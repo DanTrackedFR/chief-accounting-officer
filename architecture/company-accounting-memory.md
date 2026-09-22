@@ -14,21 +14,12 @@ Company Context covers Corporate Profile, Reporting Profile, Accounting Function
 
 ## Knowledge status
 
-Each durable item MUST support an appropriate status:
-
-- `OBSERVED`
-- `CONFIRMED`
-- `DOCUMENTED`
-- `APPROVED`
-- `PROPOSED`
-- `SUPERSEDED`
-
-A `PROPOSED` position MUST NOT silently overwrite an `APPROVED` position.
+Durable knowledge supports `OBSERVED`, `CONFIRMED`, `DOCUMENTED`, `APPROVED`, `PROPOSED`, and `SUPERSEDED` states. A proposal MUST NOT silently overwrite an approved position.
 
 ## Temporal requirements
 
-Where applicable, memory MUST preserve current state, previous state, effective date, decision date, learned date, source or evidence, approver or confirmer, reason for change, related cases or artifacts, and superseded state.
+Where applicable, memory preserves current state, previous state, effective date, decision date, learned date, source/evidence, approver/confirmer, reason for change, related cases/artifacts and supersession.
 
-`effective_date` and `learned_date` are distinct. The CAO MUST NOT imply it knew a fact before its learned date. Unknown historical dates MUST remain uncertain rather than being fabricated.
+`effective_date` and `learned_date` are distinct. Unknown historical dates remain uncertain rather than fabricated.
 
-The `/memory` directory defines each store at a structural level. Storage implementation and schemas are deferred.
+The `/memory` directory contains Phase 1 structural schemas. Persistence technology and application code are deliberately deferred.
