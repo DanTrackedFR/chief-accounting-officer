@@ -34,16 +34,20 @@ Non-blocking source limitation: public FASB materials confirm Topic 606 / ASC 20
 
 ### Batch 004 — Revenue continuation — 22 September 2026
 Worked through to REVIEWED / production-candidate:
-- TOPIC-03-004 Principal-versus-Agent / Contract Asset & Liability Accounting — 310e8e1d. Includes IFRS/AASB principal-agent control logic, IFRIC software-reseller implementation evidence, contract-balance classification, revised FRS 102 period routing, Topic 606 routing, journals, controls/systems and five scenarios. US source depth PARTIAL.
-- TOPIC-03-005 Deferred / Unbilled Revenue — 76dcec2d. Converts contract-balance standards into operational rollforwards, billing/performance classification, controls, systems and scenarios. US source depth PARTIAL.
-- TOPIC-03-006 Contract Costs / Sales Commissions & Billing Completeness — 3073dd17. Includes IFRS/AASB contract-cost model, IFRIC fulfilment-cost guidance, official FASB IFRS15/Topic606 comparison mapping to ASC 340-40, UK effective-period routing, billing completeness workflow, controls/systems and scenarios.
+- TOPIC-03-004 Principal-versus-Agent / Contract Asset & Liability Accounting — 310e8e1d.
+- TOPIC-03-005 Deferred / Unbilled Revenue — 76dcec2d.
+- TOPIC-03-006 Contract Costs / Sales Commissions & Billing Completeness — 3073dd17.
+- TOPIC-03-007 Credit Notes, Refunds, Rebates & Accounts Receivable Accounting — 860aaf6c.
+- TOPIC-03-008 AR Aging / Expected Credit Loss / Doubtful Debt Allowance — 37bd85d5.
 
-Cumulative Phase 2D topics worked through: **17**. No fully blocked topics.
+TOPIC-03-008 records a material framework divergence: IFRS 9/AASB 9 lifetime-ECL mechanics for qualifying trade receivables; ASC 326 CECL under US GAAP; FRS 102 Section 11 objective-evidence/incurred-loss model. The factory explicitly prevents reusing an IFRS provision matrix as UK GAAP by default.
+
+Cumulative Phase 2D topics worked through: **19**. No fully blocked topics. US source-depth remains PARTIAL where full current Codification paragraph bodies are unavailable through the public source path; this is not programme-blocking and no paragraph-level APPROVED claim is made.
 
 ### Regression / hygiene finding
-Regression file 3f0cc5ba records two repository-hygiene issues discovered during scaling: the Phase 2C lease folder naming spans canonical TOPIC-04-007 through 04-010 rather than matching the Phase 2B denominator one-to-one; and build retries created duplicate TOPIC-02-001 folders. These do not block substantive work, but completion-count automation must use the canonical topic universe rather than raw folder counts until normalization is completed.
+Regression file 3f0cc5ba records repository-hygiene issues: Phase 2C lease folder naming spans canonical TOPIC-04-007 through 04-010 rather than matching the Phase 2B denominator one-to-one; build retries created duplicate TOPIC-02-001 folders. Canonical-universe counts, not raw folder counts, remain authoritative until normalization.
 
-Next: TOPIC-03-007 onward. Run the next revenue-family regression after another 2–5 topics.
+Next: TOPIC-03-009 onward. Run revenue-family regression after another 1–4 topics.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after knowledge population is sufficiently mature.
