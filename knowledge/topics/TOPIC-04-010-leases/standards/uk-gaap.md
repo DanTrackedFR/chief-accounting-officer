@@ -1,23 +1,36 @@
 # UK GAAP — FRS 102 Section 20 Leases (Periodic Review 2024)
 
-Sources: SRC-FRC-FRS102S20; SRC-FRC-FACT11  
-Status: REVIEW CANDIDATE  
-Checked: 2026-09-22
+Sources: SRC-FRC-FRS102S20; SRC-FRC-FACT11
+Status: REVIEWED
+Source checked: 2026-09-22
 
 ## Effective-period gate
-The Periodic Review 2024 amendments are generally effective for accounting periods beginning on or after 1 January 2026. The CAO MUST establish the reporting period before selecting the Section 20 model; earlier periods may require the pre-amendment model.
+Revised Section 20 was completely rewritten in Periodic Review 2024. Most amendments are effective for periods beginning on or after 1 January 2026, unless early adopted. The CAO MUST establish period start before routing the case. Pre-2026 periods can use materially different lease accounting.
 
-## 2026-onward lessee model
-The revised Section 20 introduces an on-balance-sheet lessee model derived from IFRS 16 principles, replacing the former operating/finance distinction for most lessee accounting. A lessee generally recognizes an ROU asset and lease liability, with exemptions/practical simplifications provided by FRS 102.
+## Lessee model
+For 2026-onward periods, the operating/finance distinction is removed for lessees and most leases move on balance sheet as an ROU asset and lease liability. The lessor distinction remains.
 
-## CAO workflow
-Identify whether the contract contains a lease; establish term/payments; determine the applicable discount-rate approach permitted by FRS 102; recognize and subsequently measure ROU asset/liability; assess changes/modifications; present/disclose; preserve transition evidence.
+## Verified paragraph map / decision logic
+- Scope: 20.1.
+- Short-term exemption: lease term <=12 months and no purchase option; applied by class of underlying asset.
+- Low-value exemption: no numeric threshold in Section 20; lease-by-lease. Real estate and motor vehicles are examples of assets not low-value. A subleased/expected-to-be-subleased asset cannot use this exemption. FRC describes this exemption as intentionally more permissive than IFRS 16.
+- Identification: control of an identified asset. Substitution right is substantive when supplier has practical ability and economic benefit from substitution. If customer cannot readily determine whether substitution is substantive, presume it is not.
+- Components: allocate consideration using relative standalone prices. Paragraph 20.33 permits a by-class practical expedient to combine lease and associated non-lease components.
+- Portfolio expedient: permitted for leases with similar characteristics where appropriate.
+- Lease term: non-cancellable period plus extension periods reasonably certain to be exercised and termination periods reasonably certain not to be exercised / only exercisable by lessor. Reassessment is limited to specified significant events/changes within lessee control.
+- Lease payments: fixed/in-substance fixed less incentives receivable; index/rate-based payments using commencement index/rate; expected residual guarantee payments; reasonably-certain purchase option; termination penalties when reflected in term. See 20.51–20.54.
+- Discount rate: implicit rate if readily determinable. Otherwise lessee may choose, lease-by-lease, incremental borrowing rate OR obtainable borrowing rate. Public benefit entities unable readily to determine those rates use the applicable deposit-rate fallback. This is a material simplification/difference from IFRS 16.
+- Subsequent liability: interest + payments + reassessments/modifications/revised in-substance fixed payments. See 20.62 onward.
+- Reassessment: term/purchase-option changes use revised rate; residual guarantee and index/rate cash-flow changes generally use unchanged rate, except floating-rate changes use revised rate. See 20.66–20.69.
+- Modification: additional right of use with commensurate consideration is separate lease. Revised Section 20 also permits unchanged-rate treatment for specified modification cases; otherwise revised rate. See 20.70–20.73.
+- ROU asset: initial liability adjusted for pre-commencement payments/incentives, direct costs, restoration obligations and specified grant/non-exchange amounts. Subsequent cost model generally applies, with investment-property/revaluation interactions. See 20.47 and 20.56 onward.
+- Presentation: 20.74–20.75 lessees.
+- Disclosure: 20.76–20.85 lessees.
+- Lessor presentation/disclosure: 20.113 and 20.114–20.121.
+- Subleases: revised Section 20 classifies an intermediate-lessor sublease by reference to the ROU asset from the head lease (20.92), unlike legacy treatment.
 
-## Important UK-GAAP distinction
-Do not label revised FRS 102 as identical to IFRS 16. FRC intentionally adapted the model for FRS 102 entities, including simplifications. The CAO must use Section 20 itself and official FRC implementation material for the detailed conclusion.
+## Required CAO evidence
+Contract/amendments; period start; early-adoption decision; exemption elections; identified-asset/control analysis; component election; enforceable term/options; payment table; rate methodology including IBR vs obtainable-rate choice; PBE status if relevant; transition evidence; rollforward; modifications; GL reconciliation; disclosures.
 
-## Transition
-The 2024 Periodic Review creates a material effective-date transition. Company Context must preserve which FRS 102 edition applies and the transition choices/evidence used.
-
-## Evidence
-Contract population, embedded-lease assessment, payment schedules, term/options, discount-rate support, transition calculations/elections, ROU/liability rollforward, modifications, reconciliations and disclosures.
+## Source caution
+FRC Factsheet 11 is official staff implementation material, not a substitute for FRS 102. Paragraph conclusions should retain Section 20 references and the case should identify any issue requiring direct standard verification.
