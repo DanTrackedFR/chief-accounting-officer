@@ -33,7 +33,7 @@ Completed to REVIEWED knowledge status:
 - TOPIC-02-004 Trial Balance Review / Balance Sheet Reconciliations — f7425aeb
 - TOPIC-02-005 Reconciliation Governance / Account Certification — 9395eb20
 
-Regression 001: PASS — 49f69710.
+Regression 001: PASS. Later regression enhancement added temporal routing and reusable evidence/risk primitives.
 
 ### Batch 002 — Close & GL completion — 22 September 2026
 
@@ -52,12 +52,13 @@ Worked through to REVIEWED / production-candidate:
 - TOPIC-03-001 Revenue Contract Accounting Assessment / Performance Obligation Identification. Full four-framework routing, revised FRS 102 Section 23 paragraph map, CAO workflow, differences, controls/systems and 10 scenario tests. US Codification paragraph depth explicitly PARTIAL pending direct current Codification verification.
 - TOPIC-08-005 Going Concern / Subsequent Events. Four-framework routing, effective-date logic, CAO assessment workflow, differences, controls/audit/systems and 10 scenario tests. US ASC 205-40/855 paragraph depth explicitly PARTIAL pending direct current Codification verification.
 - TOPIC-03-002 Variable Consideration / Transaction Price Allocation — 2974a279. IFRS/AASB official transaction-price/allocation architecture, FRC 2026 routing, FASB Topic 606 implementation guidance, CAO execution logic, example, controls/systems/artifacts and eight scenarios. US Codification paragraph depth remains PARTIAL under the same recorded source limitation.
+- TOPIC-03-003 Revenue Recognition Timing / Contract Modifications — 1a3d2932. IFRS/AASB over-time/point-in-time routing, enforceable-right-to-payment logic, contract-modification decision model, FRS 102 effective-period routing, US Topic 606 architecture, controls/audit/systems and eight scenarios. US paragraph depth remains PARTIAL.
 
 Non-blocking source limitation: public FASB materials confirm Topic 606 / ASC 205-40 / ASC 855 architecture but do not expose all current Codification paragraph bodies required for APPROVED paragraph-level status. Per build rule, the limitation is recorded and work continues rather than stopping the programme.
 
-Cumulative Phase 2D topics worked through: **13** (10 Domain 02 + TOPIC-03-001 + TOPIC-03-002 + TOPIC-08-005). Domain 02 remains fully REVIEWED. No fully blocked topics.
+Cumulative Phase 2D topics worked through: **14** (10 Domain 02 + TOPIC-03-001/002/003 + TOPIC-08-005). No fully blocked topics.
 
-Next: continue Revenue & Receivables TOPIC-03-003 onward; run next family regression after 5–10 additional topics.
+Next: continue Revenue & Receivables TOPIC-03-004 onward; run next family regression after 5–10 additional topics.
 
 ## Phase 3 — Production skills
 
