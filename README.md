@@ -38,41 +38,22 @@ Orchestration / Case Graph
 
 The CAO is an **orchestrator**, not a router. A substantive task can invoke many capabilities and revisit earlier analysis as new facts emerge.
 
-## 17 domains
-
-1. CAO Leadership & Controllership
-2. Close & General Ledger
-3. Revenue & Receivables Accounting
-4. Assets & Capitalization
-5. Liabilities, Expenses & Compensation Accounting
-6. Cash, FX & Financial Instruments
-7. Group Accounting & Consolidation
-8. Financial Reporting
-9. Controls & Governance
-10. Audit & Assurance Readiness
-11. Accounting Systems & Data
-12. Accounting Operations
-13. Complex Transactions & Special Situations
-14. Technical Accounting & Documentation
-15. Accounting Policy, Estimates & Judgments
-16. Regulatory Reporting
-17. Sustainability & Climate Reporting
-
 ## Build phases
 
-**Phase 1 — Operating system:** scope, domains, skill map, orchestration, CAO Agent, Company Accounting Memory, schemas, knowledge architecture, artifact architecture and evaluation design.
+**Phase 1 — Operating system:** scope, 17 domains, 347-capability v1 skill map, orchestration, CAO Agent, Company Accounting Memory, schemas, knowledge architecture, artifact architecture and evaluation design.
 
 **Phase 2 — Knowledge library:** deep, sourced IFRS, US GAAP, UK GAAP, AASB, NZ IFRS, jurisdiction/regulatory and industry knowledge, including explicit framework differences.
 
-**Phase 3 — Production capabilities:** build and test the actual skills with methods, references, checklists, templates, examples and evaluations.
+**Phase 3 — Production capabilities:** build and test actual skills with methods, references, checklists, templates, examples and evaluations.
 
-A small reference set — Balance Sheet Reconciliations, Lease Accounting, Capitalized Software, ECL/Doubtful Debt and Month-End Close — will pressure-test the architecture before mass production.
+A reference set — Balance Sheet Reconciliations, Lease Accounting, Capitalized Software, ECL/Doubtful Debt and Month-End Close — will pressure-test the architecture before mass production.
 
 ## Start reading
 
 - [System overview](architecture/system-overview.md)
 - [CAO Agent](architecture/cao-agent.md)
 - [Scope](architecture/scope.md)
+- [Domains](architecture/domains.md)
 - [Complete skill map](architecture/skill-map.md)
 - [Skill specification](architecture/skill-specification.md)
 - [Orchestration](architecture/orchestration.md)
