@@ -64,3 +64,17 @@ Implemented:
 The lease fixtures are intentionally non-substantive. Phase 2A completion does not claim accounting knowledge completion.
 
 Next gate: Phase 2B complete topic universe and capability-to-topic coverage map. No mass standards content should be populated until that map is reviewed.
+
+
+## Phase 2B exit review — 22 September 2026
+
+Checkpoint 2 mapping is COMPLETE and ready for user review.
+
+- 157 top-level knowledge topics.
+- 347/347 Phase 1 capabilities mapped exactly once as primary coverage.
+- Machine-readable capability/topic matrix created.
+- Reverse mapping validated.
+- Framework sensitivity and dependency-led build waves established.
+- No mass accounting content generated.
+
+Next gate: Phase 2C Leases vertical slice, subject to checkpoint approval.
