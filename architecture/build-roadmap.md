@@ -2,11 +2,30 @@
 
 ## Phase 1 — Operating system
 
+Status: **complete**.
+
 Deliverables: scope, domains, complete skill map, skill contract, CAO Agent, orchestration, cases, Company Accounting Memory, schemas, knowledge architecture, artifact architecture, evaluations, and build sequencing.
 
-## Phase 2 — Knowledge library
+## Phase 2A — Knowledge infrastructure
 
-Populate and source IFRS, US GAAP, UK GAAP, AASB, NZ IFRS, jurisdiction/regulatory overlays, deep industry packs, and cross-framework differences. Knowledge must preserve source provenance and effective dates.
+Define and validate:
+- canonical knowledge-record schema;
+- source hierarchy and source registry;
+- citation and paragraph-reference conventions;
+- effective-date and supersession model;
+- framework inheritance/overlay rules;
+- differences records;
+- review/approval status;
+- IFRS copyright/licensing guardrails;
+- update-monitoring methodology.
+
+Initial active frameworks are IFRS, US GAAP, UK GAAP and AASB. NZ IFRS is deferred.
+
+Validate the infrastructure with an end-to-end **Leases** vertical slice across the four active frameworks before broad population.
+
+## Phase 2B — Knowledge population
+
+Populate topic-by-topic across active frameworks, then jurisdiction/regulatory overlays and deep industry packs. Prioritize technical topics that support the CAO capability map. Do not duplicate identical knowledge unnecessarily.
 
 ## Phase 3 — Production skills
 
@@ -14,7 +33,7 @@ Build skills systematically across all 17 domains. Each production skill receive
 
 ## Reference-skill pressure tests
 
-Build these early before mass-producing skills:
+Build these early:
 1. Balance Sheet Reconciliations
 2. Lease Accounting
 3. Capitalized Software
@@ -22,14 +41,3 @@ Build these early before mass-producing skills:
 5. Month-End Close
 
 Their purpose is architectural validation. Findings MAY change skill granularity or contracts before broad production.
-
-## Suggested Phase 3 waves
-
-1. Close, reconciliations, accounting operations and controls.
-2. Revenue/AR and liabilities/compensation.
-3. Assets, leases, capitalization and impairment.
-4. Group accounting, cash/FX/instruments and reporting.
-5. Technical accounting, policies/judgments and complex transactions.
-6. Systems/data, audit, regulatory, sustainability and CAO leadership.
-
-Wave order is implementation sequencing, not importance.
