@@ -8,84 +8,37 @@ Deliverables: scope, domains, complete skill map, skill contract, CAO Agent, orc
 
 ## Phase 2A — Knowledge infrastructure
 
-Define and validate:
-- canonical knowledge-record schema;
-- source hierarchy and source registry;
-- citation and paragraph-reference conventions;
-- effective-date and supersession model;
-- framework inheritance/overlay rules;
-- differences records;
-- review/approval status;
-- IFRS copyright/licensing guardrails;
-- update-monitoring methodology.
+Status: **complete**. Active frameworks: IFRS, US GAAP, UK GAAP and AASB. NZ IFRS deferred.
 
-Initial active frameworks are IFRS, US GAAP, UK GAAP and AASB. NZ IFRS is deferred.
+## Phase 2B — Topic universe
 
-Validate the infrastructure with an end-to-end **Leases** vertical slice across the four active frameworks before broad population.
+Status: **complete**. 157 top-level topics; 347/347 primary capability coverage.
 
-## Phase 2B — Knowledge population
+## Phase 2C — Leases vertical slice
 
-Populate topic-by-topic across active frameworks, then jurisdiction/regulatory overlays and deep industry packs. Prioritize technical topics that support the CAO capability map. Do not duplicate identical knowledge unnecessarily.
+Status: **complete as architecture checkpoint**. Framework routing, effective-period routing, source mapping, differences, calculations, CAO logic, practice/control/audit/systems, artifacts and 11 scenario tests demonstrated.
+
+## Phase 2D — Full knowledge population
+
+Status: **IN PROGRESS**.
+
+Build topic-by-topic across the remaining universe. Full factory means PRINCIPLES/STANDARDS/PRACTICE as applicable; authoritative sources for standards claims; differences; CAO execution logic; calculations/examples where relevant; documentation; controls/audit/disclosures/systems; capability integration; tests; QA; commit and tracking. Operational topics must not manufacture framework records.
+
+### Batch 001 — Close core — 22 September 2026
+
+Completed to REVIEWED knowledge status:
+- TOPIC-02-001 Month-End Close Design / Calendar / Critical Path — commit fec625ca
+- TOPIC-02-002 Journal Entry Preparation / Review / Manual Governance — 00142dab
+- TOPIC-02-003 Recurring & Automated Journals / GL Integrity — 0e1510a1
+- TOPIC-02-004 Trial Balance Review / Balance Sheet Reconciliations — f7425aeb
+- TOPIC-02-005 Reconciliation Governance / Account Certification — 9395eb20
+
+Regression 001: PASS — 49f69710.
+
+Coverage added this batch: 5 top-level topics and 10 mapped capabilities. No blockers. Key architecture finding: principles/practice-led operational topics can use a compact governed full-factory package, while standards-heavy topics continue to require framework/source/differences records.
+
+Next: TOPIC-02-006 through TOPIC-02-010, then recurring-controller core.
 
 ## Phase 3 — Production skills
 
-Build skills systematically across all 17 domains. Each production skill receives its contract, methods, knowledge references, checklists, templates where useful, examples, and tests.
-
-## Reference-skill pressure tests
-
-Build these early:
-1. Balance Sheet Reconciliations
-2. Lease Accounting
-3. Capitalized Software
-4. Expected Credit Loss / Doubtful Debt
-5. Month-End Close
-
-Their purpose is architectural validation. Findings MAY change skill granularity or contracts before broad production.
-
-
-## Phase 2A exit review — 22 September 2026
-
-Checkpoint 1 infrastructure is COMPLETE for architecture purposes.
-
-Implemented:
-- canonical knowledge-record contract;
-- source registry and authority hierarchy;
-- citation/reference conventions;
-- temporal effective-date and supersession model;
-- framework/AASB overlay rules;
-- first-class differences records;
-- review/status model;
-- rights/licensing guardrails for all four active framework publishers;
-- repository/ID conventions;
-- knowledge-to-skill linking contract;
-- schema fixtures and validation checklist;
-- update-monitoring methodology.
-
-The lease fixtures are intentionally non-substantive. Phase 2A completion does not claim accounting knowledge completion.
-
-Next gate: Phase 2B complete topic universe and capability-to-topic coverage map. No mass standards content should be populated until that map is reviewed.
-
-
-## Phase 2B exit review — 22 September 2026
-
-Checkpoint 2 mapping is COMPLETE and ready for user review.
-
-- 157 top-level knowledge topics.
-- 347/347 Phase 1 capabilities mapped exactly once as primary coverage.
-- Machine-readable capability/topic matrix created.
-- Reverse mapping validated.
-- Framework sensitivity and dependency-led build waves established.
-- No mass accounting content generated.
-
-Next gate: Phase 2C Leases vertical slice, subject to checkpoint approval.
-
-
-## Phase 2C exit review — 22 September 2026
-
-Leases vertical slice: **PASS / COMPLETE AS ARCHITECTURE CHECKPOINT**.
-
-The build now demonstrates framework routing, effective-period routing, authoritative-source mapping, differences, calculations, CAO execution logic, practice/control/audit/systems consequences, artifacts and scenario testing. Eleven architecture scenarios passed.
-
-The vertical slice also established an important scaling principle: top-level topics will contain multiple source-backed records/subissues; record-level approval remains granular and updateable. Checkpoint completion does not mean accounting literature is frozen or exempt from future source verification.
-
-Next gate: Scale approval for Phase 2D topic-by-topic knowledge population.
+Build skills systematically across all 17 domains after knowledge population is sufficiently mature. Each production skill receives contract, methods, knowledge references, checklists, templates, examples and tests.
