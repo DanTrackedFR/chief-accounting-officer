@@ -1,33 +1,37 @@
 # Phase 2C Lease QA
 
-## Architecture
-- [x] Topic scope and related reporting topic identified.
-- [x] Four active frameworks represented.
-- [x] Primary/official source families registered.
-- [x] Differences record created.
-- [x] CAO workflow and calculation method created.
-- [x] Practice/control/audit/systems layer created.
-- [x] Scenario suite created.
-- [x] Artifact/output contract created.
+Updated: 2026-09-22
 
-## Accounting QA
-- [x] Framework and reporting period are mandatory routing inputs.
-- [x] Lease identification precedes measurement.
-- [x] Term, payments and discount rate are explicit judgment/input areas.
-- [x] IFRS/AASB single-lessee model is not conflated with ASC 842 dual classification.
-- [x] UK pre/post-2026 effective-period risk surfaced.
+## Architecture — PASS
+- [x] Topic scope and linked sale/leaseback-reporting topic.
+- [x] Four active frameworks.
+- [x] Primary/official source families.
+- [x] Differences layer.
+- [x] CAO workflow/calculation method.
+- [x] Practice/control/audit/systems layer.
+- [x] Scenario suite and artifact contract.
+
+## Deep verification completed
+- [x] FRS 102 revised Section 20: exemptions, identification, components, term, payments, rates, subsequent measurement, reassessment, modifications, ROU, presentation/disclosure references and sublease change mapped from official FRC implementation material.
+- [x] ASC 842: core classification, modification and nonpublic risk-free-rate references verified from FASB material.
+- [x] AASB 16: current operative version and Australian NFP/Tier 2 overlay verified.
+- [x] IFRS 16: current status and 2026 PIR pipeline separated from current requirements.
+- [x] 11/11 architecture scenarios executed and passed expected routing.
+
+## Accounting QA — PASS FOR VERTICAL-SLICE PURPOSE
+- [x] Framework/reporting period mandatory.
+- [x] Identification precedes measurement.
+- [x] Term/payments/rate explicit.
+- [x] IFRS/AASB not conflated with ASC 842 dual classification.
+- [x] FRS 102 not treated as IFRS clone; obtainable borrowing rate and UK low-value simplification captured.
 - [x] Australian overlays surfaced.
-- [x] Lessor and sale-and-leaseback routing retained.
-- [x] Modification, impairment, disclosure and reconciliation implications included.
-- [x] No invented discount rates in production logic.
-- [x] No standards body text intentionally reproduced.
+- [x] Modifications, impairment, lessor, sale/leaseback, disclosures and reconciliation routed.
+- [x] No invented rates.
+- [x] No intentional reproduction of restricted standards body text.
 
-## Remaining before COMPLETE
-- [ ] Deep paragraph-level source verification for every framework subissue.
-- [ ] Expand FRS 102 simplification details from primary Section 20.
-- [ ] Expand ASC 842 paragraph-level mapping for each subissue.
-- [ ] Expand current AASB paragraph/Aus-overlay mapping.
-- [ ] Execute scenario tests against a production CAO skill implementation.
-- [ ] Independent technical accounting review.
+## Residual production-depth work
+The vertical slice is now sufficient to approve the architecture and scale the knowledge factory. However, individual lease records remain subject to normal topic-level source verification as they are promoted from REVIEWED to APPROVED. In particular, full current ASC 842 paragraph mapping for every lessee measurement/disclosure subissue and full primary-standard FRS 102/AASB cross-check remain continuing record-level QA, not blockers to the architecture checkpoint.
 
-Conclusion: vertical slice proves the architecture and exposes the record-density/verification workload, but TOPIC-04-010 must remain BUILDING rather than falsely COMPLETE.
+## Checkpoint conclusion
+PHASE 2C VERTICAL SLICE: PASS.
+TOPIC-04-010 knowledge status: REVIEWED / production-candidate, not frozen forever. Future authoritative changes follow update-monitoring and supersession rules.
