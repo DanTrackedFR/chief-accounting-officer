@@ -41,3 +41,26 @@ Build these early:
 5. Month-End Close
 
 Their purpose is architectural validation. Findings MAY change skill granularity or contracts before broad production.
+
+
+## Phase 2A exit review — 22 September 2026
+
+Checkpoint 1 infrastructure is COMPLETE for architecture purposes.
+
+Implemented:
+- canonical knowledge-record contract;
+- source registry and authority hierarchy;
+- citation/reference conventions;
+- temporal effective-date and supersession model;
+- framework/AASB overlay rules;
+- first-class differences records;
+- review/status model;
+- rights/licensing guardrails for all four active framework publishers;
+- repository/ID conventions;
+- knowledge-to-skill linking contract;
+- schema fixtures and validation checklist;
+- update-monitoring methodology.
+
+The lease fixtures are intentionally non-substantive. Phase 2A completion does not claim accounting knowledge completion.
+
+Next gate: Phase 2B complete topic universe and capability-to-topic coverage map. No mass standards content should be populated until that map is reviewed.
