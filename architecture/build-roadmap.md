@@ -78,3 +78,14 @@ Checkpoint 2 mapping is COMPLETE and ready for user review.
 - No mass accounting content generated.
 
 Next gate: Phase 2C Leases vertical slice, subject to checkpoint approval.
+
+
+## Phase 2C exit review — 22 September 2026
+
+Leases vertical slice: **PASS / COMPLETE AS ARCHITECTURE CHECKPOINT**.
+
+The build now demonstrates framework routing, effective-period routing, authoritative-source mapping, differences, calculations, CAO execution logic, practice/control/audit/systems consequences, artifacts and scenario testing. Eleven architecture scenarios passed.
+
+The vertical slice also established an important scaling principle: top-level topics will contain multiple source-backed records/subissues; record-level approval remains granular and updateable. Checkpoint completion does not mean accounting literature is frozen or exempt from future source verification.
+
+Next gate: Scale approval for Phase 2D topic-by-topic knowledge population.
