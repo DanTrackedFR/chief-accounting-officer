@@ -46,11 +46,17 @@ Completed to REVIEWED knowledge status:
 
 Regression 002 (full Domain 02 family): PASS — 4ee9619f.
 
-Cumulative Phase 2D coverage: **10 top-level topics / 22 mapped capabilities**. No blockers. Domain 02 is fully worked through to REVIEWED knowledge status. Standards anchors were checked against current official IFRS Foundation, FASB, FRC and AASB sources where standards-sensitive conclusions arise.
+### Batch 003 — Revenue start + reporting dependency — 22 September 2026
 
-Architecture finding confirmed: close/GL execution knowledge should invoke underlying accounting topics for recognition conclusions rather than duplicate standards logic inside operational records. Reconciliation assertion logic and error-versus-estimate routing become reusable primitives for later domains.
+Worked through to REVIEWED / production-candidate:
+- TOPIC-03-001 Revenue Contract Accounting Assessment / Performance Obligation Identification. Full four-framework routing, revised FRS 102 Section 23 paragraph map, CAO workflow, differences, controls/systems and 10 scenario tests. US Codification paragraph depth explicitly PARTIAL pending direct current Codification verification.
+- TOPIC-08-005 Going Concern / Subsequent Events. Four-framework routing, effective-date logic, CAO assessment workflow, differences, controls/audit/systems and 10 scenario tests. US ASC 205-40/855 paragraph depth explicitly PARTIAL pending direct current Codification verification.
 
-Next: recurring-controller core, beginning Revenue & Receivables.
+Non-blocking source limitation: public FASB materials confirm Topic 606 / ASC 205-40 / ASC 855 architecture but do not expose all current Codification paragraph bodies required for APPROVED paragraph-level status. Per build rule, the limitation is recorded and work continues rather than stopping the programme.
+
+Cumulative Phase 2D topics worked through: **12** (10 Domain 02 + TOPIC-03-001 + TOPIC-08-005). Domain 02 remains fully REVIEWED. No fully blocked topics.
+
+Next: continue Revenue & Receivables TOPIC-03-002 onward; run next family regression after 5–10 additional topics.
 
 ## Phase 3 — Production skills
 
