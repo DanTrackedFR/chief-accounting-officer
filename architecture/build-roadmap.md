@@ -27,7 +27,7 @@ Build topic-by-topic across the remaining universe. Full factory means PRINCIPLE
 ### Batch 001 — Close core — 22 September 2026
 
 Completed to REVIEWED knowledge status:
-- TOPIC-02-001 Month-End Close Design / Calendar / Critical Path — commit fec625ca
+- TOPIC-02-001 Month-End Close Design / Calendar / Critical Path — fec625ca
 - TOPIC-02-002 Journal Entry Preparation / Review / Manual Governance — 00142dab
 - TOPIC-02-003 Recurring & Automated Journals / GL Integrity — 0e1510a1
 - TOPIC-02-004 Trial Balance Review / Balance Sheet Reconciliations — f7425aeb
@@ -35,9 +35,22 @@ Completed to REVIEWED knowledge status:
 
 Regression 001: PASS — 49f69710.
 
-Coverage added this batch: 5 top-level topics and 10 mapped capabilities. No blockers. Key architecture finding: principles/practice-led operational topics can use a compact governed full-factory package, while standards-heavy topics continue to require framework/source/differences records.
+### Batch 002 — Close & GL completion — 22 September 2026
 
-Next: TOPIC-02-006 through TOPIC-02-010, then recurring-controller core.
+Completed to REVIEWED knowledge status:
+- TOPIC-02-006 Suspense/Clearing & Cut-Off — d7ddc28b
+- TOPIC-02-007 Accruals & Prepaids — 73dd2e7e
+- TOPIC-02-008 Flux Review & Post-Close Governance — 1a455ecf
+- TOPIC-02-009 Prior-Period Errors & Opening-Balance Integrity — 98ecfd8d
+- TOPIC-02-010 Close Evidence / Sign-Off / Fast Close — 2298b7f7
+
+Regression 002 (full Domain 02 family): PASS — 4ee9619f.
+
+Cumulative Phase 2D coverage: **10 top-level topics / 22 mapped capabilities**. No blockers. Domain 02 is fully worked through to REVIEWED knowledge status. Standards anchors were checked against current official IFRS Foundation, FASB, FRC and AASB sources where standards-sensitive conclusions arise.
+
+Architecture finding confirmed: close/GL execution knowledge should invoke underlying accounting topics for recognition conclusions rather than duplicate standards logic inside operational records. Reconciliation assertion logic and error-versus-estimate routing become reusable primitives for later domains.
+
+Next: recurring-controller core, beginning Revenue & Receivables.
 
 ## Phase 3 — Production skills
 
