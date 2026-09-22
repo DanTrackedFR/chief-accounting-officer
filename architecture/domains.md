@@ -20,8 +20,8 @@ The CAO has exactly 17 domains:
 16. Regulatory Reporting
 17. Sustainability & Climate Reporting
 
-Domains organize capabilities. They MUST NOT be implemented as isolated agents or fixed workflows. A future skill MUST have one `primary_domain` and MAY reference multiple `related_domains`. A capability MUST NOT be duplicated merely because it crosses domains.
+Domains organize capabilities. They MUST NOT be implemented as isolated agents or fixed workflows. A skill MUST have one `primary_domain` and MAY reference multiple `related_domains`. A capability MUST NOT be duplicated merely because it crosses domains.
 
 Industry, framework, jurisdiction, and company context are cross-cutting overlays and MUST NOT be added as domains.
 
-Detailed skill taxonomy is deferred.
+The complete Phase 1 v1 taxonomy is maintained in [skill-map.md](skill-map.md). Future changes to granularity MUST preserve stable IDs or explicit supersession/redirect metadata.
