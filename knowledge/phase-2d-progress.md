@@ -4,9 +4,9 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **46**
+- REVIEWED / worked through this phase: **47**
 - BLOCKED: **0**
-- Remaining not yet worked through: **110**
+- Remaining not yet worked through: **109**
 - Regression reviews: **5**
 
 ## Worked-through topics
@@ -23,6 +23,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-06-005 | REVIEWED / production-candidate | Debt and issuance costs; commit d2fe0893; 10 scenarios |
 | TOPIC-06-006 | REVIEWED / production-candidate | Debt modification/extinguishment and covenants; commit 3b0eb4ca; current-rule guardrails around active IASB/FASB projects; 10 scenarios |
 | TOPIC-06-007 | REVIEWED / production-candidate | Financial asset/liability classification; commits e794e305, e9429eb3; IFRS/AASB business-model+SPPI, US instrument-specific ASC routing, FRS 102 Sections 11/12 and policy-election logic; 2026 effective-date gate; 10 scenarios |
+| TOPIC-06-008 | REVIEWED / production-candidate | Fair value measurement and derivative accounting; commit c014380c; IFRS 13/AASB 13, ASC 820/815 and FRS 102 Section 2A/11/12 routing; ASU 2025-07 adoption gate and 2026 FASB proposal explicitly separated from current GAAP; 10 scenarios |
 | TOPIC-08-005 | REVIEWED / production-candidate | Going concern/subsequent-events vertical topic already built |
 
 ## Blockers
@@ -39,4 +40,4 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 Duplicate folders exist for some TOPIC-02 IDs due build retries; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
 ## Current build sequence
-Continue TOPIC-06-008–010 fair value/derivatives, hedge/investment accounting and impairment/disclosures. Standards-heavy topics require current official-source verification and explicit framework differences. Then proceed to Domain 07 Group Accounting & Consolidation. Run Regression 006 no later than completion of Domain 06.
+Continue TOPIC-06-009–010 hedge/investment accounting and impairment/disclosures. Standards-heavy topics require current official-source verification and explicit framework differences. Then proceed to Domain 07 Group Accounting & Consolidation. Run Regression 006 no later than completion of Domain 06.
