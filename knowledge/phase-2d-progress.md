@@ -1,35 +1,35 @@
 # Phase 2D — Knowledge Factory Progress
 
-Updated: 2026-09-22
+Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: 22
+- REVIEWED / worked through this phase: 31
 - BLOCKED: 0
-- Remaining not yet worked through: 134
+- Remaining not yet worked through: 125
 - Regression reviews: 2
 
 ## Worked-through topics
-| Topic range | Status | Key commits |
+| Topic range | Status | Notes |
 |---|---|---|
-| TOPIC-02-001–010 | REVIEWED | 86422401 through 8afbe6b9 |
-| TOPIC-03-001–006 | REVIEWED / production-candidate | see build-roadmap Batch 003–004 |
-| TOPIC-03-007 | REVIEWED | 860aaf6c |
-| TOPIC-03-008 | REVIEWED | 37bd85d5 |
-| TOPIC-03-009 | REVIEWED | 0197536f |
-| TOPIC-03-010 | REVIEWED | 35ab988d |
-| TOPIC-03-011 | REVIEWED | b8bb2e61 |
-| TOPIC-03-012 | REVIEWED | c6083893 |
+| TOPIC-02-001–010 | REVIEWED | Close & GL factory built; duplicate retry folders noted below |
+| TOPIC-03-001–012 | REVIEWED / production-candidate | Revenue & receivables family built |
+| TOPIC-04-001–006 | REVIEWED / production-candidate | PPE through impairment/goodwill family built |
+| TOPIC-05-001 | REVIEWED / production-candidate | AP accounting + AP-to-GL reconciliation; commits bd9332b9, 21a40827 |
+| TOPIC-05-002 | REVIEWED / production-candidate | Expense cut-off + accrual methodology; commits 0a375062, 1c7a4a72 |
+| TOPIC-08-005 | REVIEWED / production-candidate | Going concern/subsequent-events vertical topic already built |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
 
 ## Regression
 - Regression 001: early Close & GL factory scaling.
-- Regression 002 (`53f16809`): full Close/GL + Revenue/Receivables cross-topic review. Passed with repository-hygiene and US source-depth actions. Confirmed reusable primitives for population completeness, classification, calculation, posting, reconciliation, disclosure and exception governance.
+- Regression 002: full Close/GL + Revenue/Receivables cross-topic review. Passed with repository-hygiene and US source-depth actions. Confirmed reusable primitives for population completeness, classification, calculation, posting, reconciliation, disclosure and exception governance.
+
+Next regression is due after the current assets/liabilities batch reaches 5–10 additional canonical topics.
 
 ## Repository hygiene
-Duplicate folders exist for some TOPIC-02 IDs due build retries; Phase 2C lease folder naming also does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
+Duplicate folders exist for some TOPIC-02 IDs due build retries; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
-## Next build sequence
-Assets/capitalization and liabilities/expenses recurring-controller core, then bank/cash/FX, intercompany and primary financial reporting. Standards-heavy topics continue to require current official-source verification and framework differences; operational topics receive principles/practice/controls/systems depth without artificial four-framework records.
+## Current build sequence
+Continue TOPIC-05 liabilities/expenses/compensation, then bank/cash/FX, intercompany and primary financial reporting. Standards-heavy topics require current official-source verification and framework differences; operational topics receive principles/practice/controls/systems depth without artificial four-framework records.
