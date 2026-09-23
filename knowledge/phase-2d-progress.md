@@ -4,9 +4,9 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: 40
+- REVIEWED / worked through this phase: 41
 - BLOCKED: 0
-- Remaining not yet worked through: 116
+- Remaining not yet worked through: 115
 - Regression reviews: 4
 
 ## Worked-through topics
@@ -21,6 +21,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-05-009 | REVIEWED / production-candidate | Severance/termination benefits and vacation/leave liabilities; commit a3d09f34; 10 scenarios |
 | TOPIC-05-010 | REVIEWED / production-candidate | Compensation reconciliations and expense classification; commit ee54ea1f; 10 scenarios. Domain 05 complete |
 | TOPIC-06-001 | REVIEWED / production-candidate | Bank reconciliation, cash in transit and restricted cash; commit 0399b8a5; current IAS 7/IFRIC, AASB 107, FRS 102 and ASC 230 routing; 10 scenarios |
+| TOPIC-06-002 | REVIEWED / production-candidate | Cash classification/presentation and foreign-currency transaction accounting; commits bccd5373, d9b7bbce, b0dfe1fb, a1d56765; current IAS 7/IAS 21, AASB 107/121, FRS 102 Sections 7/30 and ASC 230/830 routing; 10/10 scenarios PASS. Effective-period gates include IFRS/AASB presentation changes, UK 2026 Periodic Review and exchangeability considerations. |
 | TOPIC-08-005 | REVIEWED / production-candidate | Going concern/subsequent-events vertical topic already built |
 
 ## Blockers
@@ -36,4 +37,4 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 Duplicate folders exist for some TOPIC-02 IDs due build retries; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
 ## Current build sequence
-Continue TOPIC-06-002–010 cash classification, FX, debt and financial instruments. Standards-heavy topics require current official-source verification and explicit framework differences. Run Regression 005 after no more than another 5–8 canonical topics.
+Continue TOPIC-06-003–010 FX remeasurement/translation, functional currency, debt and financial instruments. Standards-heavy topics require current official-source verification and explicit framework differences. Run Regression 005 after no more than another 4–7 canonical topics.
