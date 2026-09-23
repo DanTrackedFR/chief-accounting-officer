@@ -4,9 +4,9 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **49**
+- REVIEWED / worked through this phase: **50**
 - BLOCKED: **0**
-- Remaining not yet worked through: **107**
+- Remaining not yet worked through: **106**
 - Regression reviews: **6**
 
 ## Worked-through topics
@@ -17,6 +17,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-04-001–006 | REVIEWED / production-candidate | PPE through impairment/goodwill family built |
 | TOPIC-05-001–010 | REVIEWED / production-candidate | AP, cut-off/accruals, provisions, onerous contracts, payroll/benefits, bonuses/commissions, SBC, mixed awards/modifications, termination/leave and compensation reconciliation. Domain 05 complete. |
 | TOPIC-06-001–010 | REVIEWED / production-candidate | Cash/bank, FX, debt, instruments, fair value/derivatives, hedge/investment and impairment/disclosure factory. Domain 06 complete. |
+| TOPIC-07-001 | REVIEWED / production-candidate | Consolidation scope assessment and subsidiary accounting. Explicit IFRS/AASB control model, US ASC 810 routing, UK FRS 102/statutory routing, investment-entity branch, effective dating, scope controls and 8 scenario tests. Commits 1275d463, 3fd066b0. |
 | TOPIC-08-005 | REVIEWED / production-candidate | Going concern/subsequent-events vertical topic already built |
 
 ## Blockers
@@ -34,4 +35,4 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
 ## Current build sequence
-Proceed to Domain 07 Group Accounting & Consolidation, beginning TOPIC-07-001 consolidation scope/subsidiary accounting and TOPIC-07-002 control/NCI. Standards-heavy topics require current official-source verification and explicit framework differences.
+Continue Domain 07 Group Accounting & Consolidation with TOPIC-07-002 control/NCI, then intercompany and elimination topics. Run the next regression after another 4–8 canonical topics. Standards-heavy topics require current official-source verification and explicit framework differences.
