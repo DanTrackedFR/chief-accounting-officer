@@ -51,9 +51,14 @@ REVIEWED:
 
 Regression 002 — 53f16809 — covers Domain 02 plus full Domain 03. PASS with two actions: preserve PARTIAL paragraph-depth status for US records where public Codification access is insufficient; normalize duplicate/retry folders later without interrupting the substantive build.
 
-Cumulative canonical Phase 2D topics worked through: **22**. No fully blocked topics. Remaining: **134**.
+### Batch 006 — PPE recognition/capitalization + reporting depth — 22 September 2026
+REVIEWED / production-candidate:
+- TOPIC-04-001 Fixed Asset Recognition / Capitalization / Additions — fe1a69dd, 9df137c6. 8/8 routing scenarios PASS. IFRS IAS 16, AASB 116 and FRS 102 Section 17 authoritative families checked; US ASC 360 paragraph-depth remains PARTIAL where public Codification access is insufficient.
+- TOPIC-08-005 Subsequent Events deepened — f3519633, 68abc2b3. Added structured event-log method and authoritative IAS 10 / FRS 102 Section 32 / AASB 110 / ASC 855 map.
 
-Next: assets/capitalization and liabilities/expenses recurring-controller core; then bank/cash/FX, intercompany and primary reporting.
+Cumulative canonical Phase 2D topics worked through: **23**. No fully blocked topics. Remaining: **133**.
+
+Next: TOPIC-04-002 depreciation/useful lives/disposals, then CIP/capitalized software and remaining assets/capitalization family.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after knowledge population is sufficiently mature.
