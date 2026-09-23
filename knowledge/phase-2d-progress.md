@@ -4,9 +4,9 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **45**
+- REVIEWED / worked through this phase: **46**
 - BLOCKED: **0**
-- Remaining not yet worked through: **111**
+- Remaining not yet worked through: **110**
 - Regression reviews: **5**
 
 ## Worked-through topics
@@ -22,6 +22,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-06-004 | REVIEWED / production-candidate | FX gain/loss analysis and functional currency; commit 331fcde7; 10 scenarios |
 | TOPIC-06-005 | REVIEWED / production-candidate | Debt and issuance costs; commit d2fe0893; 10 scenarios |
 | TOPIC-06-006 | REVIEWED / production-candidate | Debt modification/extinguishment and covenants; commit 3b0eb4ca; current-rule guardrails around active IASB/FASB projects; 10 scenarios |
+| TOPIC-06-007 | REVIEWED / production-candidate | Financial asset/liability classification; commits e794e305, e9429eb3; IFRS/AASB business-model+SPPI, US instrument-specific ASC routing, FRS 102 Sections 11/12 and policy-election logic; 2026 effective-date gate; 10 scenarios |
 | TOPIC-08-005 | REVIEWED / production-candidate | Going concern/subsequent-events vertical topic already built |
 
 ## Blockers
@@ -32,10 +33,10 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 - Regression 002: full Close/GL + Revenue/Receivables cross-topic review. PASS.
 - Regression 003: TOPIC-05-001–006 liabilities/compensation review. PASS.
 - Regression 004: Domain 05 completion + Domain 06 handoff. PASS.
-- Regression 005: TOPIC-06-001–006 FX/debt review. **PASS**. Confirmed transaction-v-remeasurement-v-translation separation, functional-currency dependency, effective-date routing, debt legal-principal-v-carrying-amount separation, modification/EIR controls, covenant separation and future-project `not current GAAP` guardrail. Commit 69968c45.
+- Regression 005: TOPIC-06-001–006 FX/debt review. PASS. Confirmed transaction-v-remeasurement-v-translation separation, functional-currency dependency, effective-date routing, debt legal-principal-v-carrying-amount separation, modification/EIR controls, covenant separation and future-project `not current GAAP` guardrail. Commit 69968c45.
 
 ## Repository hygiene
 Duplicate folders exist for some TOPIC-02 IDs due build retries; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
 ## Current build sequence
-Continue TOPIC-06-007–010 financial asset/liability classification, fair value/derivatives, hedge/investment accounting and impairment/disclosures. Standards-heavy topics require current official-source verification and explicit framework differences. Then proceed to Domain 07 Group Accounting & Consolidation.
+Continue TOPIC-06-008–010 fair value/derivatives, hedge/investment accounting and impairment/disclosures. Standards-heavy topics require current official-source verification and explicit framework differences. Then proceed to Domain 07 Group Accounting & Consolidation. Run Regression 006 no later than completion of Domain 06.
