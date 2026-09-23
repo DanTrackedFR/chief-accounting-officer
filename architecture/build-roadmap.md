@@ -34,22 +34,19 @@ REVIEWED / production-candidate: TOPIC-03-004 through TOPIC-03-008. TOPIC-03-008
 ### Batch 005 — Revenue & receivables completion — 22 September 2026
 REVIEWED: TOPIC-03-009 through TOPIC-03-012. Regression PASS. Domain 03 fully worked through.
 
-### Batch 006 — PPE recognition/capitalization + reporting depth — 22 September 2026
-REVIEWED / production-candidate:
-- TOPIC-04-001 Fixed Asset Recognition / Capitalization / Additions.
-- TOPIC-08-005 Subsequent Events deepened with structured event-log method and authoritative framework map.
+### Batch 006–010 — Assets & capitalization — 22–23 September 2026
+REVIEWED / production-candidate: TOPIC-04-001 through TOPIC-04-006 plus the previously proven lease vertical slice mapped across the canonical lease capabilities. PPE, depreciation/disposals, CIP/FA reconciliation, capitalized software/R&D/cloud implementation, intangibles/amortization and impairment/goodwill were worked through. Regression identified effective-date routing and canonical-folder normalization as reusable architecture requirements.
 
-### Batch 007 — Depreciation / useful lives / disposals — 22 September 2026
-REVIEWED / production-candidate:
-- TOPIC-04-002 Depreciation / Useful Life & Residual Value / Asset Transfer, Disposal & Retirement — 15c6a77e.
-- Official IAS 16, AASB 116 and FRS 102 Section 17 architecture checked. Component depreciation, available-for-use start, estimate-change routing, disposal logic, controls/data/artifacts and five scenarios built.
-- Material US difference retained: component depreciation is not generally mandatory under US GAAP; full current ASC 360 paragraph-body depth remains PARTIAL under the existing non-blocking public-source limitation.
+### Batch 011 — Liabilities, expenses & compensation start — 23 September 2026
+REVIEWED / production-candidate: TOPIC-05-001 through TOPIC-05-007. AP, expense/cut-off/accruals, vendor balances/provisions, onerous contracts/payroll-to-GL, payroll accruals/employee benefits, bonuses/sales incentives and share-based compensation built. Regression 003 PASS after TOPIC-05-006.
 
-Cumulative canonical Phase 2D topics worked through: **24**. No fully blocked topics. Remaining: **132**.
+TOPIC-05-007 source check incorporated current IFRS 2, ASC 718/ASU 2024-01, FRS 102 Section 26 routing and current AASB 2 version. US and UK paragraph-level source depth remains PARTIAL where authoritative body text is not available through the public path; this does not block subsequent topics.
 
-Repository hygiene remains an open non-blocking action: duplicate/retry folders exist for some earlier topic IDs. Canonical Phase 2B topic IDs, not raw folder counts, control progress.
+Cumulative canonical post-Leases Phase 2D topics worked through: **36 / 156**. Remaining: **120**. No fully blocked topics.
 
-Next: TOPIC-04-003 Construction in Progress / FA reconciliation / Capitalized Software, then remaining Assets & Capitalization family. Regression after the next 4–6 canonical topics.
+Repository hygiene remains non-blocking: duplicate/retry folders exist for some stable topic IDs. A regression record requires canonicalization before final automated completion counts. Canonical Phase 2B IDs remain authoritative.
+
+Next: TOPIC-05-008 through TOPIC-05-010, then Domain 06 Cash, FX & Financial Instruments. Regression after another 3–8 canonical topics.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after knowledge population is sufficiently mature.
