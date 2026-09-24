@@ -4,9 +4,9 @@ Updated: 2026-09-24
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **110**
+- REVIEWED / worked through this phase: **111**
 - BLOCKED: **0**
-- Remaining not yet worked through: **46**
+- Remaining not yet worked through: **45**
 - Regression reviews: **13**
 
 ## Worked-through topics
@@ -23,7 +23,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-10-001–007 | REVIEWED / production-candidate | Domain 10 complete; Regression 010 PASS |
 | TOPIC-11-001–010 | REVIEWED / production-candidate | Domain 11 complete; Regression 012 PASS |
 | TOPIC-12-001–009 | REVIEWED / production-candidate | Domain 12 complete; Regression 013 PASS |
-| TOPIC-13-001–008 | REVIEWED / production-candidate | Business combinations/PPA through complex contracts/related parties. TOPIC-13-006 debt restructuring/equity financing and TOPIC-13-007 convertibles/warrants preserve framework-specific classification/modification routing and current-v-pipeline separation. TOPIC-13-008 separates transaction-specific recognition/measurement from related-party disclosure and adds complete-contract/side-letter orchestration. |
+| TOPIC-13-001–009 | REVIEWED / production-candidate | Business combinations/PPA through common-control/spin-off/demerger accounting. TOPIC-13-009 preserves the IFRS/AASB BCUCC scope gap, UK FRS 102 group-reconstruction route, independent US Codification routing, transaction-form analysis and 10/10 scenario QA. |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
@@ -58,4 +58,4 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
 
 ## Current build sequence
-Continue Domain 13 with TOPIC-13-009 Common-Control Transaction Accounting / Spin-Off / Demerger Accounting, then carve-outs/reorganization, hyperinflation and special-transaction workplans. Preserve transaction-date/effective-period routing, framework differences and specialist-input integration. Run Regression 014 after another 1–3 canonical Domain 13 topics.
+Continue Domain 13 with TOPIC-13-010 carve-outs/reorganization, then hyperinflation and special-transaction workplans. Preserve transaction-date/effective-period routing, framework differences and specialist-input integration. Run Regression 014 after another 1–3 canonical Domain 13 topics.
