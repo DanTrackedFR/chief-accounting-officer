@@ -10,37 +10,35 @@ Status: **complete**. Active frameworks: IFRS, US GAAP, UK GAAP and AASB. NZ IFR
 Status: **complete**. 157 top-level topics; 347/347 primary capability coverage.
 
 ## Phase 2C — Leases vertical slice
-Status: **complete as architecture checkpoint**. Framework routing, effective-period routing, source mapping, differences, calculations, CAO logic, practice/control/audit/systems, artifacts and 11 scenario tests demonstrated.
+Status: **complete as architecture checkpoint**. Full factory proven end-to-end.
 
 ## Phase 2D — Full knowledge population
 Status: **IN PROGRESS**.
 
 Build topic-by-topic across the remaining universe. Full factory means PRINCIPLES/STANDARDS/PRACTICE as applicable; authoritative sources for standards claims; differences; CAO execution logic; calculations/examples where relevant; documentation; controls/audit/disclosures/systems; capability integration; tests; QA; commit and tracking. Operational topics must not manufacture framework records.
 
-### Batches 001–002 — Close & GL — 22 September 2026
-REVIEWED: TOPIC-02-001 through TOPIC-02-010. Domain 02 complete. Regression PASS.
+### Completed domain families
+- Domain 02 Close & General Ledger — TOPIC-02-001–010 — REVIEWED.
+- Domain 03 Revenue & Receivables — TOPIC-03-001–012 — REVIEWED / production-candidate.
+- Domain 04 Assets & Capitalization — TOPIC-04-001–006 worked through plus proven Leases vertical slice; remaining canonical Domain 04 denominator handled according to lease mapping/hygiene rules.
+- Domain 05 Liabilities, Expenses & Compensation — TOPIC-05-001–010 — REVIEWED / production-candidate.
+- Domain 06 Cash, FX & Financial Instruments — TOPIC-06-001–010 — REVIEWED / production-candidate.
+- Domain 07 Group Accounting & Consolidation — TOPIC-07-001–009 — REVIEWED / production-candidate.
+- Domain 08 Financial Reporting — TOPIC-08-001–010 — REVIEWED / production-candidate.
+- Domain 09 Controls & Governance — TOPIC-09-001–009 — REVIEWED / production-candidate. Regression 009 PASS.
 
-### Batches 003–005 — Revenue & receivables — 22 September 2026
-REVIEWED / production-candidate: TOPIC-03-001 through TOPIC-03-012 plus TOPIC-08-005 Going Concern/Subsequent Events dependency. Domain 03 complete. Regression PASS. ECL preserves IFRS 9/AASB 9, ASC 326 and FRS 102 divergence.
+### Domain 09 architecture findings
+SOX/ICFR labels require a jurisdiction/entity-status gate. Information used in controls (IPE) needs explicit source/report/parameter/completeness/accuracy/transformation/version/evidence metadata. Deficiency cases link exposed assertions, compensating controls, remediation and retest. Control knowledge remains principles/practice-led unless a jurisdiction overlay imposes formal requirements.
 
-### Batches 006–010 — Assets & capitalization — 22–23 September 2026
-REVIEWED / production-candidate: TOPIC-04-001 through TOPIC-04-006 plus the previously proven lease vertical slice mapped across canonical lease capabilities. PPE, depreciation/disposals, CIP/FA reconciliation, capitalized software/R&D/cloud implementation, intangibles/amortization and impairment/goodwill worked through.
+### Source guardrails
+Current official PCAOB AS 2201/2301/2401 and SEC Release 33-8810 verified for Domain 09. Public FASB materials still do not expose all Codification paragraph bodies; affected US GAAP records remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status. Rights/licensing guardrails remain in force.
 
-### Batches 011–014 — Liabilities, expenses & compensation — 23 September 2026
-REVIEWED / production-candidate: TOPIC-05-001 through TOPIC-05-010. Domain 05 complete. AP, expense cut-off/accruals, provisions, onerous contracts, payroll/benefits, bonuses/commissions, SBC/mixed awards, termination/leave and compensation reconciliations built. Regression 003 and 004 PASS.
+### Progress
+Cumulative canonical post-Leases Phase 2D topics worked through: **76 / 156**. Remaining: **80**. No fully blocked topics. Nine regression reviews completed.
 
-### Batches 015–016 — Cash, FX & debt start — 23 September 2026
-REVIEWED / production-candidate: TOPIC-06-001 through TOPIC-06-006. Bank/cash, foreign-currency transactions, remeasurement/translation, functional currency, debt/issuance costs, modifications/extinguishments and covenants built. Regression 005 PASS.
+Repository duplicate/retry folders remain a non-blocking hygiene item; canonical Phase 2B IDs and `knowledge/phase-2d-progress.md` are authoritative.
 
-Current-source gates include IAS/AASB 21 Lack of Exchangeability effective 1 January 2025, IFRS/AASB hyperinflationary-presentation amendments effective 1 January 2027, UK FRS 102 Periodic Review effective-period routing, IFRS 9 2026 classification/measurement amendments, and explicit separation of active IASB/FASB projects from current GAAP.
-
-Non-blocking source limitation: public FASB materials do not always expose complete current Codification paragraph bodies required for APPROVED paragraph-level status. Affected US records remain PARTIAL at paragraph level; work continues.
-
-Cumulative canonical post-Leases Phase 2D topics worked through: **45 / 156**. Remaining: **111**. No fully blocked topics. Five regression reviews completed.
-
-Repository hygiene remains non-blocking: duplicate/retry folders exist for some stable topic IDs. Canonical Phase 2B IDs and `knowledge/phase-2d-progress.md` remain authoritative until normalization.
-
-Next: TOPIC-06-007 through TOPIC-06-010 financial instruments, then Domain 07 Group Accounting & Consolidation.
+Next: Domain 10 Audit & Assurance Readiness (TOPIC-10-001–007), regression, then Domain 11 Accounting Systems & Data.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after knowledge population is sufficiently mature.
