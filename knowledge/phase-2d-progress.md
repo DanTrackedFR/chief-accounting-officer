@@ -4,9 +4,9 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **67**
+- REVIEWED / worked through this phase: **70**
 - BLOCKED: **0**
-- Remaining not yet worked through: **89**
+- Remaining not yet worked through: **86**
 - Regression reviews: **8**
 
 ## Worked-through topics
@@ -19,6 +19,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-06-001–010 | REVIEWED / production-candidate | Domain 06 complete: cash/bank, FX, debt, instruments, fair value/derivatives, hedge/investment and impairment/disclosure |
 | TOPIC-07-001–009 | REVIEWED / production-candidate | Domain 07 complete: group accounting and consolidation |
 | TOPIC-08-001–010 | REVIEWED / production-candidate | Domain 08 complete: primary statements, disclosures/comparatives, going concern/subsequent events, related parties/segments, EPS/APMs, statutory bridge, tie-out and reporting quality/certification. Regression 008 PASS |
+| TOPIC-09-001–003 | REVIEWED / production-candidate | Accounting risk/RCM/control design; control precision and preventive/detective/manual design; automated/MRC/evidence standards |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
@@ -38,9 +39,10 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 - AASB 18 timing is entity-type aware: generally 1 January 2027 for relevant for-profit entities and 1 January 2028 for NFP and specified superannuation entities, earlier application permitted.
 - FRC February 2026 adapted-format amendments are effective for periods beginning on or after 1 January 2027 for entities choosing those formats; Periodic Review 2024 gating remains relevant from 1 January 2026.
 - IAS 24/IFRS 8/IAS 33 routing is now connected to related-party/segment/EPS execution. SEC non-GAAP governance is kept as a jurisdiction overlay rather than generalized across frameworks.
+- Domain 09 control design is intentionally principles/practice-led. Formal ICFR/SOX obligations remain jurisdiction/entity-status overlays rather than being generalized as accounting-framework requirements.
 
 ## Repository hygiene
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch. Do not delete potentially useful duplicate material during active factory scaling.
 
 ## Current build sequence
-Continue Domain 09 Controls & Governance (TOPIC-09-001–009), with regression after 5–9 canonical topics, then Domain 10 Audit & Assurance Readiness. Standards-heavy topics require current official-source verification, explicit framework differences and period/effective-date routing; operational topics receive principles/practice/controls/systems depth without artificial four-framework records.
+Continue Domain 09 Controls & Governance (TOPIC-09-004–009), with regression at domain completion, then Domain 10 Audit & Assurance Readiness. Standards-heavy topics require current official-source verification, explicit framework differences and period/effective-date routing; operational topics receive principles/practice/controls/systems depth without artificial four-framework records.
