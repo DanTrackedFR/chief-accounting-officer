@@ -4,9 +4,9 @@ Updated: 2026-09-24
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **107**
+- REVIEWED / worked through this phase: **109**
 - BLOCKED: **0**
-- Remaining not yet worked through: **49**
+- Remaining not yet worked through: **47**
 - Regression reviews: **13**
 
 ## Worked-through topics
@@ -23,7 +23,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-10-001–007 | REVIEWED / production-candidate | Domain 10 complete; Regression 010 PASS |
 | TOPIC-11-001–010 | REVIEWED / production-candidate | Domain 11 complete; Regression 012 PASS |
 | TOPIC-12-001–009 | REVIEWED / production-candidate | Domain 12 complete; Regression 013 PASS |
-| TOPIC-13-001–005 | REVIEWED / production-candidate | Business combinations/PPA through asset acquisitions/restructuring; TOPIC-13-004 and 13-005 10/10 scenario QA PASS |
+| TOPIC-13-001–007 | REVIEWED / production-candidate | Business combinations/PPA through convertibles/warrants. TOPIC-13-006 debt restructuring/equity financing and TOPIC-13-007 convertibles/warrants preserve framework-specific classification/modification routing and current-v-pipeline separation. |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
@@ -49,12 +49,12 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 - FRC February 2026 adapted-format amendments are effective for periods beginning on or after 1 January 2027 for entities choosing those formats; Periodic Review 2024 gating remains relevant from 1 January 2026.
 - Domain 09 uses current official PCAOB/SEC jurisdiction anchors; SOX/ICFR is not generalized as an accounting-framework requirement.
 - Domain 10 assurance effective dates are context gates rather than accounting-framework requirements.
-- TOPIC-13-001–003 preserve current business-combination framework divergence and transaction/effective-date gates.
-- TOPIC-13-004 preserves independent IFRS 5/AASB 5, ASC 205-20 and FRS 102/company-law routing for divestitures/discontinued operations.
-- TOPIC-13-005 makes business-versus-asset classification a hard upstream gate and separates asset-acquisition accounting from restructuring-obligation recognition. IFRS restructuring routes through IAS 37; US exit/termination obligations require independent Codification routing; FRS 102 and AASB require independent period/current-version checks.
+- TOPIC-13-001–005 preserve transaction/effective-date gates across combinations, divestitures, asset acquisitions and restructuring.
+- TOPIC-13-006 preserves current IFRS/AASB financial-liability derecognition/modification mechanics and marks the IASB 2026 amortised-cost modification proposals as PIPELINE, not current GAAP. US debt modification paragraph-level mapping remains PARTIAL where current Codification body is unavailable publicly.
+- TOPIC-13-007 preserves IAS 32/AASB 132 compound-instrument and own-equity classification architecture, FRS 102 Section 22 routing, and independent US Codification routing. IFRIC's warrant reclassification agenda decision is treated as current interpretive context; FICE work remains pipeline.
 
 ## Repository hygiene
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
 
 ## Current build sequence
-Continue Domain 13 with TOPIC-13-006 Debt Restructuring Accounting / Equity Financing Accounting, then onward through Domain 13. Preserve transaction-date/effective-period routing, framework differences and specialist-input integration. Run regression after another 2–5 canonical Domain 13 topics.
+Continue Domain 13 with TOPIC-13-008 Complex Contract Accounting Assessment / Related-Party Transaction Accounting, then common control/spin-offs, carve-outs/reorganization, hyperinflation and special-transaction workplans. Preserve transaction-date/effective-period routing, framework differences and specialist-input integration. Run Regression 014 after another 2–4 canonical Domain 13 topics.
