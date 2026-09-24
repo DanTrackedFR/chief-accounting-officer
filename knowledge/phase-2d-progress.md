@@ -4,10 +4,10 @@ Updated: 2026-09-23
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **88**
+- REVIEWED / worked through this phase: **93**
 - BLOCKED: **0**
-- Remaining not yet worked through: **68**
-- Regression reviews: **11**
+- Remaining not yet worked through: **63**
+- Regression reviews: **12**
 
 ## Worked-through topics
 | Topic range | Status | Notes |
@@ -21,7 +21,7 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-08-001–010 | REVIEWED / production-candidate | Domain 08 complete |
 | TOPIC-09-001–009 | REVIEWED / production-candidate | Domain 09 complete; Regression 009 PASS |
 | TOPIC-10-001–007 | REVIEWED / production-candidate | Domain 10 complete; Regression 010 PASS |
-| TOPIC-11-001–005 | REVIEWED / production-candidate | ERP/COA/dimensions; books/subledgers/master data; interfaces/reconciliation/lineage; data quality/requirements/ERP design; migration/cutover/opening balances. Regression 011 PASS |
+| TOPIC-11-001–010 | REVIEWED / production-candidate | Domain 11 Accounting Systems & Data complete; Regression 012 PASS |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
@@ -37,7 +37,8 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 8. Domain 08 Financial Reporting — PASS.
 9. Domain 09 Controls & Governance — PASS.
 10. Domain 10 Audit & Assurance Readiness — PASS.
-11. Domain 11A Accounting Systems & Data (TOPIC-11-001–005) — PASS. Added reusable accounting-sensitive-configuration, interface-run and migration-adjustment concepts; confirmed effective dating and transaction-level lineage as first-class requirements.
+11. Domain 11A Accounting Systems & Data (TOPIC-11-001–005) — PASS.
+12. Domain 11 complete (TOPIC-11-001–010) — PASS. Confirmed accounting-sensitive configuration/versioning, run identity, close-state reporting, risk-tiered EUC/AI governance, completeness-before-match-rate and exception lineage as reusable architecture.
 
 ## Current source/effective-date findings
 - IFRS 18 replaces IAS 1 and is mandatory for annual periods beginning on or after 1 January 2027, earlier application permitted; transition retrospective.
@@ -50,4 +51,4 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
 
 ## Current build sequence
-Complete Domain 11 with TOPIC-11-006–010 (access/roles, automation, spreadsheet/EUC governance, warehouse/reporting layer, AI/change impact, integration monitoring/reconciliation automation), then proceed to Domain 12 Accounting Operations. Operational systems topics receive PRINCIPLES/PRACTICE/controls/data-lineage depth; standards-sensitive configuration routes to the applicable framework/topic/effective period.
+Proceed to Domain 12 Accounting Operations: P2P, O2C, collections/payroll, FA/lease/intercompany processes, bank reconciliation/reconciliation operating model, journal/process documentation, SOP/process ownership, exception/queue design, service levels and automation assessment. Reuse Domain 11 lineage/interface/EUC/automation concepts and route accounting recognition/measurement conclusions to the relevant standards-sensitive topics rather than duplicating them.
