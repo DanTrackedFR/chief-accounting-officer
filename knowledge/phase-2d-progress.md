@@ -1,12 +1,12 @@
 # Phase 2D — Knowledge Factory Progress
 
-Updated: 2026-09-23
+Updated: 2026-09-24
 Denominator: 156 post-Leases top-level topics to work through.
 
 ## Status
-- REVIEWED / worked through this phase: **102**
+- REVIEWED / worked through this phase: **103**
 - BLOCKED: **0**
-- Remaining not yet worked through: **54**
+- Remaining not yet worked through: **53**
 - Regression reviews: **13**
 
 ## Worked-through topics
@@ -22,7 +22,8 @@ Denominator: 156 post-Leases top-level topics to work through.
 | TOPIC-09-001–009 | REVIEWED / production-candidate | Domain 09 complete; Regression 009 PASS |
 | TOPIC-10-001–007 | REVIEWED / production-candidate | Domain 10 complete; Regression 010 PASS |
 | TOPIC-11-001–010 | REVIEWED / production-candidate | Domain 11 complete; Regression 012 PASS |
-| TOPIC-12-001–009 | REVIEWED / production-candidate | Domain 12 Accounting Operations complete; Regression 013 PASS |
+| TOPIC-12-001–009 | REVIEWED / production-candidate | Domain 12 complete; Regression 013 PASS |
+| TOPIC-13-001 | REVIEWED / production-candidate | Business combinations / PPA coordination; current IFRS, FASB, FRC and AASB routing checked 2026-09-24 |
 
 ## Blockers
 No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
@@ -40,7 +41,7 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 10. Domain 10 Audit & Assurance Readiness — PASS.
 11. Domain 11A Accounting Systems & Data — PASS.
 12. Domain 11 complete — PASS.
-13. Domain 12 Accounting Operations — PASS. Confirmed completeness-before-match-rate, technical-topic routing, source/run/config identity, evidence-bearing exception queues and quality-balanced service levels as reusable architecture.
+13. Domain 12 Accounting Operations — PASS.
 
 ## Current source/effective-date findings
 - IFRS 18 replaces IAS 1 and is mandatory for annual periods beginning on or after 1 January 2027, earlier application permitted; transition retrospective.
@@ -48,9 +49,10 @@ No fully blocked topic. Non-blocking source-depth limitation: public FASB materi
 - FRC February 2026 adapted-format amendments are effective for periods beginning on or after 1 January 2027 for entities choosing those formats; Periodic Review 2024 gating remains relevant from 1 January 2026.
 - Domain 09 uses current official PCAOB/SEC jurisdiction anchors; SOX/ICFR is not generalized as an accounting-framework requirement.
 - Domain 10 assurance effective dates are context gates rather than accounting-framework requirements.
+- TOPIC-13-001: IASB business-combination disclosure/goodwill proposals remain under redeliberation in 2026 and are not current IFRS requirements; FASB ASU 2025-03 creates an effective-date gate for accounting-acquirer analysis in qualifying VIE equity-exchange combinations; FRS 102 Section 19 remains materially different from current IFRS 3; AASB periods beginning on/after 1 July 2026 require subsequent/uncompiled-amendment routing rather than sole reliance on the December 2022 compilation.
 
 ## Repository hygiene
 Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
 
 ## Current build sequence
-Proceed to Domain 13 Complex Transactions & Special Situations. These are standards-heavy and require current authoritative source verification across applicable frameworks. Build TOPIC-13-001 onward topic-by-topic, preserving acquisition/business-combination versus asset-acquisition boundaries, transaction-date/effective-period routing, framework differences and specialist-input integration. Run regression after 5–10 canonical Domain 13 topics.
+Continue Domain 13 Complex Transactions & Special Situations with TOPIC-13-002 acquisition-date accounting / contingent consideration, then TOPIC-13-003 onward. Preserve business-combination versus asset-acquisition boundaries, transaction-date/effective-period routing, framework differences and specialist-input integration. Run regression after 5–10 canonical Domain 13 topics.
