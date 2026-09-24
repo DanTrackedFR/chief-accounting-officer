@@ -30,18 +30,20 @@ Build topic-by-topic across the remaining universe. Full factory means PRINCIPLE
 - Domain 11 Accounting Systems & Data — TOPIC-11-001–010 — REVIEWED / production-candidate.
 - Domain 12 Accounting Operations — TOPIC-12-001–009 — REVIEWED / production-candidate. Regression 013 PASS.
 
-### Domain 12 architecture findings
-Accounting operations consume technical conclusions rather than duplicating them. Population completeness precedes matching/accuracy metrics. Operational automation retains source/run/configuration identity, exception populations and overrides. Queue history can be accounting evidence where it affects close completeness. Service-level management pairs timeliness with quality. TrackedFR is assessed only for recurring, multi-system, data-intensive reconciliation/manipulation workflows.
+### Domain 13 — in progress
+- TOPIC-13-001 Business Combination Accounting / PPA Coordination — REVIEWED / production-candidate. Current IFRS/FASB/FRC/AASB source routing checked 24 September 2026; 10 scenario tests PASS.
+- Key gates: business-v-asset, accounting acquirer/date, framework/effective period, identifiable-net-assets completeness, specialist valuation challenge, PPA-to-reporting reconciliation and measurement-period ownership.
+- Current-source findings: IASB's business-combination disclosure/goodwill project remains under redeliberation and is not effective IFRS; FASB ASU 2025-03 requires an effective-date gate for specified VIE accounting-acquirer analysis; FRS 102 Section 19 remains materially different from current IFRS 3; AASB 3 requires explicit subsequent/uncompiled-amendment routing for periods beginning on/after 1 July 2026.
 
 ### Source guardrails
-Public FASB materials still do not expose all current Codification paragraph bodies; affected US GAAP records remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status. Rights/licensing guardrails remain in force. Operational topics are PRINCIPLES/PRACTICE-led unless the underlying accounting conclusion invokes a standards-sensitive topic.
+Public FASB materials still do not expose all current Codification paragraph bodies; affected US GAAP records remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status. Rights/licensing guardrails remain in force.
 
 ### Progress
-Cumulative canonical post-Leases Phase 2D topics worked through: **102 / 156**. Remaining: **54**. No fully blocked topics. Thirteen regression reviews completed.
+Cumulative canonical post-Leases Phase 2D topics worked through: **103 / 156**. Remaining: **53**. No fully blocked topics. Thirteen regression reviews completed.
 
 Repository duplicate/retry folders remain a non-blocking hygiene item; canonical Phase 2B IDs and `knowledge/phase-2d-progress.md` are authoritative.
 
-Next: Domain 13 Complex Transactions & Special Situations (TOPIC-13-001–012), with authoritative framework verification and regression after 5–10 topics.
+Next: TOPIC-13-002 acquisition-date accounting / contingent consideration, then continue Domain 13 and run regression after 5–10 canonical Domain 13 topics.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after knowledge population is sufficiently mature.
