@@ -1,3 +1,5 @@
+> **Reconciliation audit (26 September 2026):** The historical 111/156 REVIEWED claim below is a *ledger claim*, not an independently verified completion count. A repository-tree audit at commit 9adf2164 found 126/157 canonical IDs with at least one artifact, 31 with no canonical-path artifact, and 18 IDs with a QA/test/scenario path. Artifact presence does not establish depth, sourcing, or test pass. 27 IDs have multiple topic folders and must be deduplicated. Domain 01 has eight missing canonical paths; Domain 04 has 007–009 missing, which may require mapping to the separately proven lease slice. The canonical path inventory is `knowledge/phase-2d-reconciliation-inventory.csv` (commit b45f090). Do not infer 126 completed topics. **Verified substantive completion count remains undetermined pending per-topic evidence audit.** The historical figures below are retained for traceability, not represented as reconciled truth.
+
 # Phase 2D — Knowledge Factory Progress
 
 Updated: 2026-09-24
