@@ -1,63 +1,32 @@
-> **Reconciliation audit (26 September 2026):** The historical 111/156 REVIEWED claim below is a *ledger claim*, not an independently verified completion count. A repository-tree audit at commit 9adf2164 found 126/157 canonical IDs with at least one artifact, 31 with no canonical-path artifact, and 18 IDs with a QA/test/scenario path. Artifact presence does not establish depth, sourcing, or test pass. 27 IDs have multiple topic folders and must be deduplicated. Domain 01 has eight missing canonical paths; Domain 04 has 007–009 missing, which may require mapping to the separately proven lease slice. The canonical path inventory is `knowledge/phase-2d-reconciliation-inventory.csv` (commit b45f090). Do not infer 126 completed topics. **Verified substantive completion count remains undetermined pending per-topic evidence audit.** The historical figures below are retained for traceability, not represented as reconciled truth.
-
 # Phase 2D — Knowledge Factory Progress
 
-Updated: 2026-09-24
-Denominator: 156 post-Leases top-level topics to work through.
+Updated: 2026-09-26
 
-## Status
-- REVIEWED / worked through this phase: **111**
+## Reconciled source of truth
+`knowledge/phase-2d-topic-manifest.json` is the canonical Phase 2D status ledger. Derived reports must not override it.
+
+## Conservative evidence status
+- Canonical topics: **157**
+- REVIEWED: **1** (the proven Leases vertical slice)
+- PARTIAL: **125** (artifacts exist but evidence audit has not yet justified REVIEWED)
+- NOT_STARTED: **31** (no canonical-path artifact in the reconciled snapshot)
 - BLOCKED: **0**
-- Remaining not yet worked through: **45**
-- Regression reviews: **13**
+- APPROVED: **0**
+- Topics with explicit QA/test/scenario path evidence in manifest: **17**
+- Topics with explicit source/effective-date path evidence in manifest: **11**
+- Topics with duplicate/retry folders requiring canonicalization: **27**
 
-## Worked-through topics
-| Topic range | Status | Notes |
-|---|---|---|
-| TOPIC-02-001–010 | REVIEWED | Domain 02 Close & GL complete |
-| TOPIC-03-001–012 | REVIEWED / production-candidate | Domain 03 Revenue & Receivables complete |
-| TOPIC-04-001–006 | REVIEWED / production-candidate | PPE through impairment/goodwill family; lease vertical slice separately proven |
-| TOPIC-05-001–010 | REVIEWED / production-candidate | Domain 05 complete |
-| TOPIC-06-001–010 | REVIEWED / production-candidate | Domain 06 complete |
-| TOPIC-07-001–009 | REVIEWED / production-candidate | Domain 07 complete |
-| TOPIC-08-001–010 | REVIEWED / production-candidate | Domain 08 complete |
-| TOPIC-09-001–009 | REVIEWED / production-candidate | Domain 09 complete; Regression 009 PASS |
-| TOPIC-10-001–007 | REVIEWED / production-candidate | Domain 10 complete; Regression 010 PASS |
-| TOPIC-11-001–010 | REVIEWED / production-candidate | Domain 11 complete; Regression 012 PASS |
-| TOPIC-12-001–009 | REVIEWED / production-candidate | Domain 12 complete; Regression 013 PASS |
-| TOPIC-13-001–009 | REVIEWED / production-candidate | Business combinations/PPA through common-control/spin-off/demerger accounting. TOPIC-13-009 preserves the IFRS/AASB BCUCC scope gap, UK FRS 102 group-reconstruction route, independent US Codification routing, transaction-form analysis and 10/10 scenario QA. |
+These figures are deliberately conservative. PARTIAL does not mean poor-quality content; it means completion has not yet been independently evidenced against the full factory contract. Historical claims of 111 REVIEWED and roadmap claims of 103 worked-through are superseded for reporting purposes.
 
-## Blockers
-No fully blocked topic. Non-blocking source-depth limitation: public FASB materials do not always expose complete current Codification paragraph bodies. US records affected by this remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
+## Reconciliation findings
+The repository contains substantially more work than the old ledger captured, but artifact presence was previously conflated with completion. Duplicate/retry folders and lease-path mapping also made raw folder counts unsafe. Future progress is counted only from the canonical manifest.
 
-## Regression
-1. Early Close & GL factory scaling — PASS.
-2. Full Close/GL + Revenue/Receivables — PASS.
-3. TOPIC-05-001–006 liabilities/compensation — PASS.
-4. Domain 05 completion + Domain 06 handoff — PASS.
-5. TOPIC-06-001–006 FX/debt — PASS.
-6. Domain 06 Cash, FX & Financial Instruments — PASS.
-7. Domain 07 Group Accounting & Consolidation — PASS.
-8. Domain 08 Financial Reporting — PASS.
-9. Domain 09 Controls & Governance — PASS.
-10. Domain 10 Audit & Assurance Readiness — PASS.
-11. Domain 11A Accounting Systems & Data — PASS.
-12. Domain 11 complete — PASS.
-13. Domain 12 Accounting Operations — PASS.
+## Remaining work
+1. Audit PARTIAL topics against full factory evidence and promote only when justified.
+2. Canonicalize duplicate/retry paths without discarding useful material.
+3. Resolve TOPIC-04-007–009 against the proven lease vertical-slice mapping.
+4. Build genuinely NOT_STARTED topics, including Domains 16–17 and identified gaps in Domains 14–15.
+5. Update manifest first, then regenerate this report and the roadmap in controlled sequence.
 
-## Current source/effective-date findings
-- IFRS 18 replaces IAS 1 and is mandatory for annual periods beginning on or after 1 January 2027, earlier application permitted; transition retrospective.
-- AASB 18 timing is entity-type aware: generally 1 January 2027 for relevant for-profit entities and 1 January 2028 for NFP and specified superannuation entities, earlier application permitted.
-- FRC February 2026 adapted-format amendments are effective for periods beginning on or after 1 January 2027 for entities choosing those formats; Periodic Review 2024 gating remains relevant from 1 January 2026.
-- Domain 09 uses current official PCAOB/SEC jurisdiction anchors; SOX/ICFR is not generalized as an accounting-framework requirement.
-- Domain 10 assurance effective dates are context gates rather than accounting-framework requirements.
-- TOPIC-13-001–005 preserve transaction/effective-date gates across combinations, divestitures, asset acquisitions and restructuring.
-- TOPIC-13-006 preserves current IFRS/AASB financial-liability derecognition/modification mechanics and marks the IASB 2026 amortised-cost modification proposals as PIPELINE, not current GAAP. US debt modification paragraph-level mapping remains PARTIAL where current Codification body is unavailable publicly.
-- TOPIC-13-007 preserves IAS 32/AASB 132 compound-instrument and own-equity classification architecture, FRS 102 Section 22 routing, and independent US Codification routing. IFRIC's warrant reclassification agenda decision is treated as current interpretive context; FICE work remains pipeline.
-- TOPIC-13-008 uses IAS 24 / ASC 850 / FRS 102 Section 33 / AASB 124 as related-party disclosure anchors while routing recognition and measurement to the transaction-specific literature. UK small-entity and Australian entity/tier overlays are explicit gates.
-
-## Repository hygiene
-Duplicate folders exist for some stable topic IDs due build retries/concurrent factory writes; Phase 2C lease folder naming does not map one-to-one to the canonical Phase 2B denominator. Canonical topic universe and this ledger—not raw folder counts—are authoritative until a later normalization batch.
-
-## Current build sequence
-Continue Domain 13 with TOPIC-13-010 carve-outs/reorganization, then hyperinflation and special-transaction workplans. Preserve transaction-date/effective-period routing, framework differences and specialist-input integration. Run Regression 014 after another 1–3 canonical Domain 13 topics.
+## Persistent source limitation
+Public FASB materials do not always expose complete current Codification paragraph bodies. Affected US GAAP records must remain PARTIAL at paragraph-level authority rather than receiving unsupported APPROVED status.
