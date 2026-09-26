@@ -14,3 +14,24 @@ QA date: 2026-09-26
 10. **Estimate conclusion is quantitatively immaterial but control failure is pervasive.** Expected: document both accounting materiality and control/governance consequence; immaterial accounting effect does not erase control issue. PASS.
 
 Result: **10/10 PASS**.
+
+## Factory evidence
+Classification gate: distinguish accounting policy, accounting estimate, significant judgment and prior-period error before drafting. Record framework, jurisdiction, reporting period, facts, authoritative literature, effective date, alternatives, quantitative effect, disclosure/control implications, preparer, reviewer and evidence date.
+
+Judgment papers must contain question/conclusion, locked facts, framework/effective literature, relevant decision tree, credible alternatives, contradictory evidence, sensitivities, quantified accounting effects, governance and disclosure/audit handoff.
+
+Estimate methodology papers must define population/unit of account, measurement objective, model, data, assumptions, overlays and expert inputs; document lineage and book reconciliation; explain uncertainty and useful sensitivity; define model/input change governance; and distinguish new-information estimate changes from corrections of errors.
+
+Accounting policy papers must define scope, recognition, measurement, presentation, disclosure, elections, transition, ownership and reassessment triggers. Entity policy translates requirements into entity transactions and systems rather than reproducing standards text.
+
+CAO workflow: lock framework and effective period; classify issue; map claims to sources and evidence; quantify; challenge contrary evidence; test consistency; define ledger/system/reporting effects; define controls and reassessment triggers; run QA; finalize with traceability.
+
+## Framework routing checked 2026-09-26
+- IFRS: IAS 8 is the core policy/estimate/error anchor. The 2021 definition-of-accounting-estimates amendments are effective for annual periods beginning on or after 1 January 2023. IFRS 18 is effective for annual periods beginning on or after 1 January 2027, early application permitted, and moves specified basis-of-preparation requirements from IAS 1 into IAS 8; route by reporting period.
+- US GAAP: route to ASC 250 and topic-specific Codification. Public FASB material does not expose all current Codification paragraph bodies, so final paragraph-level conclusions require current authorized Codification evidence.
+- UK GAAP: FRS 102 Section 10 governs policies, estimates and errors. Periodic Review 2024 is generally effective for periods beginning on or after 1 January 2026; record the applicable edition.
+- AASB: AASB 108 provides the Australian policy/estimate/error architecture; use the compilation applicable to the reporting period.
+
+Official source check: IFRS Foundation IAS 8 / Definition of Accounting Estimates; FRC FRS 102 Section 10 and Periodic Review 2024 materials; AASB 108 current period compilation; FASB public accounting-change material with the stated Codification access limitation.
+
+Status boundary: REVIEWED is supportable for this documentation/execution capability after the 10/10 scenario QA above. APPROVED is not claimed as a substitute for licensed/current paragraph-level literature.
