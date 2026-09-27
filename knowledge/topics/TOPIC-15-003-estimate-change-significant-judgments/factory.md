@@ -1,5 +1,7 @@
 # Estimate change and significant judgment identification — substantive factory
 
+Case approval gate: establish which asset guidance governs the useful-life illustration, prove the revised forecast became available after prior authorization and check whether the earlier estimate was reasonable with then-available information. For US cases retrieve current ASC 250 and asset-specific ASC 360 text through authorized access. Later deterioration alone does not prove prior error.
+
 Companion to existing README. CAO-15-007/008. Source checked 2026-09-27. Proposed REVIEWED candidate; actual accounting judgment depends on governing transaction standard.
 
 ## Distinct classification pathways

@@ -1,5 +1,7 @@
 # Technical consultation, memo and position paper — applied factory
 
+Canonical capability map: CAO-14-007 technical accounting consultation records the question, stakeholders and advice; CAO-14-008 accounting memo writing produces the fact/source/analysis/journal document; CAO-14-009 position paper records a defensible selected treatment, alternatives, dissent and approval. These are three outputs of this one canonical topic, each tested by the worked sale-and-leaseback consultation below.
+
 Retains original concise README. CAO-14-007–009. Source check 2026-09-27. Proposed REVIEWED candidate for drafting/execution method.
 
 ## Choosing the artifact

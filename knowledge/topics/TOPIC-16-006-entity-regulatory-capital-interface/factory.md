@@ -1,5 +1,9 @@
 # Entity-level regulatory reporting and capital interface — substantive factory
 
+## Reusable regime-specific test: Australian ADI
+
+For an Australian authorised deposit-taking institution, first prove the entity is in the population of [APRA APS 110](https://www.apra.gov.au/standards/aps-110); its applicability page excludes foreign ADIs and purchased payment facility providers from this standard. Obtain the operative APS 110 version and linked capital-definition, risk-weighting, buffer and reporting standards for the period. Map accounting equity through eligible Common Equity Tier 1 instruments, prescribed prudential deductions and other adjustments. Obtain independently calculated total risk-weighted assets and any entity-specific minimum and buffers. For illustration only, 16m eligible CET1 / 160m supported RWA = 10%; an 11% **hypothetical** applicable threshold would imply 17.6m required and a 1.6m shortfall. The 11% assumption is deliberately not represented as an APRA rule. Escalate breach immediately; do not sign a return from this arithmetic alone. Test whether 2025–26 APRA changes to Additional Tier 1 instruments or leverage requirements affect the actual instrument and effective period using [APRA's finalisation notice](https://www.apra.gov.au/finalising-removal-of-additional-tier-1-capital). Independent tests: reconcile instrument register to GL and legal terms; deductions to subledger; RWA to risk engine/approved return; ratio numerator and denominator to the same perimeter/date; board capital plan to buffers. This is one complete reusable sector route; other sectors need their own rule-specific calculation packs.
+
 Companion to original README. Capabilities CAO-16-012/013. Source checked 2026-09-27. Proposed PARTIAL: no universal capital rule applies across banking, insurance, payments and other licences; the factory method is developed but exact regime requires a licensed entity.
 
 ## Regulatory versus financial capital

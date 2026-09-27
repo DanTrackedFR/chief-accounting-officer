@@ -1,5 +1,7 @@
 # Process narrative, SOP and control documentation — applied factory
 
+Canonical coverage: CAO-14-013 process narrative writing, CAO-14-014 SOP writing, and CAO-14-015 control documentation writing each have an independently testable output and walkthrough below. The complementary `../TOPIC-14-005-process-sop-control-writing/README.md` is retained as the operator checklist. It is a duplicate path to the same canonical topic; use this path for all three capabilities.
+
 Retains both existing complementary 14-005 READMEs. CAO-14-013–015. Primarily PRACTICE; no artificial four-GAAP standard files. Source check for reporting-control overlay 2026-09-27: [SEC disclosure-control interpretation](https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/exchange-act-rules) for registrants, [COSO internal control framework overview](https://www.coso.org/guidance-on-ic) as a governance framework, and entity-specific audit/regulator requirements where applicable. Proposed REVIEWED candidate for operating documentation.
 
 ## Separate outputs and testability

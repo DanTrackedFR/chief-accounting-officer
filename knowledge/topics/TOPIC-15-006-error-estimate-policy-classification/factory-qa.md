@@ -1,5 +1,7 @@
 # Error, estimate, policy change and election — targeted factory completion
 
+Case approval gate: freeze the earlier information set and materiality assessment, identify the old entry's source and verify the governing transaction standard and transition before classification. For a US registrant assess reissuance/non-reliance using authorized current ASC 250 and SEC guidance. The illustrated 50k correction does not itself determine a restatement.
+
 The substantial classification README and election supplement are retained. This companion integrates CAO-15-013/014 and adds a transition/error calculation and election register. Source checked 2026-09-27. Proposed REVIEWED candidate for the classification/election method.
 
 ## Chronology and authority

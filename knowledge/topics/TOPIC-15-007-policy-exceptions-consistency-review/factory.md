@@ -1,5 +1,7 @@
 # Policy exceptions and consistency of accounting application — substantive factory
 
+Case approval gate: inspect commission terms, recoverability and eligible expedients under operative IFRS 15/AASB 15, ASC 340-40 or FRS 102 Section 23 before concluding the 40k item is an asset. Determine election unit and whether UK 2026 Section 23 transition affects the policy; a generic consistency rule cannot authorize a management exception.
+
 Companion to existing README. CAO-15-015/016. Source checked 2026-09-27. Proposed REVIEWED candidate for governance and diagnostic method.
 
 ## Nature of the deviation

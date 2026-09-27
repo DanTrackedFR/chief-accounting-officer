@@ -1,5 +1,7 @@
 # Technical documentation quality and evidence traceability — applied factory
 
+Canonical capability map: CAO-14-020 technical documentation quality review checks logic, arithmetic, effective date and reviewer sign-off; CAO-14-021 accounting citation and evidence traceability binds every material claim to an accessible versioned authority and source record. The ECL trace test below exercises both capabilities.
+
 Retains original README. CAO-14-020/021. Source check 2026-09-27. Proposed REVIEWED candidate for quality method.
 
 ## Claim-to-source and amount-to-ledger graphs

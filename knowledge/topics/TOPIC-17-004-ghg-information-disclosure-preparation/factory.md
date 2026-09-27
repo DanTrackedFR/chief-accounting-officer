@@ -1,5 +1,7 @@
 # GHG information dependencies and sustainability disclosure preparation — substantive factory
 
+Effective-period refresh: the ISSB's [December 2025 targeted IFRS S2 GHG amendments](https://www.ifrs.org/projects/completed-projects/2025/amendments-to-disclosure-of-greenhouse-gas-emissions-s2/) are effective for annual periods beginning on or after 1 January 2027, with early application permitted. Capture whether the jurisdiction adopted the amendments and which edition applies; do not impose 2027 changes on an unadopted 2026 report or assume the original IFRS S2 effective date supplies a local mandate.
+
 Companion to prior README; CAO-17-008/009. Source checked 2026-09-27. Proposed REVIEWED candidate for the calculation/disclosure production method, not approval of any factor or legal category conclusion.
 
 ## Framework and boundary decisions

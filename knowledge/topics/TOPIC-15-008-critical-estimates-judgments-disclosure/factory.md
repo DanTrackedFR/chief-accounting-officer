@@ -1,5 +1,7 @@
 # Critical estimate and judgment disclosure support — substantive factory
 
+Case approval gate: identify framework, issuer/private status, year and disclosure tier, then compare the estimate register with exact judgment, uncertainty and transaction-specific note requirements. US Item 303 applies to covered registrant MD&A, not automatically private notes. IFRS 18 early adoption/2027 effective date and AASB 1060 Tier 2 must be resolved before citing operative disclosure paragraphs.
+
 Companion to existing README. CAO-15-017/018. Source checked 2026-09-27. Proposed REVIEWED candidate for drafting and tie-out method; entity-specific disclosure obligation conditional.
 
 ## Separate disclosure regimes

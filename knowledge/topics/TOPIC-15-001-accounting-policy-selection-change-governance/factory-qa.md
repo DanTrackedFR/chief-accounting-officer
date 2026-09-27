@@ -1,5 +1,7 @@
 # Policy selection, change and governance — targeted factory completion
 
+Case approval gate: retrieve the transaction standard's election and transition requirements, the entity's earlier policy and adoption date. For a US SEC registrant, determine whether a preferability letter and filing disclosure apply to this voluntary change; public ASC 250 access here does not verify current detailed paragraphs. This blocks an individual US change memo, not the reusable bridge method below.
+
 The existing 75-line README is substantive and retained. This companion adds reproducible transition arithmetic, source/version gates and an adverse-case test. CAO-15-001–003. Source checked 2026-09-27. Proposed REVIEWED candidate, conditional on independent authority review.
 
 ## Framework authority and transition gates

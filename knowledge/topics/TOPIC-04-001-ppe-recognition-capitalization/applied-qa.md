@@ -1,0 +1,16 @@
+# TOPIC-04-001 — applied recognition and cost test
+
+This supplements the existing knowledge pack and the alternative `TOPIC-04-001-ppe-recognition/README.md`; neither is superseded. Capability CAO-04-001–003. Source gate: [IAS 16](https://www.ifrs.org/issued-standards/list-of-standards/ias-16-property-plant-and-equipment/), [FRC FRS 102](https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/) Section 17, [AASB 116](https://standards.aasb.gov.au/), and [FASB Codification](https://asc.fasb.org/) ASC 360/cost-specific guidance. Recheck edition and entity type at the reporting date; FRS 102 Periodic Review 2024 is generally effective from 2026. FASB current paragraph bodies were not independently verified from the public portal.
+
+## Controlled case
+
+An entity pays 500,000 for machinery, 20,000 freight, 30,000 installation and 10,000 operator training. Assuming the first three amounts are necessary to bring the item to the location and condition for intended operation, gross PPE is 550,000 and training expense 10,000. Dr PPE 550,000; Dr training expense 10,000; Cr AP/cash 560,000. Obtain invoices, receiving record, commissioning certificate and the training invoice split; a budget authorization alone does not prove recognition. If restoration is a present obligation, separately estimate and recognize the qualifying provision and corresponding cost using the applicable IAS 37/AASB 137, FRS 102 or US asset-retirement model; the 550,000 answer deliberately excludes an unstated obligation. Borrowing costs, rebates and tax recoverability are separate routing questions. Depreciation begins at actual availability for use (04-002), and construction remains CIP until then (04-003).
+
+## Assertions and adversarial retests
+
+1. Trial production yields sale proceeds while commissioning: IAS 16's current proceeds-before-intended-use amendment prohibits netting proceeds from PPE cost; account for sales and associated costs under applicable requirements. The illustrative 550,000 does not silently assume a proceeds offset. [IASB amendment history](https://www.ifrs.org/projects/completed-projects/2020/property-plant-and-equipment-proceeds-before-intended-use/).
+2. The equipment is installed but cannot perform the intended production process: retain in CIP, require engineering acceptance and reassess cost cut-off; an administrative go-live date cannot override readiness evidence.
+3. Management proposes an upward revaluation at year-end: IFRS/AASB may elect a class-level revaluation policy subject to measurement requirements; ordinary US PPE does not inherit that election. UK Section 17 must be assessed in its own operative edition.
+4. A material replacement component is installed: test separate recognition and derecognition of the replaced component; do not capitalize both indefinitely. Request the component register and the old part's estimated carrying amount.
+
+The reviewer signs the invoice-to-asset-ID cost bridge, eligibility decisions, restoration referral, ready date and GL/register tie-out. Failure to evidence training split or date fails the case even if the sum agrees. This is a desk calculation and routing test, not independent standards certification.

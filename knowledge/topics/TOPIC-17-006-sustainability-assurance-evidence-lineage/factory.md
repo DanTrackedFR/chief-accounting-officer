@@ -1,5 +1,7 @@
 # Sustainability assurance readiness and evidence lineage — substantive factory
 
+Assurance boundary challenge: the 12 MWh sample below proves one measurement chain, not that every warehouse, Scope 3 category or forward-looking narrative is within the engagement. Maintain a disclosure-by-disclosure scope grid: reporting criteria and edition, legal requirement, assurance level, practitioner, period, entity/site perimeter, included metrics and narrative, exclusions, estimation and other information. Reconcile the grid to the signed engagement terms and the exact published assurance report. Test a disclosure outside scope that is mistakenly labeled assured: FAIL, even if its supporting arithmetic passes. Test adoption of ISSA 5000 without a jurisdictional mandate: it may govern a voluntary engagement but does not make assurance compulsory. These checks keep standard effective date, local adoption and engagement scope separate.
+
 Companion to prior README; capabilities CAO-17-012/013. Source checked 2026-09-27. Proposed REVIEWED candidate for evidence method, with assurance-level and local-law decisions conditional.
 
 ## Criteria, engagement and requirement gate

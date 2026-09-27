@@ -1,5 +1,9 @@
 # Policy inventory and estimate methodology — targeted completion
 
+Case approval gate: each estimate requires its governing measurement standard, population and reporting-period method. The ECL case below needs IFRS 9/AASB 9 or ASC 326 as applicable, the actual aged receivables population and supported overlay; IAS 8/ASC 250 alone does not establish 215k. Reconcile both retained folders against canonical CAO-15-004–006 before promotion.
+
+Canonical coverage: CAO-15-004 policy inventory, CAO-15-005 estimate methodology, and CAO-15-006 change governance are covered by the canonical README and this file. Preserve `../TOPIC-15-002-accounting-estimates-changes/README.md` as substantive companion evidence on IAS 8/ASC 250/FRS 102/AASB 108. Its CAO-15-007 change-versus-error analysis is linked to canonical `../TOPIC-15-003-estimate-change-significant-judgments/README.md` and `factory.md`, where the manifest maps CAO-15-007. A consolidation must retain that analysis and its evidence rather than delete the duplicate blindly.
+
 The canonical policy-inventory README and complementary `TOPIC-15-002-accounting-estimates-changes/README.md` are retained. This adds the missing combined inventory-to-estimate execution, calculations and test evidence. CAO-15-004–006; CAO-15-007 in the companion changes guide and TOPIC-15-003. Source checked 2026-09-27. Proposed REVIEWED candidate subject to duplicate-path integration.
 
 ## Inventory completeness and framework map

@@ -1,5 +1,7 @@
 # Materiality assessment and auditor performance-materiality support
 
+Case approval gate: obtain entity users, covenant terms, profit context and all corrected/uncorrected items before concluding that the worked difference is material. For a US registrant verify the SEC staff guidance for its filing. Auditor performance materiality is set by the engagement team under its audit standard, not this management method; no numeric audit threshold is approved here.
+
 Companion to existing README. CAO-15-011/012. Source checked 2026-09-27. Proposed REVIEWED candidate for management materiality method, not for setting an auditor's performance materiality.
 
 ## Framework, scope and boundary

@@ -1,5 +1,7 @@
 # Significant judgment and estimation uncertainty — substantive factory
 
+Case approval gate: identify the impairment unit and operative IAS 36/AASB 136, ASC 350/360 or FRS 102 Section 27 rule before converting forecast uncertainty into an adjustment. Verify discount rate, forecast period, headroom and whether an assumption change is reasonably possible within the next reporting period. The memo method is reusable; the accounting amount remains conditional on these facts.
+
 Companion to existing README. CAO-15-009/010. Source checked 2026-09-27. Proposed REVIEWED candidate for methodology; specific disclosures require period/tier assessment.
 
 ## Separate two questions
