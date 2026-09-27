@@ -17,6 +17,9 @@ Determine whether a contract contains a lease and, where the applicable framewor
 ## Shared factory artifacts
 Authoritative framework records, differences, source/effective-date maps, workflow, controls, examples and QA live in `../TOPIC-04-010-leases/`. The shared workflow steps 1–6 cover identification/components and step 11 covers framework-specific classification. This avoids four inconsistent copies of lease authority.
 
+## Framework and evidence detail retained from main
+IFRS 16 identification routes through the specified-asset and control-of-use guidance, while an ordinary IFRS lessee does not choose a finance/operating model. ASC 842 retains lessee finance/operating classification; assess ownership transfer, reasonably certain purchase option, major-part term, PV relative to fair value and specialized nature as applicable. UK FRS 102 revised Section 20 generally applies to periods beginning 1 January 2026, subject to adoption/transition, while a 2025 period requires the legacy classification route. AASB 16 needs an independent Australian entity-type/tier overlay. Retain asset specification, supplier substitution economics, decision-right evidence, amendments and side letters, commencement and exemption/election memo. Contract intake must gate schedule creation on identification approval; compare lease population with AP/procurement/legal recurring-contract registers. The dedicated-server and fungible-asset counterexamples test the substitution boundary. Paragraph and edition detail resides in the reviewed 04-010 sources; public US paragraph-body access remains limited.
+
 ## QA
 PASS — embedded-asset scenario tests specified asset, substitution, economic benefits and decision rights before measurement.
 PASS — IFRS-versus-ASC-842 scenario routes classification/model differences correctly.
