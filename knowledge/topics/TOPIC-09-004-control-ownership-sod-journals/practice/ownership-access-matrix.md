@@ -1,0 +1,9 @@
+# CAO control specification — ownership and SoD
+
+Supplements substantive README and conflict case for CAO-09-010–012.
+
+**Access matrix.** Map person and service account (not just role label) to create vendor/customer, change payment master, approve invoice/payment, prepare/approve/post/reverse journal, alter accounting mapping, reopen period and change logs. For each combination identify initiation, authorization, custody, recording and monitoring conflicts; assign retained accountable controller, operator and independent reviewer. Review emergency access for time, scope, source action IDs and subsequent substantive independent review. A second username controlled by the same person does not create segregation.
+
+**Worked conflict.** User creates vendor, changes bank and approves 60,000 payment. Block right combination, validate bank independently and review all payments to changed vendors during exposure. If same controller posts a 75,000 emergency accrual, record contract/receipt, calculation, system log, GL effect and independent after-event challenge. Retrospective review may mitigate risk but is not the approval that should have occurred before posting; classify the lapse, consider affected population and report under TOPIC-09-007.
+
+**Systems/evidence/jurisdiction.** Joiner/mover/leaver, privileged role logs, change tickets and periodic access recertifications must reconcile approved to actual entitlements and activity. PCAOB AS 2401 is an auditor fraud/journal standard and SEC 33-8810 concerns applicable US management ICFR, checked 2026-09-27. Other jurisdictions require their own obligation assessment; management governance remains good practice. Output: action-level access matrix, conflict decision, compensating-control proof, exception and remediation. Handoffs TOPIC-02-002/003, 11-006 and 12-006.
