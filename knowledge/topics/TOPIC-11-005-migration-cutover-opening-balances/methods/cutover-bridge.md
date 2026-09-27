@@ -1,0 +1,7 @@
+# ERP migration and opening balances — cutover bridge
+
+Extends substantive README. Capabilities CAO-11-013–014. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Freeze legacy close and target opening snapshots, then reconcile by entity/book/account/currency and source item. Distinguish outstanding subledger transactions, master-data mapping, open journals, retained historical periods, intercompany and consolidation. Compare legacy GL and subledger before conversion, converted transactions, target subledger/GL, and reported opening balances after approved transformation. Record each adjustment with original ID, rationale, accounting approval and reversal/settlement. Parallel reporting and fallback must be possible until all material differences are resolved.
+
+Illustration: legacy AR GL 480,000, AR subledger 500,000 because disputed invoices of 20,000 never posted. Target migration imports subledger 500,000. Do not invent a 20,000 opening equity plug. Trace the disputed invoice population, confirm legal receivable/revenue conclusion, resolve legacy reconciliation or approved restatement and then migrate a supportable balance. The migration workpaper bridges 480,000→approved adjustments→target GL and 500,000→valid item disposition→target subledger; equality requires genuine supported actions. **Negative test:** target reports 500,000 AR with 20,000 suspense credit to force TB balance. Expected FAIL. Source evidence, approvals, original and target snapshots, mapping versions and item-level crosswalk remain immutable. Error classification routes TOPIC-02-009.

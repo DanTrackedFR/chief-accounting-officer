@@ -1,0 +1,7 @@
+# Finance access, roles and automation — control proof
+
+Extends substantive README. Capabilities CAO-11-015–016. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Define entitlement by action and entity: master-data creation/change, mapping configuration, journal draft/approve/post/reverse, period reopen, report edit, privileged export and service account execution. Resolve toxic combinations before grant; time-limit emergencies, log all activity and assign independent retrospective scrutiny. Joiner/mover/leaver events and periodic recertification compare approved rights to actual system role and recent use. An automation account cannot approve its own mapping changes or suppress its failed-run logs.
+
+Example: bot `AUTO-1` can change deferred revenue mapping and post a 250,000 batch. Segregation fails. Split controlled deployer/config approver from executor; finance reviewer independently validates source population, config version, posted batch and exceptions. If 250,000 lands in wrong entity, freeze further runs, assess/approve correction, inspect all batches since the change and test rollback. **Negative test:** bot log deleted after correcting mapping. Expected FAIL for evidence integrity even if balance is repaired. Handoffs: 09-004/003 and 02-003. US issuer ICFR context may apply via [SEC 33-8810](https://www.sec.gov/rule-release/33-8810), checked 2026-09-27; no universal role matrix is prescribed.
