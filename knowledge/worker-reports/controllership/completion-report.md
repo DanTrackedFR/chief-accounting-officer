@@ -2,13 +2,28 @@
 
 Prepared 2026-09-27 on `worker/controllership`. Canonical status remains unchanged. The inventory in `inventory.md` was created before topic edits. Existing content was preserved.
 
+## QA remediation disposition (supersedes interim statuses below)
+
+The definitive topic-by-topic proposal is [`qa-remediation-ledger.md`](qa-remediation-ledger.md). QA comment on existing PR #2 prompted additional source, control, audit, system and process gates. Domain 01 003–008 were independently integrated on main and left alone in this pass. Of 53 owned canonical IDs, eight Domain 01 topics are reviewed on main, 44 are proposed ready for independent REVIEWED assessment, and 02-009 remains PARTIAL. No canonical manifest status was edited. Historical tables below describe the first checkpoint.
+
+The tables headed “Batch record” document the **initial checkpoint** and their PARTIAL proposals are superseded by this final disposition and the six domain depth reports: [`batch-01-depth.md`](batch-01-depth.md), [`batch-02-depth.md`](batch-02-depth.md), [`batch-09-depth.md`](batch-09-depth.md), [`batch-10-depth.md`](batch-10-depth.md), [`batch-11-depth.md`](batch-11-depth.md), and [`batch-12-depth.md`](batch-12-depth.md). Those reports enumerate every canonical ID, capability range, retained content, substantive method, source/effective-period check, tested arithmetic and residual limit.
+
+| Disposition | Canonical topics | Basis |
+|---|---|---|
+| Preserve manifest REVIEWED | TOPIC-01-001, TOPIC-01-002 | Read-only; no identified regression. |
+| Reviewed on main | TOPIC-01-003–008 (**6 topics**) | Independently integrated after the first checkpoint; preserved in this remediation pass. |
+| Ready for independent REVIEWED assessment | TOPIC-02-001–008 and 02-010; TOPIC-09-001–009; TOPIC-10-001–007; TOPIC-11-001–010; TOPIC-12-001–009 (**44 topics**) | Existing work plus targeted methods and QA remediation practice gates, source/period routing and adverse cases. Proposal only; see ledger. |
+| Remains PARTIAL | TOPIC-02-009 (**one topic**) | Exact current ASC 250 error-correction paragraph support and US SEC issuer filing overlay could not be independently verified from accessible authoritative text. IFRS/AASB/FRS broad treatment and FRS 102 period routing, plus an illustrative restatement bridge, are documented. Retain the limitations rather than assert four-framework completion. |
+
+Arithmetic: 8 on main + 9 + 9 + 7 + 10 + 9 = **52** reviewed or ready; 1 PARTIAL = 53. Domain 02 duplicate folders remain for independent comparison/canonicalization, not separate topics.
+
 ## Regression method
 
 For each topic: manifest ID and capability IDs against all topic-family artifacts; exactly one new worker scenario for each non-REVIEWED topic; positive/negative route and evidence fields; no writes outside owned topic families/report; preservation of REVIEWED 01-001/002. Structural test is not independent accounting QA.
 
 Result: 53/53 structural checks pass. Each new scenario is a reasoned desk-check using explicit input; no live ERP or assurance engagement has been run.
 
-## Batch record
+## Initial batch record (historical interim checkpoint)
 
 ### Batch 1: TOPIC-01-001–TOPIC-01-008
 
@@ -126,7 +141,7 @@ Regression checkpoint 7: 5/5 structural checks; no canonical status changes.
 
 ## Integrated execution
 
-Two worked cross-topic cases are in [`integrated-scenarios.md`](integrated-scenarios.md): a 120,000 prepaid plus 24,000 uninvoiced receipt, and a 500,000 billing feed with 4,000 rejects and an 8,000 reporting-layer mapping error. Arithmetic, source-to-GL lineage, fail-stop decisions, control/audit handoffs and Domain 03 technical boundary were desk-checked. Both PASS for routing, not live-system operation.
+Four worked cross-topic cases are in [`integrated-scenarios.md`](integrated-scenarios.md): a prepaid/uninvoiced receipt; billing rejects and reporting-layer mapping; AR migration opening balances; and a lease amendment/intercompany mismatch. Arithmetic, source-to-GL lineage, fail-stop decisions, control/audit handoffs and technical-accounting boundaries were desk-checked. All four PASS for routing, not live-system operation.
 
 ## Duplicate and dependency handoff
 
@@ -134,10 +149,10 @@ Domain 02 duplicate/retry paths remain intact. For integration, choose the first
 
 Domain 12 process conclusions defer to technical accounting in Domains 03–08; Domain 09 control design, Domain 10 audit evidence and Domain 11 lineage are reciprocal dependencies. Domain 01 operating models consume close, systems and control outputs. Final integrated scenarios must exercise these handoffs and current-period standard routing.
 
-## Final self-review and remaining blockers
+## Final self-review and remaining blocker
 
 - Ownership: changed files fall only within 01, 02, 09, 10, 11, 12 topic families and this worker report. Protected manifest/progress/roadmap/Master Build Map untouched.
 - Existing REVIEWED 01-001/002 remain unchanged. Existing PARTIAL content and duplicates remain intact.
-- All 53 canonical topic IDs and their capability mappings appear in the report; 51 new/extended topic treatments received worker scenarios. Source rights respected: links/references only.
-- New routing desk-checks and structural regression pass. This does **not** justify claiming all topics REVIEWED: independent assessment of source precision, effective-period overlays, duplicate canonicalization and integrated/live operating evidence remains.
-- No global audit or source-access blocker prevented preserving and extending operational topics. Independent QA should promote individual topics only after its contract check.
+- All 53 canonical topic IDs and their capability mappings appear; 51 non-REVIEWED topics received a substantive method and earlier worker scenarios. Source rights respected: links/references only.
+- Final structural regression: 53/53 topic families have expected methods/scenarios (two REVIEWED excluded from new-method requirement); no missing mapped capabilities; no out-of-scope changed paths. Worked examples and four integrated scenarios were arithmetic/decision desk-checked. No live ERP or auditor procedure was represented as executed.
+- Eight Domain 01 topics are independently reviewed on main; 44 other topics are proposed ready for independent REVIEWED assessment; one remains PARTIAL for the ASC 250 version/paragraph and case-specific US filing blocker. Independent QA must assess source precision, duplicate canonicalization, cross-worker technical dependencies and scenario adequacy before promotion.
