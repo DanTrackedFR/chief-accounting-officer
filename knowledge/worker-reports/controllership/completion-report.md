@@ -124,6 +124,10 @@ Regression checkpoint 7: 5/5 structural checks; no canonical status changes.
 - [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework): voluntary AI-risk guidance; checked 2026-09-27.
 - FASB Codification exact ASC 250 paragraph text was not independently verified from an accessible primary source during this batch. Prior duplicate material is retained but paragraph-specific US conclusions remain PARTIAL. No licensed standard text was copied.
 
+## Integrated execution
+
+Two worked cross-topic cases are in [`integrated-scenarios.md`](integrated-scenarios.md): a 120,000 prepaid plus 24,000 uninvoiced receipt, and a 500,000 billing feed with 4,000 rejects and an 8,000 reporting-layer mapping error. Arithmetic, source-to-GL lineage, fail-stop decisions, control/audit handoffs and Domain 03 technical boundary were desk-checked. Both PASS for routing, not live-system operation.
+
 ## Duplicate and dependency handoff
 
 Domain 02 duplicate/retry paths remain intact. For integration, choose the first manifest artifact directory as a canonical entrypoint where it has a substantive `README.md` and `factory.md`, and retain other folders as archived source with explicit links after comparing content. The worker tests for 02-001, 02-006 and 02-007 have been placed in those first-entry folders; 02-008 uses the folder containing `factory.md`. Do not delete any duplicate without content comparison.
