@@ -1,0 +1,9 @@
+# Segregation and journal ownership — conflict resolution
+
+Extends substantive README. Capabilities CAO-09-010–012. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Create an action-level access map, not a title-level RACI. For each role identify ability to create/change master data, configure posting rules, initiate, approve, post, reverse, reopen and alter evidence. Rank conflicts by transaction magnitude, concealment ability and independence of detection. A service account and emergency access are actors too. If resources are limited, a compensating reviewer must inspect a complete, independently generated population promptly enough to detect and correct a material misstatement; a verbal check or sampled friendly transactions is inadequate.
+
+Example: one user creates a vendor, changes bank account and approves a 60,000 payment. Segregation fails even if the three functions occur on different days. Disable the combination; meanwhile require independently sourced bank-change validation and complete review of payments to changed vendors, including audit trail and bank confirmation. For a controller posting an emergency 75,000 journal after hours, record reason, source, user ID, timing, before/after TB, independent next-day substantive review and possible deficiency. Do not treat next-day signature as evidence of pre-post approval.
+
+Source: [PCAOB AS 2401](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2401) addresses auditor response to journal-entry override; [SEC 33-8810](https://www.sec.gov/rule-release/33-8810) is US-management ICFR context; checked 2026-09-27. These do not impose the illustrative 60,000 threshold or universal SOX on private non-US entities. Handoffs 02-002, 09-009, 11-006 and 12-006. Test result PASS for conflict identification; the emergency example cannot receive clean certification without independent review.

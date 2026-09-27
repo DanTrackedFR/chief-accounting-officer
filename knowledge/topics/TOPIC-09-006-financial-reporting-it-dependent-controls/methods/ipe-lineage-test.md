@@ -1,0 +1,9 @@
+# Financial-reporting and IT-dependent control — IPE test
+
+Extends substantive README. Capabilities CAO-09-015–016. PRINCIPLES/PRACTICE with reporting-standard dependency; 2026-09-27.
+
+Map financial statement line and disclosure to trial balance, consolidation adjustments, reporting transformation, source query, access/change controls and reviewer. Information produced by the entity (IPE) requires completeness and accuracy evidence at the precision of the management review. Validate extraction filter, time range, joins, deduplication, mapping and report version; reconcile counts and amounts to a controlled source. Access/ITGCs matter where a change could undermine the particular reporting control, not simply because the system is in finance's stack.
+
+Example: warehouse table shows 1,010 December invoices totaling 505,000, ERP GL shows 1,000 totaling 500,000. Ten test records totaling 5,000 were included by a changed SQL filter. Management review of the 505,000 output is ineffective until source population, filter and GL bridge are corrected. Preserve query hash/version, test-flag definition, run time, authorization of change, reviewer investigation and final statement tie-out. A matching dashboard total after manually editing a CSV does not repair lineage.
+
+For IFRS annual periods beginning on/after 1 January 2027, consider IFRS 18 presentation mapping; [official IFRS overview](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/) checked 2026-09-27. Other frameworks have distinct reporting requirements and effective dates; route to Domain 08 rather than assume identical taxonomy. [SEC 33-8810](https://www.sec.gov/rule-release/33-8810) and [AS 2201](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201) provide US-context control anchors, checked 2026-09-27. Dependencies 11-008/010 and 10-001. Result PASS for numeric bridge and failed unreliable-IPE control.

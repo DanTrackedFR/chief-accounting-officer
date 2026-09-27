@@ -1,0 +1,9 @@
+# Control precision — expectation and threshold calibration
+
+Extends substantive README. Capabilities CAO-09-004–006. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Control objective: detect a material misstatement before statements are issued. Start with the risk, population, level of aggregation, likely error types and available independent expectation. A preventive rule may block invalid entity/account codes; a detective review must operate at a level and frequency capable of finding a missed transaction or wrong valuation. Neither classification alone proves effectiveness.
+
+Worked case: monthly group payroll expense is 2.4m. Review at group total with a 10% threshold could overlook 200,000 missing in one subsidiary and an offsetting 180,000 overstatement in another. A defensible review disaggregates by entity, payroll type and headcount; compares independent HR roster/rates to payroll and GL; sets risk-based absolute and relative triggers; follows all unusual exceptions. If expected subsidiary payroll is 250,000 and actual 50,000, a 200,000 gap must be investigated despite group net variance 20,000. Reviewer documents expectation before seeing actuals, underlying data completeness, queries, explanations and corrective action.
+
+Negative test: sign-off says “reasonable” without expected range or evidence of follow-up. Result FAIL. For manual controls retain who did what, when, on which version of the report, at what precision and with what resolution. For IT-dependent review validate report population/query/version. Source boundary: [SEC 33-8810](https://www.sec.gov/rule-release/33-8810) and [PCAOB AS 2201](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201) are US issuer/auditor context, checked 2026-09-27; thresholds here are illustrations, not prescribed by either. Handoffs: 09-003/006, 11-008 and 12-003.
