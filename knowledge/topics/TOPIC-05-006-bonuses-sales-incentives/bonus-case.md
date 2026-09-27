@@ -1,0 +1,9 @@
+# Bonus accrual and acquisition-commission boundary
+
+Capabilities CAO-05-011/012. Existing factory retained. Classify the payment before selecting an expense/capitalization schedule.
+
+A cash bonus plan awards 10% of eligible salary of 600 for a full-year target, but the supported forecast at year-end is 80% payout. Assume employee service has been rendered and a present obligation exists under the applicable plan/accounting rules: estimate 600×10%×80%=48. If 30 has already been accrued, Dr compensation expense 18 / Cr bonus payable 18. Document whether a discretionary approval can still eliminate or materially change the obligation; if so, reassess recognition, not merely probability. If payout settles at 45, the 3 difference is an estimate true-up after evaluating the reporting-date evidence.
+
+A 12 sales commission paid only for winning a specific three-year customer contract is not automatically an IAS 19 payroll expense in the same period: determine whether it qualifies for IFRS 15/AASB 15 contract-cost capitalization or ASC 340-40, and its amortization/impairment. By contrast, salary paid regardless of contract success fails the incremental acquisition test. Link to TOPIC-03-006. Under revised FRS 102 Section 23, verify the period-specific cost model rather than assume IFRS identity.
+
+**Executed:** 600×.10×.80=48, 48−30=18; PASS arithmetic only. Preserve approved plan, participant eligibility, payroll and sales data, revenue achievement definition, forfeiture/leaver terms, management approval, current estimate and backtest. Official [IAS 19](https://www.ifrs.org/issued-standards/list-of-standards/ias-19-employee-benefits/) and [IFRS 15](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-15-revenue-from-contracts-with-customers/) source families checked 2026-09-27. Exact US bonus/contract-cost and UK amended paragraph mapping remains PARTIAL.
