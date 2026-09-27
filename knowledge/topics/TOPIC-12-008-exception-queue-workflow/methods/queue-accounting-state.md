@@ -1,0 +1,7 @@
+# Accounting exception queue — state and evidence model
+
+Extends substantive README. Capabilities CAO-12-019–020. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Each exception has immutable event/source ID, entity, transaction/currency/amount, type and cause, financial-statement risk, opened date, age, owner, SLA, accounting state (unposted, posted, reversed, held), corrective action, approvals and closure proof. Distinguish task closure from accounting resolution. Queue states: detected → triaged → assigned → investigated → proposed accounting action → approved/posted or supported no-action → reconciled → closed. Escalate near close, material/old items and repeat causes; reopening retains history. Automation may classify, but cannot delete exceptions it does not understand.
+
+Example: 40 rejected invoices totaling 30,000, 10 high-risk and close cutoff tomorrow. Assign individual IDs and current source/destination states; prioritize by amount and cutoff, investigate cause and accrue legitimate received services under applicable policy if not posted. A response SLA met on 35 does not certify the remaining five. **Negative test:** all 40 tickets are bulk-closed with note “reprocessed,” but destination accepted only 37. Expected FAIL; count/amount bridge and three unresolved IDs remain, with period exposure. Evidence: failed run, queue versions, original records, reprocess IDs, posting/reconciliation, owner and reviewer. Handoffs 11-003/010, 02-006 and 09-007. Result PASS for controlled queue state and fail-stop.

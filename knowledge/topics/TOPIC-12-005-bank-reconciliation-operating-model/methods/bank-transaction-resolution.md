@@ -1,0 +1,7 @@
+# Bank reconciliation and operating model — transaction resolution
+
+Extends substantive README. Capabilities CAO-12-013–014. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Obtain bank statement independently and GL cash by account/legal entity/currency/date. Normalize signed amounts and transaction IDs; match one-to-one and many-to-one with controlled rules, then inspect unmatched and duplicate populations in both directions. Reconcile statement closing + outstanding deposits − outstanding payments ± supported bank/GL errors to GL closing under consistent sign convention. Do not let net-zero differences hide gross unsupported items or mix restricted cash with operating cash. Ownership, aging, due date, subsequent clearing, entry and reviewer are required for every reconciling item.
+
+Example bank balance 300,000 and GL 315,000, purported 15,000 deposit in transit. If deposit was recorded in GL before bank and later clears, the bridge can support the 15,000. But if the same item remains 120 days and no subsequent statement shows settlement, demand deposit proof and investigate wrong account, duplicate or nonexistent cash. **Negative test:** user creates a fresh transit item ID each month for the same amount to reset aging. Expected FAIL; stable source key/first-open date exposes it. Audit evidence: bank statement, GL extract, reconciled item IDs, match rule version, exception workpaper, subsequent clearing and approved correction. Handoffs cash classification Domain 06, 02-004/005, 09-005 and 11-010. Result PASS for aged exception gate.
