@@ -1,0 +1,9 @@
+# Audit PBC management — population proof
+
+Extends substantive README. Capabilities CAO-10-001–003. PRINCIPLES/PRACTICE; prepared 2026-09-27.
+
+At planning agree entity/period/reporting basis, audit milestones, request owner, source system, required population, cutoff, format, contact, dependency and review. Management supplies reliable accounting information; auditor determines its own audit procedures and conclusions. Maintain a request log with unique ID, version, due date, preparer/reviewer, delivery hash, auditor question and final disposition. Freeze and reconcile extracts before sending; redaction and access must preserve necessary evidence and privacy.
+
+Example: auditor requests all 12,000 supplier invoices for year-end. Export contains 11,800 because query excludes cancelled/reversed records, which may be relevant to completeness/fraud. Reconcile source 12,000 = 11,800 provided + 200 separately described/excluded with IDs and reasons; agree scope with auditor, not silently omit. Amount totals by entity/currency are checked separately. A replacement extract gets new version and a delta bridge to the old package.
+
+Evidence chain: source/report parameters → saved file and control totals → prepared reconciliation → independent review → auditor delivery acknowledgment → query resolution. **Negative test:** a PBC folder holds 11,800 unversioned records with no source tie-out. Expected FAIL. [PCAOB AS 1105](https://pcaobus.org/oversight/standards/auditing-standards/details/AS1105) and [AS 1215](https://pcaobus.org/oversight/standards/auditing-standards/details/AS1215) are auditor standards, checked 2026-09-27; AS 1215 page flags amendments effective 15 December 2026, so audit-date routing is required. Other assurance regimes need their own source. Result PASS for management-side readiness, not an auditor sufficiency conclusion.

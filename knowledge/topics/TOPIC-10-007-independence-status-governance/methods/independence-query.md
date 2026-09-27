@@ -1,0 +1,9 @@
+# Auditor independence support and status governance — query workflow
+
+Extends substantive README. Capabilities CAO-10-017–018. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Management tracks audit/non-audit services, related entities, engagement period, proposed providers, fees, approvals and potential self-review/conflict facts. It provides complete information to auditor and governance body but does not issue the auditor's independence conclusion. Obtain an appropriate auditor/legal judgment under the engagement's actual jurisdiction before commissioning a potentially prohibited service. Status forum logs issue, accounting implication, materiality, decision owner, auditor question, due date, unresolved dependencies and escalation; do not turn an open issue into a green status by changing its label.
+
+Example: audit firm is asked to design the 2m fair-value model that it will later audit. **Hold** the service pending independence analysis and management-owned alternative; scope design, assumptions, valuation and review separately. If a distinct specialist is engaged, management still owns inputs and accounting conclusion. Record request date, service proposal, group/entity scope, auditor response, audit committee approval where applicable and final disposition.
+
+**Failure injection:** status dashboard shows audit 95% complete while one material estimate paper is unsigned. Expected FAIL for critical-path/governance status; escalate rather than average it away. [PCAOB AS 1301](https://pcaobus.org/oversight/standards/auditing-standards/details/AS1301) concerns auditor/audit-committee communications; [PCAOB independence rules](https://pcaobus.org/oversight/standards/ethics-independence-rules) provide US PCAOB context, checked 2026-09-27. SEC or other jurisdiction rules may also apply, so exact independence determination is case-specific. Result PASS for support workflow, not a legal independence opinion.
