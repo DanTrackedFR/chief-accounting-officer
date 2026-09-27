@@ -19,6 +19,8 @@ This ledger addresses the owner QA comment of 2026-09-27. Canonical manifest/pro
 
 ## Domain 16
 
+Main-merge entry audit: main added alternate `TOPIC-16-001-regulatory-reporting-applicability-calendar-readiness/README.md`, `TOPIC-16-002-annual-interim-filing-accounting-support/README.md` plus its test file, and `TOPIC-16-003-regulatory-financial-statements-xbrl-structured-reporting/tests/scenarios.md`. They cover the same canonical IDs as the specialist folders, not new topics. They were preserved byte-for-byte from main. The alternate 16-001/002 source and calendar methods agree with the canonical period/issuer gates; the 16-003 semantic-tag failure scenarios complement the canonical tagging workpaper. Integration should retain their useful source/QA material while selecting one canonical path per ID. Their in-file REVIEWED labels do not override independent manifest promotion.
+
 | IDs | Applicability and capability check | Proposed status |
 |---|---|---|
 | 16-001 | CAO-16-001–003; legal-entity/security, listed status, year end, regulator and filing readiness precede calendar. | REVIEWED-method candidate; exact entity classification and deadline are live inputs. |
@@ -35,4 +37,4 @@ All 17-001–007 have literal capability coverage CAO-17-001–015 and original 
 
 ## QA criteria and unresolved matters
 
-Source rights are REFERENCE_ONLY; no standard text is copied. Official source links are navigational evidence, not proof that a paywalled current US paragraph was inspected. Cross-framework results are conditional where source depth or case facts are missing. Reviewer should inspect calculation evidence and deliberate FAIL cases, not infer completeness from word count. A topic marked PARTIAL above is not promoted on this branch. Merge reconciliation with main is recorded separately in completion log after the conflict-free merge. No shared manifest/progress/roadmap/Master Build Map edits are authorized.
+Source rights are REFERENCE_ONLY; no standard text is copied. Official source links are navigational evidence, not proof that a paywalled current US paragraph was inspected. Cross-framework results are conditional where source depth or case facts are missing. Reviewer should inspect calculation evidence and deliberate FAIL cases, not infer completeness from word count. A topic marked PARTIAL above is not promoted on this branch. Merge reconciliation with main is recorded separately in completion log after the conflict-free merge. The main-side manifest update was inherited as an unchanged merge-parent blob; this worker did not edit the shared manifest/progress/roadmap/Master Build Map.
