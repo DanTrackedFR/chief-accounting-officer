@@ -1,6 +1,6 @@
 # TOPIC-02-009 — Prior-Period Errors / Opening Balance & Roll-Forward Integrity
 
-Status: REVIEWED
+Status: PARTIAL in canonical manifest; worker assessment pending current ASC Basic View paragraph verification
 Capabilities: CAO-02-019, CAO-02-020
 Knowledge mix: STANDARDS + PRINCIPLES + PRACTICE.
 
