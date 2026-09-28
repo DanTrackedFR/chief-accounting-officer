@@ -1,6 +1,6 @@
 # TOPIC-02-009 — Prior-Period Errors & Opening-Balance / Roll-Forward Integrity
 
-Status: REVIEWED
+Status: PARTIAL in canonical manifest; worker assessment pending current ASC Basic View paragraph verification
 Capabilities: CAO-02-019, CAO-02-020
 Knowledge: PRINCIPLES + STANDARDS + PRACTICE
 Framework sensitivity: MEDIUM
@@ -19,6 +19,8 @@ Use FRS 102 Section 10 Accounting Policies, Estimates and Errors for classificat
 
 ## US GAAP
 Use the authoritative FASB Codification, particularly the accounting-changes/error-corrections literature applicable to the entity and SEC overlay where relevant. FASB Concepts Statements are not authoritative GAAP.
+
+For the error-specific ASC paragraph inspection list and direct-access limitation, see `canonical-sources.md`. For the completed SEC registrant materiality, Big R/little r/out-of-period and Item 4.02 decision route, see `practice/us-issuer-overlay.md`. The issuer route does not certify current ASC paragraph applicability.
 
 ## CAO decision tree
 1. Establish what was known/available at original authorization date.
