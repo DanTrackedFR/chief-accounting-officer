@@ -6,7 +6,7 @@ Checked 27 September 2026 against AGENTS.md, canonical manifest/matrix, existing
 
 - 63 canonical topics and 126 capability mappings across Domains 03, 05, 06, 07, 08 and 13 have been audited and have substantive packs. The manifest lists 34 duplicate/retry folder references, counted under canonical IDs once.
 - Batch reports 01–22 preserve prior work and record additions; batches 10–22 respond to QA with decision forks, cross-framework routing, workpapers, controls, source links, adverse cases and explicit unresolved limits.
-- Nine operational/method topics below are **candidates for independent REVIEWED assessment**, not self-promoted. The other 54 remain **PARTIAL** because full source-depth and applicable framework checks have not all been independently completed. Inaccessible current US Codification paragraph bodies are an external access/rights blocker for paragraph-level authority; this does not excuse available FRC/AASB/IFRS checks.
+- Nine operational/method topics below are **candidates for independent REVIEWED assessment**, not self-promoted. The other 54 remain **PARTIAL** because full source-depth and applicable framework checks have not all been independently completed. Exact US Codification paragraph verification remains incomplete: the Basic View landing page was located, but a live paragraph session did not return content on 28 September 2026. This is a source-access/verification gap, not a restriction on citing paragraph identifiers or a need to reproduce copyrighted text; it does not excuse available FRC/AASB/IFRS checks.
 - Existing README labels “REVIEWED / production-candidate” and scenario PASS text are not canonical status; arithmetic and structural checks do not prove the full factory contract.
 
 ## Source/effective-period gates
@@ -24,7 +24,7 @@ Period gates verified on official overview/register pages: revised FRS 102 Secti
 
 ## Topic-by-topic disposition
 
-“Source gate” means current US ASC paragraph text has not been independently verified from an authorized Codification source where the topic relies on US GAAP; IFRS/FRC/AASB section and effective version must still be checked against the particular reporting period. This is a precise source-access limitation, not a claim that every other subquestion is solved.
+“Source gate” means exact current US ASC paragraph applicability has not been independently verified in Basic View where the topic relies on US GAAP; IFRS/FRC/AASB section and effective version must still be checked against the particular reporting period. This is a precise source-access limitation, not a claim that every other subquestion is solved.
 
 | Canonical ID | Capabilities | Worker proposal | Remaining gate / QA focus |
 |---|---|---|---|
@@ -98,3 +98,7 @@ Period gates verified on official overview/register pages: revised FRS 102 Secti
 - Source provenance uses official IFRS Foundation, FASB, FRC, AASB and SEC locations. A source URL is not proof of every paragraph body; do not claim US paragraph verification from an ASU or FASB project summary. One stale IAS 21 pipeline assertion was corrected in 13-011. AASB 8 and 10 links were corrected to identifiable compilations with period gates.
 - Factory contract check: every topic has decision method and applicable standards/practice routing, with worked cases, adverse conditions, evidence and controls; further depth is required where the table says PARTIAL. Operational packs use source handoffs rather than artificial four-framework standards. Duplicates are preserved and counted once. No shared manifest, progress, roadmap, Master Build Map or other worker domain was edited.
 - Independent QA owns status promotion and integration. This report does not assert all 63 are REVIEWED-ready. The remaining source-depth queue, especially current US Codification access, must be resolved before such a claim; per-topic gates above identify what to recheck.
+
+## 28 September 2026 continuation checkpoint
+
+The latest **main** manifest (generated 28 September 2026) independently classified nine assigned topics REVIEWED and the 54 IDs in this ledger PARTIAL. The worker-branch manifest is an older snapshot and was not edited. PR #1 was merged at 04:37 UTC on 28 September; it cannot receive new commits, though the same `worker/technical-accounting` workstream remains available. TOPIC-03-001 received `practice/period-and-authority-check-2026.md`, preserving existing content and adding verified IFRS/AASB/FRC period routing, an option SSP allocation, adverse cases and exact residual sign-off conditions. The file's calculations reconcile to 180; this topic **remains PARTIAL** pending live ASC Basic View and the later AASB operative compilation for periods commencing 1 July 2026. No other PARTIAL topic is promoted by this checkpoint. This is not a five-topic completion batch.
