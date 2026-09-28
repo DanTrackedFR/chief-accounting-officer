@@ -1,6 +1,6 @@
 # TOPIC-15-002 — Accounting Estimates & Changes
 
-Status: REVIEWED
+Status: retained substantive companion; canonical TOPIC-15-002 remains PARTIAL pending current ASC verification
 Built: 2026-09-23
 Capabilities: CAO-15-005, CAO-15-006, CAO-15-007
 Knowledge types: PRINCIPLES, STANDARDS, PRACTICE, DIFFERENCES
@@ -66,4 +66,4 @@ Estimate methodology paper; estimate register; model/calculation; sensitivity an
 Primary sources: IFRS Foundation IAS 8; FASB Topic 250 official materials; FRC FRS 102 Section 10; AASB 108 current compilation. Original CAO analysis only; no restricted standards text stored.
 
 ## Completion assessment
-REVIEWED and suitable for orchestration. Specific estimates must also invoke their governing topic (ECL, impairment, provisions, fair value, useful lives, bonuses, etc.).
+This companion is not a separately approved canonical topic. The canonical path is `../TOPIC-15-002-policy-inventory-estimate-methodology/`; its source gate remains PARTIAL. Specific estimates must also invoke their governing topic (ECL, impairment, provisions, fair value, useful lives, bonuses, etc.). CAO-15-007 chronology is handed to TOPIC-15-003 and retained here as source material.

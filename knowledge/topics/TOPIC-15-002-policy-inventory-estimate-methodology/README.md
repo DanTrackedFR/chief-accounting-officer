@@ -1,5 +1,5 @@
 # TOPIC-15-002 — Policy Inventory / Estimate Identification / Estimate Methodology
-Status: REVIEWED / production-candidate
+Status: PARTIAL — source verification pending; proposed for independent review only after the current US paragraph gate in `canonical-crosswalk.md` is closed
 Capabilities: CAO-15-004, CAO-15-005, CAO-15-006
 Sensitivity: H
 
@@ -16,4 +16,4 @@ Define measurement objective; identify data population; select method consistent
 Estimate revisions from new information are not automatically errors. Policy, estimate and error classification is resolved before transition accounting.
 
 ## QA
-ECL; useful life; impairment inputs; bonus accrual; provision; fair value; missing historical data; methodology change; specialist model; back-test variance. 10/10 PASS.
+Ten illustrative decision-route cases (ECL; useful life; impairment inputs; bonus accrual; provision; fair value; missing historical data; methodology change; specialist model; back-test variance) have been desk reviewed. Their arithmetic and routing do not certify a live estimate or current US authority. See `factory-qa.md` and `canonical-crosswalk.md` for source and population gates.
