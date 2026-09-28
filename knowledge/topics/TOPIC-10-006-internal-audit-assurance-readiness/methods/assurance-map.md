@@ -1,0 +1,9 @@
+# Internal audit and assurance readiness — coverage map
+
+Extends substantive README. Capabilities CAO-10-015–016. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Inventory reporting risks, material processes, controls, prior external/internal audit findings, regulator concerns and planned assurance. Distinguish first-line process/control ownership, second-line monitoring and independent internal audit challenge; neither internal nor external audit operates management's controls. Prioritize assurance by risk and change, not a rote annual rotation. For a readiness project, score design, execution, evidence, systems lineage and remediation history separately.
+
+Worked case: internal audit reports a privileged ERP role can both alter revenue mapping and approve output. Management's plan revokes access on 1 October, but nine months of prior postings remain exposed. The CAO must inventory the role's historical actions, reconcile affected revenue and assess misstatement/control severity; internal audit can independently retest restriction after remediation. A future role fix does not prove historical balances were correct.
+
+Evidence: risk-control-assurance matrix, access extracts, investigation results, owner response and due date, interim controls, retest procedure/outcome and communication to audit committee where appropriate. **Negative test:** finding closed when access request is submitted but not implemented/tested. Expected FAIL. Source: [IIA Global Internal Audit Standards](https://www.theiia.org/en/content/standards/complete-global-internal-audit-standards/) were issued January 2024 and effective January 2025; official page checked 2026-09-27. They guide internal auditors, not accounting recognition, and no wording is copied. Result PASS for management response logic, with assurance regime case-specific.

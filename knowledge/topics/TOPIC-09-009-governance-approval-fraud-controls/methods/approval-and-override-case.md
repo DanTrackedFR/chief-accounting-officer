@@ -1,0 +1,11 @@
+# Accounting governance, delegation and fraud control — approval case
+
+Extends substantive README. Capabilities CAO-09-021–022. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Maintain a versioned authority matrix by entity, role, transaction type, magnitude, unusualness and conflict. Approval must precede the consequential action, be by an authorized independent person, include substantive review and leave immutable evidence. Distinguish management's ability to set policy from its ability to bypass a control; emergency override has reason, time limit, privileged access log, independent after-event challenge and incident escalation. A CEO/CFO instruction is not an accounting authority for unsupported entries.
+
+Worked case: CFO requests a 300,000 revenue accrual after close based on verbal sales forecast. Approval matrix permits CFO sign-off for material journals, but the request lacks executed customer contract/performance evidence and independent policy conclusion. Expected **HOLD**; obtain Domain 03 technical analysis, source population, cutoff and independent reviewer. If posted through emergency access, preserve original and corrected books, assess potential management override/fraud risk and investigate related entries. Do not mechanically assume fraud from a disagreement, but do not waive investigation because of seniority.
+
+Monthly governance reviews override logs, unusual manual journals, vendor/bank changes, late adjustments, aged reconciliations and whistleblower concerns; record actions and board/audit committee escalation when warranted. [PCAOB AS 2401](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2401) addresses auditor fraud procedures; [SEC 33-8810](https://www.sec.gov/rule-release/33-8810) addresses applicable US management ICFR evaluation, checked 2026-09-27. Neither is a universal recognition rule. Dependencies 02-002/008, 09-004/007, 10-007, 11-006. Result PASS for documented hold and investigation boundary.
+
+**Negative test:** a CFO-approved verbal forecast is treated as sufficient source for the 300,000 revenue accrual. Expected FAIL pending contract/performance evidence and independent technical assessment.

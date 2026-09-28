@@ -1,0 +1,18 @@
+# Domain 02 canonical-path reconciliation
+
+Prepared 2026-09-27. The topic ID, not the folder count, is the denominator. This map was made after reading every same-ID directory and comparing headings, substantive coverage and factory artifacts. No file is deleted or treated as a second canonical topic. Independent integration can consolidate text with an explicit supersession/change log; it must retain substantive variants until comparison is complete.
+
+| Canonical ID | Proposed entrypoint | Additional paths and useful content to retain | Exact integration action |
+|---|---|---|---|
+| 02-001 | `TOPIC-02-001-close-architecture/` (README, factory, critical-path method and executed scenario) | `close-design/` has maturity ladder, resource allocation, process QA; `month-end-close/` has calendar design, world-class practices, failure modes and audit evidence; `close/` has earlier close dependencies | Link all three as historical source from canonical README; compare calendar roles and task exit criteria, incorporate any unique evidence before marking them superseded. Do not count four topics. |
+| 02-002 | `journal-governance/` | No same-ID duplicate; factory, knowledge pack and README coexist in same folder | Retain all three; the new journal workpaper adds calculation/reversal and adverse access route. |
+| 02-003 | `automated-journals-gl-integrity/` (factory, knowledge pack, method and test; lacks README) | `recurring-journals-gl-integrity/` adds recurring-journal eligibility and distinct GL analytics; has its own README and pack | Add canonical README that names both streams, links the alternative pack and assigns CAO-02-007/008; keep alternate path until unique controls are integrated. |
+| 02-004 | `tb-balance-sheet-reconciliations/` | `trial-balance-reconciliations/knowledge-pack.md` adds TB review analytics and reconciling-item policy | Cross-link the alternate pack; include its TB analytics in QA so reconciliation work does not displace TB review capability. |
+| 02-005 | `reconciliation-governance-certification/` | No same-ID duplicate | Retain README/factory/pack; new risk-tier method extends certification. |
+| 02-006 | `suspense-clearing-cutoff/` | `suspense-cutoff/README.md` has an independently authored framework layer, cutoff method and TrackedFR fit | Cross-link and reconcile cutoff framework language; preserve source until independent standard/effective-date check. |
+| 02-007 | `accruals-prepaids/` | `accruals-prepayments/README.md` has methodology hierarchy, estimate risk and prepayment method | Cross-link and retain its methodology, reconcile service-benefit pattern and no-hindsight error routing. |
+| 02-008 | `flux-post-close/` (contains factory) | `close-variance-post-close/README.md` has detailed post-close decision model and variance controls | Cross-link, compare reopen authority/thresholds, retain unique governance. |
+| 02-009 | `errors-opening-balances/` (contains factory) | `prior-period-errors-opening-balances/README.md` provides broader four-framework map and opening bridge but claims some exact ASC references as previously verified | Cross-link; preserve its chronology and framework analysis while flagging ASC paragraph verification as unresolved. Never silently promote the alternate self-declared REVIEWED state. |
+| 02-010 | `close-evidence-fast-close/` | No same-ID duplicate | Retain README/factory and evidence method. |
+
+Canonicalization is a documentation/QA routing choice, not deletion. The final PR review should verify that capabilities and tests point to the entrypoint, source-sensitive claims are reconciled, and unique alternate material is either incorporated or explicitly retained as related records. All ten IDs remain one per manifest.

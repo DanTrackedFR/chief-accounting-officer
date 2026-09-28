@@ -1,0 +1,9 @@
+# P2P invoice-to-GL — cutoff and exception control
+
+Extends substantive README. Capabilities CAO-12-001–003. PRINCIPLES/PRACTICE with transaction-specific accounting handoff; 2026-09-27.
+
+Map request → approved PO → receipt/service evidence → invoice intake/duplicate screen → match/exception → coding and approval → AP subledger → GL → payment → bank. Retain source IDs and status at every step; agree entity, vendor, price, quantity, currency, tax and service period. An invoice date is neither a universal expense date nor proof of delivery. Unbilled receipt population at period end must reconcile to accrued liability or supported exclusions. Expenses and assets follow underlying standard, not a generic P2P rule.
+
+Example: 29 March goods receipt 25,000, invoice 5 April. If control/contractual terms support March inventory and payable, March accrual debit inventory 25,000 / credit GRNI 25,000; April AP invoice clears GRNI rather than posting a second expense. If evidence shows seller retains control until April, do not force March recognition. The process owner assembles PO, receipt, terms and subsequent invoice for technical assessment. At close, GRNI opening + receipts − matched invoices ± approved corrections = ending balance; age by item.
+
+**Negative test:** three-way match dashboard is green for 950 invoices but 50 rejected invoices worth 30,000 are not in any queue or cutoff estimate. Expected FAIL for completeness. Report source 1,000 = 950 accepted + 50 rejected and amount bridge; assign each rejected ID, owner and period impact. Controls: supplier/bank master segregation, duplicates, receipt cutoff, matching tolerance change, subledger-to-GL proof and independent exception review. Evidence: source snapshots, approvals, interface log, journal/reversal IDs, GL bridge. Handoffs TOPIC-02-006/007, 05-001/002, 09-003, 11-003. Result PASS for explicit fail-stop, with asset/expense recognition conditional on technical facts.

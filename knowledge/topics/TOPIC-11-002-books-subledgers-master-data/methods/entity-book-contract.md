@@ -1,0 +1,7 @@
+# Entity, books, subledgers and master data — contract
+
+Extends substantive README. Capabilities CAO-11-004–006. PRINCIPLES/PRACTICE; 2026-09-27.
+
+For each legal entity identify registration/currency, functional and reporting currencies, primary and adjustment books, accounting framework, tax/statutory reporting owner, consolidation relationship and effective dates. A transaction has immutable entity and source key, approved counterparty, account/dimension and posting period; do not rely on free-text subsidiary labels. Define subledger ownership and mapping, open/closed status and daily/monthly control totals. Changes to vendor/customer/bank/tax master data require authorized request, verification and versioned audit trail.
+
+Worked case: new subsidiary's 100 invoices totaling 200,000 are posted to parent book with a manual tag. Target entity subledger totals 200,000 while target GL is zero; parent GL has unexpected 200,000. Do not certify an enterprise-total match. Trace each invoice and approved entity; correct both books under journal governance, reassess tax/statutory and intercompany impacts, and test recurrence prevention. **Negative test:** a 200,000 top-side reclass hides wrong legal seller on customer invoices. Expected FAIL; fix master data and original source lineage. Evidence: entity/book register, mapping, change approvals, source-to-GL reconciliation and statutory sign-off. Relevant accounting treatment routes to framework topic.

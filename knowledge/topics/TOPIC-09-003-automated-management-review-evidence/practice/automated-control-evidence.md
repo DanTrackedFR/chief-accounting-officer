@@ -1,0 +1,9 @@
+# CAO control specification — automated rule and management review
+
+Supplements substantive README and worked evidence chain for CAO-09-007–009.
+
+**Automated control.** Specify rule and source grain, approved tolerance, configured value and effective version, role permitted to edit, migration/deployment approval, full population, accepted/held/rejected disposition, monitoring and fallback. An automatic “pass” from a rule whose inputs or config are untrusted does not support accuracy. Test normal, boundary, missing-field, duplicate, wrong-entity and override cases before release; check source-to-destination counts and signed/absolute amounts after each change. A 1%→8% tolerance change requires accounting risk and fraud assessment, not just IT deployment approval.
+
+**Management review.** Save an expectation set before seeing actuals, report criteria, GL/source tie, disaggregation and amount thresholds. Reviewer records anomalous items, investigation with external or independently generated evidence, corrections and why remaining items are accepted. A report screenshot plus “reviewed” has no detectable precision. In the 1,000-invoice run, 950 pass/470,000, 40 held/25,000 and ten reject/5,000: 1,000/500,000 is accounted for but the 50 exceptions remain open until disposition. If rejection history is deleted, reconstruct from source and halt certification.
+
+**Failure/evidence.** Maintain immutable config hash, source extract, run ID, output and exceptions, change ticket, reviewers and GL bridge. A rule failure routes to TOPIC-09-007 and TOPIC-11-010; unresolved posting/cutoff routes Domain 12. US issuer/auditor references SEC 33-8810 and AS 2201 (checked 2026-09-27) do not turn this into a universal four-framework requirement. Output: control rule spec, operation/test evidence and exception remediation.

@@ -1,0 +1,7 @@
+# Accrual and prepaid period gate
+
+Separate **present obligation** for received services from **future benefit** paid in advance. Record contract, service dates, invoices received after cutoff, approved forecast basis, population, calculation owner, reversal and subsequent settlement. Compare the next invoice to accrual and decide whether variance reflects facts available at reporting date or genuinely later information. Framework-specific liability/asset criteria and estimate-change treatment require the applicable version; an invoice date alone does not set the expense period.
+
+**Example.** An annual 120,000 insurance payment covers 1 July through 30 June and benefit is uniform: 10,000 expense per month, 60,000 unexpired balance at 31 December. If cover or consumption is uneven, revisit allocation; do not enforce straight-line mechanically. A 24,000 December service estimate based on approved usage later invoices for 27,000. Trace the additional 3,000 to December usage data, authorization date and statement issuance: revise an unissued December close if evidence was available, or analyze error versus new estimate if already issued. Document tax and disclosure effects as relevant.
+
+**Failure injection.** Prepaid schedule totals agree with itself but omit a new entity. Tie contract/payment population to bank/AP and entity register, correct omitted balances, assess control deficiency and retrospective consequence under TOPIC-02-009. Archive source counts, schedule version, journal and reviewer challenge.
