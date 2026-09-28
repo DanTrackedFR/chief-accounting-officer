@@ -6,7 +6,7 @@ Prepared 2026-09-27 for existing PR #2. This is a worker proposal for independen
 
 - 53 canonical IDs: 8 Domain 01 topics reviewed on main (01-001/002 preserved and 01-003–008 independently integrated); 44 additional proposed REVIEWED-ready; 1 remains PARTIAL (02-009).
 - Domain 02 duplicate paths are preserved and linked in `domain-02-canonicalization.md`. QA must select canonical paths after content comparison; no duplicate is a new ID. The worker recommends the first manifest artifact path with factory/method/test, except 02-008 uses its factory-bearing path.
-- Specific unresolved knowledge authority: exact current ASC 250 error-correction paragraph/version and case-specific US registrant filing decision for 02-009. SEC SAB 99/108 overlay is now verified separately. No unsupported four-framework conclusion is asserted.
+- Specific unresolved knowledge authority for 02-009: exact current ASC 250 error-correction paragraphs/version in FASB Basic View. The SEC SAB 99/108, Item 4.02 and Big R/little r decision route is documented and source-checked as of 2026-09-28; an actual registrant filing remains fact-specific. No unsupported four-framework conclusion is asserted.
 - Actual entity facts, local law, engagement standards and live ERP evidence are case inputs. They remain validation gates in the methods rather than claims of tests performed.
 
 | Canonical ID | Capabilities | Baseline | QA disposition | Substantive acceptance evidence / precise open item |
