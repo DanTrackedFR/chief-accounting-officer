@@ -1,24 +1,26 @@
-# TOPIC-04-008 — Lease Initial Measurement / Lease Subsequent Measurement
-
+# TOPIC-04-008 — Lease Initial / Subsequent Measurement
 Capabilities: CAO-04-019, CAO-04-020
-Status: REVIEWED
+Status: REVIEWED / production-candidate
 
-## Workflow
-Confirm commencement, term, payment population and supported discount rate. Measure the liability from qualifying unpaid lease payments discounted at the applicable rate. Build the ROU asset from the initial liability adjusted for applicable prepayments, incentives, initial direct costs and restoration obligations. Tie inputs to executed contracts and payment data; lock the commencement schedule.
+## Canonical scope
+Measure lease liabilities/right-of-use assets at commencement and subsequently under the applicable framework. Reuse the Phase 2C lease vertical slice as the shared technical authority.
 
-Payment population evaluates fixed/in-substance-fixed amounts, index/rate-based payments at commencement, residual guarantees, purchase options and termination penalties as applicable. Ordinary usage/performance variable payments are excluded when the framework requires expense as incurred.
+## Decision path
+Resolve framework/period and commencement date; establish in-scope payment population; determine rate using TOPIC-04-009; calculate initial liability and ROU asset; build framework-appropriate subsequent schedule and expense/journal logic; assess impairment interaction; reconcile schedule/system to GL and disclosures.
 
-## Frameworks
-IFRS 16.22–46: initial ROU/liability recognition, subsequent interest/payment mechanics and specified remeasurement; ROU asset generally follows depreciation/impairment. ASC 842: finance leases generally show interest plus ROU amortization; operating leases use ROU mechanics designed for generally straight-line single lease cost. Revised FRS 102 Section 20 (2026+) uses its revised liability/ROU model and must not be applied automatically to pre-2026 periods. AASB 16 for-profit core generally follows IFRS 16 subject to Australian overlays.
+## Shared factory artifacts
+Use `../TOPIC-04-010-leases/methods/calculation-model.md`, `examples/illustrative-calculation.md`, framework records under `standards/`, `differences/framework-differences.md`, and `practice/controls-audit-systems.md`. Do not duplicate the calculation engine or framework source maps here.
 
-## Worked example
-Five annual fixed payments of 100 in arrears at a supported 5% annual rate, with no other adjustments: commencement PV ≈432.95. Year-one interest ≈21.65; after a 100 payment, closing liability ≈354.60. Production schedules require exact dates, frequency, rate convention and framework-specific inputs.
+## Controls and evidence
+Retain executed contract/payment population, commencement evidence, rate support, schedule version, preparer/reviewer, change log, GL reconciliation and disclosure rollforward. Unsupported assumptions are surfaced rather than invented.
 
-## Controls / evidence
-Contract-to-schedule input reconciliation; rate support; payment completeness; commencement approval; versioned schedule; JE support; monthly rollforward; ROU/liability GL reconciliation; modification log; disclosure population; independent recalculation samples.
+## Payment detail and worked case retained from main
+Evaluate fixed and in-substance-fixed consideration, index/rate-based amounts at commencement, residual guarantees, purchase options and termination penalties where the framework/option assessment requires them. Assess prepayments, incentives, initial direct costs and restoration obligations in the ROU opening bridge; ordinary usage-based payments follow the framework-specific variable-payment model. IFRS 16 and AASB 16 interest/payment and ROU depreciation/impairment are distinct from ASC 842 operating lease's generally single lease cost; UK revised FRS 102 Section 20 applies from the operative 2026 period, not automatically in 2025. Five end-of-year payments of 100 discounted at 5%, without other adjustments, give PV approximately 432.95; first-year interest 21.65 and liability after 100 payment approximately 354.60. The 04-010 schedule owns precise date/rate convention and control logic. A missing supported rate blocks approval, and a schedule-to-GL difference fails reconciliation. Source edition/US current paragraph limitations remain recorded in 04-010.
 
-## Scenario QA
-Missing rate → stop and route to rate methodology PASS. CPI-linked rent → commencement index/rate plus later remeasurement route PASS. ASC 842 operating lease → do not apply IFRS P&L pattern PASS. Worked PV/rollforward recalculation PASS. Lease-system/GL difference → block sign-off until reconciled PASS.
+## QA
+PASS — five-year property routes term/payments/rate before ROU/liability and schedule.
+PASS — IFRS-versus-ASC-842 scenario preserves different subsequent expense/ROU mechanics.
+PASS — CPI-linked rent applies initial index/rate logic and routes later changes to remeasurement.
+PASS — cross-system close requires rollforward and lease-system/GL/AP reconciliation.
 
-## Provenance
-Derived from reviewed TOPIC-04-010 lease source pack checked 2026-09-22. IFRS references are references, not reproduced text. Public FASB paragraph-level access remains PARTIAL.
+Executed evidence: `../TOPIC-04-010-leases/tests/executed-scenarios.md` S2–S4 and S11. REVIEWED retains the shared vertical slice's paragraph-level source-QA limitations and is not final APPROVED.

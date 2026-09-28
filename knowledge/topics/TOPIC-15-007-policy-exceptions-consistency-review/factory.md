@@ -1,0 +1,21 @@
+# Policy exceptions and consistency of accounting application — substantive factory
+
+Case approval gate: inspect commission terms, recoverability and eligible expedients under operative IFRS 15/AASB 15, ASC 340-40 or FRS 102 Section 23 before concluding the 40k item is an asset. Determine election unit and whether UK 2026 Section 23 transition affects the policy; a generic consistency rule cannot authorize a management exception.
+
+Companion to existing README. CAO-15-015/016. Source checked 2026-09-27. Proposed REVIEWED candidate for governance and diagnostic method.
+
+## Nature of the deviation
+
+Compare proposed treatment with approved policy and binding literature before approving anything. An exception may reflect genuinely different contractual facts; a standard-permitted election at the entity or class level; materiality treatment; a control override; an unapproved policy change; or an error. Classify explicitly. [IAS 8](https://www.ifrs.org/issued-standards/list-of-standards/ias-8-basis-of-preparation-of-financial-statements/) policy consistency and change discipline, [AASB 108](https://standards.aasb.gov.au/aasb-108-mar-2021), [FRS 102 Section 10](https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/) (2026 version gate), and US [ASC 250](https://asc.fasb.org/) anchor framework-specific analysis. Transaction standards may define election level and exceptions differently, so do not grant local management authority to override recognition. A policy documented for IFRS does not automatically apply to a US GAAP subsidiary.
+
+## Portfolio consistency test
+
+Extract the entire comparable transaction population across entities and periods, including similar contract types and accounting system configuration. Group by economic facts that affect the standard (term, rights, performance obligations, payment structure), not just business-unit label. For every exception record policy ID/version, facts and difference, authoritative basis, alternative, amount and period, precedent, approver, expiry and system/control impact. Quantify how many cases have similar facts but different outcomes; unexplained variation can indicate error, discrimination in estimates or faulty ERP rule. Review repeated exceptions to see whether policy needs formal revision or whether business practices changed. A waiver in a delegated approval matrix may waive process, not GAAP.
+
+## Worked commission case
+
+Entity capitalizes qualifying incremental contract acquisition costs where recoverable under its framework policy. Sales asks to expense 40k commission on a low-margin contract to preserve a dashboard KPI. For five comparable contracts with 40k each, the proposed one-off exception would create an inconsistent 40k expense/contract asset difference and 200k potential portfolio exposure if the logic were generalized. First test whether costs truly meet the specific IFRS 15/ASC 340-40/UK/AASB route and any permitted expedient/impairment; margin may affect recoverability but is not unilateral permission to pick presentation. If no recognition basis for exception, reject and record management override attempt. If facts legitimately differ, create documented class definition and consistent application, with disclosure/control implications.
+
+## Controls, scenarios and evidence
+
+Quarterly exception register review, system configuration comparison, standardized approval, legal/technical review for novel facts, effect aggregation, downstream disclosure tie-out and sunset trigger. S1: same facts, different treatment based on target earnings → FAIL. S2: different rights substantively change classification with documented memo → permissible exception if framework supports. S3: ten recurring “one-off” exceptions → investigate policy design/process rather than renew blindly. S4: 40k portfolio amount and 200k five-contract sensitivity recalculated → PASS. Evidence: contracts, policy, source literature/version, comparables export, calculation, approval, JE and controls. Dependencies 03-006 contract costs, 15-001 policy, 15-005 materiality, 15-006 classification and 11-004 ERP mapping. US exact paragraph limitation remains.
