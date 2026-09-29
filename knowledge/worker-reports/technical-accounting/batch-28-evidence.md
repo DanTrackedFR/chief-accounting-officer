@@ -1,4 +1,6 @@
 # Batch 28 — FX, debt and instrument classification
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. Canonical IDs TOPIC-06-003–007; capabilities CAO-06-006–015. Preserved existing factory cases and duplicate paths. Added five topic-local claim registers and distinct adverse cases covering transaction versus group FX, mixed functional-currency indicators, debt issue fee classification, debt modification fees/waiver timing, and contingent SPPI classification. Canonical PARTIAL status clarified in READMEs.
 

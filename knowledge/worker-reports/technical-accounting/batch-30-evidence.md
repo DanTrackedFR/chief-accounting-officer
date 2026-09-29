@@ -1,4 +1,6 @@
 # Batch 30 — group accounting consolidation and disposals
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. Canonical IDs TOPIC-07-004 and 07-006–009; capabilities CAO-07-007–008 and CAO-07-011–018. Preserved existing group packs and duplicate folders. Added claim registers and five adverse worked cases to canonical paths. Each case has four framework IDs, workpaper/audit inputs and opposite-route testing; README labels now defer to the canonical PARTIAL status.
 

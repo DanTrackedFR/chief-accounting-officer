@@ -1,4 +1,6 @@
 # Batch 26 — revenue disclosure and liability/employee benefit routes
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. Canonical IDs TOPIC-03-012 and TOPIC-05-003–006; capabilities CAO-03-024–025 and CAO-05-005–012. Retained all existing factory content and prior workpapers. Added five topic-local claim registers and adverse calculation/control cases. No shared manifest/progress/roadmap or other worker topic changed.
 

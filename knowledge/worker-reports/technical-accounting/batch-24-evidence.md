@@ -1,4 +1,6 @@
 # Batch 24 — revenue contracts through deferred/unbilled (29 September 2026)
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Canonical IDs: TOPIC-03-001–005. Capability IDs: CAO-03-001–011. The existing factory, workpapers, duplicate/retry paths and source notes were retained. Added a topic-local `standards-claims.json` and `evidence-and-regression.md` for each, and clarified the canonical PARTIAL status in the five READMEs. No shared manifest or other worker domain changed.
 

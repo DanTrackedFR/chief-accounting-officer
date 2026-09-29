@@ -1,4 +1,6 @@
 # Batch 29 — valuation, hedges, loss disclosures and control
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. IDs TOPIC-06-008–010 and TOPIC-07-001–002; capabilities CAO-06-016–021, CAO-07-001–004. Retained original factory and duplicate materials. Added four-framework topic-local claim registers and worked adverse paths. No shared manifest/progress/roadmap changed.
 

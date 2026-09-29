@@ -1,4 +1,6 @@
 # Batch 33 — acquisition costs, disposals and capital transactions
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. IDs TOPIC-13-003–007; capabilities CAO-13-005–014. Existing special-transaction packs retained. Added topic-local claim registers and adverse cases to canonical paths. Historical status labels qualified against canonical PARTIAL.
 

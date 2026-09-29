@@ -1,4 +1,6 @@
 # Batch 31 — primary statements and subsequent events
+> **Final evidence correction (29 September 2026):** The source-status claims in this batch were re-audited globally. Opening an issuer page or identifying a paragraph range was not sufficient for `SOURCE_VERIFIED`. The topic-local `standards-claims.json` files and `final-standards-audit-queue.json` supersede any earlier source-tier counts or wording in this batch report. Substantive examples and local arithmetic checks remain as recorded; they are not independent QA.
+
 
 Date: 29 September 2026. IDs TOPIC-08-001–005; capabilities CAO-08-001–010. Existing source, factory and scenario files retained. Added claim registers and five adverse cases; canonical PARTIAL status clarified in READMEs. Method candidates for independent assessment: covenant classification versus post-period waiver; cash-flow indirect bridge and noncash lease; equity/NCI rollforward; prior error versus new estimate; subsequent event versus going-concern basis.
 
