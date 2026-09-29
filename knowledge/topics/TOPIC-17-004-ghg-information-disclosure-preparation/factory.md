@@ -1,0 +1,21 @@
+# GHG information dependencies and sustainability disclosure preparation — substantive factory
+
+Effective-period refresh: the ISSB's [December 2025 targeted IFRS S2 GHG amendments](https://www.ifrs.org/projects/completed-projects/2025/amendments-to-disclosure-of-greenhouse-gas-emissions-s2/) are effective for annual periods beginning on or after 1 January 2027, with early application permitted. Capture whether the jurisdiction adopted the amendments and which edition applies; do not impose 2027 changes on an unadopted 2026 report or assume the original IFRS S2 effective date supplies a local mandate.
+
+Companion to prior README; CAO-17-008/009. Source checked 2026-09-27. Proposed REVIEWED candidate for the calculation/disclosure production method, not approval of any factor or legal category conclusion.
+
+## Framework and boundary decisions
+
+[IFRS S2](https://www.ifrs.org/issued-standards/ifrs-sustainability-standards-navigator/ifrs-s2-climate-related-disclosures/) addresses Scope 1, 2 and 3 GHG disclosure with GHG Protocol dependencies and transition relief. [IFRS S1](https://www.ifrs.org/issued-standards/ifrs-sustainability-standards-navigator/ifrs-s1-general-requirements/) covers material sustainability-related risks and opportunities and connected information. [AASB S2](https://standards.aasb.gov.au/aasb-s2-sep-2024) has Australian modifications, scope and effective date; EU ESRS E1 and UK SRS require independent local version checks. The [GHG Protocol Corporate Standard](https://ghgprotocol.org/corporate-standard) and [Scope 3 Standard](https://ghgprotocol.org/standards/scope-3-standard) describe organizational boundary approaches and value-chain categories. A metric's category depends on activity and boundary, not which GL account paid the invoice. Check permitted first-year relief, comparative/restatement policy and timing before declaring a missing Scope 3 metric a breach.
+
+## Calculation ledger
+
+For each activity row retain entity, site, boundary, period, data source ID, activity quantity/unit, original/corrected quantity, category, factor ID/version/geography/year, factor unit, gases and GWP basis, calculated kg/tCO2e, estimate flag, evidence and reviewer. Formula: `activity × factor × unit-conversion × applicable allocation`, then sum after deduplication and boundary checks. Separate Scope 1 direct fuel/refrigerants, Scope 2 purchased energy and the relevant Scope 3 upstream/downstream categories; identify exclusions and estimation hierarchy. For electricity, check location versus market basis under the governing rule and evidence for contractual instruments. Data from suppliers may be spend-based estimates or measured activity; state method, data quality and double-count risk.
+
+## Worked example and disclosure link
+
+An illustrative meter shows 100,000 kWh in 2026. A verified factor of 0.4 kg CO2e/kWh would yield 40,000 kg = 40 tCO2e; 1,000 kg/t conversion is essential. If a supplier has 20,000 kWh of that consumption billed to a landlord but it is still inside the selected boundary, omitting it gives 32 t instead of 40 t under the same factor. A separate 10,000-litre fuel purchase cannot use the electricity factor; obtain compatible fuel/activity factor and test cut-off and actual consumption. Do not claim real emissions from illustrative factors. Published disclosures should explain boundary, governance/strategy/risk process, metric and target, base year, progress, material methods and estimates as required by the applicable standard, with sign-off from finance and sustainability owners.
+
+## Controls and scenarios
+
+Controls: scope mapping, duplicate invoice/meter detection, unit/factor validation, factor change approval, estimate/restatement log, category completeness, target-to-metric consistency, published-total tie-out and independent reperformance. S1: a t/MWh factor applied as kg/kWh → unit error, fail. S2: Scope 3 omitted without period-specific relief analysis → fail disclosure checklist. S3: 100,000 kWh × 0.4 kg/kWh → 40 t arithmetic PASS, source and boundary still conditional. S4: one subsidiary uses equity-share boundary and another operational control without bridge → fail consistency. Dependencies 17-001–003, 17-006, 11-003. Residual: verified factors, applicable standard version and entity-specific category population.

@@ -1,11 +1,13 @@
 # TOPIC-02-009 — Prior-Period Errors / Opening Balance & Roll-Forward Integrity
 
-Status: PARTIAL in canonical manifest; worker assessment pending current ASC Basic View paragraph verification
+Manifest status: PARTIAL; proposed substantive REVIEWED-ready for independent QA, with claim-level ASC audit gate in `standards-claims.json`.
 Capabilities: CAO-02-019, CAO-02-020
 Knowledge mix: STANDARDS + PRINCIPLES + PRACTICE.
 
 ## Framework principle
 Prior-period error accounting is standards-sensitive. IFRS/AASB route through IAS 8/AASB 108; US GAAP through ASC 250; UK GAAP through FRS 102 Section 10. Material prior-period errors generally require retrospective correction/restatement subject to framework-specific practicability rules and presentation/disclosure. Distinguish errors from changes in estimates and accounting policies before deciding treatment.
+
+Claim map: [IFRS-01, IFRS-02, AU-01, AU-02, UK-01, UK-02, US-01, US-02]. US paragraph references remain provisional in the evidence register.
 
 ## Error-vs-estimate decision
 Error: information available, or reasonably obtainable, when prior statements were authorized/issued was omitted or misused, including mathematical mistakes, policy misapplication, oversight or misinterpretation. Estimate change arises from new information/developments and is generally prospective. A later outcome differing from a reasonable prior estimate is not automatically an error.

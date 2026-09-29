@@ -1,5 +1,7 @@
 # US issuer correction overlay and verification limit
 
+Evidence map: [US-01, US-02, US-03, US-04, SEC-01, SEC-02, SEC-03, SEC-04, SEC-05] in `../standards-claims.json`. The fuller current method and worked cases supersede any shorthand here where facts differ.
+
 For a US GAAP issuer, document ASC 250 accounting conclusion separately from SEC registrant materiality and filing decisions. SEC Staff Accounting Bulletin 99 cautions against a mechanical percentage-only materiality test; evaluate qualitative effects and aggregate misstatements. SAB 108 addresses both income-statement and balance-sheet quantification of prior-year effects. SEC staff's 2022 statement distinguishes a prior period material correction from a current-period comparative revision in its discussion of restatements. These are issuer overlays, not replacements for authoritative GAAP or legal advice on filing deadlines.
 
 **Decision case.** A 2025 expense omission of 80,000 was discovered in 2026. Build original and corrected 2025 income statement and 2025/2026 balance-sheet bridges; compute 2026 rollover effect if the prior accrual reverses, and cumulative balance-sheet error if it persists. Include tax, EPS, debt covenants, trends, executive compensation and the effect of any other errors. Document management and governance determination of materiality for each issued period and current year, and the correction/filing route. A current-year debit to expense alone is not adequate analysis.

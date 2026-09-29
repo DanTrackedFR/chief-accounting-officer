@@ -1,21 +1,25 @@
 # TOPIC-02-009 — Prior-Period Errors & Opening-Balance / Roll-Forward Integrity
 
-Status: PARTIAL in canonical manifest; worker assessment pending current ASC Basic View paragraph verification
+Manifest status: PARTIAL (QA owns promotion). Worker proposal: substantively REVIEWED-ready, with isolated ASC authority audit.
 Capabilities: CAO-02-019, CAO-02-020
 Knowledge: PRINCIPLES + STANDARDS + PRACTICE
 Framework sensitivity: MEDIUM
-Source check: 2026-09-22
+Source/evidence check: 2026-09-29; see `standards-claims.json`.
+
+## Phase 2D completion entrypoint
+
+Read `methods/phase-2d-error-correction.md` for the full four-framework recognition, presentation, disclosure, materiality, interim, SEC registrant, opening-balance, controls and systems method. Read `tests/phase-2d-worked-error-cases.md` for five recalculated and adverse cases. `standards-claims.json` identifies each normative assertion's source, evidence tier, effective period and audit queue. The earlier README/factory, restatement bridge and alternate same-ID paper are preserved as supporting material. Claim-level ASC authority remains provisional without current Basic View inspection; this does not prevent substantive independent QA.
 
 ## Objective
 Distinguish errors from estimate changes and policy changes, correct material errors under the applicable framework, and prove opening balances and rollforwards preserve accounting continuity.
 
 ## IFRS / AASB
-IAS 8 and AASB 108 define prior-period errors around failure to use or misuse reliable information that was available, or reasonably obtainable, when prior financial statements were authorized. Material prior-period errors are corrected retrospectively by restating comparative amounts unless impracticable. Estimate changes arise from new information/developments and are recognized prospectively. Accounting-policy changes are generally retrospective unless specific transition or impracticability applies.
+IAS 8 and AASB 108 define prior-period errors around failure to use or misuse reliable information that was available, or reasonably obtainable, when prior financial statements were authorized. Material prior-period errors are corrected retrospectively by restating comparative amounts unless impracticable. Estimate changes arise from new information/developments and are recognized prospectively. Accounting-policy changes are generally retrospective unless specific transition or impracticability applies. [IFRS-01, IFRS-02, AU-01, AU-02]
 
-AASB 108 current compilation for periods beginning on/after 1 January 2023 and before 1 January 2027 follows this core IAS 8 model.
+AASB 108 inspected compilation applies for periods beginning on/after 1 January 2023; check later amendments and Tier 2 disclosure scope. [AU-02, AU-03]
 
 ## UK GAAP
-Use FRS 102 Section 10 Accounting Policies, Estimates and Errors for classification and correction, with period/version routing. Do not infer UK treatment solely from IAS 8.
+Use FRS 102 Section 10 Accounting Policies, Estimates and Errors for classification and correction, with period/version routing. Do not infer UK treatment solely from IAS 8. [UK-01, UK-02, UK-03]
 
 ## US GAAP
 Use the authoritative FASB Codification, particularly the accounting-changes/error-corrections literature applicable to the entity and SEC overlay where relevant. FASB Concepts Statements are not authoritative GAAP.

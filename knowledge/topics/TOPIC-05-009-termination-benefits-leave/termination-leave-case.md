@@ -1,0 +1,9 @@
+# Termination offer and leave liability case
+
+Capabilities CAO-05-017/018. Both existing 05-009 directories remain intact pending canonicalization. Treat termination and accumulated paid leave as separate populations with different triggers.
+
+At close, 20 employees each have four earned, unused leave days expected to be paid or taken, at an expected daily salary cost of 250, plus employer costs of 10% where applicable. Undiscounted estimate = 20×4×250×1.10=22,000; assess forfeiture, utilization, legal terms, future salary, discount and classification under the applicable framework. It is not automatically a 22,000 liability if leave is non-accumulating or terms invalidate the assumptions. An additional 12 employees receive a communicated termination offer of 15,000 each, accepted before close under assumed facts; estimated severance 180,000. If the offer was not yet irrevocable/accepted, re-evaluate the framework trigger rather than using the board budget as a liability. Benefits requiring future service are not all immediate termination expense.
+
+**Executed:** 20×4×250×1.10=22,000; 12×15,000=180,000; combined liability candidate 202,000 only if both recognition/measurement conclusions pass. PASS arithmetic, recognition conditional.
+
+IFRS IAS 19/AASB 119 termination benefits and leave, US ASC 420/712/715 as relevant, and FRS 102 Section 28 diverge in offer and plan mechanics. [IAS 19 overview](https://www.ifrs.org/issued-standards/list-of-standards/ias-19-employee-benefits/) and [termination amendment effective history](https://www.ifrs.org/projects/completed-projects/2011/termination-benefits/) checked 2026-09-27. Current US/UK/AASB paragraph mapping and jurisdictional leave law are PARTIAL. Preserve employee-level census, leave rules, compensation rates, offer terms, communication and acceptance timestamps, service conditions, HR/payroll-to-GL rollforward, approval and reviewer challenge.

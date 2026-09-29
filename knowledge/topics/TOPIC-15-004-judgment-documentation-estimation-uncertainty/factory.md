@@ -1,0 +1,21 @@
+# Significant judgment and estimation uncertainty — substantive factory
+
+Case approval gate: identify the impairment unit and operative IAS 36/AASB 136, ASC 350/360 or FRS 102 Section 27 rule before converting forecast uncertainty into an adjustment. Verify discount rate, forecast period, headroom and whether an assumption change is reasonably possible within the next reporting period. The memo method is reusable; the accounting amount remains conditional on these facts.
+
+Companion to existing README. CAO-15-009/010. Source checked 2026-09-27. Proposed REVIEWED candidate for methodology; specific disclosures require period/tier assessment.
+
+## Separate two questions
+
+Judgment: which accounting rule/criterion applies to these facts, and what credible alternative could change the statement? Estimation uncertainty: what range of monetary amounts follows a chosen measurement objective and uncertain inputs? A control assessment may be a significant judgment with no Monte Carlo model; an unobservable discount rate may involve both. Under IFRS before IFRS 18, IAS 1's significant judgment/source-of-estimation-uncertainty disclosures are relevant, with [IFRS 18](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/) moving some basis/presentation material into IAS 8 from 2027 or early adoption. The [IAS 8 official page](https://www.ifrs.org/issued-standards/list-of-standards/ias-8-basis-of-preparation-of-financial-statements/) governs estimates/errors. UK [FRS 102](https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/) Section 8/10, [AASB 101/108](https://standards.aasb.gov.au/aasb-108-mar-2021) with Tier 2 overlays, and US topic-specific [FASB Codification](https://asc.fasb.org/) plus SEC Item 303 for registrants must be assessed independently.
+
+## Judgment paper and estimate workpaper
+
+For a judgment record criterion and paragraph/source pointer, transaction scope, complete contract/fact chronology, evidence for and against each treatment, quantitative effect, sensitivity to facts, conclusion, approver and trigger for revisit. For an estimate record measurement target, model inputs, population/cut-off, external vs internal evidence, scenario range, point-estimate selection, bias challenge, back-test and disclosure/tie-out. Label ranges: plausible scenarios are not automatically reasonably possible changes for note requirements. Specialists supply evidence but management owns the final accounting conclusion. A significant valuation change from new information can be prospective; evidence of an omitted available input triggers error analysis.
+
+## Worked case
+
+CGU carrying amount 10.0m; approved base-case recoverable amount 10.5m, headroom 0.5m. A 10% reduction in projected cash flows yields modelled recoverable amount 9.8m, potential shortfall 0.2m. A one-point valuation conclusion “no impairment” omits the sensitivity and could obscure significant uncertainty; verify probability, model consistency and IAS 36/other framework disclosure requirements. Independently document whether the asset group/CGU selected is a significant judgment; if two plausible groupings change impairment by 1.0m, show why the chosen grouping meets the underlying cash-inflow criterion. Not every stress scenario becomes booked loss. Calculation 10.0−9.8=0.2; if base recoverable amount drops to 9.8 at reporting date under applicable method, impairment assessment/entries follow governing standard.
+
+## Controls, evidence and challenge tests
+
+Reconcile source data, lock model version, independent formula review, compare specialists to observable market data, back-test previous estimates and inspect management-incentive bias; record reviewer challenge and resolution. S1: judgment paper contains only favored conclusion → fail alternative/evidence standard. S2: model uses 9.8m sensitivity but note claims 2m headroom → fail tie-out. S3: specialist result accepted without scope/assumption review → fail management ownership. S4: 0.5m headroom and 0.2m scenario loss arithmetic → PASS; disclosure assessment still conditional. Inputs: board plans, contracts, valuations, market data, model, journal and draft note. Dependencies 04-006, 15-003, 15-008, 14-004 and 08-004.

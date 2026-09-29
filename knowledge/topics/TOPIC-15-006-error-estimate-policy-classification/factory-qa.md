@@ -1,0 +1,21 @@
+# Error, estimate, policy change and election — targeted factory completion
+
+Case approval gate: freeze the earlier information set and materiality assessment, identify the old entry's source and verify the governing transaction standard and transition before classification. For a US registrant assess reissuance/non-reliance using authorized current ASC 250 and SEC guidance. The illustrated 50k correction does not itself determine a restatement.
+
+The substantial classification README and election supplement are retained. This companion integrates CAO-15-013/014 and adds a transition/error calculation and election register. Source checked 2026-09-27. Proposed REVIEWED candidate for the classification/election method.
+
+## Chronology and authority
+
+Write two dated evidence columns: facts existing at the earlier reporting date and evidence reasonably available then, versus genuinely later information. Mistake, omission or misapplication of earlier evidence points toward error; changed measurement input or technique using new evidence points toward estimate; changed basis/principle points toward policy. [IAS 8](https://www.ifrs.org/issued-standards/list-of-standards/ias-8-basis-of-preparation-of-financial-statements/) and [AASB 108](https://standards.aasb.gov.au/aasb-108-mar-2021) distinguish these with generally retrospective material-error correction and prospective estimate treatment; [FRS 102 Section 10](https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/) requires period version, and US [ASC 250](https://asc.fasb.org/) has its own restatement and disclosure consequences. SEC registrants require separate filing/reissuance analysis. Standards-specific transition takes precedence over generic policy-change treatment. Public Codification paragraph bodies have not been fully verified.
+
+## Worked correction versus revision
+
+Prior-year depreciation expense was 150k; a formula omitted one asset with 50k depreciation that was available in the register before prior statements were authorized. Subject to materiality and framework, investigate a prior-period error of 50k: correct comparative depreciation from 150k to 200k, comparative profit/equity downward 50k before tax, and opening accumulated depreciation/current opening equity bridge. Do not simply book 50k as current estimate change. Contrast an asset's newly evidenced useful-life extension giving 50k lower current depreciation: recalculate prospectively from current carrying value, without revising prior comparatives if the original judgment was reasonable. Disclose nature/effects under applicable rule and avoid double-counting tax or depreciation in consolidation.
+
+## Election decision and register
+
+An election exists only in applicable authority. Capture standard/version, eligible population, entity/class level, initial or transition window, irrevocability or change rule, alternative and quantified consequences, approval and disclosure. For a lease recognition exemption, confirm term/option facts and the framework's class/election restrictions before invoking. A vendor contract label or ERP default is not an election. Compare effects over the full population and run a consistency test against similar contracts. If management later changes a policy election, determine whether it is permitted, whether ASC 250/IAS 8/FRS 102 Section 10 applies and whether standard-specific transition controls.
+
+## Tests, controls and evidence
+
+S1: omitted available asset 50k recognized in current period as “new estimate” → FAIL; prior-error/materiality route. S2: new machine usage pattern arises after authorization → prospective estimate analysis. S3: material policy change made with no comparative/transition workpaper → FAIL. S4: eligible lease class lacks documented election level/period → no approval. S5: prior 150k + omitted 50k = corrected 200k and equity effect −50k before tax → arithmetic PASS. Controls: prior-adjustment approval, audit-difference register, source snapshots, policy-election population review, system mapping and comparative/disclosure reconciliation. Related TOPIC-04-007–010, 14-003, 15-001/003/005, 08-004. Residual: case-specific standard/election and US paragraph access.
