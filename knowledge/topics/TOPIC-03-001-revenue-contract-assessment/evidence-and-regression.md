@@ -1,5 +1,7 @@
 # Contract population and material-right challenge — evidence layer
 
+Granular claim supersession and an executed opposite-branch journal/workpaper are in `granular-claim-and-adverse-test.md`. The four legacy `001` references below now designate **scope only**, not the former compound claims; use suffixes `002`–`007` for the other assertions.
+
 Claims: [TOPIC-03-001-IFRS-001], [TOPIC-03-001-AASB-001], [TOPIC-03-001-UK-001], [TOPIC-03-001-US-001]. Existing contract and allocation workpapers remain the operative method; this file controls source attribution.
 
 ## Execution and entry
