@@ -69,11 +69,75 @@ assert D("12.0") - D("11.0") == D("1.0")
 assert D("12.0") > D("11.5") and D("12.0") - D("10.8") == D("1.2")
 assert D("12.0") < D("12.1")  # US held-and-used recoverability countercase
 assert D(1000000) - D(600000) == D(400000)
+# TOPIC-04-011: independently derive the annuity and compare every published row.
+from decimal import ROUND_HALF_UP
+q = lambda value: value.quantize(D(".01"), rounding=ROUND_HALF_UP)
+rate, term, initial = D(".05"), 5, D(400000)
+fixed = initial * rate / (1 - (1 + rate) ** -term)
+assert q(fixed) == D("92389.92")
+assert abs(sum(fixed / (1 + rate) ** t for t in range(1, term + 1)) - initial) < D(".000001")
+# Boundary: the rejected 100k payment cannot support the 400k inception PV.
+assert q(sum(D(100000) / (1 + rate) ** t for t in range(1, term + 1))) == D("432947.67")
+workpaper = (ROOT / "knowledge/topics/TOPIC-04-011-sale-leaseback/applied-qa.md").read_text()
+fixed_text, variable_text = workpaper.split("## Variable-only leaseback:", 1)
+rows = [line for line in fixed_text.splitlines() if line.startswith("| Year ")]
+assert len(rows) == 5
+balance, total_interest, total_cash, total_principal = initial, D(0), D(0), D(0)
+for year, line in enumerate(rows, 1):
+    interest = q(balance * rate)
+    cash = q(fixed) if year < term else balance + interest
+    principal = cash - interest
+    closing = balance + interest - cash
+    depreciation, accumulated = D(48000), D(48000) * year
+    rou = D(240000) - accumulated
+    expected = [balance, interest, cash, principal, closing, depreciation, accumulated, rou]
+    published = [D(cell.strip().replace(",", "")) for cell in line.split("|")[2:-1]]
+    assert published == expected, (year, published, expected)
+    # Reconcile the journal-driven net liability movement to principal repayment.
+    assert balance - closing == principal
+    assert closing >= 0 and rou >= 0
+    total_interest += interest; total_cash += cash; total_principal += principal
+    balance = closing
+assert balance == 0 and total_principal == initial
+assert total_interest == D("61949.59") and total_cash == D("461949.59")
+assert initial + total_interest - total_cash == 0
+# Framework-specific initial journals: IFRS/AASB, UK proportionate/deferred, US operating.
+for framework, rou, gain, deferred in [
+    ("IFRS", D(240000), D(240000), D(0)),
+    ("AASB", D(240000), D(240000), D(0)),
+    ("UK proportionate", D(240000), D(240000), D(0)),
+    ("UK deferred", D(400000), D(0), D(400000)),
+    ("US operating", D(400000), D(400000), D(0)),
+]:
+    assert D(1000000) + rou == D(600000) + initial + gain + deferred, framework
+assert D(1000000) == D(600000) + D(400000)  # separate US variable-only sale
+# Preserve adverse route text and all six evidence-tier flags; no source promotion.
+method = (ROOT / "knowledge/topics/TOPIC-04-011-sale-leaseback/phase-2d-method.md").read_text()
+for boundary in ("finance", "repurchase", "off-market", "termination", "transition", "deferred"):
+    assert boundary in method.lower()
+claims = json.loads((ROOT / "knowledge/topics/TOPIC-04-011-sale-leaseback/standards-claims.json").read_text())["claims"]
+assert len(claims) == 6 and all(c["audit_required"] for c in claims)
+assert {c["framework"] for c in claims} == {"IFRS", "AASB", "UK_GAAP", "US_GAAP"}
+assert sum(c["evidence_status"] == "PRIMARY_CORROBORATED" for c in claims) == 5
+assert sum(c["evidence_status"] == "MODEL_DERIVED_AUDIT_REQUIRED" for c in claims) == 1
+print("TOPIC-04-011 fixed: PV 400000; payment 92389.92; final 92389.91; interest 61949.59; liability/ROU zero")
 assert D(400000) * D(".6") == D(240000)
 p = D(400000) / (D(1) / D("1.05") + D(1) / D("1.05") ** 2)
 closing1 = D(400000) * D("1.05") - p
 closing2 = closing1 * D("1.05") - p
 assert abs(closing2) < D(".001") and p.quantize(D(".01")) == D("215121.95")
+assert D("240000") - q(p) == D("24878.05")
+assert q(p) - D("190000") == D("25121.95")
+variable_rows = [line for line in variable_text.splitlines() if line.startswith("| Year ")]
+assert len(variable_rows) == 2
+vb = initial
+for year, line in enumerate(variable_rows, 1):
+    vi = q(vb * rate); vp = q(p); vc = vb + vi - vp
+    cells = [cell.strip() for cell in line.split("|")[2:-1]]
+    assert [D(cell.replace(",", "")) for cell in cells[:5]] == [vb, vi, vp, vc, D(240000 if year == 1 else 190000)]
+    assert D(cells[-1].replace(",", "")) == D(240000) - D(120000) * year
+    vb = vc
+assert vb == 0
 assert (D(4000000) * D(".01") + D(1000000) * D(".05") +
         D(500000) * D(".20") + D(25000)) == D(215000)
 assert D(215000) - D(170000) == D(45000)
