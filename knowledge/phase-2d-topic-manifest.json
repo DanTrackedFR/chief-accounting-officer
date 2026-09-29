@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-09-29",
   "source_of_truth": "knowledge/topic-universe.md + knowledge/capability-topic-matrix.csv + repository tree audit",
-  "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-  "status_policy": "Independent post-remediation reconciliation after all three worker PRs were integrated to main. REVIEWED requires reusable Phase 2D method and QA evidence; live-entity facts may remain implementation inputs. PARTIAL is retained for unresolved authoritative-source, framework, canonicalization, jurisdiction or reusable-method gates. No artifact-presence-only promotions.",
+  "repo_snapshot_sha": "c627934bbb8f485d6e517c8b7417398604e881c3",
+  "status_policy": "REVIEWED means the reusable substantive Phase 2D method passed independent QA; standards-evidence status is tracked separately in topic-local standards-claims.json and REVIEWED does not imply SOURCE_VERIFIED or APPROVED. PARTIAL is retained for substantive framework, canonicalization, jurisdiction, decision-logic, workpaper/control/data or scenario gaps. Unavailable authoritative text alone is not a substantive PARTIAL blocker when the proposition is explicitly ringfenced for audit.",
   "topics": [
     {
       "topic_id": "TOPIC-01-001",
@@ -375,16 +375,22 @@
       "artifact_paths": [
         "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
         "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
-        "knowledge/topics/TOPIC-02-009-prior-period-errors-opening-balances/README.md"
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/standards-claims.json",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/controllership/qa-remediation-ledger.md"
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
+        "knowledge/worker-reports/controllership/topic-02-009-completion.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Current ASC 250 error-correction paragraph/version and case-specific US registrant filing route remain unverified; see controllership QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "c627934bbb8f485d6e517c8b7417398604e881c3",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-02-009-errors-opening-balances",
         "TOPIC-02-009-prior-period-errors-opening-balances"
