@@ -1,4 +1,6 @@
 # TOPIC-06-003 — Foreign Currency Remeasurement / Foreign Currency Translation
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier REVIEWED/PASS labels are historical self-assessments. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Capabilities: `CAO-06-006`, `CAO-06-007`  

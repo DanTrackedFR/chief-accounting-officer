@@ -1,4 +1,6 @@
 # TOPIC-06-006 — Debt Modification & Extinguishment / Covenant Accounting & Disclosure Assessment
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier REVIEWED/PASS labels are historical self-assessments. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: **CAO-06-012, CAO-06-013**  
