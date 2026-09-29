@@ -1,0 +1,5 @@
+# Batch 31 — primary statements and subsequent events
+
+Date: 29 September 2026. IDs TOPIC-08-001–005; capabilities CAO-08-001–010. Existing source, factory and scenario files retained. Added claim registers and five adverse cases; canonical PARTIAL status clarified in READMEs. Method candidates for independent assessment: covenant classification versus post-period waiver; cash-flow indirect bridge and noncash lease; equity/NCI rollforward; prior error versus new estimate; subsequent event versus going-concern basis.
+
+Structural four-framework and scenario-ID checks passed for five topics. Arithmetic checks passed CFO 100/net cash 70, parent equity 135 and NCI profit 6. Standards evidence is separate: IAS 7 (2025), IAS 8 (2025), IAS 10 (2026) core routes inspected. IAS 1 operative HTML could not be accessed for 08-001/003; those IFRS claims are MODEL_DERIVED_AUDIT_REQUIRED. All US/UK/AASB claims require direct operative text/period/tier audit. Official IFRS Foundation overview confirms IFRS 18 annual periods from 1 January 2027, earlier application permitted, but does not independently verify every 2026 IAS 1 covenant detail. No canonical status promotion.

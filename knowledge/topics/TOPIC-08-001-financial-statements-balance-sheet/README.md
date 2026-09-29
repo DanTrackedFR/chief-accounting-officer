@@ -1,4 +1,6 @@
 # TOPIC-08-001 — Financial Statement Preparation / Balance Sheet Presentation
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: CAO-08-001, CAO-08-002  
