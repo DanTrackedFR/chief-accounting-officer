@@ -1,4 +1,6 @@
 # TOPIC-03-007 — Credit Notes, Refunds, Rebates & Accounts Receivable Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / US SOURCE-DEPTH PARTIAL
 Capabilities: CAO-03-014, CAO-03-015

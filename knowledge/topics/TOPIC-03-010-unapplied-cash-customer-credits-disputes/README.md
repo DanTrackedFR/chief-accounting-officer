@@ -1,4 +1,6 @@
 # TOPIC-03-010 — Unapplied Cash, Customer Credit Balances & Dispute Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED
 Capabilities: CAO-03-020, CAO-03-021

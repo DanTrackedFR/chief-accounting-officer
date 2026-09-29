@@ -1,4 +1,6 @@
 # TOPIC-03-009 — Bad Debt Write-Offs & Recoveries / Cash Application Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED
 Capabilities: CAO-03-018, CAO-03-019
