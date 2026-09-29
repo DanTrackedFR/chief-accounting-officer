@@ -1,0 +1,3 @@
+# TOPIC-02-004 — Related TB review pack
+
+The [`trial-balance-reconciliations` knowledge pack](../TOPIC-02-004-trial-balance-reconciliations/knowledge-pack.md) has useful TB analytics and reconciling-item policy. It is a same-ID alternate, not another topic. This folder's README/factory/method/test is the proposed entrypoint. CAO-02-009 requires TB movement/mapping analytics; CAO-02-010 requires independently supported account reconciliations. Both must pass independently. The 125,000 schedule versus 130,000 GL example tests reconciliation; a balanced TB alone cannot clear the 5,000. Retain alternate analytics until integrated QA confirms neither capability was lost.

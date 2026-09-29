@@ -1,0 +1,3 @@
+# TOPIC-02-006 — Related cutoff pack and period gate
+
+The [`suspense-cutoff` README](../TOPIC-02-006-suspense-cutoff/README.md) contributes an independently authored cutoff method, framework layer and evidence design. It is a related same-ID source, not a separate canonical topic. This folder has the proposed canonical README/factory/method/test. Compare the alternate's IFRS/AASB, FRS 102 and US GAAP routing with the actual entity's period and transaction before integration. A suspense balance never establishes that the underlying inventory, revenue or liability recognition is correct. Retain the old folder until its unique cutoff tests and source references are explicitly reconciled.

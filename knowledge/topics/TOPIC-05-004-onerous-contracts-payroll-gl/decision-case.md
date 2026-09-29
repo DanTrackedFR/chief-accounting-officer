@@ -1,0 +1,11 @@
+# Onerous contract decision and payroll posting bridge
+
+Capabilities CAO-05-007/008. The existing factory correctly separates contract loss accounting from payroll mechanics; this record tests that separation.
+
+One remaining customer contract promises 500 consideration. Expected costs directly related to fulfilment are materials 300, labor 150 and allocated contract-related depreciation 80, total 530. Contract exit penalty is 40. If these are the unavoidable alternatives and no other recoveries or assets intervene, net cost of fulfilment is 30 (530−500) versus termination cost 40; the lower unavoidable loss is 30. Test impairment of assets used to fulfil the contract before a separate IAS 37 provision; avoid counting the same 80 twice. The 2020 IAS 37 cost-of-fulfilment amendment (effective 1 January 2022) means directly related allocation cannot automatically be excluded in the IFRS route. The outcome under US GAAP is not a universal ASC 450 “onerous contract” provision; route to contract-specific guidance. UK FRS 102 Section 21 and AASB 137 need their own versions.
+
+**Executed:** 300+150+80=530; 530−500=30; min(30,40)=30. PASS subject to contract, allocation and asset-impairment facts.
+
+Independent payroll case: payroll register gross pay 1,000, employee withholding 200 and net bank funding 800. Employer payroll taxes of 90 are a separate obligation and expense. Illustrative entry Dr wages 1,000, Cr employee-withholding payable 200, Cr cash/net-pay clearing 800; Dr employer-tax expense 90, Cr tax payable 90. Reconcile register to bank 800, withholding remittance 200 and GL expense 1,090; differences need person/entity/pay-code ownership. Payroll is not deemed correctly posted solely because the bank agrees.
+
+Official [IAS 37 amendment project](https://www.ifrs.org/projects/completed-projects/2020/onerous-contracts-cost-of-fulfilling-a-contract/) and [2022 effective date notice](https://www.ifrs.org/news-and-events/news/2020/05/iasb-issues-package-of-narrow-scope-amendments-to-ifrs-standards/) checked 2026-09-27. Preserve cost model, asset-impairment paper, payroll register, bank and remittance tie-outs, journal IDs and reviewer approval. US/UK contract-specific paragraph conclusions remain PARTIAL; payroll bridge operationally REVIEWED candidate.

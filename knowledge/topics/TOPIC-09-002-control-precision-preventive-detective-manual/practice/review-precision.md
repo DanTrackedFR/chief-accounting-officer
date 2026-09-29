@@ -1,0 +1,9 @@
+# CAO control specification — precision and manual review
+
+Supplements the README and precision case for CAO-09-004–006.
+
+**Design.** State the financial-reporting error the control must prevent/detect and its timing. Select preventive validation (e.g. closed-period posting block), detective reconciliation or both based on risk. A manual review needs an independent expectation, report population and level of disaggregation, threshold (absolute and relative when useful), reviewer competence, criteria for inquiry and documented follow-up. Precision is about the magnitude and type of error a control can realistically catch, not whether the reviewer signs. Define how source reports were generated and who can change them.
+
+**Test.** Group payroll 2.4m has subsidiary 200,000 omission offset by 180,000 elsewhere. Group net variance 20,000 sits below an arbitrary 10% threshold, but entity/headcount and gross movement analysis should flag both. In an executed workpaper, preserve pre-review expected payroll by entity, HR roster/rates, GL and payroll extract IDs, variance investigation, correction or supported no-action and dated independent reviewer. If sources disagree, stop sign-off, assign owner and test the population before lowering thresholds. If monthly review misses two months, evaluate deficiency and exposure (TOPIC-09-007); do not manufacture retrospective evidence.
+
+**Systems/source.** Report SQL/filter version, refresh timestamp, entity mapping and input completeness are IPE dependencies under TOPIC-09-006/11-008. Thresholds are company risk decisions. SEC 33-8810 and PCAOB AS 2201 offer US issuer/auditor control context only, checked 2026-09-27. Non-US entities must resolve applicable governance regime separately. Output: control design document, tested sample, exceptions and reviewer conclusion.

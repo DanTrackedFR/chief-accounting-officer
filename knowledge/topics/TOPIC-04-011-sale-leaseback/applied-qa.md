@@ -15,7 +15,7 @@ For a **separate illustrative first period** assume a contractually supported 5%
 3. Subsequent variable payments not dependent on an index/rate: **conditional**, not the 320,000 liability result. Obtain the amended IFRS 16 requirements and contract-specific schedule to ensure no gain is recognized on retained use; public summary alone does not support a prescribed calculation.
 4. Different UK or US seller-lessee: reperform transfer, classification, initial gain and subsequent schedule under that framework, not this IFRS entry.
 
-Controller reconciles agreement-to-sale memo-to-opening journals, contract terms to rate and schedule, payments to bank, liability/ROU movement to GL and gain/interest/depreciation to notes. The fixed-payment arithmetic and sale-before-gain routing pass; variable-payment and exact US/UK conclusions remain PARTIAL pending authorized case-specific authority.
+Controller reconciles agreement-to-sale memo-to-opening journals, contract terms to rate and schedule, payments to bank, liability/ROU movement to GL and gain/interest/depreciation to notes. Fixed and variable-payment arithmetic, US contrast and UK elections are developed in phase-2d-method.md. Live contract inputs and operative-source precision remain separate application/audit gates.
 
 ## Variable-payment amendment route and alternative-framework challenge
 

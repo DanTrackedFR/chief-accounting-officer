@@ -1,6 +1,8 @@
 # TOPIC-04-003 — Construction in Progress, Fixed-Asset Reconciliation & Capitalized Software Routing
 
-Status: REVIEWED / production-candidate
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Built: 2026-09-23
 Primary capabilities: CAO-04-007, CAO-04-008, CAO-04-009
 

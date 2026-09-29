@@ -1,0 +1,9 @@
+# Management representations and findings — truth check
+
+Extends substantive README. Capabilities CAO-10-013–014. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Map every material representation statement to an accountable business owner and evidence: litigation/legal letters, fraud/whistleblower register, related parties, subsequent events, debt/covenants, estimates, completeness of records and uncorrected differences as applicable to the actual engagement. Resolve contradictory information with legal and governance advisers before signing; do not alter records to make a letter easier. Auditors set their own requested representations, but management must stand behind its statements.
+
+Example draft says “no known fraud indicators”; hotline log has one unresolved senior-management allegation. The representation cannot be confirmed as written. Escalate to audit committee/legal, investigate factually, assess financial-reporting/control impact and communicate with auditor through appropriate channel. An allegation is not automatically proven fraud, nor can it be silently excluded. Preserve version, owner confirmations, supporting registers, unresolved questions and approval chronology.
+
+Management-letter issue: bank reconciliation missed two months. Root cause includes departed preparer and unassigned reviewer, not just “lack of training.” Interim complete reconciliation of exposed months, role reassignment, monthly monitoring and evidence of sustained operation are required before closure. **Negative test:** action marked done after SOP update alone. Expected FAIL. Source boundary: PCAOB auditor documentation and communication standards (AS 1215/1301) may inform US audit context; non-US engagement standards need separate verification. Result PASS for management-side truth and remediation logic.

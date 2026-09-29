@@ -15,7 +15,7 @@ Enable the CAO to identify, document and execute accounting when an entity's fun
 6. Treat entry into and exit from hyperinflation as controlled accounting events with documented effective-period conclusions.
 
 ## Standards routing
-- IFRS: IAS 29 plus IAS 21 interaction. The July 2025 IFRIC agenda decision confirms all relevant indicators are assessed, other relevant indicators may be considered, and judgment is required. Current 2026 IASB translation work is PIPELINE until issued/effective.
+- IFRS: IAS 29 plus IAS 21 interaction. The July 2025 IFRIC agenda decision confirms all relevant indicators are assessed, other relevant indicators may be considered, and judgment is required. The November 2025 IAS 21 amendment on translation into a hyperinflationary presentation currency has been issued, is effective for annual periods beginning on or after 1 January 2027 and permits earlier application. Assess the translation direction and reporting period; do not apply it automatically in 2026.
 - US GAAP: route independently through ASC 830 highly-inflationary-economy requirements; do not infer US treatment from IAS 29. Public FASB paragraph-body access is insufficient for APPROVED paragraph-level mapping, so US authority status remains PARTIAL.
 - UK GAAP: route through current FRS 102 foreign-currency/high-inflation requirements after resolving reporting period and edition; Periodic Review 2024 is effective for periods beginning 1 Jan 2026.
 - AASB: AASB 129/AASB 121 architecture, with Australian current-version/effective-date gate. Australian Interpretation 7 provides first-period application context.
@@ -42,7 +42,7 @@ Key controls: quarterly economy watch; index approval; completeness of historica
 Never describe IAS 29 and US highly-inflationary accounting as equivalent. The CAO must independently route recognition, measurement, functional-currency and translation consequences under each framework.
 
 ## Current-source note — 24 Sep 2026
-The IFRS Foundation's final July 2025 agenda decision confirms that stakeholders do not assess hyperinflation from one IAS 29 indicator alone, consider other relevant indicators, and use judgment. IASB projects concerning translation in hyperinflationary presentation currencies remain non-effective pipeline unless and until issued. AASB Interpretation 7 confirms retrospective-style application on first identifying hyperinflation for AASB 129 purposes. FRC current-edition/effective-date routing remains mandatory.
+The IFRS Foundation's final July 2025 agenda decision confirms that stakeholders do not assess hyperinflation from one IAS 29 indicator alone, consider other relevant indicators, and use judgment. Correction as of 27 September 2026: the IASB issued Translation to a Hyperinflationary Presentation Currency (Amendments to IAS 21) in November 2025, effective from 1 January 2027 with early application permitted; earlier descriptions of it as merely pipeline were stale. AASB Interpretation 7 provides first-period application context for AASB 129. FRC current-edition/effective-date routing remains mandatory.
 
 ## Completion criteria
 A case is not complete until the economy conclusion, functional currency, effective period, index, item population, restatement/translation mechanics, reconciliations, disclosures, evidence and reviewer conclusions are explicit.

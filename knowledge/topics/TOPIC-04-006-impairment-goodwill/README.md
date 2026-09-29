@@ -1,6 +1,8 @@
 # TOPIC-04-006 — Asset Impairment & Goodwill Impairment Support
 
-Status: REVIEWED / production-candidate; US detailed model routing retained as framework-specific
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Built: 2026-09-23
 Capabilities: CAO-04-015, CAO-04-016
 
@@ -44,4 +46,4 @@ Quarterly indicator review; annual-test calendar; model version control; forecas
 5. Australian 2025/26 entity: resolve exact AASB 136 compilation and consider new uncertainty examples.
 
 ## QA
-PASS for cross-framework orchestration. US GAAP detailed numerical impairment testing must retrieve current ASC 350/360 records before final calculation; this is a deliberate framework-specific dependency, not a blocker.
+PASS for cross-framework orchestration. US ASC 350/360 numerical examples and sequencing tests are in phase-2d-method.md; operative ASC paragraph authority is separately audit-required.

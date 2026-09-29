@@ -1,0 +1,7 @@
+# Accounting service levels and automation — outcome model
+
+Extends substantive README. Capabilities CAO-12-021–022. PRINCIPLES/PRACTICE; 2026-09-27.
+
+Define service catalogue by transaction scope, cutoff/timezone, upstream inputs, output and GL/reconciliation quality, evidence, owner, exclusions and escalation. Pair response/throughput SLA with accounting outcome: complete and accurate posting by period, aged exception value, rework, late adjustments and control findings. An automation opportunity first has a stable rule, reliable source, known exception population, fail-safe, business owner, expected benefit and controlled fallback. Compare quality, risk and actual retained effort, not just bot run time.
+
+Example provider closes 980 of 1,000 tickets within SLA (98%), but 20 unposted items include 15,000 of material December services. Service-level headline is green only for response, not accounting completion; escalate cutoff/accrual with evidence. Proposed bot saves 50 hours mechanical work but needs 12 hours exception review, 5 monitoring and 3 change maintenance: net 30 hours capacity, not 50. If 15,000 is unsupported, do not book a plug merely to meet SLA. **Negative test:** automation marks exception “resolved” upon retry request without destination ID. Expected FAIL. Preserve source/GL count and amount bridge, service metric definition, incident/fallback, approvals and benefits realization. Dependencies TOPIC-01-005/006, 09-003, 11-010, 12-008. Result PASS for outcome and benefit calculation.

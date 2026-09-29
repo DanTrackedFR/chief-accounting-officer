@@ -1,6 +1,6 @@
 # TOPIC-04-005 — Intangible Asset Recognition & Amortization
 
-Status: REVIEWED / production-candidate
+Status: retained companion to the canonical topic path; see its phase-2d-method.md and standards-claims.json
 Built: 2026-09-23
 Capabilities: CAO-04-013, CAO-04-014
 

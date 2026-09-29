@@ -17,4 +17,4 @@ Tie acquisition and component costs to 04-001; prove availability date with comm
 - **Revised useful life after damage:** change the estimate prospectively and separately test impairment under 04-006; estimate change does not repair a previously unsupported original life or an error.
 - **Sale-and-leaseback:** route gain through 04-011, not the ordinary 31,428.57 disposal formula.
 
-Desk arithmetic and journal balance pass on stated facts. US method-change classification and transaction-specific disposal require current Codification access before case approval.
+Desk arithmetic and journal balance pass on stated facts. US method-change and disposal routes are substantively developed in phase-2d-method.md; current Codification precision remains an audit-required claim.

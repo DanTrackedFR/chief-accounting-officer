@@ -1,0 +1,3 @@
+# TOPIC-02-007 — Related accrual/prepaid methodology
+
+The [`accruals-prepayments` README](../TOPIC-02-007-accruals-prepayments/README.md) adds an estimate-method hierarchy and a separate prepaid benefit analysis. This folder's README/factory/method/test is the proposed canonical entrypoint; both address CAO-02-015/016 under one topic ID. The 120,000/12 calculation is illustrative only if uniform benefit is established. A later invoice variance requires evidence chronology and potential error-versus-estimate routing rather than an automatic current expense. Preserve the alternate until independent QA compares these judgments and source/effective period.

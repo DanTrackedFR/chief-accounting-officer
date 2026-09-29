@@ -1,5 +1,7 @@
 # TOPIC-15-002 — Policy Inventory / Estimate Identification / Estimate Methodology
-Status: PARTIAL — source verification pending; proposed for independent review only after the current US paragraph gate in `canonical-crosswalk.md` is closed
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Capabilities: CAO-15-004, CAO-15-005, CAO-15-006
 Sensitivity: H
 

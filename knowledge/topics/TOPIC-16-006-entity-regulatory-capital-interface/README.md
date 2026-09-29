@@ -1,6 +1,8 @@
 # TOPIC-16-006 — Entity-level regulatory reporting and capital interface
 
-Status: REVIEWED-ready reusable method for independent Phase 2D QA; no live-entity regulatory conclusion. Canonical capabilities: CAO-16-012, CAO-16-013. Prepared 2026-09-27, extended 2026-09-28 in `sector-methods.md`. This topic contains independently authored decision and execution guidance; restricted standards and regulations are reference-only.
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 
 ## Principles and scope
 
