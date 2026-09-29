@@ -1,0 +1,9 @@
+# Technical defense and audit differences — disposition sheet
+
+Extends substantive README. Capabilities CAO-10-010–012. PRINCIPLES/PRACTICE; 2026-09-27.
+
+For a disputed conclusion, prepare facts chronology, applicable framework and effective-period authority, alternatives, material judgments, calculations, contradictory evidence and quantified statement/disclosure effects. Identify which facts are disputed versus which interpretation differs. Consult without delegating management's decision to the auditor. Track proposed adjustments as corrected, uncorrected, reclassification or unresolved, with entity, account, period, gross and tax/net effects, aggregation and qualitative factors. The auditor evaluates its audit results; the CAO evaluates management's books and reporting.
+
+Example: auditor proposes 70,000 depreciation adjustment; management argues 20,000 based on in-service date. Difference register records auditor 70,000, management 20,000, disputed 50,000, asset register dates, evidence and relevant useful-life policy. Do not simply record 20,000 and discard the 50,000; document decision and include uncorrected exposure in aggregate with other items. If date evidence supports 70,000, correct books; if unresolved, escalate before sign-off. Prior-period effects route TOPIC-02-009.
+
+**Failure injection:** 50,000 unresolved is relabeled “timing” without source or materiality review. Expected FAIL. [PCAOB AS 2810](https://pcaobus.org/oversight/standards/auditing-standards/details/AS2810) addresses auditor evaluation of results; [AS 1301](https://pcaobus.org/oversight/standards/auditing-standards/details/AS1301) specified auditor/audit-committee communications, checked 2026-09-27. Both are engagement-context-specific auditor rules, not universal company accounting standards. Result PASS for issue governance, not a definitive depreciation conclusion.

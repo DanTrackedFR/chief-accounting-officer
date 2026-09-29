@@ -1,0 +1,21 @@
+# Regulator query and statutory filing coordination — substantive factory
+
+Companion to original README. Capabilities CAO-16-010/011. Source checked 2026-09-27. Proposed REVIEWED candidate for process; responses remain case-specific and subject to legal/auditor review.
+
+## Issue governance and authority
+
+Record the original regulator question verbatim in a restricted case file, case reference, receipt date, filing and period, requested documents, response deadline, confidentiality considerations and accountable owner. Distinguish accounting standards authority from the regulator's procedural powers and interpretive comments. For US SEC comment letters, use the [Division of Corporation Finance filing review process](https://www.sec.gov/divisions/corpfin/cffilingreview.htm) and current correspondence requirements; for UK accounts, consult [Companies House filing guidance](https://www.gov.uk/government/publications/life-of-a-company-annual-requirements/life-of-a-company-part-1-accounts) and the applicable FRC/company-law channel; for Australian filings use [ASIC financial reporting](https://www.asic.gov.au/regulatory-resources/financial-reporting-and-audit/). European securities/registry comments require the appropriate national competent authority rather than a presumed EU-wide inbox. Do not treat a regulator's question as itself proof that past accounting was wrong.
+
+## CAO workflow
+
+Freeze the original filed package and underlying model/source extracts. Decompose a multi-part question into issues and assertions; identify framework, specific accounting literature, original effective period, legal entity and population. Build a chronology distinguishing information available at the reporting date from later developments; investigate whether the response entails an error, changed estimate, new disclosure, prospective policy clarification or no accounting change. Reperform calculations and reconcile the disputed figure to ledger, note, management analysis and prior public statements. Quantify alternatives and materiality, identify contrary evidence and draft an answer that addresses the question directly with evidence, not merely a restatement of policy. Obtain CAO, legal, IR, auditor and executive approval as applicable. Track follow-up, filing amendment decision, disclosure-control remediation and policy-register changes.
+
+For local statutory coordination, map each subsidiary's audit status, board signatories, accounting period, framework, translation, consolidation exemptions, filing channel and receipt. Consolidated parent sign-off does not waive a local entity's requirement. Separate tax return ownership from statutory accounts; they can have different dates and numbers. Establish a handoff log for local accountants, auditors, directors and filing agent with content version and signatory evidence.
+
+## Worked response skeleton
+
+Regulator asks why a 12m trade-receivable portfolio's allowance fell from 600k (5%) to 240k (2%) while aging worsened. Reconcile population and aging at both dates; isolate write-offs, mix, forward-looking overlays and model changes. A 360k release equals 3% × 12m if the population is constant, but here aging changed, so the simple multiplication is a reasonableness check, not proof. Back-test prior assumptions; identify any omitted known data, which could indicate error rather than new estimate. Draft a table of drivers that exactly reconciles 600k to 240k and note/disclosure implications. Do not claim the model is validated merely because the closing allowance matches the GL.
+
+## Scenarios and controls
+
+S1: original model cannot be reproduced → response blocked until evidence reconstruction and escalation. S2: post-period evidence used as if known at year end → reject hindsight. S3: regulator asks for prior-period correction → run TOPIC-15-006 materiality/error route before promising restatement. S4: local director signs version A, agent files version B → fail version/authorization control. Evidence: case log, research, calculations, source snapshots, reviewer comments, authorized response, regulator receipt and remediation tracker. Dependencies TOPIC-14-003, TOPIC-15-006, TOPIC-08-008, TOPIC-16-004. Residual: regulator-specific procedural and legal requirements must be checked for each case.

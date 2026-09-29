@@ -1,0 +1,9 @@
+# Fixed assets, leases and intercompany — three subledger proofs
+
+Extends substantive README. Capabilities CAO-12-010–012. PRINCIPLES/PRACTICE with technical handoffs; 2026-09-27.
+
+Fixed assets: approved project/invoice and in-service decision → asset register with entity/class/cost/life → depreciation/disposal → GL. Example opening cost 1,000,000 + additions 100,000 − disposals 20,000 = ending cost 1,080,000; GL 1,085,000 leaves 5,000 to trace to source, not an unexplained “miscellaneous addition.” Technical capitalization/useful life routes Domain 04.
+
+Leases: contract repository population → lease identification/term/payments/rate and modification memo → schedule → journals/GL and disclosures. A modification effective 1 October changing floor area requires technical analysis under applicable framework before schedule edits; reconcile opening liability + interest − payment ± approved remeasurements to closing, preserving distinct ROU asset movements. TOPIC-04-010/011 own technical conclusion; processor cannot choose discount rate or term from intuition.
+
+Intercompany: reciprocal entity/counterparty/currency/transaction IDs → bilateral confirmation → difference queue → approved elimination. If A receivable 100,000 and B payable 95,000, preserve 5,000 mismatch with reason (cutoff, FX, missing record, tax/classification) and owner; eliminate supported reciprocal balance only under consolidation policy. Never post a 5,000 plug to force match. **Negative test:** month-end lease schedule remeasured after email amendment without signed contract/policy memo, while GL posts automatically. Expected FAIL, quarantine change and assess prior entries. Evidence: register/schedule versions, contracts, workpapers, interface totals, reconciliation, approval, disclosure bridge. Result PASS for controlled technical handoff and arithmetic.

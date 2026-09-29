@@ -1,0 +1,3 @@
+# TOPIC-02-008 — Related post-close governance
+
+The [`close-variance-post-close` README](../TOPIC-02-008-close-variance-post-close/README.md) contains a substantive post-close decision model and controls. This `flux-post-close` folder has factory, method and executed test and is the proposed entrypoint for CAO-02-017/018. Integrate the alternate's reopen authority and disposition model into QA; preserve both until consistent. A quantified residual and statement impact, not calendar pressure, determines the reopen/correction assessment. Underlying material prior-period error treatment routes to TOPIC-02-009.

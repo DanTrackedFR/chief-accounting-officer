@@ -1,0 +1,9 @@
+# Audit sample and query support — lineage packet
+
+Extends substantive README. Capabilities CAO-10-004–006. PRINCIPLES/PRACTICE; 2026-09-27.
+
+An audit support paper states the precise question, management assertion, framework/period, facts, accounting conclusion, source index, calculation, GL/reporting ties, judgments, contradictions and reviewer. For samples, preserve the auditor-selected population and item key; management must not substitute an easier item. Trace selected transaction from original source and approvals through subledger, interface, journal and reporting balance. If an item is unavailable, disclose that and explain why, rather than creating backdated evidence.
+
+Illustration: sample invoice ID 452 shows source value 10,000, AP subledger 10,000 and GL 9,800. A 200 discount is asserted but no credit note exists. Packet cannot state “matches GL”; investigate terms, credit authorization and posting, quantify 200 and provide auditor both the original and amended versions. Query tracker retains question, answer, attachments/version, owner, date, unresolved follow-up and whether accounting changed. A sample result must not be generalized to the whole population without appropriate procedure.
+
+For confirmations, management supplies accurate account/contact data and investigates differences while auditor controls the procedure. [PCAOB AS 2310](https://pcaobus.org/oversight/standards/implementation-resources-PCAOB-standards-rules/confirmation) replacement confirmation standard applies to audits of fiscal years ending on/after 15 June 2025; checked 2026-09-27. [AS 1215](https://pcaobus.org/oversight/standards/auditing-standards/details/AS1215) documentation context applies by engagement date. **Negative test:** team replaces invoice 452 with 453 because support is easier. Expected FAIL. Result PASS for lineage and auditor/management boundary.

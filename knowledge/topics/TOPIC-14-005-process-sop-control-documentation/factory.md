@@ -1,0 +1,19 @@
+# Process narrative, SOP and control documentation — applied factory
+
+Canonical coverage: CAO-14-013 process narrative writing, CAO-14-014 SOP writing, and CAO-14-015 control documentation writing each have an independently testable output and walkthrough below. The complementary `../TOPIC-14-005-process-sop-control-writing/README.md` is retained as the operator checklist. It is a duplicate path to the same canonical topic; use this path for all three capabilities.
+
+Retains both existing complementary 14-005 READMEs. CAO-14-013–015. Primarily PRACTICE; no artificial four-GAAP standard files. Source check for reporting-control overlay 2026-09-27: [SEC disclosure-control interpretation](https://www.sec.gov/rules-regulations/staff-guidance/corporation-finance-interpretations/exchange-act-rules) for registrants, [COSO internal control framework overview](https://www.coso.org/guidance-on-ic) as a governance framework, and entity-specific audit/regulator requirements where applicable. Proposed REVIEWED candidate for operating documentation.
+
+## Separate outputs and testability
+
+Process narrative follows event from first trigger to book/report and shows roles, systems, handoffs, judgment, exception, close and downstream control. SOP tells a named operator exactly how to repeat an approved procedure and recover when an input fails. Control record states risk/assertion, objective, population, owner, reviewer, frequency, inputs and IPE reliability, precision, action, exception threshold and retained evidence. A policy states accounting treatment, not how to click through NetSuite; a screenshot is neither narrative nor control. Each document includes entity/framework/period or product scope, version, effective date, approver and previous-version link. Reconcile actual system configuration and observed walkthrough to text before calling a document current.
+
+## Applied AP accrual example
+
+Process: service consumed in December → PO/receipt and invoice source (Coupa/AP) → accrual assessment → December JE/approval → January invoice match/reversal → expense/BS reconciliation. SOP: export open PO receipts and post-period invoices with entity/date filters; verify counts and GL account mapping; identify unbilled services; calculate service-period amount; prepare JE and supporting source IDs; submit independent review; record reversal ID; resolve duplicates. Control: risk unrecorded liabilities; monthly complete population; reviewer matches source count/total to procurement control report, tests a sample across year-end cutoff, challenges items above approved risk threshold, verifies JE and subsequent reversal. Evidence is the annotated report and resolution log, not merely a sign-off checkbox.
+
+Worked amount: annual vendor service 120k evenly consumed January–December, only 110k invoiced by 31 December. If contract/invoice facts confirm 10k unbilled service, Dr expense 10k / Cr accrual 10k; if invoice appears January, clear accrual and AP without double expense. If 5k concerns January service, exclude it despite an open PO. Reconcile source 120k service expectation to 110k booked + 10k accrual; actual pattern may not be straight-line and must be evidenced.
+
+## Walkthrough scenarios
+
+S1: SOP says December cut-off but ERP query runs calendar month after close → FAIL parameter match. S2: reviewer signs but does not document population or challenge → FAIL control evidence. S3: automated interface bypasses approved tolerance alert → document dependency/incident and reassess control. S4: 110k booked + 10k accrual = 120k supported expense → arithmetic PASS if facts. S5: emergency manual workaround lacks version/approval → fail change control. Retain RACI, data dictionary, query/filter screenshot or config, evidence samples, JE/reconciliation, exception escalation and release history. Dependencies 02-007 accruals, 09-003 management review, 11-003 lineage and 12-006 process documentation.

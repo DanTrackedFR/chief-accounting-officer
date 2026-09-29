@@ -1,4 +1,6 @@
 # TOPIC-03-001 — Revenue Contract Assessment, Performance Obligations & Transaction Price
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier production-candidate/REVIEWED labels in this pack are historical self-assessments, not independent promotion. Substantive and standards-evidence outcomes are tracked separately in `evidence-and-regression.md` and `standards-claims.json`.
+
 
 Status: REVIEWED
 Capabilities: CAO-03-001, CAO-03-002, CAO-03-003

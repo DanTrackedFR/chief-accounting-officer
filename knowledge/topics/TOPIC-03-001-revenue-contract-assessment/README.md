@@ -1,4 +1,6 @@
 # TOPIC-03-001 — Revenue Contract Accounting Assessment
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/production-candidate labels are not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / production-candidate
 Capabilities: CAO-03-001, CAO-03-002

@@ -1,0 +1,21 @@
+# Critical estimate and judgment disclosure support — substantive factory
+
+Case approval gate: identify framework, issuer/private status, year and disclosure tier, then compare the estimate register with exact judgment, uncertainty and transaction-specific note requirements. US Item 303 applies to covered registrant MD&A, not automatically private notes. IFRS 18 early adoption/2027 effective date and AASB 1060 Tier 2 must be resolved before citing operative disclosure paragraphs.
+
+Companion to existing README. CAO-15-017/018. Source checked 2026-09-27. Proposed REVIEWED candidate for drafting and tie-out method; entity-specific disclosure obligation conditional.
+
+## Separate disclosure regimes
+
+For IFRS, distinguish disclosure of significant judgments from assumptions and other estimation uncertainty affecting material carrying amounts. Route IAS 1/IAS 8 before [IFRS 18](https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/) and operative successor references after its 2027 effective date or early application; transaction-specific disclosures (such as IAS 36) can add sensitivities. Australian [AASB 101/108](https://standards.aasb.gov.au/aasb-108-mar-2021) requires its own compilation and Tier 2 AASB 1060 evaluation. UK [FRS 102](https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/) Section 8 and relevant measurement sections differ in scope; small-entity options must be checked. US [FASB Codification](https://asc.fasb.org/) risks/uncertainties and topic-specific notes do not replace a registrant's separate [SEC Regulation S-K Item 303(b)(3) critical accounting estimates MD&A](https://www.sec.gov/newsroom/press-releases/2020-290). Do not label all US private-company notes “SEC critical estimates.”
+
+## Disclosure construction
+
+Start from the judgment/estimate inventory, not a prior-year boilerplate list. For each material item identify affected balance and carrying value, specific assumption/method, why it is uncertain, measurement horizon, past change, reasonably possible change/sensitivity, alternatives and reviewer. Link all numbers to locked model outputs and journal/GL; check the financial statement estimate narrative against MD&A and sustainability assumptions where applicable. Distinguish uncertainty that could affect assets/liabilities within the relevant period from long-horizon speculative risks; consider transaction-specific disclosure thresholds. Omit generic summaries of every accounting policy when they obscure entity-specific material judgment. Obtain specialist and legal review where source assumptions depend on them.
+
+## Worked impairment disclosure
+
+Goodwill allocated to a CGU is 12.0m. Model carrying amount of the full CGU is 30.0m and recoverable amount is 30.5m; headroom 0.5m. If a supportable 0.2 percentage-point discount-rate rise reduces recoverable amount to 29.8m, stress-case shortfall is 0.2m. The disclosure should identify CGU and key assumptions, numerical headroom/sensitivity when applicable, and how management derived assumptions, rather than state “goodwill is tested annually.” Do not confuse the 12m goodwill amount with the 30m CGU carrying amount. Under US ASC 350 a reporting-unit model may have different disclosure requirements; do not transplant IAS 36 wording.
+
+## Controls and tests
+
+Reconcile estimate inventory to note checklist, model balances to GL, sensitivity to published text, management discussion to notes, and significant judgment to technical memo. Reviewer checks effective-period source, materiality, current/prior changes, contradictory evidence and accessible source references. S1: sensitivity statement says 2m headroom but signed model says 0.5m → FAIL. S2: SEC registrant copies IFRS note as entire critical-estimates MD&A → FAIL independent Item 303 analysis. S3: 30−29.8=0.2 stress gap → arithmetic PASS, no automatic base-case impairment. S4: UK small entity treated as full IFRS solely because parent uses IFRS → FAIL entity/framework gate. Artifacts: disclosure matrix, calculations, source literature, review notes and final tie-out. Dependencies 08-003/004 disclosure, 14-006 checklist, 15-003/004 estimates and 04-006 impairment.

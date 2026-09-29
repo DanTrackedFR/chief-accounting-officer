@@ -1,0 +1,7 @@
+# Promise-level gross/net and contract balances — evidence and regression
+
+Claims: [TOPIC-03-004-IFRS-001], [TOPIC-03-004-AASB-001], [TOPIC-03-004-UK-001], [TOPIC-03-004-US-001]. Preserve the retained 120/90 marketplace case.
+
+At sale, if the platform controlled the specified product before transfer: Dr receivable 120 / Cr revenue 120, and Dr cost 90 / Cr supplier payable 90. If its promise is arranging third-party fulfillment: Dr receivable 120 / Cr supplier payable 90 / Cr revenue 30, subject to legal settlement rights. Both branches have 30 gross margin but radically different revenue and liabilities. A different obligation in the same order can take the opposite role; classify by promise, never by the platform as a whole.
+
+Test a conditional 30 commission: before acceptance a valid performed right may be a contract asset; upon an unconditional right Dr receivable / Cr contract asset 30. A pre-performance advance is a liability. IFRS/AASB contract-balance route explicitly separates unconditional rights, with separate impairment on contract assets. US Topic 606 classification and private-entity disclosure elections must be checked independently. UK revised Section 23 transition and small-entity disclosures are independent; do not import IFRS note requirements. Direct ship plus inventory control defeats a mechanical agent conclusion. Reviewer ties customer gross cash, supplier payout, taxes, refunds and processor fees by transaction ID, then agrees revenue and liabilities to GL. Exact UK/US rules remain auditable claims.

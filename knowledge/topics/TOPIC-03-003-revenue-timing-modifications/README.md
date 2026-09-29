@@ -1,4 +1,6 @@
 # TOPIC-03-003 — Revenue Recognition Timing & Contract Modifications
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier production-candidate/REVIEWED labels in this pack are historical self-assessments, not independent promotion. Substantive and standards-evidence outcomes are tracked separately in `evidence-and-regression.md` and `standards-claims.json`.
+
 
 Status: REVIEWED / US SOURCE-DEPTH PARTIAL — Phase 2D
 Primary capabilities: CAO-03-006, CAO-03-007

@@ -1,0 +1,7 @@
+# SOP design and ownership — current-state acceptance
+
+Extends substantive README. Capabilities CAO-12-017–018. PRINCIPLES/PRACTICE; 2026-09-27.
+
+An executable SOP states purpose/scope, entity/period, input and source/version, steps and decisions, accounting-policy reference, RACI, system permissions, control checks, exception/fallback, output and retained evidence. Assign one accountable process owner and separate preparer/reviewer where risk warrants. Version control includes effective date, approver, change reason, training and superseded procedure retained. Walk through an actual transaction and an exception with the operator; if practice differs, determine which is right and assess control gaps during the mismatch period.
+
+Example SOP says monthly AP-to-GL reconciliation but team performed quarterly for six months. Do not simply update SOP to quarterly. Assess material balances/transactions, legal/audit requirements, missed months, compensating checks and why practice changed; complete risk-based catch-up, approve cadence if justified and train owners. **Negative test:** SOP approval is marked “control performed” with no reconciliation evidence. Expected FAIL. Measure rework, adherence, aged exceptions and stakeholder handoffs rather than document count. Evidence: source SOP version, walkthrough trace, approval, training, control test and action log. No four-framework standards claim; underlying entries route to transaction topic. Result PASS for governance decision.
