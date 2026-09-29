@@ -4,18 +4,18 @@
     {
       "claim_id": "TOPIC-03-010-IFRS-001",
       "framework": "IFRS",
-      "proposition": "A customer prepayment precedes performance and ordinarily represents an obligation; a disputed invoice requires cause classification before revenue, receivable or impairment adjustment.",
+      "proposition": "Customer consideration before related performance remains a liability under the applicable revenue model.",
       "paragraph_references": [
-        "IFRS 15.105\u2013109"
+        "IFRS 15.105–109"
       ],
-      "reference_confidence": "VERIFIED",
+      "reference_confidence": "PROVISIONAL",
       "evidence_status": "SOURCE_VERIFIED",
       "sources": [
         {
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.105\u2013109",
+          "locator": "IFRS 15.105–109",
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": true
@@ -25,10 +25,175 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": false,
       "limitations": [
-        "Only the identified core route has been inspected; subsidiary claims require separate audit."
+        "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Prepayment"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-010-IFRS-002",
+      "framework": "IFRS",
+      "proposition": "An unidentified receipt is not revenue solely because cash settled; preserve a traceable liability or clearing conclusion until entitlement is established.",
+      "paragraph_references": [
+        "IFRS 15.9–16, 105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
+          "locator": "IFRS 15.9–16, 105–109",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Unmatched receipt"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-010-IFRS-003",
+      "framework": "IFRS",
+      "proposition": "Classify an invoice dispute as error, concession/refund, credit deterioration, modification or separate legal claim before posting.",
+      "paragraph_references": [
+        "IFRS 15.50–59; IFRS 9"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
+          "locator": "IFRS 15.50–59; IFRS 9",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Dispute cause"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-010-IFRS-004",
+      "framework": "IFRS",
+      "proposition": "Do not release an old customer credit to income without establishing contractual and jurisdiction-specific legal expiry and accounting consequences.",
+      "paragraph_references": [
+        "IFRS 15.105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
+          "locator": "IFRS 15.105–109",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Credit expiry"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-010-IFRS-005",
+      "framework": "IFRS",
+      "proposition": "Offset receivables and customer credit liabilities only if the operative financial-instrument set-off conditions are satisfied.",
+      "paragraph_references": [
+        "IAS 32.42"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
+          "locator": "IAS 32.42",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-010-IFRS-006",
+      "framework": "IFRS",
+      "proposition": "Assess material balance/judgment disclosures, applicable transitions and public/private or entity-tier reliefs for the period.",
+      "paragraph_references": [
+        "IFRS 15.113–126"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
+          "locator": "IFRS 15.113–126",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": "Codex source inspection",
@@ -37,9 +202,9 @@
     {
       "claim_id": "TOPIC-03-010-AASB-001",
       "framework": "AASB",
-      "proposition": "A customer prepayment precedes performance and ordinarily represents an obligation; a disputed invoice requires cause classification before revenue, receivable or impairment adjustment.",
+      "proposition": "Customer consideration before related performance remains a liability under the applicable revenue model.",
       "paragraph_references": [
-        "AASB 15.105\u2013109"
+        "AASB 15.105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -48,7 +213,7 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "AASB 15.105\u2013109",
+          "locator": "IFRS 15.105–109",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
@@ -58,11 +223,175 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "Later amendments and NFP/Tier 2 overlays require separate period audit.",
-        "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Prepayment"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-AASB-002",
+      "framework": "AASB",
+      "proposition": "An unidentified receipt is not revenue solely because cash settled; preserve a traceable liability or clearing conclusion until entitlement is established.",
+      "paragraph_references": [
+        "AASB 15.9–16, 105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
+          "locator": "IFRS 15.9–16, 105–109",
+          "version_date": "December 2022 compilation",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Unmatched receipt"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-AASB-003",
+      "framework": "AASB",
+      "proposition": "Classify an invoice dispute as error, concession/refund, credit deterioration, modification or separate legal claim before posting.",
+      "paragraph_references": [
+        "AASB 15.50–59; AASB 9"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
+          "locator": "IFRS 15.50–59; IFRS 9",
+          "version_date": "December 2022 compilation",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Dispute cause"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-AASB-004",
+      "framework": "AASB",
+      "proposition": "Do not release an old customer credit to income without establishing contractual and jurisdiction-specific legal expiry and accounting consequences.",
+      "paragraph_references": [
+        "AASB 15.105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
+          "locator": "IFRS 15.105–109",
+          "version_date": "December 2022 compilation",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Credit expiry"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-AASB-005",
+      "framework": "AASB",
+      "proposition": "Offset receivables and customer credit liabilities only if the operative financial-instrument set-off conditions are satisfied.",
+      "paragraph_references": [
+        "AASB 132.42"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
+          "locator": "IAS 32.42",
+          "version_date": "December 2022 compilation",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-AASB-006",
+      "framework": "AASB",
+      "proposition": "Assess material balance/judgment disclosures, applicable transitions and public/private or entity-tier reliefs for the period.",
+      "paragraph_references": [
+        "AASB 15.113–126"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
+          "locator": "IFRS 15.113–126",
+          "version_date": "December 2022 compilation",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,
@@ -71,7 +400,7 @@
     {
       "claim_id": "TOPIC-03-010-UK-001",
       "framework": "UK_GAAP",
-      "proposition": "Apply the applicable FRS 102 Section 23 revenue and/or Section 11 financial instrument model; do not transplant IFRS 9 expected-loss mechanics.",
+      "proposition": "Prepayment before UK revenue-model performance remains a liability under the operative old or revised Section 23.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -80,7 +409,7 @@
           "source_kind": "MODEL_KNOWLEDGE",
           "title": "Model-authored synthesis; not operative text",
           "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
-          "locator": null,
+          "locator": "FRC operative section detail pending",
           "version_date": null,
           "access_date": null,
           "inspected": false
@@ -90,10 +419,165 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "Exact operative paragraph and election/transition remain to be audited."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Prepayment"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-UK-002",
+      "framework": "UK_GAAP",
+      "proposition": "Unidentified UK receipt is not revenue without established entitlement; retain a separately reconcilable balance.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Unmatched receipt"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-UK-003",
+      "framework": "UK_GAAP",
+      "proposition": "Investigate UK dispute cause under Section 23, Section 11, error or legal-claim routes before adjustment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Dispute cause"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-UK-004",
+      "framework": "UK_GAAP",
+      "proposition": "Release an old UK customer credit only after assessing contractual rights, statutory expiry and financial-reporting consequences.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Credit expiry"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-UK-005",
+      "framework": "UK_GAAP",
+      "proposition": "UK customer credit/AR offset requires applicable enforceable set-off and presentation conditions.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-UK-006",
+      "framework": "UK_GAAP",
+      "proposition": "Disclose material customer credit and revenue judgments using the applicable FRS 102 edition/tier/transition.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,
@@ -102,7 +586,7 @@
     {
       "claim_id": "TOPIC-03-010-US-001",
       "framework": "US_GAAP",
-      "proposition": "Apply the relevant US Topic 606, ASC 326 and/or ASC 340-40 route independently of IFRS; exact method depends on transaction and operative Codification.",
+      "proposition": "ASC 606 preperformance consideration creates a liability rather than immediate revenue.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -111,7 +595,7 @@
           "source_kind": "MODEL_KNOWLEDGE",
           "title": "Model-authored synthesis; not operative text",
           "url": "https://asc.fasb.org/",
-          "locator": null,
+          "locator": "Current Codification detail pending",
           "version_date": null,
           "access_date": null,
           "inspected": false
@@ -121,10 +605,165 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "Current Codification paragraph not inspected; do not infer US rules from IFRS."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Prepayment"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-US-002",
+      "framework": "US_GAAP",
+      "proposition": "An unmatched US customer receipt lacks revenue entitlement evidence and requires a traceable classification.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Unmatched receipt"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-US-003",
+      "framework": "US_GAAP",
+      "proposition": "Classify US invoice dispute as ASC 606 concession/error or ASC 326 credit deterioration, or separate claim, before journal.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Dispute cause"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-US-004",
+      "framework": "US_GAAP",
+      "proposition": "Do not release a stale US credit without contractual entitlement and state unclaimed-property/legal analysis.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Credit expiry"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-US-005",
+      "framework": "US_GAAP",
+      "proposition": "Apply US balance-sheet offsetting rules before netting customer credit liabilities with unrelated AR.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-010-US-006",
+      "framework": "US_GAAP",
+      "proposition": "Disclose material contract balances and unresolved credits under applicable US entity-period rules.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,

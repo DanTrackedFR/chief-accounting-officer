@@ -4,11 +4,11 @@
     {
       "claim_id": "TOPIC-03-009-IFRS-001",
       "framework": "IFRS",
-      "proposition": "Write off all or part of a financial asset when no reasonable expectation of recovery remains; the allowance and gross receivable move together.",
+      "proposition": "Write off the gross asset, in whole or part, when no reasonable expectation of recovery remains; mere age is not conclusive.",
       "paragraph_references": [
         "IFRS 9.5.4.4"
       ],
-      "reference_confidence": "VERIFIED",
+      "reference_confidence": "PROVISIONAL",
       "evidence_status": "SOURCE_VERIFIED",
       "sources": [
         {
@@ -25,10 +25,175 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": false,
       "limitations": [
-        "Only the identified core route has been inspected; subsidiary claims require separate audit."
+        "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Writeoff threshold"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-009-IFRS-002",
+      "framework": "IFRS",
+      "proposition": "Apply an existing allowance on write-off and recognize any incremental uncovered loss under the impairment model.",
+      "paragraph_references": [
+        "IFRS 9.5.5"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs9.html",
+          "locator": "IFRS 9.5.5",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Allowance"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-009-IFRS-003",
+      "framework": "IFRS",
+      "proposition": "A later recovery links to the previously written-off exposure and its P&L/allowance treatment, without fabricating a current receivable.",
+      "paragraph_references": [
+        "IFRS 9.5.4.4"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs9.html",
+          "locator": "IFRS 9.5.4.4",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Recovery"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-009-IFRS-004",
+      "framework": "IFRS",
+      "proposition": "Apply receipts to supported debtor/invoice rights; unidentified receipts require controlled classification, not an arbitrary AR reduction.",
+      "paragraph_references": [
+        "IFRS 15.105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs9.html",
+          "locator": "IFRS 15.105–109",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Cash application"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-009-IFRS-005",
+      "framework": "IFRS",
+      "proposition": "Do not offset unrelated customer credits and receivables without satisfying the applicable set-off requirements.",
+      "paragraph_references": [
+        "IAS 32.42"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs9.html",
+          "locator": "IAS 32.42",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex source inspection",
+      "review_date": "2026-09-29"
+    },
+    {
+      "claim_id": "TOPIC-03-009-IFRS-006",
+      "framework": "IFRS",
+      "proposition": "Disclose material write-off/credit-risk movement and select the operative entity-period impairment requirements.",
+      "paragraph_references": [
+        "IFRS 7.35H–35N"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "CURRENT_STANDARD",
+          "title": "2026 issued IFRS standard",
+          "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs9.html",
+          "locator": "IFRS 7.35H–35N",
+          "version_date": "2026 issued",
+          "access_date": "2026-09-29",
+          "inspected": false
+        }
+      ],
+      "effective_period": "2026 issued edition; select historical edition for older periods",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": "Codex source inspection",
@@ -37,16 +202,18 @@
     {
       "claim_id": "TOPIC-03-009-AASB-001",
       "framework": "AASB",
-      "proposition": "Apply Australian financial instrument impairment/write-off model after selecting the operative AASB 9 compilation.",
-      "paragraph_references": [],
-      "reference_confidence": "UNKNOWN",
+      "proposition": "Write off the gross asset, in whole or part, when no reasonable expectation of recovery remains; mere age is not conclusive.",
+      "paragraph_references": [
+        "AASB 9.5.4.4"
+      ],
+      "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
       "sources": [
         {
           "source_kind": "MODEL_KNOWLEDGE",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
-          "locator": null,
+          "locator": "IFRS 9.5.4.4",
           "version_date": "December 2022 compilation",
           "access_date": null,
           "inspected": false
@@ -56,10 +223,175 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "AASB 9 period-specific compilation and paragraph must be audited."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Writeoff threshold"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-AASB-002",
+      "framework": "AASB",
+      "proposition": "Apply an existing allowance on write-off and recognize any incremental uncovered loss under the impairment model.",
+      "paragraph_references": [
+        "AASB 9.5.5"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
+          "locator": "IFRS 9.5.5",
+          "version_date": "December 2022 compilation",
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Allowance"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-AASB-003",
+      "framework": "AASB",
+      "proposition": "A later recovery links to the previously written-off exposure and its P&L/allowance treatment, without fabricating a current receivable.",
+      "paragraph_references": [
+        "AASB 9.5.4.4"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
+          "locator": "IFRS 9.5.4.4",
+          "version_date": "December 2022 compilation",
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Recovery"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-AASB-004",
+      "framework": "AASB",
+      "proposition": "Apply receipts to supported debtor/invoice rights; unidentified receipts require controlled classification, not an arbitrary AR reduction.",
+      "paragraph_references": [
+        "AASB 15.105–109"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
+          "locator": "IFRS 15.105–109",
+          "version_date": "December 2022 compilation",
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Cash application"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-AASB-005",
+      "framework": "AASB",
+      "proposition": "Do not offset unrelated customer credits and receivables without satisfying the applicable set-off requirements.",
+      "paragraph_references": [
+        "AASB 132.42"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
+          "locator": "IAS 32.42",
+          "version_date": "December 2022 compilation",
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-AASB-006",
+      "framework": "AASB",
+      "proposition": "Disclose material write-off/credit-risk movement and select the operative entity-period impairment requirements.",
+      "paragraph_references": [
+        "AASB 7.35H–35N"
+      ],
+      "reference_confidence": "PROVISIONAL",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "AASB compilation",
+          "url": "https://standards.aasb.gov.au/aasb-9-dec-2022",
+          "locator": "IFRS 7.35H–35N",
+          "version_date": "December 2022 compilation",
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,
@@ -68,7 +400,7 @@
     {
       "claim_id": "TOPIC-03-009-UK-001",
       "framework": "UK_GAAP",
-      "proposition": "Apply the applicable FRS 102 Section 23 revenue and/or Section 11 financial instrument model; do not transplant IFRS 9 expected-loss mechanics.",
+      "proposition": "Use Section 11 evidence and derecognition guidance for an uncollectible UK receivable; an IFRS 9 threshold is not automatically operative.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -77,7 +409,7 @@
           "source_kind": "MODEL_KNOWLEDGE",
           "title": "Model-authored synthesis; not operative text",
           "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
-          "locator": null,
+          "locator": "FRC operative section detail pending",
           "version_date": null,
           "access_date": null,
           "inspected": false
@@ -87,10 +419,165 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "Exact operative paragraph and election/transition remain to be audited."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Writeoff threshold"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-UK-002",
+      "framework": "UK_GAAP",
+      "proposition": "Apply the UK impairment allowance against a write-off and identify any further loss under Section 11.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Allowance"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-UK-003",
+      "framework": "UK_GAAP",
+      "proposition": "Link later cash recovery to the previously reduced UK exposure and determine the UK policy's P&L presentation.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Recovery"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-UK-004",
+      "framework": "UK_GAAP",
+      "proposition": "Match bank receipts to valid UK debtor rights before reducing AR; hold unmatched balances separately.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Cash application"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-UK-005",
+      "framework": "UK_GAAP",
+      "proposition": "Do not net customer credits against unrelated UK receivables without the operative legal and accounting set-off conditions.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-UK-006",
+      "framework": "UK_GAAP",
+      "proposition": "Disclose material UK impairment/write-off judgments under the applicable edition and entity tier.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+          "locator": "FRC operative section detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,
@@ -99,7 +586,7 @@
     {
       "claim_id": "TOPIC-03-009-US-001",
       "framework": "US_GAAP",
-      "proposition": "Apply the relevant US Topic 606, ASC 326 and/or ASC 340-40 route independently of IFRS; exact method depends on transaction and operative Codification.",
+      "proposition": "Apply operative ASC 326/receivables policy to write off exposures deemed uncollectible, independent of the IFRS wording.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -108,7 +595,7 @@
           "source_kind": "MODEL_KNOWLEDGE",
           "title": "Model-authored synthesis; not operative text",
           "url": "https://asc.fasb.org/",
-          "locator": null,
+          "locator": "Current Codification detail pending",
           "version_date": null,
           "access_date": null,
           "inspected": false
@@ -118,10 +605,165 @@
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
-        "Current Codification paragraph not inspected; do not infer US rules from IFRS."
+        "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "evidence-and-regression.md"
+        "Batch 36 adverse test: Writeoff threshold"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-US-002",
+      "framework": "US_GAAP",
+      "proposition": "Apply the US allowance to a write-off and separately recognize any uncovered loss, avoiding double count.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Allowance"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-US-003",
+      "framework": "US_GAAP",
+      "proposition": "Link recovery cash to original US written-off receivable and the entity's supported recovery presentation.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Recovery"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-US-004",
+      "framework": "US_GAAP",
+      "proposition": "Apply customer cash to documented invoice rights and retain unmatched receipts as separately traceable liabilities/clearing balances.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Cash application"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-US-005",
+      "framework": "US_GAAP",
+      "proposition": "Apply US offsetting guidance and enforceable right tests before netting unrelated customer credit liabilities with AR.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Offsetting"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-009-US-006",
+      "framework": "US_GAAP",
+      "proposition": "Disclose material CECL allowance/write-off and recovery movements under applicable public/private requirements.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "Model-authored synthesis; not operative text",
+          "url": "https://asc.fasb.org/",
+          "locator": "Current Codification detail pending",
+          "version_date": null,
+          "access_date": null,
+          "inspected": false
+        }
+      ],
+      "effective_period": null,
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Provision, period, policy election and exceptions require authoritative audit."
+      ],
+      "tests": [
+        "Batch 36 adverse test: Disclosure-period"
       ],
       "model_reviews": [],
       "reviewer": null,
