@@ -1,4 +1,6 @@
 # TOPIC-06-010 — Financial Instrument Impairment / Financial Instrument Disclosure Support
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: CAO-06-020, CAO-06-021  

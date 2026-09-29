@@ -1,4 +1,6 @@
 # TOPIC-06-008 — Fair Value Measurement / Derivative Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Primary capabilities: `CAO-06-016`, `CAO-06-017`

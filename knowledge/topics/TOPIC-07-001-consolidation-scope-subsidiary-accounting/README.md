@@ -1,4 +1,6 @@
 # TOPIC-07-001 — Consolidation Scope Assessment / Subsidiary Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Primary capabilities: CAO-07-001, CAO-07-002

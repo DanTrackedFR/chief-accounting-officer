@@ -1,0 +1,5 @@
+# Batch 29 — valuation, hedges, loss disclosures and control
+
+Date: 29 September 2026. IDs TOPIC-06-008–010 and TOPIC-07-001–002; capabilities CAO-06-016–021, CAO-07-001–004. Retained original factory and duplicate materials. Added four-framework topic-local claim registers and worked adverse paths. No shared manifest/progress/roadmap changed.
+
+Substantive proposals for independent method QA: derivative valuation level/source challenge; forecast cash-flow hedge failure and excess ineffectiveness; stage versus CECL allowance disclosure; 45% de facto control and cutover; NCI allocation/ownership change without lost control. Four-framework structural and scenario references passed for all five; numerical checks passed 12−10=2 hedge ineffectiveness, 80−15=65 loss allowance change and 80/20 profit attribution. Source risk: IFRS 13, 9/7, 10/3 2026 issued core routes inspected; all 15 US/UK/AASB records remain MODEL_DERIVED_AUDIT_REQUIRED, and IFRS compound claims need finer paragraph sampling. US VIE/hedge elections and UK/Australian effective-period differences remain explicit. No canonical status promotion.
