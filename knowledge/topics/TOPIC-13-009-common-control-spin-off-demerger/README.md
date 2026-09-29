@@ -1,4 +1,6 @@
 # TOPIC-13-009 — Common-Control Transactions / Spin-Offs / Demergers
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Primary capabilities: CAO-13-017, CAO-13-018

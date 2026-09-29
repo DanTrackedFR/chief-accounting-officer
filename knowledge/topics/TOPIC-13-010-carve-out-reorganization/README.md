@@ -1,4 +1,6 @@
 # TOPIC-13-010 — Carve-Out Financial Statements / Fresh-Start & Reorganization Accounting Assessment
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / production-candidate
 Primary capabilities: CAO-13-019, CAO-13-020

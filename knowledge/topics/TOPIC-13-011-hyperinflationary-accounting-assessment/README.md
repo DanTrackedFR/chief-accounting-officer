@@ -1,4 +1,6 @@
 # TOPIC-13-011 — Hyperinflationary Accounting Assessment
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 Status: REVIEWED / production-candidate
 Primary capability: CAO-13-021
 Sensitivity: H
