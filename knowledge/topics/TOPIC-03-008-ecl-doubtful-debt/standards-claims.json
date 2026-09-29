@@ -400,7 +400,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-001",
       "framework": "UK_GAAP",
-      "proposition": "Section 11 applies its objective-evidence/incurred-loss impairment model to relevant basic trade receivables and contract assets; do not import lifetime ECL by default.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, section 11 applies its objective-evidence/incurred-loss impairment model to relevant basic trade receivables and contract assets; do not import lifetime ECL by default.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -431,7 +431,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-002",
       "framework": "UK_GAAP",
-      "proposition": "Identify a loss event and its effect on estimated future cash flows before recognizing impairment; an adverse forecast without an incurred trigger is not automatically an allowance.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, identify a loss event and its effect on estimated future cash flows before recognizing impairment; an adverse forecast without an incurred trigger is not automatically an allowance.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -462,7 +462,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-003",
       "framework": "UK_GAAP",
-      "proposition": "Measure impairment using the applicable Section 11 cash-flow method and consider subsequent evidence and reversal rules rather than IFRS probability-weighted staging.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, measure impairment using the applicable Section 11 cash-flow method and consider subsequent evidence and reversal rules rather than IFRS probability-weighted staging.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -493,7 +493,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-004",
       "framework": "UK_GAAP",
-      "proposition": "Segment or individually assess exposures as supported by objective evidence; a forward-looking IFRS provision matrix is not a default FRS 102 policy.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, segment or individually assess exposures as supported by objective evidence; a forward-looking IFRS provision matrix is not a default FRS 102 policy.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -524,7 +524,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-005",
       "framework": "UK_GAAP",
-      "proposition": "Distinguish reduction or derecognition of an irrecoverable balance from initial incurred-loss allowance measurement under Section 11.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, distinguish reduction or derecognition of an irrecoverable balance from initial incurred-loss allowance measurement under Section 11.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -555,7 +555,7 @@
     {
       "claim_id": "TOPIC-03-008-UK-006",
       "framework": "UK_GAAP",
-      "proposition": "Disclose material financial-asset impairment judgments and select the applicable pre/post-2026 FRS 102 edition, entity tier and transition.",
+      "proposition": "If the entity has elected FRS 102 Sections 11/12 recognition and measurement, disclose material financial-asset impairment judgments and select the applicable pre/post-2026 FRS 102 edition, entity tier and transition.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -857,6 +857,37 @@
       ],
       "tests": [
         "granular-regression.md: US public/private election boundary"
+      ],
+      "model_reviews": [],
+      "reviewer": null,
+      "review_date": null
+    },
+    {
+      "claim_id": "TOPIC-03-008-UK-007",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 permits a recognition-and-measurement policy choice among Sections 11/12, IAS 39 and IFRS 9 while Sections 11/12 disclosures apply; from the 2026 amendments, new IAS 39 adoption is restricted to group-consistency situations, while existing adopters may continue.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "PRIMARY_CORROBORATED",
+      "sources": [
+        {
+          "source_kind": "REGULATOR",
+          "title": "FRC Factsheet 4, financial instruments, policy and scope",
+          "url": "https://www.frc.org.uk/docs/7822/html/",
+          "locator": "Policy choice; FRS 102 references 11.2, 12.2, 1.37",
+          "version_date": "November 2024",
+          "access_date": "2026-09-29",
+          "inspected": true
+        }
+      ],
+      "effective_period": "Revised Section 23 generally annual starts from 1 January 2026; Section 11 version must be checked",
+      "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+      "audit_required": true,
+      "limitations": [
+        "Official staff factsheet corroborates route but expressly is not definitive standard text; inspect operative FRS 102 PDF and period-specific amendments."
+      ],
+      "tests": [
+        "granular-regression.md: UK Sections 11/12 versus IFRS 9 policy election"
       ],
       "model_reviews": [],
       "reviewer": null,
