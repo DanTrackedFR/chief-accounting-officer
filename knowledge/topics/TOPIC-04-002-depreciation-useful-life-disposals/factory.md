@@ -1,12 +1,12 @@
 # TOPIC-04-002 — Depreciation / Useful Life & Residual Value / Asset Transfer, Disposal & Retirement
 
-Status: REVIEWED / production-candidate
+Status: retained companion to the canonical topic path; see its phase-2d-method.md and standards-claims.json
 Capabilities: CAO-04-004, CAO-04-005, CAO-04-006
 Sensitivity: HIGH
 Source checked: 2026-09-22
 
 ## Sources
-IFRS: IAS 16 Property, Plant and Equipment, official IFRS Foundation source. AASB: AASB 116 current applicable compilation, official AASB source. UK: FRS 102 Section 17, September 2024 edition/current amendments. US: ASC 360 PP&E/depreciation architecture; public FASB material confirms key US/IFRS differences, but complete current Codification paragraph-body verification remains PARTIAL under the programme's existing source limitation.
+IFRS: IAS 16 Property, Plant and Equipment, official IFRS Foundation source. AASB: AASB 116 current applicable compilation, official AASB source. UK: FRS 102 Section 17, September 2024 edition/current amendments. US: ASC 360 PP&E/depreciation architecture; public FASB material confirms key US/IFRS differences, but current Codification paragraph precision remains audit-required under the canonical standards-claims.json.
 
 ## Principles
 Depreciation allocates depreciable amount systematically over the period/pattern of expected consumption; it is not a valuation adjustment. Useful life is entity-specific expected utility, not necessarily physical/economic life. Residual value is estimated disposal value at the end of useful life under the framework definition. Changes in useful life, residual value or method are generally estimate changes applied prospectively under the relevant framework, not prior-period errors absent an earlier error.
@@ -57,4 +57,4 @@ Useful-life study; depreciation policy; component assessment; change-in-estimate
 5. Asset transferred between cost centers only: usually classification/master-data move, not disposal; preserve cost/accumulated depreciation lineage.
 
 ## QA
-PASS for factory build. IFRS/AASB and FRS 102 official depreciation architecture verified; material US difference captured. US paragraph-level Codification depth remains PARTIAL, documented and non-blocking.
+PASS for factory build. IFRS/AASB and FRS 102 official depreciation architecture verified; material US difference captured. US paragraph-level Codification depth is an explicit evidence audit item, not a substantive incompleteness claim.
