@@ -1,6 +1,8 @@
 # TOPIC-04-005 — Intangible Asset Recognition & Amortization
 
-Status: REVIEWED / production-candidate
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Built: 2026-09-22
 Capabilities: CAO-04-013, CAO-04-014
 Knowledge: PRINCIPLES + STANDARDS + PRACTICE + DIFFERENCES
@@ -13,7 +15,7 @@ Determine whether a non-monetary resource qualifies for separate intangible-asse
 - IFRS: IAS 38 Intangible Assets; IAS 36 for impairment; IFRS 3 for acquired intangibles in business combinations.
 - AASB: AASB 138, AASB 136 and AASB 3; AASB 1060 for Tier 2 disclosures.
 - UK GAAP: FRS 102 Section 18 Intangible Assets other than Goodwill; Section 19 for business combinations/goodwill; current Periodic Review version by reporting period.
-- US GAAP: ASC 350 Intangibles—Goodwill and Other, plus acquisition/software-specific topics where applicable. Current paragraph-body verification remains PARTIAL under the recorded public-Codification limitation.
+- US GAAP: ASC 350 Intangibles—Goodwill and Other, plus acquisition/software-specific topics where applicable. Current paragraph-body evidence is audit-required in standards-claims.json; the US method is developed in phase-2d-method.md.
 Source check: 2026-09-22.
 
 ## IFRS / AASB core
@@ -72,4 +74,4 @@ Recognition memo; useful-life assessment; cost schedule; amortization schedule; 
 6. Useful life shortened after technology change: prospective estimate-change treatment plus impairment-indicator assessment.
 
 ## QA
-PASS for factory coverage. US current Codification paragraph-depth remains PARTIAL and is recorded as a non-blocking source limitation. UK detailed Section 18 paragraph mapping should be expanded before APPROVED status for unusual recognition/useful-life fact patterns.
+PASS for factory coverage. US current Codification paragraph-depth remains an audit-required evidence limitation separate from substantive status. UK detailed Section 18 paragraph mapping should be expanded before APPROVED status for unusual recognition/useful-life fact patterns.

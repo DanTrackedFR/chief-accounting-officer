@@ -1,6 +1,8 @@
 # TOPIC-04-004 — R&D / Internal Software Cost Allocation / Cloud Implementation
 
-Status: REVIEWED / production-candidate; US paragraph-depth PARTIAL
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Capabilities: CAO-04-010, CAO-04-011, CAO-04-012
 Knowledge: PRINCIPLES + STANDARDS + PRACTICE + DIFFERENCES
 Source check: 2026-09-22
@@ -73,4 +75,4 @@ IFRS/AASB use a development-criteria model under IAS/AASB 38. US GAAP is model-s
 8. Project abandoned before available for use: stop capitalization and assess impairment/write-off.
 
 ## QA
-PASS for IFRS/AASB architecture and official cloud agenda-decision routing. US status remains PARTIAL at complete current Codification paragraph-body depth; UK unusual cloud/detail conclusions remain PARTIAL pending direct Section 18 verification. These are recorded source-depth limitations, not programme blockers.
+PASS for IFRS/AASB architecture and official cloud agenda-decision routing. The integrated framework methods and adverse cases are in phase-2d-method.md; ASC and unusual UK source precision are separately audit-required in standards-claims.json.

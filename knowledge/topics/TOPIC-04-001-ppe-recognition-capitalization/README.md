@@ -1,6 +1,8 @@
 # TOPIC-04-001 — Fixed Asset Recognition, Capitalization & Additions
 
-Status: REVIEWED / production-candidate
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 Primary domain: 04 Assets & Capitalization
 Capabilities: CAO-04-001, CAO-04-002, CAO-04-003
 Checked: 2026-09-22

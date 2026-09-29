@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-09-29",
   "source_of_truth": "knowledge/topic-universe.md + knowledge/capability-topic-matrix.csv + repository tree audit",
-  "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-  "status_policy": "Independent post-remediation reconciliation after all three worker PRs were integrated to main. REVIEWED requires reusable Phase 2D method and QA evidence; live-entity facts may remain implementation inputs. PARTIAL is retained for unresolved authoritative-source, framework, canonicalization, jurisdiction or reusable-method gates. No artifact-presence-only promotions.",
+  "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+  "status_policy": "REVIEWED means the reusable substantive Phase 2D method passed independent QA; standards-evidence status is tracked separately in topic-local standards-claims.json and REVIEWED does not imply SOURCE_VERIFIED or APPROVED. PARTIAL is retained for substantive framework, canonicalization, jurisdiction, decision-logic, workpaper/control/data or scenario gaps. Unavailable authoritative text alone is not a substantive PARTIAL blocker when the proposition is explicitly ringfenced for audit.",
   "topics": [
     {
       "topic_id": "TOPIC-01-001",
@@ -375,16 +375,22 @@
       "artifact_paths": [
         "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
         "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
-        "knowledge/topics/TOPIC-02-009-prior-period-errors-opening-balances/README.md"
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/standards-claims.json",
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/controllership/qa-remediation-ledger.md"
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
+        "knowledge/worker-reports/controllership/topic-02-009-completion.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Current ASC 250 error-correction paragraph/version and case-specific US registrant filing route remain unverified; see controllership QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-02-009-errors-opening-balances/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "c627934bbb8f485d6e517c8b7417398604e881c3",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-02-009-errors-opening-balances",
         "TOPIC-02-009-prior-period-errors-opening-balances"
@@ -682,16 +688,22 @@
       "artifact_paths": [
         "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/README.md",
         "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/knowledge-pack.md",
-        "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md"
+        "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md",
+        "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json",
+        "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-04-001-ppe-recognition-capitalization",
         "TOPIC-04-001-ppe-recognition"
@@ -706,16 +718,22 @@
       ],
       "artifact_paths": [
         "knowledge/topics/TOPIC-04-002-depreciation-disposals/README.md",
-        "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md"
+        "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md",
+        "knowledge/topics/TOPIC-04-002-depreciation-disposals/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json",
+        "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-04-002-depreciation-disposals",
         "TOPIC-04-002-depreciation-useful-life-disposals"
@@ -730,16 +748,22 @@
       ],
       "artifact_paths": [
         "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/README.md",
-        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md"
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md",
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json",
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": []
     },
     {
@@ -750,16 +774,22 @@
         "CAO-04-012"
       ],
       "artifact_paths": [
-        "knowledge/topics/TOPIC-04-004-rd-software-cloud/README.md"
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/README.md",
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/standards-claims.json",
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-004-rd-software-cloud/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": []
     },
     {
@@ -770,16 +800,22 @@
       ],
       "artifact_paths": [
         "knowledge/topics/TOPIC-04-005-intangible-assets/README.md",
-        "knowledge/topics/TOPIC-04-005-intangibles-amortization/README.md"
+        "knowledge/topics/TOPIC-04-005-intangibles-amortization/README.md",
+        "knowledge/topics/TOPIC-04-005-intangible-assets/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-005-intangible-assets/standards-claims.json",
+        "knowledge/topics/TOPIC-04-005-intangible-assets/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-005-intangible-assets/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-005-intangible-assets/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-04-005-intangible-assets",
         "TOPIC-04-005-intangibles-amortization"
@@ -792,16 +828,22 @@
         "CAO-04-016"
       ],
       "artifact_paths": [
-        "knowledge/topics/TOPIC-04-006-impairment-goodwill/README.md"
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/README.md",
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/standards-claims.json",
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-006-impairment-goodwill/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": []
     },
     {
@@ -911,16 +953,22 @@
         "CAO-04-026"
       ],
       "artifact_paths": [
-        "knowledge/topics/TOPIC-04-011-sale-leaseback/README.md"
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/README.md",
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/phase-2d-method.md",
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/standards-claims.json",
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/applied-qa.md"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
-        "knowledge/worker-reports/specialist/qa-remediation.md"
+        "knowledge/worker-reports/specialist/qa-remediation.md",
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/applied-qa.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-04-011-sale-leaseback/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": []
     },
     {
@@ -2893,16 +2941,20 @@
       ],
       "artifact_paths": [
         "knowledge/topics/TOPIC-15-002-accounting-estimates-changes/README.md",
-        "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/README.md"
+        "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/README.md",
+        "knowledge/topics/TOPIC-15-002-accounting-estimates-changes/phase-2d-method.md",
+        "knowledge/topics/TOPIC-15-002-accounting-estimates-changes/standards-claims.json"
       ],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
         "knowledge/worker-reports/specialist/qa-remediation.md"
       ],
-      "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "source_effective_date_evidence": [
+        "knowledge/topics/TOPIC-15-002-accounting-estimates-changes/standards-claims.json"
+      ],
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": [
         "TOPIC-15-002-accounting-estimates-changes",
         "TOPIC-15-002-policy-inventory-estimate-methodology"
@@ -3105,14 +3157,14 @@
         "CAO-16-013"
       ],
       "artifact_paths": [],
-      "status": "PARTIAL",
+      "status": "REVIEWED",
       "qa_evidence": [
         "knowledge/worker-reports/specialist/qa-remediation.md"
       ],
       "source_effective_date_evidence": [],
-      "repo_snapshot_sha": "3513881d34056266bdab3ffe618cacbcde598b9c",
-      "blockers": "Independent QA retained PARTIAL for the precise topic-level source, canonicalization, jurisdiction or case-method gate recorded in specialist QA remediation ledger.",
-      "last_update": "2026-09-28",
+      "repo_snapshot_sha": "8a8ea8e0c6ea24440cee5121c00231fca42c3ba4",
+      "blockers": "",
+      "last_update": "2026-09-29",
       "duplicate_folders": []
     },
     {

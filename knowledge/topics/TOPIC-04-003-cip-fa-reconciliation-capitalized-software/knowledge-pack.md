@@ -1,6 +1,6 @@
 # TOPIC-04-003 — Construction in Progress / Fixed Asset Reconciliation / Capitalized Software
 
-Status: REVIEWED / US SOURCE-DEPTH PARTIAL
+Status: proposed substantively REVIEWED-ready; US claim-level authority audit open
 Capabilities: CAO-04-007, CAO-04-008, CAO-04-009
 Knowledge types: PRINCIPLES, STANDARDS, PRACTICE, DIFFERENCES
 Source checked: 2026-09-22
@@ -35,7 +35,7 @@ IFRS/AASB: IAS/AASB 38 distinguishes research from development; research is expe
 
 UK GAAP: route through FRS 102 Section 18 and applicable accounting policy/effective-period requirements; do not copy IAS 38 criteria mechanically.
 
-US GAAP: software model depends on software's nature/use. Internal-use software is governed by ASC 350-40 rather than IAS 38 research/development architecture. ASU 2025-06 removes the old project-stage model and uses updated capitalization thresholds for periods in its effective scope; 2026 cases normally remain under pre-amendment guidance unless facts/effective adoption say otherwise. Full current Codification paragraph-body verification remains PARTIAL under the programme's public-source limitation.
+US GAAP: software model depends on software's nature/use. Internal-use software is governed by ASC 350-40 rather than IAS 38 research/development architecture. ASU 2025-06 removes the old project-stage model and uses updated capitalization thresholds for periods in its effective scope; 2026 cases normally remain under pre-amendment guidance unless facts/effective adoption say otherwise. Current Codification paragraph bodies remain unverified; related claims are explicitly audit-required in standards-claims.json.
 
 ## Journal patterns
 During qualifying build: Dr CIP/software asset; Cr AP/payroll/other source. At ready-for-use: Dr final asset class; Cr CIP. Subsequent depreciation/amortization follows applicable useful-life method. Abandoned/impaired projects route to impairment/abandonment analysis, not automatic capitalization continuation.
@@ -55,4 +55,4 @@ Project ID, entity, asset class, cost category, employee/vendor, service date, c
 6. Register agrees GL total but class-level balances differ: reconciliation fails at appropriate assertion/detail level.
 
 ## QA
-PASS for factory coverage. US paragraph-depth remains PARTIAL, recorded as non-blocking. No standards text reproduced.
+PASS for factory coverage. US paragraph-depth remains an audit-required evidence issue, separate from substantive readiness. No standards text reproduced.

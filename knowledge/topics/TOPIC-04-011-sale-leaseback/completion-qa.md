@@ -1,6 +1,6 @@
 # TOPIC-04-011 — Completion supplement (retains Phase 2C README)
 
-Prepared 2026-09-27. Capabilities CAO-04-025 sale-and-leaseback and CAO-04-026 lease reconciliation/disclosure. Proposed PARTIAL for independent QA. The existing decision tree remains the starting point; use TOPIC-04-010 for shared lease classification, schedules, source maps and controls. No duplicate lease standard is created.
+Prepared 2026-09-27. Capabilities CAO-04-025 sale-and-leaseback and CAO-04-026 lease reconciliation/disclosure. Historical checkpoint; the integrated phase-2d-method.md now proposes substantive REVIEWED readiness for independent QA. The existing decision tree remains the starting point; use TOPIC-04-010 for shared lease classification, schedules, source maps and controls. No duplicate lease standard is created.
 
 ## Authority and period
 
@@ -28,6 +28,6 @@ Liability bridge: opening + new leases + effective interest + increases from mod
 3. Off-market consideration: PASS only if adjustment and additional financing/prepayment analyzed.
 4. 2026 UK case: PASS only if Periodic Review edition/transition checked independently.
 5. Multiple ledgers disagree on liability: FAIL until contract-to-schedule-to-GL-to-note bridge explained.
-6. Variable payments under IFRS amendment: PARTIAL until specific authoritative paragraph and method verified for the case.
+6. Variable payments under IFRS amendment: generic method and two-period schedule now complete; actual contract/policy and direct-source verification remain application/audit gates.
 
 Residual blockers: US current Codification paragraph bodies, unusual UK fact patterns and variable-payment subsequent measurement. Do not mark APPROVED on this supplement alone.

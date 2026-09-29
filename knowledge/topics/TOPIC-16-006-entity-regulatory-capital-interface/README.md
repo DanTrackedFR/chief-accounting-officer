@@ -1,6 +1,8 @@
 # TOPIC-16-006 — Entity-level regulatory reporting and capital interface
 
-Status: DRAFT for independent Phase 2D QA; canonical capabilities: CAO-16-012, CAO-16-013. Prepared 2026-09-27. This topic contains independently authored decision and execution guidance; restricted standards and regulations are reference-only.
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 
 ## Principles and scope
 
@@ -32,4 +34,4 @@ A parent balance is used for a solo regulated entity: FAIL; an intangible deduct
 
 ## Dependencies and limitations
 
-TOPIC-07-001 consolidation scope; TOPIC-04-005 intangibles; TOPIC-16-007. Source depth: official overview and effective-date pages verified; form-, sector- and entity-specific rules remain case-dependent. Proposed status: PARTIAL pending independent jurisdiction/technical QA for a real reporting fact pattern.
+TOPIC-07-001 consolidation scope; TOPIC-04-005 intangibles; TOPIC-16-007. `sector-methods.md` supplies four additional regulated-sector routes, source-period gates, and contrary-case calculations. A real filing requires its licence, actual effective instrument and form, waiver/direction, returns and signed input population. These are application inputs; this reusable routing method is proposed REVIEWED-ready for independent technical QA.

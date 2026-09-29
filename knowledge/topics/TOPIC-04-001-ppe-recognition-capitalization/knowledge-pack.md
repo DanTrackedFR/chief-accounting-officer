@@ -18,7 +18,7 @@ Core recognition/measurement is closely aligned to IAS 16. Current AASB compilat
 Section 17 is the primary PPE model. Current FRC materials retain a cost/revaluation architecture and include UK-specific scope/presentation details. The September 2024 edition is current; Periodic Review 2024 has principal effective date 1 January 2026. Version-route the reporting period and early-adoption status before final conclusion.
 
 ## US GAAP
-US GAAP PPE accounting is distributed across ASC 360 and transaction/cost-specific topics rather than mirroring IAS 16 paragraph architecture. General practice capitalizes acquisition/construction costs necessary to ready the asset for intended use, then depreciates systematically; impairment is routed to ASC 360. Revaluation upward of ordinary PPE is generally not an IAS-16-style policy option. Full paragraph-level Codification support remains PARTIAL where public FASB access does not expose current body text; do not fabricate paragraph citations.
+US GAAP PPE accounting is distributed across ASC 360 and transaction/cost-specific topics rather than mirroring IAS 16 paragraph architecture. General practice capitalizes acquisition/construction costs necessary to ready the asset for intended use, then depreciates systematically; impairment is routed to ASC 360. Revaluation upward of ordinary PPE is generally not an IAS-16-style policy option. Current paragraph-level Codification support is audit-required in standards-claims.json; do not fabricate citations.
 
 ## Differences
 - IFRS/AASB permit a revaluation model by class subject to requirements; ordinary US GAAP does not offer the same broad upward-revaluation policy.
@@ -51,4 +51,4 @@ Systems: preserve project/CIP ID to final asset IDs and source transactions. A r
 7. Asset not yet capable of intended operation at close: remain CIP/no ordinary depreciation; verify impairment and costs. PASS.
 8. Asset physically installed but waiting for ceremonial launch/customer ramp: assess actual readiness, not management's preferred depreciation date. PASS.
 
-Result: 8/8 routing scenarios PASS. US paragraph-level source depth remains PARTIAL; not a blocker to production-candidate architecture.
+Result: 8/8 routing scenarios PASS. US paragraph-level source audit remains open in standards-claims.json; substantive method and countertests are in phase-2d-method.md.

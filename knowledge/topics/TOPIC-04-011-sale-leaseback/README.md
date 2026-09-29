@@ -1,6 +1,8 @@
 # TOPIC-04-011 — Sale-and-Leaseback & Lease Reporting
 
-Status: BUILDING — Phase 2C linked topic
+Status: proposed substantively REVIEWED-ready for independent QA; standards-claim audit queue remains open.
+
+Integrated route: `phase-2d-method.md` and `standards-claims.json`. This is a substantive QA proposal, not canonical manifest promotion or a live-entity approval. Earlier source-access-only status statements below are historical; claim-level audit remains open.
 
 ## Sale-and-leaseback decision tree
 1. Resolve framework/reporting period.
