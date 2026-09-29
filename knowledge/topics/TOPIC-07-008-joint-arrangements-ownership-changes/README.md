@@ -1,4 +1,6 @@
 # TOPIC-07-008 — Joint Arrangement Accounting / Changes in Ownership Interests
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Capabilities: CAO-07-015, CAO-07-016  

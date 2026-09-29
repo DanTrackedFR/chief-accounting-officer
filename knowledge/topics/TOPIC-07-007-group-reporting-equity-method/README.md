@@ -1,4 +1,6 @@
 # TOPIC-07-007 — Group Reporting Package Design / Equity Method Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Capabilities: CAO-07-013, CAO-07-014  

@@ -1,4 +1,6 @@
 # TOPIC-07-004 — Intercompany Elimination / Intercompany Profit Elimination
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Primary capabilities: CAO-07-007, CAO-07-008
