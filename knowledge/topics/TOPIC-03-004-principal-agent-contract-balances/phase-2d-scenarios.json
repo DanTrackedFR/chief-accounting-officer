@@ -1,0 +1,212 @@
+{
+  "cases": [
+    {
+      "id": "PA-mixed-items-agent",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-004-IFRS-R004",
+        "TOPIC-03-004-US-R004",
+        "TOPIC-03-004-UK-R004",
+        "TOPIC-03-004-AASB-R004"
+      ],
+      "facts": {
+        "collected": 140,
+        "own_service": 40,
+        "third_party_price": 100,
+        "fee": 15,
+        "controls_third_party": false
+      },
+      "calculations": {
+        "payable": "third_party_price-fee",
+        "revenue": "own_service+fee",
+        "net_cash": "collected-payable"
+      },
+      "expected_calculations": {
+        "payable": 85,
+        "revenue": 55,
+        "net_cash": 55
+      },
+      "route": "controls_third_party",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "customer collection",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "collected"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "supplier_payable",
+              "amount": "payable"
+            }
+          ]
+        },
+        {
+          "event": "remit supplier",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "supplier_payable",
+              "amount": "payable"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "payable"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 55,
+        "revenue": -55,
+        "supplier_payable": 0
+      },
+      "workpaper_outcome": "PA-001 separates own service from specified third-party service and documents control evidence; collectibility and pricing are indicators, not determinative.",
+      "control_outcome": "Gross-net review compares supplier agreement and deliverable matrix; detect overstatement revenue85/cost85 if all140 booked gross.",
+      "data_outcome": "Split collection across item IDs; gross cash140, net revenue55 and supplier settlement85 remain separately traceable.",
+      "presentation_disclosure_outcome": "Present revenue55 with no supplier85 cost; disclose significant agent judgment and disaggregation."
+    },
+    {
+      "id": "PA-integrated-output-principal",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-004-IFRS-R003",
+        "TOPIC-03-004-US-R003",
+        "TOPIC-03-004-UK-R003",
+        "TOPIC-03-004-AASB-R003"
+      ],
+      "facts": {
+        "collected": 140,
+        "supplier_cost": 85,
+        "integration_control": true
+      },
+      "calculations": {
+        "margin": "collected-supplier_cost"
+      },
+      "expected_calculations": {
+        "margin": 55
+      },
+      "route": "integration_control",
+      "expected_route": true,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "entity controls integrated output",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "collected"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "collected"
+            },
+            {
+              "side": "Dr",
+              "account": "cost_of_sales",
+              "amount": "supplier_cost"
+            },
+            {
+              "side": "Cr",
+              "account": "supplier_payable",
+              "amount": "supplier_cost"
+            }
+          ]
+        },
+        {
+          "event": "settlement",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "supplier_payable",
+              "amount": "supplier_cost"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "supplier_cost"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 55,
+        "revenue": -140,
+        "cost_of_sales": 85,
+        "supplier_payable": 0
+      },
+      "workpaper_outcome": "Evidence proves control over integration of subcontractor input into specified output; identical cash economics does not establish agency.",
+      "control_outcome": "Review ensures opposite control facts produce gross140/cost85 rather than reusing net55 rule.",
+      "data_outcome": "Specified_output ID drives gross reporting; supplier input kept in procurement cost lineage.",
+      "presentation_disclosure_outcome": "Revenue140, cost85, margin55; note judgment separately from previous agency case."
+    },
+    {
+      "id": "PA-no-cross-contract-netting",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-004-IFRS-R008",
+        "TOPIC-03-004-US-R008",
+        "TOPIC-03-004-UK-R008",
+        "TOPIC-03-004-AASB-R008"
+      ],
+      "facts": {
+        "contract_a_asset": 80,
+        "contract_b_liability": 100,
+        "same_customer": true,
+        "combined_contract": false
+      },
+      "calculations": {
+        "present_asset": "contract_a_asset",
+        "present_liability": "contract_b_liability",
+        "wrong_net_liability": "contract_b_liability-contract_a_asset"
+      },
+      "expected_calculations": {
+        "present_asset": 80,
+        "present_liability": 100,
+        "wrong_net_liability": 20
+      },
+      "route": "same_customer and combined_contract",
+      "expected_route": false,
+      "opening_balances": {
+        "contract_asset_a": 80,
+        "contract_liability_b": -100
+      },
+      "journals": [],
+      "expected_balances": {
+        "contract_asset_a": 80,
+        "contract_liability_b": -100
+      },
+      "workpaper_outcome": "Balance workpaper tests combination criteria and fails them; two separate contracts remain despite same customer.",
+      "control_outcome": "Close control flags customer-level net20 as suppressing asset80 and liability80; ledger balances unchanged by presentation review.",
+      "data_outcome": "Group on accounting_contract_id rather than customer_id; prevent consolidation report netting unrelated contracts.",
+      "presentation_disclosure_outcome": "Present asset80 and liability100; unconditional receivables would remain separate even within a combined contract."
+    }
+  ]
+}
