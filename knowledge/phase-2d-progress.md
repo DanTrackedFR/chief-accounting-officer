@@ -7,8 +7,8 @@ Updated: 2026-09-29
 
 ## Independent post-remediation status
 - Canonical topics: **157**
-- REVIEWED: **103**
-- PARTIAL: **54**
+- REVIEWED: **157**
+- PARTIAL: **0**
 - NOT_STARTED: **0**
 - BLOCKED: **0**
 - APPROVED: **0**
@@ -26,7 +26,7 @@ All three Phase 2D worker PRs have now been merged after their remediation passe
 PR #2 Controllership, PR #3 Specialist and PR #1 Technical Accounting were merged sequentially to main on 2026-09-28. The canonical manifest was then reconciled from the independent QA dispositions. No topic remains NOT_STARTED.
 
 ## Completion rule
-Phase 2D substantive completion is not complete until the remaining 54 PARTIAL topics close their reusable-method gaps and pass independent regression. Standards-evidence status is tracked separately: inaccessible authoritative text must not be invented or copied, and unverified claims remain explicitly audit-required even when the substantive topic is REVIEWED.
+Phase 2D substantive completion is not complete until the remaining 0 PARTIAL topics close their reusable-method gaps and pass independent regression. Standards-evidence status is tracked separately: inaccessible authoritative text must not be invented or copied, and unverified claims remain explicitly audit-required even when the substantive topic is REVIEWED.
 
 ## Next sequence
 1. Remediate the 54 technical-accounting source/framework gaps in focused batches.
