@@ -1,10 +1,10 @@
 # Batch 40 — Domain 03 final substantive review
 
-Scope: TOPIC-03-001 through TOPIC-03-010. This review uses the actual branch head, including remediation committed after the stale batch-39 checkpoint. Canonical tracking files are unchanged.
+Scope: the 11-topic remediation population TOPIC-03-001 through TOPIC-03-010 plus TOPIC-03-012. This review uses the actual branch head, including remediation committed after the stale batch-39 checkpoint. Canonical tracking files are unchanged.
 
 ## Phase 2D disposition
 
-All ten topics are proposed **REVIEWED-ready for substantive content**, subject to the independent integration gate in AGENTS.md. Standards-evidence status remains claim-level and separate.
+All eleven remediation topics are proposed **REVIEWED-ready for substantive content**, subject to the independent integration gate in AGENTS.md. Standards-evidence status remains claim-level and separate.
 
 The branch now contains granular framework-specific decision methods and executable adverse cases for contract formation/modification, variable consideration and allocation, over-time/point-in-time recognition, principal-agent/licensing/contract balances, acceptance/refunds/credit deterioration, contract costs and billing completeness, returns/concessions/collection, ECL/CECL routing, write-off/recovery/cash application, and unapplied cash/customer-credit legal routes.
 
@@ -26,4 +26,4 @@ Unverified normative propositions remain in topic-local standards-claims.json wi
 
 ## Residual
 
-No substantive blocker identified in these ten topics. Independent QA may still reject a worker readiness proposal; that is an integration gate, not a worker-side substantive gap.
+TOPIC-03-012 is also closed: its disclosure-control pack covers disaggregation/contract balances, remaining-performance-obligation completeness and expedients, acquired-system population completeness, worked disclosure reconciliation, control evidence and data lineage across applicable framework/entity routes.\n\nNo substantive blocker identified in these eleven topics. Independent QA may still reject a worker readiness proposal; that is an integration gate, not a worker-side substantive gap.
