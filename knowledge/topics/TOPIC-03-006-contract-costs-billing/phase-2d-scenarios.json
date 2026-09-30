@@ -1,0 +1,393 @@
+{
+  "cases": [
+    {
+      "id": "CC-asset-amortization-impairment",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-IFRS-R002",
+        "TOPIC-03-006-US-R003",
+        "TOPIC-03-006-UK-R005",
+        "TOPIC-03-006-AASB-R002",
+        "TOPIC-03-006-IFRS-R013",
+        "TOPIC-03-006-US-R015",
+        "TOPIC-03-006-UK-R017",
+        "TOPIC-03-006-AASB-R013"
+      ],
+      "facts": {
+        "commission": 90,
+        "years": 3,
+        "consideration": 200,
+        "future_cost": 155,
+        "incremental": true,
+        "recoverable": true,
+        "uk_capitalize": true
+      },
+      "calculations": {
+        "amortization": "commission/years",
+        "before_loss": "commission-amortization",
+        "cap": "consideration-future_cost",
+        "loss": "max(0,before_loss-cap)",
+        "closing": "before_loss-loss"
+      },
+      "expected_calculations": {
+        "amortization": 30,
+        "before_loss": 60,
+        "cap": 45,
+        "loss": 15,
+        "closing": 45
+      },
+      "route": "incremental and recoverable and uk_capitalize",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "successful contract commission",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_asset",
+              "amount": "commission"
+            },
+            {
+              "side": "Cr",
+              "account": "commission_payable",
+              "amount": "commission"
+            }
+          ]
+        },
+        {
+          "event": "year-one amortization",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "amortization",
+              "amount": "amortization"
+            },
+            {
+              "side": "Cr",
+              "account": "cost_asset",
+              "amount": "amortization"
+            }
+          ]
+        },
+        {
+          "event": "recoverability shortfall",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "impairment",
+              "amount": "loss"
+            },
+            {
+              "side": "Cr",
+              "account": "cost_asset",
+              "amount": "loss"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {},
+      "expected_balances": {
+        "cost_asset": 45,
+        "commission_payable": -90,
+        "amortization": 30,
+        "impairment": 15
+      },
+      "workpaper_outcome": "CC-006 ties success-only90 to plan/payroll and supports three-year renewal benefit; approved remaining consideration200 and direct cost155 support cap45.",
+      "control_outcome": "Asset rollforward90-30-15=45 rejects salary capitalization and a revenue-offset impairment plug; UK capitalization policy must be approved.",
+      "data_outcome": "Cost ID links successful contract, payroll payable90, amortization30 and loss15; policy version gates UK asset route.",
+      "presentation_disclosure_outcome": "Closing cost asset45, amortization30 and impairment15 feed the applicable cost-asset notes; payable remains90 until settlement."
+    },
+    {
+      "id": "CC-UK-policy-False",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-UK-R005",
+        "TOPIC-03-006-UK-R006"
+      ],
+      "facts": {
+        "cost": 90,
+        "capitalize": false
+      },
+      "calculations": {
+        "asset": "cost if capitalize else 0",
+        "expense": "cost-asset"
+      },
+      "expected_calculations": {
+        "asset": 0,
+        "expense": 90
+      },
+      "route": "capitalize",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "selected UK acquisition-cost policy",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_asset",
+              "amount": "asset"
+            },
+            {
+              "side": "Dr",
+              "account": "commission_expense",
+              "amount": "expense"
+            },
+            {
+              "side": "Cr",
+              "account": "payable",
+              "amount": "cost"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {},
+      "expected_balances": {
+        "cost_asset": 0,
+        "commission_expense": 90,
+        "payable": -90
+      },
+      "workpaper_outcome": "CC-006 records FRS102 revised adoption and a consistently applied policy; neither choice is selected from desired quarterly profit.",
+      "control_outcome": "Policy approval rejects contradictory expense90 plus asset90 and produces exactly one90 debit destination.",
+      "data_outcome": "Entity/period policy selects acquisition-cost classification; commission90 remains linked to the same payable and contract.",
+      "presentation_disclosure_outcome": "Asset90 or current expense90 differs by election; disclose policy and separately assess subsequent asset amortization when capitalized."
+    },
+    {
+      "id": "CC-UK-policy-True",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-UK-R005",
+        "TOPIC-03-006-UK-R006"
+      ],
+      "facts": {
+        "cost": 90,
+        "capitalize": true
+      },
+      "calculations": {
+        "asset": "cost if capitalize else 0",
+        "expense": "cost-asset"
+      },
+      "expected_calculations": {
+        "asset": 90,
+        "expense": 0
+      },
+      "route": "capitalize",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "selected UK acquisition-cost policy",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_asset",
+              "amount": "asset"
+            },
+            {
+              "side": "Dr",
+              "account": "commission_expense",
+              "amount": "expense"
+            },
+            {
+              "side": "Cr",
+              "account": "payable",
+              "amount": "cost"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {},
+      "expected_balances": {
+        "cost_asset": 90,
+        "commission_expense": 0,
+        "payable": -90
+      },
+      "workpaper_outcome": "CC-006 records FRS102 revised adoption and a consistently applied policy; neither choice is selected from desired quarterly profit.",
+      "control_outcome": "Policy approval rejects contradictory expense90 plus asset90 and produces exactly one90 debit destination.",
+      "data_outcome": "Entity/period policy selects acquisition-cost classification; commission90 remains linked to the same payable and contract.",
+      "presentation_disclosure_outcome": "Asset90 or current expense90 differs by election; disclose policy and separately assess subsequent asset amortization when capitalized."
+    },
+    {
+      "id": "CC-reversal-US-False",
+      "frameworks": [
+        "IFRS",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-IFRS-R014",
+        "TOPIC-03-006-AASB-R014"
+      ],
+      "facts": {
+        "opening_asset": 45,
+        "new_cap": 55,
+        "no_loss_cap": 60,
+        "us": false
+      },
+      "calculations": {
+        "reversal": "0 if us else min(new_cap,no_loss_cap)-opening_asset",
+        "closing": "opening_asset+reversal"
+      },
+      "expected_calculations": {
+        "reversal": 10,
+        "closing": 55
+      },
+      "route": "not us",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "supported improvement before further amortization",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_asset",
+              "amount": "reversal"
+            },
+            {
+              "side": "Cr",
+              "account": "impairment_reversal",
+              "amount": "reversal"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "cost_asset": 45
+      },
+      "expected_balances": {
+        "cost_asset": 55,
+        "impairment_reversal": -10
+      },
+      "workpaper_outcome": "CC-006 retains improved remaining recovery55 and no-loss cap60; there has been no intervening amortization in these stated facts.",
+      "control_outcome": "Framework control rejects a10 US reversal and rejects IFRS/AASB reversal beyond the no-loss carrying amount.",
+      "data_outcome": "Prior impairment ID and new estimate version remain linked; US reversal flag stays disabled.",
+      "presentation_disclosure_outcome": "IFRS/AASB asset55 and gain10 versus US asset45 and no gain are independently reconciled."
+    },
+    {
+      "id": "CC-reversal-US-True",
+      "frameworks": [
+        "US_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-US-R016"
+      ],
+      "facts": {
+        "opening_asset": 45,
+        "new_cap": 55,
+        "no_loss_cap": 60,
+        "us": true
+      },
+      "calculations": {
+        "reversal": "0 if us else min(new_cap,no_loss_cap)-opening_asset",
+        "closing": "opening_asset+reversal"
+      },
+      "expected_calculations": {
+        "reversal": 0,
+        "closing": 45
+      },
+      "route": "not us",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "supported improvement before further amortization",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_asset",
+              "amount": "reversal"
+            },
+            {
+              "side": "Cr",
+              "account": "impairment_reversal",
+              "amount": "reversal"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "cost_asset": 45
+      },
+      "expected_balances": {
+        "cost_asset": 45,
+        "impairment_reversal": 0
+      },
+      "workpaper_outcome": "CC-006 retains improved remaining recovery55 and no-loss cap60; there has been no intervening amortization in these stated facts.",
+      "control_outcome": "Framework control rejects a10 US reversal and rejects IFRS/AASB reversal beyond the no-loss carrying amount.",
+      "data_outcome": "Prior impairment ID and new estimate version remain linked; US reversal flag stays disabled.",
+      "presentation_disclosure_outcome": "IFRS/AASB asset55 and gain10 versus US asset45 and no gain are independently reconciled."
+    },
+    {
+      "id": "CC-billing-interface-duplicate-revenue",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-006-IFRS-R001",
+        "TOPIC-03-006-US-R001",
+        "TOPIC-03-006-UK-R001",
+        "TOPIC-03-006-AASB-R001"
+      ],
+      "facts": {
+        "usage_count": 10,
+        "invoiced_usage": 9,
+        "usage_price": 12,
+        "milestones": 2,
+        "milestone_price": 40,
+        "revenue_already_recorded": true
+      },
+      "calculations": {
+        "eligible": "usage_count*usage_price+milestones*milestone_price",
+        "billed": "invoiced_usage*usage_price+milestones*milestone_price",
+        "missing": "eligible-billed",
+        "new_revenue": "0 if revenue_already_recorded else missing"
+      },
+      "expected_calculations": {
+        "eligible": 200,
+        "billed": 188,
+        "missing": 12,
+        "new_revenue": 0
+      },
+      "route": "revenue_already_recorded",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "recover invoice for previously recognized event",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "receivable",
+              "amount": "missing"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_asset",
+              "amount": "missing"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "contract_asset": 12,
+        "revenue": -12
+      },
+      "expected_balances": {
+        "receivable": 12,
+        "contract_asset": 0,
+        "revenue": -12
+      },
+      "workpaper_outcome": "Billing workpaper independently matches10 approved usage events and2 milestones to invoices; the missing12 already exists in revenue/contract asset.",
+      "control_outcome": "Control detects200-188=12 missing billing and rejects second revenue credit12 during invoice recovery.",
+      "data_outcome": "Recovered invoice references original performance event and contract-asset ID; replayed event is idempotent.",
+      "presentation_disclosure_outcome": "AR12 replaces conditional asset12 without changing revenue12; billing defect is reported as a control exception."
+    }
+  ]
+}
