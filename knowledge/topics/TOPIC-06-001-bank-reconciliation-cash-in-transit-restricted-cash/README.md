@@ -1,4 +1,6 @@
 # TOPIC-06-001 — Bank Reconciliation / Cash-in-Transit / Restricted Cash
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Capabilities: `CAO-06-001`, `CAO-06-002`, `CAO-06-003`  

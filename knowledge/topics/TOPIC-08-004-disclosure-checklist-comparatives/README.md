@@ -1,4 +1,6 @@
 # TOPIC-08-004 — Disclosure Checklist Management / Comparative Financial Information
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: CAO-08-007, CAO-08-008  

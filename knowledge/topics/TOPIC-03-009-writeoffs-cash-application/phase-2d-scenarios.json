@@ -1,0 +1,276 @@
+{
+  "cases": [
+    {
+      "id": "WO-recovery-framework-False",
+      "frameworks": [
+        "IFRS",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-009-IFRS-R005",
+        "TOPIC-03-009-IFRS-R007",
+        "TOPIC-03-009-AASB-R005",
+        "TOPIC-03-009-AASB-R007"
+      ],
+      "facts": {
+        "writeoff": 80,
+        "opening_allowance": 70,
+        "recovery": 15,
+        "closing_required": 25,
+        "us": false
+      },
+      "calculations": {
+        "topup": "writeoff-opening_allowance",
+        "additional": "closing_required-recovery if us else closing_required"
+      },
+      "expected_calculations": {
+        "topup": 10,
+        "additional": 25
+      },
+      "route": "us",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "allowance sufficient for partial writeoff",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "topup"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "topup"
+            }
+          ]
+        },
+        {
+          "event": "write off identified exposure",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "allowance",
+              "amount": "writeoff"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "writeoff"
+            }
+          ]
+        },
+        {
+          "event": "actual recovery",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "recovery"
+            },
+            {
+              "side": "Cr",
+              "account": "credit_loss",
+              "amount": "recovery"
+            }
+          ]
+        },
+        {
+          "event": "independent remaining portfolio loss",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "additional"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "additional"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 280,
+        "allowance": -70
+      },
+      "expected_balances": {
+        "receivable": 200,
+        "allowance": -25,
+        "cash": 15,
+        "credit_loss": 20
+      },
+      "workpaper_outcome": "WO-009 proves invoice80 uncollectible, retains collection rights and later remittance15, with independently measured loss25 on remaining200.",
+      "control_outcome": "Framework-specific recovery15 appears once; net asset190 versus opening210 reconciles to loss20 in both branches.",
+      "data_outcome": "Written-off exposure ID survives in recovery register; allowance rollforward distinguishes writeoff80, cash15 and closing25.",
+      "presentation_disclosure_outcome": "GrossAR200/allowance25/cash15 and credit-loss result20 reconcile, while gross recovery display follows applicable regime."
+    },
+    {
+      "id": "WO-recovery-framework-True",
+      "frameworks": [
+        "US_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-009-US-R005",
+        "TOPIC-03-009-US-R008"
+      ],
+      "facts": {
+        "writeoff": 80,
+        "opening_allowance": 70,
+        "recovery": 15,
+        "closing_required": 25,
+        "us": true
+      },
+      "calculations": {
+        "topup": "writeoff-opening_allowance",
+        "additional": "closing_required-recovery if us else closing_required"
+      },
+      "expected_calculations": {
+        "topup": 10,
+        "additional": 10
+      },
+      "route": "us",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "allowance sufficient for partial writeoff",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "topup"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "topup"
+            }
+          ]
+        },
+        {
+          "event": "write off identified exposure",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "allowance",
+              "amount": "writeoff"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "writeoff"
+            }
+          ]
+        },
+        {
+          "event": "actual recovery",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "recovery"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "recovery"
+            }
+          ]
+        },
+        {
+          "event": "independent remaining portfolio loss",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "additional"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "additional"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 280,
+        "allowance": -70
+      },
+      "expected_balances": {
+        "receivable": 200,
+        "allowance": -25,
+        "cash": 15,
+        "credit_loss": 20
+      },
+      "workpaper_outcome": "WO-009 proves invoice80 uncollectible, retains collection rights and later remittance15, with independently measured loss25 on remaining200.",
+      "control_outcome": "Framework-specific recovery15 appears once; net asset190 versus opening210 reconciles to loss20 in both branches.",
+      "data_outcome": "Written-off exposure ID survives in recovery register; allowance rollforward distinguishes writeoff80, cash15 and closing25.",
+      "presentation_disclosure_outcome": "GrossAR200/allowance25/cash15 and credit-loss result20 reconcile, while gross recovery display follows applicable regime."
+    },
+    {
+      "id": "WO-bank-fee-not-customer-default",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-009-IFRS-R010",
+        "TOPIC-03-009-US-R010",
+        "TOPIC-03-009-UK-R010",
+        "TOPIC-03-009-AASB-R010"
+      ],
+      "facts": {
+        "settlement": 60,
+        "fee": 2
+      },
+      "calculations": {
+        "net_cash": "settlement-fee"
+      },
+      "expected_calculations": {
+        "net_cash": 58
+      },
+      "route": "fee>0",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "gross customer settlement with bank deduction",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "net_cash"
+            },
+            {
+              "side": "Dr",
+              "account": "bank_fee",
+              "amount": "fee"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "settlement"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 60,
+        "revenue": -60
+      },
+      "expected_balances": {
+        "receivable": 0,
+        "cash": 58,
+        "bank_fee": 2,
+        "revenue": -60
+      },
+      "workpaper_outcome": "WO-009 ties bank statement58 to customer remittance60 and bank fee2; customer debt is fully settled.",
+      "control_outcome": "Cash-application control rejects a fictitious2 overdue receivable,2 bad-debt expense or2 revenue concession.",
+      "data_outcome": "Gross settlement and fee are separate bank transaction components with original invoice linkage.",
+      "presentation_disclosure_outcome": "AR0, cash58, bank expense2 and unchanged revenue60; fee follows expense presentation, not bad debt."
+    }
+  ]
+}

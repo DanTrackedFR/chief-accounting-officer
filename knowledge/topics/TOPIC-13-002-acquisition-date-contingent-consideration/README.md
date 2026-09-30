@@ -1,4 +1,6 @@
 # TOPIC-13-002 — Acquisition-Date Accounting / Contingent Consideration Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Source check: 2026-09-24

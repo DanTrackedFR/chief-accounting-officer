@@ -1,4 +1,6 @@
 # TOPIC-03-006 — Contract Costs / Sales Commissions and Billing Completeness
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / US SOURCE-DEPTH PARTIAL
 Capabilities: CAO-03-012, CAO-03-013

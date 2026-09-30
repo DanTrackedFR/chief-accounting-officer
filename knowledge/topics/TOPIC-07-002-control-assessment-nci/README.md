@@ -1,4 +1,6 @@
 # TOPIC-07-002 — Control Assessment / Non-Controlling Interest Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / production-candidate
 Primary capabilities: CAO-07-003, CAO-07-004

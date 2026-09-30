@@ -1,4 +1,6 @@
 # TOPIC-13-005 — Asset Acquisition Accounting / Restructuring Accounting
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / production-candidate
 Primary capabilities: CAO-13-009, CAO-13-010

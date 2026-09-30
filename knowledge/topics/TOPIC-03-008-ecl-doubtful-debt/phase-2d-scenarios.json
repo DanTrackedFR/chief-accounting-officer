@@ -1,0 +1,322 @@
+{
+  "cases": [
+    {
+      "id": "ECL-UK-policy-False",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-008-UK-R014",
+        "TOPIC-03-008-UK-R015",
+        "TOPIC-03-008-UK-R018"
+      ],
+      "facts": {
+        "current": 1000,
+        "late": 500,
+        "very_late": 100,
+        "rate_current": 0.01,
+        "rate_late": 0.05,
+        "rate_very_late": 0.145,
+        "individual_loss": 30,
+        "opening_allowance": 20,
+        "uk_ifrs9": false,
+        "objective_evidence": true
+      },
+      "calculations": {
+        "matrix": "current*rate_current+late*rate_late+very_late*rate_very_late",
+        "required": "matrix if uk_ifrs9 else individual_loss",
+        "charge": "required-opening_allowance",
+        "gross": "current+late+very_late",
+        "net": "gross-required"
+      },
+      "expected_calculations": {
+        "matrix": 49.5,
+        "required": 30,
+        "charge": 10,
+        "gross": 1600,
+        "net": 1570
+      },
+      "route": "uk_ifrs9",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "selected loss model",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "charge"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "charge"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 1600,
+        "allowance": -20
+      },
+      "expected_balances": {
+        "receivable": 1600,
+        "allowance": -30,
+        "credit_loss": 10
+      },
+      "workpaper_outcome": "ECL-008 validates invoice population1600, lifetime rate/cohort support and individual objective evidence30; approved UK measurement policy selects method.",
+      "control_outcome": "Control prevents a forecast-only49.5 matrix being imposed on Sections11/12 and ensures the same exposure is not pooled and individual twice.",
+      "data_outcome": "UK policy version, evidence flag and model output persist; loss journal never changes revenue.",
+      "presentation_disclosure_outcome": "Closing net1550.5 or1570 follows independently selected policy; Sections11/12 disclosures remain applicable to the IFRS9 measurement election."
+    },
+    {
+      "id": "ECL-UK-policy-True",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-008-UK-R014",
+        "TOPIC-03-008-UK-R015",
+        "TOPIC-03-008-UK-R018"
+      ],
+      "facts": {
+        "current": 1000,
+        "late": 500,
+        "very_late": 100,
+        "rate_current": 0.01,
+        "rate_late": 0.05,
+        "rate_very_late": 0.145,
+        "individual_loss": 30,
+        "opening_allowance": 20,
+        "uk_ifrs9": true,
+        "objective_evidence": true
+      },
+      "calculations": {
+        "matrix": "current*rate_current+late*rate_late+very_late*rate_very_late",
+        "required": "matrix if uk_ifrs9 else individual_loss",
+        "charge": "required-opening_allowance",
+        "gross": "current+late+very_late",
+        "net": "gross-required"
+      },
+      "expected_calculations": {
+        "matrix": 49.5,
+        "required": 49.5,
+        "charge": 29.5,
+        "gross": 1600,
+        "net": 1550.5
+      },
+      "route": "uk_ifrs9",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "selected loss model",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "charge"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "charge"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 1600,
+        "allowance": -20
+      },
+      "expected_balances": {
+        "receivable": 1600,
+        "allowance": -49.5,
+        "credit_loss": 29.5
+      },
+      "workpaper_outcome": "ECL-008 validates invoice population1600, lifetime rate/cohort support and individual objective evidence30; approved UK measurement policy selects method.",
+      "control_outcome": "Control prevents a forecast-only49.5 matrix being imposed on Sections11/12 and ensures the same exposure is not pooled and individual twice.",
+      "data_outcome": "UK policy version, evidence flag and model output persist; loss journal never changes revenue.",
+      "presentation_disclosure_outcome": "Closing net1550.5 or1570 follows independently selected policy; Sections11/12 disclosures remain applicable to the IFRS9 measurement election."
+    },
+    {
+      "id": "ECL-pool-individual-overlap",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-008-IFRS-R006",
+        "TOPIC-03-008-US-R011",
+        "TOPIC-03-008-AASB-R006"
+      ],
+      "facts": {
+        "gross": 1000,
+        "individual_exposure": 100,
+        "pool_rate": 0.02,
+        "individual_loss": 30
+      },
+      "calculations": {
+        "pool": "gross-individual_exposure",
+        "collective": "pool*pool_rate",
+        "required": "collective+individual_loss",
+        "wrong": "gross*pool_rate+individual_loss",
+        "overstatement": "wrong-required"
+      },
+      "expected_calculations": {
+        "pool": 900,
+        "collective": 18,
+        "required": 48,
+        "wrong": 50,
+        "overstatement": 2
+      },
+      "route": "individual_exposure>0",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "nonoverlapping loss assessment",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "required"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "required"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 1000
+      },
+      "expected_balances": {
+        "receivable": 1000,
+        "allowance": -48,
+        "credit_loss": 48
+      },
+      "workpaper_outcome": "ECL-008 identifies the individual100 before pool construction; collective lifetime2% is independently supported under each selected loss framework.",
+      "control_outcome": "Overlap control detects the wrong50 calculation overstates losses2; pooled plus individual exposure must equal gross1000.",
+      "data_outcome": "Exposure ID100 is removed from pool membership and retained in individual assessment; membership versions are auditable.",
+      "presentation_disclosure_outcome": "Allowance48/net952 with method and concentration notes; US lifetime support is documented separately from IFRS stage terminology."
+    },
+    {
+      "id": "ECL-US-subsequent-cash-eligibility-False",
+      "frameworks": [
+        "US_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-008-US-R012",
+        "TOPIC-03-008-US-R013"
+      ],
+      "facts": {
+        "exposure": 100,
+        "subsequent_collection": 60,
+        "remaining_rate": 0.1,
+        "non_pbe": false,
+        "current_606": true,
+        "expedient_adopted": true
+      },
+      "calculations": {
+        "eligible": "non_pbe and current_606 and expedient_adopted",
+        "basis": "exposure-subsequent_collection if eligible else exposure",
+        "required": "basis*remaining_rate"
+      },
+      "expected_calculations": {
+        "basis": 100,
+        "required": 10
+      },
+      "route": "non_pbe and current_606 and expedient_adopted",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "independently selected current-balance estimate",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "required"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "required"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 100
+      },
+      "expected_balances": {
+        "receivable": 100,
+        "allowance": -10,
+        "credit_loss": 10
+      },
+      "workpaper_outcome": "ECL-008 records 2026 effective adoption, current606 scope and collection60 before statements available for issuance; remaining10% is supported, not an automatic zero loss.",
+      "control_outcome": "Election gate rejects additional subsequent-cash relief for a PBE and rejects it without the underlying current-conditions expedient.",
+      "data_outcome": "Subsequent-cash evidence date and entity status enter election engine; reporting-date gross100 is not reduced by later cash in this estimate journal.",
+      "presentation_disclosure_outcome": "Non-PBE allowance4 versus independently supported PBE10 illustrate eligibility rather than mandatory identical forecasts; note elected methodology."
+    },
+    {
+      "id": "ECL-US-subsequent-cash-eligibility-True",
+      "frameworks": [
+        "US_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-008-US-R012",
+        "TOPIC-03-008-US-R013"
+      ],
+      "facts": {
+        "exposure": 100,
+        "subsequent_collection": 60,
+        "remaining_rate": 0.1,
+        "non_pbe": true,
+        "current_606": true,
+        "expedient_adopted": true
+      },
+      "calculations": {
+        "eligible": "non_pbe and current_606 and expedient_adopted",
+        "basis": "exposure-subsequent_collection if eligible else exposure",
+        "required": "basis*remaining_rate"
+      },
+      "expected_calculations": {
+        "basis": 40,
+        "required": 4
+      },
+      "route": "non_pbe and current_606 and expedient_adopted",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "independently selected current-balance estimate",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": "required"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "required"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 100
+      },
+      "expected_balances": {
+        "receivable": 100,
+        "allowance": -4,
+        "credit_loss": 4
+      },
+      "workpaper_outcome": "ECL-008 records 2026 effective adoption, current606 scope and collection60 before statements available for issuance; remaining10% is supported, not an automatic zero loss.",
+      "control_outcome": "Election gate rejects additional subsequent-cash relief for a PBE and rejects it without the underlying current-conditions expedient.",
+      "data_outcome": "Subsequent-cash evidence date and entity status enter election engine; reporting-date gross100 is not reduced by later cash in this estimate journal.",
+      "presentation_disclosure_outcome": "Non-PBE allowance4 versus independently supported PBE10 illustrate eligibility rather than mandatory identical forecasts; note elected methodology."
+    }
+  ]
+}

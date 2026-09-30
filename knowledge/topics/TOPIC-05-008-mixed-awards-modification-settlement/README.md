@@ -1,4 +1,6 @@
 # TOPIC-05-008 — Cash-and-Equity Mixed Awards / Modification, Cancellation & Settlement of Awards
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: CAO-05-015, CAO-05-016  

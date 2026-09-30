@@ -1,4 +1,6 @@
 # TOPIC-13-001 — Business Combination Accounting / Purchase Price Allocation Coordination
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: CAO-13-001, CAO-13-002  

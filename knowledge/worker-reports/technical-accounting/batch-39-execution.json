@@ -1,0 +1,904 @@
+{
+  "as_of": "2026-09-29",
+  "scope": "03-001\u2013005",
+  "executed_case_count": 27,
+  "results": [
+    {
+      "topic_id": "TOPIC-03-001",
+      "topic_path": "/workspace/scratch/c7d431dd62ea/repo_current/knowledge/topics/TOPIC-03-001-revenue-contract-assessment",
+      "executed_cases": [
+        {
+          "case_id": "RC-failed-collectibility",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "deposit": 100,
+            "collectible": false,
+            "terminated": false,
+            "revenue": 0,
+            "liability": 100
+          },
+          "ledger": {
+            "cash": 100,
+            "deposit_liability": -100
+          },
+          "framework_routes": {},
+          "control_checks": {
+            "release_authorized": false,
+            "cash_receipt_does_not_create_revenue": true
+          }
+        },
+        {
+          "case_id": "RC-material-right",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "cash": 180,
+            "equipment_ssp": 100,
+            "service_ssp": 80,
+            "option_ssp": 20,
+            "incremental": true,
+            "total_ssp": 200,
+            "equipment": 90.0,
+            "service": 72.0,
+            "option": 18.0
+          },
+          "ledger": {
+            "cash": 180,
+            "revenue": -90.0,
+            "service_liability": -72.0,
+            "option_liability": -18.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-option-not-incremental",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "cash": 180,
+            "equipment_ssp": 100,
+            "service_ssp": 80,
+            "incremental": false,
+            "equipment": 100.0,
+            "service": 80.0
+          },
+          "ledger": {
+            "cash": 180,
+            "revenue": -100.0,
+            "service_liability": -80.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-Australian-NFP-scope",
+          "result": "PASS",
+          "frameworks": [
+            "AASB"
+          ],
+          "calculations": {
+            "funds": 500,
+            "enforceable": true,
+            "specific": false,
+            "own_asset_construction": false,
+            "income": 500
+          },
+          "ledger": {
+            "cash": 500,
+            "contribution_income": -500
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-UK-cumulative-transition",
+          "result": "PASS",
+          "frameworks": [
+            "UK_GAAP"
+          ],
+          "calculations": {
+            "prior_liability": 100,
+            "new_liability": 130,
+            "uncompleted": true,
+            "cumulative": true,
+            "adjustment": 30
+          },
+          "ledger": {
+            "contract_liability": -130,
+            "opening_retained_earnings": 30
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-UK-advance-financing-True",
+          "result": "PASS",
+          "frameworks": [
+            "UK_GAAP"
+          ],
+          "calculations": {
+            "advance": 1000,
+            "rate": 0.1,
+            "elected": true,
+            "year1": 100.0,
+            "year2": 110.0,
+            "transfer": 1210.0
+          },
+          "ledger": {
+            "cash": 1000,
+            "contract_liability": 0.0,
+            "interest_expense": 210.0,
+            "revenue": -1210.0
+          },
+          "framework_routes": {
+            "UK_GAAP": 1210.0
+          },
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-UK-advance-financing-False",
+          "result": "PASS",
+          "frameworks": [
+            "UK_GAAP"
+          ],
+          "calculations": {
+            "advance": 1000,
+            "rate": 0.1,
+            "elected": false,
+            "year1": 0,
+            "year2": 0,
+            "transfer": 1000
+          },
+          "ledger": {
+            "cash": 1000,
+            "contract_liability": 0,
+            "interest_expense": 0,
+            "revenue": -1000
+          },
+          "framework_routes": {
+            "UK_GAAP": 1000
+          },
+          "control_checks": {}
+        },
+        {
+          "case_id": "RC-US-shipping-election-False",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "price": 120,
+            "product_ssp": 100,
+            "shipping_ssp": 20,
+            "shipping_cost": 8,
+            "elected": false,
+            "product_transferred": true,
+            "shipping_transferred": false,
+            "revenue": 100.0,
+            "liability": 20.0,
+            "accrual": 0
+          },
+          "ledger": {
+            "receivable": 120,
+            "revenue": -100.0,
+            "shipping_liability": -20.0,
+            "shipping_expense": 0,
+            "shipping_payable": 0
+          },
+          "framework_routes": {},
+          "control_checks": {
+            "unperformed_shipping_released_without_election": false
+          }
+        },
+        {
+          "case_id": "RC-US-shipping-election-True",
+          "result": "PASS",
+          "frameworks": [
+            "US_GAAP"
+          ],
+          "calculations": {
+            "price": 120,
+            "product_ssp": 100,
+            "shipping_ssp": 20,
+            "shipping_cost": 8,
+            "elected": true,
+            "product_transferred": true,
+            "shipping_transferred": false,
+            "revenue": 120,
+            "liability": 0,
+            "accrual": 8
+          },
+          "ledger": {
+            "receivable": 120,
+            "revenue": -120,
+            "shipping_liability": 0,
+            "shipping_expense": 8,
+            "shipping_payable": -8
+          },
+          "framework_routes": {},
+          "control_checks": {
+            "unperformed_shipping_released_without_election": false
+          }
+        }
+      ]
+    },
+    {
+      "topic_id": "TOPIC-03-002",
+      "topic_path": "/workspace/scratch/c7d431dd62ea/repo_current/knowledge/topics/TOPIC-03-002-variable-consideration-allocation",
+      "executed_cases": [
+        {
+          "case_id": "VC-specific-bonus",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "base": 1000,
+            "bonus": 200,
+            "ssp_a": 600,
+            "ssp_b": 400,
+            "specific_supported": true,
+            "a": 600.0,
+            "b": 600.0,
+            "general_a": 720.0
+          },
+          "ledger": {
+            "contract_asset": 600.0,
+            "revenue": -600.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "VC-unspecified-bonus",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "base": 1000,
+            "bonus": 200,
+            "ssp_a": 600,
+            "ssp_b": 400,
+            "specific_supported": false,
+            "a": 720.0,
+            "b": 480.0
+          },
+          "ledger": {
+            "contract_asset": 720.0,
+            "revenue": -720.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "VC-constraint-catch-down",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "original_fixed": 1000,
+            "recognized_bonus": 160,
+            "surviving_bonus": 40,
+            "satisfied_fraction": 0.5,
+            "old_revenue": 580.0,
+            "new_revenue": 520.0,
+            "reversal": 60.0
+          },
+          "ledger": {
+            "contract_asset": 520.0,
+            "revenue": -520.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        }
+      ]
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "topic_path": "/workspace/scratch/c7d431dd62ea/repo_current/knowledge/topics/TOPIC-03-003-revenue-timing-modifications",
+      "executed_cases": [
+        {
+          "case_id": "RT-no-enforceable-profit-right",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "price": 1000,
+            "cost": 300,
+            "total_cost": 600,
+            "alternative_use": false,
+            "termination_payment": 100,
+            "required_compensation": 550,
+            "customer_controls": false,
+            "simultaneous_benefit": false,
+            "potential_progress": 0.5,
+            "revenue": 0
+          },
+          "ledger": {
+            "inventory_wip": 300,
+            "cash": -300
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RT-enforceable-profit-right",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "price": 1000,
+            "cost": 300,
+            "total_cost": 600,
+            "alternative_use": false,
+            "right_cost_profit": true,
+            "progress": 0.5,
+            "revenue": 500.0
+          },
+          "ledger": {
+            "contract_asset": 500.0,
+            "revenue": -500.0,
+            "cost_of_sales": 300,
+            "cash": -300
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RT-integrated-modification-catchdown",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "old_revenue": 600,
+            "new_price": 1400,
+            "cost_to_date": 400,
+            "new_total_cost": 1000,
+            "remaining_distinct": false,
+            "new_cumulative": 560.0,
+            "reversal": 40.0
+          },
+          "ledger": {
+            "revenue": -560.0,
+            "contract_asset": 560.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "RT-licence-access-False",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "price": 120,
+            "months": 12,
+            "access": false,
+            "usable": true,
+            "ongoing_activities_significant": false,
+            "customer_exposed": false,
+            "separate_activity_transfer": false,
+            "symbolic": false,
+            "function_changed": false,
+            "required_updated_use": false,
+            "uk_standready": false,
+            "revenue": 120,
+            "liability": 0
+          },
+          "ledger": {
+            "cash": 120,
+            "contract_liability": 0,
+            "revenue": -120
+          },
+          "framework_routes": {
+            "IFRS": false,
+            "AASB": false,
+            "US_GAAP": false,
+            "UK_GAAP": false
+          },
+          "control_checks": {
+            "licence_activation": true,
+            "premature_full_release_detected": false
+          }
+        },
+        {
+          "case_id": "RT-licence-access-True",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "price": 120,
+            "months": 12,
+            "access": true,
+            "usable": true,
+            "ongoing_activities_significant": true,
+            "customer_exposed": true,
+            "separate_activity_transfer": false,
+            "symbolic": true,
+            "function_changed": false,
+            "required_updated_use": false,
+            "uk_standready": true,
+            "revenue": 10.0,
+            "liability": 110.0
+          },
+          "ledger": {
+            "cash": 120,
+            "contract_liability": -110.0,
+            "revenue": -10.0
+          },
+          "framework_routes": {
+            "IFRS": true,
+            "AASB": true,
+            "US_GAAP": true,
+            "UK_GAAP": true
+          },
+          "control_checks": {
+            "licence_activation": true,
+            "premature_full_release_detected": false
+          }
+        }
+      ]
+    },
+    {
+      "topic_id": "TOPIC-03-004",
+      "topic_path": "/workspace/scratch/c7d431dd62ea/repo_current/knowledge/topics/TOPIC-03-004-principal-agent-contract-balances",
+      "executed_cases": [
+        {
+          "case_id": "PA-mixed-items-agent",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "collected": 140,
+            "own_service": 40,
+            "third_party_price": 100,
+            "fee": 15,
+            "controls_third_party": false,
+            "payable": 85,
+            "revenue": 55,
+            "net_cash": 55
+          },
+          "ledger": {
+            "cash": 55,
+            "revenue": -55,
+            "supplier_payable": 0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "PA-integrated-output-principal",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "collected": 140,
+            "supplier_cost": 85,
+            "integration_control": true,
+            "margin": 55
+          },
+          "ledger": {
+            "cash": 55,
+            "revenue": -140,
+            "cost_of_sales": 85,
+            "supplier_payable": 0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "PA-no-cross-contract-netting",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "contract_a_asset": 80,
+            "contract_b_liability": 100,
+            "same_customer": true,
+            "combined_contract": false,
+            "present_asset": 80,
+            "present_liability": 100,
+            "wrong_net_liability": 20
+          },
+          "ledger": {
+            "contract_asset_a": 80,
+            "contract_liability_b": -100
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        }
+      ]
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "topic_path": "/workspace/scratch/c7d431dd62ea/repo_current/knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue",
+      "executed_cases": [
+        {
+          "case_id": "DB-refund-and-revised-release",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "receipt": 1200,
+            "months": 12,
+            "refund": 300,
+            "remaining_months": 6,
+            "first_release": 100.0,
+            "after_refund": 800.0,
+            "next_release": 133.33333333333334
+          },
+          "ledger": {
+            "cash": 900,
+            "contract_liability": -800.0,
+            "revenue": -100.0,
+            "refund_liability": 0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-conditional-to-unconditional",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "earned": 240,
+            "transfer_proven": true,
+            "milestone_signed": true,
+            "reclassification": 240
+          },
+          "ledger": {
+            "contract_asset": 0,
+            "revenue": -240,
+            "receivable": 240
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-substantive-acceptance-fails",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "proposed_revenue": 240,
+            "acceptance_substantive": true,
+            "accepted": false,
+            "revenue": 0
+          },
+          "ledger": {},
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-concession-versus-credit-False",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "gross": 240,
+            "loss": 12,
+            "commercial_concession": false,
+            "objective_evidence": true,
+            "net": 228
+          },
+          "ledger": {
+            "receivable": 240,
+            "revenue": -240,
+            "credit_loss_expense": 12,
+            "allowance": -12
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-concession-versus-credit-True",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "gross": 240,
+            "loss": 12,
+            "commercial_concession": true,
+            "objective_evidence": true,
+            "net": 228
+          },
+          "ledger": {
+            "receivable": 228,
+            "revenue": -228
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-FX-refundable-False",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "foreign": 100,
+            "initial_rate": 1.2,
+            "closing_rate": 1.3,
+            "refundable": false,
+            "initial": 120.0,
+            "closing": 120.0,
+            "loss": 0.0
+          },
+          "ledger": {
+            "cash": 120,
+            "advance_liability": -120.0,
+            "fx_loss": 0.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        },
+        {
+          "case_id": "DB-FX-refundable-True",
+          "result": "PASS",
+          "frameworks": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ],
+          "calculations": {
+            "foreign": 100,
+            "initial_rate": 1.2,
+            "closing_rate": 1.3,
+            "refundable": true,
+            "initial": 120.0,
+            "closing": 130.0,
+            "loss": 10.0
+          },
+          "ledger": {
+            "cash": 120,
+            "advance_liability": -130.0,
+            "fx_loss": 10.0
+          },
+          "framework_routes": {},
+          "control_checks": {}
+        }
+      ]
+    }
+  ],
+  "fault_injections": [
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-failed-collectibility",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-material-right",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-option-not-incremental",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-Australian-NFP-scope",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-UK-cumulative-transition",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-UK-advance-financing-True",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-UK-advance-financing-False",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-US-shipping-election-False",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-001",
+      "case_id": "RC-US-shipping-election-True",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-002",
+      "case_id": "VC-specific-bonus",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-002",
+      "case_id": "VC-unspecified-bonus",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-002",
+      "case_id": "VC-constraint-catch-down",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "case_id": "RT-no-enforceable-profit-right",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "case_id": "RT-enforceable-profit-right",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "case_id": "RT-integrated-modification-catchdown",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "case_id": "RT-licence-access-False",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-003",
+      "case_id": "RT-licence-access-True",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-004",
+      "case_id": "PA-mixed-items-agent",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-004",
+      "case_id": "PA-integrated-output-principal",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-refund-and-revised-release",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-conditional-to-unconditional",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-concession-versus-credit-False",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-concession-versus-credit-True",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-FX-refundable-False",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    },
+    {
+      "topic_id": "TOPIC-03-005",
+      "case_id": "DB-FX-refundable-True",
+      "injection": "Unbalanced first journal debit increased1",
+      "result": "DETECTED"
+    }
+  ],
+  "limitation": "Execution checks arithmetic, ledger, supplied accounting predicates and selected cross-framework rules; it does not establish authoritative-source accuracy or complete normative linkage."
+}

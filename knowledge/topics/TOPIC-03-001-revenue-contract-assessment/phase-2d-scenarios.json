@@ -1,0 +1,662 @@
+{
+  "cases": [
+    {
+      "id": "RC-failed-collectibility",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-IFRS-R005",
+        "TOPIC-03-001-US-R005",
+        "TOPIC-03-001-UK-R005",
+        "TOPIC-03-001-AASB-R005"
+      ],
+      "facts": {
+        "deposit": 100,
+        "collectible": false,
+        "terminated": false
+      },
+      "calculations": {
+        "revenue": "0",
+        "liability": "deposit"
+      },
+      "expected_calculations": {
+        "revenue": 0,
+        "liability": 100
+      },
+      "route": "collectible or terminated",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "receive deposit",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "deposit"
+            },
+            {
+              "side": "Cr",
+              "account": "deposit_liability",
+              "amount": "deposit"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 100,
+        "deposit_liability": -100
+      },
+      "workpaper_outcome": "RC-001 attaches insolvency notice and legal termination evidence; failed gate persists at close. No fulfilled-obligation posting is approved.",
+      "control_outcome": "Credit-review exception prevents delivery-triggered revenue; cash-to-liability reconciliation identifies an attempted cash/revenue posting of 100.",
+      "data_outcome": "Store contract_gate=false, deposit_id and next reassessment; revenue engine rejects this contract until an approved gate version replaces it.",
+      "presentation_disclosure_outcome": "Show deposit liability, not customer revenue; document judgment. The termination branch requires its own legal conditions, not a cash-only rule.",
+      "control_checks": {
+        "release_authorized": {
+          "expression": "collectible or terminated",
+          "expected": false
+        },
+        "cash_receipt_does_not_create_revenue": {
+          "expression": "revenue==0 and liability==deposit",
+          "expected": true
+        }
+      }
+    },
+    {
+      "id": "RC-material-right",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-IFRS-R010",
+        "TOPIC-03-001-US-R010",
+        "TOPIC-03-001-UK-R010",
+        "TOPIC-03-001-AASB-R010"
+      ],
+      "facts": {
+        "cash": 180,
+        "equipment_ssp": 100,
+        "service_ssp": 80,
+        "option_ssp": 20,
+        "incremental": true
+      },
+      "calculations": {
+        "total_ssp": "equipment_ssp+service_ssp+option_ssp",
+        "equipment": "cash*equipment_ssp/total_ssp",
+        "service": "cash*service_ssp/total_ssp",
+        "option": "cash*option_ssp/total_ssp"
+      },
+      "expected_calculations": {
+        "equipment": 90,
+        "service": 72,
+        "option": 18
+      },
+      "route": "incremental",
+      "expected_route": true,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "equipment delivered; services and option outstanding",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "cash"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "equipment"
+            },
+            {
+              "side": "Cr",
+              "account": "service_liability",
+              "amount": "service"
+            },
+            {
+              "side": "Cr",
+              "account": "option_liability",
+              "amount": "option"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 180,
+        "revenue": -90,
+        "service_liability": -72,
+        "option_liability": -18
+      },
+      "workpaper_outcome": "RC-001 retains separately supportable SSP and exercise probability behind option SSP; delivery evidence supports only the equipment transfer.",
+      "control_outcome": "Review identifies omitted option by comparing approved promotions to obligation master; allocation sum equals 180.",
+      "data_outcome": "Create three obligation IDs and option exercise/expiry event; do not release the 18 on equipment shipping.",
+      "presentation_disclosure_outcome": "Disaggregate equipment versus service revenue; remaining rights remain contract liabilities and enter obligation-term note."
+    },
+    {
+      "id": "RC-option-not-incremental",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-IFRS-R010",
+        "TOPIC-03-001-US-R010",
+        "TOPIC-03-001-UK-R010",
+        "TOPIC-03-001-AASB-R010"
+      ],
+      "facts": {
+        "cash": 180,
+        "equipment_ssp": 100,
+        "service_ssp": 80,
+        "incremental": false
+      },
+      "calculations": {
+        "equipment": "cash*equipment_ssp/(equipment_ssp+service_ssp)",
+        "service": "cash-equipment"
+      },
+      "expected_calculations": {
+        "equipment": 100,
+        "service": 80
+      },
+      "route": "incremental",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "ordinary public promotion is not a material right",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "cash"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "equipment"
+            },
+            {
+              "side": "Cr",
+              "account": "service_liability",
+              "amount": "service"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 180,
+        "revenue": -100,
+        "service_liability": -80
+      },
+      "workpaper_outcome": "Archive the public price list showing identical access without the contract; opposite conclusion changes delivered revenue by 10.",
+      "control_outcome": "Reviewer challenges customer-only label against public promotion evidence; same numbers alone cannot select the route.",
+      "data_outcome": "No option obligation is activated; preserve rejected option assessment for later pricing changes.",
+      "presentation_disclosure_outcome": "No separate option liability or remaining-option disclosure; service liability remains 80."
+    },
+    {
+      "id": "RC-Australian-NFP-scope",
+      "frameworks": [
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-AASB-R022",
+        "TOPIC-03-001-AASB-R023"
+      ],
+      "facts": {
+        "funds": 500,
+        "enforceable": true,
+        "specific": false,
+        "own_asset_construction": false
+      },
+      "calculations": {
+        "income": "funds if not specific and not own_asset_construction else 0"
+      },
+      "expected_calculations": {
+        "income": 500
+      },
+      "route": "enforceable and specific",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "unrestricted-output funding, no other liability",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "funds"
+            },
+            {
+              "side": "Cr",
+              "account": "contribution_income",
+              "amount": "income"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 500,
+        "contribution_income": -500
+      },
+      "workpaper_outcome": "Grant wording only says support operations; grantor cannot enforce specific output; separately certify no repayment, lease or capital-construction obligation.",
+      "control_outcome": "Grant intake prevents a budget restriction being misclassified as a customer performance obligation.",
+      "data_outcome": "Set standard_route=1058 and retain agreement specificity assessment; exclude from 15 obligation backlog.",
+      "presentation_disclosure_outcome": "Separate contribution income from customer revenue; disclose significant agreement-scope judgment when material."
+    },
+    {
+      "id": "RC-UK-cumulative-transition",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-UK-R018"
+      ],
+      "facts": {
+        "prior_liability": 100,
+        "new_liability": 130,
+        "uncompleted": true,
+        "cumulative": true
+      },
+      "calculations": {
+        "adjustment": "new_liability-prior_liability"
+      },
+      "expected_calculations": {
+        "adjustment": 30
+      },
+      "route": "uncompleted and cumulative",
+      "expected_route": true,
+      "opening_balances": {
+        "contract_liability": -100
+      },
+      "journals": [
+        {
+          "event": "opening cumulative equity adjustment",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "opening_retained_earnings",
+              "amount": "adjustment"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "adjustment"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "opening_retained_earnings": 30,
+        "contract_liability": -130
+      },
+      "workpaper_outcome": "Adoption schedule proves uncompleted population and old/new price allocation; show 30 opening difference and keep prior comparator on old basis.",
+      "control_outcome": "Opening bridge must reconcile old closing100 + transition30 = new opening130; reject an unexplained current-year revenue debit.",
+      "data_outcome": "Version old and revised Section23 rules; adoption date selects rule without overwriting comparator data.",
+      "presentation_disclosure_outcome": "Opening retained earnings decreases30; comparative not restated on this selected method; current-period impact reconciliation is separately prepared."
+    },
+    {
+      "id": "RC-UK-advance-financing-True",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-UK-R039"
+      ],
+      "facts": {
+        "advance": 1000,
+        "rate": 0.1,
+        "elected": true
+      },
+      "calculations": {
+        "year1": "advance*rate if elected else 0",
+        "year2": "(advance+year1)*rate if elected else 0",
+        "transfer": "advance+year1+year2"
+      },
+      "expected_calculations": {
+        "year1": 100,
+        "year2": 110,
+        "transfer": 1210
+      },
+      "route": "elected",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "advance",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "advance"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "advance"
+            }
+          ]
+        },
+        {
+          "event": "financing two years",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "interest_expense",
+              "amount": "year1+year2"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "year1+year2"
+            }
+          ]
+        },
+        {
+          "event": "transfer",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "transfer"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "transfer"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 1000,
+        "contract_liability": 0,
+        "interest_expense": 210,
+        "revenue": -1210
+      },
+      "workpaper_outcome": "RC-001 proves substantive advance financing, supports10% rate and records UK policy election; two-year liability rollforward attaches to transfer evidence.",
+      "control_outcome": "Review compares elected and unelected outputs; rejects forced IFRS adjustment where UK policy leaves advance unadjusted; cash receipt still not revenue.",
+      "data_outcome": "Policy-version and adoption-date fields select financing schedule; no artificial interest event under unelected route.",
+      "presentation_disclosure_outcome": "Present selected transfer revenue and separate interest expense; election and material time-value judgment documented, liability settles to zero.",
+      "framework_routes": {
+        "UK_GAAP": {
+          "expression": "transfer",
+          "expected": 1210
+        }
+      }
+    },
+    {
+      "id": "RC-UK-advance-financing-False",
+      "frameworks": [
+        "UK_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-UK-R039"
+      ],
+      "facts": {
+        "advance": 1000,
+        "rate": 0.1,
+        "elected": false
+      },
+      "calculations": {
+        "year1": "advance*rate if elected else 0",
+        "year2": "(advance+year1)*rate if elected else 0",
+        "transfer": "advance+year1+year2"
+      },
+      "expected_calculations": {
+        "year1": 0,
+        "year2": 0,
+        "transfer": 1000
+      },
+      "route": "elected",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "advance",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "advance"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "advance"
+            }
+          ]
+        },
+        {
+          "event": "financing two years",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "interest_expense",
+              "amount": "year1+year2"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "year1+year2"
+            }
+          ]
+        },
+        {
+          "event": "transfer",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "transfer"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "transfer"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 1000,
+        "contract_liability": 0,
+        "interest_expense": 0,
+        "revenue": -1000
+      },
+      "workpaper_outcome": "RC-001 proves substantive advance financing, supports10% rate and records UK policy election; two-year liability rollforward attaches to transfer evidence.",
+      "control_outcome": "Review compares elected and unelected outputs; rejects forced IFRS adjustment where UK policy leaves advance unadjusted; cash receipt still not revenue.",
+      "data_outcome": "Policy-version and adoption-date fields select financing schedule; no artificial interest event under unelected route.",
+      "presentation_disclosure_outcome": "Present selected transfer revenue and separate interest expense; election and material time-value judgment documented, liability settles to zero.",
+      "framework_routes": {
+        "UK_GAAP": {
+          "expression": "transfer",
+          "expected": 1000
+        }
+      }
+    },
+    {
+      "id": "RC-US-shipping-election-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-US-R063",
+        "TOPIC-03-001-IFRS-R064",
+        "TOPIC-03-001-AASB-R064",
+        "TOPIC-03-001-UK-R065"
+      ],
+      "facts": {
+        "price": 120,
+        "product_ssp": 100,
+        "shipping_ssp": 20,
+        "shipping_cost": 8,
+        "elected": false,
+        "product_transferred": true,
+        "shipping_transferred": false
+      },
+      "calculations": {
+        "revenue": "price if elected else price*product_ssp/(product_ssp+shipping_ssp)",
+        "liability": "price-revenue",
+        "accrual": "shipping_cost if elected else 0"
+      },
+      "expected_calculations": {
+        "revenue": 100,
+        "liability": 20,
+        "accrual": 0
+      },
+      "route": "elected and product_transferred",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "product transfer",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "receivable",
+              "amount": "price"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "shipping_liability",
+              "amount": "liability"
+            }
+          ]
+        },
+        {
+          "event": "US fulfilment cost accrual if elected",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "shipping_expense",
+              "amount": "accrual"
+            },
+            {
+              "side": "Cr",
+              "account": "shipping_payable",
+              "amount": "accrual"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "receivable": 120,
+        "revenue": -100,
+        "shipping_liability": -20,
+        "shipping_expense": 0,
+        "shipping_payable": 0
+      },
+      "workpaper_outcome": "RC-001 confirms product control precedes separately promised shipping; store100/20 SSP, actual terms and supported8 cost estimate, with US election documented separately.",
+      "control_outcome": "Reviewer detects20 revenue timing difference plus8 cost accrual under US election; applies no US election automatically to UK/IFRS/AASB. Product delivery evidence is independently required.",
+      "data_outcome": "US policy version selects fulfilment flag and cost accrual; separate-service route retains shipping obligation20 until shipping completion event.",
+      "presentation_disclosure_outcome": "Elected US product-transfer revenue120 and expense8; unelected promise route revenue100 with shipping liability20. Document election and obligation-term disclosure under applicable notes.",
+      "control_checks": {
+        "unperformed_shipping_released_without_election": {
+          "expression": "not elected and not shipping_transferred and liability==0",
+          "expected": false
+        }
+      }
+    },
+    {
+      "id": "RC-US-shipping-election-True",
+      "frameworks": [
+        "US_GAAP"
+      ],
+      "claim_ids": [
+        "TOPIC-03-001-US-R063",
+        "TOPIC-03-001-IFRS-R064",
+        "TOPIC-03-001-AASB-R064",
+        "TOPIC-03-001-UK-R065"
+      ],
+      "facts": {
+        "price": 120,
+        "product_ssp": 100,
+        "shipping_ssp": 20,
+        "shipping_cost": 8,
+        "elected": true,
+        "product_transferred": true,
+        "shipping_transferred": false
+      },
+      "calculations": {
+        "revenue": "price if elected else price*product_ssp/(product_ssp+shipping_ssp)",
+        "liability": "price-revenue",
+        "accrual": "shipping_cost if elected else 0"
+      },
+      "expected_calculations": {
+        "revenue": 120,
+        "liability": 0,
+        "accrual": 8
+      },
+      "route": "elected and product_transferred",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "product transfer",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "receivable",
+              "amount": "price"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "shipping_liability",
+              "amount": "liability"
+            }
+          ]
+        },
+        {
+          "event": "US fulfilment cost accrual if elected",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "shipping_expense",
+              "amount": "accrual"
+            },
+            {
+              "side": "Cr",
+              "account": "shipping_payable",
+              "amount": "accrual"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "receivable": 120,
+        "revenue": -120,
+        "shipping_liability": 0,
+        "shipping_expense": 8,
+        "shipping_payable": -8
+      },
+      "workpaper_outcome": "RC-001 confirms product control precedes separately promised shipping; store100/20 SSP, actual terms and supported8 cost estimate, with US election documented separately.",
+      "control_outcome": "Reviewer detects20 revenue timing difference plus8 cost accrual under US election; applies no US election automatically to UK/IFRS/AASB. Product delivery evidence is independently required.",
+      "data_outcome": "US policy version selects fulfilment flag and cost accrual; separate-service route retains shipping obligation20 until shipping completion event.",
+      "presentation_disclosure_outcome": "Elected US product-transfer revenue120 and expense8; unelected promise route revenue100 with shipping liability20. Document election and obligation-term disclosure under applicable notes.",
+      "control_checks": {
+        "unperformed_shipping_released_without_election": {
+          "expression": "not elected and not shipping_transferred and liability==0",
+          "expected": false
+        }
+      }
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 # TOPIC-06-007 — Financial Asset & Liability Classification and Measurement
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier REVIEWED/PASS labels are historical self-assessments. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**
 Primary capabilities: CAO-06-014, CAO-06-015

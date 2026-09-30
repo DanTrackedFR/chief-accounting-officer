@@ -1,4 +1,6 @@
 # TOPIC-05-007 — Share-Based Compensation & Employee Share Schemes
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS wording is a worker self-assessment. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED / US+UK SOURCE-DEPTH PARTIAL
 Capabilities: CAO-05-013, CAO-05-014

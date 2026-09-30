@@ -1,4 +1,6 @@
 # TOPIC-03-012 — Revenue Disclosure Support & Revenue Process/Control Design
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Historical REVIEWED/PASS text is not independent promotion. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: REVIEWED
 Capabilities: CAO-03-024, CAO-03-025

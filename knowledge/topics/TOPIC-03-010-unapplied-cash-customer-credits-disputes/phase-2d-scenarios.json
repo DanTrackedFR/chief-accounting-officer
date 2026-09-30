@@ -1,0 +1,252 @@
+{
+  "cases": [
+    {
+      "id": "UC-identification-and-remittance-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-010-IFRS-R002",
+        "TOPIC-03-010-US-R002",
+        "TOPIC-03-010-UK-R002",
+        "TOPIC-03-010-AASB-R002",
+        "TOPIC-03-010-IFRS-R010",
+        "TOPIC-03-010-US-R010",
+        "TOPIC-03-010-UK-R010",
+        "TOPIC-03-010-AASB-R010"
+      ],
+      "facts": {
+        "receipt": 300,
+        "matched": 120,
+        "future": 100,
+        "unidentified": 80,
+        "later_match": 30,
+        "remit": false
+      },
+      "calculations": {
+        "remaining": "unidentified-later_match",
+        "statutory_payment": "remaining if remit else 0"
+      },
+      "expected_calculations": {
+        "remaining": 50,
+        "statutory_payment": 0
+      },
+      "route": "remit",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "bank receipt split",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "receipt"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "matched"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "future"
+            },
+            {
+              "side": "Cr",
+              "account": "unapplied_liability",
+              "amount": "unidentified"
+            }
+          ]
+        },
+        {
+          "event": "later supported allocation",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "unapplied_liability",
+              "amount": "later_match"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "later_match"
+            }
+          ]
+        },
+        {
+          "event": "legal remittance obligation only when established",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "unapplied_liability",
+              "amount": "statutory_payment"
+            },
+            {
+              "side": "Cr",
+              "account": "government_payable",
+              "amount": "statutory_payment"
+            }
+          ]
+        },
+        {
+          "event": "statutory settlement",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "government_payable",
+              "amount": "statutory_payment"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "statutory_payment"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 150
+      },
+      "expected_balances": {
+        "receivable": 0,
+        "cash": 300,
+        "contract_liability": -100,
+        "unapplied_liability": -50,
+        "government_payable": 0,
+        "revenue": 0
+      },
+      "workpaper_outcome": "UC-010 evidences original120 invoice match,100 future service, later30 identified debt and governing-law remittance conclusion; absent legal proof,50 remains liability.",
+      "control_outcome": "Allocation children120+100+80 equal300; later30 reduces both unmatched liability and AR without revenue. Aging alone cannot release50.",
+      "data_outcome": "Bank receipt is immutable; allocation IDs and legal-review version drive reclassification50 and optional settlement, with no duplicate customer refund.",
+      "presentation_disclosure_outcome": "Future-service liability100 persists; unmatched50 or paid government50 never becomes income; material credits are not buried in netAR."
+    },
+    {
+      "id": "UC-identification-and-remittance-True",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-010-IFRS-R002",
+        "TOPIC-03-010-US-R002",
+        "TOPIC-03-010-UK-R002",
+        "TOPIC-03-010-AASB-R002",
+        "TOPIC-03-010-IFRS-R010",
+        "TOPIC-03-010-US-R010",
+        "TOPIC-03-010-UK-R010",
+        "TOPIC-03-010-AASB-R010"
+      ],
+      "facts": {
+        "receipt": 300,
+        "matched": 120,
+        "future": 100,
+        "unidentified": 80,
+        "later_match": 30,
+        "remit": true
+      },
+      "calculations": {
+        "remaining": "unidentified-later_match",
+        "statutory_payment": "remaining if remit else 0"
+      },
+      "expected_calculations": {
+        "remaining": 50,
+        "statutory_payment": 50
+      },
+      "route": "remit",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "bank receipt split",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "receipt"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "matched"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "future"
+            },
+            {
+              "side": "Cr",
+              "account": "unapplied_liability",
+              "amount": "unidentified"
+            }
+          ]
+        },
+        {
+          "event": "later supported allocation",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "unapplied_liability",
+              "amount": "later_match"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "later_match"
+            }
+          ]
+        },
+        {
+          "event": "legal remittance obligation only when established",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "unapplied_liability",
+              "amount": "statutory_payment"
+            },
+            {
+              "side": "Cr",
+              "account": "government_payable",
+              "amount": "statutory_payment"
+            }
+          ]
+        },
+        {
+          "event": "statutory settlement",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "government_payable",
+              "amount": "statutory_payment"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "statutory_payment"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 150
+      },
+      "expected_balances": {
+        "receivable": 0,
+        "cash": 250,
+        "contract_liability": -100,
+        "unapplied_liability": 0,
+        "government_payable": 0,
+        "revenue": 0
+      },
+      "workpaper_outcome": "UC-010 evidences original120 invoice match,100 future service, later30 identified debt and governing-law remittance conclusion; absent legal proof,50 remains liability.",
+      "control_outcome": "Allocation children120+100+80 equal300; later30 reduces both unmatched liability and AR without revenue. Aging alone cannot release50.",
+      "data_outcome": "Bank receipt is immutable; allocation IDs and legal-review version drive reclassification50 and optional settlement, with no duplicate customer refund.",
+      "presentation_disclosure_outcome": "Future-service liability100 persists; unmatched50 or paid government50 never becomes income; material credits are not buried in netAR."
+    }
+  ]
+}

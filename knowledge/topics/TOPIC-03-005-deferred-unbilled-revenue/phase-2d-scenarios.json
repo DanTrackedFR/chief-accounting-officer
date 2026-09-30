@@ -1,0 +1,452 @@
+{
+  "cases": [
+    {
+      "id": "DB-refund-and-revised-release",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R006",
+        "TOPIC-03-005-US-R006",
+        "TOPIC-03-005-UK-R006",
+        "TOPIC-03-005-AASB-R006"
+      ],
+      "facts": {
+        "receipt": 1200,
+        "months": 12,
+        "refund": 300,
+        "remaining_months": 6
+      },
+      "calculations": {
+        "first_release": "receipt/months",
+        "after_refund": "receipt-first_release-refund",
+        "next_release": "after_refund/remaining_months"
+      },
+      "expected_calculations": {
+        "first_release": 100,
+        "after_refund": 800,
+        "next_release": 133.3333333333
+      },
+      "route": "refund>0",
+      "expected_route": true,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "receipt",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "receipt"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "receipt"
+            }
+          ]
+        },
+        {
+          "event": "month one",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "first_release"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "first_release"
+            }
+          ]
+        },
+        {
+          "event": "approved termination refund",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "refund"
+            },
+            {
+              "side": "Cr",
+              "account": "refund_liability",
+              "amount": "refund"
+            }
+          ]
+        },
+        {
+          "event": "pay refund",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "refund_liability",
+              "amount": "refund"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "refund"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 900,
+        "contract_liability": -800,
+        "refund_liability": 0,
+        "revenue": -100
+      },
+      "workpaper_outcome": "Termination amendment supports refund300 and six surviving service months; release schedule recomputes800/6 with final-cent adjustment.",
+      "control_outcome": "Refund approval separated from cash execution; liability bridge1200-100-300=800 and cash1200-300=900 tie.",
+      "data_outcome": "Keep refund event and amendment lineage distinct from impairment; version surviving term and future monthly schedule.",
+      "presentation_disclosure_outcome": "Current revenue100; contract liability800, refund liability zero after settlement; no unapproved breakage revenue."
+    },
+    {
+      "id": "DB-conditional-to-unconditional",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R003",
+        "TOPIC-03-005-US-R003",
+        "TOPIC-03-005-UK-R003",
+        "TOPIC-03-005-AASB-R003"
+      ],
+      "facts": {
+        "earned": 240,
+        "transfer_proven": true,
+        "milestone_signed": true
+      },
+      "calculations": {
+        "reclassification": "earned if milestone_signed else 0"
+      },
+      "expected_calculations": {
+        "reclassification": 240
+      },
+      "route": "transfer_proven and milestone_signed",
+      "expected_route": true,
+      "opening_balances": {
+        "contract_asset": 240,
+        "revenue": -240
+      },
+      "journals": [
+        {
+          "event": "milestone billing right matures",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "receivable",
+              "amount": "reclassification"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_asset",
+              "amount": "reclassification"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "receivable": 240,
+        "contract_asset": 0,
+        "revenue": -240
+      },
+      "workpaper_outcome": "Transfer previously proven independently of milestone; signed certificate removes only billing condition, not a substantive control-transfer condition.",
+      "control_outcome": "Control rejects second revenue credit240 on invoicing; contract asset-to-AR bridge proves zero net change in assets/revenue.",
+      "data_outcome": "Match invoice to existing obligation and asset event; billing event tagged reclassification, not new performance.",
+      "presentation_disclosure_outcome": "Unconditional receivable240 replaces contract asset240; notes movement has no additional revenue."
+    },
+    {
+      "id": "DB-substantive-acceptance-fails",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R004",
+        "TOPIC-03-005-US-R004",
+        "TOPIC-03-005-UK-R004",
+        "TOPIC-03-005-AASB-R004"
+      ],
+      "facts": {
+        "proposed_revenue": 240,
+        "acceptance_substantive": true,
+        "accepted": false
+      },
+      "calculations": {
+        "revenue": "proposed_revenue if accepted else 0"
+      },
+      "expected_calculations": {
+        "revenue": 0
+      },
+      "route": "not acceptance_substantive or accepted",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [],
+      "expected_balances": {
+        "contract_asset": 0,
+        "revenue": 0
+      },
+      "workpaper_outcome": "Acceptance tests show customer can reject functionality not yet demonstrated; neither invoicing nor progress evidence establishes transfer.",
+      "control_outcome": "Acceptance control blocks proposed Dr contract asset240/Cr revenue240; reconcile job status to accounting transfer event.",
+      "data_outcome": "Set acceptance_state=pending and suppress revenue event; inventory or recoverable fulfilment costs evaluated separately.",
+      "presentation_disclosure_outcome": "No earned contract asset or revenue; any deposit remains liability; assess loss-making contract independently."
+    },
+    {
+      "id": "DB-concession-versus-credit-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R014",
+        "TOPIC-03-005-US-R016",
+        "TOPIC-03-005-UK-R017",
+        "TOPIC-03-005-AASB-R014"
+      ],
+      "facts": {
+        "gross": 240,
+        "loss": 12,
+        "commercial_concession": false,
+        "objective_evidence": true
+      },
+      "calculations": {
+        "net": "gross-loss"
+      },
+      "expected_calculations": {
+        "net": 228
+      },
+      "route": "commercial_concession",
+      "expected_route": false,
+      "opening_balances": {
+        "receivable": 240,
+        "revenue": -240
+      },
+      "journals": [
+        {
+          "event": "credit impairment under selected model",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss_expense",
+              "amount": "loss"
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": "loss"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "receivable": 240,
+        "revenue": -240,
+        "allowance": -12,
+        "credit_loss_expense": 12
+      },
+      "workpaper_outcome": "DU-005 distinguishes supported reduction in entitlement from inability to pay valid240. UK objective evidence is present in impairment branch; IFRS9 policy election is documented independently.",
+      "control_outcome": "Reason-code review rejects two12 charges for the same event; net228 alone cannot prove classification because revenue and expense differ across the branches.",
+      "data_outcome": "Commercial credit references contract price version and AR adjustment; loss event references allowance model and gross240 ledger, with separate loss reason and approval.",
+      "presentation_disclosure_outcome": "Concession reduces revenue to228 and grossAR228; impairment retains revenue240/grossAR240 with allowance12 and expense12; loss-method note follows chosen framework."
+    },
+    {
+      "id": "DB-concession-versus-credit-True",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R014",
+        "TOPIC-03-005-US-R016",
+        "TOPIC-03-005-UK-R017",
+        "TOPIC-03-005-AASB-R014"
+      ],
+      "facts": {
+        "gross": 240,
+        "loss": 12,
+        "commercial_concession": true,
+        "objective_evidence": true
+      },
+      "calculations": {
+        "net": "gross-loss"
+      },
+      "expected_calculations": {
+        "net": 228
+      },
+      "route": "commercial_concession",
+      "expected_route": true,
+      "opening_balances": {
+        "receivable": 240,
+        "revenue": -240
+      },
+      "journals": [
+        {
+          "event": "approved commercial price reduction",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "revenue",
+              "amount": "loss"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "loss"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "receivable": 228,
+        "revenue": -228,
+        "allowance": 0,
+        "credit_loss_expense": 0
+      },
+      "workpaper_outcome": "DU-005 distinguishes supported reduction in entitlement from inability to pay valid240. UK objective evidence is present in impairment branch; IFRS9 policy election is documented independently.",
+      "control_outcome": "Reason-code review rejects two12 charges for the same event; net228 alone cannot prove classification because revenue and expense differ across the branches.",
+      "data_outcome": "Commercial credit references contract price version and AR adjustment; loss event references allowance model and gross240 ledger, with separate loss reason and approval.",
+      "presentation_disclosure_outcome": "Concession reduces revenue to228 and grossAR228; impairment retains revenue240/grossAR240 with allowance12 and expense12; loss-method note follows chosen framework."
+    },
+    {
+      "id": "DB-FX-refundable-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R018",
+        "TOPIC-03-005-US-R018",
+        "TOPIC-03-005-UK-R018",
+        "TOPIC-03-005-AASB-R018"
+      ],
+      "facts": {
+        "foreign": 100,
+        "initial_rate": 1.2,
+        "closing_rate": 1.3,
+        "refundable": false
+      },
+      "calculations": {
+        "initial": "foreign*initial_rate",
+        "closing": "foreign*closing_rate if refundable else foreign*initial_rate",
+        "loss": "closing-initial"
+      },
+      "expected_calculations": {
+        "initial": 120,
+        "closing": 120,
+        "loss": 0
+      },
+      "route": "refundable",
+      "expected_route": false,
+      "opening_balances": {
+        "cash": 120,
+        "advance_liability": -120
+      },
+      "journals": [
+        {
+          "event": "closing monetary remeasurement only",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "fx_loss",
+              "amount": "loss"
+            },
+            {
+              "side": "Cr",
+              "account": "advance_liability",
+              "amount": "loss"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 120,
+        "advance_liability": -120,
+        "fx_loss": 0
+      },
+      "workpaper_outcome": "DU-005 retains foreign100 contract, transaction-date rate1.20, closing1.30 and legal cash-refund terms; refund enforceability selects monetary nature.",
+      "control_outcome": "Closing FX review rejects blanket retranslation of all revenue advances; unexplained10 difference is traced to refund terms rather than revenue release.",
+      "data_outcome": "Balance monetary flag and historical-rate lot drive valuation; retain both rate snapshots and legal refund evidence in immutable advance record.",
+      "presentation_disclosure_outcome": "Nonmonetary service advance remains120; refundable monetary liability130 creates FX loss10, with policy and material currency exposure disclosures routed independently."
+    },
+    {
+      "id": "DB-FX-refundable-True",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-005-IFRS-R019",
+        "TOPIC-03-005-US-R019",
+        "TOPIC-03-005-UK-R019",
+        "TOPIC-03-005-AASB-R019"
+      ],
+      "facts": {
+        "foreign": 100,
+        "initial_rate": 1.2,
+        "closing_rate": 1.3,
+        "refundable": true
+      },
+      "calculations": {
+        "initial": "foreign*initial_rate",
+        "closing": "foreign*closing_rate if refundable else foreign*initial_rate",
+        "loss": "closing-initial"
+      },
+      "expected_calculations": {
+        "initial": 120,
+        "closing": 130,
+        "loss": 10
+      },
+      "route": "refundable",
+      "expected_route": true,
+      "opening_balances": {
+        "cash": 120,
+        "advance_liability": -120
+      },
+      "journals": [
+        {
+          "event": "closing monetary remeasurement only",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "fx_loss",
+              "amount": "loss"
+            },
+            {
+              "side": "Cr",
+              "account": "advance_liability",
+              "amount": "loss"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 120,
+        "advance_liability": -130,
+        "fx_loss": 10
+      },
+      "workpaper_outcome": "DU-005 retains foreign100 contract, transaction-date rate1.20, closing1.30 and legal cash-refund terms; refund enforceability selects monetary nature.",
+      "control_outcome": "Closing FX review rejects blanket retranslation of all revenue advances; unexplained10 difference is traced to refund terms rather than revenue release.",
+      "data_outcome": "Balance monetary flag and historical-rate lot drive valuation; retain both rate snapshots and legal refund evidence in immutable advance record.",
+      "presentation_disclosure_outcome": "Nonmonetary service advance remains120; refundable monetary liability130 creates FX loss10, with policy and material currency exposure disclosures routed independently."
+    }
+  ]
+}

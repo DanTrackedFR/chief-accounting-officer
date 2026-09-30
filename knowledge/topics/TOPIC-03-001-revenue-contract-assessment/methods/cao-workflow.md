@@ -1,20 +1,22 @@
+> Retained-content interpretation: use the canonical `phase-2d-method.md` and its topic-local claim register for the selected framework and reporting period. Earlier PASS/source-verified/source-depth-PARTIAL labels are historical assessments; evidence tier is defined only by the claim register. Source access is not a substantive completion gate.
+
 # CAO Workflow — Revenue Contract Assessment
 
 1. Resolve framework/version, entity, reporting period, product/service and jurisdiction affecting enforceability.
-2. Obtain executed MSA/order form/SOW, amendments, side letters, pricing schedules, product terms, sales approvals and relevant customary practices.
-3. Identify counterparty and test whether it is a customer for the goods/services in question.
+2. Obtain executed MSA/order form/SOW, amendments, side letters, pricing schedules, product terms, sales approvals and relevant customary practices. [TOPIC-03-001-IFRS-R007] [TOPIC-03-001-US-R007] [TOPIC-03-001-UK-R007] [TOPIC-03-001-AASB-R007]
+3. Identify counterparty and test whether it is a customer for the goods/services in question. [TOPIC-03-001-IFRS-R001] [TOPIC-03-001-US-R001] [TOPIC-03-001-UK-R001] [TOPIC-03-001-AASB-R001]
 4. Separate portions governed by other accounting models before applying revenue guidance.
-5. Test contract existence/criteria: approvals/commitment, identifiable rights/payment terms, commercial substance, collectibility as applicable.
-6. If criteria fail, determine treatment of consideration received and reassessment trigger; do not recognize revenue merely because cash arrived.
-7. Test whether contemporaneous related contracts must be combined.
-8. Inventory every explicit and implicit promise, including options, warranties, setup/onboarding, support, licenses, updates, stand-ready services and third-party arrangements.
-9. Test each promise for distinctness: customer benefit and separability in contract context. Combine non-distinct promises until the appropriate accounting unit emerges.
-10. Test series treatment where repeated distinct services transfer with the same pattern.
-11. Create performance-obligation register with evidence and downstream routing to transaction price, allocation and timing topics.
-12. Flag principal-agent, modification, contract-cost, license, warranty or other specialist subissues.
+5. Test contract existence/criteria: approvals/commitment, identifiable rights/payment terms, commercial substance, collectibility as applicable. [TOPIC-03-001-IFRS-R002] [TOPIC-03-001-US-R002] [TOPIC-03-001-UK-R002] [TOPIC-03-001-AASB-R002]
+6. If criteria fail, determine treatment of consideration received and reassessment trigger; do not recognize revenue merely because cash arrived. [TOPIC-03-001-IFRS-R005] [TOPIC-03-001-US-R005] [TOPIC-03-001-UK-R005] [TOPIC-03-001-AASB-R005] [TOPIC-03-001-IFRS-R043] [TOPIC-03-001-US-R043] [TOPIC-03-001-UK-R043] [TOPIC-03-001-AASB-R043]
+7. Test whether contemporaneous related contracts must be combined. [TOPIC-03-001-IFRS-R006] [TOPIC-03-001-US-R006] [TOPIC-03-001-UK-R006] [TOPIC-03-001-AASB-R006]
+8. Inventory every explicit and implicit promise, including options, warranties, setup/onboarding, support, licenses, updates, stand-ready services and third-party arrangements. [TOPIC-03-001-IFRS-R007] [TOPIC-03-001-US-R007] [TOPIC-03-001-UK-R007] [TOPIC-03-001-AASB-R007] [TOPIC-03-001-IFRS-R009] [TOPIC-03-001-US-R009] [TOPIC-03-001-UK-R009] [TOPIC-03-001-AASB-R009] [TOPIC-03-001-IFRS-R010] [TOPIC-03-001-US-R010] [TOPIC-03-001-UK-R010] [TOPIC-03-001-AASB-R010]
+9. Test each promise for distinctness: customer benefit and separability in contract context. [TOPIC-03-001-IFRS-R008] [TOPIC-03-001-US-R008] [TOPIC-03-001-UK-R008] [TOPIC-03-001-AASB-R008] Combine non-distinct promises until the appropriate accounting unit emerges. [TOPIC-03-001-IFRS-R006] [TOPIC-03-001-US-R006] [TOPIC-03-001-UK-R006] [TOPIC-03-001-AASB-R006] [TOPIC-03-001-IFRS-R008] [TOPIC-03-001-US-R008] [TOPIC-03-001-UK-R008] [TOPIC-03-001-AASB-R008]
+10. Test series treatment where repeated distinct services transfer with the same pattern. [TOPIC-03-001-IFRS-R008] [TOPIC-03-001-US-R008] [TOPIC-03-001-UK-R008] [TOPIC-03-001-AASB-R008] [TOPIC-03-001-IFRS-R009] [TOPIC-03-001-US-R009] [TOPIC-03-001-UK-R009] [TOPIC-03-001-AASB-R009] [TOPIC-03-001-IFRS-R043] [TOPIC-03-001-US-R043] [TOPIC-03-001-UK-R043] [TOPIC-03-001-AASB-R043]
+11. Create performance-obligation register with evidence and downstream routing to transaction price, allocation and timing topics. [TOPIC-03-001-IFRS-R042] [TOPIC-03-001-US-R042] [TOPIC-03-001-UK-R042] [TOPIC-03-001-AASB-R042] [TOPIC-03-001-IFRS-R011] [TOPIC-03-001-US-R011] [TOPIC-03-001-UK-R011] [TOPIC-03-001-AASB-R011]
+12. Flag principal-agent, modification, contract-cost, license, warranty or other specialist subissues. [TOPIC-03-001-IFRS-R010] [TOPIC-03-001-US-R010] [TOPIC-03-001-UK-R010] [TOPIC-03-001-AASB-R010]
 
 ## Required output fields
-Contract ID; customer; entity; framework; period; scope conclusion; excluded components; contract-criteria conclusion; combination conclusion; promise inventory; performance obligations; material judgments; evidence; open facts; downstream topics; reviewer.
+Contract ID; customer; entity; framework; period; scope conclusion; excluded components; contract-criteria conclusion; combination conclusion; promise inventory; performance obligations; material judgments; evidence; open facts; downstream topics; reviewer. [TOPIC-03-001-IFRS-R002] [TOPIC-03-001-US-R002] [TOPIC-03-001-UK-R002] [TOPIC-03-001-AASB-R002] [TOPIC-03-001-IFRS-R006] [TOPIC-03-001-US-R006] [TOPIC-03-001-UK-R006] [TOPIC-03-001-AASB-R006] [TOPIC-03-001-IFRS-R007] [TOPIC-03-001-US-R007] [TOPIC-03-001-UK-R007] [TOPIC-03-001-AASB-R007] [TOPIC-03-001-IFRS-R001] [TOPIC-03-001-US-R001] [TOPIC-03-001-UK-R001] [TOPIC-03-001-AASB-R001]
 
 ## Stop conditions
-Do not finalize where enforceability, side agreements, customer identity, material promises or scope boundaries are unresolved. Ask for the specific missing evidence rather than defaulting to generic advice.
+Do not finalize where enforceability, side agreements, customer identity, material promises or scope boundaries are unresolved. [TOPIC-03-001-IFRS-R001] [TOPIC-03-001-US-R001] [TOPIC-03-001-UK-R001] [TOPIC-03-001-AASB-R001] Ask for the specific missing evidence rather than defaulting to generic advice.

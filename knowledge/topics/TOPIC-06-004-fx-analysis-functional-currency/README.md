@@ -1,4 +1,6 @@
 # TOPIC-06-004 — FX Gain/Loss Analysis / Functional Currency Assessment
+> Canonical manifest status at 2026-09-29: **PARTIAL**. Earlier REVIEWED/PASS labels are historical self-assessments. See `standards-claims.json` and `evidence-and-regression.md`.
+
 
 Status: **REVIEWED / production-candidate**  
 Primary capabilities: **CAO-06-008, CAO-06-009**  
