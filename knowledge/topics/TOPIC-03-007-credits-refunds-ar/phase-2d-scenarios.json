@@ -1,0 +1,272 @@
+{
+  "cases": [
+    {
+      "id": "RF-return-estimate-and-settlement",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-007-IFRS-R005",
+        "TOPIC-03-007-US-R005",
+        "TOPIC-03-007-UK-R005",
+        "TOPIC-03-007-AASB-R005"
+      ],
+      "facts": {
+        "cash_sale": 1000,
+        "cost": 600,
+        "original_rate": 0.2,
+        "final_rate": 0.1,
+        "initial_recovery_cost": 10,
+        "final_recovery_cost": 10
+      },
+      "calculations": {
+        "initial_refund": "cash_sale*original_rate",
+        "revenue": "cash_sale-initial_refund",
+        "initial_recovery": "cost*original_rate-initial_recovery_cost",
+        "initial_cogs": "cost-initial_recovery",
+        "refund": "cash_sale*final_rate",
+        "release": "initial_refund-refund",
+        "final_recovery": "cost*final_rate-final_recovery_cost",
+        "recovery_reduction": "initial_recovery-final_recovery"
+      },
+      "expected_calculations": {
+        "initial_refund": 200,
+        "revenue": 800,
+        "initial_recovery": 110,
+        "initial_cogs": 490,
+        "refund": 100,
+        "release": 100,
+        "final_recovery": 50,
+        "recovery_reduction": 60
+      },
+      "route": "final_rate<original_rate",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "sale",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "cash_sale"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "refund_liability",
+              "amount": "initial_refund"
+            }
+          ]
+        },
+        {
+          "event": "derecognize inventory and recognize recovery",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_of_sales",
+              "amount": "initial_cogs"
+            },
+            {
+              "side": "Dr",
+              "account": "recovery_asset",
+              "amount": "initial_recovery"
+            },
+            {
+              "side": "Cr",
+              "account": "inventory",
+              "amount": "cost"
+            }
+          ]
+        },
+        {
+          "event": "re-estimate refunds",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "refund_liability",
+              "amount": "release"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "release"
+            }
+          ]
+        },
+        {
+          "event": "re-estimate recovery costs",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cost_of_sales",
+              "amount": "recovery_reduction"
+            },
+            {
+              "side": "Cr",
+              "account": "recovery_asset",
+              "amount": "recovery_reduction"
+            }
+          ]
+        },
+        {
+          "event": "cash refund",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "refund_liability",
+              "amount": "refund"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "refund"
+            }
+          ]
+        },
+        {
+          "event": "net recovered inventory",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "inventory",
+              "amount": "final_recovery"
+            },
+            {
+              "side": "Cr",
+              "account": "recovery_asset",
+              "amount": "final_recovery"
+            }
+          ]
+        }
+      ],
+      "opening_balances": {},
+      "expected_balances": {
+        "cash": 900,
+        "revenue": -900,
+        "refund_liability": 0,
+        "recovery_asset": 0,
+        "cost_of_sales": 550,
+        "inventory": -550
+      },
+      "workpaper_outcome": "RF-007 retains revised return cohort and recovery cost10; physical net inventory50 and cash100 settle separately after re-estimation.",
+      "control_outcome": "Refund rollforward200-100-100=0 and recovery110-60-50=0 reject double revenue reversal at settlement.",
+      "data_outcome": "Return/refund/inventory receipt IDs are separate; estimate versions20%->10% preserve original sale lineage.",
+      "presentation_disclosure_outcome": "Final revenue900 and cost550 reconcile to cash900 and net inventory derecognition550; no residual recovery asset or refund liability."
+    },
+    {
+      "id": "RF-price-versus-credit-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-007-IFRS-R009",
+        "TOPIC-03-007-US-R009",
+        "TOPIC-03-007-UK-R009",
+        "TOPIC-03-007-AASB-R009"
+      ],
+      "facts": {
+        "balance": 50,
+        "concession": false
+      },
+      "calculations": {},
+      "expected_calculations": {},
+      "route": "concession",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "supported credit loss",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "credit_loss",
+              "amount": 50
+            },
+            {
+              "side": "Cr",
+              "account": "allowance",
+              "amount": 50
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 50,
+        "revenue": -50
+      },
+      "expected_balances": {
+        "receivable": 50,
+        "revenue": -50,
+        "allowance": -50,
+        "credit_loss": 50
+      },
+      "workpaper_outcome": "RF-007 records legal reduction of entitlement or insolvency of an unchanged claim; UK objective evidence is provided for the loss branch.",
+      "control_outcome": "Reason-code review rejects a50 allowance and a50 price credit for the same surrendered entitlement.",
+      "data_outcome": "Commercial credit references price version and invoice; impairment references exposure and allowance model.",
+      "presentation_disclosure_outcome": "Commercial concession changes revenue/grossAR; impairment retains gross revenue50 and AR50 with allowance50."
+    },
+    {
+      "id": "RF-price-versus-credit-True",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-007-IFRS-R009",
+        "TOPIC-03-007-US-R009",
+        "TOPIC-03-007-UK-R009",
+        "TOPIC-03-007-AASB-R009"
+      ],
+      "facts": {
+        "balance": 50,
+        "concession": true
+      },
+      "calculations": {},
+      "expected_calculations": {},
+      "route": "concession",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "commercial concession",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "revenue",
+              "amount": 50
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": 50
+            }
+          ]
+        }
+      ],
+      "opening_balances": {
+        "receivable": 50,
+        "revenue": -50
+      },
+      "expected_balances": {
+        "receivable": 0,
+        "revenue": 0,
+        "allowance": 0,
+        "credit_loss": 0
+      },
+      "workpaper_outcome": "RF-007 records legal reduction of entitlement or insolvency of an unchanged claim; UK objective evidence is provided for the loss branch.",
+      "control_outcome": "Reason-code review rejects a50 allowance and a50 price credit for the same surrendered entitlement.",
+      "data_outcome": "Commercial credit references price version and invoice; impairment references exposure and allowance model.",
+      "presentation_disclosure_outcome": "Commercial concession changes revenue/grossAR; impairment retains gross revenue50 and AR50 with allowance50."
+    }
+  ]
+}
