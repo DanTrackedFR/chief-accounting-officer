@@ -1,0 +1,184 @@
+{
+  "cases": [
+    {
+      "id": "VC-specific-bonus",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-002-IFRS-R009",
+        "TOPIC-03-002-US-R009",
+        "TOPIC-03-002-UK-R009",
+        "TOPIC-03-002-AASB-R009"
+      ],
+      "facts": {
+        "base": 1000,
+        "bonus": 200,
+        "ssp_a": 600,
+        "ssp_b": 400,
+        "specific_supported": true
+      },
+      "calculations": {
+        "a": "base*ssp_a/(ssp_a+ssp_b)",
+        "b": "base-a+bonus",
+        "general_a": "(base+bonus)*ssp_a/(ssp_a+ssp_b)"
+      },
+      "expected_calculations": {
+        "a": 600,
+        "b": 600,
+        "general_a": 720
+      },
+      "route": "specific_supported",
+      "expected_route": true,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "only A transferred",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_asset",
+              "amount": "a"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "a"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "contract_asset": 600,
+        "revenue": -600
+      },
+      "workpaper_outcome": "VC-001 ties bonus entirely to B performance and demonstrates allocation consistent with pricing economics; UK uses faithful-entitlement test rather than imported wording.",
+      "control_outcome": "Control recomputes both allocation outcomes and blocks mechanical720 to A; bonus approval and constraint evidence required.",
+      "data_outcome": "Record bonus-to-B lineage plus original SSP600/400; scenario general allocation differs by120.",
+      "presentation_disclosure_outcome": "A revenue600; B600 remains unsatisfied; significant estimate/allocation judgment enters appropriate full or relief note route."
+    },
+    {
+      "id": "VC-unspecified-bonus",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-002-IFRS-R006",
+        "TOPIC-03-002-US-R006",
+        "TOPIC-03-002-UK-R006",
+        "TOPIC-03-002-AASB-R006"
+      ],
+      "facts": {
+        "base": 1000,
+        "bonus": 200,
+        "ssp_a": 600,
+        "ssp_b": 400,
+        "specific_supported": false
+      },
+      "calculations": {
+        "a": "(base+bonus)*ssp_a/(ssp_a+ssp_b)",
+        "b": "base+bonus-a"
+      },
+      "expected_calculations": {
+        "a": 720,
+        "b": 480
+      },
+      "route": "specific_supported",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "A transferred without specific exception",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_asset",
+              "amount": "a"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "a"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "contract_asset": 720,
+        "revenue": -720
+      },
+      "workpaper_outcome": "VC-001 records insufficient evidence connecting bonus only to B; relative SSP allocation selected after independently reviewing UK objective.",
+      "control_outcome": "Allocation reviewer cannot use exception based solely on contract bonus label; approval records failed evidence limb.",
+      "data_outcome": "Exception_flag=false; retain original SSP, bonus component and general allocation version.",
+      "presentation_disclosure_outcome": "Unsatisfied B amount480; A720 enters revenue and contract asset, subject to unconditional-right review."
+    },
+    {
+      "id": "VC-constraint-catch-down",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-002-IFRS-R010",
+        "TOPIC-03-002-US-R010",
+        "TOPIC-03-002-UK-R010",
+        "TOPIC-03-002-AASB-R010"
+      ],
+      "facts": {
+        "original_fixed": 1000,
+        "recognized_bonus": 160,
+        "surviving_bonus": 40,
+        "satisfied_fraction": 0.5
+      },
+      "calculations": {
+        "old_revenue": "(original_fixed+recognized_bonus)*satisfied_fraction",
+        "new_revenue": "(original_fixed+surviving_bonus)*satisfied_fraction",
+        "reversal": "old_revenue-new_revenue"
+      },
+      "expected_calculations": {
+        "old_revenue": 580,
+        "new_revenue": 520,
+        "reversal": 60
+      },
+      "route": "surviving_bonus<recognized_bonus",
+      "expected_route": true,
+      "opening_balances": {
+        "contract_asset": 580,
+        "revenue": -580
+      },
+      "journals": [
+        {
+          "event": "new adverse outcome evidence",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "revenue",
+              "amount": "reversal"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_asset",
+              "amount": "reversal"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "contract_asset": 520,
+        "revenue": -520
+      },
+      "workpaper_outcome": "Outcome forecast identifies dispute reducing constrained estimate to40; rerun original allocation and cumulative satisfaction rather than new SSP.",
+      "control_outcome": "A current-period exception flags failure to reassess bonus; contract asset reconciliation isolates60 accounting reduction from credit losses.",
+      "data_outcome": "Store estimate160->40, change reason and cumulative catch-up60; prevent moving reduction to bad-debt code.",
+      "presentation_disclosure_outcome": "Disclose material price-estimate change and judgment; revenue reduction60 differs from receivable impairment."
+    }
+  ]
+}
