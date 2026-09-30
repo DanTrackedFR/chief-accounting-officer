@@ -1,3 +1,5 @@
+> Retained-content interpretation: use the canonical `phase-2d-method.md` and its topic-local claim register for the selected framework and reporting period. Earlier PASS/source-verified/source-depth-PARTIAL labels are historical assessments; evidence tier is defined only by the claim register. Source access is not a substantive completion gate.
+
 # TOPIC-03-001 — Sources & Framework Differences
 
 Checked: 2026-09-23
@@ -15,15 +17,15 @@ Rights posture: REFERENCE_ONLY for standards text. Repository stores independent
 ## Current-status facts
 IFRS Foundation's 2024 PIR concluded IFRS 15 is working as intended, while flagging principal-agent, consideration payable to customers and interactions with other IFRS Standards for future consideration. These are monitoring items, not license to change current requirements.
 
-FASB's November 2024 PIR similarly concluded the long-term benefits of Topic 606 generally outweigh costs. FASB issued 2025 guidance on share-based consideration payable to a customer, so current US cases involving that fact pattern require an effective-date check.
+FASB's November 2024 PIR similarly concluded the long-term benefits of Topic 606 generally outweigh costs. FASB issued 2025 guidance on share-based consideration payable to a customer, so current US cases involving that fact pattern require an effective-date check. [TOPIC-03-001-IFRS-R015] [TOPIC-03-001-US-R015] [TOPIC-03-001-UK-R015] [TOPIC-03-001-AASB-R015]
 
-FRC states the Periodic Review 2024 changes significantly revise revenue recognition and that most amendments become effective for periods beginning on/after 1 January 2026.
+FRC states the Periodic Review 2024 changes significantly revise revenue recognition and that most amendments become effective for periods beginning on/after 1 January 2026. [TOPIC-03-001-UK-R017]
 
-AASB's version register shows the December 2022 AASB 15 compilation applies to periods beginning on/after 1 January 2023 but before 1 July 2026, with an uncompiled AASB 2022-9 amendment applying from 1 July 2026. Therefore current-period routing must inspect amendments rather than citing the superseded compilation as universally current.
+AASB's version register shows the December 2022 AASB 15 compilation applies to periods beginning on/after 1 January 2023 but before 1 July 2026, with an uncompiled AASB 2022-9 amendment applying from 1 July 2026. [TOPIC-03-001-UK-R017] Therefore current-period routing must inspect amendments rather than citing the superseded compilation as universally current.
 
 ## Differences discipline
 The five-step core is highly converged across IFRS 15 and Topic 606, but convergence is not identity. A cross-framework answer must retrieve the applicable framework record for the specific issue.
 
-FRS 102's revised Section 23 is an adapted/simplified model. Apply UK-specific wording, simplifications, transition and disclosure requirements.
+FRS 102's revised Section 23 is an adapted/simplified model. Apply UK-specific wording, simplifications, transition and disclosure requirements. [TOPIC-03-001-UK-R017]
 
 AASB conclusions require the operative Australian version plus entity-type overlay. Core IFRS reasoning can be reused only after independent AASB verification.
