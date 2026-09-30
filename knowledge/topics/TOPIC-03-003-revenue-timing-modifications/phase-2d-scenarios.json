@@ -1,0 +1,412 @@
+{
+  "cases": [
+    {
+      "id": "RT-no-enforceable-profit-right",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-003-IFRS-R002",
+        "TOPIC-03-003-US-R002",
+        "TOPIC-03-003-UK-R002",
+        "TOPIC-03-003-AASB-R002"
+      ],
+      "facts": {
+        "price": 1000,
+        "cost": 300,
+        "total_cost": 600,
+        "alternative_use": false,
+        "termination_payment": 100,
+        "required_compensation": 550,
+        "customer_controls": false,
+        "simultaneous_benefit": false
+      },
+      "calculations": {
+        "potential_progress": "cost/total_cost",
+        "revenue": "price*potential_progress if (customer_controls or simultaneous_benefit or (not alternative_use and termination_payment>=required_compensation)) else 0"
+      },
+      "expected_calculations": {
+        "potential_progress": 0.5,
+        "revenue": 0
+      },
+      "route": "customer_controls or simultaneous_benefit or (not alternative_use and termination_payment>=required_compensation)",
+      "expected_route": false,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "custom item remains controlled by seller",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "inventory_wip",
+              "amount": "cost"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "cost"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "inventory_wip": 300,
+        "cash": -300
+      },
+      "workpaper_outcome": "Legal counsel shows cancellation reimbursement100 does not pay cost plus reasonable profit; absence of alternative use alone fails overtime.",
+      "control_outcome": "Close reviewer rejects premature revenue500 and confirms WIP ownership/cost recoverability; litigation interpretation retained.",
+      "data_outcome": "Timing_rule=point_in_time; no progress revenue event; WIP tracked by job and acceptance controls.",
+      "presentation_disclosure_outcome": "No revenue/contract asset; classify WIP under inventory; disclose material timing judgment where required."
+    },
+    {
+      "id": "RT-enforceable-profit-right",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-003-IFRS-R001",
+        "TOPIC-03-003-US-R001",
+        "TOPIC-03-003-UK-R001",
+        "TOPIC-03-003-AASB-R001"
+      ],
+      "facts": {
+        "price": 1000,
+        "cost": 300,
+        "total_cost": 600,
+        "alternative_use": false,
+        "right_cost_profit": true
+      },
+      "calculations": {
+        "progress": "cost/total_cost",
+        "revenue": "price*progress"
+      },
+      "expected_calculations": {
+        "progress": 0.5,
+        "revenue": 500
+      },
+      "route": "not alternative_use and right_cost_profit",
+      "expected_route": true,
+      "opening_balances": {},
+      "journals": [
+        {
+          "event": "valid overtime transfer",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_asset",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            },
+            {
+              "side": "Dr",
+              "account": "cost_of_sales",
+              "amount": "cost"
+            },
+            {
+              "side": "Cr",
+              "account": "cash",
+              "amount": "cost"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "contract_asset": 500,
+        "revenue": -500,
+        "cost_of_sales": 300,
+        "cash": -300
+      },
+      "workpaper_outcome": "Legal memo supports enforceable right throughout performance; exclude abnormal waste from300 and verify remaining300 forecast.",
+      "control_outcome": "Reviewer checks cancellation right is legally substantive and denominator current; failure reverses timing conclusion.",
+      "data_outcome": "Activate progress rule only after legal approval; cost ledger and job forecast feed versioned percentage.",
+      "presentation_disclosure_outcome": "Revenue500 and gross margin200; conditional asset500; significant progress-method judgment note."
+    },
+    {
+      "id": "RT-integrated-modification-catchdown",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-003-IFRS-R012",
+        "TOPIC-03-003-US-R012",
+        "TOPIC-03-003-UK-R012",
+        "TOPIC-03-003-AASB-R012"
+      ],
+      "facts": {
+        "old_revenue": 600,
+        "new_price": 1400,
+        "cost_to_date": 400,
+        "new_total_cost": 1000,
+        "remaining_distinct": false
+      },
+      "calculations": {
+        "new_cumulative": "new_price*cost_to_date/new_total_cost",
+        "reversal": "old_revenue-new_cumulative"
+      },
+      "expected_calculations": {
+        "new_cumulative": 560,
+        "reversal": 40
+      },
+      "route": "remaining_distinct",
+      "expected_route": false,
+      "opening_balances": {
+        "revenue": -600,
+        "contract_asset": 600
+      },
+      "journals": [
+        {
+          "event": "approved integrated change",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "revenue",
+              "amount": "reversal"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_asset",
+              "amount": "reversal"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "revenue": -560,
+        "contract_asset": 560
+      },
+      "workpaper_outcome": "Amendment and engineer memo demonstrate one integrated output; price1400 and revised completion cost1000 are approved together.",
+      "control_outcome": "Modification-review control rejects prospective-only treatment that leaves accumulated revenue600; bridge decrease40.",
+      "data_outcome": "Keep approved amendment linked to original obligation; recompute cumulative revenue without rewriting historical journals.",
+      "presentation_disclosure_outcome": "Explain significant modification estimate/timing effect40; updated remaining output remains in obligation note."
+    },
+    {
+      "id": "RT-licence-access-False",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-003-IFRS-R019",
+        "TOPIC-03-003-US-R020",
+        "TOPIC-03-003-US-R021",
+        "TOPIC-03-003-UK-R022",
+        "TOPIC-03-003-AASB-R019"
+      ],
+      "facts": {
+        "price": 120,
+        "months": 12,
+        "access": false,
+        "usable": true,
+        "ongoing_activities_significant": false,
+        "customer_exposed": false,
+        "separate_activity_transfer": false,
+        "symbolic": false,
+        "function_changed": false,
+        "required_updated_use": false,
+        "uk_standready": false
+      },
+      "calculations": {
+        "revenue": "price/months if access else price",
+        "liability": "price-revenue"
+      },
+      "expected_calculations": {
+        "revenue": 120,
+        "liability": 0
+      },
+      "route": "access",
+      "expected_route": false,
+      "journals": [
+        {
+          "event": "advance",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "price"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "price"
+            }
+          ]
+        },
+        {
+          "event": "first month usable right",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 120,
+        "contract_liability": 0,
+        "revenue": -120
+      },
+      "workpaper_outcome": "TM-003 documents distinct right and ongoing activity obligation; IFRS activities, US IP classification and UK licence substance independently support selected route.",
+      "control_outcome": "Activation-date evidence is required in both cases; licence classifier challenge causes120 versus10 revenue, exposing110 premature release if access is miscoded.",
+      "data_outcome": "IP type and activity-dependency fields select point-in-time event or12-month access schedule; source licence retained and hosting not silently bundled.",
+      "presentation_disclosure_outcome": "Distinguish point-in-time licence120 from over-time access10 and liability110; remaining-term and significant judgment note selects framework relief separately.",
+      "framework_routes": {
+        "IFRS": {
+          "expression": "ongoing_activities_significant and customer_exposed and not separate_activity_transfer",
+          "expected": false
+        },
+        "AASB": {
+          "expression": "ongoing_activities_significant and customer_exposed and not separate_activity_transfer",
+          "expected": false
+        },
+        "US_GAAP": {
+          "expression": "symbolic or (function_changed and required_updated_use)",
+          "expected": false
+        },
+        "UK_GAAP": {
+          "expression": "uk_standready",
+          "expected": false
+        }
+      },
+      "control_checks": {
+        "licence_activation": {
+          "expression": "usable",
+          "expected": true
+        },
+        "premature_full_release_detected": {
+          "expression": "access and revenue==price",
+          "expected": false
+        }
+      }
+    },
+    {
+      "id": "RT-licence-access-True",
+      "frameworks": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ],
+      "claim_ids": [
+        "TOPIC-03-003-IFRS-R019",
+        "TOPIC-03-003-US-R020",
+        "TOPIC-03-003-US-R021",
+        "TOPIC-03-003-UK-R022",
+        "TOPIC-03-003-AASB-R019"
+      ],
+      "facts": {
+        "price": 120,
+        "months": 12,
+        "access": true,
+        "usable": true,
+        "ongoing_activities_significant": true,
+        "customer_exposed": true,
+        "separate_activity_transfer": false,
+        "symbolic": true,
+        "function_changed": false,
+        "required_updated_use": false,
+        "uk_standready": true
+      },
+      "calculations": {
+        "revenue": "price/months if access else price",
+        "liability": "price-revenue"
+      },
+      "expected_calculations": {
+        "revenue": 10,
+        "liability": 110
+      },
+      "route": "access",
+      "expected_route": true,
+      "journals": [
+        {
+          "event": "advance",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "price"
+            },
+            {
+              "side": "Cr",
+              "account": "contract_liability",
+              "amount": "price"
+            }
+          ]
+        },
+        {
+          "event": "first month usable right",
+          "lines": [
+            {
+              "side": "Dr",
+              "account": "contract_liability",
+              "amount": "revenue"
+            },
+            {
+              "side": "Cr",
+              "account": "revenue",
+              "amount": "revenue"
+            }
+          ]
+        }
+      ],
+      "expected_balances": {
+        "cash": 120,
+        "contract_liability": -110,
+        "revenue": -10
+      },
+      "workpaper_outcome": "TM-003 documents distinct right and ongoing activity obligation; IFRS activities, US IP classification and UK licence substance independently support selected route.",
+      "control_outcome": "Activation-date evidence is required in both cases; licence classifier challenge causes120 versus10 revenue, exposing110 premature release if access is miscoded.",
+      "data_outcome": "IP type and activity-dependency fields select point-in-time event or12-month access schedule; source licence retained and hosting not silently bundled.",
+      "presentation_disclosure_outcome": "Distinguish point-in-time licence120 from over-time access10 and liability110; remaining-term and significant judgment note selects framework relief separately.",
+      "framework_routes": {
+        "IFRS": {
+          "expression": "ongoing_activities_significant and customer_exposed and not separate_activity_transfer",
+          "expected": true
+        },
+        "AASB": {
+          "expression": "ongoing_activities_significant and customer_exposed and not separate_activity_transfer",
+          "expected": true
+        },
+        "US_GAAP": {
+          "expression": "symbolic or (function_changed and required_updated_use)",
+          "expected": true
+        },
+        "UK_GAAP": {
+          "expression": "uk_standready",
+          "expected": true
+        }
+      },
+      "control_checks": {
+        "licence_activation": {
+          "expression": "usable",
+          "expected": true
+        },
+        "premature_full_release_detected": {
+          "expression": "access and revenue==price",
+          "expected": false
+        }
+      }
+    }
+  ]
+}
