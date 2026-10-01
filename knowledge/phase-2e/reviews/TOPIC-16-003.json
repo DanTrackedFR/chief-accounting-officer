@@ -5,10 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Regulatory delivery and structured reporting; numeric/tag semantic correctness,conditionalUS/EU applicability",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/README.md",
-    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/factory.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Correcthumantextwrongscale/priorcontext, extensionwithoutbasis,wrongtaxonomypackage andlateadjustment fail; crossjurisdictionreuse mustbereviewed.",
@@ -37,5 +33,11 @@
   "numerical_reperformance": "1200000raw units→1200displaythousands→1200000machine;doublemultiplication1200000*1000=1200000000 errorfactor1000. Liability400000signnotflippedfromtypographyalone.",
   "cross_topic_check": "08-009tieout/11-008reportinglayer/16-004outputchecksum sameapprovednumbers.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/README.md",
+    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

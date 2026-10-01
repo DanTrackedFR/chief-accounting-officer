@@ -5,13 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Employee deductions reconcile gross payroll to net settlement and deduction liabilities; employer costs and earned accruals are assessed separately from employee net cash. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/README.md",
-    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/methods/collections-payroll-bridges.md",
-    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/practice/collections-payroll-handoff.md",
-    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/standards-claims.json",
-    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/tests/phase-2d-worker-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Collections marks20000paid withoutbankorcredit fails; payrollnet570000cannotbecomparedtoexpense600000as30000expensevariance.",
@@ -82,5 +75,14 @@
   "numerical_reperformance": "600000gross-30000deductions=570000net;GL605000 implies5000employercharge/timingbridge not35000netcasherror.",
   "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/README.md",
+    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/methods/collections-payroll-bridges.md",
+    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/practice/collections-payroll-handoff.md",
+    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/standards-claims.json",
+    "knowledge/topics/TOPIC-12-003-collections-payroll-accounting-process/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

@@ -5,17 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "partial writeoffs/recoveries and cash allocation",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
-    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
-    "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Aging180withenforceableplan doesnotprovezero recovery; remission50invoice60 leaves10validclaimunlessconcession. UScashrecovery15allowance thenreassess25 ->charge10 vsIFRS25 with15recovery.",
@@ -778,5 +767,18 @@
   "numerical_reperformance": "120gross-100writeoff=20;90allowance+10loss=100. Portfolio280-80writeoff=200;15recovery and25closingallowance ->netcash+AR-allowance190 versus210opening netloss20bothroutes. Bankgross60-fee2=cash58;receipt250 application240 leaves10credit/10disputed separate.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
+    "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
+    "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

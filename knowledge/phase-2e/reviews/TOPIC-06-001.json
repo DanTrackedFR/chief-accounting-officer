@@ -5,11 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/README.md",
-    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-restrictions/README.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Unresolved bank difference remains an exception; transfers cannot create duplicate cash.",
@@ -136,5 +131,12 @@
   "numerical_reperformance": "1000+100-80=1020;1040-20=1020. 900-70+40=870 versus890-10+10=890 leaves20; only evidenced debit reduces books to870.",
   "cross_topic_check": "Crosschecked03-008 impairment,07 consolidation/CTA/equitymethod,08 cashflow/covenantpresentation,13debt events and06sibling classifications; no duplicateFX,fees orOCI.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/README.md",
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-restrictions/README.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

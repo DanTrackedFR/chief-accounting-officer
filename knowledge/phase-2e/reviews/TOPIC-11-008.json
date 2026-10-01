@@ -7,12 +7,6 @@
   "approval_track": "NON_NORMATIVE_SCOPE_REVIEW",
   "source_note": "Source: ChatGPT training data",
   "scope_review": "Original accounting system/control architecture. No specific recognition, measurement, disclosure or statutory quantitative threshold asserted. Framework requirements are conditional referrals to technical topics. SEC/PCAOB footer identifies applicable control/auditor context without mandating architecture; NIST voluntary use verified on its official overview, 2026-10-01. Operational must statements are design acceptance criteria, not new GAAP.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/README.md",
-    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/methods/reporting-contract.md",
-    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/practice/warehouse-reporting.md",
-    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/tests/phase-2d-worker-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "An 8,000 GL credit would corrupt correct accounting; correct the report population and preserve bridge.",
@@ -25,5 +19,13 @@
   "numerical_reperformance": "504,000 dashboard minus 8 test invoices of 1,000 = 496,000 ledger.",
   "cross_topic_check": "Consistent with approved close/control topics: no plugs, gross exception review, retained ownership, complete populations before match rate, accounting approval before automated posting.",
   "rights_check": "Original design guidance, no restricted authoritative text. NIST overview https://www.nist.gov/itl/ai-risk-management-framework checked; limited voluntary-status paraphrase.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/README.md",
+    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/methods/reporting-contract.md",
+    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/practice/warehouse-reporting.md",
+    "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "NON_NORMATIVE_SCOPE_REVIEW"
 }

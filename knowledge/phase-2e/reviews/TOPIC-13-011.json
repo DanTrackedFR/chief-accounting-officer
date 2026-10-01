@@ -5,22 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Functional-currency economy assessment and index/restatement followed by translation; no unsupported current-country designation.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-13-011-hyperinflation/README.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflation/sources.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflation/tests.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflation/tests/scenarios.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/README.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/index-and-translation-workpaper.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/sources.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/tests.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/tests/scenarios.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/README.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/framework-routing.md",
-    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/tests.md",
-    "knowledge/topics/TOPIC-13-011/README.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Single100% indicator, cash indexation, simpleassetadjustment credited to PL without monetary/equity reconciliation, missingdates, index change and hyperinflationary presentation confused with functionalcurrency fail.",
@@ -217,5 +201,23 @@
   "numerical_reperformance": "100*150/100=150gross; machine100*250/200=125, adjustment25; inventory50*250/225=55.5556 rounds55.56; cash40 remains40. No balanced JE or monetary gain fabricated from isolated assets. Monetaryreceivable100 not150.",
   "cross_topic_check": "06functionalcurrency/FX and07consolidation take restated local inputs first;13-001acquisition and15judgment retain complete monetary/tax/impairment calculations.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-13-011-hyperinflation/README.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflation/sources.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflation/tests.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflation/tests/scenarios.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/README.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/index-and-translation-workpaper.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/sources.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/tests.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting-assessment/tests/scenarios.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/README.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/framework-routing.md",
+    "knowledge/topics/TOPIC-13-011-hyperinflationary-accounting/tests.md",
+    "knowledge/topics/TOPIC-13-011/README.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

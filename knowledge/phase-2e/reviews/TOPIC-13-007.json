@@ -5,11 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Issuer-side convertible debt and freestanding warrants; executed terms, all settlement paths and functional currency; not valuation of unprovided instruments.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/README.md",
-    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/compound-and-warrant-workpaper.md",
-    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/evidence-and-regression.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Variable number/value, foreign-currency strike exceptions, issuer cash choice, strike later fixed without amendment, and separately issued warrants were independently contrasted; no universal equity or reclassification inference.",
@@ -206,5 +201,12 @@
   "numerical_reperformance": "1000-920=80; costs20*.92=18.4 and20*.08=1.6; net901.6+78.4=980=1000-20. Alternative1000-800=200 residual; derivative31-25=6 loss. Coupon/maturity absent: no invented numeric EIR yield; opening901.6 route checked.",
   "cross_topic_check": "Debt/valuation06, equity13-006 and EPS08-006 inputs agree; liability remeasurement versus fixed original equity maintained.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/README.md",
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/compound-and-warrant-workpaper.md",
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/evidence-and-regression.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

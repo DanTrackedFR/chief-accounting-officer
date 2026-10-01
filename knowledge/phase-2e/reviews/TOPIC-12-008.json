@@ -5,13 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/README.md",
-    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/methods/queue-accounting-state.md",
-    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/practice/queue-handoff.md",
-    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/standards-claims.json",
-    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/tests/phase-2d-worker-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "40failedinvoices30000,10highrisk,35SLAresponses notallcomplete;bulkclosed40butdestination37 leaves3unresolved; noautodeleteunknownexceptions.",
@@ -82,5 +75,14 @@
   "numerical_reperformance": "40-37=3unresolved;35/40=87.5%responsecompletion distinctfrom37/40=92.5%acceptedcount andamountcompletion.",
   "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/README.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/methods/queue-accounting-state.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/practice/queue-handoff.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/standards-claims.json",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

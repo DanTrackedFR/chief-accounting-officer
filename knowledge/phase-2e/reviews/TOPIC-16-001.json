@@ -5,10 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Entity/jurisdiction filing calendar, UK ordinary subsequent accounts and conditionalSECdates",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/README.md",
-    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/factory.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Firstaccounts, shortenedperiod, listing/filerstatuschange, submissionvsacceptance andUKweekendvsSECnextbusinessday contrasted; no universaldeadline.",
@@ -37,5 +33,11 @@
   "numerical_reperformance": "31Dec2026 ordinarysubsequentprivate→30Sep2027;public→30Jun2027. Separatefilerrows; deadlines calendar-month not270/180hardcoded days. SECdays countfromperiodend conditionalclassification notUKformula.",
   "cross_topic_check": "08-008/010calendars and16-002issuerstatus align.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/README.md",
+    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

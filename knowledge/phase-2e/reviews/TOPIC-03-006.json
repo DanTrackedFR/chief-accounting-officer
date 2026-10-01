@@ -5,16 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "contract acquisition/fulfilment cost and billing",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/README.md",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/granular-regression.md",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/recoverability-and-contract-cost-impairment.md",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/standards-claims.json",
-    "knowledge/topics/TOPIC-03-006-contract-costs-billing/tests/worked-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Salary30 paidregardlessofsuccess expensed; UKexpenseelection separatefromIFRS1yearamortization relief. Missingbilling12 alreadyearnedandrecorded mustnotcreditrevenueagain.",
@@ -832,5 +822,17 @@
   "numerical_reperformance": "Commission90/3=30amort;60remaining;200-155=45cap;15loss;closing45. Improvedcap55 supports10reversalwherepermitted notUS. Billing10*12+2*40=200 vs9*12+80=188 missing12.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/README.md",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/granular-regression.md",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/recoverability-and-contract-cost-impairment.md",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/standards-claims.json",
+    "knowledge/topics/TOPIC-03-006-contract-costs-billing/tests/worked-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

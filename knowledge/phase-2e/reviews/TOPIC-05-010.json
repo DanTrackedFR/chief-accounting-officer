@@ -5,13 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Individual review of canonical capability and retained substantive methods for payables/employee topic 10; existing REVIEWED baseline confirmed. All material rule families represented, operational controls treated as recommendations.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/README.md",
-    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/classification-and-payroll-interface-resolution.md",
-    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/compensation-bridge.md",
-    "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/README.md",
-    "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/standards-claims.json"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Department code does not make all engineering wages capitalizable; unexplained reconciliation cannot be plugged.",
@@ -82,5 +75,14 @@
   "numerical_reperformance": "1000+60+20-10=1070 expected versus1085 gives15 difference. If10 administrative wages fail asset criteria, expected1080 and difference5. Trace original entries and simultaneous liability effects before correction.",
   "cross_topic_check": "Linked03-006 acquisition costs,04 capitalization/impairment,06 FX/finance,05 sibling benefit rules and09 controls checked for duplicate recognition and contradictory classification.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/README.md",
+    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/classification-and-payroll-interface-resolution.md",
+    "knowledge/topics/TOPIC-05-010-compensation-reconciliations/compensation-bridge.md",
+    "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/README.md",
+    "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/standards-claims.json"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

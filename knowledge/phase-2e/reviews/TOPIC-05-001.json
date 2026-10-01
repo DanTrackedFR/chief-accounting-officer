@@ -5,13 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "Individual review of canonical capability and retained substantive methods for payables/employee topic 1; existing REVIEWED baseline confirmed. All material rule families represented, operational controls treated as recommendations.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/README.md",
-    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/factory.md",
-    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/standards-claims.json",
-    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/three-way-match-and-aged-exception.md",
-    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/worked-bridge-and-qa.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Completeness cannot be established by a matching aging; vendor debit and financing require distinct substance.",
@@ -138,5 +131,14 @@
   "numerical_reperformance": "GL 1260 minus subledger 1240 =20 manual-credit difference, independent missing receipt 75 remains an accrual; 525 minus 510=15 requires origin-specific correction. PO100 received80 leaves20 unperformed, not automatically liability.",
   "cross_topic_check": "Linked03-006 acquisition costs,04 capitalization/impairment,06 FX/finance,05 sibling benefit rules and09 controls checked for duplicate recognition and contradictory classification.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/README.md",
+    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/factory.md",
+    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/standards-claims.json",
+    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/three-way-match-and-aged-exception.md",
+    "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/worked-bridge-and-qa.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

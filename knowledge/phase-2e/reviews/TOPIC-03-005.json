@@ -5,17 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "deferred/unbilled revenue, monetary balances and loss routes",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/README.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/acceptance-refund-and-credit-risk-gates.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/granular-regression.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/period-source-and-acceptance-protocol.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/standards-claims.json",
-    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/tests/worked-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Continuing original100/month for11months afterrefund misstates survivingobligations; refundable fixedFXcash debt monetary versus nonrefundablefuturegoodsadvance nonmonetary.",
@@ -910,5 +899,18 @@
   "numerical_reperformance": "1200/12=100;1200-100-300refund=800; netcash900 revenue100 liability800. Revised6months800/6=133.3333. Conditionalperformed240 ->AR240 reclassification no secondrevenue; supportedloss12 separately.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/README.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/acceptance-refund-and-credit-risk-gates.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/granular-regression.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/period-source-and-acceptance-protocol.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/standards-claims.json",
+    "knowledge/topics/TOPIC-03-005-deferred-unbilled-revenue/tests/worked-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

@@ -5,16 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "credits/returns/refunds and AR",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/README.md",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/granular-regression.md",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/returns-price-concession-and-collection.md",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/standards-claims.json",
-    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/tests/worked-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Defectiveexchange routewarranty; bankruptcyvalidAR notreturn; duplicateinvoice reverseerrornotECL; returnedassetvaluefall notnewrevenuecredit.",
@@ -942,5 +932,17 @@
   "numerical_reperformance": "1000cash=800revenue+200refund;600inventory=490COGS+110recovery (120-10). Returnrate10% ->100liability release100revenue;recovery50 declines60COGS. Settlement100 no duplicateP&L.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/README.md",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/granular-regression.md",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/returns-price-concession-and-collection.md",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/standards-claims.json",
+    "knowledge/topics/TOPIC-03-007-credits-refunds-ar/tests/worked-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

@@ -26,10 +26,10 @@ For each canonical topic, complete the appropriate full factory: principles/stan
 Update the canonical manifest first. Derived progress reports and roadmap are regenerated only after the manifest update. Duplicate/retry folders never count as additional topics. Preserve useful duplicate material until canonicalization is safe.
 
 ### Next sequence
-Phase 2D substantive population is closed. Continue the separate full-corpus standards-evidence audit under `knowledge/standards-evidence/`: complete claim-register coverage, verify current authoritative sources and effective periods where accessible, preserve rights restrictions, quarantine conflicts, and run linked regression after claim changes. Do not equate SOURCE_VERIFIED with substantive REVIEWED, and do not promote APPROVED until its explicit authority-QA threshold is satisfied.
+Phase 2D and the full Phase 2E two-track approval audit are closed. Preserve the individual evidence and run both standards-evidence and canonical approval validators after changes. Future direct-source assurance work remains a separate queue; access restrictions alone do not reverse owner-authorised training-data approvals. Implement and verify the public output contract in the eventual production application.
 
 ## Phase 3 — Production skills
 Build skills systematically across all 17 domains after the standards-evidence baseline is sufficiently mature for the intended production use.
 
 ## Phase 2E — approval audit
-In progress: 157/157 individually processed and approved; 0 pending. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found. Production output-boundary runtime verification is pending; executable contract runs in CI. After local environment failure, exact-commit GitHub Actions validates batches before continuation.
+Complete: 157/157 individually processed and approved; no remaining accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found. Production output-boundary runtime verification is pending; executable contract runs in CI. After local environment failure, exact-commit GitHub Actions validates batches before continuation.

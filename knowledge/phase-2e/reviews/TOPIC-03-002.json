@@ -5,18 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "variable price/constraint/SSP/discount and changes",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/README.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/factory.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/granular-regression.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/period-source-and-estimate-protocol.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/reassessment-and-specific-allocation.md",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/standards-claims.json",
-    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/worked-estimate-and-control.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Specific uptime bonus with evidence versus arbitrary label; removal100 when B satisfied reduces revenue100, notECL; quoted invoice amount notSSP evidence.",
@@ -834,5 +822,19 @@
   "numerical_reperformance": "1000*600/1000=600;400toB; unconstrainedbonus200 generalA120/B80 versus qualifiedspecificB200 -> A600/B600. Binary80%bonus200 mostlikely200, expected160 is another estimate, both constrained independently.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/README.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/factory.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/granular-regression.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/period-source-and-estimate-protocol.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/reassessment-and-specific-allocation.md",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/standards-claims.json",
+    "knowledge/topics/TOPIC-03-002-variable-consideration-allocation/worked-estimate-and-control.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

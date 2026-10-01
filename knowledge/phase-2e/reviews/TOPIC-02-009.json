@@ -6,19 +6,9 @@
   "result": "PASS",
   "approval_track": "MIXED_CLAIM_REVIEW",
   "scope_review": "Reviewed all 19 existing claims and tested source/period/scope alongside five executed cases; the SEC overlay is not universal US GAAP. Added deadline precision and clarified obsolete source-access-only blocker prose.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/canonical-sources.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/restatement-bridge.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
-    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worker-scenarios.md"
-  ],
   "accuracy_checks": [
     {
-      "challenge": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly \u00b160,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
+      "challenge": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly ±60,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
       "result": "PASS",
       "test": "tests/test_phase2e_close_calculations.py::test_error_statement_and_opening_bridge"
     }
@@ -141,8 +131,20 @@
   ],
   "period_and_scope_check": "2026 method with explicit historical/early-adoption gates; no universal filing, inventory-control, materiality, uniform-benefit or tax assumption. IFRS 18 start gate differs from current accrual/error rules; AASB entity tier, FRS regime and US filer status remain explicit.",
   "cross_framework_check": "IFRS/AASB/FRS retrospective/practicability and US error route challenged separately; SEC and PCAOB scope do not apply universally. Tier 2 simplified disclosures and small-entity law are not inferred from IFRS.",
-  "numerical_reperformance": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly \u00b160,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
+  "numerical_reperformance": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly ±60,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
   "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
   "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/canonical-sources.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/restatement-bridge.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

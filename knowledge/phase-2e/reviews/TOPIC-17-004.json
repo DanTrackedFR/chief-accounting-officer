@@ -5,10 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "GHGscopes/calculation/disclosure withversionedmethods",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/README.md",
-    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/factory.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "BlindScope3omission, electricityfactorforfuel,mixedboundary andmasslabelwithoutconversionfail; valid t/MWh-to-kg/kWh passes. CorporateStandardoptionalScope3 doesnotwaiveadoptedS2requirements.",
@@ -79,5 +75,11 @@
   "numerical_reperformance": "100000kWh*.4kg/kWh=40000kg=40t;100MWh*.4t/MWh=40t. Missing20000kWhyields32t,gap8t.10kLfuelnoprovfactor,noinventedemissions.",
   "cross_topic_check": "17-0032800MWh1120t/00612MWh4.2t dimensionallyconsistent;GLonlyonepopulationinput.",
   "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/README.md",
+    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

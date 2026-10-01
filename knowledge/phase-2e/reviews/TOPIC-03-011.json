@@ -5,13 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "AR/revenue population reconciliation is operational; technical exception treatment is delegated.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-011-ar-revenue-reconciliations/factory.md",
-    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/README.md",
-    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/counterparty-independent-completeness-test.md",
-    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/standards-claims.json",
-    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/worked-case-and-qa.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "1000 source versus995accepted requires5rejects and amounts; duplicate invoice in source/subledger/GL can still balance, requiring original-event population proof.",
@@ -25,5 +18,14 @@
   "numerical_reperformance": "AR opening+invoices-cash-credits-writeoffs+FX/reclasses=closing; require separate allowance and liability bridge, no inferred offset.",
   "cross_topic_check": "Consistent with Domains02/03/09/11: complete population, genuine evidence, no plugs or backdating, gross unresolved issues, technical owner decision and provider independence.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-011-ar-revenue-reconciliations/factory.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/README.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/counterparty-independent-completeness-test.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/standards-claims.json",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/worked-case-and-qa.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "NON_NORMATIVE_SCOPE_REVIEW"
 }

@@ -5,17 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "principal/agent and contract balances",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/README.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/granular-regression.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/multiple-promises-and-billing-separation.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/period-source-and-control-protocol.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/standards-claims.json",
-    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/worked-gross-net-and-balance-case.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Same margin55 doesnotjustify gross140 agent revenue; invoiceprocessing delay alone doesnotmake receivable conditional; refundablecash/agentsettlement notperformance liability bydefault.",
@@ -866,5 +855,18 @@
   "numerical_reperformance": "140cash=40ownservice+15commission+85payable; remit85cash/netrevenue55. Principalbranch140revenue-85cost=55margin withdifferentpresentation.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/README.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/granular-regression.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/multiple-promises-and-billing-separation.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/period-source-and-control-protocol.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/standards-claims.json",
+    "knowledge/topics/TOPIC-03-004-principal-agent-contract-balances/worked-gross-net-and-balance-case.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

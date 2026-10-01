@@ -5,17 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "unapplied cash/customer credit/legal expiry/breakage",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/README.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/credit-origin-and-legal-expiry.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/granular-regression.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/standards-claims.json",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/worked-case-and-qa.md",
-    "knowledge/topics/TOPIC-03-010-unapplied-cash-disputes/factory.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Sweep sixmonthold100torevenuefailswithoutlegalentitlement. Qualifyingbreakageproportionateexercise distinctfinancialliabilityrelease; customerinactivitycannotproverelease; pricecreditvsinsolvency vsseparatelegalclaim independent.",
@@ -921,5 +910,18 @@
   "numerical_reperformance": "300=120AR+100future+80unidentified;later30matchremaining50;AR150fullysettled. Remit50tocustodian ->cash250 liability100 noincome.1050=950AR+100credit;200-170=30dispute.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/README.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/credit-origin-and-legal-expiry.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/granular-regression.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/standards-claims.json",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/worked-case-and-qa.md",
+    "knowledge/topics/TOPIC-03-010-unapplied-cash-disputes/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

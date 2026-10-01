@@ -6,13 +6,6 @@
   "result": "PASS",
   "approval_track": "MIXED_CLAIM_REVIEW",
   "scope_review": "Close mechanics are practice; the embedded IFRS 18 effective date is normative and registered.",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-02-001-close-architecture/README.md",
-    "knowledge/topics/TOPIC-02-001-close-architecture/canonical-sources.md",
-    "knowledge/topics/TOPIC-02-001-close-architecture/factory.md",
-    "knowledge/topics/TOPIC-02-001-close-architecture/methods/critical-path-model.md",
-    "knowledge/topics/TOPIC-02-001-close-architecture/tests/phase-2d-worker-scenarios.md"
-  ],
   "accuracy_checks": [
     {
       "challenge": "AP and revenue branches both end at day 4, then consolidation/tie-out give day 6. AP improvement alone leaves day 6; billing delay gives day 7. A completed checkbox with rejected billing rows fails source completeness.",
@@ -33,5 +26,14 @@
   "numerical_reperformance": "AP and revenue branches both end at day 4, then consolidation/tie-out give day 6. AP improvement alone leaves day 6; billing delay gives day 7. A completed checkbox with rejected billing rows fails source completeness.",
   "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
   "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-02-001-close-architecture/README.md",
+    "knowledge/topics/TOPIC-02-001-close-architecture/canonical-sources.md",
+    "knowledge/topics/TOPIC-02-001-close-architecture/factory.md",
+    "knowledge/topics/TOPIC-02-001-close-architecture/methods/critical-path-model.md",
+    "knowledge/topics/TOPIC-02-001-close-architecture/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }

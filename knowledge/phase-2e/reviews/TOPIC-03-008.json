@@ -5,16 +5,6 @@
   "baseline_status": "REVIEWED",
   "result": "PASS",
   "scope_review": "expected credit loss and UK incurred loss",
-  "files_reviewed": [
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/2026-source-and-model-review.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/evidence-and-regression.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/factory.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/granular-regression.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-method.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-scenarios.json",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/receivable-vintage-forward-risk-and-election.md",
-    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/standards-claims.json"
-  ],
   "accuracy_checks": [
     {
       "challenge": "Forecastonly risks donotbythemselvesestablishUK11/12incurredloss. Knowninsolventcustomer cannotremain generic1%; US2025-05 notblanketzero/loanexemption; subsequentcollection election onlynonPBEwithexpedient.",
@@ -777,5 +767,17 @@
   "numerical_reperformance": "900*2%=18 plusindividual30=48;poolingextra100overstates2. 1000*.01+500*.05+100*.145=49.5;UKobjective30 unlessIFRS9election;charge29.5from20;net1550.5;subsequent25reverses24.5. Cohort600*.01+200*.03+150*.1+50*.4=47;40+12-5=47.",
   "cross_topic_check": "03-001 scope/contract precedes03-002price and03-003transfer; 03-004/005balances,03-006costs,03-007entitlement,03-008loss,03-009writeoff and03-010cash agree. Disclosure relief doesnotaltermeasurement; no duplicate revenue or double loss.",
   "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
-  "blockers": []
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/2026-source-and-model-review.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/factory.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/granular-regression.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-method.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-scenarios.json",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/receivable-vintage-forward-risk-and-election.md",
+    "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/standards-claims.json"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
 }
