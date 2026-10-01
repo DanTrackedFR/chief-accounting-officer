@@ -1,0 +1,86 @@
+{
+  "topic_id": "TOPIC-12-008",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/README.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/methods/queue-accounting-state.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/practice/queue-handoff.md",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/standards-claims.json",
+    "knowledge/topics/TOPIC-12-008-exception-queue-workflow/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "40failedinvoices30000,10highrisk,35SLAresponses notallcomplete;bulkclosed40butdestination37 leaves3unresolved; noautodeleteunknownexceptions.",
+      "result": "PASS",
+      "reason": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-12-008-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-008-US_GAAP-E002",
+      "framework": "US_GAAP",
+      "proposition": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-008-UK_GAAP-E003",
+      "framework": "UK_GAAP",
+      "proposition": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-008-AASB-E004",
+      "framework": "AASB",
+      "proposition": "Rejected transactions require assessment of underlying recognition and cutoff regardless of ticket or retry status; unsupported amounts are not accrued solely to close the queue.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Transaction entity/currency/service/controldate and actual accountingframework edition gate journal decisions. Operational cadence/thresholds are companypolicy notstatutorynorms. No universaltax, cashclassification, leaseterm or consolidation testcreated.",
+  "cross_framework_check": "IFRS/US/UK/AASB accounting differences remain in owningtechnicaltopics; process doesnotimposeUSleaseclassification onIFRS or IFRSECL onUK11/12. Payrollgross/net and completepopulation arithmetic isframework-neutral.",
+  "numerical_reperformance": "40-37=3unresolved;35/40=87.5%responsecompletion distinctfrom37/40=92.5%acceptedcount andamountcompletion.",
+  "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}

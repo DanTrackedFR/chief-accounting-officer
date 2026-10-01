@@ -15,7 +15,7 @@ Status: complete as architecture checkpoint. Full factory proven end-to-end.
 ## Phase 2D — Full knowledge population
 Status: COMPLETE AT SUBSTANTIVE REVIEWED LEVEL.
 
-Canonical status source: `knowledge/phase-2d-topic-manifest.json`. Current independently reconciled substantive status: **101 REVIEWED, 0 PARTIAL, 0 NOT_STARTED, 0 BLOCKED, 56 APPROVED** across 157 canonical topics, with **347/347** canonical capabilities covered. All three Phase 2D production workstreams are integrated; there is no remaining substantive worker closure queue.
+Canonical status source: `knowledge/phase-2d-topic-manifest.json`. Current independently reconciled substantive status: **92 REVIEWED, 0 PARTIAL, 0 NOT_STARTED, 0 BLOCKED, 65 APPROVED** across 157 canonical topics, with **347/347** canonical capabilities covered. All three Phase 2D production workstreams are integrated; there is no remaining substantive worker closure queue.
 
 REVIEWED and standards-evidence assurance are separate axes. A REVIEWED topic may still contain claims requiring direct authoritative-source verification. APPROVED uses the owner-authorised two-track gate. Individually signed-off topics passed scope, claims, adversarial and relevant numerical review; source-evidence labels remain independent.
 
@@ -32,4 +32,4 @@ Phase 2D substantive population is closed. Continue the separate full-corpus sta
 Build skills systematically across all 17 domains after the standards-evidence baseline is sufficiently mature for the intended production use.
 
 ## Phase 2E — approval audit
-In progress: 56/157 individually processed and approved; 101 pending. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found in the repository tree. Production output-boundary runtime verification is pending; executable contract tests pass.
+In progress: 65/157 individually processed and approved; 92 pending. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found in the repository tree. Production output-boundary runtime verification is pending; executable contract tests pass.

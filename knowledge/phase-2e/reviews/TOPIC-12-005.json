@@ -1,0 +1,29 @@
+{
+  "topic_id": "TOPIC-12-005",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Non-normative operating design. No recognition/measurement/disclosure threshold or legal duty prescribed; accounting exceptions route to technical topics. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-12-005-bank-reconciliation-operating-model/README.md",
+    "knowledge/topics/TOPIC-12-005-bank-reconciliation-operating-model/methods/bank-transaction-resolution.md",
+    "knowledge/topics/TOPIC-12-005-bank-reconciliation-operating-model/practice/bank-rec-handoff.md",
+    "knowledge/topics/TOPIC-12-005-bank-reconciliation-operating-model/standards-claims.json",
+    "knowledge/topics/TOPIC-12-005-bank-reconciliation-operating-model/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Bank300000 versusGL315000 transit15000 viableonlywithgenuine subsequentsettlement;120daysunsettled requiresinvestigation. NewmonthlyIDs cannotresetoriginalage.",
+      "result": "PASS",
+      "reason": "Non-normative operating design. No recognition/measurement/disclosure threshold or legal duty prescribed; accounting exceptions route to technical topics. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage."
+    }
+  ],
+  "claim_checks": [],
+  "period_and_scope_check": "Transaction entity/currency/service/controldate and actual accountingframework edition gate journal decisions. Operational cadence/thresholds are companypolicy notstatutorynorms. No universaltax, cashclassification, leaseterm or consolidation testcreated.",
+  "cross_framework_check": "IFRS/US/UK/AASB accounting differences remain in owningtechnicaltopics; process doesnotimposeUSleaseclassification onIFRS or IFRSECL onUK11/12. Payrollgross/net and completepopulation arithmetic isframework-neutral.",
+  "numerical_reperformance": "300000+15000=315000; grossdeposits/payments notburiedin zero netdifference;restrictedcashclassificationtechnical.",
+  "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}
