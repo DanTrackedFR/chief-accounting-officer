@@ -1,0 +1,148 @@
+{
+  "topic_id": "TOPIC-02-009",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "approval_track": "MIXED_CLAIM_REVIEW",
+  "scope_review": "Reviewed all 19 existing claims and tested source/period/scope alongside five executed cases; the SEC overlay is not universal US GAAP. Added deadline precision and clarified obsolete source-access-only blocker prose.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/canonical-sources.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/restatement-bridge.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
+    "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly \u00b160,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
+      "result": "PASS",
+      "test": "tests/test_phase2e_close_calculations.py::test_error_statement_and_opening_bridge"
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-02-009-IFRS-01",
+      "result": "PASS",
+      "challenge": "Known available evidence versus a new default: preserve authorization chronology; no hindsight.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-IFRS-02",
+      "result": "PASS",
+      "challenge": "Within-comparative restatement differs from pre-comparative opening correction; impracticability needs evidence.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-IFRS-03",
+      "result": "PASS",
+      "challenge": "EPS only if IAS 33 applies; quantify line/period effects and earliest opening, with no hindsight.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-IFRS-04",
+      "result": "PASS",
+      "challenge": "2026 non-early adopter versus 2027/early adoption; issued IAS 8 includes future amendments, not automatic 2026 application.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-UK-01",
+      "result": "PASS",
+      "challenge": "Updated reliable assumptions versus changed measurement basis; apply 10.17 balance adjustment where relevant.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-UK-02",
+      "result": "PASS",
+      "challenge": "2023-origin error adjusts earliest 2024 opening, while a 2025 error restates its comparative P&L.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-UK-03",
+      "result": "PASS",
+      "challenge": "FRS 102 disclosure versus small-entity legal/SORP overlay; do not import IFRS EPS wording.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-AU-01",
+      "result": "PASS",
+      "challenge": "New information changes estimates; a known invoice omission remains error.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-AU-02",
+      "result": "PASS",
+      "challenge": "Restatement from earliest practicable period; lack of convenient records alone does not establish impracticability.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-AU-03",
+      "result": "PASS",
+      "challenge": "Tier 2 AASB 1060 is excluded from AASB 108.49; preserve simplified-disclosure route.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-US-01",
+      "result": "PASS",
+      "challenge": "Expense omission with known evidence is error; new shock estimate change and policy change have separate routes.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-US-02",
+      "result": "PASS",
+      "challenge": "80,000 current charge clears liability but distorts current earnings; no general IFRS-style impracticability exception inferred.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-US-03",
+      "result": "PASS",
+      "challenge": "Retain original/adjusted statements and opening after-tax equity; assumed tax amount must be separately validated in actual case.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-US-04",
+      "result": "PASS",
+      "challenge": "Zero annual effect of opposing quarterly errors does not prove interim statements reliable.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-SEC-01",
+      "result": "PASS",
+      "challenge": "0.4%/0.33% illustrative ratios do not establish immateriality; aggregation/intentionality and qualitative factors tested.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-SEC-02",
+      "result": "PASS",
+      "challenge": "Rollover 0 versus iron-curtain 80,000 for unchanged prior omitted payable; current charge reverses those errors rather than curing both periods.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-SEC-03",
+      "result": "PASS",
+      "challenge": "Authorized conclusion, not discovery, starts issuer deadline; auditor notice independently triggers letter/amendment route. Foreign private issuers differ.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-SEC-04",
+      "result": "PASS",
+      "challenge": "Prior material Big R; prior immaterial/current material little r; both immaterial only conditional current charge.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-009-SEC-05",
+      "result": "PASS",
+      "challenge": "Both restatement classes require listed-issuer recovery assessment; scope exceptions and compensation facts remain case inputs.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    }
+  ],
+  "period_and_scope_check": "2026 method with explicit historical/early-adoption gates; no universal filing, inventory-control, materiality, uniform-benefit or tax assumption. IFRS 18 start gate differs from current accrual/error rules; AASB entity tier, FRS regime and US filer status remain explicit.",
+  "cross_framework_check": "IFRS/AASB/FRS retrospective/practicability and US error route challenged separately; SEC and PCAOB scope do not apply universally. Tier 2 simplified disclosures and small-entity law are not inferred from IFRS.",
+  "numerical_reperformance": "80,000 expense correction with assumed 20,000 tax gives 60,000 equity effect; corrected profit 90,000. Current 2,000 charge gives 598,000 only on stipulated immateriality. Little r 80,000 against 100,000 current profit gives 20,000 distortion if charged now. Quarterly \u00b160,000 offsets do not cure interim materiality; earliest-opening 30,000 is not current expense.",
+  "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
+  "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
+  "blockers": []
+}

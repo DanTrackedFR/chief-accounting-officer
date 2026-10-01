@@ -1,0 +1,63 @@
+{
+  "topic_id": "TOPIC-02-006",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "approval_track": "MIXED_CLAIM_REVIEW",
+  "scope_review": "Cutoff follows the applicable recognition event; invoice/payment dates are not universal rules. The illustration assumes control of inventory, and the IFRS 18 date is separately registered.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/README.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/canonical-sources.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/factory.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/knowledge-pack.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/methods/cutoff-and-suspense-case.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/practice/cutoff-authority-gate.md",
+    "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Receipt on 29 December for 25,000 is accrued only on confirmed control/terms. Seller-controlled transit can reverse the recognition outcome; +25,000/-25,000 clearing items net zero but leave 50,000 gross unmatched.",
+      "result": "PASS",
+      "test": "tests/test_phase2e_close_calculations.py::test_cutoff_journal_balances_without_determining_control"
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-02-006-IFRS-E01",
+      "result": "PASS",
+      "challenge": "Inventory-control assumption versus seller-controlled transit; service evidence versus an invoice for future service.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-006-US_GAAP-E01",
+      "result": "PASS",
+      "challenge": "Inventory-control assumption versus seller-controlled transit; service evidence versus an invoice for future service.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-006-UK_GAAP-E01",
+      "result": "PASS",
+      "challenge": "Inventory-control assumption versus seller-controlled transit; service evidence versus an invoice for future service.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-006-AASB-E01",
+      "result": "PASS",
+      "challenge": "Inventory-control assumption versus seller-controlled transit; service evidence versus an invoice for future service.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-006-IFRS-E02",
+      "result": "PASS",
+      "challenge": "Presentation change does not create an inventory receipt/recognition event.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    }
+  ],
+  "period_and_scope_check": "2026 method with explicit historical/early-adoption gates; no universal filing, inventory-control, materiality, uniform-benefit or tax assumption. IFRS 18 start gate differs from current accrual/error rules; AASB entity tier, FRS regime and US filer status remain explicit.",
+  "cross_framework_check": "IFRS/AASB/FRS retrospective/practicability and US error route challenged separately; SEC and PCAOB scope do not apply universally. Tier 2 simplified disclosures and small-entity law are not inferred from IFRS.",
+  "numerical_reperformance": "Receipt on 29 December for 25,000 is accrued only on confirmed control/terms. Seller-controlled transit can reverse the recognition outcome; +25,000/-25,000 clearing items net zero but leave 50,000 gross unmatched.",
+  "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
+  "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
+  "blockers": []
+}

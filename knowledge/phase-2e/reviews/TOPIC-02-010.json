@@ -1,0 +1,29 @@
+{
+  "topic_id": "TOPIC-02-010",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "approval_track": "NON_NORMATIVE_SCOPE_REVIEW",
+  "scope_review": "Evidence hierarchy, signoff, risk-weighted metrics and fast close are operational practices; no external accounting close-day target is asserted.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/README.md",
+    "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/factory.md",
+    "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/methods/evidence-gate.md",
+    "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "190/200=95%, ten omitted reconciliations include 1.2m of balances and 80,000 unresolved gross items. Count completion cannot support clean certification; backdated signoff and material day-6 entries fail day-4 quality claims.",
+      "result": "PASS",
+      "test": "tests/test_phase2e_close_calculations.py::test_signoff_counts"
+    }
+  ],
+  "claim_checks": [],
+  "period_and_scope_check": "2026 method with explicit historical/early-adoption gates; no universal filing, inventory-control, materiality, uniform-benefit or tax assumption. IFRS 18 start gate differs from current accrual/error rules; AASB entity tier, FRS regime and US filer status remain explicit.",
+  "cross_framework_check": "IFRS/AASB/FRS retrospective/practicability and US error route challenged separately; SEC and PCAOB scope do not apply universally. Tier 2 simplified disclosures and small-entity law are not inferred from IFRS.",
+  "numerical_reperformance": "190/200=95%, ten omitted reconciliations include 1.2m of balances and 80,000 unresolved gross items. Count completion cannot support clean certification; backdated signoff and material day-6 entries fail day-4 quality claims.",
+  "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
+  "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
+  "blockers": []
+}
