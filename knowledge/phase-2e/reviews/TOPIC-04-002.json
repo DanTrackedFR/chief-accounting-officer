@@ -1,0 +1,128 @@
+{
+  "topic_id": "TOPIC-04-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Systematicdepreciation, readiness, components/life/residual/method, gain/derecognition and heldforsale claims checked with prospectiveversuserror distinction.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md",
+    "knowledge/topics/TOPIC-04-002-depreciation-disposals/README.md",
+    "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md",
+    "knowledge/topics/TOPIC-04-002-depreciation-disposals/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Idleasset continues timebaseddepreciation absentproperpatternchange. Cashreceipt cannotleavegrosscostinregister; methodchangeevidence cannotbeprovedbycoincidentallyequalamount.",
+      "result": "PASS",
+      "reason": "Systematicdepreciation, readiness, components/life/residual/method, gain/derecognition and heldforsale claims checked with prospectiveversuserror distinction."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-002-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 116 depreciation follows applicable period-specific requirements; Tier 2 disclosures use AASB 1060",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "Significant components, availability date, systematic depreciation and annual life, method and residual reviews control IAS 16 depreciation",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-IFRS-02",
+      "framework": "IFRS",
+      "proposition": "Derecognition gain or loss and held-for-sale classification are distinct from ordinary depreciation",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 17 depreciation and reassessment wording differs from automatic IAS 16 annual review, with Section 27 impairment",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-US-01",
+      "framework": "US_GAAP",
+      "proposition": "US life revisions are prospective and depreciation-method changes can be estimate changes effected by principle changes under ASC 250",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-US-02",
+      "framework": "US_GAAP",
+      "proposition": "ASC 360 held-for-sale and disposal classification changes measurement, depreciation and presentation from ordinary held-and-used asset",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-002-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Useful life, residual and method are reviewed at least at each year end; depreciation starts when available for use.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Actual framework/entity/tier/annualstart and adoption selected. IAS16testingproceeds effective2022; UKPeriodicReview2024principal2026starts/earlyadoption. AASB136Jan2026compilation appliesstarts1July2025before1July2026 withends>=28Feb2026, notJuly2026bydefault. AASB138subsequentpublicsectorinsuranceamendment separatelyscreened. ASU2025-06annualstartsafter15Dec2027/earlyadoption transition retainsdistinctionfromcurrentASC.",
+  "cross_framework_check": "UK significant-changeindicatorreassessment notautomaticIASannualwording; USmethodchangeestimateeffectedbyprinciple vsIFRSestimate; heldforsalestopsordinarydepreciation aftervalidclassification.",
+  "numerical_reperformance": "(600000-60000)/6=90000;after2years420000;(420000-60000)/7=51428.5714;year3carrying368571.4286;proceeds400000gain31428.5714;totaldebits631428.5714. Halfyear45000;360000/70000*10000=51428.5714.",
+  "cross_topic_check": "04recognition before04depreciation/transfer;04softwarecontrol before04intangiblelife;04impairment separate fromlifeestimate. Agrees02priorerror,03contract-cost otherassets-first and12registerbridge. Noautomaticjournalposting.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}

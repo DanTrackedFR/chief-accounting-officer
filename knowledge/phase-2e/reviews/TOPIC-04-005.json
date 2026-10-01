@@ -1,0 +1,114 @@
+{
+  "topic_id": "TOPIC-04-005",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Identifiability/control/acquisition, finite/indefinite, availability/consumption/legalright, active-marketrevaluation and classnotes individually checked.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-04-005-intangible-assets/README.md",
+    "knowledge/topics/TOPIC-04-005-intangible-assets/applied-qa.md",
+    "knowledge/topics/TOPIC-04-005-intangible-assets/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-005-intangible-assets/standards-claims.json",
+    "knowledge/topics/TOPIC-04-005-intangibles-amortization/README.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Three-yearnonrenewablelegalright cannotusesixyearsbecausefunctionalsoftware; uniqueacquiredbrandvaluation notactivemarket; internalcustomerlist expensed; hostedaccessnotownedlicence.",
+      "result": "PASS",
+      "reason": "Identifiability/control/acquisition, finite/indefinite, availability/consumption/legalright, active-marketrevaluation and classnotes individually checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-005-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 138 version, entity type and AASB 1060 Tier 2 disclosure must be selected for the reporting period",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-005-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "IAS 38 identifiable intangible recognition, finite/indefinite life, amortization from availability and active-market revaluation are separate gates",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-005-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 18 intangibles use a finite-life model under the adopted UK edition, distinct from IAS 38 indefinite lives",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-005-US-01",
+      "framework": "US_GAAP",
+      "proposition": "ASC 350-30 finite/indefinite intangible accounting and ASC 360/350 impairment routes differ from IAS 38 revaluation and development rules",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-005-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "An indefinite-lived intangible is not amortized, but requires annual and triggered impairment and each-period life reassessment; revaluation requires an active market.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-005-UK_GAAP-E002",
+      "framework": "UK_GAAP",
+      "proposition": "FRS102 intangible assets have finite lives; if useful life cannot be reliably estimated it must not exceed10years.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Actual framework/entity/tier/annualstart and adoption selected. IAS16testingproceeds effective2022; UKPeriodicReview2024principal2026starts/earlyadoption. AASB136Jan2026compilation appliesstarts1July2025before1July2026 withends>=28Feb2026, notJuly2026bydefault. AASB138subsequentpublicsectorinsuranceamendment separatelyscreened. ASU2025-06annualstartsafter15Dec2027/earlyadoption transition retainsdistinctionfromcurrentASC.",
+  "cross_framework_check": "UK102allfinite andunreliablelifecap10years; IFRS/USindefinitepossiblewithreassessment/impairment. OrdinaryUSintangiblerevaluationunavailable; IFRSactivemarket rare.",
+  "numerical_reperformance": "Licence600000/6years*6/12=50000firstyear from1July;carrying550000. Three-yearlegalcap would100000halfyear absentrenewal evidence.",
+  "cross_topic_check": "04recognition before04depreciation/transfer;04softwarecontrol before04intangiblelife;04impairment separate fromlifeestimate. Agrees02priorerror,03contract-cost otherassets-first and12registerbridge. Noautomaticjournalposting.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}

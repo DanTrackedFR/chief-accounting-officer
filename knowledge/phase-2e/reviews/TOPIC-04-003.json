@@ -1,0 +1,114 @@
+{
+  "topic_id": "TOPIC-04-003",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "CIP qualifying tangible/softwarecosts, availability/transfer, impairment/abandonment, registergross/net and disclosure routing checked.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/README.md",
+    "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md",
+    "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md",
+    "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Training20000 reduces eligiblecost; ifalreadytransferredcorrectPPE notjustCIP. Grossandaccumulatedboth50000over cannetmatchfalse. Hostedaccessdoesnotownsoftware.",
+      "result": "PASS",
+      "reason": "CIP qualifying tangible/softwarecosts, availability/transfer, impairment/abandonment, registergross/net and disclosure routing checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-003-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 116 tangible CIP and AASB 138 software require separate period-appropriate asset models and disclosure tier",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-003-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "Qualifying CIP transfers to PPE when ready for intended use and aged unfinished projects require impairment or abandonment review",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-003-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Sections 17 and 18 distinguish tangible construction from intangible/software costs",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-003-US-01",
+      "framework": "US_GAAP",
+      "proposition": "US tangible construction, eligible interest and fixed-asset transfer route to ASC 360 and ASC 835-20",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-003-US-02",
+      "framework": "US_GAAP",
+      "proposition": "US internal-use software, external-sale software and hosted-service implementation costs use different recognition models and future ASU 2025-06 transition",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-003-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Depreciation starts when the asset is available for intended use, independently of administrative project-budget closure.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Actual framework/entity/tier/annualstart and adoption selected. IAS16testingproceeds effective2022; UKPeriodicReview2024principal2026starts/earlyadoption. AASB136Jan2026compilation appliesstarts1July2025before1July2026 withends>=28Feb2026, notJuly2026bydefault. AASB138subsequentpublicsectorinsuranceamendment separatelyscreened. ASU2025-06annualstartsafter15Dec2027/earlyadoption transition retainsdistinctionfromcurrentASC.",
+  "cross_framework_check": "IAS16/38 andUK17/18 separate; US360/835-20tangible vs350-40internal/985-20external/hostedcost;2028softwaremustselect2025-06adoption/transition.",
+  "numerical_reperformance": "200000opening+120000vendor+80000time-300000transfer=100000;training20000excluded ->80000CIP unlesspartoftransferrequiresPPEcorrection.",
+  "cross_topic_check": "04recognition before04depreciation/transfer;04softwarecontrol before04intangiblelife;04impairment separate fromlifeestimate. Agrees02priorerror,03contract-cost otherassets-first and12registerbridge. Noautomaticjournalposting.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}
