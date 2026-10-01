@@ -46,7 +46,7 @@ Route to FRS 102 Section 7 (cash flows), financial-instrument sections and prese
 10. Reviewer certifies reconciliation, unresolved exposure and disclosure impact.
 
 ## Calculation / data model
-`Bank closing balance + book-side reconciling adjustments = adjusted bank balance` and `GL closing balance + bank-side/timing reconciling adjustments = adjusted book balance`; both adjusted balances must agree. Internal-transfer control: sending-bank outflow and receiving-bank inflow are paired to one transfer ID and tested for period cut-off. Maintain gross reconciling-item populations; never hide unmatched items in a net plug.
+`Bank closing balance + deposits in transit - outstanding payments = adjusted bank balance` and `GL closing balance + supported unposted bank receipts - supported unposted bank debits = adjusted book balance`; both adjusted balances must agree. Internal-transfer control: sending-bank outflow and receiving-bank inflow are paired to one transfer ID and tested for period cut-off. Maintain gross reconciling-item populations; never hide unmatched items in a net plug.
 
 ## Controls / audit evidence
 Complete account inventory; direct/controlled bank evidence; preparer/reviewer segregation; automated match rules with exception review; stale-item aging/escalation; new/closed bank account trigger; internal-transfer cut-off test; restricted-cash agreement review; reconciliation-to-FS tie-out; evidence retention and certification.

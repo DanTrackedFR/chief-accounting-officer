@@ -3,12 +3,12 @@
 Updated 2026-10-01. Canonical source: `knowledge/phase-2d-topic-manifest.json`.
 
 - Canonical topics: 157; capabilities: 347/347.
-- APPROVED: 86.
-- REVIEWED pending Phase 2E: 71.
+- APPROVED: 96.
+- REVIEWED pending Phase 2E: 61.
 - PARTIAL / NOT_STARTED / BLOCKED: 0 / 0 / 0.
 
-Phase 2D substantive population remains complete. Phase 2E is in progress; 86 topics passed recorded individual controller review, and 71 are pending. Pending is not a genuine accounting blocker.
+Phase 2D substantive population remains complete. Phase 2E individual accounting review: 96 passed, 61 pending. Pending is not a genuine accounting blocker.
 
-APPROVED follows the owner-authorised two-track contract and does not imply SOURCE_VERIFIED. Per-claim evidence status and future direct-source audit requirements are retained. Individual review records are under `knowledge/phase-2e/reviews/`; registers remain topic-local.
+APPROVED follows the owner-authorised two-track contract and does not imply SOURCE_VERIFIED. Per-claim source assurance and future direct-source work remain separate. Individual evidence: `knowledge/phase-2e/reviews/`.
 
-Public output interface tests pass. There is no runnable production CAO application in the repository; runtime integration/verification remains pending and does not block accounting review.
+The repository has no runnable production CAO application. Executable public output boundary contract passes; runtime integration/verification remains pending. Local execution environment became offline after batch 10; subsequent validator/regression execution uses GitHub Actions on exact PR commits.

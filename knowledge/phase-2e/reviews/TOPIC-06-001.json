@@ -1,0 +1,140 @@
+{
+  "topic_id": "TOPIC-06-001",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/README.md",
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-restrictions/README.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Unresolved bank difference remains an exception; transfers cannot create duplicate cash.",
+      "result": "PASS",
+      "reason": "Cash nature, restriction, presentation, demand withdrawal and reconciliation checked; corrected reversed adjustment labels."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-06-001-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Demand deposits and qualifying short-term highly liquid investments feed cash equivalents; restrictions require substantive classification and disclosure assessment.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply the US_GAAP recognition, measurement, presentation, disclosure and transition model to bank reconciliation cash in transit restricted cash independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply the UK_GAAP recognition, measurement, presentation, disclosure and transition model to bank reconciliation cash in transit restricted cash independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply the AASB recognition, measurement, presentation, disclosure and transition model to bank reconciliation cash in transit restricted cash independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "Restrictions require deposit-nature and withdrawal-right assessment, separately from presentation and group availability disclosures.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "Restrictions require deposit-nature and withdrawal-right assessment, separately from presentation and group availability disclosures.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "Restrictions require deposit-nature and withdrawal-right assessment, separately from presentation and group availability disclosures.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-001-AASB-R004",
+      "framework": "AASB",
+      "proposition": "Restrictions require deposit-nature and withdrawal-right assessment, separately from presentation and group availability disclosures.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+  "cross_framework_check": "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public.",
+  "numerical_reperformance": "1000+100-80=1020;1040-20=1020. 900-70+40=870 versus890-10+10=890 leaves20; only evidenced debit reduces books to870.",
+  "cross_topic_check": "Crosschecked03-008 impairment,07 consolidation/CTA/equitymethod,08 cashflow/covenantpresentation,13debt events and06sibling classifications; no duplicateFX,fees orOCI.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}

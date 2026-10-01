@@ -20,7 +20,7 @@ Framework and reporting period; entity/reporting tier; instrument/asset/liabilit
 5. Hierarchy classification follows the lowest-level input significant to the entire measurement: Level 1 unadjusted quoted price for an identical item in an active market; Level 2 other observable inputs; Level 3 significant unobservable inputs.
 6. A model output is not self-validating. Governance must establish source data, assumptions, calibration, independent review, change control and period-end back-testing where useful.
 7. Derivative accounting begins with contract identification and scope. Do not assume that every variable-price contract is a derivative or that every derivative is eligible for hedge accounting.
-8. A derivative normally requires an underlying, notional/payment provision, little or no initial net investment relative to similar exposure, and net settlement characteristics under the applicable framework; scope exceptions and embedded features must be assessed under that framework.
+8. A derivative normally requires an underlying, notional/payment provision, little or no initial net investment relative to similar exposure, and future settlement (IFRS/AASB) or the applicable net-settlement characteristics (US GAAP); scope exceptions and embedded features must be assessed under that framework.
 9. Unless a qualifying hedge-accounting relationship or another specific model changes presentation, derivatives are generally remeasured at fair value with changes routed through earnings/profit or loss.
 10. Hedge accounting is deliberately separated into TOPIC-06-009. This topic determines derivative recognition/measurement and hands qualifying designations to that topic.
 

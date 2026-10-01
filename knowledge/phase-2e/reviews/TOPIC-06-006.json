@@ -1,0 +1,139 @@
+{
+  "topic_id": "TOPIC-06-006",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-06-006-debt-modification-covenants/README.md",
+    "knowledge/topics/TOPIC-06-006-debt-modification-covenants/evidence-and-regression.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Exclude thirdparty fees and respect lender-fee sign; US subsequent waiver can differ fromIFRS; UK unstated10% test cannot be imported.",
+      "result": "PASS",
+      "reason": "Same-lender modification, qualitative/legal release and reporting-date covenant rights checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-06-006-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "An exchange or substantial change in terms can extinguish a liability; compare discounted new cash flows including qualifying borrower-lender fees at original EIR, then assess covenant rights separately.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply US_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt modification covenants.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt modification covenants.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply AASB instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt modification covenants.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-006-AASB-R004",
+      "framework": "AASB",
+      "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+  "cross_framework_check": "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public.",
+  "numerical_reperformance": "NewPV1110/old1000 gives11%;1080 gives8%. 1085+paid20=1105 gives10.5%, not1115 including adviser10;received20→1065 gives6.5%. Required1.2 actual1.1 breach measuredDec31 despiteFeb certificate;Jan waiver not automatically IFRSDecember right.",
+  "cross_topic_check": "Crosschecked03-008 impairment,07 consolidation/CTA/equitymethod,08 cashflow/covenantpresentation,13debt events and06sibling classifications; no duplicateFX,fees orOCI.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}
