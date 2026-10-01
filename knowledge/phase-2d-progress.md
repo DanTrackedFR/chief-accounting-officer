@@ -7,11 +7,11 @@ Updated: 2026-10-01
 
 ## Independent post-remediation status
 - Canonical topics: **157**
-- REVIEWED: **157**
+- REVIEWED: **149**
 - PARTIAL: **0**
 - NOT_STARTED: **0**
 - BLOCKED: **0**
-- APPROVED: **0**
+- APPROVED: **8**
 - Worker PRs integrated to main: **3/3**
 - Canonical capability universe: **347/347**
 
@@ -23,7 +23,7 @@ There is no remaining substantive Phase 2D closure queue. Technical Accounting, 
 Standards-authority verification is a separate assurance axis. Unverified or inaccessible authoritative claims remain ringfenced in topic-local `standards-claims.json` where present and in the full-corpus standards-evidence audit. They do not reduce an otherwise substantively complete topic from REVIEWED solely because direct authoritative text remains unavailable.
 
 ## Integration result
-The three production workstreams were integrated sequentially to main and the canonical manifest was reconciled after independent QA. The final Technical Accounting remediation closed the remaining 54 PARTIAL topics. Canonical substantive status is now **157 REVIEWED / 0 PARTIAL / 0 NOT_STARTED / 0 BLOCKED / 0 APPROVED**.
+The three production workstreams were integrated sequentially to main and the canonical manifest was reconciled after independent QA. The final Technical Accounting remediation closed the remaining 54 PARTIAL topics. Canonical substantive status is now **149 REVIEWED / 0 PARTIAL / 0 NOT_STARTED / 0 BLOCKED / 8 APPROVED**.
 
 ## Completion rule
 Phase 2D substantive population is complete at the REVIEWED level. APPROVED remains a separate higher gate and must not be inferred from REVIEWED, file presence, worker self-review, or standards-evidence corroboration.
@@ -32,3 +32,6 @@ Phase 2D substantive population is complete at the REVIEWED level. APPROVED rema
 1. Continue the separate full-corpus standards-evidence audit under `knowledge/standards-evidence/`.
 2. Complete claim-register coverage and direct-authority verification where accessible, preserving rights restrictions and evidence-status ringfencing.
 3. Define and apply the APPROVED gate only after the authority/evidence population is sufficiently complete and independently QA'd.
+
+## Phase 2E checkpoint
+Batch 01 individually approved TOPIC-01-001–008 after documented non-normative scope review and adversarial process checks. 8 processed, 149 pending; no pending topic is represented as blocked or approved. Training-data approval does not assert operative authority verification. Public output contract tests pass; production runtime integration is pending.
