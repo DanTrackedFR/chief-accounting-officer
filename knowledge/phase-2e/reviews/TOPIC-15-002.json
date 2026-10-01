@@ -1,0 +1,254 @@
+{
+  "topic_id": "TOPIC-15-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Canonical policy/estimate inventories including retained companion and all method/QA/crosswalk files",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-15-002-accounting-estimates-changes/README.md",
+    "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/README.md",
+    "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/canonical-crosswalk.md",
+    "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/factory-qa.md",
+    "knowledge/topics/TOPIC-15-002-policy-inventory-estimate-methodology/phase-2d-method.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Missing200k grossAR, duplicative25koverlay, omittedknowncustomerdefault, hindsight140vs180 and publiccompanytakingnonpubliccollectionelection fail.",
+      "result": "PASS",
+      "reason": "All12existing claims tested against classification chronology and conditionalcreditloss methodology; no automaticoutcomeerror. Eligible lifetimeECL/CECL/currentAR optional2025-05expedient vsUKimpairment notassumed same. Primarycorroborated retained, notpromoted byreview."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-15-002-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 108 estimate and policy distinctions and 2027 version changes require period-specific application",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-AASB-02",
+      "framework": "AASB",
+      "proposition": "AASB 9 receivables ECL and Tier 2 disclosure need Australian standard and population gates",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "IAS 8 distinguishes policy, estimate and error and prospectively recognizes estimate changes with material disclosures",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-IFRS-02",
+      "framework": "IFRS",
+      "proposition": "IFRS 9 eligible trade receivables use simplified lifetime ECL with historical, current and forward-looking evidence",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 10 classifies policy, estimate and error with adopted edition and prospective estimate route",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-UK-02",
+      "framework": "UK_GAAP",
+      "proposition": "UK receivable impairment under FRS 102 Sections 11/12 must be assessed separately from IFRS 9 ECL",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-US-01",
+      "framework": "US_GAAP",
+      "proposition": "ASC 250 estimates are prospective; depreciation method change may combine principle and estimate and material disclosure is assessed",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-US-02",
+      "framework": "US_GAAP",
+      "proposition": "ASC 326 CECL expected-loss method and ASU 2025-05 optional current receivable practical expedient/election require eligibility, period and disclosure checks",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "IFRS: maintain distinct policy/estimate populations and governing measurement objectives; input/technique changes from new evidence differ from changes in measurement basis and correction of omitted available information.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-IFRS-R002",
+      "framework": "IFRS",
+      "proposition": "IFRS: receivable impairment method and elections require population/period/entity eligibility; supported historical/current/forecast evidence, nonduplicative overlay and GL completeness govern conditional loss allowance; IFRS lifetime ECL is not automatically US CECL or FRS102 impairment.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-US_GAAP-R003",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: maintain distinct policy/estimate populations and governing measurement objectives; input/technique changes from new evidence differ from changes in measurement basis and correction of omitted available information.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-US_GAAP-R004",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: receivable impairment method and elections require population/period/entity eligibility; supported historical/current/forecast evidence, nonduplicative overlay and GL completeness govern conditional loss allowance; IFRS lifetime ECL is not automatically US CECL or FRS102 impairment.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-UK_GAAP-R005",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: maintain distinct policy/estimate populations and governing measurement objectives; input/technique changes from new evidence differ from changes in measurement basis and correction of omitted available information.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-UK_GAAP-R006",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: receivable impairment method and elections require population/period/entity eligibility; supported historical/current/forecast evidence, nonduplicative overlay and GL completeness govern conditional loss allowance; IFRS lifetime ECL is not automatically US CECL or FRS102 impairment.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-AASB-R007",
+      "framework": "AASB",
+      "proposition": "AASB: maintain distinct policy/estimate populations and governing measurement objectives; input/technique changes from new evidence differ from changes in measurement basis and correction of omitted available information.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-002-AASB-R008",
+      "framework": "AASB",
+      "proposition": "AASB: receivable impairment method and elections require population/period/entity eligibility; supported historical/current/forecast evidence, nonduplicative overlay and GL completeness govern conditional loss allowance; IFRS lifetime ECL is not automatically US CECL or FRS102 impairment.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+  "cross_framework_check": "IFRS9/AASB9 eligibility/lifetimefutureinputs vsASC326optionalcurrentASC606 population/adoption andnarrownonPBEelection; UK11/12 notdefaultECL.",
+  "numerical_reperformance": "Gross4+1+.5=5.5m;40+50+100=190k,+25=215k;215-170=45k Dr expense/Cr allowance. GL5.7m-aging5.5m=.2m unresolvedpopulation.180-140=40k backtestdeviation notprooferror.",
+  "cross_topic_check": "03-008alreadychecked sameallowance andFASB2025-05primaryperiod;14-004method and15-003/006 chronology consistent.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}

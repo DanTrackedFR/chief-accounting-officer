@@ -1,0 +1,83 @@
+{
+  "topic_id": "TOPIC-15-005",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Reportingmateriality vs auditorperformancemateriality support",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-15-005-materiality-performance-materiality/README.md",
+    "knowledge/topics/TOPIC-15-005-materiality-performance-materiality/factory.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Fraud/relatedparty/misclassification, covenantcrossing, offsetmaskingandnextperiodreversal can'tclear solelypercentage.",
+      "result": "PASS",
+      "reason": "Nature/size/aggregation/usercontext independently tested; benchmarknotthresholdmandate; performance materialityengagementauditor notmanagement. IFRSPracticeStatement2 nonmandatory;SEC99/108registrantcontext."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-15-005-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "IFRS: financial-reporting materiality considers nature and size, individual/aggregate effects and qualitative user consequences; fixed profit percentages or offsets alone cannot resolve materiality, including covenant/fraud/related-party factors.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-005-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: financial-reporting materiality considers nature and size, individual/aggregate effects and qualitative user consequences; fixed profit percentages or offsets alone cannot resolve materiality, including covenant/fraud/related-party factors.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-005-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: financial-reporting materiality considers nature and size, individual/aggregate effects and qualitative user consequences; fixed profit percentages or offsets alone cannot resolve materiality, including covenant/fraud/related-party factors.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-005-AASB-R004",
+      "framework": "AASB",
+      "proposition": "AASB: financial-reporting materiality considers nature and size, individual/aggregate effects and qualitative user consequences; fixed profit percentages or offsets alone cannot resolve materiality, including covenant/fraud/related-party factors.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+  "cross_framework_check": "Financialreportingmaterialityframework/context-specific; IAASBISA320orPCAOBauditorframework distinct. SECqualitativeguidance onlycoveredregistrants.",
+  "numerical_reperformance": "100000/20000000=.005=.5%;1.99<2min<2.01, difference.02 doesnotderivecash100kwithoutcovenantformula.8*20k=160k same-directiongross;50k natureassessment notautomaticnumerical conclusion.",
+  "cross_topic_check": "02error/08comparison/09deficiency/10auditdifferences retainedsameaggregation/responsibility.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}

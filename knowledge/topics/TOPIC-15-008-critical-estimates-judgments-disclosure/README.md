@@ -25,7 +25,7 @@ Required evidence: fact and learned-date chronology; authority/period/source reg
 
 ## Worked case
 
-A 12m goodwill balance has 0.5m impairment headroom. A 0.2 percentage-point discount-rate increase would exhaust it. Disclose the relevant assumption/headroom sensitivity if required by the applicable impairment disclosure model, with consistent model values and affected CGU/segment.
+A 12m goodwill balance has 0.5m impairment headroom. In the companion illustration, a 0.2 percentage-point (20 basis-point) discount-rate increase reduces full-CGU recoverable amount from 30.5m to 29.8m against carrying amount 30.0m: the 0.5m headroom is exhausted and a conditional 0.2m shortfall results. Disclose the relevant assumption/headroom sensitivity if required by the applicable impairment disclosure model, with consistent model values and affected CGU/segment.
 
 ## Decision-route tests
 
