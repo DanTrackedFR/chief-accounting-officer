@@ -1,0 +1,55 @@
+{
+  "topic_id": "TOPIC-16-003",
+  "claims": [
+    {
+      "claim_id": "TOPIC-16-003-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Covered SEC operating-company filings require applicable Inline XBRL; ESEF in-scope annual reports use XHTML and applicable consolidated IFRS tagging, with correct taxonomy, context, unit/scale, extensions and required anchoring assessed for the period.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
+        }
+      ],
+      "effective_period": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+      "entity_scope": "Regulatory delivery and structured reporting; numeric/tag semantic correctness,conditionalUS/EU applicability",
+      "audit_required": true,
+      "limitations": [
+        "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+        "SEC/ESEF scopes/formats distinct fromUKregistry/ASICchannels; periodtaxonomyeffectiveversion mandatory notnamedunsupported2026release."
+      ],
+      "tests": [
+        "knowledge/phase-2e/reviews/TOPIC-16-003.json"
+      ],
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+          "SEC/ESEF scopes/formats distinct fromUKregistry/ASICchannels; periodtaxonomyeffectiveversion mandatory notnamedunsupported2026release."
+        ]
+      }
+    }
+  ]
+}

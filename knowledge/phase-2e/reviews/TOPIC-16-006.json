@@ -1,0 +1,113 @@
+{
+  "topic_id": "TOPIC-16-006",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Regime-specificcapitalbridge: AUADI/general/lifeinsurers andUKpaymentinstitution; no realentitycompliancecertification",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-16-006-entity-regulatory-capital-interface/README.md",
+    "knowledge/topics/TOPIC-16-006-entity-regulatory-capital-interface/factory.md",
+    "knowledge/topics/TOPIC-16-006-entity-regulatory-capital-interface/phase-2d-method.md",
+    "knowledge/topics/TOPIC-16-006-entity-regulatory-capital-interface/sector-methods.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "MixsolonumeratorgroupRWA,lifeappliedgeneralinsurercharge, FundBdeficithiddenbyA, safeguardingcashasownfunds, unverifieddeduction/waiver and2027AT1reformpremature fail.",
+      "result": "PASS",
+      "reason": "Allfourexistingclaims independentlychallenged. APRAAPS110operativeLevel1/2scope andLPS112operativefund/company2026commencement checked; GPS110PCRcomponents/aggregationbenefit makes grosscharge8 notnecessarilyPCRincrease8, correctedexampletoverifiednetPCRimpact. UKreg22bodyaccessfailed: TrackB maxfloor/methods andFCA directions challenge, notdirectverification."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-16-006-REG-01",
+      "framework": "REGULATORY",
+      "proposition": "Australian ADI capital adequacy requires APS 110 applicability, APS 111 eligible capital, RWA and applicable institution-specific buffers",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-006-REG-02",
+      "framework": "REGULATORY",
+      "proposition": "Australian general insurer capital bridge uses GPS 110/112 capital base and prescribed capital amount by operative risk charges",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-006-REG-03",
+      "framework": "REGULATORY",
+      "proposition": "Australian life insurer fund and entity capital tests use LPS 110/112 with July 2026 LPS 112 version gate",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-006-REG-04",
+      "framework": "REGULATORY",
+      "proposition": "UK payment institution own funds compare applicable initial capital and calculated method under regulation 22 and Schedule 3, with FCA direction",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-006-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "APS110 excludes foreign ADIs and purchased payment facility providers and resolves Level1/Level2 applicability independently of accounting equity.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-006-OTHER-R002",
+      "framework": "OTHER",
+      "proposition": "LPS112 applies separately to relevant life-company funds and company level from1July2026; pooled fund headroom does not establish compliance for each fund.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+  "cross_framework_check": "Regulatorbridgesnotfinancialequityrecognition; APS110exceptions foreignADI/paymentfacility; insuranceperimeter/category/floors andaggregation; UKvsEUlegalimplementation distinct; hypothetical11%/125knotstatutory.",
+  "numerical_reperformance": "20-3-1=16m;16/160=.10;160*.11=17.6m,shortfall1.6m hypotheticalthreshold.30/24=125%,headroom6m;assumedverifiednetPCR+8 gives32,30/32=93.75%,shortfall2. FundA12-10=2,B7-9=-2;totals19/19 nofund clearance. max125k/180k=180k;210-180=30k;210-40=170k,shortfall10k. Noactualthreshold asserted.",
+  "cross_topic_check": "04intangibleand06capitalinstruments/07perimeter preserveGAAP;16-007returnchange/15materiality/escalation consistent.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}

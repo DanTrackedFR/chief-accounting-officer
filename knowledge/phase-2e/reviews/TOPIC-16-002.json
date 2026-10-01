@@ -1,0 +1,55 @@
+{
+  "topic_id": "TOPIC-16-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Annual/interim filing accounting support withUSdomestic/FPI andFCAin-scope regimes",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-16-002-annual-interim-filing-accounting-support/README.md",
+    "knowledge/topics/TOPIC-16-002-annual-interim-filing-accounting-support/tests/scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Materiallatechanges rerun allaffectedtags andreviews; verbalcommentclosure notproof; interim notjustannualabbreviation andparentapprovalnotlocalsatisfaction.",
+      "result": "PASS",
+      "reason": "Annual source-tofiling/notes/MD&A/certification handoffs andinterimframeworkupdates coherent. ActualUKDTR4scopeannual/interim operativeclauses inspected; USdomestic/FPIseparateroutes retained."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-16-002-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Annual/interim regulatory financial reporting uses the applicable issuer/form and period-specific reporting regime; domestic SEC and foreign private issuers differ, and FCA DTR4 applies only within its issuer scope and exemptions.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-16-002-OTHER-R002",
+      "framework": "OTHER",
+      "proposition": "In-scope FCA issuers, subject to exemptions, publish annual financial reports within four months and half-yearly reports within three months; content and consolidated interim IAS34 requirements follow the applicable DTR4 rules.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+  "cross_framework_check": "Domestic10K/Q vsFPI20F/40F/6K;UKDTR4in-scopeissuer/exemptions vsCompaniesHouse;AASB/FRS102frameworknotglobalfilingmandate.",
+  "numerical_reperformance": "Three linkedroutecases, no additionalmonetaryexample. Currentreportingcutoff/YTD/comparative andaudit/reviewbasis challenged withoutpretendinglivesubmission.",
+  "cross_topic_check": "08notes/09disclosurecontrols/10audit/16-003tagging currentversions agree.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}
