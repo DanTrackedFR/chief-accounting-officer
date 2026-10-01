@@ -1,9 +1,7 @@
-# Internal source notes and approval
+# Internal source-note policy and application implementation requirement
 
-Source notes are internal metadata, not user-facing guidance. A direct-source claim uses `Source: [named source]`; a model-derived claim uses `Source: ChatGPT training data`. Never present a model-derived claim as independently verified current authority.
+For directly used, inspected source material, store `Source: [named source]` (publisher/standard name, not a website). For training-data-derived material, store exactly `Source: ChatGPT training data`. Notes belong in internal claim metadata and must not be embedded in public topic prose.
 
-A model-derived claim can be marked `MODEL_CHECKED` only after independent accuracy review, framework-specific boundary tests, effective-period checks, and conflict review. `MODEL_CHECKED` is distinct from `SOURCE_VERIFIED`. Preserve existing evidence statuses and the authority-based APPROVED gate until an explicit schema and approval-policy change is reviewed and merged.
+The application must use an explicit allowlist for user-visible accounting content. Exclude `source_note`, `approval_track`, `evidence_status`, `audit_required`, reviewer identities, raw claim registers and other internal provenance from all answer generation context, retrieval snippets, citations, logs exposed to users, downloads and exports. A prompt alone is not an adequate security boundary. Disclose material accounting limitations and uncertainties in ordinary guidance.
 
-The user-facing tool must exclude internal source notes and provenance fields from answers, citations, retrieval snippets, and exports. Material uncertainty and period limitations must still be disclosed. Implement automated tests of these output paths before asserting that source notes are hidden.
-
-This file specifies a proposed contract. It does not establish that a renderer exists, tests have passed, or any topic qualifies for APPROVED.
+Before release, automated tests must feed both source-note forms through each response and export route, assert neither note nor internal provenance is emitted, and confirm substantive accounting caveats remain. The repository README currently identifies Phase 3 as the production capability build; until a runnable application and its renderer are identified, this is a required contract and **not a verified runtime control**.
