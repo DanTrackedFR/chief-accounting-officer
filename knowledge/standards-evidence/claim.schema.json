@@ -179,6 +179,58 @@
               "string",
               "null"
             ]
+          },
+          "source_note": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Internal-only provenance note. Never expose to user-facing output."
+          },
+          "approval_track": {
+            "enum": [
+              "DIRECT_SOURCE_CHECKED",
+              "TRAINING_DATA_CHECKED",
+              "PENDING"
+            ],
+            "description": "Independent topic approval track; separate from authority evidence_status."
+          },
+          "approval_review": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "reviewer": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              },
+              "result": {
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "PENDING"
+                ]
+              },
+              "scope_and_period_checked": {
+                "type": "boolean"
+              },
+              "cross_framework_checked": {
+                "type": "boolean"
+              },
+              "regression_checked": {
+                "type": "boolean"
+              },
+              "limitations": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
           }
         },
         "additionalProperties": false
