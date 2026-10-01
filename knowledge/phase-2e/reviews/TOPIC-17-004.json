@@ -1,0 +1,83 @@
+{
+  "topic_id": "TOPIC-17-004",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "GHGscopes/calculation/disclosure withversionedmethods",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/README.md",
+    "knowledge/topics/TOPIC-17-004-ghg-information-disclosure-preparation/factory.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "BlindScope3omission, electricityfactorforfuel,mixedboundary andmasslabelwithoutconversionfail; valid t/MWh-to-kg/kWh passes. CorporateStandardoptionalScope3 doesnotwaiveadoptedS2requirements.",
+      "result": "PASS",
+      "reason": "Scopes/categoryrelief andelectricitymethods challenged. Correctedfalseunitfailure: .4t/MWh=.4kg/kWh sincebothconversionfactors1000cancel. One-sidedconversion/labelerrorstillfails. IFRSS2C1B/C6operative2027amendmentread;GHGCorporateStandardboundary/Scope2bodyread."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-17-004-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Sustainability/assurance obligations follow jurisdictional adoption, entity/reporting year and relief, not financial-framework or ISSB publication alone; Australian cohorts, UK listed-issuer comply-or-explain, EU amended CSRD/transposition and US effective/stayed/final rule status differ.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-17-004-OTHER-R002",
+      "framework": "OTHER",
+      "proposition": "Under the adopted reporting method, assess direct/purchased-energy/value-chain categories, organizational boundary, required coverage and period relief; use compatible activity/factor/GWP units and applicable electricity methods.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-17-004-IFRS-R003",
+      "framework": "IFRS",
+      "proposition": "December2025 IFRSS2 GHG amendments apply for annual reporting periods beginning1January2027; earlier application is permitted and disclosed, with amendment-specific comparative transition.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-17-004-OTHER-R004",
+      "framework": "OTHER",
+      "proposition": "Where adopted, the GHG Corporate Standard's equity-share and control consolidation approaches differ; operational control accounts for controlled operations, and purchased electricity consumed within the boundary is Scope2.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026-10-01 review. ISSBS1/S2effective2024 notuniversalmandate; AUcohorts2025-01-01/2026-07-01/2027-07-01/fullentitycriteria. UKSRSFebruary2026voluntary; FCASeptember30PS26/19 rulescommence2027, comply-or-explain/reliefs. EU2026/470thresholds/transition/localtransposition independent. SECMay2026proposal doesnotestablish finalrescission/livecourtstatus; refreshactualcase. S2December2025amendments2027earlygate;ISSA5000December15,2026engagementadoption notmandate.",
+  "cross_framework_check": "OriginalS22024vsDecember2025amendment2027early;AU/UK/ESRSadoption,Scope3relief/location-marketmethod separately.",
+  "numerical_reperformance": "100000kWh*.4kg/kWh=40000kg=40t;100MWh*.4t/MWh=40t. Missing20000kWhyields32t,gap8t.10kLfuelnoprovfactor,noinventedemissions.",
+  "cross_topic_check": "17-0032800MWh1120t/00612MWh4.2t dimensionallyconsistent;GLonlyonepopulationinput.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}
