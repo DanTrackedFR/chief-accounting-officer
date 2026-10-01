@@ -79,3 +79,7 @@ Reconciliation policy; risk-tiered inventory; template/evidence standard; aging 
 
 ## Completion criteria
 PASS when CAO can design precise reconciliation and close controls, distinguish process completion from control evidence, govern reconciling items and late changes, and identify appropriate automation without over-recommending tooling.
+## Phase 2E scope and period qualification
+SEC Release 33-8810 describes one acceptable management evaluation route; it does not prescribe the only permitted method. PCAOB requirements apply to the relevant auditor engagement. AS 2201 amendments have a 15 December 2026 effective gate; select the engagement-period version before applying planning requirements. Underlying transaction recognition stays with the applicable technical topic.
+
+Claim coverage: TOPIC-09-005-SEC-E01, TOPIC-09-005-OTHER-E02.

@@ -19,7 +19,7 @@ US GAAP uses a distinct going-concern model centered on management evaluating wh
 
 ASC 855 distinguishes recognized subsequent events (additional evidence about conditions existing at balance-sheet date) from nonrecognized subsequent events (conditions arising after balance-sheet date). Recognized events affect statements; material nonrecognized events generally require disclosure of nature and estimated financial effect or inability to estimate. The evaluation cut-off depends on entity type and issuance/availability-to-be-issued concepts; SEC filers/public-company facts require jurisdiction overlay.
 
-Blocker note: current public FASB search material does not expose the complete Codification paragraph body. Detailed paragraph-level ASC 205-40/855 records remain REFERENCE_ONLY and require direct Codification verification before APPROVED status. This does not block CAO routing/practice build.
+Evidence limitation: current public FASB material does not expose complete operative Codification paragraphs. Exact ASC references remain unverified. Under the owner-authorised Phase 2E contract, independently checked treatment can be APPROVED through Track B with internal Source: ChatGPT training data notes; direct-source assurance remains separate.
 
 ## UK GAAP — FRS 102
 Primary: FRS 102 Section 3 Financial Statement Presentation and Section 32 Events after the End of the Reporting Period, plus FRC going-concern guidance.

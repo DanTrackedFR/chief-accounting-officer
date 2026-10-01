@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json, re, sys
 from pathlib import Path
+from schema_validation import validate as validate_schema
 
 ROOT=Path(__file__).resolve().parents[2]
 TOPICS=ROOT/"knowledge"/"topics"
@@ -12,6 +13,7 @@ FRAMEWORKS={"IFRS","US_GAAP","UK_GAAP","AASB","SEC","REGULATORY","OTHER"}
 SOURCE_KINDS={"CURRENT_STANDARD","OFFICIAL_AMENDMENT","REGULATOR","OFFICIAL_TAXONOMY","PROFESSIONAL_LITERATURE","MODEL_KNOWLEDGE","OTHER"}
 
 errors=[]; warnings=[]; seen={}
+schema=json.loads((ROOT/"knowledge/standards-evidence/claim.schema.json").read_text())
 topic_dirs=[p for p in TOPICS.iterdir() if p.is_dir() and TOPIC_RE.match(p.name)]
 registers=list(TOPICS.glob("TOPIC-*/standards-claims.json"))
 
@@ -20,6 +22,7 @@ for path in registers:
     try: doc=json.loads(path.read_text())
     except Exception as e:
         errors.append(f"{path}: invalid JSON: {e}"); continue
+    errors.extend(f"{path}: {error}" for error in validate_schema(doc,schema))
     if doc.get("topic_id") != folder_id:
         errors.append(f"{path}: topic_id {doc.get('topic_id')!r} != {folder_id}")
     if not isinstance(doc.get("claims"),list):

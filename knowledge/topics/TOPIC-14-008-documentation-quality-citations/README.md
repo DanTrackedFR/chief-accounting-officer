@@ -13,4 +13,8 @@ Correct entity/framework/period; authoritative source hierarchy; current/effecti
 Never invent paragraph numbers. Record source, standard/topic, paragraph where verified, URL/reference, source-check date, effective period and review status. A secondary source may explain but does not silently replace primary authority. Public-source limitations remain PARTIAL. Superseded guidance stays traceable.
 
 ## QA
-A document cannot move to APPROVED merely because prose is polished. Failed source verification, unresolved effective-date routing, missing material evidence or non-reproducible calculations prevent approval.
+A document cannot move to APPROVED merely because prose is polished. A genuine material contradiction, unresolved effective-date routing, missing material fact evidence or non-reproducible calculation prevents approval. Unavailable operative source text alone does not prevent owner-authorised Track B approval: record independent accuracy challenges, reviewer/date/period/limitations and retain the underlying evidence status. SOURCE_VERIFIED still requires operative authority inspection.
+
+## Phase 2E approval and output boundary
+
+The canonical manifest and individual Phase 2E review supersede historical substantive DRAFT/REVIEWED labels. APPROVED may follow direct-source or owner-authorised training-data checks; source-depth limitations and paragraph verification remain separate. Internal source notes/provenance are excluded from public outputs by the interface allowlist. Material accounting uncertainty and effective-period limits remain visible. This does not approve unexamined live transactions or change the literature hierarchy.

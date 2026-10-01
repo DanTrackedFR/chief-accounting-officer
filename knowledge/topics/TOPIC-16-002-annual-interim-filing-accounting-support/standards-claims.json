@@ -1,0 +1,96 @@
+{
+  "topic_id": "TOPIC-16-002",
+  "claims": [
+    {
+      "claim_id": "TOPIC-16-002-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Annual/interim regulatory financial reporting uses the applicable issuer/form and period-specific reporting regime; domestic SEC and foreign private issuers differ, and FCA DTR4 applies only within its issuer scope and exemptions.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
+        }
+      ],
+      "effective_period": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+      "entity_scope": "Annual/interim filing accounting support withUSdomestic/FPI andFCAin-scope regimes",
+      "audit_required": true,
+      "limitations": [
+        "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+        "Domestic10K/Q vsFPI20F/40F/6K;UKDTR4in-scopeissuer/exemptions vsCompaniesHouse;AASB/FRS102frameworknotglobalfilingmandate."
+      ],
+      "tests": [
+        "knowledge/phase-2e/reviews/TOPIC-16-002.json"
+      ],
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+          "Domestic10K/Q vsFPI20F/40F/6K;UKDTR4in-scopeissuer/exemptions vsCompaniesHouse;AASB/FRS102frameworknotglobalfilingmandate."
+        ]
+      }
+    },
+    {
+      "claim_id": "TOPIC-16-002-OTHER-R002",
+      "framework": "OTHER",
+      "proposition": "In-scope FCA issuers, subject to exemptions, publish annual financial reports within four months and half-yearly reports within three months; content and consolidated interim IAS34 requirements follow the applicable DTR4 rules.",
+      "paragraph_references": [
+        "4.1.1, 4.1.3, 4.1.5; 4.2.1–4.2.4"
+      ],
+      "reference_confidence": "VERIFIED",
+      "evidence_status": "SOURCE_VERIFIED",
+      "sources": [
+        {
+          "source_kind": "REGULATOR",
+          "title": "FCA Handbook DTR4",
+          "url": "https://handbook.fca.org.uk/handbook/dtr4",
+          "locator": "4.1.1, 4.1.3, 4.1.5; 4.2.1–4.2.4",
+          "access_date": "2026-10-01",
+          "inspected": true
+        }
+      ],
+      "effective_period": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+      "entity_scope": "Annual/interim filing accounting support withUSdomestic/FPI andFCAin-scope regimes",
+      "audit_required": false,
+      "limitations": [],
+      "tests": [
+        "knowledge/phase-2e/reviews/TOPIC-16-002.json"
+      ],
+      "model_reviews": [],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "source_note": "Source: FCA Handbook DTR4",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": []
+      }
+    }
+  ]
+}

@@ -5,20 +5,34 @@ on:
     paths:
       - "knowledge/topics/**/standards-claims.json"
       - "knowledge/standards-evidence/**"
+      - "interfaces/**"
+      - "tests/**"
+      - "knowledge/phase-2e/**"
+      - "knowledge/phase-2d-topic-manifest.json"
       - ".github/workflows/standards-evidence.yml"
   push:
     branches: [main]
     paths:
       - "knowledge/topics/**/standards-claims.json"
       - "knowledge/standards-evidence/**"
+      - "interfaces/**"
+      - "tests/**"
+      - "knowledge/phase-2e/**"
+      - "knowledge/phase-2d-topic-manifest.json"
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Validate claim registers
         run: python knowledge/standards-evidence/validate_claims.py
+      - name: Validate canonical approval contract
+        run: python knowledge/standards-evidence/validate_approvals.py
+      - name: Test accounting regressions and public output boundary contract
+        run: python -m unittest discover -s tests -p "test_*.py"

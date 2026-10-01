@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CAO curated public accounting record",
+  "description": "Closed field allowlist. Content must additionally pass interfaces/public_output.py for every public route; schema alone does not sanitize text.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "topic_id": {
+      "type": "string"
+    },
+    "guidance": {
+      "type": "string"
+    },
+    "framework": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "entity_scope": {
+      "type": "string"
+    },
+    "effective_period": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

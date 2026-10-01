@@ -1,0 +1,82 @@
+{
+  "topic_id": "TOPIC-02-007",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "approval_track": "MIXED_CLAIM_REVIEW",
+  "scope_review": "Accrual, prepaid, consumption and estimate/error treatment are material normative propositions and are registered by framework. Illustration is conditional on valid service/right and uniform benefit.",
+  "accuracy_checks": [
+    {
+      "challenge": "120,000/12 = 10,000; six consumed months give 60,000 expense and prepaid. 3,000*8 = 24,000; 75*8 = 600 explains 24,600 actual. New unavailable evidence may revise an estimate; omitted available reliable usage may be error. No automatic current charge or straight-line mandate.",
+      "result": "PASS",
+      "test": "tests/test_phase2e_close_calculations.py::test_prepaid_and_estimate_trueup"
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-02-007-IFRS-E01",
+      "result": "PASS",
+      "challenge": "Uniform annual support versus terminated/nonuniform contract; received unbilled service versus undelivered purchase order.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-US_GAAP-E01",
+      "result": "PASS",
+      "challenge": "Uniform annual support versus terminated/nonuniform contract; received unbilled service versus undelivered purchase order.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-UK_GAAP-E01",
+      "result": "PASS",
+      "challenge": "Uniform annual support versus terminated/nonuniform contract; received unbilled service versus undelivered purchase order.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-AASB-E01",
+      "result": "PASS",
+      "challenge": "Uniform annual support versus terminated/nonuniform contract; received unbilled service versus undelivered purchase order.",
+      "track": "TRAINING_DATA_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-IFRS-E02",
+      "result": "PASS",
+      "challenge": "Missing available 75 units is an error candidate; new 2026 shock is not hindsight evidence of an unreasonable 2025 estimate.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-AASB-E02",
+      "result": "PASS",
+      "challenge": "No automatic 600 current expense; distinguish availability chronology.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-UK_GAAP-E02",
+      "result": "PASS",
+      "challenge": "Change in measurement basis is a policy change; a missing known invoice is not merely a revised estimate.",
+      "track": "DIRECT_SOURCE_CHECKED"
+    },
+    {
+      "claim_id": "TOPIC-02-007-US_GAAP-E02",
+      "result": "PASS",
+      "challenge": "New evidence versus omitted available usage; test corrected comparative and current effects separately.",
+      "track": "TRAINING_DATA_CHECKED"
+    }
+  ],
+  "period_and_scope_check": "2026 method with explicit historical/early-adoption gates; no universal filing, inventory-control, materiality, uniform-benefit or tax assumption. IFRS 18 start gate differs from current accrual/error rules; AASB entity tier, FRS regime and US filer status remain explicit.",
+  "cross_framework_check": "IFRS/AASB/FRS retrospective/practicability and US error route challenged separately; SEC and PCAOB scope do not apply universally. Tier 2 simplified disclosures and small-entity law are not inferred from IFRS.",
+  "numerical_reperformance": "120,000/12 = 10,000; six consumed months give 60,000 expense and prepaid. 3,000*8 = 24,000; 75*8 = 600 explains 24,600 actual. New unavailable evidence may revise an estimate; omitted available reliable usage may be error. No automatic current charge or straight-line mandate.",
+  "cross_topic_check": "Journal/accrual totals reconcile through 02-002/007, proof and certification through 02-004/005/010, corrections through 02-008/009. Revenue/inventory recognition remain underlying-topic dependencies.",
+  "rights_check": "No standard paragraph bodies, licensed files or credentials added; conclusions independently paraphrased.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/README.md",
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/canonical-sources.md",
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/factory.md",
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/methods/estimate-and-prepaid-schedule.md",
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/practice/estimate-period-gate.md",
+    "knowledge/topics/TOPIC-02-007-accruals-prepaids/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

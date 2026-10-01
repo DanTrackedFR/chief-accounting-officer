@@ -1,0 +1,144 @@
+{
+  "topic_id": "TOPIC-05-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Individual review of canonical capability and retained substantive methods for payables/employee topic 2; existing REVIEWED baseline confirmed. All material rule families represented, operational controls treated as recommendations.",
+  "accuracy_checks": [
+    {
+      "challenge": "Distinguish January work from December estimate change and exclude duplicate reversal/invoice posting.",
+      "result": "PASS",
+      "reason": "Accrual hierarchy and rollforward are sound conditional on actual performance; matching cannot defer non-assets."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-05-002-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Unbilled goods or services received require recognition under their applicable model; matching alone cannot create an asset.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-US_GAAP-E002",
+      "framework": "US_GAAP",
+      "proposition": "Unbilled goods or services received require recognition under their applicable model; matching alone cannot create an asset.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-UK_GAAP-E003",
+      "framework": "UK_GAAP",
+      "proposition": "Unbilled goods or services received require recognition under their applicable model; matching alone cannot create an asset.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-AASB-E004",
+      "framework": "AASB",
+      "proposition": "Unbilled goods or services received require recognition under their applicable model; matching alone cannot create an asset.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-IFRS-E005",
+      "framework": "IFRS",
+      "proposition": "Estimate accruals from verified service/units and terms; distinguish new-period expense, estimate true-ups and invoice clearing without duplication.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-US_GAAP-E006",
+      "framework": "US_GAAP",
+      "proposition": "Estimate accruals from verified service/units and terms; distinguish new-period expense, estimate true-ups and invoice clearing without duplication.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-UK_GAAP-E007",
+      "framework": "UK_GAAP",
+      "proposition": "Estimate accruals from verified service/units and terms; distinguish new-period expense, estimate true-ups and invoice clearing without duplication.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-002-AASB-E008",
+      "framework": "AASB",
+      "proposition": "Estimate accruals from verified service/units and terms; distinguish new-period expense, estimate true-ups and invoice clearing without duplication.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 framework/entity selected; UK Periodic Review annual starts 1 January 2026, US ASU2024-01 PBE starts after15 December2024, other entities after15 December2025 with transition election; AASB compilation and disclosure tier separately selected; IAS37 cost amendment from2022 and IFRS2 amendments from2018. Future IFRS18 presentation not imposed absent adoption. Country employment law and plan-specific settlement assumptions remain material limitations.",
+  "cross_framework_check": "IFRS/AASB full accounting similarity does not remove Australian entity/tier and compilation gates. US contingency probability/range, pension OCI, SBC forfeiture/attribution and severance models differ. UK Sections21/26/28 simplifications and revised contract-cost election must be resolved for the stated fact pattern. Training-data conclusions independently challenged without claiming operative US/UK paragraph verification.",
+  "numerical_reperformance": "12 December days times800=9600; invoice10400 splits9600 clearing and800 January unless 13th December day evidenced. Cloud20k times1.1=22k. Four weeks times10k=40k, existing20k short20k; January45k includes5k January.",
+  "cross_topic_check": "Linked03-006 acquisition costs,04 capitalization/impairment,06 FX/finance,05 sibling benefit rules and09 controls checked for duplicate recognition and contradictory classification.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/README.md",
+    "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/factory.md",
+    "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/post-close-invoice-and-reversal-backtest.md",
+    "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/standards-claims.json",
+    "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/worked-accrual-and-backtest.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

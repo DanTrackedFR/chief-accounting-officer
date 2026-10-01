@@ -1,0 +1,43 @@
+{
+  "topic_id": "TOPIC-16-001",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Entity/jurisdiction filing calendar, UK ordinary subsequent accounts and conditionalSECdates",
+  "accuracy_checks": [
+    {
+      "challenge": "Firstaccounts, shortenedperiod, listing/filerstatuschange, submissionvsacceptance andUKweekendvsSECnextbusinessday contrasted; no universaldeadline.",
+      "result": "PASS",
+      "reason": "UKnine/private six/public months corroborated current CompaniesHouse Sep25,2026 guidance; first/shortenedperiod different. SEC60/75/90K and40/45Q primaryFRMchecked but operativeactualform entityadoption/holiday gate retained. Groupcalendar cannotoverridelegalentity."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-16-001-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Filing obligations, due dates and approvals require legal entity, jurisdiction, form/filer classification and effective-period facts; ordinary UK subsequent accounts normally have nine-month private/six-month public periods, with first/shortened-period exceptions; conditional SEC accelerated deadlines differ.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+  "cross_framework_check": "IFRS/US/FRS102/AASB financialframework doesnotset universalfilingdate;UKCompaniesHouse vsFCA DTR,SECdomesticvsFPI,ASICcategories andEUregulatedissuers distinct.",
+  "numerical_reperformance": "31Dec2026 ordinarysubsequentprivate→30Sep2027;public→30Jun2027. Separatefilerrows; deadlines calendar-month not270/180hardcoded days. SECdays countfromperiodend conditionalclassification notUKformula.",
+  "cross_topic_check": "08-008/010calendars and16-002issuerstatus align.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/README.md",
+    "knowledge/topics/TOPIC-16-001-regulatory-applicability-calendar-readiness/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

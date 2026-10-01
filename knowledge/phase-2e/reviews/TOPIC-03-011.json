@@ -1,0 +1,31 @@
+{
+  "topic_id": "TOPIC-03-011",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "AR/revenue population reconciliation is operational; technical exception treatment is delegated.",
+  "accuracy_checks": [
+    {
+      "challenge": "1000 source versus995accepted requires5rejects and amounts; duplicate invoice in source/subledger/GL can still balance, requiring original-event population proof.",
+      "result": "PASS",
+      "reason": "AR/revenue population reconciliation is operational; technical exception treatment is delegated."
+    }
+  ],
+  "claim_checks": [],
+  "period_and_scope_check": "Engagement framework, entity and reporting period selected; PCAOB duties apply only within actual engagement. AS2310 yearend15June2025 gate; AS1215 future15December2026 amendment separately selected. IIA9January2025 checked. Underlying accounting uses actual applicable edition.",
+  "cross_framework_check": "PCAOB obligations are auditor-side; ISA/UKISA/AUASB and local independence/representation requirements separately routed. IFRS/US/UK/AASB underlying measurement not supplied by assurance standards. Revenue notes use regime-specific relief/old-newUK/Tier2 distinctions.",
+  "numerical_reperformance": "AR opening+invoices-cash-credits-writeoffs+FX/reclasses=closing; require separate allowance and liability bridge, no inferred offset.",
+  "cross_topic_check": "Consistent with Domains02/03/09/11: complete population, genuine evidence, no plugs or backdating, gross unresolved issues, technical owner decision and provider independence.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-03-011-ar-revenue-reconciliations/factory.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/README.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/counterparty-independent-completeness-test.md",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/standards-claims.json",
+    "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/worked-case-and-qa.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "NON_NORMATIVE_SCOPE_REVIEW"
+}

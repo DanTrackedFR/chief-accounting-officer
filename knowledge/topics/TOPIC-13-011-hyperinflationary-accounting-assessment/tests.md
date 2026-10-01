@@ -10,4 +10,4 @@ Status: PASS — 10/10 routing tests
 7. Australian reporter -> AASB 129/AASB 121 plus Interpretation 7 routing. PASS
 8. Missing reliable price index -> stop production calculation and record blocker/open item. PASS
 9. Foreign operation in hyperinflationary economy -> local restatement before group translation/reconciliation. PASS
-10. 2026 IASB proposal encountered -> classify PIPELINE, not current GAAP. PASS
+10. IAS 21 November 2025 issued amendment encountered in a 2026 period -> classify issued but not mandatorily effective until 2027; assess valid early application rather than calling it an unissued proposal. PASS

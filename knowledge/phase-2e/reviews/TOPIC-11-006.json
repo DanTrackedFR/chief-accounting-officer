@@ -1,0 +1,31 @@
+{
+  "topic_id": "TOPIC-11-006",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "approval_track": "NON_NORMATIVE_SCOPE_REVIEW",
+  "source_note": "Source: ChatGPT training data",
+  "scope_review": "Original accounting system/control architecture. No specific recognition, measurement, disclosure or statutory quantitative threshold asserted. Framework requirements are conditional referrals to technical topics. SEC/PCAOB footer identifies applicable control/auditor context without mandating architecture; NIST voluntary use verified on its official overview, 2026-10-01. Operational must statements are design acceptance criteria, not new GAAP.",
+  "accuracy_checks": [
+    {
+      "challenge": "Wrong-entity postings require freeze, impact review since configuration change, correction and preserved logs; deleting logs fails.",
+      "result": "PASS",
+      "reason": "Bot can alter mapping and post 250,000: incompatible access exists despite a service-account identity."
+    }
+  ],
+  "period_and_scope_check": "Architecture is framework-neutral; framework, legal entity, currency and transaction date gate the actual policy implemented. Existing effective-dated mappings retained. NIST AI RMF is voluntary; revision in progress does not prescribe accounting.",
+  "cross_framework_check": "Same reconciled architecture can implement different IFRS, US GAAP, UK and AU policies. No inference of identical recognition or measurement; issuer ICFR and integrated-auditor responsibilities are separate.",
+  "numerical_reperformance": "Bot can alter mapping and post 250,000: incompatible access exists despite a service-account identity.",
+  "cross_topic_check": "Consistent with approved close/control topics: no plugs, gross exception review, retained ownership, complete populations before match rate, accounting approval before automated posting.",
+  "rights_check": "Original design guidance, no restricted authoritative text. NIST overview https://www.nist.gov/itl/ai-risk-management-framework checked; limited voluntary-status paraphrase.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-11-006-access-roles-automation/README.md",
+    "knowledge/topics/TOPIC-11-006-access-roles-automation/methods/access-change-proof.md",
+    "knowledge/topics/TOPIC-11-006-access-roles-automation/practice/roles-automation.md",
+    "knowledge/topics/TOPIC-11-006-access-roles-automation/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "NON_NORMATIVE_SCOPE_REVIEW"
+}

@@ -1,0 +1,88 @@
+{
+  "topic_id": "TOPIC-12-004",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
+  "accuracy_checks": [
+    {
+      "challenge": "Leaseamendmentemail/noapprovedterm/rateanalysis cannotdriveautojournal. Bilateral100000AR/95000AP discrepancyrequires5000investigation notunsupportedelimination.",
+      "result": "PASS",
+      "reason": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-12-004-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-004-US_GAAP-E002",
+      "framework": "US_GAAP",
+      "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-004-UK_GAAP-E003",
+      "framework": "UK_GAAP",
+      "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-004-AASB-E004",
+      "framework": "AASB",
+      "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Transaction entity/currency/service/controldate and actual accountingframework edition gate journal decisions. Operational cadence/thresholds are companypolicy notstatutorynorms. No universaltax, cashclassification, leaseterm or consolidation testcreated.",
+  "cross_framework_check": "IFRS/US/UK/AASB accounting differences remain in owningtechnicaltopics; process doesnotimposeUSleaseclassification onIFRS or IFRSECL onUK11/12. Payrollgross/net and completepopulation arithmetic isframework-neutral.",
+  "numerical_reperformance": "1000000+100000-20000=1080000cost;GL1085000 leaves5000sourceexception. Liabilityopening+interest-payment+remeasurements independentlyfromROU.",
+  "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md",
+    "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md",
+    "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md",
+    "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json",
+    "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

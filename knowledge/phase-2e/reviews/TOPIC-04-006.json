@@ -1,0 +1,101 @@
+{
+  "topic_id": "TOPIC-04-006",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Asset/CGU/reportingunit scope andsequence, indicator/annualtests, recoveryhigherof, lossallocation/floors, reversals/disclosures challenged. AASBJan2026operativerange inspected andnotall2026starts.",
+  "accuracy_checks": [
+    {
+      "challenge": "USundiscountedscreen cannotbe replacedbydiscountedVIU; goodwilllossreversal fails; UKgoodwillnotamortizedfails; CGUaggregationcannothideindependentloss; double350/360loss fails.",
+      "result": "PASS",
+      "reason": "Asset/CGU/reportingunit scope andsequence, indicator/annualtests, recoveryhigherof, lossallocation/floors, reversals/disclosures challenged. AASBJan2026operativerange inspected andnotall2026starts."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-006-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 136 period-specific compilation and Australian tier/uncertainty amendments require separate assessment",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-006-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "IAS 36 indicator/annual testing, higher-of recoverable amount, CGU allocation, goodwill non-reversal and other-asset reversal ceilings govern",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-006-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 19 goodwill amortization and Section 27 impairment differ from IFRS goodwill non-amortization",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-006-US-01",
+      "framework": "US_GAAP",
+      "proposition": "ASC 360 held-and-used assets use undiscounted recoverability before fair-value loss measurement and distinct held-for-sale treatment",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-006-US-02",
+      "framework": "US_GAAP",
+      "proposition": "ASC 350 goodwill reporting-unit and indefinite-lived intangible tests, sequencing and eligible private-company alternative differ from ASC 360 groups",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Actual framework/entity/tier/annualstart and adoption selected. IAS16testingproceeds effective2022; UKPeriodicReview2024principal2026starts/earlyadoption. AASB136Jan2026compilation appliesstarts1July2025before1July2026 withends>=28Feb2026, notJuly2026bydefault. AASB138subsequentpublicsectorinsuranceamendment separatelyscreened. ASU2025-06annualstartsafter15Dec2027/earlyadoption transition retainsdistinctionfromcurrentASC.",
+  "cross_framework_check": "US360undiscounted thenfairvalue vsIAS36higherofVIU/FVLCD; US350reportingunit/privatealternative distinct; UKamortizedgoodwill; otherassetreversalcap vsgoodwillneverreverse.",
+  "numerical_reperformance": "IFRS12m-max(10.8m,11m)=1m goodwillloss;1.5m-1m=.5m nofuture reversal. US12m carrying/11.5m undiscounted fails ->12-10.8=1.2m;12.1m undiscountedpasses. GoodwillRU8-7.4=.6m capped2m afterotherlosses.",
+  "cross_topic_check": "04recognition before04depreciation/transfer;04softwarecontrol before04intangiblelife;04impairment separate fromlifeestimate. Agrees02priorerror,03contract-cost otherassets-first and12registerbridge. Noautomaticjournalposting.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-04-006-impairment-goodwill/README.md",
+    "knowledge/topics/TOPIC-04-006-impairment-goodwill/applied-qa.md",
+    "knowledge/topics/TOPIC-04-006-impairment-goodwill/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-006-impairment-goodwill/standards-claims.json"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

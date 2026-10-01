@@ -1,0 +1,86 @@
+{
+  "topic_id": "TOPIC-07-003",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+  "accuracy_checks": [
+    {
+      "challenge": "Legal discharge and payment initiation differ; unmatchedcounterparties cannotnettozero and principalelimination mayleave genuineFX.",
+      "result": "PASS",
+      "reason": "Intercompany operational bridge and limited inherited recognition/FX norms checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-07-003-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-003-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-003-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-003-AASB-R004",
+      "framework": "AASB",
+      "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+  "cross_framework_check": "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats.",
+  "numerical_reperformance": "A100 versusB95 leaves5 requiring bank/discharge evidence; USD100 versusEUR90 at.90 arecommoncurrencyequal, not10principalbreak.",
+  "cross_topic_check": "Crosschecked06FX/instruments,13businesscombinations/assetacquisitions/disposals,08statements/tax/disclosures,07siblingcontrol/NCI/eliminations; no duplicated precontrolresults,FX,dividends,profit release orownershipgains.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md",
+    "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md",
+    "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

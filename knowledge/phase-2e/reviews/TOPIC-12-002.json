@@ -1,0 +1,88 @@
+{
+  "topic_id": "TOPIC-12-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage.",
+  "accuracy_checks": [
+    {
+      "challenge": "Two unallocatedpayments2000each do not prove five rejected4000invoices transferred; unsupported4000revenue plug fails.",
+      "result": "PASS",
+      "reason": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events. Individual source/workflow, duplicate/retry, period, owner and acceptance propositions challenged against actual event lineage."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-12-002-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-002-US_GAAP-E002",
+      "framework": "US_GAAP",
+      "proposition": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-002-UK_GAAP-E003",
+      "framework": "UK_GAAP",
+      "proposition": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-12-002-AASB-E004",
+      "framework": "AASB",
+      "proposition": "Revenue follows satisfaction of the relevant promises and price entitlement, while billing, cash receipt and application are separate accounting events.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Transaction entity/currency/service/controldate and actual accountingframework edition gate journal decisions. Operational cadence/thresholds are companypolicy notstatutorynorms. No universaltax, cashclassification, leaseterm or consolidation testcreated.",
+  "cross_framework_check": "IFRS/US/UK/AASB accounting differences remain in owningtechnicaltopics; process doesnotimposeUSleaseclassification onIFRS or IFRSECL onUK11/12. Payrollgross/net and completepopulation arithmetic isframework-neutral.",
+  "numerical_reperformance": "1000/500000=995/496000+5/4000; cash2*2000=4000 isdifferentpopulation.",
+  "cross_topic_check": "Checked against02cutoff/accruals,03billing/creditloss/cash,09SoD/deficiencies,11idempotency/lineage and all12process handoffs; no plugs, doublepostings, fabricatedevidence or prematurequeueclosure.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/README.md",
+    "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/methods/o2c-population-bridge.md",
+    "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/practice/o2c-handoff.md",
+    "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/standards-claims.json",
+    "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/tests/phase-2d-worker-scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

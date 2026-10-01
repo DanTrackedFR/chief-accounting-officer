@@ -1,0 +1,43 @@
+{
+  "topic_id": "TOPIC-16-003",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Regulatory delivery and structured reporting; numeric/tag semantic correctness,conditionalUS/EU applicability",
+  "accuracy_checks": [
+    {
+      "challenge": "Correcthumantextwrongscale/priorcontext, extensionwithoutbasis,wrongtaxonomypackage andlateadjustment fail; crossjurisdictionreuse mustbereviewed.",
+      "result": "PASS",
+      "reason": "CurrentSECInlineXBRLoverview supportscoveredoperatingcompanyformats;ESMAESEFXHTML/consolidatedIFRStags scopechecked. ExactoperativeRTS/taxonomy notasserted inspected. Tagsmeaning/contexts/units vsaccountingentries distinct."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-16-003-OTHER-R001",
+      "framework": "OTHER",
+      "proposition": "Covered SEC operating-company filings require applicable Inline XBRL; ESEF in-scope annual reports use XHTML and applicable consolidated IFRS tagging, with correct taxonomy, context, unit/scale, extensions and required anchoring assessed for the period.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Review2026-10-01. Actual legal entity, licence/filer status, report date, rule/form/taxonomy version, exemptions, holidays/extensions and transition must be documented. APRA LPS112 commencement2026-07-01; bank AT1 reform notice effective2027-01-01/reporting March2027, not automatic2026 change. Accounting framework separate from jurisdiction.",
+  "cross_framework_check": "SEC/ESEF scopes/formats distinct fromUKregistry/ASICchannels; periodtaxonomyeffectiveversion mandatory notnamedunsupported2026release.",
+  "numerical_reperformance": "1200000raw units→1200displaythousands→1200000machine;doublemultiplication1200000*1000=1200000000 errorfactor1000. Liability400000signnotflippedfromtypographyalone.",
+  "cross_topic_check": "08-009tieout/11-008reportinglayer/16-004outputchecksum sameapprovednumbers.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/README.md",
+    "knowledge/topics/TOPIC-16-003-regulatory-statements-structured-reporting/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

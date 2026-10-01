@@ -1,0 +1,145 @@
+{
+  "topic_id": "TOPIC-04-001",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "PPE scope, unit, cost, subsequent classpolicy, restoration/interest, proceeds-before-use and notes inspected/challenged; recognition precedes thresholdpolicy.",
+  "accuracy_checks": [
+    {
+      "challenge": "Capexapproval cannotcapitalize10000training; installation30000afterreadiness excludedunlessnewimprovement;100000replacement derecognizesoldpart;USupwardrevaluation fails.",
+      "result": "PASS",
+      "reason": "PPE scope, unit, cost, subsequent classpolicy, restoration/interest, proceeds-before-use and notes inspected/challenged; recognition precedes thresholdpolicy."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-001-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 116 broadly follows the PPE recognition model but Australian compilation, entity type and Tier 2 disclosures are separate gates",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "PPE scope and component unit distinguish operating tangible assets from inventory, investment property and leases",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-IFRS-02",
+      "framework": "IFRS",
+      "proposition": "Initial eligible cost includes directly attributable readiness expenditures and qualifying restoration, excluding training and abnormal waste",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-IFRS-03",
+      "framework": "IFRS",
+      "proposition": "Class-level subsequent policy and proceeds-before-intended-use presentation and disclosures require period-specific IAS 16 application",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 17 controls UK PPE recognition, cost, policy and class disclosure under the adopted edition",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-US-01",
+      "framework": "US_GAAP",
+      "proposition": "US tangible PPE cost and depreciation route through ASC 360 plus transaction-specific topics; general IAS 16 upward revaluation is unavailable",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-US-02",
+      "framework": "US_GAAP",
+      "proposition": "A qualifying asset retirement obligation and capitalized interest require separate US ASC 410-20 and 835-20 analysis",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-001-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Training is excluded from PPE initial cost, and testing-output proceeds and costs are recognized separately in profit or loss.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Actual framework/entity/tier/annualstart and adoption selected. IAS16testingproceeds effective2022; UKPeriodicReview2024principal2026starts/earlyadoption. AASB136Jan2026compilation appliesstarts1July2025before1July2026 withends>=28Feb2026, notJuly2026bydefault. AASB138subsequentpublicsectorinsuranceamendment separatelyscreened. ASU2025-06annualstartsafter15Dec2027/earlyadoption transition retainsdistinctionfromcurrentASC.",
+  "cross_framework_check": "IFRS/AASB significantcomponents/revaluation unlikeUS; UKclassrevaluation/17criteria separate; US410-20/835-20 ratherthanIFRSliability/interest assumption.",
+  "numerical_reperformance": "500000+20000freight+30000installation=550000;training10000expense;payable560000. Separateactualrestoration20000 ->PPE570000andprovision20000, notinventedobligation.",
+  "cross_topic_check": "04recognition before04depreciation/transfer;04softwarecontrol before04intangiblelife;04impairment separate fromlifeestimate. Agrees02priorerror,03contract-cost otherassets-first and12registerbridge. Noautomaticjournalposting.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md",
+    "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/README.md",
+    "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md",
+    "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/knowledge-pack.md",
+    "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

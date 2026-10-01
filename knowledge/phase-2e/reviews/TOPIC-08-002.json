@@ -1,0 +1,143 @@
+{
+  "topic_id": "TOPIC-08-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+  "accuracy_checks": [
+    {
+      "challenge": "Unexplained cashflow80 cannotbeplug; noncashlease70 notinvestingcash; PSP15 settlement timing affects cashpopulation.",
+      "result": "PASS",
+      "reason": "Profit/cashflow categories, workingcapital signs, noncash/FX/acquisition separation and period gates checked; corrected AR/AP sign error."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-08-002-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Cash flows separate operating, investing and financing; noncash transactions do not enter cash totals, and indirect profit adjustments require a complete balance-sheet bridge.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply US_GAAP reporting, comparative, disclosure and transition requirements to income statement cash flow independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply UK_GAAP reporting, comparative, disclosure and transition requirements to income statement cash flow independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply AASB reporting, comparative, disclosure and transition requirements to income statement cash flow independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "Cashflows distinguish operating/investing/financing and noncash movements; indirect operating reconciliation uses correct asset/liability signs and excludes acquisition/FX effects.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "Cashflows distinguish operating/investing/financing and noncash movements; indirect operating reconciliation uses correct asset/liability signs and excludes acquisition/FX effects.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "Cashflows distinguish operating/investing/financing and noncash movements; indirect operating reconciliation uses correct asset/liability signs and excludes acquisition/FX effects.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-08-002-AASB-R004",
+      "framework": "AASB",
+      "proposition": "Cashflows distinguish operating/investing/financing and noncash movements; indirect operating reconciliation uses correct asset/liability signs and excludes acquisition/FX effects.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+  "cross_framework_check": "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible.",
+  "numerical_reperformance": "300+50-80-20-10=240;100+240-90+50-10=290. Direct500-390=110;140+30-20+40=190 gives80unresolved;110-70+(80-20)=100increase,closing200.",
+  "cross_topic_check": "Checked02priorerrors,06cash/debt/FX,07NCI/consolidation,03AR/ECL,13convertibles/acquisitions and08siblingdisclosures; source notes excluded at interface while judgment/effective-period limitations remain public.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/README.md",
+    "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/cash-and-performance-classification-case.md",
+    "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/cash-flow-bridge.md",
+    "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/evidence-and-regression.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

@@ -1,0 +1,212 @@
+{
+  "topic_id": "TOPIC-13-007",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Issuer-side convertible debt and freestanding warrants; executed terms, all settlement paths and functional currency; not valuation of unprovided instruments.",
+  "accuracy_checks": [
+    {
+      "challenge": "Variable number/value, foreign-currency strike exceptions, issuer cash choice, strike later fixed without amendment, and separately issued warrants were independently contrasted; no universal equity or reclassification inference.",
+      "result": "PASS",
+      "reason": "Compound liabilities first, equity residual and proportional costs are coherent under IFRS/AASB and qualifying UK instruments. US ASU 2020-06 primary public material corroborates simpler single-liability default subject to remaining derivative separation and other specific exceptions; no IAS 32 split imported. Classification before EIR, own-equity exceptions, freestanding allocations, modification/inducement and cap-table/EPS handoff challenged."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-13-007-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Compound convertible debt separates liability and equity when settlement meets the own-equity fixed-for-fixed criterion; variable share obligations and warrants need their own classification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Determine US_GAAP transaction scope, recognition, measurement, presentation, disclosure and transition for convertible instrument warrant accounting independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Determine UK_GAAP transaction scope, recognition, measurement, presentation, disclosure and transition for convertible instrument warrant accounting independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-AASB-001",
+      "framework": "AASB",
+      "proposition": "Determine AASB transaction scope, recognition, measurement, presentation, disclosure and transition for convertible instrument warrant accounting independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "IFRS: issuer contractual obligations and settlement alternatives determine classification; qualifying compound separation, initial liability valuation, residual equity and issue-cost allocation use that framework's rules. US convertible simplification is not an IFRS residual split.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-IFRS-R002",
+      "framework": "IFRS",
+      "proposition": "IFRS: warrants require independent own-equity/derivative and exception analysis; liability-classified instruments remeasure under relevant rules; contractual modifications/induced conversions, settlement and EPS require separate event analysis, not universal reclassification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-US_GAAP-R003",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: issuer contractual obligations and settlement alternatives determine classification; qualifying compound separation, initial liability valuation, residual equity and issue-cost allocation use that framework's rules. US convertible simplification is not an IFRS residual split.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-US_GAAP-R004",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: warrants require independent own-equity/derivative and exception analysis; liability-classified instruments remeasure under relevant rules; contractual modifications/induced conversions, settlement and EPS require separate event analysis, not universal reclassification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-UK_GAAP-R005",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: issuer contractual obligations and settlement alternatives determine classification; qualifying compound separation, initial liability valuation, residual equity and issue-cost allocation use that framework's rules. US convertible simplification is not an IFRS residual split.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-UK_GAAP-R006",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: warrants require independent own-equity/derivative and exception analysis; liability-classified instruments remeasure under relevant rules; contractual modifications/induced conversions, settlement and EPS require separate event analysis, not universal reclassification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-AASB-R007",
+      "framework": "AASB",
+      "proposition": "AASB: issuer contractual obligations and settlement alternatives determine classification; qualifying compound separation, initial liability valuation, residual equity and issue-cost allocation use that framework's rules. US convertible simplification is not an IFRS residual split.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-AASB-R008",
+      "framework": "AASB",
+      "proposition": "AASB: warrants require independent own-equity/derivative and exception analysis; liability-classified instruments remeasure under relevant rules; contractual modifications/induced conversions, settlement and EPS require separate event analysis, not universal reclassification.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-13-007-IFRS-R009",
+      "framework": "IFRS",
+      "proposition": "A qualifying compound issuer instrument separates liability and residual equity; allocating proceeds creates no initial gain, and related transaction costs follow the components' proportions.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Reviewed 2026-10-01 for period-specific application. FRS 102 Periodic Review generally annual periods beginning 2026-01-01; IAS 1 remains mandatory before IFRS 18 2027 unless early applied; IAS 21 November 2025 presentation-currency amendment mandatory 2027-01-01, with valid early application separately documented. Australian compilations/tier and US adoption facts independent.",
+  "cross_framework_check": "IFRS/AASB compound and IAS 32 own-equity tests are not ASC 470/480/815; UK Sections11/12/22 separately. ASU2020-06 elimination of certain separation models does not abolish all bifurcation or liability/equity tests.",
+  "numerical_reperformance": "1000-920=80; costs20*.92=18.4 and20*.08=1.6; net901.6+78.4=980=1000-20. Alternative1000-800=200 residual; derivative31-25=6 loss. Coupon/maturity absent: no invented numeric EIR yield; opening901.6 route checked.",
+  "cross_topic_check": "Debt/valuation06, equity13-006 and EPS08-006 inputs agree; liability remeasurement versus fixed original equity maintained.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/README.md",
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/compound-and-warrant-workpaper.md",
+    "knowledge/topics/TOPIC-13-007-convertible-instrument-warrant-accounting/evidence-and-regression.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

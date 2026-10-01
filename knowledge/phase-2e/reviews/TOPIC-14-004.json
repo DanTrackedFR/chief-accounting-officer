@@ -1,0 +1,86 @@
+{
+  "topic_id": "TOPIC-14-004",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Documentation practice with material policy/estimate/error distinctions and conditional allowance/PPE illustration registered.",
+  "accuracy_checks": [
+    {
+      "challenge": "Stale2027IAS1location, materialpopulationmismatch, copiedtext no entityapplication, immaterialaccounting withpervasivecontrolfailure and unverifiedparagraphpromotion challenged.",
+      "result": "PASS",
+      "reason": "New experience updates estimate prospectively; omitted known available population can be error, not estimate. Capitalizationthreshold does not waive asset criteria. Model overlay supported/no double-counting. Specialist inputs remain management-owned."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-14-004-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "IFRS: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-14-004-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-14-004-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-14-004-AASB-R004",
+      "framework": "AASB",
+      "proposition": "AASB: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026-10-01 review; identify transaction/reporting period, actual operative standard and transition. IAS8 estimate-definition changes effective2023; IAS1 to IFRS18/IAS8 relocated preparation requirements mandatory2027 absent early application; UK PeriodicReview2024 generally2026; AASB compilation/entity/tier separately.",
+  "cross_framework_check": "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate.",
+  "numerical_reperformance": "5m*.02=100k. 4m*.01=40k;1m*.05=50k;.5m*.20=100k;total190k;overlay25=215k;book170 increment45k. Population5.5m matches4+1+.5;missing.2m prevents final estimate. 2000 threshold notqualifyingtest.",
+  "cross_topic_check": "03-008ECL population/currentforecast,04PPEcriteria,15-002/003/006 errorvsestimate consistent.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/README.md",
+    "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/factory.md",
+    "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/tests.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

@@ -6,18 +6,18 @@
       "framework": "IFRS",
       "proposition": "Customer consideration before related performance remains a liability under the applicable revenue model.",
       "paragraph_references": [
-        "IFRS 15.105\u2013109"
+        "IFRS 15.106"
       ],
-      "reference_confidence": "PROVISIONAL",
+      "reference_confidence": "VERIFIED",
       "evidence_status": "SOURCE_VERIFIED",
       "sources": [
         {
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.105\u2013109",
+          "locator": "IFRS 15.106",
           "version_date": "2026 issued",
-          "access_date": "2026-09-29",
+          "access_date": "2026-10-01",
           "inspected": true
         }
       ],
@@ -28,18 +28,32 @@
         "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
       ],
       "tests": [
-        "Batch 36 adverse test: Prepayment"
+        "Batch 36 adverse test: Prepayment",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
       "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "source_note": "Source: 2026 issued IFRS standard",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-002",
       "framework": "IFRS",
       "proposition": "An unidentified receipt is not revenue solely because cash settled; preserve a traceable liability or clearing conclusion until entitlement is established.",
       "paragraph_references": [
-        "IFRS 15.9\u201316, 105\u2013109"
+        "IFRS 15.9–16, 105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -48,10 +62,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.9\u201316, 105\u2013109",
+          "locator": "IFRS 15.9–16, 105–109",
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "2026 issued edition; select historical edition for older periods",
@@ -61,18 +81,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Unmatched receipt"
+        "Batch 36 adverse test: Unmatched receipt",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-003",
       "framework": "IFRS",
       "proposition": "Classify an invoice dispute as error, concession/refund, credit deterioration, modification or separate legal claim before posting.",
       "paragraph_references": [
-        "IFRS 15.50\u201359; IFRS 9"
+        "IFRS 15.50–59; IFRS 9"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -81,10 +122,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.50\u201359; IFRS 9",
+          "locator": "IFRS 15.50–59; IFRS 9",
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "2026 issued edition; select historical edition for older periods",
@@ -94,18 +141,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Dispute cause"
+        "Batch 36 adverse test: Dispute cause",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-004",
       "framework": "IFRS",
       "proposition": "Do not release an old customer credit to income without establishing contractual and jurisdiction-specific legal expiry and accounting consequences.",
       "paragraph_references": [
-        "IFRS 15.105\u2013109"
+        "IFRS 15.105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -114,10 +182,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.105\u2013109",
+          "locator": "IFRS 15.105–109",
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "2026 issued edition; select historical edition for older periods",
@@ -127,11 +201,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Credit expiry"
+        "Batch 36 adverse test: Credit expiry",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-005",
@@ -151,6 +246,12 @@
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "2026 issued edition; select historical edition for older periods",
@@ -160,18 +261,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Offsetting"
+        "Batch 36 adverse test: Offsetting",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-006",
       "framework": "IFRS",
       "proposition": "Assess material balance/judgment disclosures, applicable transitions and public/private or entity-tier reliefs for the period.",
       "paragraph_references": [
-        "IFRS 15.113\u2013126"
+        "IFRS 15.113–126"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -180,10 +302,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "2026 issued IFRS standard",
           "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ifrs15.html",
-          "locator": "IFRS 15.113\u2013126",
+          "locator": "IFRS 15.113–126",
           "version_date": "2026 issued",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "2026 issued edition; select historical edition for older periods",
@@ -193,18 +321,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Disclosure-period"
+        "Batch 36 adverse test: Disclosure-period",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": "Codex source inspection",
-      "review_date": "2026-09-29"
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-001",
       "framework": "AASB",
       "proposition": "Customer consideration before related performance remains a liability under the applicable revenue model.",
       "paragraph_references": [
-        "AASB 15.105\u2013109"
+        "AASB 15.105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -213,10 +362,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "IFRS 15.105\u2013109",
+          "locator": "IFRS 15.105–109",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -226,18 +381,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Prepayment"
+        "Batch 36 adverse test: Prepayment",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-002",
       "framework": "AASB",
       "proposition": "An unidentified receipt is not revenue solely because cash settled; preserve a traceable liability or clearing conclusion until entitlement is established.",
       "paragraph_references": [
-        "AASB 15.9\u201316, 105\u2013109"
+        "AASB 15.9–16, 105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -246,10 +422,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "IFRS 15.9\u201316, 105\u2013109",
+          "locator": "IFRS 15.9–16, 105–109",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -259,18 +441,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Unmatched receipt"
+        "Batch 36 adverse test: Unmatched receipt",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-003",
       "framework": "AASB",
       "proposition": "Classify an invoice dispute as error, concession/refund, credit deterioration, modification or separate legal claim before posting.",
       "paragraph_references": [
-        "AASB 15.50\u201359; AASB 9"
+        "AASB 15.50–59; AASB 9"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -279,10 +482,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "IFRS 15.50\u201359; IFRS 9",
+          "locator": "IFRS 15.50–59; IFRS 9",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -292,18 +501,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Dispute cause"
+        "Batch 36 adverse test: Dispute cause",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-004",
       "framework": "AASB",
       "proposition": "Do not release an old customer credit to income without establishing contractual and jurisdiction-specific legal expiry and accounting consequences.",
       "paragraph_references": [
-        "AASB 15.105\u2013109"
+        "AASB 15.105–109"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -312,10 +542,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "IFRS 15.105\u2013109",
+          "locator": "IFRS 15.105–109",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -325,11 +561,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Credit expiry"
+        "Batch 36 adverse test: Credit expiry",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-005",
@@ -349,6 +606,12 @@
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -358,18 +621,39 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Offsetting"
+        "Batch 36 adverse test: Offsetting",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-006",
       "framework": "AASB",
       "proposition": "Assess material balance/judgment disclosures, applicable transitions and public/private or entity-tier reliefs for the period.",
       "paragraph_references": [
-        "AASB 15.113\u2013126"
+        "AASB 15.113–126"
       ],
       "reference_confidence": "PROVISIONAL",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -378,10 +662,16 @@
           "source_kind": "CURRENT_STANDARD",
           "title": "AASB compilation",
           "url": "https://standards.aasb.gov.au/aasb-15-dec-2022",
-          "locator": "IFRS 15.113\u2013126",
+          "locator": "IFRS 15.113–126",
           "version_date": "December 2022 compilation",
           "access_date": "2026-09-29",
           "inspected": false
+        },
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data independently checked in Phase 2E",
+          "inspected": false,
+          "access_date": "2026-10-01"
         }
       ],
       "effective_period": "Annual periods beginning 1 January 2023 before 1 July 2026",
@@ -391,11 +681,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Disclosure-period"
+        "Batch 36 adverse test: Disclosure-period",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-001",
@@ -422,11 +733,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Prepayment"
+        "Batch 36 adverse test: Prepayment",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-002",
@@ -453,11 +785,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Unmatched receipt"
+        "Batch 36 adverse test: Unmatched receipt",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-003",
@@ -484,11 +837,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Dispute cause"
+        "Batch 36 adverse test: Dispute cause",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-004",
@@ -515,11 +889,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Credit expiry"
+        "Batch 36 adverse test: Credit expiry",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-005",
@@ -546,11 +941,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Offsetting"
+        "Batch 36 adverse test: Offsetting",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-006",
@@ -577,11 +993,32 @@
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Disclosure-period"
+        "Batch 36 adverse test: Disclosure-period",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-001",
@@ -601,18 +1038,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Prepayment"
+        "Batch 36 adverse test: Prepayment",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-002",
@@ -632,18 +1090,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Unmatched receipt"
+        "Batch 36 adverse test: Unmatched receipt",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-003",
@@ -663,18 +1142,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Dispute cause"
+        "Batch 36 adverse test: Dispute cause",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-004",
@@ -694,18 +1194,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Credit expiry"
+        "Batch 36 adverse test: Credit expiry",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-005",
@@ -725,18 +1246,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Offsetting"
+        "Batch 36 adverse test: Offsetting",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-006",
@@ -756,18 +1298,39 @@
           "inspected": false
         }
       ],
-      "effective_period": null,
+      "effective_period": "2026 reporting gate: actual annual start/adoption/framework and entity regime selected. UK revised revenue from1January2026 starts or authorizedearlyadoption; earlierperiod oldmodel. IFRS/AASB historical2018routes retained; AASBJuly2026scope amendments/NFP separately. US originalpublic/privateadoption and2025-04/07 annualstartsafter15December2026 versus2025-05 after15December2025 checked in official amendments; directliveASC assurance not asserted.",
       "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
       "audit_required": true,
       "limitations": [
         "Provision, period, policy election and exceptions require authoritative audit."
       ],
       "tests": [
-        "Batch 36 adverse test: Disclosure-period"
+        "Batch 36 adverse test: Disclosure-period",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Provision, period, policy election and exceptions require authoritative audit."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R001",
@@ -794,11 +1357,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R001",
@@ -825,11 +1409,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R001",
@@ -856,11 +1461,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R001",
@@ -887,11 +1513,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R002",
@@ -918,11 +1565,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R002",
@@ -949,11 +1617,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R002",
@@ -980,11 +1669,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R002",
@@ -1011,11 +1721,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R003",
@@ -1042,11 +1773,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R003",
@@ -1073,11 +1825,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R003",
@@ -1104,11 +1877,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R003",
@@ -1135,11 +1929,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R004",
@@ -1166,11 +1981,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R004",
@@ -1197,11 +2033,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R004",
@@ -1228,11 +2085,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R004",
@@ -1259,11 +2137,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R005",
@@ -1290,11 +2189,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R005",
@@ -1321,11 +2241,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R005",
@@ -1352,11 +2293,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R005",
@@ -1383,11 +2345,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R006",
@@ -1414,11 +2397,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R006",
@@ -1445,11 +2449,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R006",
@@ -1476,11 +2501,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R006",
@@ -1507,11 +2553,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R007",
@@ -1538,11 +2605,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R007",
@@ -1569,11 +2657,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R008",
@@ -1600,11 +2709,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R009",
@@ -1631,11 +2761,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R010",
@@ -1662,11 +2813,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R010",
@@ -1693,11 +2865,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R010",
@@ -1724,11 +2917,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R010",
@@ -1755,11 +2969,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R011",
@@ -1786,11 +3021,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R011",
@@ -1817,11 +3073,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R011",
@@ -1848,11 +3125,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R011",
@@ -1879,11 +3177,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R012",
@@ -1910,11 +3229,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R012",
@@ -1941,11 +3281,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R012",
@@ -1972,11 +3333,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R012",
@@ -2003,11 +3385,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R013",
@@ -2034,11 +3437,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R013",
@@ -2065,11 +3489,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R013",
@@ -2096,11 +3541,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R013",
@@ -2127,11 +3593,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R014",
@@ -2158,11 +3645,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R014",
@@ -2189,11 +3697,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R014",
@@ -2220,11 +3749,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R014",
@@ -2251,11 +3801,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R015",
@@ -2282,11 +3853,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R015",
@@ -2313,11 +3905,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R015",
@@ -2344,11 +3957,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R016",
@@ -2375,11 +4009,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R017",
@@ -2406,11 +4061,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-IFRS-R018",
@@ -2437,11 +4113,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-US-R018",
@@ -2468,11 +4165,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-UK-R018",
@@ -2499,11 +4217,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     },
     {
       "claim_id": "TOPIC-03-010-AASB-R018",
@@ -2530,11 +4269,32 @@
         "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
       ],
       "tests": [
-        "phase-2d-scenarios.json"
+        "phase-2d-scenarios.json",
+        "knowledge/phase-2e/reviews/TOPIC-03-010.json"
       ],
-      "model_reviews": [],
-      "reviewer": null,
-      "review_date": null
+      "model_reviews": [
+        {
+          "model": "Codex Phase 2E independent controller",
+          "date": "2026-10-01",
+          "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+          "disagreements": []
+        }
+      ],
+      "reviewer": "Codex Phase 2E independent controller",
+      "review_date": "2026-10-01",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "source_note": "Source: ChatGPT training data",
+      "approval_review": {
+        "reviewer": "Codex Phase 2E independent controller",
+        "date": "2026-10-01",
+        "result": "PASS",
+        "scope_and_period_checked": true,
+        "cross_framework_checked": true,
+        "regression_checked": true,
+        "limitations": [
+          "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+        ]
+      }
     }
   ]
 }

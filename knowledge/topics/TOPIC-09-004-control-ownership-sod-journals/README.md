@@ -78,3 +78,7 @@ Reconcile ERP role extracts to HR/user populations and privileged accounts. Conf
 
 ## Completion criteria
 PASS when the CAO can distinguish ownership from review, assess actual SoD conflicts, design compensating controls, build a risk-tiered journal control model, address management override, specify evidence and system data, and keep SOX/ICFR obligations jurisdiction-specific.
+## Phase 2E scope and period qualification
+SEC Release 33-8810 describes one acceptable management evaluation route; it does not prescribe the only permitted method. PCAOB requirements apply to the relevant auditor engagement. AS 2201 amendments have a 15 December 2026 effective gate; select the engagement-period version before applying planning requirements. Underlying transaction recognition stays with the applicable technical topic.
+
+Claim coverage: TOPIC-09-004-SEC-E01, TOPIC-09-004-OTHER-E02, TOPIC-09-004-OTHER-E05.

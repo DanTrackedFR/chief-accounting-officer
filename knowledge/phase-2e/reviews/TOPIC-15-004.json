@@ -1,0 +1,85 @@
+{
+  "topic_id": "TOPIC-15-004",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Significantjudgment and estimationuncertainty, conditionalCGU model",
+  "accuracy_checks": [
+    {
+      "challenge": "Singlepoint noassumptions, favouredconclusiononly, specialistacceptedblindly, note2mheadroomvs.5m and arbitraryCGU fail.",
+      "result": "PASS",
+      "reason": "Judgment selectscriteria/unit; estimate supplies uncertainamount. Baseheadroomnotabsenceofdisclosure. Sensitivityscenario notautomaticbookedloss; actualunit/IFRSrecoverablemodel vsUSreportingunit differs."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-15-004-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "IFRS: material significant judgments and estimation uncertainty require applicable entity-specific disclosures and supported assumptions/carrying amounts; stress scenarios and reasonably possible changes are distinct, with model/unit and measurement requirements framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-004-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "US_GAAP: material significant judgments and estimation uncertainty require applicable entity-specific disclosures and supported assumptions/carrying amounts; stress scenarios and reasonably possible changes are distinct, with model/unit and measurement requirements framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-004-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "UK_GAAP: material significant judgments and estimation uncertainty require applicable entity-specific disclosures and supported assumptions/carrying amounts; stress scenarios and reasonably possible changes are distinct, with model/unit and measurement requirements framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-15-004-AASB-R004",
+      "framework": "AASB",
+      "proposition": "AASB: material significant judgments and estimation uncertainty require applicable entity-specific disclosures and supported assumptions/carrying amounts; stress scenarios and reasonably possible changes are distinct, with model/unit and measurement requirements framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+  "cross_framework_check": "IAS1judgments/uncertaintybefore2027vsIAS8afteradoption, IAS36sensitivity vsASC350/360/275 andFRS1028/27; AASBTier2 independently.",
+  "numerical_reperformance": "10.5-10=.5mheadroom;10-9.8=.2mconditionalshortfall.10%CFreduction cannotindependentlyderive9.8without fullmodel; verify given output/chronology, notclaim model rerun. Alternative grouping1m impact requiresunit support.",
+  "cross_topic_check": "04-006impairment and08notes preserveconditional stress/basebasis.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-15-004-judgment-documentation-estimation-uncertainty/README.md",
+    "knowledge/topics/TOPIC-15-004-judgment-documentation-estimation-uncertainty/factory.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}

@@ -1,0 +1,145 @@
+{
+  "topic_id": "TOPIC-06-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+  "accuracy_checks": [
+    {
+      "challenge": "Remaining maturity alone insufficient; historical nonmonetary advances and US overdrafts cannot inherit IFRS exceptions.",
+      "result": "PASS",
+      "reason": "Acquisition-maturity equivalent criteria and transaction/closing/settlement FX checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-06-002-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Foreign-currency monetary balances are retranslated at closing rate; historical-cost nonmonetary balances retain transaction-date measurement, while cash-equivalent classification is a distinct IAS 7 question.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply the US_GAAP recognition, measurement, presentation, disclosure and transition model to cash classification foreign currency transactions independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply the UK_GAAP recognition, measurement, presentation, disclosure and transition model to cash classification foreign currency transactions independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply the AASB recognition, measurement, presentation, disclosure and transition model to cash classification foreign currency transactions independently of IFRS.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-06-002-AASB-R004",
+      "framework": "AASB",
+      "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+  "cross_framework_check": "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public.",
+  "numerical_reperformance": "USD100 at.90/.95/.92 givesEUR90/95/92; gain5 thenloss3 netgain2. 100-day acquisition deposit with30remaining not automatically equivalent.",
+  "cross_topic_check": "Crosschecked03-008 impairment,07 consolidation/CTA/equitymethod,08 cashflow/covenantpresentation,13debt events and06sibling classifications; no duplicateFX,fees orOCI.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": [],
+  "artifact_scope": [
+    "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md",
+    "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md",
+    "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md",
+    "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md",
+    "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md"
+  ],
+  "review_basis": "Claim propositions and relevant guidance, framework/period gates, worked examples and boundary cases were individually challenged in the findings below. artifact_scope is the topic inventory, not a claim that every historical line or authority link was independently source-verified.",
+  "claim_register_disposition": "MATERIAL_CLAIMS_REGISTERED"
+}
