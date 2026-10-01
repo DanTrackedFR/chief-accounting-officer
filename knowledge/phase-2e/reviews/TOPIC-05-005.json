@@ -1,0 +1,198 @@
+{
+  "topic_id": "TOPIC-05-005",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Individual review of canonical capability and retained substantive methods for payables/employee topic 5; existing REVIEWED baseline confirmed. All material rule families represented, operational controls treated as recommendations.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/defined-benefit-valuation-bridge.md",
+    "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/employee-case.md",
+    "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/factory.md",
+    "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/standards-claims.json"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Contributions reduce funded deficit; they are not a proxy for DB expense. Asset ceiling and multi-employer missing information require separate evaluation.",
+      "result": "PASS",
+      "reason": "Service accrual, benefit classification, actuarial rollforward and presentation independently checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-05-005-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Employee service creates short-term cost/payable; defined-benefit obligation, plan assets and remeasurement need distinct measurement and presentation.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply the UK_GAAP treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply the US_GAAP treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply the AASB treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-US_GAAP-E002",
+      "framework": "US_GAAP",
+      "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-UK_GAAP-E003",
+      "framework": "UK_GAAP",
+      "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-AASB-E004",
+      "framework": "AASB",
+      "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-IFRS-E005",
+      "framework": "IFRS",
+      "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-US_GAAP-E006",
+      "framework": "US_GAAP",
+      "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-UK_GAAP-E007",
+      "framework": "UK_GAAP",
+      "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-05-005-AASB-E008",
+      "framework": "AASB",
+      "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 framework/entity selected; UK Periodic Review annual starts 1 January 2026, US ASU2024-01 PBE starts after15 December2024, other entities after15 December2025 with transition election; AASB compilation and disclosure tier separately selected; IAS37 cost amendment from2022 and IFRS2 amendments from2018. Future IFRS18 presentation not imposed absent adoption. Country employment law and plan-specific settlement assumptions remain material limitations.",
+  "cross_framework_check": "IFRS/AASB full accounting similarity does not remove Australian entity/tier and compilation gates. US contingency probability/range, pension OCI, SBC forfeiture/attribution and severance models differ. UK Sections21/26/28 simplifications and revised contract-cost election must be resolved for the stated fact pattern. Training-data conclusions independently challenged without claiming operative US/UK paragraph verification.",
+  "numerical_reperformance": "10 employees times5 days times200=10000 plus8% DC800=10800. DBO1000+60+40-50+30=1080; assets800+32+70-50+18=870; deficit210. IFRS service60+netinterest8=68 P&L, net remeasurement12 OCI; not US OCI amortization equivalence.",
+  "cross_topic_check": "Linked03-006 acquisition costs,04 capitalization/impairment,06 FX/finance,05 sibling benefit rules and09 controls checked for duplicate recognition and contradictory classification.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}
