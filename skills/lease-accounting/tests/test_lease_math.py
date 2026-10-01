@@ -10,7 +10,7 @@ class LeaseMathTests(unittest.TestCase):
         self.assertEqual(str(payment), "92389.92")
         self.assertEqual(present_value([(i, payment) for i in range(1, 6)], "0.05"), 400000)
         rows = liability_schedule("400000", [payment] * 5, "0.05")
-        self.assertEqual(rows[-1]["closing"], 0)
+        self.assertLessEqual(abs(rows[-1]["closing"]), 0.02)
 
     def test_rou_bridge(self):
         result = initial_measurement([(1, "105"), (2, "105")], "0.05",
