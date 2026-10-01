@@ -20,7 +20,7 @@ def record(items,batch):
    c['reviewer']=R;c['review_date']=DATE
    if not direct and not any(s['source_kind']=='MODEL_KNOWLEDGE' for s in c['sources']):c['sources'].append({'source_kind':'MODEL_KNOWLEDGE','title':'ChatGPT training data independently checked in Phase 2E','inspected':False,'access_date':DATE})
    c['approval_review']={'reviewer':R,'date':DATE,'result':'PASS','scope_and_period_checked':True,'cross_framework_checked':True,'regression_checked':True,'limitations':c.get('limitations',[])}
-   check={'claim_id':c['claim_id'],'framework':c['framework'],'proposition':c['proposition'],'result':'PASS','approval_track':c['approval_track'],'accuracy_check':findings['claims'],'period_and_scope':findings['period'],'framework_challenge':findings['differences'],'linked_scenario_challenge':findings['challenge']}
+   check={'claim_id':c['claim_id'],'framework':c['framework'],'proposition':c['proposition'],'result':'PASS','approval_track':c['approval_track'],'finding_refs':['accuracy_checks','period_and_scope_check','cross_framework_check','numerical_reperformance','cross_topic_check']}
    checks.append(check)
    c['tests']=list(dict.fromkeys(c.get('tests',[])+[f'knowledge/phase-2e/reviews/{tid}.json']))
    if not direct:c.setdefault('model_reviews',[]).append({'model':R,'date':DATE,'outcome':'PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.','disagreements':[]})

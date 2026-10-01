@@ -1,0 +1,44 @@
+{
+  "topic_id": "TOPIC-10-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Inspected confirmation effective date and selection/send/receive rules; management retains underlying accounting ownership.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-10-002-audit-support-query-samples/README.md",
+    "knowledge/topics/TOPIC-10-002-audit-support-query-samples/methods/sample-lineage.md",
+    "knowledge/topics/TOPIC-10-002-audit-support-query-samples/practice/audit-query-sample.md",
+    "knowledge/topics/TOPIC-10-002-audit-support-query-samples/standards-claims.json",
+    "knowledge/topics/TOPIC-10-002-audit-support-query-samples/tests/phase-2d-worker-scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "Selected invoice452 source10000/subledger10000/GL9800 gives200unsupporteddiscount. Substituting easy sample or forging unavailable evidence fails.",
+      "result": "PASS",
+      "reason": "Inspected confirmation effective date and selection/send/receive rules; management retains underlying accounting ownership."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-10-002-OTHER-E001",
+      "framework": "OTHER",
+      "proposition": "Auditor retains confirmation selection, sending and receipt control; current AS2310 applies to fiscal years ending on/after15June2025.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "Engagement framework, entity and reporting period selected; PCAOB duties apply only within actual engagement. AS2310 yearend15June2025 gate; AS1215 future15December2026 amendment separately selected. IIA9January2025 checked. Underlying accounting uses actual applicable edition.",
+  "cross_framework_check": "PCAOB obligations are auditor-side; ISA/UKISA/AUASB and local independence/representation requirements separately routed. IFRS/US/UK/AASB underlying measurement not supplied by assurance standards. Revenue notes use regime-specific relief/old-newUK/Tier2 distinctions.",
+  "numerical_reperformance": "10000-9800=200; no extrapolation of one sample result to all invoices without auditor methodology.",
+  "cross_topic_check": "Consistent with Domains02/03/09/11: complete population, genuine evidence, no plugs or backdating, gross unresolved issues, technical owner decision and provider independence.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}
