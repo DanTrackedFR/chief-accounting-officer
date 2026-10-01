@@ -76,3 +76,7 @@ Risk assessment; RCM; process/system map; control narratives; IPE inventory; key
 
 ## Completion assessment
 Principles/practice: PASS. Framework/jurisdiction boundary: PASS. RCM schema: PASS. CAO workflow: PASS. Controls/systems/automation: PASS. Scenarios: 10/10 PASS. **Factory status: REVIEWED / production-candidate.**
+## Phase 2E scope and period qualification
+SEC Release 33-8810 describes one acceptable management evaluation route; it does not prescribe the only permitted method. PCAOB requirements apply to the relevant auditor engagement. AS 2201 amendments have a 15 December 2026 effective gate; select the engagement-period version before applying planning requirements. Underlying transaction recognition stays with the applicable technical topic.
+
+Claim coverage: TOPIC-09-001-SEC-E01, TOPIC-09-001-OTHER-E02.

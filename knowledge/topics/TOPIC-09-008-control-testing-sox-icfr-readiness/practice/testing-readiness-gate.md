@@ -1,6 +1,6 @@
 # Testing readiness gate
 
-**Regime first.** Record issuer/listing, filer status, management evaluation and auditor-attestation applicability, period and service-organization footprint. SEC Release 33-8810 governs US issuer management evaluation; PCAOB AS 2201 governs applicable integrated audits. A voluntary readiness project does not acquire SOX attestation merely by naming its RCM “SOX.” Local law and assurance standards govern other entities.
+**Regime first.** Record issuer/listing, filer status, management evaluation and auditor-attestation applicability, period and service-organization footprint. SEC Release 33-8810 supplies an acceptable risk-based route for applicable US issuer management evaluation; PCAOB AS 2201 governs applicable integrated audits. A voluntary readiness project does not acquire SOX attestation merely by naming its RCM “SOX.” Local law and assurance standards govern other entities.
 
 **Risk-to-evidence map.** For every significant account/disclosure and relevant assertion, identify the risk, control ID, entity/location, owner, frequency, precise review criteria, full population, system and report dependencies, evidence artifact and exception owner. Confirm design by walkthrough from transaction initiation to reported figure, including manual adjustments and outsourced process interfaces. Preserve decisions excluding controls with a documented risk rationale.
 

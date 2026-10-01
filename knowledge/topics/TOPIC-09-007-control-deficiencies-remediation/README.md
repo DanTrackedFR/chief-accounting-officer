@@ -48,3 +48,7 @@ Deficiency evaluation memo; aggregation matrix; compensating-control assessment;
 
 ## Completion criteria
 PASS when CAO can create a defensible deficiency analysis, distinguish design/operation failure, assess magnitude/likelihood/aggregation/compensation, route formal labels correctly, and build evidence-based remediation and closure.
+## Phase 2E scope and period qualification
+SEC Release 33-8810 describes one acceptable management evaluation route; it does not prescribe the only permitted method. PCAOB requirements apply to the relevant auditor engagement. AS 2201 amendments have a 15 December 2026 effective gate; select the engagement-period version before applying planning requirements. Underlying transaction recognition stays with the applicable technical topic.
+
+Claim coverage: TOPIC-09-007-SEC-E01, TOPIC-09-007-OTHER-E02, TOPIC-09-007-OTHER-E03, TOPIC-09-007-OTHER-E04, TOPIC-09-007-OTHER-E05.
