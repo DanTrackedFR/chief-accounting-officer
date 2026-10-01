@@ -1,0 +1,142 @@
+{
+  "topic_id": "TOPIC-07-002",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-07-002-control-assessment-nci/README.md",
+    "knowledge/topics/TOPIC-07-002-control-assessment-nci/evidence-and-regression.md",
+    "knowledge/topics/TOPIC-07-002-control-nci/README.md",
+    "knowledge/topics/TOPIC-07-002-control-nci/nci-rollforward-case.md",
+    "knowledge/topics/TOPIC-07-002-control-nci/retained-control-ownership-change.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "NCI cannotfloorzero mechanically; preferences/puts/asymmetric rights caninvalidate percentageallocation.",
+      "result": "PASS",
+      "reason": "NCI equity, ordinary-rights attribution, deficit losses and retained-control ownership changes checked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-07-002-IFRS-001",
+      "framework": "IFRS",
+      "proposition": "Present non-controlling interests separately and attribute profit/OCI, including losses, while changes in ownership without loss of control are equity transactions.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-US-001",
+      "framework": "US_GAAP",
+      "proposition": "Apply US_GAAP scope, recognition, measurement, presentation, disclosure and period rules to control assessment nci independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-UK-001",
+      "framework": "UK_GAAP",
+      "proposition": "Apply UK_GAAP scope, recognition, measurement, presentation, disclosure and period rules to control assessment nci independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-AASB-001",
+      "framework": "AASB",
+      "proposition": "Apply AASB scope, recognition, measurement, presentation, disclosure and period rules to control assessment nci independently.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-IFRS-R001",
+      "framework": "IFRS",
+      "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-US_GAAP-R002",
+      "framework": "US_GAAP",
+      "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-UK_GAAP-R003",
+      "framework": "UK_GAAP",
+      "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-07-002-AASB-R004",
+      "framework": "AASB",
+      "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+  "cross_framework_check": "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats.",
+  "numerical_reperformance": "200+20%of100+20%of20=224;100+20%of200-20%of50=130. Buy10points outof20 for85: NCI150 times10/20=75, ownersequity debit10; no goodwill/P&L.",
+  "cross_topic_check": "Crosschecked06FX/instruments,13businesscombinations/assetacquisitions/disposals,08statements/tax/disclosures,07siblingcontrol/NCI/eliminations; no duplicated precontrolresults,FX,dividends,profit release orownershipgains.",
+  "rights_check": "Original paraphrase; no restricted authority text reproduced. Training-data review does not verify provisional references.",
+  "blockers": []
+}
