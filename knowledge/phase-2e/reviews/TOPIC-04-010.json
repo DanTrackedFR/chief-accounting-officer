@@ -1,0 +1,520 @@
+{
+  "topic_id": "TOPIC-04-010",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Sharedslice auditedacrossallscope/term/payment/ROU/liability/lessor/sublease/disclosure/transition propositions andS1\u2013S11 routes.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-04-010-leases/README.md",
+    "knowledge/topics/TOPIC-04-010-leases/artifacts/lease-case-output-spec.md",
+    "knowledge/topics/TOPIC-04-010-leases/differences/framework-differences.md",
+    "knowledge/topics/TOPIC-04-010-leases/examples/illustrative-calculation.md",
+    "knowledge/topics/TOPIC-04-010-leases/methods/calculation-model.md",
+    "knowledge/topics/TOPIC-04-010-leases/methods/cao-workflow.md",
+    "knowledge/topics/TOPIC-04-010-leases/practice/controls-audit-systems.md",
+    "knowledge/topics/TOPIC-04-010-leases/sources.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/aasb-paragraph-map.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/aasb.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/ifrs-current-status.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/ifrs.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/uk-gaap.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/us-gaap-paragraph-map.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards/us-gaap.md",
+    "knowledge/topics/TOPIC-04-010-leases/standards-claims.json",
+    "knowledge/topics/TOPIC-04-010-leases/tests/executed-scenarios.md",
+    "knowledge/topics/TOPIC-04-010-leases/tests/qa.md",
+    "knowledge/topics/TOPIC-04-010-leases/tests/scenarios.md"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "USoperatingsingleexpenseandunderlyingasset-basedsublease notIFRSROU-based; NFPbelowmarketcost-election disclosuresandtier scoped. Low-valueIFRS/UK cannotinventUSgeneralexemption.",
+      "result": "PASS",
+      "reason": "Sharedslice auditedacrossallscope/term/payment/ROU/liability/lessor/sublease/disclosure/transition propositions andS1\u2013S11 routes."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Control-based identification precedes measurement and uses specified asset, substantive substitution, economic benefits and decision rights.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E002",
+      "framework": "IFRS",
+      "proposition": "Contract components, enforceable term and reasonably certain options are documented before rate/payment measurement; available expedients require actual elections.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E003",
+      "framework": "IFRS",
+      "proposition": "Included unpaid payments are discounted at the permitted rate; ROU adds applicable prepayments/direct/restoration costs and deducts incentives.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E004",
+      "framework": "IFRS",
+      "proposition": "Liability accretes interest and reduces for settlement, with applicable remeasurements; ROU impairment, expense and presentation are separately framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E005",
+      "framework": "IFRS",
+      "proposition": "A modification adding a separate right and commensurate consideration may be separate; scope decrease requires termination/remeasurement accounting rather than ordinary rent.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E006",
+      "framework": "IFRS",
+      "proposition": "Lessor classification and net-investment/underlying-asset models are separate from ordinary lessee accounting; sublease classification uses its own framework basis.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E007",
+      "framework": "IFRS",
+      "proposition": "Material lease balances, expenses, cash, commitments, judgments and eligible exemptions/elections are disclosed through the applicable framework and entity tier.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-IFRS-E008",
+      "framework": "IFRS",
+      "proposition": "Transition and subsequent amendments are selected by actual annual start, transaction cohort and elected adoption route, without silently overwriting historical balances.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E009",
+      "framework": "US_GAAP",
+      "proposition": "Control-based identification precedes measurement and uses specified asset, substantive substitution, economic benefits and decision rights.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E010",
+      "framework": "US_GAAP",
+      "proposition": "Contract components, enforceable term and reasonably certain options are documented before rate/payment measurement; available expedients require actual elections.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E011",
+      "framework": "US_GAAP",
+      "proposition": "Included unpaid payments are discounted at the permitted rate; ROU adds applicable prepayments/direct/restoration costs and deducts incentives.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E012",
+      "framework": "US_GAAP",
+      "proposition": "Liability accretes interest and reduces for settlement, with applicable remeasurements; ROU impairment, expense and presentation are separately framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E013",
+      "framework": "US_GAAP",
+      "proposition": "A modification adding a separate right and commensurate consideration may be separate; scope decrease requires termination/remeasurement accounting rather than ordinary rent.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E014",
+      "framework": "US_GAAP",
+      "proposition": "Lessor classification and net-investment/underlying-asset models are separate from ordinary lessee accounting; sublease classification uses its own framework basis.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E015",
+      "framework": "US_GAAP",
+      "proposition": "Material lease balances, expenses, cash, commitments, judgments and eligible exemptions/elections are disclosed through the applicable framework and entity tier.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-US_GAAP-E016",
+      "framework": "US_GAAP",
+      "proposition": "Transition and subsequent amendments are selected by actual annual start, transaction cohort and elected adoption route, without silently overwriting historical balances.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E017",
+      "framework": "UK_GAAP",
+      "proposition": "Control-based identification precedes measurement and uses specified asset, substantive substitution, economic benefits and decision rights.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E018",
+      "framework": "UK_GAAP",
+      "proposition": "Contract components, enforceable term and reasonably certain options are documented before rate/payment measurement; available expedients require actual elections.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E019",
+      "framework": "UK_GAAP",
+      "proposition": "Included unpaid payments are discounted at the permitted rate; ROU adds applicable prepayments/direct/restoration costs and deducts incentives.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E020",
+      "framework": "UK_GAAP",
+      "proposition": "Liability accretes interest and reduces for settlement, with applicable remeasurements; ROU impairment, expense and presentation are separately framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E021",
+      "framework": "UK_GAAP",
+      "proposition": "A modification adding a separate right and commensurate consideration may be separate; scope decrease requires termination/remeasurement accounting rather than ordinary rent.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E022",
+      "framework": "UK_GAAP",
+      "proposition": "Lessor classification and net-investment/underlying-asset models are separate from ordinary lessee accounting; sublease classification uses its own framework basis.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E023",
+      "framework": "UK_GAAP",
+      "proposition": "Material lease balances, expenses, cash, commitments, judgments and eligible exemptions/elections are disclosed through the applicable framework and entity tier.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E024",
+      "framework": "UK_GAAP",
+      "proposition": "Transition and subsequent amendments are selected by actual annual start, transaction cohort and elected adoption route, without silently overwriting historical balances.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E025",
+      "framework": "AASB",
+      "proposition": "Control-based identification precedes measurement and uses specified asset, substantive substitution, economic benefits and decision rights.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E026",
+      "framework": "AASB",
+      "proposition": "Contract components, enforceable term and reasonably certain options are documented before rate/payment measurement; available expedients require actual elections.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E027",
+      "framework": "AASB",
+      "proposition": "Included unpaid payments are discounted at the permitted rate; ROU adds applicable prepayments/direct/restoration costs and deducts incentives.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E028",
+      "framework": "AASB",
+      "proposition": "Liability accretes interest and reduces for settlement, with applicable remeasurements; ROU impairment, expense and presentation are separately framework-specific.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E029",
+      "framework": "AASB",
+      "proposition": "A modification adding a separate right and commensurate consideration may be separate; scope decrease requires termination/remeasurement accounting rather than ordinary rent.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E030",
+      "framework": "AASB",
+      "proposition": "Lessor classification and net-investment/underlying-asset models are separate from ordinary lessee accounting; sublease classification uses its own framework basis.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E031",
+      "framework": "AASB",
+      "proposition": "Material lease balances, expenses, cash, commitments, judgments and eligible exemptions/elections are disclosed through the applicable framework and entity tier.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E032",
+      "framework": "AASB",
+      "proposition": "Transition and subsequent amendments are selected by actual annual start, transaction cohort and elected adoption route, without silently overwriting historical balances.",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-AASB-E033",
+      "framework": "AASB",
+      "proposition": "Below-market NFP cost-election leases require Australian additional disclosures under applicable full-disclosure scope.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-010-UK_GAAP-E034",
+      "framework": "UK_GAAP",
+      "proposition": "Revised leaseback permits proportionate-right or deferred-gain accounting choice; transition preserves specified prior sale-leaseback accounting.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "IFRS16original2019/retainedtransition; saleleasebackamendment2024andcohortretrospective. UKrevisedSection20principal2026starts orapprovedearlyadoption, previousperiods legacy. AASB16Nov2022compilation1Jan2024before1Jan2027 verified. FutureIFRS18consequentialadoption separatelygated. USpublic/privateoriginaladoption andriskfreeelection recordedwithoutoperativeASCinspection.",
+  "cross_framework_check": "IFRS/AASBsingleordinarylesseemodel; USfinanceversusoperating/lessorthreemodels; UKobtainableandPBEfallback/unchangedmodificationrate/lowvalue/saleleasebackpolicy; NFP/tierAUnotblindIFRS. USsubleaseunderlyingasset vsIFRS/UKROU classification.",
+  "numerical_reperformance": "All11routingcases challenged;5yearPV androllforward recomputed, year5zero. No liveleaseengine/applicationexecuted.",
+  "cross_topic_check": "007identification ->009rate/event ->008measurement ->010sharedcontrol/disclosure;011salegate precedesgain. Linked12leasepopulation/GL ownsprocessingnotmeasurement. No competingtechnicalimplementation.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}

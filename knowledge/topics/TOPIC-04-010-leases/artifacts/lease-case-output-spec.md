@@ -16,4 +16,4 @@ A complete CAO lease case can produce:
 - control/evidence checklist;
 - technical accounting memo where judgment/materiality warrants.
 
-Each output carries entity, framework, reporting period, contract ID, source documents, preparer/reviewer status, open items and provenance.
+Public output carries only approved accounting fields under `interfaces/public_output.py`: guidance, framework, jurisdiction, entity scope, effective period, limitations, uncertainties and curated citations. Internal workpapers retain contract/source IDs, preparer/reviewer status and provenance. Source notes and provenance never enter answers, snippets, citations, tools, user logs or exports. Production integration is pending.

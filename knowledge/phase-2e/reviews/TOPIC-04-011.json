@@ -1,0 +1,128 @@
+{
+  "topic_id": "TOPIC-04-011",
+  "reviewer": "Codex Phase 2E independent controller",
+  "date": "2026-10-01",
+  "baseline_status": "REVIEWED",
+  "result": "PASS",
+  "scope_review": "Salecontrol, retainedgain/ROU, offmarketadjustment, expectedvariablepayment discipline, USfailedfinance/repurchase andUKpolicy/transition individuallychecked.",
+  "files_reviewed": [
+    "knowledge/topics/TOPIC-04-011-sale-leaseback/README.md",
+    "knowledge/topics/TOPIC-04-011-sale-leaseback/applied-qa.md",
+    "knowledge/topics/TOPIC-04-011-sale-leaseback/completion-qa.md",
+    "knowledge/topics/TOPIC-04-011-sale-leaseback/phase-2d-method.md",
+    "knowledge/topics/TOPIC-04-011-sale-leaseback/standards-claims.json"
+  ],
+  "accuracy_checks": [
+    {
+      "challenge": "IFRSvariableonlyleaseback stillliabilitywithretainedright; USotherwisequalifying operatingvariable-onlyleaseback mayzeroinitialliability, notIFRSrule. Partialtermination separate; futurecashvariance notnewsalegain.",
+      "result": "PASS",
+      "reason": "Salecontrol, retainedgain/ROU, offmarketadjustment, expectedvariablepayment discipline, USfailedfinance/repurchase andUKpolicy/transition individuallychecked."
+    }
+  ],
+  "claim_checks": [
+    {
+      "claim_id": "TOPIC-04-011-AASB-01",
+      "framework": "AASB",
+      "proposition": "AASB 16 sale-and-leaseback paragraph 102A and Australian amendment/transition gate require period-specific assessment",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-IFRS-01",
+      "framework": "IFRS",
+      "proposition": "IFRS 16 qualifying sale uses IFRS 15 control, retained-right ROU and gain on rights transferred; failed sale is financing",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-IFRS-02",
+      "framework": "IFRS",
+      "proposition": "IFRS 16 amended subsequent sale-and-leaseback liability measurement constrains gain/loss on retained use, effective 2024 with transition",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-UK-01",
+      "framework": "UK_GAAP",
+      "proposition": "Revised FRS 102 Section 20 qualifying sale-and-leaseback policy routes include proportionate retained right or deferred gain, with transition",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-US-01",
+      "framework": "US_GAAP",
+      "proposition": "ASC 842-40 sale control, finance-leaseback and repurchase tests govern successful sale versus financing",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-US-02",
+      "framework": "US_GAAP",
+      "proposition": "US successful sale recognizes sale gain and ASC 842 leaseback; variable-only rent generally is not an inception liability absent fixed or index-linked elements",
+      "result": "PASS",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    },
+    {
+      "claim_id": "TOPIC-04-011-IFRS-E001",
+      "framework": "IFRS",
+      "proposition": "Sale qualification precedes retained-right gain; subsequent payments cannot create gain on retained use under the2024 amendment.",
+      "result": "PASS",
+      "approval_track": "DIRECT_SOURCE_CHECKED",
+      "finding_refs": [
+        "accuracy_checks",
+        "period_and_scope_check",
+        "cross_framework_check",
+        "numerical_reperformance",
+        "cross_topic_check"
+      ]
+    }
+  ],
+  "period_and_scope_check": "IFRS16original2019/retainedtransition; saleleasebackamendment2024andcohortretrospective. UKrevisedSection20principal2026starts orapprovedearlyadoption, previousperiods legacy. AASB16Nov2022compilation1Jan2024before1Jan2027 verified. FutureIFRS18consequentialadoption separatelygated. USpublic/privateoriginaladoption andriskfreeelection recordedwithoutoperativeASCinspection.",
+  "cross_framework_check": "IFRS/AASBsingleordinarylesseemodel; USfinanceversusoperating/lessorthreemodels; UKobtainableandPBEfallback/unchangedmodificationrate/lowvalue/saleleasebackpolicy; NFP/tierAUnotblindIFRS. USsubleaseunderlyingasset vsIFRS/UKROU classification.",
+  "numerical_reperformance": "Sale1m/carry600k/retained40% ->ROU240k gain240k liability400k;USfixedROU/gain400k;UKdeferredgain400k. Fiveyear5%payment92389.91925;liabilities327610.08,251600.66,171790.77,87990.39,0centround. Two-year215121.95122expected;first204878.04878,last0;actual240k/190k deltas24878.04878/-25121.95122.",
+  "cross_topic_check": "007identification ->009rate/event ->008measurement ->010sharedcontrol/disclosure;011salegate precedesgain. Linked12leasepopulation/GL ownsprocessingnotmeasurement. No competingtechnicalimplementation.",
+  "rights_check": "Original paraphrase; no restricted standards text reproduced. Training-data approval does not verify provisional references.",
+  "blockers": []
+}

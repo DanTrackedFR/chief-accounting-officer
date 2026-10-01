@@ -26,4 +26,4 @@ Use the rate implicit when readily determinable; otherwise IBR. For an eligible 
 ASC 842 retains sales-type, direct-financing and operating models. FASB's Topic 842 basis and post-issuance material confirm this architecture. Variable-payment lessor guidance was amended by ASU 2021-05 for specified selling-loss fact patterns.
 
 ## Open paragraph verification
-Production completion still requires direct current-Codification verification for lease identification/components, lessee initial/subsequent measurement, operating-lease ROU mechanics, reassessment, impairment, sale-and-leaseback and full disclosures before those subissues are marked APPROVED.
+Independent Phase 2E training-data checks can approve the guidance under the owner-authorised contract. Current Codification inspection remains a separate source-assurance queue; provisional references do not become verified through approval. See topic-local register and Phase 2E review.
