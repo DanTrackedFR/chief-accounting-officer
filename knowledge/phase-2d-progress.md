@@ -1,9 +1,9 @@
 # Phase 2D — Knowledge Factory Progress
 
-Updated: 2026-09-29
+Updated: 2026-10-01
 
 ## Reconciled source of truth
-`knowledge/phase-2d-topic-manifest.json` is the canonical Phase 2D status ledger. Derived reports must not override it.
+`knowledge/phase-2d-topic-manifest.json` is the canonical Phase 2D substantive-status ledger. Derived reports must not override it.
 
 ## Independent post-remediation status
 - Canonical topics: **157**
@@ -13,22 +13,22 @@ Updated: 2026-09-29
 - BLOCKED: **0**
 - APPROVED: **0**
 - Worker PRs integrated to main: **3/3**
-- Canonical capability universe: **347**
+- Canonical capability universe: **347/347**
 
-All three Phase 2D worker PRs have now been merged after their remediation passes. REVIEWED is used for reusable topic methods that passed independent Phase 2D assessment; live-entity facts remain implementation inputs. PARTIAL is retained where a reusable topic still has an unresolved authoritative-source, framework, effective-period, jurisdiction, canonicalization or method gate.
+All Phase 2D substantive population work is integrated. REVIEWED means the reusable substantive Phase 2D method passed independent QA; it does **not** mean every standards claim is SOURCE_VERIFIED or that the topic is APPROVED.
 
-## Remaining closure queue
-- **Technical accounting:** 54 PARTIAL topics. The dominant issue is source/framework depth: current US Codification paragraph access, exact UK/AASB period routing, and topic-specific cross-framework conclusions. See `knowledge/worker-reports/technical-accounting/qa-remediation-self-review.md`.
-- **Controllership:** 0 PARTIAL topics. TOPIC-02-009 passed independent substantive QA on 2026-09-29 and was integrated via PR #7. Its remaining ASC direct-authority checks are ringfenced in `standards-claims.json` and do not imply SOURCE_VERIFIED or APPROVED.
-- **Specialist:** 0 PARTIAL topics. All nine remediation topics passed independent substantive QA on 2026-09-29 and were integrated via PR #4. Remaining standards-authority checks are ringfenced in topic-local `standards-claims.json` files.
+## Phase 2D closure
+There is no remaining substantive Phase 2D closure queue. Technical Accounting, Controllership and Specialist worker populations are integrated, and no canonical topic remains PARTIAL or NOT_STARTED.
+
+Standards-authority verification is a separate assurance axis. Unverified or inaccessible authoritative claims remain ringfenced in topic-local `standards-claims.json` where present and in the full-corpus standards-evidence audit. They do not reduce an otherwise substantively complete topic from REVIEWED solely because direct authoritative text remains unavailable.
 
 ## Integration result
-PR #2 Controllership, PR #3 Specialist and PR #1 Technical Accounting were merged sequentially to main on 2026-09-28. The canonical manifest was then reconciled from the independent QA dispositions. No topic remains NOT_STARTED.
+The three production workstreams were integrated sequentially to main and the canonical manifest was reconciled after independent QA. The final Technical Accounting remediation closed the remaining 54 PARTIAL topics. Canonical substantive status is now **157 REVIEWED / 0 PARTIAL / 0 NOT_STARTED / 0 BLOCKED / 0 APPROVED**.
 
 ## Completion rule
-Phase 2D substantive completion is not complete until the remaining 0 PARTIAL topics close their reusable-method gaps and pass independent regression. Standards-evidence status is tracked separately: inaccessible authoritative text must not be invented or copied, and unverified claims remain explicitly audit-required even when the substantive topic is REVIEWED.
+Phase 2D substantive population is complete at the REVIEWED level. APPROVED remains a separate higher gate and must not be inferred from REVIEWED, file presence, worker self-review, or standards-evidence corroboration.
 
 ## Next sequence
-1. Remediate the 54 technical-accounting source/framework gaps in focused batches.
-2. Independently regress each Technical Accounting 5–10 topic batch and update this ledger only after the canonical manifest changes.
-3. Maintain the separate standards-authority audit queue; do not equate REVIEWED with SOURCE_VERIFIED or APPROVED.
+1. Continue the separate full-corpus standards-evidence audit under `knowledge/standards-evidence/`.
+2. Complete claim-register coverage and direct-authority verification where accessible, preserving rights restrictions and evidence-status ringfencing.
+3. Define and apply the APPROVED gate only after the authority/evidence population is sufficiently complete and independently QA'd.
