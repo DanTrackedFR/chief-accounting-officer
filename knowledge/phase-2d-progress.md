@@ -3,11 +3,11 @@
 Updated 2026-10-01. Canonical source: `knowledge/phase-2d-topic-manifest.json`.
 
 - Canonical topics: 157; capabilities: 347/347.
-- APPROVED: 127.
-- REVIEWED pending Phase 2E: 30.
+- APPROVED: 135.
+- REVIEWED pending Phase 2E: 22.
 - PARTIAL / NOT_STARTED / BLOCKED: 0 / 0 / 0.
 
-Phase 2D substantive population remains complete. Phase 2E individual accounting review: 127 passed, 30 pending. Pending is not a genuine accounting blocker.
+Phase 2D substantive population remains complete. Phase 2E individual accounting review: 135 passed, 22 pending. Pending is not a genuine accounting blocker.
 
 APPROVED follows the owner-authorised two-track contract and does not imply SOURCE_VERIFIED. Per-claim source assurance and future direct-source work remain separate. Individual evidence: `knowledge/phase-2e/reviews/`.
 

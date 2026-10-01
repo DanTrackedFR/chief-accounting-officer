@@ -21,3 +21,7 @@ Maintain claim-to-authority and calculation-to-source indexes, cited source vers
 ## QA
 
 Use `tests.md`: 10/10 desk scenarios passed for classification, literature dates, source limitations and evidence. Reviewer must still test specific live data and current paragraph requirements before APPROVED. Proposed REVIEWED for the document method only, subject to independent QA; no claim that all framework-specific accounting questions are approved.
+
+## Phase 2E approval and output boundary
+
+The canonical manifest and individual Phase 2E review supersede historical substantive DRAFT/REVIEWED labels. APPROVED may follow direct-source or owner-authorised training-data checks; source-depth limitations and paragraph verification remain separate. Internal source notes/provenance are excluded from public outputs by the interface allowlist. Material accounting uncertainty and effective-period limits remain visible. This does not approve unexamined live transactions or change the literature hierarchy.
