@@ -1,0 +1,21 @@
+# Employee Benefits & Payroll Accounting — bounded governed methods
+
+## Executed method
+
+Classify benefit first. Supported short-term salary/bonus/commission/accumulating leave/defined contribution/employer tax rows require actual service-created obligation, independently supported entitlement/rate, settlement and cutoff evidence. No budget percentage establishes an obligation. Amount = supplied earned units × supported unit rate; on-cost = amount × evidenced employer fraction. Contribution/employer-tax rows cannot apply burden again. Withholding is never added employer expense. Capitalized compensation requires the receiving asset/contract-cost engine; the ordinary expense route blocks it.
+
+Opening benefit payable + period-earned expense − gross settlement = closing benefit payable. Gross settlement debits benefit payable; credits net bank cash and separate employee deduction payable. Settlement cannot exceed earned available liability; deductions cannot exceed gross settlement. Each source, register, cash and all journal offset reconciles. Opening stocks must independently agree with GL, not merely a balanced invented closing journal.
+
+A cumulative closing bonus/leave valuation is not automatically current expense: supply independently evidenced current-period earned units (including a supported catch-up) and distinguish prior recognized service. Complex true-ups/negative obligations, termination and other long-term/DB/actuarial plans require the relevant qualified method rather than copying short-term arithmetic. US ASC710/712/715/420 and UKFRS102Section28 recognition triggers remain their own independently reviewed routes; IAS19 rules cannot be presumed universal. AASB actual compilation and disclosure tier are mandatory.
+
+Share-based compensation and revenue contract-cost conclusions can be consumed only as complete, current, exact-once evidence-only results. Their recognition journals are not copied into payroll. A payroll amount already recognized by SBC/contract-cost/asset owner must not also be supplied as earned payroll expense. Posting ownership and source-exclusion evidence are reviewer responsibilities.
+
+## Worked example and controls
+
+Fifty earned employee-days ×200=10000 salary; supported8% employer on-cost800; charge10800. Gross settlement5000 with employee deductions1000 gives bank4000, benefit payable5800 and deductions payable1000. Drbenefitexpense10800/Crbenefitpayable10800; Drbenefitpayable5000/Crcash4000/Crdeductionpayable1000. Independently prove payroll cohort/HR completeness, earned cutoff, plan type, true-up and nonduplicate later settlement, gross-to-net bank mapping and disclosure classification. DB flat8%, unsupported discretionary bonus, nonaccumulating unused leave, duplicate source IDs or absent statement offset fail closed. This is accounting, not payroll execution.
+
+## Authority, controls and completion
+
+Actual mapping: TOPIC-05-005 (CAO-05-009, CAO-05-010); TOPIC-05-006 (CAO-05-011, CAO-05-012); TOPIC-05-009 (CAO-05-017, CAO-05-018); TOPIC-05-010 (CAO-05-019, CAO-05-020). Read FINANCING-KNOWLEDGE-MAP.json for every actual claim ID, approval track and unchanged rating. APPROVED is independent workflow approval, not direct-source assurance. Exact paragraph claims are limited to the existing registers and qualified by their actual reference confidence.
+
+Source rows must match actual entity, framework and both reporting dates. Independent source inventory/count/absolute amount, current-version approvals, effective policy, complete disclosure review and all-account GL opening/closing/statement ties are required. Imported completed results are evidence-only/exact-once; they cannot silently be reposted. Independent reviewer/preparer separation and exact case/knowledge/implementation certification are required; no final human approval is manufactured. Missing/stale certification gives partial; unresolved unsupported method gives blocked without entries. Complete and partial four-framework examples are clearly synthetic. Public output uses the existing seven-route allowlist; no raw internal metadata, source notes, reviewer information or hashes are published. No ERP, filing, tax-return, payroll or counterparty action is authorized.

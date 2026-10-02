@@ -1,0 +1,21 @@
+# Fair Value Measurement — bounded governed methods
+
+## Executed method
+
+This workflow governs supplied measurement, not market discovery or valuation. Underlying standard supplies permitted/required basis and unit of account. Evidence establishes actual accessible principal/most-advantageous market, measurement date and market participants, never management-specific value-in-use. Current IFRS13/ASC820/AASB13 and UKFRS1022026 Section2A/elections are reviewed independently; pre2026 UK uses a separate specialist method. SBC/Lease or NRV/value-in-use cannot silently be IFRS13 scope.
+
+Quoted bounded route: identical, active-market unadjusted Level1 quote × supported quantity. Transaction costs are excluded from fair value. Lowest significant input determines hierarchy; all significant inputs must be inventoried and reviewed. Level2/3 value is a supplied qualified independent valuation with model-validation/calibration/input-change records, not a model-generated discount rate, option price or private-company appraisal. Transfers require current reviewed reason/timing policy. Recurring/nonrecurring classification and actual disclosure populations remain separate.
+
+The supported executable integration adapter is a completed current Financial Instruments equity measurement. Reexecute its exact certified case, check entity/framework/period, supplied result equality, opening/additions/closing amounts, and exact controlled journal mapping. Recognition P&L versus OCI remains with that owner; no arbitrary reviewer-supplied offset is accepted. Source journal population cannot duplicate balanced pairs. Other underlying assets/liabilities, disposal/FX/transport require an appropriate qualified integration adapter and fail closed here. Asset-location transport is not a transaction cost and cannot adjust Level1; the present equity adapter does not permit transport.
+
+Closing = opening + purchases − carrying amount sold + FX + period remeasurement. Only the current movement is recognized, not the full closing stock. Opening and closing source values, each journal offset, underlying result and GL/statements must tie. Level3 sensitivity/valuation uncertainty, transfer, methods/inputs, recurring rollforward and entity/tier disclosure requirements are assessed through a complete independent operative checklist rather than universal UK/US/IFRS notes.
+
+## Worked example and controls
+
+Ten shares × supplied market quote12 gives120, not119 after transaction cost1. Opening100 produces remeasurement20. Completed instrument result maps DrFairvalueasset20/CrFairvaluegain20 (or its supported actual OCI election). Quoted result cannot remain Level1 if an input is significantly unobservable. Qualified Level3 supplied120 is accepted only with reviewed model/input/control evidence and the same complete underlying recognition result. Missing valuation/underlying certification, stale measurement date, mismatched dimensions, wrong P&L/OCI offset or arbitrary market data blocks.
+
+## Authority, controls and completion
+
+Actual mapping: TOPIC-06-008 (CAO-06-016, CAO-06-017). Read FINANCING-KNOWLEDGE-MAP.json for every actual claim ID, approval track and unchanged rating. APPROVED is independent workflow approval, not direct-source assurance. Exact paragraph claims are limited to the existing registers and qualified by their actual reference confidence.
+
+Source rows must match actual entity, framework and both reporting dates. Independent source inventory/count/absolute amount, current-version approvals, effective policy, complete disclosure review and all-account GL opening/closing/statement ties are required. Imported completed results are evidence-only/exact-once; they cannot silently be reposted. Independent reviewer/preparer separation and exact case/knowledge/implementation certification are required; no final human approval is manufactured. Missing/stale certification gives partial; unresolved unsupported method gives blocked without entries. Complete and partial four-framework examples are clearly synthetic. Public output uses the existing seven-route allowlist; no raw internal metadata, source notes, reviewer information or hashes are published. No ERP, filing, tax-return, payroll or counterparty action is authorized.

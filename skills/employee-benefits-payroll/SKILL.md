@@ -1,12 +1,12 @@
 ---
-id: SKILL-TAX-001
-name: "Income Taxes"
+id: SKILL-BEN-001
+name: "Employee Benefits & Payroll Accounting"
 version: 0.9.0
 status: review
-primary_domain: "08"
+primary_domain: "05"
 related_domains: ["02", "04", "05", "06", "08", "13", "15"]
 description: Governed evidence-dependent accounting workflow with bounded calculations and fail-closed specialist routing.
-triggers: ["Income Taxes", accounting assessment, journal and disclosure review]
+triggers: ["Employee Benefits & Payroll Accounting", accounting assessment, journal and disclosure review]
 non_triggers: [automatic posting, legal opinion, autonomous valuation, filing, payroll processing]
 framework_sensitivity: HIGH
 applicable_frameworks: [IFRS, US_GAAP, UK_GAAP, AASB]
@@ -19,10 +19,10 @@ inputs: [independently_complete_source_population, reviewed_method, source_evide
 outputs: [skill_result, technical_memo, calculation_schedule, journal_pack, specialist_handoff]
 artifacts: [reviewed_case, reconciliation, journals, partial_public_output, complete_public_output, certification]
 dependencies: [approved_knowledge, company_context, independent_judgments, qualified_specialists, independent_review]
-related_skills: [income-taxes, business-combinations, share-based-compensation, accounting-changes, financial-statements, provisions-contingencies]
+related_skills: [share-based-compensation, revenue-recognition, accounting-changes, financial-statements]
 knowledge_sources:
-  principles: [SUPPLEMENTAL_TAX]
-  standards: [SUPPLEMENTAL_TAX]
+  principles: [TOPIC-05-005, TOPIC-05-006, TOPIC-05-009, TOPIC-05-010]
+  standards: [TOPIC-05-005, TOPIC-05-006, TOPIC-05-009, TOPIC-05-010]
   practice: [FINANCING-KNOWLEDGE-MAP.json, methods.md]
 risk_level: HIGH
 review_required: true
@@ -31,9 +31,9 @@ completion_criteria: [approved_scope_and_period, full_source_population, current
 
 # Governed contract
 
-Jurisdictional current tax; independently supported tax bases/timing differences; DTA/DTL and US allowance, loss/credit inputs, rate changes, specialist uncertainty, allocation, ETR, offset and rollforwards. All sixteen decision areas require scope dispositions.
+Earned short-term salary, bonus, commission, accumulating leave, employer contribution/tax and defined-contribution rows; units × approved rate plus evidenced on-cost; payment/withholding clearing and complete source/payroll/GL/cash bridges.
 
-No tax-law/return/filing decisions; uncertain tax amounts, outside-basis exceptions, acquisition/SBC allocation, recoverability, PillarTwo and legal offset rights require qualified evidence. UK timing-difference-plus is separate from IFRS/AASB temporary differences; US uses enacted rates and gross DTA/allowance.
+No payroll processing or employee-law/tax conclusion. Termination, DB/other long-term, unusual entitlement and capitalized compensation require specialist or underlying accounting workflow. Nonaccumulating leave cannot use earned unused-day arithmetic.
 
 Production promotion requires independent accounting QA, not calculator success.
 
@@ -41,7 +41,7 @@ Production promotion requires independent accounting QA, not calculator success.
 2. Resolve actual framework, jurisdiction, entity/tier, effective editions, adoption/elections and exact reporting period. Unsupported FRS101/105, AASB non-profit/public-sector and unresolved exceptions fail closed.
 3. Independently freeze source IDs, opening stocks, current flows, gross count/amount and GL/statement population. Evidence records and approval assertions are supplied facts, not authenticated identities or authority.
 4. Select reviewed applicable claims; retain full document hashes. APPROVED is not SOURCE_VERIFIED. Unverified paragraph references remain qualified; source notes and reviewer metadata stay internal.
-5. Invoke production.assess_case("income-taxes", case) through run_skill.py. Deterministic guarded Decimal calculations never infer legal rights, rates, quantities, forecasts or intentions. Resolve malformed/missing facts and specialist boundaries before completion.
+5. Invoke production.assess_case("employee-benefits-payroll", case) through run_skill.py. Deterministic guarded Decimal calculations never infer legal rights, rates, quantities, forecasts or intentions. Resolve malformed/missing facts and specialist boundaries before completion.
 6. Reperform balanced entries and every offset-to-opening/closing GL bridge, source/GL/statement ties and disclosure completeness. Imported governed results must be completed, current, dimension-matched, unaltered and exact-once.
 7. Obtain independent reviewer certification tied to case, reviewed knowledge documents and implementation fingerprints. Missing/stale/non-independent certification gives partial; unresolved route gives blocked without accounting journals.
 8. Public output must pass the existing seven-route allowlist. Only generated controlled schedules/journals and accounting caveats leave the boundary, never source notes, internal reviewer records or hashes.

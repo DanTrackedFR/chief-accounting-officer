@@ -34,7 +34,12 @@ PACKAGES = {
     'consolidation': ('SKILL-CONS-001', ['TOPIC-07-%03d'%i for i in range(1,10)]+['TOPIC-13-001']),
     'business-combinations': ('SKILL-BC-001', ['TOPIC-13-001','TOPIC-13-002','TOPIC-13-003']),
     'asset-impairment': ('SKILL-IMP-001', ['TOPIC-04-006']),
-    'income-taxes': ('SKILL-TAX-001', []),
+    'income-taxes': ('SKILL-TAX-001', ['SUPPLEMENTAL_TAX']),
+    'inventory-cost': ('SKILL-INV-001', []),
+    'employee-benefits-payroll': ('SKILL-BEN-001', ['TOPIC-05-005','TOPIC-05-006','TOPIC-05-009','TOPIC-05-010']),
+    'debt-financing': ('SKILL-DEBT-001', ['TOPIC-06-005','TOPIC-06-006','TOPIC-06-007','TOPIC-13-006']),
+    'intangible-assets': ('SKILL-INT-001', ['TOPIC-04-003','TOPIC-04-004','TOPIC-04-005']),
+    'fair-value-measurement': ('SKILL-FV-001', ['TOPIC-06-008']),
     'foreign-currency': ('SKILL-FX-001', ['TOPIC-06-002','TOPIC-06-003','TOPIC-06-004','TOPIC-07-006']),
     'share-based-compensation': ('SKILL-SBC-001', ['TOPIC-05-007','TOPIC-05-008']),
     'financial-statements': ('SKILL-FS-001', ['TOPIC-08-%03d'%i for i in range(1,10)]),
@@ -84,6 +89,20 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework):
+    if topic_ids == ['SUPPLEMENTAL_TAX']:
+        spec=importlib.util.spec_from_file_location('supplemental_tax_retrieval',ROOT/'knowledge/income-taxes/retrieval.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        try:
+            eligible={c['claim_id'] for c in module.retrieve(framework,'actual period requires case review','for_profit')}
+            register=module.load_register()
+        except ValueError as exc:raise ReviewRequired(str(exc)) from exc
+        claims=[dict(topic_id='SUPPLEMENTAL_TAX',claim_id=c['claim_id'],proposition=c['proposition'],
+            references=c.get('paragraph_references',[]),reference_confidence=c['reference_confidence'],
+            evidence_status=c['evidence_status'],audit_required=c['audit_required'],limitations=c['limitations'],
+            effective_period=c['effective_period'],entity_scope=c['entity_scope']) for c in register['claims'] if c['claim_id'] in eligible]
+        docs=[{'topic_id':'SUPPLEMENTAL_TAX','path':str(p.relative_to(ROOT)),
+            'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted((ROOT/'knowledge/income-taxes').glob('*')) if p.is_file()]
+        return claims,docs
     # Explicitly approved operational tie-out topic has no normative claims.
     # Retrieve its documents, but never manufacture accounting authority.
     operational={'TOPIC-02-001','TOPIC-02-002','TOPIC-02-003','TOPIC-02-004','TOPIC-02-005','TOPIC-02-010','TOPIC-03-011','TOPIC-08-009'}
@@ -115,8 +134,8 @@ def canonical_knowledge(topic_ids, framework):
 
 def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
-    if package == 'income-taxes':
-        raise ReviewRequired('No approved canonical income-tax topic or IAS 12 / ASC 740 / FRS 102 Section 29 / AASB 112 claim register; standards-governance approval required')
+    if package == 'inventory-cost':
+        raise ReviewRequired('No approved substantive inventory recognition, costing or subsequent-measurement knowledge; inventory accounting specialist and governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
@@ -166,7 +185,7 @@ def case_fingerprint(case):
     files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
     files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
     files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
-    files += [ROOT/'skills/reporting_accounting.py']
+    files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -193,6 +212,10 @@ def to_public(result, route='answer'):
       'SKILL-IC-001':['IAS 21 / IFRS 10','ASC 830 / ASC 810','FRS 102 Sections 9 / 30','AASB 121 / AASB 10'],
       'SKILL-IMP-001':['IAS 36','ASC 350 / ASC 360','FRS 102 Sections 19 / 27','AASB 136'],
       'SKILL-TAX-001':['IAS 12','ASC 740','FRS 102 Section 29','AASB 112'],
+      'SKILL-BEN-001':['IAS 19','Applicable ASC 710 / 712 / 715 / 420','FRS 102 Section 28','AASB 119'],
+      'SKILL-DEBT-001':['IFRS 9 / IAS 32','Applicable ASC 470 / interest guidance','FRS 102 Sections 11 / 12','AASB 9 / AASB 132'],
+      'SKILL-INT-001':['IAS 38','Applicable ASC 350 / 730 / 985','FRS 102 Section 18','AASB 138'],
+      'SKILL-FV-001':['IFRS 13','ASC 820','Applicable FRS 102 fair-value guidance','AASB 13'],
       'SKILL-FX-001':['IAS 21','ASC 830','FRS 102 Section 30','AASB 121'],
       'SKILL-SBC-001':['IFRS 2','ASC 718','FRS 102 Section 26','AASB 2'],
       'SKILL-FS-001':['IAS 1 / IFRS 18 / IAS 7','Applicable ASC presentation / ASC 230','FRS 102 Sections 3–8','AASB 101 / AASB 18 / AASB 107']}
@@ -249,7 +272,12 @@ def assess_case(package,case):
           'consolidation':('TOPIC-07-009','Group accounting and transaction specialist','Control/legal evidence, certified TBs, PPA, FX, ownership and elimination schedules'),
           'business-combinations':('TOPIC-13-001','Acquisition accounting, legal, tax and valuation specialists','SPA, control date, business definition, PPA, tax and consideration classification'),
           'asset-impairment':('TOPIC-04-006','Impairment and valuation specialist','Unit perimeter, indicators, forecasts, market values, discount inputs and allocation floors'),
-          'income-taxes':('INCOME-TAX-GOVERNANCE-GAP','Standards governance owner and tax specialist','Approved canonical topic and framework claim registers, enacted law, tax bases, returns, recoverability and uncertainty memos'),
+          'income-taxes':('SUPPLEMENTAL_TAX','Tax, legal and underlying transaction specialists','Enacted law, tax bases, returns, jurisdictional recoverability, uncertainty, allocation and operative-period memos'),
+          'inventory-cost':('unmapped','Inventory specialist and standards governance owner','Approved substantive costing and measurement knowledge; physical quantities, overhead and NRV evidence'),
+          'employee-benefits-payroll':('TOPIC-05-005','Employee benefits, HR, employment-law and actuarial specialists','Complete service/entitlement populations, benefit classification and payroll/GL/cash proofs'),
+          'debt-financing':('TOPIC-06-005','Debt, legal, instrument and treasury specialists','Executed terms, fee population, approved yields, reporting-date rights and modification conclusions'),
+          'intangible-assets':('TOPIC-04-005','Intangible, software, acquisition and impairment specialists','Rights, project gates, cost eligibility, available dates, lives and register/GL bridges'),
+          'fair-value-measurement':('TOPIC-06-008','Valuation and underlying accounting specialists','Measurement basis/unit/date, market evidence, significant inputs, reviewed valuations and GL/note proofs'),
           'foreign-currency':('TOPIC-06-003','Foreign currency and group accounting specialist','Functional currency memo, rate feed, transaction population, translated TBs and disposal rights'),
           'share-based-compensation':('TOPIC-05-007','Award accounting, legal and valuation specialist','Grant terms, approved classification, vesting census, valuations and event schedules'),
           'financial-statements':('TOPIC-08-009','Financial reporting and disclosure specialist','Authorized TB, period/entity checklist, comparatives, source-to-line and narrative tie-outs'),

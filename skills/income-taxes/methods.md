@@ -1,23 +1,27 @@
-# Income taxes — exact unresolved governance blocker
+# Income Taxes — bounded governed methods
 
-## Evidence of gap
+## Executed method
 
-At baseline main b3103c107b089c302bb5b172f5148abaf72c08db, the approved 157-topic/347-mapping canonical manifest, topic universe and capability matrix have no dedicated income-tax/deferred-tax topic. No approved claim-register proposition establishes IAS 12, ASC 740, FRS 102 Section 29 or AASB 112 current/deferred tax, recoverability, uncertain tax positions or rate recognition. Acquisition tax mentions are not a substitute. Independent QA confirmed the gap.
+All sixteen supplemental decision requirements receive independent framework/entity/period reviews (applicable, not applicable with evidence, or specialist resolved). The operative register and independent QA override historical PROPOSED/unapproved headings; no knowledge package is rewritten or reapproved. Retrieve its 16 applicable claims through the existing supplemental validator, preserving all64 ratings and authority-audit flags.
 
-production.execute and workflow.assess fail closed even if a caller supplies plausible facts, forged signoff or an empty/fabricated claim list. The public route returns a blocked result with no calculations, citations or journals and a standards-governance/tax-specialist handoff. This package is review status, not production. It does not count toward eleven production skills.
+For each independently inventoried taxpayer/jurisdiction, taxable income = supported pretax profit + permanent adjustment + signed current-tax/timing adjustment. Current tax = max(taxable income,0) × supplied legal rate − eligible credits used + signed return-to-provision true-up. Negative/refundable or specialized current-tax law requires a separate specialist method. Credits cannot exceed gross positive current tax in this bounded route. Opening current payable + current charge − payments = closing payable.
 
-## Required resolution outside this package's authority
+IFRS/AASB/US asset temporary difference = carrying amount − tax base; liability taxable sign = tax base − carrying amount. Positive is taxable; negative deductible. UK uses independently evidenced timing-difference-plus amounts, not automatic IAS12 tax-base inference. Loss differences are tax-effected by the evidenced reversal rate; unused-credit inputs are already tax currency, not multiplied again. Neither unused loss nor credit can create DTL. Classify outside-basis separately and require exception/reversal evidence.
 
-The standards governance owner must approve a canonical taxonomy/mapping extension or a separately governed supplemental tax package, with four-framework claim registers, evidence tiers, period/entity/legal-law scope and independent approval. AGENTS.md reserves canonical manifest/master mapping ownership; this execution must not silently invent a topic ID or approval. Direct-source and training-data approval tracks must remain distinct. After approval, integrate that knowledge explicitly, remove the fail-closed blocker only with complete executable methods and independent QA.
+Enacted/substantively enacted rate status is evidenced; US current and reversal rates must be enacted. Closing gross DTL = measured taxable difference unless supported recognition exception. IFRS/AASB/UK recognized DTA uses independently supported recoverable tax amount; US records gross DTA and separate valuation allowance = gross − supported recovery. Recoverability cannot exceed gross; exceptions cannot coexist with claimed recognized recovery. No deferred-tax discount factor is applied; jurisdiction law, carryforward expiry, probabilities, scheduling, initial-recognition/goodwill/lease/outside-basis/PillarTwo exceptions remain tax-specialist evidence.
 
-The outstanding contract includes:
-- Current tax by entity/jurisdiction, returns-to-ledger bridge and legally supported rates.
-- Asset/liability tax bases and temporary-difference signs, exemptions, business-combination and intragroup effects.
-- Enacted versus substantively enacted framework rate gates, expected reversal dates/rates and reporting-period tax-law changes.
-- IAS 12/AASB 112/FRS 102 recoverability versus ASC 740 gross DTA/valuation allowance, loss/credit carryforwards, expiry and supported taxable-profit evidence.
-- Uncertain-position framework-specific recognition/measurement, tax authority assumptions, interest/penalty policy and settlement/expiry bridges.
-- P&L/OCI/equity origin allocation, current/deferred journals and opening-to-closing asset/liability reconciliation.
-- Effective-tax-rate reconciliation, tax paid/current tax bridge, disclosures and jurisdiction/period adoption changes.
-- Numerical, adverse, four-framework, public-output and certification regression cases.
+Journal only current closing−opening differences, with gross DTA/DTL and separate US allowance. P&L is the default supplied allocation; OCI/equity/acquisition require dimensioned tax-allocation specialist evidence and matching signed movement. No automatic US back-tracing or SBC-tax allocation rule is inferred. Acquisition/SBC/accounting-change/provision imports are completed current results used as evidence only; their journals remain with their owners to prevent duplicate recognition.
 
-No company tax rate, tax base, legal interpretation or valuation allowance is created while this dependency remains unresolved. Continue the other five packages rather than falsely approving this one.
+Uncertain-position recognition/measurement is a reviewed actual-framework specialist workpaper. Its expense = closing liability − opening liability + settlements; IFRIC23 and ASC740 probability models are not interchangeable. Interest/penalty treatment requires a reviewed memo. ETR reconciliation = pretax × supplied benchmark rate + complete explained adjustments = current + deferred P&L + uncertainty expense. Zero pretax gives an undefined ratio (null), never division by zero or a fabricated rate.
+
+Offset is presentation only after evidenced same authority/entity, enforceable rights and applicable settlement conditions. DTA/DTL/VA and tax payable/uncertainty opening and closing source stocks tie to all-account GL; every P&L/OCI/equity offset and statement amount reconciles. Jurisdiction-specific note population and current/deferred/rate/UTP/loss/PillarTwo/ASU2023-09 effective disclosures remain reviewed operative checklist requirements, not canned statutory notes.
+
+## Worked example and adversity
+
+Synthetic25% is stipulated, not Netherlands/UK/Australian tax law: pretax/taxable1000 gives current250; equipment1000/base700 gives DTL75; accrued liability200/base0 gives recoverable DTA50; deferred P&L25 and total tax275/ETR27.5%. Journals Drcurrentexpense250/Crpayable250; Drdeferredexpense75/CrDTL75; DrDTA50/Crdeferredexpense50. DTA400×25%=100 with supported60: US gross100/allowance40 versus IFRS/AASB recognized60 (UK independent timing method). Rate300×30%−opening75 gives incremental15, not a new90 expense. No current/credit loss can be forced into a taxable DTL. Missing one decision area, unsupported offset, wrong rate status or wrong source sign blocks before certification.
+
+## Authority, controls and completion
+
+Actual mapping: SUPPLEMENTAL_TAX (). Read FINANCING-KNOWLEDGE-MAP.json for every actual claim ID, approval track and unchanged rating. APPROVED is independent workflow approval, not direct-source assurance. Exact paragraph claims are limited to the existing registers and qualified by their actual reference confidence.
+
+Source rows must match actual entity, framework and both reporting dates. Independent source inventory/count/absolute amount, current-version approvals, effective policy, complete disclosure review and all-account GL opening/closing/statement ties are required. Imported completed results are evidence-only/exact-once; they cannot silently be reposted. Independent reviewer/preparer separation and exact case/knowledge/implementation certification are required; no final human approval is manufactured. Missing/stale certification gives partial; unresolved unsupported method gives blocked without entries. Complete and partial four-framework examples are clearly synthetic. Public output uses the existing seven-route allowlist; no raw internal metadata, source notes, reviewer information or hashes are published. No ERP, filing, tax-return, payroll or counterparty action is authorized.
