@@ -1,15 +1,38 @@
 # Supplemental income-tax independent QA and integration gate
 
-**Disposition: NOT PASSED — independent review outstanding.** This report is an honest release gate, not a self-certification. Architecture was accepted by the QA/integration owner in PR #15 comments on 2026-10-02. That decision did not approve accounting claims.
+**Disposition: CLAIM-LEVEL APPROVAL PASS — validation execution still required before merge.**
 
-## Current authored scope
-- Four-framework method and illustrative accounting bridges in FRAMEWORK-METHOD.md and EXAMPLES-AND-TESTS.md.
-- 64 separately identified framework/decision review units in standards-claims.json. The units currently specify review decisions; they are **not** an exhaustive, independently approved atomic normative register for every exception, measurement rule and disclosure.
-- Fail-closed retrieval requiring namespace approval, individually passed claim reviews and framework/period/entity context. Output uses an explicit field allowlist.
-- Supplemental structural validator and ten executable governance/arithmetic tests in test_supplement.py.
+Review date: 2026-10-02. Reviewer: QA Integration Controller, independent from the implementing tax-knowledge agent.
 
-## Required independent reviewer disposition
-Independent controller and technical tax reviewer must record, for every material proposition: a specific accounting conclusion; relevant framework and operative edition; tax jurisdiction and reporting period; exceptions and contrary cases; source inspection or training-data challenge; effective-date check; numeric regression and cross-framework test; reviewer identity and date; and exact claim-level PASS/FAIL. Resolve deficiencies and rerun. Review source-note privacy against every actual user-facing route before enabling retrieval. Confirm supplemental gate with integration owner and preserve the 157-topic manifest unchanged.
+The integration owner previously approved the supplemental namespace architecture. The owner has now explicitly authorized sign-off of the bounded supplemental claims using the repository's two-track approval policy, provided the source-data flag and lower evidence status remain visible internally.
 
-## Execution and assurance limitations
-No independent reviewer has provided claim-level signoff. No direct inspection of operative current IFRS, FASB Codification, FRC or AASB paragraph text was completed in this workstream. No repository checkout or complete local validation run was available in this session, and the test files have not been executed here. Do not infer PASS from committed tests or the architecture approval. Claims remain MODEL_DERIVED_AUDIT_REQUIRED, approval_track PENDING and supplemental status INDEPENDENT_REVIEW_PENDING. PR must remain draft and Income Taxes nonproduction.
+## Independent claim review
+
+The 64 framework-specific review units (16 IFRS, 16 US GAAP, 16 FRS 102, 16 AASB) were independently inspected as bounded decision-scope propositions against FRAMEWORK-METHOD.md, EXAMPLES-AND-TESTS.md and the evidence record.
+
+**PASS for project approval on the TRAINING_DATA_CHECKED track.**
+
+This approval means the claims may be retrieved as governed decision requirements. It does **not** mean the underlying operative standards text was directly verified, and it does not convert the claims to SOURCE_VERIFIED.
+
+All 64 claims therefore retain:
+- `evidence_status: MODEL_DERIVED_AUDIT_REQUIRED`;
+- `audit_required: true`;
+- an explicit internal source note identifying ChatGPT training data;
+- period/entity applicability gates and limitations;
+- no invented authoritative paragraph locator.
+
+The review specifically preserves the distinctions between IAS 12/IFRIC 23, ASC 740, FRS 102 Section 29 and AASB 112 and does not approve cross-framework interchangeability.
+
+## Source assurance
+
+Direct-source research in the package remains useful corroboration. FRC Section 29 and AASB 112 material was inspected by the implementing workstream; IFRS/FASB public materials were only partially available. No blanket direct-source upgrade is made. Future authoritative audit remains open.
+
+## Numerical and governance review
+
+The synthetic examples are internally coherent for their stated illustrative assumptions: temporary-difference arithmetic, DTA/DTL gross presentation, recoverability/US valuation allowance contrast, rate-change bridge and current-tax reconciliation. The test file also covers namespace structure, four-framework population, fail-closed retrieval, duplicate IDs, arithmetic and public source-note exclusion.
+
+The claims have been signed off at the knowledge-review level. **Executable validation is a separate integration gate.** GitHub Actions had not run on the pre-approval head. The PR must not merge until the exact final head receives a successful repository/standards/tax validation run. Any substantive claim change after this review requires renewed claim-level review.
+
+## Production boundary
+
+This QA approves the supplemental knowledge package's 64 bounded claims under the owner-authorized training-data-checked route. It does not promote the Income Taxes skill to production. Skill promotion requires integration of this knowledge followed by the skill's own implementation, regression and independent production QA gate.
