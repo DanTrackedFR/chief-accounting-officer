@@ -33,12 +33,38 @@ def assess(c,claims):
             required(e,'shares','carrying_cost','cost_method_memo','loss_allocation')
             count=positive(e['shares']);book=nonnegative(e['carrying_cost']);loss=max(book-n,ZERO);gain=max(n-book,ZERO)
             if count>ownshares or book>-balances.get('treasury',ZERO):raise ReviewRequired('Treasury disposal exceeds cost/share inventory')
+            gain_component='premium';allowed_loss=['premium','retained_earnings'];method=None
+            if c['framework']=='US_GAAP':
+                required(e,'treasury_handoff');method=specialist(c,e['treasury_handoff'],'Treasury Shares Accounting',n);policy(c,method);required(method,'method','gain_component','loss_capacity','allocation_memo','allocation_rule')
+                texts(method,'allocation_memo')
+                if method['method']!='cost' or method['allocation_rule']!='reserve_first':raise ReviewRequired('US treasury par-value/other allocation method lacks approved executable route')
+                gain_component=method['gain_component']
+                if gain_component!='treasury_apic' or gain_component not in byid or byid[gain_component]['equity_owner']!='parent' or byid[gain_component]['role']!='capital':raise ReviewRequired('US treasury gains require separately substantiated treasury APIC component')
+                if not isinstance(method['loss_capacity'],dict) or set(method['loss_capacity'])!={'treasury_apic'}:raise ReviewRequired('Qualified treasury APIC loss-capacity source required')
+                capacity=nonnegative(method['loss_capacity']['treasury_apic'])
+                if capacity>balances['treasury_apic']:raise ReviewRequired('Treasury APIC capacity exceeds substantiated reserve')
+                allowed_loss=['treasury_apic','retained_earnings']
             allocation=rows(e['loss_allocation']);agree(sum((nonnegative(a['amount']) for a in allocation),ZERO),loss,'Treasury loss allocation')
             for a in allocation:
                 required(a,'component','amount');v=nonnegative(a['amount'])
-                if a['component'] not in ['premium','retained_earnings']:raise ReviewRequired('Treasury loss cannot enter P&L or arbitrary reserve')
+                if a['component'] not in allowed_loss:raise ReviewRequired('Treasury loss cannot enter P&L, ordinary US issuance premium or arbitrary reserve')
                 shift(a['component'],-v)
-            shift('treasury',book);shift('premium',gain);ownshares-=count;reissued+=count;lines=journal(('Dr','cash',n),('Dr','premium',sum((nonnegative(a['amount']) for a in allocation if a['component']=='premium'),ZERO)),('Dr','retained_earnings',sum((nonnegative(a['amount']) for a in allocation if a['component']=='retained_earnings'),ZERO)),('Cr','treasury',book),('Cr','premium',gain))
+            if method:
+                allocated=sum((nonnegative(a['amount']) for a in allocation if a['component']=='treasury_apic'),ZERO)
+                agree(allocated,min(loss,capacity),'Treasury reserve-first loss allocation')
+            shift('treasury',book);shift(gain_component,gain);ownshares-=count;reissued+=count;lines=journal(('Dr','cash',n),('Dr',gain_component,sum((nonnegative(a['amount']) for a in allocation if a['component']==gain_component),ZERO)),('Dr','retained_earnings',sum((nonnegative(a['amount']) for a in allocation if a['component']=='retained_earnings'),ZERO)),('Cr','treasury',book),('Cr',gain_component,gain))
+            if method:
+                required(e,'source_entries','source_journal_ids');src=e['source_entries'];sourceids=e['source_journal_ids']
+                if not isinstance(src,list) or not src or not isinstance(sourceids,list) or len(src)!=len(sourceids) or len(sourceids)!=len(set(sourceids)) or any(not isinstance(i,str) or not i or i in import_ids for i in sourceids):raise ReviewRequired('Qualified US treasury source journals require exact-once identifiers')
+                for j in src:balance(j)
+                def aggregate(js):
+                    out={}
+                    for j in js:
+                        for l in j:
+                            key=(l['account'],l['side']);out[key]=out.get(key,ZERO)+dec(l['amount'])
+                    return out
+                if aggregate(src)!=aggregate([lines]):raise ReviewRequired('Qualified US treasury journals differ from complete calculated allocation')
+                import_ids.update(sourceids)
         elif kind=='dividend_declared':shift('retained_earnings',-n);dividend_payable+=n;lines=journal(('Dr','retained_earnings',n),('Cr','dividends payable',n))
         elif kind=='dividend_paid':
             if n>dividend_payable:raise ReviewRequired('Distribution payment exceeds approved declared payable')

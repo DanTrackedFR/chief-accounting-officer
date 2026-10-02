@@ -1,8 +1,8 @@
 ---
 id: SKILL-RP-001
 name: Related Parties & Related-Party Transactions
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["02", "05", "06", "08", "13", "15"]
 description: Governed related parties & related-party transactions using approved canonical knowledge and independently evidenced inputs.
@@ -44,4 +44,3 @@ A qualified independent reviewer must reperform the route, calculations and jour
 All seven public-output routes use existing adapter allowlisting. Generated conclusions, numerical schedules, balanced journals, disclosure requirements and curated caveats are permitted. Internal source notes, confidence/evidence metadata, reviewer identities and fingerprints/hashes must not cross the boundary; contamination blocks rendering. The disclosure output is a controlled workpaper/checklist for Financial Statements review, not final filed notes. Public generated accounting judgments must not repeat raw memos.
 
 Promotion requires full supported contract examples and adverse tests across four frameworks, independent accounting QA, complete shared/lease/repository/standards/approval validation and CI on frozen head SHA. Passing an initial calculator alone is insufficient.
-
