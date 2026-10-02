@@ -1,0 +1,341 @@
+{
+  "case_id": "synthetic-financial-instruments-ecl",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "instrument": {
+    "kind": "debt_asset",
+    "classification_memo": "Hold to collect SPPI debt",
+    "measurement": "amortized_cost",
+    "impairment_model": "CECL",
+    "business_model": "hold_collect",
+    "sppi": true,
+    "basic_instrument_assessment": "Basic fixed rate debt"
+  },
+  "credit": {
+    "method": "pd_lgd",
+    "assumptions_memo": "Forward looking marginal PD/LGD",
+    "overlay": "0",
+    "overlay_memo": "No overlay",
+    "credit_impaired": false,
+    "sicr": true,
+    "origination_risk_evidence": "Origination rating",
+    "current_risk_evidence": "Risk deterioration",
+    "default_definition": "Default reviewed",
+    "horizon": "lifetime_default_events",
+    "objective_impairment_evidence": true,
+    "scenarios": [
+      {
+        "weight": "0.75",
+        "terms": [
+          {
+            "ead": "1000",
+            "marginal_pd": "0.10",
+            "lgd": "0.5",
+            "discount_factor": "1"
+          }
+        ]
+      },
+      {
+        "weight": "0.25",
+        "terms": [
+          {
+            "ead": "1000",
+            "marginal_pd": "0.20",
+            "lgd": "0.5",
+            "discount_factor": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "measurement_schedule": {
+    "opening_gross": "1000",
+    "eir": "0",
+    "cash_flows": "0",
+    "additions": "0",
+    "writeoffs": "20",
+    "fx": "0",
+    "fair_value": "980",
+    "opening_fair_value_adjustment": "0"
+  },
+  "allowance_bridge": {
+    "opening": "100",
+    "writeoffs": "20",
+    "recoveries": "5",
+    "fx": "0"
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-06-007-US-001",
+      "TOPIC-06-007-US_GAAP-R002",
+      "TOPIC-06-008-US-001",
+      "TOPIC-06-008-US_GAAP-R002",
+      "TOPIC-06-009-US-001",
+      "TOPIC-06-009-US_GAAP-R002",
+      "TOPIC-06-010-US-001",
+      "TOPIC-06-010-US_GAAP-R002",
+      "TOPIC-03-008-US-001",
+      "TOPIC-03-008-US-002",
+      "TOPIC-03-008-US-003",
+      "TOPIC-03-008-US-004",
+      "TOPIC-03-008-US-005",
+      "TOPIC-03-008-US-006",
+      "TOPIC-03-008-US-007",
+      "TOPIC-03-008-US-008",
+      "TOPIC-03-008-US-009",
+      "TOPIC-03-008-US-R001",
+      "TOPIC-03-008-US-R009",
+      "TOPIC-03-008-US-R010",
+      "TOPIC-03-008-US-R011",
+      "TOPIC-03-008-US-R012",
+      "TOPIC-03-008-US-R013",
+      "TOPIC-03-008-US-R020",
+      "TOPIC-03-008-US-R021",
+      "TOPIC-03-008-US-R023",
+      "TOPIC-03-009-US-001",
+      "TOPIC-03-009-US-002",
+      "TOPIC-03-009-US-003",
+      "TOPIC-03-009-US-004",
+      "TOPIC-03-009-US-005",
+      "TOPIC-03-009-US-006",
+      "TOPIC-03-009-US-R001",
+      "TOPIC-03-009-US-R003",
+      "TOPIC-03-009-US-R005",
+      "TOPIC-03-009-US-R006",
+      "TOPIC-03-009-US-R008",
+      "TOPIC-03-009-US-R010",
+      "TOPIC-03-009-US-R011",
+      "TOPIC-03-009-US-R012",
+      "TOPIC-03-009-US-R013",
+      "TOPIC-03-009-US-R015",
+      "TOPIC-03-009-US-R016"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+        "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+        "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+        "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+        "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+        "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+        "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+        "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+        "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+        "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+        "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+        "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+        "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+        "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+        "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+        "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-investment-accounting/README.md",
+        "sha256": "aa245069e1bf494a53b7c440d96826e4ca427596c5beb0080adc3930fd0b982d"
+      },
+      {
+        "topic_id": "TOPIC-06-010",
+        "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/README.md",
+        "sha256": "a25b0bc2ceb0e672b784555cf66faad9fa9a8c318e1a45192f2168690bcefc6a"
+      },
+      {
+        "topic_id": "TOPIC-06-010",
+        "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/credit-risk-transition-and-note-reconciliation.md",
+        "sha256": "06817c890e1c23d94aa8c4bf86968d2f1efea15378e874598ad2f0cc5c131c3f"
+      },
+      {
+        "topic_id": "TOPIC-06-010",
+        "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/evidence-and-regression.md",
+        "sha256": "bebffb7d2722366ca0c3489afb8476460da85c00514f31ca4e15af04f4476aad"
+      },
+      {
+        "topic_id": "TOPIC-06-010",
+        "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/portfolio-disclosure-case.md",
+        "sha256": "0d187ad26f5b920b20b105ded815aacddbc16ede24b7be2adbfc20228f048bda"
+      },
+      {
+        "topic_id": "TOPIC-06-010",
+        "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/standards-claims.json",
+        "sha256": "29e3ac10c07079ff7bbb0ba00a292956d2f813ad3f076199c278dcabd678b18c"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/2026-source-and-model-review.md",
+        "sha256": "a9c5625dbf0b0621f148a04c9ce3be8e0ebf6ca93c7f10faec89c80cdf921ad9"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/evidence-and-regression.md",
+        "sha256": "87009ebcc708b70a825b6e7a523d3a97944e31af469027bb870dc3715da90c0f"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/factory.md",
+        "sha256": "819fedfd53404d6e4fb8828cd8d785b2b6e942ebdbb94a0b5c53096d54edba34"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/granular-regression.md",
+        "sha256": "eb5ea5035656b642972dd6dcb5fed7beb66f028d7da1fb9b516e732aff60feff"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-method.md",
+        "sha256": "dc11d68461778569b3cc4553e8fc0a03710db42ddc7877352b696327ebbdd418"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/receivable-vintage-forward-risk-and-election.md",
+        "sha256": "056b1a396b50ed0b04d02dfb85c3a9ef78b1d1c78a81b59fc4fec059f9fb113f"
+      },
+      {
+        "topic_id": "TOPIC-03-008",
+        "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/standards-claims.json",
+        "sha256": "017c1f7675579c293a73fa31aa6021b08095c8f8141e63a73106973f55329fa1"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md",
+        "sha256": "de45a5e8bd5f3e3545d71ef1fbeb2790a027511903b2f6fdc4376979789b6bc9"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
+        "sha256": "b905f262e05b15d7ec73574ba0083809fc5fbb7391eae72c261645e0b38682ac"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
+        "sha256": "26a1089f0dcdd80a10f7e90bb33b0ee8fead456402ee4eb0e1362e3977e8402d"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
+        "sha256": "a350c13259b56a4be89518d42f8169601d442327b2c3f58f1969606452bdd056"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
+        "sha256": "f0f989e2e2d038d82cabf915415b25b35b63eb763316b386bd739ac550d4a815"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
+        "sha256": "041f400975efa1d6f36dda512cb3e8ffc3dd080d0a2a2b10d8df1f1d48285b14"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
+        "sha256": "1d46c8e7e02f9f3befde9905500de8470bb11b08d16932927bd59ab3e8b1ce4c"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
+        "sha256": "23d6c352d070e40f7bfb2101c03d75fe8b5547b14818590045ef162941ae5773"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-007-US-001",
+      "TOPIC-06-008-US-001",
+      "TOPIC-06-009-US-001",
+      "TOPIC-06-010-US-001",
+      "TOPIC-03-008-US-001",
+      "TOPIC-03-009-US-001"
+    ],
+    "selection_memo": "Synthetic reviewer selected framework and transaction scope rules; inspect canonical method for all applicable exceptions",
+    "public_caveats": [
+      "Use the edition effective for the stated reporting period; precise paragraph authority is not asserted where the governed register has no established reference."
+    ]
+  },
+  "reviewer_signoff": {
+    "reviewer": "synthetic independent reviewer",
+    "approved": true,
+    "case_fingerprint": "0b4772c9d6b638427b245512c26d6c7e66ceb830bac671ab9f43b53b554a6257"
+  }
+}

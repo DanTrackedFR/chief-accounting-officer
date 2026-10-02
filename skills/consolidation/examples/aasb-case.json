@@ -1,0 +1,438 @@
+{
+  "case_id": "synthetic-consolidation",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "2026 effective compilation",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "entities": [
+    {
+      "id": "P",
+      "parent": true,
+      "balances": {
+        "cash": "300",
+        "investment": "80",
+        "equity": "-380"
+      },
+      "control": {
+        "model": "power_returns_link",
+        "substantive_power": true,
+        "variable_returns": true,
+        "power_returns_link": true,
+        "control_memo": "Substantive voting rights control",
+        "excluded": false
+      },
+      "translation": null,
+      "policy_alignment": true,
+      "date_alignment": true
+    },
+    {
+      "id": "S",
+      "parent": false,
+      "balances": {
+        "cash": "100",
+        "sub equity": "-100"
+      },
+      "control": {
+        "model": "power_returns_link",
+        "substantive_power": true,
+        "variable_returns": true,
+        "power_returns_link": true,
+        "control_memo": "Substantive voting rights control",
+        "excluded": false
+      },
+      "translation": null,
+      "policy_alignment": true,
+      "date_alignment": true
+    }
+  ],
+  "intercompany": [],
+  "investments": [
+    {
+      "subsidiary": "S",
+      "parent_entity": "P",
+      "investment_account": "investment",
+      "investment": "80",
+      "acquisition_equity": {
+        "sub equity": "100"
+      },
+      "fair_value_adjustments": {},
+      "goodwill": "0",
+      "nci_at_acquisition": "20",
+      "acquisition_memo": "80% acquisition of net assets100"
+    }
+  ],
+  "profit_eliminations": [],
+  "nci": [
+    {
+      "subsidiary": "S",
+      "ownership": "0.8",
+      "opening": "20",
+      "adjusted_profit": "0",
+      "adjusted_oci": "0",
+      "dividends": "0",
+      "other": "0",
+      "allocation_memo": "80/20 rights"
+    }
+  ],
+  "ownership_changes": [],
+  "nci_attribution_account": "equity",
+  "statement_mapping": {
+    "cash": "assets",
+    "investment": "assets",
+    "equity": "equity",
+    "sub equity": "equity",
+    "goodwill": "assets",
+    "noncontrolling interest": "equity"
+  },
+  "cash_flow_bridge": {
+    "opening_cash": "400",
+    "operating": "0",
+    "investing": "0",
+    "financing": "0",
+    "fx": "0",
+    "closing_cash": "400",
+    "cash_accounts": [
+      "cash"
+    ],
+    "memo": "Cash flow population tie"
+  },
+  "disclosure_tieout": "Group TB and NCI note bridge",
+  "equity_bridge": {
+    "opening": "400",
+    "profit": "0",
+    "oci": "0",
+    "owner_transactions": "0",
+    "other": "0",
+    "closing": "400",
+    "memo": "Opening-to-closing equity"
+  },
+  "cta_bridge": {
+    "opening": "0",
+    "translation": "0",
+    "disposals": "0",
+    "other": "0",
+    "closing": "0",
+    "cta_accounts": [],
+    "memo": "Common currency group"
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-07-001-AASB-001",
+      "TOPIC-07-001-AASB-R004",
+      "TOPIC-07-002-AASB-001",
+      "TOPIC-07-002-AASB-R004",
+      "TOPIC-07-003-AASB-R004",
+      "TOPIC-07-004-AASB-001",
+      "TOPIC-07-004-AASB-R004",
+      "TOPIC-07-005-AASB-R004",
+      "TOPIC-07-006-AASB-001",
+      "TOPIC-07-006-AASB-R004",
+      "TOPIC-07-007-AASB-001",
+      "TOPIC-07-007-AASB-R004",
+      "TOPIC-07-008-AASB-001",
+      "TOPIC-07-008-AASB-R004",
+      "TOPIC-07-009-AASB-001",
+      "TOPIC-07-009-AASB-R004",
+      "TOPIC-13-001-AASB-001",
+      "TOPIC-13-001-AASB-R004"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/README.md",
+        "sha256": "adc34f9a52980d759648c500fc8b466f50a3fc3e7a821c7037b9a53aadceb145"
+      },
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/evidence-and-regression.md",
+        "sha256": "f5616b33905bdc573fd63fd2949afefa4aa507d9ea743fc6248081a671b32c28"
+      },
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/power-returns-and-cutover-memo.md",
+        "sha256": "98651af9b01b156126e95f18840126ece8b1047ef1e9f3919d326e9d221d0f37"
+      },
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/scope-case.md",
+        "sha256": "f6251b62f4f756e736736f2e8e2f20a9182976d2044d58b5798770afb75f1a8d"
+      },
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/standards-claims.json",
+        "sha256": "2c38f96965b4ca6761306655887d6999909abe460398d4b78de4c480aac7538a"
+      },
+      {
+        "topic_id": "TOPIC-07-001",
+        "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/tests.md",
+        "sha256": "436539f43919dba3745aa923983fd318fc42517c8b3280f58668baabbfb37347"
+      },
+      {
+        "topic_id": "TOPIC-07-002",
+        "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/README.md",
+        "sha256": "45b3aac7777874d978ab7a92c034d4b4071eae9266725c0811d5a7a60da6777d"
+      },
+      {
+        "topic_id": "TOPIC-07-002",
+        "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/evidence-and-regression.md",
+        "sha256": "7ff89f3e2be2468aa92dfcf0141514493664857d369a16801894bd32d21b074a"
+      },
+      {
+        "topic_id": "TOPIC-07-002",
+        "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/standards-claims.json",
+        "sha256": "c8b42f408b1ffd77f4308017a8dff8123a8d4008aa6ac751e00a0564e9cbed9b"
+      },
+      {
+        "topic_id": "TOPIC-07-002",
+        "path": "knowledge/topics/TOPIC-07-002-control-nci/README.md",
+        "sha256": "565ab621c5655c3b6587a68f0d5bce99f289d67107dbe392aad9b2f69265c0fc"
+      },
+      {
+        "topic_id": "TOPIC-07-003",
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md",
+        "sha256": "fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5"
+      },
+      {
+        "topic_id": "TOPIC-07-003",
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md",
+        "sha256": "cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8"
+      },
+      {
+        "topic_id": "TOPIC-07-003",
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md",
+        "sha256": "fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854"
+      },
+      {
+        "topic_id": "TOPIC-07-003",
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json",
+        "sha256": "b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5"
+      },
+      {
+        "topic_id": "TOPIC-07-004",
+        "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/README.md",
+        "sha256": "3e9d86ee269e5b5560418774f43c071ade9334b1e980275af8c3fb532b27a138"
+      },
+      {
+        "topic_id": "TOPIC-07-004",
+        "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/asset-transfer-and-unwind.md",
+        "sha256": "fea162980f6accf886bbb547b6bfde7426e8e38112eb9b42f896c0f0d73688cf"
+      },
+      {
+        "topic_id": "TOPIC-07-004",
+        "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/evidence-and-regression.md",
+        "sha256": "aefa1a2161270509b621e2dda280c431604a0206882829db77ce36cb433f5f21"
+      },
+      {
+        "topic_id": "TOPIC-07-004",
+        "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/profit-case.md",
+        "sha256": "33489f1b06bf82b7aae2cd34e299e53a733af91d34b1f4ec0578973409aac1ee"
+      },
+      {
+        "topic_id": "TOPIC-07-004",
+        "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/standards-claims.json",
+        "sha256": "6fcaed1675ba74346a4e8dd26de8f294c675b713a7872f73c8b909cb1719d6ae"
+      },
+      {
+        "topic_id": "TOPIC-07-005",
+        "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/README.md",
+        "sha256": "9c5f3652d8f5185023fcc5aca8418eb0b870a246d888524a9298f6748267ed7c"
+      },
+      {
+        "topic_id": "TOPIC-07-005",
+        "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/consolidation-bridge.md",
+        "sha256": "f866e7c1850535224ce8ed3343e984362b5aac9092e1f4d69165c503edb77df8"
+      },
+      {
+        "topic_id": "TOPIC-07-005",
+        "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/journal-lineage-and-rerun-control.md",
+        "sha256": "0999720109cb187f9be39c7dadbd306a43852e24ec902e9fbeedba1b9961d27c"
+      },
+      {
+        "topic_id": "TOPIC-07-005",
+        "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/standards-claims.json",
+        "sha256": "b66f19ded535d7b2235e5f8cf1d7c434c313a3d7ae400278edeb6e035d4292af"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+        "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+        "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+        "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+        "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+        "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+      },
+      {
+        "topic_id": "TOPIC-07-007",
+        "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/README.md",
+        "sha256": "00d3170c83c3b3a6870d496d8d3416261f6947a56fabd56e5ae1d28e0ca0a4b6"
+      },
+      {
+        "topic_id": "TOPIC-07-007",
+        "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/basis-difference-and-loss-limit.md",
+        "sha256": "3688be9da82cc498803c8b8ead0b2cd43b07d65cafca720fba31316824087d32"
+      },
+      {
+        "topic_id": "TOPIC-07-007",
+        "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/equity-method-case.md",
+        "sha256": "e52a440e87d843036978884da56e89ee01e39024f293e05df44fa65763e62af6"
+      },
+      {
+        "topic_id": "TOPIC-07-007",
+        "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/evidence-and-regression.md",
+        "sha256": "99099701e8b4e09ee998bbfb45d770ff853629ca86c7aebdf7ce2c7fc93a5cb0"
+      },
+      {
+        "topic_id": "TOPIC-07-007",
+        "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/standards-claims.json",
+        "sha256": "68369c9e080e40ded2610b998aeef4e56b13e259bc9cc1d910d43bbf32eb5727"
+      },
+      {
+        "topic_id": "TOPIC-07-008",
+        "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/README.md",
+        "sha256": "1bda954f218d5d0752c43abae95a1da39712092fb254b899789f0ce2f13f6d7d"
+      },
+      {
+        "topic_id": "TOPIC-07-008",
+        "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/evidence-and-regression.md",
+        "sha256": "061c69c5c32e66285dab2c376bfb0075b1c6c94e7db82303d3056118b73ad211"
+      },
+      {
+        "topic_id": "TOPIC-07-008",
+        "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/joint-and-ownership-case.md",
+        "sha256": "3feaf68947624f2d7b01af700df132e7146b2cabd837b2fd5e74f2e30168de22"
+      },
+      {
+        "topic_id": "TOPIC-07-008",
+        "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/rights-obligations-and-joint-operation.md",
+        "sha256": "9267e5014959c3479601b1ab89a1bc94a2ff264a64a39f41bcf8d2bb5be71216"
+      },
+      {
+        "topic_id": "TOPIC-07-008",
+        "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/standards-claims.json",
+        "sha256": "b4116562ed13b92a658e8489d1b40dc8a5db31e52de5574081d329a1bda3f6e9"
+      },
+      {
+        "topic_id": "TOPIC-07-009",
+        "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/README.md",
+        "sha256": "0be73f5e0d1dbf1e9d0ca0348bb64758d55ba9427d762be17ae8ac2de41d1b5c"
+      },
+      {
+        "topic_id": "TOPIC-07-009",
+        "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/acquisition-disposal-case.md",
+        "sha256": "054846c0fb777f7325bab7f51088ce6b6103281be09cccde75f2a8e11ff6e7d5"
+      },
+      {
+        "topic_id": "TOPIC-07-009",
+        "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/control-loss-and-retained-investment.md",
+        "sha256": "553f3c06ddfa9f1d1a0d15a2c9223e3ebaaca096f748a6580b07a11a87b9f7bb"
+      },
+      {
+        "topic_id": "TOPIC-07-009",
+        "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/evidence-and-regression.md",
+        "sha256": "44efbc2beb196290c0e54b92122da430f56e5b24010d3d8879372d8875326f7f"
+      },
+      {
+        "topic_id": "TOPIC-07-009",
+        "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/standards-claims.json",
+        "sha256": "22ca56bafe860b64812887419f8c8e8476472600a960f82ba49b37077f16b152"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/README.md",
+        "sha256": "1ba6aafc7d6fda0d688c7e77b9ab25e53a0481a06f0b8f7ef62a567fb4b4a6e3"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/evidence-and-regression.md",
+        "sha256": "3c3e8da82074959fb6e17f486bfaa3dcbbce2882aa7248c304be03aaa7df858d"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/framework-differences.md",
+        "sha256": "1e4a8d5546ea4ef04bfa502621589f2f8a509936fc2322caa994bb7f576968c2"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/ppa-worked-case.md",
+        "sha256": "19a460a91ffb4e8f901daa02e25aaf59b2d04a8eae754d44d24ee2407cb406e7"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/sources.md",
+        "sha256": "b5a3853d43112028cb4e4b893fe92417cfbd91ccaaa7bd4cdd7eae5c0fbe09b9"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/standards-claims.json",
+        "sha256": "b583d0a4062881f3bf4523848a02bc558b3ceeceb11979ad527254df6911ee49"
+      },
+      {
+        "topic_id": "TOPIC-13-001",
+        "path": "knowledge/topics/TOPIC-13-001-business-combinations/tests.md",
+        "sha256": "cdc52687c47de817eea08316deb9b7bc457ce9f55e7a204f9d9093c0ee2ec4e2"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-07-001-AASB-001",
+      "TOPIC-07-002-AASB-001",
+      "TOPIC-07-004-AASB-001",
+      "TOPIC-07-006-AASB-001",
+      "TOPIC-07-007-AASB-001",
+      "TOPIC-07-008-AASB-001",
+      "TOPIC-07-009-AASB-001",
+      "TOPIC-13-001-AASB-001"
+    ],
+    "selection_memo": "Synthetic reviewer selected framework and transaction scope rules; inspect canonical method for all applicable exceptions",
+    "public_caveats": [
+      "Use the edition effective for the stated reporting period; precise paragraph authority is not asserted where the governed register has no established reference."
+    ]
+  },
+  "reviewer_signoff": {
+    "reviewer": "synthetic independent reviewer",
+    "approved": true,
+    "case_fingerprint": "3caa13439523ba1adbadfd9b81c886eb1c879b81c5e6c4d027c9dd99e313dc5f"
+  }
+}

@@ -23,6 +23,7 @@ def transaction_price(c):
         required(v,'method','outcomes','constraint_memo','included_amount','royalty_exception')
         outcomes=v['outcomes']
         if not outcomes: raise ReviewRequired('Variable price needs supported outcomes')
+        if sum(fraction(x['probability']) for x in outcomes)!=1:raise ReviewRequired('Variable probabilities must total one')
         if v['method']=='expected_value':
             if sum(fraction(x['probability']) for x in outcomes)!=1: raise ReviewRequired('Variable probabilities must total one')
             estimate=sum(dec(x['amount'])*fraction(x['probability']) for x in outcomes)
@@ -66,6 +67,7 @@ def assess(c,claims):
         if not flag(contract,k): raise ReviewRequired('Contract criterion failed: '+k+'; received cash remains liability pending framework-specific review')
     required(contract,'combination_memo','scope_memo')
     if c['specialist_items']: raise ReviewRequired('Complete specialist schedules for: '+', '.join(c['specialist_items']))
+    if 'early_adopt_revised_section23' in c['policy_elections']:flag(c['policy_elections'],'early_adopt_revised_section23')
     legacy=c['framework']=='UK_GAAP' and c['period_start']<'2026-01-01' and not c['policy_elections'].get('early_adopt_revised_section23',False)
     if c['framework']=='UK_GAAP':
         expected='legacy' if legacy else 'revised_2026'
@@ -77,7 +79,10 @@ def assess(c,claims):
         required(o,'distinct_memo','ssp_evidence','role','role_memo')
         if o['role'] not in ('principal','agent'): raise ReviewRequired('Resolve principal/agent control analysis')
     allocation=c.get('specific_allocation')
-    if allocation:
+    if legacy:
+        amounts={o['id']:cash(nonnegative(o['legacy_component_consideration'])) for o in obs}
+        if sum(amounts.values())!=price:raise ReviewRequired('Legacy identifiable-component consideration does not tie to fair-value price')
+    elif allocation:
         required(allocation,'amounts','objective_memo')
         if set(allocation['amounts'])!=set(ids): raise ReviewRequired('Specific allocation must address every obligation')
         amounts={k:cash(nonnegative(v)) for k,v in allocation['amounts'].items()}

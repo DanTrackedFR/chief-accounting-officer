@@ -10,11 +10,15 @@ def allocate(price,obligations):
     if not obligations: raise ReviewRequired("No distinct obligations")
     total=sum((dec(x["ssp"]) for x in obligations),dec("0"))
     if total<=0 or any(dec(x["ssp"])<=0 for x in obligations): raise ReviewRequired("Invalid stand-alone selling prices")
-    amount=cash(price); remaining=amount; out=[]
-    for i,x in enumerate(obligations):
-        share=remaining if i==len(obligations)-1 else cash(amount*dec(x["ssp"])/total)
-        remaining-=share
-        out.append({"obligation":x["id"],"allocation":share})
+    from decimal import ROUND_DOWN
+    amount=cash(price)
+    if amount<0:raise ReviewRequired("Negative allocation price")
+    exact=[amount*dec(x["ssp"])/total for x in obligations]
+    shares=[x.quantize(dec("0.01"),rounding=ROUND_DOWN) for x in exact]
+    cents=int((amount-sum(shares))/dec("0.01"))
+    order=sorted(range(len(shares)),key=lambda i:(-(exact[i]-shares[i]),i))
+    for i in order[:cents]:shares[i]+=dec("0.01")
+    out=[{"obligation":x["id"],"allocation":v} for x,v in zip(obligations,shares)]
     if sum(x["allocation"] for x in out)!=amount: raise ReviewRequired("Allocation reconciliation failed")
     return out
 

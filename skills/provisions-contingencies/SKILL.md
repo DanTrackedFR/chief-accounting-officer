@@ -1,8 +1,8 @@
 ---
 id: SKILL-PROV-001
 name: Provisions and contingencies
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["08", "09", "14", "15"]
 description: Governed provisions and contingencies assessment, calculation and review pack.
@@ -21,9 +21,9 @@ artifacts: [technical_memo, measurement_schedule, journal_pack, reconciliation, 
 dependencies: [approved_topic_retrieval, company_context, deterministic_calculator, reviewer_signoff]
 related_skills: [technical_accounting_research, disclosure_review, close_reconciliation]
 knowledge_sources:
-  principles: [TOPIC-08-003, TOPIC-08-004, TOPIC-08-005, TOPIC-13-005, TOPIC-15-004]
-  standards: [TOPIC-08-003, TOPIC-08-004, TOPIC-08-005, TOPIC-13-005, TOPIC-15-004]
-  practice: [TOPIC-08-003, TOPIC-08-004, TOPIC-08-005, TOPIC-13-005, TOPIC-15-004]
+  principles: [TOPIC-05-003, TOPIC-05-004, TOPIC-13-005, TOPIC-15-004]
+  standards: [TOPIC-05-003, TOPIC-05-004, TOPIC-13-005, TOPIC-15-004]
+  practice: [TOPIC-05-003, TOPIC-05-004, TOPIC-13-005, TOPIC-15-004]
 risk_level: HIGH
 review_required: true
 completion_criteria: [framework_and_period_resolved, all_required_facts_present, approved_claims_retrieved, method_and_judgments_documented, arithmetic_reconciled, journals_balance, citations_checked, reviewer_signoff]
@@ -46,4 +46,13 @@ Assess present obligations, past events, probability and reliable estimation, di
 ## Specialist boundaries
 Do not import IAS 37 recognition thresholds or measurement conventions into ASC 450. Litigation outcomes, onerous contracts, restructuring, decommissioning and reimbursement need event-specific specialist checks.
 
-The skill is not production-complete until executable decision routes, period/framework tests, numerical regression, output boundary, and integration tests pass. A contract alone does not satisfy that gate.
+Production use is bounded by the reviewed workflow, explicit specialist handoffs, current knowledge/period selection, reconciled calculations and independent case certification. A contract or initial calculator alone does not satisfy the completion gate.
+
+
+## Executable governed case workflow
+
+Use `../production.py:assess_case` with this package name and a complete reviewed case. The entrypoint retrieves approved claim registers and canonical document hashes before running `workflow.py:assess`. It returns the standard envelope, preserves internal evidence ratings, reconciles arithmetic and validates an independent approval tied to the exact input/knowledge/implementation fingerprint. `../run_skill.py` is the public CLI; `to_public` is the application adapter for answers, retrieval context, citations, tool outputs, logs and exports. Legacy `engine.py` is preserved as a bounded internal prototype; its partial result cannot certify a case. `execute` is the internal certification engine; unresolved CAO cases return structured blocked envelopes and specialist evidence requirements.
+
+Read `methods.md` before constructing the case and `../REVIEWER-CONTROLS.md` before signing off. Synthetic examples in `examples/` demonstrate inputs and expected calculations, rather than company facts or actual reviewer authorization. A successful regression does not authorize production status; independent QA and the consolidated completion report control package promotion.
+
+Canonical dependencies: TOPIC-05-003, TOPIC-05-004, TOPIC-13-005, TOPIC-15-004. Provision versus contingency, reimbursement, onerous/restructuring and uncertainty disclosures.

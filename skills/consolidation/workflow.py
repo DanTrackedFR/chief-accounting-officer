@@ -33,6 +33,8 @@ def assess(c,claims):
     if c['specialist_items']:raise ReviewRequired('Unresolved group specialist schedules: '+', '.join(c['specialist_items']))
     ids=[e['id'] for e in c['entities']]
     if not ids or len(ids)!=len(set(ids)):raise ReviewRequired('Unique group entity IDs required')
+    for e in c['entities']:flag(e,'parent')
+    if sum(e['parent'] for e in c['entities'])!=1:raise ReviewRequired('Exactly one group reporting parent required')
     totals={};source={};entries=[];perimeter=[];translations=[]
     def post(lines):
         balance(lines);entries.append(lines)
@@ -67,17 +69,22 @@ def assess(c,claims):
             key=(eid,acc);used[key]=used.get(key,Decimal(0))+n
             if source[eid].get(acc,Decimal(0))*sign<used[key]:raise ReviewRequired('Elimination exceeds entity/account source population')
         post(journal(('Dr',dracc,n),('Cr',cracc,n)))
+    investment_used={}
     if len({x['subsidiary'] for x in c['investments']})!=len(c['investments']):raise ReviewRequired('Duplicate subsidiary investment schedule')
     for inv in c['investments']:
         required(inv,'subsidiary','parent_entity','investment_account','investment','acquisition_equity','fair_value_adjustments','goodwill','nci_at_acquisition','acquisition_memo')
         if inv['subsidiary'] not in source:raise ReviewRequired('Investment elimination outside perimeter')
-        if inv['parent_entity'] not in source or source[inv['parent_entity']].get(inv['investment_account'],0)!=cash(inv['investment']):raise ReviewRequired('Investment elimination does not tie to parent source balance')
+        key=(inv['parent_entity'],inv['investment_account'])
+        investment_used[key]=investment_used.get(key,Decimal(0))+nonnegative(inv['investment'])
+        if inv['parent_entity'] not in source or source[inv['parent_entity']].get(inv['investment_account'],0)<investment_used[key]:raise ReviewRequired('Investment elimination exceeds parent source balance')
         rows=[('Cr',inv['investment_account'],nonnegative(inv['investment']))]
         for acc,v in inv['acquisition_equity'].items():rows.append(('Dr',acc,nonnegative(v)))
         for acc,v in inv['fair_value_adjustments'].items():
             n=dec(v);rows.append(('Dr' if n>=0 else 'Cr',acc,abs(n)))
         rows.extend([('Dr','goodwill',nonnegative(inv['goodwill'])),('Cr','noncontrolling interest',nonnegative(inv['nci_at_acquisition']))])
         post(journal(*rows))
+    for (eid,acc),value in investment_used.items():
+        if source[eid][acc]!=cash(value):raise ReviewRequired('Investment elimination allocation must reconcile to full source account')
     subs={e['id'] for e in c['entities'] if not e['parent'] and e['id'] in source}
     if {x['subsidiary'] for x in c['investments']}!=subs:raise ReviewRequired('Investment/equity opening schedule must cover every subsidiary')
     for p in c['profit_eliminations']:
@@ -99,6 +106,7 @@ def assess(c,claims):
         if n['subsidiary'] not in subs:raise ReviewRequired('NCI schedule outside subsidiary perimeter')
         ratio=1-fraction(n['ownership']);profit=cash(dec(n['adjusted_profit'])*ratio);oci=cash(dec(n['adjusted_oci'])*ratio);dividend=cash(nonnegative(n['dividends'])*ratio)
         closing=cash(dec(n['opening'])+profit+oci-dividend+dec(n['other']))
+        if ratio==0 and closing!=0:raise ReviewRequired('Wholly owned entity cannot retain unexplained nonzero NCI')
         # Attribution is equity presentation, not additional group expense.
         ncirows.append({'subsidiary':n['subsidiary'],'profit':profit,'oci':oci,'dividends':dividend,'closing':closing})
     if {x['subsidiary'] for x in c['nci']}!=subs:raise ReviewRequired('NCI bridge required for all subsidiaries including wholly owned zero-NCI')
@@ -124,13 +132,21 @@ def assess(c,claims):
     for acc,val in totals.items():
         if mapping[acc] not in ('assets','liabilities','equity','income','expenses'):raise ReviewRequired('Invalid statement classification')
         statements[mapping[acc]]=cash(statements.get(mapping[acc],0)+val)
-    required(c,'cash_flow_bridge','disclosure_tieout')
+    required(c,'cash_flow_bridge','disclosure_tieout','equity_bridge','cta_bridge')
+    eq=c['equity_bridge'];required(eq,'opening','profit','oci','owner_transactions','other','closing','memo')
+    profit=-statements.get('income',Decimal(0))-statements.get('expenses',Decimal(0))
+    if cash(eq['profit'])!=cash(profit):raise ReviewRequired('Equity profit does not tie to group income statement')
+    if cash(sum(dec(eq[k]) for k in ('opening','profit','oci','owner_transactions','other')))!=cash(eq['closing']):raise ReviewRequired('Opening-to-closing group equity bridge fails')
+    if cash(eq['closing'])!=cash(-statements.get('equity',Decimal(0))+profit):raise ReviewRequired('Closing equity does not tie to TB plus unclosed results')
+    ct=c['cta_bridge'];required(ct,'opening','translation','disposals','other','closing','cta_accounts','memo')
+    if cash(dec(ct['opening'])+dec(ct['translation'])+dec(ct['disposals'])+dec(ct['other']))!=cash(ct['closing']):raise ReviewRequired('CTA bridge fails')
+    if cash(sum(totals.get(k,Decimal(0)) for k in ct['cta_accounts']))!=cash(ct['closing']):raise ReviewRequired('CTA does not tie to consolidated TB')
     cf=c['cash_flow_bridge'];required(cf,'opening_cash','operating','investing','financing','fx','closing_cash','cash_accounts','memo')
     if cash(dec(cf['opening_cash'])+dec(cf['operating'])+dec(cf['investing'])+dec(cf['financing'])+dec(cf['fx']))!=cash(cf['closing_cash']):raise ReviewRequired('Cash-flow bridge does not reconcile')
     if cash(sum(totals.get(k,Decimal(0)) for k in cf['cash_accounts']))!=cash(cf['closing_cash']):raise ReviewRequired('Cash flow closing cash does not tie to consolidated TB')
     return {'conclusion':f'Consolidated {len(perimeter)} entities; balanced group trial balance after {len(entries)} consolidation entries.',
       'method':'Framework control perimeter; aligned/translated source TBs; documented eliminations; NCI and cash-flow bridges',
-      'calculations':{'perimeter':perimeter,'consolidated_balances':totals,'statements':statements,'translations':translations,'nci':ncirows,'cash_flow':cf},
+      'calculations':{'perimeter':perimeter,'consolidated_balances':totals,'statements':statements,'translations':translations,'nci':ncirows,'cash_flow':cf,'equity':eq,'cta':ct},
       'journal_entry_implications':entries,'judgments':[c['judgment_memo'],*[e['control']['control_memo'] for e in c['entities']]],
       'uncertainties':['Acquisition fair values, historical FX, rights-specific NCI allocations, loss-of-control OCI and tax effects are independently reviewed specialist inputs.'],
       'open_items':[],'disclosures_impacted':['Group composition and significant control judgments','NCI interests, restrictions and summarized financial information','Ownership changes and acquisitions/disposals','Foreign operation translation reserves','Associates/joint arrangements and unconsolidated structured entities when applicable','Reconcile consolidated statements, equity and cash-flow disclosures with applicable tier relief']}

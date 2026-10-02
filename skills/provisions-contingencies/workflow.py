@@ -7,6 +7,7 @@ def assess(c,claims):
     required(c,'obligation','estimate','movements','reimbursement','specialist_items')
     if c['specialist_items']:raise ReviewRequired('Unresolved provision specialist matters: '+', '.join(c['specialist_items']))
     o=c['obligation'];required(o,'type','basis','probability','obligation_memo','past_event','present_obligation','estimable')
+    if o['type']=='contingent_asset':return gain_contingency(c,claims)
     past=flag(o,'past_event'); present=flag(o,'present_obligation'); estimable=flag(o,'estimable')
     if o['basis'] not in ('legal','constructive','possible'):raise ReviewRequired('Unresolved obligation basis')
     if o['type'] not in ('litigation','warranty','onerous','restructuring','decommissioning','other_provision','contingent_asset'):raise ReviewRequired('Unknown provision scope')
@@ -62,14 +63,31 @@ def assess(c,claims):
     provision=cash(amount/(1+rate)**years)
     m=c['movements'];required(m,'opening','settlements','unwind','fx','other','movement_evidence')
     opening=nonnegative(m['opening']);settled=nonnegative(m['settlements']);unwind=nonnegative(m['unwind']);fx=dec(m['fx']);other=dec(m['other'])
-    if fx!=0 or other!=0:raise ReviewRequired('FX/other provision movements require supported balanced event journals; this workpaper cannot use unexplained bridge amounts')
+    event_entries=m.get('event_journals',[])
+    if event_entries or fx!=0 or other!=0:
+        if not event_entries:raise ReviewRequired('FX/other provision movements require supported balanced event journals')
+        from core_accounting import balance
+        for lines in event_entries:balance(lines)
+        delta=sum(dec(l['amount'])*(1 if l['side']=='Cr' else -1) for lines in event_entries for l in lines if l['account']=='provision')
+        if cash(delta)!=cash(fx+other):raise ReviewRequired('Provision event journals do not tie to FX/other movements')
     reestimate=cash(provision-opening+settled-unwind-fx-other)
     entries=[]
-    destination='restoration asset' if o['type']=='decommissioning' else 'provision expense'
-    if reestimate>=0:entries.append(journal(('Dr',destination,reestimate),('Cr','provision',reestimate)))
+    destination='provision expense'
+    if o['type']=='decommissioning':
+        required(c,'restoration_asset');a=c['restoration_asset'];required(a,'carrying_amount','remaining_life','model','impairment_review_memo')
+        if a['model']!='cost':raise ReviewRequired('Revaluation-model restoration asset changes require specialist reserve/P&L schedule')
+        carrying=nonnegative(a['carrying_amount']);life=nonnegative(a['remaining_life'])
+        if reestimate>=0:
+            destination='restoration asset' if life>0 else 'provision expense'
+            entries.append(journal(('Dr',destination,reestimate),('Cr','provision',reestimate)))
+        else:
+            reduction=min(carrying,-reestimate) if life>0 else Decimal(0)
+            entries.append(journal(('Dr','provision',-reestimate),('Cr','restoration asset',reduction),('Cr','restoration remeasurement gain',-reestimate-reduction)))
+    elif reestimate>=0:entries.append(journal(('Dr',destination,reestimate),('Cr','provision',reestimate)))
     else:entries.append(journal(('Dr','provision',-reestimate),('Cr',destination,-reestimate)))
     if settled:entries.append(journal(('Dr','provision',settled),('Cr','cash',settled)))
     if unwind:entries.append(journal(('Dr','finance cost',unwind),('Cr','provision',unwind)))
+    entries.extend(event_entries)
     r=c['reimbursement'];required(r,'claimed','recognition_threshold_met','reimbursement_memo','opening_asset','cash_received')
     asset=min(nonnegative(r['claimed']),provision) if flag(r,'recognition_threshold_met') else Decimal(0)
     if us and asset and not c['policy_elections'].get('us_recovery_recognition_memo'):
@@ -90,3 +108,26 @@ def assess(c,claims):
       'journal_entry_implications':entries,'judgments':[o['obligation_memo'],e['estimate_memo'],e['risk_memo'],r['reimbursement_memo']],
       'uncertainties':['Probability and legal outcome are supported judgments, not statistical thresholds inferred by the calculator. Reimbursements are separate assets; no balance-sheet netting is implied.'],
       'open_items':[],'disclosures_impacted':['Provision opening-to-closing movements by class','Nature, timing and uncertainty of obligations','Assumptions, expected reimbursements and recognized reimbursement assets','Contingent liability description and financial effect or why not practicable','ASC450 additional reasonably possible exposure beyond accrued amount','Apply framework-specific prejudicial-information exception with reviewer support']}
+
+
+def gain_contingency(c,claims):
+    o=c['obligation'];required(o,'gain_probability','gain_memo')
+    if o['gain_probability'] not in ('virtually_certain','probable','possible','remote'):raise ReviewRequired('Gain probability category unresolved')
+    us=c['framework']=='US_GAAP'
+    recognized=flag(o,'gain_realized') if us else o['gain_probability']=='virtually_certain'
+    e=c['estimate'];required(e,'gain_amount','estimate_memo')
+    r=c['reimbursement'];required(r,'opening_asset','cash_received')
+    asset=cash(nonnegative(e['gain_amount'])) if recognized else Decimal(0)
+    opening=nonnegative(r['opening_asset']);receipts=nonnegative(r['cash_received']);movement=cash(asset-opening+receipts)
+    if not recognized and opening:raise ReviewRequired('Previously recognized gain asset needs impairment/derecognition specialist assessment')
+    entries=[]
+    if movement>=0:entries.append(journal(('Dr','gain receivable',movement),('Cr','gain income',movement)))
+    else:entries.append(journal(('Dr','gain reversal',-movement),('Cr','gain receivable',-movement)))
+    if receipts:entries.append(journal(('Dr','cash',receipts),('Cr','gain receivable',receipts)))
+    disclosure=recognized or o['gain_probability']=='probable'
+    return {'conclusion':f'Gain contingency: recognized asset {asset}; period gain {movement}; disclosure assessment {disclosure}.',
+      'method':'ASC450 realized gain route' if us else 'Virtually-certain asset / probable-inflow disclosure route',
+      'calculations':{'opening_asset':opening,'recognized_asset':asset,'period_gain':movement,'cash':receipts},
+      'journal_entry_implications':entries,'judgments':[o['gain_memo'],e['estimate_memo']],
+      'uncertainties':['Contingent gains do not reduce unrelated provision liabilities. US gain realization is assessed separately from IAS37 inflow probability.'],
+      'open_items':[],'disclosures_impacted':['Contingent asset nature and financial effect when applicable','Avoid misleading recognition certainty in gain contingency disclosures']}

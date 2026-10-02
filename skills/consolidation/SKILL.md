@@ -1,8 +1,8 @@
 ---
 id: SKILL-CONS-001
 name: Consolidation and group reporting
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "07"
 related_domains: ["08", "09", "14", "15"]
 description: Governed consolidation and group reporting assessment, calculation and review pack.
@@ -21,9 +21,9 @@ artifacts: [technical_memo, measurement_schedule, journal_pack, reconciliation, 
 dependencies: [approved_topic_retrieval, company_context, deterministic_calculator, reviewer_signoff]
 related_skills: [technical_accounting_research, disclosure_review, close_reconciliation]
 knowledge_sources:
-  principles: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009]
-  standards: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009]
-  practice: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009]
+  principles: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009, TOPIC-13-001]
+  standards: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009, TOPIC-13-001]
+  practice: [TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009, TOPIC-13-001]
 risk_level: HIGH
 review_required: true
 completion_criteria: [framework_and_period_resolved, all_required_facts_present, approved_claims_retrieved, method_and_judgments_documented, arithmetic_reconciled, journals_balance, citations_checked, reviewer_signoff]
@@ -46,4 +46,13 @@ Determine consolidation perimeter under IFRS 10/AASB 10, ASC 810 and applicable 
 ## Specialist boundaries
 Do not infer control solely from ownership percentage; do not treat ASC 810 VIE analysis as IFRS 10; do not manufacture acquisition-date fair values, goodwill, FX rates or non-controlling-interest elections.
 
-The skill is not production-complete until executable decision routes, period/framework tests, numerical regression, output boundary, and integration tests pass. A contract alone does not satisfy that gate.
+Production use is bounded by the reviewed workflow, explicit specialist handoffs, current knowledge/period selection, reconciled calculations and independent case certification. A contract or initial calculator alone does not satisfy the completion gate.
+
+
+## Executable governed case workflow
+
+Use `../production.py:assess_case` with this package name and a complete reviewed case. The entrypoint retrieves approved claim registers and canonical document hashes before running `workflow.py:assess`. It returns the standard envelope, preserves internal evidence ratings, reconciles arithmetic and validates an independent approval tied to the exact input/knowledge/implementation fingerprint. `../run_skill.py` is the public CLI; `to_public` is the application adapter for answers, retrieval context, citations, tool outputs, logs and exports. Legacy `engine.py` is preserved as a bounded internal prototype; its partial result cannot certify a case. `execute` is the internal certification engine; unresolved CAO cases return structured blocked envelopes and specialist evidence requirements.
+
+Read `methods.md` before constructing the case and `../REVIEWER-CONTROLS.md` before signing off. Synthetic examples in `examples/` demonstrate inputs and expected calculations, rather than company facts or actual reviewer authorization. A successful regression does not authorize production status; independent QA and the consolidated completion report control package promotion.
+
+Canonical dependencies: TOPIC-07-001, TOPIC-07-002, TOPIC-07-003, TOPIC-07-004, TOPIC-07-005, TOPIC-07-006, TOPIC-07-007, TOPIC-07-008, TOPIC-07-009, TOPIC-13-001. Control/perimeter, investments, eliminations, foreign operations, NCI, ownership changes and primary-statement bridges.

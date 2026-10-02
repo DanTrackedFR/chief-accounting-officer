@@ -1,8 +1,8 @@
 ---
 id: SKILL-REV-001
 name: Revenue recognition
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "03"
 related_domains: ["08", "09", "14", "15"]
 description: Governed revenue recognition assessment, calculation and review pack.
@@ -46,4 +46,13 @@ IFRS 15 / ASC 606 / applicable FRS 102 / AASB 15. Apply the five-step model, sep
 ## Specialist boundaries
 Do not allocate unresolved variable consideration or book revenue without supported satisfaction evidence. FRS 102 must be period-gated; do not silently treat it as IFRS 15.
 
-The skill is not production-complete until executable decision routes, period/framework tests, numerical regression, output boundary, and integration tests pass. A contract alone does not satisfy that gate.
+Production use is bounded by the reviewed workflow, explicit specialist handoffs, current knowledge/period selection, reconciled calculations and independent case certification. A contract or initial calculator alone does not satisfy the completion gate.
+
+
+## Executable governed case workflow
+
+Use `../production.py:assess_case` with this package name and a complete reviewed case. The entrypoint retrieves approved claim registers and canonical document hashes before running `workflow.py:assess`. It returns the standard envelope, preserves internal evidence ratings, reconciles arithmetic and validates an independent approval tied to the exact input/knowledge/implementation fingerprint. `../run_skill.py` is the public CLI; `to_public` is the application adapter for answers, retrieval context, citations, tool outputs, logs and exports. Legacy `engine.py` is preserved as a bounded internal prototype; its partial result cannot certify a case. `execute` is the internal certification engine; unresolved CAO cases return structured blocked envelopes and specialist evidence requirements.
+
+Read `methods.md` before constructing the case and `../REVIEWER-CONTROLS.md` before signing off. Synthetic examples in `examples/` demonstrate inputs and expected calculations, rather than company facts or actual reviewer authorization. A successful regression does not authorize production status; independent QA and the consolidated completion report control package promotion.
+
+Canonical dependencies: TOPIC-03-001, TOPIC-03-002, TOPIC-03-003, TOPIC-03-004, TOPIC-03-005, TOPIC-03-006, TOPIC-03-012. Contract criteria, distinct/combined promises, constraint and allocation, transfer/timing, modification, presentation and contract costs.

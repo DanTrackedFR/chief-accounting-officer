@@ -19,7 +19,10 @@ def base(package,framework='IFRS',start='2026-01-01'):
 def finalize(package,c):
     from production import PACKAGES
     claims,docs=canonical_knowledge(PACKAGES[package][1],c['framework'])
-    c['knowledge_review']={'reviewer':'synthetic accounting reviewer','claim_ids':[x['claim_id'] for x in claims],'documents':docs}
+    c['knowledge_review']={'reviewer':'synthetic accounting reviewer','claim_ids':[x['claim_id'] for x in claims],'documents':docs,
+      'applied_claim_ids':[x['claim_id'] for x in claims if x['claim_id'].endswith('-001')],
+      'selection_memo':'Synthetic reviewer selected framework and transaction scope rules; inspect canonical method for all applicable exceptions',
+      'public_caveats':['Use the edition effective for the stated reporting period; precise paragraph authority is not asserted where the governed register has no established reference.']}
     c['reviewer_signoff']={'reviewer':'synthetic independent reviewer','approved':True,'case_fingerprint':case_fingerprint(c)}
     return c
 
@@ -27,9 +30,9 @@ def revenue(fw='IFRS',start='2026-01-01'):
     c=base('revenue-recognition',fw,start)
     c.update(contract={k:True for k in ['customer_in_scope','approved_committed','rights_identified','payment_terms_identified','commercial_substance','collectibility_met']},
       price_components={'fixed':'1000','noncash':'0','customer_payments':'0','financing_adjustment':'0','variable':[]},
-      obligations=[{'id':'delivery','ssp':'600','distinct_memo':'Distinct delivered product','ssp_evidence':'Price list','role':'principal','role_memo':'Controls product',
+      obligations=[{'id':'delivery','ssp':'600','legacy_component_consideration':'600','distinct_memo':'Distinct delivered product','ssp_evidence':'Price list','role':'principal','role_memo':'Controls product',
        'timing':'point_in_time','timing_evidence':'Signed delivery','control_transferred':True,'legacy_route':'goods','risks_rewards_transferred':True},
-       {'id':'service','ssp':'400','distinct_memo':'Independent stand-ready service','ssp_evidence':'Price list','role':'principal','role_memo':'Controls service',
+       {'id':'service','ssp':'400','legacy_component_consideration':'400','distinct_memo':'Independent stand-ready service','ssp_evidence':'Price list','role':'principal','role_memo':'Controls service',
         'timing':'over_time','timing_evidence':'Certified six of twelve months','simultaneous_receipt':True,'customer_controls_asset':False,
         'no_alternative_use':False,'right_to_payment_with_margin':False,'progress_reliable':True,'progress':'0.5','legacy_route':'service','reliable_completion':True}],
       balance_bridge={'opening_revenue':'300','opening_contract_net':'-200','opening_receivable':'200','billings':'400','cash_received':'300','opening_cost_asset':'50'},
@@ -47,8 +50,11 @@ def ecl(fw='IFRS'):
          'default_definition':'Default reviewed','horizon':'lifetime_default_events','objective_impairment_evidence':True,
          'scenarios':[{'weight':'0.75','terms':[{'ead':'1000','marginal_pd':'0.10','lgd':'0.5','discount_factor':'1'}]},
                       {'weight':'0.25','terms':[{'ead':'1000','marginal_pd':'0.20','lgd':'0.5','discount_factor':'1'}]}]},
-      measurement_schedule={'opening_gross':'1000','eir':'0','cash_flows':'0','additions':'0','writeoffs':'20','fx':'0','fair_value':'980'},
+      measurement_schedule={'opening_gross':'1000','eir':'0','cash_flows':'0','additions':'0','writeoffs':'20','fx':'0','fair_value':'980','opening_fair_value_adjustment':'0'},
       allowance_bridge={'opening':'100','writeoffs':'20','recoveries':'5','fx':'0'})
+    if fw=='UK_GAAP':
+        c['credit']['method']='cash_shortfall'
+        c['credit']['scenarios']=[{'weight':'1','terms':[{'contractual_cash':'980','expected_cash':'917.5','discount_factor':'1'}]}]
     return finalize('financial-instruments-ecl',c)
 
 def provision(fw='IFRS'):
@@ -73,5 +79,7 @@ def consolidation(fw='IFRS'):
       profit_eliminations=[],nci=[{'subsidiary':'S','ownership':'0.8','opening':'20','adjusted_profit':'0','adjusted_oci':'0','dividends':'0','other':'0','allocation_memo':'80/20 rights'}],
       ownership_changes=[],nci_attribution_account='equity',statement_mapping={'cash':'assets','investment':'assets','equity':'equity','sub equity':'equity','goodwill':'assets','noncontrolling interest':'equity'},
       cash_flow_bridge={'opening_cash':'400','operating':'0','investing':'0','financing':'0','fx':'0','closing_cash':'400','cash_accounts':['cash'],'memo':'Cash flow population tie'},
-      disclosure_tieout='Group TB and NCI note bridge')
+      disclosure_tieout='Group TB and NCI note bridge',
+      equity_bridge={'opening':'400','profit':'0','oci':'0','owner_transactions':'0','other':'0','closing':'400','memo':'Opening-to-closing equity'},
+      cta_bridge={'opening':'0','translation':'0','disposals':'0','other':'0','closing':'0','cta_accounts':[],'memo':'Common currency group'})
     return finalize('consolidation',c)
