@@ -17,6 +17,11 @@ class CaseEngineTests(unittest.TestCase):
   self.assertLessEqual(abs(r["rou_schedule"][-1]["closing"]),0.02)
   self.assertTrue(any("IFRS 16.22" in c["locator"] for c in r["citations"]))
   public=to_public_answer(r); self.assertNotIn("journal_entries",public); self.assertEqual(public["framework"],"IFRS")
+ def test_commencement_journal_balances_with_bridge(self):
+  c=base(); c.update(prepayments="1000",direct_costs="200",incentives="300",restoration="500")
+  r=run_case(c); lines=r["journal_entries"][0]["lines"]
+  dr=sum(x[2] for x in lines if x[0]=="Dr"); cr=sum(x[2] for x in lines if x[0]=="Cr")
+  self.assertEqual(dr,cr)
  def test_us_finance(self):
   c=base("US_GAAP"); c["classification"]="finance"; r=run_case(c)
   self.assertIn("pinpoint paragraph",r["limitations"][0])
