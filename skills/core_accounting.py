@@ -10,13 +10,16 @@ class ReviewRequired(ValueError): pass
 
 def dec(value):
     if isinstance(value,(float,bool)): raise ReviewRequired("Use decimal strings, not binary floats or booleans")
-    try: return Decimal(str(value))
+    try:
+        result=Decimal(str(value))
+        if not result.is_finite(): raise ReviewRequired("Non-finite decimal input")
+        return result
     except Exception as exc: raise ReviewRequired("Invalid decimal input") from exc
 
 def cash(value): return dec(value).quantize(CENT,rounding=ROUND_HALF_UP)
 
 def required(case,*keys):
-    missing=[k for k in keys if case.get(k) in (None,"",[])]
+    missing=[k for k in keys if case.get(k) in (None,"")]
     if missing: raise ReviewRequired("Missing required facts: "+", ".join(missing))
 
 def context(case):
@@ -44,11 +47,14 @@ def approved_claims(topic_ids,framework,root=None):
         if not accepted: raise ReviewRequired("No approved "+framework+" claims for "+tid)
         output.extend({"topic_id":tid,"claim_id":c["claim_id"],"proposition":c["proposition"],
                        "references":c.get("paragraph_references",[]),"reference_confidence":c.get("reference_confidence"),
-                       "evidence_status":c.get("evidence_status"),"limitations":c.get("limitations",[])}
+                       "evidence_status":c.get("evidence_status"),"limitations":c.get("limitations",[]),"effective_period":c.get("effective_period"),
+                       "entity_scope":c.get("entity_scope"),"audit_required":c.get("audit_required")}
                       for c in accepted)
     return output
 
 def balance(lines):
+    if any(x.get("side") not in ("Dr","Cr") or not x.get("account") or dec(x["amount"])<0 for x in lines):
+        raise ReviewRequired("Journal requires valid sides/accounts and nonnegative amounts")
     dr=sum((dec(x["amount"]) for x in lines if x["side"]=="Dr"),Decimal(0))
     cr=sum((dec(x["amount"]) for x in lines if x["side"]=="Cr"),Decimal(0))
     if cash(dr)!=cash(cr): raise ReviewRequired(f"Journal does not balance: {dr} vs {cr}")
