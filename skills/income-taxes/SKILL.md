@@ -1,8 +1,8 @@
 ---
 id: SKILL-TAX-001
 name: "Income Taxes"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["02", "04", "05", "06", "08", "13", "15"]
 description: Governed evidence-dependent accounting workflow with bounded calculations and fail-closed specialist routing.

@@ -1,8 +1,8 @@
 ---
 id: SKILL-INT-001
 name: "Intangible Assets & Amortization"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "04"
 related_domains: ["02", "04", "05", "06", "08", "13", "15"]
 description: Governed evidence-dependent accounting workflow with bounded calculations and fail-closed specialist routing.
