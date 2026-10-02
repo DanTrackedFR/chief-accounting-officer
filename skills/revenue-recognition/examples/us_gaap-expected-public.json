@@ -1,0 +1,18 @@
+{
+  "topic_id": "TOPIC-03-001",
+  "guidance": "Revenue assessment: period revenue 500.00; closing contract asset 0 and liability 100.00; receivable 300.00.\nReview status: complete\nCalculations: {\"contract_bridge\": {\"billings\": \"400\", \"closing\": \"-100.00\", \"opening\": \"-200\", \"revenue\": \"500.00\"}, \"contract_cost_asset\": \"120.00\", \"cumulative_revenue\": \"800.00\", \"obligations\": [{\"allocation\": \"600.00\", \"cumulative_revenue\": \"600.00\", \"id\": \"delivery\", \"role\": \"principal\"}, {\"allocation\": \"400.00\", \"cumulative_revenue\": \"200.00\", \"id\": \"service\", \"role\": \"principal\"}], \"period_revenue\": \"500.00\", \"receivable\": \"300.00\", \"transaction_price\": \"1000.00\"}\nJournals: [[{\"side\": \"Dr\", \"account\": \"contract clearing\", \"amount\": \"500.00\"}, {\"side\": \"Cr\", \"account\": \"revenue\", \"amount\": \"500.00\"}], [{\"side\": \"Dr\", \"account\": \"receivable\", \"amount\": \"400.00\"}, {\"side\": \"Cr\", \"account\": \"contract clearing\", \"amount\": \"400.00\"}], [{\"side\": \"Dr\", \"account\": \"cash\", \"amount\": \"300.00\"}, {\"side\": \"Cr\", \"account\": \"receivable\", \"amount\": \"300.00\"}], [{\"side\": \"Dr\", \"account\": \"contract cost asset\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"cash / payable\", \"amount\": \"100.00\"}], [{\"side\": \"Dr\", \"account\": \"contract cost amortization\", \"amount\": \"25.00\"}, {\"side\": \"Cr\", \"account\": \"contract cost asset\", \"amount\": \"25.00\"}], [{\"side\": \"Dr\", \"account\": \"contract cost impairment\", \"amount\": \"5.00\"}, {\"side\": \"Cr\", \"account\": \"contract cost asset\", \"amount\": \"5.00\"}]]\nDisclosure review: Disaggregate revenue by meaningful categories; Reconcile receivables and contract assets/liabilities; Performance obligations, payment terms and remaining obligations; Timing, progress, price constraint and SSP judgments; Contract cost balances, amortization and impairment; Apply US nonpublic, UK small entity and AASB tier relief only when eligible",
+  "framework": "US_GAAP",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "Contract clearing journals require mapping to the contract-specific asset/liability accounts; do not offset different contracts.",
+    "Use the edition effective for the stated reporting period; precise paragraph authority is not asserted where the governed register has no established reference."
+  ],
+  "uncertainties": [],
+  "citations": [
+    {
+      "title": "ASC 606"
+    }
+  ]
+}

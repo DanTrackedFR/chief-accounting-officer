@@ -29,7 +29,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Phase 3 skill tests
-        run: python -m unittest discover -s skills -p "test_*.py"
+        run: |
+          python -m unittest discover -s skills/lease-accounting/tests -p "test_*.py"
+          python -m unittest discover -s skills/tests -p "test_*.py"
       - name: Repository regression
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Standards evidence validation
