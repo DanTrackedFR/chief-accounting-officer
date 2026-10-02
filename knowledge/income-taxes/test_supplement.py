@@ -16,10 +16,16 @@ class TaxKnowledgeTests(unittest.TestCase):
         claims = load_register()["claims"]
         for framework in ("IFRS","US_GAAP","UK_GAAP","AASB"):
             self.assertEqual(sum(c["framework"] == framework for c in claims), 16)
-    def test_unapproved_retrieval_fails_closed(self):
+    def test_approved_retrieval_succeeds_without_internal_metadata(self):
         for fw in ("IFRS","US_GAAP","UK_GAAP","AASB"):
-            with self.assertRaises(ValueError):
-                retrieve(fw,"2026-12-31","example company")
+            claims = retrieve(fw,"2026-12-31","example company")
+            self.assertEqual(len(claims), 16)
+            for claim in claims:
+                self.assertNotIn("source_note", claim)
+                self.assertNotIn("sources", claim)
+                self.assertNotIn("approval_review", claim)
+                self.assertNotIn("reviewer", claim)
+                self.assertNotIn("evidence_status", claim)
     def test_missing_context_fails_closed(self):
         with self.assertRaises(ValueError):
             retrieve("IFRS","","example company")
@@ -36,7 +42,7 @@ class TaxKnowledgeTests(unittest.TestCase):
         dtl=(Decimal("1000")-Decimal("700"))*rate
         dta=Decimal("200")*rate
         self.assertEqual((dtl,dta,dtl-dta),(75,50,25))
-        self.assertEqual(dtl+dta,Decimal("125")) # gross debit/credit across entries
+        self.assertEqual(dtl+dta,Decimal("125"))
     def test_recoverability_and_us_valuation_allowance(self):
         gross=Decimal("400")*Decimal(".25")
         supported=Decimal("240")*Decimal(".25")
