@@ -1,0 +1,15 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "title":"SKILL-LEASE-001 case input","type":"object","additionalProperties":true,
+ "required":["case_id","framework","period_start","entity","jurisdiction","commencement_date","contract_contains_lease","payments","periodic_rate","lease_periods"],
+ "properties":{
+  "framework":{"enum":["IFRS","US_GAAP","UK_GAAP","AASB"]},
+  "role":{"enum":["lessee","lessor"]},
+  "classification":{"enum":["finance","operating"]},
+  "payments":{"type":"array","minItems":1,"items":{"type":["string","integer"]}},
+  "lease_periods":{"type":"integer","minimum":1},
+  "periodic_rate":{"type":["string","integer"]},
+  "contract_contains_lease":{"type":"boolean"},
+  "sale_and_leaseback":{"type":"boolean"}
+ }
+}
