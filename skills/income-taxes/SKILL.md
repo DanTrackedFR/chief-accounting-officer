@@ -44,4 +44,3 @@ IAS 12 / ASC 740 / FRS 102 Section 29 / AASB 112. This package is blocked, not p
 9. Hand off tax, valuation, legal, specialized transaction and filing questions to named subject specialists with required evidence and a rerun/certification gate. Do not book specialist-generated estimates until supported by reviewed workpapers.
 
 Read `../REVIEWER-CONTROLS.md`. No ERP posting is performed. Reconcile illustrative account labels to the company-approved chart and close controls. Test success alone cannot promote this package. Completion additionally requires a governed tax knowledge extension and independent standards approval, then the full numerical and framework-specific contract; no calculator bypass is permitted.
-
