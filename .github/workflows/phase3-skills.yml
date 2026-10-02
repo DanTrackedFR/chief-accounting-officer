@@ -1,7 +1,11 @@
 name: Phase 3 skill regression
 
+# Run the full skill gate when a PR is explicitly moved to review, and on
+# merges/pushes to main. This avoids one CI run (and possible owner email)
+# for every intermediate development commit while preserving the merge gate.
 on:
   pull_request:
+    types: [ready_for_review, reopened]
     paths:
       - "skills/**"
       - ".github/workflows/phase3-skills.yml"
@@ -9,17 +13,23 @@ on:
     branches: [main]
     paths:
       - "skills/**"
+      - ".github/workflows/phase3-skills.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: phase3-skills-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  lease-skill:
+  skill-regression:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Lease skill tests
-        run: python -m unittest discover -s skills/lease-accounting/tests -p "test_*.py"
+      - name: Phase 3 skill tests
+        run: python -m unittest discover -s skills -p "test_*.py"
       - name: Repository regression
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Standards evidence validation
