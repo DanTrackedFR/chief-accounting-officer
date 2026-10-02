@@ -15,7 +15,8 @@ def assess(c,claims):
     handoff(c,'impairment','Impairment');handoff(c,'leases','Lease Accounting')
     policy=c['asset_policy'];required(policy,'model','component_review','life_review','review_memo')
     if policy['model']!='cost' or not flag(policy,'component_review') or not flag(policy,'life_review'):raise ReviewRequired('Cost model, component and life review required')
-    assets=rows(c['assets'],False);costs=rows(c['costs']);projects=rows(c['cip']);amap={a['id']:a for a in assets};pmap={p['id']:p for p in projects};adds={id:ZERO for id in amap};padds={id:ZERO for id in pmap};entries=[];expenses=ZERO
+    assets=rows(c['assets'],False);costs=rows(c['costs']);projects=rows(c['cip']);inventory(c,'asset_inventory',assets);inventory(c,'project_inventory',projects);amap={a['id']:a for a in assets};pmap={p['id']:p for p in projects};adds={id:ZERO for id in amap};padds={id:ZERO for id in pmap};entries=[];expenses=ZERO
+    if set(amap)&set(pmap):raise ReviewRequired('Asset and project destination IDs overlap')
     for x in costs:
         approval(x,c);required(x,'amount','date','eligible','eligibility_memo','kind','destination','account','offset','recognition_reviewed')
         inperiod(c,x['date']);n=positive(x['amount'])
@@ -48,17 +49,20 @@ def assess(c,claims):
         approval(a,c);required(a,'opening_cost','opening_accumulated','residual','remaining_life','ready_date','method','remaining_units','period_units','change','disposal','expected_depreciation','gl_cost','gl_accumulated','scope','component_id','consumption_memo')
         if a['scope']!='ordinary_ppe':raise ReviewRequired('Software, ROU, revaluation, held-for-sale and specialized assets require owning specialist')
         cost=nonnegative(a['opening_cost'])+adds[a['id']];openingacc=nonnegative(a['opening_accumulated']);residual=nonnegative(a['residual']);carrying=cost-openingacc
-        if openingacc>cost or residual>carrying:raise ReviewRequired('Accumulation or residual exceeds register carrying value')
+        if openingacc>cost:raise ReviewRequired('Accumulation exceeds register cost')
         ready=iso(a['ready_date']);begin=max(start,ready);last=end;disp=a['disposal'];required(disp,'enabled')
+        if ready>end:raise ReviewRequired('Asset not ready at period end must remain in CIP')
         if flag(disp,'enabled'):required(disp,'date','proceeds','ordinary_sale','evidence');last=inperiod(c,disp['date'])
-        change=a['change'];required(change,'enabled');basis=carrying-residual;life=positive(a['remaining_units'] if a['method']=='units_of_production' else a['remaining_life'])
+        change=a['change'];required(change,'enabled');basis=max(carrying-residual,ZERO);life=positive(a['remaining_units'] if a['method']=='units_of_production' else a['remaining_life'])
         if flag(change,'enabled'):
             required(change,'date','new_remaining_life','new_residual','new_information','evidence','units_before','units_after')
             d=inperiod(c,change['date'])
             if d<begin or d>last or not flag(change,'new_information'):raise ReviewRequired('Estimate revision chronology or error assessment unresolved')
-            first=charge(begin,d-timedelta(days=1),basis,life,a['method'],nonnegative(change['units_before']));newres=nonnegative(change['new_residual']);newbasis=carrying-first-newres
-            if newbasis<0:raise ReviewRequired('Revised residual exceeds carrying')
-            amount=first+charge(d,last,newbasis,positive(change['new_remaining_life']),a['method'],nonnegative(change['units_after']))
+            first=charge(begin,d-timedelta(days=1),basis,life,a['method'],nonnegative(change['units_before']));newres=nonnegative(change['new_residual']);newbasis=max(carrying-first-newres,ZERO)
+            afterunits=nonnegative(change['units_after'])
+            if a['method']=='units_of_production' and nonnegative(change['units_before'])+afterunits!=nonnegative(a['period_units']):raise ReviewRequired('Production before/after revision does not reconcile to complete output')
+            if a['method']=='units_of_production' and (nonnegative(change['units_before'])>life or afterunits>positive(change['new_remaining_life'])):raise ReviewRequired('Revised production exceeds supported remaining units')
+            amount=first+charge(d,last,newbasis,positive(change['new_remaining_life']),a['method'],afterunits)
         else:
             units=nonnegative(a['period_units'])
             if a['method']=='units_of_production' and units>life:raise ReviewRequired('Production exceeds approved remaining units')

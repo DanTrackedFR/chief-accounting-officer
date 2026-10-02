@@ -14,7 +14,9 @@ def assess(c,claims):
         nonnegative(a['subsequent_actual']);a['_received']=received;a['_unbilled']=unbilled
         delta=unbilled-prior;entries.append(movement(a['account'],'accrued expenses',delta));acc+=unbilled
     for i in inv:
-        approval(i,c);required(i,'supplier','invoice_number','amount','units','unit_price','po_amount','received_amount','received_date','invoice_date','account','match_approved','bank_master_review','accrual_id','currency')
+        approval(i,c);required(i,'supplier','invoice_number','amount','units','unit_price','po_amount','received_amount','received_date','invoice_date','account','match_approved','bank_master_review','currency')
+        if 'accrual_id' not in i:raise ReviewRequired('Explicit accrual link or empty none required')
+        texts(i,'bank_master_review','invoice_number')
         key=(i['supplier'],i['invoice_number'].strip().casefold())
         if key in keys:raise ReviewRequired('Duplicate supplier invoice')
         keys.add(key)
@@ -38,6 +40,7 @@ def assess(c,claims):
     bankids=set()
     for p in payments:
         approval(p,c);required(p,'supplier','amount','date','bank_id','bank_confirmed','bank_master_approved','payment_preparer','payment_releaser')
+        texts(p,'bank_id','payment_preparer','payment_releaser')
         if p['supplier'] not in balances or p['bank_id'] in bankids or not flag(p,'bank_confirmed') or not flag(p,'bank_master_approved') or p['payment_preparer']==p['payment_releaser']:raise ReviewRequired('Payment segregation, bank master or duplicate payment failure')
         bankids.add(p['bank_id']);inperiod(c,p['date']);n=positive(p['amount'])
         if n>balances[p['supplier']]:raise ReviewRequired('Payment exceeds supported supplier debt')

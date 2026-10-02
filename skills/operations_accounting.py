@@ -5,6 +5,10 @@ from core_accounting import ReviewRequired, cash, dec, required, journal, balanc
 from advanced_accounting import gate, iso, positive, movement, result, ZERO
 from production import flag, nonnegative, fraction
 
+def texts(obj,*keys):
+    required(obj,*keys)
+    if any(not isinstance(obj[k],str) or not obj[k].strip() for k in keys):raise ReviewRequired('Nonblank evidence, identity and version text required')
+
 def rows(value, allow_empty=True):
     if not isinstance(value,list) or (not value and not allow_empty):
         raise ReviewRequired('Source population must be an array')
@@ -17,9 +21,13 @@ def rows(value, allow_empty=True):
     return value
 
 def proof(c,*keys):
-    gate(c,'controls',*keys)
+    gate(c,'controls','execution_date',*keys)
+    if iso(c['execution_date'])<iso(c['reporting_period']):raise ReviewRequired('Execution date precedes source reporting cutoff')
     q=c['controls']
     required(q,'source_version','as_of','population_count','population_amount','owner','reviewer','complete','policy_version','cutoff_memo')
+    texts(q,'source_version','owner','reviewer','policy_version','cutoff_memo')
+    versions=c['applicability_review']['standard_versions']
+    if not isinstance(versions,list) or not versions or any(not isinstance(v,str) or not v.strip() for v in versions):raise ReviewRequired('Actual effective standard versions required')
     if q['owner']==q['reviewer'] or not flag(q,'complete') or iso(q['as_of'])!=iso(c['reporting_period']):
         raise ReviewRequired('Independent complete period-end population proof required')
     if not isinstance(q['population_count'],int) or isinstance(q['population_count'],bool) or q['population_count']<0:
@@ -32,9 +40,10 @@ def population(c,rs,amounts):
 
 def approval(r,c):
     required(r,'owner','reviewer','evidence','approved','approval_date','version','approved_version')
+    texts(r,'owner','reviewer','evidence','version','approved_version')
     if r['owner']==r['reviewer'] or not flag(r,'approved') or r['version']!=r['approved_version'] or not isinstance(r['evidence'],str) or not r['evidence'].strip():
         raise ReviewRequired('Independent supported current-version approval required')
-    if iso(r['approval_date'])>iso(c['reporting_period']):raise ReviewRequired('Approval falls after workpaper cutoff')
+    if iso(r['approval_date'])>iso(c['execution_date']):raise ReviewRequired('Approval falls after workpaper execution cutoff')
 
 def inperiod(c,d):
     d=iso(d)
@@ -47,6 +56,7 @@ def agree(actual,expected,label):
 def handoff(c,key,target):
     required(c,'handoffs'); h=c['handoffs'].get(key,{})
     required(h,'target','entity','framework','reporting_period','evidence','reviewer','resolved','scope_memo')
+    texts(h,'target','entity','framework','reporting_period','evidence','reviewer','scope_memo')
     if h['target']!=target or h['entity']!=c['entity'] or h['framework']!=c['framework'] or h['reporting_period']!=c['reporting_period'] or not flag(h,'resolved'):
         raise ReviewRequired('Unresolved or mismatched specialist handoff: '+key)
     # This is an external reviewed memo, not a forged downstream certification.
@@ -56,6 +66,12 @@ def handoff(c,key,target):
         if r.get('status')!='complete' or r.get('framework')!=c['framework'] or c['entity'] not in r.get('entities',[]) or c['reporting_period'] not in r.get('periods',[]):
             raise ReviewRequired('Downstream skill result is incomplete or out of scope')
     return h
+
+def inventory(c,key,rs):
+    required(c,key)
+    ids=c[key]
+    if not isinstance(ids,list) or any(not isinstance(x,str) or not x for x in ids) or len(ids)!=len(set(ids)) or set(ids)!={r['id'] for r in rs}:
+        raise ReviewRequired('Independent source inventory coverage failed: '+key)
 
 def finish(title,calcs,entries,judgments,notes):
     return result(title,'Approved canonical operational method; independently substantiated source-to-journal-to-GL proof',calcs,entries,judgments,notes,
