@@ -1,0 +1,24 @@
+{
+  "topic_id": "TOPIC-05-001",
+  "guidance": "Supplier invoices, payments and independently received unbilled liabilities reconciled.\nReview status: partial\nCalculations: {\"accrual_backtests\": [{\"estimate\": \"9600.00\", \"id\": \"A1\", \"subsequent_actual\": \"10400\", \"variance\": \"800.00\"}], \"closing_accruals\": \"9600.00\", \"closing_ap\": \"20\", \"invoices\": \"120\", \"opening_ap\": \"0\", \"payments\": \"100\", \"planned_reversals\": [{\"date\": \"2027-01-01\", \"id\": \"A1\", \"lines\": [{\"account\": \"accrued expenses\", \"amount\": \"9600.00\", \"side\": \"Dr\"}, {\"account\": \"professional services expense\", \"amount\": \"9600.00\", \"side\": \"Cr\"}]}]}\nJournals: [[{\"side\": \"Dr\", \"account\": \"expense\", \"amount\": \"120.00\"}, {\"side\": \"Cr\", \"account\": \"accounts payable\", \"amount\": \"120.00\"}], [{\"side\": \"Dr\", \"account\": \"professional services expense\", \"amount\": \"9600.00\"}, {\"side\": \"Cr\", \"account\": \"accrued expenses\", \"amount\": \"9600.00\"}], [{\"side\": \"Dr\", \"account\": \"accounts payable\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"cash\", \"amount\": \"100.00\"}]]\nDisclosure review: Material accrual uncertainty, expense/asset classification, related parties and supplier financing require separate disclosure review.",
+  "framework": "IFRS",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+  ],
+  "uncertainties": [
+    "Independent reviewer must approve this exact case fingerprint before use"
+  ],
+  "citations": [
+    {
+      "title": "Applicable expense and liability guidance"
+    },
+    {
+      "title": "Applicable expense and liability guidance",
+      "locator": "IAS 8.34\u201338, .41\u201348"
+    }
+  ]
+}

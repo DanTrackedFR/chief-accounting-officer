@@ -1,0 +1,277 @@
+{
+  "case_id": "synthetic-accounts-payable",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "functional_currency": "EUR",
+  "execution_date": "2027-01-05",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 2,
+    "population_amount": "9720",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete period end independent source"
+  },
+  "invoices": [
+    {
+      "id": "I1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "supplier": "S1",
+      "invoice_number": "N1",
+      "amount": "120",
+      "units": "12",
+      "unit_price": "10",
+      "po_amount": "120",
+      "received_amount": "120",
+      "received_date": "2026-12-31",
+      "invoice_date": "2026-12-31",
+      "account": "expense",
+      "match_approved": true,
+      "bank_master_review": "Independent bank master",
+      "accrual_id": "",
+      "currency": "EUR"
+    }
+  ],
+  "accruals": [
+    {
+      "id": "A1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "supplier": "S1",
+      "units": "12",
+      "rate": "800",
+      "received_supported": true,
+      "received_date": "2026-12-31",
+      "invoiced_received": "0",
+      "opening_accrual": "0",
+      "account": "professional services expense",
+      "reversal_date": "2027-01-01",
+      "clearing_plan": "Linked subsequent invoice review",
+      "subsequent_actual": "10400",
+      "backtest_memo": "800 relates to supported January services",
+      "gl_closing": "9600"
+    }
+  ],
+  "payments": [
+    {
+      "id": "P1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "supplier": "S1",
+      "amount": "100",
+      "date": "2026-12-31",
+      "bank_id": "B1",
+      "bank_confirmed": true,
+      "bank_master_approved": true,
+      "payment_preparer": "synthetic initiator",
+      "payment_releaser": "synthetic releaser"
+    }
+  ],
+  "opening_ap": [
+    {
+      "id": "S1",
+      "balance": "0"
+    }
+  ],
+  "gl_ap": "20",
+  "supplier_balances": [
+    {
+      "id": "S1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "balance": "20"
+    }
+  ],
+  "gl_accrual": "9600",
+  "bank_total": "100",
+  "handoffs": {
+    "recognition": {
+      "target": "Expense and asset recognition",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-05-001-US_GAAP-E002",
+      "TOPIC-05-001-US_GAAP-E006",
+      "TOPIC-05-002-US_GAAP-E002",
+      "TOPIC-05-002-US_GAAP-E006",
+      "TOPIC-02-007-US_GAAP-E01",
+      "TOPIC-02-007-US_GAAP-E02",
+      "TOPIC-12-001-US_GAAP-E002"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-05-001",
+        "path": "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/README.md",
+        "sha256": "87106d0c5fb0b753c1488ab9606584bebce2ac306afd2da565d70be19757b4f2"
+      },
+      {
+        "topic_id": "TOPIC-05-001",
+        "path": "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/factory.md",
+        "sha256": "8ec331e36e1e656d8d266ec2ed1e4bdda7634f95ea2f18960b71fefbcdb91a82"
+      },
+      {
+        "topic_id": "TOPIC-05-001",
+        "path": "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/standards-claims.json",
+        "sha256": "9a90d5afd4900867bf962a62e3b146563084e6d8173a01a58a90e1529d8e6b42"
+      },
+      {
+        "topic_id": "TOPIC-05-001",
+        "path": "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/three-way-match-and-aged-exception.md",
+        "sha256": "a31a92b9047cf3baa25daf773ca0ebee7b839658ed013a2d5a99056ac5bc7f97"
+      },
+      {
+        "topic_id": "TOPIC-05-001",
+        "path": "knowledge/topics/TOPIC-05-001-ap-accounting-reconciliation/worked-bridge-and-qa.md",
+        "sha256": "c76a0e068404c641f3c9d4f22073c26e20c7055186e6c43f6a5c2030ede1e1af"
+      },
+      {
+        "topic_id": "TOPIC-05-002",
+        "path": "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/README.md",
+        "sha256": "226d38ee3fe5fbf179b0118f57b25933f038d1a70f1a2e15030d686ef4294673"
+      },
+      {
+        "topic_id": "TOPIC-05-002",
+        "path": "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/factory.md",
+        "sha256": "db09bbaa54d45a761e78cc9cb8e991d75febe6020542348386d2d0d28756a2f6"
+      },
+      {
+        "topic_id": "TOPIC-05-002",
+        "path": "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/post-close-invoice-and-reversal-backtest.md",
+        "sha256": "4c2ac0c49ded76d2d4eb0acd9b82c06db2becbba4b211ba8a543c0ef95f34270"
+      },
+      {
+        "topic_id": "TOPIC-05-002",
+        "path": "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/standards-claims.json",
+        "sha256": "d073736a3e98a20a43cbfdc8aeae6eb5371e9266f7135e77787eb83513d00bc2"
+      },
+      {
+        "topic_id": "TOPIC-05-002",
+        "path": "knowledge/topics/TOPIC-05-002-expense-cutoff-accrual-methodology/worked-accrual-and-backtest.md",
+        "sha256": "4ddde60f3e8419d84f84eabc331010da6f531279ec744f7a303971a0e6169858"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/README.md",
+        "sha256": "a0a153ff83501e1a6db55f3434e525712b0c363a5315f0dfd6ea51df323c83d4"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/canonical-sources.md",
+        "sha256": "e53567dca5c41f76817e01bfd617bcfcebeff5e348a2b488c26c8a4da3c59263"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/factory.md",
+        "sha256": "ee19995412ee35c874c451e0d5e78ec9a179aff7910968622966b12e5d2523ff"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/standards-claims.json",
+        "sha256": "0a5b50fcf7b4b3cf1604eb4ea2ae22ee716eaa822b505623829437cb470ef402"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepayments/README.md",
+        "sha256": "bfa9aa67a9fd186c5ced4b3f6377b997085c2f83a8cf51a594bf0ed42c9fc843"
+      },
+      {
+        "topic_id": "TOPIC-12-001",
+        "path": "knowledge/topics/TOPIC-12-001-p2p-invoice-expense-process/README.md",
+        "sha256": "b48a7e51b09b48ab9147d1cf4037a0ec441885119fcc06d27d69e6d150e3720b"
+      },
+      {
+        "topic_id": "TOPIC-12-001",
+        "path": "knowledge/topics/TOPIC-12-001-p2p-invoice-expense-process/methods/p2p-cutoff-control.md",
+        "sha256": "00b03238a383d991c8ff782cf3d4d804fbf80565f2cf2eef06a7d10686a5afa4"
+      },
+      {
+        "topic_id": "TOPIC-12-001",
+        "path": "knowledge/topics/TOPIC-12-001-p2p-invoice-expense-process/practice/p2p-handoff.md",
+        "sha256": "18559b58eaa10e3f18bc0951f2c0d611b6b6c5ce26bdae81d9d0cd9416a62af8"
+      },
+      {
+        "topic_id": "TOPIC-12-001",
+        "path": "knowledge/topics/TOPIC-12-001-p2p-invoice-expense-process/standards-claims.json",
+        "sha256": "c21e48526a78ebb4e2f92fac3d600ba4e1b35a76d6da38d36785a393b751cba4"
+      },
+      {
+        "topic_id": "TOPIC-12-001",
+        "path": "knowledge/topics/TOPIC-12-001-p2p-invoice-expense-process/tests/phase-2d-worker-scenarios.md",
+        "sha256": "5d01dd425aa68c953e4509433043f2b7df27ee24daf39b853acf333cda4fddac"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-05-001-US_GAAP-E002",
+      "TOPIC-05-001-US_GAAP-E006",
+      "TOPIC-05-002-US_GAAP-E002",
+      "TOPIC-05-002-US_GAAP-E006",
+      "TOPIC-02-007-US_GAAP-E01",
+      "TOPIC-02-007-US_GAAP-E02",
+      "TOPIC-12-001-US_GAAP-E002"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}
