@@ -7,6 +7,8 @@ def assess(c,claims):
     for r in components:
         reviewed(r,c,'classification_memo');required(r,'opening','closing','gl_closing','equity_owner','role')
         if r['equity_owner'] not in ['parent','nci'] or r['role'] not in ['capital','profit','oci']:raise ReviewRequired('Equity owner/component role unresolved')
+        roles={'share_capital':'capital','premium':'capital','treasury':'capital','retained_earnings':'profit','oci':'oci'}
+        if r['id'] in roles and (r['equity_owner']!='parent' or r['role']!=roles[r['id']]):raise ReviewRequired('Ordinary parent equity component mapping contradicts accounting journals')
         if r['id']=='treasury' and dec(r['opening'])>0:raise ReviewRequired('Treasury opening must be contra-equity')
     def shift(id,n):
         if id not in byid:raise ReviewRequired('Missing equity component')
@@ -73,6 +75,7 @@ def assess(c,claims):
         if lines:entries.append(lines)
         work.append({'id':e['id'],'kind':kind,'amount':n})
     for id,r in byid.items():agree(r['closing'],balances[id],'Equity component movement');agree(r['gl_closing'],balances[id],'Equity component GL')
+    if balances.get('treasury',ZERO)>0:raise ReviewRequired('Closing treasury cannot become positive equity')
     total=sum(balances.values(),ZERO);s=c['statement'];agree(s['closing_equity'],total,'Statement equity');agree(s['opening_equity'],sum((dec(r['opening']) for r in components),ZERO),'Opening equity');agree(s['closing_dividend_payable'],dividend_payable,'Dividend payable GL');agree(c['share_register']['closing_issued'],shares,'Issued cap table');agree(c['share_register']['closing_own'],ownshares,'Own-share cap table')
     population(c,events,[nonnegative(e['amount']) for e in events])
     return finish('Capital register, owner transactions and every equity component reconcile.',{'components':balances,'movements':effects,'opening':dec(s['opening_equity']),'closing':total,'issued_shares':shares,'own_shares':ownshares,'dividend_payable':dividend_payable,'events':work},entries,

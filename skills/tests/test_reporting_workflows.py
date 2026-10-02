@@ -63,7 +63,7 @@ class ReportingTests(unittest.TestCase):
     def test_provisional_references_are_qualified(self):
         r=self.run_case('cash-flow-reporting',reporting('cash-flow-reporting'));s=json.dumps(to_public(r),default=serializable).lower();self.assertIn('unverified',s)
     def test_cash_numeric_bridge_and_working_capital(self):
-        c=reporting('cash-flow-reporting');c['indirect']['start_amount']='220';c['indirect']['net_profit']='220';c['handoffs']['profit']['amount']='220';c['indirect']['working_capital']=[approved('ar',opening='100',closing='135',acquisition='10',fx='5',noncash='0',side='asset',source_bridge='35 change less acquisition10 FX5 =20 operating')]
+        c=reporting('cash-flow-reporting');c['indirect']['start_amount']='220';c['indirect']['net_profit']='220';c['handoffs']['profit']['amount']='220';c['indirect']['working_capital']=[approved('ar',opening='100',closing='135',acquisition='10',fx='5',noncash='0',side='asset',source_bridge='35 change less acquisition10 FX5 =20 operating')];c['indirect']['working_capital_inventory']=['ar']
         r=self.run_case('cash-flow-reporting',c);self.assertEqual(r['calculations']['indirect_operating'],Decimal('240'))
     def test_cash_wrong_indirect_and_sign(self):
         self.block('cash-flow-reporting',lambda c:c['indirect']['adjustments'][0].update(amount='120'))
@@ -111,7 +111,7 @@ class ReportingTests(unittest.TestCase):
     def test_changes_prior_error_profit_eps_opening(self):
         r=self.run_case('accounting-changes',reporting('accounting-changes'));self.assertEqual(r['calculations']['opening_equity_change'],Decimal('-20'));self.assertEqual(r['calculations']['periods'][0]['basic_eps'],Decimal('8'))
     def test_changes_multiperiod_carryforward_not_doublecounted(self):
-        c=reporting('accounting-changes');p=copy.deepcopy(c['affected_periods'][0]);p['id']='earlier';p['period_start']='2024-01-01';p['period_end']='2024-12-31';c['affected_periods'].append(p);c['period_inventory'].append('earlier');a=copy.deepcopy(c['adjustments'][0]);a.update(id='earlier',period_id='earlier');c['adjustments'].append(a);c['controls'].update(population_count=2,population_amount='40');r=self.run_case('accounting-changes',c);self.assertEqual(r['calculations']['opening_equity_change'],Decimal('-20'))
+        c=reporting('accounting-changes');c['change']['information_date']='2024-12-01';p=copy.deepcopy(c['affected_periods'][0]);p['id']='earlier';p['period_start']='2024-01-01';p['period_end']='2024-12-31';c['affected_periods'].append(p);c['period_inventory'].append('earlier');a=copy.deepcopy(c['adjustments'][0]);a.update(id='earlier',period_id='earlier');c['adjustments'].append(a);c['error_register'][0].update(correction_ids=['correct','earlier'],correction_debit_total='40');c['controls'].update(population_count=2,population_amount='40');r=self.run_case('accounting-changes',c);self.assertEqual(r['calculations']['opening_equity_change'],Decimal('-20'))
     def test_changes_estimate_prospective_and_old_info_rejected(self):
         c=reporting('accounting-changes');c['change'].update(kind='estimate',original_information_available=False,new_information=True,information_date='2026-04-01');p=c['affected_periods'][0];p.update(period_start='2026-01-01',period_end='2026-12-31');c['adjustments'][0]['layer']='current_profit';c['opening_equity_bridge']['corrected']='100';self.run_case('accounting-changes',c);c['change']['original_information_available']=True;self.run_case('accounting-changes',c,'blocked')
     def test_changes_us_hybrid_only(self):
@@ -192,5 +192,11 @@ class ReportingTests(unittest.TestCase):
                 with tempfile.TemporaryDirectory() as d:
                     path=Path(d)/'case.json';path.write_text(json.dumps(certified(p,f)));run=subprocess.run([sys.executable,str(ROOT/'skills/run_skill.py'),p,str(path)],capture_output=True,text=True,cwd=ROOT);self.assertEqual(run.returncode,0,run.stderr);self.assertIn('Review status: complete',json.loads(run.stdout)['guidance'])
     def test_blocked_tax_preserved(self):self.assertEqual(assess_case('income-taxes',reporting('accounting-changes'))['status'],'blocked')
+    def test_archived_complete_and_partial_worked_examples(self):
+        for package in PACKAGES:
+            for framework in FW:
+                directory=ROOT/'skills'/package/'examples';case=json.loads((directory/(framework+'.case.json')).read_text());self.assertNotIn('reviewer_signoff',case)
+                result=assess_case(package,case);self.assertEqual(result['status'],'partial',result['conclusion']);self.assertEqual(to_public(result),json.loads((directory/(framework+'.partial.public.json')).read_text()))
+                result=self.run_case(package,case);self.assertEqual(to_public(result),json.loads((directory/(framework+'.complete.public.json')).read_text()))
 
 if __name__=='__main__':unittest.main()

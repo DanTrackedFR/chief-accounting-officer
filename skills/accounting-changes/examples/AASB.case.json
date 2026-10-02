@@ -1,0 +1,361 @@
+{
+  "case_id": "synthetic-accounting-changes",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "2026 effective compilation",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-03-31",
+  "functional_currency": "EUR",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "20",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independent complete source register"
+  },
+  "disclosure_review": {
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual entity/period requirements independently reviewed",
+    "complete": true
+  },
+  "change": {
+    "id": "error",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "AASB",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "kind": "error",
+    "discovery_date": "2027-01-15",
+    "original_information_available": true,
+    "new_information": false,
+    "mandatory": false,
+    "specific_transition": false,
+    "transition_route": "retrospective",
+    "permitted_change": true,
+    "impracticable": false,
+    "impracticability_memo": "Not invoked",
+    "earliest_practicable": "2025-01-01",
+    "original_authorization": "2026-03-01",
+    "information_date": "2025-12-01"
+  },
+  "affected_periods": [
+    {
+      "id": "prior",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "issued_version": "v1",
+      "statement_memo": "Comparative-year expense was omitted",
+      "comparative_memo": "Separately reviewed annual comparative",
+      "lines": [
+        {
+          "id": "cash",
+          "balance": "100",
+          "category": "asset"
+        },
+        {
+          "id": "payable",
+          "balance": "0",
+          "category": "liability"
+        },
+        {
+          "id": "revenue",
+          "balance": "-100",
+          "category": "revenue"
+        },
+        {
+          "id": "expense",
+          "balance": "0",
+          "category": "expense"
+        }
+      ],
+      "expected_corrected": {
+        "cash": "100",
+        "payable": "-20",
+        "revenue": "-100",
+        "expense": "20"
+      },
+      "opening_equity_effect": false,
+      "issued": true,
+      "weighted_shares": "10",
+      "original_eps": "10",
+      "corrected_eps": "8",
+      "eps_applicable": true
+    }
+  ],
+  "period_inventory": [
+    "prior"
+  ],
+  "adjustments": [
+    {
+      "id": "correct",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "period_id": "prior",
+      "layer": "comparative_profit",
+      "source_memo": "Original invoice proves original information available",
+      "lines": [
+        {
+          "side": "Dr",
+          "account": "expense",
+          "amount": "20"
+        },
+        {
+          "side": "Cr",
+          "account": "payable",
+          "amount": "20"
+        }
+      ]
+    }
+  ],
+  "materiality": {
+    "id": "materiality",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "qualitative_memo": "Material to issued comparative",
+    "aggregation_memo": "Complete cumulative error review",
+    "interim_memo": "All interims separately reviewed",
+    "prior_material": true,
+    "current_if_corrected_material": true,
+    "current_uncorrected_material": true,
+    "interim_review_complete": true
+  },
+  "sec": {
+    "registrant": false,
+    "auditor_notice": false
+  },
+  "error_register": [
+    {
+      "id": "error",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "current_earnings_effect": "0",
+      "ending_balance_effect": "20",
+      "qualitative_memo": "Prior expense liability error",
+      "correction_memo": "Exact original invoice correction lineage",
+      "correction_ids": [
+        "correct"
+      ],
+      "correction_debit_total": "20",
+      "resolved": true
+    }
+  ],
+  "opening_equity_bridge": {
+    "original": "100",
+    "corrected": "80"
+  },
+  "handoffs": {
+    "tax": {
+      "target": "Tax and EPS",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "underlying": {
+      "target": "Underlying transaction accounting",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-02-009-AU-01",
+      "TOPIC-02-009-AU-02",
+      "TOPIC-02-009-AU-03",
+      "TOPIC-15-001-AASB-R007",
+      "TOPIC-15-001-AASB-R008",
+      "TOPIC-15-003-AASB-R004",
+      "TOPIC-15-006-AASB-R004"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/README.md",
+        "sha256": "99cb7c7ae3cfd73a05d97122de12da258038f187b7f9374270c08232920f0019"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/canonical-sources.md",
+        "sha256": "ab9f1981434c1879c6aa72d68b5b8fd5e90b4a0ffcbbd7875353607dacedade6"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/factory.md",
+        "sha256": "18312b238cac76d95cd9b7a06c233c3c56badc562fd5c814cb9e6134b9bee37c"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/phase-2d-error-correction.md",
+        "sha256": "e77a5f2673b2fc6561f062a85075a9cff2fd06561c4ab2b5ef962520c0af6528"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/methods/restatement-bridge.md",
+        "sha256": "d24d8872d1bc58f2a417917072fbcd07818a200d2706ae1129927e6482811708"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/practice/us-issuer-overlay.md",
+        "sha256": "a29c73d01a55669bf3fe3483f901dd93026cce09d9dd40b8431b152e161537e6"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/standards-claims.json",
+        "sha256": "4af5558a1047d903fed7e954687c3a0fc83e8a82fe7c6eb1516eda4f6ea31921"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worked-error-cases.md",
+        "sha256": "a5fee866c6e05819e261ffbfc5dc5771f11646ba82b1e879fe0b7cc13b291d2a"
+      },
+      {
+        "topic_id": "TOPIC-02-009",
+        "path": "knowledge/topics/TOPIC-02-009-errors-opening-balances/tests/phase-2d-worker-scenarios.md",
+        "sha256": "ab01e5867945afdcf004a8207f2e03925a819fa214d513975721ffd8259f8c6e"
+      },
+      {
+        "topic_id": "TOPIC-15-001",
+        "path": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/README.md",
+        "sha256": "7178f8116fa8d8390608e6c2ae9a4b580accadb2d2bd52db4ccb6e8dd204212b"
+      },
+      {
+        "topic_id": "TOPIC-15-001",
+        "path": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/factory-qa.md",
+        "sha256": "76f2d1b32b6c5ed39c105124d85e24280dd2b0e0e095fb071d239455be8cabb9"
+      },
+      {
+        "topic_id": "TOPIC-15-001",
+        "path": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/standards-claims.json",
+        "sha256": "4d54c253d07de8b1a7351a6a35c0b574e1c2e8c2499f8c229c45eb4ea21d9d1f"
+      },
+      {
+        "topic_id": "TOPIC-15-003",
+        "path": "knowledge/topics/TOPIC-15-003-estimate-change-significant-judgments/README.md",
+        "sha256": "853bb463fe7adad6def840b1b899232841eb4841301f03293835ec09aa39c320"
+      },
+      {
+        "topic_id": "TOPIC-15-003",
+        "path": "knowledge/topics/TOPIC-15-003-estimate-change-significant-judgments/factory.md",
+        "sha256": "736d45c8ea9473d4047f13f336ecb3463852e09338ca0a8772b1ef4d2220fbe6"
+      },
+      {
+        "topic_id": "TOPIC-15-003",
+        "path": "knowledge/topics/TOPIC-15-003-estimate-change-significant-judgments/standards-claims.json",
+        "sha256": "8477f0c6de31799b452d98f6011435d8a95a6f5f1639c7483772826967e3618b"
+      },
+      {
+        "topic_id": "TOPIC-15-006",
+        "path": "knowledge/topics/TOPIC-15-006-error-estimate-policy-classification/README.md",
+        "sha256": "7e97cb3e9b9b16576d6b794df591276701a6bedd54c601fb6a15d23e0ec24bf4"
+      },
+      {
+        "topic_id": "TOPIC-15-006",
+        "path": "knowledge/topics/TOPIC-15-006-error-estimate-policy-classification/election-supplement.md",
+        "sha256": "28fd78b0047e79270ee632246fd946376ea4674c91ba15ed0672e764ba94a64c"
+      },
+      {
+        "topic_id": "TOPIC-15-006",
+        "path": "knowledge/topics/TOPIC-15-006-error-estimate-policy-classification/factory-qa.md",
+        "sha256": "8d496624eb8b2a308c64a13286a630605e1e763162524ba2649484b65732326f"
+      },
+      {
+        "topic_id": "TOPIC-15-006",
+        "path": "knowledge/topics/TOPIC-15-006-error-estimate-policy-classification/standards-claims.json",
+        "sha256": "845a3298f1348fa829d4af0cd99668f264ad2956705bc300280c1f84af5cc072"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-02-009-AU-01",
+      "TOPIC-02-009-AU-02",
+      "TOPIC-02-009-AU-03",
+      "TOPIC-15-001-AASB-R007",
+      "TOPIC-15-001-AASB-R008",
+      "TOPIC-15-003-AASB-R004",
+      "TOPIC-15-006-AASB-R004"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

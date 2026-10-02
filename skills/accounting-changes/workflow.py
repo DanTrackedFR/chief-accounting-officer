@@ -99,9 +99,16 @@ def assess(c,claims):
         if len(values)!=1:raise ReviewRequired('Current annual/interim profit correction conflicts')
         profit_change=next(iter(values))
     required(c,'opening_equity_bridge');eq=c['opening_equity_bridge'];agree(dec(eq['original'])+equity_change,eq['corrected'],'Corrected prior close to current opening equity')
-    rollover=ZERO;iron=ZERO;gross=ZERO
+    rollover=ZERO;iron=ZERO;gross=ZERO;covered=set();adjmap={a['id']:a for a in adjustments}
     for e in error_rows:
         reviewed(e,c,'qualitative_memo');required(e,'current_earnings_effect','ending_balance_effect');rollover+=dec(e['current_earnings_effect']);iron+=dec(e['ending_balance_effect']);gross+=abs(dec(e['ending_balance_effect']))
+        if kind=='error':
+            reviewed(e,c,'correction_memo');required(e,'correction_ids','correction_debit_total','resolved')
+            ids=e['correction_ids']
+            if not flag(e,'resolved') or not isinstance(ids,list) or len(ids)!=len(set(ids)) or not set(ids)<=set(adjmap) or covered.intersection(ids):raise ReviewRequired('Complete exact-once error correction disposition required')
+            if (dec(e['ending_balance_effect']) or dec(e['current_earnings_effect'])) and not ids:raise ReviewRequired('Known monetary error has no supported correction')
+            covered.update(ids);agree(e['correction_debit_total'],sum((dec(l['amount']) for id in ids for l in adjmap[id]['lines'] if l['side']=='Dr'),ZERO),'Error register to correction journal population')
+    if kind=='error' and covered!=set(adjmap):raise ReviewRequired('Correction journal lacks independently reviewed error disposition')
     population(c,adjustments,[sum((dec(l['amount']) for l in a['lines'] if l['side']=='Dr'),ZERO) for a in adjustments])
     return finish('Accounting change route and original-to-corrected periods reconcile.',{'route':route,'periods':work,'opening_equity_change':equity_change,'current_profit_change':profit_change,'rollover':rollover,'iron_curtain':iron,'gross_balance_error':gross,'sec_route':filing,'item_402_review':registrant and kind=='error' and (prior_material or notice)},entries,
       ['Materiality is a reviewed quantitative/qualitative and aggregate judgment, never an automatic percentage.','Counsel owns Item4.02/non-reliance, deadlines and filings; accounting workflow does not file or make legal determinations.'],

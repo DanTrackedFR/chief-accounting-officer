@@ -27,7 +27,7 @@ def assess(c,claims):
             if m<d or m>limit or not all(flag(a,k) for k in ['cash_management','known_amount','insignificant_risk']):raise ReviewRequired('Cash-equivalent original maturity/purpose/risk unsupported')
         if a['type']=='restricted':
             if fw=='US_GAAP' and not included:raise ReviewRequired('US cash flow reconciliation includes restricted cash population')
-            if fw!='US_GAAP' and included and not flag(a,'withdrawable_demand'):raise ReviewRequired('Restriction alone cannot prove deposit cash eligibility')
+            if fw!='US_GAAP' and included!=flag(a,'withdrawable_demand'):raise ReviewRequired('Restricted deposit inclusion must follow evidenced withdrawable demand nature; use-only restriction does not remove cash')
         if a['type']=='overdraft':
             if included and (fw=='US_GAAP' or not flag(a,'integral_cash_management') or not flag(a,'repayable_on_demand')):raise ReviewRequired('Overdraft requires distinct framework cash-management assessment')
         elif dec(a['opening'])<0 or dec(a['closing'])<0:raise ReviewRequired('Negative asset cash balance requires overdraft route')
@@ -62,16 +62,18 @@ def assess(c,claims):
     agree(transfers,0,'Internal cash transfers must cancel within included population')
     for kind in ['business_acquisition','business_disposal']:
         if kind in direct:specialist(c,kind,'Consolidation',direct[kind])
-    noncash=rows(c['noncash']);noncashwork=[]
+    noncash=rows(c['noncash']);inventory(c,'noncash_inventory',noncash);noncashwork=[]
     for n in noncash:
-        reviewed(n,c,'accounting_memo','source_id');required(n,'amount','type')
+        reviewed(n,c,'accounting_memo','source_id');required(n,'amount','type','date');inperiod(c,n['date'])
         if n['source_id'] in {t['source_id'] for t in tx}:raise ReviewRequired('Noncash source double counted in bank flows')
         noncashwork.append({'id':n['id'],'amount':nonnegative(n['amount']),'type':n['type']})
+    required(c,'noncash_source_total');agree(c['noncash_source_total'],sum((nonnegative(n['amount']) for n in noncash),ZERO),'Noncash independent source population')
     ind=c['indirect'];required(ind,'starting_subtotal','start_amount','net_profit','subtotal_to_profit','adjustments','working_capital')
     if fw=='US_GAAP' and ind['starting_subtotal']!='net_profit' or modern and ind['starting_subtotal']!='operating_profit':raise ReviewRequired('Indirect starting subtotal conflicts with framework/adoption')
     if ind['starting_subtotal'] not in ['net_profit','profit_before_tax','operating_profit']:raise ReviewRequired('Unsupported cash flow starting subtotal')
     agree(dec(ind['start_amount'])+dec(ind['subtotal_to_profit']),ind['net_profit'],'Cash subtotal to net profit');specialist(c,'profit','Financial Statements',dec(ind['start_amount']))
     operating=dec(ind['start_amount']);adjustments=rows(ind['adjustments']);wc=rows(ind['working_capital'])
+    inventory(ind,'adjustment_inventory',adjustments);inventory(ind,'working_capital_inventory',wc)
     for a in adjustments:
         reviewed(a,c,'basis_memo');required(a,'amount','noncash_acquisition_fx_excluded')
         if not flag(a,'noncash_acquisition_fx_excluded'):raise ReviewRequired('Indirect adjustment has acquisition/FX contamination')

@@ -16,6 +16,7 @@ def assess(c,claims):
     for d in debt:
         reviewed(d,c,'agreement','classification_memo','covenant_memo');required(d,'maturity','principal','breach','waiver_effective','payable_on_demand','coverage_by_scenario')
         due=iso(d['maturity']);principal=nonnegative(d['principal']);breach=flag(d,'breach');demand=flag(d,'payable_on_demand')
+        if principal and (demand or due<=report):raise ReviewRequired('Positive opening on-demand/overdue debt requires specialist immediate-call/default liquidity method; monthly term-debt route cannot infer settlement timing')
         if breach:
             if not d['waiver_effective']:raise ReviewRequired('Breach requires documented covenant/waiver specialist assessment')
             iso(d['waiver_effective'])
@@ -40,22 +41,25 @@ def assess(c,claims):
         for d in dates:
             if (d.year*12+d.month)-(previous.year*12+previous.month)!=1 or d.day!=monthrange(d.year,d.month)[1]:raise ReviewRequired('Forecast must cover each consecutive month end')
             previous=d
-        before=cash_available;after=cash_available;res=nonnegative(s['minimum_reserve']);minbefore=before-res;minafter=after-res;usedplans=set();debt_paid={id:ZERO for id in debt_dates};trace=[];first_exhaustion=None;tested={id:set() for id in debt_dates}
+        before=cash_available;after=cash_available;res=nonnegative(s['minimum_reserve']);minbefore=before-res;minafter=after-res;usedplans=set();debt_paid={id:ZERO for id in debt_dates};trace=[];first_exhaustion=None;tested={id:set() for id in debt_dates};cash_date=report
         for r in periods:
             reviewed(r,c,'source_memo','intra_period_timing_memo');required(r,'date','receipts','payments','debt_payments','plan_draws','expected_before','expected_after','covenants','intra_period_min_before','intra_period_min_after')
             receipt=nonnegative(r['receipts']);payment=nonnegative(r['payments']);dt=iso(r['date']);dps=rows(r['debt_payments']);draws=rows(r['plan_draws']);debtcash=ZERO;plancash=ZERO
             for dp in dps:
-                required(dp,'debt_id','amount')
+                required(dp,'debt_id','amount','date')
                 if dp['debt_id'] not in debt_dates:raise ReviewRequired('Forecast debt payment absent from debt register')
+                paid_date=iso(dp['date'])
+                if not cash_date<paid_date<=dt or paid_date>debt_dates[dp['debt_id']][0]:raise ReviewRequired('Debt payment timing misses forecast interval or contractual due date')
                 n=nonnegative(dp['amount']);debt_paid[dp['debt_id']]+=n;debtcash+=n
                 if debt_paid[dp['debt_id']]>debt_dates[dp['debt_id']][1]:raise ReviewRequired('Debt principal cash exceeds confirmed register')
             for id,(due,n,demand) in debt_dates.items():
                 if due<=dt and debt_paid[id]<n:raise ReviewRequired('Debt maturity/on-demand cash omitted from forecast')
             for dr in draws:
-                required(dr,'plan_id','amount')
+                required(dr,'plan_id','amount','date')
                 if dr['plan_id'] not in pmap or dr['plan_id'] in usedplans:raise ReviewRequired('Missing or repeated mitigation draw')
                 p=pmap[dr['plan_id']];n=nonnegative(dr['amount']);usedplans.add(p['id'])
-                if dt<iso(p['available_date']) or n>nonnegative(p['amount']):raise ReviewRequired('Mitigation amount/timing exceeds evidence')
+                draw_date=iso(dr['date'])
+                if not cash_date<draw_date<=dt or draw_date<iso(p['available_date']) or n>nonnegative(p['amount']):raise ReviewRequired('Mitigation amount/timing exceeds evidence')
                 if not p['committed'] or not p['within_control'] or fw=='US_GAAP' and not (p['probable_implementation'] and p['probable_mitigation']):raise ReviewRequired('Uncommitted/infeasible plan cannot supply assumed funding')
                 plancash+=n
             opening_before=before;opening_after=after
@@ -77,6 +81,7 @@ def assess(c,claims):
                 if not actual:texts(cv,'waiver_memo');specialist(c,'covenant_breach','Debt and covenants')
             trace.append({'date':r['date'],'before_plans':cash(before),'after_plans':cash(after),'plan_funding':cash(plancash),'headroom':cash(after-res)})
             source.append(r)
+            cash_date=dt
         for d in debt:
             if tested[d['id']]!=set(d['coverage_by_scenario'][s['id']]):raise ReviewRequired('Forecast omits required covenant tests')
         agree(s['expected_min_before'],minbefore,'Minimum pre-plan headroom');agree(s['expected_min_after'],minafter,'Minimum post-plan headroom')

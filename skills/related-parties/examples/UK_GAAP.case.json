@@ -1,0 +1,341 @@
+{
+  "case_id": "synthetic-related-parties",
+  "framework": "UK_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "section23_model": "revised_2026",
+    "financial_instruments": "sections11_12"
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-03-31",
+  "functional_currency": "EUR",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 2,
+    "population_amount": "120",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independent complete source register"
+  },
+  "disclosure_review": {
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual entity/period requirements independently reviewed",
+    "complete": true
+  },
+  "reporting_scope": {
+    "id": "scope",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "UK_GAAP",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "level": "separate",
+    "exemptions_review": "None used",
+    "kmp_scope": false,
+    "small_entity": false,
+    "uk_2026_disclosure_review": true
+  },
+  "relationships": [
+    {
+      "id": "relation",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "counterparty": "parent",
+      "kind": "parent",
+      "start": "2020-01-01",
+      "end": "2099-12-31",
+      "related": true,
+      "internal_group": true,
+      "arm_length_asserted": false,
+      "pricing_evidence": "No arm-length assertion",
+      "arm_length_approved": false,
+      "relationship_evidence": "Synthetic ownership register",
+      "identification_memo": "Documented controlling parent"
+    }
+  ],
+  "relationship_inventory": [
+    "relation"
+  ],
+  "counterparty_inventory": [
+    "parent"
+  ],
+  "declarations": [
+    {
+      "id": "parent",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "related": true,
+      "relationship_ids": [
+        "relation"
+      ],
+      "declaration_evidence": "Signed synthetic declaration",
+      "search_memo": "Ownership and GL populations searched"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "sale",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "relationship_id": "relation",
+      "counterparty": "parent",
+      "date": "2026-12-01",
+      "amount": "100",
+      "gl_amount": "100",
+      "type": "sale",
+      "eliminated": false,
+      "exemption": false,
+      "exemption_memo": "No exemption",
+      "source_evidence": "Reviewed invoice",
+      "terms_memo": "Unsecured normal terms",
+      "governance_approval": "Independent transaction approval"
+    }
+  ],
+  "balances": [
+    {
+      "id": "receivable",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "relationship_id": "relation",
+      "counterparty": "parent",
+      "amount": "20",
+      "gl_amount": "20",
+      "type": "receivable",
+      "eliminated": false,
+      "exemption": false,
+      "exemption_memo": "No exemption",
+      "source_evidence": "Reviewed customer ledger",
+      "terms_memo": "Unsecured normal terms",
+      "governance_approval": "Independent balance confirmation"
+    }
+  ],
+  "commitments": [],
+  "disclosure": [
+    {
+      "id": "sale",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "included": true,
+      "amount": "100",
+      "requirement_memo": "Applicable related-party disclosure"
+    },
+    {
+      "id": "receivable",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "included": true,
+      "amount": "20",
+      "requirement_memo": "Applicable related-party disclosure"
+    }
+  ],
+  "kmp_compensation": [],
+  "statement_totals": {
+    "sales": "100",
+    "purchases": "0",
+    "receivables": "20",
+    "payables": "0",
+    "commitments": "0",
+    "kmp": "0"
+  },
+  "handoffs": {
+    "legal": {
+      "target": "Related-party legal assessment",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "group": {
+      "target": "Consolidation",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "pricing": {
+      "target": "Transfer Pricing",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    }
+  },
+  "kmp_inventory": [],
+  "kmp_categories_review": {
+    "id": "kmp_categories",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "completeness_memo": "All KMP pay categories nil/not applicable, independent payroll review",
+    "totals": {
+      "short_term": "0",
+      "post_employment": "0",
+      "other_long_term": "0",
+      "termination": "0",
+      "share_based": "0"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-08-006-UK-001",
+      "TOPIC-08-006-UK_GAAP-R003",
+      "TOPIC-13-008-UK-001",
+      "TOPIC-13-008-UK_GAAP-R005",
+      "TOPIC-13-008-UK_GAAP-R006"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-08-006",
+        "path": "knowledge/topics/TOPIC-08-006-related-parties-segments/README.md",
+        "sha256": "ee962fdc16a4d5a70d2df9c525bfc32a2fb496955faa0c552894d22ba612db8e"
+      },
+      {
+        "topic_id": "TOPIC-08-006",
+        "path": "knowledge/topics/TOPIC-08-006-related-parties-segments/evidence-and-regression.md",
+        "sha256": "afcaedcc27c27f6a183c468581f6499a55831c6e730fb70404acff6172f9746e"
+      },
+      {
+        "topic_id": "TOPIC-08-006",
+        "path": "knowledge/topics/TOPIC-08-006-related-parties-segments/practice-and-tests.md",
+        "sha256": "b08fcd622e21a4eda8d33f6f4eed32f00f6f89a2b138a7f4c1266b4d9267bb17"
+      },
+      {
+        "topic_id": "TOPIC-08-006",
+        "path": "knowledge/topics/TOPIC-08-006-related-parties-segments/segment-and-relationship-reconciliation.md",
+        "sha256": "19775935afb5a8ad7b2ffdfab52131e3d55878f6e1a6d67f252b4f86a4682edb"
+      },
+      {
+        "topic_id": "TOPIC-08-006",
+        "path": "knowledge/topics/TOPIC-08-006-related-parties-segments/standards-claims.json",
+        "sha256": "c5f7fc359f9e173b556e2bc0c76902347fb091dfb9df74540d96d861d00a71c2"
+      },
+      {
+        "topic_id": "TOPIC-13-008",
+        "path": "knowledge/topics/TOPIC-13-008-complex-contracts-related-parties/README.md",
+        "sha256": "08cc7e3bed32a4163e934495163972fd1f1c056bda79ebd7aece6da301923e11"
+      },
+      {
+        "topic_id": "TOPIC-13-008",
+        "path": "knowledge/topics/TOPIC-13-008-complex-contracts-related-parties/evidence-and-regression.md",
+        "sha256": "08ed51ec54eda3edc4b6fd4605be8ef41efe8b9e981b59c772c4e0ed4a6fce2b"
+      },
+      {
+        "topic_id": "TOPIC-13-008",
+        "path": "knowledge/topics/TOPIC-13-008-complex-contracts-related-parties/linked-contract-and-disclosure-case.md",
+        "sha256": "a2a740d569d34a5953c43f64a2e7eaed0439a9ce3fc2aefb58fb4c512348be78"
+      },
+      {
+        "topic_id": "TOPIC-13-008",
+        "path": "knowledge/topics/TOPIC-13-008-complex-contracts-related-parties/standards-claims.json",
+        "sha256": "87b2afa6ad114b8979136ef05e00dc8a431986f1d764f8937a789b75c9bddb7a"
+      },
+      {
+        "topic_id": "TOPIC-13-008",
+        "path": "knowledge/topics/TOPIC-13-008-complex-contracts-related-parties/tests.md",
+        "sha256": "2b2e8fdf2f314e1f406718b969c7e50af8a62d6329fc6da0918bea3ea79acb69"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-08-006-UK-001",
+      "TOPIC-08-006-UK_GAAP-R003",
+      "TOPIC-13-008-UK-001",
+      "TOPIC-13-008-UK_GAAP-R005",
+      "TOPIC-13-008-UK_GAAP-R006"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}
