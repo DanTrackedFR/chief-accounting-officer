@@ -1,0 +1,509 @@
+{
+  "case_id": "synthetic-month-end-close",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "2026 effective compilation",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "functional_currency": "EUR",
+  "execution_date": "2027-01-05",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "25000",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete period end independent source"
+  },
+  "calendar": {
+    "working_dates": [
+      "2026-12-23",
+      "2026-12-24",
+      "2026-12-25",
+      "2026-12-28",
+      "2026-12-29",
+      "2026-12-30",
+      "2026-12-31"
+    ],
+    "timezone": "UTC",
+    "holiday_review": "Synthetic local operating calendar; no real holiday assertion"
+  },
+  "tasks": [
+    {
+      "id": "ap",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "predecessors": [],
+      "duration": "2",
+      "due_day": "2",
+      "complete": true,
+      "timezone": "UTC",
+      "unresolved_count": 0,
+      "actual_finish_day": "2",
+      "actual_start_day": "0"
+    },
+    {
+      "id": "aprec",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "predecessors": [
+        "ap"
+      ],
+      "duration": "2",
+      "due_day": "4",
+      "complete": true,
+      "timezone": "UTC",
+      "unresolved_count": 0,
+      "actual_finish_day": "4",
+      "actual_start_day": "2"
+    },
+    {
+      "id": "billing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "predecessors": [],
+      "duration": "4",
+      "due_day": "4",
+      "complete": true,
+      "timezone": "UTC",
+      "unresolved_count": 0,
+      "actual_finish_day": "4",
+      "actual_start_day": "0"
+    },
+    {
+      "id": "group",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "predecessors": [
+        "aprec",
+        "billing"
+      ],
+      "duration": "1",
+      "due_day": "5",
+      "complete": true,
+      "timezone": "UTC",
+      "unresolved_count": 0,
+      "actual_finish_day": "5",
+      "actual_start_day": "4"
+    },
+    {
+      "id": "statements",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "predecessors": [
+        "group"
+      ],
+      "duration": "1",
+      "due_day": "6",
+      "complete": true,
+      "timezone": "UTC",
+      "unresolved_count": 0,
+      "actual_finish_day": "6",
+      "actual_start_day": "5"
+    }
+  ],
+  "journals": [
+    {
+      "id": "J1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "class": "estimate",
+      "source_ids": [
+        "A1"
+      ],
+      "posting_date": "2026-12-31",
+      "posted_at": "2026-12-31",
+      "posting_id": "P1",
+      "lines": [
+        {
+          "side": "Dr",
+          "account": "expense",
+          "amount": "25000"
+        },
+        {
+          "side": "Cr",
+          "account": "accrued liabilities",
+          "amount": "25000"
+        }
+      ],
+      "rule_version": "v1",
+      "cutoff_supported": true,
+      "posted": true,
+      "reversal_plan": "January monitored invoice"
+    }
+  ],
+  "accruals": [
+    {
+      "id": "A1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "received": "75000",
+      "posted": "50000",
+      "opening_accrual": "0",
+      "recognition_supported": true,
+      "account": "expense",
+      "reversal_plan": "January monitored invoice",
+      "gl_adjustment": "25000"
+    }
+  ],
+  "close": {
+    "id": "lock",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "state": "locked",
+    "account_certifications_complete": true,
+    "exceptions": [],
+    "reopened": false,
+    "reopen_authorization": "",
+    "reclose_evidence": "",
+    "journal_population_reconciled": true,
+    "recognition_error_review": "No prior errors",
+    "recognition_errors_resolved": true
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-02-006-AASB-E01",
+      "TOPIC-02-007-AASB-E01",
+      "TOPIC-02-007-AASB-E02",
+      "TOPIC-02-008-AASB-E01",
+      "TOPIC-12-006-AASB-E004"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close/README.md",
+        "sha256": "1ef9dce9bdf0ba72370de50a2883cd386a805537aa1d69666527390b0a3691b0"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/README.md",
+        "sha256": "cea209386cca2744491348e38a67bbab43ec7ee38fa5930fdc0b8e2b7ad357d5"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/canonical-sources.md",
+        "sha256": "0866982d23e1d81803e82c78d11eaf407c3be527e386f59c0fdd7dcd6a05308e"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/factory.md",
+        "sha256": "95327fd63368a773c7e373040cf80e18ed7df016221afa31a5b531215cb7b975"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/methods/critical-path-model.md",
+        "sha256": "79954477768378035a0e1c605799e2b9626152e597b3a52ecad82d35da05617a"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/standards-claims.json",
+        "sha256": "750eb08e80a41bba0cbe21eecc5447a5deccb3c4c9e2bc8cbc4a6fa3e2ea8e2f"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-architecture/tests/phase-2d-worker-scenarios.md",
+        "sha256": "c52803e878d995c0e270e4326cf63febb9f0558134ab306ad6cdff1da6b8a5b6"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-design/README.md",
+        "sha256": "32d8e6edb3009d58a84a1d0bb1cad7e493b5aa0b74b8c267f9e2e94aef4c1a46"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-close-design/factory.md",
+        "sha256": "187a21826e890059935d6c2dbe07ab7e8d89421141c904bd7880d5fabc319dd3"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-month-end-close/README.md",
+        "sha256": "9cf4a644a622af1bb6930987e770524ccc7cdeb5d0129a9a3bad42a7868dc05e"
+      },
+      {
+        "topic_id": "TOPIC-02-001",
+        "path": "knowledge/topics/TOPIC-02-001-month-end-close/knowledge-pack.md",
+        "sha256": "967f81b6a64b00ef9ae0984276372bd5286cf48e5242e95fe7f06ba8a531d97d"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/README.md",
+        "sha256": "949d438dfd0c52b1bf60f5cb6f3d66673aad31db86e7f235e17f045c4159cdc5"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/factory.md",
+        "sha256": "c9e1b4ea0abf06835e3ae0e600118d85aeb8eddab801657b36473f15cabc3e30"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/knowledge-pack.md",
+        "sha256": "5723b57c92507381bef7bcc2b2cdfafa3024a17891943fe2a9b23107a5c4d107"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/methods/journal-decision-workpaper.md",
+        "sha256": "9dea2283d7e041febea242447103a46d4dc276ebfc0de8fe2167cbe0d76c10d3"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/standards-claims.json",
+        "sha256": "474e380c834f37170ff765459822a1ee66e31d5e6fb6ca0552d30fd9233723f2"
+      },
+      {
+        "topic_id": "TOPIC-02-002",
+        "path": "knowledge/topics/TOPIC-02-002-journal-governance/tests/phase-2d-worker-scenarios.md",
+        "sha256": "c872cdcd6ff5636abf643f9c1aab472f54b0a46d7e1006cc482d71b0fe514877"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/README.md",
+        "sha256": "0c274765dfb3e05182241bb6016a43f1c09c85a33c4047e036bcfb0c067f57c1"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/factory.md",
+        "sha256": "ecfd8558534c4f51395e6d489e0969684f685d3afabb163f5afc398cc03aef06"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/knowledge-pack.md",
+        "sha256": "0a5f176724eb0271a488c24ede4dfb52ec456821fe36782e60186bf52893248f"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/methods/automated-posting-contract.md",
+        "sha256": "ecc666fe11c73bd2309a1dc5134ddb5f569947a8318181d7b5e48ec71dee91b7"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/standards-claims.json",
+        "sha256": "622bb738b7238df396b7e39051c567a92b5f543163f76fb4c7d79d0ac3b6bf89"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-automated-journals-gl-integrity/tests/phase-2d-worker-scenarios.md",
+        "sha256": "fcc3a5256b0be63f1ed0785ee600d243625a10af178c6b85d277e290fc7db05c"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-recurring-journals-gl-integrity/README.md",
+        "sha256": "4870d37f1e86b7f25c7864f0759784045d7998a6d1ae789f3ed38865bfb7d630"
+      },
+      {
+        "topic_id": "TOPIC-02-003",
+        "path": "knowledge/topics/TOPIC-02-003-recurring-journals-gl-integrity/knowledge-pack.md",
+        "sha256": "d0abf3ee2416d892fab72d43bdc6b8cf3cf80472c2daeb57b083fa83750078e6"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/README.md",
+        "sha256": "d116c166b79bac0b687127effdbf70b27535a2d3cb0d20a3e6c52ab66f0a7287"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/canonical-sources.md",
+        "sha256": "fcf98a147708f996d9f63256cf9e9969dbd3d281817c3b70fed1678248839374"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/factory.md",
+        "sha256": "42a8b55ccd07d2bb9424fdaed3707bc102c9fe73ac1d6db63b41a357fcfe89bc"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/knowledge-pack.md",
+        "sha256": "468b8a05557cf4cbdffe020423b6c4da23ea3fa11d3e9cb60f203332b56ce360"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-clearing-cutoff/standards-claims.json",
+        "sha256": "6af1bb2c2310579d845b0ed8fb447fa98a33f5a2709f8a89eca7ea1feb49ca68"
+      },
+      {
+        "topic_id": "TOPIC-02-006",
+        "path": "knowledge/topics/TOPIC-02-006-suspense-cutoff/README.md",
+        "sha256": "ac7392de6539dcd7e1be01b968d2492c3bcccfde58931311e0a3a20a2c5055d6"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/README.md",
+        "sha256": "a0a153ff83501e1a6db55f3434e525712b0c363a5315f0dfd6ea51df323c83d4"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/canonical-sources.md",
+        "sha256": "e53567dca5c41f76817e01bfd617bcfcebeff5e348a2b488c26c8a4da3c59263"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/factory.md",
+        "sha256": "ee19995412ee35c874c451e0d5e78ec9a179aff7910968622966b12e5d2523ff"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepaids/standards-claims.json",
+        "sha256": "0a5b50fcf7b4b3cf1604eb4ea2ae22ee716eaa822b505623829437cb470ef402"
+      },
+      {
+        "topic_id": "TOPIC-02-007",
+        "path": "knowledge/topics/TOPIC-02-007-accruals-prepayments/README.md",
+        "sha256": "bfa9aa67a9fd186c5ced4b3f6377b997085c2f83a8cf51a594bf0ed42c9fc843"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-close-variance-post-close/README.md",
+        "sha256": "8c7f944e68eca4ecc92eea383059c19e79b2b2f4b9cc2c2df7b57898f9653f81"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/README.md",
+        "sha256": "0731f6205bd32448d1fe813645a7d71f9964f3a169e2122cb205c3f0578c2d5d"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/canonical-sources.md",
+        "sha256": "2c2ac856e2491ad2a523d094fc06622a9907c4dea632572b422d31ebce0620bd"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/factory.md",
+        "sha256": "cc981fe43f49d76b6da4d6ad88e5dde07a8e7b36a339a3aa83eba895deb5945f"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/standards-claims.json",
+        "sha256": "42e49d9f9b1654c35bfa95be916e6d6166c8b9e0222e8137c6dec484d888b8e4"
+      },
+      {
+        "topic_id": "TOPIC-02-010",
+        "path": "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/README.md",
+        "sha256": "09bff7243666fc0b2cb3087c91682b5741dffcf0cd15497097fc4fde5fe4365b"
+      },
+      {
+        "topic_id": "TOPIC-02-010",
+        "path": "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/factory.md",
+        "sha256": "d18db370bb058720d0d8aad55e9d4a2f36561622e69d204cb587397bd9202092"
+      },
+      {
+        "topic_id": "TOPIC-02-010",
+        "path": "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/methods/evidence-gate.md",
+        "sha256": "bd786483c0593c7b3f4aa1a3c1219aac921cf625ecf8c3d080092f3eed0ddcaa"
+      },
+      {
+        "topic_id": "TOPIC-02-010",
+        "path": "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/standards-claims.json",
+        "sha256": "5093877fea1819c59f7bc4412b281955f81e5a253fafd7acd8448dca2c504536"
+      },
+      {
+        "topic_id": "TOPIC-02-010",
+        "path": "knowledge/topics/TOPIC-02-010-close-evidence-fast-close/tests/phase-2d-worker-scenarios.md",
+        "sha256": "6fcd033e7f0167c6bae29574ea735a187ddf6e68bc9e51ecc30c7a7f4ba57d54"
+      },
+      {
+        "topic_id": "TOPIC-12-006",
+        "path": "knowledge/topics/TOPIC-12-006-journal-process-documentation/README.md",
+        "sha256": "d65b0c813d1a126a59d97f4f95a2a10a29ec0b1f4f098a7ea6d6a41c9bca69ac"
+      },
+      {
+        "topic_id": "TOPIC-12-006",
+        "path": "knowledge/topics/TOPIC-12-006-journal-process-documentation/methods/journal-operating-trace.md",
+        "sha256": "68660b46e1f1b7c6ec21749eb01cd345d9e90fa44d985f600b5890edef12405c"
+      },
+      {
+        "topic_id": "TOPIC-12-006",
+        "path": "knowledge/topics/TOPIC-12-006-journal-process-documentation/practice/journal-handoff.md",
+        "sha256": "f77f781ca865bf57583d42deffa9b2c44d060c64308dcc734dcf8aca30363057"
+      },
+      {
+        "topic_id": "TOPIC-12-006",
+        "path": "knowledge/topics/TOPIC-12-006-journal-process-documentation/standards-claims.json",
+        "sha256": "a169e6f66c9131e98d88b10467723961b854807d963c5fdbc5063d8514ca3853"
+      },
+      {
+        "topic_id": "TOPIC-12-006",
+        "path": "knowledge/topics/TOPIC-12-006-journal-process-documentation/tests/phase-2d-worker-scenarios.md",
+        "sha256": "a14b835b468be0861f8e0a3141d7535426043e3c2f3d103037afec7dcf6d5145"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-02-006-AASB-E01",
+      "TOPIC-02-007-AASB-E01",
+      "TOPIC-02-007-AASB-E02",
+      "TOPIC-02-008-AASB-E01",
+      "TOPIC-12-006-AASB-E004"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

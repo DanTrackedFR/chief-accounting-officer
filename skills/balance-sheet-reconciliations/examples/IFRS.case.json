@@ -1,0 +1,253 @@
+{
+  "case_id": "synthetic-balance-sheet-reconciliations",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "functional_currency": "EUR",
+  "execution_date": "2027-01-05",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 2,
+    "population_amount": "260000",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete period end independent source"
+  },
+  "trial_balance": [
+    {
+      "id": "prepaid",
+      "balance": "130000",
+      "category": "balance_sheet"
+    },
+    {
+      "id": "equity",
+      "balance": "-130000",
+      "category": "balance_sheet"
+    },
+    {
+      "id": "expense",
+      "balance": "0",
+      "category": "profit_loss"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "prepaid"
+    },
+    {
+      "id": "equity"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "prepaid",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "100000",
+      "additions": "40000",
+      "reductions": "15000",
+      "source_closing": "125000",
+      "gl_closing": "130000",
+      "source_ids": [
+        "S1"
+      ],
+      "gl_ids": [
+        "S1"
+      ],
+      "items": [],
+      "adjustments": [
+        {
+          "id": "fix",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "amount": "-5000",
+          "offset": "expense",
+          "error_vs_estimate_memo": "Supported duplicated asset correction",
+          "posted": true,
+          "source_id": "S1"
+        }
+      ],
+      "threshold": "100",
+      "relative_threshold": "0.01",
+      "max_age_days": 30,
+      "risk_tier": "high",
+      "movement_memo": "Approved additions/consumption"
+    },
+    {
+      "id": "equity",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "-130000",
+      "additions": "0",
+      "reductions": "0",
+      "source_closing": "-130000",
+      "gl_closing": "-130000",
+      "source_ids": [
+        "EQ"
+      ],
+      "gl_ids": [
+        "EQ"
+      ],
+      "items": [],
+      "adjustments": [],
+      "threshold": "100",
+      "relative_threshold": "0.01",
+      "max_age_days": 30,
+      "risk_tier": "high",
+      "movement_memo": "Supported opening equity"
+    }
+  ],
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-02-008-IFRS-E01"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/README.md",
+        "sha256": "e8d5ada53ae2b1d079e92a6cbc4569d2bda6bab0093c95e5219474b96cbaa655"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/canonical-sources.md",
+        "sha256": "24374701f61c5cc8911fd2138bec31acdd8f30dd2207b550a697daba564c4b47"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/factory.md",
+        "sha256": "55b367e9402b4f1a85d515de6809e04572514cc6bd4d17c3b923a542264cf5f9"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/knowledge-pack.md",
+        "sha256": "ad4ca280cf1cc01f3a8e8696532bff603897ccc54a1b95e45dea925e24c755bc"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/methods/reconciliation-proof.md",
+        "sha256": "564a9a3a91782e175a89d39c64504f0166b2c4a4cfceceb4858ef328ca37b46f"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/standards-claims.json",
+        "sha256": "a33e6205faaa09cb90adccfbd07f2c1e6c4a242cbca001ee418def4eb887acd3"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-tb-balance-sheet-reconciliations/tests/phase-2d-worker-scenarios.md",
+        "sha256": "576be9269769533f2cc2f0a5db9ae6cc0aa4eb13ff1c0d665949568aafcbdd0f"
+      },
+      {
+        "topic_id": "TOPIC-02-004",
+        "path": "knowledge/topics/TOPIC-02-004-trial-balance-reconciliations/knowledge-pack.md",
+        "sha256": "91a7876ec5f1bd4c6c6ce58d6435c1c454363abcf85294353fd1035c52c01ec6"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/README.md",
+        "sha256": "d736bacff3147ec5cbbe7da6001e0c70c213d0559352b583aae7d204c63c18ab"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/factory.md",
+        "sha256": "20e6310123fd94ebd467f4a8070d63284f83724cb527e01773816848cc5b4061"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/knowledge-pack.md",
+        "sha256": "ae78cf099c902d0d7bd3c9de602494ae9765e76339cb31f6494e3931a1ec4cef"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/methods/certification-risk-model.md",
+        "sha256": "2acd86957f2f44402747e0159417b74c8180b1d39e80a60fc5f67dbe03926586"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/standards-claims.json",
+        "sha256": "b6150702f8f9458ee3b04c9a2cc6e7bdf309507b9cfd072337f945c5afb5aebc"
+      },
+      {
+        "topic_id": "TOPIC-02-005",
+        "path": "knowledge/topics/TOPIC-02-005-reconciliation-governance-certification/tests/phase-2d-worker-scenarios.md",
+        "sha256": "d335d93962b7f69f4a6d7f02c41fef1f853f40018a5f8dafbfd2cd7c59b260ff"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-close-variance-post-close/README.md",
+        "sha256": "8c7f944e68eca4ecc92eea383059c19e79b2b2f4b9cc2c2df7b57898f9653f81"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/README.md",
+        "sha256": "0731f6205bd32448d1fe813645a7d71f9964f3a169e2122cb205c3f0578c2d5d"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/canonical-sources.md",
+        "sha256": "2c2ac856e2491ad2a523d094fc06622a9907c4dea632572b422d31ebce0620bd"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/factory.md",
+        "sha256": "cc981fe43f49d76b6da4d6ad88e5dde07a8e7b36a339a3aa83eba895deb5945f"
+      },
+      {
+        "topic_id": "TOPIC-02-008",
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/standards-claims.json",
+        "sha256": "42e49d9f9b1654c35bfa95be916e6d6166c8b9e0222e8137c6dec484d888b8e4"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-02-008-IFRS-E01"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

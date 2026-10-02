@@ -12,6 +12,15 @@ from production import assess_case,to_public,case_fingerprint,canonical_knowledg
 from core_accounting import balance
 
 class OperationalTests(unittest.TestCase):
+    def test_saved_public_CLI_examples(self):
+        root=Path(__file__).resolve().parents[2]
+        for p in PACKAGES:
+            for fw in ['IFRS','US_GAAP','UK_GAAP','AASB']:
+                folder=root/'skills'/p/'examples';case=folder/(fw+'.case.json')
+                proc=subprocess.run([sys.executable,str(root/'skills/run_skill.py'),p,str(case),'--route','export'],capture_output=True,text=True,check=True)
+                self.assertEqual(json.loads(proc.stdout),json.loads((folder/(fw+'.public.json')).read_text()))
+                self.assertNotIn('reviewer_signoff',json.loads(case.read_text()))
+
     def check(self,p,c):
         r=assess_case(p,certify(p,c));self.assertEqual(r['status'],'complete',r['conclusion'])
         for j in r['journal_entry_implications']:balance(j)

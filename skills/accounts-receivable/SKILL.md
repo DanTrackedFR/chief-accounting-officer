@@ -1,8 +1,8 @@
 ---
 id: SKILL-AR-001
 name: Accounts Receivable & Collections
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "03"
 related_domains: ["02", "03", "04", "05", "07", "08", "09", "12"]
 description: Governed accounts receivable & collections with independently substantiated accounting inputs.
@@ -13,7 +13,7 @@ applicable_frameworks: [IFRS, US_GAAP, UK_GAAP, AASB]
 jurisdiction_sensitivity: HIGH
 industry_sensitivity: MEDIUM
 context_requirements:
-  required: [case_id, entity, entity_type, jurisdiction, framework, period_start, reporting_period, policy_elections, applicability_review, evidence, judgment_memo, controls, knowledge_review]
+  required: [case_id, entity, entity_type, jurisdiction, framework, period_start, reporting_period, execution_date, policy_elections, applicability_review, evidence, judgment_memo, controls, knowledge_review]
   retrieve_if_available: [comparatives, materiality, GL_mapping, prior_exceptions, source_extracts]
 inputs: [invoices, receipts, credits, opening_customers, closing_customers, gl_ar, collections, handoffs]
 outputs: [skill_result, calculations, journals, reconciliations, judgments, controls, disclosures, specialist_handoff]
