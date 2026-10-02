@@ -1,11 +1,12 @@
 {
-  "namespace": "SUPPLEMENTAL_TAX_PROPOSED",
-  "status": "UNAPPROVED",
+  "namespace": "SUPPLEMENTAL_TAX",
+  "status": "INDEPENDENT_REVIEW_PENDING",
+  "governance": "PR #15 integration-owner architecture approval; claim approval separate",
   "claims": [
     {
       "claim_id": "TAX-IFRS-001",
       "framework": "IFRS",
-      "proposition": "IAS 12 / IFRIC 23: recognition and measurement. current tax uses enacted or substantively enacted rates; deferred tax applies temporary differences and recognition exceptions; DTA recovery is probability-gated. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "IAS 12 and IFRIC 23 — current-tax: Current tax payable or receivable is measured using applicable tax law and reporting-date rates; reconcile tax return, installments and prior-year true-ups. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -16,15 +17,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of IAS 12; IFRIC 23 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-IFRS-route-1"
+        "tax_current_tax_ifrs"
       ],
       "reviewer": null,
       "review_date": null,
@@ -35,7 +36,7 @@
     {
       "claim_id": "TAX-IFRS-002",
       "framework": "IFRS",
-      "proposition": "IAS 12 / IFRIC 23: recoverability and uncertainty. current tax uses enacted or substantively enacted rates; deferred tax applies temporary differences and recognition exceptions; DTA recovery is probability-gated. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "IAS 12 and IFRIC 23 — tax-base: Establish asset and liability tax bases independently of accounting carrying amounts before computing differences. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -46,15 +47,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of IAS 12; IFRIC 23 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-IFRS-route-2"
+        "tax_tax_base_ifrs"
       ],
       "reviewer": null,
       "review_date": null,
@@ -65,7 +66,7 @@
     {
       "claim_id": "TAX-IFRS-003",
       "framework": "IFRS",
-      "proposition": "IAS 12 / IFRIC 23: business combinations, share-based payments and outside-basis differences. current tax uses enacted or substantively enacted rates; deferred tax applies temporary differences and recognition exceptions; DTA recovery is probability-gated. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "IAS 12 and IFRIC 23 — temporary-difference: Classify taxable and deductible differences and assess the relevant recognition exceptions. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -76,15 +77,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of IAS 12; IFRIC 23 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-IFRS-route-3"
+        "tax_temporary_difference_ifrs"
       ],
       "reviewer": null,
       "review_date": null,
@@ -95,7 +96,7 @@
     {
       "claim_id": "TAX-IFRS-004",
       "framework": "IFRS",
-      "proposition": "IAS 12 / IFRIC 23: allocation, rate changes, disclosures and transitions. current tax uses enacted or substantively enacted rates; deferred tax applies temporary differences and recognition exceptions; DTA recovery is probability-gated. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "IAS 12 and IFRIC 23 — losses-and-credits: Evaluate loss and credit carryforwards, restrictions, expiry and available taxable profit. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -106,15 +107,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of IAS 12; IFRIC 23 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-IFRS-route-4"
+        "tax_losses_and_credits_ifrs"
       ],
       "reviewer": null,
       "review_date": null,
@@ -123,9 +124,369 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-US-001",
+      "claim_id": "TAX-IFRS-005",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — recoverability: Reassess recoverability each reporting date using supportable positive and negative evidence. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_recoverability_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-006",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — uncertain-position: Apply the framework-specific recognition and measurement route to uncertain income tax treatments. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_uncertain_position_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-007",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — rate-change: Use the applicable enacted or substantively enacted rate rule and the expected reversal period. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_rate_change_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-008",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — business-combination: Evaluate acquisition-date tax bases, recognition exceptions and goodwill interactions separately. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_business_combination_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-009",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — share-based: Determine tax deductions and accounting allocation for share-based awards using the applicable framework. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_share_based_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-010",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — outside-basis: Assess investment and subsidiary outside-basis differences using the framework-specific reversal and control exceptions. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_outside_basis_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-011",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — origin-allocation: Allocate tax consequences between profit or loss, OCI, equity and business combination consistently with applicable requirements. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_origin_allocation_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-012",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — effective-rate: Reconcile statutory benchmark to reported income tax expense and explain material reconciling items. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_effective_rate_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-013",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — disclosures: Populate current/deferred tax balances, movements, unrecognized attributes, uncertainties and entity-specific disclosures. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_disclosures_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-014",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — transitions: Check effective dates, adopted editions, transition and reporting-tier or registrant overlays. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_transitions_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-015",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — offset: Offset current or deferred balances only after applicable legal-right, tax-authority and entity tests. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_offset_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-IFRS-016",
+      "framework": "IFRS",
+      "proposition": "IAS 12 and IFRIC 23 — deferred-measurement: Measure recognized deferred taxes at applicable rates and do not apply unsupported discounting. Framework gate: IFRS enacted or substantively enacted rate; probable DTA recovery; IFRIC 23 uncertainty; IAS 12 exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_deferred_measurement_ifrs"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-001",
       "framework": "US_GAAP",
-      "proposition": "ASC 740: recognition and measurement. current/deferred tax uses enacted law; deferred tax assets require valuation allowance review; uncertain positions have distinct recognition and measurement tests. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "ASC 740 — current-tax: Current tax payable or receivable is measured using applicable tax law and reporting-date rates; reconcile tax return, installments and prior-year true-ups. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -136,15 +497,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of ASC 740 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-US-route-1"
+        "tax_current_tax_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -153,9 +514,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-US-002",
+      "claim_id": "TAX-US_GAAP-002",
       "framework": "US_GAAP",
-      "proposition": "ASC 740: recoverability and uncertainty. current/deferred tax uses enacted law; deferred tax assets require valuation allowance review; uncertain positions have distinct recognition and measurement tests. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "ASC 740 — tax-base: Establish asset and liability tax bases independently of accounting carrying amounts before computing differences. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -166,15 +527,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of ASC 740 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-US-route-2"
+        "tax_tax_base_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -183,9 +544,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-US-003",
+      "claim_id": "TAX-US_GAAP-003",
       "framework": "US_GAAP",
-      "proposition": "ASC 740: business combinations, share-based payments and outside-basis differences. current/deferred tax uses enacted law; deferred tax assets require valuation allowance review; uncertain positions have distinct recognition and measurement tests. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "ASC 740 — temporary-difference: Classify taxable and deductible differences and assess the relevant recognition exceptions. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -196,15 +557,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of ASC 740 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-US-route-3"
+        "tax_temporary_difference_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -213,9 +574,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-US-004",
+      "claim_id": "TAX-US_GAAP-004",
       "framework": "US_GAAP",
-      "proposition": "ASC 740: allocation, rate changes, disclosures and transitions. current/deferred tax uses enacted law; deferred tax assets require valuation allowance review; uncertain positions have distinct recognition and measurement tests. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "ASC 740 — losses-and-credits: Evaluate loss and credit carryforwards, restrictions, expiry and available taxable profit. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -226,15 +587,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of ASC 740 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-US-route-4"
+        "tax_losses_and_credits_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -243,9 +604,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-UK-001",
-      "framework": "UK_GAAP",
-      "proposition": "FRS 102 Section 29: recognition and measurement. operative-edition timing-difference-plus model, recovery assessment and allocation must be evaluated independently of IAS 12. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "claim_id": "TAX-US_GAAP-005",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — recoverability: Reassess recoverability each reporting date using supportable positive and negative evidence. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -256,15 +617,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of FRS 102 Section 29 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-UK-route-1"
+        "tax_recoverability_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -273,9 +634,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-UK-002",
-      "framework": "UK_GAAP",
-      "proposition": "FRS 102 Section 29: recoverability and uncertainty. operative-edition timing-difference-plus model, recovery assessment and allocation must be evaluated independently of IAS 12. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "claim_id": "TAX-US_GAAP-006",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — uncertain-position: Apply the framework-specific recognition and measurement route to uncertain income tax treatments. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -286,15 +647,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of FRS 102 Section 29 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-UK-route-2"
+        "tax_uncertain_position_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -303,9 +664,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-UK-003",
-      "framework": "UK_GAAP",
-      "proposition": "FRS 102 Section 29: business combinations, share-based payments and outside-basis differences. operative-edition timing-difference-plus model, recovery assessment and allocation must be evaluated independently of IAS 12. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "claim_id": "TAX-US_GAAP-007",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — rate-change: Use the applicable enacted or substantively enacted rate rule and the expected reversal period. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -316,15 +677,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of FRS 102 Section 29 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-UK-route-3"
+        "tax_rate_change_us_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -333,9 +694,9 @@
       "approval_review": null
     },
     {
-      "claim_id": "TAX-UK-004",
-      "framework": "UK_GAAP",
-      "proposition": "FRS 102 Section 29: allocation, rate changes, disclosures and transitions. operative-edition timing-difference-plus model, recovery assessment and allocation must be evaluated independently of IAS 12. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "claim_id": "TAX-US_GAAP-008",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — business-combination: Evaluate acquisition-date tax bases, recognition exceptions and goodwill interactions separately. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -346,15 +707,735 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of FRS 102 Section 29 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-UK-route-4"
+        "tax_business_combination_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-009",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — share-based: Determine tax deductions and accounting allocation for share-based awards using the applicable framework. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_share_based_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-010",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — outside-basis: Assess investment and subsidiary outside-basis differences using the framework-specific reversal and control exceptions. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_outside_basis_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-011",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — origin-allocation: Allocate tax consequences between profit or loss, OCI, equity and business combination consistently with applicable requirements. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_origin_allocation_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-012",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — effective-rate: Reconcile statutory benchmark to reported income tax expense and explain material reconciling items. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_effective_rate_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-013",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — disclosures: Populate current/deferred tax balances, movements, unrecognized attributes, uncertainties and entity-specific disclosures. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_disclosures_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-014",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — transitions: Check effective dates, adopted editions, transition and reporting-tier or registrant overlays. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_transitions_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-015",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — offset: Offset current or deferred balances only after applicable legal-right, tax-authority and entity tests. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_offset_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-US_GAAP-016",
+      "framework": "US_GAAP",
+      "proposition": "ASC 740 — deferred-measurement: Measure recognized deferred taxes at applicable rates and do not apply unsupported discounting. Framework gate: US enacted rate; gross DTA and valuation allowance; two-step uncertain position; US exceptions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_deferred_measurement_us_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-001",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — current-tax: Current tax payable or receivable is measured using applicable tax law and reporting-date rates; reconcile tax return, installments and prior-year true-ups. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_current_tax_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-002",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — tax-base: Establish asset and liability tax bases independently of accounting carrying amounts before computing differences. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_tax_base_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-003",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — temporary-difference: Classify taxable and deductible differences and assess the relevant recognition exceptions. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_temporary_difference_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-004",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — losses-and-credits: Evaluate loss and credit carryforwards, restrictions, expiry and available taxable profit. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_losses_and_credits_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-005",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — recoverability: Reassess recoverability each reporting date using supportable positive and negative evidence. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_recoverability_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-006",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — uncertain-position: Apply the framework-specific recognition and measurement route to uncertain income tax treatments. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_uncertain_position_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-007",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — rate-change: Use the applicable enacted or substantively enacted rate rule and the expected reversal period. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_rate_change_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-008",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — business-combination: Evaluate acquisition-date tax bases, recognition exceptions and goodwill interactions separately. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_business_combination_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-009",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — share-based: Determine tax deductions and accounting allocation for share-based awards using the applicable framework. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_share_based_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-010",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — outside-basis: Assess investment and subsidiary outside-basis differences using the framework-specific reversal and control exceptions. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_outside_basis_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-011",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — origin-allocation: Allocate tax consequences between profit or loss, OCI, equity and business combination consistently with applicable requirements. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_origin_allocation_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-012",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — effective-rate: Reconcile statutory benchmark to reported income tax expense and explain material reconciling items. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_effective_rate_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-013",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — disclosures: Populate current/deferred tax balances, movements, unrecognized attributes, uncertainties and entity-specific disclosures. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_disclosures_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-014",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — transitions: Check effective dates, adopted editions, transition and reporting-tier or registrant overlays. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_transitions_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-015",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — offset: Offset current or deferred balances only after applicable legal-right, tax-authority and entity tests. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_offset_uk_gaap"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-UK_GAAP-016",
+      "framework": "UK_GAAP",
+      "proposition": "FRS 102 Section 29 — deferred-measurement: Measure recognized deferred taxes at applicable rates and do not apply unsupported discounting. Framework gate: UK operative edition and timing-difference-plus model; applicable recovery and uncertainty provisions. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_deferred_measurement_uk_gaap"
       ],
       "reviewer": null,
       "review_date": null,
@@ -365,7 +1446,7 @@
     {
       "claim_id": "TAX-AASB-001",
       "framework": "AASB",
-      "proposition": "AASB 112: recognition and measurement. current/deferred tax and temporary differences require operative Australian compilation, entity tier and jurisdictional overlays. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "AASB 112 and applicable interpretations — current-tax: Current tax payable or receivable is measured using applicable tax law and reporting-date rates; reconcile tax return, installments and prior-year true-ups. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -376,15 +1457,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of AASB 112 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-AASB-route-1"
+        "tax_current_tax_aasb"
       ],
       "reviewer": null,
       "review_date": null,
@@ -395,7 +1476,7 @@
     {
       "claim_id": "TAX-AASB-002",
       "framework": "AASB",
-      "proposition": "AASB 112: recoverability and uncertainty. current/deferred tax and temporary differences require operative Australian compilation, entity tier and jurisdictional overlays. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "AASB 112 and applicable interpretations — tax-base: Establish asset and liability tax bases independently of accounting carrying amounts before computing differences. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -406,15 +1487,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of AASB 112 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-AASB-route-2"
+        "tax_tax_base_aasb"
       ],
       "reviewer": null,
       "review_date": null,
@@ -425,7 +1506,7 @@
     {
       "claim_id": "TAX-AASB-003",
       "framework": "AASB",
-      "proposition": "AASB 112: business combinations, share-based payments and outside-basis differences. current/deferred tax and temporary differences require operative Australian compilation, entity tier and jurisdictional overlays. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "AASB 112 and applicable interpretations — temporary-difference: Classify taxable and deductible differences and assess the relevant recognition exceptions. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -436,15 +1517,15 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of AASB 112 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-AASB-route-3"
+        "tax_temporary_difference_aasb"
       ],
       "reviewer": null,
       "review_date": null,
@@ -455,7 +1536,7 @@
     {
       "claim_id": "TAX-AASB-004",
       "framework": "AASB",
-      "proposition": "AASB 112: allocation, rate changes, disclosures and transitions. current/deferred tax and temporary differences require operative Australian compilation, entity tier and jurisdictional overlays. Apply the actual reporting period, entity scope and transaction-specific exceptions; require independent accounting and legal evidence.",
+      "proposition": "AASB 112 and applicable interpretations — losses-and-credits: Evaluate loss and credit carryforwards, restrictions, expiry and available taxable profit. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
       "paragraph_references": [],
       "reference_confidence": "UNKNOWN",
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -466,15 +1547,375 @@
           "inspected": false
         }
       ],
-      "effective_period": "To be confirmed against operative edition for each reporting period",
-      "entity_scope": "Entity/jurisdiction-specific; no blanket application",
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
       "audit_required": true,
       "limitations": [
-        "No operative paragraph of AASB 112 independently verified for this claim",
-        "Material subclaims must be atomized and independently challenged before approval"
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
       ],
       "tests": [
-        "TAX-AASB-route-4"
+        "tax_losses_and_credits_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-005",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — recoverability: Reassess recoverability each reporting date using supportable positive and negative evidence. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_recoverability_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-006",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — uncertain-position: Apply the framework-specific recognition and measurement route to uncertain income tax treatments. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_uncertain_position_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-007",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — rate-change: Use the applicable enacted or substantively enacted rate rule and the expected reversal period. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_rate_change_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-008",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — business-combination: Evaluate acquisition-date tax bases, recognition exceptions and goodwill interactions separately. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_business_combination_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-009",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — share-based: Determine tax deductions and accounting allocation for share-based awards using the applicable framework. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_share_based_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-010",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — outside-basis: Assess investment and subsidiary outside-basis differences using the framework-specific reversal and control exceptions. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_outside_basis_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-011",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — origin-allocation: Allocate tax consequences between profit or loss, OCI, equity and business combination consistently with applicable requirements. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_origin_allocation_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-012",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — effective-rate: Reconcile statutory benchmark to reported income tax expense and explain material reconciling items. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_effective_rate_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-013",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — disclosures: Populate current/deferred tax balances, movements, unrecognized attributes, uncertainties and entity-specific disclosures. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_disclosures_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-014",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — transitions: Check effective dates, adopted editions, transition and reporting-tier or registrant overlays. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_transitions_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-015",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — offset: Offset current or deferred balances only after applicable legal-right, tax-authority and entity tests. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_offset_aasb"
+      ],
+      "reviewer": null,
+      "review_date": null,
+      "source_note": "Source: ChatGPT training data",
+      "approval_track": "PENDING",
+      "approval_review": null
+    },
+    {
+      "claim_id": "TAX-AASB-016",
+      "framework": "AASB",
+      "proposition": "AASB 112 and applicable interpretations — deferred-measurement: Measure recognized deferred taxes at applicable rates and do not apply unsupported discounting. Framework gate: Australian compilation and tier; enacted or substantively enacted rate; AASB recovery and uncertainty. This is a separate reviewable proposition; transaction-specific exceptions require documented assessment.",
+      "paragraph_references": [],
+      "reference_confidence": "UNKNOWN",
+      "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+      "sources": [
+        {
+          "source_kind": "MODEL_KNOWLEDGE",
+          "title": "ChatGPT training data",
+          "inspected": false
+        }
+      ],
+      "effective_period": "Operative edition, amendments and reporting-period applicability require independent confirmation",
+      "entity_scope": "Subject to tax jurisdiction, entity type and reporting tier",
+      "audit_required": true,
+      "limitations": [
+        "Training-data-derived: not checked against operative standard text",
+        "Requires independent technical review and exact provision assessment"
+      ],
+      "tests": [
+        "tax_deferred_measurement_aasb"
       ],
       "reviewer": null,
       "review_date": null,
