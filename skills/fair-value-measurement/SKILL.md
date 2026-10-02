@@ -33,7 +33,7 @@ completion_criteria: [approved_scope_and_period, full_source_population, current
 
 Underlying-standard unit/basis and market evidence, Level1 quoted quantity × supplied price; qualified Level2/3 valuation inputs, lowest significant input hierarchy, transfer controls, recurring/nonrecurring populations and all-offset underlying journals/GL bridges.
 
-No invented market data/model/rate. Actual complex valuations require qualified independent evidence. UK pre2026 operative-method route blocks. Transaction costs excluded; transport only via qualified adjusted exit price, not a Level1 adjustment. Recognition owner retains journals.
+No invented market data/model/rate. Actual complex valuations require qualified independent evidence. UK pre2026 operative-method route blocks. Transaction costs excluded. The executable integration adapter supports completed Financial Instruments equity results with controlled exact journal mapping; non-equity/liability, disposal/FX/transport requires a separate qualified adapter. Recognition owner determines P&L/OCI; each underlying result is used exactly once.
 
 Production promotion requires independent accounting QA, not calculator success.
 

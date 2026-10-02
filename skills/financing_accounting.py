@@ -1,9 +1,18 @@
 """Evidence-dependent methods reuse the established execution/control boundary."""
 from reporting_accounting import *
 from datetime import date
+import json
+
+def same_result(a,b):
+    # The existing public/CLI serializer represents Decimal amounts as strings.
+    # Canonical JSON comparison preserves exact completed-result bytes/keys and
+    # boolean types while permitting their documented JSON round trip.
+    return json.dumps(a,sort_keys=True,default=str)==json.dumps(b,sort_keys=True,default=str)
 
 def begin(c,key):
     common(c,key,'accounting_policy','gl','imports')
+    texts(c,'preparer','entity','jurisdiction','case_id')
+    if iso(c['reporting_period']).year>=9999:raise ReviewRequired('Unsupported date arithmetic range')
     policy(c,c['accounting_policy'])
     if c['entity_type']!='for_profit' or c['applicability_review']['exceptions']:
         raise ReviewRequired('Unresolved entity/period overlay requires specialist method')
@@ -35,7 +44,7 @@ def imports(c,allowed):
         if source.get('entity')!=c['entity'] or source.get('framework')!=c['framework'] or source.get('period_start')!=c['period_start'] or source.get('reporting_period')!=c['reporting_period']:
             raise ReviewRequired('Imported entity/framework/period mismatch')
         fresh=execute(r['package'],source)
-        if fresh['status']!='complete' or supplied!=fresh or supplied.get('case_fingerprint')!=case_fingerprint(source):
+        if fresh['status']!='complete' or not same_result(supplied,fresh) or supplied.get('case_fingerprint')!=case_fingerprint(source):
             raise ReviewRequired('Imported result must be current, complete and unaltered')
         key=(r['package'],source['case_id'])
         if key in seen:raise ReviewRequired('Duplicate imported accounting conclusion')
@@ -66,6 +75,14 @@ def stocks(c,values):
             if opening or closing:raise ReviewRequired('Opening/closing source stock account omitted')
             continue
         agree(by[account]['opening'],opening,'Source opening stock/GL');agree(by[account]['closing'],closing,'Source closing stock/GL')
+
+def year_fraction(start,end):
+    if max(start.year,end.year)>=9999:raise ReviewRequired('Unsupported date arithmetic range')
+    value=ZERO
+    for year in range(start.year,end.year+1):
+        lo=max(start,date(year,1,1));hi=min(end,date(year,12,31))
+        if hi>=lo:value+=Decimal((hi-lo).days+1)/Decimal((date(year+1,1,1)-date(year,1,1)).days)
+    return value
 
 def complete(c,title,calcs,entries,judgments):
     ledger(c,entries)

@@ -167,7 +167,7 @@ class FinancingControls(unittest.TestCase):
     def test_debt_current_maturity_QA(self):
         for f in FRAMEWORKS:
             c=case('debt-financing',f);r=c['debt'][0];r['maturities'][0]['date']='2027-06-30';self.assertEqual(assess_case('debt-financing',ready('debt-financing',f,c))['status'],'blocked')
-            r.update(current_carrying='1008.40',noncurrent_carrying='0');self.assertEqual(assess_case('debt-financing',ready('debt-financing',f,c))['status'],'complete')
+            r.update(current_carrying='1008.40',noncurrent_carrying='0');r['maturities'][0]['date']='2027-12-31';v=r['yield_validation'];v['cashflows']=v['cashflows'][:1]+[dict(v['cashflows'][-1],date='2027-12-31',amount='1089.072')];v['flow_inventory']=['coupon1','redemption'];self.assertEqual(assess_case('debt-financing',ready('debt-financing',f,c))['status'],'complete')
     def test_intangible_zero_amortization_QA(self):
         c=case('intangible-assets');c['assets'][0].update(period_fraction='0',expected_amortization='0',gl_accumulated='0')
         for r in c['gl']:
@@ -227,5 +227,190 @@ class FinancingControls(unittest.TestCase):
             self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'complete')
             c['imports'][0]['mode']='post_journals';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
             c['imports'][0]['mode']='evidence_only';dupe=copy.deepcopy(c['imports'][0]);dupe['id']='sbc_duplicate';c['imports'].append(dupe);self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+
+    def test_fv_duplicate_underlying_result(self):
+        c=case('fair-value-measurement');r=copy.deepcopy(c['measurements'][0]);r['id']='duplicate';c['measurements'].append(r);c['source_inventory'].append('duplicate');c['controls'].update(population_count=2,population_amount='240');self.assertEqual(assess_case('fair-value-measurement',ready('fair-value-measurement',c=c))['status'],'blocked')
+    def test_payroll_bonus_current_vs_cumulative(self):
+        for f in FRAMEWORKS:
+            c=case('employee-benefits-payroll',f);r=c['benefits'][0];r.update(kind='bonus',units='600',rate='.1',employer_rate='0',measurement_basis='cumulative_entitlement',prior_service_expense='30',opening='30',payment='0',withholding='0',expected_charge='30',gl_closing='60');c.update(cash_total='0',register_expense='30',register_closing='60',register_withholding='0');c['controls']['population_amount']='30'
+            c['gl']=[dict(x,opening='-30' if x['id']=='Employee benefit payable' else '0',closing='-60' if x['id']=='Employee benefit payable' else '30' if x['id']=='Employee benefit expense' else '0',statement='-60' if x['id']=='Employee benefit payable' else '30' if x['id']=='Employee benefit expense' else '0') for x in c['gl']]
+            self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'complete')
+            r['expected_charge']='60';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+    def test_payroll_other_supported_benefits(self):
+        for f in FRAMEWORKS:
+            for kind in ['bonus','commission','leave','defined_contribution','employer_tax']:
+                c=case('employee-benefits-payroll',f);r=c['benefits'][0];r['kind']=kind
+                if kind=='leave':r['accumulating']=True
+                if kind in ['defined_contribution','employer_tax']:
+                    r.update(units='54',payment_service_units='54',employer_rate='0')
+                self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'complete')
+    def test_payroll_termination_framework_routes(self):
+        from reporting_cases import pol
+        from operational_cases import handoffs
+        for f in FRAMEWORKS:
+            c=case('employee-benefits-payroll',f);r=c['benefits'][0];r['kind']='termination';r['termination_review']=pol(c,'termination',withdrawal_memo='Actual signed inability-to-withdraw evidence',future_service_memo='No service retention condition',framework_trigger_memo='Independently verified actual framework event',recognition_date='2026-12-01',future_service_required=False,cannot_withdraw=True,linked_restructuring_recognized=False,handoff='termination')
+            if f in ['US_GAAP','UK_GAAP']:
+                c['handoffs']=handoffs(c,{'termination':'Termination benefit accounting'});c['handoffs']['termination']['amount']='10800'
+            self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'complete')
+            r['termination_review']['future_service_required']=True;self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+    def test_payroll_long_term_settlement(self):
+        c=case('employee-benefits-payroll');c['benefits'][0]['settlement_date']='2028-01-01';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',c=c))['status'],'blocked')
+    def test_tax_us_allowance_vs_probable_asset(self):
+        for f in FRAMEWORKS:
+            c=case('income-taxes',f);r=c['jurisdictions'][0];d=r['differences'][1];d['recoverable_tax_amount']='30';d['expected_gross']='50' if f=='US_GAAP' else '30';d['expected_allowance']='20' if f=='US_GAAP' else '0';r['closing_dta']=d['expected_gross'];r['closing_allowance']=d['expected_allowance'];r['etr_adjustments'][0]['amount']='45';c['statement_tax_expense']='295'
+            for g in c['gl']:
+                if g['id']=='Deferred tax asset':g.update(closing=d['expected_gross'],statement=d['expected_gross'])
+                if g['id']=='Deferred tax expense':g.update(closing='45',statement='45')
+            if f=='US_GAAP':
+                from operational_cases import approved
+                c['gl'].append(approved('Deferred tax valuation allowance',opening='0',closing='-20',statement='-20'));c['gl_inventory'].append('Deferred tax valuation allowance')
+            result=assess_case('income-taxes',ready('income-taxes',f,c));self.assertEqual(result['status'],'complete');self.assertEqual(result['calculations']['jurisdictions'][0]['dta_net'],Decimal('30'))
+    def test_tax_rate_change_is_movement(self):
+        from operational_cases import approved
+        for f in FRAMEWORKS:
+            c=case('income-taxes',f);r=c['jurisdictions'][0];d=r['differences'][0];d.update(opening_gross='75',reversal_rate='.30',expected_gross='90');r.update(closing_dtl='90');r['etr_adjustments'][0]['amount']='-35';c['statement_tax_expense']='215'
+            for g in c['gl']:
+                if g['id']=='Deferred tax liability':g.update(opening='-75',closing='-90',statement='-90')
+                if g['id']=='Deferred tax expense':g.update(closing='-35',statement='-35')
+            self.assertEqual(assess_case('income-taxes',ready('income-taxes',f,c))['status'],'complete')
+    def test_intangible_disposal_gain(self):
+        from financing_cases import gl
+        for f in FRAMEWORKS:
+            c=case('intangible-assets',f);r=c['assets'][0];r.update(disposed=True,proceeds='550000',gl_cost='0',gl_accumulated='0');gl(c,{'Intangible asset':'0','Cash':'-50000','Amortization expense':'100000','Accumulated amortization':'0','Disposal gain':'-50000'})
+            self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'complete')
+    def test_intangible_indefinite_routes(self):
+        from financing_cases import gl
+        for f in ['IFRS','US_GAAP','AASB']:
+            c=case('intangible-assets',f);r=c['assets'][0];r.update(life='indefinite',annual_impairment_complete=True,expected_amortization='0',gl_accumulated='0');gl(c,{'Intangible asset':'600000','Cash':'-600000'})
+            self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'complete')
+            r['annual_impairment_complete']=False;self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'blocked')
+    def test_intangible_development_pre_gate_cost(self):
+        from operational_cases import approved
+        from financing_cases import gl
+        for f in ['IFRS','UK_GAAP','AASB']:
+            c=case('intangible-assets',f);r=c['assets'][0];r.update(origin='development',gate_date='2026-01-01',feasible=True,intention=True,ability=True,benefits=True,resources=True,reliable_measurement=True);r['costs'][0]['kind']='eligible_development'
+            self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'complete')
+            r['gate_date']='2026-02-01';self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'blocked')
+    def test_intangible_us_development_not_IFRS(self):
+        c=case('intangible-assets','US_GAAP');c['assets'][0].update(origin='development',gate_date='2026-01-01');self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',c=c))['status'],'blocked')
+    def test_tax_credit_not_multiplied_by_rate(self):
+        c=case('income-taxes');r=c['jurisdictions'][0];d=r['differences'][1];d.update(source='credit',difference='50');self.assertEqual(assess_case('income-taxes',ready('income-taxes',c=c))['status'],'complete')
+    def test_inventory_fabricated_approval_no_bypass(self):
+        c=case('inventory-cost');c['knowledge_review']={'claim_ids':['INVENTED-INVENTORY'], 'documents':[], 'reviewer':'fake'};c['reviewer_signoff']={'approved':True,'reviewer':'fake','case_fingerprint':case_fingerprint(c)};self.assertEqual(assess_case('inventory-cost',c)['status'],'blocked')
+    def test_intangible_purchase_chronology_QA(self):
+        c=case('intangible-assets');c['assets'][0]['costs'][0]['date']='2026-12-31';self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',c=c))['status'],'blocked')
+    def test_intangible_short_life_floor_QA(self):
+        for f in FRAMEWORKS:
+            c=case('intangible-assets',f);r=c['assets'][0];r.update(remaining_years='.5',expected_amortization='600000',gl_accumulated='600000')
+            for g in c['gl']:
+                if g['id']=='Amortization expense':g.update(closing='600000',statement='600000')
+                if g['id']=='Accumulated amortization':g.update(closing='-600000',statement='-600000')
+            self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'complete')
+            r.update(expected_amortization='1200000',gl_accumulated='1200000');self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',f,c))['status'],'blocked')
+    def test_intangible_disposal_cutoff_QA(self):
+        c=case('intangible-assets');c['assets'][0].update(disposed=True,disposal_date='2026-06-30');self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',c=c))['status'],'blocked')
+    def test_tax_prepayment_specialist(self):
+        c=case('income-taxes');c['jurisdictions'][0].update(tax_paid='300',closing_current='-50');self.assertEqual(assess_case('income-taxes',ready('income-taxes',c=c))['status'],'blocked')
+    def test_framework_overlay_boundaries(self):
+        for p in NEW:
+            c=case(p,'AASB');c['entity_type']='not_for_profit';c['applicability_review']['entity_scope']='not_for_profit';self.assertEqual(assess_case(p,ready(p,c=c))['status'],'blocked')
+            c=case(p,'UK_GAAP');c['uk_standard']='FRS_101';self.assertEqual(assess_case(p,ready(p,c=c))['status'],'blocked')
+    def test_disclosure_incomplete(self):
+        def run(p,f):
+            c=case(p,f);c['disclosure_review']['complete']=False;self.assertEqual(assess_case(p,ready(p,f,c))['status'],'blocked')
+        self.each(run)
+    def test_intangible_unreliable_uk_life(self):
+        c=case('intangible-assets','UK_GAAP');c['assets'][0].update(life_reliably_estimated=False,remaining_years='11');self.assertEqual(assess_case('intangible-assets',ready('intangible-assets',c=c))['status'],'blocked')
+    def test_fv_underlying_result_entity_mismatch(self):
+        c=case('fair-value-measurement');c['handoffs']['instrument']['case']['entity']='Other';self.assertEqual(assess_case('fair-value-measurement',ready('fair-value-measurement',c=c))['status'],'blocked')
+    def test_fv_underlying_result_partial(self):
+        c=case('fair-value-measurement');c['handoffs']['instrument']['result']['status']='partial';self.assertEqual(assess_case('fair-value-measurement',ready('fair-value-measurement',c=c))['status'],'blocked')
+    def test_fv_underlying_zero_quote(self):
+        c=case('fair-value-measurement');c['measurements'][0]['quote']='0';self.assertEqual(assess_case('fair-value-measurement',ready('fair-value-measurement',c=c))['status'],'blocked')
+    def test_immutable_map_actual_registers(self):
+        import hashlib
+        root=Path(__file__).resolve().parents[2];m=json.loads((root/'skills/FINANCING-KNOWLEDGE-MAP.json').read_text())
+        self.assertEqual((m['canonical_topics'],m['capabilities']),(157,347))
+        for p in m['packages'].values():
+            for t in p['topics']:
+                source=root/t['register'];self.assertEqual(t['sha256'],hashlib.sha256(source.read_bytes()).hexdigest());self.assertEqual({x['claim_id'] for x in t['claims']},{x['claim_id'] for x in json.loads(source.read_text())['claims']})
+    def test_debt_fictitious_tail_QA(self):
+        from operational_cases import approved
+        c=case('debt-financing');r=c['debt'][0];r['maturities'][0].update(date='2027-06-30',carrying='0');r['maturities'].append(approved('tail',date='2028-12-31',principal='0',carrying='1008.4'));r['maturity_inventory'].append('tail');self.assertEqual(assess_case('debt-financing',ready('debt-financing',c=c))['status'],'blocked')
+    def test_fv_extra_journal_metadata_never_public_QA(self):
+        c=case('fair-value-measurement');c['handoffs']['instrument']['journals'][1][0].update(reviewer='secret-person',sha256='secret-hash',private={'reviewer':'secret'});r=assess_case('fair-value-measurement',ready('fair-value-measurement',c=c));self.assertEqual(r['status'],'complete')
+        for route in ['answer_context','answer','retrieval_snippet','citation','tool_output','user_log','export']:self.assertNotIn('secret',json.dumps(to_public(r,route)))
+    def test_debt_eir_not_contractually_supported(self):
+        c=case('debt-financing');c['debt'][0]['yield_validation']['cashflows'][-1]['amount']='1050';self.assertEqual(assess_case('debt-financing',ready('debt-financing',c=c))['status'],'blocked')
+    def test_missing_preparer_cannot_prove_independence(self):
+        def run(p,f):
+            c=case(p,f);c.pop('preparer');self.assertEqual(assess_case(p,ready(p,f,c))['status'],'blocked')
+        self.each(run)
+    def test_payroll_future_payment_and_service(self):
+        c=case('employee-benefits-payroll');c['benefits'][0]['payment_date']='2027-01-01';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',c=c))['status'],'blocked')
+        c=case('employee-benefits-payroll');c['benefits'][0]['service_end']='2027-01-01';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',c=c))['status'],'blocked')
+    def test_completed_underlying_JSON_roundtrip(self):
+        from production import serializable
+        for f in FRAMEWORKS:
+            c=json.loads(json.dumps(ready('fair-value-measurement',f),default=serializable));self.assertEqual(assess_case('fair-value-measurement',c)['status'],'complete')
+    def test_archived_four_framework_examples(self):
+        from reporting_cases import certified
+        from production import execute
+        root=Path(__file__).resolve().parents[1]
+        for p in NEW:
+            for f in FRAMEWORKS:
+                original=json.loads((root/p/'examples'/f'{f}.case.json').read_text());self.assertNotIn('reviewer_signoff',original)
+                # Reissue ONLY these labeled synthetic nested examples against
+                # current bytes; never copy a real human approval to new code.
+                for h in original.get('handoffs',{}).values():
+                    if 'case' in h:
+                        h['case']=certified(h['package'],f,case=h['case']);h['result']=execute(h['package'],h['case'])
+                c=ready(p,f,original);r=assess_case(p,c);self.assertEqual(r['status'],'complete');self.assertEqual(to_public(r),json.loads((root/p/'examples'/f'{f}.complete.public.json').read_text()))
+                c.pop('reviewer_signoff');r=assess_case(p,c);self.assertEqual(r['status'],'partial');self.assertEqual(to_public(r),json.loads((root/p/'examples'/f'{f}.partial.public.json').read_text()))
+    def test_debt_intra_interval_cash_omission_QA(self):
+        from operational_cases import approved
+        from financing_accounting import year_fraction
+        from datetime import date
+        c=case('debt-financing');v=c['debt'][0]['yield_validation'];v['cashflows'].append(approved('mid',date='2026-06-30',amount='20',principal='0'));v['flow_inventory'].append('mid');shift=Decimal(20)*Decimal('1.08')**(year_fraction(date(2026,1,1),date(2028,12,31))-year_fraction(date(2026,1,1),date(2026,6,30)));v['cashflows'][2]['amount']=str(Decimal(v['cashflows'][2]['amount'])-shift)
+        self.assertEqual(assess_case('debt-financing',ready('debt-financing',c=c))['status'],'blocked')
+    def test_payroll_pre_service_settlement_QA(self):
+        c=case('employee-benefits-payroll');c['benefits'][0].update(service_start='2026-12-01',payment_date='2026-01-01');self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',c=c))['status'],'blocked')
+    def test_payroll_unearned_payment_prefix(self):
+        c=case('employee-benefits-payroll');c['benefits'][0]['payment_service_units']='10';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',c=c))['status'],'blocked')
+    def test_payroll_withholding_opening_and_remittance(self):
+        from operational_cases import approved
+        for f in FRAMEWORKS:
+            c=case('employee-benefits-payroll',f);c.update(opening_withholding='200',withholding_remittances=[approved('remit',date='2026-12-31',amount='600',bank_evidence='Independent bank settlement',authority_evidence='Actual withholding remittance')],withholding_inventory=['remit'],withholding_bank_total='600',register_withholding='600',cash_total='4600')
+            for g in c['gl']:
+                if g['id']=='Cash':g.update(closing='-4600',statement='-4600')
+                if g['id']=='Employee withholding payable':g.update(opening='-200',closing='-600',statement='-600')
+            self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'complete')
+            c['withholding_remittances'][0]['date']='2027-01-01';self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+    def test_linked_only_termination_requires_specialist_adapter_QA(self):
+        from financing_cases import pol
+        for f in ('IFRS','AASB'):
+            c=case('employee-benefits-payroll',f);r=c['benefits'][0];r['kind']='termination';r['termination_review']=pol(c,'termination',withdrawal_memo='Reviewed',future_service_memo='No future service',framework_trigger_memo='Reviewed linkage',recognition_date='2026-12-01',future_service_required=False,cannot_withdraw=False,linked_restructuring_recognized=True)
+            self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+    def test_withholding_cannot_settle_future_deductions_QA(self):
+        from operational_cases import approved
+        for f in FRAMEWORKS:
+            c=case('employee-benefits-payroll',f);c.update(withholding_remittances=[approved('early',date='2026-01-01',amount='600',bank_evidence='Actual bank payment',authority_evidence='Reviewed remittance')],withholding_inventory=['early'],withholding_bank_total='600',register_withholding='400',cash_total='4600')
+            for g in c['gl']:
+                if g['id']=='Cash':g.update(closing='-4600',statement='-4600')
+                if g['id']=='Employee withholding payable':g.update(closing='-400',statement='-400')
+            self.assertEqual(assess_case('employee-benefits-payroll',ready('employee-benefits-payroll',f,c))['status'],'blocked')
+    def test_public_CLI_four_framework_roundtrip(self):
+        import subprocess,tempfile
+        from production import serializable
+        root=Path(__file__).resolve().parents[2]
+        for p in NEW:
+            for f in FRAMEWORKS:
+                path=root/'skills'/p/'examples'/f'{f}.case.json'
+                output=subprocess.check_output([sys.executable,str(root/'skills/run_skill.py'),p,str(path)],text=True)
+                self.assertIn('Review status: partial',json.loads(output)['guidance'])
+                with tempfile.TemporaryDirectory() as temp:
+                    signed=Path(temp)/'synthetic.json';signed.write_text(json.dumps(ready(p,f),default=serializable))
+                    output=subprocess.check_output([sys.executable,str(root/'skills/run_skill.py'),p,str(signed)],text=True)
+                    self.assertIn('Review status: complete',json.loads(output)['guidance']);self.assertNotIn('case_fingerprint',output);self.assertNotIn('source_note',output)
 
 if __name__=='__main__':unittest.main()

@@ -1,7 +1,7 @@
 ---
 id: SKILL-CASH-001
 name: Cash Flow Statement & Cash Reporting
-version: 1.0.0
+version: 1.0.1
 status: production
 primary_domain: "08"
 related_domains: ["02", "05", "06", "08", "13", "15"]

@@ -1,0 +1,323 @@
+{
+  "case_id": "synthetic-employee-benefits-payroll",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "2026 effective compilation",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-02-01",
+  "imports": [],
+  "handoffs": {},
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "10800",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independently frozen population"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual operative framework/tier checklist",
+    "complete": true
+  },
+  "accounting_policy": {
+    "id": "policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "AASB",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "development_election": "capitalize",
+    "time_basis": "actual_actual",
+    "maturity_allocation": "principal_pro_rata",
+    "effective_time_basis": "actual_actual_compound"
+  },
+  "benefits": [
+    {
+      "id": "salary",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "kind": "salary",
+      "earned_obligation": true,
+      "short_term": true,
+      "capitalized": false,
+      "units": "50",
+      "rate": "200",
+      "employer_rate": ".08",
+      "opening": "0",
+      "payment": "5000",
+      "withholding": "1000",
+      "expected_charge": "10800",
+      "gl_closing": "5800",
+      "entitlement_memo": "Fifty earned employee service days",
+      "classification_memo": "Ordinary short-term liability, separate from DB",
+      "cutoff_memo": "Actual unpaid days excluded from later duplicate payroll",
+      "settlement_memo": "Approved gross payment/deductions",
+      "settlement_date": "2027-01-31",
+      "measurement_basis": "period_earned",
+      "prior_service_expense": "0",
+      "service_start": "2026-01-01",
+      "service_end": "2026-12-31",
+      "payment_date": "2026-12-31",
+      "payment_service_units": "50",
+      "earned_service_at_payment_memo": "Independent dated service-to-payroll evidence",
+      "source_entity": "Synthetic Group",
+      "source_framework": "AASB",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ]
+    }
+  ],
+  "source_inventory": [
+    "salary"
+  ],
+  "cash_total": "4000",
+  "register_expense": "10800",
+  "register_closing": "5800",
+  "register_withholding": "1000",
+  "opening_withholding": "0",
+  "withholding_remittances": [],
+  "withholding_inventory": [],
+  "withholding_bank_total": "0",
+  "gl": [
+    {
+      "id": "Employee benefit expense",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "10800",
+      "statement": "10800"
+    },
+    {
+      "id": "Employee benefit payable",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "-5800",
+      "statement": "-5800"
+    },
+    {
+      "id": "Cash",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "-4000",
+      "statement": "-4000"
+    },
+    {
+      "id": "Employee withholding payable",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "-1000",
+      "statement": "-1000"
+    }
+  ],
+  "gl_inventory": [
+    "Employee benefit expense",
+    "Employee benefit payable",
+    "Cash",
+    "Employee withholding payable"
+  ],
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-05-005-AASB-001",
+      "TOPIC-05-005-AASB-E004",
+      "TOPIC-05-005-AASB-E008",
+      "TOPIC-05-006-AASB-001",
+      "TOPIC-05-006-AASB-E004",
+      "TOPIC-05-006-AASB-E008",
+      "TOPIC-05-009-AASB-001",
+      "TOPIC-05-009-AASB-E004",
+      "TOPIC-05-009-AASB-E008",
+      "TOPIC-05-010-AASB-E004"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/defined-benefit-valuation-bridge.md",
+        "sha256": "436b8b456af9a01adda77a45864d55600749d3d718fc30ff552432c7263354bc"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/employee-case.md",
+        "sha256": "a2ca69a6750230a707aa0720bba85795304058794a4a77734b26bc82cec466ed"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/evidence-and-regression.md",
+        "sha256": "45930add95aa2ad5d4db04d3a613d12e65ce1f5b2b35970b26ba39b6214d22db"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/factory.md",
+        "sha256": "0888d9d1482e4488a68360acb8961c13f56d68e9b8c6b3010e9946d911a9761e"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/standards-claims.json",
+        "sha256": "39ef5ff999763c23847d83c718d6180b9fc13ae1a9184da8f489989691b7cea2"
+      },
+      {
+        "topic_id": "TOPIC-05-006",
+        "path": "knowledge/topics/TOPIC-05-006-bonuses-sales-incentives/bonus-case.md",
+        "sha256": "eb5ef225e5dc1b9c1efbe8e7876e61241fc74b66fd04456e1e9e648e5f5745c9"
+      },
+      {
+        "topic_id": "TOPIC-05-006",
+        "path": "knowledge/topics/TOPIC-05-006-bonuses-sales-incentives/commission-amortization-and-obligation-test.md",
+        "sha256": "879f8968e2d03d6a00e7d1e9647ba2608e51c4c506fd66b0a66bf80d7f44c7c6"
+      },
+      {
+        "topic_id": "TOPIC-05-006",
+        "path": "knowledge/topics/TOPIC-05-006-bonuses-sales-incentives/evidence-and-regression.md",
+        "sha256": "7bc14bf7de9f663b2733deb38c41ff4f5c6714cdaf458994b63012f740f4168b"
+      },
+      {
+        "topic_id": "TOPIC-05-006",
+        "path": "knowledge/topics/TOPIC-05-006-bonuses-sales-incentives/factory.md",
+        "sha256": "7a741f0abe1e66b05b924cbba96c3da0fe8cef1cc0ab64fb4af6351594229b02"
+      },
+      {
+        "topic_id": "TOPIC-05-006",
+        "path": "knowledge/topics/TOPIC-05-006-bonuses-sales-incentives/standards-claims.json",
+        "sha256": "7caae0da4658bd3cdead7b4d2610c180e9887b85bd2a2b580d4999056d260f5f"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-benefits-leave/README.md",
+        "sha256": "dab3635dbb10302c98821657ebf51c726c03f9ae6ed25be2c22ffd0d78032571"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-benefits-leave/evidence-and-regression.md",
+        "sha256": "73dbfd0d24c59d56cac96204e6a6347bba9a05e95ceb6134bdfb20e4aa098088"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-benefits-leave/service-versus-termination-decision.md",
+        "sha256": "29343d331b994901118654b9d5104dc232d64fdc12468d02a8fe610a04ec688f"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-benefits-leave/standards-claims.json",
+        "sha256": "a102f2df8fac710b0d6e6aae3bf0efdeff36e8f2a19a64853c253a830b9f020d"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-benefits-leave/termination-leave-case.md",
+        "sha256": "c9895804d2d3f5df92caf8a321208961eb0cec745406d18980ed66ad08a0f2b7"
+      },
+      {
+        "topic_id": "TOPIC-05-009",
+        "path": "knowledge/topics/TOPIC-05-009-termination-leave/README.md",
+        "sha256": "bee3503992a2de7d190512edaafb787ab05667f043372fde6a6dc48b4625282e"
+      },
+      {
+        "topic_id": "TOPIC-05-010",
+        "path": "knowledge/topics/TOPIC-05-010-compensation-reconciliations/README.md",
+        "sha256": "524c3ea7894ac917a99283b58c80987c4f792d5861b3fdb8393e34fafd48fa45"
+      },
+      {
+        "topic_id": "TOPIC-05-010",
+        "path": "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/README.md",
+        "sha256": "a7ba477d0b2896a888618641c412beb8ddf19553b95563a104ad3da81fa546d6"
+      },
+      {
+        "topic_id": "TOPIC-05-010",
+        "path": "knowledge/topics/TOPIC-05-010-compensation-reconciliations-expense-classification/standards-claims.json",
+        "sha256": "7b883aa5bffe85f1692aa71ba973bb85362e61ee8385db9906212e5dab0eee8d"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-05-005-AASB-001",
+      "TOPIC-05-005-AASB-E004",
+      "TOPIC-05-005-AASB-E008",
+      "TOPIC-05-006-AASB-001",
+      "TOPIC-05-006-AASB-E004",
+      "TOPIC-05-006-AASB-E008",
+      "TOPIC-05-009-AASB-001",
+      "TOPIC-05-009-AASB-E004",
+      "TOPIC-05-009-AASB-E008",
+      "TOPIC-05-010-AASB-E004"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

@@ -15,7 +15,7 @@ def case(package,fw='IFRS'):
     c=base(package,fw);c['execution_date']='2027-02-01';c['imports']=[];c['handoffs']={}
     c['controls']=dict(source_version='v1',as_of=c['reporting_period'],population_count=1,population_amount='0',owner='synthetic source owner',reviewer='synthetic completeness reviewer',complete=True,policy_version='v1',cutoff_memo='Synthetic independently frozen population')
     c['disclosure_review']=approved('disclosure',checklist_version='v1',period_entity_memo='Actual operative framework/tier checklist',complete=True)
-    c['accounting_policy']=pol(c,'policy',development_election='capitalize',time_basis='actual_actual')
+    c['accounting_policy']=pol(c,'policy',development_election='capitalize',time_basis='actual_actual',maturity_allocation='principal_pro_rata',effective_time_basis='actual_actual_compound')
     if package=='income-taxes':
         areas=['current_tax','tax_bases','differences','losses_credits','recoverability','uncertainty','rates','acquisitions','share_based','outside_basis','allocation','etr','disclosures','transition','offsetting','scope']
         c['tax_area_reviews']=[pol(c,k,scope_memo='Synthetic independently evaluated scope',exception_memo='No unsupported exception',disposition='applicable') for k in areas]
@@ -28,16 +28,23 @@ def case(package,fw='IFRS'):
     elif package=='employee-benefits-payroll':
         r=approved('salary',kind='salary',earned_obligation=True,short_term=True,capitalized=False,units='50',rate='200',employer_rate='.08',opening='0',payment='5000',withholding='1000',expected_charge='10800',gl_closing='5800',entitlement_memo='Fifty earned employee service days',classification_memo='Ordinary short-term liability, separate from DB',cutoff_memo='Actual unpaid days excluded from later duplicate payroll',settlement_memo='Approved gross payment/deductions')
         c.update(benefits=[r],source_inventory=['salary'],cash_total='4000',register_expense='10800',register_closing='5800',register_withholding='1000');c['controls']['population_amount']='10800'
+        r.update(settlement_date='2027-01-31',measurement_basis='period_earned',prior_service_expense='0')
+        r.update(service_start=c['period_start'],service_end=c['reporting_period'],payment_date=c['reporting_period'])
+        r.update(payment_service_units='50',earned_service_at_payment_memo='Independent dated service-to-payroll evidence')
+        c.update(opening_withholding='0',withholding_remittances=[],withholding_inventory=[],withholding_bank_total='0')
         gl(c,{'Employee benefit expense':'10800','Employee benefit payable':'-5800','Cash':'-4000','Employee withholding payable':'-1000'})
     elif package=='debt-financing':
         p=approved('annual',start=c['period_start'],end=c['reporting_period'],effective_period_rate='.08',cash_interest='50',principal_payment='0',expected_interest='78.40',expected_closing='1008.40')
         r=approved('loan',measurement='amortized_cost',complex_features=False,modified=False,opening_carrying='0',opening_principal='0',draws='1000',eligible_cost='20',service_cost='0',directly_attributable=True,schedule=[p],schedule_inventory=['annual'],lender_principal='1000',gl_closing='1008.40',rights_at_reporting_date=True,current_carrying='0',noncurrent_carrying='1008.40',maturities=[approved('maturity',date='2028-12-31',principal='1000')],maturity_inventory=['maturity'],terms_memo='Executed synthetic term-loan',fee_memo='Verified eligible lender issue costs',yield_memo='Supplied contract-supported periodic yield',classification_memo='Independent actual framework rights review',covenant_memo='All testing dates/rights reviewed')
         r['maturities'][0]['carrying']='1008.40'
+        r['annual_yield']='.08';r['yield_validation']=approved('yield',contract_memo='Synthetic step-up coupons50,50,122.19776 and redemption1000',compounding_memo='Evidenced actual/actual annual compound convention',cashflows=[approved('coupon1',date='2026-12-31',amount='50'),approved('coupon2',date='2027-12-31',amount='50'),approved('redemption',date='2028-12-31',amount='1122.19776')],flow_inventory=['coupon1','coupon2','redemption'])
+        for flow in r['yield_validation']['cashflows']:flow['principal']='1000' if flow['id']=='redemption' else '0'
         c.update(debt=[r],source_inventory=['loan']);c['controls']['population_amount']='1000'
         gl(c,{'Cash':'930','Interest expense':'78.40','Debt carrying liability':'-1008.40'})
     elif package=='intangible-assets':
         r=approved('licence',origin='purchased',life='finite',rights_memo='Verified controlled identifiable licence',recognition_memo='Separate purchase gate',life_memo='Supported six-year life',annual_review='Annual method/life/residual review',impairment_memo='No indicators independently reviewed',recognition_supported=True,model='cost',costs=[approved('purchase',date=c['period_start'],amount='600000',kind='purchase',capitalize=True)],cost_inventory=['purchase'],available_date=c['period_start'],opening_cost='0',opening_accumulated='0',residual='0',remaining_years='6',period_fraction='1',life_reliably_estimated=True,expected_amortization='100000',disposed=False,proceeds='0',gl_cost='600000',gl_accumulated='100000')
         c.update(assets=[r],source_inventory=['licence']);c['controls']['population_amount']='600000'
+        r.update(recognition_date=c['period_start'],disposal_date=c['reporting_period'])
         gl(c,{'Intangible asset':'600000','Cash':'-600000','Amortization expense':'100000','Accumulated amortization':'-100000'})
     elif package=='fair-value-measurement':
         r=approved('listed',basis_memo='Underlying standard requires market fair value',unit_memo='Ten identical ordinary shares',market_memo='Accessible principal active market',market_participant_memo='Unadjusted market-participant exit quote',disclosure_memo='Actual hierarchy/recurring requirements',valuation_memo='Independent quote validation',measurement_date=c['reporting_period'],required_or_permitted=True,accessible_market=True,recurrence='recurring',method='quoted',inputs=[approved('quote',level='1',significant=True)],input_inventory=['quote'],transport='0',transaction_cost='1',identical_active_unadjusted=True,quantity='10',quote='12',expected_level=1,prior_level=1,expected_value='120',opening_value='100',purchases='0',sales_at_carrying='0',fx='0',remeasurement='20',underlying_handoff='instrument',asset=True,account='Fair value asset',gl_value='120')

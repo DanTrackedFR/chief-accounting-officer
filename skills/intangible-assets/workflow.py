@@ -16,14 +16,21 @@ def assess(c,claims):
             if c['framework']=='US_GAAP':raise ReviewRequired('US software/R&D capitalization is specialized; do not import IAS38 development gate')
             if c['framework']=='UK_GAAP' and enum(c['accounting_policy'],'development_election',{'capitalize','expense'})=='expense':gate_date=None
             elif not all(flag(r,k) for k in ['feasible','intention','ability','benefits','resources','reliable_measurement']):raise ReviewRequired('All development recognition conditions must be evidenced')
-        available=iso(r['available_date'])
+        available=iso(r['available_date']);recognized=iso(r['recognition_date'])
+        if origin=='purchased' and available<recognized:raise ReviewRequired('Asset availability cannot precede acquired control/recognition')
         for p in costs:
             approval(p,c);d=inperiod(c,p['date']);amount=nonnegative(p['amount']);kind=enum(p,'kind',{'purchase','eligible_development','research','training','maintenance'})
+            if kind=='purchase' and (d!=recognized or d>available):raise ReviewRequired('Purchase recognition/control date and availability chronology do not reconcile')
             qualifying=(kind=='purchase' and origin=='purchased') or (kind=='eligible_development' and origin=='development' and gate_date is not None and gate_date<=d<=available)
             if flag(p,'capitalize')!=qualifying:raise ReviewRequired('Capitalization conflicts with source type or dated gate; pre-gate expense cannot be reinstated')
             if qualifying:additions+=amount
             else:excluded+=amount
         opening=nonnegative(r['opening_cost']);acc=nonnegative(r['opening_accumulated']);residual=nonnegative(r['residual']);cost=opening+additions
+        if opening and additions:raise ReviewRequired('New costs on an existing intangible require separate dated component schedule')
+        if opening and recognized>iso(c['period_start']):raise ReviewRequired('Opening intangible stock cannot be recognized after opening date')
+        disposed=flag(r,'disposed')
+        disposal_date=inperiod(c,r['disposal_date']) if disposed else iso(c['reporting_period'])
+        if disposed and disposal_date<max(available,recognized):raise ReviewRequired('Disposal precedes recognition or available-use evidence')
         if acc+residual>cost:raise ReviewRequired('Accumulated amortization/residual exceeds cost')
         if life=='indefinite':
             if not flag(r,'annual_impairment_complete'):raise ReviewRequired('Indefinite asset requires completed impairment evidence')
@@ -34,14 +41,14 @@ def assess(c,claims):
             if available>iso(c['reporting_period']) and use:raise ReviewRequired('Amortization precedes availability')
             if available>iso(c['period_start']) and opening:raise ReviewRequired('Mixed existing/new asset requires separate component schedule')
             enum(c['accounting_policy'],'time_basis',{'actual_actual'})
-            start=max(available,iso(c['period_start']));end=iso(c['reporting_period']);expected=ZERO
+            start=max(available,recognized,iso(c['period_start']));end=disposal_date;expected=ZERO
             for year in range(start.year,end.year+1):
                 lo=max(start,date(year,1,1));hi=min(end,date(year,12,31))
                 if hi>=lo:expected+=Decimal((hi-lo).days+1)/Decimal((date(year+1,1,1)-date(year,1,1)).days)
             if use!=expected:raise ReviewRequired('Amortization fraction must equal derived available actual-day/year interval')
-            amort=cash((cost-acc-residual)/years*use)
+            amort=cash(min(cost-acc-residual,(cost-acc-residual)/years*use))
         agree(r['expected_amortization'],amort,'Intangible amortization')
-        disposed=flag(r,'disposed');proceeds=nonnegative(r['proceeds']);net=cost-acc-amort
+        proceeds=nonnegative(r['proceeds']);net=cost-acc-amort
         if not disposed and proceeds:raise ReviewRequired('Proceeds without disposal')
         end_cost=ZERO if disposed else cost;end_acc=ZERO if disposed else acc+amort
         agree(r['gl_cost'],end_cost,'Intangible gross GL');agree(r['gl_accumulated'],end_acc,'Intangible accumulated GL')

@@ -1,0 +1,2240 @@
+{
+  "case_id": "synthetic-fair-value-measurement",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-02-01",
+  "imports": [],
+  "handoffs": {
+    "instrument": {
+      "target": "Underlying fair-value accounting",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope",
+      "measurement_value": "120",
+      "opening_account": "100",
+      "closing_account": "120",
+      "journals": [
+        [],
+        [
+          {
+            "side": "Dr",
+            "account": "Fair value asset",
+            "amount": "20"
+          },
+          {
+            "side": "Cr",
+            "account": "Fair value gain",
+            "amount": "20"
+          }
+        ]
+      ],
+      "package": "financial-instruments-ecl",
+      "case": {
+        "case_id": "synthetic-financial-instruments-ecl",
+        "framework": "IFRS",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {},
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "instrument": {
+          "kind": "equity_asset",
+          "classification_memo": "Hold to collect SPPI debt",
+          "measurement": "FVTPL",
+          "impairment_model": "none",
+          "business_model": "hold_collect",
+          "sppi": true,
+          "basic_instrument_assessment": "Basic fixed rate debt"
+        },
+        "credit": {
+          "method": "pd_lgd",
+          "assumptions_memo": "Forward looking marginal PD/LGD",
+          "overlay": "0",
+          "overlay_memo": "No overlay",
+          "credit_impaired": false,
+          "sicr": true,
+          "origination_risk_evidence": "Origination rating",
+          "current_risk_evidence": "Risk deterioration",
+          "default_definition": "Default reviewed",
+          "horizon": "lifetime_default_events",
+          "objective_impairment_evidence": true,
+          "scenarios": [
+            {
+              "weight": "0.75",
+              "terms": [
+                {
+                  "ead": "1000",
+                  "marginal_pd": "0.10",
+                  "lgd": "0.5",
+                  "discount_factor": "1"
+                }
+              ]
+            },
+            {
+              "weight": "0.25",
+              "terms": [
+                {
+                  "ead": "1000",
+                  "marginal_pd": "0.20",
+                  "lgd": "0.5",
+                  "discount_factor": "1"
+                }
+              ]
+            }
+          ]
+        },
+        "measurement_schedule": {
+          "opening_gross": "100",
+          "eir": "0",
+          "cash_flows": "0",
+          "additions": "0",
+          "writeoffs": "0",
+          "fx": "0",
+          "fair_value": "120",
+          "opening_fair_value_adjustment": "0"
+        },
+        "allowance_bridge": {
+          "opening": "100",
+          "writeoffs": "20",
+          "recoveries": "5",
+          "fx": "0"
+        },
+        "knowledge_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "claim_ids": [
+            "TOPIC-06-007-IFRS-001",
+            "TOPIC-06-007-IFRS-R001",
+            "TOPIC-06-008-IFRS-001",
+            "TOPIC-06-008-IFRS-R001",
+            "TOPIC-06-009-IFRS-001",
+            "TOPIC-06-009-IFRS-R001",
+            "TOPIC-06-010-IFRS-001",
+            "TOPIC-06-010-IFRS-R001",
+            "TOPIC-03-008-IFRS-001",
+            "TOPIC-03-008-IFRS-002",
+            "TOPIC-03-008-IFRS-003",
+            "TOPIC-03-008-IFRS-004",
+            "TOPIC-03-008-IFRS-005",
+            "TOPIC-03-008-IFRS-006",
+            "TOPIC-03-008-IFRS-R001",
+            "TOPIC-03-008-IFRS-R002",
+            "TOPIC-03-008-IFRS-R003",
+            "TOPIC-03-008-IFRS-R004",
+            "TOPIC-03-008-IFRS-R005",
+            "TOPIC-03-008-IFRS-R006",
+            "TOPIC-03-008-IFRS-R007",
+            "TOPIC-03-008-IFRS-R008",
+            "TOPIC-03-008-IFRS-R019",
+            "TOPIC-03-008-IFRS-R021",
+            "TOPIC-03-008-IFRS-R022",
+            "TOPIC-03-009-IFRS-001",
+            "TOPIC-03-009-IFRS-002",
+            "TOPIC-03-009-IFRS-003",
+            "TOPIC-03-009-IFRS-004",
+            "TOPIC-03-009-IFRS-005",
+            "TOPIC-03-009-IFRS-006",
+            "TOPIC-03-009-IFRS-R001",
+            "TOPIC-03-009-IFRS-R002",
+            "TOPIC-03-009-IFRS-R005",
+            "TOPIC-03-009-IFRS-R006",
+            "TOPIC-03-009-IFRS-R007",
+            "TOPIC-03-009-IFRS-R010",
+            "TOPIC-03-009-IFRS-R011",
+            "TOPIC-03-009-IFRS-R012",
+            "TOPIC-03-009-IFRS-R013",
+            "TOPIC-03-009-IFRS-R015",
+            "TOPIC-03-009-IFRS-R016"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+              "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+              "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+              "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+              "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+              "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+              "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+              "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+              "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+              "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+              "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+              "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+              "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+              "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+              "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+              "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-investment-accounting/README.md",
+              "sha256": "aa245069e1bf494a53b7c440d96826e4ca427596c5beb0080adc3930fd0b982d"
+            },
+            {
+              "topic_id": "TOPIC-06-010",
+              "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/README.md",
+              "sha256": "a25b0bc2ceb0e672b784555cf66faad9fa9a8c318e1a45192f2168690bcefc6a"
+            },
+            {
+              "topic_id": "TOPIC-06-010",
+              "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/credit-risk-transition-and-note-reconciliation.md",
+              "sha256": "06817c890e1c23d94aa8c4bf86968d2f1efea15378e874598ad2f0cc5c131c3f"
+            },
+            {
+              "topic_id": "TOPIC-06-010",
+              "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/evidence-and-regression.md",
+              "sha256": "bebffb7d2722366ca0c3489afb8476460da85c00514f31ca4e15af04f4476aad"
+            },
+            {
+              "topic_id": "TOPIC-06-010",
+              "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/portfolio-disclosure-case.md",
+              "sha256": "0d187ad26f5b920b20b105ded815aacddbc16ede24b7be2adbfc20228f048bda"
+            },
+            {
+              "topic_id": "TOPIC-06-010",
+              "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/standards-claims.json",
+              "sha256": "29e3ac10c07079ff7bbb0ba00a292956d2f813ad3f076199c278dcabd678b18c"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/2026-source-and-model-review.md",
+              "sha256": "a9c5625dbf0b0621f148a04c9ce3be8e0ebf6ca93c7f10faec89c80cdf921ad9"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/evidence-and-regression.md",
+              "sha256": "87009ebcc708b70a825b6e7a523d3a97944e31af469027bb870dc3715da90c0f"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/factory.md",
+              "sha256": "819fedfd53404d6e4fb8828cd8d785b2b6e942ebdbb94a0b5c53096d54edba34"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/granular-regression.md",
+              "sha256": "eb5ea5035656b642972dd6dcb5fed7beb66f028d7da1fb9b516e732aff60feff"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-method.md",
+              "sha256": "dc11d68461778569b3cc4553e8fc0a03710db42ddc7877352b696327ebbdd418"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/receivable-vintage-forward-risk-and-election.md",
+              "sha256": "056b1a396b50ed0b04d02dfb85c3a9ef78b1d1c78a81b59fc4fec059f9fb113f"
+            },
+            {
+              "topic_id": "TOPIC-03-008",
+              "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/standards-claims.json",
+              "sha256": "017c1f7675579c293a73fa31aa6021b08095c8f8141e63a73106973f55329fa1"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md",
+              "sha256": "de45a5e8bd5f3e3545d71ef1fbeb2790a027511903b2f6fdc4376979789b6bc9"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
+              "sha256": "b905f262e05b15d7ec73574ba0083809fc5fbb7391eae72c261645e0b38682ac"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
+              "sha256": "26a1089f0dcdd80a10f7e90bb33b0ee8fead456402ee4eb0e1362e3977e8402d"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
+              "sha256": "a350c13259b56a4be89518d42f8169601d442327b2c3f58f1969606452bdd056"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
+              "sha256": "f0f989e2e2d038d82cabf915415b25b35b63eb763316b386bd739ac550d4a815"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
+              "sha256": "041f400975efa1d6f36dda512cb3e8ffc3dd080d0a2a2b10d8df1f1d48285b14"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
+              "sha256": "1d46c8e7e02f9f3befde9905500de8470bb11b08d16932927bd59ab3e8b1ce4c"
+            },
+            {
+              "topic_id": "TOPIC-03-009",
+              "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
+              "sha256": "23d6c352d070e40f7bfb2101c03d75fe8b5547b14818590045ef162941ae5773"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-06-007-IFRS-001",
+            "TOPIC-06-007-IFRS-R001",
+            "TOPIC-06-008-IFRS-001",
+            "TOPIC-06-008-IFRS-R001",
+            "TOPIC-06-009-IFRS-001",
+            "TOPIC-06-009-IFRS-R001",
+            "TOPIC-06-010-IFRS-001",
+            "TOPIC-06-010-IFRS-R001",
+            "TOPIC-03-008-IFRS-001",
+            "TOPIC-03-008-IFRS-002",
+            "TOPIC-03-008-IFRS-003",
+            "TOPIC-03-008-IFRS-004",
+            "TOPIC-03-008-IFRS-005",
+            "TOPIC-03-008-IFRS-006",
+            "TOPIC-03-008-IFRS-R001",
+            "TOPIC-03-008-IFRS-R002",
+            "TOPIC-03-008-IFRS-R003",
+            "TOPIC-03-008-IFRS-R004",
+            "TOPIC-03-008-IFRS-R005",
+            "TOPIC-03-008-IFRS-R006",
+            "TOPIC-03-008-IFRS-R007",
+            "TOPIC-03-008-IFRS-R008",
+            "TOPIC-03-008-IFRS-R019",
+            "TOPIC-03-008-IFRS-R021",
+            "TOPIC-03-008-IFRS-R022",
+            "TOPIC-03-009-IFRS-001",
+            "TOPIC-03-009-IFRS-002",
+            "TOPIC-03-009-IFRS-003",
+            "TOPIC-03-009-IFRS-004",
+            "TOPIC-03-009-IFRS-005",
+            "TOPIC-03-009-IFRS-006",
+            "TOPIC-03-009-IFRS-R001",
+            "TOPIC-03-009-IFRS-R002",
+            "TOPIC-03-009-IFRS-R005",
+            "TOPIC-03-009-IFRS-R006",
+            "TOPIC-03-009-IFRS-R007",
+            "TOPIC-03-009-IFRS-R010",
+            "TOPIC-03-009-IFRS-R011",
+            "TOPIC-03-009-IFRS-R012",
+            "TOPIC-03-009-IFRS-R013",
+            "TOPIC-03-009-IFRS-R015",
+            "TOPIC-03-009-IFRS-R016"
+          ],
+          "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+          "public_caveats": [
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "synthetic independent reviewer",
+          "approved": true,
+          "case_fingerprint": "6070d5a9f23a2cc928c2acb15ce43d07144b9b685f6aeeaeec3c1da0076d0874"
+        }
+      },
+      "result": {
+        "conclusion": "Equity investment fair-value measurement: closing carrying amount 120.00; period interest/fair-value change 20.00.",
+        "method": "Equity investment fair-value measurement",
+        "calculations": {
+          "opening": "100",
+          "additions": "0",
+          "interest_or_fv_change": "20.00",
+          "cash": "0",
+          "closing": "120.00"
+        },
+        "journal_entry_implications": [
+          [],
+          [
+            {
+              "side": "Dr",
+              "account": "equity investment",
+              "amount": "20.00"
+            },
+            {
+              "side": "Cr",
+              "account": "fair value gain/loss",
+              "amount": "20.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Hold to collect SPPI debt"
+        ],
+        "uncertainties": [
+          "Fair-value hierarchy and instrument-specific classification/elections require supporting evidence.",
+          "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+        ],
+        "open_items": [],
+        "disclosures_impacted": [
+          "Instrument category and policy/elections",
+          "Carrying amount reconciliation",
+          "Fair value hierarchy and valuation sensitivity",
+          "Debt maturity and covenant/liquidity disclosures as applicable"
+        ],
+        "skill_id": "SKILL-ECL-001",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-financial-instruments-ecl",
+          "framework": "IFRS",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {},
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "instrument": {
+            "kind": "equity_asset",
+            "classification_memo": "Hold to collect SPPI debt",
+            "measurement": "FVTPL",
+            "impairment_model": "none",
+            "business_model": "hold_collect",
+            "sppi": true,
+            "basic_instrument_assessment": "Basic fixed rate debt"
+          },
+          "credit": {
+            "method": "pd_lgd",
+            "assumptions_memo": "Forward looking marginal PD/LGD",
+            "overlay": "0",
+            "overlay_memo": "No overlay",
+            "credit_impaired": false,
+            "sicr": true,
+            "origination_risk_evidence": "Origination rating",
+            "current_risk_evidence": "Risk deterioration",
+            "default_definition": "Default reviewed",
+            "horizon": "lifetime_default_events",
+            "objective_impairment_evidence": true,
+            "scenarios": [
+              {
+                "weight": "0.75",
+                "terms": [
+                  {
+                    "ead": "1000",
+                    "marginal_pd": "0.10",
+                    "lgd": "0.5",
+                    "discount_factor": "1"
+                  }
+                ]
+              },
+              {
+                "weight": "0.25",
+                "terms": [
+                  {
+                    "ead": "1000",
+                    "marginal_pd": "0.20",
+                    "lgd": "0.5",
+                    "discount_factor": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "measurement_schedule": {
+            "opening_gross": "100",
+            "eir": "0",
+            "cash_flows": "0",
+            "additions": "0",
+            "writeoffs": "0",
+            "fx": "0",
+            "fair_value": "120",
+            "opening_fair_value_adjustment": "0"
+          },
+          "allowance_bridge": {
+            "opening": "100",
+            "writeoffs": "20",
+            "recoveries": "5",
+            "fx": "0"
+          }
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-IFRS-001",
+            "proposition": "Asset classification combines business model and contractual cash-flow assessment, with limited elections; liabilities follow their own amortised cost/FVTPL and equity-boundary rules.",
+            "references": [
+              "IFRS 9.4.1.1\u20134.1.5, 4.2.1\u20134.2.2"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-IFRS-R001",
+            "proposition": "IFRS/AASB asset business model and SPPI categories differ from US instrument-specific and UK basic/other instrument policy routes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-001",
+            "proposition": "Fair value is market-participant exit price at measurement date, with hierarchy driven by significant lowest-level input, while derivatives need independent scope and measurement.",
+            "references": [
+              "IFRS 13.24, 61\u201367, 72\u201390"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-R001",
+            "proposition": "Fair value follows market-participant exit assumptions and lowest significant input; derivative recognition/scope precedes valuation and hedge accounting.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-001",
+            "proposition": "Hedge accounting requires eligible item/instrument, formal inception documentation, economic relationship and ongoing effectiveness assessment; forecast item probability and discontinuation have distinct routes.",
+            "references": [
+              "IFRS 9.6.4.1, 6.5.1\u20136.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-R001",
+            "proposition": "Hedge accounting requires timely formal qualifying relationship and type-specific OCI/P&L; investments first resolve control/joint control/significant influence.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "claim_id": "TOPIC-06-010-IFRS-001",
+            "proposition": "Credit losses and associated risk disclosures depend on instrument scope, deterioration or simplified route, exposure, assumptions and allowance reconciliation.",
+            "references": [
+              "IFRS 9.5.5.3\u20135.5.17; IFRS 7.35A\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "claim_id": "TOPIC-06-010-IFRS-R001",
+            "proposition": "IFRS/AASB lifetime versus twelve-month ECL and special models differ from USCECL/AFS and UK elected model; allowance disclosures must tie without plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-001",
+            "proposition": "Identify receivables and contract assets in impairment scope and distinguish disputed validity and price concessions from credit risk.",
+            "references": [
+              "IFRS 9.5.5.1\u20135.5.2"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-002",
+            "proposition": "Apply mandatory lifetime expected credit loss for qualifying trade receivables/contract assets without significant financing; assess available policy choices for other qualifying assets.",
+            "references": [
+              "IFRS 9.5.5.15\u20135.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-003",
+            "proposition": "Measure expected losses using probability-weighted outcomes, time value and reasonable/supportable past, current and forecast information.",
+            "references": [
+              "IFRS 9.5.5.17"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-004",
+            "proposition": "A provision matrix is an implementation method, not fixed rates; segment on shared risk and avoid double-counted specific reserves.",
+            "references": [
+              "IFRS 9.B5.5.35\u2013B5.5.52"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-005",
+            "proposition": "Reduce gross carrying amount when there is no reasonable expectation of recovery, separately from allowance estimation.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-006",
+            "proposition": "Disclose loss allowance and risk judgments under applicable financial-instrument disclosures; assess entity-period election and transition.",
+            "references": [
+              "IFRS 7.35H\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R001",
+            "proposition": "Capabilities remain those in the retained factory. Apply the loss model to a valid receivable or contract asset after removing supported concessions, returns, duplicate billing and other entitlement errors.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R002",
+            "proposition": "Trade receivables/contract assets without significant financing use lifetime expected credit losses under the simplified approach.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R003",
+            "proposition": "For qualifying balances with significant financing, the simplified lifetime approach is a consistently applied policy election.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R004",
+            "proposition": "Otherwise the general approach uses12-month ECL initially and lifetime ECL after a significant increase in credit risk, with credit-impaired interest on the net carrying basis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R005",
+            "proposition": "Expected loss is an unbiased probability-weighted discounted cash-shortfall estimate using reasonable supportable historical, current and forward-looking information.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R006",
+            "proposition": "Group shared-risk exposures appropriately and assess significant individual risks without counting an exposure twice in an individual overlay and collective matrix.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R007",
+            "proposition": "A purchased/originated credit-impaired asset instead tracks changes in lifetime losses using its credit-adjusted effective interest rate.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R008",
+            "proposition": "Write off the uncollectible portion when there is no reasonable expectation of recovery; pursuing enforcement does not necessarily prevent an accounting write-off.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R019",
+            "proposition": "IFRS9/AASB9 original2018 adoption uses the relevant opening-equity transition/comparator rules; Australian NFP/customer scope and disclosure tier remain independently selected.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R021",
+            "proposition": "Changes in a supported loss estimate go through current loss expense/reversal; correcting a material previous error follows the separate error model.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R022",
+            "proposition": "IFRS/AASB Tier1 notes include methods/assumptions, risk concentrations and loss-allowance movements with relevant stage and gross-balance information.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-001",
+            "proposition": "Write off the gross asset, in whole or part, when no reasonable expectation of recovery remains; mere age is not conclusive.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [
+              "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-002",
+            "proposition": "Apply an existing allowance on write-off and recognize any incremental uncovered loss under the impairment model.",
+            "references": [
+              "IFRS 9.5.5"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-003",
+            "proposition": "A later recovery links to the previously written-off exposure and its P&L/allowance treatment, without fabricating a current receivable.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-004",
+            "proposition": "Apply receipts to supported debtor/invoice rights; unidentified receipts require controlled classification, not an arbitrary AR reduction.",
+            "references": [
+              "IFRS 15.105\u2013109"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-005",
+            "proposition": "Do not offset unrelated customer credits and receivables without satisfying the applicable set-off requirements.",
+            "references": [
+              "IAS 32.42"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-006",
+            "proposition": "Disclose material write-off/credit-risk movement and select the operative entity-period impairment requirements.",
+            "references": [
+              "IFRS 7.35H\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R001",
+            "proposition": "Capabilities are preserved from the canonical README and the useful bad-debt retry folder; one topic is counted. Credit loss, commercial concession, legal debt release and a bank remittance match are different decisions.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R002",
+            "proposition": "IFRS/AASB writes off all or part of a financial asset when no reasonable expectation of recovery remains.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R005",
+            "proposition": "Estimate the required allowance before charging a write-off; insufficient existing allowance does not justify hiding the excess in revenue.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R006",
+            "proposition": "Accounting write-off and cessation of legal enforcement are not necessarily the same event.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R007",
+            "proposition": "IFRS/AASB actual recoveries of written-off amounts are recognized through the credit-loss/recovery result, not new customer revenue.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R010",
+            "proposition": "Apply customer cash to supported invoice rights and identify discounts, concessions, fees, FX and true residual debt separately; unexplained residuals do not automatically become write-offs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R011",
+            "proposition": "Netting unrelated receivables/payables requires the framework's valid offsetting conditions; matching software alone cannot establish a legal right.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R012",
+            "proposition": "Material prior-period billing errors follow the error model rather than being disguised as current credit losses.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R013",
+            "proposition": "Select historical versus adopted IFRS9/AASB9 or CECL periods before deciding loss measurement; write-off against a properly measured allowance remains distinct from initial adoption equity adjustments.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R015",
+            "proposition": "Disclose material allowance write-offs/recoveries and the loss policy under the applicable instrument-note regime; IFRS/AASB Tier1, US public/nonpublic, UK regime and Australian Tier2 relief are independently assessed.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R016",
+            "proposition": "Accounting write-off does not by itself prove a deductible tax bad debt or remove applicable VAT/GST correction obligations.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-IFRS-001",
+            "proposition": "Asset classification combines business model and contractual cash-flow assessment, with limited elections; liabilities follow their own amortised cost/FVTPL and equity-boundary rules.",
+            "references": [
+              "IFRS 9.4.1.1\u20134.1.5, 4.2.1\u20134.2.2"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-IFRS-R001",
+            "proposition": "IFRS/AASB asset business model and SPPI categories differ from US instrument-specific and UK basic/other instrument policy routes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-001",
+            "proposition": "Fair value is market-participant exit price at measurement date, with hierarchy driven by significant lowest-level input, while derivatives need independent scope and measurement.",
+            "references": [
+              "IFRS 13.24, 61\u201367, 72\u201390"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-R001",
+            "proposition": "Fair value follows market-participant exit assumptions and lowest significant input; derivative recognition/scope precedes valuation and hedge accounting.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-001",
+            "proposition": "Hedge accounting requires eligible item/instrument, formal inception documentation, economic relationship and ongoing effectiveness assessment; forecast item probability and discontinuation have distinct routes.",
+            "references": [
+              "IFRS 9.6.4.1, 6.5.1\u20136.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-R001",
+            "proposition": "Hedge accounting requires timely formal qualifying relationship and type-specific OCI/P&L; investments first resolve control/joint control/significant influence.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "claim_id": "TOPIC-06-010-IFRS-001",
+            "proposition": "Credit losses and associated risk disclosures depend on instrument scope, deterioration or simplified route, exposure, assumptions and allowance reconciliation.",
+            "references": [
+              "IFRS 9.5.5.3\u20135.5.17; IFRS 7.35A\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "claim_id": "TOPIC-06-010-IFRS-R001",
+            "proposition": "IFRS/AASB lifetime versus twelve-month ECL and special models differ from USCECL/AFS and UK elected model; allowance disclosures must tie without plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-001",
+            "proposition": "Identify receivables and contract assets in impairment scope and distinguish disputed validity and price concessions from credit risk.",
+            "references": [
+              "IFRS 9.5.5.1\u20135.5.2"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-002",
+            "proposition": "Apply mandatory lifetime expected credit loss for qualifying trade receivables/contract assets without significant financing; assess available policy choices for other qualifying assets.",
+            "references": [
+              "IFRS 9.5.5.15\u20135.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-003",
+            "proposition": "Measure expected losses using probability-weighted outcomes, time value and reasonable/supportable past, current and forecast information.",
+            "references": [
+              "IFRS 9.5.5.17"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-004",
+            "proposition": "A provision matrix is an implementation method, not fixed rates; segment on shared risk and avoid double-counted specific reserves.",
+            "references": [
+              "IFRS 9.B5.5.35\u2013B5.5.52"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-005",
+            "proposition": "Reduce gross carrying amount when there is no reasonable expectation of recovery, separately from allowance estimation.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-006",
+            "proposition": "Disclose loss allowance and risk judgments under applicable financial-instrument disclosures; assess entity-period election and transition.",
+            "references": [
+              "IFRS 7.35H\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R001",
+            "proposition": "Capabilities remain those in the retained factory. Apply the loss model to a valid receivable or contract asset after removing supported concessions, returns, duplicate billing and other entitlement errors.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R002",
+            "proposition": "Trade receivables/contract assets without significant financing use lifetime expected credit losses under the simplified approach.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R003",
+            "proposition": "For qualifying balances with significant financing, the simplified lifetime approach is a consistently applied policy election.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R004",
+            "proposition": "Otherwise the general approach uses12-month ECL initially and lifetime ECL after a significant increase in credit risk, with credit-impaired interest on the net carrying basis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R005",
+            "proposition": "Expected loss is an unbiased probability-weighted discounted cash-shortfall estimate using reasonable supportable historical, current and forward-looking information.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R006",
+            "proposition": "Group shared-risk exposures appropriately and assess significant individual risks without counting an exposure twice in an individual overlay and collective matrix.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R007",
+            "proposition": "A purchased/originated credit-impaired asset instead tracks changes in lifetime losses using its credit-adjusted effective interest rate.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R008",
+            "proposition": "Write off the uncollectible portion when there is no reasonable expectation of recovery; pursuing enforcement does not necessarily prevent an accounting write-off.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R019",
+            "proposition": "IFRS9/AASB9 original2018 adoption uses the relevant opening-equity transition/comparator rules; Australian NFP/customer scope and disclosure tier remain independently selected.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R021",
+            "proposition": "Changes in a supported loss estimate go through current loss expense/reversal; correcting a material previous error follows the separate error model.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "claim_id": "TOPIC-03-008-IFRS-R022",
+            "proposition": "IFRS/AASB Tier1 notes include methods/assumptions, risk concentrations and loss-allowance movements with relevant stage and gross-balance information.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-001",
+            "proposition": "Write off the gross asset, in whole or part, when no reasonable expectation of recovery remains; mere age is not conclusive.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [
+              "Narrow operative principle inspected; entity-period exceptions and other claims separately audited."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-002",
+            "proposition": "Apply an existing allowance on write-off and recognize any incremental uncovered loss under the impairment model.",
+            "references": [
+              "IFRS 9.5.5"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-003",
+            "proposition": "A later recovery links to the previously written-off exposure and its P&L/allowance treatment, without fabricating a current receivable.",
+            "references": [
+              "IFRS 9.5.4.4"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-004",
+            "proposition": "Apply receipts to supported debtor/invoice rights; unidentified receipts require controlled classification, not an arbitrary AR reduction.",
+            "references": [
+              "IFRS 15.105\u2013109"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-005",
+            "proposition": "Do not offset unrelated customer credits and receivables without satisfying the applicable set-off requirements.",
+            "references": [
+              "IAS 32.42"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-006",
+            "proposition": "Disclose material write-off/credit-risk movement and select the operative entity-period impairment requirements.",
+            "references": [
+              "IFRS 7.35H\u201335N"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Provision, period, policy election and exceptions require authoritative audit."
+            ],
+            "effective_period": "2026 issued edition; select historical edition for older periods",
+            "entity_scope": "For-profit; apply entity-tier and jurisdiction overlay",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R001",
+            "proposition": "Capabilities are preserved from the canonical README and the useful bad-debt retry folder; one topic is counted. Credit loss, commercial concession, legal debt release and a bank remittance match are different decisions.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R002",
+            "proposition": "IFRS/AASB writes off all or part of a financial asset when no reasonable expectation of recovery remains.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R005",
+            "proposition": "Estimate the required allowance before charging a write-off; insufficient existing allowance does not justify hiding the excess in revenue.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R006",
+            "proposition": "Accounting write-off and cessation of legal enforcement are not necessarily the same event.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R007",
+            "proposition": "IFRS/AASB actual recoveries of written-off amounts are recognized through the credit-loss/recovery result, not new customer revenue.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R010",
+            "proposition": "Apply customer cash to supported invoice rights and identify discounts, concessions, fees, FX and true residual debt separately; unexplained residuals do not automatically become write-offs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R011",
+            "proposition": "Netting unrelated receivables/payables requires the framework's valid offsetting conditions; matching software alone cannot establish a legal right.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R012",
+            "proposition": "Material prior-period billing errors follow the error model rather than being disguised as current credit losses.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R013",
+            "proposition": "Select historical versus adopted IFRS9/AASB9 or CECL periods before deciding loss measurement; write-off against a properly measured allowance remains distinct from initial adoption equity adjustments.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R015",
+            "proposition": "Disclose material allowance write-offs/recoveries and the loss policy under the applicable instrument-note regime; IFRS/AASB Tier1, US public/nonpublic, UK regime and Australian Tier2 relief are independently assessed.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "claim_id": "TOPIC-03-009-IFRS-R016",
+            "proposition": "Accounting write-off does not by itself prove a deductible tax bad debt or remove applicable VAT/GST correction obligations.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Direct authoritative audit remains open; no exact paragraph asserted from uncertain model knowledge."
+            ],
+            "effective_period": "Reporting period and adoption branch specified in phase-2d-method.md",
+            "entity_scope": "Framework/entity applicability branches specified in phase-2d-method.md",
+            "audit_required": true
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+            "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+            "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+            "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+            "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+            "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+            "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+            "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+            "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+            "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+            "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+            "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+            "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+            "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+            "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+            "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-investment-accounting/README.md",
+            "sha256": "aa245069e1bf494a53b7c440d96826e4ca427596c5beb0080adc3930fd0b982d"
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/README.md",
+            "sha256": "a25b0bc2ceb0e672b784555cf66faad9fa9a8c318e1a45192f2168690bcefc6a"
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/credit-risk-transition-and-note-reconciliation.md",
+            "sha256": "06817c890e1c23d94aa8c4bf86968d2f1efea15378e874598ad2f0cc5c131c3f"
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/evidence-and-regression.md",
+            "sha256": "bebffb7d2722366ca0c3489afb8476460da85c00514f31ca4e15af04f4476aad"
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/portfolio-disclosure-case.md",
+            "sha256": "0d187ad26f5b920b20b105ded815aacddbc16ede24b7be2adbfc20228f048bda"
+          },
+          {
+            "topic_id": "TOPIC-06-010",
+            "path": "knowledge/topics/TOPIC-06-010-financial-instrument-impairment-disclosures/standards-claims.json",
+            "sha256": "29e3ac10c07079ff7bbb0ba00a292956d2f813ad3f076199c278dcabd678b18c"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/2026-source-and-model-review.md",
+            "sha256": "a9c5625dbf0b0621f148a04c9ce3be8e0ebf6ca93c7f10faec89c80cdf921ad9"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/evidence-and-regression.md",
+            "sha256": "87009ebcc708b70a825b6e7a523d3a97944e31af469027bb870dc3715da90c0f"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/factory.md",
+            "sha256": "819fedfd53404d6e4fb8828cd8d785b2b6e942ebdbb94a0b5c53096d54edba34"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/granular-regression.md",
+            "sha256": "eb5ea5035656b642972dd6dcb5fed7beb66f028d7da1fb9b516e732aff60feff"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/phase-2d-method.md",
+            "sha256": "dc11d68461778569b3cc4553e8fc0a03710db42ddc7877352b696327ebbdd418"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/receivable-vintage-forward-risk-and-election.md",
+            "sha256": "056b1a396b50ed0b04d02dfb85c3a9ef78b1d1c78a81b59fc4fec059f9fb113f"
+          },
+          {
+            "topic_id": "TOPIC-03-008",
+            "path": "knowledge/topics/TOPIC-03-008-ecl-doubtful-debt/standards-claims.json",
+            "sha256": "017c1f7675579c293a73fa31aa6021b08095c8f8141e63a73106973f55329fa1"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md",
+            "sha256": "de45a5e8bd5f3e3545d71ef1fbeb2790a027511903b2f6fdc4376979789b6bc9"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
+            "sha256": "b905f262e05b15d7ec73574ba0083809fc5fbb7391eae72c261645e0b38682ac"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
+            "sha256": "26a1089f0dcdd80a10f7e90bb33b0ee8fead456402ee4eb0e1362e3977e8402d"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
+            "sha256": "a350c13259b56a4be89518d42f8169601d442327b2c3f58f1969606452bdd056"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
+            "sha256": "f0f989e2e2d038d82cabf915415b25b35b63eb763316b386bd739ac550d4a815"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
+            "sha256": "041f400975efa1d6f36dda512cb3e8ffc3dd080d0a2a2b10d8df1f1d48285b14"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
+            "sha256": "1d46c8e7e02f9f3befde9905500de8470bb11b08d16932927bd59ab3e8b1ce4c"
+          },
+          {
+            "topic_id": "TOPIC-03-009",
+            "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
+            "sha256": "23d6c352d070e40f7bfb2101c03d75fe8b5547b14818590045ef162941ae5773"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "case_fingerprint": "6070d5a9f23a2cc928c2acb15ce43d07144b9b685f6aeeaeec3c1da0076d0874",
+        "status": "complete"
+      }
+    }
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "120",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independently frozen population"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual operative framework/tier checklist",
+    "complete": true
+  },
+  "accounting_policy": {
+    "id": "policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "development_election": "capitalize",
+    "time_basis": "actual_actual",
+    "maturity_allocation": "principal_pro_rata",
+    "effective_time_basis": "actual_actual_compound"
+  },
+  "measurements": [
+    {
+      "id": "listed",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "basis_memo": "Underlying standard requires market fair value",
+      "unit_memo": "Ten identical ordinary shares",
+      "market_memo": "Accessible principal active market",
+      "market_participant_memo": "Unadjusted market-participant exit quote",
+      "disclosure_memo": "Actual hierarchy/recurring requirements",
+      "valuation_memo": "Independent quote validation",
+      "measurement_date": "2026-12-31",
+      "required_or_permitted": true,
+      "accessible_market": true,
+      "recurrence": "recurring",
+      "method": "quoted",
+      "inputs": [
+        {
+          "id": "quote",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "level": "1",
+          "significant": true
+        }
+      ],
+      "input_inventory": [
+        "quote"
+      ],
+      "transport": "0",
+      "transaction_cost": "1",
+      "identical_active_unadjusted": true,
+      "quantity": "10",
+      "quote": "12",
+      "expected_level": 1,
+      "prior_level": 1,
+      "expected_value": "120",
+      "opening_value": "100",
+      "purchases": "0",
+      "sales_at_carrying": "0",
+      "fx": "0",
+      "remeasurement": "20",
+      "underlying_handoff": "instrument",
+      "asset": true,
+      "account": "Fair value asset",
+      "gl_value": "120",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ]
+    }
+  ],
+  "source_inventory": [
+    "listed"
+  ],
+  "gl": [
+    {
+      "id": "Fair value asset",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "100",
+      "closing": "120",
+      "statement": "120"
+    },
+    {
+      "id": "Fair value gain",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "-20",
+      "statement": "-20"
+    }
+  ],
+  "gl_inventory": [
+    "Fair value asset",
+    "Fair value gain"
+  ],
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-06-008-IFRS-001",
+      "TOPIC-06-008-IFRS-R001"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+        "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+        "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+        "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+        "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+        "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-008-IFRS-001",
+      "TOPIC-06-008-IFRS-R001"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

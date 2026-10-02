@@ -33,7 +33,7 @@ completion_criteria: [approved_scope_and_period, full_source_population, current
 
 Earned short-term salary, bonus, commission, accumulating leave, employer contribution/tax and defined-contribution rows; units × approved rate plus evidenced on-cost; payment/withholding clearing and complete source/payroll/GL/cash bridges.
 
-No payroll processing or employee-law/tax conclusion. Termination, DB/other long-term, unusual entitlement and capitalized compensation require specialist or underlying accounting workflow. Nonaccumulating leave cannot use earned unused-day arithmetic.
+No payroll processing or employee-law/tax conclusion. Termination uses a separately evidenced framework trigger and qualified US/UK handoff; DB/other long-term, unusual entitlement and capitalized compensation require specialist or underlying accounting workflow. Nonaccumulating leave cannot use earned unused-day arithmetic. Cumulative entitlement and current service expense are distinct.
 
 Production promotion requires independent accounting QA, not calculator success.
 

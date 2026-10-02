@@ -21,6 +21,7 @@ def assess(c,claims):
         credit=nonnegative(r['credits_used']);current=cash(max(taxable,ZERO)*rate-credit+dec(r['prior_trueup']))
         if credit>max(taxable,ZERO)*rate:raise ReviewRequired('Refundable/negative current tax requires supported specialist method')
         agree(r['expected_current'],current,'Current tax');payable=dec(r['opening_current'])+current-nonnegative(r['tax_paid']);agree(r['closing_current'],payable,'Current tax rollforward')
+        if payable<0:raise ReviewRequired('Current tax receivable/refundable position requires a separately supported specialist method')
         opening_stocks['Current tax payable']=opening_stocks.get('Current tax payable',ZERO)-dec(r['opening_current']);closing_stocks['Current tax payable']=closing_stocks.get('Current tax payable',ZERO)-payable
         entries += [signed_entry('Current tax payable','Current tax expense',current,False),journal(('Dr','Current tax payable',r['tax_paid']),('Cr','Cash',r['tax_paid']))]
         dta=dtl=va=deferred_pl=ZERO;differences=rows(r['differences']);inventory(r,'difference_inventory',differences)

@@ -6,7 +6,7 @@ def assess(c,claims):
     if c['imports']:raise ReviewRequired('FV imports belong to explicit underlying measurement source, not duplicate journal imports')
     if c['framework']=='UK_GAAP' and iso(c['period_start'])<iso('2026-01-01'):
         raise ReviewRequired('Pre2026 UK fair-value edition requires separate operative-method specialist')
-    op_total=cl_total=ZERO
+    op_total=cl_total=ZERO;underlying_seen=set()
     for r in rs:
         reviewed(r,c,'basis_memo','unit_memo','market_memo','market_participant_memo','disclosure_memo','valuation_memo')
         if iso(r['measurement_date'])!=iso(c['reporting_period']):raise ReviewRequired('Stale fair value measurement date')
@@ -39,9 +39,12 @@ def assess(c,claims):
         required(h,'package','case','result')
         if h['package']!='financial-instruments-ecl':raise ReviewRequired('Non-equity underlying measurement requires a qualified specific integration adapter')
         source=h['case']
+        source_key=(h['package'],source.get('case_id'))
+        if source_key in underlying_seen:raise ReviewRequired('Underlying measurement result may be imported only once')
+        underlying_seen.add(source_key)
         if source.get('entity')!=c['entity'] or source.get('framework')!=c['framework'] or source.get('period_start')!=c['period_start'] or source.get('reporting_period')!=c['reporting_period']:raise ReviewRequired('Underlying case dimensions mismatch')
         fresh=execute(h['package'],source)
-        if fresh['status']!='complete' or fresh!=h['result'] or source['instrument']['kind']!='equity_asset':raise ReviewRequired('Underlying fair-value recognition must be complete, current and unaltered')
+        if fresh['status']!='complete' or not same_result(fresh,h['result']) or source['instrument']['kind']!='equity_asset':raise ReviewRequired('Underlying fair-value recognition must be complete, current and unaltered')
         agree(fresh['calculations']['closing'],value,'Certified underlying carrying value');agree(fresh['calculations']['opening'],opening,'Certified underlying opening')
         agree(fresh['calculations']['additions'],purchases,'Certified underlying purchases')
         if sales or fx or transport:raise ReviewRequired('Disposal, FX or transport requires a qualified separate integration adapter')
@@ -59,7 +62,9 @@ def assess(c,claims):
         if (account=='Fair value asset')!=asset:raise ReviewRequired('FV asset/liability journal classification mismatch')
         delta=sum((line_delta(j,account,credit=not asset) for j in journal_rows),ZERO)
         agree(delta,value-opening,'Underlying all-movement accounting journal bridge')
-        entries+=journal_rows;agree(r['gl_value'],value,'FV source/GL');gross.append(value)
+        # Publish only the regenerated controlled mapping, never arbitrary extra
+        # keys attached to a supplied journal by a caller.
+        entries+=mapped;agree(r['gl_value'],value,'FV source/GL');gross.append(value)
         op_total+=opening;cl_total+=value
         out.append(dict(level=hierarchy,value=value,remeasurement=movement,transaction_cost_excluded=transaction,transport=transport))
     population(c,rs,gross)
