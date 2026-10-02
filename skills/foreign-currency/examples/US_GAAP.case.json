@@ -1,0 +1,246 @@
+{
+  "case_id": "synthetic-foreign-currency",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "currency": {
+    "functional": "EUR",
+    "presentation": "EUR",
+    "ledger": "EUR",
+    "functional_memo": "Primary price/cost economics reviewed",
+    "rate_source": "Synthetic approved spot feed",
+    "rate_convention": "functional_per_foreign",
+    "functional_review_complete": true,
+    "hyperinflation": false,
+    "exchangeability": true,
+    "functional_change": false,
+    "net_investment_items": false
+  },
+  "items": [
+    {
+      "id": "AR",
+      "type": "monetary",
+      "side": "asset",
+      "account": "receivable",
+      "foreign_amount": "100",
+      "initial_rate": "1.10",
+      "closing_rate": "1.20",
+      "settled_foreign": "40",
+      "settlement_rate": "1.15",
+      "initial_date": "2026-01-01",
+      "settlement_date": "2026-06-30",
+      "opening_book": "110",
+      "opening_route": "initial",
+      "opening_rate": "1.10",
+      "memo": "Supported customer receivable"
+    }
+  ],
+  "translation": {
+    "enabled": true,
+    "operation_id": "Synthetic USD subsidiary",
+    "valuation_date": "2026-12-31",
+    "functional_currency": "USD",
+    "presentation_currency": "EUR",
+    "quote": "presentation_per_functional",
+    "tb": [
+      {
+        "id": "cash",
+        "balance": "120",
+        "category": "asset",
+        "rate": "0.80",
+        "memo": "Closing rate"
+      },
+      {
+        "id": "capital",
+        "balance": "-100",
+        "category": "equity",
+        "rate": "0.90",
+        "memo": "Historical equity"
+      },
+      {
+        "id": "profit",
+        "balance": "-20",
+        "category": "profit",
+        "rate": "0.85",
+        "memo": "Supported average"
+      }
+    ],
+    "opening_net_assets": "100",
+    "opening_rate": "0.90",
+    "closing_rate": "0.80",
+    "profit": "20",
+    "profit_rate": "0.85",
+    "flows": [],
+    "other_oci": "0",
+    "other_oci_rate": "0.85",
+    "opening_cta": "0",
+    "reported_closing_net_assets": "120",
+    "ownership": "0.8",
+    "memo": "Separate foreign operation synthetic bridge",
+    "rates_approximate_dates": true
+  },
+  "disposal": {
+    "kind": "none",
+    "memo": "No disposal"
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-06-002-US-001",
+      "TOPIC-06-002-US_GAAP-R002",
+      "TOPIC-06-003-US-001",
+      "TOPIC-06-003-US_GAAP-R002",
+      "TOPIC-06-004-US-001",
+      "TOPIC-06-004-US_GAAP-R002",
+      "TOPIC-07-006-US-001",
+      "TOPIC-07-006-US_GAAP-R002"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md",
+        "sha256": "ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md",
+        "sha256": "eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json",
+        "sha256": "ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md",
+        "sha256": "925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md",
+        "sha256": "e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md",
+        "sha256": "4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md",
+        "sha256": "ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577"
+      },
+      {
+        "topic_id": "TOPIC-06-003",
+        "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/README.md",
+        "sha256": "21bb034b5d63d1587cdb1de1e7d05167309fefd300865054d5707f20bb10b288"
+      },
+      {
+        "topic_id": "TOPIC-06-003",
+        "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/evidence-and-regression.md",
+        "sha256": "736a6d1c23c37e0777e8db3bf46390d894139c58662817dbd6c6bfa61e6629a4"
+      },
+      {
+        "topic_id": "TOPIC-06-003",
+        "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/standards-claims.json",
+        "sha256": "7391675cddf485703c39ea2b0fc82687d16500141cd22034eaea1e43a63cb244"
+      },
+      {
+        "topic_id": "TOPIC-06-003",
+        "path": "knowledge/topics/TOPIC-06-003-fx-remeasurement-translation/README.md",
+        "sha256": "4d7761e8c470e45ed102d72a4582b665e91c22fd9405db4c1eaf62f173c72e4d"
+      },
+      {
+        "topic_id": "TOPIC-06-004",
+        "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/README.md",
+        "sha256": "37c3cc37fa9c54c6d0888a59e810a4c2865212a859d158f98738a5779a97c6ca"
+      },
+      {
+        "topic_id": "TOPIC-06-004",
+        "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/evidence-and-regression.md",
+        "sha256": "135435381cc74112320dcc5dcdb478a4f6f55912edda9ae2c14f3128be5b40ee"
+      },
+      {
+        "topic_id": "TOPIC-06-004",
+        "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/functional-currency-case.md",
+        "sha256": "e31a546b11c1238a7416f5e3b8230b4a77dd5a6ea540dc75f449dff1edb935e9"
+      },
+      {
+        "topic_id": "TOPIC-06-004",
+        "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/indicator-evidence-and-change-trigger.md",
+        "sha256": "e7e5cc2dcc523d653de18681e863e34032a3080854d9343c2edaafcbae5c08f7"
+      },
+      {
+        "topic_id": "TOPIC-06-004",
+        "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/standards-claims.json",
+        "sha256": "6efc14f774429008e29c2bbf9797cb643369e589617cc6d461b76f02d2db6e1d"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+        "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+        "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+        "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+        "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+      },
+      {
+        "topic_id": "TOPIC-07-006",
+        "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+        "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-002-US-001",
+      "TOPIC-06-002-US_GAAP-R002",
+      "TOPIC-06-003-US-001",
+      "TOPIC-06-003-US_GAAP-R002",
+      "TOPIC-06-004-US-001",
+      "TOPIC-06-004-US_GAAP-R002",
+      "TOPIC-07-006-US-001",
+      "TOPIC-07-006-US_GAAP-R002"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

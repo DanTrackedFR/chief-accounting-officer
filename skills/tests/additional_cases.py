@@ -39,7 +39,7 @@ def fx(fw='IFRS'):
       items=[{'id':'AR','type':'monetary','side':'asset','account':'receivable','foreign_amount':'100','initial_rate':'1.10',
         'closing_rate':'1.20','settled_foreign':'40','settlement_rate':'1.15','initial_date':'2026-01-01','settlement_date':'2026-06-30',
         'opening_book':'110','opening_route':'initial','opening_rate':'1.10','memo':'Supported customer receivable'}],
-      translation={'enabled':True,'operation_id':'Synthetic USD subsidiary','functional_currency':'USD','presentation_currency':'EUR','quote':'presentation_per_functional',
+      translation={'enabled':True,'operation_id':'Synthetic USD subsidiary','valuation_date':'2026-12-31','functional_currency':'USD','presentation_currency':'EUR','quote':'presentation_per_functional',
       'tb':[{'id':'cash','balance':'120','category':'asset','rate':'0.80','memo':'Closing rate'},
         {'id':'capital','balance':'-100','category':'equity','rate':'0.90','memo':'Historical equity'},
         {'id':'profit','balance':'-20','category':'profit','rate':'0.85','memo':'Supported average'}],
@@ -65,11 +65,12 @@ def award(fw='IFRS'):
 def reporting(fw='IFRS',start='2026-01-01'):
     c=base('financial-statements',fw,start);year=start[:4];modern=fw in ('IFRS','AASB') and start>='2027-01-01'
     def tb(rows):
-        return [{'id':i,'balance':b,'category':cat,'line':i,'source_version':'syntheticTBv1','classification_memo':'Reviewed class and population','cash_account':i=='cash'} for i,b,cat in rows]
+        return [{'id':i,'balance':b,'category':cat,'performance_category':'operating','line':i,'source_version':'syntheticTBv1','classification_memo':'Reviewed class and population','cash_account':i=='cash'} for i,b,cat in rows]
     c.update(presentation={'model':('IFRS18' if modern else 'IAS1') if fw=='IFRS' else ('AASB18' if modern else 'AASB101') if fw=='AASB' else 'US_GAAP' if fw=='US_GAAP' else 'FRS102',
       'early_adoption':False,'adoption_memo':'Actual period and framework reviewed','business_activity':'ordinary','entity_overlay':'Reviewed for-profit tier/filer scope',
       'classification_review_complete':True,'offsetting_review_complete':True,'transition_comparatives_reconciled':True,'mdp_review_complete':True,'category_map_reviewed':True,
-      'statutory_format_version':'Applicable company-law formats','small_entity_scope':False,'periodic_review_adopted':True,'adapted_formats_2027_review_complete':True},
+      'statutory_format_version':'Applicable company-law formats','small_entity_scope':False,'periodic_review_adopted':True,'adapted_formats_2027_review_complete':True,
+      'mdps':[],'mdp_population_memo':'No management-defined public measure in synthetic case'},
       current_tb=tb([('cash','290','asset'),('other assets','210','asset'),('debt','-200','liability'),('opening equity','-100','equity'),('sales','-400','revenue'),('cost','200','expense')]),
       comparative_tb=tb([('cash','100','asset'),('opening equity','-100','equity')]),
       comparative={'period_end':str(int(year)-1)+'-12-31','issued_version':'Signed prior v1','restated_version':'No restatement','adjustments_memo':'No prior error; source bridge reviewed','opening_equity_tie':True,'tax_effects_reviewed':True},
@@ -77,9 +78,9 @@ def reporting(fw='IFRS',start='2026-01-01'):
       cash_flow={'start_subtotal':'operating_profit' if modern else 'profit','start_amount':'200','subtotal_reconciliation':'0','subtotal_memo':'Operating profit equals net profit in synthetic case',
       'adjustments':[{'id':'noncash','amount':'40','source':'Reviewed movement ledger','noncash_acquisition_fx_excluded':True,'memo':'Noncash adjustment'}],
       'investing':'-90','financing':'50','fx':'-10','opening':'100','closing':'290','balance_sheet_bridge':'0','opening_balance_sheet_bridge':'0','population_memo':'All cash accounts and classifications reviewed',
-      'classifications':[{'id':'op','kind':'net_customer_supplier','class':'operating','amount':'240','memo':'Complete operating flows'},
-        {'id':'inv','kind':'asset_purchase','class':'investing','amount':'-90','memo':'Investing flows'},
-        {'id':'fin','kind':'borrowing','class':'financing','amount':'50','memo':'Financing flows'}]},
+      'classifications':[{'id':'op','date':year+'-12-31','kind':'net_customer_supplier','class':'operating','amount':'240','memo':'Complete operating flows'},
+        {'id':'inv','date':year+'-12-31','kind':'asset_purchase','class':'investing','amount':'-90','memo':'Investing flows'},
+        {'id':'fin','date':year+'-12-31','kind':'borrowing','class':'financing','amount':'50','memo':'Financing flows'}]},
       notes=[{'id':'cash-note','target':'cash','amount':'290','population_evidence':'Bank evidence','memo':'All accounts covered'}],
       checklist=[{'id':g,'group':g,'requirement':'Reviewed '+g+' population','effective_version':'Applicable operative edition','decision':'satisfied',
        'memo':'Scope and disclosure population challenge','evidence':'Complete requirement register','owner':'Synthetic disclosure owner'} for g in ('balance_sheet','income','comprehensive_income','cash_flow','equity','notes')],

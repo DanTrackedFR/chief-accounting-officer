@@ -5,8 +5,9 @@ from advanced_accounting import gate, unique, event_date, iso, result, ZERO
 
 CATEGORIES={'asset','liability','equity','revenue','expense','oci'}
 
-def statements(tb):
+def statements(tb,modern=False):
     unique(tb);totals={k:ZERO for k in CATEGORIES};lines={};line_categories={};cash_total=ZERO
+    performance={k:ZERO for k in ('operating','investing','financing','income_tax','discontinued')}
     for x in tb:
         required(x,'balance','category','line','source_version','classification_memo','cash_account')
         if x['category'] not in CATEGORIES:raise ReviewRequired('Unknown statement category')
@@ -15,14 +16,23 @@ def statements(tb):
             raise ReviewRequired('Statement line collision across categories would cause invalid netting')
         line_categories[x['line']]=x['category']
         lines[x['line']]=lines.get(x['line'],ZERO)+b
+        if modern and x['category'] in ('revenue','expense'):
+            required(x,'performance_category')
+            if x['performance_category'] not in performance:raise ReviewRequired('IFRS18 performance category unresolved')
+            performance[x['performance_category']]-=b
         if flag(x,'cash_account'):
             if x['category']!='asset':raise ReviewRequired('Cash mapping requires separately assessed asset/cash convention')
             cash_total+=b
     if sum(totals.values())!=0:raise ReviewRequired('Authorized TB does not balance')
     profit=-(totals['revenue']+totals['expense']);oci=-totals['oci'];equity=-totals['equity']+profit+oci
     if totals['asset']!=-totals['liability']+equity:raise ReviewRequired('Statement equation fails')
-    return {'assets':totals['asset'],'liabilities':-totals['liability'],'closing_equity':equity,'revenue':-totals['revenue'],
+    out={'assets':totals['asset'],'liabilities':-totals['liability'],'closing_equity':equity,'revenue':-totals['revenue'],
       'expenses':totals['expense'],'profit':profit,'oci':oci,'comprehensive_income':profit+oci,'cash':cash_total,'lines':lines}
+    if modern:
+        out.update(performance_categories=performance,operating_profit=performance['operating'],
+          profit_before_financing_tax=performance['operating']+performance['investing'],
+          profit_before_tax=performance['operating']+performance['investing']+performance['financing'])
+    return out
 
 def assess(c,claims):
     gate(c,'presentation','current_tb','comparative_tb','comparative','cash_flow','equity_bridge','notes','checklist','coverage')
@@ -35,6 +45,7 @@ def assess(c,claims):
         expected=('IFRS18' if effective else 'IAS1') if fw=='IFRS' else ('AASB18' if effective else 'AASB101')
         if p['model']!=expected:raise ReviewRequired('Presentation model conflicts with reporting-period/adoption gate')
         if effective:
+            if fw=='AASB' and c['reporting_tier']==2:raise ReviewRequired('AASB Tier2 presentation/1060 adoption overlay requires specialist current-edition method')
             required(p,'transition_comparatives_reconciled','mdp_review_complete','category_map_reviewed')
             if not all(flag(p,k) for k in ('transition_comparatives_reconciled','mdp_review_complete','category_map_reviewed')):
                 raise ReviewRequired('IFRS18/AASB18 transition, management performance measures and category mapping incomplete')
@@ -49,7 +60,24 @@ def assess(c,claims):
             if start>=iso('2027-01-01'):
                 required(p,'adapted_formats_2027_review_complete')
                 if not flag(p,'adapted_formats_2027_review_complete'):raise ReviewRequired('UK 2027 adapted-format changes not assessed')
-    current=statements(c['current_tb']);prior=statements(c['comparative_tb'])
+    modern=p['model'] in ('IFRS18','AASB18')
+    current=statements(c['current_tb'],modern);prior=statements(c['comparative_tb'],modern)
+    mdps=[]
+    if modern:
+        required(p,'mdps','mdp_population_memo')
+        if not isinstance(p['mdps'],list):raise ReviewRequired('Management performance measure population must be an array')
+        if p['mdps']:unique(p['mdps'])
+        for m in p['mdps']:
+            required(m,'subtotal','amount','adjustments','definition_memo','public_communication_review')
+            if m['subtotal'] not in ('operating_profit','profit_before_financing_tax','profit_before_tax','profit'):
+                raise ReviewRequired('Unknown management performance measure comparator')
+            reconciled=current[m['subtotal']]
+            for adjustment in m['adjustments']:
+                required(adjustment,'amount','tax_effect','nci_effect','memo')
+                reconciled+=dec(adjustment['amount']);dec(adjustment['tax_effect']);dec(adjustment['nci_effect'])
+            if cash(reconciled)!=cash(dec(m['amount'])):raise ReviewRequired('Management performance measure reconciliation fails')
+            mdps.append({'id':m['id'],'subtotal':m['subtotal'],'subtotal_amount':current[m['subtotal']],
+              'adjustments':[{k:a[k] for k in ('amount','tax_effect','nci_effect')} for a in m['adjustments']],'amount':cash(reconciled)})
     q=c['comparative'];required(q,'period_end','issued_version','restated_version','adjustments_memo','opening_equity_tie','tax_effects_reviewed')
     if iso(q['period_end'])>=start:raise ReviewRequired('Comparative reporting period must precede current period')
     if not flag(q,'opening_equity_tie') or not flag(q,'tax_effects_reviewed'):
@@ -64,8 +92,8 @@ def assess(c,claims):
         raise ReviewRequired('Equity bridge fails primary-statement income/OCI/closing tie')
     if cash(opening_eq)!=prior['closing_equity']:raise ReviewRequired('Restated comparative equity differs from opening current equity')
     cf=c['cash_flow'];required(cf,'start_subtotal','start_amount','adjustments','investing','financing','fx','opening','closing','balance_sheet_bridge','population_memo','classifications')
-    modern=p['model'] in ('IFRS18','AASB18')
     if modern and cf['start_subtotal']!='operating_profit':raise ReviewRequired('IFRS18 indirect method starts with operating profit')
+    if modern and cash(dec(cf['start_amount']))!=current['operating_profit']:raise ReviewRequired('IFRS18 cash flow starting subtotal differs from computed operating profit')
     if cf['start_subtotal'] not in ('profit','profit_before_tax','operating_profit'):raise ReviewRequired('Unknown indirect starting subtotal')
     if fw=='US_GAAP' and cf['start_subtotal']!='profit':raise ReviewRequired('US indirect cash flow starts with net income')
     if cf['start_subtotal']=='profit' and cash(dec(cf['start_amount']))!=current['profit']:raise ReviewRequired('Cash flow starting profit fails P&L tie')
@@ -81,7 +109,8 @@ def assess(c,claims):
     unique(cf['classifications'])
     classified={k:ZERO for k in ('operating','investing','financing')}
     for x in cf['classifications']:
-        required(x,'kind','class','amount','memo')
+        required(x,'kind','class','amount','memo','date');event_date(c,x['date'])
+        if x['date']<c['period_start']:raise ReviewRequired('Classified cash movement precedes reporting period')
         if x['class'] not in ('operating','investing','financing'):raise ReviewRequired('Cash flow classification unknown')
         classified[x['class']]+=dec(x['amount'])
         if fw=='US_GAAP':
@@ -113,13 +142,13 @@ def assess(c,claims):
         required(x,'group','requirement','effective_version','decision','memo','evidence','owner')
         if x['decision'] not in ('satisfied','not_applicable'):raise ReviewRequired('Open disclosure checklist item')
     unique(c['notes'])
-    totals={k:v for k,v in current.items() if k!='lines'}
+    totals={k:v for k,v in current.items() if k not in ('lines','performance_categories')}
     for n in c['notes']:
         required(n,'target','amount','population_evidence','memo')
         if n['target'] not in totals or cash(dec(n['amount']))!=totals[n['target']]:raise ReviewRequired('Note amount does not tie to primary statement')
     return result('Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.',
       {'framework':fw,'presentation':p['model'],'entity_overlay':p['entity_overlay'],'checklist_version':coverage['checklist_version']},
-      {'current':current,'comparative':prior,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
+      {'current':current,'comparative':prior,'management_performance_measures':mdps,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
        'financing':cash(dec(cf['financing'])),'fx':cash(dec(cf['fx'])),'opening':cash(opening),'closing':cash(closing),'bs_cash_bridge':cash(bridge)},'note_tieouts':[{k:n[k] for k in ('id','target','amount')} for n in c['notes']]},[],
       [p['adoption_memo'],q['adjustments_memo'],cf['population_memo']],
       ['Complete period/entity-specific requirement register','Accounting policies and significant judgments/estimation uncertainty',

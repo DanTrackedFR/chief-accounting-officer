@@ -18,7 +18,9 @@ Supply unit/model, indicator/annual test, sequencing/perimeter memos and complet
 
 DCF uses reviewed signed cash flows at unique positive integer end-of-year times, rate > -1 and supplied terminal value discounted at final forecast year. No growth, risk, tax or valuation input is inferred. The reviewer aligns currency, nominal/real, pre-/post-tax, budget exclusions, forecast period, disposal costs and market-participant assumptions. Fair value and FVLCD are independent supported inputs; discounted VIU never substitutes for US undiscounted screen. Loss allocation repeatedly redistributes when floors bind and explicitly blocks an unallocated residual.
 
-Non-goodwill reversal is a separately reviewed event, limited to recoverable headroom and the depreciated no-impairment carrying ceiling. Never combine simultaneous same-unit loss and reversal. Cost-model journal is Dr impairment expense/Cr asset; reversal Dr asset/Cr reversal income. Map actual presentation accounts before posting.
+Non-goodwill reversal is a separately reviewed individual or unit-pro-rata event, limited to recoverable headroom, the depreciated no-impairment carrying ceiling and any separately determinable individual recoverable cap. Record every nongoodwill asset's cap decision in individual_recoverable_caps (null only with a memo supporting no separately determinable cap). The deterministic allocation must agree with the submitted schedule; floors/caps redistribute remaining allocation. A single fully written-off asset can reverse within its supported cap; a zero-carrying multi-asset unit requires a specialist allocation basis. Never combine simultaneous same-unit loss and reversal. Cost-model journal is Dr impairment expense/Cr asset; reversal Dr asset/Cr reversal income. Map actual presentation accounts before posting.
+
+UK Section 27 indicator-based goodwill assessment does not import an IFRS annual-test requirement. UK intangible lives/amortization must be resolved; an IFRS indefinite-life asset classification is not automatically available under FRS 102.
 
 ## Worked and adverse cases
 

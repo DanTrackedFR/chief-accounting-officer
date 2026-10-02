@@ -60,7 +60,7 @@ def assess(c,claims):
         ('Cr','acquisition costs payable',direct if uk else ZERO),('Cr','noncontrolling interest',nci),('Cr','bargain purchase gain',bargain)]))]
     expense=other+(ZERO if uk else direct)
     entries.append(journal(('Dr','acquisition expense',expense),('Cr','acquisition costs payable',expense)))
-    adjustments=[];closing_contingent=contingent_amount
+    adjustments=[];closing_contingent=contingent_amount;asset_balances={r['account']:cash(nonnegative(r['amount'])) for r in c['assets']}
     for e in c['events']:
         required(e,'kind','date','amount','memo')
         when=event_date(c,e['date']);delta=cash(dec(e['amount']))
@@ -75,8 +75,9 @@ def assess(c,claims):
             if not flag(e,'tax_nci_effects_zero') or (owned<1 and n['method']=='proportionate'):
                 raise ReviewRequired('Measurement adjustment tax/NCI effects require full revised PPA schedule')
             matches=[r for r in c['assets'] if r['account']==e['account']]
-            if len(matches)!=1 or cash(nonnegative(matches[0]['amount']))+delta<0:
+            if len(matches)!=1 or asset_balances.get(e['account'],ZERO)+delta<0:
                 raise ReviewRequired('Measurement adjustment requires a known asset and nonnegative revised carrying value')
+            asset_balances[e['account']]+=delta
             if delta>goodwill:raise ReviewRequired('Adjustment crosses goodwill/bargain boundary; reassessment required')
             goodwill-=delta
             if goodwill<0:raise ReviewRequired('Adjustment produced negative goodwill')

@@ -57,11 +57,12 @@ def assess(c,claims):
     t=c['translation'];required(t,'enabled')
     calcs={'transactions':schedules,'monetary_fx_profit':remeasure}
     if flag(t,'enabled'):
-        required(t,'operation_id','functional_currency','presentation_currency','quote','tb','opening_net_assets','opening_rate','closing_rate',
+        required(t,'operation_id','valuation_date','functional_currency','presentation_currency','quote','tb','opening_net_assets','opening_rate','closing_rate',
           'profit','profit_rate','flows','other_oci','other_oci_rate','opening_cta','reported_closing_net_assets','ownership','memo','rates_approximate_dates')
         if t['quote']!='presentation_per_functional' or t['functional_currency']==t['presentation_currency']:
             raise ReviewRequired('Translation layer currencies/quote convention invalid')
         if t['presentation_currency']!=cur['presentation']:raise ReviewRequired('Foreign operation must translate to reporting presentation currency')
+        event_date(c,t['valuation_date'])
         if not flag(t,'rates_approximate_dates'):raise ReviewRequired('Average rate cannot approximate transaction dates; use dated transaction population')
         unique(t['tb']);tb=t['tb']
         if cash(sum((dec(x['balance']) for x in tb),ZERO))!=0:raise ReviewRequired('Foreign-operation functional TB does not balance')
@@ -99,6 +100,7 @@ def assess(c,claims):
         if d['kind']=='full':
             required(d,'date','qualifying_disposal_reviewed','owners_cta','nci_cta')
             event_date(c,d['date'])
+            if t['valuation_date']!=d['date']:raise ReviewRequired('Disposal translation TB and rate must be measured at disposal date')
             if not flag(d,'qualifying_disposal_reviewed'):raise ReviewRequired('Disposal trigger requires rights/control review')
             owner_balance=cash(dec(d['owners_cta']));nci_balance=cash(dec(d['nci_cta']))
             if owner_balance+nci_balance!=total:raise ReviewRequired('Owner/NCI accumulated CTA does not tie')
@@ -106,7 +108,9 @@ def assess(c,claims):
             entries.append(movement('owners translation reserve','disposal gain',owner_balance))
             entries.append(movement('NCI translation reserve','NCI derecognition clearing',nci_balance))
             closing_cta=ZERO
-        elif d['kind']=='none':closing_cta=total
+        elif d['kind']=='none':
+            if t['valuation_date']!=c['reporting_period']:raise ReviewRequired('Continuing operation translation must use reporting-date TB/rate')
+            closing_cta=total
         else:raise ReviewRequired('Partial disposal or retained-control transfer requires framework-specific specialist method')
         calcs['translation']={'translated_tb':translated_tb,'opening_net_translated':translated_open,'profit_translated':profit_trans,
           'closing_net_translated':translated_net,'cta_movement':cta,'owners_movement':owners,'nci_movement':nci,

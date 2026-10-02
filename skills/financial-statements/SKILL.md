@@ -1,8 +1,8 @@
 ---
 id: SKILL-FS-001
 name: Financial statements and disclosures
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["07", "08", "09", "14", "15"]
 description: Governed financial statements and disclosures workpaper, accounting decisions, reconciliations, journals, disclosure review and specialist routing.
@@ -44,4 +44,3 @@ IAS 1 / IFRS 18 / IAS 7; applicable ASC and SEC; FRS 102 Sections 3–8; AASB 10
 9. Hand off tax, valuation, legal, specialized transaction and filing questions to named subject specialists with required evidence and a rerun/certification gate. Do not book specialist-generated estimates until supported by reviewed workpapers.
 
 Read `../REVIEWER-CONTROLS.md`. No ERP posting is performed. Reconcile illustrative account labels to the company-approved chart and close controls. Test success alone cannot promote this package. The completion report and independent QA determine package promotion; unresolved cases remain blocked even for a production package.
-

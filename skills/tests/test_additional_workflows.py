@@ -3,6 +3,7 @@ import copy
 import json
 import sys
 import unittest
+import subprocess
 from pathlib import Path
 from decimal import Decimal
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -232,8 +233,9 @@ class AdditionalWorkflowTests(unittest.TestCase):
 
     def test_modification_floor(self):
         c=award();c['event']={'kind':'beneficial_modification','date':'2026-12-31','memo':'Supported repricing',
-          'before_fair_value':'8','after_fair_value':'11','eligible_count':'9000','remaining_service_progress':'1','conditions_unchanged':True,'original_probable':True}
-        r=self.run_case('share-based-compensation',copy.deepcopy(c));self.assertEqual(r['calculations']['incremental_modification_expense'],Decimal('27000'))
+          'before_fair_value':'8','after_fair_value':'11','eligible_count':'9000','conditions_unchanged':True,'original_probable':True,
+          'modification_date':'2026-06-30','remaining_service_memo':'Approved actual-day service from modification to vest','remaining_service_basis':'actual_days'}
+        r=self.run_case('share-based-compensation',copy.deepcopy(c));self.assertEqual(r['calculations']['incremental_modification_expense'],Decimal('5429.51'))
         c['event']['after_fair_value']='7';self.assertEqual(self.run_case('share-based-compensation',c)['calculations']['incremental_modification_expense'],Decimal('0'))
 
     def test_cancellation_remaining_cost_and_payment(self):
@@ -328,5 +330,92 @@ class AdditionalWorkflowTests(unittest.TestCase):
 
     def test_qa_cross_category_statement_line_collision(self):
         c=reporting();c['current_tb'][2]['line']='cash';self.blocked('financial-statements',c,'line collision')
+
+    def test_future_vesting_date_always_validated(self):
+        c=award();c['tranches'][0]['vesting_date']='not-a-date';self.blocked('share-based-compensation',c,'ISO')
+
+    def test_reversal_individual_recoverable_cap_and_zero_carrying(self):
+        c=impairment();c['assets']=[{'id':'A','account':'asset','type':'finite','carrying':'0','floor':'0','no_impairment_ceiling':'100','valuation_evidence':'Fully impaired'}]
+        c['valuation'].update(cash_flows=[{'year':'1','amount':'100'}],fv_less_costs='100')
+        c['reversal'].update(requested=True,allocation_model='individual',amounts={'A':'50'},individual_recoverable_caps={'A':'50'},individual_recoverable_memo='Individual supported cap50')
+        r=self.run_case('asset-impairment',copy.deepcopy(c));self.assertEqual(r['status'],'complete',r);self.assertEqual(r['calculations']['closing']['A'],Decimal('50'))
+        c['reversal']['amounts']['A']='60';self.blocked('asset-impairment',c,'ceiling')
+
+    def test_translation_presentation_currency_mismatch(self):
+        c=fx();c['currency']['presentation']='USD';self.blocked('foreign-currency',c,'reporting presentation')
+
+    def test_ifrs18_categories_subtotals_and_mdp(self):
+        c=reporting('IFRS','2027-01-01')
+        c['current_tb'][5].update(balance='100',performance_category='operating')
+        prototype=copy.deepcopy(c['current_tb'][5])
+        for i,b,category in [('financecost','60','financing'),('taxcost','40','income_tax')]:
+            row=copy.deepcopy(prototype);row.update(id=i,line=i,balance=b,performance_category=category);c['current_tb'].append(row)
+        c['cash_flow'].update(start_amount='300',subtotal_reconciliation='-100')
+        c['cash_flow']['adjustments'][0]['amount']='-60'
+        c['presentation']['mdps']=[{'id':'adjusted-operating','subtotal':'operating_profit','amount':'310',
+          'adjustments':[{'amount':'10','tax_effect':'2','nci_effect':'1','memo':'Reviewed disclosed adjustment'}],
+          'definition_memo':'Public subtotal eligible as MDP','public_communication_review':'Reviewed public communications'}]
+        r=self.run_case('financial-statements',copy.deepcopy(c));self.assertEqual(r['status'],'complete',r)
+        self.assertEqual(r['calculations']['current']['operating_profit'],Decimal('300'))
+        self.assertEqual(r['calculations']['current']['profit_before_tax'],Decimal('240'))
+        self.assertEqual(r['calculations']['current']['profit'],Decimal('200'))
+        c['presentation']['mdps'][0]['amount']='311';self.blocked('financial-statements',c,'measure reconciliation')
+
+    def test_ifrs18_bad_categories_subtotal_and_tier2(self):
+        c=reporting('IFRS','2027-01-01');c['current_tb'][4]['performance_category']='unknown';self.blocked('financial-statements',c,'performance category')
+        c=reporting('IFRS','2027-01-01');c['cash_flow']['start_amount']='199';self.blocked('financial-statements',c,'computed operating profit')
+        c=reporting('AASB','2027-01-01');c['reporting_tier']=2;self.blocked('financial-statements',c,'Tier2')
+
+    def test_cash_population_must_be_dated_and_complete(self):
+        c=reporting();c['cash_flow']['classifications'][0]['date']='2025-12-31';self.blocked('financial-statements',c,'precedes')
+        c=reporting();c['cash_flow']['classifications'][0]['amount']='239';self.blocked('financial-statements',c,'population')
+
+    def test_aasb_tier2_current_and_unsupported_entity_scopes(self):
+        for p,f in FACTORIES.items():
+            c=f('AASB');c['reporting_tier']=2;self.assertEqual(self.run_case(p,c)['status'],'complete')
+            c=f('AASB');c['entity_type']='not_for_profit';self.blocked(p,c)
+            c=f('UK_GAAP');c['uk_standard']='FRS_105';self.blocked(p,c)
+
+    def test_public_contamination_fails_closed_all_packages(self):
+        for p,f in FACTORIES.items():
+            c=certify(p,f());c['knowledge_review']['public_caveats']=['Source: ChatGPT training data']
+            c['reviewer_signoff']['case_fingerprint']=case_fingerprint(c)
+            r=assess_case(p,c);self.assertEqual(r['status'],'blocked')
+            for route in ROUTES:self.assertNotIn('Source:',json.dumps(to_public(r,route)))
+
+    def test_modification_service_chronology(self):
+        c=award();c['event']={'kind':'beneficial_modification','date':'2026-12-31','modification_date':'2026-12-31','remaining_service_memo':'No subsequent service yet',
+          'memo':'Repriced today','before_fair_value':'8','after_fair_value':'11','eligible_count':'9000','remaining_service_progress':'1',
+          'conditions_unchanged':True,'original_probable':True,'remaining_service_basis':'actual_days'}
+        self.blocked('share-based-compensation',copy.deepcopy(c),'remaining service')
+        c['event']['remaining_service_progress']='0';self.assertEqual(self.run_case('share-based-compensation',c)['calculations']['incremental_modification_expense'],Decimal('0'))
+
+    def test_uk_goodwill_indicator_not_imported_annual_requirement(self):
+        c=impairment('UK_GAAP');c['unit']['annual_test']=False;self.assertEqual(self.run_case('asset-impairment',c)['status'],'complete')
+        c=impairment('UK_GAAP');c['assets'][1]['type']='indefinite';self.blocked('asset-impairment',c,'useful-life')
+
+    def test_disposal_date_rate_scope(self):
+        c=fx();c['disposal']={'kind':'full','date':'2026-06-30','memo':'Midyear sale','qualifying_disposal_reviewed':True,'owners_cta':'-8.8','nci_cta':'-2.2'}
+        self.blocked('foreign-currency',c,'disposal date')
+
+    def test_award_reporting_date_measurement_not_stale(self):
+        for classification in ('equity','cash'):
+            c=award();c['award']['classification']=classification;c['schedule'][0]['date']='2026-06-30'
+            self.blocked('share-based-compensation',c,'reach reporting date')
+
+    def test_saved_twenty_examples_and_cli_public_exports(self):
+        root=Path(__file__).resolve().parents[2]
+        for package in FACTORIES:
+            for fw in FRAMEWORKS:
+                with self.subTest(package=package,framework=fw):
+                    path=root/'skills'/package/'examples'/(fw+'.case.json')
+                    c=json.loads(path.read_text());r=assess_case(package,c)
+                    self.assertEqual(r['status'],'partial',r)
+                    self.assertNotIn('reviewer_signoff',c)
+                    expected=json.loads(path.with_name(fw+'.public.json').read_text())
+                    self.assertEqual(json.loads(json.dumps(to_public(r,'export'),default=str)),expected)
+                    proc=subprocess.run([sys.executable,str(root/'skills/run_skill.py'),package,str(path),'--route','export'],capture_output=True,text=True)
+                    self.assertEqual(proc.returncode,0,proc.stderr)
+                    self.assertEqual(json.loads(proc.stdout),expected)
 
 if __name__=='__main__':unittest.main()

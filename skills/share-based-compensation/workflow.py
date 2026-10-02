@@ -1,7 +1,7 @@
 """Award/tranche service attribution; external valuations and legal classification."""
 from core_accounting import cash, dec, required, ReviewRequired, journal
 from production import flag, fraction, nonnegative
-from advanced_accounting import gate, unique, positive, event_date, movement, result, ZERO
+from advanced_accounting import gate, unique, positive, event_date, iso, movement, result, ZERO
 
 def assess(c,claims):
     gate(c,'award','tranches','schedule','event')
@@ -21,7 +21,7 @@ def assess(c,claims):
     unique(c['tranches']);tranches={t['id']:t for t in c['tranches']}
     for t in tranches.values():
         required(t,'granted','grant_fair_value','vesting_date','service_attribution_memo')
-        positive(t['granted']);nonnegative(t['grant_fair_value']);event_date(c,t['vesting_date']) if t['vesting_date']<=c['reporting_period'] else None
+        positive(t['granted']);nonnegative(t['grant_fair_value']);iso(t['vesting_date'])
         if t['vesting_date']<a['grant_date']:raise ReviewRequired('Vesting precedes grant')
     required(a,'opening_cumulative','opening_balance_memo')
     unique(c['schedule'],'date');previous_date=max(a['grant_date'],c['period_start']);previous=cash(nonnegative(a['opening_cumulative']));rows=[];entries=[];last_quantities={}
@@ -53,17 +53,32 @@ def assess(c,claims):
         previous=cumulative;previous_date=row['date']
     e=c['event'];required(e,'kind','date','memo')
     kind=e['kind'];incremental=ZERO;settlement=ZERO;closing=previous
+    if kind in ('none','beneficial_modification'):
+        if previous_date!=c['reporting_period']:raise ReviewRequired('Continuing award schedule must reach reporting date')
+        if kind=='beneficial_modification' and e['date']!=c['reporting_period']:
+            raise ReviewRequired('Modification attribution must be recognized through reporting date')
+    elif e['date']!=previous_date:
+        raise ReviewRequired('Settlement/cancellation needs same-date service and census schedule')
     if kind!='none':
         event_date(c,e['date'])
         if e['date']<previous_date:raise ReviewRequired('Event precedes final schedule row; use event-specific chronological schedule')
         if kind=='beneficial_modification':
             if a['classification']!='equity':raise ReviewRequired('Cash modifications require settlement-date liability valuation')
-            required(e,'before_fair_value','after_fair_value','eligible_count','remaining_service_progress','conditions_unchanged','original_probable')
+            required(e,'before_fair_value','after_fair_value','eligible_count','conditions_unchanged','original_probable','modification_date','remaining_service_memo','remaining_service_basis')
+            modified=event_date(c,e['modification_date']);recognized=event_date(c,e['date'])
+            if modified<iso(a['grant_date']) or modified>recognized:raise ReviewRequired('Modification chronology invalid')
+            vest_dates={t['vesting_date'] for t in tranches.values()}
+            if len(vest_dates)>1:raise ReviewRequired('Different tranche modification-service periods need per-tranche specialist event schedule')
+            vest=iso(next(iter(vest_dates)))
+            if e['remaining_service_basis']!='actual_days':raise ReviewRequired('Modification service attribution convention requires specialist schedule')
+            progress=1 if recognized>=vest else dec((recognized-modified).days)/dec((vest-modified).days)
+            if 'remaining_service_progress' in e and abs(fraction(e['remaining_service_progress'])-progress)>dec('0.000000000001'):
+                raise ReviewRequired('Modification remaining service progress does not reconcile to dates')
             if not flag(e,'conditions_unchanged') or not flag(e,'original_probable'):
                 raise ReviewRequired('Modified vesting/probability requires framework-specific modification analysis')
             count=nonnegative(e['eligible_count'])
             if count>sum(last_quantities.values()):raise ReviewRequired('Modification population exceeds eligible awards')
-            incremental=cash(count*max(nonnegative(e['after_fair_value'])-nonnegative(e['before_fair_value']),ZERO)*fraction(e['remaining_service_progress']))
+            incremental=cash(count*max(nonnegative(e['after_fair_value'])-nonnegative(e['before_fair_value']),ZERO)*progress)
             entries.append(journal(('Dr','share compensation expense',incremental),('Cr','award equity',incremental)))
             closing+=incremental
         elif kind=='cash_settlement':

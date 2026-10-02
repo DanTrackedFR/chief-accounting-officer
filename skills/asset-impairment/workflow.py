@@ -51,7 +51,8 @@ def assess(c,claims):
         raise ReviewRequired('Indefinite-lived intangible uses its separate test')
     carrying=sum((a['carrying'] for a in assets),ZERO);gw=sum((a['carrying'] for a in goodwill),ZERO)
     annual=flag(u,'annual_test');indicator=flag(u,'indicator')
-    if (goodwill or any(a['type']=='indefinite' for a in assets)) and not annual:
+    if c['framework']=='UK_GAAP' and any(a['type']=='indefinite' for a in assets):raise ReviewRequired('FRS102 intangible useful-life/amortization assessment required; do not import IFRS indefinite life')
+    if c['framework']!='UK_GAAP' and (goodwill or any(a['type']=='indefinite' for a in assets)) and not annual:
         raise ReviewRequired('Annual goodwill/indefinite test not completed')
     v=c['valuation'];required(v,'cash_flows','discount_rate','terminal_value','fv_less_costs','fair_value','undiscounted','memo','inputs_reviewed')
     if not flag(v,'inputs_reviewed'):raise ReviewRequired('Unreviewed forecast/market valuation inputs')

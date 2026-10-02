@@ -1,8 +1,8 @@
 ---
 id: SKILL-SBC-001
 name: Share-based compensation
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "05"
 related_domains: ["07", "08", "09", "14", "15"]
 description: Governed share-based compensation workpaper, accounting decisions, reconciliations, journals, disclosure review and specialist routing.
@@ -44,4 +44,3 @@ IFRS 2 / ASC 718 / FRS 102 Section 26 / AASB 2. Read methods.md and the complete
 9. Hand off tax, valuation, legal, specialized transaction and filing questions to named subject specialists with required evidence and a rerun/certification gate. Do not book specialist-generated estimates until supported by reviewed workpapers.
 
 Read `../REVIEWER-CONTROLS.md`. No ERP posting is performed. Reconcile illustrative account labels to the company-approved chart and close controls. Test success alone cannot promote this package. The completion report and independent QA determine package promotion; unresolved cases remain blocked even for a production package.
-
