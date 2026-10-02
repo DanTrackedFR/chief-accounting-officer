@@ -1,0 +1,26 @@
+name: Phase 3 skill regression
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - ".github/workflows/phase3-skills.yml"
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+
+jobs:
+  lease-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lease skill tests
+        run: python -m unittest discover -s skills/lease-accounting/tests -p "test_*.py"
+      - name: Repository regression
+        run: python -m unittest discover -s tests -p "test_*.py"
+      - name: Standards evidence validation
+        run: python knowledge/standards-evidence/validate_claims.py && python knowledge/standards-evidence/validate_approvals.py
