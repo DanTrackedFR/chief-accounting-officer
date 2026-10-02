@@ -24,7 +24,7 @@ class CaseEngineTests(unittest.TestCase):
   self.assertEqual(dr,cr)
  def test_us_finance(self):
   c=base("US_GAAP"); c["classification"]="finance"; r=run_case(c)
-  self.assertIn("pinpoint paragraph",r["limitations"][0])
+  self.assertTrue(any("ASC 842-20-30-1" in c["locator"] for c in r["citations"]))
  def test_us_operating_single_cost(self):
   c=base("US_GAAP"); c["classification"]="operating"; r=run_case(c)
   self.assertEqual(r["rou_schedule"][0]["lease_cost"],100000)
