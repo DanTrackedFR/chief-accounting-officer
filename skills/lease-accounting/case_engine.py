@@ -42,9 +42,13 @@ def _citations(framework):
           {"title":"FRS 102 Section 20 Leases","locator":"FRS 102 20.47, 20.51–20.54"},
           {"title":"FRS 102 Section 20 Leases","locator":"FRS 102 20.56–20.75"},
           {"title":"FRS 102 Section 20 Leases","locator":"FRS 102 20.76–20.85"}]
-    # Current governed records do not establish exact pinpoints for these routes.
-    return [{"title":"ASC 842 Leases","locator":"Topic 842 — pinpoint paragraph verification required"}] if framework=="US_GAAP" else [
-      {"title":"AASB 16 Leases","locator":"AASB 16 — pinpoint paragraph verification required"}]
+    if framework=="US_GAAP":
+        return [
+          {"title":"ASC 842 Leases","locator":"ASC 842-20-30-1 through 30-5"},
+          {"title":"ASC 842 Leases","locator":"ASC 842-20-35-1 through 35-4"}]
+    return [
+      {"title":"AASB 16 Leases","locator":"AASB 16.22–32"},
+      {"title":"AASB 16 Leases","locator":"AASB 16.47–60"}]
 
 def run_case(case):
     validate_case(case)
@@ -74,8 +78,8 @@ def run_case(case):
             rou.append({"period":i,"opening":opening,"depreciation":dep,"closing":closing}); opening=closing
     journals=_journals(framework,classification,initial,liability,rou,case)
     limitations=[]
-    if framework in ("US_GAAP","AASB"):
-        limitations.append("The governed knowledge does not yet establish a confirmed pinpoint paragraph for this route; do not present the locator as paragraph-verified.")
+    if framework=="US_GAAP":
+        limitations.append("ASC pinpoints are supported by official FASB Topic 842 issuance/amendment materials; direct inspection of the current operative Codification remains a separate source-assurance task.")
     return {"skill_id":"SKILL-LEASE-001","status":"complete","case_id":case["case_id"],
       "framework":framework,"jurisdiction":case["jurisdiction"],"entity":case["entity"],
       "period_start":case["period_start"],"method":"fixed end-period lessee lease vertical slice",
