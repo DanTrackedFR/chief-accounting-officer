@@ -1,0 +1,117 @@
+{
+  "case_id": "synthetic-asset-impairment",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "unit": {
+    "model": "recoverable_amount",
+    "perimeter_memo": "Single independent unit",
+    "indicator_memo": "Test indicators reviewed",
+    "sequence_memo": "Other asset tests completed before unit",
+    "annual_test": true,
+    "indicator": true,
+    "carrying_alignment": true,
+    "other_tests_complete": true,
+    "uk_amortization_complete": true
+  },
+  "assets": [
+    {
+      "id": "gw",
+      "account": "goodwill",
+      "type": "goodwill",
+      "carrying": "1500",
+      "floor": "0",
+      "no_impairment_ceiling": "1500",
+      "valuation_evidence": "PPA"
+    },
+    {
+      "id": "plant",
+      "account": "plant",
+      "type": "finite",
+      "carrying": "10500",
+      "floor": "0",
+      "no_impairment_ceiling": "10500",
+      "valuation_evidence": "Asset ledger"
+    }
+  ],
+  "valuation": {
+    "cash_flows": [
+      {
+        "year": "1",
+        "amount": "10800"
+      }
+    ],
+    "discount_rate": "0",
+    "terminal_value": "0",
+    "fv_less_costs": "11000",
+    "fair_value": "11000",
+    "undiscounted": "10800",
+    "memo": "Forecast and market value inputs supported",
+    "inputs_reviewed": true
+  },
+  "reversal": {
+    "requested": false,
+    "amounts": {},
+    "change_memo": "No reversal"
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-04-006-IFRS-01"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-04-006",
+        "path": "knowledge/topics/TOPIC-04-006-impairment-goodwill/README.md",
+        "sha256": "a774b10ff7f978da6cc59247c31809174159674c8ffc0366571f05026939536a"
+      },
+      {
+        "topic_id": "TOPIC-04-006",
+        "path": "knowledge/topics/TOPIC-04-006-impairment-goodwill/applied-qa.md",
+        "sha256": "5d7e7f288434ad93e3db0b547ee89055d7324f84aec9bbccf2410ce90b6e1813"
+      },
+      {
+        "topic_id": "TOPIC-04-006",
+        "path": "knowledge/topics/TOPIC-04-006-impairment-goodwill/phase-2d-method.md",
+        "sha256": "d3f0731a6fb0d0450643c99dd6f83e5ed91620990199e58abdf9395a37eb4936"
+      },
+      {
+        "topic_id": "TOPIC-04-006",
+        "path": "knowledge/topics/TOPIC-04-006-impairment-goodwill/standards-claims.json",
+        "sha256": "1b81187810c33cb70b6da945210ad56711172c1ebe7cacd7e310ab8b51fc48a2"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-04-006-IFRS-01"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

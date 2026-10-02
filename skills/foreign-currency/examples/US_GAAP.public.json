@@ -1,0 +1,20 @@
+{
+  "topic_id": "TOPIC-06-002",
+  "guidance": "Functional-currency transaction schedule and separate presentation-currency bridge reconcile.\nReview status: partial\nCalculations: {\"monetary_fx_profit\": \"8.00\", \"transactions\": [{\"closing\": \"72.00\", \"gain\": \"8.00\", \"id\": \"AR\", \"initial\": \"110.00\", \"origin\": \"FX income\", \"settlement\": \"46.00\"}], \"translation\": {\"closing_cta\": \"-11.00\", \"closing_net_translated\": \"96.00\", \"cta_movement\": \"-11.00\", \"nci_movement\": \"-2.20\", \"opening_cta\": \"0.00\", \"opening_net_translated\": \"90.00\", \"owners_movement\": \"-8.80\", \"profit_translated\": \"17.00\", \"recycled_owners\": \"0\", \"translated_tb\": {\"capital\": \"-90.00\", \"cash\": \"96.00\", \"profit\": \"-17.00\"}}}\nJournals: [[{\"side\": \"Dr\", \"account\": \"receivable\", \"amount\": \"8.00\"}, {\"side\": \"Cr\", \"account\": \"FX income\", \"amount\": \"8.00\"}], [{\"side\": \"Dr\", \"account\": \"cash\", \"amount\": \"46.00\"}, {\"side\": \"Cr\", \"account\": \"receivable\", \"amount\": \"46.00\"}], [{\"side\": \"Cr\", \"account\": \"translation clearing\", \"amount\": \"8.80\"}, {\"side\": \"Dr\", \"account\": \"owners translation OCI\", \"amount\": \"8.80\"}], [{\"side\": \"Cr\", \"account\": \"translation clearing\", \"amount\": \"2.20\"}, {\"side\": \"Dr\", \"account\": \"NCI translation OCI\", \"amount\": \"2.20\"}]]\nDisclosure review: Functional/presentation currencies and changes; Transaction FX gains/losses separate from translation OCI; Translation reserve and NCI rollforwards; Disposal reclassification and ownership changes; Rate-source uncertainty and lack-of-exchangeability disclosures where relevant",
+  "framework": "US_GAAP",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+  ],
+  "uncertainties": [
+    "Independent reviewer must approve this exact case fingerprint before use"
+  ],
+  "citations": [
+    {
+      "title": "ASC 830"
+    }
+  ]
+}
