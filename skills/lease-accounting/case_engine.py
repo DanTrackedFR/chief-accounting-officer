@@ -72,7 +72,7 @@ def run_case(case):
         for i in range(1,periods+1):
             dep=opening if i==periods else depreciation; closing=money(opening-dep)
             rou.append({"period":i,"opening":opening,"depreciation":dep,"closing":closing}); opening=closing
-    journals=_journals(framework,classification,initial,liability,rou)
+    journals=_journals(framework,classification,initial,liability,rou,case)
     limitations=[]
     if framework in ("US_GAAP","AASB"):
         limitations.append("The governed knowledge does not yet establish a confirmed pinpoint paragraph for this route; do not present the locator as paragraph-verified.")
@@ -86,11 +86,19 @@ def run_case(case):
       "disclosures":["Route schedule totals and judgments to the applicable lease disclosure checklist."],
       "open_items":[]}
 
-def _journals(framework,classification,initial,liability,rou):
-    entries=[{"when":"commencement","lines":[["Dr","ROU asset",initial["rou_asset"]],["Cr","lease liability",initial["lease_liability"]]]}]
-    adjustment=money(initial["rou_asset"]-initial["lease_liability"])
-    if adjustment:
-        entries[0]["note"]="ROU/liability difference represents supplied prepayment/direct-cost/incentive/restoration bridge; post the underlying cash/provision accounts from the approved workpaper."
+def _journals(framework,classification,initial,liability,rou,case=None):
+    case=case or {}
+    commencement=[["Dr","ROU asset",initial["rou_asset"]]]
+    incentive=money(case.get("incentives","0"))
+    if incentive: commencement.append(["Dr","cash/incentive receivable",incentive])
+    commencement.append(["Cr","lease liability",initial["lease_liability"]])
+    prepayment=money(case.get("prepayments","0"))
+    direct=money(case.get("direct_costs","0"))
+    restoration=money(case.get("restoration","0"))
+    if prepayment: commencement.append(["Cr","prepaid lease asset",prepayment])
+    if direct: commencement.append(["Cr","cash/AP — initial direct costs",direct])
+    if restoration: commencement.append(["Cr","restoration provision",restoration])
+    entries=[{"when":"commencement","lines":commencement}]
     for l,r in zip(liability,rou):
         if framework=="US_GAAP" and classification=="operating":
             entries.append({"when":f"period {l['period']}","lines":[["Dr","lease expense",r["lease_cost"]],["Cr","lease liability (interest accretion)",l["interest"]],["Cr","ROU asset",r["rou_reduction"]],["Dr","lease liability",l["payment"]],["Cr","cash",l["payment"]]]})
