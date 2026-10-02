@@ -1,8 +1,8 @@
 ---
 id: SKILL-LEASE-001
 name: Lease accounting assessment and measurement
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "04"
 related_domains: ["08", "12", "13"]
 description: Assess lessee lease contracts and generate a documented measurement and journal pack.
