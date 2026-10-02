@@ -1,0 +1,20 @@
+{
+  "topic_id": "TOPIC-08-003",
+  "guidance": "Capital register, owner transactions and every equity component reconcile.\nReview status: partial\nCalculations: {\"closing\": \"332.00\", \"components\": {\"oci\": \"0\", \"premium\": \"172.00\", \"retained_earnings\": \"40\", \"share_capital\": \"120.00\", \"treasury\": \"0\"}, \"dividend_payable\": \"10\", \"events\": [{\"amount\": \"200\", \"id\": \"issue\", \"kind\": \"issue\"}, {\"amount\": \"10\", \"id\": \"dividend\", \"kind\": \"dividend_declared\"}], \"issued_shares\": \"120\", \"movements\": {\"oci\": \"0\", \"premium\": \"172.00\", \"retained_earnings\": \"-10\", \"share_capital\": \"20.00\", \"treasury\": \"0\"}, \"opening\": \"150\", \"own_shares\": \"0\"}\nJournals: [[{\"side\": \"Dr\", \"account\": \"cash\", \"amount\": \"200.00\"}, {\"side\": \"Cr\", \"account\": \"share_capital\", \"amount\": \"20.00\"}, {\"side\": \"Cr\", \"account\": \"premium\", \"amount\": \"180.00\"}], [{\"side\": \"Dr\", \"account\": \"premium\", \"amount\": \"8.00\"}, {\"side\": \"Cr\", \"account\": \"cash\", \"amount\": \"8.00\"}], [{\"side\": \"Dr\", \"account\": \"retained_earnings\", \"amount\": \"10.00\"}, {\"side\": \"Cr\", \"account\": \"dividends payable\", \"amount\": \"10.00\"}]]\nDisclosure review: Capital/share counts, premium/treasury costs, owner/nonowner changes, parent/NCI reserves, OCI and retrospective comparatives.",
+  "framework": "US_GAAP",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+  ],
+  "uncertainties": [
+    "Independent reviewer must approve this exact case fingerprint before use"
+  ],
+  "citations": [
+    {
+      "title": "ASC 505 / applicable equity presentation"
+    }
+  ]
+}

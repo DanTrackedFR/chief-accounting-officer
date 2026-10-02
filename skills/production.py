@@ -16,6 +16,12 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'cash-flow-reporting': ('SKILL-CASH-001',['TOPIC-08-002','TOPIC-06-001','TOPIC-06-002']),
+    'equity-capital': ('SKILL-EQUITY-001',['TOPIC-08-003','TOPIC-13-006']),
+    'accounting-changes': ('SKILL-CHANGE-001',['TOPIC-02-009','TOPIC-15-001','TOPIC-15-003','TOPIC-15-006']),
+    'going-concern': ('SKILL-GC-001',['TOPIC-08-005','TOPIC-06-006']),
+    'commitments-contingencies': ('SKILL-COMMIT-001',['TOPIC-05-003','TOPIC-13-008','TOPIC-06-007']),
+    'related-parties': ('SKILL-RP-001',['TOPIC-08-006','TOPIC-13-008']),
     'month-end-close': ('SKILL-CLOSE-001', ['TOPIC-02-001','TOPIC-02-002','TOPIC-02-003','TOPIC-02-006','TOPIC-02-007','TOPIC-02-008','TOPIC-02-010','TOPIC-12-006']),
     'balance-sheet-reconciliations': ('SKILL-REC-001', ['TOPIC-02-004','TOPIC-02-005','TOPIC-02-008']),
     'accounts-receivable': ('SKILL-AR-001', ['TOPIC-03-007','TOPIC-03-009','TOPIC-03-010','TOPIC-03-011','TOPIC-12-002']),
@@ -82,6 +88,8 @@ def canonical_knowledge(topic_ids, framework):
     # Retrieve its documents, but never manufacture accounting authority.
     operational={'TOPIC-02-001','TOPIC-02-002','TOPIC-02-003','TOPIC-02-004','TOPIC-02-005','TOPIC-02-010','TOPIC-03-011','TOPIC-08-009'}
     claims=approved_claims([t for t in topic_ids if t not in operational],framework)
+    if 'TOPIC-02-009' in topic_ids and framework=='US_GAAP':
+        claims+=approved_claims(['TOPIC-02-009'],'SEC')
     # Operational documents are not universal normative authority. IFRS18 and
     # auditor-only OTHER claims remain in the reviewed documents, not applied
     # company recognition citations merely because this is a close workflow.
@@ -93,6 +101,10 @@ def canonical_knowledge(topic_ids, framework):
         # Canonical methods added during remediation may not occur in the old artifact list.
         claim_path=next(ROOT/p for p in t['artifact_paths'] if p.endswith('/standards-claims.json'))
         paths=set(claim_path.parent.glob('*.md'))
+        # New reporting packages read full method trees without changing
+        # archived knowledge manifests of existing production packages.
+        if list(topic_ids) in [PACKAGES[p][1] for p in ('cash-flow-reporting','equity-capital','accounting-changes','going-concern','commitments-contingencies','related-parties')]:
+            paths.update(claim_path.parent.rglob('*.md'))
         if tid in operational or tid.startswith('TOPIC-12-'):
             paths.update(claim_path.parent.rglob('*.md'))
         paths.add(claim_path)
@@ -123,6 +135,8 @@ def execute(package, case):
     used=set(reviewed['applied_claim_ids'])
     if not used or not used<={c['claim_id'] for c in claims}:raise ReviewRequired('Applied claims must be a nonempty subset of reviewed approved claims')
     selected=[c for c in claims if c['claim_id'] in used]
+    if package=='accounting-changes' and any('-SEC-' in c['claim_id'] for c in selected) and not case.get('sec',{}).get('registrant'):
+        raise ReviewRequired('SEC claims require actual registrant applicability')
     if case['framework']=='UK_GAAP' and any('FRS105' in c['proposition'].replace(' ','') or 'FRS101' in c['proposition'].replace(' ','') for c in selected):raise ReviewRequired('FRS102 case cannot cite FRS101/105-specific propositions as applicable authority')
     if not isinstance(reviewed['public_caveats'],list) or not reviewed['public_caveats']:raise ReviewRequired('Curated accounting/period/authority caveats required')
     result.setdefault('uncertainties',[]).extend(reviewed['public_caveats'])
@@ -152,6 +166,7 @@ def case_fingerprint(case):
     files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
     files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
     files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
+    files += [ROOT/'skills/reporting_accounting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -164,6 +179,12 @@ def to_public(result, route='answer'):
       'SKILL-CONS-001':{'IFRS':'IFRS 10','US_GAAP':'ASC 810','UK_GAAP':'FRS 102 Section 9','AASB':'AASB 10'}}
     title=standard_titles.get(result['skill_id'],{}).get(result['framework'],'Framework unresolved')
     additional={'SKILL-BC-001':['IFRS 3','ASC 805','FRS 102 Section 19','AASB 3'],
+      'SKILL-CASH-001':['IAS 7 / applicable IFRS 18 amendments','ASC 230','FRS 102 Section 7','AASB 107 / applicable AASB 18 amendments'],
+      'SKILL-EQUITY-001':['IAS 32 / applicable equity presentation','ASC 505 / applicable equity presentation','FRS 102 Sections 6 / 22','AASB 132 / applicable equity presentation'],
+      'SKILL-CHANGE-001':['IAS 8','ASC 250','FRS 102 Section 10','AASB 108'],
+      'SKILL-GC-001':['Applicable IAS 1 / IAS 8 / IAS 10','ASC 205-40 / ASC 855','FRS 102 Sections 3 / 32','Applicable AASB 101 / AASB 108 / AASB 110'],
+      'SKILL-COMMIT-001':['IAS 37 / contract-specific guidance','ASC 450 / contract-specific guidance','FRS 102 Section 21 / contract-specific guidance','AASB 137 / contract-specific guidance'],
+      'SKILL-RP-001':['IAS 24','ASC 850','FRS 102 Section 33','AASB 124'],
       'SKILL-CLOSE-001':['Applicable recognition guidance / IAS 8','Applicable recognition guidance / ASC 250','Applicable FRS 102 / Section 10','Applicable AASB / AASB 108'],
       'SKILL-REC-001':['IAS 8','ASC 250','FRS 102 Section 10','AASB 108'],
       'SKILL-AR-001':['IFRS 15 / IFRS 9','ASC 606 / ASC 326','FRS 102 Sections 11 / 23','AASB 15 / AASB 9'],
@@ -179,11 +200,12 @@ def to_public(result, route='answer'):
         title=additional[result['skill_id']][('IFRS','US_GAAP','UK_GAAP','AASB').index(result['framework'])]
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
+        claim_title='SEC issuer materiality and filing guidance' if '-SEC-' in claim['claim_id'] else title
         for ref in claim.get('references',[]):
             if isinstance(ref,str):
                 confirmed=claim.get('reference_confidence')=='VERIFIED'
                 locator=ref if confirmed else 'Unverified paragraph reference: '+ref
-                citations.append({'title':title,'locator':locator})
+                citations.append({'title':claim_title,'locator':locator})
     # Never copy internal evidence limitations or arbitrary case text to public output.
     guidance=result['conclusion']+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(result['calculations'],default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
     if result.get('specialist_routing'):
@@ -209,6 +231,12 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'cash-flow-reporting':('TOPIC-08-002','Cash reporting, Financial Statements, FX, Consolidation and Lease specialists','Bank/GL cash definitions, cash source population, indirect/direct bridge, classification and adopted-period memos'),
+          'equity-capital':('TOPIC-08-003','Equity, legal capital, SBC and group specialists','Instrument/legal terms, cap table, owner approvals, component and NCI bridges'),
+          'accounting-changes':('TOPIC-02-009','Technical accounting, tax/EPS, auditors and SEC securities counsel','Original facts/issued statements, policy/estimate/error analysis, both error measures, comparative bridges and filing evidence'),
+          'going-concern':('TOPIC-08-005','Management, treasury, legal and going-concern reviewer','Authorized forecasts, maturities/covenants, feasible documented plans, downside evidence and framework assessment'),
+          'commitments-contingencies':('TOPIC-13-008','Provisions, Financial Instruments, guarantee valuation and legal specialists','Complete contracts/claims register, legal probability/recognition analysis, guarantee measurement and disclosure proofs'),
+          'related-parties':('TOPIC-08-006','Related-party, legal, Transfer Pricing and Consolidation specialists','Dated relationship declarations, complete source transactions, balances/commitments, terms, exemptions and arm-length support'),
           'month-end-close':('TOPIC-02-001','Close controller and transaction specialist','Frozen task, source, approval and lock histories; cutoff and error assessments'),
           'balance-sheet-reconciliations':('TOPIC-02-004','Account owner and reconciliation reviewer','Complete GL inventory, independent source proofs, item-level exceptions and approved corrections'),
           'accounts-receivable':('TOPIC-03-011','Revenue Recognition, ECL and collections specialists','Contract entitlement, credits, remittances, allowance and collection evidence'),

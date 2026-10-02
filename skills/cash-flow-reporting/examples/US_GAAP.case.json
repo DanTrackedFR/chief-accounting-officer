@@ -1,0 +1,409 @@
+{
+  "case_id": "synthetic-cash-flow-reporting",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-03-31",
+  "functional_currency": "EUR",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 4,
+    "population_amount": "700",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independent complete source register"
+  },
+  "disclosure_review": {
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual entity/period requirements independently reviewed",
+    "complete": true
+  },
+  "cash_policy": {
+    "id": "policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "US_GAAP",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "early_adoption": false,
+    "business_activity": "ordinary",
+    "interest_paid": "operating",
+    "interest_received": "operating",
+    "dividends_received": "operating",
+    "dividends_paid": "financing",
+    "restricted_memo": "No restrictions"
+  },
+  "cash_inventory": [
+    "bank"
+  ],
+  "cash_accounts": [
+    {
+      "id": "bank",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "100",
+      "closing": "290",
+      "gl_opening": "100",
+      "gl_closing": "290",
+      "type": "demand",
+      "cf_included": true,
+      "balance_sheet_cash": true,
+      "fx": "-10",
+      "definition_memo": "Demand deposit",
+      "restriction_evidence": "Unrestricted",
+      "bank_gl_evidence": "Independent bank/GL tie"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "customers",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "date": "2026-12-31",
+      "amount": "400",
+      "kind": "customer_receipts",
+      "category": "operating",
+      "cash": true,
+      "source_id": "customers",
+      "bank_id": "customers",
+      "classification_memo": "Reviewed cash classification"
+    },
+    {
+      "id": "suppliers",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "date": "2026-12-31",
+      "amount": "-160",
+      "kind": "suppliers_employees",
+      "category": "operating",
+      "cash": true,
+      "source_id": "suppliers",
+      "bank_id": "suppliers",
+      "classification_memo": "Reviewed cash classification"
+    },
+    {
+      "id": "capex",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "date": "2026-12-31",
+      "amount": "-90",
+      "kind": "capital_purchase",
+      "category": "investing",
+      "cash": true,
+      "source_id": "capex",
+      "bank_id": "capex",
+      "classification_memo": "Reviewed cash classification"
+    },
+    {
+      "id": "debt",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "date": "2026-12-31",
+      "amount": "50",
+      "kind": "debt_proceeds",
+      "category": "financing",
+      "cash": true,
+      "source_id": "debt",
+      "bank_id": "debt",
+      "classification_memo": "Reviewed cash classification"
+    }
+  ],
+  "indirect": {
+    "starting_subtotal": "net_profit",
+    "start_amount": "200",
+    "net_profit": "200",
+    "subtotal_to_profit": "0",
+    "adjustments": [
+      {
+        "id": "depreciation",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "amount": "40",
+        "basis_memo": "Supported noncash depreciation",
+        "noncash_acquisition_fx_excluded": true
+      }
+    ],
+    "working_capital": [],
+    "adjustment_inventory": [
+      "depreciation"
+    ],
+    "working_capital_inventory": []
+  },
+  "noncash": [
+    {
+      "id": "lease",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_id": "lease_non_cash",
+      "amount": "20",
+      "type": "new lease",
+      "date": "2026-12-31",
+      "accounting_memo": "Reviewed Lease Accounting result"
+    }
+  ],
+  "noncash_inventory": [
+    "lease"
+  ],
+  "noncash_source_total": "20",
+  "statement": {
+    "opening": "100",
+    "closing": "290",
+    "balance_sheet_opening": "100",
+    "balance_sheet_closing": "290",
+    "operating": "240",
+    "investing": "-90",
+    "financing": "50",
+    "fx": "-10"
+  },
+  "handoffs": {
+    "fx": {
+      "target": "Foreign Currency",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope",
+      "amount": "-10"
+    },
+    "statements": {
+      "target": "Financial Statements",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "leases": {
+      "target": "Lease Accounting",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "consolidation": {
+      "target": "Consolidation",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "profit": {
+      "target": "Financial Statements",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope",
+      "amount": "200"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-08-002-US-001",
+      "TOPIC-08-002-US_GAAP-R002",
+      "TOPIC-06-001-US-001",
+      "TOPIC-06-001-US_GAAP-R002",
+      "TOPIC-06-002-US-001",
+      "TOPIC-06-002-US_GAAP-R002"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-08-002",
+        "path": "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/README.md",
+        "sha256": "646e1ec013bcbb5b61fd844652d2a467c4b078d7e7542725817f7892c94a9fcc"
+      },
+      {
+        "topic_id": "TOPIC-08-002",
+        "path": "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/cash-and-performance-classification-case.md",
+        "sha256": "eb94ad2174eecf8d87bb2996df699c1ae509ac304713a7774dfedfb232907502"
+      },
+      {
+        "topic_id": "TOPIC-08-002",
+        "path": "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/cash-flow-bridge.md",
+        "sha256": "273e63f42924fbecd3ad8d9fd50876cc7c636459e2c9eef68da3f4a45f77c560"
+      },
+      {
+        "topic_id": "TOPIC-08-002",
+        "path": "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/evidence-and-regression.md",
+        "sha256": "c2c1699a6d1840e076619ecc2a61b83b7603d1ef20130580e95c2cf075b67e73"
+      },
+      {
+        "topic_id": "TOPIC-08-002",
+        "path": "knowledge/topics/TOPIC-08-002-income-statement-cash-flow/standards-claims.json",
+        "sha256": "3e93ac3595a79ba369c5858d73be28b00526627f1216970ee6493d3716c5782c"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/README.md",
+        "sha256": "e45d753f2064b30e17fabfae9f660b0d368ae8105776a63a9acd19ab47f00c72"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/evidence-and-regression.md",
+        "sha256": "0e7118fa92733585fcbd29bd8b16f123ede45be8c3e060a614e2007213d6647a"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/reconciliation-case.md",
+        "sha256": "3891c68a60fd0a52d752bd723109f5d353ac5225ab37a83a1b53d80876690196"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/restriction-and-cutoff-resolution.md",
+        "sha256": "803730b58b9ae46c7412c1d1ec8fec51efbddd4f54f5028c3cfdbbe9e8e7da22"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-in-transit-restricted-cash/standards-claims.json",
+        "sha256": "f38dc25ebcc7fd063c43d50e6305fc48f70d3dede659ef96ff05a59158050561"
+      },
+      {
+        "topic_id": "TOPIC-06-001",
+        "path": "knowledge/topics/TOPIC-06-001-bank-reconciliation-cash-restrictions/README.md",
+        "sha256": "b14efebd906b28621216f5a905ef30a34663e474668740fa42d96a8ce4423b43"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md",
+        "sha256": "ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md",
+        "sha256": "eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json",
+        "sha256": "ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md",
+        "sha256": "925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md",
+        "sha256": "e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md",
+        "sha256": "4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239"
+      },
+      {
+        "topic_id": "TOPIC-06-002",
+        "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md",
+        "sha256": "ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-08-002-US-001",
+      "TOPIC-08-002-US_GAAP-R002",
+      "TOPIC-06-001-US-001",
+      "TOPIC-06-001-US_GAAP-R002",
+      "TOPIC-06-002-US-001",
+      "TOPIC-06-002-US_GAAP-R002"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}
