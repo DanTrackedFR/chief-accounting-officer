@@ -37,8 +37,8 @@ def approved_claims(topic_ids,framework,root=None):
         match=[x for x in entries if x.get("topic_id")==tid]
         if len(match)!=1 or match[0].get("status")!="APPROVED":
             raise ReviewRequired("Canonical topic not approved: "+tid)
-        paths=list((root/"knowledge/topics").glob(tid+"-*/standards-claims.json"))
-        if len(paths)!=1: raise ReviewRequired("Ambiguous canonical claim path for "+tid)
+        paths=[root/p for p in match[0].get("artifact_paths",[]) if p.endswith("/standards-claims.json")]
+        if len(paths)!=1 or not paths[0].is_file(): raise ReviewRequired("Missing canonical claim path for "+tid)
         claims=json.loads(paths[0].read_text())["claims"]
         accepted=[x for x in claims if x.get("framework")==framework and x.get("approval_review",{}).get("result")=="PASS"]
         if not accepted: raise ReviewRequired("No approved "+framework+" claims for "+tid)
