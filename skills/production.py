@@ -20,6 +20,12 @@ PACKAGES = {
     'financial-instruments-ecl': ('SKILL-ECL-001', ['TOPIC-06-007','TOPIC-06-008','TOPIC-06-009','TOPIC-06-010','TOPIC-03-008','TOPIC-03-009']),
     'provisions-contingencies': ('SKILL-PROV-001', ['TOPIC-05-003','TOPIC-05-004','TOPIC-13-005','TOPIC-15-004']),
     'consolidation': ('SKILL-CONS-001', ['TOPIC-07-%03d'%i for i in range(1,10)]+['TOPIC-13-001']),
+    'business-combinations': ('SKILL-BC-001', ['TOPIC-13-001','TOPIC-13-002','TOPIC-13-003']),
+    'asset-impairment': ('SKILL-IMP-001', ['TOPIC-04-006']),
+    'income-taxes': ('SKILL-TAX-001', []),
+    'foreign-currency': ('SKILL-FX-001', ['TOPIC-06-002','TOPIC-06-003','TOPIC-06-004','TOPIC-07-006']),
+    'share-based-compensation': ('SKILL-SBC-001', ['TOPIC-05-007','TOPIC-05-008']),
+    'financial-statements': ('SKILL-FS-001', ['TOPIC-08-%03d'%i for i in range(1,10)]),
 }
 
 def flag(obj, key):
@@ -66,11 +72,14 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework):
-    claims=approved_claims(topic_ids,framework)
+    # Explicitly approved operational tie-out topic has no normative claims.
+    # Retrieve its documents, but never manufacture accounting authority.
+    claims=approved_claims([t for t in topic_ids if t!='TOPIC-08-009'],framework)
     manifest=json.loads((ROOT/'knowledge/phase-2d-topic-manifest.json').read_text())['topics']
     documents=[]
     for tid in topic_ids:
         t=next(x for x in manifest if x['topic_id']==tid)
+        if t['status']!='APPROVED':raise ReviewRequired('Canonical topic not approved: '+tid)
         # Canonical methods added during remediation may not occur in the old artifact list.
         claim_path=next(ROOT/p for p in t['artifact_paths'] if p.endswith('/standards-claims.json'))
         paths=set(claim_path.parent.glob('*.md'))
@@ -82,6 +91,8 @@ def canonical_knowledge(topic_ids, framework):
 
 def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
+    if package == 'income-taxes':
+        raise ReviewRequired('No approved canonical income-tax topic or IAS 12 / ASC 740 / FRS 102 Section 29 / AASB 112 claim register; standards-governance approval required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
@@ -128,7 +139,7 @@ def case_fingerprint(case):
     files=[ROOT/'skills/core_accounting.py',ROOT/'skills/production.py',ROOT/'interfaces/public_output.py']
     files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
     files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
-    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py']
+    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -140,6 +151,14 @@ def to_public(result, route='answer'):
       'SKILL-PROV-001':{'IFRS':'IAS 37','US_GAAP':'ASC 450 and applicable event-specific guidance','UK_GAAP':'FRS 102 Section 21','AASB':'AASB 137'},
       'SKILL-CONS-001':{'IFRS':'IFRS 10','US_GAAP':'ASC 810','UK_GAAP':'FRS 102 Section 9','AASB':'AASB 10'}}
     title=standard_titles.get(result['skill_id'],{}).get(result['framework'],'Framework unresolved')
+    additional={'SKILL-BC-001':['IFRS 3','ASC 805','FRS 102 Section 19','AASB 3'],
+      'SKILL-IMP-001':['IAS 36','ASC 350 / ASC 360','FRS 102 Sections 19 / 27','AASB 136'],
+      'SKILL-TAX-001':['IAS 12','ASC 740','FRS 102 Section 29','AASB 112'],
+      'SKILL-FX-001':['IAS 21','ASC 830','FRS 102 Section 30','AASB 121'],
+      'SKILL-SBC-001':['IFRS 2','ASC 718','FRS 102 Section 26','AASB 2'],
+      'SKILL-FS-001':['IAS 1 / IFRS 18 / IAS 7','Applicable ASC presentation / ASC 230','FRS 102 Sections 3–8','AASB 101 / AASB 18 / AASB 107']}
+    if result['skill_id'] in additional and result['framework'] in ('IFRS','US_GAAP','UK_GAAP','AASB'):
+        title=additional[result['skill_id']][('IFRS','US_GAAP','UK_GAAP','AASB').index(result['framework'])]
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
         for ref in claim.get('references',[]):
@@ -176,6 +195,12 @@ def assess_case(package,case):
           'financial-instruments-ecl':('TOPIC-06-007','Financial instruments specialist','Instrument contracts, classification, credit-adjusted measurement and model validation'),
           'provisions-contingencies':('TOPIC-05-003','Provision/legal/valuation specialist','Obligation/counsel evidence, outcome estimates, settlement timing and asset/recovery analysis'),
           'consolidation':('TOPIC-07-009','Group accounting and transaction specialist','Control/legal evidence, certified TBs, PPA, FX, ownership and elimination schedules'),
+          'business-combinations':('TOPIC-13-001','Acquisition accounting, legal, tax and valuation specialists','SPA, control date, business definition, PPA, tax and consideration classification'),
+          'asset-impairment':('TOPIC-04-006','Impairment and valuation specialist','Unit perimeter, indicators, forecasts, market values, discount inputs and allocation floors'),
+          'income-taxes':('INCOME-TAX-GOVERNANCE-GAP','Standards governance owner and tax specialist','Approved canonical topic and framework claim registers, enacted law, tax bases, returns, recoverability and uncertainty memos'),
+          'foreign-currency':('TOPIC-06-003','Foreign currency and group accounting specialist','Functional currency memo, rate feed, transaction population, translated TBs and disposal rights'),
+          'share-based-compensation':('TOPIC-05-007','Award accounting, legal and valuation specialist','Grant terms, approved classification, vesting census, valuations and event schedules'),
+          'financial-statements':('TOPIC-08-009','Financial reporting and disclosure specialist','Authorized TB, period/entity checklist, comparatives, source-to-line and narrative tie-outs'),
         }
         topic,target,evidence=routes[package]
         return {'skill_id':PACKAGES[package][0],'status':'blocked','conclusion':'Accounting case cannot be completed: '+reason,
