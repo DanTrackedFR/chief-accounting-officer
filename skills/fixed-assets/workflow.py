@@ -53,6 +53,7 @@ def assess(c,claims):
         ready=iso(a['ready_date']);begin=max(start,ready);last=end;disp=a['disposal'];required(disp,'enabled')
         if ready>end:raise ReviewRequired('Asset not ready at period end must remain in CIP')
         if flag(disp,'enabled'):required(disp,'date','proceeds','ordinary_sale','evidence');last=inperiod(c,disp['date'])
+        if flag(disp,'enabled') and last<ready:raise ReviewRequired('Pre-readiness disposal must use the CIP/uncommissioned asset route')
         change=a['change'];required(change,'enabled');basis=max(carrying-residual,ZERO);life=positive(a['remaining_units'] if a['method']=='units_of_production' else a['remaining_life'])
         if flag(change,'enabled'):
             required(change,'date','new_remaining_life','new_residual','new_information','evidence','units_before','units_after')

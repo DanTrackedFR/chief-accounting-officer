@@ -9,3 +9,5 @@ Opening prepaid 100,000 + additions 40,000 - consumption 15,000 = 125,000. GL 13
 Recognition and error-versus-estimate conclusions remain with the underlying topic owner. Aged or unidentified items cannot be certified by this clean-certification route; remediate or obtain a separate conditional close decision.
 
 Read the exact case schema in workflow.py and synthetic examples. Decimal strings only; positive rates/lives, nonnegative amounts and balanced cent-rounded journals. Source and GL gross populations must agree independently of net totals. Use case fingerprint certification only after source, period, framework and specialist review.
+
+Every TB row has reviewed balance_sheet/profit_loss classification. The independent inventory must exactly cover all balance-sheet IDs, including equity and active zero balances. Corrections are aggregated across every mapped account before final reconciliation; an offset into another balance-sheet account must reconcile there too. Absolute and relative thresholds and item ageing are company-approved inputs, not universal standards.

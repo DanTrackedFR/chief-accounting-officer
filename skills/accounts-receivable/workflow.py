@@ -30,6 +30,7 @@ def assess(c,claims):
         if n>target['balance']:raise ReviewRequired('Credit exceeds outstanding right')
         target['balance']-=n;balances[target['row']['customer']]-=n;credit+=n
         entries.append(journal(('Dr',cr['offset'],n),('Cr','accounts receivable',n)))
+    residual_events=[]
     for r in receipts:
         approval(r,c);required(r,'customer','amount','date','allocations','bank_id','bank_confirmed','currency')
         if r['customer'] not in balances or not flag(r,'bank_confirmed') or r['currency']!=c['functional_currency']:raise ReviewRequired('Receipt is not supported bank cash in the book currency')
@@ -38,14 +39,28 @@ def assess(c,claims):
             required(a,'invoice_id','amount')
             if a['invoice_id'] not in invs:raise ReviewRequired('Cash allocation invoice missing')
             target=invs[a['invoice_id']];v=positive(a['amount'])
+            if any(cr['invoice_id']==a['invoice_id'] and iso(cr['date'])>iso(r['date']) for cr in credits):raise ReviewRequired('Credit after customer payment requires paid-invoice credit/refund specialist classification')
             if iso(r['date'])<iso(target['row']['invoice_date']):raise ReviewRequired('Pre-invoice cash must remain a deposit until separately supported application')
             if target['row']['customer']!=r['customer'] or v>target['balance']:raise ReviewRequired('Cross-customer or excessive cash allocation')
             allocated+=v;target['balance']-=v;balances[r['customer']]-=v
         if allocated>n:raise ReviewRequired('Allocations exceed receipt')
         applied+=allocated;liabilities[r['customer']]+=n-allocated;cash_total+=n
+        residual_events.append({'customer':r['customer'],'date':r['date'],'amount':n-allocated})
         entries.append(journal(('Dr','cash',n),('Cr','accounts receivable',allocated),('Cr','customer unapplied liability',n-allocated)))
     if len({r['bank_id'] for r in receipts})!=len(receipts):raise ReviewRequired('Duplicate bank receipt')
-    for a in rows(c['liability_applications']):
+    applications=rows(c['liability_applications']);refunds=rows(c['refunds']);events=applications+refunds
+    # Check every dated prefix of the liability ledger. Same-day movements may
+    # be grouped; no later receipt can finance an earlier application/refund.
+    opening_deposits={r['id']:nonnegative(r['balance']) for r in deposits}
+    for event in events:
+        required(event,'customer','date','amount');inperiod(c,event['date']);positive(event['amount'])
+        if event['customer'] not in opening_deposits:raise ReviewRequired('Liability event customer missing')
+    for event in sorted(events,key=lambda e:(iso(e['date']),e['id'])):
+        day=iso(event['date']);customer=event['customer']
+        funding=opening_deposits[customer]+sum((e['amount'] for e in residual_events if e['customer']==customer and iso(e['date'])<=day),ZERO)
+        release=sum((positive(e['amount']) for e in events if e['customer']==customer and iso(e['date'])<=day),ZERO)
+        if release>funding:raise ReviewRequired('Customer liability application/refund precedes available funding')
+    for a in applications:
         approval(a,c);required(a,'customer','invoice_id','amount','date','identification_evidence')
         texts(a,'identification_evidence');inperiod(c,a['date'])
         if a['invoice_id'] not in invs or a['customer'] not in liabilities:raise ReviewRequired('Customer deposit application lacks original right')
@@ -54,7 +69,7 @@ def assess(c,claims):
         liabilities[a['customer']]-=n;target['balance']-=n;balances[a['customer']]-=n;applied+=n
         entries.append(journal(('Dr','customer unapplied liability',n),('Cr','accounts receivable',n)))
     refund_total=ZERO;bankids={r['bank_id'] for r in receipts}
-    for r in rows(c['refunds']):
+    for r in refunds:
         approval(r,c);required(r,'customer','amount','date','bank_id','bank_confirmed','refund_right_evidence')
         texts(r,'refund_right_evidence','bank_id');inperiod(c,r['date']);n=positive(r['amount'])
         if r['customer'] not in liabilities or n>liabilities[r['customer']] or r['bank_id'] in bankids or not flag(r,'bank_confirmed'):raise ReviewRequired('Refund right, bank evidence or customer liability unresolved')

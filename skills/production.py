@@ -206,7 +206,7 @@ def assess_case(package,case):
     if package not in PACKAGES:raise ReviewRequired('Unknown accounting skill')
     if not isinstance(case,dict):case={}
     try:return execute(package,case)
-    except (ReviewRequired,KeyError,TypeError,AttributeError) as exc:
+    except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
           'month-end-close':('TOPIC-02-001','Close controller and transaction specialist','Frozen task, source, approval and lock histories; cutoff and error assessments'),

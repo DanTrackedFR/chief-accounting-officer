@@ -8,6 +8,22 @@ from cases import revenue,ecl,consolidation
 from production import assess_case,to_public
 
 class RouteTests(unittest.TestCase):
+    def test_QA_numerical_and_chronology_regressions(self):
+        p='accounts-receivable';c=operational(p);c['credits'][0]['date']='2026-01-01';self.run_case(p,c,'blocked')
+        c=operational(p);c['receipts'][0]['date']='2026-01-01';c['receipts'][0]['allocations'][0]['invoice_id']='new';self.run_case(p,c,'blocked')
+        p='fixed-assets';c=operational(p);a=c['assets'][0];a.update(method='units_of_production',remaining_units='1000',period_units='100',expected_depreciation='0',gl_accumulated='180000');a['change']={'enabled':True,'date':'2026-01-01','new_remaining_life':'1000','new_residual':'60000','new_information':True,'evidence':'engineering','units_before':'0','units_after':'0'};c['gl']['accumulated']='180000';self.run_case(p,c,'blocked')
+        c=operational(p);a=c['assets'][0];a.update(residual='500000',expected_depreciation='0',gl_accumulated='180000');c['gl']['accumulated']='180000';self.run_case(p,c)
+        c=operational(p);a=c['assets'][0];a['ready_date']='2026-07-01';a['disposal']={'enabled':True,'date':'2026-01-01','proceeds':'400000','ordinary_sale':True,'evidence':'sale'};self.run_case(p,c,'blocked')
+        p='intercompany-accounting';c=operational(p);c['recharges']=[approved('bad',cost_pool='100',allocations=[{'id':'x','entity':'Synthetic Sub','pair_id':'AB','share':'0.498'},{'id':'y','entity':'Synthetic Sub2','pair_id':'AC','share':'0.498'}],markup='0',agreement='Reviewed agreement',tax_review='Reviewed tax',date='2026-12-31',provider='Synthetic Group',currency='USD',source_complete=True)];self.run_case(p,c,'blocked')
+
+    def test_customer_opening_deposit_application_and_refund(self):
+        p='accounts-receivable';c=operational(p);c['opening_unapplied'][0]['balance']='100';c['liability_applications']=[approved('deposit',customer='C1',invoice_id='new',amount='20',date='2026-12-31',identification_evidence='Original deposit identified')];c['refunds']=[approved('refund',customer='C1',amount='50',date='2026-12-31',bank_id='refundbank',bank_confirmed=True,refund_right_evidence='Approved customer refund obligation')];c['refund_bank_total']='50';c['gl_ar']='100';c['closing_customers'][0]['balance']='100';c['gl_unapplied']='110';r=self.run_case(p,c);self.assertEqual(r['calculations']['unapplied_liability'],Decimal('110'))
+        c['opening_unapplied'][0]['balance']='0';c['refunds'][0]['date']='2026-01-01';self.run_case(p,c,'blocked')
+        c['refunds']=[];c['refund_bank_total']='0';c['liability_applications'][0].update(invoice_id='opening',date='2026-01-01');self.run_case(p,c,'blocked')
+
+    def test_IC_different_opening_and_recharge_rates(self):
+        p='intercompany-accounting';c=operational(p);pair=c['pairs'][0];pair.update(opening_book_a='120',opening_book_b='120',recharge='100',initial_rate_a='1.3',initial_rate_b='1.3',confirmed_a='200',confirmed_b='200',book_a='250',book_b='250',gl_a='240',gl_b='220');c['recharges']=[approved('R',cost_pool='100',allocations=[{'id':'B','entity':'Synthetic Sub','pair_id':'AB','share':'1'}],markup='0',agreement='Approved agreement',tax_review='Reviewed tax',date='2026-12-31',provider='Synthetic Group',currency='USD',source_complete=True)];c['controls']['population_amount']='200';r=self.run_case(p,c);self.assertEqual(r['calculations']['pairs'][0]['a_fx_gain'],Decimal('-10'))
+
     def run_case(self,p,c,status='complete'):
         # Select only FRS102 propositions while retaining full reviewed register.
         c=certify(p,c)
