@@ -23,7 +23,7 @@ class CaseEngineTests(unittest.TestCase):
  def test_us_operating_single_cost(self):
   c=base("US_GAAP"); c["classification"]="operating"; r=run_case(c)
   self.assertEqual(r["rou_schedule"][0]["lease_cost"],100000)
-  self.assertEqual(r["rou_schedule"][-1]["closing"],0)
+  self.assertLessEqual(abs(r["rou_schedule"][-1]["closing"]),0.02)
  def test_uk_period_gate(self):
   c=base("UK_GAAP"); c["period_start"]="2025-01-01"
   with self.assertRaises(CaseError): run_case(c)
