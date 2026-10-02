@@ -1,0 +1,476 @@
+{
+  "case_id": "synthetic-accounts-receivable",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "2026 effective compilation",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "functional_currency": "EUR",
+  "execution_date": "2027-01-05",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 2,
+    "population_amount": "250",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete period end independent source"
+  },
+  "invoices": [
+    {
+      "id": "opening",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "customer": "C1",
+      "amount": "150",
+      "due_date": "2026-12-31",
+      "invoice_date": "2025-12-01",
+      "opening": true,
+      "entitlement_supported": true,
+      "offset": "contract balance",
+      "disputed": false,
+      "currency": "EUR"
+    },
+    {
+      "id": "new",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "customer": "C1",
+      "amount": "100",
+      "due_date": "2027-01-31",
+      "invoice_date": "2026-12-31",
+      "opening": false,
+      "entitlement_supported": true,
+      "offset": "contract balance",
+      "disputed": false,
+      "currency": "EUR"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "cash",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "customer": "C1",
+      "amount": "200",
+      "date": "2026-12-31",
+      "allocations": [
+        {
+          "id": "alloc",
+          "invoice_id": "opening",
+          "amount": "120"
+        }
+      ],
+      "bank_id": "BANK1",
+      "bank_confirmed": true,
+      "currency": "EUR"
+    }
+  ],
+  "credits": [
+    {
+      "id": "credit",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "invoice_id": "new",
+      "amount": "10",
+      "date": "2026-12-31",
+      "offset": "contract balance",
+      "reason": "billing_error",
+      "revenue_reviewed": true
+    }
+  ],
+  "opening_customers": [
+    {
+      "id": "C1",
+      "balance": "150"
+    }
+  ],
+  "closing_customers": [
+    {
+      "id": "C1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "balance": "120"
+    }
+  ],
+  "gl_ar": "120",
+  "gl_unapplied": "80",
+  "collections": [],
+  "bank_total": "200",
+  "opening_unapplied": [
+    {
+      "id": "C1",
+      "balance": "0"
+    }
+  ],
+  "liability_applications": [],
+  "refunds": [],
+  "refund_bank_total": "0",
+  "handoffs": {
+    "revenue": {
+      "target": "Revenue Recognition",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "ecl": {
+      "target": "ECL",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-03-007-AASB-001",
+      "TOPIC-03-007-AASB-002",
+      "TOPIC-03-007-AASB-003",
+      "TOPIC-03-007-AASB-004",
+      "TOPIC-03-007-AASB-005",
+      "TOPIC-03-007-AASB-006",
+      "TOPIC-03-007-AASB-R001",
+      "TOPIC-03-007-AASB-R002",
+      "TOPIC-03-007-AASB-R003",
+      "TOPIC-03-007-AASB-R004",
+      "TOPIC-03-007-AASB-R005",
+      "TOPIC-03-007-AASB-R006",
+      "TOPIC-03-007-AASB-R007",
+      "TOPIC-03-007-AASB-R008",
+      "TOPIC-03-007-AASB-R009",
+      "TOPIC-03-007-AASB-R010",
+      "TOPIC-03-007-AASB-R011",
+      "TOPIC-03-007-AASB-R017",
+      "TOPIC-03-007-AASB-R018",
+      "TOPIC-03-007-AASB-R020",
+      "TOPIC-03-007-AASB-R021",
+      "TOPIC-03-009-AASB-001",
+      "TOPIC-03-009-AASB-002",
+      "TOPIC-03-009-AASB-003",
+      "TOPIC-03-009-AASB-004",
+      "TOPIC-03-009-AASB-005",
+      "TOPIC-03-009-AASB-006",
+      "TOPIC-03-009-AASB-R001",
+      "TOPIC-03-009-AASB-R002",
+      "TOPIC-03-009-AASB-R005",
+      "TOPIC-03-009-AASB-R006",
+      "TOPIC-03-009-AASB-R007",
+      "TOPIC-03-009-AASB-R010",
+      "TOPIC-03-009-AASB-R011",
+      "TOPIC-03-009-AASB-R012",
+      "TOPIC-03-009-AASB-R013",
+      "TOPIC-03-009-AASB-R015",
+      "TOPIC-03-009-AASB-R016",
+      "TOPIC-03-010-AASB-001",
+      "TOPIC-03-010-AASB-002",
+      "TOPIC-03-010-AASB-003",
+      "TOPIC-03-010-AASB-004",
+      "TOPIC-03-010-AASB-005",
+      "TOPIC-03-010-AASB-006",
+      "TOPIC-03-010-AASB-R001",
+      "TOPIC-03-010-AASB-R002",
+      "TOPIC-03-010-AASB-R003",
+      "TOPIC-03-010-AASB-R004",
+      "TOPIC-03-010-AASB-R005",
+      "TOPIC-03-010-AASB-R006",
+      "TOPIC-03-010-AASB-R007",
+      "TOPIC-03-010-AASB-R010",
+      "TOPIC-03-010-AASB-R011",
+      "TOPIC-03-010-AASB-R012",
+      "TOPIC-03-010-AASB-R013",
+      "TOPIC-03-010-AASB-R014",
+      "TOPIC-03-010-AASB-R015",
+      "TOPIC-03-010-AASB-R017",
+      "TOPIC-03-010-AASB-R018",
+      "TOPIC-12-002-AASB-E004"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/README.md",
+        "sha256": "aa07f7babe2d9a14097aa19138c2389d114884246b301e7fe71a4812c433a8c3"
+      },
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/evidence-and-regression.md",
+        "sha256": "5d4d1315713af3374c7b56bcf65ba3cbc21de321eec37a04a204b52d82e102d0"
+      },
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/granular-regression.md",
+        "sha256": "b75d0c4071d39d621e03b4c1798d5bb45e198e4be123d985a3f9278493d1df3f"
+      },
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/phase-2d-method.md",
+        "sha256": "10436f1d00affec4ef14a07ba1ff0d2470558a9a3825e6f6178f3a563a555825"
+      },
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/returns-price-concession-and-collection.md",
+        "sha256": "a72fc8e2cac4f377faf60d9e0276e8f500a1b92b4002a90b1275acb7917b08d4"
+      },
+      {
+        "topic_id": "TOPIC-03-007",
+        "path": "knowledge/topics/TOPIC-03-007-credits-refunds-ar/standards-claims.json",
+        "sha256": "989130075aaf4c24a2de4a0110802d5f10992c83836025ca9f1a56c2759a4b6a"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-bad-debt-cash-application/factory.md",
+        "sha256": "de45a5e8bd5f3e3545d71ef1fbeb2790a027511903b2f6fdc4376979789b6bc9"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/README.md",
+        "sha256": "b905f262e05b15d7ec73574ba0083809fc5fbb7391eae72c261645e0b38682ac"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/evidence-and-regression.md",
+        "sha256": "26a1089f0dcdd80a10f7e90bb33b0ee8fead456402ee4eb0e1362e3977e8402d"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/granular-regression.md",
+        "sha256": "a350c13259b56a4be89518d42f8169601d442327b2c3f58f1969606452bdd056"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/partial-recovery-and-control-split.md",
+        "sha256": "f0f989e2e2d038d82cabf915415b25b35b63eb763316b386bd739ac550d4a815"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/phase-2d-method.md",
+        "sha256": "041f400975efa1d6f36dda512cb3e8ffc3dd080d0a2a2b10d8df1f1d48285b14"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/standards-claims.json",
+        "sha256": "1d46c8e7e02f9f3befde9905500de8470bb11b08d16932927bd59ab3e8b1ce4c"
+      },
+      {
+        "topic_id": "TOPIC-03-009",
+        "path": "knowledge/topics/TOPIC-03-009-writeoffs-cash-application/worked-case-and-qa.md",
+        "sha256": "23d6c352d070e40f7bfb2101c03d75fe8b5547b14818590045ef162941ae5773"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/README.md",
+        "sha256": "f8c03d6411a3f8d3ac37f7ea8c6d1378a0b4ffdb9d8e4dea6ddfee5f826d8814"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/credit-origin-and-legal-expiry.md",
+        "sha256": "32f50fb88a353105c1839c7b7a9be06fd3e9126536ab73b067a49845f8a62640"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/evidence-and-regression.md",
+        "sha256": "44acbdb8fac65acce1a00ca3a8ba141170e6859dd33065423d46d93619d49fee"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/granular-regression.md",
+        "sha256": "a8ba1692b922fe88b81b2446bd2ac67dadf189b675620ba6488b59666cb44f03"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/phase-2d-method.md",
+        "sha256": "2982221e0d18d97e13dad02930ea873fa5a97316cefec4db788e43eb2df33e31"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/standards-claims.json",
+        "sha256": "2c576aae8aa3449be114e8434d44acc1f912545080762b48811f108e2b5faf3e"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-customer-credits-disputes/worked-case-and-qa.md",
+        "sha256": "acfbeea0e3af1b31c3b53968ec25236cccef13eac28a1c764ce8fbf5dc7b7126"
+      },
+      {
+        "topic_id": "TOPIC-03-010",
+        "path": "knowledge/topics/TOPIC-03-010-unapplied-cash-disputes/factory.md",
+        "sha256": "4e1230bb48f757d904b284480d6728306b64e525d2310d8a41ccc5e74f25eff7"
+      },
+      {
+        "topic_id": "TOPIC-03-011",
+        "path": "knowledge/topics/TOPIC-03-011-ar-revenue-reconciliations/factory.md",
+        "sha256": "7c3d30b58fe24a3651e783ef6c5a2d1319f41f53c8bcfd9966d0bf688c3f68a7"
+      },
+      {
+        "topic_id": "TOPIC-03-011",
+        "path": "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/README.md",
+        "sha256": "b59814f7a209826c6677403313d678f6043d15fc9d7c50a7d82bd770eed9a166"
+      },
+      {
+        "topic_id": "TOPIC-03-011",
+        "path": "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/counterparty-independent-completeness-test.md",
+        "sha256": "b5c2c5642a330a31c3f1f8712a8aa53aee6e7cb7333b4af6a4f55f077dd214a2"
+      },
+      {
+        "topic_id": "TOPIC-03-011",
+        "path": "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/standards-claims.json",
+        "sha256": "e545da30791a574072d1bddfa98549698523966140048116a9e8e2013e2a9bfa"
+      },
+      {
+        "topic_id": "TOPIC-03-011",
+        "path": "knowledge/topics/TOPIC-03-011-ar-revenue-subledger-reconciliations/worked-case-and-qa.md",
+        "sha256": "251cdcb6043047997d7cb988a247904797917d415291fd8b4faf20bd9e092528"
+      },
+      {
+        "topic_id": "TOPIC-12-002",
+        "path": "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/README.md",
+        "sha256": "cd870b782bd83f6514f0d461f1d7205f818146deb620f4bd6ea4853f90699806"
+      },
+      {
+        "topic_id": "TOPIC-12-002",
+        "path": "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/methods/o2c-population-bridge.md",
+        "sha256": "2556dc4fbc5bec2a4b0adff573c8462f57a67a40b78db1414746f731b5b895bf"
+      },
+      {
+        "topic_id": "TOPIC-12-002",
+        "path": "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/practice/o2c-handoff.md",
+        "sha256": "b02c4eea6205658a270b49639429725661702d4f19fee5810330e471c758846e"
+      },
+      {
+        "topic_id": "TOPIC-12-002",
+        "path": "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/standards-claims.json",
+        "sha256": "c3fcf6f66d8dfc0d4efc78cd2503f47bf6ff879fe58bd3a16ed5790108487ed1"
+      },
+      {
+        "topic_id": "TOPIC-12-002",
+        "path": "knowledge/topics/TOPIC-12-002-o2c-billing-cash-application/tests/phase-2d-worker-scenarios.md",
+        "sha256": "13287ec0017c0029672fd2e486e9ddbcd1dfeed7c074bacc974d4cb598c974b8"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-03-007-AASB-001",
+      "TOPIC-03-007-AASB-002",
+      "TOPIC-03-007-AASB-003",
+      "TOPIC-03-007-AASB-004",
+      "TOPIC-03-007-AASB-005",
+      "TOPIC-03-007-AASB-006",
+      "TOPIC-03-007-AASB-R001",
+      "TOPIC-03-007-AASB-R002",
+      "TOPIC-03-007-AASB-R003",
+      "TOPIC-03-007-AASB-R004",
+      "TOPIC-03-007-AASB-R005",
+      "TOPIC-03-007-AASB-R006",
+      "TOPIC-03-007-AASB-R007",
+      "TOPIC-03-007-AASB-R008",
+      "TOPIC-03-007-AASB-R009",
+      "TOPIC-03-007-AASB-R010",
+      "TOPIC-03-007-AASB-R011",
+      "TOPIC-03-007-AASB-R017",
+      "TOPIC-03-007-AASB-R018",
+      "TOPIC-03-007-AASB-R020",
+      "TOPIC-03-007-AASB-R021",
+      "TOPIC-03-009-AASB-001",
+      "TOPIC-03-009-AASB-002",
+      "TOPIC-03-009-AASB-003",
+      "TOPIC-03-009-AASB-004",
+      "TOPIC-03-009-AASB-005",
+      "TOPIC-03-009-AASB-006",
+      "TOPIC-03-009-AASB-R001",
+      "TOPIC-03-009-AASB-R002",
+      "TOPIC-03-009-AASB-R005",
+      "TOPIC-03-009-AASB-R006",
+      "TOPIC-03-009-AASB-R007",
+      "TOPIC-03-009-AASB-R010",
+      "TOPIC-03-009-AASB-R011",
+      "TOPIC-03-009-AASB-R012",
+      "TOPIC-03-009-AASB-R013",
+      "TOPIC-03-009-AASB-R015",
+      "TOPIC-03-009-AASB-R016",
+      "TOPIC-03-010-AASB-001",
+      "TOPIC-03-010-AASB-002",
+      "TOPIC-03-010-AASB-003",
+      "TOPIC-03-010-AASB-004",
+      "TOPIC-03-010-AASB-005",
+      "TOPIC-03-010-AASB-006",
+      "TOPIC-03-010-AASB-R001",
+      "TOPIC-03-010-AASB-R002",
+      "TOPIC-03-010-AASB-R003",
+      "TOPIC-03-010-AASB-R004",
+      "TOPIC-03-010-AASB-R005",
+      "TOPIC-03-010-AASB-R006",
+      "TOPIC-03-010-AASB-R007",
+      "TOPIC-03-010-AASB-R010",
+      "TOPIC-03-010-AASB-R011",
+      "TOPIC-03-010-AASB-R012",
+      "TOPIC-03-010-AASB-R013",
+      "TOPIC-03-010-AASB-R014",
+      "TOPIC-03-010-AASB-R015",
+      "TOPIC-03-010-AASB-R017",
+      "TOPIC-03-010-AASB-R018",
+      "TOPIC-12-002-AASB-E004"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

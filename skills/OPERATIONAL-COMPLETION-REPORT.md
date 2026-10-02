@@ -1,0 +1,46 @@
+# Phase 3: six operational accounting skills
+
+Base: main after merged PR14, `9242d0477b70c62e000aff3fcf37204ed7f6c686`. Dedicated branch: `phase-3/six-operational-accounting-skills`. Integration PR: [16](https://github.com/DanTrackedFR/chief-accounting-officer/pull/16); do not merge automatically.
+
+All six packages are production version1.0.0 for their independently reviewed supported scope. Existing ten production skills, knowledge, canonical manifest, capability mappings and claim ratings are preserved. Six added packages bring production skills to sixteen; the pre-existing blocked Income Taxes package remains blocked and is not counted.
+
+| Skill | Supported governed functionality | Numerical and journal proof | Principal specialist boundary |
+|---|---|---|---|
+| Month-End Close & Journal Governance | Approved local calendar, planned critical path and actual dependencies; journal class/rule/source/posting controls, cut-off, incremental accrual, lock and authorized reopening | Day-six close example;75,000 receipts less50,000 invoices yields25,000 expense/accrual, linked once; source and destination uniqueness | Transaction recognition, material prior errors, complex source-grain allocations and conditional close exceptions |
+| Balance Sheet Reconciliations | Full classified balance-sheet inventory, TB integrity, independent source rollforwards, bidirectional IDs, ageing/gross exception review, owner/reviewer and movements | Prepaid125,000 versus GL130,000 produces supported5,000 correction; every offset reconciles in the adjusted TB; gross offsetting differences cannot disappear | Unsupported or aged balances and transaction recognition; clean certification cannot hide conditional exceptions |
+| Accounts Receivable & Collections | Approved rights/credits, bank cash allocation, opening unapplied deposits, dated liability applications/refunds, ageing, disputes, collection ownership and customer/GL proof | Opening150 + billing100 -credit10 -applied120 =closing120; cash200 creates80 liability; deposit releases cannot use later funds | Revenue/ECL measurement, credit of a paid invoice, write-off/recovery, statutory release, FX and tax |
+| Accounts Payable & Accrued Expenses | Match/duplicate/cut-off controls, supplier proofs, independent unbilled receipts, opening accrual clearing, reversal plans/backtest and segregated bank payment |12x800 =9,600 accrual; subsequent10,400 backtest800; invoice120 less payment100 leaves AP20; linked prior accrual is cleared once | Specialized asset/expense recognition, provisions, credits/advances, FX, tax and supplier finance |
+| Fixed Assets & Depreciation | Cost eligibility/exclusions, independent component/register/project inventory, readiness/CIP, straight-line/UOP, prospective estimates, ordinary disposals and separate gross/accumulated GL proof | Annual90,000 depreciation; revised remaining life7 yields51,428.57; disposal gain31,428.57; daily365/366 calculation; residual above carrying yields zero charge | Revaluation, held-for-sale, pre-readiness disposal, ROU, software, borrowing/restoration and sale-and-leaseback |
+| Intercompany Accounting & Reconciliation | Bilateral principal/confirmation/cut-off, approved recharge allocation, separate opening/new transaction rates, settlements, local FX books and mismatch resolution |100 versus95 cannot certify; pool1,000 x1.05 =1,050; exact allocation weights and largest-remainder cents; entity-separated journals bridge book to closing GL | Consolidation elimination/unrealized profit, complex FX and external Transfer Pricing arm's-length/tax/legal assessment |
+
+## Framework, period and evidence coverage
+
+All six routes run under IFRS, US GAAP, FRS102 and applicable for-profit AASB. Operational mechanics are common where appropriate; underlying recognition is independently reviewed through the approved transaction topics and specialist workpapers. Actual period-start/end, standards versions, jurisdiction, entity scope, UK edition/elections, US entity type and Australian compilation/tier are required. Unsupported FRS101/105, NFP/public-sector overlays or applicability exceptions fail closed. Fixed-asset framework distinctions include IAS16/AASB116 component and annual-review requirements, FRS102 material components/significant-change review, and US cost/component/method-change policy. Financial Statements owns relevant IFRS18/adoption presentation dependencies; no close calendar substitutes for that analysis.
+
+Canonical mapping is recorded in [OPERATIONAL-TOPIC-MAP.md](OPERATIONAL-TOPIC-MAP.md). Every proposed skill was mapped to actual approved IDs before implementation. Collections does not adopt payroll claims merely because TOPIC-12-003 includes collections in its title. Transfer Pricing is an external specialist, not an invented canonical topic. No material knowledge gap blocks the supported ordinary routes.
+
+Two-track standards approval remains intact:157 approved topics,347 mappings and1,598 claims;90 SOURCE_VERIFIED,1,454 MODEL_DERIVED_AUDIT_REQUIRED,51 PRIMARY_CORROBORATED and3 SECONDARY_CORROBORATED. APPROVED is not directly verified authority. No paragraph reference, confidence rating or source-audit status was upgraded. Empty operational registers supply deep practice without artificial standards claims. IFRS18-only and auditor-only close/journal claims remain reviewed document evidence rather than universal recognition citations. Provisional paragraph locators remain identified as unverified.
+
+## Integration, reviewer and public-output controls
+
+All packages use the existing result envelope, governed execute/assess boundary, Decimal calculations, balanced cent-rounded journals, approved retrieval and current canonical-document hashes. The shared fingerprint now includes the operational helper; changes to inputs, code, contracts and reviewed knowledge invalidate prior signoff. Post-period approval uses a separate execution date; actual task/calendar/lock and journal approval/posting chronology remain controlled. A reviewer must differ from the preparer and approve the exact case fingerprint. These are externally recorded approvals, not authenticated identities or automatic company-fact verification.
+
+Missing facts/evidence, stale source review, unresolved scope, unbalanced journals or failed proofs return blocked specialist handoffs. Missing/stale independent certification returns partial. Public output uses all seven existing routes and excludes raw evidence, source notes, claim/reviewer metadata and original specialist memos. Contamination fails closed. No ERP posting or collection messages are sent. The twenty-four archived synthetic case/public examples deliberately contain no final reviewer signoff and remain partial until genuinely certified.
+
+Regression integration exercises supplied complete Revenue Recognition, ECL, Impairment, Foreign Currency and Consolidation results, rejecting partial or entity/framework/period mismatches. Lease scope uses a reviewed Lease Accounting specialist handoff; the existing lease engine and17-test suite remain unchanged. External reviewed memos remain necessary for unsupported downstream events; a resolved boolean alone is insufficient evidence.
+
+## Validation and independent QA
+
+- 151 shared skill test methods PASS, including 28 new operational methods with four-framework ordinary/adverse matrices and 24 public CLI golden cases.
+- 17 lease methods PASS; 53 repository methods PASS. Total 221 unittest methods, with additional parameterized assertions within those methods.
+- Claims and approvals validators: zero errors; claims validator also zero warnings. Duplicate/retry source paths remain preserved and separately tracked rather than recounted as canonical topics.
+- Whitespace/diff checks PASS. No knowledge, canonical tracking, architecture or public-boundary source files changed.
+- Independent contract/accounting QA: supported-scope PASS; exact reviewed file hashes and findings are in [OPERATIONAL-INDEPENDENT-QA.md](OPERATIONAL-INDEPENDENT-QA.md).
+
+QA found and drove fixes for post-period approval, actual lock chronology, duplicate destination posting, omitted BS inventory, cross-account journal offsets, IC source/book mismatches, fractional weight and tiny-pool rounding, UOP output conservation, residual/disposal boundaries, AR event chronology and later-funded deposit releases, typed approval evidence and UK claim selection. All demonstrated counterexamples now fail closed or produce the independently recomputed supported result.
+
+The integration gate requires successful GitHub Actions on the exact final PR head; the final handoff records that SHA/run. Any subsequent commit requires fresh CI. This PR must remain unmerged for final integration review.
+
+## Remaining limitations and blockers
+
+No unresolved blocker prevents production use within the scopes above. Unsupported specialist routes remain explicit blocked cases rather than invented facts or journal plugs. Existing authoritative-text audit queues remain open under the approved evidence policy. Company implementation still requires real source evidence, approved account mapping, substantive reviewer judgment, external specialist conclusions and posting controls. The prior Income Taxes canonical-governance blocker remains unchanged and is outside this six-skill execution.

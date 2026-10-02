@@ -1,0 +1,246 @@
+{
+  "case_id": "synthetic-fixed-assets",
+  "framework": "UK_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "section23_model": "revised_2026",
+    "financial_instruments": "sections11_12"
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "functional_currency": "EUR",
+  "execution_date": "2027-01-05",
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 0,
+    "population_amount": "0",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete period end independent source"
+  },
+  "asset_policy": {
+    "model": "cost",
+    "component_review": true,
+    "life_review": true,
+    "review_memo": "Reviewed significant components and framework life-review frequency"
+  },
+  "assets": [
+    {
+      "id": "machine",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening_cost": "600000",
+      "opening_accumulated": "180000",
+      "residual": "60000",
+      "remaining_life": "4",
+      "ready_date": "2024-01-01",
+      "method": "straight_line",
+      "remaining_units": "0",
+      "period_units": "0",
+      "change": {
+        "enabled": false
+      },
+      "disposal": {
+        "enabled": false
+      },
+      "expected_depreciation": "90000",
+      "gl_cost": "600000",
+      "gl_accumulated": "270000",
+      "scope": "ordinary_ppe",
+      "component_id": "machine component",
+      "consumption_memo": "Straight-line engineering service use"
+    }
+  ],
+  "costs": [],
+  "cip": [],
+  "gl": {
+    "cost": "600000",
+    "accumulated": "270000",
+    "cip": "0"
+  },
+  "asset_inventory": [
+    "machine"
+  ],
+  "project_inventory": [],
+  "handoffs": {
+    "impairment": {
+      "target": "Impairment",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    },
+    "leases": {
+      "target": "Lease Accounting",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "reporting_period": "2026-12-31",
+      "evidence": "synthetic specialist memo",
+      "reviewer": "synthetic technical reviewer",
+      "resolved": true,
+      "scope_memo": "Reviewed ordinary supported scope"
+    }
+  },
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-04-001-UK-01",
+      "TOPIC-04-002-UK-01",
+      "TOPIC-04-003-UK-01",
+      "TOPIC-12-004-UK_GAAP-E003"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md",
+        "sha256": "d19b437a3df9edcab468d38b038063c36e915f207afeb9a2cbfd9c399ca0bc33"
+      },
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/README.md",
+        "sha256": "5d984fab37f7d8226d99c007efb0b779ff9c504b5cf93f7db01bdb6b1bd39fd9"
+      },
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md",
+        "sha256": "66d09da71681e3e202e7736402a8c633ddd56e08d93bc5d50511e3ab128a11ce"
+      },
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/knowledge-pack.md",
+        "sha256": "096a06cdc1ced5e97aa499eb3bb4b967b5f7be3278a6c755eaab4bddbd83aa37"
+      },
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/phase-2d-method.md",
+        "sha256": "a6619e5a3ea7a57b6d1afc2fd1a6bbcf5c44a545bab15b959ce0c910a2055bcb"
+      },
+      {
+        "topic_id": "TOPIC-04-001",
+        "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json",
+        "sha256": "2964ea34d8a021b2147e3487c7b6ab64951991843938ec8c3c7f1b472f093725"
+      },
+      {
+        "topic_id": "TOPIC-04-002",
+        "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/README.md",
+        "sha256": "14855a0fe3eaa16545fd2e41b7520f772c0b7c7f0ac97de824ba8e2a1b47709c"
+      },
+      {
+        "topic_id": "TOPIC-04-002",
+        "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md",
+        "sha256": "3b8602f800b34750ff8882275c5ae8ea878fc81ccf20f26ce2ed19916a383cbc"
+      },
+      {
+        "topic_id": "TOPIC-04-002",
+        "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/phase-2d-method.md",
+        "sha256": "b267d953bcfd2271c4a70865d0d7fdfc837432dc823d457fe066ea17ae3f2cea"
+      },
+      {
+        "topic_id": "TOPIC-04-002",
+        "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json",
+        "sha256": "f416b5bea0003df4cde5ba312d7fe551f16974c64a4d5c3231f1bb63b28cca07"
+      },
+      {
+        "topic_id": "TOPIC-04-002",
+        "path": "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md",
+        "sha256": "4c53b2c082d93715837bacba8e1e7cef4e4fc16f9c2f1e2785c41dde75d42dd1"
+      },
+      {
+        "topic_id": "TOPIC-04-003",
+        "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/README.md",
+        "sha256": "19eb722e26babf27f098eee41a155ece289a34ee21ec5d336d732a33610d3709"
+      },
+      {
+        "topic_id": "TOPIC-04-003",
+        "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md",
+        "sha256": "6406d2391d1f73682b809cd2885afcb47bd37bf7f8fd2363195f46da631d41a6"
+      },
+      {
+        "topic_id": "TOPIC-04-003",
+        "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md",
+        "sha256": "99fbeeb4e8f43db98b9678aadf22f15b63abee45fc9735087828a533259a0ad4"
+      },
+      {
+        "topic_id": "TOPIC-04-003",
+        "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/phase-2d-method.md",
+        "sha256": "6f682fed66d8822e18b007bdc5781a42ecaa5a11ec36d32faf2d4058f5215161"
+      },
+      {
+        "topic_id": "TOPIC-04-003",
+        "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json",
+        "sha256": "378b24254f5d3fe03ae08aa288320966f5264eea5ffaa8774db99024bab4c129"
+      },
+      {
+        "topic_id": "TOPIC-12-004",
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md",
+        "sha256": "92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725"
+      },
+      {
+        "topic_id": "TOPIC-12-004",
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md",
+        "sha256": "e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6"
+      },
+      {
+        "topic_id": "TOPIC-12-004",
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md",
+        "sha256": "fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071"
+      },
+      {
+        "topic_id": "TOPIC-12-004",
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json",
+        "sha256": "ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd"
+      },
+      {
+        "topic_id": "TOPIC-12-004",
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md",
+        "sha256": "e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-04-001-UK-01",
+      "TOPIC-04-002-UK-01",
+      "TOPIC-04-003-UK-01",
+      "TOPIC-12-004-UK_GAAP-E003"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}
