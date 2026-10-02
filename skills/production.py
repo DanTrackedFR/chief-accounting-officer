@@ -16,6 +16,12 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'month-end-close': ('SKILL-CLOSE-001', ['TOPIC-02-001','TOPIC-02-002','TOPIC-02-003','TOPIC-02-006','TOPIC-02-007','TOPIC-02-008','TOPIC-02-010','TOPIC-12-006']),
+    'balance-sheet-reconciliations': ('SKILL-REC-001', ['TOPIC-02-004','TOPIC-02-005','TOPIC-02-008']),
+    'accounts-receivable': ('SKILL-AR-001', ['TOPIC-03-007','TOPIC-03-009','TOPIC-03-010','TOPIC-03-011','TOPIC-12-002']),
+    'accounts-payable': ('SKILL-AP-001', ['TOPIC-05-001','TOPIC-05-002','TOPIC-02-007','TOPIC-12-001']),
+    'fixed-assets': ('SKILL-FA-001', ['TOPIC-04-001','TOPIC-04-002','TOPIC-04-003','TOPIC-12-004']),
+    'intercompany-accounting': ('SKILL-IC-001', ['TOPIC-07-003','TOPIC-12-004']),
     'revenue-recognition': ('SKILL-REV-001', ['TOPIC-03-001','TOPIC-03-002','TOPIC-03-003','TOPIC-03-004','TOPIC-03-005','TOPIC-03-006','TOPIC-03-012']),
     'financial-instruments-ecl': ('SKILL-ECL-001', ['TOPIC-06-007','TOPIC-06-008','TOPIC-06-009','TOPIC-06-010','TOPIC-03-008','TOPIC-03-009']),
     'provisions-contingencies': ('SKILL-PROV-001', ['TOPIC-05-003','TOPIC-05-004','TOPIC-13-005','TOPIC-15-004']),
@@ -74,7 +80,11 @@ def load_workflow(package):
 def canonical_knowledge(topic_ids, framework):
     # Explicitly approved operational tie-out topic has no normative claims.
     # Retrieve its documents, but never manufacture accounting authority.
-    claims=approved_claims([t for t in topic_ids if t!='TOPIC-08-009'],framework)
+    operational={'TOPIC-02-001','TOPIC-02-002','TOPIC-02-003','TOPIC-02-004','TOPIC-02-005','TOPIC-02-010','TOPIC-03-011','TOPIC-08-009'}
+    claims=approved_claims([t for t in topic_ids if t not in operational],framework)
+    # Operational documents are not universal normative authority. IFRS18 and
+    # auditor-only OTHER claims remain in the reviewed documents, not applied
+    # company recognition citations merely because this is a close workflow.
     manifest=json.loads((ROOT/'knowledge/phase-2d-topic-manifest.json').read_text())['topics']
     documents=[]
     for tid in topic_ids:
@@ -83,6 +93,8 @@ def canonical_knowledge(topic_ids, framework):
         # Canonical methods added during remediation may not occur in the old artifact list.
         claim_path=next(ROOT/p for p in t['artifact_paths'] if p.endswith('/standards-claims.json'))
         paths=set(claim_path.parent.glob('*.md'))
+        if tid in operational or tid.startswith('TOPIC-12-'):
+            paths.update(claim_path.parent.rglob('*.md'))
         paths.add(claim_path)
         paths.update(ROOT/p for p in t['artifact_paths'] if p.endswith('.md'))
         for p in sorted(paths):
@@ -139,7 +151,7 @@ def case_fingerprint(case):
     files=[ROOT/'skills/core_accounting.py',ROOT/'skills/production.py',ROOT/'interfaces/public_output.py']
     files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
     files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
-    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py']
+    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -152,6 +164,12 @@ def to_public(result, route='answer'):
       'SKILL-CONS-001':{'IFRS':'IFRS 10','US_GAAP':'ASC 810','UK_GAAP':'FRS 102 Section 9','AASB':'AASB 10'}}
     title=standard_titles.get(result['skill_id'],{}).get(result['framework'],'Framework unresolved')
     additional={'SKILL-BC-001':['IFRS 3','ASC 805','FRS 102 Section 19','AASB 3'],
+      'SKILL-CLOSE-001':['Applicable recognition guidance / IAS 8','Applicable recognition guidance / ASC 250','Applicable FRS 102 / Section 10','Applicable AASB / AASB 108'],
+      'SKILL-REC-001':['IAS 8','ASC 250','FRS 102 Section 10','AASB 108'],
+      'SKILL-AR-001':['IFRS 15 / IFRS 9','ASC 606 / ASC 326','FRS 102 Sections 11 / 23','AASB 15 / AASB 9'],
+      'SKILL-AP-001':['Applicable expense and liability guidance','Applicable expense and liability guidance','Applicable FRS 102 expense and liability guidance','Applicable AASB expense and liability guidance'],
+      'SKILL-FA-001':['IAS 16','ASC 360 / ASC 250','FRS 102 Section 17','AASB 116'],
+      'SKILL-IC-001':['IAS 21 / IFRS 10','ASC 830 / ASC 810','FRS 102 Sections 9 / 30','AASB 121 / AASB 10'],
       'SKILL-IMP-001':['IAS 36','ASC 350 / ASC 360','FRS 102 Sections 19 / 27','AASB 136'],
       'SKILL-TAX-001':['IAS 12','ASC 740','FRS 102 Section 29','AASB 112'],
       'SKILL-FX-001':['IAS 21','ASC 830','FRS 102 Section 30','AASB 121'],
@@ -191,6 +209,12 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError) as exc:
         reason=str(exc)
         routes={
+          'month-end-close':('TOPIC-02-001','Close controller and transaction specialist','Frozen task, source, approval and lock histories; cutoff and error assessments'),
+          'balance-sheet-reconciliations':('TOPIC-02-004','Account owner and reconciliation reviewer','Complete GL inventory, independent source proofs, item-level exceptions and approved corrections'),
+          'accounts-receivable':('TOPIC-03-011','Revenue Recognition, ECL and collections specialists','Contract entitlement, credits, remittances, allowance and collection evidence'),
+          'accounts-payable':('TOPIC-05-001','AP, procurement and liability specialist','PO, receipt, invoice, supplier confirmation, accrual and payment evidence'),
+          'fixed-assets':('TOPIC-04-001','PPE, Impairment and Lease Accounting specialists','Cost eligibility, commissioning, components, engineering lives, disposal and gross GL proofs'),
+          'intercompany-accounting':('TOPIC-07-003','Group accounting, Consolidation, FX and Transfer Pricing specialists','Bilateral contracts, confirmations, rates, recharge agreements and tax review'),
           'revenue-recognition':('TOPIC-03-001','Revenue technical accounting','Executed contracts, amendments, transfer evidence, pricing and policy analysis'),
           'financial-instruments-ecl':('TOPIC-06-007','Financial instruments specialist','Instrument contracts, classification, credit-adjusted measurement and model validation'),
           'provisions-contingencies':('TOPIC-05-003','Provision/legal/valuation specialist','Obligation/counsel evidence, outcome estimates, settlement timing and asset/recovery analysis'),
