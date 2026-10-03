@@ -65,6 +65,7 @@ def assess(c,claims):
     noncash=rows(c['noncash']);inventory(c,'noncash_inventory',noncash);noncashwork=[]
     for n in noncash:
         reviewed(n,c,'accounting_memo','source_id');required(n,'amount','type','date');inperiod(c,n['date'])
+        if n['type'] not in ['new lease','debt_to_equity','noncash_asset_acquisition','share_based_compensation','other_reviewed']:raise ReviewRequired('Noncash public classification must be a supported controlled label, never raw metadata')
         if n['source_id'] in {t['source_id'] for t in tx}:raise ReviewRequired('Noncash source double counted in bank flows')
         noncashwork.append({'id':n['id'],'amount':nonnegative(n['amount']),'type':n['type']})
     required(c,'noncash_source_total');agree(c['noncash_source_total'],sum((nonnegative(n['amount']) for n in noncash),ZERO),'Noncash independent source population')

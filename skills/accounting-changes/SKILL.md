@@ -1,7 +1,7 @@
 ---
 id: SKILL-CHANGE-001
 name: Accounting Estimates, Policy Changes & Error Corrections
-version: 1.0.0
+version: 1.0.1
 status: production
 primary_domain: "02"
 related_domains: ["02", "05", "06", "08", "13", "15"]

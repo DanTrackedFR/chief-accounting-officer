@@ -80,7 +80,7 @@ def assess(c,claims):
         elif flag(p,'opening_equity_effect'):
             if p['period_start']!=c['period_start'] or p['period_end']!=c['period_start']:raise ReviewRequired('Current opening layer must be a point at period start')
             transition_effect+=net
-        else:current_profits.append((iso(p['period_end']),profit_after-profit_before))
+        else:current_profits.append((iso(p['period_start']),iso(p['period_end']),profit_after-profit_before))
         if flag(p,'opening_equity_effect'):
             if any(types[id] in ['revenue','expense'] and delta for id,delta in deltas[p['id']].items()):raise ReviewRequired('Earliest-opening correction cannot also charge comparative P&L')
         if route=='prospective' and p['opening_equity_effect']:raise ReviewRequired('Estimate change cannot adjust opening equity')
@@ -95,8 +95,8 @@ def assess(c,claims):
         equity_change=next(iter(values))
     equity_change+=transition_effect
     if current_profits:
-        latest=max(d for d,n in current_profits);values={n for d,n in current_profits if d==latest}
-        if len(values)!=1:raise ReviewRequired('Current annual/interim profit correction conflicts')
+        values={n for start,end,n in current_profits if start==iso(c['period_start']) and end==iso(c['reporting_period'])}
+        if len(values)!=1:raise ReviewRequired('Current profit correction requires the full reporting-period statement; interim flow effects are separately reconciled')
         profit_change=next(iter(values))
     required(c,'opening_equity_bridge');eq=c['opening_equity_bridge'];agree(dec(eq['original'])+equity_change,eq['corrected'],'Corrected prior close to current opening equity')
     rollover=ZERO;iron=ZERO;gross=ZERO;covered=set();adjmap={a['id']:a for a in adjustments}

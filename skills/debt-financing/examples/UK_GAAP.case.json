@@ -1,0 +1,399 @@
+{
+  "case_id": "synthetic-debt-financing",
+  "framework": "UK_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "section23_model": "revised_2026",
+    "financial_instruments": "sections11_12"
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-02-01",
+  "imports": [],
+  "handoffs": {},
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "1000",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic independently frozen population"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "v1",
+    "period_entity_memo": "Actual operative framework/tier checklist",
+    "complete": true
+  },
+  "accounting_policy": {
+    "id": "policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "UK_GAAP",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "development_election": "capitalize",
+    "time_basis": "actual_actual",
+    "maturity_allocation": "principal_pro_rata",
+    "effective_time_basis": "actual_actual_compound"
+  },
+  "debt": [
+    {
+      "id": "loan",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "measurement": "amortized_cost",
+      "complex_features": false,
+      "modified": false,
+      "opening_carrying": "0",
+      "opening_principal": "0",
+      "draws": "1000",
+      "eligible_cost": "20",
+      "service_cost": "0",
+      "directly_attributable": true,
+      "schedule": [
+        {
+          "id": "annual",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "start": "2026-01-01",
+          "end": "2026-12-31",
+          "effective_period_rate": ".08",
+          "cash_interest": "50",
+          "principal_payment": "0",
+          "expected_interest": "78.40",
+          "expected_closing": "1008.40"
+        }
+      ],
+      "schedule_inventory": [
+        "annual"
+      ],
+      "lender_principal": "1000",
+      "gl_closing": "1008.40",
+      "rights_at_reporting_date": true,
+      "current_carrying": "0",
+      "noncurrent_carrying": "1008.40",
+      "maturities": [
+        {
+          "id": "maturity",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "date": "2028-12-31",
+          "principal": "1000",
+          "carrying": "1008.40"
+        }
+      ],
+      "maturity_inventory": [
+        "maturity"
+      ],
+      "terms_memo": "Executed synthetic term-loan",
+      "fee_memo": "Verified eligible lender issue costs",
+      "yield_memo": "Supplied contract-supported periodic yield",
+      "classification_memo": "Independent actual framework rights review",
+      "covenant_memo": "All testing dates/rights reviewed",
+      "annual_yield": ".08",
+      "yield_validation": {
+        "id": "yield",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "contract_memo": "Synthetic step-up coupons50,50,122.19776 and redemption1000",
+        "compounding_memo": "Evidenced actual/actual annual compound convention",
+        "cashflows": [
+          {
+            "id": "coupon1",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "date": "2026-12-31",
+            "amount": "50",
+            "principal": "0"
+          },
+          {
+            "id": "coupon2",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "date": "2027-12-31",
+            "amount": "50",
+            "principal": "0"
+          },
+          {
+            "id": "redemption",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "date": "2028-12-31",
+            "amount": "1122.19776",
+            "principal": "1000"
+          }
+        ],
+        "flow_inventory": [
+          "coupon1",
+          "coupon2",
+          "redemption"
+        ]
+      },
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ]
+    }
+  ],
+  "source_inventory": [
+    "loan"
+  ],
+  "gl": [
+    {
+      "id": "Cash",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "930",
+      "statement": "930"
+    },
+    {
+      "id": "Interest expense",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "78.40",
+      "statement": "78.40"
+    },
+    {
+      "id": "Debt carrying liability",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "opening": "0",
+      "closing": "-1008.40",
+      "statement": "-1008.40"
+    }
+  ],
+  "gl_inventory": [
+    "Cash",
+    "Interest expense",
+    "Debt carrying liability"
+  ],
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-06-005-UK-001",
+      "TOPIC-06-005-UK_GAAP-R003",
+      "TOPIC-06-006-UK-001",
+      "TOPIC-06-006-UK_GAAP-R003",
+      "TOPIC-06-007-UK-001",
+      "TOPIC-06-007-UK_GAAP-R003",
+      "TOPIC-13-006-UK-001",
+      "TOPIC-13-006-UK_GAAP-R003"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-005",
+        "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/README.md",
+        "sha256": "5a3656a844cf57f58fb377145994a3db9dbd43279cd6deae74b74890e5afed2f"
+      },
+      {
+        "topic_id": "TOPIC-06-005",
+        "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/effective-interest-case.md",
+        "sha256": "e116ab7de3c2c8995bbcca6f162bad7b934b3c6d5f3fa19d268b246b564a33c3"
+      },
+      {
+        "topic_id": "TOPIC-06-005",
+        "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/eir-and-cost-eligibility-review.md",
+        "sha256": "62c3808bd746b4d6016d773df050bd0db819401c2cf3d1e9f4f79d67e11c2efe"
+      },
+      {
+        "topic_id": "TOPIC-06-005",
+        "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/evidence-and-regression.md",
+        "sha256": "8efe590aa1f88100550f84ec60061baf14b80981d97dc8fca1c175f619e6fdb0"
+      },
+      {
+        "topic_id": "TOPIC-06-005",
+        "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/standards-claims.json",
+        "sha256": "881ba246619350fc08da26555f332c83b33caba6e67f45abc975d9dcf2315fe3"
+      },
+      {
+        "topic_id": "TOPIC-06-006",
+        "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/README.md",
+        "sha256": "eb5c9045e3ddf7d13befcecfc82d9516e5a67cf64bcad8536540164cb168497e"
+      },
+      {
+        "topic_id": "TOPIC-06-006",
+        "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/debt-event-case.md",
+        "sha256": "8106a86488a21f5d3fbd789a82b2c9afabb7f0088f104cc57db301f733f0cf2e"
+      },
+      {
+        "topic_id": "TOPIC-06-006",
+        "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/evidence-and-regression.md",
+        "sha256": "067570a733afc42ec9c8577d12c899b66bd3a9389abf4462a633bfa4e689b9bc"
+      },
+      {
+        "topic_id": "TOPIC-06-006",
+        "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/fee-and-waiver-chronology.md",
+        "sha256": "ba34ba9c602e9a10e9db771bc9c981bf89511bb06af29096daa09bd7e2c14eb3"
+      },
+      {
+        "topic_id": "TOPIC-06-006",
+        "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/standards-claims.json",
+        "sha256": "e15925b1f09936858a48e8251d3edeacfbb2f15a47184f988b483bbab826bbf6"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+        "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+        "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+        "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+        "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+      },
+      {
+        "topic_id": "TOPIC-06-007",
+        "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+        "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+      },
+      {
+        "topic_id": "TOPIC-13-006",
+        "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/README.md",
+        "sha256": "582aeea38c04f7b9bc996c68ade8f10fc7895c2546c8890fdffec8fe955f0d9f"
+      },
+      {
+        "topic_id": "TOPIC-13-006",
+        "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/evidence-and-regression.md",
+        "sha256": "017f1f3983136b5661d87f77c364b52b909f4fd3ee27d4e60952bc3465a692f0"
+      },
+      {
+        "topic_id": "TOPIC-13-006",
+        "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/modification-and-capital-case.md",
+        "sha256": "b5a08a2045df7d75fe339da514ef1ec9fce3df37d7f6ea6598c61ff75363fc13"
+      },
+      {
+        "topic_id": "TOPIC-13-006",
+        "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/standards-claims.json",
+        "sha256": "d5ec5cdbad3e69307aa53d3e9b1a600d6dcf5125b5aed894a4fb1b5302cb4fb0"
+      },
+      {
+        "topic_id": "TOPIC-13-006",
+        "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/tests.md",
+        "sha256": "c643da340bba4e387258769d9abc84c0dea906b07bbd052e9df9d2bc071da322"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-005-UK-001",
+      "TOPIC-06-005-UK_GAAP-R003",
+      "TOPIC-06-006-UK-001",
+      "TOPIC-06-006-UK_GAAP-R003",
+      "TOPIC-06-007-UK-001",
+      "TOPIC-06-007-UK_GAAP-R003",
+      "TOPIC-13-006-UK-001",
+      "TOPIC-13-006-UK_GAAP-R003"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}

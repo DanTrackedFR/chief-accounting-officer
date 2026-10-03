@@ -1,46 +1,50 @@
 ---
 id: SKILL-TAX-001
-name: Income taxes and deferred tax
-version: 0.9.0
-status: review
+name: "Income Taxes"
+version: 1.0.0
+status: production
 primary_domain: "08"
-related_domains: ["07", "08", "09", "14", "15"]
-description: Governed income taxes and deferred tax workpaper, accounting decisions, reconciliations, journals, disclosure review and specialist routing.
-triggers: [income taxes and deferred tax, accounting assessment, journal and disclosure review]
-non_triggers: [legal opinion, autonomous valuation, unsupported tax conclusion, automatic posting]
+related_domains: ["02", "04", "05", "06", "08", "13", "15"]
+description: Governed evidence-dependent accounting workflow with bounded calculations and fail-closed specialist routing.
+triggers: ["Income Taxes", accounting assessment, journal and disclosure review]
+non_triggers: [automatic posting, legal opinion, autonomous valuation, filing, payroll processing]
 framework_sensitivity: HIGH
 applicable_frameworks: [IFRS, US_GAAP, UK_GAAP, AASB]
 jurisdiction_sensitivity: HIGH
 industry_sensitivity: HIGH
 context_requirements:
-  required: [entity, jurisdiction, framework, entity_type, period_start, reporting_period, effective_standards, policy_elections, evidence, judgment_memo, assumptions]
-  retrieve_if_available: [materiality, prior_workpapers, source_ledgers, regulatory_scope, chart_of_accounts]
-inputs: [tax jurisdiction, current tax, temporary differences, recoverability, uncertain positions, rate reconciliation]
-outputs: [skill_result, technical_memo, calculation_schedule, journal_pack, disclosure_review, specialist_handoff]
-artifacts: [reviewed_case, numerical_workpaper, reconciliations, journals, public_output, certification]
-dependencies: [approved_canonical_knowledge, company_context, accounting_judgments, specialist_inputs, independent_review]
-related_skills: [consolidation, disclosure_review, technical_accounting_research]
+  required: [case_id, entity, jurisdiction, framework, entity_type, period_start, reporting_period, policy_elections, evidence, judgment_memo, assumptions, applicability_review, knowledge_review]
+  retrieve_if_available: [materiality, source_ledgers, regulatory_scope, prior_workpapers]
+inputs: [independently_complete_source_population, reviewed_method, source_evidence, opening_balances, source_GL_statement_bridges, disclosure_checklist]
+outputs: [skill_result, technical_memo, calculation_schedule, journal_pack, specialist_handoff]
+artifacts: [reviewed_case, reconciliation, journals, partial_public_output, complete_public_output, certification]
+dependencies: [approved_knowledge, company_context, independent_judgments, qualified_specialists, independent_review]
+related_skills: [income-taxes, business-combinations, share-based-compensation, accounting-changes, financial-statements, provisions-contingencies]
 knowledge_sources:
-  principles: []
-  standards: []
-  practice: []
+  principles: [SUPPLEMENTAL_TAX]
+  standards: [SUPPLEMENTAL_TAX]
+  practice: [FINANCING-KNOWLEDGE-MAP.json, methods.md]
 risk_level: HIGH
 review_required: true
-completion_criteria: [approved_scope_and_period, supported_facts_and_assumptions, applicable_claim_selection, balanced_journals, reconciled_bridges, disclosure_population_review, public_output_safe, independent_certification, independent_package_QA, full_regression]
+completion_criteria: [approved_scope_and_period, full_source_population, current_evidence_and_approvals, supported_judgments, balanced_journals, all_account_GL_tie, complete_disclosure_review, privacy, independent_exact_fingerprint_certification, independent_QA, full_regression]
 ---
 
-# Income taxes and deferred tax — governed execution contract
+# Governed contract
 
-IAS 12 / ASC 740 / FRS 102 Section 29 / AASB 112. This package is blocked, not production: the approved canonical universe contains no income-tax topic or framework claim registers. Read methods.md for the exact governance dependency. Never treat incidental acquisition tax references as a tax method.
+Jurisdictional current tax; independently supported tax bases/timing differences; DTA/DTL and US allowance, loss/credit inputs, rate changes, specialist uncertainty, allocation, ETR, offset and rollforwards. All sixteen decision areas require scope dispositions.
 
-1. Resolve framework, jurisdiction, entity scope, reporting dates, actual edition/amendments and elections. Use the shared context gates; UK FRS 101/105 and Australian NFP/public-sector overlays require separate methods.
-2. Inspect complete source populations. Separate company facts, supported judgments and explicit assumptions. Do not invent rates, forecasts, valuations, legal rights, approval, tax bases or materiality.
-3. Retrieve approved claims and exact document hashes. Independently select applicable claim IDs and document period/entity scope. Preserve evidence ratings and unresolved authority audit requirements. Qualify provisional paragraph references as unverified; never add a guessed locator.
-4. Execute `production.assess_case("income-taxes", case)` through `run_skill.py`. Apply `workflow.py` only within the bounded methods described in methods.md. Missing facts, unsupported model routes or unresolved specialist work return a blocked standard envelope and evidence-specific handoff, without journals.
-5. Reperform deterministic schedules, source-population completeness, journal balances and statement/note tie-outs. Review alternative/adverse routes; matching arithmetic does not prove the accounting judgment.
-6. Review disclosure applicability using the actual tier, filer, period and transaction population. Assign owner/evidence and resolve all material open items before certification.
-7. Obtain an independent reviewer record, distinct from preparer, bound to the exact case, canonical knowledge and implementation fingerprint. Missing/stale signoff returns partial. Synthetic regression identities are examples, not authenticated authorization.
-8. Render only through `production.to_public` for all registered routes. Keep source notes, evidence-tier objects, internal memos and reviewer metadata internal. Public safety failures block completion.
-9. Hand off tax, valuation, legal, specialized transaction and filing questions to named subject specialists with required evidence and a rerun/certification gate. Do not book specialist-generated estimates until supported by reviewed workpapers.
+No tax-law/return/filing decisions; uncertain tax amounts, outside-basis exceptions, acquisition/SBC allocation, recoverability, PillarTwo and legal offset rights require qualified evidence. UK timing-difference-plus is separate from IFRS/AASB temporary differences; US uses enacted rates and gross DTA/allowance.
 
-Read `../REVIEWER-CONTROLS.md`. No ERP posting is performed. Reconcile illustrative account labels to the company-approved chart and close controls. Test success alone cannot promote this package. Completion additionally requires a governed tax knowledge extension and independent standards approval, then the full numerical and framework-specific contract; no calculator bypass is permitted.
+Production promotion requires independent accounting QA, not calculator success.
+
+1. Read methods.md, the actual mapped knowledge and claim registers, and ../REVIEWER-CONTROLS.md. The immutable batch map records actual claims, capabilities and unchanged ratings; SUPPLEMENTAL_TAX is a supplemental namespace, not a fabricated canonical topic.
+2. Resolve actual framework, jurisdiction, entity/tier, effective editions, adoption/elections and exact reporting period. Unsupported FRS101/105, AASB non-profit/public-sector and unresolved exceptions fail closed.
+3. Independently freeze source IDs, opening stocks, current flows, gross count/amount and GL/statement population. Evidence records and approval assertions are supplied facts, not authenticated identities or authority.
+4. Select reviewed applicable claims; retain full document hashes. APPROVED is not SOURCE_VERIFIED. Unverified paragraph references remain qualified; source notes and reviewer metadata stay internal.
+5. Invoke production.assess_case("income-taxes", case) through run_skill.py. Deterministic guarded Decimal calculations never infer legal rights, rates, quantities, forecasts or intentions. Resolve malformed/missing facts and specialist boundaries before completion.
+6. Reperform balanced entries and every offset-to-opening/closing GL bridge, source/GL/statement ties and disclosure completeness. Imported governed results must be completed, current, dimension-matched, unaltered and exact-once.
+7. Obtain independent reviewer certification tied to case, reviewed knowledge documents and implementation fingerprints. Missing/stale/non-independent certification gives partial; unresolved route gives blocked without accounting journals.
+8. Public output must pass the existing seven-route allowlist. Only generated controlled schedules/journals and accounting caveats leave the boundary, never source notes, internal reviewer records or hashes.
+9. Retain workpapers, exceptions, judgments, alternatives and rerun lineage. No ERP postings, tax returns, legal filings or counterparty communications are performed.
+
+Synthetic worked examples are regression evidence only; their reviewer identities are never represented as actual company authorization.

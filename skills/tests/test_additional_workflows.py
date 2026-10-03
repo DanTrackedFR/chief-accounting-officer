@@ -76,7 +76,7 @@ class AdditionalWorkflowTests(unittest.TestCase):
         for fw in FRAMEWORKS:
             r=assess_case('income-taxes',{'framework':fw,'reviewer_signoff':{'approved':True}})
             self.assertEqual(r['status'],'blocked');self.assertEqual(r['calculations'],{});self.assertEqual(r['evidence'],[])
-            self.assertIn('No approved canonical income-tax',r['conclusion'])
+            self.assertIn('Missing required facts',r['conclusion'])
             for route in ROUTES:self.assertEqual(to_public(r,route)['citations'],[])
 
     def test_nonobjects_malformed_and_numerical_inputs(self):
