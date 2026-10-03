@@ -16,6 +16,11 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'ipo-accounting-readiness': ('SKILL-IPO-001',['TOPIC-01-008']),
+    'audit-support-pbc': ('SKILL-PBC-001',['TOPIC-10-001', 'TOPIC-10-002']),
+    'accounting-policy-memo-governance': ('SKILL-POLICY-001',['TOPIC-15-001', 'TOPIC-14-003', 'TOPIC-14-004', 'TOPIC-14-008']),
+    'disclosure-management': ('SKILL-DISC-001',['TOPIC-08-004', 'TOPIC-08-009']),
+    'management-accounting-analytics': ('SKILL-ANALYTICS-001',['TOPIC-08-008', 'TOPIC-02-008', 'TOPIC-01-005', 'TOPIC-11-008']),
     'held-for-sale-discontinued-operations': ('SKILL-HFS-001',['TOPIC-13-004']),
     'investment-property': ('SKILL-IP-001',['TOPIC-04-001']),
     'hyperinflation-accounting': ('SKILL-HYPER-001',['TOPIC-13-011']),
@@ -99,6 +104,9 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework):
+    from governance_accounting import BATCH, mapped_knowledge as governance_knowledge
+    for package in BATCH:
+        if topic_ids == PACKAGES[package][1]:return governance_knowledge(package,framework)
     # This exact new package consumes regulatory workflow claims, not accounting
     # framework authority. OTHER is preserved; never relabel it US GAAP.
     if topic_ids == PACKAGES['sec-filing-accounting'][1]:
@@ -160,6 +168,7 @@ def execute(package, case):
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
+    if package in __import__('governance_accounting').BATCH and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
     claims,knowledge=canonical_knowledge(PACKAGES[package][1],case['framework'])
     required(case,'knowledge_review')
     reviewed=case['knowledge_review']
@@ -173,7 +182,7 @@ def execute(package, case):
     for entry in result.get('journal_entry_implications',[]): balance(entry)
     required(reviewed,'applied_claim_ids','selection_memo','public_caveats')
     used=set(reviewed['applied_claim_ids'])
-    if not used or not used<={c['claim_id'] for c in claims}:raise ReviewRequired('Applied claims must be a nonempty subset of reviewed approved claims')
+    if (not used and package not in __import__('governance_accounting').BATCH) or not used<={c['claim_id'] for c in claims}:raise ReviewRequired('Applied claims must be a nonempty subset of reviewed approved claims')
     selected=[c for c in claims if c['claim_id'] in used]
     if package=='accounting-changes' and any('-SEC-' in c['claim_id'] for c in selected) and not case.get('sec',{}).get('registrant'):
         raise ReviewRequired('SEC claims require actual registrant applicability')
@@ -192,6 +201,7 @@ def execute(package, case):
         audit_evidence_required=['Contract/legal/source evidence','Assumptions and alternatives','Calculation reperformance','Approval record'])
     fingerprint=case_fingerprint(case)
     result['case_fingerprint']=fingerprint
+    if package in __import__('governance_accounting').BATCH:result['governance_topic']=PACKAGES[package][1][0]
     signoff=case.get('reviewer_signoff',{})
     valid=(signoff.get('case_fingerprint')==fingerprint and bool(signoff.get('reviewer')) and
            signoff.get('reviewer')!=case.get('preparer') and signoff.get('approved') is True)
@@ -208,7 +218,7 @@ def case_fingerprint(case):
     files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
     files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
     files += [ROOT/'skills/presentation_accounting.py']
-    files += [ROOT/'skills/special_reporting.py']
+    files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -251,6 +261,7 @@ def to_public(result, route='answer'):
       'SKILL-FS-001':['IAS 1 / IFRS 18 / IAS 7','Applicable ASC presentation / ASC 230','FRS 102 Sections 3–8','AASB 101 / AASB 18 / AASB 107']}
     if result['skill_id'] in additional and result['framework'] in ('IFRS','US_GAAP','UK_GAAP','AASB'):
         title=additional[result['skill_id']][('IFRS','US_GAAP','UK_GAAP','AASB').index(result['framework'])]
+    if result['skill_id'] in ['SKILL-IPO-001', 'SKILL-PBC-001', 'SKILL-POLICY-001', 'SKILL-DISC-001', 'SKILL-ANALYTICS-001']:title='Governed management accounting practice; actual topic authority remains separately qualified'
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
         claim_title='SEC issuer materiality and filing guidance' if '-SEC-' in claim['claim_id'] else title
@@ -264,7 +275,7 @@ def to_public(result, route='answer'):
     if result.get('specialist_routing'):
         route_info=result['specialist_routing']
         guidance+='\nSpecialist handoff: '+route_info['target']+'; required evidence: '+route_info['required_evidence']+'; '+route_info['completion_gate']
-    public_topic=result['evidence'][0]['topic_id'] if result['evidence'] else result['specialist_routing']['topic_id']
+    public_topic=result['evidence'][0]['topic_id'] if result['evidence'] else result.get('governance_topic') or result['specialist_routing']['topic_id']
     rec={'topic_id':public_topic,'guidance':guidance,
          'framework':result['framework'],'jurisdiction':result['jurisdiction'],
          'entity_scope':result['entities'][0],'effective_period':' to '.join(result['periods']),
@@ -284,6 +295,11 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'ipo-accounting-readiness': ('TOPIC-01-008','Accounting governance and underlying topic owners','Accounting-function gap/evidence/dependency roadmap only; no IPO score, arbitrary benchmark, legal obligation, success/timing prediction or filing mechanics.'),
+          'audit-support-pbc': ('TOPIC-10-001','Accounting governance and underlying topic owners','Management PBC population, source reconciliation, query and auditor-selected sample support only; no opinion, sufficiency/independence determination, confirmations, adjustments or accounting alteration.'),
+          'accounting-policy-memo-governance': ('TOPIC-15-001','Accounting governance and underlying topic owners','Versioned policy/memo governance consuming actual completed accounting conclusions; no autonomous policy selection/transition/recognition, paragraph invention or overwriting policy history.'),
+          'disclosure-management': ('TOPIC-08-004','Accounting governance and underlying topic owners','Qualified current requirements/applicability population and source/note/issued-comparative tie-outs; no generated universal checklist, new requirements, unowned disclosures or compliance certification.'),
+          'management-accounting-analytics': ('TOPIC-08-008','Accounting governance and underlying topic owners','Accounting-source lineage, management/statutory bridge, reconciled calendar comparable flux and on-time reconciliation KPI only. Facts separate from reviewed explanations; no FP&A/forecast/budget, generic BI, invented adjustments or undisclosed netting.'),
           'held-for-sale-discontinued-operations':('TOPIC-13-004','Disposal, impairment, fixed assets and group specialists','Dated disposal perimeter and classification evidence; group allocation, reversal, disposal and US/UK measurement need separate governed methods'),
           'investment-property':('TOPIC-04-001','Investment-property accounting and knowledge governance','Substantive approved investment-property scope, models, transfers and framework-specific measurement; PPE pointers are insufficient'),
           'hyperinflation-accounting':('TOPIC-13-011','Hyperinflation, FX, tax and consolidation specialists','Actual economic evidence and index provenance; full monetary-result, equity, tax, translation and consolidation method required beyond isolated schedule'),
