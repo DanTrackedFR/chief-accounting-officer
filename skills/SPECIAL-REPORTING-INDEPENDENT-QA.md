@@ -61,7 +61,7 @@ A read-review also found that the first component-source helper compared compone
 ## Executed independent verification
 
 - `test_independent_special_reporting.py`: **16 unittest methods PASS**: thirteen original substantive counterexamples; 92 independent scope/privacy/case-certification assertions; eight mocked stale-knowledge/implementation checks; actual completed-owner positive and contradiction checks.
-- Separate authored workflow suite inspected and run: **9 unittest methods PASS** at this review snapshot. These authored tests alone were not accepted as independent QA.
+- Separate authored workflow suite inspected and rerun after promotion: **11 unittest methods PASS** at the final promotion review snapshot. These authored tests alone were not accepted as independent QA.
 - Supported positive workpapers complete; missing own certification becomes partial. Unsupported measurement/model, country-threshold shortcut, invented APM adjustment, recurring-item misdescription, stale rule, false deadline, wrong filer/form, XBRL scale/sign/unit and incomplete disclosure controls reject.
 - All four Investment Property framework routes reject despite arbitrary approval claims. Other unsupported US/UK and legal/filing/certification routes reject without new journals.
 - Internal provenance/reviewer/hash injection remained private through all seven public routes: answer_context, answer, retrieval_snippet, citation, tool_output, user_log, export.
@@ -79,23 +79,31 @@ This report excludes itself from its own anchor. The immutable knowledge map sep
 |---|---|
 | `interfaces/public_output.py` | `5df913e00294199abd7583324c0a077f7fcbf720c6cbd6c63a0c5d4e58f58357` |
 | `skills/SPECIAL-REPORTING-KNOWLEDGE-MAP.json` | `3a78c5f2438550955db358f07dd27b06920970f7df6ae1961d36ed4c9600b089` |
-| `skills/alternative-performance-measures/SKILL.md` | `466a6a3f2fbaeb7097e0c92ea534b2ccbdff68c969c2e086e028b29df5a551f9` |
+| `skills/alternative-performance-measures/SKILL.md` | `4fb6fe1cafc59515b295a14225aabda98a5c869f89788fc1afe1c377bd132190` |
 | `skills/alternative-performance-measures/methods.md` | `588ae0a2cde5a53544c78225c95a1483e1f3533b7b724993143312c342c2a2f6` |
 | `skills/alternative-performance-measures/workflow.py` | `661fcea41e7620d6868bb32fccf52dbe7acf205c9fdb292fce1bc21eb95c00b9` |
-| `skills/held-for-sale-discontinued-operations/SKILL.md` | `103b807fdb7c0f840fbffe5be6dedb54dbd77b4c2c9cce3f355ff499aa3f53e5` |
+| `skills/held-for-sale-discontinued-operations/SKILL.md` | `44a4396b05ad0471c0377f2d8819390ae37b18e6ac6253a89cd152e079223157` |
 | `skills/held-for-sale-discontinued-operations/methods.md` | `d35b24da3b19598d06414b51631433ec0dafd34e023beeeec52f89323da525a7` |
 | `skills/held-for-sale-discontinued-operations/workflow.py` | `066bdf6952ca1232e182fbdf8d76d568ba898093164041667cfd75df3db90864` |
-| `skills/hyperinflation-accounting/SKILL.md` | `d7bd6d311c90adccf75d161291b795e14cd4b1f92991f941e4b1ea25a45970ba` |
+| `skills/hyperinflation-accounting/SKILL.md` | `4229c7ed7bca71813da09db1e79ff3192edfc4557efc2760dcbebc1a46f7cb5b` |
 | `skills/hyperinflation-accounting/methods.md` | `cdcb684f5f4eb22b59da4330173029583ac06c5ad21fe2dd00335187d3bb7087` |
 | `skills/hyperinflation-accounting/workflow.py` | `c6e2af0514a9d5f01808c6be9388cfa68918cbcbec820b1f79715c680461791e` |
 | `skills/investment-property/SKILL.md` | `248435f35e1dcddba45160a9e927ce498153b9ceb91a060f9e83be0a8d12180a` |
 | `skills/investment-property/methods.md` | `d0b4ec4b2e239ca62ca9dd8ef950062ee4a1f8a0ee3f756bcde7e0628d5e8643` |
 | `skills/investment-property/workflow.py` | `2349c570bac544756ef5b90d9dafc07efb41ccecfe2871ea90d25b641b602f2a` |
 | `skills/production.py` | `ddc974097dc67eb5d5b9985bca9aa4b26727c89e707a147644182c438b449940` |
-| `skills/sec-filing-accounting/SKILL.md` | `4be0e42e8b721e759b9fe34368dbc8f3c51f436ba15fffa1f986ba3132cb52d3` |
+| `skills/sec-filing-accounting/SKILL.md` | `8dd369a4ebce33434b1b76fdc13b39135bbf7d509c991a9c9159c82623f82376` |
 | `skills/sec-filing-accounting/methods.md` | `bcbfa3f8b33a8fc778c06efe61837c1e304b1faef9feeb6f9495bd30a89a0be8` |
 | `skills/sec-filing-accounting/workflow.py` | `2b677ab734d74811cbf9d6f58a0c82e6092b55e37025375f9143774de703bfb7` |
 | `skills/special_reporting.py` | `0fc6e1c1512c86f26ee057f5426486df94889ab9f93c4d6d98984727c3e7a8af` |
 | `skills/tests/special_reporting_cases.py` | `735ed4ca4b4e40211e2cde3a2e0b4518afea67bf1d42b8354ebfa7c854b1713e` |
 | `skills/tests/test_independent_special_reporting.py` | `90b0b7ca858d399257409daa0075851efd3420099dd9f7e4d13654f0ed4747f1` |
-| `skills/tests/test_special_reporting_workflows.py` | `0ae61dac4fa54d575f614174cd0344e53029048c7eaf8bc995176964a6bd5f6a` |
+| `skills/tests/test_special_reporting_workflows.py` | `07aa8f8bd7d161f9492c9421c92b20efc70c7420cf81ddcfb54ed8d025dd30e9` |
+
+## Independent production-promotion review
+
+**PASS, 2026-10-03.** Independently compared every anchored implementation/method/contract byte to the substantive QA snapshot. The only implementation/contract changes are `version: 0.9.0` / `status: review` to `version: 1.0.0` / `status: production` in the four supported packages. Normalizing those two fields reproduces the original contract SHA-256 exactly. All methods and executable accounting bytes remain unchanged; no supported scope or specialist boundary widened. The authored workflow suite gained two reviewed cross-skill/interim methods and now passes 11 methods. Investment Property remains `0.1.0` / `review` with explicit NONPRODUCTION/all-framework rejection.
+
+Independent suite rerun under production metadata: **16 methods PASS**, including all thirteen remediated counterexamples, 100 scope/privacy/staleness assertions and actual completed-owner positive/contradictory cases. Normal repository generator results independently matched every saved example byte after final metadata: **10 complete, 10 partial and 10 blocked public artifacts across 20 package/framework cases**. Public examples contain no source notes, evidence-status/approval-track objects, reviewer metadata or hashes. Metadata-dependent certificates are current; unapproved cases remain partial and unsupported framework routes remain blocked. All four preceding adjusting-owner examples were regenerated through the shared architecture, preserving the separate Subsequent Events production contract.
+
+The pre-promotion candidate CI head was `46cd18909ae8a0695e0577a263c0c79f0b444679`. This report update and production metadata require a new exact final-head CI run; the earlier candidate run is not a final-head integration approval. Final regression/CI results belong in the owner's completion artifact and PR metadata. The refreshed SHA-256 table above anchors final production metadata and current reviewed implementation bytes.

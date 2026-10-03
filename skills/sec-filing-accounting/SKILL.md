@@ -1,8 +1,8 @@
 ---
 id: SKILL-SEC-001
 name: "SEC / Public Company Reporting & Filing Accounting"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "16"
 related_domains: ["02", "04", "05", "06", "07", "08", "13", "15"]
 description: Governed bounded special-reporting workflow with independently evidenced accounting and fail-closed boundaries.
