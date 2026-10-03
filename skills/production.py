@@ -16,6 +16,11 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'earnings-per-share': ('SKILL-EPS-001',['TOPIC-08-007']),
+    'segment-reporting': ('SKILL-SEG-001',['TOPIC-08-006']),
+    'subsequent-events': ('SKILL-EVENT-001',['TOPIC-08-005']),
+    'government-grants': ('SKILL-GRANT-001',[]),
+    'borrowing-costs': ('SKILL-BORROW-001',['TOPIC-04-003']),
     'cash-flow-reporting': ('SKILL-CASH-001',['TOPIC-08-002','TOPIC-06-001','TOPIC-06-002']),
     'equity-capital': ('SKILL-EQUITY-001',['TOPIC-08-003','TOPIC-13-006']),
     'accounting-changes': ('SKILL-CHANGE-001',['TOPIC-02-009','TOPIC-15-001','TOPIC-15-003','TOPIC-15-006']),
@@ -134,6 +139,8 @@ def canonical_knowledge(topic_ids, framework):
 
 def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
+    if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
+    if package=='borrowing-costs':raise ReviewRequired('Approved CIP routing does not provide a substantive borrowing-cost capitalization method; governed knowledge extension required')
     if package == 'inventory-cost':
         raise ReviewRequired('No approved substantive inventory recognition, costing or subsequent-measurement knowledge; inventory accounting specialist and governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
@@ -186,6 +193,7 @@ def case_fingerprint(case):
     files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
     files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
     files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
+    files += [ROOT/'skills/presentation_accounting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -198,6 +206,9 @@ def to_public(result, route='answer'):
       'SKILL-CONS-001':{'IFRS':'IFRS 10','US_GAAP':'ASC 810','UK_GAAP':'FRS 102 Section 9','AASB':'AASB 10'}}
     title=standard_titles.get(result['skill_id'],{}).get(result['framework'],'Framework unresolved')
     additional={'SKILL-BC-001':['IFRS 3','ASC 805','FRS 102 Section 19','AASB 3'],
+      'SKILL-EPS-001':['IAS 33','ASC 260','Applicable FRS 102 Section 1 / separately scoped IAS 33','AASB 133'],
+      'SKILL-SEG-001':['IFRS 8','ASC 280','Applicable UK segment reporting scope','AASB 8'],
+      'SKILL-EVENT-001':['IAS 10','ASC 855','FRS 102 Section 32','AASB 110'],
       'SKILL-CASH-001':['IAS 7 / applicable IFRS 18 amendments','ASC 230','FRS 102 Section 7','AASB 107 / applicable AASB 18 amendments'],
       'SKILL-EQUITY-001':['IAS 32 / applicable equity presentation','ASC 505 / applicable equity presentation','FRS 102 Sections 6 / 22','AASB 132 / applicable equity presentation'],
       'SKILL-CHANGE-001':['IAS 8','ASC 250','FRS 102 Section 10','AASB 108'],
@@ -254,6 +265,11 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'earnings-per-share':('TOPIC-08-007','EPS, equity, award, tax and instrument specialists','Legal share rights, complete dated shares/instruments, attributable earnings and qualified instrument methods'),
+          'segment-reporting':('TOPIC-08-006','Segment accounting, management and financial reporting specialists','Actual CODM packs, components, aggregation/reportability judgments and reconciled entity-wide disclosures'),
+          'subsequent-events':('TOPIC-08-005','Subsequent events, underlying accounting, legal and filing specialists','Authorized window, independent feed/event population, period-end conditions and completed underlying recognition'),
+          'government-grants':('unmapped','Grant accounting and standards governance owner','Approved substantive framework-specific grant knowledge and actual agreements/compliance evidence'),
+          'borrowing-costs':('TOPIC-04-003','Borrowing-cost accounting and standards governance owner','Substantive approved capitalization method, project and financing facts; CIP pointers are insufficient'),
           'cash-flow-reporting':('TOPIC-08-002','Cash reporting, Financial Statements, FX, Consolidation and Lease specialists','Bank/GL cash definitions, cash source population, indirect/direct bridge, classification and adopted-period memos'),
           'equity-capital':('TOPIC-08-003','Equity, legal capital, SBC and group specialists','Instrument/legal terms, cap table, owner approvals, component and NCI bridges'),
           'accounting-changes':('TOPIC-02-009','Technical accounting, tax/EPS, auditors and SEC securities counsel','Original facts/issued statements, policy/estimate/error analysis, both error measures, comparative bridges and filing evidence'),
