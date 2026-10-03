@@ -1,8 +1,8 @@
 ---
 id: SKILL-EVENT-001
 name: "Subsequent Events"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["02", "04", "05", "06", "07", "08", "13", "15"]
 description: Governed subsequent events workflow with independently evidenced accounting and fail-closed boundaries.

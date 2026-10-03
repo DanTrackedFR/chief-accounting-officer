@@ -1,8 +1,8 @@
 ---
 id: SKILL-SEG-001
 name: "Segment Reporting"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["02", "04", "05", "06", "07", "08", "13", "15"]
 description: Governed segment reporting workflow with independently evidenced accounting and fail-closed boundaries.
