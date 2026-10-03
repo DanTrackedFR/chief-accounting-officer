@@ -1,0 +1,2306 @@
+{
+  "schema_version": 1,
+  "baseline_main": "5a011a7b4195307743bddb768a13de638ccb8f7b",
+  "roadmap_batch": [
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "invariants": {
+    "approved_topics": 157,
+    "capability_mappings": 347,
+    "canonical_claims": 1598,
+    "supplemental_tax_claims": 64,
+    "approved_is_source_verified": false
+  },
+  "packages": {
+    "ipo-accounting-readiness": {
+      "roadmap_number": 43,
+      "roadmap_name": "IPO Accounting Readiness",
+      "supported_executable_boundary": "Accounting-function gap/evidence/dependency roadmap only; no IPO score, arbitrary benchmark, legal obligation, success/timing prediction or filing mechanics.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-01-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-017"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-017",
+            "CAO-01-018"
+          ],
+          "register": "knowledge/topics/TOPIC-01-008-ipo-public-company-accounting-readiness-benchmarking/standards-claims.json",
+          "sha256": "9f5c4a6cabf95e8747aa9ef5b13b691c5a6b73fd61a36ad68386f46dbb2f12d1",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-008.json",
+              "sha256": "f34f2f9e9ae74e0f9f4486c99814073850e75cfc16c5e08fdaea613f48fb3e1c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-008-ipo-public-company-accounting-readiness-benchmarking/README.md",
+              "sha256": "c3819c0877418a96d1f5f64f86bcd76b968edce4ff8f65aaa8b96f595bff5d03"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-008-ipo-public-company-accounting-readiness-benchmarking/methods/readiness-gates.md",
+              "sha256": "659f0a9af21d9f49d7c578243932c7b731ea42c31d9a8561e0124c5d90436fef"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-008-ipo-public-company-accounting-readiness-benchmarking/phase-2d-completion.md",
+              "sha256": "69b8c06f231c2eaadd70026ea1f02ea18046fb7f325367af1b42b879f09d6239"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-008-ipo-public-company-accounting-readiness-benchmarking/tests/phase-2d-worker-scenarios.md",
+              "sha256": "2a158dd5da1bd46f2cbd4e508eb2b9d1c5c1feb49c5035de9bdf1f1969a1b136"
+            }
+          ]
+        }
+      ]
+    },
+    "audit-support-pbc": {
+      "roadmap_number": 44,
+      "roadmap_name": "Audit Support & PBC Management",
+      "supported_executable_boundary": "Management PBC population, source reconciliation, query and auditor-selected sample support only; no opinion, sufficiency/independence determination, confirmations, adjustments or accounting alteration.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-10-001",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-10-001",
+            "CAO-10-002",
+            "CAO-10-003"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-10-001",
+            "CAO-10-002",
+            "CAO-10-003"
+          ],
+          "register": "knowledge/topics/TOPIC-10-001-external-audit-planning-pbc-evidence/standards-claims.json",
+          "sha256": "4f5713d450ced7b61cfcc2ab2dcfa0bc99925c6d82a4d357b8c7e6007c522f64",
+          "claims": [
+            {
+              "claim_id": "TOPIC-10-001-OTHER-E001",
+              "framework": "OTHER",
+              "proposition": "Auditor obtains sufficient appropriate evidence: sufficiency is quantity, appropriateness relevance/reliability; company information is tested for completeness, accuracy and precision.",
+              "paragraph_references": [
+                ".03\u2013.10A"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS1105",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS1105",
+                  "locator": ".03\u2013.10A",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-10-001.json"
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "source_note": "Source: PCAOB AS1105",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-10-001-OTHER-E002",
+              "framework": "OTHER",
+              "proposition": "Audit documentation supports procedures, evidence, conclusions, performer/reviewer and accounting-record reconciliation to statements.",
+              "paragraph_references": [
+                ".05\u2013.06A"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS1215",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS1215",
+                  "locator": ".05\u2013.06A",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-10-001.json"
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "source_note": "Source: PCAOB AS1215",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-10-001.json",
+              "sha256": "fef0881fcdea07d5693b5ef84fd87e4dbf52cfded7ebb3dde57c24df0d8d7f8d"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-001-external-audit-planning-pbc-evidence/README.md",
+              "sha256": "39711ffcdcdabb1354139c85dcb17ccf63cd63daf7bb62c3b8be98c9591cae8b"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-001-external-audit-planning-pbc-evidence/methods/pbc-population-proof.md",
+              "sha256": "89631c54171e7054e510c6679d1115c31b6a03be5c1f6311b21805243bdf50b4"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-001-external-audit-planning-pbc-evidence/practice/audit-planning-evidence.md",
+              "sha256": "5ea57ad0cdd3e642a6864b0cd06de506b886c318b56333ec8195b05bb5eb20ea"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-001-external-audit-planning-pbc-evidence/tests/phase-2d-worker-scenarios.md",
+              "sha256": "10ed3b4565c1773163d62a933734982c15811f5b6200a261c35a9d73ff418644"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-10-002",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-10-004",
+            "CAO-10-005",
+            "CAO-10-006"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-10-004",
+            "CAO-10-005",
+            "CAO-10-006"
+          ],
+          "register": "knowledge/topics/TOPIC-10-002-audit-support-query-samples/standards-claims.json",
+          "sha256": "4f5ece2d90c037510c495a981c5cbe2fb7efeedf14b9ca80e1fcb8fd047e23bf",
+          "claims": [
+            {
+              "claim_id": "TOPIC-10-002-OTHER-E001",
+              "framework": "OTHER",
+              "proposition": "Auditor retains confirmation selection, sending and receipt control; current AS2310 applies to fiscal years ending on/after15June2025.",
+              "paragraph_references": [
+                "Effective date; .14\u2013.15"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS2310",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2310",
+                  "locator": "Effective date; .14\u2013.15",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-10-002.json"
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "source_note": "Source: PCAOB AS2310",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-10-002.json",
+              "sha256": "2faa56d65e4cbcee6b11015cf22a1bc6fe5d4e4328733036c3834da9e09be582"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-002-audit-support-query-samples/README.md",
+              "sha256": "514384dc028843499ad82edcb7eff5faebc59db8f74a8c236fb8c3540fb2bf04"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-002-audit-support-query-samples/methods/sample-lineage.md",
+              "sha256": "345501dfdeb6eef0182177e1ec6442978f43249d0962d17944867d7e7d75a8d5"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-002-audit-support-query-samples/practice/audit-query-sample.md",
+              "sha256": "544e9240d3c68d0f966315a418f78974d5466a3bcc8fd3f968141babd7126816"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-10-002-audit-support-query-samples/tests/phase-2d-worker-scenarios.md",
+              "sha256": "16896315f9ea3957ad40b9d40c9e9297976485a729ef60ec187d9173b1d4d5bd"
+            }
+          ]
+        }
+      ]
+    },
+    "accounting-policy-memo-governance": {
+      "roadmap_number": 45,
+      "roadmap_name": "Accounting Policy Management & Technical Memo Governance",
+      "supported_executable_boundary": "Versioned policy/memo governance consuming actual completed accounting conclusions; no autonomous policy selection/transition/recognition, paragraph invention or overwriting policy history.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-15-001",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-15-001",
+            "CAO-15-002",
+            "CAO-15-003"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-15-001",
+            "CAO-15-002",
+            "CAO-15-003"
+          ],
+          "register": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/standards-claims.json",
+          "sha256": "4d54c253d07de8b1a7351a6a35c0b574e1c2e8c2499f8c229c45eb4ea21d9d1f",
+          "claims": [
+            {
+              "claim_id": "TOPIC-15-001-IFRS-R001",
+              "framework": "IFRS",
+              "proposition": "IFRS: use specifically applicable accounting requirements, then framework-specific policy hierarchy for gaps; consistent comparable transactions/elections and permitted voluntary change threshold are required.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-IFRS-R002",
+              "framework": "IFRS",
+              "proposition": "IFRS: mandatory adoption follows specified transition; otherwise use applicable retrospective/impracticability rules and disclosures, preserving specific-standard exceptions and distinctions from prospective estimates and errors.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-US_GAAP-R003",
+              "framework": "US_GAAP",
+              "proposition": "US_GAAP: use specifically applicable accounting requirements, then framework-specific policy hierarchy for gaps; consistent comparable transactions/elections and permitted voluntary change threshold are required.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-US_GAAP-R004",
+              "framework": "US_GAAP",
+              "proposition": "US_GAAP: mandatory adoption follows specified transition; otherwise use applicable retrospective/impracticability rules and disclosures, preserving specific-standard exceptions and distinctions from prospective estimates and errors.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-UK_GAAP-R005",
+              "framework": "UK_GAAP",
+              "proposition": "UK_GAAP: use specifically applicable accounting requirements, then framework-specific policy hierarchy for gaps; consistent comparable transactions/elections and permitted voluntary change threshold are required.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-UK_GAAP-R006",
+              "framework": "UK_GAAP",
+              "proposition": "UK_GAAP: mandatory adoption follows specified transition; otherwise use applicable retrospective/impracticability rules and disclosures, preserving specific-standard exceptions and distinctions from prospective estimates and errors.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-AASB-R007",
+              "framework": "AASB",
+              "proposition": "AASB: use specifically applicable accounting requirements, then framework-specific policy hierarchy for gaps; consistent comparable transactions/elections and permitted voluntary change threshold are required.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-15-001-AASB-R008",
+              "framework": "AASB",
+              "proposition": "AASB: mandatory adoption follows specified transition; otherwise use applicable retrospective/impracticability rules and disclosures, preserving specific-standard exceptions and distinctions from prospective estimates and errors.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Reviewed2026-10-01; IAS8 definition-of-estimates amendment2023 and IFRS18/IAS8 relocation mandatory2027 absentearlyapplication; AASB1082023-before2027 compilation and Tier2AASB1060 independent; FRS1022026PeriodicReview generally; US ASC250/326/entity elections and SEC registrant overlays separately.",
+              "entity_scope": "Policy selection/change governance",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-15-001.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 vsASC250preferability/SECoverlay vsFRS102hierarchy/SORP; topic-specific revaluation transitionexception."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-15-001.json",
+              "sha256": "fc60afc2856ceacdf8509b83622c52ba413bd7e453a639061ebadb8906a2fe7e"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/README.md",
+              "sha256": "7178f8116fa8d8390608e6c2ae9a4b580accadb2d2bd52db4ccb6e8dd204212b"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-15-001-accounting-policy-selection-change-governance/factory-qa.md",
+              "sha256": "76f2d1b32b6c5ed39c105124d85e24280dd2b0e0e095fb071d239455be8cabb9"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-14-003",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-14-007",
+            "CAO-14-008",
+            "CAO-14-009"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-14-007",
+            "CAO-14-008",
+            "CAO-14-009"
+          ],
+          "register": "knowledge/topics/TOPIC-14-003-technical-consultation-memo-position-paper/standards-claims.json",
+          "sha256": "2995678cb7050a5a95c7f0505a6470306a638fb896a1bafe6d2a92d18c11f58a",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-14-003.json",
+              "sha256": "5ba62b4f225ccc994d583edaa86e2efcd9df59d577330858c00dd848d05d8e6c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-003-technical-consultation-memo-position-paper/README.md",
+              "sha256": "608a518c795e80712f377a39a0911cee9cd3f6dcd139e596b2151dbb5c5fdf55"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-003-technical-consultation-memo-position-paper/factory.md",
+              "sha256": "59b2e56cb465d6731ab70ea1e5942ed5e82397282e7bd32bb51955ba4e5b70a5"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-14-004",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-14-012"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-14-010",
+            "CAO-14-011",
+            "CAO-14-012"
+          ],
+          "register": "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/standards-claims.json",
+          "sha256": "7a7396640fe6533989bccd4d12da4fa73d0fafda423d261186760a8a86231538",
+          "claims": [
+            {
+              "claim_id": "TOPIC-14-004-IFRS-R001",
+              "framework": "IFRS",
+              "proposition": "IFRS: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026-10-01 review; identify transaction/reporting period, actual operative standard and transition. IAS8 estimate-definition changes effective2023; IAS1 to IFRS18/IAS8 relocated preparation requirements mandatory2027 absent early application; UK PeriodicReview2024 generally2026; AASB compilation/entity/tier separately.",
+              "entity_scope": "Documentation practice with material policy/estimate/error distinctions and conditional allowance/PPE illustration registered.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-14-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-14-004-US_GAAP-R002",
+              "framework": "US_GAAP",
+              "proposition": "US_GAAP: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026-10-01 review; identify transaction/reporting period, actual operative standard and transition. IAS8 estimate-definition changes effective2023; IAS1 to IFRS18/IAS8 relocated preparation requirements mandatory2027 absent early application; UK PeriodicReview2024 generally2026; AASB compilation/entity/tier separately.",
+              "entity_scope": "Documentation practice with material policy/estimate/error distinctions and conditional allowance/PPE illustration registered.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-14-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-14-004-UK_GAAP-R003",
+              "framework": "UK_GAAP",
+              "proposition": "UK_GAAP: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026-10-01 review; identify transaction/reporting period, actual operative standard and transition. IAS8 estimate-definition changes effective2023; IAS1 to IFRS18/IAS8 relocated preparation requirements mandatory2027 absent early application; UK PeriodicReview2024 generally2026; AASB compilation/entity/tier separately.",
+              "entity_scope": "Documentation practice with material policy/estimate/error distinctions and conditional allowance/PPE illustration registered.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-14-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-14-004-AASB-R004",
+              "framework": "AASB",
+              "proposition": "AASB: classify policy, judgment, measurement estimate and prior-period error using applicable rules; genuine new-information estimate changes differ from errors using information available earlier; materiality threshold cannot authorize nonqualifying asset recognition.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026-10-01 review; identify transaction/reporting period, actual operative standard and transition. IAS8 estimate-definition changes effective2023; IAS1 to IFRS18/IAS8 relocated preparation requirements mandatory2027 absent early application; UK PeriodicReview2024 generally2026; AASB compilation/entity/tier separately.",
+              "entity_scope": "Documentation practice with material policy/estimate/error distinctions and conditional allowance/PPE illustration registered.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-14-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "IAS8/AASB108 versus ASC250 andFRS10210; disclosure/transitionframeworkspecific. IFRS18 relocationsfuturegate."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-14-004.json",
+              "sha256": "f40b0a0f4b655a3b540a5d7ee7000a21ec20900b6d1b95c0fd3f26ed7b71c5e2"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/README.md",
+              "sha256": "e8acf681294b3f6937ac00be5f7fb4023c827e6d4d16a71761fcbab6660d7782"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/factory.md",
+              "sha256": "2b08198d94376c3cacd7188027aaca24553ca24d8837d7a84574f2c737fccb87"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-004-judgment-estimate-policy-writing/tests.md",
+              "sha256": "5e7447eff78a75d371cd8ad591653e489a78fa5428b6f2f1c927b065ed446806"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-14-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-14-020",
+            "CAO-14-021"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-14-020",
+            "CAO-14-021"
+          ],
+          "register": "knowledge/topics/TOPIC-14-008-documentation-quality-citations/standards-claims.json",
+          "sha256": "b852d9f04ff52c7cb8fac7f022f165d7f4fc02f5463351b2a64372f909ff2b10",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-14-008.json",
+              "sha256": "8400786612b343cf797548055c8558bd072ca6ec1e2951d3145bb709b617ff16"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-008-documentation-quality-citations/README.md",
+              "sha256": "8c2ba85f6b109feeb9d16642c0f8413c7f445fff2070501ddabf4227b7045e9f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-14-008-documentation-quality-citations/factory.md",
+              "sha256": "2451036dbe882f1a84503df7d6cdfcf560d834034eab6d2be540f15f47c6f6a8"
+            }
+          ]
+        }
+      ]
+    },
+    "disclosure-management": {
+      "roadmap_number": 46,
+      "roadmap_name": "Disclosure Checklist & Disclosure Management",
+      "supported_executable_boundary": "Qualified current requirements/applicability population and source/note/issued-comparative tie-outs; no generated universal checklist, new requirements, unowned disclosures or compliance certification.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-08-004",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-08-007",
+            "CAO-08-008"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-08-007",
+            "CAO-08-008"
+          ],
+          "register": "knowledge/topics/TOPIC-08-004-disclosure-checklist-comparatives/standards-claims.json",
+          "sha256": "c350938b2feda915940bbf0c95e4bb53351e2cd67096da26279e74bba64fab72",
+          "claims": [
+            {
+              "claim_id": "TOPIC-08-004-IFRS-001",
+              "framework": "IFRS",
+              "proposition": "Material prior-period errors are corrected in comparative information, with opening-balance and disclosure consequences; checklist must reflect the applicable framework and period.",
+              "paragraph_references": [
+                "IAS 8.42\u201349"
+              ],
+              "reference_confidence": "PROVISIONAL",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "CURRENT_STANDARD",
+                  "title": "IFRS issued edition",
+                  "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2025/issued/ias8.html",
+                  "locator": "IAS 8.42\u201349",
+                  "version_date": "2025 issued",
+                  "access_date": "2026-09-29",
+                  "inspected": false
+                },
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Source edition, IFRS 18 from annual periods beginning 1 January 2027 unless early applied",
+              "entity_scope": "For-profit; public/private, small entity and Australian tier separately assessed",
+              "audit_required": true,
+              "limitations": [
+                "Core paragraph inspected; subsidiary disclosures and older periods require audit.",
+                "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Core paragraph inspected; subsidiary disclosures and older periods require audit.",
+                  "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-US-001",
+              "framework": "US_GAAP",
+              "proposition": "Apply US_GAAP reporting, comparative, disclosure and transition requirements to disclosure checklist comparatives independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model synthesis; direct operative text not verified",
+                  "url": "https://asc.fasb.org/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; public/private, small entity and Australian tier separately assessed",
+              "audit_required": true,
+              "limitations": [
+                "Operative paragraph, election, period and entity tier require direct audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Operative paragraph, election, period and entity tier require direct audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-UK-001",
+              "framework": "UK_GAAP",
+              "proposition": "Apply UK_GAAP reporting, comparative, disclosure and transition requirements to disclosure checklist comparatives independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model synthesis; direct operative text not verified",
+                  "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; public/private, small entity and Australian tier separately assessed",
+              "audit_required": true,
+              "limitations": [
+                "Operative paragraph, election, period and entity tier require direct audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Operative paragraph, election, period and entity tier require direct audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-AASB-001",
+              "framework": "AASB",
+              "proposition": "Apply AASB reporting, comparative, disclosure and transition requirements to disclosure checklist comparatives independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model synthesis; direct operative text not verified",
+                  "url": "https://standards.aasb.gov.au/accounting-standards",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; public/private, small entity and Australian tier separately assessed",
+              "audit_required": true,
+              "limitations": [
+                "Operative paragraph, election, period and entity tier require direct audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Operative paragraph, election, period and entity tier require direct audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-IFRS-R001",
+              "framework": "IFRS",
+              "proposition": "Comparatives preserve issued-to-restated bridge and framework-specific material error, policy transition and presentation consequences; checklist applicability follows actual entity and effective period.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-US_GAAP-R002",
+              "framework": "US_GAAP",
+              "proposition": "Comparatives preserve issued-to-restated bridge and framework-specific material error, policy transition and presentation consequences; checklist applicability follows actual entity and effective period.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-UK_GAAP-R003",
+              "framework": "UK_GAAP",
+              "proposition": "Comparatives preserve issued-to-restated bridge and framework-specific material error, policy transition and presentation consequences; checklist applicability follows actual entity and effective period.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-004-AASB-R004",
+              "framework": "AASB",
+              "proposition": "Comparatives preserve issued-to-restated bridge and framework-specific material error, policy transition and presentation consequences; checklist applicability follows actual entity and effective period.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-004.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-08-004.json",
+              "sha256": "9e71276c49b70bc3debfbdffe98819278522b17f98883107b60a51499f759961"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-004-disclosure-checklist-comparatives/README.md",
+              "sha256": "49ccb2f22c283b93362782ab623b87d92a0f4225b765737e63a7cfc1d6bcb907"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-004-disclosure-checklist-comparatives/checklist-case.md",
+              "sha256": "1de3770e57cff3f3823e788e50402dbc5e2f9bdb95a750be7f5198afe017bed2"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-004-disclosure-checklist-comparatives/comparative-and-checklist-gate.md",
+              "sha256": "d4e8592a3b063347a408f6d445e50884dbf6162618222b2ce913c198f1e8e0c8"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-004-disclosure-checklist-comparatives/evidence-and-regression.md",
+              "sha256": "e1ab9b47ef16cdc48ffd9bb2b09877a1e6c724190bd848f006e978812e3316dc"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-08-009",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-08-017",
+            "CAO-08-018"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-08-017",
+            "CAO-08-018"
+          ],
+          "register": "knowledge/topics/TOPIC-08-009-financial-statement-tieout/standards-claims.json",
+          "sha256": "d822a1ad99db8cbf38e042005308907caadf8711e30013631d2390f1c303b32b",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-08-009.json",
+              "sha256": "68b4d9e316ec145b8be180257a69f61db4ca0890ee749536c12613c4f83bf59c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-009-financial-statement-tieout/README.md",
+              "sha256": "9b9e134a266a243a58dcebadce9e772cff62dbdf8cfacd49c60e4722f0c95dfb"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-009-financial-statement-tieout/assertion-to-source-and-late-change-protocol.md",
+              "sha256": "00faf3275c286ab9e656e127bb78af594194ae283c1c535045b9c7c7df049fd5"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-009-financial-statement-tieout/traceability-case.md",
+              "sha256": "ed52f43da949c31be03796a7d1875fbb9c7544f74ba66489c5cf729a9323ff95"
+            }
+          ]
+        }
+      ]
+    },
+    "management-accounting-analytics": {
+      "roadmap_number": 47,
+      "roadmap_name": "Management Reporting & Accounting Analytics",
+      "supported_executable_boundary": "Accounting-source lineage, management/statutory bridge, reconciled calendar comparable flux and on-time reconciliation KPI only. Facts separate from reviewed explanations; no FP&A/forecast/budget, generic BI, invented adjustments or undisclosed netting.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-08-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-08-016"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-08-015",
+            "CAO-08-016"
+          ],
+          "register": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/standards-claims.json",
+          "sha256": "409b8d4efd830a94f2699896cd014a99eaa46446f0196271c5e461a9c1cd8e7f",
+          "claims": [
+            {
+              "claim_id": "TOPIC-08-008-IFRS-001",
+              "framework": "IFRS",
+              "proposition": "A group IFRS close does not substitute for each legal entity\u2019s statutory framework, size/tier and jurisdiction-specific filing requirements.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored synthesis; operative standard/law audit pending",
+                  "url": "https://www.ifrs.org/issued-standards/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+              "audit_required": true,
+              "limitations": [
+                "Current paragraph/law, elections and disclosure scope require audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Current paragraph/law, elections and disclosure scope require audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-US-001",
+              "framework": "US_GAAP",
+              "proposition": "Apply US_GAAP scope, accounting, presentation, disclosure and period-specific rules to statutory reporting bridge independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored synthesis; operative standard/law audit pending",
+                  "url": "https://asc.fasb.org/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+              "audit_required": true,
+              "limitations": [
+                "Current paragraph/law, elections and disclosure scope require audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Current paragraph/law, elections and disclosure scope require audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-UK-001",
+              "framework": "UK_GAAP",
+              "proposition": "Apply UK_GAAP scope, accounting, presentation, disclosure and period-specific rules to statutory reporting bridge independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored synthesis; operative standard/law audit pending",
+                  "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+              "audit_required": true,
+              "limitations": [
+                "Current paragraph/law, elections and disclosure scope require audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Current paragraph/law, elections and disclosure scope require audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-AASB-001",
+              "framework": "AASB",
+              "proposition": "Apply AASB scope, accounting, presentation, disclosure and period-specific rules to statutory reporting bridge independently.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored synthesis; operative standard/law audit pending",
+                  "url": "https://standards.aasb.gov.au/accounting-standards",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+              "audit_required": true,
+              "limitations": [
+                "Current paragraph/law, elections and disclosure scope require audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Current paragraph/law, elections and disclosure scope require audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-IFRS-R001",
+              "framework": "IFRS",
+              "proposition": "Statutory reporting follows legal-entity accounting framework and jurisdiction-specific obligations; management adjustments cannot replace compliant recognition, presentation and filing scope.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-US_GAAP-R002",
+              "framework": "US_GAAP",
+              "proposition": "Statutory reporting follows legal-entity accounting framework and jurisdiction-specific obligations; management adjustments cannot replace compliant recognition, presentation and filing scope.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-UK_GAAP-R003",
+              "framework": "UK_GAAP",
+              "proposition": "Statutory reporting follows legal-entity accounting framework and jurisdiction-specific obligations; management adjustments cannot replace compliant recognition, presentation and filing scope.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-08-008-AASB-R004",
+              "framework": "AASB",
+              "proposition": "Statutory reporting follows legal-entity accounting framework and jurisdiction-specific obligations; management adjustments cannot replace compliant recognition, presentation and filing scope.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "2026 non-early IFRS uses IAS1-era presentation; IFRS18 mandatory annualstarts2027 with retrospective transition, not universal2026. AASB18 relevantforprofits2027, NFP/specifiedsuperannuation2028; August2026 AASB2026-4 newentityrelief considered futuregate. UKPeriodicReview2026 andFRCFebruary2026adaptedformats2027 verified officialnotice; legalform/companysize/tier/regulator remain required. Goingconcern IFRS/AASB assessment at least12months fromreportdate, US one-yearafter issuance/availabletoissue model with probable management-plan evaluation; UK framework and applicablecode horizon independently selected. No unverified exact ASC references promoted.",
+              "entity_scope": "Individual material reporting normative proposition families reviewed; substantive REVIEWED baseline confirmed.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-08-008.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: individual accounting challenge and relevant calculations recorded in linked topic review; source assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+                  "US cashflowinterest/dividend classification, refinancing/waiver rules, ASC205-40 substantialdoubt andASC855 eventwindow differ; SECAPM scope separate fromIFRS18MDP. UKstatutoryformats,FRS102smallentity relief andspecifiedIAS33scope distinct; AASBtiers/NFPdates separatelygated. Training-data accuracy checked without operativeUS/UKtext assurance; legalrights, forecasts, uncertainty andeffectiveperiod caveats remain visible."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-08-008.json",
+              "sha256": "cb28f145a82a299d1d80110b955b30cb561d619b0610b1cf0887fb6f32f922d1"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/README.md",
+              "sha256": "ed3c43bf94f33b72811f1bbc9e1d5e88708877e773b2625d411afe59b9e98f12"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/entity-filing-and-adjustment-register.md",
+              "sha256": "38e032cae9a395611452b206036e26e5e7b1a3a20e2c33edcce7112586a85727"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/evidence-and-regression.md",
+              "sha256": "7cfc2196d67bb4482c76099183a6451392fc811b4a1fa87f5620ca6d0b10b766"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/statutory-bridge-case.md",
+              "sha256": "056927d06ffcb6830743ad12605dcdacec4aff56a175fff08ed17770203df3d4"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-02-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-02-017"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-02-017",
+            "CAO-02-018"
+          ],
+          "register": "knowledge/topics/TOPIC-02-008-flux-post-close/standards-claims.json",
+          "sha256": "42e49d9f9b1654c35bfa95be916e6d6166c8b9e0222e8137c6dec484d888b8e4",
+          "claims": [
+            {
+              "claim_id": "TOPIC-02-008-IFRS-E01",
+              "framework": "IFRS",
+              "proposition": "A proven material prior error requires the applicable prior-period correction route rather than concealment in current earnings.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data; independent Phase 2E treatment challenge",
+                  "url": null,
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 reporting; transaction-specific standard, historical edition and early adoption must be selected before a live entry.",
+              "entity_scope": "IFRS reporting entity; the operational example does not establish its transaction facts.",
+              "audit_required": true,
+              "limitations": [
+                "Operative authority was not independently inspected for this proposition; direct-source assurance remains open. No precise paragraph asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+                "Known material earlier omission versus genuinely new estimate information; IFRS/AASB/FRS practicability conditions are not automatically imported into US GAAP."
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent challenge already recorded in the linked per-topic review; operative-source assurance remains unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: ChatGPT training data",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Future operative-source verification pending; accuracy checked through explicit challenge and worked/boundary cases."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-02-008-US_GAAP-E01",
+              "framework": "US_GAAP",
+              "proposition": "A proven material prior error requires the applicable prior-period correction route rather than concealment in current earnings.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data; independent Phase 2E treatment challenge",
+                  "url": null,
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 reporting; transaction-specific standard, historical edition and early adoption must be selected before a live entry.",
+              "entity_scope": "US_GAAP reporting entity; the operational example does not establish its transaction facts.",
+              "audit_required": true,
+              "limitations": [
+                "Operative authority was not independently inspected for this proposition; direct-source assurance remains open. No precise paragraph asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+                "Known material earlier omission versus genuinely new estimate information; IFRS/AASB/FRS practicability conditions are not automatically imported into US GAAP."
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent challenge already recorded in the linked per-topic review; operative-source assurance remains unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: ChatGPT training data",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Future operative-source verification pending; accuracy checked through explicit challenge and worked/boundary cases."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-02-008-UK_GAAP-E01",
+              "framework": "UK_GAAP",
+              "proposition": "A proven material prior error requires the applicable prior-period correction route rather than concealment in current earnings.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data; independent Phase 2E treatment challenge",
+                  "url": null,
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 reporting; transaction-specific standard, historical edition and early adoption must be selected before a live entry.",
+              "entity_scope": "UK_GAAP reporting entity; the operational example does not establish its transaction facts.",
+              "audit_required": true,
+              "limitations": [
+                "Operative authority was not independently inspected for this proposition; direct-source assurance remains open. No precise paragraph asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+                "Known material earlier omission versus genuinely new estimate information; IFRS/AASB/FRS practicability conditions are not automatically imported into US GAAP."
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent challenge already recorded in the linked per-topic review; operative-source assurance remains unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: ChatGPT training data",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Future operative-source verification pending; accuracy checked through explicit challenge and worked/boundary cases."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-02-008-AASB-E01",
+              "framework": "AASB",
+              "proposition": "A proven material prior error requires the applicable prior-period correction route rather than concealment in current earnings.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data; independent Phase 2E treatment challenge",
+                  "url": null,
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 reporting; transaction-specific standard, historical edition and early adoption must be selected before a live entry.",
+              "entity_scope": "AASB reporting entity; the operational example does not establish its transaction facts.",
+              "audit_required": true,
+              "limitations": [
+                "Operative authority was not independently inspected for this proposition; direct-source assurance remains open. No precise paragraph asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+                "Known material earlier omission versus genuinely new estimate information; IFRS/AASB/FRS practicability conditions are not automatically imported into US GAAP."
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent challenge already recorded in the linked per-topic review; operative-source assurance remains unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: ChatGPT training data",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Future operative-source verification pending; accuracy checked through explicit challenge and worked/boundary cases."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+              "sha256": "23faa1e5865556525f7d41e6664b61656f0fd2dcf8e2b7f44ac71e674ef7b10d"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-close-variance-post-close/README.md",
+              "sha256": "8c7f944e68eca4ecc92eea383059c19e79b2b2f4b9cc2c2df7b57898f9653f81"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-flux-post-close/README.md",
+              "sha256": "0731f6205bd32448d1fe813645a7d71f9964f3a169e2122cb205c3f0578c2d5d"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-flux-post-close/canonical-sources.md",
+              "sha256": "2c2ac856e2491ad2a523d094fc06622a9907c4dea632572b422d31ebce0620bd"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-flux-post-close/factory.md",
+              "sha256": "cc981fe43f49d76b6da4d6ad88e5dde07a8e7b36a339a3aa83eba895deb5945f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-flux-post-close/methods/flux-and-reopen-decision.md",
+              "sha256": "d86522e26135628d1af54ae24da7381f826491b6469aa3a167dc0921a699257e"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-02-008-flux-post-close/tests/phase-2d-worker-scenarios.md",
+              "sha256": "0ada564bd30f4babb8f67c30bc711a24a69d89032b7804cb2c314936a7742a45"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-005",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-011"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-011",
+            "CAO-01-012"
+          ],
+          "register": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/standards-claims.json",
+          "sha256": "caa6ba398ed30b270a03100ec60a70c5c5fd9c53a54851685f7fc98d7e4aad3d",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-005.json",
+              "sha256": "fa016cb51aefadc891dff0ee327966f869f584558cff1e30e5c9e210576645e7"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/README.md",
+              "sha256": "f1e83331e102ebfefb498fff0978d67ea456632e21bdd89c0c87d413eda0845e"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/methods/metric-specification.md",
+              "sha256": "400b4cc28d061f4e027b73880e6d0d3cd79dfe6c4fde1a52327814c3d887c3cb"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/phase-2d-completion.md",
+              "sha256": "d3b6f2bc19fdda9e36b2e4c13b79c454629171d4f7526dc41073fe03bd803d53"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/tests/phase-2d-worker-scenarios.md",
+              "sha256": "640fcf9927a6f1a95cb96075e2a316a5cf4d2882108b48a4a2d36da50247d45d"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-019",
+            "CAO-11-020"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-019",
+            "CAO-11-020"
+          ],
+          "register": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/standards-claims.json",
+          "sha256": "4d616cd4e9aedc7d6c4605971466e02121ece7b32a3faaa585c20c005e458124",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-008.json",
+              "sha256": "f2f285ee51f9e1ad4282d15e71d6e218ec3e364b6022f677da40eb2a558c653a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/README.md",
+              "sha256": "e1aa99bda18112766fb85bffba3942955a57293d0742a8f0608b9a4feaa62b32"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/methods/reporting-contract.md",
+              "sha256": "eedcb4f24800eea9c1724d1f2291f11f79892c811966275fe1f7fab1f4edacef"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/practice/warehouse-reporting.md",
+              "sha256": "e8e551bc76eef9b15ea1c0fd5a27408debec2a29390b89a48f61bf01e0e0e1e5"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/tests/phase-2d-worker-scenarios.md",
+              "sha256": "11133f3fe1a421293841dc43e78a7da32ee511586565b128f5ecec77a204343a"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "inspected_not_imported": {
+    "topics": [
+      "TOPIC-08-003",
+      "TOPIC-09-008",
+      "TOPIC-10-003",
+      "TOPIC-10-004",
+      "TOPIC-10-005",
+      "TOPIC-10-006",
+      "TOPIC-10-007",
+      "TOPIC-16-001",
+      "TOPIC-16-004"
+    ],
+    "reason": "Existing reporting, control, auditor judgment, difference, independence and filing owners remain dependencies; no substantive new engines in this governance batch."
+  },
+  "untouched_packages": [
+    "government-grants",
+    "borrowing-costs",
+    "investment-property"
+  ],
+  "reserved_queue": [
+    24,
+    29,
+    30,
+    38,
+    39
+  ]
+}
