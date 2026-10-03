@@ -33,6 +33,8 @@ completion_criteria: [approved_scope, operative_framework_period, current_eviden
 
 Actual CODM component identification, qualified aggregation/reportability parameters, coverage, corporate/intersegment bridges and complete geography/product/customer disclosure populations.
 
+Actual period statement-line populations bind revenue/profit/assets/liabilities and included geographic noncurrent assets to GL and any completed Financial Statements import. Mixed-profit/loss aggregation is outside the supported threshold-denominator adapter.
+
 No invented CODM practices, economic similarity or framework thresholds. UK obligation and US effective significant-expense/single-segment disclosures require qualified operative review.
 
 1. Read methods.md, actual mapped knowledge documents/claims and ../REVIEWER-CONTROLS.md. Use the immutable batch map; APPROVED never implies SOURCE_VERIFIED. Preserve all reference-confidence qualifications.

@@ -97,7 +97,7 @@ class PresentationTests(unittest.TestCase):
     def test_eps_retrospective_postperiod_split(self):
         c=case('earnings-per-share');a=approved('split',kind='split',date='2027-01-15',factor='2',legal_terms='Actual two-for-one',retrospective_memo='Reviewed retrospective adjustment');dimensions(c,[a]);c['retrospective_actions']=[a];c['retrospective_inventory']=['split'];c['expected_weighted_shares']='200';c['potential_shares']=[];c['instrument_inventory']=[]
         for k in ('basic_total','basic_continuing','diluted_total','diluted_continuing'):c['statement'][k]='.5'
-        c['comparatives']=[approved('prior',period_end='2025-12-31',original_weighted_shares='100',restated_weighted_shares='200',ordinary_profit='100',basic_eps='.5',method=method(c,'prior-method','EPS comparative accounting'))];c['comparative_inventory']=['prior']
+        c['comparatives']=[approved('prior',period_start='2025-01-01',period_end='2025-12-31',source_entity=c['entity'],source_framework=c['framework'],source_period=['2025-01-01','2025-12-31'],original_weighted_shares='100',restated_weighted_shares='200',ordinary_profit='100',basic_eps='.5',original_diluted_shares='110',original_diluted_numerator='106',restated_diluted_shares='220',diluted_eps=str(Decimal(106)/220),method=method(c,'prior-method','EPS comparative accounting'))];c['comparative_inventory']=['prior']
         r=assess_case('earnings-per-share',ready('earnings-per-share',c=c));self.assertEqual(r['status'],'complete',r['conclusion'])
         c['expected_weighted_shares']='100';self.blocked('earnings-per-share',c)
     def test_eps_antidilution(self):
@@ -211,9 +211,9 @@ class PresentationTests(unittest.TestCase):
     def test_eps_zero_incremental_adjustment(self):
         c=case('earnings-per-share');c['potential_shares'][0]['method']['incremental_weighted_shares']='0';self.blocked('earnings-per-share',c)
     def test_segment_profit_loss_denominator(self):
-        c=case('segment-reporting');c['components'][1]['profit']='-40';c['reconciliations'][1].update(segment_total='140',consolidated='120',statement='120');bind_statement(c,dict(revenue='1000',profit='120',assets='1600',liabilities='600'));r=assess_case('segment-reporting',ready('segment-reporting',c=c));self.assertEqual(r['status'],'complete');self.assertEqual(r['calculations']['profit_threshold_basis'],180)
+        c=case('segment-reporting');c['components'][1]['profit']='-40';c['reconciliations'][1].update(segment_total='140',consolidated='120',statement='120');bind_statement(c,dict(revenue='1000',profit='120',assets='1600',liabilities='600',geographic_noncurrent_assets='800'));r=assess_case('segment-reporting',ready('segment-reporting',c=c));self.assertEqual(r['status'],'complete');self.assertEqual(r['calculations']['profit_threshold_basis'],180)
     def test_segment_zero_activity(self):
-        c=case('segment-reporting');c.update(components=[],source_inventory=[],groups=[],group_inventory=[]);c['controls'].update(population_count=0,population_amount='0');bind_statement(c,dict(revenue='0',profit='0',assets='0',liabilities='0'))
+        c=case('segment-reporting');c.update(components=[],source_inventory=[],groups=[],group_inventory=[]);c['controls'].update(population_count=0,population_amount='0');bind_statement(c,dict(revenue='0',profit='0',assets='0',liabilities='0',geographic_noncurrent_assets='0'));c['entity_wide']['geographic'][0]['noncurrent_assets']='0';c['entity_wide']['statement_noncurrent_assets']='0'
         for r in c['reconciliations']:r.update(segment_total='0',consolidated='0',statement='0');r['items'][0]['amount']='0'
         for key in ('geographic','products_services','customers'):
             for r in c['entity_wide'][key]:r['external_revenue']='0'
@@ -228,5 +228,34 @@ class PresentationTests(unittest.TestCase):
     def test_duplicate_import(self):
         from additional_cases import reporting,certify
         c=case('segment-reporting');s=certify('financial-statements',reporting());r=approved('actual',package='financial-statements',case=s,result=execute('financial-statements',s),mode='evidence_only');c['imports']=[r,dict(r,id='twice')];self.blocked('segment-reporting',c)
+    def test_matching_financial_statement_import(self):
+        from additional_cases import reporting,certify
+        for f in FRAMEWORKS:
+            c=case('earnings-per-share',f);c['numerator'].update(profit='200',continuing_profit='200',ordinary_total='180',ordinary_continuing='180');bind_statement(c,{k:c['numerator'][k] for k in ('profit','nci','preferred','other','continuing_profit','continuing_nci','continuing_preferred','continuing_other')});c['statement'].update(basic_total='1.8',basic_continuing='1.8',diluted_total=str(Decimal(186)/110),diluted_continuing=str(Decimal(186)/110));s=certify('financial-statements',reporting(f));c['imports']=[approved('actual',package='financial-statements',case=s,result=execute('financial-statements',s),mode='evidence_only')];r=assess_case('earnings-per-share',ready('earnings-per-share',f,c));self.assertEqual(r['status'],'complete',r['conclusion'])
+    def test_saved_examples_and_public_cli(self):
+        root=Path(__file__).resolve().parents[2]
+        for p in PACKAGES+BLOCKED:
+            for path in sorted((root/'skills'/p/'examples').glob('*.case.json')):
+                c=json.loads(path.read_text());fw=c['framework'];stem=str(path)[:-len('.case.json')]
+                expected='blocked' if p in BLOCKED else 'partial'
+                r=assess_case(p,c);self.assertEqual(r['status'],expected,r['conclusion']);self.assertEqual(json.loads(json.dumps(to_public(r),default=serializable)),json.loads(Path(stem+f'.{expected}.public.json').read_text()))
+                cli=subprocess.run([sys.executable,str(root/'skills/run_skill.py'),p,str(path)],capture_output=True,text=True,check=True);self.assertEqual(json.loads(cli.stdout),json.loads(json.dumps(to_public(r),default=serializable)))
+                if p in PACKAGES:
+                    r=assess_case(p,ready(p,fw,c));self.assertEqual(r['status'],'complete',r['conclusion']);self.assertEqual(json.loads(json.dumps(to_public(r),default=serializable)),json.loads(Path(stem+'.complete.public.json').read_text()))
+    def test_QA_comparative_diluted_denominator(self):
+        c=case('earnings-per-share');c['comparatives']=[approved('prior',period_start='2025-01-01',period_end='2025-12-31',source_entity=c['entity'],source_framework=c['framework'],source_period=['2025-01-01','2025-12-31'],original_weighted_shares='100',restated_weighted_shares='100',ordinary_profit='100',basic_eps='1',original_diluted_shares='50',restated_diluted_shares='50',original_diluted_numerator='100',diluted_eps='2',method=method(c,'prior-method','EPS comparative accounting'))];c['comparative_inventory']=['prior'];self.blocked('earnings-per-share',c)
+    def test_QA_comparative_source_dimensions(self):
+        for field,value in [('source_entity','other'),('source_framework','other'),('source_period',['2025-07-01','2025-12-31'])]:
+            c=case('earnings-per-share');r=approved('prior',period_start='2025-01-01',period_end='2025-12-31',source_entity=c['entity'],source_framework=c['framework'],source_period=['2025-01-01','2025-12-31'],original_weighted_shares='100',restated_weighted_shares='100',ordinary_profit='100',basic_eps='1',original_diluted_shares='110',restated_diluted_shares='110',original_diluted_numerator='106',diluted_eps=str(Decimal(106)/110),method=method(c,'prior-method','EPS comparative accounting'));r[field]=value;c['comparatives']=[r];c['comparative_inventory']=['prior'];self.blocked('earnings-per-share',c)
+    def test_QA_reportability_public_flag(self):
+        r=assess_case('segment-reporting',ready('segment-reporting'));self.assertTrue(all(x['required'] for x in r['calculations']['segments']));self.assertFalse(any(x['qualitative_required'] for x in r['calculations']['segments']))
+    def test_QA_mixed_sign_aggregation_closed(self):
+        c=case('segment-reporting');c['components'][1]['profit']='-40';g=c['groups'][0];g['members']=['A','B'];g['aggregation']=method(c,'aggregation','Segment aggregation',criteria_met=True,long_term_economics='Supported',products_services='Supported',production_process='Supported',customers='Supported',distribution='Supported',regulatory_memo='Supported');c['groups']=[g];c['group_inventory']=['A'];self.blocked('segment-reporting',c)
+    def test_QA_geographic_assets_not_self_substantiating(self):
+        c=case('segment-reporting');c['entity_wide']['geographic'][0]['noncurrent_assets']='9999';c['entity_wide']['statement_noncurrent_assets']='9999';self.blocked('segment-reporting',c)
+    def test_QA_primary_event_measurement_cannot_be_zero_offset(self):
+        c=adjusting();c['events'][0].update(measurement_change='0',financial_effect='0');c['controls']['population_amount']='0';c['accounting_updates'][0]['measured_account']='cash';self.blocked('subsequent-events',c)
+    def test_QA_adjusting_disclosure_cannot_hide_measurement(self):
+        c=adjusting();c['events'][0]['financial_effect']='0';self.blocked('subsequent-events',c)
 
 if __name__=='__main__':unittest.main()

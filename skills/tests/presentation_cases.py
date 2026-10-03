@@ -40,7 +40,7 @@ def case(pkg,fw='IFRS'):
         c['feeds']=[approved(id,search_memo='Independent source search through exact cutoff',reviewed_through='2027-03-31',complete=True,event_ids=['financing'] if id=='treasury' else []) for id in ('board','legal','treasury','commercial','tax','asset','post_close','management_forecast')];c['feed_inventory']=[r['id'] for r in c['feeds']]
         c['accounting_updates']=[];c['update_inventory']=[];c['statement_balances']=[approved('Cash',original='100',revised='100',statement='100'),approved('Equity',original='-100',revised='-100',statement='-100')];c['statement_inventory']=['Cash','Equity'];c['source_inventory']=['financing'];c['controls'].update(population_count=1,population_amount='0');dimensions(c,c['events'])
     if pkg in {'earnings-per-share','segment-reporting'}:
-        values={k:c['numerator'][k] for k in ('profit','nci','preferred','other','continuing_profit','continuing_nci','continuing_preferred','continuing_other')} if pkg=='earnings-per-share' else dict(revenue='1000',profit='200',assets='1600',liabilities='600')
+        values={k:c['numerator'][k] for k in ('profit','nci','preferred','other','continuing_profit','continuing_nci','continuing_preferred','continuing_other')} if pkg=='earnings-per-share' else dict(revenue='1000',profit='200',assets='1600',liabilities='600',geographic_noncurrent_assets='800')
         bind_statement(c,values)
         if pkg=='segment-reporting':c['segment_method'].update(profit_definition_adjustment='0',profit_definition_memo='Same independently supported net profit definition')
     return c
@@ -69,7 +69,7 @@ def adjusting(fw='IFRS'):
     for sign,result in ((-1,original),(1,revised)):
         for e in result['journal_entry_implications']:
             for l in e:delta[l['account']]=delta.get(l['account'],Decimal(0))+sign*Decimal(l['amount'])*(1 if l['side']=='Dr' else -1)
-    account=next(k for k,v in delta.items() if v==10)
+    account='provision'
     u=approved('claim',measured_account=account,original=approved('original',package='provisions-contingencies',case=before,result=original),revised=approved('revised',package='provisions-contingencies',case=after,result=revised));dimensions(c,[u]);c['accounting_updates']=[u];c['update_inventory']=['claim']
     baseline={'provision expense':str(original['calculations']['provision_bridge']['estimate_change']),'provision':str(-original['calculations']['provision']),'cash':'-20','opening equity':'50'}
     c['statement_balances']=[approved(k,original=v,revised=str(Decimal(v)+delta.get(k,Decimal(0))),statement=str(Decimal(v)+delta.get(k,Decimal(0)))) for k,v in baseline.items()];c['statement_inventory']=list(baseline)

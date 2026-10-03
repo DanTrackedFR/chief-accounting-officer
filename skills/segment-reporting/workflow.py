@@ -30,18 +30,21 @@ def assess(c,claims):
             a=qualified(c,r['aggregation'],'Segment aggregation');reviewed(a,c,'long_term_economics','products_services','production_process','customers','distribution','regulatory_memo')
             if not flag(a,'criteria_met'):raise ReviewRequired('Aggregation economic criteria unresolved')
         selected=[x for x in ops if x['id'] in members]
+        if any(dec(x['profit'])>0 for x in selected) and any(dec(x['profit'])<0 for x in selected):raise ReviewRequired('Mixed-profit/loss aggregation requires a qualified threshold-denominator adapter; netting is unsupported')
         measure={k:sum((dec(x[k]) for x in selected),ZERO) for k in ('external_revenue','intersegment_revenue','profit','assets','liabilities')}
-        measure.update(label=public_label(r),required=flag(r,'qualitative_required'),reported=flag(r,'reported'));g.append(measure)
+        measure.update(label=public_label(r),qualitative_required=flag(r,'qualitative_required'),reported=flag(r,'reported'));g.append(measure)
     if seen!={x['id'] for x in ops}:raise ReviewRequired('Operating component missing from reportability population')
     total_revenue=sum((x['external_revenue']+x['intersegment_revenue'] for x in g),ZERO);total_assets=sum((x['assets'] for x in g),ZERO)
     profits=sum((max(x['profit'],ZERO) for x in g),ZERO);losses=sum((max(-x['profit'],ZERO) for x in g),ZERO);basis=max(profits,losses)
     for x in g:
-        required=(total_revenue>0 and x['external_revenue']+x['intersegment_revenue']>=total_revenue*revenue_limit) or (basis>0 and abs(x['profit'])>=basis*profit_limit) or (flag(p,'asset_test') and total_assets>0 and x['assets']>=total_assets*asset_limit) or x['required']
+        required=(total_revenue>0 and x['external_revenue']+x['intersegment_revenue']>=total_revenue*revenue_limit) or (basis>0 and abs(x['profit'])>=basis*profit_limit) or (flag(p,'asset_test') and total_assets>0 and x['assets']>=total_assets*asset_limit) or x['qualitative_required']
+        x['required']=required
         if required and not x['reported']:raise ReviewRequired('Required reportable segment omitted')
     external=sum((x['external_revenue'] for x in g),ZERO);reported=sum((x['external_revenue'] for x in g if x['reported']),ZERO)
     if external and reported<external*coverage:raise ReviewRequired('Insufficient reportable external revenue coverage')
     bridges=rows(c['reconciliations']);inventory(c,'reconciliation_inventory',bridges)
-    statement_totals=statement_source(c,('revenue','profit','assets','liabilities'))
+    statement_totals=statement_source(c,('revenue','profit','assets','liabilities','geographic_noncurrent_assets'))
+    if not ZERO<=statement_totals['geographic_noncurrent_assets']<=statement_totals['assets']:raise ReviewRequired('Geographic asset population cannot exceed total assets')
     if {r['id'] for r in bridges}!={'revenue','profit','assets','liabilities'}:raise ReviewRequired('Complete revenue/profit/asset/liability bridges required')
     totals={'revenue':total_revenue,'profit':sum((x['profit'] for x in g),ZERO),'assets':total_assets,'liabilities':sum((x['liabilities'] for x in g),ZERO)}
     for r in bridges:
@@ -59,6 +62,7 @@ def assess(c,claims):
         agree(sum((dec(r['external_revenue']) for r in pop),ZERO),external,'Complete entity-wide revenue population')
         if key=='geographic':
             reviewed(wide,c,'geographic_asset_memo');agree(sum((nonnegative(r['noncurrent_assets']) for r in pop),ZERO),wide['statement_noncurrent_assets'],'Geographic noncurrent assets')
+            agree(wide['statement_noncurrent_assets'],statement_totals['geographic_noncurrent_assets'],'Geographic included assets / actual statement source')
         if key=='customers':
             for r in pop:
                 major=external>0 and dec(r['external_revenue'])>=external*customer_limit

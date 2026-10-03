@@ -33,6 +33,8 @@ completion_criteria: [approved_scope, operative_framework_period, current_eviden
 
 Complete independently searched event window, reporting-date condition classification, material disclosure and exact-once original/revised completed accounting-owner bridges.
 
+The adjusting stock adapter supports one litigation provision with exact original/revised owned liability stocks and primary measurement/disclosure effects. Other adjusting measurements require separately supported stock adapters and cannot certify through a generic completed-result import.
+
 Going-concern basis changes, post-issuance discoveries, reissuance/SEC filing and reserved specialist measurement fail closed to their owners.
 
 1. Read methods.md, actual mapped knowledge documents/claims and ../REVIEWER-CONTROLS.md. Use the immutable batch map; APPROVED never implies SOURCE_VERIFIED. Preserve all reference-confidence qualifications.

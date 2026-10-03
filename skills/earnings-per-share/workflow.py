@@ -74,8 +74,12 @@ def assess(c,claims):
     for d,f in action_dates:cumulative*=f
     for r in comps:
         approval(r,c);qualified(c,r['method'],'EPS comparative accounting')
-        if iso(r['period_end'])>=start:raise ReviewRequired('Comparative must precede current period')
+        if iso(r['period_start'])>iso(r['period_end']) or iso(r['period_end'])>=start:raise ReviewRequired('Comparative must be a valid prior reporting span')
+        if r.get('source_entity')!=c['entity'] or r.get('source_framework')!=c['framework'] or r.get('source_period')!=[r['period_start'],r['period_end']]:raise ReviewRequired('Comparative source dimensions mismatch')
         revised=positive(r['original_weighted_shares'])*cumulative;agree(r['restated_weighted_shares'],revised,'Retrospective comparative denominator')
-        agree(r['basic_eps'],ratio(r['ordinary_profit'],revised),'Comparative EPS');out.append(dict(weighted_shares=revised,basic_eps=ratio(r['ordinary_profit'],revised)))
+        diluted=positive(r['original_diluted_shares'])*cumulative;agree(r['restated_diluted_shares'],diluted,'Retrospective comparative diluted denominator')
+        if positive(r['original_diluted_shares'])<positive(r['original_weighted_shares']) or diluted<revised:raise ReviewRequired('Single-class comparative diluted shares cannot be below basic shares')
+        agree(r['basic_eps'],ratio(r['ordinary_profit'],revised),'Comparative EPS');agree(r['diluted_eps'],ratio(r['original_diluted_numerator'],diluted),'Comparative diluted EPS')
+        out.append(dict(weighted_shares=revised,basic_eps=ratio(r['ordinary_profit'],revised),diluted_shares=diluted,diluted_eps=ratio(r['original_diluted_numerator'],diluted)))
     calculations['comparatives']=out
     return complete(c,'Basic and diluted EPS reconciled under qualified framework methods',calculations,[],['EPS itself creates no journal; underlying earnings/capital accounting remains with its owner','Rights issues, two-class, participating securities and complex contingencies require separately supported methods; option/convertible increments are qualified inputs, not invented terms'])

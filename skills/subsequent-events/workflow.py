@@ -55,14 +55,17 @@ def assess(c,claims):
                 for entry in result['journal_entry_implications']:
                     for l in entry:change[l['account']]=change.get(l['account'],ZERO)+sign*dec(l['amount'])*(1 if l['side']=='Dr' else -1)
             if cash(sum(change.values(),ZERO))!=ZERO:raise ReviewRequired('Underlying adjustment is not balanced')
-            texts(u,'measured_account');agree(amount,change.get(u['measured_account'],ZERO),'Event/underlying measurement change')
+            if u.get('measured_account')!='provision':raise ReviewRequired('Litigation adapter must measure the primary provision stock, not an arbitrary zero offset')
+            agree(amount,dec(after['calculations']['provision'])-dec(before['calculations']['provision']),'Event/primary provision liability change')
             for account,n in change.items():delta[account]=delta.get(account,ZERO)+n
             effect=amount
         elif amount:raise ReviewRequired('Nonadjusting event cannot alter period-end accounting')
         if flag(r,'material') and not flag(r,'disclosed'):raise ReviewRequired('Material event disclosure missing')
         if flag(r,'disclosed'):
             reviewed(r,c,'nature_memo');estimated=flag(r,'effect_estimable')
-            if estimated:effect=dec(r['financial_effect'])
+            if estimated:
+                effect=dec(r['financial_effect'])
+                if adjusts:agree(effect,amount,'Adjusting-event disclosed measurement effect; other exposure bases need separate adapter')
             else:reviewed(r,c,'inability_to_estimate_memo')
         out.append(dict(kind=kind,adjusting=adjusts,disclosed=r['disclosed'],financial_effect=effect))
     if used!=set(by):raise ReviewRequired('Unlinked accounting update could double count recognition')
