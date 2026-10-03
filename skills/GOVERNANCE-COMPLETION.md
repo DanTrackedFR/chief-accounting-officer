@@ -6,7 +6,7 @@ The immutable map was committed before implementation at `4a72c713a62f6df55ecda9
 
 ## Individual supported outcomes
 
-All five packages are production candidates within the following management-workpaper boundaries, subject to candidate exact-head CI before metadata promotion and final exact-head CI after promotion/regeneration.
+All five packages individually passed governed knowledge sufficiency, implementation review, comprehensive tests, independent QA/remediation/rerun, examples and full regression. Candidate exact head `7df93ae40a8b964fc35aae95b0dbdf2f3d1df08a` passed [GitHub Actions run 37152087340](https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/37152087340) before promotion. Each is now `1.0.0 / production` within its unchanged bounded management-workpaper scope; final exact-head CI after metadata promotion/regeneration is recorded in PR #21.
 
 | Roadmap | Package | Supported boundary |
 |---|---|---|
@@ -48,7 +48,7 @@ Normal generator: `python skills/tests/generate_governance_examples.py`. Five pa
 
 ## Regression gates
 
-Required final local gate: 516 shared skill tests (449 prior + 17 implementation-authored + 50 independent), 17 lease tests, 53 repository tests and 10 supplemental Income Tax tests. Supplemental, standards-evidence and approval validators must pass, along with `git diff --check`. Exact results and final exact head/CI links are recorded in PR #21 after each immutable candidate is pushed. If final files change, exact-head CI is rerun.
+Passed local gate before promotion; repeated after fingerprint regeneration: 516 shared skill tests (449 prior + 17 implementation-authored + 50 independent), 17 lease tests, 53 repository tests and 10 supplemental Income Tax tests. Supplemental, standards-evidence and approval validators passed, along with `git diff --check`. Exact results and final exact head/CI links are recorded in PR #21 after each immutable candidate is pushed. If final files change, exact-head CI is rerun.
 
 ## Invariants and integration boundary
 

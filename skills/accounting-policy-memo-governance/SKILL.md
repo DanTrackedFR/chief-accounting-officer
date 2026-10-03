@@ -1,8 +1,8 @@
 ---
 id: SKILL-POLICY-001
 name: "Accounting Policy Management & Technical Memo Governance"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "15"
 related_domains: ["08", "14"]
 description: Versioned accounting policy and technical memo governance consuming completed accounting owner conclusions.

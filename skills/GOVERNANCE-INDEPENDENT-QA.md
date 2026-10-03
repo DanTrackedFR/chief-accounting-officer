@@ -41,7 +41,7 @@ Further independent tests challenged equal-total source ID substitution, cancell
 
 `python -m unittest discover -s skills/tests -p test_independent_governance.py -q`
 
-Final result: **50 tests passed**, 5.08 seconds after the metadata refinement rerun. The positive test includes all twenty package/framework combinations across IFRS, US GAAP, FRS 102 UK GAAP and AASB. All produce no journals. Each positive output was inspected through all seven registered routes: answer context, answer, retrieval snippet, citation, tool output, user log and export. Approved practice did not create fake claims or citations. Raw reviewer records, owner fingerprints, source hashes and internal provenance were absent, while substantive limitations remained visible. Both named-source and training-data note contamination failed closed.
+Final result: **50 tests passed**, 5.70 seconds after the promotion re-review rerun. The positive test includes all twenty package/framework combinations across IFRS, US GAAP, FRS 102 UK GAAP and AASB. All produce no journals. Each positive output was inspected through all seven registered routes: answer context, answer, retrieval snippet, citation, tool output, user log and export. Approved practice did not create fake claims or citations. Raw reviewer records, owner fingerprints, source hashes and internal provenance were absent, while substantive limitations remained visible. Both named-source and training-data note contamination failed closed.
 
 Independent stale-input tests covered source bytes/hash/snapshot, release payload, case approval, knowledge-review manifest, frozen actual knowledge bytes, implementation bytes and imported accounting owner output. Byte mutations were simulated with read mocks; canonical and implementation files were not edited. Stale implementation may yield PARTIAL for a direct workpaper or BLOCKED when an imported owner can no longer certify; neither reaches COMPLETE.
 
@@ -55,6 +55,14 @@ Only the independent test file and this QA report were authored by this reviewer
 
 After integration refined the five SKILL.md descriptions, triggers and related domains, the independent reviewer reread all five complete skill definitions and reran all fifty independent tests. The descriptions and triggers now identify accounting-function readiness tracking, management PBC/sample evidence, completed-owner policy/memo governance, qualified disclosure populations/tie-outs and reconciled controllership bridges/flux/KPIs. Related domains reflect actual approved-topic inputs and specialist handoffs. The bounded contracts remain explicit; no runtime scope or accounting authority was expanded. All five remain version 0.9.0, status review, pending candidate CI and promotion. Report anchors below were refreshed to the actual metadata-reviewed working-tree bytes.
 
+## Promotion re-review checkpoint
+
+The independent reviewer compared the current working tree directly with candidate commit `7df93ae40a8b964fc35aae95b0dbdf2f3d1df08a`. For each of the five SKILL.md files, the exact full-file difference was only `version: 0.9.0` → `version: 1.0.0` and `status: review` → `status: production`. All five workflow.py and methods.md files, shared governance helper, production runtime, frozen knowledge map, public renderer and independent tests remained byte-identical to that candidate. No scope expansion or added accounting authority occurred.
+
+The fifty independent tests passed again in 5.70 seconds. The seventeen governance lifecycle/example tests also passed in 9.28 seconds, including exact generator-versus-saved-artifact checks, all four framework examples, twenty freshly reviewed complete workpapers, expected partial archived certifications, blocked examples and all seven privacy routes across complete/partial/blocked states. Production example regeneration updates nested completed-owner fingerprints after the approved metadata changes; it does not reuse old real approvals or change accounting methods.
+
+The parent integration review records candidate GitHub Actions run `37152087340` as PASS for that exact candidate commit. This checkpoint independently verifies the local promotion delta, examples and tests; final full-regression and exact promoted-head CI remain integration gates and are not asserted here as completed. The twenty-two anchors below now identify the independently re-reviewed production-metadata bytes. No commit was created by this reviewer.
+
 ## Reviewed working-tree hash anchors
 
 These anchors identify bytes independently examined at this QA checkpoint. Later edits require rerunning the relevant controls and refreshing the review; this report does not certify future bytes.
@@ -63,19 +71,19 @@ These anchors identify bytes independently examined at this QA checkpoint. Later
 |---|---|
 | `skills/ipo-accounting-readiness/workflow.py` | `7d0dcfde67a98d72ebd2e4a3dedaaab743851c282ec096be0f2c797a362fc481` |
 | `skills/ipo-accounting-readiness/methods.md` | `e4a57ea57494a0576c0fb2c974d5ea497be2237dbe310aa1320c2dd930429269` |
-| `skills/ipo-accounting-readiness/SKILL.md` | `923a5ab24e6f8d9c964fa6faefe18f6ee897eb887960e0a246d3eca410b659db` |
+| `skills/ipo-accounting-readiness/SKILL.md` | `9128701ba5742dc4997a5799db16ece824b9f7f3a8cc959e1848a665a81dcb0c` |
 | `skills/audit-support-pbc/workflow.py` | `3f31e43036cbfe60ad11995bfe8e8e85f63f6c58a655ae2d102d1ffdf771f27d` |
 | `skills/audit-support-pbc/methods.md` | `3d8c5cb305541b91fea372ac0e40270de7ec169831ff5951e9f31db49ecdc930` |
-| `skills/audit-support-pbc/SKILL.md` | `af3d98a7bf8385c19b577c0119d3ae21d902c418d21b92a6ae5bbc605d131588` |
+| `skills/audit-support-pbc/SKILL.md` | `4b3a3df5dc0c8e6bd08a1965f799f5aa5cd6c058681e366122f757a1917546d1` |
 | `skills/accounting-policy-memo-governance/workflow.py` | `8788b3db21bdc242cd23873414ee8cf1befa7ef5ab98ce4ef2ffcf0537de985c` |
 | `skills/accounting-policy-memo-governance/methods.md` | `7ab601016fb0837379dc45348c197c16dba75d241fe35199cfb691af248e72cd` |
-| `skills/accounting-policy-memo-governance/SKILL.md` | `721243ad6c6554f9ce85eed48cd27a16c9c59c00874fb8ea3655c992fc009a5e` |
+| `skills/accounting-policy-memo-governance/SKILL.md` | `ba0c3f11e361573a99afe82fcb2aa8b38fbf07f60664c8687f901f4b433aed5d` |
 | `skills/disclosure-management/workflow.py` | `29feb6794f26db509e9915d118f327e339fe03469c2721ecb7edbcf8d8d6d16b` |
 | `skills/disclosure-management/methods.md` | `dfbef400cc19d29613ccc3801482c2652701ed4ccb58336b3e3a66ee75793e41` |
-| `skills/disclosure-management/SKILL.md` | `6f70e92788faa147d263461a93d9de54ba9421066d1fcf6c56beb5d35ff9fd81` |
+| `skills/disclosure-management/SKILL.md` | `aab1a1435fe14fc8582d11127513da83a101e9333aa651b7aaa16b4919a26c8f` |
 | `skills/management-accounting-analytics/workflow.py` | `01c2f5d727c9fa6fb59f9951516c2f54de9f8a60a1bd04c229bd4dced994f27a` |
 | `skills/management-accounting-analytics/methods.md` | `9b5f89d11707d41b31b00aa432389b20be9b5471e55a8f27d212e1a53be10f7d` |
-| `skills/management-accounting-analytics/SKILL.md` | `b7d814dcd540ec3ab64e00aa9ae917722e820407002ebf29b3804278e3c8b561` |
+| `skills/management-accounting-analytics/SKILL.md` | `201ee7a1b5614d8b7b22bd0436457b0119316c33e2c21484c971681d9575e07c` |
 | `skills/GOVERNANCE-KNOWLEDGE-MAP.json` | `2f3412690a71751f95074fdd7b6bd1f513747222dfbd3f3b6c3a4140f42eef10` |
 | `skills/governance_accounting.py` | `397af36669c5dbdcaa7d52db7b1db4e35db3882d2b8f71dad8cdfac70a521029` |
 | `skills/production.py` | `2815c507e13cb6e92fccb45a531ca3b72e3b982b493b7e2e6d388e7d0323c5e4` |

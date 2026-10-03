@@ -1,8 +1,8 @@
 ---
 id: SKILL-IPO-001
 name: "IPO Accounting Readiness"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "01"
 related_domains: ["02", "08", "09", "10", "11", "14", "15", "16"]
 description: Accounting-function readiness evidence, reviewed gap and dependency tracking; no IPO score or filing determination.

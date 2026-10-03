@@ -1,8 +1,8 @@
 ---
 id: SKILL-PBC-001
 name: "Audit Support & PBC Management"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "10"
 related_domains: ["02", "08", "14"]
 description: Management PBC population reconciliation, auditor-selected sample support and factual query packages; no auditor conclusions.

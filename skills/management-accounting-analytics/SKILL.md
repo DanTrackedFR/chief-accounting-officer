@@ -1,8 +1,8 @@
 ---
 id: SKILL-ANALYTICS-001
 name: "Management Reporting & Accounting Analytics"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["01", "02", "11"]
 description: Reconciled accounting reporting sources, management-to-statutory bridges, factual flux and reconciliation timing metrics.

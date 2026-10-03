@@ -1,8 +1,8 @@
 ---
 id: SKILL-DISC-001
 name: "Disclosure Checklist & Disclosure Management"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["14", "16"]
 description: Current qualified disclosure populations, applicability review and owner statement-note-comparative tie-outs.
