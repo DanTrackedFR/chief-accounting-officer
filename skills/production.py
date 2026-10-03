@@ -16,6 +16,11 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'held-for-sale-discontinued-operations': ('SKILL-HFS-001',['TOPIC-13-004']),
+    'investment-property': ('SKILL-IP-001',['TOPIC-04-001']),
+    'hyperinflation-accounting': ('SKILL-HYPER-001',['TOPIC-13-011']),
+    'alternative-performance-measures': ('SKILL-APM-001',['TOPIC-08-007']),
+    'sec-filing-accounting': ('SKILL-SEC-001',['TOPIC-16-001','TOPIC-16-002','TOPIC-16-003','TOPIC-16-004','TOPIC-16-005']),
     'earnings-per-share': ('SKILL-EPS-001',['TOPIC-08-007']),
     'segment-reporting': ('SKILL-SEG-001',['TOPIC-08-006']),
     'subsequent-events': ('SKILL-EVENT-001',['TOPIC-08-005']),
@@ -94,6 +99,14 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework):
+    # This exact new package consumes regulatory workflow claims, not accounting
+    # framework authority. OTHER is preserved; never relabel it US GAAP.
+    if topic_ids == PACKAGES['sec-filing-accounting'][1]:
+        from special_reporting import mapped_knowledge
+        return mapped_knowledge('sec-filing-accounting')
+    if topic_ids == PACKAGES['hyperinflation-accounting'][1]:
+        from special_reporting import mapped_knowledge
+        return mapped_knowledge('hyperinflation-accounting',framework)
     if topic_ids == ['SUPPLEMENTAL_TAX']:
         spec=importlib.util.spec_from_file_location('supplemental_tax_retrieval',ROOT/'knowledge/income-taxes/retrieval.py')
         module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
@@ -139,6 +152,7 @@ def canonical_knowledge(topic_ids, framework):
 
 def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
+    if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
     if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
     if package=='borrowing-costs':raise ReviewRequired('Approved CIP routing does not provide a substantive borrowing-cost capitalization method; governed knowledge extension required')
     if package == 'inventory-cost':
@@ -194,6 +208,7 @@ def case_fingerprint(case):
     files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
     files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
     files += [ROOT/'skills/presentation_accounting.py']
+    files += [ROOT/'skills/special_reporting.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -206,6 +221,10 @@ def to_public(result, route='answer'):
       'SKILL-CONS-001':{'IFRS':'IFRS 10','US_GAAP':'ASC 810','UK_GAAP':'FRS 102 Section 9','AASB':'AASB 10'}}
     title=standard_titles.get(result['skill_id'],{}).get(result['framework'],'Framework unresolved')
     additional={'SKILL-BC-001':['IFRS 3','ASC 805','FRS 102 Section 19','AASB 3'],
+      'SKILL-HFS-001':['IFRS 5 bounded classification/presentation','US disposal specialist boundary','FRS 102 disposal specialist boundary','AASB 5 bounded classification/presentation'],
+      'SKILL-HYPER-001':['IAS 29 isolated index workpaper','ASC 830 specialist boundary','FRS 102 specialist boundary','AASB 129 isolated index workpaper'],
+      'SKILL-APM-001':['Applicable IFRS and issuer APM rules','Applicable SEC non-GAAP rules','Applicable UK issuer APM rules','Applicable Australian issuer APM rules'],
+      'SKILL-SEC-001':['Case-specific SEC filing accounting controls','Case-specific SEC filing accounting controls','SEC framework boundary','SEC framework boundary'],
       'SKILL-EPS-001':['IAS 33','ASC 260','Applicable FRS 102 Section 1 / separately scoped IAS 33','AASB 133'],
       'SKILL-SEG-001':['IFRS 8','ASC 280','Applicable UK segment reporting scope','AASB 8'],
       'SKILL-EVENT-001':['IAS 10','ASC 855','FRS 102 Section 32','AASB 110'],
@@ -265,6 +284,11 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'held-for-sale-discontinued-operations':('TOPIC-13-004','Disposal, impairment, fixed assets and group specialists','Dated disposal perimeter and classification evidence; group allocation, reversal, disposal and US/UK measurement need separate governed methods'),
+          'investment-property':('TOPIC-04-001','Investment-property accounting and knowledge governance','Substantive approved investment-property scope, models, transfers and framework-specific measurement; PPE pointers are insufficient'),
+          'hyperinflation-accounting':('TOPIC-13-011','Hyperinflation, FX, tax and consolidation specialists','Actual economic evidence and index provenance; full monetary-result, equity, tax, translation and consolidation method required beyond isolated schedule'),
+          'alternative-performance-measures':('TOPIC-08-007','Financial reporting and jurisdiction-specific APM reviewer','Controlled source statements and adjustment journals, period/definition bridge and current regulatory publication review'),
+          'sec-filing-accounting':('TOPIC-16-001','Registrant controller, securities counsel and tagging specialists','Actual filer/form/period and current authoritative rule/taxonomy evidence; source-to-filing and late-change proofs'),
           'earnings-per-share':('TOPIC-08-007','EPS, equity, award, tax and instrument specialists','Legal share rights, complete dated shares/instruments, attributable earnings and qualified instrument methods'),
           'segment-reporting':('TOPIC-08-006','Segment accounting, management and financial reporting specialists','Actual CODM packs, components, aggregation/reportability judgments and reconciled entity-wide disclosures'),
           'subsequent-events':('TOPIC-08-005','Subsequent events, underlying accounting, legal and filing specialists','Authorized window, independent feed/event population, period-end conditions and completed underlying recognition'),
