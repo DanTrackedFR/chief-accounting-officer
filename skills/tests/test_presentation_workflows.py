@@ -8,6 +8,15 @@ from production import assess_case,to_public,case_fingerprint,canonical_knowledg
 from interfaces.public_output import ROUTES
 
 class PresentationTests(unittest.TestCase):
+    def test_immutable_actual_knowledge_map(self):
+        import hashlib
+        root=Path(__file__).resolve().parents[2];mapping=json.loads((root/'skills/PRESENTATION-KNOWLEDGE-MAP.json').read_text())
+        for package,value in mapping['packages'].items():
+            for topic in value['topics']:
+                register=root/topic['register'];self.assertEqual(hashlib.sha256(register.read_bytes()).hexdigest(),topic['sha256']);actual={r['claim_id']:r for r in json.loads(register.read_text())['claims']}
+                for claim in topic['claims']:
+                    for field in ('evidence_status','reference_confidence','audit_required','approval_track','proposition','paragraph_references','effective_period'):self.assertEqual(claim[field],actual[claim['claim_id']][field])
+                for document in topic['knowledge_documents']:self.assertEqual(hashlib.sha256((root/document['path']).read_bytes()).hexdigest(),document['sha256'])
     def blocked(self,p,c,f='IFRS'):
         r=assess_case(p,ready(p,f,c));self.assertEqual(r['status'],'blocked',r['conclusion']);self.assertEqual(r['journal_entry_implications'],[])
     def test_four_framework_ordinary(self):
@@ -22,6 +31,10 @@ class PresentationTests(unittest.TestCase):
         for p in PACKAGES:
             for f in FRAMEWORKS:
                 c=ready(p,f);c.pop('reviewer_signoff');self.assertEqual(assess_case(p,c)['status'],'partial')
+    def test_blocked_knowledge_not_replaced_by_specialist_input(self):
+        for p in BLOCKED:
+            for f in FRAMEWORKS:
+                c=case(p,f);c.update(specialist_result={'approved':True,'complete':True,'amount':'1000','authority':'arbitrary'},calculation_schedule=[{'amount':'1000'}],journals=[{'account':'Cash','side':'Dr','amount':'1000'}]);c['reviewer_signoff']={'approved':True,'reviewer':'independent','case_fingerprint':case_fingerprint(c)};r=assess_case(p,c);self.assertEqual(r['status'],'blocked');self.assertEqual(r['calculations'],{});self.assertEqual(r['journal_entry_implications'],[])
     def test_stale_certification(self):
         for p in PACKAGES:
             c=ready(p);c['assumptions'].append('Additional actual assumption');self.assertEqual(assess_case(p,c)['status'],'partial')
