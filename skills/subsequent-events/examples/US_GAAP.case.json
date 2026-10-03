@@ -1,0 +1,389 @@
+{
+  "case_id": "synthetic-subsequent-events",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "execution_date": "2027-03-31",
+  "imports": [],
+  "gl": [],
+  "gl_inventory": [],
+  "accounting_policy": {
+    "id": "policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "US_GAAP",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "Actual operative period/tier",
+    "period_entity_memo": "Synthetic completed scope/checklist",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "0",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic complete source population"
+  },
+  "event_method": {
+    "id": "window",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "US_GAAP",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "target": "Subsequent-event accounting",
+    "resolved": true,
+    "scope_memo": "Actual hypothetical framework/entity/period scope independently reviewed",
+    "boundary_memo": "No unsupported exception in synthetic route",
+    "cutoff": "2027-03-31",
+    "window_basis": "issuance",
+    "basis_appropriate": true,
+    "post_issuance": false,
+    "authorization_memo": "Actual legal authorizer and date",
+    "window_memo": "Framework-specific actual window",
+    "filer_memo": "Actual public entity",
+    "basis_memo": "Continued appropriate basis",
+    "aggregate_materiality_memo": "Complete individual and aggregate assessment"
+  },
+  "events": [
+    {
+      "id": "financing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "kind": "financing",
+      "event_date": "2027-01-10",
+      "learned_date": "2027-01-15",
+      "condition_date": "2027-01-10",
+      "existed_at_reporting_date": false,
+      "adjusting": false,
+      "going_concern_impact": false,
+      "measurement_change": "0",
+      "material": true,
+      "disclosed": true,
+      "effect_estimable": true,
+      "financial_effect": "100",
+      "condition_memo": "Executed new financing after report",
+      "materiality_memo": "Qualified material event",
+      "disclosure_memo": "Approved nature/effect",
+      "going_concern_memo": "Separately reviewed nil adverse impact",
+      "nature_memo": "Material new financing",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ]
+    }
+  ],
+  "feeds": [
+    {
+      "id": "board",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "legal",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "treasury",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": [
+        "financing"
+      ]
+    },
+    {
+      "id": "commercial",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "tax",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "asset",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "post_close",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    },
+    {
+      "id": "management_forecast",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "search_memo": "Independent source search through exact cutoff",
+      "reviewed_through": "2027-03-31",
+      "complete": true,
+      "event_ids": []
+    }
+  ],
+  "feed_inventory": [
+    "board",
+    "legal",
+    "treasury",
+    "commercial",
+    "tax",
+    "asset",
+    "post_close",
+    "management_forecast"
+  ],
+  "accounting_updates": [],
+  "update_inventory": [],
+  "statement_balances": [
+    {
+      "id": "Cash",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "original": "100",
+      "revised": "100",
+      "statement": "100"
+    },
+    {
+      "id": "Equity",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "original": "-100",
+      "revised": "-100",
+      "statement": "-100"
+    }
+  ],
+  "statement_inventory": [
+    "Cash",
+    "Equity"
+  ],
+  "source_inventory": [
+    "financing"
+  ],
+  "knowledge_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "claim_ids": [
+      "TOPIC-08-005-US-001",
+      "TOPIC-08-005-US_GAAP-R002"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/README.md",
+        "sha256": "d9919c05f4645b0f51a0b6baea02aa87ffa59c48bd62836dc009e83753ebfe9b"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/differences/framework-differences.md",
+        "sha256": "0b63afcc1495f90ba63c178dab4ac8189afbecf2b66328354e3bb61db7915703"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/evidence-and-regression.md",
+        "sha256": "67fa84640454433e1c3a5ece58146a66d10cb45bb1125d1703328740817f59bf"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/financing-event-case.md",
+        "sha256": "16b01d17d2847fa371936dfa4f6562f424a5d06909daa2b7e672ad9a390f04a5"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/methods/cao-workflow.md",
+        "sha256": "fb62a7db2996715ff7375a8d87a52348bb02d0c1ab8bd431a9ce2e85e812e276"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/methods/subsequent-event-log.md",
+        "sha256": "dff3099a70561f0923a21dd943d09c78edbcba932cc7546d0a3e6d30806599da"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/practice/controls-audit-systems.md",
+        "sha256": "574431925d75942f78031bb80da899a0a5b61ebc5d17180b70b8a5979e6d64ae"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/sources.md",
+        "sha256": "2e65bffd7b910878965672f4ecf4cfddd45d9abfc4c45776b1ee2ca0f4bb3f90"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/standards/authoritative-subsequent-events-map.md",
+        "sha256": "2ffdf64b88dc7665decdfd5595158222caf5e5ce5ab92b455c58731b2a4e67c9"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/standards/frameworks.md",
+        "sha256": "b98cafd52eb734c98b3b923dd51e1e4e5f5cde75c3feeaa11b9637b103bddc43"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/standards-claims.json",
+        "sha256": "868384df64644709bc7c523ed070f525f0f4dc202d9ba23e3b82d75068bc295c"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/tests/qa.md",
+        "sha256": "bcbe758781b5ee5ad98239bd65d7e34013269ae9fd99a333282c305b039c1d62"
+      },
+      {
+        "topic_id": "TOPIC-08-005",
+        "path": "knowledge/topics/TOPIC-08-005-going-concern-subsequent-events/tests/scenarios.md",
+        "sha256": "75202c817af6d62368c4bd84f6ba4b324ec70734ffcef55876e4dbc3820bdc72"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-08-005-US-001",
+      "TOPIC-08-005-US_GAAP-R002"
+    ],
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ]
+  }
+}
