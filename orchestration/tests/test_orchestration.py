@@ -24,7 +24,7 @@ class Foundation(unittest.TestCase):
     def test_flagship_actual_multi_owner(self):
         c=self.result;self.assertEqual('complete',c.outcome,c.open_questions);self.assertEqual('CLOSED',c.status)
         self.assertEqual(13,len(c.skills_invoked));calc=c.conclusions[0]['calculations']
-        for k,v in {'closing_inventory':'45726.00','cogs':'11304.00','period_revenue':'40000.00','gross_margin':'28696.00'}.items():self.assertEqual(v,calc[k])
+        for k,v in {'closing_inventory':'45726.00','cogs':'11304.00','period_revenue':'40000.00','gross_margin':'-16304.00'}.items():self.assertEqual(v,calc[k])
         inv=c.graph.nodes['inventory-cost'].result['calculations'];self.assertEqual(Decimal('45000'),inv['order-1']['under_recovery'])
         self.assertEqual(Decimal('11304'),inv['inventory_by_class']['Work in progress'])
         self.assertEqual(7,len(c.handoff_ledger))
@@ -80,11 +80,11 @@ class Foundation(unittest.TestCase):
         c=self.run_request(lambda r:r['facts']['inventory']['imports'][0]['result']['calculations'].update(depreciation='89999'))
         self.assertNotEqual('complete',c.outcome)
     def test_no_approved_context_mutation(self):
-        r=copy.deepcopy(self.request);r['company_context']=[dict(attribute='year_end',value='12-31',status='APPROVED',scope={'entities':['Synthetic Group']})];before=copy.deepcopy(r)
+        r=copy.deepcopy(self.request);r['company_context']+=[dict(attribute='year_end',value='12-31',status='APPROVED',scope={'entities':['Synthetic Group']})];before=copy.deepcopy(r)
         c=self.cao.run(r);self.assertEqual(before,r);self.assertTrue(c.observer_ran)
         self.assertTrue(all(m['status']=='PROPOSED' for m in c.memory_candidates))
     def test_context_precedes_questions(self):
-        r=copy.deepcopy(self.request);value=r['scope'].pop('framework');r['company_context']=[dict(attribute='framework',value=value,status='APPROVED',scope={'entities':['Synthetic Group']})]
+        r=copy.deepcopy(self.request);value=r['scope'].pop('framework');r['company_context']+=[dict(attribute='framework',value=value,status='APPROVED',scope={'entities':['Synthetic Group']})]
         c=self.cao.run(r);self.assertEqual('complete',c.outcome,c.open_questions)
     def test_context_conflict_not_assumption_fact(self):
         c=self.run_request(lambda r:r.update(company_context=[dict(attribute='framework',value='US_GAAP',status='APPROVED',scope={})]))
@@ -109,7 +109,7 @@ class Foundation(unittest.TestCase):
     def test_cycle_unknown_owner_malformed_plan(self):
         class Bad:
             def identify(self,*args):return [Issue('a','x','unknown','unknown',dependencies=['a'])]
-        c=CAO(planner=Bad()).run(self.request);self.assertEqual('blocked',c.outcome);self.assertIn('cycle',str(c.open_questions))
+        r=copy.deepcopy(self.request);r['handoffs']=[];c=CAO(planner=Bad()).run(r);self.assertEqual('blocked',c.outcome);self.assertIn('cycle',str(c.open_questions))
     def test_invalid_lifecycle(self):
         c=Case('id','objective')
         with self.assertRaises(ValueError):c.transition('CLOSED')

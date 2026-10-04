@@ -93,17 +93,24 @@ class DeterministicPlanner:
                         if found: found.considerations.append(capability)
                         else: issues.append(Issue(owner, capability, owner, attribute+' requires '+capability))
         by = {i.owner:i for i in issues}
-        # Dependencies are inferred from actual certified owner imports, never
-        # every related skill in metadata (which would over-route).
-        for issue in issues:
-            supplied = next((facts[k] for k in issue.source_inputs), {})
+        # Walk actual source imports transitively. Track owner populations so a
+        # recursive import remains a graph cycle for validation, never an infinite walk.
+        queue = [(i, next((facts[k] for k in i.source_inputs), {})) for i in issues]
+        inspected = set()
+        for issue, supplied in queue:
+            if issue.owner in inspected: continue
+            inspected.add(issue.owner)
             for imp in supplied.get('imports', []):
                 upstream = imp.get('package')
+                if not isinstance(upstream, str) or not upstream: raise ValueError('Malformed imported owner identity')
                 if upstream not in by:
                     dep = Issue(upstream, 'owner dependency', upstream,
                         'Actual supplied accounting workpaper requires this owner result')
                     by[upstream] = dep; issues.append(dep)
                 if upstream not in issue.dependencies: issue.dependencies.append(upstream)
+                actual = imp.get('case')
+                if not isinstance(actual, dict): raise ValueError('Actual imported owner case required')
+                queue.append((by[upstream], actual))
         return issues
 
 
@@ -128,6 +135,7 @@ class Node:
     rework_triggered: bool = False
     challenge_triggered: bool = False
     iterations: int = 0
+    invalidated_results: list = field(default_factory=list)
     required: bool = True
     material: object = None
     condition: object = None
@@ -156,7 +164,9 @@ class Graph:
         return [n for n in self.nodes.values() if n.status == 'pending' and all(
             self.nodes[d].status in ('complete', 'not_applicable') for d in n.dependencies)]
     def invalidate(self, id, reason):
-        n = self.nodes[id]; n.status = 'blocked'; n.result = None
+        n = self.nodes[id]
+        if n.result is not None: n.invalidated_results.append(n.result)
+        n.status = 'blocked'; n.result = None
         n.rework_triggered = n.challenge_triggered = True
         if reason not in n.open_items: n.open_items.append(reason)
         self.history.append(dict(node=id, event='invalidate', reason=reason))

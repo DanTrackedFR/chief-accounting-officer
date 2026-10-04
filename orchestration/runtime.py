@@ -41,6 +41,10 @@ def at(value, path):
     return value
 
 
+def inputs_for_synthesis(result):
+    return [v for v in result.get('calculations',{}).values() if isinstance(v,dict) and 'actual_eligible_total' in v]
+
+
 def number(value):
     if isinstance(value, bool): raise ValueError('Boolean is not an accounting amount')
     n = Decimal(str(value))
@@ -85,6 +89,7 @@ class Case:
     handoff_ledger: list = field(default_factory=list)
     economic_ledger: list = field(default_factory=list)
     observer_ran: bool = False
+    journal_mapping_valid: bool = False
 
     def transition(self, target):
         lifecycle = ['OPEN', 'SCOPED', 'IN_PROGRESS', 'CHALLENGE', 'CONCLUDED', 'DOCUMENTED', 'CLOSED']
@@ -171,6 +176,9 @@ class CAO:
         if not isinstance(issues, list) or any(not isinstance(i, Issue) for i in issues):
             raise ValueError('Planner must return bounded structured issues')
         if not issues: raise ValueError('No supported issue decomposition; supply accounting facts or a scoped planner')
+        for family in set(facts)&set(FACT_ADAPTERS):
+            if not isinstance(facts[family], dict):
+                c.open_questions.append(dict(kind='blocking', question='Malformed supplied fact family: '+family))
         unknown = set(facts)-set(FACT_ADAPTERS)-{'task_attributes'}
         for family in sorted(unknown): c.open_questions.append(dict(kind='blocking', question='Unsupported fact family: '+family))
         inputs = {}
@@ -188,7 +196,7 @@ class CAO:
                     inputs[owner]=copy.deepcopy(actual); queue.append(inputs[owner])
         for i in issues:
             if not isinstance(i.id, str) or not i.id or not isinstance(i.owner, str): raise ValueError('Malformed issue identity')
-            if type(i.required) is not bool or i.material not in (None, True, False): raise ValueError('Invalid dependency materiality')
+            if type(i.required) is not bool or (i.material is not None and type(i.material) is not bool): raise ValueError('Invalid dependency materiality')
             graph.add(Node(i.id, i.capability, i.owner, i.reason, context['entity'],context['framework'],c.periods,
                 prerequisites=self.registry.get(i.owner).get('context_requirements',{}).get('required',[]),
                 dependencies=list(i.dependencies),source_inputs=i.source_inputs,
@@ -200,6 +208,20 @@ class CAO:
             if b['consumer'] not in graph.nodes or b['producer'] not in graph.nodes: raise ValueError('Handoff owner node absent')
             n=graph.nodes[b['consumer']]
             if b['producer'] not in n.dependencies: n.dependencies.append(b['producer'])
+        by_owner={n.selected_skill:n for n in graph.nodes.values()}
+        # Required combined-conclusion bridges are inferred, never made optional
+        # by omission of caller-supplied handoffs. Native owner imports already
+        # govern the actual upstream cost links inside Inventory/Analytics/etc.
+        required_bridges=[('inventory-cost','financial-statements','cogs'),
+            ('inventory-cost','balance-sheet-reconciliations','inventory_balance'),
+            ('revenue-recognition','financial-statements','revenue')]
+        for upstream,downstream,semantic in required_bridges:
+            if upstream not in by_owner or downstream not in by_owner:continue
+            producer=by_owner[upstream];consumer=by_owner[downstream]
+            if producer.id not in consumer.dependencies:consumer.dependencies.append(producer.id)
+            matched=[b for b in bindings if b.get('producer')==producer.id and b.get('consumer')==consumer.id and b.get('semantic')==semantic]
+            if len(matched)!=1:
+                consumer.status='blocked';consumer.open_items.append('Missing or duplicated qualified '+semantic+' owner bridge')
         graph.validate(); c.accounting_issues=[asdict(i) for i in issues]
         c.transition('SCOPED'); c.transition('IN_PROGRESS')
         consumed=set(); owned={}; entries=set()
@@ -229,7 +251,8 @@ class CAO:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
                     for imp in source.get('imports', []):
-                        producer=graph.nodes.get(imp['package'])
+                        matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package']]
+                        producer=matches[0] if len(matches)==1 else None
                         if not producer or producer.status!='complete' or digest(imp['result'])!=digest(producer.result):
                             raise ValueError('Imported owner result stale, incomplete or contradictory')
                     for b in [b for b in bindings if b['consumer']==n.id]:
@@ -241,12 +264,15 @@ class CAO:
                     production.to_public(r, 'answer_context')
                     if r.get('status')=='complete' and r.get('case_fingerprint')!=production.case_fingerprint(source):
                         raise ValueError('Stale exact-case certification')
+                    if r.get('status')=='complete' and (r.get('entities')!=[context['entity']] or r.get('framework')!=context['framework'] or r.get('jurisdiction')!=context['jurisdiction'] or r.get('periods')!=c.periods):
+                        raise ValueError('Owner result envelope dimensions differ')
                     n.result=r; n.status=r['status']; n.open_items=list(r.get('open_items',[])); n.evidence=copy.deepcopy(r.get('evidence',[]))
                     c.skills_invoked.append(n.selected_skill)
                     c.execution_ledger.append(dict(node=n.id,batch=batch,status=n.status,case_fingerprint=r.get('case_fingerprint')))
                     if n.status == 'complete':
                         self._economics(c,n,source,owned,entries)
                     c.evidence_refs.extend(n.evidence); c.judgments.extend(r.get('judgments',[]))
+                    c.knowledge_refs.extend(copy.deepcopy(r.get('knowledge_documents',[])))
                     c.facts['assumed'].extend(r.get('assumptions',[]))
                 except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
                     n.status='blocked'; n.result=None; n.open_items.append(str(exc))
@@ -258,7 +284,10 @@ class CAO:
         if c.open_questions: critical += [None]
         complete=any(n.status=='complete' for n in graph.nodes.values())
         c.outcome='partial' if critical and complete else 'blocked' if critical else 'complete'
-        c.conclusions=[self._synthesis(c,graph)]
+        c.conclusions=[self._synthesis(c,graph,context)]
+        mapping=request.get('journal_account_mapping',{}) if c.journal_mapping_valid else {}
+        for entry in c.conclusions[0]['journals']:
+            for line in entry['lines']:line['account']=mapping.get(line['account'],line['account'])
         c.transition('CONCLUDED')
         self._observe(c,context,request)
         c.artifacts=[dict(id=c.id+'-'+kind,type=kind,status='DRAFT',version=1,source_case=c.id,
@@ -270,10 +299,18 @@ class CAO:
         self.public(c)
         if c.outcome == 'complete': c.transition('CLOSED')
 
+    def rework(self, previous, revised_request):
+        if revised_request.get('case_id') == previous.id:
+            raise ValueError('Rework requires a new versioned Case identity')
+        revised=self.run(revised_request)
+        revised.supersedes.append(previous.id)
+        previous.superseded_by.append(revised.id)
+        return revised
+
     def _handoff(self,c,graph,inputs,b,consumed):
         producer=graph.nodes[b['producer']]; consumer=graph.nodes[b['consumer']]
         if producer.status!='complete': raise ValueError('Incomplete owner handoff')
-        if dimensions(inputs[producer.id]) != dimensions(inputs[consumer.id]): raise ValueError('Handoff dimensions differ')
+        if dimensions(inputs[producer.selected_skill]) != dimensions(inputs[consumer.selected_skill]): raise ValueError('Handoff dimensions differ')
         path=b['metric_path']; purpose=b['purpose']; semantic=b['semantic']
         allowed={
             'factory_labour':('employee-benefits-payroll',['expense'],'absorb'),
@@ -290,13 +327,15 @@ class CAO:
         if semantic=='historical_purchase' and (len(path)!=3 or path[0]!='transactions' or path[2]!='initial'):
             raise ValueError('FX historical metric mismatch')
         value=number(at(producer.result['calculations'],path))
-        actual=number(at(inputs[consumer.id],b['target_path']))*number(b.get('sign',1))
+        actual=number(at(inputs[consumer.selected_skill],b['target_path']))*number(b.get('sign',1))
         if actual!=value or number(b['amount'])!=value: raise ValueError('Owner and consumer amount contradiction')
         if not isinstance(b.get('economic_id'),str) or not b['economic_id'] or not b.get('qualification_evidence'):
             raise ValueError('Economic identity and eligible-cost evidence required')
-        identity=(b['economic_id'],purpose)
-        if identity in consumed: raise ValueError('Economic source consumed twice')
-        consumed.add(identity)
+        identity=(b['economic_id'],purpose if purpose=='absorb' else (purpose,consumer.id))
+        metric_identity=('metric',producer.id,tuple(path),purpose if purpose=='absorb' else (purpose,consumer.id))
+        target_identity=('target',consumer.id,tuple(b['target_path']),purpose)
+        if identity in consumed or metric_identity in consumed or target_identity in consumed: raise ValueError('Economic source consumed twice')
+        consumed.update((identity,metric_identity,target_identity))
         c.handoff_ledger.append(dict(producer=producer.id,consumer=consumer.id,semantic=semantic,
             metric_path=path,economic_id=b['economic_id'],amount=str(value),purpose=purpose,
             fingerprint=producer.result['case_fingerprint'],qualification_evidence=b['qualification_evidence']))
@@ -327,8 +366,20 @@ class CAO:
                 if id in g.nodes: g.invalidate(id,message)
         for n in list(g.nodes.values()):
             if n.status=='complete':
-                fresh=production.assess_case(n.selected_skill,inputs[n.id])
+                fresh=production.assess_case(n.selected_skill,inputs[n.selected_skill])
                 if digest(fresh)!=digest(n.result): flag([n.id],'STALE_OWNER','Owner result changed during challenge')
+        # Cross-owner delivered quantity is not established by a revenue amount.
+        # Require a reconciliation if an actual contract source supplies units.
+        inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
+        revenue=next((n for n in g.nodes.values() if n.selected_skill=='revenue-recognition' and n.status=='complete'),None)
+        if inventory and revenue:
+            sales=inputs[revenue.selected_skill].get('delivered_quantity')
+            if sales is not None:
+                relieved=sum((number(m['quantity']) for m in inputs[inventory.selected_skill].get('movements',[]) if m.get('kind')=='sale'),Decimal(0))
+                if number(sales)!=relieved:
+                    flag([revenue.id,inventory.id],'SALES_RELIEF','Revenue delivered units differ from inventory sale relief; reconcile source populations')
+        if inventory and revenue and context.get('gross_margin_basis') not in ('inventory_relief_only','inventory_relief_and_manufacturing_expense'):
+            c.open_questions.append(dict(kind='blocking',question='Confirm gross-margin policy: does cost of sales include unallocated manufacturing expense?'))
         # Structured independent assertions compare actual owner metrics with
         # separately supplied GL/system/quantity/policy evidence. No prose wins.
         assertions=request.get('challenge_assertions',[])
@@ -348,6 +399,14 @@ class CAO:
         for conflict in request.get('policy_conflicts',[]):
             flag(conflict['nodes'],'POLICY_CONFLICT',conflict['finding'])
             c.alternatives.extend(conflict.get('alternatives',[]))
+        reporting=next((n for n in g.nodes.values() if n.selected_skill=='financial-statements' and n.status=='complete'),None)
+        journal_owners=[n for n in g.nodes.values() if n.status=='complete' and n.result.get('journal_entry_implications')]
+        if reporting and (len(journal_owners)>1 or 'journal_account_mapping' in request):
+            try:
+                self._journal_mapping(c,g,inputs,request,reporting)
+                c.journal_mapping_valid=True
+            except (ValueError,KeyError,TypeError,ArithmeticError) as exc:
+                flag([reporting.id],'JOURNAL_MAPPING',str(exc))
         for n in g.nodes.values():
             if n.status in ('blocked','partial'):
                 findings.append(dict(code='OPEN_OWNER',nodes=[n.id],finding='; '.join(n.open_items)))
@@ -356,32 +415,71 @@ class CAO:
             'journals/reconciliations','controls','disclosures','systems','audit documentation'],
             findings=findings,passed=not findings)]
 
-    def _synthesis(self,c,g):
+    def _journal_mapping(self,c,g,inputs,request,reporting):
+        mapping=request.get('journal_account_mapping');review=request.get('journal_pack_review',{})
+        if not isinstance(mapping,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in mapping.items()):
+            raise ValueError('Malformed journal mapping')
+        native=[dict(owner=n.selected_skill,case_fingerprint=n.result['case_fingerprint'],journals=n.result.get('journal_entry_implications',[]))
+            for n in g.nodes.values() if n.status=='complete']
+        payload=dict(mapping=mapping,native_owner_journals=native)
+        if review.get('payload_fingerprint')!=digest(payload) or review.get('approved') is not True or not review.get('reviewer') or review.get('reviewer')==review.get('preparer'):
+            raise ValueError('Mapped journal pack requires independent exact-payload review')
+        delta={}
+        for owner in native:
+            for journal in owner['journals']:
+                for line in journal:
+                    account=mapping.get(line['account'],line['account'])
+                    delta[account]=delta.get(account,Decimal(0))+number(line['amount'])*(1 if line['side']=='Dr' else -1)
+        source=inputs[reporting.selected_skill]
+        current={row['id']:number(row['balance']) for row in source['current_tb']}
+        opening={row['id']:number(row['balance']) for row in source['comparative_tb']}
+        for account in set(delta)|set(current)|set(opening):
+            if delta.get(account,Decimal(0))!=current.get(account,Decimal(0))-opening.get(account,Decimal(0)):
+                raise ValueError('Mapped owner journals disagree with reviewed statement GL movement: '+account)
+
+    def _synthesis(self,c,g,context):
         values={}; journals=[]; controls=[]; reporting=[]; limits=[]; approvals=[]
         for n in g.nodes.values():
             if n.status!='complete' or not n.result: continue
             r=n.result
             # Numeric accounting authority is extracted by owner semantic, not
             # added indiscriminately across results.
-            for metric in ('closing_inventory','cogs','period_revenue','closing_ap'):
+            metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',)}
+            for metric in metrics.get(n.selected_skill,()):
                 if metric in r.get('calculations',{}): values[metric]=str(number(r['calculations'][metric]))
-            for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=j))
+            for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
+        inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
+        if inventory:
+            calc=inventory.result['calculations']
+            for label,amount in sorted(calc.get('inventory_by_class',{}).items()): values[label]=str(number(amount))
+            for label in ('write_down','reversal','manufacturing_expense'):
+                if label in calc:values[label]=str(number(calc[label]))
+            for order in inputs_for_synthesis(inventory.result):
+                for label in ('material','direct_labour','variable_overhead','fixed_overhead','absorbed_fixed','under_recovery','actual_eligible_total','completed_cost','closing_wip','finished_unit_cost'):
+                    if label in order:values[label]=str(number(order[label]))
         if 'period_revenue' in values and 'cogs' in values:
-            revenue=number(values['period_revenue']); margin=revenue-number(values['cogs'])
-            values['gross_margin']=str(margin); values['gross_margin_percent']=str(margin/revenue*100) if revenue else None
+            revenue=number(values['period_revenue']); relief_margin=revenue-number(values['cogs'])
+            values['revenue_less_inventory_relief']=str(relief_margin)
+            overhead=number(values.get('manufacturing_expense','0'))
+            basis=context.get('gross_margin_basis')
+            if basis in ('inventory_relief_only','inventory_relief_and_manufacturing_expense'):
+                cost_of_sales=number(values['cogs'])+(overhead if basis=='inventory_relief_and_manufacturing_expense' else Decimal(0))
+                margin=revenue-cost_of_sales
+                values['cost_of_sales']=str(cost_of_sales)
+                values['gross_margin']=str(margin);values['gross_margin_percent']=str(margin/revenue*100) if revenue else None
         open_items=[dict(node=n.id,issue=n.issue,reason='; '.join(n.open_items),required=n.required,material=n.material)
             for n in g.nodes.values() if n.status in ('blocked','partial')]
         text='The supplied accounting workpapers support the requested conclusion within the reviewed scope.' if c.outcome=='complete' else 'The accounting review is unresolved in the areas listed below; completed workpapers are retained.'
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
-        if 'gross_margin' in values: text+=' Supported revenue less inventory COGS is '+values['gross_margin']+'.'
+        if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,
             controls=sorted(set(controls)),reporting=sorted(set(reporting)),limitations=sorted(set(limits)),
             required_approvals=sorted(set(approvals)),confidence='medium' if c.outcome=='complete' else 'low')
 
     def _observe(self,c,context,request):
-        for k in ('framework','jurisdiction','currency','year_end','industry','policies','systems','known_processes'):
+        for k in ('framework','jurisdiction','currency','year_end','industry','gross_margin_basis','policies','systems','known_processes'):
             if k in context:
                 c.memory_candidates.append(dict(id=c.id+'-'+k,attribute=k,value=copy.deepcopy(context[k]),
                     status='PROPOSED',source_case=c.id,source_refs=['supplied-governed-context'],
@@ -407,4 +505,18 @@ class CAO:
             controls=s['controls'],reporting=s['reporting'],required_approvals=s['required_approvals'],
             limitations=s['limitations'],uncertainties=[str(a) for a in c.facts['assumed']],
             confidence=s.get('confidence','low'))
-        return public_record(record,route=route)
+        # Deny known reviewer identifiers even if inserted inside otherwise
+        # allowlisted text. Do not mutate the internal approval evidence.
+        private=[]
+        def visit(o):
+            if isinstance(o,dict):
+                for key,value in o.items():
+                    if key in ('reviewer','approved_by','reviewer_identity') and isinstance(value,str) and value:private.append(value)
+                    else:visit(value)
+            elif isinstance(o,list):
+                for value in o:visit(value)
+        visit(c.workplan_nodes)
+        curated=public_record(record,route=route)
+        encoded=json.dumps(curated,ensure_ascii=False)
+        if any(value in encoded for value in private):raise ValueError('Private reviewer identity in public content')
+        return curated

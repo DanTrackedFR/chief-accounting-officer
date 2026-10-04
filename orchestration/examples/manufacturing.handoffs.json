@@ -1,0 +1,95 @@
+[
+  {
+    "amount": "10800.00",
+    "consumer": "inventory-cost",
+    "economic_id": "cost-labour",
+    "fingerprint": "8cebed25671d02eab8152e9e2d11584ceac6053cf65aa376e692e4f942af902a",
+    "metric_path": [
+      "expense"
+    ],
+    "producer": "employee-benefits-payroll",
+    "purpose": "absorb",
+    "qualification_evidence": "labour-source",
+    "semantic": "factory_labour"
+  },
+  {
+    "amount": "120",
+    "consumer": "inventory-cost",
+    "economic_id": "cost-variable",
+    "fingerprint": "707ea9abe51662439e90d4726ebf13e65976c4c134286d0edfdd848626f9a07e",
+    "metric_path": [
+      "invoices"
+    ],
+    "producer": "accounts-payable",
+    "purpose": "absorb",
+    "qualification_evidence": "variable-source",
+    "semantic": "factory_supplier"
+  },
+  {
+    "amount": "90000.00",
+    "consumer": "inventory-cost",
+    "economic_id": "cost-fixed",
+    "fingerprint": "7d613232130c1c1647bb10c9d165fbb734179fa5137f137759fae3c583ba839d",
+    "metric_path": [
+      "depreciation"
+    ],
+    "producer": "fixed-assets",
+    "purpose": "absorb",
+    "qualification_evidence": "fixed-source",
+    "semantic": "factory_depreciation"
+  },
+  {
+    "amount": "110.00",
+    "consumer": "inventory-cost",
+    "economic_id": "economic-foreign-purchase",
+    "fingerprint": "3bcb0cc31a7405a0b103f60774b97c0cf155f974980096fce8b40e3cb294b929",
+    "metric_path": [
+      "transactions",
+      "inventory-purchase",
+      "initial"
+    ],
+    "producer": "foreign-currency",
+    "purpose": "absorb",
+    "qualification_evidence": "foreign-purchase-source",
+    "semantic": "historical_purchase"
+  },
+  {
+    "amount": "11304.00",
+    "consumer": "financial-statements",
+    "economic_id": "inventory-cogs",
+    "fingerprint": "398ded084e70aaeb3296672d12bcf293f1a785c4385d39cb9cbb64d6009c24bd",
+    "metric_path": [
+      "cogs"
+    ],
+    "producer": "inventory-cost",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic owned COGS to GL/statement mapping",
+    "semantic": "cogs"
+  },
+  {
+    "amount": "40000.00",
+    "consumer": "financial-statements",
+    "economic_id": "sales-revenue",
+    "fingerprint": "5b22e07f75bcc0b64493f67eb42de9cf934150afe32b029da5f6d4db4d3d40c6",
+    "metric_path": [
+      "period_revenue"
+    ],
+    "producer": "revenue-recognition",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic goods delivery to revenue GL mapping",
+    "semantic": "revenue"
+  },
+  {
+    "amount": "45726.00",
+    "consumer": "balance-sheet-reconciliations",
+    "economic_id": "closing-stock",
+    "fingerprint": "398ded084e70aaeb3296672d12bcf293f1a785c4385d39cb9cbb64d6009c24bd",
+    "metric_path": [
+      "closing_inventory"
+    ],
+    "producer": "inventory-cost",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic gross reconciliation total equals twice signed stock asset",
+    "semantic": "inventory_balance"
+  }
+]

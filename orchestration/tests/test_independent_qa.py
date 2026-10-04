@@ -2,7 +2,6 @@
 import copy
 import json
 import unittest
-from unittest.mock import patch
 from orchestration.runtime import CAO, Case, company_context
 from orchestration.planning import Issue, Node, Graph, DeterministicPlanner
 from orchestration.registry import production
@@ -57,6 +56,25 @@ class IndependentQA(unittest.TestCase):
     def test_materiality_flag_rejects_integer(self):
         r=self.request();p=FixedPlanner([Issue('accounts-payable','liability','accounts-payable','supplier',['supplier_cost'],material=1)])
         c=CAO(planner=p).run(r);self.assertEqual(c.outcome,'blocked')
+    def test_unknown_owner_blocks_without_execution(self):
+        p=FixedPlanner([Issue('unknown','unknown','unregistered-accounting-owner','supplied novel issue')])
+        c=CAO(planner=p).run(self.request());self.assertEqual(c.outcome,'blocked');self.assertFalse(c.skills_invoked)
+        self.assertIn('unavailable',str(CAO().public(c)))
+    def test_false_condition_is_not_applicable(self):
+        p=FixedPlanner([Issue('accounts-payable','liability','accounts-payable','conditional evidence',['supplier_cost'],condition={'fact':'active','equals':True})])
+        c=CAO(planner=p).run(self.request());self.assertEqual(c.workplan_nodes[0]['status'],'not_applicable');self.assertFalse(c.skills_invoked)
+    def test_simple_keyword_does_not_force_inventory(self):
+        r=self.request();r['objective']='What is the closing AP balance for our manufacturing subsidiary?'
+        c=CAO().run(r);self.assertEqual(c.skills_invoked,['accounts-payable']);self.assertEqual(c.outcome,'complete')
+    def test_all_public_routes_retain_caveats_and_hide_private(self):
+        from interfaces.public_output import ROUTES
+        c=CAO().run(self.request());c.conclusions[0]['limitations'].append('Current evidence excludes a disputed supplier claim.')
+        for route in ROUTES:
+            p=CAO().public(c,route);self.assertIn('Current evidence excludes a disputed supplier claim.',p['limitations'])
+            self.assertNotIn('reviewer_signoff',json.dumps(p));self.assertNotIn('case_fingerprint',json.dumps(p))
+    def test_material_unresolved_case_cannot_close(self):
+        c=Case('qa','review');c.status='DOCUMENTED';c.outcome='partial';c.observer_ran=True;c.artifacts=[{'id':'a'}]
+        with self.assertRaises(ValueError):c.transition('CLOSED')
     def test_graph_cycle_unknown_and_duplicate(self):
         for deps in (['b'],['a'],['a','a']):
             g=Graph();g.add(Node('a','x','accounts-payable','r','E','IFRS',[],dependencies=deps))
@@ -97,6 +115,44 @@ class IndependentQA(unittest.TestCase):
         r=manufacturing();duplicate=copy.deepcopy(r['handoffs'][0]);duplicate['economic_id']='different-spelling-same-owner-metric';r['handoffs'].append(duplicate)
         c=CAO().run(r);self.assertNotEqual(c.outcome,'complete')
         self.assertNotEqual(c.status,'CLOSED')
+    def test_reporting_owner_handoffs_cannot_be_omitted(self):
+        r=manufacturing();r['handoffs']=[]
+        c=CAO().run(r);self.assertNotEqual(c.outcome,'complete')
+        self.assertNotEqual(c.status,'CLOSED')
+        self.assertTrue(any(word in str(CAO().public(c)).lower() for word in ('handoff','mapping','lineage','bridge','owner')))
+    def test_journal_account_remapping_cannot_change_accounting(self):
+        r=manufacturing();r['journal_account_mapping']['accounts payable']='Revenue'
+        c=CAO().run(r);self.assertNotEqual(c.outcome,'complete');self.assertNotEqual(c.status,'CLOSED')
+    def test_fresh_pack_review_does_not_authorize_wrong_gl_mapping(self):
+        from orchestration.runtime import digest
+        r=manufacturing();clean=CAO().run(r)
+        self.assertEqual(clean.outcome,'complete')
+        native=[dict(owner=n.selected_skill,case_fingerprint=n.result['case_fingerprint'],journals=n.result.get('journal_entry_implications',[])) for n in clean.graph.nodes.values() if n.status=='complete']
+        r['journal_account_mapping']['accounts payable']='Revenue'
+        r['journal_pack_review']['payload_fingerprint']=digest(dict(mapping=r['journal_account_mapping'],native_owner_journals=native))
+        c=CAO().run(r);self.assertNotEqual(c.outcome,'complete')
+        findings=c.challenge_results[0]['findings']
+        self.assertTrue(any('GL movement' in f['finding'] for f in findings),str(findings))
+    def test_combined_journal_validation_cannot_be_omitted(self):
+        r=manufacturing();r.pop('journal_account_mapping');r.pop('journal_pack_review')
+        c=CAO().run(r);self.assertNotEqual(c.outcome,'complete')
+    def test_missing_margin_basis_asks_material_question(self):
+        r=manufacturing();r['company_context']=[]
+        c=CAO().run(r);self.assertEqual(c.outcome,'partial');self.assertEqual(c.status,'DOCUMENTED')
+        values=c.conclusions[0]['calculations'];self.assertNotIn('gross_margin',values)
+        self.assertIn('revenue_less_inventory_relief',values)
+        self.assertTrue(any('gross margin' in q['question'].lower().replace('_',' ').replace('-',' ') for q in c.open_questions))
+    def test_alternate_approved_margin_basis_preserves_factory_expense(self):
+        r=manufacturing();r['company_context'][0]['value']='inventory_relief_only'
+        c=CAO().run(r);self.assertEqual(c.outcome,'complete')
+        values=c.conclusions[0]['calculations'];D=__import__('decimal').Decimal
+        self.assertEqual(D(values['gross_margin']),D('28696'))
+        self.assertEqual(D(values['cost_of_sales']),D(values['cogs']))
+        self.assertEqual(D(values['manufacturing_expense']),D('45000'))
+    def test_proposed_margin_policy_cannot_be_established(self):
+        r=manufacturing();r['company_context'][0]['status']='PROPOSED'
+        c=CAO().run(r);self.assertEqual(c.outcome,'partial');self.assertNotIn('gross_margin',c.conclusions[0]['calculations'])
+        self.assertFalse(any(f['attribute']=='gross_margin_basis' for f in c.facts['established']))
     def test_actual_owner_full_result_stale_import_rejected(self):
         r=manufacturing();r['facts']['inventory']['imports'][0]['result']['conclusion']='altered owner accounting conclusion'
         c=CAO().run(r);self.assertNotEqual(c.outcome,'complete');self.assertNotEqual(c.status,'CLOSED')
@@ -105,7 +161,12 @@ class IndependentQA(unittest.TestCase):
         selected=set(c.skills_invoked)
         self.assertTrue({'inventory-cost','fixed-assets','employee-benefits-payroll','accounts-payable','foreign-currency','revenue-recognition','financial-statements'}<=selected)
         self.assertFalse({'agriculture-biological-assets','derivatives-hedge-accounting','insurance-contracts-accounting','lease-accounting','government-grants','borrowing-costs'}&selected)
-        values=c.conclusions[0]['calculations'];self.assertEqual(str(__import__('decimal').Decimal(values['period_revenue'])-__import__('decimal').Decimal(values['cogs'])),values['gross_margin'])
+        values=c.conclusions[0]['calculations'];D=__import__('decimal').Decimal
+        self.assertEqual(D(values['period_revenue'])-D(values['cost_of_sales']),D(values['gross_margin']))
+        self.assertEqual(D(values['period_revenue'])-D(values['cogs']),D(values['revenue_less_inventory_relief']))
+        self.assertEqual(D(values['cost_of_sales']),D(values['cogs'])+D(values['manufacturing_expense']))
+        self.assertEqual(D(values['manufacturing_expense']),D('45000'))
+        self.assertEqual(D(values['gross_margin']),D('-16304'))
         self.assertTrue(c.handoff_ledger)
 
 if __name__=='__main__':unittest.main()

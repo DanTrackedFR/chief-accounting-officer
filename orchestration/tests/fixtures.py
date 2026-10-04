@@ -76,7 +76,7 @@ def manufacturing(with_fx=True):
     inv=inventory_ready(c=sources(inv));owners['inventory-cost']=inv;ir=completed('inventory-cost',inv)
     rev=revenue();rev['functional_currency']='USD';rev['price_components']['fixed']='40000'
     rev['obligations']=[rev['obligations'][0]];rev['obligations'][0]['ssp']='40000'
-    rev['balance_bridge'].update(opening_revenue='0',opening_contract_net='0',opening_receivable='0',billings='40000',cash_received='0',opening_cost_asset='0');rev['contract_costs']=[]
+    rev['balance_bridge'].update(opening_revenue='0',opening_contract_net='0',opening_receivable='0',billings='40000',cash_received='0',opening_cost_asset='0');rev['contract_costs']=[];rev['delivered_quantity']='20'
     owners['revenue-recognition']=certify('revenue-recognition',rev);rr=completed('revenue-recognition',owners['revenue-recognition'])
     # Aggregate actual owner journals once, with documented clearing mapping.
     account_map={'depreciation expense':'Overhead clearing','Employee benefit expense':'Labour clearing','expense':'Overhead clearing',
@@ -105,7 +105,7 @@ def manufacturing(with_fx=True):
         if a in liabilities:return 'liability'
         return 'expense'
     fs['current_tb']=[dict(id=a,balance=str(v),category=category(a),performance_category='operating',line=a,source_version='Synthetic-factory-GL-v1',classification_memo='Synthetic approved owner-journal clearing map and account classification',cash_account=a=='Cash') for a,v in balances.items() if v]
-    fs['comparative_tb']=[dict(id=a,balance=v,category=cat,performance_category='operating',line=a,source_version='Synthetic-opening-GL-v1',classification_memo='Synthetic controlled prior ledger',cash_account=False) for a,v,cat in [('PPE gross','600000','asset'),('Accumulated depreciation','-180000','asset'),('Raw materials','1000','asset'),('Opening equity','-421000','equity')]]
+    fs['comparative_tb']=[dict(id=a,balance=v,category=cat,performance_category='operating',line=a,source_version='Synthetic-opening-GL-v1',classification_memo='Synthetic controlled prior ledger',cash_account=False) for a,v,cat in [('PPE gross','600000','asset'),('accumulated depreciation','-180000','asset'),('Raw materials','1000','asset'),('Opening equity','-421000','equity')]]
     profit=-sum(v for a,v in balances.items() if category(a) in ('expense','revenue'))
     fs['equity_bridge']=[dict(id='owners',opening='421000',profit=str(profit),oci='0',owner_transactions='0',retrospective_adjustments='0',other='0',closing=str(Decimal('421000')+profit),memo='Synthetic opening equity plus actual owned P&L')]
     cash=balances.get('Cash',Decimal(0));adjust=cash-profit
@@ -113,7 +113,7 @@ def manufacturing(with_fx=True):
     owners['financial-statements']=certify('financial-statements',fs);fr=completed('financial-statements',owners['financial-statements'])
     # Real complete reconciliation with RM/WIP/FG source identities, no adjustment.
     rec=operational('balance-sheet-reconciliations');rec['functional_currency']='USD'
-    stock=ir['calculations']['inventory_by_class'];stock_total=sum(stock.values())
+    stock=dict(sorted(ir['calculations']['inventory_by_class'].items()));stock_total=sum(stock.values())
     rec['trial_balance']=[dict(id=a,balance=str(v),category='balance_sheet') for a,v in stock.items()]+[dict(id='stock-offset',balance=str(-stock_total),category='balance_sheet')]
     rec['inventory']=[dict(id=r['id']) for r in rec['trial_balance']];rec['reconciliations']=[]
     for r in rec['trial_balance']:
@@ -185,5 +185,15 @@ def manufacturing(with_fx=True):
     handoffs.append(dict(producer='revenue-recognition',consumer='financial-statements',metric_path=['period_revenue'],target_path=['current_tb','Revenue','balance'],semantic='revenue',amount='40000',sign=-1,purpose='report',economic_id='sales-revenue',qualification_evidence='Synthetic goods delivery to revenue GL mapping'))
     handoffs.append(dict(producer='inventory-cost',consumer='balance-sheet-reconciliations',metric_path=['closing_inventory'],target_path=['controls','population_amount'],semantic='inventory_balance',amount=str(stock_total),sign='.5',purpose='report',economic_id='closing-stock',qualification_evidence='Synthetic gross reconciliation total equals twice signed stock asset'))
     assertions=[dict(node='inventory-cost',metric_path=['closing_inventory'],evidence_value=str(stock_total),operator='equal',evidence_ref='Synthetic independent inventory GL total',code='INVENTORY_GL'),dict(node='inventory-cost',metric_path=['quantity_population','product','closing_quantity'],evidence_value='60',operator='equal',evidence_ref='Synthetic manufacturing system physical count',code='SYSTEM_QUANTITY')]
-    return dict(case_id='synthetic-factory-year-end',objective='Prepare our year-end manufacturing accounting review and tell me whether inventory and gross margin are right.',
-        scope=dict(entity='Synthetic Group',framework='IFRS',jurisdiction='NL',period_start='2026-01-01',reporting_period='2026-12-31',currency='USD',industry='manufacturing',materiality='1000'),facts=facts,handoffs=handoffs,challenge_assertions=assertions,company_context=[],assumptions=['Controlled synthetic company and source data, for deterministic regression only.'],journal_account_mapping=account_map)
+    request=dict(case_id='synthetic-factory-year-end',objective='Prepare our year-end manufacturing accounting review and tell me whether inventory and gross margin are right.',
+        scope=dict(entity='Synthetic Group',framework='IFRS',jurisdiction='NL',period_start='2026-01-01',reporting_period='2026-12-31',currency='USD',industry='manufacturing',materiality='1000'),facts=facts,handoffs=handoffs,challenge_assertions=assertions,company_context=[dict(id='factory-margin-policy',attribute='gross_margin_basis',value='inventory_relief_and_manufacturing_expense',status='APPROVED',scope={'entities':['Synthetic Group']},source_refs=['Synthetic approved income statement presentation policy'])],assumptions=['Controlled synthetic company and source data, for deterministic regression only.'],journal_account_mapping=account_map)
+    from orchestration.runtime import digest
+    from orchestration import CAO
+    # Fixture-only synthetic approval of the exact combined journal pack. The
+    # runtime cannot generate this record, and still tests actual GL movements.
+    native=[]
+    for package,source in owners.items():
+        result=completed(package,source)
+        native.append(dict(owner=package,case_fingerprint=result['case_fingerprint'],journals=result.get('journal_entry_implications',[])))
+    request['journal_pack_review']=dict(preparer='Synthetic factory workpaper preparer',reviewer='Synthetic independent factory journal reviewer',approved=True,payload_fingerprint=digest(dict(mapping=account_map,native_owner_journals=native)))
+    return request

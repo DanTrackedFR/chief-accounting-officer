@@ -1,0 +1,205 @@
+[
+  {
+    "capability": "machinery",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "fixed-assets",
+    "material": null,
+    "owner": "fixed-assets",
+    "reason": "Supplied machinery population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "machinery"
+    ]
+  },
+  {
+    "capability": "supplier_cost",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "accounts-payable",
+    "material": null,
+    "owner": "accounts-payable",
+    "reason": "Supplied supplier cost population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "supplier_cost"
+    ]
+  },
+  {
+    "capability": "employee_cost",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "employee-benefits-payroll",
+    "material": null,
+    "owner": "employee-benefits-payroll",
+    "reason": "Supplied employee cost population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "employee_cost"
+    ]
+  },
+  {
+    "capability": "currency_exposure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "foreign-currency",
+    "material": null,
+    "owner": "foreign-currency",
+    "reason": "Supplied currency exposure population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "currency_exposure"
+    ]
+  },
+  {
+    "capability": "inventory",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "employee-benefits-payroll",
+      "accounts-payable",
+      "fixed-assets",
+      "foreign-currency"
+    ],
+    "id": "inventory-cost",
+    "material": null,
+    "owner": "inventory-cost",
+    "reason": "Supplied inventory population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "inventory"
+    ]
+  },
+  {
+    "capability": "customer_contract",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "revenue-recognition",
+    "material": null,
+    "owner": "revenue-recognition",
+    "reason": "Supplied customer contract population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "customer_contract"
+    ]
+  },
+  {
+    "capability": "statement",
+    "condition": null,
+    "considerations": [
+      "financial reporting"
+    ],
+    "dependencies": [],
+    "id": "financial-statements",
+    "material": null,
+    "owner": "financial-statements",
+    "reason": "Supplied statement population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "statement"
+    ]
+  },
+  {
+    "capability": "reconciliation",
+    "condition": null,
+    "considerations": [
+      "reconciliation"
+    ],
+    "dependencies": [],
+    "id": "balance-sheet-reconciliations",
+    "material": null,
+    "owner": "balance-sheet-reconciliations",
+    "reason": "Supplied reconciliation population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "reconciliation"
+    ]
+  },
+  {
+    "capability": "close_calendar",
+    "condition": null,
+    "considerations": [
+      "accounting operations"
+    ],
+    "dependencies": [],
+    "id": "month-end-close",
+    "material": null,
+    "owner": "month-end-close",
+    "reason": "Supplied close calendar population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "close_calendar"
+    ]
+  },
+  {
+    "capability": "interface",
+    "condition": null,
+    "considerations": [
+      "systems and automation"
+    ],
+    "dependencies": [],
+    "id": "accounting-systems-data-integrity",
+    "material": null,
+    "owner": "accounting-systems-data-integrity",
+    "reason": "Supplied interface population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "interface"
+    ]
+  },
+  {
+    "capability": "control",
+    "condition": null,
+    "considerations": [
+      "controls"
+    ],
+    "dependencies": [],
+    "id": "accounting-controls-icfr",
+    "material": null,
+    "owner": "accounting-controls-icfr",
+    "reason": "Supplied control population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "control"
+    ]
+  },
+  {
+    "capability": "disclosure",
+    "condition": null,
+    "considerations": [
+      "disclosure"
+    ],
+    "dependencies": [
+      "financial-statements"
+    ],
+    "id": "disclosure-management",
+    "material": null,
+    "owner": "disclosure-management",
+    "reason": "Supplied disclosure population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "disclosure"
+    ]
+  },
+  {
+    "capability": "analytics",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "inventory-cost"
+    ],
+    "id": "management-accounting-analytics",
+    "material": null,
+    "owner": "management-accounting-analytics",
+    "reason": "Supplied analytics population affects the requested accounting work",
+    "required": true,
+    "source_inputs": [
+      "analytics"
+    ]
+  }
+]
