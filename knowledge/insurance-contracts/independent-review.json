@@ -1526,7 +1526,8 @@
     "KQ5 investment DPF exception retained and blocked rather than financial instrument misroute",
     "KQ6 all three fixed fee criteria and irrevocable contract election",
     "KQ7 financial guarantee historical assertion/accounting prerequisites and irrevocable election",
-    "KQ8 all three adapted reinsurance grouping buckets and annual cohorts"
+    "KQ8 all three adapted reinsurance grouping buckets and annual cohorts",
+    "KQ9 malformed AASB operative-window string rejected through controlled validation; claim approvals unchanged"
   ],
   "source_inspections": [
     {
@@ -1586,5 +1587,11 @@
       "assurance": "Not operative per-claim text; IFRS claims remain model-derived audit required"
     }
   ],
-  "source_assurance": "9 operative direct-source approved claims (AASB4 UK5),159 independently training-data checked claims; approval does not confer source verification. All lower-status claims retain audit_required and no invented locators."
+  "source_assurance": "9 operative direct-source approved claims (AASB4 UK5),159 independently training-data checked claims; approval does not confer source verification. All lower-status claims retain audit_required and no invented locators.",
+  "tests": {
+    "authored": 21,
+    "independent": 14,
+    "per_claim_review_subtests": 168,
+    "changed_claim_adversarial_subtests": 168
+  }
 }

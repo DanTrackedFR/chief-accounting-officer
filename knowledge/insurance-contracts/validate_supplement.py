@@ -21,7 +21,7 @@ def claim_hash(c):
     reviewed={k:v for k,v in c.items() if k not in {'approval_track','approval_review','reviewer','review_date','proposed_approval_track'}}
     return hashlib.sha256(json.dumps(reviewed,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
-def validate_data(d):
+def _validate_data(d):
     errors=[]
     if not isinstance(d,dict):return ['Invalid register object']
     if d.get('namespace')!='SUPPLEMENTAL_INSURANCE_CONTRACTS':errors.append('Invalid namespace')
@@ -94,6 +94,13 @@ def validate_data(d):
         actual={c.get('decision') for c in claims if isinstance(c,dict) and c.get('framework')==fw}
         if actual!=set(EXPECTED_DECISIONS[fw]):errors.append('Incomplete reviewed decisions '+fw)
     return errors
+
+def validate_data(d):
+    # Malformed source metadata is untrusted data, not an exception path into completion.
+    try:
+        return _validate_data(d)
+    except (TypeError, ValueError, KeyError, AttributeError):
+        return ['Malformed Insurance supplemental metadata']
 
 def validate(path=None):
     try:d=load_register(path)
