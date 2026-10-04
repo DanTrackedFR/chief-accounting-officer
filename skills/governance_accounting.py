@@ -49,7 +49,7 @@ def actual_owner(c,id):
 
 def accounting_owner(c,id):
     imp=actual_owner(c,id)
-    if imp['package'] in set(BATCH)|{'sec-filing-accounting','alternative-performance-measures'}:raise ReviewRequired('Governance/filing/control facts cannot authorize substantive accounting assertions')
+    if imp['package'] in set(BATCH)|{'sec-filing-accounting','alternative-performance-measures','accounting-controls-icfr','accounting-systems-data-integrity','accounting-operating-model'}:raise ReviewRequired('Governance/filing/control facts cannot authorize substantive accounting assertions')
     return imp
 
 def owner_assertion(c,r):

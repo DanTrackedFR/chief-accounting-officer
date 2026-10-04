@@ -1,0 +1,1607 @@
+{
+  "case_id": "Synthetic accounting-controls-icfr",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "accounting-controls-icfr",
+  "execution_date": "2027-03-31",
+  "requested_action": "certify_compliance",
+  "imports": [],
+  "gl": [],
+  "gl_inventory": [],
+  "documents": [
+    {
+      "id": "risk-scope",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "records": [
+          {
+            "id": "risk-cash",
+            "misstatement": "Omitted cash population",
+            "assertion": "completeness",
+            "process": "cash-reconciliation",
+            "fraud_rationale": "Qualified actual fraud scope"
+          }
+        ],
+        "inventory": [
+          "risk-cash"
+        ]
+      },
+      "content_hash": "a3b97b6852c560e942d7225ca2973b45bb293ec81841d15e0bf79b95fb2d4f27"
+    },
+    {
+      "id": "design",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_key": "Actual cash completeness control",
+        "objective": "Actual population completeness",
+        "assertion": "completeness",
+        "risk_id": "risk-cash",
+        "owner_person": "preparer-person",
+        "review_person": "review-person",
+        "kind": "management_review",
+        "timing": "detective",
+        "frequency": "monthly",
+        "threshold": "10",
+        "rcm_version": "v1",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "precision_evidenced": true,
+        "independent_expectation": true,
+        "ipe_reconciled": true,
+        "expectation_set_on": "2026-01-01",
+        "data_available_on": "2026-12-31",
+        "expected_occurrence_ids": [
+          "occurrence-1",
+          "occurrence-2",
+          "occurrence-3",
+          "occurrence-4",
+          "occurrence-5",
+          "occurrence-6",
+          "occurrence-7",
+          "occurrence-8",
+          "occurrence-9",
+          "occurrence-10",
+          "occurrence-11",
+          "occurrence-12"
+        ],
+        "sod_conflict": false,
+        "independent_compensating_population_reviewed": false
+      },
+      "content_hash": "d72a5e5b54c1b74713f9a64eaf18a611e9e8c89e6f50304009e5428c82a90663"
+    },
+    {
+      "id": "evidence-occurrence-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-01-31",
+        "period_date": "2026-01-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "e48c3e1c8e1e3c1375b550a65fa303d311c3b48bf2bfed19bf3cc83f4e381513"
+    },
+    {
+      "id": "evidence-occurrence-2",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-02-28",
+        "period_date": "2026-02-28",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "6121805209c2776ddf0e663d6b95bf5d6ee473db0b72c12367e9d2f0b54756dd"
+    },
+    {
+      "id": "evidence-occurrence-3",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-03-31",
+        "period_date": "2026-03-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "dc39d39ea219db09cd4843ec776b056dd4259a8ae08de469c4b2eb71c7d41ae5"
+    },
+    {
+      "id": "evidence-occurrence-4",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-04-30",
+        "period_date": "2026-04-30",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "c250174291c582c6c411969a6b4f9148245dd0f89629dafe38b59102f7aec47e"
+    },
+    {
+      "id": "evidence-occurrence-5",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-05-31",
+        "period_date": "2026-05-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "c24c4ba9548e9c9ecc8f0b87bd202d7464cce49c9b40b7241becd0eeb3684f4e"
+    },
+    {
+      "id": "evidence-occurrence-6",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-06-30",
+        "period_date": "2026-06-30",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "569a079520b2db7e2388ee3f3c543daff8dddab29de458100eb8107361808f86"
+    },
+    {
+      "id": "evidence-occurrence-7",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-07-31",
+        "period_date": "2026-07-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "1ea6e192c7856ae7dba1d20aad0b6ff18444c46999a92869d11c59b2766af85a"
+    },
+    {
+      "id": "evidence-occurrence-8",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-08-31",
+        "period_date": "2026-08-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "f730436ba5d6a194b2831df56d0e3c7f77ccee97e3958337370dc0757acfa77f"
+    },
+    {
+      "id": "evidence-occurrence-9",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-09-30",
+        "period_date": "2026-09-30",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "2dd5762fb9c6b729ff2f54c7ef5f5829858854a416ee009ff13a5c0b26755839"
+    },
+    {
+      "id": "evidence-occurrence-10",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-10-31",
+        "period_date": "2026-10-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "e7af2366b6c28ae6bcccd486acedefd5623a3af8eeff1801611834ed462c5e07"
+    },
+    {
+      "id": "evidence-occurrence-11",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-11-30",
+        "period_date": "2026-11-30",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "8bebebffb1132456284c3791a9fdf9e6464a73cda55bee4f6698dc0b3a7d8397"
+    },
+    {
+      "id": "evidence-occurrence-12",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-12-31",
+        "period_date": "2026-12-31",
+        "attributes_present": true,
+        "exceptions_followed_up": true
+      },
+      "content_hash": "ca4e9c652fe6b72890ed6c83ccff1411c243a3447544d738a165c4d13cedc9fd"
+    },
+    {
+      "id": "regime",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "checked_on": "2027-03-31",
+        "issuer_facts": "Actual separately qualified issuer facts",
+        "qualified_applicability_memo": "No automatic SOX inference",
+        "operative_requirements": "Actual scoped management controls",
+        "regime": "Qualified voluntary design readiness",
+        "requested_conclusion": "design_evidence_readiness"
+      },
+      "content_hash": "b201af65c38ff7367e7daa910b2911dac7392226e083cab720973f4dafec32ed"
+    }
+  ],
+  "document_inventory": [
+    "risk-scope",
+    "design",
+    "evidence-occurrence-1",
+    "evidence-occurrence-2",
+    "evidence-occurrence-3",
+    "evidence-occurrence-4",
+    "evidence-occurrence-5",
+    "evidence-occurrence-6",
+    "evidence-occurrence-7",
+    "evidence-occurrence-8",
+    "evidence-occurrence-9",
+    "evidence-occurrence-10",
+    "evidence-occurrence-11",
+    "evidence-occurrence-12",
+    "regime"
+  ],
+  "accounting_policy": {
+    "id": "governance-policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "period_entity_memo": "Actual bounded management scope review",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "0",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence"
+  },
+  "governance_method": {
+    "id": "method",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "target": "Bounded final batch",
+    "resolved": true,
+    "scope_memo": "Actual independently bounded management workpaper",
+    "boundary_memo": "All forbidden claims excluded",
+    "current_requirements_memo": "Actual separately qualified current case scope",
+    "qualification_memo": "Actual experienced independent reviewer",
+    "entity": "Synthetic Group",
+    "jurisdiction": "NL",
+    "checked_on": "2027-03-31",
+    "posting_requested": false,
+    "legal_certification": false,
+    "audit_opinion": false,
+    "regulatory_compliance": false,
+    "forecast_requested": false,
+    "authority_override": false,
+    "score_requested": false,
+    "benchmark_requested": false,
+    "ipo_timing_prediction": false,
+    "sec_status_determination": false,
+    "filing_mechanics": false,
+    "evidence_sufficiency_asserted": false,
+    "auditor_independence_determined": false,
+    "confirmation_control_requested": false,
+    "audit_adjustments_requested": false,
+    "auditor_signoff_requested": false,
+    "autonomous_policy_selection": false,
+    "transition_calculation_requested": false,
+    "overwrite_history": false,
+    "invented_citations": false,
+    "universal_checklist": false,
+    "compliance_certification": false,
+    "prior_year_rollforward_only": false,
+    "filing_requested": false,
+    "comparative_change_requested": false,
+    "budgeting": false,
+    "forecasting": false,
+    "investment_analysis": false,
+    "commercial_planning": false,
+    "generic_bi": false,
+    "manufactured_explanations": false,
+    "automatic_gl_correction": false,
+    "venue": "Synthetic venue, not an actual IPO",
+    "issuer_assumptions": "Case-specific qualified assumptions, no status determination",
+    "adviser_scope_memo": "Separate market/counsel assessment required",
+    "external_write": false,
+    "applicability_doc": "regime"
+  },
+  "source_inventory": [
+    "control-1"
+  ],
+  "release_review": {
+    "id": "release",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "review_memo": "Synthetic independently reperformed payload",
+    "payload_fingerprint": "483e971472a1974297389f8313fd602ac12103f3e7621dd860abb375a8a2a2c7"
+  },
+  "owner_links": [],
+  "owner_link_inventory": [],
+  "control_rows": [
+    {
+      "id": "control-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "amount": "0",
+      "control_key": "Actual cash completeness control",
+      "objective": "Actual population completeness",
+      "assertion": "completeness",
+      "risk_id": "risk-cash",
+      "process": "cash-reconciliation",
+      "accountable_owner": "Controller",
+      "owner_person": "preparer-person",
+      "review_person": "review-person",
+      "precision_memo": "Current independently qualified precision",
+      "exception_route": "Actual documented escalation",
+      "test_attributes": "Population, reviewed attributes and exceptions",
+      "frequency": "monthly",
+      "kind": "management_review",
+      "timing": "detective",
+      "threshold": "10",
+      "design_doc": "design",
+      "rcm_version": "v1"
+    }
+  ],
+  "control_source": {
+    "id": "original-controls",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "records": [
+      {
+        "id": "control-1",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "amount": "0",
+        "control_key": "Actual cash completeness control",
+        "objective": "Actual population completeness",
+        "assertion": "completeness",
+        "risk_id": "risk-cash",
+        "process": "cash-reconciliation",
+        "accountable_owner": "Controller",
+        "owner_person": "preparer-person",
+        "review_person": "review-person",
+        "precision_memo": "Current independently qualified precision",
+        "exception_route": "Actual documented escalation",
+        "test_attributes": "Population, reviewed attributes and exceptions",
+        "frequency": "monthly",
+        "kind": "management_review",
+        "timing": "detective",
+        "threshold": "10",
+        "design_doc": "design",
+        "rcm_version": "v1"
+      }
+    ],
+    "inventory": [
+      "control-1"
+    ],
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "extract_version": "v1"
+  },
+  "risk_source": {
+    "id": "original-risks",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "records": [
+      {
+        "id": "risk-cash",
+        "misstatement": "Omitted cash population",
+        "assertion": "completeness",
+        "process": "cash-reconciliation",
+        "fraud_rationale": "Qualified actual fraud scope"
+      }
+    ],
+    "inventory": [
+      "risk-cash"
+    ],
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "extract_version": "v1",
+    "source_doc": "risk-scope"
+  },
+  "occurrences": [
+    {
+      "id": "occurrence-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-01-31",
+      "period_date": "2026-01-31",
+      "evidence_doc": "evidence-occurrence-1"
+    },
+    {
+      "id": "occurrence-2",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-02-28",
+      "period_date": "2026-02-28",
+      "evidence_doc": "evidence-occurrence-2"
+    },
+    {
+      "id": "occurrence-3",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-03-31",
+      "period_date": "2026-03-31",
+      "evidence_doc": "evidence-occurrence-3"
+    },
+    {
+      "id": "occurrence-4",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-04-30",
+      "period_date": "2026-04-30",
+      "evidence_doc": "evidence-occurrence-4"
+    },
+    {
+      "id": "occurrence-5",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-05-31",
+      "period_date": "2026-05-31",
+      "evidence_doc": "evidence-occurrence-5"
+    },
+    {
+      "id": "occurrence-6",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-06-30",
+      "period_date": "2026-06-30",
+      "evidence_doc": "evidence-occurrence-6"
+    },
+    {
+      "id": "occurrence-7",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-07-31",
+      "period_date": "2026-07-31",
+      "evidence_doc": "evidence-occurrence-7"
+    },
+    {
+      "id": "occurrence-8",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-08-31",
+      "period_date": "2026-08-31",
+      "evidence_doc": "evidence-occurrence-8"
+    },
+    {
+      "id": "occurrence-9",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-09-30",
+      "period_date": "2026-09-30",
+      "evidence_doc": "evidence-occurrence-9"
+    },
+    {
+      "id": "occurrence-10",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-10-31",
+      "period_date": "2026-10-31",
+      "evidence_doc": "evidence-occurrence-10"
+    },
+    {
+      "id": "occurrence-11",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-11-30",
+      "period_date": "2026-11-30",
+      "evidence_doc": "evidence-occurrence-11"
+    },
+    {
+      "id": "occurrence-12",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "control_id": "control-1",
+      "state": "ready",
+      "due_date": "2026-12-31",
+      "period_date": "2026-12-31",
+      "evidence_doc": "evidence-occurrence-12"
+    }
+  ],
+  "occurrence_inventory": [
+    "occurrence-1",
+    "occurrence-2",
+    "occurrence-3",
+    "occurrence-4",
+    "occurrence-5",
+    "occurrence-6",
+    "occurrence-7",
+    "occurrence-8",
+    "occurrence-9",
+    "occurrence-10",
+    "occurrence-11",
+    "occurrence-12"
+  ],
+  "occurrence_source": {
+    "id": "original-all-occurrences",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "records": [
+      {
+        "id": "occurrence-1",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-01-31",
+        "period_date": "2026-01-31",
+        "evidence_doc": "evidence-occurrence-1"
+      },
+      {
+        "id": "occurrence-2",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-02-28",
+        "period_date": "2026-02-28",
+        "evidence_doc": "evidence-occurrence-2"
+      },
+      {
+        "id": "occurrence-3",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-03-31",
+        "period_date": "2026-03-31",
+        "evidence_doc": "evidence-occurrence-3"
+      },
+      {
+        "id": "occurrence-4",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-04-30",
+        "period_date": "2026-04-30",
+        "evidence_doc": "evidence-occurrence-4"
+      },
+      {
+        "id": "occurrence-5",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-05-31",
+        "period_date": "2026-05-31",
+        "evidence_doc": "evidence-occurrence-5"
+      },
+      {
+        "id": "occurrence-6",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-06-30",
+        "period_date": "2026-06-30",
+        "evidence_doc": "evidence-occurrence-6"
+      },
+      {
+        "id": "occurrence-7",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-07-31",
+        "period_date": "2026-07-31",
+        "evidence_doc": "evidence-occurrence-7"
+      },
+      {
+        "id": "occurrence-8",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-08-31",
+        "period_date": "2026-08-31",
+        "evidence_doc": "evidence-occurrence-8"
+      },
+      {
+        "id": "occurrence-9",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-09-30",
+        "period_date": "2026-09-30",
+        "evidence_doc": "evidence-occurrence-9"
+      },
+      {
+        "id": "occurrence-10",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-10-31",
+        "period_date": "2026-10-31",
+        "evidence_doc": "evidence-occurrence-10"
+      },
+      {
+        "id": "occurrence-11",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-11-30",
+        "period_date": "2026-11-30",
+        "evidence_doc": "evidence-occurrence-11"
+      },
+      {
+        "id": "occurrence-12",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "control_id": "control-1",
+        "state": "ready",
+        "due_date": "2026-12-31",
+        "period_date": "2026-12-31",
+        "evidence_doc": "evidence-occurrence-12"
+      }
+    ],
+    "inventory": [
+      "occurrence-1",
+      "occurrence-2",
+      "occurrence-3",
+      "occurrence-4",
+      "occurrence-5",
+      "occurrence-6",
+      "occurrence-7",
+      "occurrence-8",
+      "occurrence-9",
+      "occurrence-10",
+      "occurrence-11",
+      "occurrence-12"
+    ],
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "extract_version": "v1"
+  },
+  "deficiencies": [],
+  "deficiency_inventory": [],
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "TOPIC-09-001-OTHER-E02",
+      "TOPIC-09-002-OTHER-E02",
+      "TOPIC-09-003-OTHER-E02",
+      "TOPIC-09-004-OTHER-E02",
+      "TOPIC-09-004-OTHER-E05",
+      "TOPIC-09-007-OTHER-E02",
+      "TOPIC-09-007-OTHER-E03",
+      "TOPIC-09-007-OTHER-E04",
+      "TOPIC-09-007-OTHER-E05",
+      "TOPIC-09-008-OTHER-E02",
+      "TOPIC-09-008-OTHER-E03",
+      "TOPIC-09-009-OTHER-E05",
+      "TOPIC-09-009-OTHER-E06"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-001.json",
+        "sha256": "2843b5f69fbd87eef87993408cd9b948b975658ceeab9d27c8af44d3eced3a1a"
+      },
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/README.md",
+        "sha256": "661950995c31f03f3bf92f2b4c6de77df5802fe7e80abe6e3853e610fc5be5a0"
+      },
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/methods/risk-to-control-case.md",
+        "sha256": "53fb2ef88c1647961beb0091c69919b299a84aa38c2d39444de9f42b3c3d7f0a"
+      },
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/practice/control-specification.md",
+        "sha256": "0bf9b1f11650c0bcdc53d64b0cdf713549f2fc67ae9f99f0a48a6abc66f57b63"
+      },
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/tests/phase-2d-worker-scenarios.md",
+        "sha256": "46408ffda9bb165b6a2b558633f671748e7de023f3648670700e57f08faa5e76"
+      },
+      {
+        "topic_id": "TOPIC-09-001",
+        "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/standards-claims.json",
+        "sha256": "7348a3f22d0a86ae1b6d73fc0827ef538bf6ab8eac609310042b05b66e394a91"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-002.json",
+        "sha256": "fb3f0bb2d3b4af2dca561165c337bb09f60127e903f7fe0e1b7301ec19864ab2"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/README.md",
+        "sha256": "7a47c73e5b51ab11cc98080198351852ef21216666b23dc98f0d70d8e39f5ca6"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/methods/precision-calibration.md",
+        "sha256": "f7bb961342a29e6cf37701a37360c980910cbc50b60b79bcb631fa255e3a5011"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/practice/review-precision.md",
+        "sha256": "fe78ebae58b932b89c01b4559a49240e0be49529924ff0d95723cc072ed9a15c"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/tests/phase-2d-worker-scenarios.md",
+        "sha256": "facb8f39c2ca64f58a84658dbb19afccf232bbcb73d7bbe4a08ffce230574277"
+      },
+      {
+        "topic_id": "TOPIC-09-002",
+        "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/standards-claims.json",
+        "sha256": "95cb0dc08388160afa44794fa497545f0bceded640f0204b5244d09b84bd5eae"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-003.json",
+        "sha256": "d2f798354f49fb335035e487cb18ece9209c0e2e9042f613595b87c12ddbf658"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/README.md",
+        "sha256": "e823c4e18e851ca22c932ca2dcbe601bc4c6f85186a5a97293f561029d9398d7"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/methods/config-and-review-evidence.md",
+        "sha256": "1d0ad92565a5a00e7aa69926bf470d64586114fcc8d9ff6dd239a2ae6e4c4d78"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/practice/automated-control-evidence.md",
+        "sha256": "7a1f0e9ceea18f3150a93b635962b7e3cbec990f6a5f76a4d0579737858e7cb1"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/tests/phase-2d-worker-scenarios.md",
+        "sha256": "631d04faeb5c7bbecc56883e9148bc586a284a688a78a331f28dc5123959fc59"
+      },
+      {
+        "topic_id": "TOPIC-09-003",
+        "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/standards-claims.json",
+        "sha256": "a09a205d4ceff5b025d3d7ff00e8adb9968358787d173c672115e85188c37646"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-004.json",
+        "sha256": "f4e43e4eea992876c68dea402ef3defeb5c122684dc74de65553e8ea93ba8f20"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/README.md",
+        "sha256": "f82dd1c3ab2c072e8f3310c6de8d441a13d9f02d99b1cf649d09365cae0dc648"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/methods/segregation-conflict-resolution.md",
+        "sha256": "d790206e92feabcae402434b393dfaf9c90dedb79ddc5e958ce7368c9d101c18"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/practice/ownership-access-matrix.md",
+        "sha256": "74ad554d3c7b594c7a07b8e44c3686928d4820f2e63b2c0e8b855b3d973492af"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/tests/phase-2d-worker-scenarios.md",
+        "sha256": "f67e3fd607ec3cf80be0cf73501cc65eeb091dbae94e9ad0eb307d38fa9de72c"
+      },
+      {
+        "topic_id": "TOPIC-09-004",
+        "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/standards-claims.json",
+        "sha256": "2661aa98e3adbd3738fed378308c7fe3f2f2e6e5939d84ecc3aaf9a01b8f18c7"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+        "sha256": "68e539cb40201ff40bf67790b0e790c7f009f3fc7b7627e6532106f1239cbe7c"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/README.md",
+        "sha256": "a24d5835052eaf0a5c839979ac263520c68443b70c264dc59f1f806b7d3cb501"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/methods/deficiency-case.md",
+        "sha256": "8d8656745aab2df7ea0ef6118a475cd24024332634edae03f11bc1114a6641c6"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/practice/severity-and-closure-case.md",
+        "sha256": "8267344d39991ccfc17cec455b8b679008e4f5038ef4dfbe9154b36a8188daef"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/tests/phase-2d-worker-scenarios.md",
+        "sha256": "31bc7ce3b97ae9125dc74cff00191819107db08a361f6e9ca500bf6c693bafb8"
+      },
+      {
+        "topic_id": "TOPIC-09-007",
+        "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/standards-claims.json",
+        "sha256": "67c2f1ad31bcc0cf8933fe1f3b7317d6d54e948586e4b465bae905f17d1a0783"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-008.json",
+        "sha256": "5dbd9d51a6173b59a19b10c8418a1aafb3171b1718c24a7df540cffff88eda04"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/README.md",
+        "sha256": "4434d6a689cd1d5dc9f6b2fcf11569cb86398e102e3d4edd55793abca574d1f4"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/methods/testing-plan.md",
+        "sha256": "266d9489d10c4094df613fb87ffe62fa089278cba3a3d5112825f238cadbd183"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/practice/testing-readiness-gate.md",
+        "sha256": "b4c3f14edc78fe8a71113bbaed7b96eec2a72450955330962ea4ff8721647f5f"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/tests/phase-2d-worker-scenarios.md",
+        "sha256": "ddeabb97cec4ac5f4121c8465e49e1d7178247e2f7994d1aeaeb1c31c2367015"
+      },
+      {
+        "topic_id": "TOPIC-09-008",
+        "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/standards-claims.json",
+        "sha256": "de45a89271f8df962f1b0f0c24f53dff0757f1e5bebb634ae7b561527cdd6453"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/phase-2e/reviews/TOPIC-09-009.json",
+        "sha256": "7d95f830a40ee9e3db68fefb35f1a59cbf74e2c62ff8e4e2fe6c6e175bf876a5"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/README.md",
+        "sha256": "9499f6cf59f85e293bc3ceffd00c26124c6b24058b0956c32e23732e9830ef1f"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/methods/approval-and-override-case.md",
+        "sha256": "2db363c8e9a708b6fe48cea59b364683b647726466d9112a3e4750f86e9e64fc"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/practice/override-and-authority-gate.md",
+        "sha256": "ddd13b276508f377da3da1bdf4b6b7771c617a7429eb509bdfecfad641f4af33"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/tests/phase-2d-worker-scenarios.md",
+        "sha256": "d3737659079b372db0c50ed3fb14e533b2d6dcb3eb17b20e93e8a72f1e8a3890"
+      },
+      {
+        "topic_id": "TOPIC-09-009",
+        "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/standards-claims.json",
+        "sha256": "3b9aaa2df64fa7e6f0571a66865a716bdab54debaa2eda7c54746aa16dc4d3ab"
+      }
+    ],
+    "applied_claim_ids": [],
+    "selection_memo": "Actual bounded claim/method applicability, practice never invents authority",
+    "public_caveats": [
+      "Qualified actual sources and current framework/period review required. No actuarial, legal, audit or external compliance certification."
+    ]
+  }
+}
