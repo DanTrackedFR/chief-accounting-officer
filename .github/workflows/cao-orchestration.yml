@@ -1,0 +1,49 @@
+name: CAO orchestration integration
+on:
+  push:
+    branches: [orchestration/cao-foundation]
+  pull_request:
+    types: [ready_for_review, reopened, synchronize]
+    paths:
+      - 'orchestration/**'
+      - 'interfaces/**'
+      - '.github/workflows/cao-orchestration.yml'
+  workflow_dispatch:
+jobs:
+  integration-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Orchestration authored and independent QA
+        run: python -m unittest discover -s orchestration/tests -p 'test_*.py'
+      - name: Existing skills and lease vertical slice
+        run: |
+          python -m unittest discover -s skills/tests -p 'test_*.py'
+          python -m unittest discover -s skills/lease-accounting/tests -p 'test_*.py'
+      - name: Repository public-output and canonical tests
+        run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Supplemental knowledge and independent knowledge QA
+        run: |
+          python knowledge/income-taxes/test_supplement.py
+          python knowledge/income-taxes/validate_supplement.py
+          python knowledge/agriculture/validate_supplement.py
+          python knowledge/agriculture/test_supplement.py
+          python knowledge/agriculture/test_independent_claim_qa.py
+          python knowledge/insurance-contracts/validate_supplement.py
+          python -m unittest discover -s knowledge/insurance-contracts -p 'test*.py'
+          python knowledge/derivatives-hedge/validate_supplement.py
+          python -m unittest discover -s knowledge/derivatives-hedge -p 'test*.py'
+          python knowledge/derivatives-hedge/independent_review_tests.py
+          python knowledge/inventory-cost/validate_supplement.py
+          python -m unittest discover -s knowledge/inventory-cost -p 'test*.py'
+      - name: Canonical authority invariants and whitespace
+        run: |
+          python knowledge/standards-evidence/validate_claims.py
+          python knowledge/standards-evidence/validate_approvals.py
+          git diff --check HEAD^ HEAD
