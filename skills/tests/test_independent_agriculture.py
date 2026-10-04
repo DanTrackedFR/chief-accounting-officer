@@ -10,14 +10,14 @@ from agriculture_cases import case, ready, refresh, sources, content, row, docum
 from production import assess_case, to_public, serializable, execute, case_fingerprint
 from interfaces.public_output import ROUTES
 
-MONEY={'amount','opening_value','purchase_cost','carrying_value','fair_value','costs_to_sell','net_value','cost','opening','closing','statement','inventory_entry_value','closing_carrying_value','pnl_measurement_gain','harvest_entry'}
+MONEY={'amount','opening_value','purchase_cost','carrying_value','fair_value','costs_to_sell','net_value','cost','opening','closing','statement','inventory_entry_value','closing_carrying_value','pnl_measurement_gain','harvest_entry','qualified_produce_fvcts'}
 def specimen(fw='IFRS',kind='livestock'):
     c=case(fw,kind)
     def scale(o):
         if isinstance(o,dict):
             for k,v in list(o.items()):
                 if k in MONEY and isinstance(v,str):o[k]=str(Decimal(v)*Decimal('3.7'))
-                elif k=='quantity' and isinstance(v,str):o[k]='2'
+                elif k=='quantity' and isinstance(v,str):o[k]='83' if o.get('point_at_harvest') is True else '2'
                 elif k=='harvest_quantity' and isinstance(v,str):o[k]='83'
                 else:scale(v)
         elif isinstance(o,list):
@@ -48,6 +48,13 @@ def negative_gain_case():
     v=content(c,'live-closing');v.update(fair_value='92.5',net_value='74')
     c['gl'][0].update(closing='370',statement='370');c['gl'][2].update(closing='148',statement='148')
     c['disclosures'].update(closing_carrying_value='370',pnl_measurement_gain='-148')
+    return refresh(sources(disclosure_support(c)))
+
+def unequal_harvest_case(fw='IFRS'):
+    c=specimen(fw);h=content(c,'harvest-record');v=content(c,h['produce_valuation_doc'])
+    v.update(fair_value='259',net_value='240.5');h.update(qualified_produce_fvcts='240.5',inventory_entry_value='240.5')
+    c['gl'][3].update(closing='240.5',statement='240.5');c['gl'][2].update(closing='-240.5',statement='-240.5')
+    c['disclosures'].update(harvest_entry='240.5',pnl_measurement_gain='240.5')
     return refresh(sources(disclosure_support(c)))
 
 class IndependentAgriculture(unittest.TestCase):
@@ -94,6 +101,27 @@ class IndependentAgriculture(unittest.TestCase):
         self.blocked(sources(c))
     def test_iqa04_produce_unit_public_leak(self):
         c=specimen();content(c,'harvest-record')['produce_unit']='Private reviewer Jane Smith';self.blocked(c)
+    def test_iqa07_harvest_requires_distinct_produce_measurement(self):
+        c=specimen();content(c,'harvest-record').pop('produce_valuation_doc',None);self.blocked(c)
+    def test_iqa07_actual_produce_value_cannot_be_ignored(self):
+        c=specimen();h=content(c,'harvest-record');v=content(c,h['produce_valuation_doc']);v['fair_value']='259';v['net_value']='240.5'
+        h['qualified_produce_fvcts']='240.5';self.blocked(c)
+    def test_iqa07_valid_unequal_produce_biological_values(self):
+        for fw in ('IFRS','AASB'):
+            r=self.complete(unequal_harvest_case(fw));self.assertEqual(Decimal('240.5'),r['calculations']['harvest_entry']);self.assertEqual(Decimal('-18.5'),r['calculations']['harvest'][0]['harvest_conversion_gain']);self.assertEqual(Decimal('259'),r['calculations']['harvest'][0]['biological_carrying_removed'])
+    def test_iqa07_positive_harvest_conversion_gain(self):
+        c=specimen();h=content(c,'harvest-record');v=content(c,h['produce_valuation_doc']);v.update(fair_value='296',net_value='277.5');h.update(qualified_produce_fvcts='277.5',inventory_entry_value='277.5')
+        c['gl'][3].update(closing='277.5',statement='277.5');c['gl'][2].update(closing='-277.5',statement='-277.5');c['disclosures'].update(harvest_entry='277.5',pnl_measurement_gain='277.5')
+        r=self.complete(sources(disclosure_support(c)));self.assertEqual(Decimal('18.5'),r['calculations']['harvest'][0]['harvest_conversion_gain'])
+        for j in r['journal_entry_implications']:self.assertEqual(sum(x['amount'] for x in j if x['side']=='Dr'),sum(x['amount'] for x in j if x['side']=='Cr'))
+    def test_iqa07_uk_unequal_harvest_conversion_fails_closed(self):
+        self.blocked(unequal_harvest_case('UK_GAAP'))
+    def test_iqa07_produce_value_date_quantity_unit_origin(self):
+        for k,v in [('measurement_date','2026-12-31'),('quantity','2'),('quantity_unit','head'),('origin_asset_id','live'),('asset_id','live'),('category','consumable_livestock'),('point_at_harvest',False),('signed_on','2026-01-01')]:
+            c=specimen();h=content(c,'harvest-record');content(c,h['produce_valuation_doc'])[k]=v;self.blocked(c)
+    def test_iqa07_produce_source_missing_and_identity_collision(self):
+        c=specimen();h=content(c,'harvest-record');h['produce_id']='live';self.blocked(c)
+        c=specimen();h=content(c,'harvest-record');id=h['produce_valuation_doc'];c['documents']=[d for d in c['documents'] if d['id']!=id];c['document_inventory']=[d['id'] for d in c['documents']];self.blocked(c)
     def test_iqa05_explicit_superseded_edition(self):
         c=specimen('UK_GAAP');c['uk_standard_edition']='2015';c['applicability_review']['standard_versions']=['FRS 102 September2015'];self.blocked(c)
         c=specimen('AASB');c['aasb_compilation']='superseded1998';c['applicability_review']['standard_versions']=['AASB141 1998'];self.blocked(c)

@@ -47,7 +47,7 @@ def original_population(c,key,rs):
 def qualified_value(c,d,id,asset,qty,when):
     v=snapshot(c,d,id,c['currency']);texts(v,'qualified_valuer','qualification_memo','independence_memo','report_version','market_evidence','selling_costs_memo','measurement_basis')
     if v['measurement_basis']!='fair_value_less_costs_to_sell':raise ReviewRequired('Agriculture measurement basis must be FV less costs to sell')
-    if any(v[k]!=expected for k,expected in [('entity',c['entity']),('framework',c['framework']),('asset_id',asset['id']),('category',asset['category']),('currency',c['currency']),('measurement_date',when)]):
+    if any(v[k]!=expected for k,expected in [('entity',c['entity']),('framework',c['framework']),('asset_id',asset['id']),('category',asset['category']),('quantity_unit',asset['quantity_unit']),('currency',c['currency']),('measurement_date',when)]):
         raise ReviewRequired('Valuation owner dimensions, identity or measurement date contradict Agriculture')
     if not iso(when)<=iso(v['signed_on'])<=iso(c['execution_date']):raise ReviewRequired('Invalid qualified valuation sign date')
     if not flag(v,'control_supported') or not flag(v,'reliable_measurement') or not flag(v,'current_market_evidence'):
@@ -144,7 +144,7 @@ def assess(c,claims):
         if m['currency']!=c['currency']:raise ReviewRequired('Movement currency mismatch')
         events[m['asset_id']]=m;event_physical.append(m['event_source_id'])
     unique(event_physical,'physical movement source')
-    entries=[];schedule=[];harvests=[];opv=clv=gain=additions=harvest_total=death_total=ZERO;opqty=clqty=buyqty=birthqty=harvestqty=deadqty=ZERO
+    entries=[];schedule=[];harvests=[];produce_ids=[];opv=clv=gain=additions=harvest_total=death_total=ZERO;opqty=clqty=buyqty=birthqty=harvestqty=deadqty=ZERO
     for r in rs:
         qty=positive(r['quantity']);expected_qty=qty
         terminal=events.get(r['id']);opening_value=nonnegative(r['opening_value']);consideration=nonnegative(r['purchase_cost'])
@@ -183,9 +183,23 @@ def assess(c,claims):
                 if h['asset_id']!=r['id'] or h['date']!=terminal['date']:raise ReviewRequired('Harvest source identity/date mismatch')
                 exact(h['harvest_quantity'],terminal['harvest_quantity'],'Harvest produce quantity');positive(h['harvest_quantity']);enum(h,'produce_unit',{'head','kg','litres','tonnes','units'})
                 if not flag(h,'entire_asset_harvested') or not flag(h,'boundary_only'):raise ReviewRequired('Partial harvest/continuing bearer asset or postharvest costing needs specialist method')
-                exact(h['inventory_entry_value'],measured,'Harvest boundary inventory entry');harvest_total+=measured;harvestqty+=qty
-                entries+=[journal(('Dr','Harvest inventory entry',measured),('Cr','Biological assets',measured))]
-                harvests.append(dict(entry_value=measured,quantity=dec(h['harvest_quantity']),unit=h['produce_unit'],downstream_owner='Inventory & Cost Accounting unavailable; no subsequent measurement performed'))
+                texts(h,'produce_id','produce_valuation_doc');enum(h,'produce_category',{'meat','grain','timber','fruit','vegetable','other_produce'})
+                if h['produce_id'] in ids or h['produce_id'] in produce_ids:raise ReviewRequired('Harvest produce identity aliases biological or other harvested population')
+                produce_ids.append(h['produce_id'])
+                produce=dict(id=h['produce_id'],category=h['produce_category'],quantity_unit=h['produce_unit'])
+                qualified=snapshot(c,d,h['produce_valuation_doc'],c['currency'])
+                if not flag(qualified,'point_at_harvest') or qualified['origin_asset_id']!=r['id']:
+                    raise ReviewRequired('Qualified produce measurement must cover harvest point and original biological unit')
+                harvested_value=qualified_value(c,d,h['produce_valuation_doc'],produce,h['harvest_quantity'],terminal['date'])
+                exact(h['qualified_produce_fvcts'],harvested_value,'Harvest source qualified produce measurement')
+                exact(h['inventory_entry_value'],harvested_value,'Harvest boundary inventory entry')
+                conversion=harvested_value-measured
+                if c['framework']=='UK_GAAP' and conversion:
+                    raise ReviewRequired('UK unequal biological-to-produce harvest conversion requires separately governed accounting support')
+                gain+=conversion;harvest_total+=harvested_value;harvestqty+=qty
+                entries+=[journal(('Dr','Harvest inventory entry',harvested_value),('Cr','Biological assets',measured),
+                    ('Cr' if conversion>=0 else 'Dr','Agriculture measurement gain',abs(conversion)))]
+                harvests.append(dict(entry_value=harvested_value,biological_carrying_removed=measured,harvest_conversion_gain=conversion,quantity=dec(h['harvest_quantity']),unit=h['produce_unit'],downstream_owner='Inventory & Cost Accounting unavailable; no subsequent measurement performed'))
             else:
                 loss=snapshot(c,d,terminal['death_doc'],c['currency'])
                 if loss['asset_id']!=r['id'] or loss['date']!=terminal['date']:raise ReviewRequired('Death source identity/date mismatch')
@@ -226,7 +240,9 @@ def assess(c,claims):
     for r in rs:
         if r['state']!='opening':used_values.append(r['initial_value_doc'])
         if r['id'] not in events:used_values.append(r['closing_value_doc'])
-        elif events[r['id']]['kind']=='harvest':used_values.append(events[r['id']]['valuation_doc'])
+        elif events[r['id']]['kind']=='harvest':
+            used_values.append(events[r['id']]['valuation_doc'])
+            used_values.append(snapshot(c,d,events[r['id']]['harvest_doc'],c['currency'])['produce_valuation_doc'])
     expected_support['valuation']=sorted(used_values)
     support_ids=[]
     for requirement in req:

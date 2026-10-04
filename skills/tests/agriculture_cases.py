@@ -11,6 +11,7 @@ def content(c,id):return next(d['content'] for d in c['documents'] if d['id']==i
 def value(c,id,asset,qty,date,gross,costs='0'):
     v=dict(qualified_valuer='Synthetic independent qualified valuer',qualification_memo='Synthetic competence assessed',independence_memo='Synthetic objectivity review',report_version='synthetic-v1',market_evidence='Synthetic current actual market report',selling_costs_memo='Incremental disposal costs excluding tax and finance',measurement_basis='fair_value_less_costs_to_sell',entity=c['entity'],framework=c['framework'],asset_id=asset['id'],category=asset['category'],currency=c['currency'],measurement_date=date,signed_on=c['execution_date'],control_supported=True,reliable_measurement=True,current_market_evidence=True,quantity=qty,fair_value=gross,costs_to_sell=costs,net_value=str(Decimal(gross)-Decimal(costs)))
     v.update(finance_or_income_tax_included=False,transport_deducted_again=False,other_uncertain_costs=False,
+        quantity_unit=asset['quantity_unit'],
         cost_components=[dict(id='selling-commission',kind='commission',amount=costs,incremental_disposal=True,evidence_memo='Synthetic independently qualified actual commission')] if Decimal(costs) else [])
     document(c,id,v)
 
@@ -30,7 +31,9 @@ def disclosure_support(c):
     for a in c['assets']:
         if a['state']!='opening':used.append(a['initial_value_doc'])
         if a['id'] not in terminal:used.append(a['closing_value_doc'])
-        elif terminal[a['id']]['kind']=='harvest':used.append(terminal[a['id']]['valuation_doc'])
+        elif terminal[a['id']]['kind']=='harvest':
+            used.append(terminal[a['id']]['valuation_doc'])
+            used.append(content(c,terminal[a['id']]['harvest_doc'])['produce_valuation_doc'])
     values['valuation']=sorted(used)
     for r in dis['requirements']:
         id=r['id']+'-support';r['support_doc']=id
@@ -89,7 +92,9 @@ def case(fw='IFRS',kind='livestock'):
             document(c,a['purchase_doc'],dict(asset_id=id,date=a['recognition_date'],quantity=qty,cost='60'))
     a=c['assets'][1];h=row(c,'harvest-event',asset_id=a['id'],event_source_id='original-harvest-event-1',kind='harvest',date='2026-09-30',currency='USD',quantity='1',harvest_quantity='100',valuation_doc='harvest-value',harvest_doc='harvest-record')
     c['movements']=[h];value(c,'harvest-value',a,'1',h['date'],'75','5')
-    document(c,'harvest-record',dict(asset_id=a['id'],date=h['date'],harvest_quantity='100',produce_unit='kg',entire_asset_harvested=True,boundary_only=True,inventory_entry_value='70'))
+    document(c,'harvest-record',dict(asset_id=a['id'],date=h['date'],harvest_quantity='100',produce_unit='kg',produce_id='harvested-produce-1',produce_category='meat' if kind=='livestock' else 'grain',produce_valuation_doc='produce-value',qualified_produce_fvcts='70',entire_asset_harvested=True,boundary_only=True,inventory_entry_value='70'))
+    value(c,'produce-value',dict(id='harvested-produce-1',category='meat' if kind=='livestock' else 'grain',quantity_unit='kg'),'100',h['date'],'75','5')
+    content(c,'produce-value').update(point_at_harvest=True,origin_asset_id=a['id'])
     c['gl']=[row(c,'Biological assets',currency='USD',opening='150',closing='210',statement='210'),row(c,'Cash',currency='USD',opening='1000',closing='940',statement='940'),row(c,'Agriculture measurement gain',currency='USD',opening='0',closing='-70',statement='-70'),row(c,'Harvest inventory entry',currency='USD',opening='0',closing='70',statement='70')];c['gl_inventory']=[g['id'] for g in c['gl']]
     keys={'classes','policies','gain_loss','quantities','rollforward','harvest','valuation','restrictions','commitments','risk'} if fw in {'IFRS','AASB'} else {'classes','policies','gain_loss','valuation','rollforward'}
     requirements=[dict(id=k,supported=True,evidence_memo='Synthetic actual current '+k+' disclosure proof') for k in sorted(keys)]

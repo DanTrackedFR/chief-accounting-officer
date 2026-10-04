@@ -68,6 +68,20 @@ class IndependentKnowledgeChallenges(unittest.TestCase):
   self.assertEqual(opening+purchase_invoice+total_gain-terminal_harvest,closing)
   self.assertEqual(terminal_harvest-terminal_before,D('25'))
   self.assertEqual(20+3+2-4-1,20)
+ def test_unequal_biological_and_harvest_produce_valuation(self):
+  # Live cattle per head and carcass kg need distinct qualified populations.
+  biological,produce=map(D,('70','65'))
+  loss=biological-produce
+  self.assertEqual(loss,D('5'))
+  debits={'harvest_inventory':produce,'Agriculture_loss':loss}
+  credits={'biological_assets':biological}
+  self.assertEqual(sum(debits.values()),sum(credits.values()))
+  self.assertNotEqual(produce,biological)
+  self.assertEqual(D('100000')+D('20000')+D('33000')-D('28000')-D('5000'),D('120000'))
+  self.assertEqual(D('33000')+(D('30000')-D('28000')),D('35000'))
+  method=(Path(__file__).parent/'FRAMEWORK-METHOD.md').read_text()
+  for phrase in ('separately obtain qualified harvested-produce','actual harvested-produce quantity and unit','do not default their amounts or units to equality','conversion difference in profit or loss','Missing produce valuation'):
+   self.assertIn(phrase,method)
  def test_review_all_claims_separate_and_accurate(self):
   d=load_register()
   self.assertEqual(d['status'],'APPROVED')

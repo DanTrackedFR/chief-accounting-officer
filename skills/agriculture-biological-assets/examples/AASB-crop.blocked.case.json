@@ -272,6 +272,7 @@
         "finance_or_income_tax_included": false,
         "transport_deducted_again": false,
         "other_uncertain_costs": false,
+        "quantity_unit": "biological_units",
         "cost_components": [
           {
             "id": "selling-commission",
@@ -282,7 +283,7 @@
           }
         ]
       },
-      "content_hash": "f4fbc6c37971b01cc0239c436c0a7db9cd67182b178a01a0218455497bd2744e"
+      "content_hash": "9e79ecbede52548134b4bf7defff2be6cb886ad2a07602c4aa03d83df71f5006"
     },
     {
       "id": "harvest-control",
@@ -464,6 +465,7 @@
         "finance_or_income_tax_included": false,
         "transport_deducted_again": false,
         "other_uncertain_costs": false,
+        "quantity_unit": "biological_units",
         "cost_components": [
           {
             "id": "selling-commission",
@@ -474,7 +476,7 @@
           }
         ]
       },
-      "content_hash": "f22956b75e49740f69682a9a78837159671c412004a5883773a648682857670c"
+      "content_hash": "b1ec8115b1a2a9ed985a6bfb538500eae6b9d0a5e605b69c7c4067c5e89813c6"
     },
     {
       "id": "purchase-initial",
@@ -522,6 +524,7 @@
         "finance_or_income_tax_included": false,
         "transport_deducted_again": false,
         "other_uncertain_costs": false,
+        "quantity_unit": "biological_units",
         "cost_components": [
           {
             "id": "selling-commission",
@@ -532,7 +535,7 @@
           }
         ]
       },
-      "content_hash": "ff30ac2b4c8d7669930083f2eaf72c03fd4142fb851ece6deca5003aa6061277"
+      "content_hash": "72cb0230675f98e547b6baf7f0206e1d15e3c3f303346cc402f00fc0cc49b1e6"
     },
     {
       "id": "purchase-purchase",
@@ -609,6 +612,7 @@
         "finance_or_income_tax_included": false,
         "transport_deducted_again": false,
         "other_uncertain_costs": false,
+        "quantity_unit": "biological_units",
         "cost_components": [
           {
             "id": "selling-commission",
@@ -619,7 +623,7 @@
           }
         ]
       },
-      "content_hash": "9c13d0784edc34756dd954b8448d270913db95fce4ec2dd9227e66a18327c800"
+      "content_hash": "2d5342f2d0eeb2bdc492eaf6bec5d4b2edda8d08699bb289bf28bdf995790713"
     },
     {
       "id": "harvest-record",
@@ -647,11 +651,76 @@
         "date": "2026-09-30",
         "harvest_quantity": "100",
         "produce_unit": "kg",
+        "produce_id": "harvested-produce-1",
+        "produce_category": "grain",
+        "produce_valuation_doc": "produce-value",
+        "qualified_produce_fvcts": "70",
         "entire_asset_harvested": true,
         "boundary_only": true,
         "inventory_entry_value": "70"
       },
-      "content_hash": "de14ea504770c38d2b59e87d9825d75f939d194f61c5c1502a571b05703a7b41"
+      "content_hash": "ecdbbef92acf95532a5f7855453b7a76f02c371eb3fc2ce089fb047fcb57e8a9"
+    },
+    {
+      "id": "produce-value",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "AASB",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "qualified_valuer": "Synthetic independent qualified valuer",
+        "qualification_memo": "Synthetic competence assessed",
+        "independence_memo": "Synthetic objectivity review",
+        "report_version": "synthetic-v1",
+        "market_evidence": "Synthetic current actual market report",
+        "selling_costs_memo": "Incremental disposal costs excluding tax and finance",
+        "measurement_basis": "fair_value_less_costs_to_sell",
+        "entity": "Synthetic Group",
+        "framework": "AASB",
+        "asset_id": "harvested-produce-1",
+        "category": "grain",
+        "currency": "USD",
+        "measurement_date": "2026-09-30",
+        "signed_on": "2027-03-31",
+        "control_supported": true,
+        "reliable_measurement": true,
+        "current_market_evidence": true,
+        "quantity": "100",
+        "fair_value": "75",
+        "costs_to_sell": "5",
+        "net_value": "70",
+        "finance_or_income_tax_included": false,
+        "transport_deducted_again": false,
+        "other_uncertain_costs": false,
+        "quantity_unit": "kg",
+        "cost_components": [
+          {
+            "id": "selling-commission",
+            "kind": "commission",
+            "amount": "5",
+            "incremental_disposal": true,
+            "evidence_memo": "Synthetic independently qualified actual commission"
+          }
+        ],
+        "point_at_harvest": true,
+        "origin_asset_id": "harvest"
+      },
+      "content_hash": "828fe66ce4b8311117c439441c0a29b5b4b5d4518b7a9d5246fd164ede0c308c"
     },
     {
       "id": "requirements",
@@ -1063,11 +1132,12 @@
         "value": [
           "harvest-value",
           "live-closing",
+          "produce-value",
           "purchase-closing",
           "purchase-initial"
         ]
       },
-      "content_hash": "c6306bd6bf0441bd8540d7edc76e7bbfe742b6be047e815636772943231f6866"
+      "content_hash": "29ec14552cf7ff906cbb8e171b857a848236a1eb11cb58d5e6da872cc16bec5c"
     },
     {
       "id": "register",
@@ -1381,6 +1451,7 @@
     "purchase-purchase",
     "harvest-value",
     "harvest-record",
+    "produce-value",
     "requirements",
     "classes-support",
     "commitments-support",
@@ -1464,7 +1535,7 @@
       "2026-12-31"
     ],
     "review_memo": "Synthetic independent exact source review",
-    "payload_fingerprint": "3c9c61bc7e0983a51e8f60219d0d8fa92c5fb5571c97025c621fbc4f632b5cc8"
+    "payload_fingerprint": "33d0050f86fd84bd6f054613fc5a0319bd3ddc3f6839744a310e5083a87de683"
   },
   "currency": "USD",
   "assets": [
@@ -2028,12 +2099,12 @@
       {
         "topic_id": "SUPPLEMENTAL_AGRICULTURE",
         "path": "knowledge/agriculture/FRAMEWORK-METHOD.md",
-        "sha256": "9b3e61791f120cfac05ae4b56b3c8bf8f6d9260ed1c3ebcf76e53ea5bd22cf9c"
+        "sha256": "1a27a4dd7f3780dcacd54bdd46746d4f07a47fc3a11f4d174619ef83497ef8bf"
       },
       {
         "topic_id": "SUPPLEMENTAL_AGRICULTURE",
         "path": "knowledge/agriculture/INDEPENDENT-QA.md",
-        "sha256": "9fcc8e7ab99a67f235cb5055155f60455940d8505f2c71e9fd21fd158fe80cb1"
+        "sha256": "7603ed012e9786adb4780fd9462a51406a5539609bc36aa0040e19d869c5796a"
       },
       {
         "topic_id": "SUPPLEMENTAL_AGRICULTURE",
@@ -2053,7 +2124,7 @@
       {
         "topic_id": "SUPPLEMENTAL_AGRICULTURE",
         "path": "knowledge/agriculture/test_independent_claim_qa.py",
-        "sha256": "cd850b18d6bc7d9a70a4be0c0479fcdbe464065a5520470b00fffc180646438a"
+        "sha256": "914f9c3b147ebc216f0b227e56e32e1a734269b353260592d226caeb1e281bf6"
       },
       {
         "topic_id": "SUPPLEMENTAL_AGRICULTURE",
