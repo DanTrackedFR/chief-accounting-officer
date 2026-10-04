@@ -68,7 +68,9 @@ def start(c,key):
     if c.get('requested_action')!='workpaper':raise ReviewRequired('Only bounded management workpaper support is executable')
     for imp in rows(c['imports']):
         if imp.get('case',{}).get('jurisdiction')!=c['jurisdiction']:raise ReviewRequired('Imported owner jurisdiction mismatch')
-    blocked={'government-grants','borrowing-costs','investment-property','inventory-cost'}
+    blocked={'government-grants','borrowing-costs','investment-property'}
+    # Inventory now has governed production authority. Actual complete current
+    # imports still reexecute the native owner and retain all certification gates.
     allowed=set(PACKAGES)-blocked-{c['package']}
     imports(c,allowed)
     p=qualified(c,c['governance_method'],'Bounded management governance')
