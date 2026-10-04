@@ -27,3 +27,13 @@ Independent retrieval challenges also mutate an unselected framework claim, dele
 Validation: independent_review_tests.py **6 tests PASS**; author test_supplement.py **4 tests PASS**; validator **100 claims, 25 per framework, zero errors**. The independent test fixture constructs temporary gate data to challenge retrieval; it is not an alternative approval record. The signed review JSON is the actual approval artifact. After controller promotion, rerun both test suites and the validator and verify every approval hash still matches this independent review.
 
 No unresolved material knowledge finding remains for this bounded supplemental scope. Direct-source assurance remains open for the 90 non-SOURCE_VERIFIED claims; more specialized accounting requires separately governed knowledge rather than stretching this approval.
+
+## Follow-up native FRS102 review
+
+After implementation challenge, UK002/005 were reopened for condition-specific native rules. Both amended claims and the added native METHOD paragraph now pass fresh review. Only these two reviewed content hashes changed; the other 98 hashes, including UK009, were independently compared and remain unchanged. The two claims retain MODEL_DERIVED_AUDIT_REQUIRED, audit_required true and TRAINING_DATA_CHECKED approval despite current source corroboration.
+
+Fresh counterexamples distinguish a physical-use contract with independent atypical loss risk from an ordinary net-settleable contract whose physical purpose ceased; they also distinguish an external FVTPL purchased option with later maturity/extension from a net-written option combination. Current native instrument rules do not contain the old prescribed-type/maturity/prepayment prohibitions. The purchased-option offset or combination must not be net written, and the nonderivative FX component has a separate exception. Existing UK009 correctly requires economic relationship and documented ineffectiveness causes, without an inherited highly-effective threshold.
+
+The reviewer independently reopened the current FRC source at 12.4–12.5 and 12.17–12.18A. No source assurance upgrade was made. Native method scope and qualification match the corrected claims; specialized implementation exclusions remain separate from general standard eligibility.
+
+Follow-up validation: **7 independent tests PASS**, **4 author tests PASS**, validator **100 claims, 25 per framework, zero errors**. The updated JSON approves the two exact amended hashes and preserves all other reviews. Controller must reapply the two approvals, promote the register and refreeze the supplemental map; post-promotion tests remain required.

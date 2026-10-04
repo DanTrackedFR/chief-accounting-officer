@@ -70,11 +70,15 @@
     "distinct actual US2025source URLs",
     "cumulative entitlement versus period OCI and release ledger",
     "exact100/25decision population gate",
-    "explicit model and USnonadoption retrieval gates"
+    "explicit model and USnonadoption retrieval gates",
+    "nativeUK12.4 independent scope and12.5 continuousphysicalpurpose",
+    "nativeUK12.17 currenteligibility versus obsoleteinstrument/maturityconditions",
+    "writtenoption nonnetwritten offsetcombination and nonderivativeFXexception",
+    "nativeUKeconomicrelationship versus obsoletehighlyeffective qualification"
   ],
   "open_material_findings": [],
   "tests": [
-    "independent_review_tests.py:6testsPASS",
+    "independent_review_tests.py:7testsPASS",
     "test_supplement.py:4testsPASS",
     "validate_supplement.py:100claims,zeroerrors"
   ],
@@ -903,13 +907,15 @@
       "approval_track": "TRAINING_DATA_CHECKED",
       "evidence_status_preserved": "MODEL_DERIVED_AUDIT_REQUIRED",
       "audit_required_preserved": true,
-      "reviewed_hash": "ce8c0a3269ccbcb8f682338cb73c3170acde60419f188dc52f8c04d306a7232a",
+      "reviewed_hash": "a741824e892ac2960bd38a490061183400226ba589283dd870db9b12eefad5d1",
       "scope_and_period_checked": true,
       "cross_framework_checked": true,
       "regression_checked": true,
-      "challenge": "A commodity contract called own-use is routinely cash settled.",
-      "expected_conclusion": "Label insufficient; delivery purpose and settlement practice must be proved; specialized nature-dependent electricity blocked.",
-      "source_review": "Source: ChatGPT training data; independently challenged; source assurance not upgraded."
+      "challenge": "Physical-delivery copper purchase meets ordinary usage needs but contains loss exposure linked to an unrelated counterparty operating index; alternatively an ordinary netsettleable contract originally entered for use is now held speculatively.",
+      "expected_conclusion": "Independent12.4 atypical-risk scope survives ownuse purpose; ordinary12.5 exception requires both original entry and continuous current physical-purpose holding. Current purpose failure defeats that exception; no IFRS designation election imported.",
+      "source_review": "Current FRC12.4\u201312.5/12.17\u201312.18A directly reinspected for accuracy; original model-derived evidence and audit flag preserved conservatively, no source-assurance upgrade.",
+      "previous_reviewed_hash": "ce8c0a3269ccbcb8f682338cb73c3170acde60419f188dc52f8c04d306a7232a",
+      "followup_review_date": "2026-10-04"
     },
     {
       "claim_id": "HEDGE-UK_GAAP-003",
@@ -951,13 +957,15 @@
       "approval_track": "TRAINING_DATA_CHECKED",
       "evidence_status_preserved": "MODEL_DERIVED_AUDIT_REQUIRED",
       "audit_required_preserved": true,
-      "reviewed_hash": "ff39f5d4ccfb6664e9b2e6a1d1c8daf0b86fc7a85e0b8040cbe2cab951205f17",
+      "reviewed_hash": "72ea0405d0f7ab6010f3859bc4f9382210782d63f4d1e4a6686431db766885a3",
       "scope_and_period_checked": true,
       "cross_framework_checked": true,
       "regression_checked": true,
-      "challenge": "Intragroup swap at consolidated perimeter; net written option; nonderivative borrowing.",
-      "expected_conclusion": "Externality/model eligibility need evidence; net written option not assumed eligible; nonderivative unsupported by label.",
-      "source_review": "Source: ChatGPT training data; independently challenged; source assurance not upgraded."
+      "challenge": "External FVTPL purchasedoption extends past forecast date and has an extension clause; compare a netwritten option combination and nonderivative debt designated only for FX risk.",
+      "expected_conclusion": "Current12.17 has no universal maturity/prepayment/extension prohibition. Eligibility still needs actual relationship and causes of ineffectiveness. Writtenoption combination must not be netwritten.12.17B independently permits nonderivative FXrisk component; bounded implementation may separately exclude it.",
+      "source_review": "Current FRC12.4\u201312.5/12.17\u201312.18A directly reinspected for accuracy; original model-derived evidence and audit flag preserved conservatively, no source-assurance upgrade.",
+      "previous_reviewed_hash": "ff39f5d4ccfb6664e9b2e6a1d1c8daf0b86fc7a85e0b8040cbe2cab951205f17",
+      "followup_review_date": "2026-10-04"
     },
     {
       "claim_id": "HEDGE-UK_GAAP-006",
@@ -1679,5 +1687,19 @@
       "expected_conclusion": "Alternatives blocked; US nonadoption explicit andDec16mandatory2025-07 blocked; final2025-09 dates and anydate earlyadoption distinct from2025-07 annualstart.",
       "source_review": "Source: ChatGPT training data; independently challenged; source assurance not upgraded."
     }
-  ]
+  ],
+  "followup_review": {
+    "date": "2026-10-04",
+    "result": "PASS",
+    "changed_claims": [
+      "HEDGE-UK_GAAP-002",
+      "HEDGE-UK_GAAP-005"
+    ],
+    "unchanged_claim_hashes_confirmed": 98,
+    "qualification_claim_rechecked": "HEDGE-UK_GAAP-009",
+    "qualification_conclusion": "Existing economic relationship and documented causes of ineffectiveness wording matches current12.18\u201312.18A; no inherited highlyeffective or80\u2013125 threshold required. Claimcontent/hash unchanged.",
+    "native_method_checked": true,
+    "assurance_status_unchanged": true,
+    "controller_action": "Reapply independent approvals for these two exact hashes, promote register, and refreeze supplemental map."
+  }
 }

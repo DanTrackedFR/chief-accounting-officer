@@ -1009,25 +1009,24 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "formula": {
-          "materials": "FIFO",
-          "production": "FIFO",
-          "resale": "FIFO"
+        "carrying": {
+          "Finished goods": "600",
+          "Raw materials": "400",
+          "Work in progress": "200"
         },
         "classes": [
           "FG",
           "RM",
           "WIP"
         ],
-        "write_down": "0",
-        "reversal_circumstances": {
-          "reviewed": true,
-          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-        },
         "pledged": {
           "amount": "0",
           "reviewed": true,
           "evidence_memo": "Synthetic actual collateral register none"
+        },
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
         },
         "policy": {
           "framework": "UK_GAAP",
@@ -1035,11 +1034,12 @@
           "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
         },
         "reversal": "0",
-        "carrying": {
-          "Finished goods": "600",
-          "Raw materials": "400",
-          "Work in progress": "200"
-        }
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "write_down": "0"
       },
       "content_hash": "f3a8a8ea6edd7bdb886df32b4cb23ec013315b1f1e2860bb4494e0864226cd9f"
     },
@@ -2218,25 +2218,24 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "formula": {
-        "materials": "FIFO",
-        "production": "FIFO",
-        "resale": "FIFO"
+      "carrying": {
+        "Finished goods": "600",
+        "Raw materials": "400",
+        "Work in progress": "200"
       },
       "classes": [
         "FG",
         "RM",
         "WIP"
       ],
-      "write_down": "0",
-      "reversal_circumstances": {
-        "reviewed": true,
-        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-      },
       "pledged": {
         "amount": "0",
         "reviewed": true,
         "evidence_memo": "Synthetic actual collateral register none"
+      },
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
       },
       "policy": {
         "framework": "UK_GAAP",
@@ -2244,11 +2243,12 @@
         "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
       },
       "reversal": "0",
-      "carrying": {
-        "Finished goods": "600",
-        "Raw materials": "400",
-        "Work in progress": "200"
-      }
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "write_down": "0"
     },
     "closing_inventory": "1200",
     "cogs": "200",

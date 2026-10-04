@@ -1,0 +1,26 @@
+{
+  "topic_id": "TOPIC-06-008",
+  "guidance": "Qualified derivative scope, valuation bridges, framework hedge journals and reserves reconcile\nReview status: complete\nCalculations: {\"basis_adjustments\": [], \"derivatives\": [{\"change\": \"100\", \"closing\": \"100\", \"earnings_release\": \"0\", \"effective\": \"0\", \"hedged_item_change\": \"-90\", \"id\": \"forward1\", \"ineffectiveness\": \"10\", \"opening\": \"0\", \"route\": \"fair_value\", \"settlement\": \"0\"}], \"effectiveness\": [{\"framework_method\": \"economic_relationship\", \"historical_effective\": \"0\", \"id\": \"relationship1\", \"ratio\": \"1\", \"status\": \"active\"}], \"gl_movements\": {\"Derivative balance forward1\": \"100.00\", \"Hedge P&L relationship1\": \"-10.00\", \"Hedged item basis adjustment relationship1\": \"-90.00\"}, \"hedge_reserves\": []}\nJournals: [[{\"side\": \"Cr\", \"account\": \"Hedged item basis adjustment relationship1\", \"amount\": \"90.00\"}, {\"side\": \"Dr\", \"account\": \"Hedge P&L relationship1\", \"amount\": \"90.00\"}], [{\"side\": \"Dr\", \"account\": \"Derivative balance forward1\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Hedge P&L relationship1\", \"amount\": \"100.00\"}]]\nDisclosure review: Framework-specific instrument, risk, reserve and accounting-effect disclosure support",
+  "framework": "IFRS",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "2026 operative basic full-instrument routes only. Advanced techniques and midperiod measurement splits require a governed specialist method.",
+    "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+  ],
+  "uncertainties": [],
+  "citations": [
+    {
+      "title": "IFRS 9 / IFRS 7 derivative and hedge accounting"
+    },
+    {
+      "title": "IFRS 9 / IFRS 7 derivative and hedge accounting",
+      "locator": "Unverified paragraph reference: IFRS 13.24, 61\u201367, 72\u201390"
+    },
+    {
+      "title": "IFRS 9 / IFRS 7 derivative and hedge accounting",
+      "locator": "Unverified paragraph reference: IFRS 9.6.4.1, 6.5.1\u20136.5.16"
+    }
+  ]
+}

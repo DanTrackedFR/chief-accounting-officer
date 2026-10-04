@@ -1,0 +1,627 @@
+{
+  "case_id": "synthetic-derivatives-hedge-accounting",
+  "framework": "US_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "asu_2025_07_early_adopted": false,
+    "asu_2025_09_early_adopted": false
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "us_entity_type": "public",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "derivatives-hedge-accounting",
+  "execution_date": "2027-02-01",
+  "currency": "EUR",
+  "requested_action": "accounting_workpaper",
+  "model": "unsupported_proposed_model",
+  "documents": [
+    {
+      "id": "doc-forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "forward1",
+        "kind": "forward",
+        "underlying": "Commodity index",
+        "underlying_type": "commodity",
+        "comparable_investment": "1000",
+        "notional": "1000",
+        "payment_provision": true,
+        "initial_net_investment": "0",
+        "small_initial_investment": true,
+        "future_settlement": true,
+        "net_settlement": true,
+        "exception_applies": false,
+        "exception_assessed": true,
+        "embedded_feature": false,
+        "financial_asset_host": false,
+        "closely_related": true,
+        "separation_required": false,
+        "contract_memo": "Actual synthetic contractual terms reviewed",
+        "scope_memo": "Independent scope analysis",
+        "embedded_memo": "Reviewed none",
+        "maturity": "2027-12-31"
+      },
+      "content_hash": "73cf31426d547239b666f7b2e5a2847819a4bc0822a8b1768e0999b07337f851"
+    },
+    {
+      "id": "doc-valuation1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "valuation1",
+        "instrument_id": "forward1",
+        "qualified_valuer": "Synthetic independent derivative valuation specialist",
+        "valuation_method": "Independently qualified external curve and market valuation",
+        "market_evidence": "Synthetic frozen independent market workpaper",
+        "credit_adjustment_memo": "Independent bilateral credit assessment",
+        "measurement_date": "2026-12-31",
+        "opening_date": "2026-01-01",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "notional": "1000",
+        "opening": "0",
+        "change": "100",
+        "settlement": "0",
+        "closing": "100"
+      },
+      "content_hash": "8c193498b69fca5a5fc650bd07ba453183da8e72dc01712dcd14fb4fb70e97e2"
+    },
+    {
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent completeness reviewer",
+        "complete": true,
+        "completeness_memo": "Independent signed contract register completeness",
+        "source_system": "Synthetic contract register",
+        "contract_ids": [
+          "forward1"
+        ],
+        "notional_total": "1000",
+        "id": "population"
+      },
+      "content_hash": "7efc482a6113ad60631e278b25a77981d2a76a3f9c5b2fd8d00dde3b2863cc84"
+    },
+    {
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "framework_checklist": "US_GAAP actual operative disclosure requirements",
+        "strategy_memo": "Documented objective disclosures",
+        "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+        "framework": "US_GAAP",
+        "complete": true,
+        "contract_ids": [
+          "forward1"
+        ],
+        "relationship_ids": [
+          "relationship1"
+        ],
+        "id": "disclosures"
+      },
+      "content_hash": "514702c337e016a6f8ca2a0614afde0b1664a10e3a612c6513bc8a8973b04c09"
+    },
+    {
+      "id": "doc-Derivative balance forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Derivative balance forward1",
+        "opening": "0",
+        "closing": "100",
+        "statement": "100"
+      },
+      "content_hash": "904b0e777174780bd1c80fae39c5d2a488c95fff5752da4ad31650f7fa589497"
+    },
+    {
+      "id": "doc-Derivative P&L forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Derivative P&L forward1",
+        "opening": "0",
+        "closing": "-100",
+        "statement": "-100"
+      },
+      "content_hash": "38285cf57d9cfde289acf56978df5562341a41ac6f7b10898c009b643e006c4f"
+    },
+    {
+      "id": "doc-risk1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "purchase1",
+        "risk_id": "commodity_price",
+        "currency": "EUR",
+        "quantity": "1000",
+        "current_change": "-90",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-90",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0"
+      },
+      "content_hash": "ec7152bc2ea8d9871ed80c0672e255427f51136dfbc3faeb522e4b6fe625c8b3"
+    },
+    {
+      "id": "doc-relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "US_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "relationship1",
+        "instrument_id": "forward1",
+        "type": "cash_flow",
+        "objective": "Documented management commodity purchase price protection",
+        "designation_memo": "Frozen designation at qualification",
+        "instrument_eligibility_memo": "Eligible whole forward",
+        "item_eligibility_memo": "Highly probable commodity purchase",
+        "risk_component_memo": "Whole supported commodity risk",
+        "effectiveness_memo": "Documented independent assessment",
+        "risk_id": "commodity_price",
+        "hedged_item_id": "purchase1",
+        "designation_date": "2026-01-01",
+        "documentation_date": "2026-02-01",
+        "inception_date": "2026-01-01",
+        "advanced_route": "none",
+        "excluded_components": "none",
+        "instrument_eligible": true,
+        "item_eligible": true,
+        "risk_eligible": true,
+        "objective_unchanged": true,
+        "economic_relationship": true,
+        "credit_dominates": false,
+        "highly_effective": true,
+        "external_group_exposure": true,
+        "assessment_date": "2026-12-31",
+        "effectiveness_method": "documented_high_effectiveness",
+        "ratio": "1",
+        "actual_instrument_quantity": "1000",
+        "actual_item_quantity": "1000",
+        "status": "active",
+        "risk_measurement": {
+          "id": "risk1",
+          "instrument_valuation_id": "independent-hypothetical1",
+          "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+          "method": "Separately measured hypothetical instrument for designated risk",
+          "market_evidence": "Independent hypothetical risk source",
+          "assessment_date": "2026-12-31",
+          "item_id": "purchase1",
+          "risk_id": "commodity_price",
+          "currency": "EUR",
+          "quantity": "1000",
+          "current_change": "-90",
+          "instrument_cumulative": "100",
+          "risk_cumulative": "-90",
+          "opening_instrument_cumulative": "0",
+          "opening_risk_cumulative": "0",
+          "document_id": "doc-risk1"
+        },
+        "item_type": "forecast_purchase",
+        "opening_reserve": "0",
+        "reserve_source_opening": "0",
+        "opening_effective": "0",
+        "earnings_release": "0",
+        "basis_release": "0",
+        "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+        "forecast_date": "2027-03-31",
+        "forecast_probability": "probable",
+        "forecast_quantity": "1000",
+        "designated_start": "2026-01-01",
+        "designated_end": "2027-12-31",
+        "forecast_outcome": "pending"
+      },
+      "content_hash": "e24b3ccf62e93d15b98ed1f79ebcb36d6fa04b90ac1f5bbc1f2944916c0d21ef"
+    }
+  ],
+  "imports": [],
+  "owner_links": [],
+  "relationships": [
+    {
+      "id": "relationship1",
+      "instrument_id": "forward1",
+      "type": "cash_flow",
+      "objective": "Documented management commodity purchase price protection",
+      "designation_memo": "Frozen designation at qualification",
+      "instrument_eligibility_memo": "Eligible whole forward",
+      "item_eligibility_memo": "Highly probable commodity purchase",
+      "risk_component_memo": "Whole supported commodity risk",
+      "effectiveness_memo": "Documented independent assessment",
+      "risk_id": "commodity_price",
+      "hedged_item_id": "purchase1",
+      "designation_date": "2026-01-01",
+      "documentation_date": "2026-02-01",
+      "inception_date": "2026-01-01",
+      "advanced_route": "none",
+      "excluded_components": "none",
+      "instrument_eligible": true,
+      "item_eligible": true,
+      "risk_eligible": true,
+      "objective_unchanged": true,
+      "economic_relationship": true,
+      "credit_dominates": false,
+      "highly_effective": true,
+      "external_group_exposure": true,
+      "assessment_date": "2026-12-31",
+      "effectiveness_method": "documented_high_effectiveness",
+      "ratio": "1",
+      "actual_instrument_quantity": "1000",
+      "actual_item_quantity": "1000",
+      "status": "active",
+      "risk_measurement": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "purchase1",
+        "risk_id": "commodity_price",
+        "currency": "EUR",
+        "quantity": "1000",
+        "current_change": "-90",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-90",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0",
+        "document_id": "doc-risk1"
+      },
+      "item_type": "forecast_purchase",
+      "opening_reserve": "0",
+      "reserve_source_opening": "0",
+      "opening_effective": "0",
+      "earnings_release": "0",
+      "basis_release": "0",
+      "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+      "forecast_date": "2027-03-31",
+      "forecast_probability": "probable",
+      "forecast_quantity": "1000",
+      "designated_start": "2026-01-01",
+      "designated_end": "2027-12-31",
+      "forecast_outcome": "pending",
+      "document_id": "doc-relationship1"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "forward1",
+      "kind": "forward",
+      "underlying": "Commodity index",
+      "underlying_type": "commodity",
+      "comparable_investment": "1000",
+      "notional": "1000",
+      "payment_provision": true,
+      "initial_net_investment": "0",
+      "small_initial_investment": true,
+      "future_settlement": true,
+      "net_settlement": true,
+      "exception_applies": false,
+      "exception_assessed": true,
+      "embedded_feature": false,
+      "financial_asset_host": false,
+      "closely_related": true,
+      "separation_required": false,
+      "contract_memo": "Actual synthetic contractual terms reviewed",
+      "scope_memo": "Independent scope analysis",
+      "embedded_memo": "Reviewed none",
+      "maturity": "2027-12-31",
+      "document_id": "doc-forward1"
+    }
+  ],
+  "valuations": [
+    {
+      "id": "valuation1",
+      "instrument_id": "forward1",
+      "qualified_valuer": "Synthetic independent derivative valuation specialist",
+      "valuation_method": "Independently qualified external curve and market valuation",
+      "market_evidence": "Synthetic frozen independent market workpaper",
+      "credit_adjustment_memo": "Independent bilateral credit assessment",
+      "measurement_date": "2026-12-31",
+      "opening_date": "2026-01-01",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "notional": "1000",
+      "opening": "0",
+      "change": "100",
+      "settlement": "0",
+      "closing": "100",
+      "document_id": "doc-valuation1"
+    }
+  ],
+  "population_review": {
+    "reviewer": "Synthetic independent completeness reviewer",
+    "complete": true,
+    "completeness_memo": "Independent signed contract register completeness",
+    "source_system": "Synthetic contract register",
+    "contract_ids": [
+      "forward1"
+    ],
+    "notional_total": "1000",
+    "id": "population",
+    "document_id": "doc-population"
+  },
+  "gl": [
+    {
+      "id": "Derivative balance forward1",
+      "opening": "0",
+      "closing": "100",
+      "statement": "100",
+      "document_id": "doc-Derivative balance forward1"
+    },
+    {
+      "id": "Derivative P&L forward1",
+      "opening": "0",
+      "closing": "-100",
+      "statement": "-100",
+      "document_id": "doc-Derivative P&L forward1"
+    }
+  ],
+  "disclosure_review": {
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "framework_checklist": "US_GAAP actual operative disclosure requirements",
+    "strategy_memo": "Documented objective disclosures",
+    "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+    "framework": "US_GAAP",
+    "complete": true,
+    "contract_ids": [
+      "forward1"
+    ],
+    "relationship_ids": [
+      "relationship1"
+    ],
+    "id": "disclosures",
+    "document_id": "doc-disclosures"
+  },
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "TOPIC-06-008-US-001",
+      "TOPIC-06-008-US_GAAP-R002",
+      "TOPIC-06-009-US-001",
+      "TOPIC-06-009-US_GAAP-R002",
+      "HEDGE-US_GAAP-001",
+      "HEDGE-US_GAAP-002",
+      "HEDGE-US_GAAP-003",
+      "HEDGE-US_GAAP-004",
+      "HEDGE-US_GAAP-005",
+      "HEDGE-US_GAAP-006",
+      "HEDGE-US_GAAP-007",
+      "HEDGE-US_GAAP-008",
+      "HEDGE-US_GAAP-009",
+      "HEDGE-US_GAAP-010",
+      "HEDGE-US_GAAP-011",
+      "HEDGE-US_GAAP-012",
+      "HEDGE-US_GAAP-013",
+      "HEDGE-US_GAAP-014",
+      "HEDGE-US_GAAP-015",
+      "HEDGE-US_GAAP-016",
+      "HEDGE-US_GAAP-017",
+      "HEDGE-US_GAAP-018",
+      "HEDGE-US_GAAP-019",
+      "HEDGE-US_GAAP-020",
+      "HEDGE-US_GAAP-021",
+      "HEDGE-US_GAAP-022",
+      "HEDGE-US_GAAP-023",
+      "HEDGE-US_GAAP-024",
+      "HEDGE-US_GAAP-025"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-008.json",
+        "sha256": "4f23b8e03087599b5a4be6319626331801d6b731370c0b35e8eb8ea099585539"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+        "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+        "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+        "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+        "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+        "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-009.json",
+        "sha256": "6c786762bea7a8b1fe99d25382e11494bae9461939d8192599c5159607199bf4"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+        "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+        "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+        "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+        "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+        "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
+        "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
+        "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
+        "sha256": "666a1024e52771f6463ce2ad65aa2ee38657366635ea6c2b22f7f2b6090b6f8e"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/README.md",
+        "sha256": "2c5b2f6c0d5961e7d21e3f7b7485578ed8ab0a4d02658907bdc91cf689227303"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent-review.json",
+        "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent_review_tests.py",
+        "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/retrieval.py",
+        "sha256": "235fb758a86d927938c251c69d3941c64a6a0e08ad865bff37e5c3416dec8a1b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/standards-claims.json",
+        "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/test_supplement.py",
+        "sha256": "71a1296e72f4f3a5f2307359198532b0785e2eb2b8d02d6a63058ed39a83e4e7"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/validate_supplement.py",
+        "sha256": "6d916cabd73146f08da589a2e1aee7684178f2613cd397f6260c50182df5c317"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-008-US-001",
+      "TOPIC-06-008-US_GAAP-R002",
+      "TOPIC-06-009-US-001",
+      "TOPIC-06-009-US_GAAP-R002",
+      "HEDGE-US_GAAP-001",
+      "HEDGE-US_GAAP-002",
+      "HEDGE-US_GAAP-003",
+      "HEDGE-US_GAAP-004",
+      "HEDGE-US_GAAP-005",
+      "HEDGE-US_GAAP-006",
+      "HEDGE-US_GAAP-007",
+      "HEDGE-US_GAAP-008",
+      "HEDGE-US_GAAP-009",
+      "HEDGE-US_GAAP-010",
+      "HEDGE-US_GAAP-011",
+      "HEDGE-US_GAAP-012",
+      "HEDGE-US_GAAP-013",
+      "HEDGE-US_GAAP-014",
+      "HEDGE-US_GAAP-015",
+      "HEDGE-US_GAAP-016",
+      "HEDGE-US_GAAP-017",
+      "HEDGE-US_GAAP-018",
+      "HEDGE-US_GAAP-019",
+      "HEDGE-US_GAAP-020",
+      "HEDGE-US_GAAP-021",
+      "HEDGE-US_GAAP-022",
+      "HEDGE-US_GAAP-023",
+      "HEDGE-US_GAAP-024",
+      "HEDGE-US_GAAP-025"
+    ],
+    "selection_memo": "Synthetic reviewed decision-specific scope and hedge method claims",
+    "public_caveats": [
+      "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+    ]
+  }
+}

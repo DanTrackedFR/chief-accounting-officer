@@ -1,0 +1,1845 @@
+{
+  "case_id": "synthetic-derivatives-hedge-accounting",
+  "framework": "UK_GAAP",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "section23_model": "revised_2026",
+    "financial_instruments": "sections11_12"
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024",
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "derivatives-hedge-accounting",
+  "execution_date": "2027-02-01",
+  "currency": "EUR",
+  "requested_action": "accounting_workpaper",
+  "model": "FRS102_Section12_2026",
+  "documents": [
+    {
+      "id": "doc-forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "forward1",
+        "kind": "forward",
+        "underlying": "Commodity index",
+        "underlying_type": "commodity",
+        "comparable_investment": "1000",
+        "notional": "1000",
+        "payment_provision": true,
+        "initial_net_investment": "0",
+        "small_initial_investment": true,
+        "future_settlement": true,
+        "net_settlement": true,
+        "exception_applies": false,
+        "exception_assessed": true,
+        "embedded_feature": false,
+        "financial_asset_host": false,
+        "closely_related": true,
+        "separation_required": false,
+        "contract_memo": "Actual synthetic contractual terms reviewed",
+        "scope_memo": "Independent scope analysis",
+        "embedded_memo": "Reviewed none",
+        "maturity": "2028-12-31"
+      },
+      "content_hash": "c9adfa3761ebcb06fcefccfc6021e1619152fee37b67dadc7fe4b8902d19d1f8"
+    },
+    {
+      "id": "doc-valuation1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "valuation1",
+        "instrument_id": "forward1",
+        "qualified_valuer": "Synthetic independent derivative valuation specialist",
+        "valuation_method": "Independently qualified external curve and market valuation",
+        "market_evidence": "Synthetic frozen independent market workpaper",
+        "credit_adjustment_memo": "Independent bilateral credit assessment",
+        "measurement_date": "2026-12-31",
+        "opening_date": "2026-01-01",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "notional": "1000",
+        "opening": "0",
+        "change": "100",
+        "settlement": "0",
+        "closing": "100"
+      },
+      "content_hash": "8c193498b69fca5a5fc650bd07ba453183da8e72dc01712dcd14fb4fb70e97e2"
+    },
+    {
+      "id": "doc-debt-link",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "debt-link",
+        "owner_import": "debt1",
+        "result_path": [
+          "debt",
+          0,
+          "closing"
+        ],
+        "amount": "1008.40"
+      },
+      "content_hash": "fb89651926a0f7834233c579a2b4039eafedd7cd0796ef61c95264861a9483c8"
+    },
+    {
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent completeness reviewer",
+        "complete": true,
+        "completeness_memo": "Independent signed contract register completeness",
+        "source_system": "Synthetic contract register",
+        "contract_ids": [
+          "forward1"
+        ],
+        "notional_total": "1000",
+        "id": "population"
+      },
+      "content_hash": "7efc482a6113ad60631e278b25a77981d2a76a3f9c5b2fd8d00dde3b2863cc84"
+    },
+    {
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "framework_checklist": "UK_GAAP actual operative disclosure requirements",
+        "strategy_memo": "Documented objective disclosures",
+        "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+        "framework": "UK_GAAP",
+        "complete": true,
+        "contract_ids": [
+          "forward1"
+        ],
+        "relationship_ids": [
+          "relationship1"
+        ],
+        "id": "disclosures"
+      },
+      "content_hash": "3087027e678a6fc0a6df262a61255e8177feb24d341e595c1bff755c91c43916"
+    },
+    {
+      "id": "doc-Derivative balance forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Derivative balance forward1",
+        "opening": "0",
+        "closing": "100",
+        "statement": "100"
+      },
+      "content_hash": "904b0e777174780bd1c80fae39c5d2a488c95fff5752da4ad31650f7fa589497"
+    },
+    {
+      "id": "doc-Hedge P&L relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Hedge P&L relationship1",
+        "opening": "0",
+        "closing": "-10",
+        "statement": "-10"
+      },
+      "content_hash": "6e0c7d31baff182fcb84fe924ea4257e24c7f9778757453a6f61a1bf1eaea919"
+    },
+    {
+      "id": "doc-Hedged item basis adjustment relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Hedged item basis adjustment relationship1",
+        "opening": "0",
+        "closing": "-90",
+        "statement": "-90"
+      },
+      "content_hash": "60b4005cba42a8f7d392b2d4a0e18abf7eb4cae0faeec72610054f7d3d1da12a"
+    },
+    {
+      "id": "doc-risk1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "loan",
+        "risk_id": "commodity_price",
+        "currency": "EUR",
+        "quantity": "1000",
+        "current_change": "-90",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-90",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0"
+      },
+      "content_hash": "c42b0c8776960ca77f0a7c645eb828e5922fa4cf56269e3f79f7878fef5c5d24"
+    },
+    {
+      "id": "doc-relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "relationship1",
+        "instrument_id": "forward1",
+        "type": "fair_value",
+        "objective": "Documented management commodity purchase price protection",
+        "designation_memo": "Frozen designation at qualification",
+        "instrument_eligibility_memo": "Eligible whole forward",
+        "item_eligibility_memo": "Highly probable commodity purchase",
+        "risk_component_memo": "Whole supported commodity risk",
+        "effectiveness_memo": "Documented independent assessment",
+        "risk_id": "commodity_price",
+        "hedged_item_id": "loan",
+        "designation_date": "2026-01-01",
+        "documentation_date": "2026-01-01",
+        "inception_date": "2026-01-01",
+        "advanced_route": "none",
+        "excluded_components": "none",
+        "instrument_eligible": true,
+        "item_eligible": true,
+        "risk_eligible": true,
+        "objective_unchanged": true,
+        "economic_relationship": true,
+        "credit_dominates": false,
+        "highly_effective": true,
+        "external_group_exposure": true,
+        "assessment_date": "2026-12-31",
+        "effectiveness_method": "economic_relationship",
+        "ratio": "1",
+        "actual_instrument_quantity": "1000",
+        "actual_item_quantity": "1000",
+        "status": "active",
+        "risk_measurement": {
+          "id": "risk1",
+          "instrument_valuation_id": "independent-hypothetical1",
+          "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+          "method": "Separately measured hypothetical instrument for designated risk",
+          "market_evidence": "Independent hypothetical risk source",
+          "assessment_date": "2026-12-31",
+          "item_id": "loan",
+          "risk_id": "commodity_price",
+          "currency": "EUR",
+          "quantity": "1000",
+          "current_change": "-90",
+          "instrument_cumulative": "100",
+          "risk_cumulative": "-90",
+          "opening_instrument_cumulative": "0",
+          "opening_risk_cumulative": "0",
+          "document_id": "doc-risk1"
+        },
+        "item_type": "debt",
+        "opening_reserve": "0",
+        "reserve_source_opening": "0",
+        "opening_effective": "0",
+        "earnings_release": "0",
+        "basis_release": "0",
+        "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+        "forecast_date": "2027-03-31",
+        "forecast_probability": "highly_probable",
+        "forecast_quantity": "1000",
+        "designated_start": "2026-01-01",
+        "designated_end": "2027-12-31",
+        "forecast_outcome": "pending",
+        "instrument_external": true,
+        "instrument_fvtpl": true,
+        "written_option": false,
+        "documented_ineffectiveness_causes": "Current native documented commodity mismatch and credit causes",
+        "opening_basis": "0",
+        "basis_amortization": "0",
+        "debt_owner": "debt-link",
+        "underlying_carrying": "1008.40",
+        "debt_terms_memo": "Current completed debt contractual schedule",
+        "debt_notional": "1000",
+        "debt_maturity": "2028-12-31",
+        "debt_result_index": 0,
+        "underlying_rate_type": "fixed"
+      },
+      "content_hash": "8b187d255361d7b7d1b299a34196db21ce66fd2dd4365fb70c44e3c781a9bbcb"
+    }
+  ],
+  "imports": [
+    {
+      "id": "debt1",
+      "package": "debt-financing",
+      "case": {
+        "case_id": "synthetic-debt-financing",
+        "framework": "UK_GAAP",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {
+          "section23_model": "revised_2026",
+          "financial_instruments": "sections11_12"
+        },
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "uk_standard": "FRS_102",
+        "uk_standard_edition": "September2024",
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "execution_date": "2027-02-01",
+        "imports": [],
+        "handoffs": {},
+        "controls": {
+          "source_version": "v1",
+          "as_of": "2026-12-31",
+          "population_count": 1,
+          "population_amount": "1000",
+          "owner": "synthetic source owner",
+          "reviewer": "synthetic completeness reviewer",
+          "complete": true,
+          "policy_version": "v1",
+          "cutoff_memo": "Synthetic independently frozen population"
+        },
+        "disclosure_review": {
+          "id": "disclosure",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "checklist_version": "v1",
+          "period_entity_memo": "Actual operative framework/tier checklist",
+          "complete": true
+        },
+        "accounting_policy": {
+          "id": "policy",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "framework": "UK_GAAP",
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "method_memo": "Synthetic reviewed operative method",
+          "effective_standard": "Actual effective edition reviewed",
+          "development_election": "capitalize",
+          "time_basis": "actual_actual",
+          "maturity_allocation": "principal_pro_rata",
+          "effective_time_basis": "actual_actual_compound"
+        },
+        "debt": [
+          {
+            "id": "loan",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "measurement": "amortized_cost",
+            "complex_features": false,
+            "modified": false,
+            "opening_carrying": "0",
+            "opening_principal": "0",
+            "draws": "1000",
+            "eligible_cost": "20",
+            "service_cost": "0",
+            "directly_attributable": true,
+            "schedule": [
+              {
+                "id": "annual",
+                "owner": "synthetic owner",
+                "reviewer": "synthetic independent reviewer",
+                "evidence": "synthetic source",
+                "approved": true,
+                "approval_date": "2026-12-31",
+                "version": "v1",
+                "approved_version": "v1",
+                "start": "2026-01-01",
+                "end": "2026-12-31",
+                "effective_period_rate": ".08",
+                "cash_interest": "50",
+                "principal_payment": "0",
+                "expected_interest": "78.40",
+                "expected_closing": "1008.40"
+              }
+            ],
+            "schedule_inventory": [
+              "annual"
+            ],
+            "lender_principal": "1000",
+            "gl_closing": "1008.40",
+            "rights_at_reporting_date": true,
+            "current_carrying": "0",
+            "noncurrent_carrying": "1008.40",
+            "maturities": [
+              {
+                "id": "maturity",
+                "owner": "synthetic owner",
+                "reviewer": "synthetic independent reviewer",
+                "evidence": "synthetic source",
+                "approved": true,
+                "approval_date": "2026-12-31",
+                "version": "v1",
+                "approved_version": "v1",
+                "date": "2028-12-31",
+                "principal": "1000",
+                "carrying": "1008.40"
+              }
+            ],
+            "maturity_inventory": [
+              "maturity"
+            ],
+            "terms_memo": "Executed synthetic term-loan",
+            "fee_memo": "Verified eligible lender issue costs",
+            "yield_memo": "Supplied contract-supported periodic yield",
+            "classification_memo": "Independent actual framework rights review",
+            "covenant_memo": "All testing dates/rights reviewed",
+            "annual_yield": ".08",
+            "yield_validation": {
+              "id": "yield",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "contract_memo": "Synthetic step-up coupons50,50,122.19776 and redemption1000",
+              "compounding_memo": "Evidenced actual/actual annual compound convention",
+              "cashflows": [
+                {
+                  "id": "coupon1",
+                  "owner": "synthetic owner",
+                  "reviewer": "synthetic independent reviewer",
+                  "evidence": "synthetic source",
+                  "approved": true,
+                  "approval_date": "2026-12-31",
+                  "version": "v1",
+                  "approved_version": "v1",
+                  "date": "2026-12-31",
+                  "amount": "50",
+                  "principal": "0"
+                },
+                {
+                  "id": "coupon2",
+                  "owner": "synthetic owner",
+                  "reviewer": "synthetic independent reviewer",
+                  "evidence": "synthetic source",
+                  "approved": true,
+                  "approval_date": "2026-12-31",
+                  "version": "v1",
+                  "approved_version": "v1",
+                  "date": "2027-12-31",
+                  "amount": "50",
+                  "principal": "0"
+                },
+                {
+                  "id": "redemption",
+                  "owner": "synthetic owner",
+                  "reviewer": "synthetic independent reviewer",
+                  "evidence": "synthetic source",
+                  "approved": true,
+                  "approval_date": "2026-12-31",
+                  "version": "v1",
+                  "approved_version": "v1",
+                  "date": "2028-12-31",
+                  "amount": "1122.19776",
+                  "principal": "1000"
+                }
+              ],
+              "flow_inventory": [
+                "coupon1",
+                "coupon2",
+                "redemption"
+              ]
+            },
+            "source_entity": "Synthetic Group",
+            "source_framework": "UK_GAAP",
+            "source_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "contractual_rate_type": "fixed",
+            "contractual_rate_terms_memo": "Independently reviewed actual debt terms",
+            "contractual_benchmark": "Documented synthetic benchmark"
+          }
+        ],
+        "source_inventory": [
+          "loan"
+        ],
+        "gl": [
+          {
+            "id": "Cash",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "opening": "0",
+            "closing": "930",
+            "statement": "930"
+          },
+          {
+            "id": "Interest expense",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "opening": "0",
+            "closing": "78.40",
+            "statement": "78.40"
+          },
+          {
+            "id": "Debt carrying liability",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "opening": "0",
+            "closing": "-1008.40",
+            "statement": "-1008.40"
+          }
+        ],
+        "gl_inventory": [
+          "Cash",
+          "Interest expense",
+          "Debt carrying liability"
+        ],
+        "knowledge_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "claim_ids": [
+            "TOPIC-06-005-UK-001",
+            "TOPIC-06-005-UK_GAAP-R003",
+            "TOPIC-06-006-UK-001",
+            "TOPIC-06-006-UK_GAAP-R003",
+            "TOPIC-06-007-UK-001",
+            "TOPIC-06-007-UK_GAAP-R003",
+            "TOPIC-13-006-UK-001",
+            "TOPIC-13-006-UK_GAAP-R003"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-06-005",
+              "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/README.md",
+              "sha256": "5a3656a844cf57f58fb377145994a3db9dbd43279cd6deae74b74890e5afed2f"
+            },
+            {
+              "topic_id": "TOPIC-06-005",
+              "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/effective-interest-case.md",
+              "sha256": "e116ab7de3c2c8995bbcca6f162bad7b934b3c6d5f3fa19d268b246b564a33c3"
+            },
+            {
+              "topic_id": "TOPIC-06-005",
+              "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/eir-and-cost-eligibility-review.md",
+              "sha256": "62c3808bd746b4d6016d773df050bd0db819401c2cf3d1e9f4f79d67e11c2efe"
+            },
+            {
+              "topic_id": "TOPIC-06-005",
+              "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/evidence-and-regression.md",
+              "sha256": "8efe590aa1f88100550f84ec60061baf14b80981d97dc8fca1c175f619e6fdb0"
+            },
+            {
+              "topic_id": "TOPIC-06-005",
+              "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/standards-claims.json",
+              "sha256": "881ba246619350fc08da26555f332c83b33caba6e67f45abc975d9dcf2315fe3"
+            },
+            {
+              "topic_id": "TOPIC-06-006",
+              "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/README.md",
+              "sha256": "eb5c9045e3ddf7d13befcecfc82d9516e5a67cf64bcad8536540164cb168497e"
+            },
+            {
+              "topic_id": "TOPIC-06-006",
+              "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/debt-event-case.md",
+              "sha256": "8106a86488a21f5d3fbd789a82b2c9afabb7f0088f104cc57db301f733f0cf2e"
+            },
+            {
+              "topic_id": "TOPIC-06-006",
+              "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/evidence-and-regression.md",
+              "sha256": "067570a733afc42ec9c8577d12c899b66bd3a9389abf4462a633bfa4e689b9bc"
+            },
+            {
+              "topic_id": "TOPIC-06-006",
+              "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/fee-and-waiver-chronology.md",
+              "sha256": "ba34ba9c602e9a10e9db771bc9c981bf89511bb06af29096daa09bd7e2c14eb3"
+            },
+            {
+              "topic_id": "TOPIC-06-006",
+              "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/standards-claims.json",
+              "sha256": "e15925b1f09936858a48e8251d3edeacfbb2f15a47184f988b483bbab826bbf6"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+              "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+              "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+              "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+              "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+            },
+            {
+              "topic_id": "TOPIC-06-007",
+              "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+              "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+            },
+            {
+              "topic_id": "TOPIC-13-006",
+              "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/README.md",
+              "sha256": "582aeea38c04f7b9bc996c68ade8f10fc7895c2546c8890fdffec8fe955f0d9f"
+            },
+            {
+              "topic_id": "TOPIC-13-006",
+              "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/evidence-and-regression.md",
+              "sha256": "017f1f3983136b5661d87f77c364b52b909f4fd3ee27d4e60952bc3465a692f0"
+            },
+            {
+              "topic_id": "TOPIC-13-006",
+              "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/modification-and-capital-case.md",
+              "sha256": "b5a08a2045df7d75fe339da514ef1ec9fce3df37d7f6ea6598c61ff75363fc13"
+            },
+            {
+              "topic_id": "TOPIC-13-006",
+              "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/standards-claims.json",
+              "sha256": "d5ec5cdbad3e69307aa53d3e9b1a600d6dcf5125b5aed894a4fb1b5302cb4fb0"
+            },
+            {
+              "topic_id": "TOPIC-13-006",
+              "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/tests.md",
+              "sha256": "c643da340bba4e387258769d9abc84c0dea906b07bbd052e9df9d2bc071da322"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-06-005-UK-001",
+            "TOPIC-06-005-UK_GAAP-R003",
+            "TOPIC-06-006-UK-001",
+            "TOPIC-06-006-UK_GAAP-R003",
+            "TOPIC-06-007-UK-001",
+            "TOPIC-06-007-UK_GAAP-R003",
+            "TOPIC-13-006-UK-001",
+            "TOPIC-13-006-UK_GAAP-R003"
+          ],
+          "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+          "public_caveats": [
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "synthetic independent reviewer",
+          "approved": true,
+          "case_fingerprint": "7b8ab64621a6b1f6273b92f75b0ae1cb47aec4032e2bf88dc969a4b918032afc"
+        }
+      },
+      "result": {
+        "conclusion": "Plain debt effective-interest and lender/GL bridges reconciled",
+        "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+        "calculations": {
+          "debt": [
+            {
+              "opening": "0",
+              "draws": "1000",
+              "eligible_cost": "20",
+              "effective_interest": "78.40",
+              "cash_interest": "50",
+              "repayments": "0",
+              "closing": "1008.40",
+              "principal": "1000",
+              "current": "0",
+              "noncurrent": "1008.40"
+            }
+          ]
+        },
+        "journal_entry_implications": [
+          [
+            {
+              "side": "Dr",
+              "account": "Cash",
+              "amount": "980.00"
+            },
+            {
+              "side": "Cr",
+              "account": "Debt carrying liability",
+              "amount": "980.00"
+            }
+          ],
+          [
+            {
+              "side": "Dr",
+              "account": "Interest expense",
+              "amount": "78.40"
+            },
+            {
+              "side": "Cr",
+              "account": "Debt carrying liability",
+              "amount": "78.40"
+            }
+          ],
+          [
+            {
+              "side": "Dr",
+              "account": "Debt carrying liability",
+              "amount": "50.00"
+            },
+            {
+              "side": "Cr",
+              "account": "Cash",
+              "amount": "50.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Actual periodic yields and eligible cost classifications require independent contract evidence; no yield guessed",
+          "Modification, extinguishment, revolvers, debt-for-equity, FVTPL, derivatives, covenant/default and legal validity remain instrument/legal specialists"
+        ],
+        "disclosures_impacted": [
+          "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+          "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures"
+        ],
+        "uncertainties": [
+          "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+          "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+        ],
+        "open_items": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "skill_id": "SKILL-DEBT-001",
+        "framework": "UK_GAAP",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-debt-financing",
+          "framework": "UK_GAAP",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {
+            "section23_model": "revised_2026",
+            "financial_instruments": "sections11_12"
+          },
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "uk_standard": "FRS_102",
+          "uk_standard_edition": "September2024",
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "execution_date": "2027-02-01",
+          "imports": [],
+          "handoffs": {},
+          "controls": {
+            "source_version": "v1",
+            "as_of": "2026-12-31",
+            "population_count": 1,
+            "population_amount": "1000",
+            "owner": "synthetic source owner",
+            "reviewer": "synthetic completeness reviewer",
+            "complete": true,
+            "policy_version": "v1",
+            "cutoff_memo": "Synthetic independently frozen population"
+          },
+          "disclosure_review": {
+            "id": "disclosure",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "checklist_version": "v1",
+            "period_entity_memo": "Actual operative framework/tier checklist",
+            "complete": true
+          },
+          "accounting_policy": {
+            "id": "policy",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "framework": "UK_GAAP",
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "method_memo": "Synthetic reviewed operative method",
+            "effective_standard": "Actual effective edition reviewed",
+            "development_election": "capitalize",
+            "time_basis": "actual_actual",
+            "maturity_allocation": "principal_pro_rata",
+            "effective_time_basis": "actual_actual_compound"
+          },
+          "debt": [
+            {
+              "id": "loan",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "measurement": "amortized_cost",
+              "complex_features": false,
+              "modified": false,
+              "opening_carrying": "0",
+              "opening_principal": "0",
+              "draws": "1000",
+              "eligible_cost": "20",
+              "service_cost": "0",
+              "directly_attributable": true,
+              "schedule": [
+                {
+                  "id": "annual",
+                  "owner": "synthetic owner",
+                  "reviewer": "synthetic independent reviewer",
+                  "evidence": "synthetic source",
+                  "approved": true,
+                  "approval_date": "2026-12-31",
+                  "version": "v1",
+                  "approved_version": "v1",
+                  "start": "2026-01-01",
+                  "end": "2026-12-31",
+                  "effective_period_rate": ".08",
+                  "cash_interest": "50",
+                  "principal_payment": "0",
+                  "expected_interest": "78.40",
+                  "expected_closing": "1008.40"
+                }
+              ],
+              "schedule_inventory": [
+                "annual"
+              ],
+              "lender_principal": "1000",
+              "gl_closing": "1008.40",
+              "rights_at_reporting_date": true,
+              "current_carrying": "0",
+              "noncurrent_carrying": "1008.40",
+              "maturities": [
+                {
+                  "id": "maturity",
+                  "owner": "synthetic owner",
+                  "reviewer": "synthetic independent reviewer",
+                  "evidence": "synthetic source",
+                  "approved": true,
+                  "approval_date": "2026-12-31",
+                  "version": "v1",
+                  "approved_version": "v1",
+                  "date": "2028-12-31",
+                  "principal": "1000",
+                  "carrying": "1008.40"
+                }
+              ],
+              "maturity_inventory": [
+                "maturity"
+              ],
+              "terms_memo": "Executed synthetic term-loan",
+              "fee_memo": "Verified eligible lender issue costs",
+              "yield_memo": "Supplied contract-supported periodic yield",
+              "classification_memo": "Independent actual framework rights review",
+              "covenant_memo": "All testing dates/rights reviewed",
+              "annual_yield": ".08",
+              "yield_validation": {
+                "id": "yield",
+                "owner": "synthetic owner",
+                "reviewer": "synthetic independent reviewer",
+                "evidence": "synthetic source",
+                "approved": true,
+                "approval_date": "2026-12-31",
+                "version": "v1",
+                "approved_version": "v1",
+                "contract_memo": "Synthetic step-up coupons50,50,122.19776 and redemption1000",
+                "compounding_memo": "Evidenced actual/actual annual compound convention",
+                "cashflows": [
+                  {
+                    "id": "coupon1",
+                    "owner": "synthetic owner",
+                    "reviewer": "synthetic independent reviewer",
+                    "evidence": "synthetic source",
+                    "approved": true,
+                    "approval_date": "2026-12-31",
+                    "version": "v1",
+                    "approved_version": "v1",
+                    "date": "2026-12-31",
+                    "amount": "50",
+                    "principal": "0"
+                  },
+                  {
+                    "id": "coupon2",
+                    "owner": "synthetic owner",
+                    "reviewer": "synthetic independent reviewer",
+                    "evidence": "synthetic source",
+                    "approved": true,
+                    "approval_date": "2026-12-31",
+                    "version": "v1",
+                    "approved_version": "v1",
+                    "date": "2027-12-31",
+                    "amount": "50",
+                    "principal": "0"
+                  },
+                  {
+                    "id": "redemption",
+                    "owner": "synthetic owner",
+                    "reviewer": "synthetic independent reviewer",
+                    "evidence": "synthetic source",
+                    "approved": true,
+                    "approval_date": "2026-12-31",
+                    "version": "v1",
+                    "approved_version": "v1",
+                    "date": "2028-12-31",
+                    "amount": "1122.19776",
+                    "principal": "1000"
+                  }
+                ],
+                "flow_inventory": [
+                  "coupon1",
+                  "coupon2",
+                  "redemption"
+                ]
+              },
+              "source_entity": "Synthetic Group",
+              "source_framework": "UK_GAAP",
+              "source_period": [
+                "2026-01-01",
+                "2026-12-31"
+              ],
+              "contractual_rate_type": "fixed",
+              "contractual_rate_terms_memo": "Independently reviewed actual debt terms",
+              "contractual_benchmark": "Documented synthetic benchmark"
+            }
+          ],
+          "source_inventory": [
+            "loan"
+          ],
+          "gl": [
+            {
+              "id": "Cash",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "opening": "0",
+              "closing": "930",
+              "statement": "930"
+            },
+            {
+              "id": "Interest expense",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "opening": "0",
+              "closing": "78.40",
+              "statement": "78.40"
+            },
+            {
+              "id": "Debt carrying liability",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "opening": "0",
+              "closing": "-1008.40",
+              "statement": "-1008.40"
+            }
+          ],
+          "gl_inventory": [
+            "Cash",
+            "Interest expense",
+            "Debt carrying liability"
+          ]
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-06-005",
+            "claim_id": "TOPIC-06-005-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt issuance costs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "claim_id": "TOPIC-06-005-UK_GAAP-R003",
+            "proposition": "Eligible directly attributable amortized-cost debt costs enter effective interest; service, FVTPL and undrawn facility costs need distinct classification.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "claim_id": "TOPIC-06-006-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt modification covenants.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "claim_id": "TOPIC-06-006-UK_GAAP-R003",
+            "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to financial instrument classification measurement.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-UK_GAAP-R003",
+            "proposition": "IFRS/AASB asset business model and SPPI categories differ from US instrument-specific and UK basic/other instrument policy routes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "claim_id": "TOPIC-13-006-UK-001",
+            "proposition": "Determine UK_GAAP transaction scope, recognition, measurement, presentation, disclosure and transition for debt restructuring equity financing independently.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative current paragraph, elections, transition and entity scope need direct audit."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "For-profit; US public/private, UK size and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "claim_id": "TOPIC-13-006-UK_GAAP-R003",
+            "proposition": "Debt restructuring requires framework-specific derecognition/modification before fee treatment; equity financing instruments and costs are classified separately, and debt-for-equity scope can change P&L versus owner treatment.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "UKSection19 includes directlyattributablecombinationcosts, probable/reliable contingentcostadjustments, proportionate NCI andgoodwillamortization ratherthanfullIFRS3model. USASC805/VIE, private-company alternatives,ASC205-20/360discontinued criteria anddebt/TDRscope independentlychallenged. AASBNFP/tier/amendments separatelygated. BroadUSoperativeparagraphs unverified, training-data treatment checked; legalrights,taxvaluation andperiod caveats public."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "Individual special-transaction method reviewed; substantive REVIEWED confirmed. Explicit register families cover material recognition, measurement, scope and comparative propositions.",
+            "audit_required": true
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-06-005",
+            "claim_id": "TOPIC-06-005-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt issuance costs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "claim_id": "TOPIC-06-005-UK_GAAP-R003",
+            "proposition": "Eligible directly attributable amortized-cost debt costs enter effective interest; service, FVTPL and undrawn facility costs need distinct classification.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "claim_id": "TOPIC-06-006-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to debt modification covenants.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "claim_id": "TOPIC-06-006-UK_GAAP-R003",
+            "proposition": "Debt modification uses framework-specific quantitative/qualitative tests and fee population; covenant dates and substantive reporting-date rights control classification.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-UK-001",
+            "proposition": "Apply UK_GAAP instrument/FX recognition, measurement, presentation, disclosure and period rules independently to financial instrument classification measurement.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative paragraph, options, disclosure and effective period require direct authoritative audit."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "claim_id": "TOPIC-06-007-UK_GAAP-R003",
+            "proposition": "IFRS/AASB asset business model and SPPI categories differ from US instrument-specific and UK basic/other instrument policy routes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "claim_id": "TOPIC-13-006-UK-001",
+            "proposition": "Determine UK_GAAP transaction scope, recognition, measurement, presentation, disclosure and transition for debt restructuring equity financing independently.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Operative current paragraph, elections, transition and entity scope need direct audit."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "For-profit; US public/private, UK size and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "claim_id": "TOPIC-13-006-UK_GAAP-R003",
+            "proposition": "Debt restructuring requires framework-specific derecognition/modification before fee treatment; equity financing instruments and costs are classified separately, and debt-for-equity scope can change P&L versus owner treatment.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "UKSection19 includes directlyattributablecombinationcosts, probable/reliable contingentcostadjustments, proportionate NCI andgoodwillamortization ratherthanfullIFRS3model. USASC805/VIE, private-company alternatives,ASC205-20/360discontinued criteria anddebt/TDRscope independentlychallenged. AASBNFP/tier/amendments separatelygated. BroadUSoperativeparagraphs unverified, training-data treatment checked; legalrights,taxvaluation andperiod caveats public."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "Individual special-transaction method reviewed; substantive REVIEWED confirmed. Explicit register families cover material recognition, measurement, scope and comparative propositions.",
+            "audit_required": true
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-06-005",
+            "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/README.md",
+            "sha256": "5a3656a844cf57f58fb377145994a3db9dbd43279cd6deae74b74890e5afed2f"
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/effective-interest-case.md",
+            "sha256": "e116ab7de3c2c8995bbcca6f162bad7b934b3c6d5f3fa19d268b246b564a33c3"
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/eir-and-cost-eligibility-review.md",
+            "sha256": "62c3808bd746b4d6016d773df050bd0db819401c2cf3d1e9f4f79d67e11c2efe"
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/evidence-and-regression.md",
+            "sha256": "8efe590aa1f88100550f84ec60061baf14b80981d97dc8fca1c175f619e6fdb0"
+          },
+          {
+            "topic_id": "TOPIC-06-005",
+            "path": "knowledge/topics/TOPIC-06-005-debt-issuance-costs/standards-claims.json",
+            "sha256": "881ba246619350fc08da26555f332c83b33caba6e67f45abc975d9dcf2315fe3"
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/README.md",
+            "sha256": "eb5c9045e3ddf7d13befcecfc82d9516e5a67cf64bcad8536540164cb168497e"
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/debt-event-case.md",
+            "sha256": "8106a86488a21f5d3fbd789a82b2c9afabb7f0088f104cc57db301f733f0cf2e"
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/evidence-and-regression.md",
+            "sha256": "067570a733afc42ec9c8577d12c899b66bd3a9389abf4462a633bfa4e689b9bc"
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/fee-and-waiver-chronology.md",
+            "sha256": "ba34ba9c602e9a10e9db771bc9c981bf89511bb06af29096daa09bd7e2c14eb3"
+          },
+          {
+            "topic_id": "TOPIC-06-006",
+            "path": "knowledge/topics/TOPIC-06-006-debt-modification-covenants/standards-claims.json",
+            "sha256": "e15925b1f09936858a48e8251d3edeacfbb2f15a47184f988b483bbab826bbf6"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/README.md",
+            "sha256": "248a4dad48be92d811919bb94b4bc2633c608c67ad7b870cb9c051a5b9f33ff5"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification/tests.md",
+            "sha256": "afcd47b02e42e1ad0885ce7ab9cea106cdfb2462e5b432bb8df3c3514ef79cba"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/README.md",
+            "sha256": "589b14d0c16220f8952e01a1e4e1f2ef82eda12c2d32b45449c10380f17757e4"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/evidence-and-regression.md",
+            "sha256": "57cd3cedc86d0894ce05f323ca19e9530fe8fb3f0a9fb92e1b65fa698e18136d"
+          },
+          {
+            "topic_id": "TOPIC-06-007",
+            "path": "knowledge/topics/TOPIC-06-007-financial-instrument-classification-measurement/standards-claims.json",
+            "sha256": "4cd23ddaff71ed5ec467d19da710c13bae77b95915726755cd4ed890573ac501"
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/README.md",
+            "sha256": "582aeea38c04f7b9bc996c68ade8f10fc7895c2546c8890fdffec8fe955f0d9f"
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/evidence-and-regression.md",
+            "sha256": "017f1f3983136b5661d87f77c364b52b909f4fd3ee27d4e60952bc3465a692f0"
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/modification-and-capital-case.md",
+            "sha256": "b5a08a2045df7d75fe339da514ef1ec9fce3df37d7f6ea6598c61ff75363fc13"
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/standards-claims.json",
+            "sha256": "d5ec5cdbad3e69307aa53d3e9b1a600d6dcf5125b5aed894a4fb1b5302cb4fb0"
+          },
+          {
+            "topic_id": "TOPIC-13-006",
+            "path": "knowledge/topics/TOPIC-13-006-debt-restructuring-equity-financing/tests.md",
+            "sha256": "c643da340bba4e387258769d9abc84c0dea906b07bbd052e9df9d2bc071da322"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "case_fingerprint": "7b8ab64621a6b1f6273b92f75b0ae1cb47aec4032e2bf88dc969a4b918032afc",
+        "status": "complete"
+      }
+    }
+  ],
+  "owner_links": [
+    {
+      "id": "debt-link",
+      "owner_import": "debt1",
+      "result_path": [
+        "debt",
+        0,
+        "closing"
+      ],
+      "amount": "1008.40",
+      "document_id": "doc-debt-link"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship1",
+      "instrument_id": "forward1",
+      "type": "fair_value",
+      "objective": "Documented management commodity purchase price protection",
+      "designation_memo": "Frozen designation at qualification",
+      "instrument_eligibility_memo": "Eligible whole forward",
+      "item_eligibility_memo": "Highly probable commodity purchase",
+      "risk_component_memo": "Whole supported commodity risk",
+      "effectiveness_memo": "Documented independent assessment",
+      "risk_id": "commodity_price",
+      "hedged_item_id": "loan",
+      "designation_date": "2026-01-01",
+      "documentation_date": "2026-01-01",
+      "inception_date": "2026-01-01",
+      "advanced_route": "none",
+      "excluded_components": "none",
+      "instrument_eligible": true,
+      "item_eligible": true,
+      "risk_eligible": true,
+      "objective_unchanged": true,
+      "economic_relationship": true,
+      "credit_dominates": false,
+      "highly_effective": true,
+      "external_group_exposure": true,
+      "assessment_date": "2026-12-31",
+      "effectiveness_method": "economic_relationship",
+      "ratio": "1",
+      "actual_instrument_quantity": "1000",
+      "actual_item_quantity": "1000",
+      "status": "active",
+      "risk_measurement": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "loan",
+        "risk_id": "commodity_price",
+        "currency": "EUR",
+        "quantity": "1000",
+        "current_change": "-90",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-90",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0",
+        "document_id": "doc-risk1"
+      },
+      "item_type": "debt",
+      "opening_reserve": "0",
+      "reserve_source_opening": "0",
+      "opening_effective": "0",
+      "earnings_release": "0",
+      "basis_release": "0",
+      "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+      "forecast_date": "2027-03-31",
+      "forecast_probability": "highly_probable",
+      "forecast_quantity": "1000",
+      "designated_start": "2026-01-01",
+      "designated_end": "2027-12-31",
+      "forecast_outcome": "pending",
+      "instrument_external": true,
+      "instrument_fvtpl": true,
+      "written_option": false,
+      "documented_ineffectiveness_causes": "Current native documented commodity mismatch and credit causes",
+      "document_id": "doc-relationship1",
+      "opening_basis": "0",
+      "basis_amortization": "0",
+      "debt_owner": "debt-link",
+      "underlying_carrying": "1008.40",
+      "debt_terms_memo": "Current completed debt contractual schedule",
+      "debt_notional": "1000",
+      "debt_maturity": "2028-12-31",
+      "debt_result_index": 0,
+      "underlying_rate_type": "fixed"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "forward1",
+      "kind": "forward",
+      "underlying": "Commodity index",
+      "underlying_type": "commodity",
+      "comparable_investment": "1000",
+      "notional": "1000",
+      "payment_provision": true,
+      "initial_net_investment": "0",
+      "small_initial_investment": true,
+      "future_settlement": true,
+      "net_settlement": true,
+      "exception_applies": false,
+      "exception_assessed": true,
+      "embedded_feature": false,
+      "financial_asset_host": false,
+      "closely_related": true,
+      "separation_required": false,
+      "contract_memo": "Actual synthetic contractual terms reviewed",
+      "scope_memo": "Independent scope analysis",
+      "embedded_memo": "Reviewed none",
+      "maturity": "2028-12-31",
+      "document_id": "doc-forward1"
+    }
+  ],
+  "valuations": [
+    {
+      "id": "valuation1",
+      "instrument_id": "forward1",
+      "qualified_valuer": "Synthetic independent derivative valuation specialist",
+      "valuation_method": "Independently qualified external curve and market valuation",
+      "market_evidence": "Synthetic frozen independent market workpaper",
+      "credit_adjustment_memo": "Independent bilateral credit assessment",
+      "measurement_date": "2026-12-31",
+      "opening_date": "2026-01-01",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "notional": "1000",
+      "opening": "0",
+      "change": "100",
+      "settlement": "0",
+      "closing": "100",
+      "document_id": "doc-valuation1"
+    }
+  ],
+  "population_review": {
+    "reviewer": "Synthetic independent completeness reviewer",
+    "complete": true,
+    "completeness_memo": "Independent signed contract register completeness",
+    "source_system": "Synthetic contract register",
+    "contract_ids": [
+      "forward1"
+    ],
+    "notional_total": "1000",
+    "id": "population",
+    "document_id": "doc-population"
+  },
+  "gl": [
+    {
+      "id": "Derivative balance forward1",
+      "opening": "0",
+      "closing": "100",
+      "statement": "100",
+      "document_id": "doc-Derivative balance forward1"
+    },
+    {
+      "id": "Hedge P&L relationship1",
+      "opening": "0",
+      "closing": "-10",
+      "statement": "-10",
+      "document_id": "doc-Hedge P&L relationship1"
+    },
+    {
+      "id": "Hedged item basis adjustment relationship1",
+      "opening": "0",
+      "closing": "-90",
+      "statement": "-90",
+      "document_id": "doc-Hedged item basis adjustment relationship1"
+    }
+  ],
+  "disclosure_review": {
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "framework_checklist": "UK_GAAP actual operative disclosure requirements",
+    "strategy_memo": "Documented objective disclosures",
+    "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+    "framework": "UK_GAAP",
+    "complete": true,
+    "contract_ids": [
+      "forward1"
+    ],
+    "relationship_ids": [
+      "relationship1"
+    ],
+    "id": "disclosures",
+    "document_id": "doc-disclosures"
+  },
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "TOPIC-06-008-UK-001",
+      "TOPIC-06-008-UK_GAAP-R003",
+      "TOPIC-06-009-UK-001",
+      "TOPIC-06-009-UK_GAAP-R003",
+      "HEDGE-UK_GAAP-001",
+      "HEDGE-UK_GAAP-002",
+      "HEDGE-UK_GAAP-003",
+      "HEDGE-UK_GAAP-004",
+      "HEDGE-UK_GAAP-005",
+      "HEDGE-UK_GAAP-006",
+      "HEDGE-UK_GAAP-007",
+      "HEDGE-UK_GAAP-008",
+      "HEDGE-UK_GAAP-009",
+      "HEDGE-UK_GAAP-010",
+      "HEDGE-UK_GAAP-011",
+      "HEDGE-UK_GAAP-012",
+      "HEDGE-UK_GAAP-013",
+      "HEDGE-UK_GAAP-014",
+      "HEDGE-UK_GAAP-015",
+      "HEDGE-UK_GAAP-016",
+      "HEDGE-UK_GAAP-017",
+      "HEDGE-UK_GAAP-018",
+      "HEDGE-UK_GAAP-019",
+      "HEDGE-UK_GAAP-020",
+      "HEDGE-UK_GAAP-021",
+      "HEDGE-UK_GAAP-022",
+      "HEDGE-UK_GAAP-023",
+      "HEDGE-UK_GAAP-024",
+      "HEDGE-UK_GAAP-025"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-008.json",
+        "sha256": "4f23b8e03087599b5a4be6319626331801d6b731370c0b35e8eb8ea099585539"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+        "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+        "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+        "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+        "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+        "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-009.json",
+        "sha256": "6c786762bea7a8b1fe99d25382e11494bae9461939d8192599c5159607199bf4"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+        "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+        "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+        "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+        "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+        "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
+        "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
+        "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
+        "sha256": "666a1024e52771f6463ce2ad65aa2ee38657366635ea6c2b22f7f2b6090b6f8e"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/README.md",
+        "sha256": "2c5b2f6c0d5961e7d21e3f7b7485578ed8ab0a4d02658907bdc91cf689227303"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent-review.json",
+        "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent_review_tests.py",
+        "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/retrieval.py",
+        "sha256": "235fb758a86d927938c251c69d3941c64a6a0e08ad865bff37e5c3416dec8a1b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/standards-claims.json",
+        "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/test_supplement.py",
+        "sha256": "71a1296e72f4f3a5f2307359198532b0785e2eb2b8d02d6a63058ed39a83e4e7"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/validate_supplement.py",
+        "sha256": "6d916cabd73146f08da589a2e1aee7684178f2613cd397f6260c50182df5c317"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-008-UK-001",
+      "TOPIC-06-008-UK_GAAP-R003",
+      "TOPIC-06-009-UK-001",
+      "TOPIC-06-009-UK_GAAP-R003",
+      "HEDGE-UK_GAAP-001",
+      "HEDGE-UK_GAAP-002",
+      "HEDGE-UK_GAAP-003",
+      "HEDGE-UK_GAAP-004",
+      "HEDGE-UK_GAAP-005",
+      "HEDGE-UK_GAAP-006",
+      "HEDGE-UK_GAAP-007",
+      "HEDGE-UK_GAAP-008",
+      "HEDGE-UK_GAAP-009",
+      "HEDGE-UK_GAAP-010",
+      "HEDGE-UK_GAAP-011",
+      "HEDGE-UK_GAAP-012",
+      "HEDGE-UK_GAAP-013",
+      "HEDGE-UK_GAAP-014",
+      "HEDGE-UK_GAAP-015",
+      "HEDGE-UK_GAAP-016",
+      "HEDGE-UK_GAAP-017",
+      "HEDGE-UK_GAAP-018",
+      "HEDGE-UK_GAAP-019",
+      "HEDGE-UK_GAAP-020",
+      "HEDGE-UK_GAAP-021",
+      "HEDGE-UK_GAAP-022",
+      "HEDGE-UK_GAAP-023",
+      "HEDGE-UK_GAAP-024",
+      "HEDGE-UK_GAAP-025"
+    ],
+    "selection_memo": "Synthetic reviewed decision-specific scope and hedge method claims",
+    "public_caveats": [
+      "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+    ]
+  }
+}

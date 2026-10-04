@@ -96,6 +96,30 @@ class IndependentKnowledgeChallenges(unittest.TestCase):
             self.assertIn('prior releases',p)
         self.assertIn('entire instrument change',self.claims[('US_GAAP','cash_flow_measurement')]['proposition'])
 
+    def test_native_uk_scope_and_qualification_conditions(self):
+        # Fresh native-scope challenges: atypical loss risk survives physical purpose;
+        # original purpose alone fails if current holding is speculative.
+        scope = self.claims[('UK_GAAP','scope_exception')]
+        self.assertIn('12.4',scope['proposition'])
+        self.assertIn('cannot override',scope['proposition'])
+        self.assertIn('entry and continuous holding',scope['proposition'])
+        instrument = self.claims[('UK_GAAP','eligible_instrument')]
+        for condition in ('FVTPL','external party','not a net written option','FX risk component of a nonderivative'):
+            self.assertIn(condition,instrument['proposition'])
+        self.assertIn('do not impose obsolete',instrument['proposition'])
+        # Maturity mismatch/extension does not itself defeat current native eligibility;
+        # absence of actual economic relationship does, despite a US-style effectiveness flag.
+        qualification = self.claims[('UK_GAAP','effectiveness')]
+        self.assertIn('economic relationship',qualification['proposition'])
+        self.assertIn('documented causes of ineffectiveness',qualification['proposition'])
+        self.assertIn('not interchangeable',qualification['proposition'])
+        for c in (scope,instrument,qualification):
+            self.assertEqual(c['evidence_status'],'MODEL_DERIVED_AUDIT_REQUIRED')
+            self.assertIs(c['audit_required'],True)
+        for c in (scope,instrument):
+            self.assertTrue(any(x['inspected'] and x['source_kind']=='CURRENT_STANDARD' for x in c['sources']))
+            self.assertNotIn('paragraph_references',c)
+
     def test_signed_settlement_and_purchase_challenge(self):
         # Opening asset23, closingzero, collected31 => gain8. Liability-23,pay31 => loss8.
         self.assertEqual(0-23+31,8)

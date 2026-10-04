@@ -2759,7 +2759,7 @@
       "framework": "UK_GAAP",
       "decision": "scope_exception",
       "claim_kind": "NORMATIVE",
-      "proposition": "Resolve the actual contract exception using its rights, physical delivery purpose, settlement practice and framework; no exception can be inferred from a product label.",
+      "proposition": "Native FRS102 Section12.4 captures nonfinancial contracts imposing atypical risks independently of the ordinary Section12.5 net-settlement route. For ordinary net-settleable purchase/sale contracts, the12.5 exception requires both entry and continuous holding for actual expected receipt/delivery needs; it cannot override12.4 atypical-risk scope.",
       "source": "ChatGPT training data",
       "sources": [
         {
@@ -2769,6 +2769,14 @@
           "locator": null,
           "inspected": false,
           "access_date": null
+        },
+        {
+          "title": "FRS102 September2024 current Section12",
+          "source_kind": "CURRENT_STANDARD",
+          "url": "https://media.frc.org.uk/documents/FRS_102_September_2024_Redacted_edition_UkckFQ0.pdf",
+          "locator": "12.4\u201312.5",
+          "inspected": true,
+          "access_date": "2026-10-04"
         }
       ],
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -2777,7 +2785,7 @@
       "approval_track": "TRAINING_DATA_CHECKED",
       "approval_review": {
         "result": "PASS",
-        "reviewed_hash": "ce8c0a3269ccbcb8f682338cb73c3170acde60419f188dc52f8c04d306a7232a",
+        "reviewed_hash": "a741824e892ac2960bd38a490061183400226ba589283dd870db9b12eefad5d1",
         "scope_and_period_checked": true,
         "cross_framework_checked": true,
         "regression_checked": true,
@@ -2794,7 +2802,8 @@
       "entity_scope": "frs102_full_commercial",
       "limitations": [
         "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
-        "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+        "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation.",
+        "Evidence tier retained conservatively pending a separate authority-assurance upgrade; inspected routing material does not erase the direct audit obligation."
       ],
       "public_limitations": [
         "2026 ordinary full-instrument accounting route only; specialized methods require further analysis."
@@ -2918,7 +2927,7 @@
       "framework": "UK_GAAP",
       "decision": "eligible_instrument",
       "claim_kind": "NORMATIVE",
-      "proposition": "An eligible external hedging instrument must satisfy the actual model; a written option or specialized nonderivative is not automatically eligible.",
+      "proposition": "Under current native FRS102 Section12.17 an eligible hedging instrument is a FVTPL financial instrument with an external party and is not a written option unless offset by or combined with a purchased option and the result is not a net written option under12.17C. Section12.17A permits whole/proportion and supported spot/intrinsic designations;12.17B separately permits the FX risk component of a nonderivative financial instrument. Current rules do not impose obsolete swaps/forwards-only, maturity-before-forecast or no-prepayment/extension conditions. Actual economic relationship and documented ineffectiveness causes remain required under12.18.",
       "source": "ChatGPT training data",
       "sources": [
         {
@@ -2928,6 +2937,14 @@
           "locator": null,
           "inspected": false,
           "access_date": null
+        },
+        {
+          "title": "FRS102 September2024 current Section12",
+          "source_kind": "CURRENT_STANDARD",
+          "url": "https://media.frc.org.uk/documents/FRS_102_September_2024_Redacted_edition_UkckFQ0.pdf",
+          "locator": "12.17\u201312.18A",
+          "inspected": true,
+          "access_date": "2026-10-04"
         }
       ],
       "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
@@ -2936,7 +2953,7 @@
       "approval_track": "TRAINING_DATA_CHECKED",
       "approval_review": {
         "result": "PASS",
-        "reviewed_hash": "ff39f5d4ccfb6664e9b2e6a1d1c8daf0b86fc7a85e0b8040cbe2cab951205f17",
+        "reviewed_hash": "72ea0405d0f7ab6010f3859bc4f9382210782d63f4d1e4a6686431db766885a3",
         "scope_and_period_checked": true,
         "cross_framework_checked": true,
         "regression_checked": true,
@@ -2953,7 +2970,8 @@
       "entity_scope": "frs102_full_commercial",
       "limitations": [
         "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
-        "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+        "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation.",
+        "Evidence tier retained conservatively pending a separate authority-assurance upgrade; inspected routing material does not erase the direct audit obligation."
       ],
       "public_limitations": [
         "2026 ordinary full-instrument accounting route only; specialized methods require further analysis."
@@ -5437,11 +5455,11 @@
   "documents": [
     {
       "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
-      "sha256": "8d84954fc182dcb9f265b3f689827acc8894722003833ed8d8c53f5b9c5d6554"
+      "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
     },
     {
       "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
-      "sha256": "37cb8449caf6470dfaaecf8b4afde182646b06ff982eef5ea4e0a70fbe7bf330"
+      "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
     },
     {
       "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
@@ -5453,11 +5471,11 @@
     },
     {
       "path": "knowledge/derivatives-hedge/independent-review.json",
-      "sha256": "0baf91b9776fb081a0e7a5eb41cb05dfefd0d8d9243eec268e0eb207c1ef36e9"
+      "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
     },
     {
       "path": "knowledge/derivatives-hedge/independent_review_tests.py",
-      "sha256": "60fda3169a9a15cb254c789a07ec10a3e3cd67e91435533bce6a8a60b76e9ed9"
+      "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
     },
     {
       "path": "knowledge/derivatives-hedge/retrieval.py",
@@ -5465,7 +5483,7 @@
     },
     {
       "path": "knowledge/derivatives-hedge/standards-claims.json",
-      "sha256": "1557ae3ad8a045e081df78484e62eade1f839cdf5214e1bd34b32c7adb70cec6"
+      "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
     },
     {
       "path": "knowledge/derivatives-hedge/test_supplement.py",

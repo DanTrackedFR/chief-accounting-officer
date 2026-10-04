@@ -1,0 +1,3174 @@
+{
+  "case_id": "synthetic-derivatives-hedge-accounting",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "derivatives-hedge-accounting",
+  "execution_date": "2027-02-01",
+  "currency": "EUR",
+  "requested_action": "accounting_workpaper",
+  "model": "IFRS9_Chapter6",
+  "documents": [
+    {
+      "id": "doc-forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "forward1",
+        "kind": "forward",
+        "underlying": "Commodity index",
+        "underlying_type": "commodity",
+        "comparable_investment": "1000",
+        "notional": "64",
+        "payment_provision": true,
+        "initial_net_investment": "0",
+        "small_initial_investment": true,
+        "future_settlement": true,
+        "net_settlement": true,
+        "exception_applies": false,
+        "exception_assessed": true,
+        "embedded_feature": false,
+        "financial_asset_host": false,
+        "closely_related": true,
+        "separation_required": false,
+        "contract_memo": "Actual synthetic contractual terms reviewed",
+        "scope_memo": "Independent scope analysis",
+        "embedded_memo": "Reviewed none",
+        "maturity": "2027-12-31"
+      },
+      "content_hash": "830838e48b1cde486fb09594745af0307faf7a5904056c61095534e3d32512a4"
+    },
+    {
+      "id": "doc-valuation1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "valuation1",
+        "instrument_id": "forward1",
+        "qualified_valuer": "Synthetic independent derivative valuation specialist",
+        "valuation_method": "Independently qualified external curve and market valuation",
+        "market_evidence": "Synthetic frozen independent market workpaper",
+        "credit_adjustment_memo": "Independent bilateral credit assessment",
+        "measurement_date": "2026-12-31",
+        "opening_date": "2026-01-01",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "notional": "64",
+        "opening": "0",
+        "change": "100",
+        "settlement": "0",
+        "closing": "100"
+      },
+      "content_hash": "6ca8440e34645c55ae7af90e4cbee5e79cd4a7070303ef0d270f8580d018b530"
+    },
+    {
+      "id": "doc-translation-link",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "translation-link",
+        "owner_import": "fx1",
+        "result_path": [
+          "translation",
+          "cta_movement"
+        ],
+        "amount": "-10"
+      },
+      "content_hash": "5f3abd7192e28878ba97ce6e5d9743cef757af2b4beb97a1d0f84a538b61db16"
+    },
+    {
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent completeness reviewer",
+        "complete": true,
+        "completeness_memo": "Independent signed contract register completeness",
+        "source_system": "Synthetic contract register",
+        "contract_ids": [
+          "forward1"
+        ],
+        "notional_total": "64",
+        "id": "population"
+      },
+      "content_hash": "40f1227721741e9b51aa746bae329248a9b8fa7495f1014769acd290fd8c58e6"
+    },
+    {
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "framework_checklist": "IFRS actual operative disclosure requirements",
+        "strategy_memo": "Documented objective disclosures",
+        "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+        "framework": "IFRS",
+        "complete": true,
+        "contract_ids": [
+          "forward1"
+        ],
+        "relationship_ids": [
+          "relationship1"
+        ],
+        "id": "disclosures"
+      },
+      "content_hash": "60c9781eaf59ebb914851dc6c665a504bf09637cdfd8f645583662ae2dc3e3cc"
+    },
+    {
+      "id": "doc-Derivative balance forward1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Derivative balance forward1",
+        "opening": "0",
+        "closing": "100",
+        "statement": "100"
+      },
+      "content_hash": "904b0e777174780bd1c80fae39c5d2a488c95fff5752da4ad31650f7fa589497"
+    },
+    {
+      "id": "doc-Hedge P&L relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Hedge P&L relationship1",
+        "opening": "0",
+        "closing": "-90",
+        "statement": "-90"
+      },
+      "content_hash": "dc9f1fd9c19eccfcb2e5f2d2b16ec9a617baab678aba8d8c5cb9224a77b95e92"
+    },
+    {
+      "id": "doc-Hedge reserve relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Hedge reserve relationship1",
+        "opening": "0",
+        "closing": "-10",
+        "statement": "-10"
+      },
+      "content_hash": "cc1d00d9d7b6ca8ad6611d9c2e60c16ceaafe24be585dce1de2a8a770f3f8c4f"
+    },
+    {
+      "id": "doc-risk1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "purchase1",
+        "risk_id": "FX",
+        "currency": "EUR",
+        "quantity": "64",
+        "current_change": "-10",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-10",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0"
+      },
+      "content_hash": "32c0d3879bf96705dec98483b2006a0142d59f8968c1f1f6273682474b39bd44"
+    },
+    {
+      "id": "doc-relationship1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic frozen source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "relationship1",
+        "instrument_id": "forward1",
+        "type": "net_investment",
+        "objective": "Documented management commodity purchase price protection",
+        "designation_memo": "Frozen designation at qualification",
+        "instrument_eligibility_memo": "Eligible whole forward",
+        "item_eligibility_memo": "Highly probable commodity purchase",
+        "risk_component_memo": "Whole supported commodity risk",
+        "effectiveness_memo": "Documented independent assessment",
+        "risk_id": "FX",
+        "hedged_item_id": "purchase1",
+        "designation_date": "2026-01-01",
+        "documentation_date": "2026-01-01",
+        "inception_date": "2026-01-01",
+        "advanced_route": "none",
+        "excluded_components": "none",
+        "instrument_eligible": true,
+        "item_eligible": true,
+        "risk_eligible": true,
+        "objective_unchanged": true,
+        "economic_relationship": true,
+        "credit_dominates": false,
+        "highly_effective": true,
+        "external_group_exposure": true,
+        "assessment_date": "2026-12-31",
+        "effectiveness_method": "economic_relationship",
+        "ratio": "1",
+        "actual_instrument_quantity": "64",
+        "actual_item_quantity": "64",
+        "status": "active",
+        "risk_measurement": {
+          "id": "risk1",
+          "instrument_valuation_id": "independent-hypothetical1",
+          "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+          "method": "Separately measured hypothetical instrument for designated risk",
+          "market_evidence": "Independent hypothetical risk source",
+          "assessment_date": "2026-12-31",
+          "item_id": "purchase1",
+          "risk_id": "FX",
+          "currency": "EUR",
+          "quantity": "64",
+          "current_change": "-10",
+          "instrument_cumulative": "100",
+          "risk_cumulative": "-10",
+          "opening_instrument_cumulative": "0",
+          "opening_risk_cumulative": "0",
+          "document_id": "doc-risk1"
+        },
+        "item_type": "net_investment",
+        "opening_reserve": "0",
+        "reserve_source_opening": "0",
+        "opening_effective": "0",
+        "earnings_release": "0",
+        "basis_release": "0",
+        "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+        "forecast_date": "2027-03-31",
+        "forecast_probability": "highly_probable",
+        "forecast_quantity": "1000",
+        "designated_start": "2026-01-01",
+        "designated_end": "2027-12-31",
+        "forecast_outcome": "pending",
+        "group_perspective": true,
+        "consolidation_import": "cons1",
+        "foreign_operation_id": "ForeignS",
+        "net_investment_eligibility_memo": "Actual parent owned net assets in foreign operation qualifies; FX/group scopes reviewed",
+        "translation_owner": "translation-link",
+        "net_investment": "64",
+        "translation_change": "-10",
+        "disposed": false
+      },
+      "content_hash": "4d662da83aa8023c05332e1d0e45a1701fba44a801b1d39e0b82310191c5bd42"
+    }
+  ],
+  "imports": [
+    {
+      "id": "cons1",
+      "package": "consolidation",
+      "case": {
+        "case_id": "synthetic-consolidation",
+        "framework": "IFRS",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {},
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "entities": [
+          {
+            "id": "P",
+            "parent": true,
+            "balances": {
+              "cash": "300",
+              "investment": "72",
+              "equity": "-372"
+            },
+            "control": {
+              "model": "power_returns_link",
+              "substantive_power": true,
+              "variable_returns": true,
+              "power_returns_link": true,
+              "control_memo": "Substantive voting rights control",
+              "excluded": false
+            },
+            "translation": null,
+            "policy_alignment": true,
+            "date_alignment": true
+          },
+          {
+            "id": "ForeignS",
+            "parent": false,
+            "balances": {
+              "cash": "100",
+              "sub equity": "-100"
+            },
+            "control": {
+              "model": "power_returns_link",
+              "substantive_power": true,
+              "variable_returns": true,
+              "power_returns_link": true,
+              "control_memo": "Substantive voting rights control",
+              "excluded": false
+            },
+            "translation": {
+              "account_rates": {
+                "cash": "0.8",
+                "sub equity": "0.9"
+              },
+              "rate_evidence": "Qualified actual operation source rates",
+              "cta_account": "translation reserve"
+            },
+            "policy_alignment": true,
+            "date_alignment": true
+          }
+        ],
+        "intercompany": [],
+        "investments": [
+          {
+            "subsidiary": "ForeignS",
+            "parent_entity": "P",
+            "investment_account": "investment",
+            "investment": "72",
+            "acquisition_equity": {
+              "sub equity": "90"
+            },
+            "fair_value_adjustments": {},
+            "goodwill": "0",
+            "nci_at_acquisition": "18",
+            "acquisition_memo": "80% acquisition of net assets100"
+          }
+        ],
+        "profit_eliminations": [],
+        "nci": [
+          {
+            "subsidiary": "ForeignS",
+            "ownership": "0.8",
+            "opening": "18",
+            "adjusted_profit": "0",
+            "adjusted_oci": "0",
+            "dividends": "0",
+            "other": "0",
+            "allocation_memo": "80/20 rights"
+          }
+        ],
+        "ownership_changes": [],
+        "nci_attribution_account": "equity",
+        "statement_mapping": {
+          "cash": "assets",
+          "investment": "assets",
+          "equity": "equity",
+          "sub equity": "equity",
+          "goodwill": "assets",
+          "noncontrolling interest": "equity",
+          "translation reserve": "equity"
+        },
+        "cash_flow_bridge": {
+          "opening_cash": "380",
+          "operating": "0",
+          "investing": "0",
+          "financing": "0",
+          "fx": "0",
+          "closing_cash": "380",
+          "cash_accounts": [
+            "cash"
+          ],
+          "memo": "Cash flow population tie"
+        },
+        "disclosure_tieout": "Group TB and NCI note bridge",
+        "equity_bridge": {
+          "opening": "380",
+          "profit": "0",
+          "oci": "0",
+          "owner_transactions": "0",
+          "other": "0",
+          "closing": "380",
+          "memo": "Opening-to-closing equity"
+        },
+        "cta_bridge": {
+          "opening": "0",
+          "translation": "10",
+          "disposals": "0",
+          "other": "0",
+          "closing": "10",
+          "cta_accounts": [
+            "translation reserve"
+          ],
+          "memo": "Common currency group"
+        },
+        "knowledge_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "claim_ids": [
+            "TOPIC-07-001-IFRS-001",
+            "TOPIC-07-001-IFRS-R001",
+            "TOPIC-07-001-IFRS-R005",
+            "TOPIC-07-002-IFRS-001",
+            "TOPIC-07-002-IFRS-R001",
+            "TOPIC-07-003-IFRS-R001",
+            "TOPIC-07-004-IFRS-001",
+            "TOPIC-07-004-IFRS-R001",
+            "TOPIC-07-005-IFRS-R001",
+            "TOPIC-07-006-IFRS-001",
+            "TOPIC-07-006-IFRS-R001",
+            "TOPIC-07-007-IFRS-001",
+            "TOPIC-07-007-IFRS-R001",
+            "TOPIC-07-008-IFRS-001",
+            "TOPIC-07-008-IFRS-R001",
+            "TOPIC-07-009-IFRS-001",
+            "TOPIC-07-009-IFRS-R001",
+            "TOPIC-13-001-IFRS-001",
+            "TOPIC-13-001-IFRS-R001"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/README.md",
+              "sha256": "adc34f9a52980d759648c500fc8b466f50a3fc3e7a821c7037b9a53aadceb145"
+            },
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/evidence-and-regression.md",
+              "sha256": "f5616b33905bdc573fd63fd2949afefa4aa507d9ea743fc6248081a671b32c28"
+            },
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/power-returns-and-cutover-memo.md",
+              "sha256": "98651af9b01b156126e95f18840126ece8b1047ef1e9f3919d326e9d221d0f37"
+            },
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/scope-case.md",
+              "sha256": "f6251b62f4f756e736736f2e8e2f20a9182976d2044d58b5798770afb75f1a8d"
+            },
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/standards-claims.json",
+              "sha256": "2c38f96965b4ca6761306655887d6999909abe460398d4b78de4c480aac7538a"
+            },
+            {
+              "topic_id": "TOPIC-07-001",
+              "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/tests.md",
+              "sha256": "436539f43919dba3745aa923983fd318fc42517c8b3280f58668baabbfb37347"
+            },
+            {
+              "topic_id": "TOPIC-07-002",
+              "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/README.md",
+              "sha256": "45b3aac7777874d978ab7a92c034d4b4071eae9266725c0811d5a7a60da6777d"
+            },
+            {
+              "topic_id": "TOPIC-07-002",
+              "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/evidence-and-regression.md",
+              "sha256": "7ff89f3e2be2468aa92dfcf0141514493664857d369a16801894bd32d21b074a"
+            },
+            {
+              "topic_id": "TOPIC-07-002",
+              "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/standards-claims.json",
+              "sha256": "c8b42f408b1ffd77f4308017a8dff8123a8d4008aa6ac751e00a0564e9cbed9b"
+            },
+            {
+              "topic_id": "TOPIC-07-002",
+              "path": "knowledge/topics/TOPIC-07-002-control-nci/README.md",
+              "sha256": "565ab621c5655c3b6587a68f0d5bce99f289d67107dbe392aad9b2f69265c0fc"
+            },
+            {
+              "topic_id": "TOPIC-07-003",
+              "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md",
+              "sha256": "fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5"
+            },
+            {
+              "topic_id": "TOPIC-07-003",
+              "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md",
+              "sha256": "cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8"
+            },
+            {
+              "topic_id": "TOPIC-07-003",
+              "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md",
+              "sha256": "fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854"
+            },
+            {
+              "topic_id": "TOPIC-07-003",
+              "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json",
+              "sha256": "b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5"
+            },
+            {
+              "topic_id": "TOPIC-07-004",
+              "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/README.md",
+              "sha256": "3e9d86ee269e5b5560418774f43c071ade9334b1e980275af8c3fb532b27a138"
+            },
+            {
+              "topic_id": "TOPIC-07-004",
+              "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/asset-transfer-and-unwind.md",
+              "sha256": "fea162980f6accf886bbb547b6bfde7426e8e38112eb9b42f896c0f0d73688cf"
+            },
+            {
+              "topic_id": "TOPIC-07-004",
+              "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/evidence-and-regression.md",
+              "sha256": "aefa1a2161270509b621e2dda280c431604a0206882829db77ce36cb433f5f21"
+            },
+            {
+              "topic_id": "TOPIC-07-004",
+              "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/profit-case.md",
+              "sha256": "33489f1b06bf82b7aae2cd34e299e53a733af91d34b1f4ec0578973409aac1ee"
+            },
+            {
+              "topic_id": "TOPIC-07-004",
+              "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/standards-claims.json",
+              "sha256": "6fcaed1675ba74346a4e8dd26de8f294c675b713a7872f73c8b909cb1719d6ae"
+            },
+            {
+              "topic_id": "TOPIC-07-005",
+              "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/README.md",
+              "sha256": "9c5f3652d8f5185023fcc5aca8418eb0b870a246d888524a9298f6748267ed7c"
+            },
+            {
+              "topic_id": "TOPIC-07-005",
+              "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/consolidation-bridge.md",
+              "sha256": "f866e7c1850535224ce8ed3343e984362b5aac9092e1f4d69165c503edb77df8"
+            },
+            {
+              "topic_id": "TOPIC-07-005",
+              "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/journal-lineage-and-rerun-control.md",
+              "sha256": "0999720109cb187f9be39c7dadbd306a43852e24ec902e9fbeedba1b9961d27c"
+            },
+            {
+              "topic_id": "TOPIC-07-005",
+              "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/standards-claims.json",
+              "sha256": "b66f19ded535d7b2235e5f8cf1d7c434c313a3d7ae400278edeb6e035d4292af"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+              "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+              "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+              "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+              "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+              "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+            },
+            {
+              "topic_id": "TOPIC-07-007",
+              "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/README.md",
+              "sha256": "00d3170c83c3b3a6870d496d8d3416261f6947a56fabd56e5ae1d28e0ca0a4b6"
+            },
+            {
+              "topic_id": "TOPIC-07-007",
+              "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/basis-difference-and-loss-limit.md",
+              "sha256": "3688be9da82cc498803c8b8ead0b2cd43b07d65cafca720fba31316824087d32"
+            },
+            {
+              "topic_id": "TOPIC-07-007",
+              "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/equity-method-case.md",
+              "sha256": "e52a440e87d843036978884da56e89ee01e39024f293e05df44fa65763e62af6"
+            },
+            {
+              "topic_id": "TOPIC-07-007",
+              "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/evidence-and-regression.md",
+              "sha256": "99099701e8b4e09ee998bbfb45d770ff853629ca86c7aebdf7ce2c7fc93a5cb0"
+            },
+            {
+              "topic_id": "TOPIC-07-007",
+              "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/standards-claims.json",
+              "sha256": "68369c9e080e40ded2610b998aeef4e56b13e259bc9cc1d910d43bbf32eb5727"
+            },
+            {
+              "topic_id": "TOPIC-07-008",
+              "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/README.md",
+              "sha256": "1bda954f218d5d0752c43abae95a1da39712092fb254b899789f0ce2f13f6d7d"
+            },
+            {
+              "topic_id": "TOPIC-07-008",
+              "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/evidence-and-regression.md",
+              "sha256": "061c69c5c32e66285dab2c376bfb0075b1c6c94e7db82303d3056118b73ad211"
+            },
+            {
+              "topic_id": "TOPIC-07-008",
+              "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/joint-and-ownership-case.md",
+              "sha256": "3feaf68947624f2d7b01af700df132e7146b2cabd837b2fd5e74f2e30168de22"
+            },
+            {
+              "topic_id": "TOPIC-07-008",
+              "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/rights-obligations-and-joint-operation.md",
+              "sha256": "9267e5014959c3479601b1ab89a1bc94a2ff264a64a39f41bcf8d2bb5be71216"
+            },
+            {
+              "topic_id": "TOPIC-07-008",
+              "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/standards-claims.json",
+              "sha256": "b4116562ed13b92a658e8489d1b40dc8a5db31e52de5574081d329a1bda3f6e9"
+            },
+            {
+              "topic_id": "TOPIC-07-009",
+              "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/README.md",
+              "sha256": "0be73f5e0d1dbf1e9d0ca0348bb64758d55ba9427d762be17ae8ac2de41d1b5c"
+            },
+            {
+              "topic_id": "TOPIC-07-009",
+              "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/acquisition-disposal-case.md",
+              "sha256": "054846c0fb777f7325bab7f51088ce6b6103281be09cccde75f2a8e11ff6e7d5"
+            },
+            {
+              "topic_id": "TOPIC-07-009",
+              "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/control-loss-and-retained-investment.md",
+              "sha256": "553f3c06ddfa9f1d1a0d15a2c9223e3ebaaca096f748a6580b07a11a87b9f7bb"
+            },
+            {
+              "topic_id": "TOPIC-07-009",
+              "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/evidence-and-regression.md",
+              "sha256": "44efbc2beb196290c0e54b92122da430f56e5b24010d3d8879372d8875326f7f"
+            },
+            {
+              "topic_id": "TOPIC-07-009",
+              "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/standards-claims.json",
+              "sha256": "22ca56bafe860b64812887419f8c8e8476472600a960f82ba49b37077f16b152"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/README.md",
+              "sha256": "1ba6aafc7d6fda0d688c7e77b9ab25e53a0481a06f0b8f7ef62a567fb4b4a6e3"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/evidence-and-regression.md",
+              "sha256": "3c3e8da82074959fb6e17f486bfaa3dcbbce2882aa7248c304be03aaa7df858d"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/framework-differences.md",
+              "sha256": "1e4a8d5546ea4ef04bfa502621589f2f8a509936fc2322caa994bb7f576968c2"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/ppa-worked-case.md",
+              "sha256": "19a460a91ffb4e8f901daa02e25aaf59b2d04a8eae754d44d24ee2407cb406e7"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/sources.md",
+              "sha256": "b5a3853d43112028cb4e4b893fe92417cfbd91ccaaa7bd4cdd7eae5c0fbe09b9"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/standards-claims.json",
+              "sha256": "b583d0a4062881f3bf4523848a02bc558b3ceeceb11979ad527254df6911ee49"
+            },
+            {
+              "topic_id": "TOPIC-13-001",
+              "path": "knowledge/topics/TOPIC-13-001-business-combinations/tests.md",
+              "sha256": "cdc52687c47de817eea08316deb9b7bc457ce9f55e7a204f9d9093c0ee2ec4e2"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-07-001-IFRS-001",
+            "TOPIC-07-001-IFRS-R001",
+            "TOPIC-07-001-IFRS-R005",
+            "TOPIC-07-002-IFRS-001",
+            "TOPIC-07-002-IFRS-R001",
+            "TOPIC-07-003-IFRS-R001",
+            "TOPIC-07-004-IFRS-001",
+            "TOPIC-07-004-IFRS-R001",
+            "TOPIC-07-005-IFRS-R001",
+            "TOPIC-07-006-IFRS-001",
+            "TOPIC-07-006-IFRS-R001",
+            "TOPIC-07-007-IFRS-001",
+            "TOPIC-07-007-IFRS-R001",
+            "TOPIC-07-008-IFRS-001",
+            "TOPIC-07-008-IFRS-R001",
+            "TOPIC-07-009-IFRS-001",
+            "TOPIC-07-009-IFRS-R001",
+            "TOPIC-13-001-IFRS-001",
+            "TOPIC-13-001-IFRS-R001"
+          ],
+          "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+          "public_caveats": [
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "synthetic independent reviewer",
+          "approved": true,
+          "case_fingerprint": "0fd5433f9dec66b4083e4bc4844d9d0708be32ea0f50866a04367e5a4183af40"
+        }
+      },
+      "result": {
+        "conclusion": "Consolidated 2 entities; balanced group trial balance after 1 consolidation entries.",
+        "method": "Framework control perimeter; aligned/translated source TBs; documented eliminations; NCI and cash-flow bridges",
+        "calculations": {
+          "perimeter": [
+            "P",
+            "ForeignS"
+          ],
+          "consolidated_balances": {
+            "cash": "380.00",
+            "investment": "0.00",
+            "equity": "-372.00",
+            "sub equity": "0.00",
+            "translation reserve": "10.00",
+            "noncontrolling interest": "-18.00",
+            "goodwill": "0"
+          },
+          "statements": {
+            "assets": "380.00",
+            "equity": "-380.00"
+          },
+          "translations": [
+            {
+              "entity": "ForeignS",
+              "cta": "10.00"
+            }
+          ],
+          "nci": [
+            {
+              "subsidiary": "ForeignS",
+              "profit": "0.00",
+              "oci": "0.00",
+              "dividends": "0.00",
+              "closing": "18.00"
+            }
+          ],
+          "cash_flow": {
+            "opening_cash": "380",
+            "operating": "0",
+            "investing": "0",
+            "financing": "0",
+            "fx": "0",
+            "closing_cash": "380",
+            "cash_accounts": [
+              "cash"
+            ],
+            "memo": "Cash flow population tie"
+          },
+          "equity": {
+            "opening": "380",
+            "profit": "0",
+            "oci": "0",
+            "owner_transactions": "0",
+            "other": "0",
+            "closing": "380",
+            "memo": "Opening-to-closing equity"
+          },
+          "cta": {
+            "opening": "0",
+            "translation": "10",
+            "disposals": "0",
+            "other": "0",
+            "closing": "10",
+            "cta_accounts": [
+              "translation reserve"
+            ],
+            "memo": "Common currency group"
+          }
+        },
+        "journal_entry_implications": [
+          [
+            {
+              "side": "Cr",
+              "account": "investment",
+              "amount": "72.00"
+            },
+            {
+              "side": "Dr",
+              "account": "sub equity",
+              "amount": "90.00"
+            },
+            {
+              "side": "Cr",
+              "account": "noncontrolling interest",
+              "amount": "18.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Reviewed synthetic alternative routes and assumptions",
+          "Substantive voting rights control",
+          "Substantive voting rights control"
+        ],
+        "uncertainties": [
+          "Acquisition fair values, historical FX, rights-specific NCI allocations, loss-of-control OCI and tax effects are independently reviewed specialist inputs.",
+          "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+        ],
+        "open_items": [],
+        "disclosures_impacted": [
+          "Group composition and significant control judgments",
+          "NCI interests, restrictions and summarized financial information",
+          "Ownership changes and acquisitions/disposals",
+          "Foreign operation translation reserves",
+          "Associates/joint arrangements and unconsolidated structured entities when applicable",
+          "Reconcile consolidated statements, equity and cash-flow disclosures with applicable tier relief"
+        ],
+        "skill_id": "SKILL-CONS-001",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-consolidation",
+          "framework": "IFRS",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {},
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "entities": [
+            {
+              "id": "P",
+              "parent": true,
+              "balances": {
+                "cash": "300",
+                "investment": "72",
+                "equity": "-372"
+              },
+              "control": {
+                "model": "power_returns_link",
+                "substantive_power": true,
+                "variable_returns": true,
+                "power_returns_link": true,
+                "control_memo": "Substantive voting rights control",
+                "excluded": false
+              },
+              "translation": null,
+              "policy_alignment": true,
+              "date_alignment": true
+            },
+            {
+              "id": "ForeignS",
+              "parent": false,
+              "balances": {
+                "cash": "100",
+                "sub equity": "-100"
+              },
+              "control": {
+                "model": "power_returns_link",
+                "substantive_power": true,
+                "variable_returns": true,
+                "power_returns_link": true,
+                "control_memo": "Substantive voting rights control",
+                "excluded": false
+              },
+              "translation": {
+                "account_rates": {
+                  "cash": "0.8",
+                  "sub equity": "0.9"
+                },
+                "rate_evidence": "Qualified actual operation source rates",
+                "cta_account": "translation reserve"
+              },
+              "policy_alignment": true,
+              "date_alignment": true
+            }
+          ],
+          "intercompany": [],
+          "investments": [
+            {
+              "subsidiary": "ForeignS",
+              "parent_entity": "P",
+              "investment_account": "investment",
+              "investment": "72",
+              "acquisition_equity": {
+                "sub equity": "90"
+              },
+              "fair_value_adjustments": {},
+              "goodwill": "0",
+              "nci_at_acquisition": "18",
+              "acquisition_memo": "80% acquisition of net assets100"
+            }
+          ],
+          "profit_eliminations": [],
+          "nci": [
+            {
+              "subsidiary": "ForeignS",
+              "ownership": "0.8",
+              "opening": "18",
+              "adjusted_profit": "0",
+              "adjusted_oci": "0",
+              "dividends": "0",
+              "other": "0",
+              "allocation_memo": "80/20 rights"
+            }
+          ],
+          "ownership_changes": [],
+          "nci_attribution_account": "equity",
+          "statement_mapping": {
+            "cash": "assets",
+            "investment": "assets",
+            "equity": "equity",
+            "sub equity": "equity",
+            "goodwill": "assets",
+            "noncontrolling interest": "equity",
+            "translation reserve": "equity"
+          },
+          "cash_flow_bridge": {
+            "opening_cash": "380",
+            "operating": "0",
+            "investing": "0",
+            "financing": "0",
+            "fx": "0",
+            "closing_cash": "380",
+            "cash_accounts": [
+              "cash"
+            ],
+            "memo": "Cash flow population tie"
+          },
+          "disclosure_tieout": "Group TB and NCI note bridge",
+          "equity_bridge": {
+            "opening": "380",
+            "profit": "0",
+            "oci": "0",
+            "owner_transactions": "0",
+            "other": "0",
+            "closing": "380",
+            "memo": "Opening-to-closing equity"
+          },
+          "cta_bridge": {
+            "opening": "0",
+            "translation": "10",
+            "disposals": "0",
+            "other": "0",
+            "closing": "10",
+            "cta_accounts": [
+              "translation reserve"
+            ],
+            "memo": "Common currency group"
+          }
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-001",
+            "proposition": "Consolidation depends on power over relevant activities, variable returns and ability to use power to affect returns; protective rights and de facto control require evidence.",
+            "references": [
+              "IFRS 10.5\u20137, B11\u2013B18, B22\u2013B28"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-R001",
+            "proposition": "Consolidation uses applicable control model, exception conditions and actual control dates; policies/reporting dates align.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-R005",
+            "proposition": "IFRS 10 control requires power, variable returns and ability to use power to affect those returns; consolidation begins and ends with control.",
+            "references": [
+              "6\u20137; 19\u201320"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "claim_id": "TOPIC-07-002-IFRS-001",
+            "proposition": "Present non-controlling interests separately and attribute profit/OCI, including losses, while changes in ownership without loss of control are equity transactions.",
+            "references": [
+              "IFRS 10.22\u201324, B94\u2013B96; IFRS 3.19"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "claim_id": "TOPIC-07-002-IFRS-R001",
+            "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "claim_id": "TOPIC-07-003-IFRS-R001",
+            "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "claim_id": "TOPIC-07-004-IFRS-001",
+            "proposition": "Consolidation eliminates intragroup balances, transactions and unrealised profits in assets, with tax and NCI consequences assessed separately.",
+            "references": [
+              "IFRS 10.B86(c), B86(d)"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "claim_id": "TOPIC-07-004-IFRS-R001",
+            "proposition": "Consolidation removes intragroup transactions and unrealized asset profits, with subsequent depreciation/release and separate tax/NCI effects.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "claim_id": "TOPIC-07-005-IFRS-R001",
+            "proposition": "Consolidation preserves source layers while applying uniform policies, FX, eliminations and group adjustments with reproducible bridges.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-001",
+            "proposition": "Translate foreign-operation assets/liabilities at closing rate and income/expenses at transaction-date rates or appropriate approximation; reconcile reserve and group chart mapping.",
+            "references": [
+              "IAS 21.39\u201341; IFRS 10.B86"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-R001",
+            "proposition": "Foreign-operation translation uses applicable closing and income rates and equity history; chart mapping cannot replace accounting or currency analysis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "claim_id": "TOPIC-07-007-IFRS-001",
+            "proposition": "Equity-method carrying amount changes for investor share of post-acquisition profit and distributions, adjusted for acquisition basis differences and loss-limit obligations.",
+            "references": [
+              "IAS 28.10\u201312, 32, 38\u201339"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "claim_id": "TOPIC-07-007-IFRS-R001",
+            "proposition": "Equity method follows control/influence scope then investor share of results/OCI less distributions, basis and unrealized-profit adjustments; loss boundary includes applicable long-term interests/obligations.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "claim_id": "TOPIC-07-008-IFRS-001",
+            "proposition": "Classify joint arrangement by contractual rights to assets and obligations for liabilities, not solely by separate-vehicle legal form; joint ventures route through equity method.",
+            "references": [
+              "IFRS 11.14\u201321, B15\u2013B33"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "claim_id": "TOPIC-07-008-IFRS-R001",
+            "proposition": "Joint arrangements are classified from enforceable decision rights and assets/liability versus net-asset rights; ownership consequences depend on whether control or influence boundary changes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "claim_id": "TOPIC-07-009-IFRS-001",
+            "proposition": "Loss of control derecognises former subsidiary assets, liabilities and NCI, recognises proceeds and retained interest at fair value and routes related OCI separately.",
+            "references": [
+              "IFRS 10.25, B97\u2013B99; IFRS 3.7\u201310"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "claim_id": "TOPIC-07-009-IFRS-R001",
+            "proposition": "Acquire/consolidate from actual control date; loss ofcontrol derecognizes subsidiary balances/NCI and measures retained interest with component-specific OCI treatment, unlike retained-control equity changes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "claim_id": "TOPIC-13-001-IFRS-001",
+            "proposition": "Acquisition method identifies acquirer/date, measures consideration and identifiable net assets/NCI, and computes goodwill or bargain purchase with tax and intangible effects.",
+            "references": [
+              "IFRS 3.7\u201319, 32\u201334"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core route inspected; secondary provisions require finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; actual entity-period must be selected",
+            "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "claim_id": "TOPIC-13-001-IFRS-R001",
+            "proposition": "Business-combination scope precedes acquisition-date identification/measurement and goodwill; NCI elections, private alternatives and UK purchase method differ.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "UKSection19 includes directlyattributablecombinationcosts, probable/reliable contingentcostadjustments, proportionate NCI andgoodwillamortization ratherthanfullIFRS3model. USASC805/VIE, private-company alternatives,ASC205-20/360discontinued criteria anddebt/TDRscope independentlychallenged. AASBNFP/tier/amendments separatelygated. BroadUSoperativeparagraphs unverified, training-data treatment checked; legalrights,taxvaluation andperiod caveats public."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "Individual special-transaction method reviewed; substantive REVIEWED confirmed. Explicit register families cover material recognition, measurement, scope and comparative propositions.",
+            "audit_required": true
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-001",
+            "proposition": "Consolidation depends on power over relevant activities, variable returns and ability to use power to affect returns; protective rights and de facto control require evidence.",
+            "references": [
+              "IFRS 10.5\u20137, B11\u2013B18, B22\u2013B28"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-R001",
+            "proposition": "Consolidation uses applicable control model, exception conditions and actual control dates; policies/reporting dates align.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "claim_id": "TOPIC-07-001-IFRS-R005",
+            "proposition": "IFRS 10 control requires power, variable returns and ability to use power to affect those returns; consolidation begins and ends with control.",
+            "references": [
+              "6\u20137; 19\u201320"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "claim_id": "TOPIC-07-002-IFRS-001",
+            "proposition": "Present non-controlling interests separately and attribute profit/OCI, including losses, while changes in ownership without loss of control are equity transactions.",
+            "references": [
+              "IFRS 10.22\u201324, B94\u2013B96; IFRS 3.19"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "claim_id": "TOPIC-07-002-IFRS-R001",
+            "proposition": "NCI presentation and result/OCI allocation retain rights-specific basis; changes without loss ofcontrol normally affectequity rather thannewgoodwill.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "claim_id": "TOPIC-07-003-IFRS-R001",
+            "proposition": "Intercompany transactions follow underlying recognition/FX model; reconcile reciprocal source balances before eliminating without unsupported plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "claim_id": "TOPIC-07-004-IFRS-001",
+            "proposition": "Consolidation eliminates intragroup balances, transactions and unrealised profits in assets, with tax and NCI consequences assessed separately.",
+            "references": [
+              "IFRS 10.B86(c), B86(d)"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "claim_id": "TOPIC-07-004-IFRS-R001",
+            "proposition": "Consolidation removes intragroup transactions and unrealized asset profits, with subsequent depreciation/release and separate tax/NCI effects.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "claim_id": "TOPIC-07-005-IFRS-R001",
+            "proposition": "Consolidation preserves source layers while applying uniform policies, FX, eliminations and group adjustments with reproducible bridges.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-001",
+            "proposition": "Translate foreign-operation assets/liabilities at closing rate and income/expenses at transaction-date rates or appropriate approximation; reconcile reserve and group chart mapping.",
+            "references": [
+              "IAS 21.39\u201341; IFRS 10.B86"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-R001",
+            "proposition": "Foreign-operation translation uses applicable closing and income rates and equity history; chart mapping cannot replace accounting or currency analysis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "claim_id": "TOPIC-07-007-IFRS-001",
+            "proposition": "Equity-method carrying amount changes for investor share of post-acquisition profit and distributions, adjusted for acquisition basis differences and loss-limit obligations.",
+            "references": [
+              "IAS 28.10\u201312, 32, 38\u201339"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "claim_id": "TOPIC-07-007-IFRS-R001",
+            "proposition": "Equity method follows control/influence scope then investor share of results/OCI less distributions, basis and unrealized-profit adjustments; loss boundary includes applicable long-term interests/obligations.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "claim_id": "TOPIC-07-008-IFRS-001",
+            "proposition": "Classify joint arrangement by contractual rights to assets and obligations for liabilities, not solely by separate-vehicle legal form; joint ventures route through equity method.",
+            "references": [
+              "IFRS 11.14\u201321, B15\u2013B33"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "claim_id": "TOPIC-07-008-IFRS-R001",
+            "proposition": "Joint arrangements are classified from enforceable decision rights and assets/liability versus net-asset rights; ownership consequences depend on whether control or influence boundary changes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "claim_id": "TOPIC-07-009-IFRS-001",
+            "proposition": "Loss of control derecognises former subsidiary assets, liabilities and NCI, recognises proceeds and retained interest at fair value and routes related OCI separately.",
+            "references": [
+              "IFRS 10.25, B97\u2013B99; IFRS 3.7\u201310"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "claim_id": "TOPIC-07-009-IFRS-R001",
+            "proposition": "Acquire/consolidate from actual control date; loss ofcontrol derecognizes subsidiary balances/NCI and measures retained interest with component-specific OCI treatment, unlike retained-control equity changes.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "claim_id": "TOPIC-13-001-IFRS-001",
+            "proposition": "Acquisition method identifies acquirer/date, measures consideration and identifiable net assets/NCI, and computes goodwill or bargain purchase with tax and intangible effects.",
+            "references": [
+              "IFRS 3.7\u201319, 32\u201334"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core route inspected; secondary provisions require finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; actual entity-period must be selected",
+            "entity_scope": "For-profit; US registrant/nonpublic, UK entity regime and AASB tier individually determined",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "claim_id": "TOPIC-13-001-IFRS-R001",
+            "proposition": "Business-combination scope precedes acquisition-date identification/measurement and goodwill; NCI elections, private alternatives and UK purchase method differ.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "UKSection19 includes directlyattributablecombinationcosts, probable/reliable contingentcostadjustments, proportionate NCI andgoodwillamortization ratherthanfullIFRS3model. USASC805/VIE, private-company alternatives,ASC205-20/360discontinued criteria anddebt/TDRscope independentlychallenged. AASBNFP/tier/amendments separatelygated. BroadUSoperativeparagraphs unverified, training-data treatment checked; legalrights,taxvaluation andperiod caveats public."
+            ],
+            "effective_period": "2026transaction/entity/financialdifficulty and actualcontrol/communication dates required. UKFRS102Section19purchase-method 2026edition and statutory/PBE groupreconstruction exceptions distinct. AASB3/5December2022compilationendJuly2026 requiresnextamendmentselection, notuniversalcontinuation. FASBASU2025-03 allentitiesannualstartsafterDecember15,2026, prospective acquisitions/earlyadoption gates actuallychecked inofficialASU; pendingVIEacquirerchanges notautomatic2026. US2015-16currentperiod measurementadjustment versusIFRSretrospective; proposals/pauseddebtproject notcurrentGAAP.",
+            "entity_scope": "Individual special-transaction method reviewed; substantive REVIEWED confirmed. Explicit register families cover material recognition, measurement, scope and comparative propositions.",
+            "audit_required": true
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/README.md",
+            "sha256": "adc34f9a52980d759648c500fc8b466f50a3fc3e7a821c7037b9a53aadceb145"
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/evidence-and-regression.md",
+            "sha256": "f5616b33905bdc573fd63fd2949afefa4aa507d9ea743fc6248081a671b32c28"
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/power-returns-and-cutover-memo.md",
+            "sha256": "98651af9b01b156126e95f18840126ece8b1047ef1e9f3919d326e9d221d0f37"
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/scope-case.md",
+            "sha256": "f6251b62f4f756e736736f2e8e2f20a9182976d2044d58b5798770afb75f1a8d"
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/standards-claims.json",
+            "sha256": "2c38f96965b4ca6761306655887d6999909abe460398d4b78de4c480aac7538a"
+          },
+          {
+            "topic_id": "TOPIC-07-001",
+            "path": "knowledge/topics/TOPIC-07-001-consolidation-scope-subsidiary-accounting/tests.md",
+            "sha256": "436539f43919dba3745aa923983fd318fc42517c8b3280f58668baabbfb37347"
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/README.md",
+            "sha256": "45b3aac7777874d978ab7a92c034d4b4071eae9266725c0811d5a7a60da6777d"
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/evidence-and-regression.md",
+            "sha256": "7ff89f3e2be2468aa92dfcf0141514493664857d369a16801894bd32d21b074a"
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "path": "knowledge/topics/TOPIC-07-002-control-assessment-nci/standards-claims.json",
+            "sha256": "c8b42f408b1ffd77f4308017a8dff8123a8d4008aa6ac751e00a0564e9cbed9b"
+          },
+          {
+            "topic_id": "TOPIC-07-002",
+            "path": "knowledge/topics/TOPIC-07-002-control-nci/README.md",
+            "sha256": "565ab621c5655c3b6587a68f0d5bce99f289d67107dbe392aad9b2f69265c0fc"
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md",
+            "sha256": "fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5"
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md",
+            "sha256": "cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8"
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md",
+            "sha256": "fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854"
+          },
+          {
+            "topic_id": "TOPIC-07-003",
+            "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json",
+            "sha256": "b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5"
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/README.md",
+            "sha256": "3e9d86ee269e5b5560418774f43c071ade9334b1e980275af8c3fb532b27a138"
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/asset-transfer-and-unwind.md",
+            "sha256": "fea162980f6accf886bbb547b6bfde7426e8e38112eb9b42f896c0f0d73688cf"
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/evidence-and-regression.md",
+            "sha256": "aefa1a2161270509b621e2dda280c431604a0206882829db77ce36cb433f5f21"
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/profit-case.md",
+            "sha256": "33489f1b06bf82b7aae2cd34e299e53a733af91d34b1f4ec0578973409aac1ee"
+          },
+          {
+            "topic_id": "TOPIC-07-004",
+            "path": "knowledge/topics/TOPIC-07-004-intercompany-eliminations-profit/standards-claims.json",
+            "sha256": "6fcaed1675ba74346a4e8dd26de8f294c675b713a7872f73c8b909cb1719d6ae"
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/README.md",
+            "sha256": "9c5f3652d8f5185023fcc5aca8418eb0b870a246d888524a9298f6748267ed7c"
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/consolidation-bridge.md",
+            "sha256": "f866e7c1850535224ce8ed3343e984362b5aac9092e1f4d69165c503edb77df8"
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/journal-lineage-and-rerun-control.md",
+            "sha256": "0999720109cb187f9be39c7dadbd306a43852e24ec902e9fbeedba1b9961d27c"
+          },
+          {
+            "topic_id": "TOPIC-07-005",
+            "path": "knowledge/topics/TOPIC-07-005-consolidation-journals-systems/standards-claims.json",
+            "sha256": "b66f19ded535d7b2235e5f8cf1d7c434c313a3d7ae400278edeb6e035d4292af"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+            "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+            "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+            "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+            "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+            "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/README.md",
+            "sha256": "00d3170c83c3b3a6870d496d8d3416261f6947a56fabd56e5ae1d28e0ca0a4b6"
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/basis-difference-and-loss-limit.md",
+            "sha256": "3688be9da82cc498803c8b8ead0b2cd43b07d65cafca720fba31316824087d32"
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/equity-method-case.md",
+            "sha256": "e52a440e87d843036978884da56e89ee01e39024f293e05df44fa65763e62af6"
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/evidence-and-regression.md",
+            "sha256": "99099701e8b4e09ee998bbfb45d770ff853629ca86c7aebdf7ce2c7fc93a5cb0"
+          },
+          {
+            "topic_id": "TOPIC-07-007",
+            "path": "knowledge/topics/TOPIC-07-007-group-reporting-equity-method/standards-claims.json",
+            "sha256": "68369c9e080e40ded2610b998aeef4e56b13e259bc9cc1d910d43bbf32eb5727"
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/README.md",
+            "sha256": "1bda954f218d5d0752c43abae95a1da39712092fb254b899789f0ce2f13f6d7d"
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/evidence-and-regression.md",
+            "sha256": "061c69c5c32e66285dab2c376bfb0075b1c6c94e7db82303d3056118b73ad211"
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/joint-and-ownership-case.md",
+            "sha256": "3feaf68947624f2d7b01af700df132e7146b2cabd837b2fd5e74f2e30168de22"
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/rights-obligations-and-joint-operation.md",
+            "sha256": "9267e5014959c3479601b1ab89a1bc94a2ff264a64a39f41bcf8d2bb5be71216"
+          },
+          {
+            "topic_id": "TOPIC-07-008",
+            "path": "knowledge/topics/TOPIC-07-008-joint-arrangements-ownership-changes/standards-claims.json",
+            "sha256": "b4116562ed13b92a658e8489d1b40dc8a5db31e52de5574081d329a1bda3f6e9"
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/README.md",
+            "sha256": "0be73f5e0d1dbf1e9d0ca0348bb64758d55ba9427d762be17ae8ac2de41d1b5c"
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/acquisition-disposal-case.md",
+            "sha256": "054846c0fb777f7325bab7f51088ce6b6103281be09cccde75f2a8e11ff6e7d5"
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/control-loss-and-retained-investment.md",
+            "sha256": "553f3c06ddfa9f1d1a0d15a2c9223e3ebaaca096f748a6580b07a11a87b9f7bb"
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/evidence-and-regression.md",
+            "sha256": "44efbc2beb196290c0e54b92122da430f56e5b24010d3d8879372d8875326f7f"
+          },
+          {
+            "topic_id": "TOPIC-07-009",
+            "path": "knowledge/topics/TOPIC-07-009-acquisition-disposal-consolidation-review/standards-claims.json",
+            "sha256": "22ca56bafe860b64812887419f8c8e8476472600a960f82ba49b37077f16b152"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/README.md",
+            "sha256": "1ba6aafc7d6fda0d688c7e77b9ab25e53a0481a06f0b8f7ef62a567fb4b4a6e3"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/evidence-and-regression.md",
+            "sha256": "3c3e8da82074959fb6e17f486bfaa3dcbbce2882aa7248c304be03aaa7df858d"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/framework-differences.md",
+            "sha256": "1e4a8d5546ea4ef04bfa502621589f2f8a509936fc2322caa994bb7f576968c2"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/ppa-worked-case.md",
+            "sha256": "19a460a91ffb4e8f901daa02e25aaf59b2d04a8eae754d44d24ee2407cb406e7"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/sources.md",
+            "sha256": "b5a3853d43112028cb4e4b893fe92417cfbd91ccaaa7bd4cdd7eae5c0fbe09b9"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/standards-claims.json",
+            "sha256": "b583d0a4062881f3bf4523848a02bc558b3ceeceb11979ad527254df6911ee49"
+          },
+          {
+            "topic_id": "TOPIC-13-001",
+            "path": "knowledge/topics/TOPIC-13-001-business-combinations/tests.md",
+            "sha256": "cdc52687c47de817eea08316deb9b7bc457ce9f55e7a204f9d9093c0ee2ec4e2"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "case_fingerprint": "0fd5433f9dec66b4083e4bc4844d9d0708be32ea0f50866a04367e5a4183af40",
+        "status": "complete"
+      }
+    },
+    {
+      "id": "fx1",
+      "package": "foreign-currency",
+      "case": {
+        "case_id": "synthetic-foreign-currency",
+        "framework": "IFRS",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {},
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "currency": {
+          "functional": "EUR",
+          "presentation": "EUR",
+          "ledger": "EUR",
+          "functional_memo": "Primary price/cost economics reviewed",
+          "rate_source": "Synthetic approved spot feed",
+          "rate_convention": "functional_per_foreign",
+          "functional_review_complete": true,
+          "hyperinflation": false,
+          "exchangeability": true,
+          "functional_change": false,
+          "net_investment_items": false
+        },
+        "items": [
+          {
+            "id": "AR",
+            "type": "monetary",
+            "side": "asset",
+            "account": "receivable",
+            "foreign_amount": "100",
+            "initial_rate": "1.10",
+            "closing_rate": "1.20",
+            "settled_foreign": "40",
+            "settlement_rate": "1.15",
+            "initial_date": "2026-01-01",
+            "settlement_date": "2026-06-30",
+            "opening_book": "110",
+            "opening_route": "initial",
+            "opening_rate": "1.10",
+            "memo": "Supported customer receivable"
+          }
+        ],
+        "translation": {
+          "enabled": true,
+          "operation_id": "ForeignS",
+          "valuation_date": "2026-12-31",
+          "functional_currency": "USD",
+          "presentation_currency": "EUR",
+          "quote": "presentation_per_functional",
+          "tb": [
+            {
+              "id": "cash",
+              "balance": "100",
+              "category": "asset",
+              "rate": "0.8",
+              "memo": "Current closing"
+            },
+            {
+              "id": "sub equity",
+              "balance": "-100",
+              "category": "equity",
+              "rate": "0.9",
+              "memo": "Historical"
+            }
+          ],
+          "opening_net_assets": "100",
+          "opening_rate": "0.9",
+          "closing_rate": "0.8",
+          "profit": "0",
+          "profit_rate": "0.85",
+          "flows": [],
+          "other_oci": "0",
+          "other_oci_rate": "0.85",
+          "opening_cta": "0",
+          "reported_closing_net_assets": "100",
+          "ownership": "0.8",
+          "memo": "Separate foreign operation synthetic bridge",
+          "rates_approximate_dates": true
+        },
+        "disposal": {
+          "kind": "none",
+          "memo": "No disposal"
+        },
+        "knowledge_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "claim_ids": [
+            "TOPIC-06-002-IFRS-001",
+            "TOPIC-06-002-IFRS-R001",
+            "TOPIC-06-003-IFRS-001",
+            "TOPIC-06-003-IFRS-R001",
+            "TOPIC-06-004-IFRS-001",
+            "TOPIC-06-004-IFRS-R001",
+            "TOPIC-07-006-IFRS-001",
+            "TOPIC-07-006-IFRS-R001"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md",
+              "sha256": "ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md",
+              "sha256": "eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json",
+              "sha256": "ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md",
+              "sha256": "925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md",
+              "sha256": "e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md",
+              "sha256": "4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239"
+            },
+            {
+              "topic_id": "TOPIC-06-002",
+              "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md",
+              "sha256": "ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577"
+            },
+            {
+              "topic_id": "TOPIC-06-003",
+              "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/README.md",
+              "sha256": "21bb034b5d63d1587cdb1de1e7d05167309fefd300865054d5707f20bb10b288"
+            },
+            {
+              "topic_id": "TOPIC-06-003",
+              "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/evidence-and-regression.md",
+              "sha256": "736a6d1c23c37e0777e8db3bf46390d894139c58662817dbd6c6bfa61e6629a4"
+            },
+            {
+              "topic_id": "TOPIC-06-003",
+              "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/standards-claims.json",
+              "sha256": "7391675cddf485703c39ea2b0fc82687d16500141cd22034eaea1e43a63cb244"
+            },
+            {
+              "topic_id": "TOPIC-06-003",
+              "path": "knowledge/topics/TOPIC-06-003-fx-remeasurement-translation/README.md",
+              "sha256": "4d7761e8c470e45ed102d72a4582b665e91c22fd9405db4c1eaf62f173c72e4d"
+            },
+            {
+              "topic_id": "TOPIC-06-004",
+              "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/README.md",
+              "sha256": "37c3cc37fa9c54c6d0888a59e810a4c2865212a859d158f98738a5779a97c6ca"
+            },
+            {
+              "topic_id": "TOPIC-06-004",
+              "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/evidence-and-regression.md",
+              "sha256": "135435381cc74112320dcc5dcdb478a4f6f55912edda9ae2c14f3128be5b40ee"
+            },
+            {
+              "topic_id": "TOPIC-06-004",
+              "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/functional-currency-case.md",
+              "sha256": "e31a546b11c1238a7416f5e3b8230b4a77dd5a6ea540dc75f449dff1edb935e9"
+            },
+            {
+              "topic_id": "TOPIC-06-004",
+              "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/indicator-evidence-and-change-trigger.md",
+              "sha256": "e7e5cc2dcc523d653de18681e863e34032a3080854d9343c2edaafcbae5c08f7"
+            },
+            {
+              "topic_id": "TOPIC-06-004",
+              "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/standards-claims.json",
+              "sha256": "6efc14f774429008e29c2bbf9797cb643369e589617cc6d461b76f02d2db6e1d"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+              "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+              "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+              "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+              "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+            },
+            {
+              "topic_id": "TOPIC-07-006",
+              "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+              "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-06-002-IFRS-001",
+            "TOPIC-06-002-IFRS-R001",
+            "TOPIC-06-003-IFRS-001",
+            "TOPIC-06-003-IFRS-R001",
+            "TOPIC-06-004-IFRS-001",
+            "TOPIC-06-004-IFRS-R001",
+            "TOPIC-07-006-IFRS-001",
+            "TOPIC-07-006-IFRS-R001"
+          ],
+          "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+          "public_caveats": [
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "synthetic independent reviewer",
+          "approved": true,
+          "case_fingerprint": "390470512192e19bbbb4c824deecac640dabea157c3d40d500f9e576083430fb"
+        }
+      },
+      "result": {
+        "conclusion": "Functional-currency transaction schedule and separate presentation-currency bridge reconcile.",
+        "method": {
+          "framework": "IFRS",
+          "functional": "EUR",
+          "presentation": "EUR",
+          "layers": "remeasurement then translation"
+        },
+        "calculations": {
+          "transactions": [
+            {
+              "id": "AR",
+              "initial": "110.00",
+              "settlement": "46.00",
+              "closing": "72.00",
+              "gain": "8.00",
+              "origin": "FX income"
+            }
+          ],
+          "monetary_fx_profit": "8.00",
+          "translation": {
+            "translated_tb": {
+              "cash": "80.00",
+              "sub equity": "-90.00"
+            },
+            "opening_net_translated": "90.00",
+            "profit_translated": "0.00",
+            "closing_net_translated": "80.00",
+            "cta_movement": "-10.00",
+            "owners_movement": "-8.00",
+            "nci_movement": "-2.00",
+            "opening_cta": "0.00",
+            "recycled_owners": "0",
+            "closing_cta": "-10.00"
+          }
+        },
+        "journal_entry_implications": [
+          [
+            {
+              "side": "Dr",
+              "account": "receivable",
+              "amount": "8.00"
+            },
+            {
+              "side": "Cr",
+              "account": "FX income",
+              "amount": "8.00"
+            }
+          ],
+          [
+            {
+              "side": "Dr",
+              "account": "cash",
+              "amount": "46.00"
+            },
+            {
+              "side": "Cr",
+              "account": "receivable",
+              "amount": "46.00"
+            }
+          ],
+          [
+            {
+              "side": "Cr",
+              "account": "translation clearing",
+              "amount": "8.00"
+            },
+            {
+              "side": "Dr",
+              "account": "owners translation OCI",
+              "amount": "8.00"
+            }
+          ],
+          [
+            {
+              "side": "Cr",
+              "account": "translation clearing",
+              "amount": "2.00"
+            },
+            {
+              "side": "Dr",
+              "account": "NCI translation OCI",
+              "amount": "2.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Primary price/cost economics reviewed",
+          "Synthetic approved spot feed",
+          "Supported customer receivable"
+        ],
+        "disclosures_impacted": [
+          "Functional/presentation currencies and changes",
+          "Transaction FX gains/losses separate from translation OCI",
+          "Translation reserve and NCI rollforwards",
+          "Disposal reclassification and ownership changes",
+          "Rate-source uncertainty and lack-of-exchangeability disclosures where relevant"
+        ],
+        "uncertainties": [
+          "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+          "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+        ],
+        "open_items": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "skill_id": "SKILL-FX-001",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-foreign-currency",
+          "framework": "IFRS",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {},
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "currency": {
+            "functional": "EUR",
+            "presentation": "EUR",
+            "ledger": "EUR",
+            "functional_memo": "Primary price/cost economics reviewed",
+            "rate_source": "Synthetic approved spot feed",
+            "rate_convention": "functional_per_foreign",
+            "functional_review_complete": true,
+            "hyperinflation": false,
+            "exchangeability": true,
+            "functional_change": false,
+            "net_investment_items": false
+          },
+          "items": [
+            {
+              "id": "AR",
+              "type": "monetary",
+              "side": "asset",
+              "account": "receivable",
+              "foreign_amount": "100",
+              "initial_rate": "1.10",
+              "closing_rate": "1.20",
+              "settled_foreign": "40",
+              "settlement_rate": "1.15",
+              "initial_date": "2026-01-01",
+              "settlement_date": "2026-06-30",
+              "opening_book": "110",
+              "opening_route": "initial",
+              "opening_rate": "1.10",
+              "memo": "Supported customer receivable"
+            }
+          ],
+          "translation": {
+            "enabled": true,
+            "operation_id": "ForeignS",
+            "valuation_date": "2026-12-31",
+            "functional_currency": "USD",
+            "presentation_currency": "EUR",
+            "quote": "presentation_per_functional",
+            "tb": [
+              {
+                "id": "cash",
+                "balance": "100",
+                "category": "asset",
+                "rate": "0.8",
+                "memo": "Current closing"
+              },
+              {
+                "id": "sub equity",
+                "balance": "-100",
+                "category": "equity",
+                "rate": "0.9",
+                "memo": "Historical"
+              }
+            ],
+            "opening_net_assets": "100",
+            "opening_rate": "0.9",
+            "closing_rate": "0.8",
+            "profit": "0",
+            "profit_rate": "0.85",
+            "flows": [],
+            "other_oci": "0",
+            "other_oci_rate": "0.85",
+            "opening_cta": "0",
+            "reported_closing_net_assets": "100",
+            "ownership": "0.8",
+            "memo": "Separate foreign operation synthetic bridge",
+            "rates_approximate_dates": true
+          },
+          "disposal": {
+            "kind": "none",
+            "memo": "No disposal"
+          }
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-06-002",
+            "claim_id": "TOPIC-06-002-IFRS-001",
+            "proposition": "Foreign-currency monetary balances are retranslated at closing rate; historical-cost nonmonetary balances retain transaction-date measurement, while cash-equivalent classification is a distinct IAS 7 question.",
+            "references": [
+              "IAS 7.6\u20139; IAS 21.21\u201328"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Exact subsidiary provisions and historical period remain to audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Source edition; choose operative period",
+            "entity_scope": "For-profit entity; resolve US public/private, UK entity regime and Australian tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "claim_id": "TOPIC-06-002-IFRS-R001",
+            "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "claim_id": "TOPIC-06-003-IFRS-001",
+            "proposition": "Remeasure foreign-currency monetary items into functional currency before translating a foreign operation to presentation currency; translation differences and disposal have separate treatment.",
+            "references": [
+              "IAS 21.21\u201328, 39\u201341, 48\u201349"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "claim_id": "TOPIC-06-003-IFRS-R001",
+            "proposition": "Remeasure into functional currency before foreign-operation presentation translation; transaction FX and OCI are different accounting layers.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "claim_id": "TOPIC-06-004-IFRS-001",
+            "proposition": "Functional currency reflects primary economic environment, with primary pricing/cost indicators and supporting financing/retention evidence; change only on changed underlying economics.",
+            "references": [
+              "IAS 21.9\u201314, 35\u201337"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "claim_id": "TOPIC-06-004-IFRS-R001",
+            "proposition": "Functional currency follows economic environment; a real underlying change can justify prospective change, not retrospective earnings management.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-001",
+            "proposition": "Translate foreign-operation assets/liabilities at closing rate and income/expenses at transaction-date rates or appropriate approximation; reconcile reserve and group chart mapping.",
+            "references": [
+              "IAS 21.39\u201341; IFRS 10.B86"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-R001",
+            "proposition": "Foreign-operation translation uses applicable closing and income rates and equity history; chart mapping cannot replace accounting or currency analysis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-06-002",
+            "claim_id": "TOPIC-06-002-IFRS-001",
+            "proposition": "Foreign-currency monetary balances are retranslated at closing rate; historical-cost nonmonetary balances retain transaction-date measurement, while cash-equivalent classification is a distinct IAS 7 question.",
+            "references": [
+              "IAS 7.6\u20139; IAS 21.21\u201328"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Exact subsidiary provisions and historical period remain to audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Source edition; choose operative period",
+            "entity_scope": "For-profit entity; resolve US public/private, UK entity regime and Australian tier",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "claim_id": "TOPIC-06-002-IFRS-R001",
+            "proposition": "Cash equivalents require cash-management purpose, known convertibility and insignificant value risk; monetary and historical nonmonetary balances use distinct rates.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "claim_id": "TOPIC-06-003-IFRS-001",
+            "proposition": "Remeasure foreign-currency monetary items into functional currency before translating a foreign operation to presentation currency; translation differences and disposal have separate treatment.",
+            "references": [
+              "IAS 21.21\u201328, 39\u201341, 48\u201349"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "claim_id": "TOPIC-06-003-IFRS-R001",
+            "proposition": "Remeasure into functional currency before foreign-operation presentation translation; transaction FX and OCI are different accounting layers.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "claim_id": "TOPIC-06-004-IFRS-001",
+            "proposition": "Functional currency reflects primary economic environment, with primary pricing/cost indicators and supporting financing/retention evidence; change only on changed underlying economics.",
+            "references": [
+              "IAS 21.9\u201314, 35\u201337"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Core cited provision inspected, but each subsidiary assertion/period needs review.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "Edition in source; 2026 IFRS 9 amendments apply from 1 January 2026 where applicable",
+            "entity_scope": "For-profit; public/private and tier scope require assessment",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "claim_id": "TOPIC-06-004-IFRS-R001",
+            "proposition": "Functional currency follows economic environment; a real underlying change can justify prospective change, not retrospective earnings management.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules.",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-001",
+            "proposition": "Translate foreign-operation assets/liabilities at closing rate and income/expenses at transaction-date rates or appropriate approximation; reconcile reserve and group chart mapping.",
+            "references": [
+              "IAS 21.39\u201341; IFRS 10.B86"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Specific source claim inspected; subsidiary claims need finer audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued edition; assess period-specific amendments",
+            "entity_scope": "For-profit group; public/private, UK regime and AASB tier assessed",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "claim_id": "TOPIC-07-006-IFRS-R001",
+            "proposition": "Foreign-operation translation uses applicable closing and income rates and equity history; chart mapping cannot replace accounting or currency analysis.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "USASC810 VIE/voting-interest, ASC323 equitymethod andjointventure scope separate fromIFRScontrol/rights model; FRS102 Sections9/14/15, statutoryexemptions andseparate-investment choices independent. Australian NFP/tier/compilation gates retained. Training-data treatment checked without asserting US/UKoperative paragraph verification; tax,OCI,NCIrights andvaluation assumptions remainmaterial caveats."
+            ],
+            "effective_period": "2026 reporting group, consolidation versusseparate statements, ordinary/preference rights, actualcontrol date and entity required. IAS21 exchangeability2025,hyperinflationarypresentation2027/earlyadoption andIFRS182027 gated. UK2026PeriodReview andcompanylaw exemptions separately resolved. AASB2024-4 sale/contribution annualstarts2028 verified officialnotice; AASB2026-3 fairvalueoption starts2027, NFP/superannuation2028 noted forfutureadoption, notautomatic2026. IASB tentative equitymethod proposals don'treplacecurrentIAS28.",
+            "entity_scope": "Individual canonical group-accounting topic review; substantive REVIEWED baseline confirmed. Operational rules separated from normative accounting dependencies; register captures material conditional rules.",
+            "audit_required": true
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md",
+            "sha256": "ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md",
+            "sha256": "eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json",
+            "sha256": "ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md",
+            "sha256": "925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md",
+            "sha256": "e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md",
+            "sha256": "4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239"
+          },
+          {
+            "topic_id": "TOPIC-06-002",
+            "path": "knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md",
+            "sha256": "ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577"
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/README.md",
+            "sha256": "21bb034b5d63d1587cdb1de1e7d05167309fefd300865054d5707f20bb10b288"
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/evidence-and-regression.md",
+            "sha256": "736a6d1c23c37e0777e8db3bf46390d894139c58662817dbd6c6bfa61e6629a4"
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "path": "knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/standards-claims.json",
+            "sha256": "7391675cddf485703c39ea2b0fc82687d16500141cd22034eaea1e43a63cb244"
+          },
+          {
+            "topic_id": "TOPIC-06-003",
+            "path": "knowledge/topics/TOPIC-06-003-fx-remeasurement-translation/README.md",
+            "sha256": "4d7761e8c470e45ed102d72a4582b665e91c22fd9405db4c1eaf62f173c72e4d"
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/README.md",
+            "sha256": "37c3cc37fa9c54c6d0888a59e810a4c2865212a859d158f98738a5779a97c6ca"
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/evidence-and-regression.md",
+            "sha256": "135435381cc74112320dcc5dcdb478a4f6f55912edda9ae2c14f3128be5b40ee"
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/functional-currency-case.md",
+            "sha256": "e31a546b11c1238a7416f5e3b8230b4a77dd5a6ea540dc75f449dff1edb935e9"
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/indicator-evidence-and-change-trigger.md",
+            "sha256": "e7e5cc2dcc523d653de18681e863e34032a3080854d9343c2edaafcbae5c08f7"
+          },
+          {
+            "topic_id": "TOPIC-06-004",
+            "path": "knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/standards-claims.json",
+            "sha256": "6efc14f774429008e29c2bbf9797cb643369e589617cc6d461b76f02d2db6e1d"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md",
+            "sha256": "06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md",
+            "sha256": "ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md",
+            "sha256": "33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json",
+            "sha256": "88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5"
+          },
+          {
+            "topic_id": "TOPIC-07-006",
+            "path": "knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md",
+            "sha256": "c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "case_fingerprint": "390470512192e19bbbb4c824deecac640dabea157c3d40d500f9e576083430fb",
+        "status": "complete"
+      }
+    }
+  ],
+  "owner_links": [
+    {
+      "id": "translation-link",
+      "owner_import": "fx1",
+      "result_path": [
+        "translation",
+        "cta_movement"
+      ],
+      "amount": "-10",
+      "document_id": "doc-translation-link"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship1",
+      "instrument_id": "forward1",
+      "type": "net_investment",
+      "objective": "Documented management commodity purchase price protection",
+      "designation_memo": "Frozen designation at qualification",
+      "instrument_eligibility_memo": "Eligible whole forward",
+      "item_eligibility_memo": "Highly probable commodity purchase",
+      "risk_component_memo": "Whole supported commodity risk",
+      "effectiveness_memo": "Documented independent assessment",
+      "risk_id": "FX",
+      "hedged_item_id": "purchase1",
+      "designation_date": "2026-01-01",
+      "documentation_date": "2026-01-01",
+      "inception_date": "2026-01-01",
+      "advanced_route": "none",
+      "excluded_components": "none",
+      "instrument_eligible": true,
+      "item_eligible": true,
+      "risk_eligible": true,
+      "objective_unchanged": true,
+      "economic_relationship": true,
+      "credit_dominates": false,
+      "highly_effective": true,
+      "external_group_exposure": true,
+      "assessment_date": "2026-12-31",
+      "effectiveness_method": "economic_relationship",
+      "ratio": "1",
+      "actual_instrument_quantity": "64",
+      "actual_item_quantity": "64",
+      "status": "active",
+      "risk_measurement": {
+        "id": "risk1",
+        "instrument_valuation_id": "independent-hypothetical1",
+        "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+        "method": "Separately measured hypothetical instrument for designated risk",
+        "market_evidence": "Independent hypothetical risk source",
+        "assessment_date": "2026-12-31",
+        "item_id": "purchase1",
+        "risk_id": "FX",
+        "currency": "EUR",
+        "quantity": "64",
+        "current_change": "-10",
+        "instrument_cumulative": "100",
+        "risk_cumulative": "-10",
+        "opening_instrument_cumulative": "0",
+        "opening_risk_cumulative": "0",
+        "document_id": "doc-risk1"
+      },
+      "item_type": "net_investment",
+      "opening_reserve": "0",
+      "reserve_source_opening": "0",
+      "opening_effective": "0",
+      "earnings_release": "0",
+      "basis_release": "0",
+      "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+      "forecast_date": "2027-03-31",
+      "forecast_probability": "highly_probable",
+      "forecast_quantity": "1000",
+      "designated_start": "2026-01-01",
+      "designated_end": "2027-12-31",
+      "forecast_outcome": "pending",
+      "document_id": "doc-relationship1",
+      "group_perspective": true,
+      "consolidation_import": "cons1",
+      "foreign_operation_id": "ForeignS",
+      "net_investment_eligibility_memo": "Actual parent owned net assets in foreign operation qualifies; FX/group scopes reviewed",
+      "translation_owner": "translation-link",
+      "net_investment": "64",
+      "translation_change": "-10",
+      "disposed": false
+    }
+  ],
+  "contracts": [
+    {
+      "id": "forward1",
+      "kind": "forward",
+      "underlying": "Commodity index",
+      "underlying_type": "commodity",
+      "comparable_investment": "1000",
+      "notional": "64",
+      "payment_provision": true,
+      "initial_net_investment": "0",
+      "small_initial_investment": true,
+      "future_settlement": true,
+      "net_settlement": true,
+      "exception_applies": false,
+      "exception_assessed": true,
+      "embedded_feature": false,
+      "financial_asset_host": false,
+      "closely_related": true,
+      "separation_required": false,
+      "contract_memo": "Actual synthetic contractual terms reviewed",
+      "scope_memo": "Independent scope analysis",
+      "embedded_memo": "Reviewed none",
+      "maturity": "2027-12-31",
+      "document_id": "doc-forward1"
+    }
+  ],
+  "valuations": [
+    {
+      "id": "valuation1",
+      "instrument_id": "forward1",
+      "qualified_valuer": "Synthetic independent derivative valuation specialist",
+      "valuation_method": "Independently qualified external curve and market valuation",
+      "market_evidence": "Synthetic frozen independent market workpaper",
+      "credit_adjustment_memo": "Independent bilateral credit assessment",
+      "measurement_date": "2026-12-31",
+      "opening_date": "2026-01-01",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "notional": "64",
+      "opening": "0",
+      "change": "100",
+      "settlement": "0",
+      "closing": "100",
+      "document_id": "doc-valuation1"
+    }
+  ],
+  "population_review": {
+    "reviewer": "Synthetic independent completeness reviewer",
+    "complete": true,
+    "completeness_memo": "Independent signed contract register completeness",
+    "source_system": "Synthetic contract register",
+    "contract_ids": [
+      "forward1"
+    ],
+    "notional_total": "64",
+    "id": "population",
+    "document_id": "doc-population"
+  },
+  "gl": [
+    {
+      "id": "Derivative balance forward1",
+      "opening": "0",
+      "closing": "100",
+      "statement": "100",
+      "document_id": "doc-Derivative balance forward1"
+    },
+    {
+      "id": "Hedge P&L relationship1",
+      "opening": "0",
+      "closing": "-90",
+      "statement": "-90",
+      "document_id": "doc-Hedge P&L relationship1"
+    },
+    {
+      "id": "Hedge reserve relationship1",
+      "opening": "0",
+      "closing": "-10",
+      "statement": "-10",
+      "document_id": "doc-Hedge reserve relationship1"
+    }
+  ],
+  "disclosure_review": {
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "framework_checklist": "IFRS actual operative disclosure requirements",
+    "strategy_memo": "Documented objective disclosures",
+    "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+    "framework": "IFRS",
+    "complete": true,
+    "contract_ids": [
+      "forward1"
+    ],
+    "relationship_ids": [
+      "relationship1"
+    ],
+    "id": "disclosures",
+    "document_id": "doc-disclosures"
+  },
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "TOPIC-06-008-IFRS-001",
+      "TOPIC-06-008-IFRS-R001",
+      "TOPIC-06-009-IFRS-001",
+      "TOPIC-06-009-IFRS-R001",
+      "HEDGE-IFRS-001",
+      "HEDGE-IFRS-002",
+      "HEDGE-IFRS-003",
+      "HEDGE-IFRS-004",
+      "HEDGE-IFRS-005",
+      "HEDGE-IFRS-006",
+      "HEDGE-IFRS-007",
+      "HEDGE-IFRS-008",
+      "HEDGE-IFRS-009",
+      "HEDGE-IFRS-010",
+      "HEDGE-IFRS-011",
+      "HEDGE-IFRS-012",
+      "HEDGE-IFRS-013",
+      "HEDGE-IFRS-014",
+      "HEDGE-IFRS-015",
+      "HEDGE-IFRS-016",
+      "HEDGE-IFRS-017",
+      "HEDGE-IFRS-018",
+      "HEDGE-IFRS-019",
+      "HEDGE-IFRS-020",
+      "HEDGE-IFRS-021",
+      "HEDGE-IFRS-022",
+      "HEDGE-IFRS-023",
+      "HEDGE-IFRS-024",
+      "HEDGE-IFRS-025"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-008.json",
+        "sha256": "4f23b8e03087599b5a4be6319626331801d6b731370c0b35e8eb8ea099585539"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+        "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+        "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+        "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+        "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+      },
+      {
+        "topic_id": "TOPIC-06-008",
+        "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+        "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/phase-2e/reviews/TOPIC-06-009.json",
+        "sha256": "6c786762bea7a8b1fe99d25382e11494bae9461939d8192599c5159607199bf4"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+        "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+        "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+        "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+        "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+      },
+      {
+        "topic_id": "TOPIC-06-009",
+        "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+        "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
+        "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
+        "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
+        "sha256": "666a1024e52771f6463ce2ad65aa2ee38657366635ea6c2b22f7f2b6090b6f8e"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/README.md",
+        "sha256": "2c5b2f6c0d5961e7d21e3f7b7485578ed8ab0a4d02658907bdc91cf689227303"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent-review.json",
+        "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/independent_review_tests.py",
+        "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/retrieval.py",
+        "sha256": "235fb758a86d927938c251c69d3941c64a6a0e08ad865bff37e5c3416dec8a1b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/standards-claims.json",
+        "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/test_supplement.py",
+        "sha256": "71a1296e72f4f3a5f2307359198532b0785e2eb2b8d02d6a63058ed39a83e4e7"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+        "path": "knowledge/derivatives-hedge/validate_supplement.py",
+        "sha256": "6d916cabd73146f08da589a2e1aee7684178f2613cd397f6260c50182df5c317"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-06-008-IFRS-001",
+      "TOPIC-06-008-IFRS-R001",
+      "TOPIC-06-009-IFRS-001",
+      "TOPIC-06-009-IFRS-R001",
+      "HEDGE-IFRS-001",
+      "HEDGE-IFRS-002",
+      "HEDGE-IFRS-003",
+      "HEDGE-IFRS-004",
+      "HEDGE-IFRS-005",
+      "HEDGE-IFRS-006",
+      "HEDGE-IFRS-007",
+      "HEDGE-IFRS-008",
+      "HEDGE-IFRS-009",
+      "HEDGE-IFRS-010",
+      "HEDGE-IFRS-011",
+      "HEDGE-IFRS-012",
+      "HEDGE-IFRS-013",
+      "HEDGE-IFRS-014",
+      "HEDGE-IFRS-015",
+      "HEDGE-IFRS-016",
+      "HEDGE-IFRS-017",
+      "HEDGE-IFRS-018",
+      "HEDGE-IFRS-019",
+      "HEDGE-IFRS-020",
+      "HEDGE-IFRS-021",
+      "HEDGE-IFRS-022",
+      "HEDGE-IFRS-023",
+      "HEDGE-IFRS-024",
+      "HEDGE-IFRS-025"
+    ],
+    "selection_memo": "Synthetic reviewed decision-specific scope and hedge method claims",
+    "public_caveats": [
+      "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+    ]
+  }
+}

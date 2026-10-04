@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'derivatives-hedge-accounting': ('SKILL-HEDGE-001',['TOPIC-06-008','TOPIC-06-009']),
     'agriculture-biological-assets': ('SKILL-AGR-001',['SUPPLEMENTAL_AGRICULTURE']),
     'defined-benefit-opeb': ('SKILL-DB-001',['TOPIC-05-005']),
     'accounting-controls-icfr': ('SKILL-CTRL-001',['TOPIC-09-001','TOPIC-09-002','TOPIC-09-003','TOPIC-09-004','TOPIC-09-007','TOPIC-09-008','TOPIC-09-009']),
@@ -109,6 +110,9 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if package == 'derivatives-hedge-accounting':
+        from hedge_knowledge import mapped_knowledge
+        return mapped_knowledge(framework)
     if topic_ids == ['SUPPLEMENTAL_INVENTORY_COST']:
         spec=importlib.util.spec_from_file_location('inventory_retrieval',ROOT/'knowledge/inventory-cost/retrieval.py')
         module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
@@ -257,6 +261,9 @@ def case_fingerprint(case):
     files += [ROOT/'skills/presentation_accounting.py']
     files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
     files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
+    if case.get('package')=='derivatives-hedge-accounting':
+        files += [ROOT/'skills/hedge_knowledge.py',ROOT/'skills/derivatives-hedge-accounting/CANONICAL-KNOWLEDGE-MAP.json',ROOT/'skills/derivatives-hedge-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
+        files += [p for p in (ROOT/'knowledge/derivatives-hedge').glob('*.py')]
     if case.get('package')=='inventory-cost':
         files += [ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json']
         files += [p for p in (ROOT/'knowledge/inventory-cost').glob('*.py')]
@@ -308,6 +315,7 @@ def to_public(result, route='answer'):
     if result['skill_id'] in ['SKILL-IPO-001', 'SKILL-PBC-001', 'SKILL-POLICY-001', 'SKILL-DISC-001', 'SKILL-ANALYTICS-001']:title='Governed management accounting practice; actual topic authority remains separately qualified'
     if result['skill_id'] in ('SKILL-CTRL-001','SKILL-SYS-001','SKILL-MODEL-001'):title='Governed accounting practice; actual legal and accounting requirements remain separately qualified'
     if result['skill_id']=='SKILL-DB-001':title={'IFRS':'IAS 19 bounded actuarial accounting bridge','US_GAAP':'ASC 715 qualified report workpaper; detailed mechanics excluded','UK_GAAP':'FRS 102 Section 28 qualified report workpaper','AASB':'AASB 119 qualified report workpaper'}[result['framework']]
+    if result['skill_id']=='SKILL-HEDGE-001':title={'IFRS':'IFRS 9 / IFRS 7 derivative and hedge accounting','US_GAAP':'ASC 815 derivative and hedge accounting','UK_GAAP':'FRS 102 Section 12 derivative and hedge accounting','AASB':'AASB 9 / AASB 7 derivative and hedge accounting'}.get(result['framework'],'Derivative framework unresolved')
     if result['skill_id']=='SKILL-INV-001':title={'IFRS':'IAS 2 bounded manufacturing accounting','US_GAAP':'ASC 330 bounded manufacturing accounting','UK_GAAP':'FRS 102 Section 13 bounded manufacturing accounting','AASB':'AASB 102 Tier 1 bounded manufacturing accounting'}.get(result['framework'],'Inventory framework unresolved')
     if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
@@ -344,6 +352,7 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'derivatives-hedge-accounting':('TOPIC-06-009','Derivatives and Hedge Accounting, qualified Valuation and underlying accounting owners','Actual contract population, current qualified signed derivative valuation, contemporaneous framework-specific designation, independent hedged-risk measurement, forecast or net-investment evidence and reserve/GL ties'),
           'agriculture-biological-assets':('SUPPLEMENTAL_AGRICULTURE','Agriculture, qualified Valuation, Fixed Assets and Inventory owners','Actual current control, framework classification, quantities, biological population, valuation dates and original GL sources; post-harvest costs require completed Inventory owner sources; grants remain unavailable'),
           'defined-benefit-opeb':('TOPIC-05-005','Defined-benefit accounting and actuarial specialists','Current qualified plan/census/actuarial report and separate stock-flow/GL evidence; unsupported actuarial valuation or detailed framework mechanics require governed extension'),
           'accounting-controls-icfr':('TOPIC-09-001','Control owners and qualified governance reviewers','Complete current risk/control/occurrence/IPE populations and actual applicability; no effectiveness or SOX certification'),

@@ -1,0 +1,3920 @@
+{
+  "case_id": "Synthetic Inventory IFRS resale actual FIFO",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "IAS2_2026"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "inventory-cost",
+  "execution_date": "2027-03-31",
+  "requested_action": "accounting",
+  "imports": [
+    {
+      "id": "hedge-owner",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "package": "derivatives-hedge-accounting",
+      "case": {
+        "case_id": "synthetic-derivatives-hedge-accounting",
+        "framework": "IFRS",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {},
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "package": "derivatives-hedge-accounting",
+        "execution_date": "2027-02-01",
+        "currency": "USD",
+        "requested_action": "accounting_workpaper",
+        "model": "IFRS9_Chapter6",
+        "documents": [
+          {
+            "id": "doc-forward1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "forward1",
+              "kind": "forward",
+              "underlying": "Commodity index",
+              "underlying_type": "commodity",
+              "comparable_investment": "1000",
+              "notional": "10",
+              "payment_provision": true,
+              "initial_net_investment": "0",
+              "small_initial_investment": true,
+              "future_settlement": true,
+              "net_settlement": true,
+              "exception_applies": false,
+              "exception_assessed": true,
+              "embedded_feature": false,
+              "financial_asset_host": false,
+              "closely_related": true,
+              "separation_required": false,
+              "contract_memo": "Actual synthetic contractual terms reviewed",
+              "scope_memo": "Independent scope analysis",
+              "embedded_memo": "Reviewed none",
+              "maturity": "2027-12-31"
+            },
+            "content_hash": "a52eebc96a1ddfbe38b0893f917a9a96f07914699f47c4aa8a0546e35c32f79e"
+          },
+          {
+            "id": "doc-valuation1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "valuation1",
+              "instrument_id": "forward1",
+              "qualified_valuer": "Synthetic independent derivative valuation specialist",
+              "valuation_method": "Independently qualified external curve and market valuation",
+              "market_evidence": "Synthetic frozen independent market workpaper",
+              "credit_adjustment_memo": "Independent bilateral credit assessment",
+              "measurement_date": "2026-12-31",
+              "opening_date": "2026-01-01",
+              "currency": "USD",
+              "entity": "Synthetic Group",
+              "notional": "10",
+              "opening": "0",
+              "change": "100",
+              "settlement": "0",
+              "closing": "100"
+            },
+            "content_hash": "727222cac6824eec20b825a4e8a225a7ac1c08600ee38259df09e1398e36d97c"
+          },
+          {
+            "id": "doc-population",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "reviewer": "Synthetic independent completeness reviewer",
+              "complete": true,
+              "completeness_memo": "Independent signed contract register completeness",
+              "source_system": "Synthetic contract register",
+              "contract_ids": [
+                "forward1"
+              ],
+              "notional_total": "10",
+              "id": "population"
+            },
+            "content_hash": "2c7414975b4cbb03b0dad82c734ebe59e22556844710c88dd4c6cf001674217d"
+          },
+          {
+            "id": "doc-disclosures",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "reviewer": "Synthetic independent disclosure reviewer",
+              "framework_checklist": "IFRS actual operative disclosure requirements",
+              "strategy_memo": "Documented objective disclosures",
+              "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+              "framework": "IFRS",
+              "complete": true,
+              "contract_ids": [
+                "forward1"
+              ],
+              "relationship_ids": [
+                "relationship1"
+              ],
+              "id": "disclosures"
+            },
+            "content_hash": "60c9781eaf59ebb914851dc6c665a504bf09637cdfd8f645583662ae2dc3e3cc"
+          },
+          {
+            "id": "doc-Derivative balance forward1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "Derivative balance forward1",
+              "opening": "0",
+              "closing": "100",
+              "statement": "100"
+            },
+            "content_hash": "904b0e777174780bd1c80fae39c5d2a488c95fff5752da4ad31650f7fa589497"
+          },
+          {
+            "id": "doc-Hedge P&L relationship1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "Hedge P&L relationship1",
+              "opening": "0",
+              "closing": "-10",
+              "statement": "-10"
+            },
+            "content_hash": "6e0c7d31baff182fcb84fe924ea4257e24c7f9778757453a6f61a1bf1eaea919"
+          },
+          {
+            "id": "doc-Hedge reserve relationship1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "Hedge reserve relationship1",
+              "opening": "0",
+              "closing": "0",
+              "statement": "0"
+            },
+            "content_hash": "1d6436e9d57845c66ac024b81eec03a4fdeefac6256106a48b603f352b05433b"
+          },
+          {
+            "id": "doc-Nonfinancial asset basis adjustment",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "Nonfinancial asset basis adjustment",
+              "opening": "0",
+              "closing": "-90",
+              "statement": "-90"
+            },
+            "content_hash": "33e1ca67a5d5d6baabdc9f3268c7ff5dafbcc441b6af19e0ed87a3e0526141fd"
+          },
+          {
+            "id": "doc-risk1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "risk1",
+              "instrument_valuation_id": "independent-hypothetical1",
+              "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+              "method": "Separately measured hypothetical instrument for designated risk",
+              "market_evidence": "Independent hypothetical risk source",
+              "assessment_date": "2026-12-31",
+              "item_id": "purchase1",
+              "risk_id": "commodity_price",
+              "currency": "USD",
+              "quantity": "10",
+              "current_change": "-90",
+              "instrument_cumulative": "100",
+              "risk_cumulative": "-90",
+              "opening_instrument_cumulative": "0",
+              "opening_risk_cumulative": "0"
+            },
+            "content_hash": "afd600021b7745614f477bb28f74f7419ce7ecad4fa667e18ff7dfba9c1754ca"
+          },
+          {
+            "id": "doc-relationship1",
+            "reviewer": "Synthetic independent source reviewer",
+            "source_system": "Synthetic frozen source",
+            "version": "1",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "currency": "USD",
+            "as_of": "2026-12-31",
+            "content": {
+              "id": "relationship1",
+              "instrument_id": "forward1",
+              "type": "cash_flow",
+              "objective": "Documented management commodity purchase price protection",
+              "designation_memo": "Frozen designation at qualification",
+              "instrument_eligibility_memo": "Eligible whole forward",
+              "item_eligibility_memo": "Highly probable commodity purchase",
+              "risk_component_memo": "Whole supported commodity risk",
+              "effectiveness_memo": "Documented independent assessment",
+              "risk_id": "commodity_price",
+              "hedged_item_id": "purchase1",
+              "designation_date": "2026-01-01",
+              "documentation_date": "2026-01-01",
+              "inception_date": "2026-01-01",
+              "advanced_route": "none",
+              "excluded_components": "none",
+              "instrument_eligible": true,
+              "item_eligible": true,
+              "risk_eligible": true,
+              "objective_unchanged": true,
+              "economic_relationship": true,
+              "credit_dominates": false,
+              "highly_effective": true,
+              "external_group_exposure": true,
+              "assessment_date": "2026-12-31",
+              "effectiveness_method": "economic_relationship",
+              "ratio": "1",
+              "actual_instrument_quantity": "10",
+              "actual_item_quantity": "10",
+              "status": "active",
+              "risk_measurement": {
+                "id": "risk1",
+                "instrument_valuation_id": "independent-hypothetical1",
+                "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+                "method": "Separately measured hypothetical instrument for designated risk",
+                "market_evidence": "Independent hypothetical risk source",
+                "assessment_date": "2026-12-31",
+                "item_id": "purchase1",
+                "risk_id": "commodity_price",
+                "currency": "USD",
+                "quantity": "10",
+                "current_change": "-90",
+                "instrument_cumulative": "100",
+                "risk_cumulative": "-90",
+                "opening_instrument_cumulative": "0",
+                "opening_risk_cumulative": "0",
+                "document_id": "doc-risk1"
+              },
+              "item_type": "forecast_purchase",
+              "opening_reserve": "0",
+              "reserve_source_opening": "0",
+              "opening_effective": "0",
+              "earnings_release": "0",
+              "basis_release": "90",
+              "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+              "forecast_date": "2026-12-31",
+              "forecast_probability": "highly_probable",
+              "forecast_quantity": "10",
+              "designated_start": "2026-01-01",
+              "designated_end": "2027-12-31",
+              "forecast_outcome": "occurred",
+              "transaction_date": "2026-12-31",
+              "acquisition_id": "economic-receipt",
+              "sku": "goods",
+              "acquired_quantity": "10"
+            },
+            "content_hash": "9cf9291cc630d1c1fde4046d3a3097a5161ea51caa7269c3d29f357eda71bda5"
+          }
+        ],
+        "imports": [],
+        "owner_links": [],
+        "relationships": [
+          {
+            "id": "relationship1",
+            "instrument_id": "forward1",
+            "type": "cash_flow",
+            "objective": "Documented management commodity purchase price protection",
+            "designation_memo": "Frozen designation at qualification",
+            "instrument_eligibility_memo": "Eligible whole forward",
+            "item_eligibility_memo": "Highly probable commodity purchase",
+            "risk_component_memo": "Whole supported commodity risk",
+            "effectiveness_memo": "Documented independent assessment",
+            "risk_id": "commodity_price",
+            "hedged_item_id": "purchase1",
+            "designation_date": "2026-01-01",
+            "documentation_date": "2026-01-01",
+            "inception_date": "2026-01-01",
+            "advanced_route": "none",
+            "excluded_components": "none",
+            "instrument_eligible": true,
+            "item_eligible": true,
+            "risk_eligible": true,
+            "objective_unchanged": true,
+            "economic_relationship": true,
+            "credit_dominates": false,
+            "highly_effective": true,
+            "external_group_exposure": true,
+            "assessment_date": "2026-12-31",
+            "effectiveness_method": "economic_relationship",
+            "ratio": "1",
+            "actual_instrument_quantity": "10",
+            "actual_item_quantity": "10",
+            "status": "active",
+            "risk_measurement": {
+              "id": "risk1",
+              "instrument_valuation_id": "independent-hypothetical1",
+              "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+              "method": "Separately measured hypothetical instrument for designated risk",
+              "market_evidence": "Independent hypothetical risk source",
+              "assessment_date": "2026-12-31",
+              "item_id": "purchase1",
+              "risk_id": "commodity_price",
+              "currency": "USD",
+              "quantity": "10",
+              "current_change": "-90",
+              "instrument_cumulative": "100",
+              "risk_cumulative": "-90",
+              "opening_instrument_cumulative": "0",
+              "opening_risk_cumulative": "0",
+              "document_id": "doc-risk1"
+            },
+            "item_type": "forecast_purchase",
+            "opening_reserve": "0",
+            "reserve_source_opening": "0",
+            "opening_effective": "0",
+            "earnings_release": "0",
+            "basis_release": "90",
+            "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+            "forecast_date": "2026-12-31",
+            "forecast_probability": "highly_probable",
+            "forecast_quantity": "10",
+            "designated_start": "2026-01-01",
+            "designated_end": "2027-12-31",
+            "forecast_outcome": "occurred",
+            "transaction_date": "2026-12-31",
+            "acquisition_id": "economic-receipt",
+            "sku": "goods",
+            "acquired_quantity": "10",
+            "document_id": "doc-relationship1"
+          }
+        ],
+        "contracts": [
+          {
+            "id": "forward1",
+            "kind": "forward",
+            "underlying": "Commodity index",
+            "underlying_type": "commodity",
+            "comparable_investment": "1000",
+            "notional": "10",
+            "payment_provision": true,
+            "initial_net_investment": "0",
+            "small_initial_investment": true,
+            "future_settlement": true,
+            "net_settlement": true,
+            "exception_applies": false,
+            "exception_assessed": true,
+            "embedded_feature": false,
+            "financial_asset_host": false,
+            "closely_related": true,
+            "separation_required": false,
+            "contract_memo": "Actual synthetic contractual terms reviewed",
+            "scope_memo": "Independent scope analysis",
+            "embedded_memo": "Reviewed none",
+            "maturity": "2027-12-31",
+            "document_id": "doc-forward1"
+          }
+        ],
+        "valuations": [
+          {
+            "id": "valuation1",
+            "instrument_id": "forward1",
+            "qualified_valuer": "Synthetic independent derivative valuation specialist",
+            "valuation_method": "Independently qualified external curve and market valuation",
+            "market_evidence": "Synthetic frozen independent market workpaper",
+            "credit_adjustment_memo": "Independent bilateral credit assessment",
+            "measurement_date": "2026-12-31",
+            "opening_date": "2026-01-01",
+            "currency": "USD",
+            "entity": "Synthetic Group",
+            "notional": "10",
+            "opening": "0",
+            "change": "100",
+            "settlement": "0",
+            "closing": "100",
+            "document_id": "doc-valuation1"
+          }
+        ],
+        "population_review": {
+          "reviewer": "Synthetic independent completeness reviewer",
+          "complete": true,
+          "completeness_memo": "Independent signed contract register completeness",
+          "source_system": "Synthetic contract register",
+          "contract_ids": [
+            "forward1"
+          ],
+          "notional_total": "10",
+          "id": "population",
+          "document_id": "doc-population"
+        },
+        "gl": [
+          {
+            "id": "Derivative balance forward1",
+            "opening": "0",
+            "closing": "100",
+            "statement": "100",
+            "document_id": "doc-Derivative balance forward1"
+          },
+          {
+            "id": "Hedge P&L relationship1",
+            "opening": "0",
+            "closing": "-10",
+            "statement": "-10",
+            "document_id": "doc-Hedge P&L relationship1"
+          },
+          {
+            "id": "Hedge reserve relationship1",
+            "opening": "0",
+            "closing": "0",
+            "statement": "0",
+            "document_id": "doc-Hedge reserve relationship1"
+          },
+          {
+            "id": "Nonfinancial asset basis adjustment",
+            "opening": "0",
+            "closing": "-90",
+            "statement": "-90",
+            "document_id": "doc-Nonfinancial asset basis adjustment"
+          }
+        ],
+        "disclosure_review": {
+          "reviewer": "Synthetic independent disclosure reviewer",
+          "framework_checklist": "IFRS actual operative disclosure requirements",
+          "strategy_memo": "Documented objective disclosures",
+          "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+          "framework": "IFRS",
+          "complete": true,
+          "contract_ids": [
+            "forward1"
+          ],
+          "relationship_ids": [
+            "relationship1"
+          ],
+          "id": "disclosures",
+          "document_id": "doc-disclosures"
+        },
+        "knowledge_review": {
+          "reviewer": "Synthetic independent knowledge reviewer",
+          "claim_ids": [
+            "TOPIC-06-008-IFRS-001",
+            "TOPIC-06-008-IFRS-R001",
+            "TOPIC-06-009-IFRS-001",
+            "TOPIC-06-009-IFRS-R001",
+            "HEDGE-IFRS-001",
+            "HEDGE-IFRS-002",
+            "HEDGE-IFRS-003",
+            "HEDGE-IFRS-004",
+            "HEDGE-IFRS-005",
+            "HEDGE-IFRS-006",
+            "HEDGE-IFRS-007",
+            "HEDGE-IFRS-008",
+            "HEDGE-IFRS-009",
+            "HEDGE-IFRS-010",
+            "HEDGE-IFRS-011",
+            "HEDGE-IFRS-012",
+            "HEDGE-IFRS-013",
+            "HEDGE-IFRS-014",
+            "HEDGE-IFRS-015",
+            "HEDGE-IFRS-016",
+            "HEDGE-IFRS-017",
+            "HEDGE-IFRS-018",
+            "HEDGE-IFRS-019",
+            "HEDGE-IFRS-020",
+            "HEDGE-IFRS-021",
+            "HEDGE-IFRS-022",
+            "HEDGE-IFRS-023",
+            "HEDGE-IFRS-024",
+            "HEDGE-IFRS-025"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/phase-2e/reviews/TOPIC-06-008.json",
+              "sha256": "4f23b8e03087599b5a4be6319626331801d6b731370c0b35e8eb8ea099585539"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+              "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+              "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+              "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+              "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+            },
+            {
+              "topic_id": "TOPIC-06-008",
+              "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+              "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/phase-2e/reviews/TOPIC-06-009.json",
+              "sha256": "6c786762bea7a8b1fe99d25382e11494bae9461939d8192599c5159607199bf4"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+              "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+              "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+              "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+              "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+            },
+            {
+              "topic_id": "TOPIC-06-009",
+              "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+              "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
+              "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
+              "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
+              "sha256": "666a1024e52771f6463ce2ad65aa2ee38657366635ea6c2b22f7f2b6090b6f8e"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/README.md",
+              "sha256": "2c5b2f6c0d5961e7d21e3f7b7485578ed8ab0a4d02658907bdc91cf689227303"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/independent-review.json",
+              "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/independent_review_tests.py",
+              "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/retrieval.py",
+              "sha256": "235fb758a86d927938c251c69d3941c64a6a0e08ad865bff37e5c3416dec8a1b"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/standards-claims.json",
+              "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/test_supplement.py",
+              "sha256": "71a1296e72f4f3a5f2307359198532b0785e2eb2b8d02d6a63058ed39a83e4e7"
+            },
+            {
+              "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+              "path": "knowledge/derivatives-hedge/validate_supplement.py",
+              "sha256": "6d916cabd73146f08da589a2e1aee7684178f2613cd397f6260c50182df5c317"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-06-008-IFRS-001",
+            "TOPIC-06-008-IFRS-R001",
+            "TOPIC-06-009-IFRS-001",
+            "TOPIC-06-009-IFRS-R001",
+            "HEDGE-IFRS-001",
+            "HEDGE-IFRS-002",
+            "HEDGE-IFRS-003",
+            "HEDGE-IFRS-004",
+            "HEDGE-IFRS-005",
+            "HEDGE-IFRS-006",
+            "HEDGE-IFRS-007",
+            "HEDGE-IFRS-008",
+            "HEDGE-IFRS-009",
+            "HEDGE-IFRS-010",
+            "HEDGE-IFRS-011",
+            "HEDGE-IFRS-012",
+            "HEDGE-IFRS-013",
+            "HEDGE-IFRS-014",
+            "HEDGE-IFRS-015",
+            "HEDGE-IFRS-016",
+            "HEDGE-IFRS-017",
+            "HEDGE-IFRS-018",
+            "HEDGE-IFRS-019",
+            "HEDGE-IFRS-020",
+            "HEDGE-IFRS-021",
+            "HEDGE-IFRS-022",
+            "HEDGE-IFRS-023",
+            "HEDGE-IFRS-024",
+            "HEDGE-IFRS-025"
+          ],
+          "selection_memo": "Synthetic reviewed decision-specific scope and hedge method claims",
+          "public_caveats": [
+            "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "Synthetic independent implementation reviewer",
+          "approved": true,
+          "case_fingerprint": "1e68e2c35f2d2440c668f49efa784cd6678cc58ac104ada313b2963f99269220"
+        }
+      },
+      "result": {
+        "status": "complete",
+        "conclusion": "Qualified derivative scope, valuation bridges, framework hedge journals and reserves reconcile",
+        "method": "Bounded actual-relationship accounting; no valuation or dealing",
+        "calculations": {
+          "derivatives": [
+            {
+              "id": "forward1",
+              "route": "cash_flow",
+              "opening": "0",
+              "change": "100",
+              "settlement": "0",
+              "closing": "100",
+              "effective": "90",
+              "ineffectiveness": "10",
+              "hedged_item_change": "0",
+              "earnings_release": "0"
+            }
+          ],
+          "hedge_reserves": [
+            {
+              "id": "relationship1",
+              "opening": "0",
+              "recognized_oci": "90",
+              "reclassification": "0",
+              "basis_adjustment": "90",
+              "closing": "0"
+            }
+          ],
+          "basis_adjustments": [
+            {
+              "id": "relationship1-basis",
+              "economic_id": "relationship1-economic-receipt",
+              "item_id": "goods",
+              "acquisition_id": "economic-receipt",
+              "amount": "-90",
+              "currency": "USD",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "date": "2026-12-31",
+              "quantity": "10",
+              "relationship_id": "relationship1",
+              "instrument_id": "forward1"
+            }
+          ],
+          "effectiveness": [
+            {
+              "id": "relationship1",
+              "framework_method": "economic_relationship",
+              "status": "active",
+              "ratio": "1",
+              "historical_effective": "0"
+            }
+          ],
+          "gl_movements": {
+            "Hedge reserve relationship1": "0.00",
+            "Nonfinancial asset basis adjustment": "-90.00",
+            "Derivative balance forward1": "100.00",
+            "Hedge P&L relationship1": "-10.00"
+          }
+        },
+        "journal_entry_implications": [
+          [
+            {
+              "side": "Dr",
+              "account": "Hedge reserve relationship1",
+              "amount": "90.00"
+            },
+            {
+              "side": "Cr",
+              "account": "Nonfinancial asset basis adjustment",
+              "amount": "90.00"
+            }
+          ],
+          [
+            {
+              "side": "Dr",
+              "account": "Derivative balance forward1",
+              "amount": "10.00"
+            },
+            {
+              "side": "Cr",
+              "account": "Hedge P&L relationship1",
+              "amount": "10.00"
+            }
+          ],
+          [
+            {
+              "side": "Dr",
+              "account": "Derivative balance forward1",
+              "amount": "90.00"
+            },
+            {
+              "side": "Cr",
+              "account": "Hedge reserve relationship1",
+              "amount": "90.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Management objective and independently qualified evidence determine eligibility; quantities are not selected by this workflow"
+        ],
+        "uncertainties": [
+          "2026 operative basic full-instrument routes only. Advanced techniques and midperiod measurement splits require a governed specialist method.",
+          "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+        ],
+        "open_items": [],
+        "disclosures_impacted": [
+          "Framework-specific instrument, risk, reserve and accounting-effect disclosure support"
+        ],
+        "skill_id": "SKILL-HEDGE-001",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-derivatives-hedge-accounting",
+          "framework": "IFRS",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {},
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "package": "derivatives-hedge-accounting",
+          "execution_date": "2027-02-01",
+          "currency": "USD",
+          "requested_action": "accounting_workpaper",
+          "model": "IFRS9_Chapter6",
+          "documents": [
+            {
+              "id": "doc-forward1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "forward1",
+                "kind": "forward",
+                "underlying": "Commodity index",
+                "underlying_type": "commodity",
+                "comparable_investment": "1000",
+                "notional": "10",
+                "payment_provision": true,
+                "initial_net_investment": "0",
+                "small_initial_investment": true,
+                "future_settlement": true,
+                "net_settlement": true,
+                "exception_applies": false,
+                "exception_assessed": true,
+                "embedded_feature": false,
+                "financial_asset_host": false,
+                "closely_related": true,
+                "separation_required": false,
+                "contract_memo": "Actual synthetic contractual terms reviewed",
+                "scope_memo": "Independent scope analysis",
+                "embedded_memo": "Reviewed none",
+                "maturity": "2027-12-31"
+              },
+              "content_hash": "a52eebc96a1ddfbe38b0893f917a9a96f07914699f47c4aa8a0546e35c32f79e"
+            },
+            {
+              "id": "doc-valuation1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "valuation1",
+                "instrument_id": "forward1",
+                "qualified_valuer": "Synthetic independent derivative valuation specialist",
+                "valuation_method": "Independently qualified external curve and market valuation",
+                "market_evidence": "Synthetic frozen independent market workpaper",
+                "credit_adjustment_memo": "Independent bilateral credit assessment",
+                "measurement_date": "2026-12-31",
+                "opening_date": "2026-01-01",
+                "currency": "USD",
+                "entity": "Synthetic Group",
+                "notional": "10",
+                "opening": "0",
+                "change": "100",
+                "settlement": "0",
+                "closing": "100"
+              },
+              "content_hash": "727222cac6824eec20b825a4e8a225a7ac1c08600ee38259df09e1398e36d97c"
+            },
+            {
+              "id": "doc-population",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "reviewer": "Synthetic independent completeness reviewer",
+                "complete": true,
+                "completeness_memo": "Independent signed contract register completeness",
+                "source_system": "Synthetic contract register",
+                "contract_ids": [
+                  "forward1"
+                ],
+                "notional_total": "10",
+                "id": "population"
+              },
+              "content_hash": "2c7414975b4cbb03b0dad82c734ebe59e22556844710c88dd4c6cf001674217d"
+            },
+            {
+              "id": "doc-disclosures",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "reviewer": "Synthetic independent disclosure reviewer",
+                "framework_checklist": "IFRS actual operative disclosure requirements",
+                "strategy_memo": "Documented objective disclosures",
+                "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+                "framework": "IFRS",
+                "complete": true,
+                "contract_ids": [
+                  "forward1"
+                ],
+                "relationship_ids": [
+                  "relationship1"
+                ],
+                "id": "disclosures"
+              },
+              "content_hash": "60c9781eaf59ebb914851dc6c665a504bf09637cdfd8f645583662ae2dc3e3cc"
+            },
+            {
+              "id": "doc-Derivative balance forward1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "Derivative balance forward1",
+                "opening": "0",
+                "closing": "100",
+                "statement": "100"
+              },
+              "content_hash": "904b0e777174780bd1c80fae39c5d2a488c95fff5752da4ad31650f7fa589497"
+            },
+            {
+              "id": "doc-Hedge P&L relationship1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "Hedge P&L relationship1",
+                "opening": "0",
+                "closing": "-10",
+                "statement": "-10"
+              },
+              "content_hash": "6e0c7d31baff182fcb84fe924ea4257e24c7f9778757453a6f61a1bf1eaea919"
+            },
+            {
+              "id": "doc-Hedge reserve relationship1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "Hedge reserve relationship1",
+                "opening": "0",
+                "closing": "0",
+                "statement": "0"
+              },
+              "content_hash": "1d6436e9d57845c66ac024b81eec03a4fdeefac6256106a48b603f352b05433b"
+            },
+            {
+              "id": "doc-Nonfinancial asset basis adjustment",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "Nonfinancial asset basis adjustment",
+                "opening": "0",
+                "closing": "-90",
+                "statement": "-90"
+              },
+              "content_hash": "33e1ca67a5d5d6baabdc9f3268c7ff5dafbcc441b6af19e0ed87a3e0526141fd"
+            },
+            {
+              "id": "doc-risk1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "risk1",
+                "instrument_valuation_id": "independent-hypothetical1",
+                "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+                "method": "Separately measured hypothetical instrument for designated risk",
+                "market_evidence": "Independent hypothetical risk source",
+                "assessment_date": "2026-12-31",
+                "item_id": "purchase1",
+                "risk_id": "commodity_price",
+                "currency": "USD",
+                "quantity": "10",
+                "current_change": "-90",
+                "instrument_cumulative": "100",
+                "risk_cumulative": "-90",
+                "opening_instrument_cumulative": "0",
+                "opening_risk_cumulative": "0"
+              },
+              "content_hash": "afd600021b7745614f477bb28f74f7419ce7ecad4fa667e18ff7dfba9c1754ca"
+            },
+            {
+              "id": "doc-relationship1",
+              "reviewer": "Synthetic independent source reviewer",
+              "source_system": "Synthetic frozen source",
+              "version": "1",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "currency": "USD",
+              "as_of": "2026-12-31",
+              "content": {
+                "id": "relationship1",
+                "instrument_id": "forward1",
+                "type": "cash_flow",
+                "objective": "Documented management commodity purchase price protection",
+                "designation_memo": "Frozen designation at qualification",
+                "instrument_eligibility_memo": "Eligible whole forward",
+                "item_eligibility_memo": "Highly probable commodity purchase",
+                "risk_component_memo": "Whole supported commodity risk",
+                "effectiveness_memo": "Documented independent assessment",
+                "risk_id": "commodity_price",
+                "hedged_item_id": "purchase1",
+                "designation_date": "2026-01-01",
+                "documentation_date": "2026-01-01",
+                "inception_date": "2026-01-01",
+                "advanced_route": "none",
+                "excluded_components": "none",
+                "instrument_eligible": true,
+                "item_eligible": true,
+                "risk_eligible": true,
+                "objective_unchanged": true,
+                "economic_relationship": true,
+                "credit_dominates": false,
+                "highly_effective": true,
+                "external_group_exposure": true,
+                "assessment_date": "2026-12-31",
+                "effectiveness_method": "economic_relationship",
+                "ratio": "1",
+                "actual_instrument_quantity": "10",
+                "actual_item_quantity": "10",
+                "status": "active",
+                "risk_measurement": {
+                  "id": "risk1",
+                  "instrument_valuation_id": "independent-hypothetical1",
+                  "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+                  "method": "Separately measured hypothetical instrument for designated risk",
+                  "market_evidence": "Independent hypothetical risk source",
+                  "assessment_date": "2026-12-31",
+                  "item_id": "purchase1",
+                  "risk_id": "commodity_price",
+                  "currency": "USD",
+                  "quantity": "10",
+                  "current_change": "-90",
+                  "instrument_cumulative": "100",
+                  "risk_cumulative": "-90",
+                  "opening_instrument_cumulative": "0",
+                  "opening_risk_cumulative": "0",
+                  "document_id": "doc-risk1"
+                },
+                "item_type": "forecast_purchase",
+                "opening_reserve": "0",
+                "reserve_source_opening": "0",
+                "opening_effective": "0",
+                "earnings_release": "0",
+                "basis_release": "90",
+                "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+                "forecast_date": "2026-12-31",
+                "forecast_probability": "highly_probable",
+                "forecast_quantity": "10",
+                "designated_start": "2026-01-01",
+                "designated_end": "2027-12-31",
+                "forecast_outcome": "occurred",
+                "transaction_date": "2026-12-31",
+                "acquisition_id": "economic-receipt",
+                "sku": "goods",
+                "acquired_quantity": "10"
+              },
+              "content_hash": "9cf9291cc630d1c1fde4046d3a3097a5161ea51caa7269c3d29f357eda71bda5"
+            }
+          ],
+          "imports": [],
+          "owner_links": [],
+          "relationships": [
+            {
+              "id": "relationship1",
+              "instrument_id": "forward1",
+              "type": "cash_flow",
+              "objective": "Documented management commodity purchase price protection",
+              "designation_memo": "Frozen designation at qualification",
+              "instrument_eligibility_memo": "Eligible whole forward",
+              "item_eligibility_memo": "Highly probable commodity purchase",
+              "risk_component_memo": "Whole supported commodity risk",
+              "effectiveness_memo": "Documented independent assessment",
+              "risk_id": "commodity_price",
+              "hedged_item_id": "purchase1",
+              "designation_date": "2026-01-01",
+              "documentation_date": "2026-01-01",
+              "inception_date": "2026-01-01",
+              "advanced_route": "none",
+              "excluded_components": "none",
+              "instrument_eligible": true,
+              "item_eligible": true,
+              "risk_eligible": true,
+              "objective_unchanged": true,
+              "economic_relationship": true,
+              "credit_dominates": false,
+              "highly_effective": true,
+              "external_group_exposure": true,
+              "assessment_date": "2026-12-31",
+              "effectiveness_method": "economic_relationship",
+              "ratio": "1",
+              "actual_instrument_quantity": "10",
+              "actual_item_quantity": "10",
+              "status": "active",
+              "risk_measurement": {
+                "id": "risk1",
+                "instrument_valuation_id": "independent-hypothetical1",
+                "qualified_reviewer": "Synthetic independent hedged-risk valuation reviewer",
+                "method": "Separately measured hypothetical instrument for designated risk",
+                "market_evidence": "Independent hypothetical risk source",
+                "assessment_date": "2026-12-31",
+                "item_id": "purchase1",
+                "risk_id": "commodity_price",
+                "currency": "USD",
+                "quantity": "10",
+                "current_change": "-90",
+                "instrument_cumulative": "100",
+                "risk_cumulative": "-90",
+                "opening_instrument_cumulative": "0",
+                "opening_risk_cumulative": "0",
+                "document_id": "doc-risk1"
+              },
+              "item_type": "forecast_purchase",
+              "opening_reserve": "0",
+              "reserve_source_opening": "0",
+              "opening_effective": "0",
+              "earnings_release": "0",
+              "basis_release": "90",
+              "forecast_memo": "Actual approved purchase plan independent probability and volumes",
+              "forecast_date": "2026-12-31",
+              "forecast_probability": "highly_probable",
+              "forecast_quantity": "10",
+              "designated_start": "2026-01-01",
+              "designated_end": "2027-12-31",
+              "forecast_outcome": "occurred",
+              "transaction_date": "2026-12-31",
+              "acquisition_id": "economic-receipt",
+              "sku": "goods",
+              "acquired_quantity": "10",
+              "document_id": "doc-relationship1"
+            }
+          ],
+          "contracts": [
+            {
+              "id": "forward1",
+              "kind": "forward",
+              "underlying": "Commodity index",
+              "underlying_type": "commodity",
+              "comparable_investment": "1000",
+              "notional": "10",
+              "payment_provision": true,
+              "initial_net_investment": "0",
+              "small_initial_investment": true,
+              "future_settlement": true,
+              "net_settlement": true,
+              "exception_applies": false,
+              "exception_assessed": true,
+              "embedded_feature": false,
+              "financial_asset_host": false,
+              "closely_related": true,
+              "separation_required": false,
+              "contract_memo": "Actual synthetic contractual terms reviewed",
+              "scope_memo": "Independent scope analysis",
+              "embedded_memo": "Reviewed none",
+              "maturity": "2027-12-31",
+              "document_id": "doc-forward1"
+            }
+          ],
+          "valuations": [
+            {
+              "id": "valuation1",
+              "instrument_id": "forward1",
+              "qualified_valuer": "Synthetic independent derivative valuation specialist",
+              "valuation_method": "Independently qualified external curve and market valuation",
+              "market_evidence": "Synthetic frozen independent market workpaper",
+              "credit_adjustment_memo": "Independent bilateral credit assessment",
+              "measurement_date": "2026-12-31",
+              "opening_date": "2026-01-01",
+              "currency": "USD",
+              "entity": "Synthetic Group",
+              "notional": "10",
+              "opening": "0",
+              "change": "100",
+              "settlement": "0",
+              "closing": "100",
+              "document_id": "doc-valuation1"
+            }
+          ],
+          "population_review": {
+            "reviewer": "Synthetic independent completeness reviewer",
+            "complete": true,
+            "completeness_memo": "Independent signed contract register completeness",
+            "source_system": "Synthetic contract register",
+            "contract_ids": [
+              "forward1"
+            ],
+            "notional_total": "10",
+            "id": "population",
+            "document_id": "doc-population"
+          },
+          "gl": [
+            {
+              "id": "Derivative balance forward1",
+              "opening": "0",
+              "closing": "100",
+              "statement": "100",
+              "document_id": "doc-Derivative balance forward1"
+            },
+            {
+              "id": "Hedge P&L relationship1",
+              "opening": "0",
+              "closing": "-10",
+              "statement": "-10",
+              "document_id": "doc-Hedge P&L relationship1"
+            },
+            {
+              "id": "Hedge reserve relationship1",
+              "opening": "0",
+              "closing": "0",
+              "statement": "0",
+              "document_id": "doc-Hedge reserve relationship1"
+            },
+            {
+              "id": "Nonfinancial asset basis adjustment",
+              "opening": "0",
+              "closing": "-90",
+              "statement": "-90",
+              "document_id": "doc-Nonfinancial asset basis adjustment"
+            }
+          ],
+          "disclosure_review": {
+            "reviewer": "Synthetic independent disclosure reviewer",
+            "framework_checklist": "IFRS actual operative disclosure requirements",
+            "strategy_memo": "Documented objective disclosures",
+            "timing_profile_memo": "Actual notional maturity/settlement disclosures",
+            "framework": "IFRS",
+            "complete": true,
+            "contract_ids": [
+              "forward1"
+            ],
+            "relationship_ids": [
+              "relationship1"
+            ],
+            "id": "disclosures",
+            "document_id": "doc-disclosures"
+          }
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-001",
+            "proposition": "Fair value is market-participant exit price at measurement date, with hierarchy driven by significant lowest-level input, while derivatives need independent scope and measurement.",
+            "references": [
+              "IFRS 13.24, 61\u201367, 72\u201390"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-R001",
+            "proposition": "Fair value follows market-participant exit assumptions and lowest significant input; derivative recognition/scope precedes valuation and hedge accounting.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules."
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-001",
+            "proposition": "Hedge accounting requires eligible item/instrument, formal inception documentation, economic relationship and ongoing effectiveness assessment; forecast item probability and discontinuation have distinct routes.",
+            "references": [
+              "IFRS 9.6.4.1, 6.5.1\u20136.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-R001",
+            "proposition": "Hedge accounting requires timely formal qualifying relationship and type-specific OCI/P&L; investments first resolve control/joint control/significant influence.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules."
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-001",
+            "decision": "definition",
+            "proposition": "IFRS derivative assessment requires value response to a specified underlying, no or comparatively small initial investment, and future settlement; inspect contract scope independently.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-002",
+            "decision": "scope_exception",
+            "proposition": "Resolve the actual contract exception using its rights, physical delivery purpose, settlement practice and framework; no exception can be inferred from a product label.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-003",
+            "decision": "embedded",
+            "proposition": "An IFRS financial-asset host in IFRS9 scope is assessed as a whole under classification requirements. Other hosts require closely-related, derivative-definition and whole-contract measurement tests before bifurcation.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-004",
+            "decision": "standalone",
+            "proposition": "Recognise an in-scope standalone derivative at fair value and route ordinary non-hedge changes through earnings; settlement reduces the recognised balance. Derivative gain for a period equals closing signed balance less opening signed balance plus cash received in settlement (negative for cash paid).",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-005",
+            "decision": "eligible_instrument",
+            "proposition": "An eligible external hedging instrument must satisfy the actual model; a written option or specialized nonderivative is not automatically eligible.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-006",
+            "decision": "eligible_item",
+            "proposition": "Recognised exposures, firm commitments, forecast transactions and net investments each require their own eligibility evidence; management intention alone is insufficient.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-007",
+            "decision": "risk_component",
+            "proposition": "A partial-risk designation requires an independently supportable component under the selected framework; full item change cannot substitute for component measurement.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-008",
+            "decision": "documentation",
+            "proposition": "Record the actual objective, item, instrument, risk, assessment method, quantities and designation timing before applying the selected hedge method.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-009",
+            "decision": "effectiveness",
+            "proposition": "Qualification and measurement are separate: an independently supported assessment method does not remove the need to measure actual instrument and designated-risk changes.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-010",
+            "decision": "hedge_ratio",
+            "proposition": "Accounting quantities must reflect documented hedged quantities; no ratio may be chosen after observing results merely to conceal a mismatch.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-011",
+            "decision": "fair_value",
+            "proposition": "A basic fair-value hedge recognises the included instrument change and designated-risk item adjustment through earnings; retain the item carrying adjustment separately from ordinary owner accounting.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation.",
+              "FVOCI equity hedged-item exception is outside the basic earnings method."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-012",
+            "decision": "firm_commitment",
+            "proposition": "For a qualifying fair-value hedge of an unrecognised firm commitment recognise its cumulative designated-risk change as an asset or liability; include it in the resulting asset or liability when fulfilled.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-013",
+            "decision": "basis_amortisation",
+            "proposition": "An amortised-cost item hedge basis adjustment requires a governed amortisation method and underlying owner schedule; do not release the whole adjustment merely because designation ceases.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-014",
+            "decision": "cash_flow_measurement",
+            "proposition": "For an IFRS9 Chapter6 cash-flow hedge use the signed lower absolute cumulative instrument and offsetting hedged-risk change. Current OCI equals movement in cumulative effective amount, and residual instrument movement is earnings. Prior releases remain a separate ledger and must not reset cumulative effective measurement or regenerate released OCI.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-015",
+            "decision": "cash_flow_release",
+            "proposition": "Recycle supported reserve amounts when the designated cash flows affect earnings, preserving the underlying owner amount and earnings period. Nonfinancial purchase basis removal and unrecoverable-loss release are separate routes, not ordinary earnings recycling.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-016",
+            "decision": "nonfinancial_purchase",
+            "proposition": "For an IFRS9 cash-flow forecast purchase resulting in a nonfinancial asset or liability remove the related reserve into initial basis. A gain reserve reduces an asset cost; a loss increases it.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-017",
+            "decision": "forecast",
+            "proposition": "Highly probable is required for ongoing forecast qualification. After discontinuation retain reserve if cash flows remain expected; release immediately if no longer expected, with unrecoverable losses separately considered.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-018",
+            "decision": "discontinuation",
+            "proposition": "Under IFRS9 discontinue prospectively when qualification ceases after any applicable rebalancing; a still-qualifying relationship with unchanged objective is not voluntarily cancelled simply for preferred earnings.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-019",
+            "decision": "net_investment",
+            "proposition": "A net-investment hedge needs evidence of qualifying foreign operation, actual net investment, reporting perimeter and independent FX owner outputs; foreign location alone is insufficient. Designated nominal exposure must not exceed the actual eligible net investment. Measure the effective offset from independently supported instrument and designated FX-risk changes; the ineffective residual enters earnings.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-020",
+            "decision": "net_investment_disposal",
+            "proposition": "Under IFRS9/IAS21 effective net-investment hedge reserve follows qualifying disposal or partial-disposal reclassification rules; do not independently recompute the translation reserve.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-021",
+            "decision": "rebalancing",
+            "proposition": "IFRS9 requires rebalancing for a hedge-ratio qualification failure if the objective remains unchanged. Measure pre-rebalance ineffectiveness and document prospective new quantities.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-022",
+            "decision": "excluded_components",
+            "proposition": "An intrinsic-only, spot-only or excluded-component election needs separate component valuation and its own method; block unsupported elections rather than applying full-change basic mechanics.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-023",
+            "decision": "group",
+            "proposition": "Validate externality at the reporting perimeter. Intragroup FX exceptions require their own evidence and cannot be generalized across frameworks.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-024",
+            "decision": "disclosure",
+            "proposition": "Support the framework reporting owner with instruments, exposures, risk strategy, fair values, reserve movements and earnings effects; quantitative accounting outputs do not establish complete narrative disclosure.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-025",
+            "decision": "model_period",
+            "proposition": "Require explicit framework, operative hedge model, adoption elections, entity scope and 2026 period; retained or newly adopted alternative models must not silently use the baseline method.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-001",
+            "proposition": "Fair value is market-participant exit price at measurement date, with hierarchy driven by significant lowest-level input, while derivatives need independent scope and measurement.",
+            "references": [
+              "IFRS 13.24, 61\u201367, 72\u201390"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "claim_id": "TOPIC-06-008-IFRS-R001",
+            "proposition": "Fair value follows market-participant exit assumptions and lowest significant input; derivative recognition/scope precedes valuation and hedge accounting.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules."
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-001",
+            "proposition": "Hedge accounting requires eligible item/instrument, formal inception documentation, economic relationship and ongoing effectiveness assessment; forecast item probability and discontinuation have distinct routes.",
+            "references": [
+              "IFRS 9.6.4.1, 6.5.1\u20136.5.16"
+            ],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Cited core route inspected; subsidiary requirements still need claim-level audit.",
+              "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+            ],
+            "effective_period": "2026 issued; select period-specific edition",
+            "entity_scope": "For-profit; assess US public/private, UK regime, AASB tier"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "claim_id": "TOPIC-06-009-IFRS-R001",
+            "proposition": "Hedge accounting requires timely formal qualifying relationship and type-specific OCI/P&L; investments first resolve control/joint control/significant influence.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted.",
+              "IFRS demand-overdraft, net-investment, modification, OCI and stagedECL exceptions not universal. US restricted-cash reconciliation,CECL,liability/equity/hedging and UK financial-instrument policy elections differ. Exact US/UK authority maps remain unverified; independently challenged training-data treatment can pass. Valuation inputs, legal rights and effective-period limitations stay public."
+            ],
+            "effective_period": "2026 entity/holder/issuer, functional and presentation currencies required. IAS21 lack-of-exchangeability starts2025; IFRS9/7 May2024 amendments starts2026; IAS21 November2025 hyperinflationary-presentation amendment starts2027 or early adoption (60O inspected), IFRS18 starts2027 or early adoption. UK2026 Periodic Review and2027 adaptedformats gated; AASB exact compilation/tier independently selected. FASB debt-exchange March18,2026 pause verified officialproject; proposals do not amendGAAP; ASU2025-07/2025-05 effectivity checked in prior revenue audit.",
+            "entity_scope": "Canonical cash/FX/instrument method individually reviewed; REVIEWED baseline confirmed. Expanded register captures material conditional accounting rules."
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-001",
+            "decision": "definition",
+            "proposition": "IFRS derivative assessment requires value response to a specified underlying, no or comparatively small initial investment, and future settlement; inspect contract scope independently.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-002",
+            "decision": "scope_exception",
+            "proposition": "Resolve the actual contract exception using its rights, physical delivery purpose, settlement practice and framework; no exception can be inferred from a product label.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-003",
+            "decision": "embedded",
+            "proposition": "An IFRS financial-asset host in IFRS9 scope is assessed as a whole under classification requirements. Other hosts require closely-related, derivative-definition and whole-contract measurement tests before bifurcation.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-004",
+            "decision": "standalone",
+            "proposition": "Recognise an in-scope standalone derivative at fair value and route ordinary non-hedge changes through earnings; settlement reduces the recognised balance. Derivative gain for a period equals closing signed balance less opening signed balance plus cash received in settlement (negative for cash paid).",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-005",
+            "decision": "eligible_instrument",
+            "proposition": "An eligible external hedging instrument must satisfy the actual model; a written option or specialized nonderivative is not automatically eligible.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-006",
+            "decision": "eligible_item",
+            "proposition": "Recognised exposures, firm commitments, forecast transactions and net investments each require their own eligibility evidence; management intention alone is insufficient.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-007",
+            "decision": "risk_component",
+            "proposition": "A partial-risk designation requires an independently supportable component under the selected framework; full item change cannot substitute for component measurement.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-008",
+            "decision": "documentation",
+            "proposition": "Record the actual objective, item, instrument, risk, assessment method, quantities and designation timing before applying the selected hedge method.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-009",
+            "decision": "effectiveness",
+            "proposition": "Qualification and measurement are separate: an independently supported assessment method does not remove the need to measure actual instrument and designated-risk changes.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-010",
+            "decision": "hedge_ratio",
+            "proposition": "Accounting quantities must reflect documented hedged quantities; no ratio may be chosen after observing results merely to conceal a mismatch.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-011",
+            "decision": "fair_value",
+            "proposition": "A basic fair-value hedge recognises the included instrument change and designated-risk item adjustment through earnings; retain the item carrying adjustment separately from ordinary owner accounting.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation.",
+              "FVOCI equity hedged-item exception is outside the basic earnings method."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-012",
+            "decision": "firm_commitment",
+            "proposition": "For a qualifying fair-value hedge of an unrecognised firm commitment recognise its cumulative designated-risk change as an asset or liability; include it in the resulting asset or liability when fulfilled.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-013",
+            "decision": "basis_amortisation",
+            "proposition": "An amortised-cost item hedge basis adjustment requires a governed amortisation method and underlying owner schedule; do not release the whole adjustment merely because designation ceases.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-014",
+            "decision": "cash_flow_measurement",
+            "proposition": "For an IFRS9 Chapter6 cash-flow hedge use the signed lower absolute cumulative instrument and offsetting hedged-risk change. Current OCI equals movement in cumulative effective amount, and residual instrument movement is earnings. Prior releases remain a separate ledger and must not reset cumulative effective measurement or regenerate released OCI.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-015",
+            "decision": "cash_flow_release",
+            "proposition": "Recycle supported reserve amounts when the designated cash flows affect earnings, preserving the underlying owner amount and earnings period. Nonfinancial purchase basis removal and unrecoverable-loss release are separate routes, not ordinary earnings recycling.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-016",
+            "decision": "nonfinancial_purchase",
+            "proposition": "For an IFRS9 cash-flow forecast purchase resulting in a nonfinancial asset or liability remove the related reserve into initial basis. A gain reserve reduces an asset cost; a loss increases it.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-017",
+            "decision": "forecast",
+            "proposition": "Highly probable is required for ongoing forecast qualification. After discontinuation retain reserve if cash flows remain expected; release immediately if no longer expected, with unrecoverable losses separately considered.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-018",
+            "decision": "discontinuation",
+            "proposition": "Under IFRS9 discontinue prospectively when qualification ceases after any applicable rebalancing; a still-qualifying relationship with unchanged objective is not voluntarily cancelled simply for preferred earnings.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-019",
+            "decision": "net_investment",
+            "proposition": "A net-investment hedge needs evidence of qualifying foreign operation, actual net investment, reporting perimeter and independent FX owner outputs; foreign location alone is insufficient. Designated nominal exposure must not exceed the actual eligible net investment. Measure the effective offset from independently supported instrument and designated FX-risk changes; the ineffective residual enters earnings.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-020",
+            "decision": "net_investment_disposal",
+            "proposition": "Under IFRS9/IAS21 effective net-investment hedge reserve follows qualifying disposal or partial-disposal reclassification rules; do not independently recompute the translation reserve.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-021",
+            "decision": "rebalancing",
+            "proposition": "IFRS9 requires rebalancing for a hedge-ratio qualification failure if the objective remains unchanged. Measure pre-rebalance ineffectiveness and document prospective new quantities.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-022",
+            "decision": "excluded_components",
+            "proposition": "An intrinsic-only, spot-only or excluded-component election needs separate component valuation and its own method; block unsupported elections rather than applying full-change basic mechanics.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-023",
+            "decision": "group",
+            "proposition": "Validate externality at the reporting perimeter. Intragroup FX exceptions require their own evidence and cannot be generalized across frameworks.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-024",
+            "decision": "disclosure",
+            "proposition": "Support the framework reporting owner with instruments, exposures, risk strategy, fair values, reserve movements and earnings effects; quantitative accounting outputs do not establish complete narrative disclosure.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "claim_id": "HEDGE-IFRS-025",
+            "decision": "model_period",
+            "proposition": "Require explicit framework, operative hedge model, adoption elections, entity scope and 2026 period; retained or newly adopted alternative models must not silently use the baseline method.",
+            "references": [],
+            "reference_confidence": "PROVISIONAL",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "audit_required": true,
+            "limitations": [
+              "Ordinary single relationship full-instrument route only; specialized elections and alternative models require separate governed analysis.",
+              "No macro, portfolio-layer, shortcut, critical-terms, excluded-component or nature-dependent electricity implementation."
+            ],
+            "effective_period": "Reviewed bounded 2026 reporting periods; no automatic subsequent-period application",
+            "entity_scope": "for_profit_full_ifrs"
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/phase-2e/reviews/TOPIC-06-008.json",
+            "sha256": "4f23b8e03087599b5a4be6319626331801d6b731370c0b35e8eb8ea099585539"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/README.md",
+            "sha256": "d7de7fe5cd8f822834fc6a625813ec06c9b7258f176b976b0d147e114c78f85f"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/evidence-and-regression.md",
+            "sha256": "e1b086c8dac12daa4c6225634a6c0df211965800e95441649299776e9525fe12"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/independent-price-challenge-and-level.md",
+            "sha256": "b8a6864a0d262a49e6c5e23167cbd06a8e5ead1baae0745024bbe6a9ec44fb44"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/standards-claims.json",
+            "sha256": "0697471445cd720b2454dc69fb6f27853412de3407f7160caf422fa0d9036046"
+          },
+          {
+            "topic_id": "TOPIC-06-008",
+            "path": "knowledge/topics/TOPIC-06-008-fair-value-derivatives/valuation-control-case.md",
+            "sha256": "ec4a998f426fb79f4b1d46f08298cc7fcf571cfa683dd279f65ff30fb5b4c368"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/phase-2e/reviews/TOPIC-06-009.json",
+            "sha256": "6c786762bea7a8b1fe99d25382e11494bae9461939d8192599c5159607199bf4"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/README.md",
+            "sha256": "abe7015f56026b20342faf0e2e4d0f3f71d2f9b1379bd0d51341f9bbf146db5e"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/evidence-and-regression.md",
+            "sha256": "534b401d33375c742333db4b31ebadf293fbf292cfd43a6ff5df1b41bd4d0de0"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/forecast-purchase-and-discontinuation.md",
+            "sha256": "73936d717e7bd9f9615a0b2f5e571197a8d3da89f01a8fd492dbdce10fb827eb"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/hedge-and-investment-case.md",
+            "sha256": "df1b94087fbb41346699abc53f75ab429cb7779fc7c40fa6192d5c8d501e0de9"
+          },
+          {
+            "topic_id": "TOPIC-06-009",
+            "path": "knowledge/topics/TOPIC-06-009-hedge-accounting-investments/standards-claims.json",
+            "sha256": "4bc66f207bdcb676dbcdcbbc1282315aa12dd5c790176c2bfd9c56bd0a75fef5"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/FRAMEWORK-METHOD.md",
+            "sha256": "54f9debd5c8f8b87eb38255e86b8e3982f793d6243ec114b6f9f586ac59aaab0"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/INDEPENDENT-QA.md",
+            "sha256": "89a0bdf6f4a46ceb7e5c31d0bcf7c05c1c34f5effdecf79762b379e589a73254"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/KNOWLEDGE-SUFFICIENCY.json",
+            "sha256": "666a1024e52771f6463ce2ad65aa2ee38657366635ea6c2b22f7f2b6090b6f8e"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/README.md",
+            "sha256": "2c5b2f6c0d5961e7d21e3f7b7485578ed8ab0a4d02658907bdc91cf689227303"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/independent-review.json",
+            "sha256": "b326111893d74287ef04c2a65403f80b642c6d52f18c76032c0e077126818c63"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/independent_review_tests.py",
+            "sha256": "e25158008e441385900335e8e6fa7f5257ba67822a56163eef004d5dc3198d23"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/retrieval.py",
+            "sha256": "235fb758a86d927938c251c69d3941c64a6a0e08ad865bff37e5c3416dec8a1b"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/standards-claims.json",
+            "sha256": "46c6be8440df86059f2006d5246c6f41f8bc590e329172490f376feb333adc56"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/test_supplement.py",
+            "sha256": "71a1296e72f4f3a5f2307359198532b0785e2eb2b8d02d6a63058ed39a83e4e7"
+          },
+          {
+            "topic_id": "SUPPLEMENTAL_DERIVATIVES_HEDGE",
+            "path": "knowledge/derivatives-hedge/validate_supplement.py",
+            "sha256": "6d916cabd73146f08da589a2e1aee7684178f2613cd397f6260c50182df5c317"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "case_fingerprint": "1e68e2c35f2d2440c668f49efa784cd6678cc58ac104ada313b2963f99269220"
+      },
+      "mode": "evidence_only"
+    }
+  ],
+  "gl": [
+    {
+      "id": "Merchandise",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "100",
+      "closing": "160",
+      "statement": "160"
+    },
+    {
+      "id": "Acquisition clearing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0",
+      "closing": "-200",
+      "statement": "-200"
+    },
+    {
+      "id": "Cost of goods sold",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0",
+      "closing": "50",
+      "statement": "50"
+    }
+  ],
+  "gl_inventory": [
+    "Merchandise",
+    "Acquisition clearing",
+    "Cost of goods sold"
+  ],
+  "documents": [
+    {
+      "id": "scope-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "checked_on": "2027-03-31",
+        "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries",
+        "edition": "IAS2_2026",
+        "entity_scope": "for_profit_full_ifrs",
+        "borrowing_capitalization": false,
+        "joint_products": false,
+        "retail_method": false,
+        "industry_exception": false,
+        "forecast_generation": false,
+        "external_posting": false,
+        "early_adoption": false
+      },
+      "content_hash": "5623423cbdefeca0f9ef3b84b3d64d85a982668d3c71c47d67daac22a5657004"
+    },
+    {
+      "id": "goods-measurement",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item": "goods",
+        "checked_on": "2027-03-31",
+        "population_reviewed": true,
+        "impairment_indicator": false,
+        "forecast_used": false,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_reviewed": true,
+        "expired": false,
+        "discontinued": false,
+        "estimate_memo": "Synthetic current item value/ageing review",
+        "demand_evidence_memo": "Synthetic actual recent sales support, no autonomous forecast",
+        "ageing_evidence_memo": "Synthetic current ageing expiry discontinuation source"
+      },
+      "content_hash": "727659a1987d0772bff361de661def003a73c6e8bd6950b514d65e0c107c3426"
+    },
+    {
+      "id": "goods-rights",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item_id": "goods",
+        "rights_memo": "Synthetic current purchased-title/owned third-party/consignment assessment",
+        "ownership_event_id": "title-goods",
+        "entity": "Synthetic Group",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "checked_on": "2027-03-31",
+        "owned": true,
+        "third_party_owned": false,
+        "consigned_out_without_ownership": false
+      },
+      "content_hash": "cbe30354ab311bc6939f849303bafead74d2351af7230bb14b34f9b048edc849"
+    },
+    {
+      "id": "receipt-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-receipt",
+        "item": "goods",
+        "quantity": "10",
+        "date": "2026-12-31",
+        "ownership_supported": true,
+        "in_period": true,
+        "cost_components": [
+          {
+            "id": "price",
+            "economic_id": "price-receipt",
+            "kind": "price",
+            "amount": "200"
+          }
+        ],
+        "hedge_basis_adjustment_id": "relationship1-basis",
+        "hedge_already_in_components": false
+      },
+      "content_hash": "53e874d3af6def0328add44eb4416355572fc19cff67e9f630530ce95e37a218"
+    },
+    {
+      "id": "sale-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-sale",
+        "item": "goods",
+        "quantity": "5",
+        "date": "2026-12-31",
+        "ownership_supported": true,
+        "in_period": true
+      },
+      "content_hash": "a1fceff7de2b43e7bc553c2b198f7e1fed269f25d941a49c508952c9a7d277bd"
+    },
+    {
+      "id": "disclosures-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "carrying": {
+          "Merchandise": "160"
+        },
+        "pledged": {
+          "amount": "0",
+          "reviewed": true,
+          "evidence_memo": "Synthetic actual collateral register none"
+        },
+        "reversal": "0",
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "expense": {
+          "cogs": "50",
+          "manufacturing_other": "0",
+          "write_down": "0",
+          "reversal": "0"
+        },
+        "write_down": "0",
+        "policy": {
+          "framework": "IFRS",
+          "edition": "IAS2_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
+        "classes": [
+          "MERCH"
+        ],
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        }
+      },
+      "content_hash": "9365c578f71743868f5a2920546602b765f0673d99d9f17c0dbfd9f37b9980d8"
+    },
+    {
+      "id": "count-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "goods",
+          "item": "goods",
+          "location": "Factory",
+          "quantity": "15"
+        }
+      ],
+      "content_hash": "e4e961b0a444be6ac95a1a80498e574c4a4ab0793968487e62fddd294e520c4d"
+    },
+    {
+      "id": "cutoff-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "receipt",
+          "economic_id": "economic-receipt",
+          "ownership_supported": true,
+          "date_reviewed": true
+        },
+        {
+          "id": "sale",
+          "economic_id": "economic-sale",
+          "ownership_supported": true,
+          "date_reviewed": true
+        }
+      ],
+      "content_hash": "dde53c91d088b471bf14d4d6bcf8a145a3a74102960e35501cc38a221440eb05"
+    },
+    {
+      "id": "items-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "goods",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-goods",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "goods-rights",
+          "policy_group": "resale",
+          "currency": "USD",
+          "measurement_doc": "goods-measurement",
+          "opening_quantity": "10",
+          "opening_cost": "100",
+          "closing_quantity": "15",
+          "closing_cost": "160",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [
+            {
+              "id": "goods-opening",
+              "economic_id": "goods-opening-source",
+              "quantity": "10",
+              "cost": "100",
+              "date": "2025-12-31"
+            }
+          ],
+          "class": "MERCH"
+        }
+      ],
+      "content_hash": "faa2ba09f3fd5f16213158d2f5c3da3e52d1e7a66fc80e198370ce311c356d23"
+    },
+    {
+      "id": "movements-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "receipt",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-receipt",
+          "item": "goods",
+          "kind": "purchase",
+          "quantity": "10",
+          "amount": "110",
+          "date": "2026-12-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "receipt-source",
+          "sequence": 1,
+          "owner_kind": "hedge_basis",
+          "owner_import": "hedge-owner",
+          "hedge_basis_adjustment_id": "relationship1-basis"
+        },
+        {
+          "id": "sale",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-sale",
+          "item": "goods",
+          "kind": "sale",
+          "quantity": "5",
+          "amount": "50",
+          "date": "2026-12-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "sale-source",
+          "sequence": 2,
+          "layer_ids": [
+            "goods-opening"
+          ]
+        }
+      ],
+      "content_hash": "fcd5c35d013f922b782121d18899944d7354cf1ec75ffd3be7cd47f021b9a54e"
+    },
+    {
+      "id": "orders-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "costs-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "standards-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "valuation-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "hedge-binding-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-receipt",
+        "adjustment": "-90",
+        "currency": "USD",
+        "production_mapping_memo": "Exact identified purchased SKU and receipt",
+        "cost_qualification_memo": "Framework nonfinancial basis handoff independently reviewed",
+        "eligible_manufacturing": true
+      },
+      "content_hash": "25831b738735f9b47835b208b1130793ab12b625c2409b33f9b3a7ec80e8994c"
+    },
+    {
+      "id": "hedge-retained-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "movement_id": "receipt",
+        "owner_import": "hedge-owner",
+        "owner_account": "Nonfinancial asset basis adjustment",
+        "account": "Merchandise",
+        "amount": "-90",
+        "hedge_basis_adjustment_id": "relationship1-basis"
+      },
+      "content_hash": "2def94ff6e10a0916f16b4cf21fe18ce4a57cb1cc6656770b5fea1438fb163c9"
+    }
+  ],
+  "document_inventory": [
+    "scope-source",
+    "goods-measurement",
+    "goods-rights",
+    "receipt-source",
+    "sale-source",
+    "disclosures-source",
+    "count-source",
+    "cutoff-source",
+    "items-original",
+    "movements-original",
+    "orders-original",
+    "costs-original",
+    "standards-original",
+    "valuation-original",
+    "hedge-binding-source",
+    "hedge-retained-source"
+  ],
+  "accounting_policy": {
+    "id": "governance-policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "formula_by_group": {
+      "materials": "FIFO",
+      "production": "FIFO",
+      "resale": "FIFO"
+    }
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "period_entity_memo": "Actual bounded management scope review",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "160",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence"
+  },
+  "source_inventory": [
+    "goods"
+  ],
+  "release_review": {
+    "id": "release",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "review_memo": "Synthetic independent exact original source release",
+    "payload_fingerprint": "09ea5f6a847c7ec809cee0193cbf7668ca218401fb34c5b6c4a012e60a3639f3"
+  },
+  "currency": "USD",
+  "owner_links": [
+    {
+      "id": "hedge-basis-link",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "owner_import": "hedge-owner",
+      "result_path": [
+        "basis_adjustments",
+        "relationship1-basis",
+        "amount"
+      ],
+      "economic_id": "economic-receipt",
+      "target_id": "receipt",
+      "source_doc": "hedge-binding-source",
+      "source_field": "adjustment",
+      "amount": "-90"
+    }
+  ],
+  "owner_links_inventory": [
+    "hedge-basis-link"
+  ],
+  "owner_gl_effects": [
+    {
+      "id": "hedge-retained",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_doc": "hedge-retained-source",
+      "movement_id": "receipt",
+      "owner_import": "hedge-owner",
+      "owner_account": "Nonfinancial asset basis adjustment",
+      "account": "Merchandise",
+      "amount": "-90",
+      "hedge_basis_adjustment_id": "relationship1-basis"
+    }
+  ],
+  "owner_gl_effects_inventory": [
+    "hedge-retained"
+  ],
+  "items": [
+    {
+      "id": "goods",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "physical_id": "physical-goods",
+      "unit": "units",
+      "location": "Factory",
+      "ownership_doc": "goods-rights",
+      "policy_group": "resale",
+      "currency": "USD",
+      "measurement_doc": "goods-measurement",
+      "opening_quantity": "10",
+      "opening_cost": "100",
+      "closing_quantity": "15",
+      "closing_cost": "160",
+      "formula": "FIFO",
+      "interchangeable": true,
+      "opening_layers": [
+        {
+          "id": "goods-opening",
+          "economic_id": "goods-opening-source",
+          "quantity": "10",
+          "cost": "100",
+          "date": "2025-12-31"
+        }
+      ],
+      "class": "MERCH"
+    }
+  ],
+  "movements": [
+    {
+      "id": "receipt",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "economic-receipt",
+      "item": "goods",
+      "kind": "purchase",
+      "quantity": "10",
+      "amount": "110",
+      "date": "2026-12-31",
+      "currency": "USD",
+      "unit": "units",
+      "source_doc": "receipt-source",
+      "sequence": 1,
+      "owner_kind": "hedge_basis",
+      "owner_import": "hedge-owner",
+      "hedge_basis_adjustment_id": "relationship1-basis"
+    },
+    {
+      "id": "sale",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "economic-sale",
+      "item": "goods",
+      "kind": "sale",
+      "quantity": "5",
+      "amount": "50",
+      "date": "2026-12-31",
+      "currency": "USD",
+      "unit": "units",
+      "source_doc": "sale-source",
+      "sequence": 2,
+      "layer_ids": [
+        "goods-opening"
+      ]
+    }
+  ],
+  "orders": [],
+  "costs": [],
+  "standards": [],
+  "valuation": [],
+  "scope": {
+    "id": "scope",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "scope-source",
+    "checked_on": "2027-03-31",
+    "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries",
+    "edition": "IAS2_2026",
+    "entity_scope": "for_profit_full_ifrs",
+    "borrowing_capitalization": false,
+    "joint_products": false,
+    "retail_method": false,
+    "industry_exception": false,
+    "forecast_generation": false,
+    "external_posting": false,
+    "early_adoption": false
+  },
+  "disclosures": {
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "disclosures-source",
+    "checked_on": "2027-03-31",
+    "requirements": {
+      "carrying": {
+        "Merchandise": "160"
+      },
+      "pledged": {
+        "amount": "0",
+        "reviewed": true,
+        "evidence_memo": "Synthetic actual collateral register none"
+      },
+      "reversal": "0",
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "expense": {
+        "cogs": "50",
+        "manufacturing_other": "0",
+        "write_down": "0",
+        "reversal": "0"
+      },
+      "write_down": "0",
+      "policy": {
+        "framework": "IFRS",
+        "edition": "IAS2_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
+      "classes": [
+        "MERCH"
+      ],
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      }
+    },
+    "closing_inventory": "160",
+    "cogs": "50",
+    "write_down": "0",
+    "reversal": "0"
+  },
+  "count": {
+    "id": "count",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "count-source",
+    "records": [
+      {
+        "id": "goods",
+        "item": "goods",
+        "location": "Factory",
+        "quantity": "15"
+      }
+    ]
+  },
+  "cutoff": {
+    "id": "cutoff",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "cutoff-source",
+    "records": [
+      {
+        "id": "receipt",
+        "economic_id": "economic-receipt",
+        "ownership_supported": true,
+        "date_reviewed": true
+      },
+      {
+        "id": "sale",
+        "economic_id": "economic-sale",
+        "ownership_supported": true,
+        "date_reviewed": true
+      }
+    ]
+  },
+  "originals": {
+    "items": {
+      "id": "items-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "goods",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-goods",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "goods-rights",
+          "policy_group": "resale",
+          "currency": "USD",
+          "measurement_doc": "goods-measurement",
+          "opening_quantity": "10",
+          "opening_cost": "100",
+          "closing_quantity": "15",
+          "closing_cost": "160",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [
+            {
+              "id": "goods-opening",
+              "economic_id": "goods-opening-source",
+              "quantity": "10",
+              "cost": "100",
+              "date": "2025-12-31"
+            }
+          ],
+          "class": "MERCH"
+        }
+      ],
+      "inventory": [
+        "goods"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "items-original"
+    },
+    "movements": {
+      "id": "movements-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "receipt",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-receipt",
+          "item": "goods",
+          "kind": "purchase",
+          "quantity": "10",
+          "amount": "110",
+          "date": "2026-12-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "receipt-source",
+          "sequence": 1,
+          "owner_kind": "hedge_basis",
+          "owner_import": "hedge-owner",
+          "hedge_basis_adjustment_id": "relationship1-basis"
+        },
+        {
+          "id": "sale",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-sale",
+          "item": "goods",
+          "kind": "sale",
+          "quantity": "5",
+          "amount": "50",
+          "date": "2026-12-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "sale-source",
+          "sequence": 2,
+          "layer_ids": [
+            "goods-opening"
+          ]
+        }
+      ],
+      "inventory": [
+        "receipt",
+        "sale"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "movements-original"
+    },
+    "orders": {
+      "id": "orders-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "orders-original"
+    },
+    "costs": {
+      "id": "costs-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "costs-original"
+    },
+    "standards": {
+      "id": "standards-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "standards-original"
+    },
+    "valuation": {
+      "id": "valuation-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "valuation-original"
+    }
+  },
+  "items_inventory": [
+    "goods"
+  ],
+  "movements_inventory": [
+    "receipt",
+    "sale"
+  ],
+  "orders_inventory": [],
+  "costs_inventory": [],
+  "standards_inventory": [],
+  "valuation_inventory": [],
+  "knowledge_review": {
+    "reviewer": "Synthetic independent inventory knowledge reviewer",
+    "claim_ids": [
+      "INV-IFRS-001",
+      "INV-IFRS-002",
+      "INV-IFRS-003",
+      "INV-IFRS-004",
+      "INV-IFRS-005",
+      "INV-IFRS-006",
+      "INV-IFRS-007",
+      "INV-IFRS-008",
+      "INV-IFRS-009",
+      "INV-IFRS-010",
+      "INV-IFRS-011",
+      "INV-IFRS-012",
+      "INV-IFRS-013",
+      "INV-IFRS-014",
+      "INV-IFRS-015",
+      "INV-IFRS-016",
+      "INV-IFRS-017",
+      "INV-IFRS-018",
+      "INV-IFRS-019",
+      "INV-IFRS-020",
+      "INV-IFRS-021",
+      "INV-IFRS-022",
+      "INV-IFRS-023",
+      "INV-IFRS-024",
+      "INV-IFRS-025",
+      "INV-IFRS-026",
+      "INV-IFRS-027",
+      "INV-IFRS-028",
+      "INV-IFRS-029",
+      "INV-IFRS-030",
+      "INV-IFRS-031",
+      "INV-IFRS-032",
+      "INV-IFRS-033",
+      "INV-IFRS-034",
+      "INV-IFRS-035",
+      "INV-IFRS-036",
+      "INV-IFRS-037",
+      "INV-IFRS-038",
+      "INV-IFRS-039",
+      "INV-IFRS-040",
+      "INV-IFRS-041",
+      "INV-IFRS-042",
+      "INV-IFRS-043",
+      "INV-IFRS-044",
+      "INV-IFRS-045",
+      "INV-IFRS-046",
+      "INV-IFRS-047",
+      "INV-IFRS-048",
+      "INV-IFRS-049",
+      "INV-IFRS-050",
+      "INV-IFRS-051",
+      "INV-IFRS-052",
+      "INV-IFRS-053",
+      "INV-IFRS-054",
+      "INV-IFRS-055",
+      "INV-IFRS-056",
+      "INV-IFRS-057"
+    ],
+    "documents": [
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/EVIDENCE-AND-QA.md",
+        "sha256": "561d495cc03c268b23e1794743666e47b2195058cbac1a737493288585b86506"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/FRAMEWORK-METHOD.md",
+        "sha256": "cbbbd09fe436fb002a959d919373b15a7559848eec58665f3c577112c397586b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/INDEPENDENT-QA.md",
+        "sha256": "c5773771c4f84f6de0660262d0a076117cdc13558ec37affe9b22f10ec421907"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/README.md",
+        "sha256": "24d65703b4fdc54ec39a54225f1333b882a14de9a4d5d993891c208f25327453"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/retrieval.py",
+        "sha256": "e40d77ce5884d9a86bb89cc86f67e40944af217064b54da9e01d11d6a5595f01"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/standards-claims.json",
+        "sha256": "7fd80072d75c276013b2ea8e0074684d1f4ef952006df48528383fdfb1ed9e23"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/test_independent_claim_qa.py",
+        "sha256": "4af4afe39c3719cc96004a5db445de5b72eb8d23d1311b677657236db481de2e"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/test_supplement.py",
+        "sha256": "a7f4d9f00aec6cd9e55d7756e273bdcc7952d03c1bad00105abe6a6aaa454887"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/validate_supplement.py",
+        "sha256": "23852613ef43a6839e9b17395c2a5dcafcaad95ca20260a0b8b326e0cbefc239"
+      }
+    ],
+    "applied_claim_ids": [
+      "INV-IFRS-001",
+      "INV-IFRS-002",
+      "INV-IFRS-003",
+      "INV-IFRS-004",
+      "INV-IFRS-005",
+      "INV-IFRS-006",
+      "INV-IFRS-007",
+      "INV-IFRS-008",
+      "INV-IFRS-009",
+      "INV-IFRS-010",
+      "INV-IFRS-011",
+      "INV-IFRS-012",
+      "INV-IFRS-013",
+      "INV-IFRS-014",
+      "INV-IFRS-015",
+      "INV-IFRS-016",
+      "INV-IFRS-017",
+      "INV-IFRS-018",
+      "INV-IFRS-019",
+      "INV-IFRS-020",
+      "INV-IFRS-021",
+      "INV-IFRS-022",
+      "INV-IFRS-023",
+      "INV-IFRS-024",
+      "INV-IFRS-025",
+      "INV-IFRS-026",
+      "INV-IFRS-027",
+      "INV-IFRS-028",
+      "INV-IFRS-029",
+      "INV-IFRS-030",
+      "INV-IFRS-031",
+      "INV-IFRS-032",
+      "INV-IFRS-033",
+      "INV-IFRS-034",
+      "INV-IFRS-035",
+      "INV-IFRS-036",
+      "INV-IFRS-037",
+      "INV-IFRS-038",
+      "INV-IFRS-039",
+      "INV-IFRS-040",
+      "INV-IFRS-041",
+      "INV-IFRS-042",
+      "INV-IFRS-043",
+      "INV-IFRS-044",
+      "INV-IFRS-045",
+      "INV-IFRS-046",
+      "INV-IFRS-047",
+      "INV-IFRS-048",
+      "INV-IFRS-049",
+      "INV-IFRS-050",
+      "INV-IFRS-051",
+      "INV-IFRS-052",
+      "INV-IFRS-053",
+      "INV-IFRS-054",
+      "INV-IFRS-055",
+      "INV-IFRS-056",
+      "INV-IFRS-057"
+    ],
+    "selection_memo": "Synthetic ordinary inventory manufacturing scope and framework decisions reviewed individually",
+    "public_caveats": [
+      "Controlled actual source facts and current framework-specific standards determine cost, capacity, ownership and valuation."
+    ]
+  }
+}

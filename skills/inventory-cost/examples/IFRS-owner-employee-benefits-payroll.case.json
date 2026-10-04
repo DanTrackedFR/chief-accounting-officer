@@ -374,7 +374,7 @@
         "reviewer_signoff": {
           "reviewer": "synthetic independent reviewer",
           "approved": true,
-          "case_fingerprint": "6f6286c339da8b632ff32f7d6b0dfc219b5773163f05efca22e8dbc331fa9aa5"
+          "case_fingerprint": "d95de134a9da01d84948a068f560b4c08f72a16572c2ff72e80e29fe3ae79739"
         }
       },
       "result": {
@@ -1099,7 +1099,7 @@
         "systems_impacted": [
           "Retain case ID, source IDs, policy version, rule route and journal lineage"
         ],
-        "case_fingerprint": "6f6286c339da8b632ff32f7d6b0dfc219b5773163f05efca22e8dbc331fa9aa5",
+        "case_fingerprint": "d95de134a9da01d84948a068f560b4c08f72a16572c2ff72e80e29fe3ae79739",
         "status": "complete"
       },
       "mode": "evidence_only"
@@ -1891,20 +1891,29 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "formula": {
-          "materials": "FIFO",
-          "production": "FIFO",
-          "resale": "FIFO"
+        "carrying": {
+          "Work in progress": "2379.20",
+          "Raw materials": "548.00",
+          "Finished goods": "7137.600"
         },
         "classes": [
           "FG",
           "RM",
           "WIP"
         ],
-        "write_down": "0.00",
+        "pledged": {
+          "amount": "0.00",
+          "reviewed": true,
+          "evidence_memo": "Synthetic actual collateral register none"
+        },
         "reversal_circumstances": {
           "reviewed": true,
           "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        },
+        "policy": {
+          "framework": "IFRS",
+          "edition": "IAS2_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
         },
         "expense": {
           "cogs": "2379.20",
@@ -1912,22 +1921,13 @@
           "write_down": "0.00",
           "reversal": "0.00"
         },
-        "pledged": {
-          "amount": "0.00",
-          "reviewed": true,
-          "evidence_memo": "Synthetic actual collateral register none"
-        },
-        "policy": {
-          "framework": "IFRS",
-          "edition": "IAS2_2026",
-          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-        },
         "reversal": "0.00",
-        "carrying": {
-          "Finished goods": "7137.600",
-          "Work in progress": "2379.20",
-          "Raw materials": "548.00"
-        }
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "write_down": "0.00"
       },
       "content_hash": "6f5d219b0d10055acdb94644e4e2c7a3defb94ee9bfaf8f656d00a378c4bbdab"
     },
@@ -2560,7 +2560,7 @@
       "2026-12-31"
     ],
     "review_memo": "Synthetic independent exact original source release",
-    "payload_fingerprint": "b7b997cf8479484704076cb8b7a1a69f88a44efae65056d6b0b3e7e26fd5bcaa"
+    "payload_fingerprint": "e6e586984b9f1304622124d0c187ab55518417320209b6c1273045feb526f2e5"
   },
   "currency": "USD",
   "owner_links": [
@@ -2948,20 +2948,29 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "formula": {
-        "materials": "FIFO",
-        "production": "FIFO",
-        "resale": "FIFO"
+      "carrying": {
+        "Work in progress": "2379.20",
+        "Raw materials": "548.00",
+        "Finished goods": "7137.600"
       },
       "classes": [
         "FG",
         "RM",
         "WIP"
       ],
-      "write_down": "0.00",
+      "pledged": {
+        "amount": "0.00",
+        "reviewed": true,
+        "evidence_memo": "Synthetic actual collateral register none"
+      },
       "reversal_circumstances": {
         "reviewed": true,
         "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      },
+      "policy": {
+        "framework": "IFRS",
+        "edition": "IAS2_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
       },
       "expense": {
         "cogs": "2379.20",
@@ -2969,22 +2978,13 @@
         "write_down": "0.00",
         "reversal": "0.00"
       },
-      "pledged": {
-        "amount": "0.00",
-        "reviewed": true,
-        "evidence_memo": "Synthetic actual collateral register none"
-      },
-      "policy": {
-        "framework": "IFRS",
-        "edition": "IAS2_2026",
-        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-      },
       "reversal": "0.00",
-      "carrying": {
-        "Finished goods": "7137.600",
-        "Work in progress": "2379.20",
-        "Raw materials": "548.00"
-      }
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "write_down": "0.00"
     },
     "closing_inventory": "10064.800",
     "cogs": "2379.20",

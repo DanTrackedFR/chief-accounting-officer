@@ -1,0 +1,20 @@
+{
+  "topic_id": "TOPIC-06-008",
+  "guidance": "Qualified derivative scope, valuation bridges, framework hedge journals and reserves reconcile\nReview status: partial\nCalculations: {\"basis_adjustments\": [], \"derivatives\": [{\"change\": \"100\", \"closing\": \"100\", \"earnings_release\": \"0\", \"effective\": \"10\", \"hedged_item_change\": \"0\", \"id\": \"forward1\", \"ineffectiveness\": \"90\", \"opening\": \"0\", \"route\": \"net_investment\", \"settlement\": \"0\"}], \"effectiveness\": [{\"framework_method\": \"economic_relationship\", \"historical_effective\": \"0\", \"id\": \"relationship1\", \"ratio\": \"1\", \"status\": \"active\"}], \"gl_movements\": {\"Derivative balance forward1\": \"100.00\", \"Hedge P&L relationship1\": \"-90.00\", \"Hedge reserve relationship1\": \"-10.00\"}, \"hedge_reserves\": [{\"basis_adjustment\": \"0\", \"closing\": \"10\", \"id\": \"relationship1\", \"opening\": \"0\", \"reclassification\": \"0\", \"recognized_oci\": \"10\"}]}\nJournals: [[{\"side\": \"Dr\", \"account\": \"Derivative balance forward1\", \"amount\": \"90.00\"}, {\"side\": \"Cr\", \"account\": \"Hedge P&L relationship1\", \"amount\": \"90.00\"}], [{\"side\": \"Dr\", \"account\": \"Derivative balance forward1\", \"amount\": \"10.00\"}, {\"side\": \"Cr\", \"account\": \"Hedge reserve relationship1\", \"amount\": \"10.00\"}]]\nDisclosure review: Framework-specific instrument, risk, reserve and accounting-effect disclosure support",
+  "framework": "UK_GAAP",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "2026 operative basic full-instrument routes only. Advanced techniques and midperiod measurement splits require a governed specialist method.",
+    "Qualified current evidence and the operative accounting model are required; source confidence remains bounded."
+  ],
+  "uncertainties": [
+    "Independent reviewer must approve this exact case fingerprint before use"
+  ],
+  "citations": [
+    {
+      "title": "FRS 102 Section 12 derivative and hedge accounting"
+    }
+  ]
+}
