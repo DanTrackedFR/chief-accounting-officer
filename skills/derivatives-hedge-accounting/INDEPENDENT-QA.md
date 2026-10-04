@@ -39,3 +39,19 @@ Complex options and excluded components, portfolio/macro techniques, retained IA
 Actual production owner integration: independently constructed fixed-rate Debt FV and variable-rate Debt CF cases pass original-source ID/principal/maturity/rate-type binding. Four-framework NI cases consume actual current Consolidation and Foreign Currency owner results and pass; operation mismatch, net-investment excess, wrong translation amount and manufactured disposal fail. Actual current Inventory owner consumes -90 signed basis exactly once into160 closing inventory; refreshed-source receipt quantity/adjustment-ID mutations fail. Existing Fair Value owner is quoted equity only: unrelated current result blocked; complex derivative valuation requires independently qualified external evidence. Hedge reporting includes exact signed GL/statement and P&L/reserve bridges, without producing final statements.
 
 Reporting source validator is deliberately bounded to first-year continuing/rebalanced cash-flow hedges with zero opening balances, settlement, reclassification and basis adjustment. It validates actual completed Hedge and native Financial Statements outputs with exact unique semantic mapping and source population. It does not generate company baseline balances or replace statement-owner accounting. Other reporting routes require their explicit governed adapters.
+
+## Final promoted-byte independent verification
+
+Independent implementation reviewer returned a read-only PASS on 2026-10-04:102 targeted methods, including48 independent methods; all275 artifacts reproduced byte-for-byte; all12 recorded findings resolved;0 open material findings. No files were edited during verification. Final exact-head CI remains the external release gate recorded in PR25.
+
+| Anchor | SHA256 |
+|---|---|
+| Production SKILL metadata | e51cdf6ef5b6d616dbd1f31c5cf1e4dc2d4a919f45b1435aff9416d02cffa36d |
+| Hedge workflow | 99d1e761cddc1f1e9745ca8010cb0b089361beb4b5c19ae6074c1acc54c5d7d8 |
+| Native reporting handoff | d4ca94d74b10712c9ea945ed2d6bb071e7c935c169153fed8f3a806e663d323e |
+| Inventory workflow | 693b8f44000f83743e4004a45596e4e20818e97fbe7216ee41cf82dfcf28cc5e |
+| Shared production boundary | cdbf8a51a5b7e9290c7e1fe5c3c183ba0a028b6537ddd86d35f54d89c70c3de1 |
+| Independent accounting tests | 8dd9bbcb1dd29381d7268582baf35a37a12429ba0c3d2edb22878016a1eb0ce5 |
+| Independent handoff tests | 2269076f50c9ca7a048603959b7301026bdde50f42f399252ba1b60a1d272487 |
+| Canonical map | bc1927bccd8ddc2204731d4406a91e1e3852fab9fabde1ad956739b557b9c6b8 |
+| Supplemental map | d142cac62270a8d81eb2649d7b90a0c688ec819bbfdf043514e9087ea19990bf |

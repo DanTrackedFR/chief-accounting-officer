@@ -1,8 +1,8 @@
 ---
 name: derivatives-hedge-accounting
 skill_id: SKILL-HEDGE-001
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 roadmap: 29
 ---
 
