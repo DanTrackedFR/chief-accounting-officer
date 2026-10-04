@@ -26,10 +26,120 @@ For each canonical topic, complete the appropriate full factory: principles/stan
 Update the canonical manifest first. Derived progress reports and roadmap are regenerated only after the manifest update. Duplicate/retry folders never count as additional topics. Preserve useful duplicate material until canonicalization is safe.
 
 ### Next sequence
-Phase 2D and the full Phase 2E two-track approval audit are closed. Preserve the individual evidence and run both standards-evidence and canonical approval validators after changes. Future direct-source assurance work remains a separate queue; access restrictions alone do not reverse owner-authorised training-data approvals. Implement and verify the public output contract in the eventual production application.
+Phase 2D and the full Phase 2E two-track approval audit are closed. Preserve the individual evidence and run both standards-evidence and canonical approval validators after changes. Future direct-source assurance work remains a separate queue; access restrictions alone do not reverse owner-authorised training-data approvals.
 
 ## Phase 3 — Production skills
-Build skills systematically across all 17 domains after the standards-evidence baseline is sufficiently mature for the intended production use.
+Status: substantially complete for current product development.
+
+All 50 roadmap positions are accounted for. Current live-main position after the specialist build:
+- **47 production skills**.
+- **#34 Government Grants & Assistance** — incomplete/WIP; the existing main package remains NONPRODUCTION. Separate remediation work may exist on an unmerged branch and must not be treated as live production.
+- **#35 Borrowing Costs** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
+- **#37 Investment Property** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
+
+The three residual packages do not block CAO runtime/orchestration development. Orchestration must detect unavailable owners and return precise partial/blocked dependencies rather than fabricate accounting.
+
+### CAO Orchestration Foundation
+Status: **complete and integrated**.
+
+The governed runtime now supports objective-led issue decomposition, a dynamic dependency graph, production-skill execution through the existing accounting boundary, semantic/exact-once owner handoffs, Case lifecycle, active challenge/rework, curated synthesis, Context Observer memory candidates and runtime public-output filtering. The manufacturing flagship proves multi-skill orchestration from a broad user objective without requiring the user to name internal skills.
+
+This foundation is intentionally bounded: it is not yet arbitrary natural-language/document understanding, every skill combination, multi-entity/multi-period execution, durable persistence, authenticated approvals or a complete product UI.
+
+## CAO runtime & intelligence workstreams — unnumbered
+Do not rename these workstreams as a new numbered project phase unless the owner explicitly authorises that roadmap change.
+
+### 1. CAO Intent & Diagnostic Analytics Foundation — NEXT
+Status: **next workstream**.
+
+The CAO must determine not only which accounting topics are implicated, but what the user is actually trying to accomplish. Intent/work-mode decomposition should distinguish and combine, as appropriate:
+- diagnostic analytics;
+- technical accounting / accounting determination;
+- close review;
+- reconciliation / investigation;
+- reporting;
+- process and controls review;
+- audit support;
+- documentation;
+- transaction accounting.
+
+These are orchestration work modes, not replacement skills.
+
+Diagnostic analytics must become a first-class cross-skill capability. The CAO should be able to explain **what changed, why it changed, whether the accounting is reliable, and what action or further work is required**, while routing any accounting-treatment conclusion back through the relevant governed accounting owner.
+
+Core analytical capabilities should include, where supported by supplied data:
+- period-over-period and actual-versus-budget/forecast/standard bridges;
+- price / volume / mix analysis;
+- material price, usage and yield analysis;
+- labour rate and efficiency analysis;
+- overhead spending, capacity and absorption/recovery analysis;
+- FX impact;
+- product/customer/geography mix;
+- gross-margin and cost-driver bridges;
+- unusual journal / close-movement analysis;
+- balance flux analysis;
+- trends and controlled anomaly identification;
+- reconciliation of analytical explanations back to accounting/GL movements.
+
+Analytics may generate and test **hypotheses**, but must not turn a hypothesis into an accounting conclusion. For example, analytics may identify low factory utilisation as the driver of margin deterioration; the Inventory & Cost owner determines the accounting treatment of under-absorbed overhead.
+
+Analytical bridges must preserve source/owner lineage, avoid double counting and expose unexplained residuals. A bridge should reconcile explained drivers plus residual to the actual movement rather than burying unresolved amounts in “other”.
+
+The first diagnostic flagship should reuse the manufacturing environment with a user objective such as:
+
+> “Our factory margins look terrible this month. Can you review the close and figure out what’s going on?”
+
+The CAO should recognise this primarily as a diagnostic-analytics / close-integrity task, draw governed data and outputs from the relevant accounting owners, decompose the margin movement, distinguish genuine economic drivers from accounting errors/timing, and invoke technical accounting only where the findings create an accounting question.
+
+Independent QA must challenge at least:
+- correlation presented as causation;
+- double-counted analytical drivers;
+- overlapping price/mix/FX/usage effects;
+- inconsistent denominators;
+- stale standards/budgets/forecasts;
+- unexplained residual hidden in “other”;
+- analytics that do not reconcile to the P&L/GL movement;
+- management forecast presented as fact;
+- an accounting adjustment mislabelled as an economic driver;
+- genuine economic deterioration mislabelled as an accounting error;
+- accounting conclusions made directly by analytics instead of the governed owner.
+
+### 2. Semantic Planner + Document/Data Intake
+After the analytical-intent foundation is stable, allow the CAO to interpret genuinely free-form objectives and supplied company materials into governed facts, issues and workplan proposals.
+
+Target inputs include trial balances, monthly P&Ls, ERP/subledger exports, inventory reports, payroll data, contracts, policies, reconciliations, management commentary and other company documents.
+
+Model reasoning may propose facts/issues/workplans, but production status, owner boundaries, dependency controls, exact-once lineage, accounting authority and challenge gates remain governed by the deterministic runtime and production skill contracts.
+
+### 3. Additional end-to-end flagship scenarios
+Build broader orchestration coverage after semantic/data intake:
+1. **SaaS / month-end close** — Revenue + AR + ECL + FX + Reconciliations + Close + Reporting + Disclosure + analytics.
+2. **Treasury / financing** — Debt + FX + Derivatives/Hedge + Financial Instruments + Cash Flow + Reporting + analytics.
+3. **Group accounting** — Business Combinations + Consolidation + NCI + FX + Impairment + Tax + Reporting.
+
+Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
+
+### 4. Multi-entity and multi-period orchestration
+Support parent/subsidiary, local/group framework, comparative-period, intercompany and multi-currency execution without mixing entity/framework/period dimensions.
+
+### 5. Durable Case and Company Accounting Memory persistence
+Persist Company Context, Case history, decisions, artifacts and provenance while preserving status and temporal history such as PROPOSED, APPROVED and SUPERSEDED. Persistence must not silently promote memory candidates into approved company truth.
+
+### 6. Authenticated governance and approvals
+Add real user identity, roles, preparer/reviewer separation, approval events and audit trail. Synthetic reviewer identities/fingerprints remain regression evidence only.
+
+### 7. Product/API/UI layer
+Expose the governed CAO runtime through an application experience for conversational objectives, document/data intake, material questions, Case/workplan review, artifacts, judgments and approvals. Every user-visible route must continue to pass through the public-output boundary.
+
+### Parallel residual accounting backlog
+When capacity permits, independently complete:
+1. #34 Government Grants & Assistance;
+2. #35 Borrowing Costs;
+3. #37 Investment Property.
+
+These should use the same standalone knowledge-extension / independent-QA / promotion pattern used by the completed specialists. They are parallel backlog items rather than blockers for the CAO intelligence/runtime sequence.
 
 ## Phase 2E — approval audit
-Complete: 157/157 individually processed and approved; no remaining accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found. Production output-boundary runtime verification is pending; executable contract runs in CI. After local environment failure, exact-commit GitHub Actions validates batches before continuation.
+Complete: 157/157 individually processed and approved; no remaining canonical accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found.
+
+Runtime public-output integration and verification are now implemented in the CAO orchestration foundation. Future application adapters must continue to enforce the same public boundary. Exact-commit GitHub Actions remain the integration standard.
