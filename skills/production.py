@@ -262,6 +262,7 @@ def case_fingerprint(case):
     files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
     files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
     if case.get('package')=='derivatives-hedge-accounting':
+        files += [ROOT/'skills/derivatives-hedge-accounting/handoffs.py']
         files += [ROOT/'skills/hedge_knowledge.py',ROOT/'skills/derivatives-hedge-accounting/CANONICAL-KNOWLEDGE-MAP.json',ROOT/'skills/derivatives-hedge-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
         files += [p for p in (ROOT/'knowledge/derivatives-hedge').glob('*.py')]
     if case.get('package')=='inventory-cost':

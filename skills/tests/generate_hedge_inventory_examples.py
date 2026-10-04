@@ -20,6 +20,6 @@ def artifacts():
     return output
 
 def generate():
-    for p,o in artifacts().items():Path(p).write_text(json.dumps(o,default=serializable,indent=2)+'\n')
+    for p,o in artifacts().items():Path(p).write_text(json.dumps(o,default=serializable,indent=2,sort_keys=True)+'\n')
 
 if __name__=='__main__':generate()

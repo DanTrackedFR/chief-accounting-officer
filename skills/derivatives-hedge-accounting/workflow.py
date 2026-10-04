@@ -125,6 +125,11 @@ def assess(c,claims):
     def bound(r,key,packages,amount):
         id=r.get(key);check(id in owners,'Completed '+key+' owner required');check(id not in consumed_owner_facts,'Owner assertion consumed twice');consumed_owner_facts.add(id);pkg,value=owners[id];check(pkg in packages,'Wrong accounting owner');exact(value,amount,key)
         link=next(l for l in c['owner_links'] if l['id']==id)
+        if key=='host_owner':
+            check(link['result_path']==['gross_carrying_amount'],'Host carrying assertion must use actual gross carrying amount, not ECL or unrelated scalar')
+            imp=next(i for i in c['imports'] if i['id']==link['owner_import']);check(r.get('host_item_id')==imp['case']['case_id'],'Actual financial asset host case identity differs')
+            instrument=imp['case']['instrument'];check(instrument['kind'] in {'debt_asset','equity_asset'},'Financial asset host cannot borrow liability/other host classification')
+            if instrument.get('id') is not None:check(r.get('host_id')==instrument['id'],'Actual original host instrument identity differs')
         if key=='debt_owner':
             check(link['result_path']==['debt',r['debt_result_index'],'closing'],'Debt owner must bind actual debt closing schedule row')
             imp=next(i for i in c['imports'] if i['id']==link['owner_import']);debt=imp['case']['debt'][r['debt_result_index']]

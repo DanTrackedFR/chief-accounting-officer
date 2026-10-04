@@ -301,7 +301,11 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "valuation_losses": "0",
+        "policy": {
+          "framework": "US_GAAP",
+          "edition": "ASC330_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
         "estimates": {
           "model": "LCNRV",
           "reviewed": true,
@@ -310,19 +314,15 @@
         "carrying": {
           "Merchandise": "250"
         },
-        "policy": {
-          "framework": "US_GAAP",
-          "edition": "ASC330_2026",
-          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-        },
+        "valuation_losses": "0",
+        "classes": [
+          "MERCH"
+        ],
         "formula": {
           "materials": "SPECIFIC_IDENTIFICATION",
           "production": "SPECIFIC_IDENTIFICATION",
           "resale": "SPECIFIC_IDENTIFICATION"
-        },
-        "classes": [
-          "MERCH"
-        ]
+        }
       },
       "content_hash": "6fb1ff07db69cec4fbae063bc946e538659eef9f6d92278315e5cae920216778"
     },
@@ -872,7 +872,11 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "valuation_losses": "0",
+      "policy": {
+        "framework": "US_GAAP",
+        "edition": "ASC330_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
       "estimates": {
         "model": "LCNRV",
         "reviewed": true,
@@ -881,19 +885,15 @@
       "carrying": {
         "Merchandise": "250"
       },
-      "policy": {
-        "framework": "US_GAAP",
-        "edition": "ASC330_2026",
-        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-      },
+      "valuation_losses": "0",
+      "classes": [
+        "MERCH"
+      ],
       "formula": {
         "materials": "SPECIFIC_IDENTIFICATION",
         "production": "SPECIFIC_IDENTIFICATION",
         "resale": "SPECIFIC_IDENTIFICATION"
-      },
-      "classes": [
-        "MERCH"
-      ]
+      }
     },
     "closing_inventory": "250",
     "cogs": "50",

@@ -74,3 +74,15 @@ Sales earnings release consumes the actual Revenue owner's current contract,
 quantity, currency and period revenue output. It does not compute revenue. Every
 imported numeric fact must be consumed exactly once by a semantic accounting
 assertion; unrelated Fair Value quoted-equity output cannot qualify a derivative.
+
+The production `handoffs.validate_reporting_handoff` adapter independently
+reexecutes both Hedge and Financial Statements owners and validates explicit
+source mappings. Its supported scope is first-year continuing cash-flow hedges
+with zero opening derivative/reserve and no settlement, recycling or basis
+adjustment. It binds derivative, earnings and OCI TB rows plus a dedicated Hedge
+equity contribution to actual current source fingerprints and amounts. Duplicate
+source economics, target rows, source statement lines and unbound source postings
+fail closed. It does not infer business baseline balances or build an orchestrator.
+Other hedge routes retain their governed source-to-GL/statement reconciliation;
+this exact native Reporting adapter blocks their opening/movement/disposal/FV/NI
+handoffs pending a separately governed mapping extension.

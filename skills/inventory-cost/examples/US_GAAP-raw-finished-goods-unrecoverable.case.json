@@ -837,7 +837,11 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "valuation_losses": "80",
+        "policy": {
+          "framework": "US_GAAP",
+          "edition": "ASC330_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
         "estimates": {
           "model": "LCNRV",
           "reviewed": true,
@@ -848,21 +852,17 @@
           "Raw materials": "320",
           "Work in progress": "200"
         },
-        "policy": {
-          "framework": "US_GAAP",
-          "edition": "ASC330_2026",
-          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-        },
-        "formula": {
-          "materials": "FIFO",
-          "production": "FIFO",
-          "resale": "FIFO"
-        },
+        "valuation_losses": "80",
         "classes": [
           "FG",
           "RM",
           "WIP"
-        ]
+        ],
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        }
       },
       "content_hash": "d40925733f96676cdf09403ba8f5110342b43a40a92d80d656be77855dc4dcd9"
     },
@@ -1986,7 +1986,11 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "valuation_losses": "80",
+      "policy": {
+        "framework": "US_GAAP",
+        "edition": "ASC330_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
       "estimates": {
         "model": "LCNRV",
         "reviewed": true,
@@ -1997,21 +2001,17 @@
         "Raw materials": "320",
         "Work in progress": "200"
       },
-      "policy": {
-        "framework": "US_GAAP",
-        "edition": "ASC330_2026",
-        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-      },
-      "formula": {
-        "materials": "FIFO",
-        "production": "FIFO",
-        "resale": "FIFO"
-      },
+      "valuation_losses": "80",
       "classes": [
         "FG",
         "RM",
         "WIP"
-      ]
+      ],
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      }
     },
     "closing_inventory": "1120",
     "cogs": "200",

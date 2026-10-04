@@ -322,7 +322,11 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "valuation_losses": "50",
+        "policy": {
+          "framework": "US_GAAP",
+          "edition": "ASC330_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
         "estimates": {
           "model": "LCM",
           "reviewed": true,
@@ -331,19 +335,15 @@
         "carrying": {
           "Merchandise": "150"
         },
-        "policy": {
-          "framework": "US_GAAP",
-          "edition": "ASC330_2026",
-          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-        },
+        "valuation_losses": "50",
+        "classes": [
+          "MERCH"
+        ],
         "formula": {
           "materials": "LIFO",
           "production": "LIFO",
           "resale": "LIFO"
-        },
-        "classes": [
-          "MERCH"
-        ]
+        }
       },
       "content_hash": "792be09382d64cca006eb252469462734b54eacd53746eb69d1f4c6b65a1af5c"
     },
@@ -986,7 +986,11 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "valuation_losses": "50",
+      "policy": {
+        "framework": "US_GAAP",
+        "edition": "ASC330_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
       "estimates": {
         "model": "LCM",
         "reviewed": true,
@@ -995,19 +999,15 @@
       "carrying": {
         "Merchandise": "150"
       },
-      "policy": {
-        "framework": "US_GAAP",
-        "edition": "ASC330_2026",
-        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-      },
+      "valuation_losses": "50",
+      "classes": [
+        "MERCH"
+      ],
       "formula": {
         "materials": "LIFO",
         "production": "LIFO",
         "resale": "LIFO"
-      },
-      "classes": [
-        "MERCH"
-      ]
+      }
     },
     "closing_inventory": "150",
     "cogs": "100",
