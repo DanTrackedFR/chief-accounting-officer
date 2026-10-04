@@ -22,10 +22,12 @@ def disclosure_support(c):
     closing=sum(Decimal(a['amount']) for a in c['assets'])
     purchases=sum(Decimal(a['purchase_cost']) for a in c['assets'])
     gain=Decimal(dis['pnl_measurement_gain']);harvest=Decimal(dis['harvest_entry'])
+    biological_harvest=sum((Decimal(content(c,m['valuation_doc'])['net_value']) for m in c['movements'] if m['kind']=='harvest'),Decimal(0))
+    conversion=harvest-biological_harvest;biological_gain=gain-conversion
     mortality=Decimal(by.get('Agriculture mortality loss',{}).get('closing','0'))-Decimal(by.get('Agriculture mortality loss',{}).get('opening','0'))
     q=lambda rows:sum((Decimal(r['quantity']) for r in rows),Decimal(0))
     values=dict(classes=sorted({a['category'] for a in c['assets']}),policies=c['accounting_policy']['agriculture_model'],gain_loss=str(gain),
-        rollforward={k:str(v) for k,v in dict(opening=opening,purchases=purchases,measurement_gain=gain,harvest_entry=harvest,mortality_loss=mortality,closing=closing).items()},
+        rollforward={k:str(v) for k,v in dict(opening=opening,purchases=purchases,biological_measurement_gain=biological_gain,harvest_biological_carrying_removed=biological_harvest,mortality_loss=mortality,closing=closing).items()},
         quantities={k:str(v) for k,v in dict(opening=q(c['opening_population']),purchases=q([a for a in c['assets'] if a['state']=='purchase']),births=q([a for a in c['assets'] if a['state']=='birth']),harvest=q([a for a in c['movements'] if a['kind']=='harvest']),deaths=q([a for a in c['movements'] if a['kind']=='death']),closing=q(c['closing_population'])).items()},harvest=str(harvest))
     terminal={m['asset_id']:m for m in c['movements']};used=[]
     for a in c['assets']:

@@ -109,6 +109,17 @@ class IndependentAgriculture(unittest.TestCase):
     def test_iqa07_valid_unequal_produce_biological_values(self):
         for fw in ('IFRS','AASB'):
             r=self.complete(unequal_harvest_case(fw));self.assertEqual(Decimal('240.5'),r['calculations']['harvest_entry']);self.assertEqual(Decimal('-18.5'),r['calculations']['harvest'][0]['harvest_conversion_gain']);self.assertEqual(Decimal('259'),r['calculations']['harvest'][0]['biological_carrying_removed'])
+    def test_iqa08_biological_bridge_separates_produce_conversion(self):
+        for fw in ('IFRS','AASB'):
+            r=self.complete(unequal_harvest_case(fw));m=r['calculations']
+            self.assertEqual(Decimal('259'),m['biological_measurement_gain'])
+            self.assertEqual(Decimal('259'),m['harvest_biological_carrying_removed'])
+            self.assertEqual(Decimal('-18.5'),m['harvest_conversion_gain'])
+            self.assertEqual(m['closing'],m['opening']+m['purchases']+m['biological_measurement_gain']-m['harvest_biological_carrying_removed']-m['mortality_loss'])
+            self.assertEqual(m['measurement_gain'],m['biological_measurement_gain']+m['harvest_conversion_gain'])
+    def test_iqa08_disclosure_biological_bridge_not_total_produce_bridge(self):
+        c=unequal_harvest_case();v=content(c,'rollforward-support')['value']
+        v['biological_measurement_gain']='240.5';v['harvest_biological_carrying_removed']='240.5';self.blocked(c)
     def test_iqa07_positive_harvest_conversion_gain(self):
         c=specimen();h=content(c,'harvest-record');v=content(c,h['produce_valuation_doc']);v.update(fair_value='296',net_value='277.5');h.update(qualified_produce_fvcts='277.5',inventory_entry_value='277.5')
         c['gl'][3].update(closing='277.5',statement='277.5');c['gl'][2].update(closing='-277.5',statement='-277.5');c['disclosures'].update(harvest_entry='277.5',pnl_measurement_gain='277.5')

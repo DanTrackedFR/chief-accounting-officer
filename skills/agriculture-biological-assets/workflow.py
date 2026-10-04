@@ -144,7 +144,7 @@ def assess(c,claims):
         if m['currency']!=c['currency']:raise ReviewRequired('Movement currency mismatch')
         events[m['asset_id']]=m;event_physical.append(m['event_source_id'])
     unique(event_physical,'physical movement source')
-    entries=[];schedule=[];harvests=[];produce_ids=[];opv=clv=gain=additions=harvest_total=death_total=ZERO;opqty=clqty=buyqty=birthqty=harvestqty=deadqty=ZERO
+    entries=[];schedule=[];harvests=[];produce_ids=[];opv=clv=gain=additions=harvest_total=harvest_bio_total=conversion_total=death_total=ZERO;opqty=clqty=buyqty=birthqty=harvestqty=deadqty=ZERO
     for r in rs:
         qty=positive(r['quantity']);expected_qty=qty
         terminal=events.get(r['id']);opening_value=nonnegative(r['opening_value']);consideration=nonnegative(r['purchase_cost'])
@@ -196,7 +196,7 @@ def assess(c,claims):
                 conversion=harvested_value-measured
                 if c['framework']=='UK_GAAP' and conversion:
                     raise ReviewRequired('UK unequal biological-to-produce harvest conversion requires separately governed accounting support')
-                gain+=conversion;harvest_total+=harvested_value;harvestqty+=qty
+                gain+=conversion;conversion_total+=conversion;harvest_total+=harvested_value;harvest_bio_total+=measured;harvestqty+=qty
                 entries+=[journal(('Dr','Harvest inventory entry',harvested_value),('Cr','Biological assets',measured),
                     ('Cr' if conversion>=0 else 'Dr','Agriculture measurement gain',abs(conversion)))]
                 harvests.append(dict(entry_value=harvested_value,biological_carrying_removed=measured,harvest_conversion_gain=conversion,quantity=dec(h['harvest_quantity']),unit=h['produce_unit'],downstream_owner='Inventory & Cost Accounting unavailable; no subsequent measurement performed'))
@@ -219,7 +219,9 @@ def assess(c,claims):
     # Initial fair value differences are included in gain, so additions below
     # use cash consideration, not fair-value initial amount, in the monetary bridge.
     purchase_total=sum((nonnegative(r['purchase_cost']) for r in rs),ZERO)
-    exact(clv,opv+purchase_total+gain-harvest_total-death_total,'Agriculture opening-to-closing monetary rollforward')
+    biological_gain=gain-conversion_total
+    exact(clv,opv+purchase_total+biological_gain-harvest_bio_total-death_total,'Biological asset opening-to-closing carrying rollforward')
+    exact(harvest_total,harvest_bio_total+conversion_total,'Biological-to-produce transfer and P&L conversion bridge')
     units={r['quantity_unit'] for r in rs}
     if len(units)!=1:raise ReviewRequired('Mixed quantity units require separately controlled schedules')
     exact(clqty,opqty+buyqty+birthqty-harvestqty-deadqty,'Agriculture quantity rollforward')
@@ -234,7 +236,7 @@ def assess(c,claims):
     needed={'classes','policies','gain_loss','quantities','rollforward','harvest','valuation','restrictions','commitments','risk'} if c['framework'] in {'IFRS','AASB'} else {'classes','policies','gain_loss','valuation','rollforward'}
     if {x['id'] for x in req}!=needed:raise ReviewRequired('Framework-specific Agriculture disclosure coverage unresolved')
     expected_support=dict(classes=sorted({r['category'] for r in rs}),policies='fair_value_less_costs_to_sell',gain_loss=gain,
-        rollforward=dict(opening=opv,purchases=purchase_total,measurement_gain=gain,harvest_entry=harvest_total,mortality_loss=death_total,closing=clv),
+        rollforward=dict(opening=opv,purchases=purchase_total,biological_measurement_gain=biological_gain,harvest_biological_carrying_removed=harvest_bio_total,mortality_loss=death_total,closing=clv),
         quantities=dict(opening=opqty,purchases=buyqty,births=birthqty,harvest=harvestqty,deaths=deadqty,closing=clqty),harvest=harvest_total)
     used_values=[]
     for r in rs:
@@ -265,7 +267,7 @@ def assess(c,claims):
     if dis['presentation']!='asset_and_profit_or_loss':raise ReviewRequired('Agriculture gain/loss must not be placed in OCI/equity')
     if 'price_change' in dis or 'physical_change' in dis:
         raise ReviewRequired('Price/physical decomposition requires separately qualified bridge; total gain only is executable')
-    calcs=dict(currency=c['currency'],quantity_unit=next(iter(units)),opening=opv,purchases=purchase_total,measurement_gain=gain,harvest_entry=harvest_total,mortality_loss=death_total,closing=clv,
+    calcs=dict(currency=c['currency'],quantity_unit=next(iter(units)),opening=opv,purchases=purchase_total,measurement_gain=gain,biological_measurement_gain=biological_gain,harvest_biological_carrying_removed=harvest_bio_total,harvest_conversion_gain=conversion_total,harvest_entry=harvest_total,mortality_loss=death_total,closing=clv,
         quantity_bridge=dict(opening=opqty,purchases=buyqty,births=birthqty,harvest=harvestqty,deaths=deadqty,closing=clqty),assets=schedule,harvest=harvests)
     r=finalize(c,'Biological asset FV less costs to sell, quantity/GL bridge and harvest boundary reconciled',calcs,BOUNDARY_LIMITS,entries=entries)
     r['disclosures_impacted']=['Class and policy-specific disclosure support reconciled; use Financial Statements and Disclosure Management owners for final reporting']
