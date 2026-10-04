@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'agriculture-biological-assets': ('SKILL-AGR-001',['SUPPLEMENTAL_AGRICULTURE']),
     'defined-benefit-opeb': ('SKILL-DB-001',['TOPIC-05-005']),
     'accounting-controls-icfr': ('SKILL-CTRL-001',['TOPIC-09-001','TOPIC-09-002','TOPIC-09-003','TOPIC-09-004','TOPIC-09-007','TOPIC-09-008','TOPIC-09-009']),
     'accounting-systems-data-integrity': ('SKILL-SYS-001',['TOPIC-11-002','TOPIC-11-003','TOPIC-11-004','TOPIC-11-005','TOPIC-11-006','TOPIC-11-007','TOPIC-11-009']),
@@ -108,6 +109,24 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if topic_ids == ['SUPPLEMENTAL_AGRICULTURE']:
+        spec=importlib.util.spec_from_file_location('agriculture_retrieval',ROOT/'knowledge/agriculture/retrieval.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        try:
+            eligible={c['claim_id'] for c in module.retrieve(framework,'2026-12-31','for_profit',period_start='2026-01-01')}
+            register=module.load_register()
+            frozen=json.loads((ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json').read_text())
+            docs=[]
+            for d in frozen['documents']:
+                if hashlib.sha256((ROOT/d['path']).read_bytes()).hexdigest()!=d['sha256']:
+                    raise ReviewRequired('Frozen Agriculture knowledge changed; independent reapproval required')
+                docs.append(dict(topic_id='SUPPLEMENTAL_AGRICULTURE',**d))
+        except (ValueError,OSError,KeyError,TypeError) as exc:raise ReviewRequired('Agriculture approved knowledge gate unresolved: '+str(exc)) from exc
+        claims=[dict(topic_id='SUPPLEMENTAL_AGRICULTURE',claim_id=c['claim_id'],decision=c['decision'],proposition=c['proposition'],
+            references=c.get('paragraph_references',[]),reference_confidence=c['reference_confidence'],
+            evidence_status=c['evidence_status'],audit_required=c['audit_required'],limitations=c['limitations'],
+            effective_period=c['effective_period'],entity_scope=c['entity_scope']) for c in register['claims'] if c['claim_id'] in eligible]
+        return claims,docs
     from final_batch_accounting import BATCH as final_batch, mapped_knowledge as final_knowledge
     for candidate in final_batch:
         if topic_ids == PACKAGES[candidate][1] and (candidate!='defined-benefit-opeb' or package==candidate):return final_knowledge(candidate,framework)
@@ -228,6 +247,9 @@ def case_fingerprint(case):
     files += [ROOT/'skills/presentation_accounting.py']
     files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
     files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
+    if case.get('package')=='agriculture-biological-assets':
+        files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
+        files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -273,9 +295,11 @@ def to_public(result, route='answer'):
     if result['skill_id'] in ['SKILL-IPO-001', 'SKILL-PBC-001', 'SKILL-POLICY-001', 'SKILL-DISC-001', 'SKILL-ANALYTICS-001']:title='Governed management accounting practice; actual topic authority remains separately qualified'
     if result['skill_id'] in ('SKILL-CTRL-001','SKILL-SYS-001','SKILL-MODEL-001'):title='Governed accounting practice; actual legal and accounting requirements remain separately qualified'
     if result['skill_id']=='SKILL-DB-001':title={'IFRS':'IAS 19 bounded actuarial accounting bridge','US_GAAP':'ASC 715 qualified report workpaper; detailed mechanics excluded','UK_GAAP':'FRS 102 Section 28 qualified report workpaper','AASB':'AASB 119 qualified report workpaper'}[result['framework']]
+    if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
         claim_title='SEC issuer materiality and filing guidance' if '-SEC-' in claim['claim_id'] else title
+        if result['skill_id']=='SKILL-AGR-001':continue
         for ref in claim.get('references',[]):
             if isinstance(ref,str):
                 confirmed=claim.get('reference_confidence')=='VERIFIED'
@@ -306,6 +330,7 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'agriculture-biological-assets':('SUPPLEMENTAL_AGRICULTURE','Agriculture, qualified Valuation, Fixed Assets and reserved Inventory owners','Actual current control, framework classification, quantities, biological population, valuation dates and original GL sources; post-harvest Inventory and grant dependencies remain unavailable'),
           'defined-benefit-opeb':('TOPIC-05-005','Defined-benefit accounting and actuarial specialists','Current qualified plan/census/actuarial report and separate stock-flow/GL evidence; unsupported actuarial valuation or detailed framework mechanics require governed extension'),
           'accounting-controls-icfr':('TOPIC-09-001','Control owners and qualified governance reviewers','Complete current risk/control/occurrence/IPE populations and actual applicability; no effectiveness or SOX certification'),
           'accounting-systems-data-integrity':('TOPIC-11-003','Accounting system owners and data/control specialists','Complete entity/book/interface source-target lineage and evidenced accounting data/control requirements; no system writes'),
@@ -354,6 +379,15 @@ def assess_case(package,case):
           'financial-statements':('TOPIC-08-009','Financial reporting and disclosure specialist','Authorized TB, period/entity checklist, comparatives, source-to-line and narrative tie-outs'),
         }
         topic,target,evidence=routes[package]
+        if package=='agriculture-biological-assets':
+            if reason.startswith('Classified fixed-assets') or reason.startswith('Bearer plant belongs'):
+                target='Fixed Assets & Depreciation owner'
+            elif 'post_harvest' in reason or reason.startswith('Classified inventory'):
+                target='Inventory & Cost Accounting #24 — RESERVED and unavailable'
+            elif 'government_assistance' in reason:
+                target='Government Grants & Assistance — NONPRODUCTION specialist dependency'
+            elif 'dependency: fx' in reason:
+                target='Foreign Currency owner'
         return {'skill_id':PACKAGES[package][0],'status':'blocked','conclusion':'Accounting case cannot be completed: '+reason,
           'recommendation_class':'REQUIRED','facts_used':{k:v for k,v in case.items() if k not in ('assumptions','knowledge_review','reviewer_signoff')},
           'assumptions':case.get('assumptions',[]),'framework':case.get('framework','unresolved'),'jurisdiction':case.get('jurisdiction','unresolved'),
