@@ -1,0 +1,690 @@
+{
+  "case_id": "Synthetic defined-benefit-opeb",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "defined-benefit-opeb",
+  "execution_date": "2027-03-31",
+  "requested_action": "certify_compliance",
+  "imports": [],
+  "gl": [
+    {
+      "id": "DB net liability",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "opening": "-200",
+      "closing": "-210",
+      "statement": "-210"
+    },
+    {
+      "id": "Pension expense",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "opening": "0",
+      "closing": "68",
+      "statement": "68"
+    },
+    {
+      "id": "Pension OCI",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "opening": "0",
+      "closing": "12",
+      "statement": "12"
+    },
+    {
+      "id": "Cash",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "opening": "1000",
+      "closing": "930",
+      "statement": "930"
+    }
+  ],
+  "gl_inventory": [
+    "DB net liability",
+    "Pension expense",
+    "Pension OCI",
+    "Cash"
+  ],
+  "documents": [
+    {
+      "id": "terms",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "plan_id": "Actual synthetic plan",
+        "classification": "defined_benefit_pension",
+        "single_employer": true,
+        "amendment": false,
+        "settlement": false,
+        "curtailment": false,
+        "minimum_funding": false,
+        "asset_ceiling_issue": false,
+        "fx": false,
+        "contributions_already_expensed": false,
+        "assumption_selection_requested": false
+      },
+      "content_hash": "2d192f3f7e382ea9b8924319bbd17cb30f2b694b11438a4d1ec3889d92d2831e"
+    },
+    {
+      "id": "census",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "employees": [
+          {
+            "id": "employee-1",
+            "service_history": "Actual synthetic service record",
+            "salary_history": "Actual qualified input, never valued by software"
+          }
+        ],
+        "inventory": [
+          "employee-1"
+        ]
+      },
+      "content_hash": "01896b80871621b601b0280e837b41c28b891ad441281484aa8fe0095a270fbd"
+    },
+    {
+      "id": "hr",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "employees": [
+          {
+            "id": "employee-1",
+            "service_history": "Actual synthetic service record",
+            "salary_history": "Actual qualified input, never valued by software"
+          }
+        ],
+        "inventory": [
+          "employee-1"
+        ]
+      },
+      "content_hash": "01896b80871621b601b0280e837b41c28b891ad441281484aa8fe0095a270fbd"
+    },
+    {
+      "id": "actuary",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "opening_obligation": "1000",
+        "service_cost": "60",
+        "interest_cost": "40",
+        "benefits_paid": "50",
+        "actuarial_loss": "30",
+        "closing_obligation": "1080",
+        "opening_assets": "800",
+        "asset_interest": "32",
+        "contributions": "70",
+        "asset_remeasurement_gain": "18",
+        "closing_assets": "870",
+        "classification": "defined_benefit_pension",
+        "plan_id": "Actual synthetic plan",
+        "currency": "USD",
+        "amendment": false,
+        "settlement": false,
+        "curtailment": false,
+        "minimum_funding": false,
+        "asset_ceiling_issue": false,
+        "fx": false,
+        "assumption_selection_requested": false,
+        "actuary": "Synthetic qualified actuary",
+        "qualifications_memo": "Reviewed specialist competence",
+        "objectivity_memo": "Reviewed independence",
+        "assumption_review_memo": "Actuary-supplied assumptions; no model selection",
+        "signed_on": "2027-01-05",
+        "report_id": "Actual source report v1",
+        "method": "IAS19_qualified",
+        "measurement_date": "2026-12-31",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "entity": "Synthetic Group",
+        "framework": "IFRS",
+        "census_hash": "01896b80871621b601b0280e837b41c28b891ad441281484aa8fe0095a270fbd",
+        "assumptions": {
+          "qualified_opening_discount_rate": "0.04",
+          "mortality": "Qualified source only"
+        }
+      },
+      "content_hash": "7d3baebe46c74fdefc00162a016584886b23714581e2c84aedac48034821c4ce"
+    },
+    {
+      "id": "custody",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "opening_assets": "800",
+        "asset_interest": "32",
+        "contributions": "70",
+        "benefits_paid": "50",
+        "asset_remeasurement_gain": "18",
+        "closing_assets": "870",
+        "plan_id": "Actual synthetic plan",
+        "currency": "USD",
+        "measurement_date": "2026-12-31"
+      },
+      "content_hash": "7d50037b8c54a78ad24c8a0a9348c8b9fc7a886948cc045573d9ab04f81e14f8"
+    },
+    {
+      "id": "statement",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "plan_id": "Actual synthetic plan",
+        "currency": "USD",
+        "net_liability": "210",
+        "gl_net_liability": "210",
+        "pnl_expense": "68",
+        "oci_loss": "12"
+      },
+      "content_hash": "0e841fa269325e2872286234148fd85dc5795472cbeb50068ff21dfca9277ed0"
+    },
+    {
+      "id": "funding",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "plan_id": "Actual synthetic plan",
+        "currency": "USD",
+        "contributions": "70"
+      },
+      "content_hash": "b3846c2d2993575988995fccfc61dfeddd8e9bbf0160ca1ef0ed90926a2d7fa7"
+    }
+  ],
+  "document_inventory": [
+    "terms",
+    "census",
+    "hr",
+    "actuary",
+    "custody",
+    "statement",
+    "funding"
+  ],
+  "accounting_policy": {
+    "id": "governance-policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "period_entity_memo": "Actual bounded management scope review",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "210",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence"
+  },
+  "governance_method": {
+    "id": "method",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "target": "Bounded final batch",
+    "resolved": true,
+    "scope_memo": "Actual independently bounded management workpaper",
+    "boundary_memo": "All forbidden claims excluded",
+    "current_requirements_memo": "Actual separately qualified current case scope",
+    "qualification_memo": "Actual experienced independent reviewer",
+    "entity": "Synthetic Group",
+    "jurisdiction": "NL",
+    "checked_on": "2027-03-31",
+    "posting_requested": false,
+    "legal_certification": false,
+    "audit_opinion": false,
+    "regulatory_compliance": false,
+    "forecast_requested": false,
+    "authority_override": false,
+    "score_requested": false,
+    "benchmark_requested": false,
+    "ipo_timing_prediction": false,
+    "sec_status_determination": false,
+    "filing_mechanics": false,
+    "evidence_sufficiency_asserted": false,
+    "auditor_independence_determined": false,
+    "confirmation_control_requested": false,
+    "audit_adjustments_requested": false,
+    "auditor_signoff_requested": false,
+    "autonomous_policy_selection": false,
+    "transition_calculation_requested": false,
+    "overwrite_history": false,
+    "invented_citations": false,
+    "universal_checklist": false,
+    "compliance_certification": false,
+    "prior_year_rollforward_only": false,
+    "filing_requested": false,
+    "comparative_change_requested": false,
+    "budgeting": false,
+    "forecasting": false,
+    "investment_analysis": false,
+    "commercial_planning": false,
+    "generic_bi": false,
+    "manufactured_explanations": false,
+    "automatic_gl_correction": false,
+    "venue": "Synthetic venue, not an actual IPO",
+    "issuer_assumptions": "Case-specific qualified assumptions, no status determination",
+    "adviser_scope_memo": "Separate market/counsel assessment required",
+    "external_write": false
+  },
+  "source_inventory": [
+    "pension-source"
+  ],
+  "release_review": {
+    "id": "release",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "review_memo": "Synthetic independently reperformed payload",
+    "payload_fingerprint": "4957782cdbae98ad9311deb8af0f40427808cf33beccd75018053c668df9963e"
+  },
+  "owner_links": [],
+  "owner_link_inventory": [],
+  "plans": [
+    {
+      "id": "pension-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "amount": "210",
+      "plan_id": "Actual synthetic plan",
+      "classification": "defined_benefit_pension",
+      "currency": "USD",
+      "single_employer": true,
+      "opening_obligation": "1000",
+      "service_cost": "60",
+      "interest_cost": "40",
+      "benefits_paid": "50",
+      "actuarial_loss": "30",
+      "closing_obligation": "1080",
+      "opening_assets": "800",
+      "asset_interest": "32",
+      "contributions": "70",
+      "asset_remeasurement_gain": "18",
+      "closing_assets": "870",
+      "terms_doc": "terms",
+      "census_doc": "census",
+      "hr_doc": "hr",
+      "report_doc": "actuary",
+      "assets_doc": "custody",
+      "statement_doc": "statement",
+      "contributions_doc": "funding",
+      "amendment": false,
+      "settlement": false,
+      "curtailment": false,
+      "minimum_funding": false,
+      "asset_ceiling_issue": false,
+      "fx": false,
+      "contributions_already_expensed": false,
+      "assumption_selection_requested": false
+    }
+  ],
+  "plan_source": {
+    "id": "original-plan-register",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "records": [
+      {
+        "id": "pension-source",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "amount": "210",
+        "plan_id": "Actual synthetic plan",
+        "classification": "defined_benefit_pension",
+        "currency": "USD",
+        "single_employer": true,
+        "opening_obligation": "1000",
+        "service_cost": "60",
+        "interest_cost": "40",
+        "benefits_paid": "50",
+        "actuarial_loss": "30",
+        "closing_obligation": "1080",
+        "opening_assets": "800",
+        "asset_interest": "32",
+        "contributions": "70",
+        "asset_remeasurement_gain": "18",
+        "closing_assets": "870",
+        "terms_doc": "terms",
+        "census_doc": "census",
+        "hr_doc": "hr",
+        "report_doc": "actuary",
+        "assets_doc": "custody",
+        "statement_doc": "statement",
+        "contributions_doc": "funding",
+        "amendment": false,
+        "settlement": false,
+        "curtailment": false,
+        "minimum_funding": false,
+        "asset_ceiling_issue": false,
+        "fx": false,
+        "contributions_already_expensed": false,
+        "assumption_selection_requested": false
+      }
+    ],
+    "inventory": [
+      "pension-source"
+    ],
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "extract_version": "v1"
+  },
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "TOPIC-05-005-IFRS-001",
+      "TOPIC-05-005-IFRS-E001",
+      "TOPIC-05-005-IFRS-E005"
+    ],
+    "documents": [
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/phase-2e/reviews/TOPIC-05-005.json",
+        "sha256": "16f81070c576d567103e92e55f3a2a71757c7c93002489b7e6a862e251746d3a"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/defined-benefit-valuation-bridge.md",
+        "sha256": "436b8b456af9a01adda77a45864d55600749d3d718fc30ff552432c7263354bc"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/employee-case.md",
+        "sha256": "a2ca69a6750230a707aa0720bba85795304058794a4a77734b26bc82cec466ed"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/evidence-and-regression.md",
+        "sha256": "45930add95aa2ad5d4db04d3a613d12e65ce1f5b2b35970b26ba39b6214d22db"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/factory.md",
+        "sha256": "0888d9d1482e4488a68360acb8961c13f56d68e9b8c6b3010e9946d911a9761e"
+      },
+      {
+        "topic_id": "TOPIC-05-005",
+        "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/standards-claims.json",
+        "sha256": "39ef5ff999763c23847d83c718d6180b9fc13ae1a9184da8f489989691b7cea2"
+      }
+    ],
+    "applied_claim_ids": [
+      "TOPIC-05-005-IFRS-001",
+      "TOPIC-05-005-IFRS-E001",
+      "TOPIC-05-005-IFRS-E005"
+    ],
+    "selection_memo": "Actual bounded claim/method applicability, practice never invents authority",
+    "public_caveats": [
+      "Qualified actual sources and current framework/period review required. No actuarial, legal, audit or external compliance certification."
+    ]
+  }
+}

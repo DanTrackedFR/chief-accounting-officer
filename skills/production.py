@@ -16,6 +16,10 @@ sys.path.insert(0, str(ROOT))
 from interfaces.public_output import public_record
 
 PACKAGES = {
+    'defined-benefit-opeb': ('SKILL-DB-001',['TOPIC-05-005']),
+    'accounting-controls-icfr': ('SKILL-CTRL-001',['TOPIC-09-001','TOPIC-09-002','TOPIC-09-003','TOPIC-09-004','TOPIC-09-007','TOPIC-09-008','TOPIC-09-009']),
+    'accounting-systems-data-integrity': ('SKILL-SYS-001',['TOPIC-11-002','TOPIC-11-003','TOPIC-11-004','TOPIC-11-005','TOPIC-11-006','TOPIC-11-007','TOPIC-11-009']),
+    'accounting-operating-model': ('SKILL-MODEL-001',['TOPIC-01-001','TOPIC-01-002','TOPIC-01-003','TOPIC-01-004','TOPIC-01-005','TOPIC-01-006','TOPIC-01-007']),
     'ipo-accounting-readiness': ('SKILL-IPO-001',['TOPIC-01-008']),
     'audit-support-pbc': ('SKILL-PBC-001',['TOPIC-10-001', 'TOPIC-10-002']),
     'accounting-policy-memo-governance': ('SKILL-POLICY-001',['TOPIC-15-001', 'TOPIC-14-003', 'TOPIC-14-004', 'TOPIC-14-008']),
@@ -103,7 +107,10 @@ def load_workflow(package):
     spec=importlib.util.spec_from_file_location(package.replace('-','_')+'_workflow',ROOT/'skills'/package/'workflow.py')
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
-def canonical_knowledge(topic_ids, framework):
+def canonical_knowledge(topic_ids, framework, package=None):
+    from final_batch_accounting import BATCH as final_batch, mapped_knowledge as final_knowledge
+    for candidate in final_batch:
+        if topic_ids == PACKAGES[candidate][1] and (candidate!='defined-benefit-opeb' or package==candidate):return final_knowledge(candidate,framework)
     from governance_accounting import BATCH, mapped_knowledge as governance_knowledge
     for package in BATCH:
         if topic_ids == PACKAGES[package][1]:return governance_knowledge(package,framework)
@@ -168,8 +175,8 @@ def execute(package, case):
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
-    if package in __import__('governance_accounting').BATCH and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
-    claims,knowledge=canonical_knowledge(PACKAGES[package][1],case['framework'])
+    if package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
+    claims,knowledge=canonical_knowledge(PACKAGES[package][1],case['framework'],package=package)
     required(case,'knowledge_review')
     reviewed=case['knowledge_review']
     required(reviewed,'reviewer','claim_ids','documents')
@@ -182,7 +189,7 @@ def execute(package, case):
     for entry in result.get('journal_entry_implications',[]): balance(entry)
     required(reviewed,'applied_claim_ids','selection_memo','public_caveats')
     used=set(reviewed['applied_claim_ids'])
-    if (not used and package not in __import__('governance_accounting').BATCH) or not used<={c['claim_id'] for c in claims}:raise ReviewRequired('Applied claims must be a nonempty subset of reviewed approved claims')
+    if (not used and package not in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').PRACTICE) or not used<={c['claim_id'] for c in claims}:raise ReviewRequired('Applied claims must be a nonempty subset of reviewed approved claims')
     selected=[c for c in claims if c['claim_id'] in used]
     if package=='accounting-changes' and any('-SEC-' in c['claim_id'] for c in selected) and not case.get('sec',{}).get('registrant'):
         raise ReviewRequired('SEC claims require actual registrant applicability')
@@ -201,7 +208,8 @@ def execute(package, case):
         audit_evidence_required=['Contract/legal/source evidence','Assumptions and alternatives','Calculation reperformance','Approval record'])
     fingerprint=case_fingerprint(case)
     result['case_fingerprint']=fingerprint
-    if package in __import__('governance_accounting').BATCH:result['governance_topic']=PACKAGES[package][1][0]
+    if package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH:result['governance_topic']=PACKAGES[package][1][0]
+    if package=='accounting-operating-model':result['recommendation_class']='RECOMMENDED'
     signoff=case.get('reviewer_signoff',{})
     valid=(signoff.get('case_fingerprint')==fingerprint and bool(signoff.get('reviewer')) and
            signoff.get('reviewer')!=case.get('preparer') and signoff.get('approved') is True)
@@ -219,6 +227,7 @@ def case_fingerprint(case):
     files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
     files += [ROOT/'skills/presentation_accounting.py']
     files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
+    files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -262,6 +271,8 @@ def to_public(result, route='answer'):
     if result['skill_id'] in additional and result['framework'] in ('IFRS','US_GAAP','UK_GAAP','AASB'):
         title=additional[result['skill_id']][('IFRS','US_GAAP','UK_GAAP','AASB').index(result['framework'])]
     if result['skill_id'] in ['SKILL-IPO-001', 'SKILL-PBC-001', 'SKILL-POLICY-001', 'SKILL-DISC-001', 'SKILL-ANALYTICS-001']:title='Governed management accounting practice; actual topic authority remains separately qualified'
+    if result['skill_id'] in ('SKILL-CTRL-001','SKILL-SYS-001','SKILL-MODEL-001'):title='Governed accounting practice; actual legal and accounting requirements remain separately qualified'
+    if result['skill_id']=='SKILL-DB-001':title={'IFRS':'IAS 19 bounded actuarial accounting bridge','US_GAAP':'ASC 715 qualified report workpaper; detailed mechanics excluded','UK_GAAP':'FRS 102 Section 28 qualified report workpaper','AASB':'AASB 119 qualified report workpaper'}[result['framework']]
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
         claim_title='SEC issuer materiality and filing guidance' if '-SEC-' in claim['claim_id'] else title
@@ -295,6 +306,10 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
+          'defined-benefit-opeb':('TOPIC-05-005','Defined-benefit accounting and actuarial specialists','Current qualified plan/census/actuarial report and separate stock-flow/GL evidence; unsupported actuarial valuation or detailed framework mechanics require governed extension'),
+          'accounting-controls-icfr':('TOPIC-09-001','Control owners and qualified governance reviewers','Complete current risk/control/occurrence/IPE populations and actual applicability; no effectiveness or SOX certification'),
+          'accounting-systems-data-integrity':('TOPIC-11-003','Accounting system owners and data/control specialists','Complete entity/book/interface source-target lineage and evidenced accounting data/control requirements; no system writes'),
+          'accounting-operating-model':('TOPIC-01-001','Retained accounting governance owners','Actual service/team/RACI/capacity and dependency evidence; no arbitrary staffing, HR action, IPO score or benchmark'),
           'ipo-accounting-readiness': ('TOPIC-01-008','Accounting governance and underlying topic owners','Accounting-function gap/evidence/dependency roadmap only; no IPO score, arbitrary benchmark, legal obligation, success/timing prediction or filing mechanics.'),
           'audit-support-pbc': ('TOPIC-10-001','Accounting governance and underlying topic owners','Management PBC population, source reconciliation, query and auditor-selected sample support only; no opinion, sufficiency/independence determination, confirmations, adjustments or accounting alteration.'),
           'accounting-policy-memo-governance': ('TOPIC-15-001','Accounting governance and underlying topic owners','Versioned policy/memo governance consuming actual completed accounting conclusions; no autonomous policy selection/transition/recognition, paragraph invention or overwriting policy history.'),

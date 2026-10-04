@@ -1,0 +1,2346 @@
+{
+  "schema_version": 1,
+  "baseline_main": "eb915dea82831d4ff385591ea4c4265633957132",
+  "roadmap_batch": [
+    30,
+    48,
+    49,
+    50
+  ],
+  "owner_authorization": "Skill30 explicitly released from the reserved queue for this batch",
+  "invariants": {
+    "approved_topics": 157,
+    "capability_mappings": 347,
+    "canonical_claims": 1598,
+    "supplemental_tax_claims": 64,
+    "approved_is_source_verified": false
+  },
+  "packages": {
+    "defined-benefit-opeb": {
+      "roadmap_number": 30,
+      "roadmap_name": "Defined Benefit & Other Post-Employment Benefits",
+      "supported_executable_boundary": "Qualified single-employer DB/OPEB report, census, obligation/assets and funded-status workpaper. IFRS event-free deficit pension accounting bridge only; US/UK/AASB detailed presentation, actuarial valuation, surplus/ceiling, minimum funding, amendments, settlements, curtailments, multi-employer and other-long-term methods fail closed.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-05-005",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-05-010"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-05-009",
+            "CAO-05-010"
+          ],
+          "register": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/standards-claims.json",
+          "sha256": "39ef5ff999763c23847d83c718d6180b9fc13ae1a9184da8f489989691b7cea2",
+          "claims": [
+            {
+              "claim_id": "TOPIC-05-005-IFRS-001",
+              "framework": "IFRS",
+              "proposition": "Employee service creates short-term cost/payable; defined-benefit obligation, plan assets and remeasurement need distinct measurement and presentation.",
+              "paragraph_references": [
+                "IAS 19.11\u201324, 57\u201367, 120\u2013123"
+              ],
+              "reference_confidence": "PROVISIONAL",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "CURRENT_STANDARD",
+                  "title": "IFRS issued edition",
+                  "url": "https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2025/issued/ias19.html",
+                  "locator": "IAS 19.11\u201324, 57\u201367, 120\u2013123",
+                  "version_date": "2025 issued",
+                  "access_date": "2026-09-29",
+                  "inspected": false
+                },
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Edition dated in source; reporting-period version must be selected",
+              "entity_scope": "For-profit entity; public/private, small entity and Australian tier overlays assessed separately",
+              "audit_required": true,
+              "limitations": [
+                "Core IFRS route inspected; compound subissues and historical period require additional claim-level audit.",
+                "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Core IFRS route inspected; compound subissues and historical period require additional claim-level audit.",
+                  "Final self-review: opening the official page and locating a topic/range did not verify each material operative provision and period. Paragraph mapping is provisional until direct audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-UK-001",
+              "framework": "UK_GAAP",
+              "proposition": "Apply the UK_GAAP treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored framework synthesis; not operative source",
+                  "url": "https://www.frc.org.uk/library/standards-codes-policy/accounting-and-reporting/uk-accounting-standards/frs-102/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 framework/entity selected; UK Periodic Review annual starts 1 January 2026, US ASU2024-01 PBE starts after15 December2024, other entities after15 December2025 with transition election; AASB compilation and disclosure tier separately selected; IAS37 cost amendment from2022 and IFRS2 amendments from2018. Future IFRS18 presentation not imposed absent adoption. Country employment law and plan-specific settlement assumptions remain material limitations.",
+              "entity_scope": "For-profit entity; public/private, small entity and Australian tier overlays assessed separately",
+              "audit_required": true,
+              "limitations": [
+                "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-US-001",
+              "framework": "US_GAAP",
+              "proposition": "Apply the US_GAAP treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored framework synthesis; not operative source",
+                  "url": "https://asc.fasb.org/",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 framework/entity selected; UK Periodic Review annual starts 1 January 2026, US ASU2024-01 PBE starts after15 December2024, other entities after15 December2025 with transition election; AASB compilation and disclosure tier separately selected; IAS37 cost amendment from2022 and IFRS2 amendments from2018. Future IFRS18 presentation not imposed absent adoption. Country employment law and plan-specific settlement assumptions remain material limitations.",
+              "entity_scope": "For-profit entity; public/private, small entity and Australian tier overlays assessed separately",
+              "audit_required": true,
+              "limitations": [
+                "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-AASB-001",
+              "framework": "AASB",
+              "proposition": "Apply the AASB treatment to payroll accruals employee benefits with independent recognition, measurement, presentation and disclosure routing; do not presume IFRS identity.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "Model-authored framework synthesis; not operative source",
+                  "url": "https://standards.aasb.gov.au/accounting-standards",
+                  "locator": null,
+                  "version_date": null,
+                  "access_date": null,
+                  "inspected": false
+                }
+              ],
+              "effective_period": "2026 framework/entity selected; UK Periodic Review annual starts 1 January 2026, US ASU2024-01 PBE starts after15 December2024, other entities after15 December2025 with transition election; AASB compilation and disclosure tier separately selected; IAS37 cost amendment from2022 and IFRS2 amendments from2018. Future IFRS18 presentation not imposed absent adoption. Country employment law and plan-specific settlement assumptions remain material limitations.",
+              "entity_scope": "For-profit entity; public/private, small entity and Australian tier overlays assessed separately",
+              "audit_required": true,
+              "limitations": [
+                "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+              ],
+              "tests": [
+                "evidence-and-regression.md",
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Detailed operative paragraph, effective period, elections and disclosure tier still require direct authoritative audit."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-IFRS-E001",
+              "framework": "IFRS",
+              "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-US_GAAP-E002",
+              "framework": "US_GAAP",
+              "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-UK_GAAP-E003",
+              "framework": "UK_GAAP",
+              "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-AASB-E004",
+              "framework": "AASB",
+              "proposition": "Classify short-term, defined contribution, defined benefit and other long-term benefits before measurement and presentation; service creates earned benefit costs unless qualifying asset treatment applies.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-IFRS-E005",
+              "framework": "IFRS",
+              "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-US_GAAP-E006",
+              "framework": "US_GAAP",
+              "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-UK_GAAP-E007",
+              "framework": "UK_GAAP",
+              "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            },
+            {
+              "claim_id": "TOPIC-05-005-AASB-E008",
+              "framework": "AASB",
+              "proposition": "Defined-benefit obligations and assets require actuarial assumptions and separate rollforwards; P&L, OCI and asset-ceiling consequences depend on framework, not contributions alone.",
+              "paragraph_references": [],
+              "reference_confidence": "UNKNOWN",
+              "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+              "sources": [
+                {
+                  "source_kind": "MODEL_KNOWLEDGE",
+                  "title": "ChatGPT training data independently checked in Phase 2E",
+                  "inspected": false,
+                  "access_date": "2026-10-01"
+                }
+              ],
+              "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+              "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+              "audit_required": true,
+              "limitations": [
+                "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+              ],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-05-005.json"
+              ],
+              "model_reviews": [
+                {
+                  "model": "Codex Phase 2E independent controller",
+                  "date": "2026-10-01",
+                  "outcome": "PASS: independent accounting reasoning, scope/difference challenges and relevant numerical reperformance recorded in per-topic Phase 2E review; direct authority assurance unchanged.",
+                  "disagreements": []
+                }
+              ],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "approval_track": "TRAINING_DATA_CHECKED",
+              "source_note": "Source: ChatGPT training data",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": [
+                  "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+                ]
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-05-005.json",
+              "sha256": "16f81070c576d567103e92e55f3a2a71757c7c93002489b7e6a862e251746d3a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/defined-benefit-valuation-bridge.md",
+              "sha256": "436b8b456af9a01adda77a45864d55600749d3d718fc30ff552432c7263354bc"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/employee-case.md",
+              "sha256": "a2ca69a6750230a707aa0720bba85795304058794a4a77734b26bc82cec466ed"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/evidence-and-regression.md",
+              "sha256": "45930add95aa2ad5d4db04d3a613d12e65ce1f5b2b35970b26ba39b6214d22db"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-05-005-payroll-accruals-employee-benefits/factory.md",
+              "sha256": "0888d9d1482e4488a68360acb8961c13f56d68e9b8c6b3010e9946d911a9761e"
+            }
+          ]
+        }
+      ]
+    },
+    "accounting-controls-icfr": {
+      "roadmap_number": 48,
+      "roadmap_name": "Accounting Controls & SOX / ICFR",
+      "supported_executable_boundary": "Risk/control design and complete occurrence/evidence readiness, qualified precision, action-level segregation, deficiency and retested remediation workpapers; no legal SOX applicability, testing opinion, effectiveness or management/auditor certification.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-09-001",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-001",
+            "CAO-09-002",
+            "CAO-09-003"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-001",
+            "CAO-09-002",
+            "CAO-09-003"
+          ],
+          "register": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/standards-claims.json",
+          "sha256": "7348a3f22d0a86ae1b6d73fc0827ef538bf6ab8eac609310042b05b66e394a91",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-001-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-001.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-001-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "AS 2201 is an integrated-audit standard; risk-based control evidence is an auditor requirement within that scope.",
+              "paragraph_references": [
+                "AS 2201.01, .10\u2013.14, .21, .50\u2013.51"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.01, .10\u2013.14, .21, .50\u2013.51",
+                  "version_date": "published version prior to 15 December 2026 amendments",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audits; select updated version at the 2026-12-15 amendment gate.",
+              "entity_scope": "PCAOB integrated auditor; management controls and local ICFR obligations scoped separately.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-001.json",
+                "Management readiness work does not replace auditor testing, prove a legal exemption or mandate a universal sample count."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-001.json",
+              "sha256": "2843b5f69fbd87eef87993408cd9b948b975658ceeab9d27c8af44d3eced3a1a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/README.md",
+              "sha256": "661950995c31f03f3bf92f2b4c6de77df5802fe7e80abe6e3853e610fc5be5a0"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/methods/risk-to-control-case.md",
+              "sha256": "53fb2ef88c1647961beb0091c69919b299a84aa38c2d39444de9f42b3c3d7f0a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/practice/control-specification.md",
+              "sha256": "0bf9b1f11650c0bcdc53d64b0cdf713549f2fc67ae9f99f0a48a6abc66f57b63"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-001-accounting-risk-rcm-control-design/tests/phase-2d-worker-scenarios.md",
+              "sha256": "46408ffda9bb165b6a2b558633f671748e7de023f3648670700e57f08faa5e76"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-002",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-004",
+            "CAO-09-005",
+            "CAO-09-006"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-004",
+            "CAO-09-005",
+            "CAO-09-006"
+          ],
+          "register": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/standards-claims.json",
+          "sha256": "95cb0dc08388160afa44794fa497545f0bceded640f0204b5244d09b84bd5eae",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-002-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-002.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-002-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "AS 2201 is an integrated-audit standard; risk-based control evidence is an auditor requirement within that scope.",
+              "paragraph_references": [
+                "AS 2201.01, .10\u2013.14, .21, .50\u2013.51"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.01, .10\u2013.14, .21, .50\u2013.51",
+                  "version_date": "published version prior to 15 December 2026 amendments",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audits; select updated version at the 2026-12-15 amendment gate.",
+              "entity_scope": "PCAOB integrated auditor; management controls and local ICFR obligations scoped separately.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-002.json",
+                "Management readiness work does not replace auditor testing, prove a legal exemption or mandate a universal sample count."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-002.json",
+              "sha256": "fb3f0bb2d3b4af2dca561165c337bb09f60127e903f7fe0e1b7301ec19864ab2"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/README.md",
+              "sha256": "7a47c73e5b51ab11cc98080198351852ef21216666b23dc98f0d70d8e39f5ca6"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/methods/precision-calibration.md",
+              "sha256": "f7bb961342a29e6cf37701a37360c980910cbc50b60b79bcb631fa255e3a5011"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/practice/review-precision.md",
+              "sha256": "fe78ebae58b932b89c01b4559a49240e0be49529924ff0d95723cc072ed9a15c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-002-control-precision-preventive-detective-manual/tests/phase-2d-worker-scenarios.md",
+              "sha256": "facb8f39c2ca64f58a84658dbb19afccf232bbcb73d7bbe4a08ffce230574277"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-003",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-007",
+            "CAO-09-008",
+            "CAO-09-009"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-007",
+            "CAO-09-008",
+            "CAO-09-009"
+          ],
+          "register": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/standards-claims.json",
+          "sha256": "a09a205d4ceff5b025d3d7ff00e8adb9968358787d173c672115e85188c37646",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-003-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-003.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-003-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "AS 2201 is an integrated-audit standard; risk-based control evidence is an auditor requirement within that scope.",
+              "paragraph_references": [
+                "AS 2201.01, .10\u2013.14, .21, .50\u2013.51"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.01, .10\u2013.14, .21, .50\u2013.51",
+                  "version_date": "published version prior to 15 December 2026 amendments",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audits; select updated version at the 2026-12-15 amendment gate.",
+              "entity_scope": "PCAOB integrated auditor; management controls and local ICFR obligations scoped separately.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-003.json",
+                "Management readiness work does not replace auditor testing, prove a legal exemption or mandate a universal sample count."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-003.json",
+              "sha256": "d2f798354f49fb335035e487cb18ece9209c0e2e9042f613595b87c12ddbf658"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/README.md",
+              "sha256": "e823c4e18e851ca22c932ca2dcbe601bc4c6f85186a5a97293f561029d9398d7"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/methods/config-and-review-evidence.md",
+              "sha256": "1d0ad92565a5a00e7aa69926bf470d64586114fcc8d9ff6dd239a2ae6e4c4d78"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/practice/automated-control-evidence.md",
+              "sha256": "7a1f0e9ceea18f3150a93b635962b7e3cbec990f6a5f76a4d0579737858e7cb1"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-003-automated-management-review-evidence/tests/phase-2d-worker-scenarios.md",
+              "sha256": "631d04faeb5c7bbecc56883e9148bc586a284a688a78a331f28dc5123959fc59"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-004",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-010",
+            "CAO-09-011"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-010",
+            "CAO-09-011",
+            "CAO-09-012"
+          ],
+          "register": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/standards-claims.json",
+          "sha256": "2661aa98e3adbd3738fed378308c7fe3f2f2e6e5939d84ecc3aaf9a01b8f18c7",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-004-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-004.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-004-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "AS 2201 is an integrated-audit standard; risk-based control evidence is an auditor requirement within that scope.",
+              "paragraph_references": [
+                "AS 2201.01, .10\u2013.14, .21, .50\u2013.51"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.01, .10\u2013.14, .21, .50\u2013.51",
+                  "version_date": "published version prior to 15 December 2026 amendments",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audits; select updated version at the 2026-12-15 amendment gate.",
+              "entity_scope": "PCAOB integrated auditor; management controls and local ICFR obligations scoped separately.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-004.json",
+                "Management readiness work does not replace auditor testing, prove a legal exemption or mandate a universal sample count."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-004-OTHER-E05",
+              "framework": "OTHER",
+              "proposition": "AS 2401 addresses auditor testing of journals, estimate bias and significant unusual transactions for override risk.",
+              "paragraph_references": [
+                "AS 2401.57\u2013.67"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2401",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2401",
+                  "locator": "AS 2401.57\u2013.67",
+                  "version_date": "published standard inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable PCAOB audit engagement; period-specific standard selection required.",
+              "entity_scope": "Applicable auditor fraud response, not universal management accounting duty.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-004.json",
+                "A CFO self-approved entry or forecast is not independent support; preserve audit/management role distinction."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2401",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-004.json",
+              "sha256": "f4e43e4eea992876c68dea402ef3defeb5c122684dc74de65553e8ea93ba8f20"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/README.md",
+              "sha256": "f82dd1c3ab2c072e8f3310c6de8d441a13d9f02d99b1cf649d09365cae0dc648"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/methods/segregation-conflict-resolution.md",
+              "sha256": "d790206e92feabcae402434b393dfaf9c90dedb79ddc5e958ce7368c9d101c18"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/practice/ownership-access-matrix.md",
+              "sha256": "74ad554d3c7b594c7a07b8e44c3686928d4820f2e63b2c0e8b855b3d973492af"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-004-control-ownership-sod-journals/tests/phase-2d-worker-scenarios.md",
+              "sha256": "f67e3fd607ec3cf80be0cf73501cc65eeb091dbae94e9ad0eb307d38fa9de72c"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-007",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-017",
+            "CAO-09-018"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-017",
+            "CAO-09-018"
+          ],
+          "register": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/standards-claims.json",
+          "sha256": "67c2f1ad31bcc0cf8933fe1f3b7317d6d54e948586e4b465bae905f17d1a0783",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-007-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-007-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "Severity considers potential likelihood/magnitude and related deficiencies, even when no error was detected.",
+              "paragraph_references": [
+                "AS 2201.62\u2013.67"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.62\u2013.67",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audit period; select amended version for relevant December 2026 effective gate.",
+              "entity_scope": "Applicable PCAOB auditor; management and non-US classifications independently routed.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+                "Do not equate 4% discovered error with maximum possible exposure."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-007-OTHER-E03",
+              "framework": "OTHER",
+              "proposition": "Compensating controls mitigate only at sufficiently precise detection of the same material risk.",
+              "paragraph_references": [
+                "AS 2201.68"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.68",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audit period; select amended version for relevant December 2026 effective gate.",
+              "entity_scope": "Applicable PCAOB auditor; management and non-US classifications independently routed.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+                "CFO high-level P&L review does not establish balance-sheet reconciliation compensation."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-007-OTHER-E04",
+              "framework": "OTHER",
+              "proposition": "Senior-management fraud, qualifying restatements, undetected material errors and ineffective oversight are weakness indicators.",
+              "paragraph_references": [
+                "AS 2201.69"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.69",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audit period; select amended version for relevant December 2026 effective gate.",
+              "entity_scope": "Applicable PCAOB auditor; management and non-US classifications independently routed.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+                "Indicators demand evaluation; no mechanical universal classification from a low amount."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-007-OTHER-E05",
+              "framework": "OTHER",
+              "proposition": "Material weakness and significant deficiency have distinct US integrated-audit definitions.",
+              "paragraph_references": [
+                "AS 2201.A7, .A11"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.A7, .A11",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audit period; select amended version for relevant December 2026 effective gate.",
+              "entity_scope": "Applicable PCAOB auditor; management and non-US classifications independently routed.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+                "US definitions do not become statutory non-US labels automatically."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-007.json",
+              "sha256": "68e539cb40201ff40bf67790b0e790c7f009f3fc7b7627e6532106f1239cbe7c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/README.md",
+              "sha256": "a24d5835052eaf0a5c839979ac263520c68443b70c264dc59f1f806b7d3cb501"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/methods/deficiency-case.md",
+              "sha256": "8d8656745aab2df7ea0ef6118a475cd24024332634edae03f11bc1114a6641c6"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/practice/severity-and-closure-case.md",
+              "sha256": "8267344d39991ccfc17cec455b8b679008e4f5038ef4dfbe9154b36a8188daef"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-007-control-deficiencies-remediation/tests/phase-2d-worker-scenarios.md",
+              "sha256": "31bc7ce3b97ae9125dc74cff00191819107db08a361f6e9ca500bf6c693bafb8"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-008",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-019",
+            "CAO-09-020"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-019",
+            "CAO-09-020"
+          ],
+          "register": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/standards-claims.json",
+          "sha256": "de45a89271f8df962f1b0f0c24f53dff0757f1e5bebb634ae7b561527cdd6453",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-008-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-008.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-008-OTHER-E02",
+              "framework": "OTHER",
+              "proposition": "AS 2201 is an integrated-audit standard; risk-based control evidence is an auditor requirement within that scope.",
+              "paragraph_references": [
+                "AS 2201.01, .10\u2013.14, .21, .50\u2013.51"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.01, .10\u2013.14, .21, .50\u2013.51",
+                  "version_date": "published version prior to 15 December 2026 amendments",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable integrated audits; select updated version at the 2026-12-15 amendment gate.",
+              "entity_scope": "PCAOB integrated auditor; management controls and local ICFR obligations scoped separately.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-008.json",
+                "Management readiness work does not replace auditor testing, prove a legal exemption or mandate a universal sample count."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-008-OTHER-E03",
+              "framework": "OTHER",
+              "proposition": "Year-end ICFR opinion and full-period control-risk reliance have different operating-evidence objectives.",
+              "paragraph_references": [
+                "AS 2201.B1\u2013B5"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.B1\u2013B5",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable audit period; distinguish point-in-time conclusion from period of reliance.",
+              "entity_scope": "Applicable PCAOB integrated auditor.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-008.json",
+                "Ten clean monthly runs cannot erase historical gaps; missing March/April does not automatically preclude a supported year-end conclusion after sufficient remediation."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-008.json",
+              "sha256": "5dbd9d51a6173b59a19b10c8418a1aafb3171b1718c24a7df540cffff88eda04"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/README.md",
+              "sha256": "4434d6a689cd1d5dc9f6b2fcf11569cb86398e102e3d4edd55793abca574d1f4"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/methods/testing-plan.md",
+              "sha256": "266d9489d10c4094df613fb87ffe62fa089278cba3a3d5112825f238cadbd183"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/practice/testing-readiness-gate.md",
+              "sha256": "b4c3f14edc78fe8a71113bbaed7b96eec2a72450955330962ea4ff8721647f5f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-008-control-testing-sox-icfr-readiness/tests/phase-2d-worker-scenarios.md",
+              "sha256": "ddeabb97cec4ac5f4121c8465e49e1d7178247e2f7994d1aeaeb1c31c2367015"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-09-009",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-09-021",
+            "CAO-09-022"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-09-021",
+            "CAO-09-022"
+          ],
+          "register": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/standards-claims.json",
+          "sha256": "3b9aaa2df64fa7e6f0571a66865a716bdab54debaa2eda7c54746aa16dc4d3ab",
+          "claims": [
+            {
+              "claim_id": "TOPIC-09-009-SEC-E01",
+              "framework": "SEC",
+              "proposition": "SEC ICFR guidance offers a tailored risk-based evaluation route for applicable management assessments.",
+              "paragraph_references": [
+                "Release 33-8810 summary, sections II.A\u2013II.B"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "SEC Release 33-8810",
+                  "url": "https://www.sec.gov/files/rules/interp/2007/33-8810.pdf",
+                  "locator": "Release 33-8810 summary, sections II.A\u2013II.B",
+                  "version_date": "2007 interpretive guidance inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Guidance effective 2007-06-27; 2026 assessment after issuer/status gate.",
+              "entity_scope": "Applicable Exchange Act management evaluation; the guidance is one way to satisfy requirements, not the only mandatory method.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-009.json",
+                "Non-US voluntary readiness is not mandatory SOX; filer and attestation exemptions are separate case inputs."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: SEC Release 33-8810",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-009-OTHER-E05",
+              "framework": "OTHER",
+              "proposition": "AS 2401 addresses auditor testing of journals, estimate bias and significant unusual transactions for override risk.",
+              "paragraph_references": [
+                "AS 2401.57\u2013.67"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2401",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2401",
+                  "locator": "AS 2401.57\u2013.67",
+                  "version_date": "published standard inspected 2026-10-01",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable PCAOB audit engagement; period-specific standard selection required.",
+              "entity_scope": "Applicable auditor fraud response, not universal management accounting duty.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-009.json",
+                "A CFO self-approved entry or forecast is not independent support; preserve audit/management role distinction."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2401",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            },
+            {
+              "claim_id": "TOPIC-09-009-OTHER-E06",
+              "framework": "OTHER",
+              "proposition": "ICFR has inherent limits including collusion and override; safeguards reduce but cannot eliminate risk.",
+              "paragraph_references": [
+                "AS 2201.A5 note"
+              ],
+              "reference_confidence": "VERIFIED",
+              "evidence_status": "SOURCE_VERIFIED",
+              "sources": [
+                {
+                  "source_kind": "REGULATOR",
+                  "title": "PCAOB AS 2201",
+                  "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+                  "locator": "AS 2201.A5 note",
+                  "version_date": "published pre-December-2026 version",
+                  "access_date": "2026-10-01",
+                  "inspected": true
+                }
+              ],
+              "effective_period": "Applicable ICFR assessment; future conditions can undermine current effectiveness.",
+              "entity_scope": "PCAOB control context; no guarantee of fraud prevention.",
+              "audit_required": false,
+              "limitations": [],
+              "tests": [
+                "knowledge/phase-2e/reviews/TOPIC-09-009.json",
+                "Senior approval alone cannot neutralize that same senior person overriding a control."
+              ],
+              "model_reviews": [],
+              "reviewer": "Codex Phase 2E independent controller",
+              "review_date": "2026-10-01",
+              "source_note": "Source: PCAOB AS 2201",
+              "approval_track": "DIRECT_SOURCE_CHECKED",
+              "approval_review": {
+                "reviewer": "Codex Phase 2E independent controller",
+                "date": "2026-10-01",
+                "result": "PASS",
+                "scope_and_period_checked": true,
+                "cross_framework_checked": true,
+                "regression_checked": true,
+                "limitations": []
+              }
+            }
+          ],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-09-009.json",
+              "sha256": "7d95f830a40ee9e3db68fefb35f1a59cbf74e2c62ff8e4e2fe6c6e175bf876a5"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/README.md",
+              "sha256": "9499f6cf59f85e293bc3ceffd00c26124c6b24058b0956c32e23732e9830ef1f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/methods/approval-and-override-case.md",
+              "sha256": "2db363c8e9a708b6fe48cea59b364683b647726466d9112a3e4750f86e9e64fc"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/practice/override-and-authority-gate.md",
+              "sha256": "ddd13b276508f377da3da1bdf4b6b7771c617a7429eb509bdfecfad641f4af33"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-09-009-governance-approval-fraud-controls/tests/phase-2d-worker-scenarios.md",
+              "sha256": "d3737659079b372db0c50ed3fb14e533b2d6dcb3eb17b20e93e8a72f1e8a3890"
+            }
+          ]
+        }
+      ]
+    },
+    "accounting-systems-data-integrity": {
+      "roadmap_number": 49,
+      "roadmap_name": "Accounting Systems & Data Integrity",
+      "supported_executable_boundary": "Supplied entity/book/master-data and interface lineage, exact item/signed/gross source-target and migration ties, qualified zero-tolerance data-quality, access/EUC/AI-change evidence requirements; no engineering, writes, migration execution, source invention or reporting analytics engine.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-11-002",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-004",
+            "CAO-11-005",
+            "CAO-11-006"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-004",
+            "CAO-11-005",
+            "CAO-11-006"
+          ],
+          "register": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/standards-claims.json",
+          "sha256": "5237bffa69b4532bf21bcfc605b70a671b4807cd5fdcdf081bb6bc4fbf514b5e",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-002.json",
+              "sha256": "a461dcbdecfbd983dab7258a6ce674942535a13303be806d0276fc727175727f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/README.md",
+              "sha256": "dbcfa21eebd6b9cfeb7d1c230b33bc467febb4c3d9260fcb5d62f7ec0f1189d3"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/methods/entity-book-contract.md",
+              "sha256": "19d094aad330fafffe127cb1118e24d59f31656cfc03ea8b6740c8d2b46b5e7a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/practice/books-master-data.md",
+              "sha256": "2b2f7a06f9421a45bdceed606589e6bb41f2d431a775e2a3357df9cbf0eceea6"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/tests/phase-2d-worker-scenarios.md",
+              "sha256": "f3bb715d9424e1ef1a1565c487b81db2096249fc8abf8d82fc2a1c48f3452a00"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-003",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-007",
+            "CAO-11-008",
+            "CAO-11-009"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-007",
+            "CAO-11-008",
+            "CAO-11-009"
+          ],
+          "register": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/standards-claims.json",
+          "sha256": "5ba591b2cb386e2a529c26e4f196acfc5499e12945460c7f6d5db4a890b06baa",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-003.json",
+              "sha256": "a4476a4793de6e647e9522e11b4793f55477d3b46aabe1f7dbb09b901aaa0cd0"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/README.md",
+              "sha256": "b63cd28c308d1333fcebee1f01426df9862f37db08811b9b8de410b7e5d90f78"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/methods/interface-control-total.md",
+              "sha256": "3e2e2a16c807f36e31cf0a5e3607720742803938d0565e94dd51df44d650b2cb"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/practice/interface-lineage.md",
+              "sha256": "7ce855a44dd88ac7aa8895602580641cc9928ca352c3ce3c3165d18f60e0a567"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/tests/phase-2d-worker-scenarios.md",
+              "sha256": "1fdd328ebe223ef6510c0a39caa0ac889ef6a620f1cc016b6f2d645ba6056471"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-004",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-010"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-010",
+            "CAO-11-011",
+            "CAO-11-012"
+          ],
+          "register": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/standards-claims.json",
+          "sha256": "5f45fa487eb20cdfbf27bac61dbc729ababfbbd862a7adb95101ff951690b68b",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-004.json",
+              "sha256": "04b0e15fbc43dcd0b143c0487c61de9fbd00ff4f26313685abc3a26245500f48"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/README.md",
+              "sha256": "48e1d3c1b7c10697f1510fd794bb77491a5f94ae42112349c8e9f647163c7f4c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/methods/requirement-acceptance.md",
+              "sha256": "319a23e3b525f60fe39fe155e40ee886c3e8684b2086d767ca9f07a4070931ae"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/practice/data-quality-requirement.md",
+              "sha256": "385233c57cf8de5fc63b4b2daa57b097672a435e1936ecfdcbee7fa3353156a0"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/tests/phase-2d-worker-scenarios.md",
+              "sha256": "9b5fb7097b373f8329aa9eb36f496abf2a3501494d5f716d5e3df2a3f2990ed0"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-005",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-013",
+            "CAO-11-014"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-013",
+            "CAO-11-014"
+          ],
+          "register": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/standards-claims.json",
+          "sha256": "10b8dd06643eea6a336d665db1d925134ee447eaa2c221252baca6c885df8006",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-005.json",
+              "sha256": "b9e20afeb6ac5410668ba47b066647153c2102d98f4889cd3274687ae1611e45"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/README.md",
+              "sha256": "b363dd74716a1ea67e47ff4ec7612a6ca2f674b6fa8dbad6e501219dc6d47a44"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/methods/cutover-bridge.md",
+              "sha256": "ad4f5d56457dc031dbe80a7053c7674ef2e0dfc9389ffd77ef5b62c4cbbcdf45"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/practice/migration-cutover.md",
+              "sha256": "1aaa3d6fd53c5615f3fb49c075acecfc8dbba625e7daf422738359073a0fe8d5"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/tests/phase-2d-worker-scenarios.md",
+              "sha256": "5a763b6a52b0e0e43e36beaeb14ae816de1408fc3bd10fd0e364138adac6838e"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-006",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-015"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-015",
+            "CAO-11-016"
+          ],
+          "register": "knowledge/topics/TOPIC-11-006-access-roles-automation/standards-claims.json",
+          "sha256": "ecf8a60b5828e418bc99e30f7b0836917a32d045ceed4a94c750f41bc3210562",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-006.json",
+              "sha256": "29eccfebc49d4f18894d22d8a51b8554b0ef7a15522bd9b3f739601c8ae2dbeb"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/README.md",
+              "sha256": "3f99b35a7eab5d862e6d7a0ae87df2f85d4596d063df06c3f2e1aeb964ac58ed"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/methods/access-change-proof.md",
+              "sha256": "697d02c4ccc1fa30f5cbe184a15e6df5e7a027e436f44485ea72fd91c4e846ca"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/practice/roles-automation.md",
+              "sha256": "e22a9ed6889054b08d250b663903eedf3f45eaaf5052f44f6579e72a7db3e310"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/tests/phase-2d-worker-scenarios.md",
+              "sha256": "ffe24603ce5dd07e2561ac8198051216acb801f62ca2a8360ac44d8267053633"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-007",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-017",
+            "CAO-11-018"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-017",
+            "CAO-11-018"
+          ],
+          "register": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/standards-claims.json",
+          "sha256": "13d7bff2406b4306aed593f3f815053168b3f2fbc3bdf6fa2aa18aecfd57d444",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-007.json",
+              "sha256": "84bf481ad909c5083da1223d1e6d20f7ac694998275c3913f3cf50530bc756ab"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/README.md",
+              "sha256": "d5e058c0dcdff026656e4016cd64faea5f60b19a6019b30f1e4470d658dbc011"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/methods/model-control-test.md",
+              "sha256": "05bf8dec8f693a0fb17ac05c207796a3e2aea6db9c8fce1de2e312fb34f7bb8d"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/practice/spreadsheet-euc.md",
+              "sha256": "72b38e13674fc17e42ab3b179a88329568fb893eb4aa7b60112b600880cfd823"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/tests/phase-2d-worker-scenarios.md",
+              "sha256": "7c4a4b55a8170ad18622b03ccd20c251b8949dbd0fb9ce12ee783fbb1406b7fa"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-11-009",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-11-021",
+            "CAO-11-022"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-11-021",
+            "CAO-11-022"
+          ],
+          "register": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/standards-claims.json",
+          "sha256": "da049edfa4402dcb96ac1cfcf36c0bfb2f350459ec48b07f3d84af8c677bc009",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-11-009.json",
+              "sha256": "d46f8047c92a4cbb4ce20c7eee6b57db5f56a367cfc97494082b50884fdb8550"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/README.md",
+              "sha256": "7e3ba61ce9f4410204b38065455929a8a38c48a420bfa809a400387354d93c25"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/methods/ai-release-test.md",
+              "sha256": "722d0af2a2cbeba27fb724b5f311e329014db7ab053b8b05c425de72d9853d1f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/practice/ai-change-impact.md",
+              "sha256": "c6fd78547b3347576c185957a818add171a63ec24c1bd428f7cc283e52c4ee11"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/tests/phase-2d-worker-scenarios.md",
+              "sha256": "e2dd05b8a9939b07b6839566aac2bac435fef820df57f7a27b28eaecb87fe5ec"
+            }
+          ]
+        }
+      ]
+    },
+    "accounting-operating-model": {
+      "roadmap_number": 50,
+      "roadmap_name": "Accounting Operating Model & Team Governance",
+      "supported_executable_boundary": "Supplied accounting service/process and team populations, retained accountable RACI, actual peak-hour capacity, qualified maturity classification, evidenced governance cadence/SLA, dependency/transition/automation/AI readiness; no headcount benchmarks, HR decisions, ROI forecasts, IPO scoring or duplicate accounting analytics.",
+      "topics": [
+        {
+          "topic_id": "TOPIC-01-001",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-002",
+            "CAO-01-003"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-001",
+            "CAO-01-002",
+            "CAO-01-003"
+          ],
+          "register": "knowledge/topics/TOPIC-01-001-accounting-operating-model/standards-claims.json",
+          "sha256": "f8a78f5db79d2ed36d9aaaad1582d1ce0ef45012d93fcef86187b5ce5ca67cca",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-001.json",
+              "sha256": "789930348c1282d61e961fa545a25e1063d63eb7745ccada19b16976164c5425"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-001-accounting-operating-model/README.md",
+              "sha256": "2913a3eee26e7f4ced35054f384d379062fcabcfd5bae370fced57dc0a94e7c3"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-002",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-004",
+            "CAO-01-005",
+            "CAO-01-006"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-004",
+            "CAO-01-005",
+            "CAO-01-006"
+          ],
+          "register": "knowledge/topics/TOPIC-01-002-ownership-maturity-transformation/standards-claims.json",
+          "sha256": "27404e7ee5f8e5ce2a1a822927a529b9d5b65995920117045abbcca09b224c8c",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-002.json",
+              "sha256": "89ed0f3a27820a8bd08ddf1c2a379f34d9d751a5f753e3ed2e305613df1dde5f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-002-ownership-maturity-transformation/README.md",
+              "sha256": "1ec225d2414f888959ec2037fcc9d6f72a116badad34ee51f0174a427982675c"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-003",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-008"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-007",
+            "CAO-01-008"
+          ],
+          "register": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/standards-claims.json",
+          "sha256": "42e74af546bcf1c6b8d4a9feca5b5018554cde76f0ccfa017538a1e437378199",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-003.json",
+              "sha256": "3332fad781851d88e543a72afda2c312547e93fec7950d143e90e8ab513bdf3e"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/README.md",
+              "sha256": "5215db00ed43cb967f0725cd76b0bb8fdd08156bfd1a8d4fa46c1b331a3ae290"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/methods/transition-gates.md",
+              "sha256": "35387ca597dd5e76e0c3140ce0f54652e5ee7ffef910f44e3f90e752c9cb3b5f"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/phase-2d-completion.md",
+              "sha256": "9845c4bddba9c8fb1ada25d8948da718d62757ea89e34cae405370715c634a52"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/tests/phase-2d-worker-scenarios.md",
+              "sha256": "94a5182b217216aa59d17fb98e02b32f88f0827e9460d6314c747084fd05da7a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-003-close-transformation-shared-services/tests/scenarios.md",
+              "sha256": "074c744229194bfbf2d1f9ea6fbd4b195a836c908002197016a94911d4bba972"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-004",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-009",
+            "CAO-01-010"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-009",
+            "CAO-01-010"
+          ],
+          "register": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/standards-claims.json",
+          "sha256": "138b7cf7bced83a14e5ae8d60e06512896ac74ef28f837327ffddadaf0390343",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-004.json",
+              "sha256": "43f40c2e6364ff1f194302c9507f37192535ea8e61f60637746c355a69bd4995"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/README.md",
+              "sha256": "4a665635422bf10a6d5f4b99720c3727b03709da936722f68625ba3fc47f6857"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/methods/capacity-and-provider-workpaper.md",
+              "sha256": "ec00f80f171fa192eb78330f1991a7809239b059e86227f499e1545d047e2626"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/phase-2d-completion.md",
+              "sha256": "4c5dd402b140eb426ab5042ea32b428af3eca3041b744e9f4f0e9e5dbd4aeeb8"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/tests/phase-2d-worker-scenarios.md",
+              "sha256": "5560678ec82c048d1abda1af67cb55b21b5bd3e340e7e8a89ec4f4c8b25350c2"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-004-outsourcing-offshoring-capacity/tests/scenarios.md",
+              "sha256": "3dc49be9e666a624dc32986df5e70ebd1896917a4c517294bc27c1a14635ebeb"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-005",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-011",
+            "CAO-01-012"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-011",
+            "CAO-01-012"
+          ],
+          "register": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/standards-claims.json",
+          "sha256": "caa6ba398ed30b270a03100ec60a70c5c5fd9c53a54851685f7fc98d7e4aad3d",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-005.json",
+              "sha256": "fa016cb51aefadc891dff0ee327966f869f584558cff1e30e5c9e210576645e7"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/README.md",
+              "sha256": "f1e83331e102ebfefb498fff0978d67ea456632e21bdd89c0c87d413eda0845e"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/methods/metric-specification.md",
+              "sha256": "400b4cc28d061f4e027b73880e6d0d3cd79dfe6c4fde1a52327814c3d887c3cb"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/phase-2d-completion.md",
+              "sha256": "d3b6f2bc19fdda9e36b2e4c13b79c454629171d4f7526dc41073fe03bd803d53"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/tests/phase-2d-worker-scenarios.md",
+              "sha256": "640fcf9927a6f1a95cb96075e2a316a5cf4d2882108b48a4a2d36da50247d45d"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-006",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-013",
+            "CAO-01-014"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-013",
+            "CAO-01-014"
+          ],
+          "register": "knowledge/topics/TOPIC-01-006-change-management-automation/standards-claims.json",
+          "sha256": "8d730f9c2e47739a8d0ef3ff11a84c2565c1d19d477fcc44443ea669be825075",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-006.json",
+              "sha256": "20a2de22ba197f6ac69c5a204c24ffaf6a3306a23020f0f3436f3d5514771866"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-006-change-management-automation/README.md",
+              "sha256": "998bc2a055c8db75533a127018f1297d555bb2ecf18bd73556f9fa2ed4edf928"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-006-change-management-automation/methods/automation-investment-case.md",
+              "sha256": "024a00603553bfa05fe7c562d775f7fe971afcf78ee1f655fec41ebc703f106a"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-006-change-management-automation/phase-2d-completion.md",
+              "sha256": "0040ba9e7664bf63f9f80e49167e2ce103f5e28df5d3030d6363799e548f5e5d"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-006-change-management-automation/tests/phase-2d-worker-scenarios.md",
+              "sha256": "dc461adb28dc2186f2ce85b208b5b948801b5beccc2db284c81173cba1c42fa8"
+            }
+          ]
+        },
+        {
+          "topic_id": "TOPIC-01-007",
+          "topic_status": "APPROVED",
+          "capability_ids": [
+            "CAO-01-015",
+            "CAO-01-016"
+          ],
+          "canonical_topic_capability_ids": [
+            "CAO-01-015",
+            "CAO-01-016"
+          ],
+          "register": "knowledge/topics/TOPIC-01-007-ai-governance-scale-readiness/standards-claims.json",
+          "sha256": "6b75ddc37ef51eb13bd570f3829906a50fa5e981bdcaa1ecd7322327cc91e980",
+          "claims": [],
+          "knowledge_documents": [
+            {
+              "path": "knowledge/phase-2e/reviews/TOPIC-01-007.json",
+              "sha256": "e1fb8059db55c130a86404c512152466b1be9a073428c32910448c711819cd62"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-007-ai-governance-scale-readiness/README.md",
+              "sha256": "53e9bfa90df0f0df0abaff8dd5797d1f6419d85f80dffba245450951fd27d672"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-007-ai-governance-scale-readiness/methods/ai-gate-and-scale-model.md",
+              "sha256": "1a8578641620edf540665a4652f7eb8410bef952b3a628aef2b143a143645c97"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-007-ai-governance-scale-readiness/phase-2d-completion.md",
+              "sha256": "c3acbec6bf24f5d47a81496b42e5d377a5c70f882b3655b761d6225861cb589c"
+            },
+            {
+              "path": "knowledge/topics/TOPIC-01-007-ai-governance-scale-readiness/tests/phase-2d-worker-scenarios.md",
+              "sha256": "d4332f4ff5804f3b5e07ba6058e4c433888a68aab42961e398e69eeed2eca817"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "untouched_packages": [
+    "government-grants",
+    "borrowing-costs",
+    "investment-property"
+  ],
+  "reserved_queue": [
+    24,
+    29,
+    38,
+    39
+  ],
+  "inspected_not_imported": [
+    "TOPIC-09-005",
+    "TOPIC-09-006",
+    "TOPIC-11-001",
+    "TOPIC-11-008",
+    "TOPIC-11-010",
+    "TOPIC-01-008"
+  ]
+}

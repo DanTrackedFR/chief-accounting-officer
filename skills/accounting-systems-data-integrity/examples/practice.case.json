@@ -1,0 +1,858 @@
+{
+  "case_id": "Synthetic accounting-systems-data-integrity",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "accounting-systems-data-integrity",
+  "execution_date": "2027-03-31",
+  "requested_action": "workpaper",
+  "imports": [],
+  "gl": [],
+  "gl_inventory": [],
+  "documents": [
+    {
+      "id": "registry",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "books": [
+          {
+            "id": "main-book",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "source_entity": "Synthetic Group",
+            "source_framework": "IFRS",
+            "source_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity": "Synthetic Group",
+            "book": "main-book",
+            "framework": "IFRS",
+            "currency": "USD"
+          }
+        ],
+        "account_mapping": [
+          {
+            "id": "cash-mapping",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "source_entity": "Synthetic Group",
+            "source_framework": "IFRS",
+            "source_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "source_system": "Actual source ledger",
+            "source_account": "cash",
+            "entity": "Synthetic Group",
+            "book": "main-book",
+            "target_account": "cash",
+            "allowed_source_dimensions": [
+              "HQ"
+            ],
+            "dimension_map": {
+              "HQ": "HQ"
+            },
+            "mapping_memo": "Approved actual chart/dimension mapping"
+          }
+        ],
+        "access": [
+          {
+            "id": "access-1",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "source_entity": "Synthetic Group",
+            "source_framework": "IFRS",
+            "source_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "system": "Actual source ledger",
+            "prepare_and_approve": false,
+            "unapproved_access": false,
+            "responsibility_consistent": true
+          },
+          {
+            "id": "access-2",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "source_entity": "Synthetic Group",
+            "source_framework": "IFRS",
+            "source_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "system": "Actual target book",
+            "prepare_and_approve": false,
+            "unapproved_access": false,
+            "responsibility_consistent": true
+          }
+        ]
+      },
+      "content_hash": "c5a80c9c777a1fd32b8bf423bbfa370d663e17be44b02b55e31b91e45df72f59"
+    },
+    {
+      "id": "source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "system": "Actual source ledger",
+        "entity": "Synthetic Group",
+        "book": "main-book",
+        "currency": "USD",
+        "mapping_version": "v1",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "records": [
+          {
+            "id": "source-1",
+            "account": "cash",
+            "dimension": "HQ",
+            "amount": "120"
+          },
+          {
+            "id": "source-2",
+            "account": "cash",
+            "dimension": "HQ",
+            "amount": "-20"
+          }
+        ],
+        "inventory": [
+          "source-1",
+          "source-2"
+        ],
+        "signed_total": "100",
+        "gross_total": "140"
+      },
+      "content_hash": "f624386e0d0ee91a5c3fbedeb68133d593f7c501744cc81cfa6ef344afbe9771"
+    },
+    {
+      "id": "target",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "system": "Actual target book",
+        "entity": "Synthetic Group",
+        "book": "main-book",
+        "currency": "USD",
+        "mapping_version": "v1",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "records": [
+          {
+            "id": "target-source-1",
+            "source_id": "source-1",
+            "target_account": "cash",
+            "dimension": "HQ",
+            "entity": "Synthetic Group",
+            "book": "main-book",
+            "currency": "USD",
+            "amount": "120",
+            "state": "posted"
+          },
+          {
+            "id": "target-source-2",
+            "source_id": "source-2",
+            "target_account": "cash",
+            "dimension": "HQ",
+            "entity": "Synthetic Group",
+            "book": "main-book",
+            "currency": "USD",
+            "amount": "-20",
+            "state": "posted"
+          }
+        ],
+        "signed_total": "100",
+        "gross_total": "140",
+        "gl_amount": "100",
+        "statement_amount": "100",
+        "inventory": [
+          "target-source-1",
+          "target-source-2"
+        ]
+      },
+      "content_hash": "4badb758d89a58e016ed99d199f5dbc8ef79bc5ce2dc5dfcb8ffdb01ef4b4c40"
+    },
+    {
+      "id": "data-control",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "approved_threshold": "0",
+        "threshold_basis_memo": "Exact complete-population ties, not assumed materiality",
+        "access_memo": "Actual role review",
+        "change_memo": "Reviewed change evidence",
+        "quality_test_memo": "Independently tested mapping",
+        "fallback_memo": "Retained fallback",
+        "accounting_owner_reviewed": true,
+        "negative_tests_passed": true,
+        "exceptions_visible": true,
+        "euc_used": false,
+        "ai_used": false,
+        "migration": false
+      },
+      "content_hash": "dafe19d61ead1b2c3bdcb308ca0ca096d9b571f5f70e2b8cffcbe6dd3d197f09"
+    }
+  ],
+  "document_inventory": [
+    "registry",
+    "source",
+    "target",
+    "data-control"
+  ],
+  "accounting_policy": {
+    "id": "governance-policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed"
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "period_entity_memo": "Actual bounded management scope review",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 1,
+    "population_amount": "140",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence"
+  },
+  "governance_method": {
+    "id": "method",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "target": "Bounded final batch",
+    "resolved": true,
+    "scope_memo": "Actual independently bounded management workpaper",
+    "boundary_memo": "All forbidden claims excluded",
+    "current_requirements_memo": "Actual separately qualified current case scope",
+    "qualification_memo": "Actual experienced independent reviewer",
+    "entity": "Synthetic Group",
+    "jurisdiction": "NL",
+    "checked_on": "2027-03-31",
+    "posting_requested": false,
+    "legal_certification": false,
+    "audit_opinion": false,
+    "regulatory_compliance": false,
+    "forecast_requested": false,
+    "authority_override": false,
+    "score_requested": false,
+    "benchmark_requested": false,
+    "ipo_timing_prediction": false,
+    "sec_status_determination": false,
+    "filing_mechanics": false,
+    "evidence_sufficiency_asserted": false,
+    "auditor_independence_determined": false,
+    "confirmation_control_requested": false,
+    "audit_adjustments_requested": false,
+    "auditor_signoff_requested": false,
+    "autonomous_policy_selection": false,
+    "transition_calculation_requested": false,
+    "overwrite_history": false,
+    "invented_citations": false,
+    "universal_checklist": false,
+    "compliance_certification": false,
+    "prior_year_rollforward_only": false,
+    "filing_requested": false,
+    "comparative_change_requested": false,
+    "budgeting": false,
+    "forecasting": false,
+    "investment_analysis": false,
+    "commercial_planning": false,
+    "generic_bi": false,
+    "manufactured_explanations": false,
+    "automatic_gl_correction": false,
+    "venue": "Synthetic venue, not an actual IPO",
+    "issuer_assumptions": "Case-specific qualified assumptions, no status determination",
+    "adviser_scope_memo": "Separate market/counsel assessment required",
+    "external_write": false,
+    "registry_doc": "registry"
+  },
+  "source_inventory": [
+    "interface-1"
+  ],
+  "release_review": {
+    "id": "release",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "review_memo": "Synthetic independently reperformed payload",
+    "payload_fingerprint": "170b687568b9d1d1665185e3a14e844f4e725460a1f54f94eaab68b410bd361d"
+  },
+  "owner_links": [],
+  "owner_link_inventory": [],
+  "interfaces": [
+    {
+      "id": "interface-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "amount": "140",
+      "source_system": "Actual source ledger",
+      "target_system": "Actual target book",
+      "interface_key": "cash-interface",
+      "entity": "Synthetic Group",
+      "book": "main-book",
+      "currency": "USD",
+      "mapping_version": "v1",
+      "lineage_memo": "Exact supplied original accounting lineage",
+      "source_doc": "source",
+      "target_doc": "target",
+      "control_doc": "data-control"
+    }
+  ],
+  "interface_source": {
+    "id": "original-interfaces",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "records": [
+      {
+        "id": "interface-1",
+        "owner": "synthetic owner",
+        "reviewer": "synthetic independent reviewer",
+        "evidence": "synthetic source",
+        "approved": true,
+        "approval_date": "2026-12-31",
+        "version": "v1",
+        "approved_version": "v1",
+        "source_entity": "Synthetic Group",
+        "source_framework": "IFRS",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "amount": "140",
+        "source_system": "Actual source ledger",
+        "target_system": "Actual target book",
+        "interface_key": "cash-interface",
+        "entity": "Synthetic Group",
+        "book": "main-book",
+        "currency": "USD",
+        "mapping_version": "v1",
+        "lineage_memo": "Exact supplied original accounting lineage",
+        "source_doc": "source",
+        "target_doc": "target",
+        "control_doc": "data-control"
+      }
+    ],
+    "inventory": [
+      "interface-1"
+    ],
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "extract_version": "v1"
+  },
+  "books": [
+    {
+      "id": "main-book",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "entity": "Synthetic Group",
+      "book": "main-book",
+      "framework": "IFRS",
+      "currency": "USD"
+    }
+  ],
+  "book_inventory": [
+    "main-book"
+  ],
+  "account_mapping": [
+    {
+      "id": "cash-mapping",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Actual source ledger",
+      "source_account": "cash",
+      "entity": "Synthetic Group",
+      "book": "main-book",
+      "target_account": "cash",
+      "allowed_source_dimensions": [
+        "HQ"
+      ],
+      "dimension_map": {
+        "HQ": "HQ"
+      },
+      "mapping_memo": "Approved actual chart/dimension mapping"
+    }
+  ],
+  "mapping_inventory": [
+    "cash-mapping"
+  ],
+  "access": [
+    {
+      "id": "access-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "system": "Actual source ledger",
+      "prepare_and_approve": false,
+      "unapproved_access": false,
+      "responsibility_consistent": true
+    },
+    {
+      "id": "access-2",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "system": "Actual target book",
+      "prepare_and_approve": false,
+      "unapproved_access": false,
+      "responsibility_consistent": true
+    }
+  ],
+  "access_inventory": [
+    "access-1",
+    "access-2"
+  ],
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [],
+    "documents": [
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-002.json",
+        "sha256": "a461dcbdecfbd983dab7258a6ce674942535a13303be806d0276fc727175727f"
+      },
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/README.md",
+        "sha256": "dbcfa21eebd6b9cfeb7d1c230b33bc467febb4c3d9260fcb5d62f7ec0f1189d3"
+      },
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/methods/entity-book-contract.md",
+        "sha256": "19d094aad330fafffe127cb1118e24d59f31656cfc03ea8b6740c8d2b46b5e7a"
+      },
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/practice/books-master-data.md",
+        "sha256": "2b2f7a06f9421a45bdceed606589e6bb41f2d431a775e2a3357df9cbf0eceea6"
+      },
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/tests/phase-2d-worker-scenarios.md",
+        "sha256": "f3bb715d9424e1ef1a1565c487b81db2096249fc8abf8d82fc2a1c48f3452a00"
+      },
+      {
+        "topic_id": "TOPIC-11-002",
+        "path": "knowledge/topics/TOPIC-11-002-books-subledgers-master-data/standards-claims.json",
+        "sha256": "5237bffa69b4532bf21bcfc605b70a671b4807cd5fdcdf081bb6bc4fbf514b5e"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-003.json",
+        "sha256": "a4476a4793de6e647e9522e11b4793f55477d3b46aabe1f7dbb09b901aaa0cd0"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/README.md",
+        "sha256": "b63cd28c308d1333fcebee1f01426df9862f37db08811b9b8de410b7e5d90f78"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/methods/interface-control-total.md",
+        "sha256": "3e2e2a16c807f36e31cf0a5e3607720742803938d0565e94dd51df44d650b2cb"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/practice/interface-lineage.md",
+        "sha256": "7ce855a44dd88ac7aa8895602580641cc9928ca352c3ce3c3165d18f60e0a567"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/tests/phase-2d-worker-scenarios.md",
+        "sha256": "1fdd328ebe223ef6510c0a39caa0ac889ef6a620f1cc016b6f2d645ba6056471"
+      },
+      {
+        "topic_id": "TOPIC-11-003",
+        "path": "knowledge/topics/TOPIC-11-003-interfaces-reconciliation-lineage/standards-claims.json",
+        "sha256": "5ba591b2cb386e2a529c26e4f196acfc5499e12945460c7f6d5db4a890b06baa"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-004.json",
+        "sha256": "04b0e15fbc43dcd0b143c0487c61de9fbd00ff4f26313685abc3a26245500f48"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/README.md",
+        "sha256": "48e1d3c1b7c10697f1510fd794bb77491a5f94ae42112349c8e9f647163c7f4c"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/methods/requirement-acceptance.md",
+        "sha256": "319a23e3b525f60fe39fe155e40ee886c3e8684b2086d767ca9f07a4070931ae"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/practice/data-quality-requirement.md",
+        "sha256": "385233c57cf8de5fc63b4b2daa57b097672a435e1936ecfdcbee7fa3353156a0"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/tests/phase-2d-worker-scenarios.md",
+        "sha256": "9b5fb7097b373f8329aa9eb36f496abf2a3501494d5f716d5e3df2a3f2990ed0"
+      },
+      {
+        "topic_id": "TOPIC-11-004",
+        "path": "knowledge/topics/TOPIC-11-004-data-quality-requirements-erp-design/standards-claims.json",
+        "sha256": "5f45fa487eb20cdfbf27bac61dbc729ababfbbd862a7adb95101ff951690b68b"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-005.json",
+        "sha256": "b9e20afeb6ac5410668ba47b066647153c2102d98f4889cd3274687ae1611e45"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/README.md",
+        "sha256": "b363dd74716a1ea67e47ff4ec7612a6ca2f674b6fa8dbad6e501219dc6d47a44"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/methods/cutover-bridge.md",
+        "sha256": "ad4f5d56457dc031dbe80a7053c7674ef2e0dfc9389ffd77ef5b62c4cbbcdf45"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/practice/migration-cutover.md",
+        "sha256": "1aaa3d6fd53c5615f3fb49c075acecfc8dbba625e7daf422738359073a0fe8d5"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/tests/phase-2d-worker-scenarios.md",
+        "sha256": "5a763b6a52b0e0e43e36beaeb14ae816de1408fc3bd10fd0e364138adac6838e"
+      },
+      {
+        "topic_id": "TOPIC-11-005",
+        "path": "knowledge/topics/TOPIC-11-005-migration-cutover-opening-balances/standards-claims.json",
+        "sha256": "10b8dd06643eea6a336d665db1d925134ee447eaa2c221252baca6c885df8006"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-006.json",
+        "sha256": "29eccfebc49d4f18894d22d8a51b8554b0ef7a15522bd9b3f739601c8ae2dbeb"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/README.md",
+        "sha256": "3f99b35a7eab5d862e6d7a0ae87df2f85d4596d063df06c3f2e1aeb964ac58ed"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/methods/access-change-proof.md",
+        "sha256": "697d02c4ccc1fa30f5cbe184a15e6df5e7a027e436f44485ea72fd91c4e846ca"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/practice/roles-automation.md",
+        "sha256": "e22a9ed6889054b08d250b663903eedf3f45eaaf5052f44f6579e72a7db3e310"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/tests/phase-2d-worker-scenarios.md",
+        "sha256": "ffe24603ce5dd07e2561ac8198051216acb801f62ca2a8360ac44d8267053633"
+      },
+      {
+        "topic_id": "TOPIC-11-006",
+        "path": "knowledge/topics/TOPIC-11-006-access-roles-automation/standards-claims.json",
+        "sha256": "ecf8a60b5828e418bc99e30f7b0836917a32d045ceed4a94c750f41bc3210562"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-007.json",
+        "sha256": "84bf481ad909c5083da1223d1e6d20f7ac694998275c3913f3cf50530bc756ab"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/README.md",
+        "sha256": "d5e058c0dcdff026656e4016cd64faea5f60b19a6019b30f1e4470d658dbc011"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/methods/model-control-test.md",
+        "sha256": "05bf8dec8f693a0fb17ac05c207796a3e2aea6db9c8fce1de2e312fb34f7bb8d"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/practice/spreadsheet-euc.md",
+        "sha256": "72b38e13674fc17e42ab3b179a88329568fb893eb4aa7b60112b600880cfd823"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/tests/phase-2d-worker-scenarios.md",
+        "sha256": "7c4a4b55a8170ad18622b03ccd20c251b8949dbd0fb9ce12ee783fbb1406b7fa"
+      },
+      {
+        "topic_id": "TOPIC-11-007",
+        "path": "knowledge/topics/TOPIC-11-007-spreadsheet-euc-governance/standards-claims.json",
+        "sha256": "13d7bff2406b4306aed593f3f815053168b3f2fbc3bdf6fa2aa18aecfd57d444"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-009.json",
+        "sha256": "d46f8047c92a4cbb4ce20c7eee6b57db5f56a367cfc97494082b50884fdb8550"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/README.md",
+        "sha256": "7e3ba61ce9f4410204b38065455929a8a38c48a420bfa809a400387354d93c25"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/methods/ai-release-test.md",
+        "sha256": "722d0af2a2cbeba27fb724b5f311e329014db7ab053b8b05c425de72d9853d1f"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/practice/ai-change-impact.md",
+        "sha256": "c6fd78547b3347576c185957a818add171a63ec24c1bd428f7cc283e52c4ee11"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/tests/phase-2d-worker-scenarios.md",
+        "sha256": "e2dd05b8a9939b07b6839566aac2bac435fef820df57f7a27b28eaecb87fe5ec"
+      },
+      {
+        "topic_id": "TOPIC-11-009",
+        "path": "knowledge/topics/TOPIC-11-009-ai-accounting-change-impact/standards-claims.json",
+        "sha256": "da049edfa4402dcb96ac1cfcf36c0bfb2f350459ec48b07f3d84af8c677bc009"
+      }
+    ],
+    "applied_claim_ids": [],
+    "selection_memo": "Actual bounded claim/method applicability, practice never invents authority",
+    "public_caveats": [
+      "Qualified actual sources and current framework/period review required. No actuarial, legal, audit or external compliance certification."
+    ]
+  }
+}
