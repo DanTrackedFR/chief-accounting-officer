@@ -12,7 +12,15 @@ def assess(c,claims):
     topic_ids=source_index['applicable_topic_inventory']
     if not isinstance(topic_ids,list) or len(set(topic_ids))!=len(topic_ids) or set(topic_ids)!={r['topic_id'] for r in original}:raise ReviewRequired('Disclosure applicable-topic population incomplete')
     manifest={t['topic_id']:t for t in json.loads((ROOT/'knowledge/phase-2d-topic-manifest.json').read_text())['topics']}
-    if any(id not in manifest or manifest[id]['status']!='APPROVED' for id in topic_ids):raise ReviewRequired('Invented/unapproved disclosure topic')
+    for id in topic_ids:
+        if id=='SUPPLEMENTAL_INSURANCE_CONTRACTS':
+            # A separately approved specialist namespace is not a canonical topic.
+            # Its frozen claim/hash gate must pass; the requirement still binds
+            # an actual completed Insurance owner below.
+            from insurance_knowledge import mapped_knowledge
+            mapped_knowledge(c['framework'])
+        elif id not in manifest or manifest[id]['status']!='APPROVED':
+            raise ReviewRequired('Invented/unapproved disclosure topic')
     notes=pack(c,'notes','note_inventory');by={n['requirement_id']:n for n in notes}
     if len(by)!=len(notes):raise ReviewRequired('Duplicate disclosure requirement output')
     semantic=set();applicable=set();open_items=[]

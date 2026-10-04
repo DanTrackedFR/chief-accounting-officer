@@ -1,0 +1,1000 @@
+{
+  "case_id": "synthetic-insurance-contracts-accounting",
+  "framework": "AASB",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {
+    "ifrs18_19_early_adoption": false
+  },
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "aasb_compilation": "AASB17_DEC2022_PRE_JULY2026",
+  "reporting_tier": 1,
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "insurance-contracts-accounting",
+  "insurance_model": "proposed_unsupported_model",
+  "currency": "EUR",
+  "execution_date": "2027-02-01",
+  "requested_action": "accounting_workpaper",
+  "contracts": [
+    {
+      "id": "policy1",
+      "economic_id": "policy-economic1",
+      "group_id": "group1",
+      "terms_memo": "Executed synthetic policy compensation for insured property fire",
+      "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+      "boundary_memo": "Actual enforceable single coverage boundary",
+      "portfolio": "property",
+      "product": "property_fire",
+      "profitability": "no_significant_possibility",
+      "recognition_date": "2026-01-01",
+      "coverage_start": "2026-01-01",
+      "coverage_end": "2027-12-31",
+      "issue_date": "2026-01-01",
+      "premium_due_date": "2026-01-01",
+      "onerous_date": "2026-01-01",
+      "currency": "EUR",
+      "perspective": "issued",
+      "cohort": "2026",
+      "insured_event_benefit": "5000",
+      "no_event_benefit": "0",
+      "commercial_substance": true,
+      "us_contract_type": "short_duration",
+      "uncertain_event": true,
+      "adverse_effect": true,
+      "nonfinancial_risk": true,
+      "significant_insurance_risk": true,
+      "scope_assessed": true,
+      "financial_guarantee": false,
+      "seller_warranty": false,
+      "fixed_fee_service": false,
+      "separated_component": false,
+      "investment_component": false,
+      "participating": false,
+      "modification": false,
+      "acquired": false,
+      "transition": false,
+      "document_id": "doc-policy1"
+    }
+  ],
+  "groups": [
+    {
+      "id": "group1",
+      "economic_id": "group-economic1",
+      "portfolio": "property",
+      "product": "property_fire",
+      "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+      "recognition_date": "2026-01-01",
+      "profitability": "no_significant_possibility",
+      "model": "AASB17_GMM",
+      "contract_ids": [
+        "policy1"
+      ],
+      "original_contract_ids": [
+        "policy1"
+      ],
+      "cohort": "2026",
+      "membership_locked": true,
+      "assumption_version": "assumptions1",
+      "model_version": "model1",
+      "aggregation_basis": "US similar acquisition and servicing business",
+      "document_id": "doc-group1"
+    }
+  ],
+  "reports": [
+    {
+      "id": "report1",
+      "group_id": "group1",
+      "actuary": "Synthetic qualified actuary",
+      "qualification_memo": "Synthetic independently reviewed qualification evidence",
+      "objectivity_memo": "Synthetic independent objectivity review",
+      "reviewer": "Synthetic separate actuarial reviewer",
+      "model_version": "model1",
+      "assumption_version": "assumptions1",
+      "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+      "signed_on": "2027-01-20",
+      "measurement_date": "2026-12-31",
+      "initial_date": "2026-01-01",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "model": "AASB17_GMM",
+      "product": "property_fire",
+      "portfolio": "property",
+      "contract_ids": [
+        "policy1"
+      ],
+      "discount_source": "Qualified supplied curve register version1",
+      "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+      "coverage_method": "Qualified quantity of benefits and duration units register",
+      "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+      "change_kind": "assumption",
+      "change_service": "future",
+      "change_risk": "nonfinancial",
+      "unsupported_features": [],
+      "boundary_reviewed": true,
+      "opening_lrc": "0",
+      "opening_lic": "0",
+      "opening_csm": "0",
+      "opening_ra": "0",
+      "opening_loss": "0",
+      "loss_recovery": "0",
+      "initial_ra": "50",
+      "closing_ra": "30",
+      "initial_csm": "150",
+      "closing_csm": "132.00",
+      "csm_release": "44.00",
+      "csm_interest": "6.00",
+      "initial_loss": "0",
+      "future_change_locked": "-20",
+      "future_change_current": "-20",
+      "discount_curve_unchanged": true,
+      "locked_rate": "0.04",
+      "interest_fraction": "1",
+      "interest_day_basis": "actual365_simple",
+      "initial_outflows": "800",
+      "initial_fcf": "-150",
+      "initial_ra_dummy": "0",
+      "current_units": "25",
+      "remaining_units": "75",
+      "expected_service": "400",
+      "ra_release": "20",
+      "fcf_finance": "8",
+      "closing_pv": "388",
+      "loss_allocation": "0",
+      "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+      "closing_loss": "0",
+      "paa_material_equivalence": false,
+      "paa_significant_variability": false,
+      "paa_inception_reviewed": true,
+      "premium_financing_exemption": true,
+      "max_service_to_due_days": "364",
+      "claim_discount_exemption": true,
+      "max_claim_to_payment_days": "181",
+      "revenue_pattern": "time",
+      "pattern_reviewed": true,
+      "service_fraction": "0.5",
+      "expected_premiums": "1000",
+      "acquisition_amortization": "0",
+      "acquisition_expense_election": false,
+      "acquisition_attributable": true,
+      "onerous_assessed": true,
+      "onerous_indicator": false,
+      "remaining_fcf": "0",
+      "paa_loss": "0",
+      "past_service_change": "0",
+      "lic_finance": "0",
+      "incurred": "420",
+      "claim_paid": "200",
+      "closing_lic": "220",
+      "nonperformance_reviewed": true,
+      "us_insurance_entity": true,
+      "us_contract_scope_reviewed": true,
+      "claims_undiscounted": true,
+      "successful_acquisition": true,
+      "us_aggregation_basis": "US similar acquisition and servicing business",
+      "investment_income_policy": "exclude",
+      "investment_income": "0",
+      "remaining_claims": "0",
+      "maintenance_cost": "0",
+      "dac_writeoff": "0",
+      "closing_dac": "0",
+      "deficiency_liability": "0",
+      "closing_lrc": "550.00",
+      "service_release": "464.00",
+      "incurred_pv": "400",
+      "incurred_ra": "20",
+      "document_id": "doc-report1",
+      "contract_population_hash": "132fb02499ca76dcae5193badc841ca5135921ecc48c2c23962c26f0aa85990f",
+      "claim_population_hash": "65beec4f985118a3224c01fb4a6ce66560e8fbb92fd8df13dbf697f84cc07135",
+      "cash_population_hash": "68824a7ce509f0debdb7b7c275e749416c34af29fb8651933f0bdb71a90a2c86"
+    }
+  ],
+  "cash_events": [
+    {
+      "id": "premium1",
+      "economic_id": "premium-economic1",
+      "policy_id": "policy1",
+      "group_id": "group1",
+      "kind": "premium",
+      "date": "2026-01-01",
+      "amount": "1000",
+      "document_id": "doc-premium1"
+    },
+    {
+      "id": "payment1",
+      "economic_id": "payment-economic1",
+      "policy_id": "policy1",
+      "group_id": "group1",
+      "kind": "claim_payment",
+      "date": "2026-12-01",
+      "amount": "200",
+      "document_id": "doc-payment1"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim1",
+      "economic_id": "claim-economic1",
+      "policy_id": "policy1",
+      "group_id": "group1",
+      "occurrence_date": "2026-09-01",
+      "expected_settlement_date": "2027-03-01",
+      "valuation_date": "2026-12-31",
+      "payment_memo": "Original settlement source",
+      "incurred": "420",
+      "paid": "200",
+      "document_id": "doc-claim1"
+    }
+  ],
+  "gl": [
+    {
+      "id": "Cash",
+      "opening": "0",
+      "closing": "800",
+      "statement": "800",
+      "document_id": "doc-Cash"
+    },
+    {
+      "id": "Insurance remaining coverage group1",
+      "opening": "0",
+      "closing": "-550.00",
+      "statement": "-550.00",
+      "document_id": "doc-Insurance remaining coverage group1"
+    },
+    {
+      "id": "Insurance incurred claims group1",
+      "opening": "0",
+      "closing": "-220",
+      "statement": "-220",
+      "document_id": "doc-Insurance incurred claims group1"
+    },
+    {
+      "id": "Insurance service revenue group1",
+      "opening": "0",
+      "closing": "-464.00",
+      "statement": "-464.00",
+      "document_id": "doc-Insurance service revenue group1"
+    },
+    {
+      "id": "Insurance service expense group1",
+      "opening": "0",
+      "closing": "420",
+      "statement": "420",
+      "document_id": "doc-Insurance service expense group1"
+    },
+    {
+      "id": "Insurance finance group1",
+      "opening": "0",
+      "closing": "14.00",
+      "statement": "14.00",
+      "document_id": "doc-Insurance finance group1"
+    }
+  ],
+  "population_review": {
+    "id": "population",
+    "reviewer": "Synthetic independent completeness reviewer",
+    "source_system": "Independent original policy claims cash systems",
+    "completeness_memo": "Independent source totals and unique economic identity review",
+    "complete": true,
+    "contracts_ids": [
+      "policy1"
+    ],
+    "groups_ids": [
+      "group1"
+    ],
+    "reports_ids": [
+      "report1"
+    ],
+    "cash_events_ids": [
+      "premium1",
+      "payment1"
+    ],
+    "claims_ids": [
+      "claim1"
+    ],
+    "document_id": "doc-population"
+  },
+  "statement_review": {
+    "id": "statements",
+    "gross_presentation": true,
+    "group_ids": [
+      "group1"
+    ],
+    "document_id": "doc-statements",
+    "gl_hash": "d879b23197b3ee262122ec868a28eb1137364107a237b8aef56eee36311f306b"
+  },
+  "disclosure_review": {
+    "id": "disclosures",
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "framework_checklist": "AASB actual operative insurance requirement source",
+    "methods_inputs_memo": "Qualified methods inputs",
+    "risk_memo": "Controlled insurance and finance risk register",
+    "complete": true,
+    "framework": "AASB",
+    "group_ids": [
+      "group1"
+    ],
+    "report_ids": [
+      "report1"
+    ],
+    "requirement_ids": [
+      "amounts",
+      "rollforwards",
+      "judgments",
+      "insurance_risk",
+      "financial_risk"
+    ],
+    "document_id": "doc-disclosures"
+  },
+  "documents": [
+    {
+      "id": "doc-policy1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "policy1",
+        "economic_id": "policy-economic1",
+        "group_id": "group1",
+        "terms_memo": "Executed synthetic policy compensation for insured property fire",
+        "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+        "boundary_memo": "Actual enforceable single coverage boundary",
+        "portfolio": "property",
+        "product": "property_fire",
+        "profitability": "no_significant_possibility",
+        "recognition_date": "2026-01-01",
+        "coverage_start": "2026-01-01",
+        "coverage_end": "2027-12-31",
+        "issue_date": "2026-01-01",
+        "premium_due_date": "2026-01-01",
+        "onerous_date": "2026-01-01",
+        "currency": "EUR",
+        "perspective": "issued",
+        "cohort": "2026",
+        "insured_event_benefit": "5000",
+        "no_event_benefit": "0",
+        "commercial_substance": true,
+        "us_contract_type": "short_duration",
+        "uncertain_event": true,
+        "adverse_effect": true,
+        "nonfinancial_risk": true,
+        "significant_insurance_risk": true,
+        "scope_assessed": true,
+        "financial_guarantee": false,
+        "seller_warranty": false,
+        "fixed_fee_service": false,
+        "separated_component": false,
+        "investment_component": false,
+        "participating": false,
+        "modification": false,
+        "acquired": false,
+        "transition": false
+      },
+      "content_hash": "7abd29ab0e78ea12784dc1a3c9d9fdd9a4d2b7639c721e8ab06cd9cc7e31c45d"
+    },
+    {
+      "id": "doc-group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "group1",
+        "economic_id": "group-economic1",
+        "portfolio": "property",
+        "product": "property_fire",
+        "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+        "recognition_date": "2026-01-01",
+        "profitability": "no_significant_possibility",
+        "model": "AASB17_GMM",
+        "contract_ids": [
+          "policy1"
+        ],
+        "original_contract_ids": [
+          "policy1"
+        ],
+        "cohort": "2026",
+        "membership_locked": true,
+        "assumption_version": "assumptions1",
+        "model_version": "model1",
+        "aggregation_basis": "US similar acquisition and servicing business"
+      },
+      "content_hash": "04a4cc5cff98907e3dbf36d5788f3045f8d2e9bada688b8eb9e810bbfbec3d08"
+    },
+    {
+      "id": "doc-premium1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "premium1",
+        "economic_id": "premium-economic1",
+        "policy_id": "policy1",
+        "group_id": "group1",
+        "kind": "premium",
+        "date": "2026-01-01",
+        "amount": "1000"
+      },
+      "content_hash": "a8fc8e841c0bf9248495b363568f6dfd9811d9599c6b6369729122b84874e66f"
+    },
+    {
+      "id": "doc-payment1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "payment1",
+        "economic_id": "payment-economic1",
+        "policy_id": "policy1",
+        "group_id": "group1",
+        "kind": "claim_payment",
+        "date": "2026-12-01",
+        "amount": "200"
+      },
+      "content_hash": "d3b7e8ac0572d75d2cdba072e8d1ef3813af9587080d12432cc8e45f77e35fd3"
+    },
+    {
+      "id": "doc-claim1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "claim1",
+        "economic_id": "claim-economic1",
+        "policy_id": "policy1",
+        "group_id": "group1",
+        "occurrence_date": "2026-09-01",
+        "expected_settlement_date": "2027-03-01",
+        "valuation_date": "2026-12-31",
+        "payment_memo": "Original settlement source",
+        "incurred": "420",
+        "paid": "200"
+      },
+      "content_hash": "0165a55509b60478adc4e274112900937829910e190e3beec4fae1a892f00d64"
+    },
+    {
+      "id": "doc-report1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "report1",
+        "group_id": "group1",
+        "actuary": "Synthetic qualified actuary",
+        "qualification_memo": "Synthetic independently reviewed qualification evidence",
+        "objectivity_memo": "Synthetic independent objectivity review",
+        "reviewer": "Synthetic separate actuarial reviewer",
+        "model_version": "model1",
+        "assumption_version": "assumptions1",
+        "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+        "signed_on": "2027-01-20",
+        "measurement_date": "2026-12-31",
+        "initial_date": "2026-01-01",
+        "entity": "Synthetic Group",
+        "framework": "AASB",
+        "currency": "EUR",
+        "model": "AASB17_GMM",
+        "product": "property_fire",
+        "portfolio": "property",
+        "contract_ids": [
+          "policy1"
+        ],
+        "discount_source": "Qualified supplied curve register version1",
+        "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+        "coverage_method": "Qualified quantity of benefits and duration units register",
+        "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+        "change_kind": "assumption",
+        "change_service": "future",
+        "change_risk": "nonfinancial",
+        "unsupported_features": [],
+        "boundary_reviewed": true,
+        "opening_lrc": "0",
+        "opening_lic": "0",
+        "opening_csm": "0",
+        "opening_ra": "0",
+        "opening_loss": "0",
+        "loss_recovery": "0",
+        "initial_ra": "50",
+        "closing_ra": "30",
+        "initial_csm": "150",
+        "closing_csm": "132.00",
+        "csm_release": "44.00",
+        "csm_interest": "6.00",
+        "initial_loss": "0",
+        "future_change_locked": "-20",
+        "future_change_current": "-20",
+        "discount_curve_unchanged": true,
+        "locked_rate": "0.04",
+        "interest_fraction": "1",
+        "interest_day_basis": "actual365_simple",
+        "initial_outflows": "800",
+        "initial_fcf": "-150",
+        "initial_ra_dummy": "0",
+        "current_units": "25",
+        "remaining_units": "75",
+        "expected_service": "400",
+        "ra_release": "20",
+        "fcf_finance": "8",
+        "closing_pv": "388",
+        "loss_allocation": "0",
+        "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+        "closing_loss": "0",
+        "paa_material_equivalence": false,
+        "paa_significant_variability": false,
+        "paa_inception_reviewed": true,
+        "premium_financing_exemption": true,
+        "max_service_to_due_days": "364",
+        "claim_discount_exemption": true,
+        "max_claim_to_payment_days": "181",
+        "revenue_pattern": "time",
+        "pattern_reviewed": true,
+        "service_fraction": "0.5",
+        "expected_premiums": "1000",
+        "acquisition_amortization": "0",
+        "acquisition_expense_election": false,
+        "acquisition_attributable": true,
+        "onerous_assessed": true,
+        "onerous_indicator": false,
+        "remaining_fcf": "0",
+        "paa_loss": "0",
+        "past_service_change": "0",
+        "lic_finance": "0",
+        "incurred": "420",
+        "claim_paid": "200",
+        "closing_lic": "220",
+        "nonperformance_reviewed": true,
+        "us_insurance_entity": true,
+        "us_contract_scope_reviewed": true,
+        "claims_undiscounted": true,
+        "successful_acquisition": true,
+        "us_aggregation_basis": "US similar acquisition and servicing business",
+        "investment_income_policy": "exclude",
+        "investment_income": "0",
+        "remaining_claims": "0",
+        "maintenance_cost": "0",
+        "dac_writeoff": "0",
+        "closing_dac": "0",
+        "deficiency_liability": "0",
+        "closing_lrc": "550.00",
+        "service_release": "464.00",
+        "incurred_pv": "400",
+        "incurred_ra": "20",
+        "contract_population_hash": "132fb02499ca76dcae5193badc841ca5135921ecc48c2c23962c26f0aa85990f",
+        "claim_population_hash": "65beec4f985118a3224c01fb4a6ce66560e8fbb92fd8df13dbf697f84cc07135",
+        "cash_population_hash": "68824a7ce509f0debdb7b7c275e749416c34af29fb8651933f0bdb71a90a2c86"
+      },
+      "content_hash": "486f19073f0e1757b0753660c1bd6abae464b97c6b5caca2f522e09b0365cfd8"
+    },
+    {
+      "id": "doc-Cash",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Cash",
+        "opening": "0",
+        "closing": "800",
+        "statement": "800"
+      },
+      "content_hash": "6cf952e37550f55b02ec0f0082dba45a6a4d4a5bbf02bf97f32f0c79fa0f4779"
+    },
+    {
+      "id": "doc-Insurance remaining coverage group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Insurance remaining coverage group1",
+        "opening": "0",
+        "closing": "-550.00",
+        "statement": "-550.00"
+      },
+      "content_hash": "0881aaa427b5fb00982099c1ea6de2229854d87c9b9ca78d0d32424c005389d4"
+    },
+    {
+      "id": "doc-Insurance incurred claims group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Insurance incurred claims group1",
+        "opening": "0",
+        "closing": "-220",
+        "statement": "-220"
+      },
+      "content_hash": "fcdd8f7aee5698a2b19a13513953688c90794828d95ddb4b9be646da839815e0"
+    },
+    {
+      "id": "doc-Insurance service revenue group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Insurance service revenue group1",
+        "opening": "0",
+        "closing": "-464.00",
+        "statement": "-464.00"
+      },
+      "content_hash": "a9c1aa203ae40a125a794028a1ce043bf98a5971eb530833864912fa2da064d2"
+    },
+    {
+      "id": "doc-Insurance service expense group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Insurance service expense group1",
+        "opening": "0",
+        "closing": "420",
+        "statement": "420"
+      },
+      "content_hash": "1078375f087e08a4b4bd72a2ce35d74bfb26df20bb72b4c793b51e694dc2e3ac"
+    },
+    {
+      "id": "doc-Insurance finance group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "Insurance finance group1",
+        "opening": "0",
+        "closing": "14.00",
+        "statement": "14.00"
+      },
+      "content_hash": "ef05369e757a48c339b2ddfd3b866c7bc66e49233d80d2df21ccbfc06bb283ab"
+    },
+    {
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "population",
+        "reviewer": "Synthetic independent completeness reviewer",
+        "source_system": "Independent original policy claims cash systems",
+        "completeness_memo": "Independent source totals and unique economic identity review",
+        "complete": true,
+        "contracts_ids": [
+          "policy1"
+        ],
+        "groups_ids": [
+          "group1"
+        ],
+        "reports_ids": [
+          "report1"
+        ],
+        "cash_events_ids": [
+          "premium1",
+          "payment1"
+        ],
+        "claims_ids": [
+          "claim1"
+        ]
+      },
+      "content_hash": "abba2aa1e99b6217fb126da323d1725cbc89b6d73466230360fffaf51f7dabaa"
+    },
+    {
+      "id": "doc-statements",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "statements",
+        "gross_presentation": true,
+        "group_ids": [
+          "group1"
+        ],
+        "gl_hash": "d879b23197b3ee262122ec868a28eb1137364107a237b8aef56eee36311f306b"
+      },
+      "content_hash": "2ee3fb2fc5dd05f99fe3cdcd849af46a33f2843f3c99726763f278c9b527ce05"
+    },
+    {
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1",
+      "entity": "Synthetic Group",
+      "framework": "AASB",
+      "currency": "EUR",
+      "as_of": "2026-12-31",
+      "content": {
+        "id": "disclosures",
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "framework_checklist": "AASB actual operative insurance requirement source",
+        "methods_inputs_memo": "Qualified methods inputs",
+        "risk_memo": "Controlled insurance and finance risk register",
+        "complete": true,
+        "framework": "AASB",
+        "group_ids": [
+          "group1"
+        ],
+        "report_ids": [
+          "report1"
+        ],
+        "requirement_ids": [
+          "amounts",
+          "rollforwards",
+          "judgments",
+          "insurance_risk",
+          "financial_risk"
+        ]
+      },
+      "content_hash": "1d95795128b4e86149f6e4df7eb13ba4156957ac9d4aedaa0b52f3ca2439f859"
+    }
+  ],
+  "knowledge_review": {
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "claim_ids": [
+      "INS-AASB-001",
+      "INS-AASB-002",
+      "INS-AASB-003",
+      "INS-AASB-004",
+      "INS-AASB-005",
+      "INS-AASB-006",
+      "INS-AASB-007",
+      "INS-AASB-008",
+      "INS-AASB-009",
+      "INS-AASB-010",
+      "INS-AASB-011",
+      "INS-AASB-012",
+      "INS-AASB-013",
+      "INS-AASB-014",
+      "INS-AASB-015",
+      "INS-AASB-016",
+      "INS-AASB-017",
+      "INS-AASB-018",
+      "INS-AASB-019",
+      "INS-AASB-020",
+      "INS-AASB-021",
+      "INS-AASB-022",
+      "INS-AASB-023",
+      "INS-AASB-024",
+      "INS-AASB-025",
+      "INS-AASB-026",
+      "INS-AASB-027",
+      "INS-AASB-028",
+      "INS-AASB-029",
+      "INS-AASB-030",
+      "INS-AASB-031",
+      "INS-AASB-032",
+      "INS-AASB-033",
+      "INS-AASB-034",
+      "INS-AASB-035",
+      "INS-AASB-036",
+      "INS-AASB-037",
+      "INS-AASB-038",
+      "INS-AASB-039",
+      "INS-AASB-040",
+      "INS-AASB-041",
+      "INS-AASB-042",
+      "INS-AASB-043",
+      "INS-AASB-044",
+      "INS-AASB-045",
+      "INS-AASB-046",
+      "INS-AASB-047",
+      "INS-AASB-048",
+      "INS-AASB-049",
+      "INS-AASB-050",
+      "INS-AASB-051",
+      "INS-AASB-052",
+      "INS-AASB-053",
+      "INS-AASB-054",
+      "INS-AASB-055",
+      "INS-AASB-056",
+      "INS-AASB-057",
+      "INS-AASB-058",
+      "INS-AASB-059",
+      "INS-AASB-060",
+      "INS-AASB-061",
+      "INS-AASB-062",
+      "INS-AASB-063",
+      "INS-AASB-064",
+      "INS-AASB-065"
+    ],
+    "documents": [
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/FRAMEWORK-METHOD.md",
+        "sha256": "10b2f8bbee020634f0cff71b53592c90c293f23772c026fc00eebbaf216437e7"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/INDEPENDENT-QA.md",
+        "sha256": "79f0c7951a550856305b7b6648a96a85850725a3e7ff1d8e288f54949a7e6b79"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/README.md",
+        "sha256": "87461e8d5c569dc526c86430d69f2f7846962eec2f7bf9f7e42f8f7badbf7e3f"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/RESEARCH.md",
+        "sha256": "f0f7a5a07f3a8a2a9c9f685fa9392a1f8829a44252ba6e9bb20ddbe4ed069d5c"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/expected-decisions.json",
+        "sha256": "f02ca7aa01fc8a656ee8726990356738d20cb1ce31fad9db2ce625c9f5734d2b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/independent-review.json",
+        "sha256": "647dedd45fe4f8ba63788aef2f676048bbb69979b440f12268804c88871c9782"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/retrieval.py",
+        "sha256": "3d6338deb21cc21282fdf9b52d0c57a1cec6b961859c2a45907946d6d217f4a2"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/standards-claims.json",
+        "sha256": "749ac623705a176710a667fd5ea0248e5f2bfeff756bb7a1a9194a2a6cfc9a26"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/test_independent_claim_qa.py",
+        "sha256": "8001b20232a545cac457421d4e623692985263534de9d4b9e97810586ff6d647"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/test_supplement.py",
+        "sha256": "f484072830ff8246ade8645b438040d30cc18d3da155fc5cf33976a2cdeabbc8"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS",
+        "path": "knowledge/insurance-contracts/validate_supplement.py",
+        "sha256": "36660adc005278ceaf73ab009b067b4c884b16dc8597bd2360e9d753d915277e"
+      }
+    ],
+    "applied_claim_ids": [
+      "INS-AASB-001",
+      "INS-AASB-002",
+      "INS-AASB-003",
+      "INS-AASB-004",
+      "INS-AASB-005",
+      "INS-AASB-006",
+      "INS-AASB-007",
+      "INS-AASB-008",
+      "INS-AASB-009",
+      "INS-AASB-010",
+      "INS-AASB-011",
+      "INS-AASB-012",
+      "INS-AASB-013",
+      "INS-AASB-014",
+      "INS-AASB-015",
+      "INS-AASB-016",
+      "INS-AASB-017",
+      "INS-AASB-018",
+      "INS-AASB-019",
+      "INS-AASB-020",
+      "INS-AASB-021",
+      "INS-AASB-022",
+      "INS-AASB-023",
+      "INS-AASB-024",
+      "INS-AASB-025",
+      "INS-AASB-026",
+      "INS-AASB-027",
+      "INS-AASB-028",
+      "INS-AASB-029",
+      "INS-AASB-030",
+      "INS-AASB-031",
+      "INS-AASB-032",
+      "INS-AASB-033",
+      "INS-AASB-034",
+      "INS-AASB-035",
+      "INS-AASB-036",
+      "INS-AASB-037",
+      "INS-AASB-038",
+      "INS-AASB-039",
+      "INS-AASB-040",
+      "INS-AASB-041",
+      "INS-AASB-042",
+      "INS-AASB-043",
+      "INS-AASB-044",
+      "INS-AASB-045",
+      "INS-AASB-046",
+      "INS-AASB-047",
+      "INS-AASB-048",
+      "INS-AASB-049",
+      "INS-AASB-050",
+      "INS-AASB-051",
+      "INS-AASB-052",
+      "INS-AASB-053",
+      "INS-AASB-054",
+      "INS-AASB-055",
+      "INS-AASB-056",
+      "INS-AASB-057",
+      "INS-AASB-058",
+      "INS-AASB-059",
+      "INS-AASB-060",
+      "INS-AASB-061",
+      "INS-AASB-062",
+      "INS-AASB-063",
+      "INS-AASB-064",
+      "INS-AASB-065"
+    ],
+    "selection_memo": "Synthetic reviewed Insurance route and explicit excluded specialist boundaries",
+    "public_caveats": [
+      "Current qualified inputs and the operative insurance framework are required; complex models require separate governed methods."
+    ]
+  }
+}
