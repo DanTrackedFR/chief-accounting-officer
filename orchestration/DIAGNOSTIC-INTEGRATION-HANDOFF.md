@@ -158,9 +158,11 @@ No memory candidate is promoted to Company Context.
 
 ## Final gates
 
-Local regression passed (new independent protection and generic-expense controls
-were also executed after the original full orchestration run). Final exact-head CI
-must rerun the complete assembled 120-test orchestration suite.
+Local regression passed. Exact-head GitHub Actions on candidate
+`143eb75aacf83d5e6357177a56ab07c7c70ac244` passed the assembled 120-test orchestration
+suite and all remaining gates: integration run37243420989 and structural audit
+run37243420987. Final publication repeats CI after the narrow roadmap completion
+and protected roadmap-hash update. Final-head evidence is recorded in PR #29.
 
 | Gate | Distinct tests | Result |
 |---|---:|---|
@@ -184,7 +186,11 @@ Artifact reproduction also passes in fresh interpreters under hash seeds17 and31
 four tests per rerun including original and diagnostic artifacts. These repeated
 runs are not added to distinct totals. All five supplemental validators, canonical
 claims/approval validators and git diff --check pass. Exact-head CI evidence is
-recorded in PR #29 after publication; the PR remains draft until CI succeeds.
+recorded in PR #29 after publication; the PR becomes ready only after final-head CI succeeds.
+
+Roadmap: CAO Intent & Diagnostic Analytics Foundation is complete after all
+candidate gates passed. Semantic Planner + Document/Data Intake remains future
+work. Final docs do not change reviewed Analytics implementation bytes or artifacts.
 
 One pre-existing live-main gate was reconciled: Insurance LIVE-BASELINE.json still
 protected the roadmap hash from before the owner updated live main186b3028.
