@@ -1,7 +1,7 @@
 name: Phase 3 skill regression
 
 # Run the full skill gate when a PR is explicitly moved to review, and on
-# merges/pushes to main. The standalone Agriculture branch also runs on push
+# merges/pushes to main. Standalone specialist branches also run on push
 # so its exact final head can pass before the Draft PR is marked ready.
 on:
   pull_request:
@@ -10,13 +10,15 @@ on:
       - "skills/**"
       - "knowledge/income-taxes/**"
       - "knowledge/agriculture/**"
+      - "knowledge/inventory-cost/**"
       - ".github/workflows/phase3-skills.yml"
   push:
-    branches: [main, phase-3/agriculture-biological-assets]
+    branches: [main, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting]
     paths:
       - "skills/**"
       - "knowledge/income-taxes/**"
       - "knowledge/agriculture/**"
+      - "knowledge/inventory-cost/**"
       - ".github/workflows/phase3-skills.yml"
   workflow_dispatch:
 
@@ -43,6 +45,8 @@ jobs:
           python knowledge/agriculture/validate_supplement.py
           python knowledge/agriculture/test_supplement.py
           python knowledge/agriculture/test_independent_claim_qa.py
+          python knowledge/inventory-cost/validate_supplement.py
+          python -m unittest discover -s knowledge/inventory-cost -p "test*.py"
       - name: Repository regression
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Standards evidence validation
