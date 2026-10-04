@@ -43,6 +43,10 @@ The reviewer supplied a valid half-year GMM inception using 184/365 of a year: C
 
 ## Final reviewed anchors
 
-The machine-readable `INDEPENDENT-QA-ANCHORS.json` records SHA-256 hashes of the reviewed executable accounting, shared retrieval/privacy, native reporting owner, methods and test files. The report and anchor file omit their own hashes to avoid circular references. Final post-promotion independent rerun remains required.
+The machine-readable `INDEPENDENT-QA-ANCHORS.json` records SHA-256 hashes of the reviewed executable accounting, shared retrieval/privacy, native reporting owner, methods and test files. The report and anchor file omit their own hashes to avoid circular references. Post-promotion independent rerun passed: 41 independent methods plus 9 native integration methods, 50 tests total, in 14.7 seconds. Every previously anchored executable/retrieval/privacy/test file is byte-identical; SKILL.md changes only version 0.9.0→1.0.0 and status review→production. Updated anchors bind those final metadata bytes. Exact-final-head GitHub Actions remains the root integration gate.
 
 The root-origin output completeness gap is also closed: named LRC, LIC, CSM, RA and loss bridges (plus native US DAC) were independently recalculated with positive and negative future-service changes, profitable and onerous groups, issued PAA, both acquisition elections, US deficiency ordering and held IFRS/AASB. Every signed opening-plus-movements bridge equals its closing amount and the closing accounting stock. The final native US output omits CSM/RA/loss-component fields and schedules. It exposes premium_deficiency_liability and the premium_deficiency/DAC bridges. Independent tests rechecked insurance-entity/source-scope restrictions, bounded fully paid coverage inception recognition and protection-pattern DAC amortization; unsupported earlier premium or other populations fail closed.
+
+## Post-promotion verification
+
+The prior review candidate `305704ad60d25e791857b4dee2ca00c7ea18bfd7` passed Actions run `37207876023`. That run is review-candidate evidence; the final promoted head needs its own exact-head CI. The reviewer independently reran 50 tests on promoted 1.0.0/production metadata and confirmed all anchored code remains unchanged. No open implementation findings remain within the bounded supported scope.

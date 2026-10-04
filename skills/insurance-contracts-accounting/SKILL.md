@@ -2,8 +2,8 @@
 id: SKILL-INS-001
 name: insurance-contracts-accounting
 skill_id: SKILL-INS-001
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 roadmap: 39
 primary_domain: insurance_accounting
 related_domains: [financial_instruments, reporting, actuarial_sources]
