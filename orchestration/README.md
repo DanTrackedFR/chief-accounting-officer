@@ -163,3 +163,29 @@ and UI remain later work. No claim is made that all 47 production combinations o
 all framework/industry overlays are integration tested. Additional owners fail
 closed when adapters/source contracts are missing. No accounting skill or
 canonical/supplemental knowledge is authored here.
+
+## Intent and diagnostic analytics foundation
+
+The existing planner now has a governed `interpret` interface and `Intent` proposal:
+primary mode, secondary modes, supporting modes/reasons and an optional bounded
+owner inquiry. Runtime validates mode identities/duplicates; issue identification
+and native production availability remain separate. Deterministic interpretation
+is a bounded fixture adapter, not arbitrary semantic natural-language coverage.
+Documentation/process/narrow accounting objectives avoid diagnostic expansion;
+closing AP/inventory inquiries retain only the owner and genuine native imports.
+
+Analytics 1.1.0 remains SKILL-ANALYTICS-001. Its optional reviewed diagnostic input
+uses posted current owner metrics, frozen supplied comparators, deterministic
+flux/rate/PVM bridges, native cost component allocation, explicit residuals,
+evidence-tested hypotheses and observation-only anomalies. A comparator may be
+budget/forecast/standard/target/approved baseline; generating those remains outside
+scope. Accounting questions add bounded graph follow-ups and reexecute the actual
+owner, retaining the accounting conclusion and its native treatment separately.
+No follow-up duplicates owner journals or economics. Valid partial diagnostics
+remain visible; challenged invalid analytics cannot supply a public explanation.
+
+See `DIAGNOSTIC-INTEGRATION-HANDOFF.md`, `DIAGNOSTIC-INDEPENDENT-QA.md` and
+`skills/management-accounting-analytics/methods.md`. The December/November factory
+flagship and serializable bridge/lineage/hypothesis/Case/graph/public artifacts are
+in `orchestration/examples/factory-diagnostic.*.json`. These are synthetic reviewed
+source fixtures, not real-company approvals or an ingestion system.

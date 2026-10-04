@@ -10,6 +10,7 @@ import json
 from dataclasses import asdict, dataclass, field
 from decimal import Decimal
 from .registry import Registry, production
+from .intent import Intent, interpret
 from .planning import DeterministicPlanner, Graph, Node, Issue, FACT_ADAPTERS
 from interfaces.public_output import public_record
 
@@ -90,6 +91,9 @@ class Case:
     economic_ledger: list = field(default_factory=list)
     observer_ran: bool = False
     journal_mapping_valid: bool = False
+    work_modes: dict = field(default_factory=dict)
+    diagnostics: list = field(default_factory=list)
+    accounting_questions: list = field(default_factory=list)
 
     def transition(self, target):
         lifecycle = ['OPEN', 'SCOPED', 'IN_PROGRESS', 'CHALLENGE', 'CONCLUDED', 'DOCUMENTED', 'CLOSED']
@@ -172,6 +176,9 @@ class CAO:
         c.facts['assumed'] = copy.deepcopy(request.get('assumptions', []))
         facts = request.get('facts', {})
         if not isinstance(facts, dict): raise ValueError('Source facts must be an object')
+        proposal=self.planner.interpret(c.objective,facts,context,self.registry) if hasattr(self.planner,'interpret') else interpret(c.objective)
+        if not isinstance(proposal,Intent):raise ValueError('Planner intent must be governed structured Intent')
+        c.work_modes=proposal.record()
         issues = self.planner.identify(c.objective, facts, context, self.registry)
         if not isinstance(issues, list) or any(not isinstance(i, Issue) for i in issues):
             raise ValueError('Planner must return bounded structured issues')
@@ -203,7 +210,13 @@ class CAO:
                 owner_result_dependencies=list(i.dependencies),required=i.required,material=i.material,condition=i.condition))
         # Integrator bindings infer reporting/other dependencies as actual edges.
         bindings = request.get('handoffs', [])
+        if proposal.bounded_owner:
+            bindings=[b for b in bindings if b.get('producer') in graph.nodes and b.get('consumer') in graph.nodes]
+            request['challenge_assertions']=[a for a in request.get('challenge_assertions',[]) if a.get('node') in graph.nodes]
+            request.pop('journal_account_mapping',None)
         if not isinstance(bindings, list): raise ValueError('Handoffs must be a list')
+        bindings=[b for b in bindings if b.get('consumer') in graph.nodes]
+        request['challenge_assertions']=[a for a in request.get('challenge_assertions',[]) if a.get('node') in graph.nodes]
         for b in bindings:
             if b['consumer'] not in graph.nodes or b['producer'] not in graph.nodes: raise ValueError('Handoff owner node absent')
             n=graph.nodes[b['consumer']]
@@ -276,8 +289,12 @@ class CAO:
                     c.facts['assumed'].extend(r.get('assumptions',[]))
                 except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
                     n.status='blocked'; n.result=None; n.open_items.append(str(exc))
+        self._diagnostic_followups(c,graph,inputs,context)
         c.transition('CHALLENGE')
         self._challenge(c,graph,inputs,request,context)
+        analytics=next((n for n in graph.nodes.values() if n.selected_skill=='management-accounting-analytics'),None)
+        if analytics and analytics.status not in ('complete','partial'):
+            c.diagnostics=[]
         c.workplan_nodes=graph.record()
         unresolved=[n for n in graph.nodes.values() if n.status in ('blocked','partial')]
         critical=[n for n in unresolved if n.required or n.material is not False]
@@ -298,6 +315,42 @@ class CAO:
         # Verify the actual public adapter before allowing a clean close.
         self.public(c)
         if c.outcome == 'complete': c.transition('CLOSED')
+
+    def _diagnostic_followups(self,c,g,inputs,context):
+        analytics=next((n for n in g.nodes.values() if n.selected_skill=='management-accounting-analytics' and n.status in ('complete','partial')),None)
+        if not analytics:return
+        diagnostic=analytics.result['calculations'].get('diagnostic')
+        if not diagnostic:
+            if c.work_modes.get('primary')=='DIAGNOSTIC_ANALYTICS' or 'DIAGNOSTIC_ANALYTICS' in c.work_modes.get('secondary',[]):c.open_questions.append(dict(kind='blocking',question='Supply reviewed diagnostic periods, comparators and driver evidence to explain the movement'))
+            return
+        approval=inputs[analytics.selected_skill].get('reviewer_signoff',{})
+        if approval.get('approved') is not True or approval.get('case_fingerprint')!=production.case_fingerprint(inputs[analytics.selected_skill]):return
+        if diagnostic['bridge']['metric']=='gross_profit' and diagnostic['bridge']['presentation_basis']!=context.get('gross_margin_basis'):
+            g.invalidate(analytics.id,'Diagnostic margin basis differs from approved company presentation policy');return
+        c.diagnostics=[copy.deepcopy(diagnostic)]
+        for question in diagnostic['accounting_questions']:
+            q=copy.deepcopy(question);owner=q['target_owner'];meta=self.registry.get(owner)
+            existing=[n for n in g.nodes.values() if n.selected_skill==owner and n.issue!='diagnostic accounting follow-up']
+            node=Node('diagnostic-'+q['id'],'diagnostic accounting follow-up',owner,q['reason'],context['entity'],context['framework'],c.periods,
+                dependencies=[analytics.id]+[n.id for n in existing],source_inputs=q['source_evidence'])
+            g.add(node);g.validate();node.iterations=1
+            source=inputs.get(owner)
+            try:
+                if analytics.status!='complete':raise ValueError('Material diagnostic evidence unresolved before accounting follow-up')
+                if not meta['production_available'] or not meta['execution_available']:raise ValueError('Accounting owner unavailable for diagnostic determination')
+                if not existing or existing[0].status!='complete':raise ValueError('Accounting question requires current completed owner work')
+                result=production.assess_case(owner,source);production.to_public(result,'answer_context')
+                if result['status']!='complete' or digest(result)!=digest(existing[0].result):raise ValueError('Accounting owner recheck unresolved or changed; rework required')
+                if number(at(result['calculations'],q['result_path']))!=number(q['amount']):raise ValueError('Analytical finding differs from accounting owner')
+                node.status='complete';node.result=result;q['status']='OWNER_RECHECK_SUPPORTED'
+                q['accounting_conclusion']=result['conclusion']
+                if owner=='inventory-cost' and q['result_path']==['manufacturing_expense']:
+                    expense=sum((number(line['amount']) for journal in result.get('journal_entry_implications',[]) for line in journal if line['side']=='Dr' and line['account']=='Unallocated overhead expense'),Decimal(0))
+                    if expense==number(q['amount']):q['accounting_disposition']='unallocated manufacturing expense'
+            except (ValueError,KeyError,TypeError,ArithmeticError) as exc:
+                node.status='blocked';node.open_items=[str(exc)];q['status']='UNRESOLVED'
+            c.accounting_questions.append(q)
+            c.execution_ledger.append(dict(node=node.id,batch=[node.id],status=node.status,action='diagnostic owner recheck',reuses=[n.id for n in existing]))
 
     def rework(self, previous, revised_request):
         if revised_request.get('case_id') == previous.id:
@@ -400,7 +453,7 @@ class CAO:
             flag(conflict['nodes'],'POLICY_CONFLICT',conflict['finding'])
             c.alternatives.extend(conflict.get('alternatives',[]))
         reporting=next((n for n in g.nodes.values() if n.selected_skill=='financial-statements' and n.status=='complete'),None)
-        journal_owners=[n for n in g.nodes.values() if n.status=='complete' and n.result.get('journal_entry_implications')]
+        journal_owners=[n for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete' and n.result.get('journal_entry_implications')]
         if reporting and (len(journal_owners)>1 or 'journal_account_mapping' in request):
             try:
                 self._journal_mapping(c,g,inputs,request,reporting)
@@ -420,7 +473,7 @@ class CAO:
         if not isinstance(mapping,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in mapping.items()):
             raise ValueError('Malformed journal mapping')
         native=[dict(owner=n.selected_skill,case_fingerprint=n.result['case_fingerprint'],journals=n.result.get('journal_entry_implications',[]))
-            for n in g.nodes.values() if n.status=='complete']
+            for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
         payload=dict(mapping=mapping,native_owner_journals=native)
         if review.get('payload_fingerprint')!=digest(payload) or review.get('approved') is not True or not review.get('reviewer') or review.get('reviewer')==review.get('preparer'):
             raise ValueError('Mapped journal pack requires independent exact-payload review')
@@ -440,7 +493,7 @@ class CAO:
     def _synthesis(self,c,g,context):
         values={}; journals=[]; controls=[]; reporting=[]; limits=[]; approvals=[]
         for n in g.nodes.values():
-            if n.status!='complete' or not n.result: continue
+            if n.issue=='diagnostic accounting follow-up' or n.status!='complete' or not n.result: continue
             r=n.result
             # Numeric accounting authority is extracted by owner semantic, not
             # added indiscriminately across results.
@@ -472,6 +525,21 @@ class CAO:
         open_items=[dict(node=n.id,issue=n.issue,reason='; '.join(n.open_items),required=n.required,material=n.material)
             for n in g.nodes.values() if n.status in ('blocked','partial')]
         text='The supplied accounting workpapers support the requested conclusion within the reviewed scope.' if c.outcome=='complete' else 'The accounting review is unresolved in the areas listed below; completed workpapers are retained.'
+        if c.diagnostics:
+            d=c.diagnostics[0];b=d['bridge']
+            text='The '+b['metric'].replace('_',' ')+' moved from '+format(number(b['starting']),',.2f')+' to '+format(number(b['ending']),',.2f')+'. Explained signed movement is '+format(number(b['explained_amount']),',.2f')+'; explicit unexplained residual is '+format(number(b['residual']),',.2f')+'.'
+            if c.outcome!='complete':text+=' The review remains unresolved in the listed areas.'
+            for driver in b['drivers']:
+                text+=' '+driver['label']+': '+format(number(driver['contribution']),',.2f')+' ('+driver['category'].replace('_',' ')+', '+driver['confidence']+' confidence; bridge contribution).'
+            text+=' Accounting treatment remains with the reviewed accounting owner; diagnostic attribution does not authorize an adjustment.'
+            for q in c.accounting_questions:
+                text+=' Accounting check '+q['issue']+': '+('supported by the completed accounting workpaper' if q['status']=='OWNER_RECHECK_SUPPORTED' else 'unresolved')+'.'
+                if q.get('accounting_disposition')=='unallocated manufacturing expense':text+=' The accounting owner records '+q['amount']+' as unallocated manufacturing expense; the analytical bridge itself does not authorize capitalization.'
+            values.update(diagnostic_change=b['change'],diagnostic_explained=b['explained_amount'],diagnostic_residual=b['residual'])
+            if b['explained_percent'] is not None:values['diagnostic_explained_percent']=b['explained_percent']
+            for h in d['hypotheses']:limits.append('Hypothesis: '+h['hypothesis']+'; '+h['disposition']+' ('+h['evidence_class'].replace('_',' ')+').')
+            for observation in d['observations']:limits.append(observation['observation']+'; observation only. '+observation['question'])
+            if b['comparator_kind']!='actual':limits.append('Supplied '+b['comparator_kind']+' is an analytical comparator, not accounting actual or a new forecast.')
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
         if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,

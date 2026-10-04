@@ -279,6 +279,7 @@ def case_fingerprint(case):
     if case.get('package')=='agriculture-biological-assets':
         files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
         files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
+    files += [ROOT/'skills/management-accounting-analytics/diagnostics.py']
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -338,7 +339,12 @@ def to_public(result, route='answer'):
                 locator=ref if confirmed else 'Unverified paragraph reference: '+ref
                 citations.append({'title':claim_title,'locator':locator})
     # Never copy internal evidence limitations or arbitrary case text to public output.
-    guidance=result['conclusion']+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(result['calculations'],default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
+    public_calculations=dict(result['calculations'])
+    diagnostic=public_calculations.pop('diagnostic',None)
+    if diagnostic:
+        bridge=diagnostic['bridge']
+        public_calculations['diagnostic_bridge']={k:bridge[k] for k in ('starting','ending','change','explained_amount','explained_percent','residual','status')}
+    guidance=result['conclusion']+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(public_calculations,default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
     if result.get('specialist_routing'):
         route_info=result['specialist_routing']
         guidance+='\nSpecialist handoff: '+route_info['target']+'; required evidence: '+route_info['required_evidence']+'; '+route_info['completion_gate']
@@ -373,7 +379,7 @@ def assess_case(package,case):
           'audit-support-pbc': ('TOPIC-10-001','Accounting governance and underlying topic owners','Management PBC population, source reconciliation, query and auditor-selected sample support only; no opinion, sufficiency/independence determination, confirmations, adjustments or accounting alteration.'),
           'accounting-policy-memo-governance': ('TOPIC-15-001','Accounting governance and underlying topic owners','Versioned policy/memo governance consuming actual completed accounting conclusions; no autonomous policy selection/transition/recognition, paragraph invention or overwriting policy history.'),
           'disclosure-management': ('TOPIC-08-004','Accounting governance and underlying topic owners','Qualified current requirements/applicability population and source/note/issued-comparative tie-outs; no generated universal checklist, new requirements, unowned disclosures or compliance certification.'),
-          'management-accounting-analytics': ('TOPIC-08-008','Accounting governance and underlying topic owners','Accounting-source lineage, management/statutory bridge, reconciled calendar comparable flux and on-time reconciliation KPI only. Facts separate from reviewed explanations; no FP&A/forecast/budget, generic BI, invented adjustments or undisclosed netting.'),
+          'management-accounting-analytics': ('TOPIC-08-008','Accounting governance and underlying topic owners','Accounting-source lineage, factual flux, diagnostic bridges and supplied comparators; no autonomous FP&A, invented adjustments or accounting-owner override.'),
           'held-for-sale-discontinued-operations':('TOPIC-13-004','Disposal, impairment, fixed assets and group specialists','Dated disposal perimeter and classification evidence; group allocation, reversal, disposal and US/UK measurement need separate governed methods'),
           'investment-property':('TOPIC-04-001','Investment-property accounting and knowledge governance','Substantive approved investment-property scope, models, transfers and framework-specific measurement; PPE pointers are insufficient'),
           'hyperinflation-accounting':('TOPIC-13-011','Hyperinflation, FX, tax and consolidation specialists','Actual economic evidence and index provenance; full monetary-result, equity, tax, translation and consolidation method required beyond isolated schedule'),

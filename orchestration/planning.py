@@ -6,6 +6,7 @@ requested scope; supplied economic facts determine applicable issues.
 """
 from dataclasses import dataclass, field, asdict
 from typing import Protocol
+from .intent import interpret
 
 # Fact families map to existing bounded owner contracts. Other families remain
 # visible open questions until an adapter is implemented; never guessed routes.
@@ -48,18 +49,31 @@ class Issue:
 
 
 class Planner(Protocol):
+    def interpret(self, objective, facts, context, registry): ...
     def identify(self, objective, facts, context, registry) -> list[Issue]: ...
 
 
 class DeterministicPlanner:
     """Evidence-led bounded interpretation, no external LLM/network dependency."""
+    def interpret(self, objective, facts, context, registry):
+        return interpret(objective).validate()
+
     def identify(self, objective, facts, context, registry):
+        intent = self.interpret(objective, facts, context, registry)
         objective = objective.lower()
         # Bounded balance inquiry scales to one owner. No broad task default for
         # unsupported prose: the runtime exposes the missing decomposition.
         simple_ap = 'ap' in objective.split() and 'balance' in objective and not any(
             word in objective for word in ('review', 'year-end', 'margin', 'close'))
-        families = ['supplier_cost'] if simple_ap else list(facts)
+        simple_ap = bool(intent.bounded_owner)
+        families = [k for k,v in FACT_ADAPTERS.items() if v[0] == intent.bounded_owner] if simple_ap else list(facts)
+        if not intent.bounded_owner:
+            if intent.primary=='ACCOUNTING_DETERMINATION' and 'how' in objective:
+                families=[k for k in families if k not in {'analytics','statement','disclosure','close_calendar','reconciliation','interface','control','task_attributes'}]
+            elif intent.primary=='PROCESS_CONTROL_REVIEW':
+                families=[k for k in families if k in {'close_calendar','interface','control','task_attributes'}]
+            elif intent.primary=='DOCUMENTATION':
+                families=[k for k in families if k not in {'analytics','statement','disclosure','close_calendar','reconciliation','interface','control','task_attributes'}]
         issues = []
         for family in families:
             if family not in FACT_ADAPTERS: continue
@@ -87,11 +101,18 @@ class DeterministicPlanner:
         }
         if not simple_ap:
             for attribute, owners in rules.items():
+                if intent.primary in ('PROCESS_CONTROL_REVIEW','DOCUMENTATION') and attribute=='material_balance':continue
+                if intent.primary=='ACCOUNTING_DETERMINATION' and 'how' in objective and attribute!='significant_judgment':continue
                 if facts.get('task_attributes', {}).get(attribute) is True:
                     for owner, capability in owners:
                         found = next((i for i in issues if i.owner == owner), None)
                         if found: found.considerations.append(capability)
                         else: issues.append(Issue(owner, capability, owner, attribute+' requires '+capability))
+        if not intent.bounded_owner:
+            required_modes = {'DIAGNOSTIC_ANALYTICS': [('management-accounting-analytics','requested diagnostic investigation')], 'DOCUMENTATION': [('accounting-policy-memo-governance','requested accounting memo')],
+                'PROCESS_CONTROL_REVIEW': [('accounting-systems-data-integrity','requested process/data review'), ('accounting-controls-icfr','requested control review')]}
+            for owner, reason in required_modes.get(intent.primary, []):
+                if not any(i.owner==owner for i in issues):issues.append(Issue(owner, reason, owner, reason))
         by = {i.owner:i for i in issues}
         # Walk actual source imports transitively. Track owner populations so a
         # recursive import remains a graph cycle for validation, never an infinite walk.
