@@ -1,20 +1,22 @@
 name: Phase 3 skill regression
 
 # Run the full skill gate when a PR is explicitly moved to review, and on
-# merges/pushes to main. This avoids one CI run (and possible owner email)
-# for every intermediate development commit while preserving the merge gate.
+# merges/pushes to main. The standalone Agriculture branch also runs on push
+# so its exact final head can pass before the Draft PR is marked ready.
 on:
   pull_request:
     types: [ready_for_review, reopened]
     paths:
       - "skills/**"
       - "knowledge/income-taxes/**"
+      - "knowledge/agriculture/**"
       - ".github/workflows/phase3-skills.yml"
   push:
-    branches: [main]
+    branches: [main, phase-3/agriculture-biological-assets]
     paths:
       - "skills/**"
       - "knowledge/income-taxes/**"
+      - "knowledge/agriculture/**"
       - ".github/workflows/phase3-skills.yml"
   workflow_dispatch:
 
@@ -27,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -36,6 +40,9 @@ jobs:
           python -m unittest discover -s skills/tests -p "test_*.py"
           python knowledge/income-taxes/test_supplement.py
           python knowledge/income-taxes/validate_supplement.py
+          python knowledge/agriculture/validate_supplement.py
+          python knowledge/agriculture/test_supplement.py
+          python knowledge/agriculture/test_independent_claim_qa.py
       - name: Repository regression
         run: python -m unittest discover -s tests -p "test_*.py"
       - name: Standards evidence validation
