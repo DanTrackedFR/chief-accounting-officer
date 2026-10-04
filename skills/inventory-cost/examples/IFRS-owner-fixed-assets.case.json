@@ -1,0 +1,3516 @@
+{
+  "case_id": "Independent inventory source cost \u00d71.37 IFRS Synthetic Inventory IFRS manufacturing actual FIFO",
+  "framework": "IFRS",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "entity": "Synthetic Group",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "policy_elections": {},
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "preparer": "synthetic preparer",
+  "specialist_items": [],
+  "applicability_review": {
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "IAS2_2026"
+    ],
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": []
+  },
+  "package": "inventory-cost",
+  "execution_date": "2027-03-31",
+  "requested_action": "accounting",
+  "imports": [
+    {
+      "id": "actual-fixed-assets",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "package": "fixed-assets",
+      "case": {
+        "case_id": "synthetic-fixed-assets",
+        "framework": "IFRS",
+        "period_start": "2026-01-01",
+        "reporting_period": "2026-12-31",
+        "entity": "Synthetic Group",
+        "jurisdiction": "NL",
+        "entity_type": "for_profit",
+        "policy_elections": {},
+        "evidence": [
+          "synthetic evidence set"
+        ],
+        "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "preparer": "synthetic preparer",
+        "specialist_items": [],
+        "applicability_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "standard_versions": [
+            "selected effective edition"
+          ],
+          "effective_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "entity_scope": "for_profit",
+          "exceptions": []
+        },
+        "functional_currency": "USD",
+        "execution_date": "2027-01-05",
+        "controls": {
+          "source_version": "v1",
+          "as_of": "2026-12-31",
+          "population_count": 0,
+          "population_amount": "0",
+          "owner": "synthetic source owner",
+          "reviewer": "synthetic completeness reviewer",
+          "complete": true,
+          "policy_version": "v1",
+          "cutoff_memo": "Synthetic complete period end independent source"
+        },
+        "asset_policy": {
+          "model": "cost",
+          "component_review": true,
+          "life_review": true,
+          "review_memo": "Reviewed significant components and framework life-review frequency"
+        },
+        "assets": [
+          {
+            "id": "machine",
+            "owner": "synthetic owner",
+            "reviewer": "synthetic independent reviewer",
+            "evidence": "synthetic source",
+            "approved": true,
+            "approval_date": "2026-12-31",
+            "version": "v1",
+            "approved_version": "v1",
+            "opening_cost": "600000",
+            "opening_accumulated": "180000",
+            "residual": "60000",
+            "remaining_life": "4",
+            "ready_date": "2024-01-01",
+            "method": "straight_line",
+            "remaining_units": "0",
+            "period_units": "0",
+            "change": {
+              "enabled": false
+            },
+            "disposal": {
+              "enabled": false
+            },
+            "expected_depreciation": "90000",
+            "gl_cost": "600000",
+            "gl_accumulated": "270000",
+            "scope": "ordinary_ppe",
+            "component_id": "machine component",
+            "consumption_memo": "Straight-line engineering service use"
+          }
+        ],
+        "costs": [],
+        "cip": [],
+        "gl": {
+          "cost": "600000",
+          "accumulated": "270000",
+          "cip": "0"
+        },
+        "asset_inventory": [
+          "machine"
+        ],
+        "project_inventory": [],
+        "handoffs": {
+          "impairment": {
+            "target": "Impairment",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "reporting_period": "2026-12-31",
+            "evidence": "synthetic specialist memo",
+            "reviewer": "synthetic technical reviewer",
+            "resolved": true,
+            "scope_memo": "Reviewed ordinary supported scope"
+          },
+          "leases": {
+            "target": "Lease Accounting",
+            "entity": "Synthetic Group",
+            "framework": "IFRS",
+            "reporting_period": "2026-12-31",
+            "evidence": "synthetic specialist memo",
+            "reviewer": "synthetic technical reviewer",
+            "resolved": true,
+            "scope_memo": "Reviewed ordinary supported scope"
+          }
+        },
+        "knowledge_review": {
+          "reviewer": "synthetic accounting reviewer",
+          "claim_ids": [
+            "TOPIC-04-001-IFRS-01",
+            "TOPIC-04-001-IFRS-02",
+            "TOPIC-04-001-IFRS-03",
+            "TOPIC-04-001-IFRS-E001",
+            "TOPIC-04-002-IFRS-01",
+            "TOPIC-04-002-IFRS-02",
+            "TOPIC-04-002-IFRS-E001",
+            "TOPIC-04-003-IFRS-01",
+            "TOPIC-04-003-IFRS-E001",
+            "TOPIC-12-004-IFRS-E001"
+          ],
+          "documents": [
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md",
+              "sha256": "d19b437a3df9edcab468d38b038063c36e915f207afeb9a2cbfd9c399ca0bc33"
+            },
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/README.md",
+              "sha256": "5d984fab37f7d8226d99c007efb0b779ff9c504b5cf93f7db01bdb6b1bd39fd9"
+            },
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md",
+              "sha256": "66d09da71681e3e202e7736402a8c633ddd56e08d93bc5d50511e3ab128a11ce"
+            },
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/knowledge-pack.md",
+              "sha256": "096a06cdc1ced5e97aa499eb3bb4b967b5f7be3278a6c755eaab4bddbd83aa37"
+            },
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/phase-2d-method.md",
+              "sha256": "a6619e5a3ea7a57b6d1afc2fd1a6bbcf5c44a545bab15b959ce0c910a2055bcb"
+            },
+            {
+              "topic_id": "TOPIC-04-001",
+              "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json",
+              "sha256": "2964ea34d8a021b2147e3487c7b6ab64951991843938ec8c3c7f1b472f093725"
+            },
+            {
+              "topic_id": "TOPIC-04-002",
+              "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/README.md",
+              "sha256": "14855a0fe3eaa16545fd2e41b7520f772c0b7c7f0ac97de824ba8e2a1b47709c"
+            },
+            {
+              "topic_id": "TOPIC-04-002",
+              "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md",
+              "sha256": "3b8602f800b34750ff8882275c5ae8ea878fc81ccf20f26ce2ed19916a383cbc"
+            },
+            {
+              "topic_id": "TOPIC-04-002",
+              "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/phase-2d-method.md",
+              "sha256": "b267d953bcfd2271c4a70865d0d7fdfc837432dc823d457fe066ea17ae3f2cea"
+            },
+            {
+              "topic_id": "TOPIC-04-002",
+              "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json",
+              "sha256": "f416b5bea0003df4cde5ba312d7fe551f16974c64a4d5c3231f1bb63b28cca07"
+            },
+            {
+              "topic_id": "TOPIC-04-002",
+              "path": "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md",
+              "sha256": "4c53b2c082d93715837bacba8e1e7cef4e4fc16f9c2f1e2785c41dde75d42dd1"
+            },
+            {
+              "topic_id": "TOPIC-04-003",
+              "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/README.md",
+              "sha256": "19eb722e26babf27f098eee41a155ece289a34ee21ec5d336d732a33610d3709"
+            },
+            {
+              "topic_id": "TOPIC-04-003",
+              "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md",
+              "sha256": "6406d2391d1f73682b809cd2885afcb47bd37bf7f8fd2363195f46da631d41a6"
+            },
+            {
+              "topic_id": "TOPIC-04-003",
+              "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md",
+              "sha256": "99fbeeb4e8f43db98b9678aadf22f15b63abee45fc9735087828a533259a0ad4"
+            },
+            {
+              "topic_id": "TOPIC-04-003",
+              "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/phase-2d-method.md",
+              "sha256": "6f682fed66d8822e18b007bdc5781a42ecaa5a11ec36d32faf2d4058f5215161"
+            },
+            {
+              "topic_id": "TOPIC-04-003",
+              "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json",
+              "sha256": "378b24254f5d3fe03ae08aa288320966f5264eea5ffaa8774db99024bab4c129"
+            },
+            {
+              "topic_id": "TOPIC-12-004",
+              "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md",
+              "sha256": "92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725"
+            },
+            {
+              "topic_id": "TOPIC-12-004",
+              "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md",
+              "sha256": "e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6"
+            },
+            {
+              "topic_id": "TOPIC-12-004",
+              "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md",
+              "sha256": "fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071"
+            },
+            {
+              "topic_id": "TOPIC-12-004",
+              "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json",
+              "sha256": "ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd"
+            },
+            {
+              "topic_id": "TOPIC-12-004",
+              "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md",
+              "sha256": "e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c"
+            }
+          ],
+          "applied_claim_ids": [
+            "TOPIC-04-001-IFRS-01",
+            "TOPIC-04-001-IFRS-02",
+            "TOPIC-04-001-IFRS-03",
+            "TOPIC-04-001-IFRS-E001",
+            "TOPIC-04-002-IFRS-01",
+            "TOPIC-04-002-IFRS-02",
+            "TOPIC-04-002-IFRS-E001",
+            "TOPIC-04-003-IFRS-01",
+            "TOPIC-04-003-IFRS-E001",
+            "TOPIC-12-004-IFRS-E001"
+          ],
+          "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope",
+          "public_caveats": [
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ]
+        },
+        "reviewer_signoff": {
+          "reviewer": "synthetic independent reviewer",
+          "approved": true,
+          "case_fingerprint": "55d4c48c72393cb1faa84e3d318288d5cc1d1db0e544a15953a676bc0e69a5ea"
+        }
+      },
+      "result": {
+        "conclusion": "Qualifying costs, components, depreciation, disposals and CIP reconcile to gross ledgers.",
+        "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+        "calculations": {
+          "assets": [
+            {
+              "id": "machine",
+              "cost": "600000",
+              "depreciation": "90000.00",
+              "closing_cost": "600000",
+              "closing_accumulated": "270000.00",
+              "carrying": "330000.00",
+              "disposal_gain": "0"
+            }
+          ],
+          "cip": [],
+          "depreciation": "90000.00",
+          "excluded_expense": "0",
+          "closing_cost": "600000",
+          "closing_accumulated": "270000.00",
+          "closing_cip": "0"
+        },
+        "journal_entry_implications": [
+          [
+            {
+              "side": "Dr",
+              "account": "depreciation expense",
+              "amount": "90000.00"
+            },
+            {
+              "side": "Cr",
+              "account": "accumulated depreciation",
+              "amount": "90000.00"
+            }
+          ]
+        ],
+        "judgments": [
+          "Readiness starts depreciation independently of project budget closure; idleness does not automatically stop depreciation.",
+          "US component policy and estimate/method changes differ from IAS16; FRS102 significant-change reviews must not be described as an automatic IAS16 annual requirement."
+        ],
+        "disclosures_impacted": [
+          "Class gross/accumulated rollforwards, depreciation methods/lives, impairment, disposals and CIP commitments; AASB Tier2 disclosures use applicable reduced-disclosure requirements."
+        ],
+        "uncertainties": [
+          "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+          "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+        ],
+        "open_items": [],
+        "controls_impacted": [
+          "Source population to GL tie-out",
+          "Independent route, estimate and journal review",
+          "Versioned accounting policy and disclosure review"
+        ],
+        "documentation_required": [
+          "Accounting judgment memo",
+          "Input evidence",
+          "Calculation and reconciliation",
+          "Disclosure tie-out",
+          "Reviewer certification"
+        ],
+        "audit_evidence_required": [
+          "Contract/legal/source evidence",
+          "Assumptions and alternatives",
+          "Calculation reperformance",
+          "Approval record"
+        ],
+        "skill_id": "SKILL-FA-001",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "entities": [
+          "Synthetic Group"
+        ],
+        "periods": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "facts_used": {
+          "case_id": "synthetic-fixed-assets",
+          "framework": "IFRS",
+          "period_start": "2026-01-01",
+          "reporting_period": "2026-12-31",
+          "entity": "Synthetic Group",
+          "jurisdiction": "NL",
+          "entity_type": "for_profit",
+          "policy_elections": {},
+          "evidence": [
+            "synthetic evidence set"
+          ],
+          "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+          "preparer": "synthetic preparer",
+          "specialist_items": [],
+          "applicability_review": {
+            "reviewer": "synthetic accounting reviewer",
+            "standard_versions": [
+              "selected effective edition"
+            ],
+            "effective_period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "entity_scope": "for_profit",
+            "exceptions": []
+          },
+          "functional_currency": "USD",
+          "execution_date": "2027-01-05",
+          "controls": {
+            "source_version": "v1",
+            "as_of": "2026-12-31",
+            "population_count": 0,
+            "population_amount": "0",
+            "owner": "synthetic source owner",
+            "reviewer": "synthetic completeness reviewer",
+            "complete": true,
+            "policy_version": "v1",
+            "cutoff_memo": "Synthetic complete period end independent source"
+          },
+          "asset_policy": {
+            "model": "cost",
+            "component_review": true,
+            "life_review": true,
+            "review_memo": "Reviewed significant components and framework life-review frequency"
+          },
+          "assets": [
+            {
+              "id": "machine",
+              "owner": "synthetic owner",
+              "reviewer": "synthetic independent reviewer",
+              "evidence": "synthetic source",
+              "approved": true,
+              "approval_date": "2026-12-31",
+              "version": "v1",
+              "approved_version": "v1",
+              "opening_cost": "600000",
+              "opening_accumulated": "180000",
+              "residual": "60000",
+              "remaining_life": "4",
+              "ready_date": "2024-01-01",
+              "method": "straight_line",
+              "remaining_units": "0",
+              "period_units": "0",
+              "change": {
+                "enabled": false
+              },
+              "disposal": {
+                "enabled": false
+              },
+              "expected_depreciation": "90000",
+              "gl_cost": "600000",
+              "gl_accumulated": "270000",
+              "scope": "ordinary_ppe",
+              "component_id": "machine component",
+              "consumption_memo": "Straight-line engineering service use"
+            }
+          ],
+          "costs": [],
+          "cip": [],
+          "gl": {
+            "cost": "600000",
+            "accumulated": "270000",
+            "cip": "0"
+          },
+          "asset_inventory": [
+            "machine"
+          ],
+          "project_inventory": [],
+          "handoffs": {
+            "impairment": {
+              "target": "Impairment",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "reporting_period": "2026-12-31",
+              "evidence": "synthetic specialist memo",
+              "reviewer": "synthetic technical reviewer",
+              "resolved": true,
+              "scope_memo": "Reviewed ordinary supported scope"
+            },
+            "leases": {
+              "target": "Lease Accounting",
+              "entity": "Synthetic Group",
+              "framework": "IFRS",
+              "reporting_period": "2026-12-31",
+              "evidence": "synthetic specialist memo",
+              "reviewer": "synthetic technical reviewer",
+              "resolved": true,
+              "scope_memo": "Reviewed ordinary supported scope"
+            }
+          }
+        },
+        "assumptions": [
+          "Synthetic amounts and assumptions for regression only"
+        ],
+        "evidence": [
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-01",
+            "proposition": "PPE scope and component unit distinguish operating tangible assets from inventory, investment property and leases",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-02",
+            "proposition": "Initial eligible cost includes directly attributable readiness expenditures and qualifying restoration, excluding training and abnormal waste",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-03",
+            "proposition": "Class-level subsequent policy and proceeds-before-intended-use presentation and disclosures require period-specific IAS 16 application",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-E001",
+            "proposition": "Training is excluded from PPE initial cost, and testing-output proceeds and costs are recognized separately in profit or loss.",
+            "references": [
+              "IAS16.19\u201320A"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-01",
+            "proposition": "Significant components, availability date, systematic depreciation and annual life, method and residual reviews control IAS 16 depreciation",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 and IAS 8 version for period; prospective estimate change",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-02",
+            "proposition": "Derecognition gain or loss and held-for-sale classification are distinct from ordinary depreciation",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed.",
+              "Model-derived treatment is provisional until an independent reviewer compares operative authoritative text."
+            ],
+            "effective_period": "IAS 16 and IAS 8 version for period; prospective estimate change",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-E001",
+            "proposition": "Useful life, residual and method are reviewed at least at each year end; depreciation starts when available for use.",
+            "references": [
+              "IAS16.51,55,61"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "claim_id": "TOPIC-04-003-IFRS-01",
+            "proposition": "Qualifying CIP transfers to PPE when ready for intended use and aged unfinished projects require impairment or abandonment review",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16/38 versions at project cost and ready dates",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "claim_id": "TOPIC-04-003-IFRS-E001",
+            "proposition": "Depreciation starts when the asset is available for intended use, independently of administrative project-budget closure.",
+            "references": [
+              "IAS16.55"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "claim_id": "TOPIC-12-004-IFRS-E001",
+            "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+            ],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": true
+          }
+        ],
+        "reviewed_claims": [
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-01",
+            "proposition": "PPE scope and component unit distinguish operating tangible assets from inventory, investment property and leases",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-02",
+            "proposition": "Initial eligible cost includes directly attributable readiness expenditures and qualifying restoration, excluding training and abnormal waste",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-03",
+            "proposition": "Class-level subsequent policy and proceeds-before-intended-use presentation and disclosures require period-specific IAS 16 application",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 proceeds amendment mandatory annual periods beginning 1 January 2022; confirm other amendments by report date",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "claim_id": "TOPIC-04-001-IFRS-E001",
+            "proposition": "Training is excluded from PPE initial cost, and testing-output proceeds and costs are recognized separately in profit or loss.",
+            "references": [
+              "IAS16.19\u201320A"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-01",
+            "proposition": "Significant components, availability date, systematic depreciation and annual life, method and residual reviews control IAS 16 depreciation",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16 and IAS 8 version for period; prospective estimate change",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-02",
+            "proposition": "Derecognition gain or loss and held-for-sale classification are distinct from ordinary depreciation",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed.",
+              "Model-derived treatment is provisional until an independent reviewer compares operative authoritative text."
+            ],
+            "effective_period": "IAS 16 and IAS 8 version for period; prospective estimate change",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "claim_id": "TOPIC-04-002-IFRS-E001",
+            "proposition": "Useful life, residual and method are reviewed at least at each year end; depreciation starts when available for use.",
+            "references": [
+              "IAS16.51,55,61"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "claim_id": "TOPIC-04-003-IFRS-01",
+            "proposition": "Qualifying CIP transfers to PPE when ready for intended use and aged unfinished projects require impairment or abandonment review",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "PRIMARY_CORROBORATED",
+            "limitations": [
+              "Official material inspected is an overview or amendment, not a direct check of the entire current operative provision.",
+              "Independent source-version and paragraph audit remains open; no paragraph-level verification claimed."
+            ],
+            "effective_period": "IAS 16/38 versions at project cost and ready dates",
+            "entity_scope": "Select reporting entity, framework, reporting period and elections before application",
+            "audit_required": true
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "claim_id": "TOPIC-04-003-IFRS-E001",
+            "proposition": "Depreciation starts when the asset is available for intended use, independently of administrative project-budget closure.",
+            "references": [
+              "IAS16.55"
+            ],
+            "reference_confidence": "VERIFIED",
+            "evidence_status": "SOURCE_VERIFIED",
+            "limitations": [],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": false
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "claim_id": "TOPIC-12-004-IFRS-E001",
+            "proposition": "Asset, lease and intercompany processes implement approved framework conclusions; unsupported balance mismatches do not authorize recognition or consolidation plugs.",
+            "references": [],
+            "reference_confidence": "UNKNOWN",
+            "evidence_status": "MODEL_DERIVED_AUDIT_REQUIRED",
+            "limitations": [
+              "Training-data checked; operative authority not claimed inspected; exact paragraph references not asserted."
+            ],
+            "effective_period": "Select actual framework edition, annual start and adopted amendments as described in topic review.",
+            "entity_scope": "Topic-specific scope and tier resolved in linked Phase 2E review.",
+            "audit_required": true
+          }
+        ],
+        "knowledge_documents": [
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition/README.md",
+            "sha256": "d19b437a3df9edcab468d38b038063c36e915f207afeb9a2cbfd9c399ca0bc33"
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/README.md",
+            "sha256": "5d984fab37f7d8226d99c007efb0b779ff9c504b5cf93f7db01bdb6b1bd39fd9"
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/applied-qa.md",
+            "sha256": "66d09da71681e3e202e7736402a8c633ddd56e08d93bc5d50511e3ab128a11ce"
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/knowledge-pack.md",
+            "sha256": "096a06cdc1ced5e97aa499eb3bb4b967b5f7be3278a6c755eaab4bddbd83aa37"
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/phase-2d-method.md",
+            "sha256": "a6619e5a3ea7a57b6d1afc2fd1a6bbcf5c44a545bab15b959ce0c910a2055bcb"
+          },
+          {
+            "topic_id": "TOPIC-04-001",
+            "path": "knowledge/topics/TOPIC-04-001-ppe-recognition-capitalization/standards-claims.json",
+            "sha256": "2964ea34d8a021b2147e3487c7b6ab64951991843938ec8c3c7f1b472f093725"
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/README.md",
+            "sha256": "14855a0fe3eaa16545fd2e41b7520f772c0b7c7f0ac97de824ba8e2a1b47709c"
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/applied-qa.md",
+            "sha256": "3b8602f800b34750ff8882275c5ae8ea878fc81ccf20f26ce2ed19916a383cbc"
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/phase-2d-method.md",
+            "sha256": "b267d953bcfd2271c4a70865d0d7fdfc837432dc823d457fe066ea17ae3f2cea"
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "path": "knowledge/topics/TOPIC-04-002-depreciation-disposals/standards-claims.json",
+            "sha256": "f416b5bea0003df4cde5ba312d7fe551f16974c64a4d5c3231f1bb63b28cca07"
+          },
+          {
+            "topic_id": "TOPIC-04-002",
+            "path": "knowledge/topics/TOPIC-04-002-depreciation-useful-life-disposals/factory.md",
+            "sha256": "4c53b2c082d93715837bacba8e1e7cef4e4fc16f9c2f1e2785c41dde75d42dd1"
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/README.md",
+            "sha256": "19eb722e26babf27f098eee41a155ece289a34ee21ec5d336d732a33610d3709"
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/applied-qa.md",
+            "sha256": "6406d2391d1f73682b809cd2885afcb47bd37bf7f8fd2363195f46da631d41a6"
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/knowledge-pack.md",
+            "sha256": "99fbeeb4e8f43db98b9678aadf22f15b63abee45fc9735087828a533259a0ad4"
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/phase-2d-method.md",
+            "sha256": "6f682fed66d8822e18b007bdc5781a42ecaa5a11ec36d32faf2d4058f5215161"
+          },
+          {
+            "topic_id": "TOPIC-04-003",
+            "path": "knowledge/topics/TOPIC-04-003-cip-fa-reconciliation-capitalized-software/standards-claims.json",
+            "sha256": "378b24254f5d3fe03ae08aa288320966f5264eea5ffaa8774db99024bab4c129"
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md",
+            "sha256": "92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725"
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md",
+            "sha256": "e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6"
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md",
+            "sha256": "fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071"
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json",
+            "sha256": "ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd"
+          },
+          {
+            "topic_id": "TOPIC-12-004",
+            "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md",
+            "sha256": "e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c"
+          }
+        ],
+        "recommendation_class": "REQUIRED",
+        "confidence": "medium",
+        "memory_candidates": [],
+        "related_artifacts": [],
+        "reporting_impacted": [
+          "Framework-specific statement presentation and comparative-period consistency"
+        ],
+        "systems_impacted": [
+          "Retain case ID, source IDs, policy version, rule route and journal lineage"
+        ],
+        "case_fingerprint": "55d4c48c72393cb1faa84e3d318288d5cc1d1db0e544a15953a676bc0e69a5ea",
+        "status": "complete"
+      },
+      "mode": "evidence_only"
+    }
+  ],
+  "gl": [
+    {
+      "id": "Raw materials",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "1370.00",
+      "closing": "548.00",
+      "statement": "548.00"
+    },
+    {
+      "id": "Work in progress",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "9246.60",
+      "statement": "9246.60"
+    },
+    {
+      "id": "Finished goods",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "27739.800",
+      "statement": "27739.800"
+    },
+    {
+      "id": "Labour clearing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "-274.00",
+      "statement": "-274.00"
+    },
+    {
+      "id": "Overhead clearing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "-90137.00",
+      "statement": "-90137.00"
+    },
+    {
+      "id": "Unallocated overhead expense",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "45000",
+      "statement": "45000"
+    },
+    {
+      "id": "Cost of goods sold",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "currency": "USD",
+      "opening": "0.00",
+      "closing": "9246.60",
+      "statement": "9246.60"
+    }
+  ],
+  "gl_inventory": [
+    "Raw materials",
+    "Work in progress",
+    "Finished goods",
+    "Labour clearing",
+    "Overhead clearing",
+    "Unallocated overhead expense",
+    "Cost of goods sold"
+  ],
+  "documents": [
+    {
+      "id": "scope-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "checked_on": "2027-03-31",
+        "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries",
+        "edition": "IAS2_2026",
+        "entity_scope": "for_profit_full_ifrs",
+        "borrowing_capitalization": false,
+        "joint_products": false,
+        "retail_method": false,
+        "industry_exception": false,
+        "forecast_generation": false,
+        "external_posting": false,
+        "early_adoption": false
+      },
+      "content_hash": "5623423cbdefeca0f9ef3b84b3d64d85a982668d3c71c47d67daac22a5657004"
+    },
+    {
+      "id": "component-measurement",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item": "component",
+        "checked_on": "2027-03-31",
+        "population_reviewed": true,
+        "impairment_indicator": false,
+        "forecast_used": false,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_reviewed": true,
+        "expired": false,
+        "discontinued": false,
+        "estimate_memo": "Synthetic current item value/ageing review",
+        "demand_evidence_memo": "Synthetic actual recent sales support, no autonomous forecast",
+        "ageing_evidence_memo": "Synthetic current ageing expiry discontinuation source"
+      },
+      "content_hash": "15a6ebec55fa05412e1d192f82379ff637bb7ebfe8e822da34d44374ef6420bb"
+    },
+    {
+      "id": "component-rights",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item_id": "component",
+        "rights_memo": "Synthetic current purchased-title/owned third-party/consignment assessment",
+        "ownership_event_id": "title-component",
+        "entity": "Synthetic Group",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "checked_on": "2027-03-31",
+        "owned": true,
+        "third_party_owned": false,
+        "consigned_out_without_ownership": false
+      },
+      "content_hash": "26b69e0a4d32a911faf9693e44339314ce7de1a67c85cf3553e0f8cf7e7eb46e"
+    },
+    {
+      "id": "order-wip-measurement",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item": "order-wip",
+        "checked_on": "2027-03-31",
+        "population_reviewed": true,
+        "impairment_indicator": false,
+        "forecast_used": false,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_reviewed": true,
+        "expired": false,
+        "discontinued": false,
+        "estimate_memo": "Synthetic current item value/ageing review",
+        "demand_evidence_memo": "Synthetic actual recent sales support, no autonomous forecast",
+        "ageing_evidence_memo": "Synthetic current ageing expiry discontinuation source"
+      },
+      "content_hash": "19f20ee11cf9a505f54f4ef0f2ca4468cb426b35c7d58f59599d925a38efa09f"
+    },
+    {
+      "id": "order-wip-rights",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item_id": "order-wip",
+        "rights_memo": "Synthetic current purchased-title/owned third-party/consignment assessment",
+        "ownership_event_id": "title-order-wip",
+        "entity": "Synthetic Group",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "checked_on": "2027-03-31",
+        "owned": true,
+        "third_party_owned": false,
+        "consigned_out_without_ownership": false
+      },
+      "content_hash": "8a722d9289f40935e47c176686c66210aabbe960f451a40cf6e30aa675710f22"
+    },
+    {
+      "id": "product-measurement",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item": "product",
+        "checked_on": "2027-03-31",
+        "population_reviewed": true,
+        "impairment_indicator": false,
+        "forecast_used": false,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_reviewed": true,
+        "expired": false,
+        "discontinued": false,
+        "estimate_memo": "Synthetic current item value/ageing review",
+        "demand_evidence_memo": "Synthetic actual recent sales support, no autonomous forecast",
+        "ageing_evidence_memo": "Synthetic current ageing expiry discontinuation source"
+      },
+      "content_hash": "e77024bc3530ffdafcb19549d57716db8dd1c5b01850ceffd26fddf8720edd28"
+    },
+    {
+      "id": "product-rights",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "item_id": "product",
+        "rights_memo": "Synthetic current purchased-title/owned third-party/consignment assessment",
+        "ownership_event_id": "title-product",
+        "entity": "Synthetic Group",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "checked_on": "2027-03-31",
+        "owned": true,
+        "third_party_owned": false,
+        "consigned_out_without_ownership": false
+      },
+      "content_hash": "e78cb4406abdfe629bb549480513fa91674c5a042f0ced2f4a6d1e632b99f6fb"
+    },
+    {
+      "id": "issue-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-issue",
+        "item": "component",
+        "quantity": "60",
+        "date": "2026-06-30",
+        "ownership_supported": true,
+        "in_period": true
+      },
+      "content_hash": "c17429d07d102463ab34d0e136f922e9f9800ba508f932c2f315557ffa80e029"
+    },
+    {
+      "id": "completion-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-completion",
+        "item": "product",
+        "quantity": "80",
+        "date": "2026-09-30",
+        "ownership_supported": true,
+        "in_period": true
+      },
+      "content_hash": "a4b5efb20017ec66ebc8f02e37e997e8e37cc58b3e2af43d34519eb60aefb500"
+    },
+    {
+      "id": "sale-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "economic-sale",
+        "item": "product",
+        "quantity": "20",
+        "date": "2026-10-31",
+        "ownership_supported": true,
+        "in_period": true
+      },
+      "content_hash": "ed9c82e517c6ba81abf7e8b0d19ca1b33db95ef1b0c0ba439889a0caf1dd3420"
+    },
+    {
+      "id": "bom",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "order_id": "order-1",
+        "checked_on": "2027-03-31",
+        "effective_from": "2026-01-01",
+        "effective_to": "2026-12-31",
+        "substitutions_approved": true,
+        "components": [
+          {
+            "id": "bom-component",
+            "component_id": "component",
+            "standard_quantity_per_output": "0.6",
+            "standard_price": "12.33",
+            "maximum_good_output": "100"
+          }
+        ]
+      },
+      "content_hash": "4fdcd5a0a8e336f6e618a043176d995f4ffef1d5ebb561ab33df57bfb36344f7"
+    },
+    {
+      "id": "routing",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "order_id": "order-1",
+        "checked_on": "2027-03-31",
+        "actual_labour_hours": "20",
+        "actual_driver_units": "100",
+        "driver": "machine_hours"
+      },
+      "content_hash": "c737804c3751f19a9219ec04a2b33b2bc723a33d94e0d019b3db88b37fa1ba4c"
+    },
+    {
+      "id": "capacity",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "order_id": "order-1",
+        "checked_on": "2027-03-31",
+        "normal_capacity": "200",
+        "actual_driver_units": "100",
+        "normal_capacity_memo": "Synthetic controlled normal seasonal productive capacity incl planned maintenance",
+        "driver": "machine_hours",
+        "pool_memo": "Synthetic complete factory OH pool",
+        "reviewed_multi_period": true,
+        "pool_complete": true
+      },
+      "content_hash": "43d082c82ab51417d27e5bbbe7345c41701496fde4829eda371ad8d4bce7609e"
+    },
+    {
+      "id": "loss",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "order_id": "order-1",
+        "checked_on": "2027-03-31",
+        "reported_loss": "0",
+        "loss_memo": "Synthetic closed mass/yield source register",
+        "loss_explained": true,
+        "abnormal_excluded": true,
+        "abnormal_material_cost": "0.00",
+        "net_component_usage": {
+          "component": "60"
+        }
+      },
+      "content_hash": "814482ef29444d3dca4ac15e40d422a788cbe736d3910efa749fa25c40ee0998"
+    },
+    {
+      "id": "completion-evidence",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "order_id": "order-1",
+        "checked_on": "2027-03-31",
+        "completed_quantity": "80",
+        "closing_equivalent_units": "20",
+        "homogeneous_equivalents_reviewed": true
+      },
+      "content_hash": "5bad3c74701ab523ad880bb86ac377f8e6383d189025a5a6f0cf26dc8464d0c7"
+    },
+    {
+      "id": "labour-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "cost-labour",
+        "order_id": "order-1",
+        "amount": "274.00",
+        "currency": "USD",
+        "manufacturing": true,
+        "pool_complete": true,
+        "hours": "20",
+        "rate": "13.70"
+      },
+      "content_hash": "5345e3d0fcde48188eceb8e416708921dc78ea3da75d139c35b6f3eb7cc19c83"
+    },
+    {
+      "id": "variable-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "cost-variable",
+        "order_id": "order-1",
+        "amount": "137.00",
+        "currency": "USD",
+        "manufacturing": true,
+        "pool_complete": true,
+        "driver_units": "100"
+      },
+      "content_hash": "6f3a74a7ad368450dc42504cf5d88a3d2baa9bdd4e48e9498ec31a015163ae3a"
+    },
+    {
+      "id": "fixed-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "cost-fixed",
+        "order_id": "order-1",
+        "amount": "90000",
+        "currency": "USD",
+        "manufacturing": true,
+        "pool_complete": true,
+        "eligible_manufacturing": true,
+        "production_mapping_memo": "Independent factory cell source allocation",
+        "cost_qualification_memo": "Independent actual source conversion cost review"
+      },
+      "content_hash": "a214f3de7b73e08e384d26aafe2d6d3c82f2ba74a467fb10c50da3dbec36ef54"
+    },
+    {
+      "id": "disclosures-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": {
+        "classes": [
+          "FG",
+          "RM",
+          "WIP"
+        ],
+        "policy": {
+          "framework": "IFRS",
+          "edition": "IAS2_2026",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
+        "reversal": "0.00",
+        "expense": {
+          "cogs": "9246.60",
+          "manufacturing_other": "45000.00",
+          "write_down": "0.00",
+          "reversal": "0.00"
+        },
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        },
+        "write_down": "0.00",
+        "pledged": {
+          "amount": "0.00",
+          "reviewed": true,
+          "evidence_memo": "Synthetic actual collateral register none"
+        },
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "carrying": {
+          "Work in progress": "9246.60",
+          "Raw materials": "548.00",
+          "Finished goods": "27739.800"
+        }
+      },
+      "content_hash": "5cb64f536fe9ed07801d1536a01e76d241e8fc027ce7760c45424c77c9d89ad9"
+    },
+    {
+      "id": "count-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "component",
+          "item": "component",
+          "location": "Factory",
+          "quantity": "40"
+        },
+        {
+          "id": "order-wip",
+          "item": "order-wip",
+          "location": "Factory",
+          "quantity": "20"
+        },
+        {
+          "id": "product",
+          "item": "product",
+          "location": "Factory",
+          "quantity": "60"
+        }
+      ],
+      "content_hash": "349c54151e2bbb8e9fc15a18759f947d0c04225c556cfda3ff39ef8efa31e27c"
+    },
+    {
+      "id": "cutoff-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "issue",
+          "economic_id": "economic-issue",
+          "ownership_supported": true,
+          "date_reviewed": true
+        },
+        {
+          "id": "completion",
+          "economic_id": "economic-completion",
+          "ownership_supported": true,
+          "date_reviewed": true
+        },
+        {
+          "id": "sale",
+          "economic_id": "economic-sale",
+          "ownership_supported": true,
+          "date_reviewed": true
+        }
+      ],
+      "content_hash": "635412e7a0854763d025fc2c98a2389934bc470062dc3f5aa5009a2eceb0fc73"
+    },
+    {
+      "id": "items-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "component",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-component",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "component-rights",
+          "policy_group": "materials",
+          "currency": "USD",
+          "measurement_doc": "component-measurement",
+          "opening_quantity": "100",
+          "opening_cost": "1370.00",
+          "closing_quantity": "40",
+          "closing_cost": "548.00",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [
+            {
+              "id": "component-opening",
+              "economic_id": "component-opening-source",
+              "quantity": "100",
+              "cost": "1370.00",
+              "date": "2025-12-31"
+            }
+          ],
+          "class": "RM"
+        },
+        {
+          "id": "order-wip",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-order-wip",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "order-wip-rights",
+          "policy_group": "production",
+          "currency": "USD",
+          "measurement_doc": "order-wip-measurement",
+          "opening_quantity": "0",
+          "opening_cost": "0.00",
+          "closing_quantity": "20",
+          "closing_cost": "9246.60",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [],
+          "class": "WIP"
+        },
+        {
+          "id": "product",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-product",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "product-rights",
+          "policy_group": "production",
+          "currency": "USD",
+          "measurement_doc": "product-measurement",
+          "opening_quantity": "0",
+          "opening_cost": "0.00",
+          "closing_quantity": "60",
+          "closing_cost": "27739.800",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [],
+          "class": "FG"
+        }
+      ],
+      "content_hash": "2556b5c2e8b0e89bb8c2534967542a01cf20f96957761e6f4cd243299a191fc9"
+    },
+    {
+      "id": "movements-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "issue",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-issue",
+          "item": "component",
+          "kind": "issue",
+          "quantity": "60",
+          "amount": "822.00",
+          "date": "2026-06-30",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "issue-source",
+          "sequence": 1,
+          "order_id": "order-1",
+          "layer_ids": [
+            "component-opening"
+          ]
+        },
+        {
+          "id": "completion",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-completion",
+          "item": "product",
+          "kind": "complete",
+          "quantity": "80",
+          "amount": "36986.400",
+          "date": "2026-09-30",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "completion-source",
+          "sequence": 2,
+          "order_id": "order-1"
+        },
+        {
+          "id": "sale",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-sale",
+          "item": "product",
+          "kind": "sale",
+          "quantity": "20",
+          "amount": "9246.60",
+          "date": "2026-10-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "sale-source",
+          "sequence": 3,
+          "layer_ids": [
+            "production-1"
+          ]
+        }
+      ],
+      "content_hash": "988cab09fee88850d38d0263b68bdee4b823c576261f71c36d3330160b87a940"
+    },
+    {
+      "id": "orders-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "order-1",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "production_id": "production-1",
+          "architecture": "production_order",
+          "bom_doc": "bom",
+          "routing_doc": "routing",
+          "capacity_doc": "capacity",
+          "loss_doc": "loss",
+          "completion_doc": "completion-evidence",
+          "completed_quantity": "80",
+          "closing_equivalent_units": "20",
+          "scrap_quantity": "0",
+          "opening_wip": "0.00",
+          "wip_item": "order-wip",
+          "fg_item": "product",
+          "completion_date": "2026-09-30",
+          "costing": "actual",
+          "closing_wip_cost": "9246.60",
+          "completed_cost": "36986.400"
+        }
+      ],
+      "content_hash": "2266467347b35bcb3eca3d93559de80bcc92d5de93422aee202537611f0e18bc"
+    },
+    {
+      "id": "costs-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "labour",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-labour",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "direct_labour",
+          "amount": "274.00",
+          "currency": "USD",
+          "source_doc": "labour-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "hours": "20",
+          "rate": "13.70"
+        },
+        {
+          "id": "variable",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-variable",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "variable_overhead",
+          "amount": "137.00",
+          "currency": "USD",
+          "source_doc": "variable-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "driver_units": "100"
+        },
+        {
+          "id": "fixed",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-fixed",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "fixed_overhead",
+          "amount": "90000",
+          "currency": "USD",
+          "source_doc": "fixed-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "owner_import": "actual-fixed-assets",
+          "owner_kind": "depreciation"
+        }
+      ],
+      "content_hash": "0f1fffe76efa337ddf457a35e4269d2fbe07554e3a8f2b7b5129274b5cca24ef"
+    },
+    {
+      "id": "standards-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "id": "valuation-original",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "query_version": "synthetic-query-v1",
+      "parameters": "Actual fixed case filter",
+      "snapshot_version": "v1",
+      "currency": "USD",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  ],
+  "document_inventory": [
+    "scope-source",
+    "component-measurement",
+    "component-rights",
+    "order-wip-measurement",
+    "order-wip-rights",
+    "product-measurement",
+    "product-rights",
+    "issue-source",
+    "completion-source",
+    "sale-source",
+    "bom",
+    "routing",
+    "capacity",
+    "loss",
+    "completion-evidence",
+    "labour-source",
+    "variable-source",
+    "fixed-source",
+    "disclosures-source",
+    "count-source",
+    "cutoff-source",
+    "items-original",
+    "movements-original",
+    "orders-original",
+    "costs-original",
+    "standards-original",
+    "valuation-original"
+  ],
+  "accounting_policy": {
+    "id": "governance-policy",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "framework": "IFRS",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "method_memo": "Synthetic reviewed operative method",
+    "effective_standard": "Actual effective edition reviewed",
+    "formula_by_group": {
+      "materials": "FIFO",
+      "production": "FIFO",
+      "resale": "FIFO"
+    }
+  },
+  "disclosure_review": {
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "period_entity_memo": "Actual bounded management scope review",
+    "complete": true
+  },
+  "controls": {
+    "source_version": "v1",
+    "as_of": "2026-12-31",
+    "population_count": 3,
+    "population_amount": "37534.400",
+    "owner": "synthetic source owner",
+    "reviewer": "synthetic independent completeness reviewer",
+    "complete": true,
+    "policy_version": "v1",
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence"
+  },
+  "source_inventory": [
+    "component",
+    "order-wip",
+    "product"
+  ],
+  "release_review": {
+    "id": "release",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "review_memo": "Synthetic independent exact original source release",
+    "payload_fingerprint": "6f94e1d23a48aaf1fd7946409ac08c759ac1daa58a4aff0c67df75dc358f9038"
+  },
+  "currency": "USD",
+  "owner_links": [
+    {
+      "id": "link-fixed-assets",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "owner_import": "actual-fixed-assets",
+      "result_path": [
+        "depreciation"
+      ],
+      "economic_id": "cost-fixed",
+      "target_id": "fixed",
+      "amount": "90000",
+      "source_doc": "fixed-source",
+      "source_field": "amount"
+    }
+  ],
+  "owner_links_inventory": [
+    "link-fixed-assets"
+  ],
+  "owner_gl_effects": [],
+  "owner_gl_effects_inventory": [],
+  "items": [
+    {
+      "id": "component",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "physical_id": "physical-component",
+      "unit": "units",
+      "location": "Factory",
+      "ownership_doc": "component-rights",
+      "policy_group": "materials",
+      "currency": "USD",
+      "measurement_doc": "component-measurement",
+      "opening_quantity": "100",
+      "opening_cost": "1370.00",
+      "closing_quantity": "40",
+      "closing_cost": "548.00",
+      "formula": "FIFO",
+      "interchangeable": true,
+      "opening_layers": [
+        {
+          "id": "component-opening",
+          "economic_id": "component-opening-source",
+          "quantity": "100",
+          "cost": "1370.00",
+          "date": "2025-12-31"
+        }
+      ],
+      "class": "RM"
+    },
+    {
+      "id": "order-wip",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "physical_id": "physical-order-wip",
+      "unit": "units",
+      "location": "Factory",
+      "ownership_doc": "order-wip-rights",
+      "policy_group": "production",
+      "currency": "USD",
+      "measurement_doc": "order-wip-measurement",
+      "opening_quantity": "0",
+      "opening_cost": "0.00",
+      "closing_quantity": "20",
+      "closing_cost": "9246.60",
+      "formula": "FIFO",
+      "interchangeable": true,
+      "opening_layers": [],
+      "class": "WIP"
+    },
+    {
+      "id": "product",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "physical_id": "physical-product",
+      "unit": "units",
+      "location": "Factory",
+      "ownership_doc": "product-rights",
+      "policy_group": "production",
+      "currency": "USD",
+      "measurement_doc": "product-measurement",
+      "opening_quantity": "0",
+      "opening_cost": "0.00",
+      "closing_quantity": "60",
+      "closing_cost": "27739.800",
+      "formula": "FIFO",
+      "interchangeable": true,
+      "opening_layers": [],
+      "class": "FG"
+    }
+  ],
+  "movements": [
+    {
+      "id": "issue",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "economic-issue",
+      "item": "component",
+      "kind": "issue",
+      "quantity": "60",
+      "amount": "822.00",
+      "date": "2026-06-30",
+      "currency": "USD",
+      "unit": "units",
+      "source_doc": "issue-source",
+      "sequence": 1,
+      "order_id": "order-1",
+      "layer_ids": [
+        "component-opening"
+      ]
+    },
+    {
+      "id": "completion",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "economic-completion",
+      "item": "product",
+      "kind": "complete",
+      "quantity": "80",
+      "amount": "36986.400",
+      "date": "2026-09-30",
+      "currency": "USD",
+      "unit": "units",
+      "source_doc": "completion-source",
+      "sequence": 2,
+      "order_id": "order-1"
+    },
+    {
+      "id": "sale",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "economic-sale",
+      "item": "product",
+      "kind": "sale",
+      "quantity": "20",
+      "amount": "9246.60",
+      "date": "2026-10-31",
+      "currency": "USD",
+      "unit": "units",
+      "source_doc": "sale-source",
+      "sequence": 3,
+      "layer_ids": [
+        "production-1"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "order-1",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "production_id": "production-1",
+      "architecture": "production_order",
+      "bom_doc": "bom",
+      "routing_doc": "routing",
+      "capacity_doc": "capacity",
+      "loss_doc": "loss",
+      "completion_doc": "completion-evidence",
+      "completed_quantity": "80",
+      "closing_equivalent_units": "20",
+      "scrap_quantity": "0",
+      "opening_wip": "0.00",
+      "wip_item": "order-wip",
+      "fg_item": "product",
+      "completion_date": "2026-09-30",
+      "costing": "actual",
+      "closing_wip_cost": "9246.60",
+      "completed_cost": "36986.400"
+    }
+  ],
+  "costs": [
+    {
+      "id": "labour",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "cost-labour",
+      "order_id": "order-1",
+      "date": "2026-06-30",
+      "kind": "direct_labour",
+      "amount": "274.00",
+      "currency": "USD",
+      "source_doc": "labour-source",
+      "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+      "hours": "20",
+      "rate": "13.70"
+    },
+    {
+      "id": "variable",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "cost-variable",
+      "order_id": "order-1",
+      "date": "2026-06-30",
+      "kind": "variable_overhead",
+      "amount": "137.00",
+      "currency": "USD",
+      "source_doc": "variable-source",
+      "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+      "driver_units": "100"
+    },
+    {
+      "id": "fixed",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "economic_id": "cost-fixed",
+      "order_id": "order-1",
+      "date": "2026-06-30",
+      "kind": "fixed_overhead",
+      "amount": "90000",
+      "currency": "USD",
+      "source_doc": "fixed-source",
+      "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+      "owner_import": "actual-fixed-assets",
+      "owner_kind": "depreciation"
+    }
+  ],
+  "standards": [],
+  "valuation": [],
+  "scope": {
+    "id": "scope",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "scope-source",
+    "checked_on": "2027-03-31",
+    "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries",
+    "edition": "IAS2_2026",
+    "entity_scope": "for_profit_full_ifrs",
+    "borrowing_capitalization": false,
+    "joint_products": false,
+    "retail_method": false,
+    "industry_exception": false,
+    "forecast_generation": false,
+    "external_posting": false,
+    "early_adoption": false
+  },
+  "disclosures": {
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "disclosures-source",
+    "checked_on": "2027-03-31",
+    "requirements": {
+      "classes": [
+        "FG",
+        "RM",
+        "WIP"
+      ],
+      "policy": {
+        "framework": "IFRS",
+        "edition": "IAS2_2026",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
+      "reversal": "0.00",
+      "expense": {
+        "cogs": "9246.60",
+        "manufacturing_other": "45000.00",
+        "write_down": "0.00",
+        "reversal": "0.00"
+      },
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      },
+      "write_down": "0.00",
+      "pledged": {
+        "amount": "0.00",
+        "reviewed": true,
+        "evidence_memo": "Synthetic actual collateral register none"
+      },
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "carrying": {
+        "Work in progress": "9246.60",
+        "Raw materials": "548.00",
+        "Finished goods": "27739.800"
+      }
+    },
+    "closing_inventory": "37534.400",
+    "cogs": "9246.60",
+    "write_down": "0.00",
+    "reversal": "0.00"
+  },
+  "count": {
+    "id": "count",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "count-source",
+    "records": [
+      {
+        "id": "component",
+        "item": "component",
+        "location": "Factory",
+        "quantity": "40"
+      },
+      {
+        "id": "order-wip",
+        "item": "order-wip",
+        "location": "Factory",
+        "quantity": "20"
+      },
+      {
+        "id": "product",
+        "item": "product",
+        "location": "Factory",
+        "quantity": "60"
+      }
+    ]
+  },
+  "cutoff": {
+    "id": "cutoff",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "evidence": "synthetic source",
+    "approved": true,
+    "approval_date": "2026-12-31",
+    "version": "v1",
+    "approved_version": "v1",
+    "source_entity": "Synthetic Group",
+    "source_framework": "IFRS",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "source_doc": "cutoff-source",
+    "records": [
+      {
+        "id": "issue",
+        "economic_id": "economic-issue",
+        "ownership_supported": true,
+        "date_reviewed": true
+      },
+      {
+        "id": "completion",
+        "economic_id": "economic-completion",
+        "ownership_supported": true,
+        "date_reviewed": true
+      },
+      {
+        "id": "sale",
+        "economic_id": "economic-sale",
+        "ownership_supported": true,
+        "date_reviewed": true
+      }
+    ]
+  },
+  "originals": {
+    "items": {
+      "id": "items-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "component",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-component",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "component-rights",
+          "policy_group": "materials",
+          "currency": "USD",
+          "measurement_doc": "component-measurement",
+          "opening_quantity": "100",
+          "opening_cost": "1370.00",
+          "closing_quantity": "40",
+          "closing_cost": "548.00",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [
+            {
+              "id": "component-opening",
+              "economic_id": "component-opening-source",
+              "quantity": "100",
+              "cost": "1370.00",
+              "date": "2025-12-31"
+            }
+          ],
+          "class": "RM"
+        },
+        {
+          "id": "order-wip",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-order-wip",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "order-wip-rights",
+          "policy_group": "production",
+          "currency": "USD",
+          "measurement_doc": "order-wip-measurement",
+          "opening_quantity": "0",
+          "opening_cost": "0.00",
+          "closing_quantity": "20",
+          "closing_cost": "9246.60",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [],
+          "class": "WIP"
+        },
+        {
+          "id": "product",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "physical_id": "physical-product",
+          "unit": "units",
+          "location": "Factory",
+          "ownership_doc": "product-rights",
+          "policy_group": "production",
+          "currency": "USD",
+          "measurement_doc": "product-measurement",
+          "opening_quantity": "0",
+          "opening_cost": "0.00",
+          "closing_quantity": "60",
+          "closing_cost": "27739.800",
+          "formula": "FIFO",
+          "interchangeable": true,
+          "opening_layers": [],
+          "class": "FG"
+        }
+      ],
+      "inventory": [
+        "component",
+        "order-wip",
+        "product"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "items-original"
+    },
+    "movements": {
+      "id": "movements-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "issue",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-issue",
+          "item": "component",
+          "kind": "issue",
+          "quantity": "60",
+          "amount": "822.00",
+          "date": "2026-06-30",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "issue-source",
+          "sequence": 1,
+          "order_id": "order-1",
+          "layer_ids": [
+            "component-opening"
+          ]
+        },
+        {
+          "id": "completion",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-completion",
+          "item": "product",
+          "kind": "complete",
+          "quantity": "80",
+          "amount": "36986.400",
+          "date": "2026-09-30",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "completion-source",
+          "sequence": 2,
+          "order_id": "order-1"
+        },
+        {
+          "id": "sale",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "economic-sale",
+          "item": "product",
+          "kind": "sale",
+          "quantity": "20",
+          "amount": "9246.60",
+          "date": "2026-10-31",
+          "currency": "USD",
+          "unit": "units",
+          "source_doc": "sale-source",
+          "sequence": 3,
+          "layer_ids": [
+            "production-1"
+          ]
+        }
+      ],
+      "inventory": [
+        "issue",
+        "completion",
+        "sale"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "movements-original"
+    },
+    "orders": {
+      "id": "orders-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "order-1",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "production_id": "production-1",
+          "architecture": "production_order",
+          "bom_doc": "bom",
+          "routing_doc": "routing",
+          "capacity_doc": "capacity",
+          "loss_doc": "loss",
+          "completion_doc": "completion-evidence",
+          "completed_quantity": "80",
+          "closing_equivalent_units": "20",
+          "scrap_quantity": "0",
+          "opening_wip": "0.00",
+          "wip_item": "order-wip",
+          "fg_item": "product",
+          "completion_date": "2026-09-30",
+          "costing": "actual",
+          "closing_wip_cost": "9246.60",
+          "completed_cost": "36986.400"
+        }
+      ],
+      "inventory": [
+        "order-1"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "orders-original"
+    },
+    "costs": {
+      "id": "costs-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [
+        {
+          "id": "labour",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-labour",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "direct_labour",
+          "amount": "274.00",
+          "currency": "USD",
+          "source_doc": "labour-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "hours": "20",
+          "rate": "13.70"
+        },
+        {
+          "id": "variable",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-variable",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "variable_overhead",
+          "amount": "137.00",
+          "currency": "USD",
+          "source_doc": "variable-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "driver_units": "100"
+        },
+        {
+          "id": "fixed",
+          "owner": "synthetic owner",
+          "reviewer": "synthetic independent reviewer",
+          "evidence": "synthetic source",
+          "approved": true,
+          "approval_date": "2026-12-31",
+          "version": "v1",
+          "approved_version": "v1",
+          "source_entity": "Synthetic Group",
+          "source_framework": "IFRS",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "economic_id": "cost-fixed",
+          "order_id": "order-1",
+          "date": "2026-06-30",
+          "kind": "fixed_overhead",
+          "amount": "90000",
+          "currency": "USD",
+          "source_doc": "fixed-source",
+          "allocation_memo": "Synthetic evidenced factory actual-cost driver",
+          "owner_import": "actual-fixed-assets",
+          "owner_kind": "depreciation"
+        }
+      ],
+      "inventory": [
+        "labour",
+        "variable",
+        "fixed"
+      ],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "costs-original"
+    },
+    "standards": {
+      "id": "standards-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "standards-original"
+    },
+    "valuation": {
+      "id": "valuation-source",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "evidence": "synthetic source",
+      "approved": true,
+      "approval_date": "2026-12-31",
+      "version": "v1",
+      "approved_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "IFRS",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "records": [],
+      "inventory": [],
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "extract_version": "v1",
+      "source_doc": "valuation-original"
+    }
+  },
+  "items_inventory": [
+    "component",
+    "order-wip",
+    "product"
+  ],
+  "movements_inventory": [
+    "issue",
+    "completion",
+    "sale"
+  ],
+  "orders_inventory": [
+    "order-1"
+  ],
+  "costs_inventory": [
+    "labour",
+    "variable",
+    "fixed"
+  ],
+  "standards_inventory": [],
+  "valuation_inventory": [],
+  "knowledge_review": {
+    "reviewer": "Synthetic independent inventory knowledge reviewer",
+    "claim_ids": [
+      "INV-IFRS-001",
+      "INV-IFRS-002",
+      "INV-IFRS-003",
+      "INV-IFRS-004",
+      "INV-IFRS-005",
+      "INV-IFRS-006",
+      "INV-IFRS-007",
+      "INV-IFRS-008",
+      "INV-IFRS-009",
+      "INV-IFRS-010",
+      "INV-IFRS-011",
+      "INV-IFRS-012",
+      "INV-IFRS-013",
+      "INV-IFRS-014",
+      "INV-IFRS-015",
+      "INV-IFRS-016",
+      "INV-IFRS-017",
+      "INV-IFRS-018",
+      "INV-IFRS-019",
+      "INV-IFRS-020",
+      "INV-IFRS-021",
+      "INV-IFRS-022",
+      "INV-IFRS-023",
+      "INV-IFRS-024",
+      "INV-IFRS-025",
+      "INV-IFRS-026",
+      "INV-IFRS-027",
+      "INV-IFRS-028",
+      "INV-IFRS-029",
+      "INV-IFRS-030",
+      "INV-IFRS-031",
+      "INV-IFRS-032",
+      "INV-IFRS-033",
+      "INV-IFRS-034",
+      "INV-IFRS-035",
+      "INV-IFRS-036",
+      "INV-IFRS-037",
+      "INV-IFRS-038",
+      "INV-IFRS-039",
+      "INV-IFRS-040",
+      "INV-IFRS-041",
+      "INV-IFRS-042",
+      "INV-IFRS-043",
+      "INV-IFRS-044",
+      "INV-IFRS-045",
+      "INV-IFRS-046",
+      "INV-IFRS-047",
+      "INV-IFRS-048",
+      "INV-IFRS-049",
+      "INV-IFRS-050",
+      "INV-IFRS-051",
+      "INV-IFRS-052",
+      "INV-IFRS-053",
+      "INV-IFRS-054",
+      "INV-IFRS-055",
+      "INV-IFRS-056",
+      "INV-IFRS-057"
+    ],
+    "documents": [
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/EVIDENCE-AND-QA.md",
+        "sha256": "561d495cc03c268b23e1794743666e47b2195058cbac1a737493288585b86506"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/FRAMEWORK-METHOD.md",
+        "sha256": "cbbbd09fe436fb002a959d919373b15a7559848eec58665f3c577112c397586b"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/INDEPENDENT-QA.md",
+        "sha256": "c5773771c4f84f6de0660262d0a076117cdc13558ec37affe9b22f10ec421907"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/README.md",
+        "sha256": "24d65703b4fdc54ec39a54225f1333b882a14de9a4d5d993891c208f25327453"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/retrieval.py",
+        "sha256": "e40d77ce5884d9a86bb89cc86f67e40944af217064b54da9e01d11d6a5595f01"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/standards-claims.json",
+        "sha256": "7fd80072d75c276013b2ea8e0074684d1f4ef952006df48528383fdfb1ed9e23"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/test_independent_claim_qa.py",
+        "sha256": "4af4afe39c3719cc96004a5db445de5b72eb8d23d1311b677657236db481de2e"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/test_supplement.py",
+        "sha256": "a7f4d9f00aec6cd9e55d7756e273bdcc7952d03c1bad00105abe6a6aaa454887"
+      },
+      {
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+        "path": "knowledge/inventory-cost/validate_supplement.py",
+        "sha256": "23852613ef43a6839e9b17395c2a5dcafcaad95ca20260a0b8b326e0cbefc239"
+      }
+    ],
+    "applied_claim_ids": [
+      "INV-IFRS-001",
+      "INV-IFRS-002",
+      "INV-IFRS-003",
+      "INV-IFRS-004",
+      "INV-IFRS-005",
+      "INV-IFRS-006",
+      "INV-IFRS-007",
+      "INV-IFRS-008",
+      "INV-IFRS-009",
+      "INV-IFRS-010",
+      "INV-IFRS-011",
+      "INV-IFRS-012",
+      "INV-IFRS-013",
+      "INV-IFRS-014",
+      "INV-IFRS-015",
+      "INV-IFRS-016",
+      "INV-IFRS-017",
+      "INV-IFRS-018",
+      "INV-IFRS-019",
+      "INV-IFRS-020",
+      "INV-IFRS-021",
+      "INV-IFRS-022",
+      "INV-IFRS-023",
+      "INV-IFRS-024",
+      "INV-IFRS-025",
+      "INV-IFRS-026",
+      "INV-IFRS-027",
+      "INV-IFRS-028",
+      "INV-IFRS-029",
+      "INV-IFRS-030",
+      "INV-IFRS-031",
+      "INV-IFRS-032",
+      "INV-IFRS-033",
+      "INV-IFRS-034",
+      "INV-IFRS-035",
+      "INV-IFRS-036",
+      "INV-IFRS-037",
+      "INV-IFRS-038",
+      "INV-IFRS-039",
+      "INV-IFRS-040",
+      "INV-IFRS-041",
+      "INV-IFRS-042",
+      "INV-IFRS-043",
+      "INV-IFRS-044",
+      "INV-IFRS-045",
+      "INV-IFRS-046",
+      "INV-IFRS-047",
+      "INV-IFRS-048",
+      "INV-IFRS-049",
+      "INV-IFRS-050",
+      "INV-IFRS-051",
+      "INV-IFRS-052",
+      "INV-IFRS-053",
+      "INV-IFRS-054",
+      "INV-IFRS-055",
+      "INV-IFRS-056",
+      "INV-IFRS-057"
+    ],
+    "selection_memo": "Synthetic ordinary inventory manufacturing scope and framework decisions reviewed individually",
+    "public_caveats": [
+      "Controlled actual source facts and current framework-specific standards determine cost, capacity, ownership and valuation."
+    ]
+  }
+}

@@ -55,7 +55,7 @@ PACKAGES = {
     'business-combinations': ('SKILL-BC-001', ['TOPIC-13-001','TOPIC-13-002','TOPIC-13-003']),
     'asset-impairment': ('SKILL-IMP-001', ['TOPIC-04-006']),
     'income-taxes': ('SKILL-TAX-001', ['SUPPLEMENTAL_TAX']),
-    'inventory-cost': ('SKILL-INV-001', []),
+    'inventory-cost': ('SKILL-INV-001', ['SUPPLEMENTAL_INVENTORY_COST']),
     'employee-benefits-payroll': ('SKILL-BEN-001', ['TOPIC-05-005','TOPIC-05-006','TOPIC-05-009','TOPIC-05-010']),
     'debt-financing': ('SKILL-DEBT-001', ['TOPIC-06-005','TOPIC-06-006','TOPIC-06-007','TOPIC-13-006']),
     'intangible-assets': ('SKILL-INT-001', ['TOPIC-04-003','TOPIC-04-004','TOPIC-04-005']),
@@ -109,6 +109,18 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if topic_ids == ['SUPPLEMENTAL_INVENTORY_COST']:
+        spec=importlib.util.spec_from_file_location('inventory_retrieval',ROOT/'knowledge/inventory-cost/retrieval.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        try:
+            eligible={c['claim_id'] for c in module.retrieve(framework,'2026-12-31',module.SCOPES[framework],period_start='2026-01-01')}
+            register=module.load_register();frozen=json.loads((ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json').read_text());docs=[]
+            for d in frozen['documents']:
+                if hashlib.sha256((ROOT/d['path']).read_bytes()).hexdigest()!=d['sha256']:raise ReviewRequired('Frozen Inventory knowledge changed; independent reapproval required')
+                docs.append(dict(topic_id='SUPPLEMENTAL_INVENTORY_COST',**d))
+        except (ValueError,OSError,KeyError,TypeError) as exc:raise ReviewRequired('Inventory approved knowledge gate unresolved: '+str(exc)) from exc
+        claims=[dict(topic_id='SUPPLEMENTAL_INVENTORY_COST',claim_id=c['claim_id'],decision=c['decision'],proposition=c['proposition'],references=c.get('paragraph_references',[]),reference_confidence=c['reference_confidence'],evidence_status=c['evidence_status'],audit_required=c['audit_required'],limitations=c['limitations'],effective_period=c['effective_period'],entity_scope=c['entity_scope']) for c in register['claims'] if c['claim_id'] in eligible]
+        return claims,docs
     if topic_ids == ['SUPPLEMENTAL_AGRICULTURE']:
         spec=importlib.util.spec_from_file_location('agriculture_retrieval',ROOT/'knowledge/agriculture/retrieval.py')
         module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
@@ -189,8 +201,6 @@ def execute(package, case):
     if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
     if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
     if package=='borrowing-costs':raise ReviewRequired('Approved CIP routing does not provide a substantive borrowing-cost capitalization method; governed knowledge extension required')
-    if package == 'inventory-cost':
-        raise ReviewRequired('No approved substantive inventory recognition, costing or subsequent-measurement knowledge; inventory accounting specialist and governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
@@ -247,6 +257,9 @@ def case_fingerprint(case):
     files += [ROOT/'skills/presentation_accounting.py']
     files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
     files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
+    if case.get('package')=='inventory-cost':
+        files += [ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json']
+        files += [p for p in (ROOT/'knowledge/inventory-cost').glob('*.py')]
     if case.get('package')=='agriculture-biological-assets':
         files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
         files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
@@ -295,6 +308,7 @@ def to_public(result, route='answer'):
     if result['skill_id'] in ['SKILL-IPO-001', 'SKILL-PBC-001', 'SKILL-POLICY-001', 'SKILL-DISC-001', 'SKILL-ANALYTICS-001']:title='Governed management accounting practice; actual topic authority remains separately qualified'
     if result['skill_id'] in ('SKILL-CTRL-001','SKILL-SYS-001','SKILL-MODEL-001'):title='Governed accounting practice; actual legal and accounting requirements remain separately qualified'
     if result['skill_id']=='SKILL-DB-001':title={'IFRS':'IAS 19 bounded actuarial accounting bridge','US_GAAP':'ASC 715 qualified report workpaper; detailed mechanics excluded','UK_GAAP':'FRS 102 Section 28 qualified report workpaper','AASB':'AASB 119 qualified report workpaper'}[result['framework']]
+    if result['skill_id']=='SKILL-INV-001':title={'IFRS':'IAS 2 bounded manufacturing accounting','US_GAAP':'ASC 330 bounded manufacturing accounting','UK_GAAP':'FRS 102 Section 13 bounded manufacturing accounting','AASB':'AASB 102 Tier 1 bounded manufacturing accounting'}.get(result['framework'],'Inventory framework unresolved')
     if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
@@ -330,7 +344,7 @@ def assess_case(package,case):
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
-          'agriculture-biological-assets':('SUPPLEMENTAL_AGRICULTURE','Agriculture, qualified Valuation, Fixed Assets and reserved Inventory owners','Actual current control, framework classification, quantities, biological population, valuation dates and original GL sources; post-harvest Inventory and grant dependencies remain unavailable'),
+          'agriculture-biological-assets':('SUPPLEMENTAL_AGRICULTURE','Agriculture, qualified Valuation, Fixed Assets and Inventory owners','Actual current control, framework classification, quantities, biological population, valuation dates and original GL sources; post-harvest costs require completed Inventory owner sources; grants remain unavailable'),
           'defined-benefit-opeb':('TOPIC-05-005','Defined-benefit accounting and actuarial specialists','Current qualified plan/census/actuarial report and separate stock-flow/GL evidence; unsupported actuarial valuation or detailed framework mechanics require governed extension'),
           'accounting-controls-icfr':('TOPIC-09-001','Control owners and qualified governance reviewers','Complete current risk/control/occurrence/IPE populations and actual applicability; no effectiveness or SOX certification'),
           'accounting-systems-data-integrity':('TOPIC-11-003','Accounting system owners and data/control specialists','Complete entity/book/interface source-target lineage and evidenced accounting data/control requirements; no system writes'),
@@ -369,7 +383,7 @@ def assess_case(package,case):
           'business-combinations':('TOPIC-13-001','Acquisition accounting, legal, tax and valuation specialists','SPA, control date, business definition, PPA, tax and consideration classification'),
           'asset-impairment':('TOPIC-04-006','Impairment and valuation specialist','Unit perimeter, indicators, forecasts, market values, discount inputs and allocation floors'),
           'income-taxes':('SUPPLEMENTAL_TAX','Tax, legal and underlying transaction specialists','Enacted law, tax bases, returns, jurisdictional recoverability, uncertainty, allocation and operative-period memos'),
-          'inventory-cost':('unmapped','Inventory specialist and standards governance owner','Approved substantive costing and measurement knowledge; physical quantities, overhead and NRV evidence'),
+          'inventory-cost':('SUPPLEMENTAL_INVENTORY_COST','Inventory and manufacturing accounting owner','Current independently controlled inventory ownership, BOM/routing, material/labour/overhead sources, normal capacity, standard variance disposition, count/cutoff, lower-cost evidence and GL/disclosure bridges'),
           'employee-benefits-payroll':('TOPIC-05-005','Employee benefits, HR, employment-law and actuarial specialists','Complete service/entitlement populations, benefit classification and payroll/GL/cash proofs'),
           'debt-financing':('TOPIC-06-005','Debt, legal, instrument and treasury specialists','Executed terms, fee population, approved yields, reporting-date rights and modification conclusions'),
           'intangible-assets':('TOPIC-04-005','Intangible, software, acquisition and impairment specialists','Rights, project gates, cost eligibility, available dates, lives and register/GL bridges'),
@@ -383,7 +397,7 @@ def assess_case(package,case):
             if reason.startswith('Classified fixed-assets') or reason.startswith('Bearer plant belongs'):
                 target='Fixed Assets & Depreciation owner'
             elif 'post_harvest' in reason or reason.startswith('Classified inventory'):
-                target='Inventory & Cost Accounting #24 — RESERVED and unavailable'
+                target='Inventory & Cost Accounting #24 — governed owner'
             elif 'government_assistance' in reason:
                 target='Government Grants & Assistance — NONPRODUCTION specialist dependency'
             elif 'dependency: fx' in reason:

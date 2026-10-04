@@ -1,0 +1,56 @@
+{
+  "topic_id": "SUPPLEMENTAL_INVENTORY_COST",
+  "guidance": "Controlled inventory and manufacturing costs reconcile from supplied source populations through RM, WIP, finished goods and all journal offsets.\nReview status: complete\nCalculations: {\"class_bridges\": {\"Finished goods\": {\"closing\": \"600.00\", \"opening\": \"0\", \"own_movement\": \"600.00\", \"retained_owner_intake\": \"0\"}, \"Raw materials\": {\"closing\": \"400.00\", \"opening\": \"1000\", \"own_movement\": \"-600.00\", \"retained_owner_intake\": \"0\"}, \"Work in progress\": {\"closing\": \"200.00\", \"opening\": \"0\", \"own_movement\": \"200.00\", \"retained_owner_intake\": \"0\"}}, \"closing_inventory\": \"1200.00\", \"cogs\": \"200.00\", \"inventory_by_class\": {\"Finished goods\": \"600.00\", \"Merchandise\": \"0\", \"Raw materials\": \"400.00\", \"Work in progress\": \"200.00\"}, \"inventory_own_movement\": \"200.00\", \"manufacturing_expense\": \"100.00\", \"opening_inventory\": \"1000\", \"order-1\": {\"abnormal_material_expense\": \"0\", \"absorbed_fixed\": \"100.00\", \"actual_eligible_total\": \"1000.00\", \"closing_equivalent_units\": \"20\", \"closing_wip\": \"200.00\", \"completed_cost\": \"800.00\", \"completed_quantity\": \"80\", \"direct_labour\": \"200\", \"finished_unit_cost\": \"10.00\", \"fixed_overhead\": \"200\", \"material\": \"600.00\", \"standard_recovery\": \"-100\", \"standard_total\": \"1110.0\", \"under_recovery\": \"100.00\", \"variable_overhead\": \"100\", \"variances\": {\"fixed_spending\": \"-400\", \"fixed_volume\": \"300\", \"labour_efficiency\": \"0.0\", \"labour_rate\": \"20\", \"material_price\": \"60.00\", \"material_usage\": \"0.0\", \"variable_efficiency\": \"0.0\", \"variable_spending\": \"10.0\"}}, \"owner_handoffs\": {\"controls_movement_count\": 3, \"disclosure_inventory\": \"1200.00\", \"financial_statements\": \"1200.00\", \"revenue_cogs\": \"200.00\", \"systems_item_count\": 3}, \"quantity_population\": {\"component\": {\"closing_quantity\": \"40\", \"inflows\": \"0\", \"opening_quantity\": \"100\", \"quantity_basis\": \"controlled_physical_units\", \"reliefs\": \"60\", \"unit\": \"units\"}, \"order-wip\": {\"closing_quantity\": \"20\", \"inflows\": \"0\", \"opening_quantity\": \"0\", \"quantity_basis\": \"controlled_equivalent_units\", \"reliefs\": \"0\", \"unit\": \"units\"}, \"product\": {\"closing_quantity\": \"60\", \"inflows\": \"80\", \"opening_quantity\": \"0\", \"quantity_basis\": \"controlled_physical_units\", \"reliefs\": \"20\", \"unit\": \"units\"}}, \"retained_owner_intake\": \"0\", \"reversal\": \"0\", \"write_down\": \"0\"}\nJournals: [[{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"600.00\"}, {\"side\": \"Cr\", \"account\": \"Raw materials\", \"amount\": \"600.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"200.00\"}, {\"side\": \"Cr\", \"account\": \"Labour clearing\", \"amount\": \"200.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Overhead clearing\", \"amount\": \"100.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Overhead clearing\", \"amount\": \"100.00\"}], [{\"side\": \"Dr\", \"account\": \"Unallocated overhead expense\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Overhead clearing\", \"amount\": \"100.00\"}], [{\"side\": \"Cr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"110.00\"}, {\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"110.00\"}], [{\"side\": \"Dr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Unallocated overhead expense\", \"amount\": \"100.00\"}], [{\"side\": \"Dr\", \"account\": \"Manufacturing material_price variance\", \"amount\": \"60.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"60.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"60.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing material_price variance\", \"amount\": \"60.00\"}], [{\"side\": \"Dr\", \"account\": \"Manufacturing labour_rate variance\", \"amount\": \"20.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"20.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"20.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing labour_rate variance\", \"amount\": \"20.00\"}], [{\"side\": \"Dr\", \"account\": \"Manufacturing variable_spending variance\", \"amount\": \"10.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"10.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"10.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing variable_spending variance\", \"amount\": \"10.00\"}], [{\"side\": \"Cr\", \"account\": \"Manufacturing fixed_spending variance\", \"amount\": \"400.00\"}, {\"side\": \"Dr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"400.00\"}], [{\"side\": \"Cr\", \"account\": \"Work in progress\", \"amount\": \"400.00\"}, {\"side\": \"Dr\", \"account\": \"Manufacturing fixed_spending variance\", \"amount\": \"400.00\"}], [{\"side\": \"Dr\", \"account\": \"Manufacturing fixed_volume variance\", \"amount\": \"300.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing variance clearing\", \"amount\": \"300.00\"}], [{\"side\": \"Dr\", \"account\": \"Work in progress\", \"amount\": \"200.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing fixed_volume variance\", \"amount\": \"200.00\"}], [{\"side\": \"Dr\", \"account\": \"Unallocated overhead expense\", \"amount\": \"100.00\"}, {\"side\": \"Cr\", \"account\": \"Manufacturing fixed_volume variance\", \"amount\": \"100.00\"}], [{\"side\": \"Dr\", \"account\": \"Finished goods\", \"amount\": \"800.00\"}, {\"side\": \"Cr\", \"account\": \"Work in progress\", \"amount\": \"800.00\"}], [{\"side\": \"Dr\", \"account\": \"Cost of goods sold\", \"amount\": \"200.00\"}, {\"side\": \"Cr\", \"account\": \"Finished goods\", \"amount\": \"200.00\"}]]\nDisclosure review: Current framework-specific inventory policy, classes, formula, impairment and pledge requirements tie to supplied statements.",
+  "framework": "AASB",
+  "jurisdiction": "NL",
+  "entity_scope": "Synthetic Group",
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "limitations": [
+    "Ordinary commercial inventory and controlled manufacturing accounting for 2026 only; supplied ownership, BOM, routing, capacity and valuation judgments remain independently reviewed.",
+    "Joint/by-products, retail estimation, autonomous forecasts, specialist industry exceptions and borrowing-cost capitalization require separate governed methods. No ERP posting or audit opinion is issued.",
+    "Upstream owner entries remain with their originating owner; Inventory records eligible cost absorption and inventory relief once.",
+    "Controlled actual source facts and current framework-specific standards determine cost, capacity, ownership and valuation."
+  ],
+  "uncertainties": [],
+  "citations": [
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "11"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "12"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "13"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "13"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "13,16(a)"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "21"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "25"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "9,6"
+    },
+    {
+      "title": "AASB 102 Tier 1 bounded manufacturing accounting",
+      "locator": "33,34"
+    }
+  ]
+}
