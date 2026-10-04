@@ -1,8 +1,8 @@
 ---
 id: SKILL-INV-001
 name: "Inventory & Cost Accounting"
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "04"
 related_domains: ["02", "04", "05", "06", "08", "13", "15"]
 description: Governed ordinary inventory and manufacturing costing integrator with controlled sources, standard/actual variance accounting and fail-closed specialist boundaries.
@@ -31,7 +31,7 @@ completion_criteria: [approved_scope_and_period, full_source_population, current
 
 # Governed manufacturing accounting contract
 
-The historical lack of Inventory authority is resolved by the independently approved owner-authorized `SUPPLEMENTAL_INVENTORY_COST` namespace: 228 claims, separately governed and not canonical topics. The existing package ID remains SKILL-INV-001. Candidate metadata remains review until implementation QA, complete regression and exact-head CI pass.
+The historical lack of Inventory authority is resolved by the independently approved owner-authorized `SUPPLEMENTAL_INVENTORY_COST` namespace: 228 claims, separately governed and not canonical topics. The existing package ID remains SKILL-INV-001. Production promotion follows independent knowledge and implementation approval, complete regression and successful exact-head candidate CI. The promoted release must regenerate fingerprints, pass independent re-review and final exact-head CI before integration review.
 
 Ordinary commercial inventory in annual periods beginning and ending in 2026 is supported: full IFRS, ordinary US GAAP, full FRS102 September2024 and AASB Tier1 for-profit. Current edition/entity applicability and no early adoption require supplied independent sources. Approval preserves actual evidence ratings and outstanding direct-source audits.
 

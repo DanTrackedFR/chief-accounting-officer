@@ -1,0 +1,34 @@
+name: Inventory reviewed release regeneration
+on:
+  push:
+    branches: [phase-3/inventory-cost-accounting]
+    paths: [.github/workflows/inventory-release-regenerate.yml]
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: github.repository == 'DanTrackedFR/chief-accounting-officer' && github.ref == 'refs/heads/phase-3/inventory-cost-accounting'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phase-3/inventory-cost-accounting
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce reviewed artifacts
+        env:
+          PYTHONPATH: skills:skills/tests
+        run: |
+          python skills/tests/generate_inventory_examples.py
+          python -m unittest skills/tests/test_inventory_cost.py skills/tests/test_independent_inventory_cost.py -q
+          git diff --check
+      - name: Commit reproduced fixtures to the specialist branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- skills
+          if ! git diff --cached --quiet; then
+            git commit -m 'Reproduce reviewed Inventory release artifacts'
+            git push origin HEAD:phase-3/inventory-cost-accounting
+          fi
