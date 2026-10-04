@@ -38,7 +38,7 @@ def scope(c,d):
     return p
 
 def links(c,d,costs,movements):
-    imports(c,{'agriculture-biological-assets','fixed-assets','employee-benefits-payroll','accounts-payable','foreign-currency','leases','revenue-recognition','financial-statements','disclosure-management','accounting-controls-icfr','accounting-systems-data-integrity'})
+    imports(c,{'derivatives-hedge-accounting','agriculture-biological-assets','fixed-assets','employee-benefits-payroll','accounts-payable','foreign-currency','leases','revenue-recognition','financial-statements','disclosure-management','accounting-controls-icfr','accounting-systems-data-integrity'})
     used=set();economic=set();bindings={}
     signatures=[digest({'package':i['package'],'economic_source':{k:v for k,v in i['case'].items() if k not in {'case_id','knowledge_review','reviewer_signoff','preparer','judgment_memo','assumptions'}}}) for i in c['imports']]
     unique(signatures,'actual owner economic population under case aliases')
@@ -61,14 +61,20 @@ def links(c,d,costs,movements):
         candidates=[x for x in costs+movements if x['id']==r['target_id']]
         if len(candidates)!=1 or candidates[0]['economic_id']!=r['economic_id'] or candidates[0].get('owner_import')!=imp['id']:raise ReviewRequired('Owner assertion not bound to actual consumed source')
         target=candidates[0]
-        expected={'labour':'employee-benefits-payroll','depreciation':'fixed-assets','ap':'accounts-payable','fx':'foreign-currency','lease':'leases','harvest':'agriculture-biological-assets'}.get(target.get('owner_kind'))
+        expected={'labour':'employee-benefits-payroll','depreciation':'fixed-assets','ap':'accounts-payable','fx':'foreign-currency','lease':'leases','harvest':'agriculture-biological-assets','hedge_basis':'derivatives-hedge-accounting'}.get(target.get('owner_kind'))
         if expected!=imp['package']:raise ReviewRequired('Wrong source accounting owner')
-        valid_path={'labour':path==['expense'],'depreciation':path==['depreciation'],'ap':path==['invoices'],'fx':len(path)==3 and path[0]=='transactions' and path[2]=='initial','harvest':path==['harvest_entry']}.get(target.get('owner_kind'),False)
+        valid_path={'labour':path==['expense'],'depreciation':path==['depreciation'],'ap':path==['invoices'],'fx':len(path)==3 and path[0]=='transactions' and path[2]=='initial','harvest':path==['harvest_entry'],'hedge_basis':len(path)==3 and path[0]=='basis_adjustments' and path[2]=='amount'}.get(target.get('owner_kind'),False)
         if not valid_path:raise ReviewRequired('Owner metric cannot establish manufacturing cost')
         texts(b,'production_mapping_memo','cost_qualification_memo')
         if not flag(b,'eligible_manufacturing') or b['currency']!=c['currency']:raise ReviewRequired('Owner cost qualification/currency mismatch')
         if expected=='agriculture-biological-assets' and (path!=['harvest_entry'] or target.get('kind')!='harvest'):raise ReviewRequired('Agriculture harvest entry boundary only')
-        exact(target['amount'],value,'Consumed owner amount');used.add(imp['id']);economic.add(r['economic_id']);bindings[target['id']]=r
+        if expected=='derivatives-hedge-accounting':
+            if c['framework'] not in {'IFRS','AASB','UK_GAAP'} or target.get('kind')!='purchase' or target.get('hedge_basis_adjustment_id')!=path[1]:raise ReviewRequired('Only governed nonfinancial purchase basis handoff supported')
+            adjustment=next((x for x in imp['result']['calculations']['basis_adjustments'] if x['id']==path[1]),None)
+            if adjustment is None or any(adjustment[k]!=v for k,v in {'item_id':target['item'],'acquisition_id':target['economic_id'],'currency':c['currency'],'entity':c['entity'],'framework':c['framework'],'date':target['date']}.items()):raise ReviewRequired('Hedge basis SKU/acquisition/dimension mismatch')
+            exact(adjustment['quantity'],target['quantity'],'Hedge basis receipt quantity')
+        else:exact(target['amount'],value,'Consumed owner amount')
+        used.add(imp['id']);economic.add(r['economic_id']);bindings[target['id']]=r
     if used!={i['id'] for i in c['imports']}:raise ReviewRequired('Unused or unbound imported owner result')
     return bindings
 
@@ -246,7 +252,14 @@ def assess(c,claims):
                     enum(x,'kind',{'price','discount','rebate','duty','nonrecoverable_tax','freight','handling','insurance','recoverable_tax','selling','abnormal','admin'})
                     if x['kind'] in {'recoverable_tax','selling','abnormal','admin'} and nonnegative(x['amount']):raise ReviewRequired('Excluded landed cost component')
                     eligible+=nonnegative(x['amount'])*(-1 if x['kind'] in {'discount','rebate'} else 1)
-                exact(amount,eligible,'Purchased landed cost')
+                hedge=ZERO
+                if m.get('owner_kind')=='hedge_basis':
+                    if m['id'] not in binding:raise ReviewRequired('Actual completed Hedge basis handoff required')
+                    hedge=dec(binding[m['id']]['amount'])
+                    if movement_source.get('hedge_basis_adjustment_id')!=m.get('hedge_basis_adjustment_id') or movement_source.get('hedge_already_in_components') is not False:raise ReviewRequired('Hedge basis duplication or source identity unresolved')
+                    if movement_source.get('purchase_standard') is True:raise ReviewRequired('Hedge basis with purchase standard variance requires separately governed adapter')
+                    exact(amount,eligible+hedge,'Purchased cost plus exactly-once hedge basis')
+                else:exact(amount,eligible,'Purchased landed cost')
                 if movement_source.get('purchase_standard') is True:
                     if i['class']!='MERCH':raise ReviewRequired('Purchase standard PPV route is bounded to resale stock; overlapping manufacturing price variance needs company-specific attribution')
                     if movement_source['standard_checked_on']!=c['execution_date'] or not flag(movement_source,'standards_reviewed'):raise ReviewRequired('Purchased inventory standards stale/unreviewed')
@@ -254,7 +267,7 @@ def assess(c,claims):
                     exact(movement_source['ppv_inventory_adjustment'],ppv,'Purchase price variance normal disposition')
                     post(ACCOUNTS[i['class']],'Acquisition clearing',standard_purchase);post('Purchase price variance','Acquisition clearing',ppv);post(ACCOUNTS[i['class']],'Purchase price variance',ppv)
                     calcs.setdefault('purchase_price_variance',ZERO);calcs['purchase_price_variance']+=ppv
-                else:post(ACCOUNTS[i['class']],'Acquisition clearing',amount)
+                else:post(ACCOUNTS[i['class']],'Acquisition clearing',eligible)
             else:
                 if m['id'] not in binding:raise ReviewRequired('Actual Agriculture completed harvest handoff required')
                 # The Agriculture owner already recognized initial inventory;
@@ -387,16 +400,23 @@ def assess(c,claims):
     calcs.update(closing_inventory=sum(values.values(),ZERO),cogs=relief,write_down=write,reversal=reverse,manufacturing_expense=expense,inventory_by_class={a:v[1] for a,v in stock.items()},owner_handoffs={'financial_statements':sum(values.values(),ZERO),'revenue_cogs':relief,'disclosure_inventory':sum(values.values(),ZERO),'systems_item_count':len(items),'controls_movement_count':len(movements)})
     retained=pack(c,'owner_gl_effects','owner_gl_effects_inventory');effect_by={};seen_retained=set()
     expected_harvest={m['id'] for m in movements if m['kind']=='harvest'}
+    expected_hedge={m['id'] for m in movements if m.get('owner_kind')=='hedge_basis'}
     for effect in retained:
         texts(effect,'source_doc','movement_id','owner_import','owner_account','account');m=next((m for m in movements if m['id']==effect['movement_id']),None)
-        if m is None or m['id'] not in expected_harvest or m['id'] in seen_retained or m['owner_import']!=effect['owner_import']:raise ReviewRequired('Retained upstream movement missing/duplicated/mismatched')
+        if m is None or m['id'] not in (expected_harvest|expected_hedge) or m['id'] in seen_retained or m['owner_import']!=effect['owner_import']:raise ReviewRequired('Retained upstream movement missing/duplicated/mismatched')
         imp=actual_owner(c,effect['owner_import']);owner_delta=sum((dec(line['amount'])*(1 if line['side']=='Dr' else -1) for entry in imp['result']['journal_entry_implications'] for line in entry if line['account']==effect['owner_account']),ZERO)
-        if effect['account']!=ACCOUNTS[by[m['item']]['class']] or effect['owner_account']!='Harvest inventory entry':raise ReviewRequired('Unsupported retained owner GL mapping')
-        exact(effect['amount'],m['amount'],'Retained harvest movement basis');exact(effect['amount'],owner_delta,'Original owner-recognized inventory journal')
+        expected_account='Nonfinancial asset basis adjustment' if m['id'] in expected_hedge else 'Harvest inventory entry'
+        if effect['account']!=ACCOUNTS[by[m['item']]['class']] or effect['owner_account']!=expected_account:raise ReviewRequired('Unsupported retained owner GL mapping')
+        expected_amount=binding[m['id']]['amount'] if m['id'] in expected_hedge else m['amount']
+        if m['id'] in expected_hedge:
+            if effect.get('hedge_basis_adjustment_id')!=m['hedge_basis_adjustment_id']:raise ReviewRequired('Hedge retained economic adjustment mismatch')
+            owner_delta=sum((dec(x['amount']) for x in imp['result']['calculations']['basis_adjustments'] if x['id']==m['hedge_basis_adjustment_id']),ZERO)
+            exact(sum((dec(x['amount']) for x in imp['result']['calculations']['basis_adjustments']),ZERO),sum((dec(line['amount'])*(1 if line['side']=='Dr' else -1) for entry in imp['result']['journal_entry_implications'] for line in entry if line['account']==expected_account),ZERO),'Hedge handoffs to originating journal')
+        exact(effect['amount'],expected_amount,'Retained owner movement basis');exact(effect['amount'],owner_delta,'Original owner-recognized inventory journal')
         original_effect=snapshot(c,d,effect['source_doc'],c['currency'])
-        if original_effect!={k:effect[k] for k in ('movement_id','owner_import','owner_account','account','amount')}:raise ReviewRequired('Original retained owner GL mapping differs')
+        if original_effect!={k:effect[k] for k in (('movement_id','owner_import','owner_account','account','amount','hedge_basis_adjustment_id') if m['id'] in expected_hedge else ('movement_id','owner_import','owner_account','account','amount'))}:raise ReviewRequired('Original retained owner GL mapping differs')
         effect_by[effect['account']]=effect_by.get(effect['account'],ZERO)+dec(effect['amount']);seen_retained.add(m['id'])
-    if seen_retained!=expected_harvest:raise ReviewRequired('Harvest owner-recognized movement absent from GL bridge')
+    if seen_retained!=(expected_harvest|expected_hedge):raise ReviewRequired('Harvest owner-recognized movement absent from GL bridge')
     deltas={}
     for entry in entries:
         balance(entry)

@@ -11,14 +11,16 @@ on:
       - "knowledge/income-taxes/**"
       - "knowledge/agriculture/**"
       - "knowledge/inventory-cost/**"
+      - "knowledge/derivatives-hedge/**"
       - ".github/workflows/phase3-skills.yml"
   push:
-    branches: [main, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting]
+    branches: [main, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting, phase-3/derivatives-hedge-accounting]
     paths:
       - "skills/**"
       - "knowledge/income-taxes/**"
       - "knowledge/agriculture/**"
       - "knowledge/inventory-cost/**"
+      - "knowledge/derivatives-hedge/**"
       - ".github/workflows/phase3-skills.yml"
   workflow_dispatch:
 
@@ -45,6 +47,9 @@ jobs:
           python knowledge/agriculture/validate_supplement.py
           python knowledge/agriculture/test_supplement.py
           python knowledge/agriculture/test_independent_claim_qa.py
+          python knowledge/derivatives-hedge/validate_supplement.py
+          python -m unittest discover -s knowledge/derivatives-hedge -p "test*.py"
+          python knowledge/derivatives-hedge/independent_review_tests.py
           python knowledge/inventory-cost/validate_supplement.py
           python -m unittest discover -s knowledge/inventory-cost -p "test*.py"
       - name: Repository regression

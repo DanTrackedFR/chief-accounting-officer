@@ -327,7 +327,7 @@
         "reviewer_signoff": {
           "reviewer": "synthetic independent reviewer",
           "approved": true,
-          "case_fingerprint": "e5c28172cbd6802c6413252fe24510e94a3a851f5680883837a80f472db3da4e"
+          "case_fingerprint": "d1b250c9471917e4d585f0e2fb01d3939beda79374ce111c92eb4653c39d63ca"
         }
       },
       "result": {
@@ -906,7 +906,7 @@
         "systems_impacted": [
           "Retain case ID, source IDs, policy version, rule route and journal lineage"
         ],
-        "case_fingerprint": "e5c28172cbd6802c6413252fe24510e94a3a851f5680883837a80f472db3da4e",
+        "case_fingerprint": "d1b250c9471917e4d585f0e2fb01d3939beda79374ce111c92eb4653c39d63ca",
         "status": "complete"
       },
       "mode": "evidence_only"
@@ -1698,26 +1698,10 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "formula": {
-          "materials": "FIFO",
-          "production": "FIFO",
-          "resale": "FIFO"
-        },
-        "classes": [
-          "FG",
-          "RM",
-          "WIP"
-        ],
-        "write_down": "0.00",
-        "reversal_circumstances": {
-          "reviewed": true,
-          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-        },
-        "expense": {
-          "cogs": "270.60",
-          "manufacturing_other": "137.00",
-          "write_down": "0.00",
-          "reversal": "0.00"
+        "carrying": {
+          "Work in progress": "270.60",
+          "Finished goods": "811.800",
+          "Raw materials": "548.00"
         },
         "pledged": {
           "amount": "0.00",
@@ -1729,11 +1713,27 @@
           "edition": "IAS2_2026",
           "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
         },
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "write_down": "0.00",
+        "classes": [
+          "FG",
+          "RM",
+          "WIP"
+        ],
+        "expense": {
+          "cogs": "270.60",
+          "manufacturing_other": "137.00",
+          "write_down": "0.00",
+          "reversal": "0.00"
+        },
         "reversal": "0.00",
-        "carrying": {
-          "Finished goods": "811.800",
-          "Work in progress": "270.60",
-          "Raw materials": "548.00"
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
         }
       },
       "content_hash": "31a2bf1382430caed7ab1a36cb16875a64f079c37eea36c2a2729bb94636c090"
@@ -2367,7 +2367,7 @@
       "2026-12-31"
     ],
     "review_memo": "Synthetic independent exact original source release",
-    "payload_fingerprint": "48f04cab3ea5f70bcc1e9556ee932555cb35ac8b10fa12e7190f8c91519bb7a2"
+    "payload_fingerprint": "009f5d0429916b01914e23849326733a55f5481627e0e1ccb683be6b20b32ee0"
   },
   "currency": "USD",
   "owner_links": [
@@ -2755,26 +2755,10 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "formula": {
-        "materials": "FIFO",
-        "production": "FIFO",
-        "resale": "FIFO"
-      },
-      "classes": [
-        "FG",
-        "RM",
-        "WIP"
-      ],
-      "write_down": "0.00",
-      "reversal_circumstances": {
-        "reviewed": true,
-        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-      },
-      "expense": {
-        "cogs": "270.60",
-        "manufacturing_other": "137.00",
-        "write_down": "0.00",
-        "reversal": "0.00"
+      "carrying": {
+        "Work in progress": "270.60",
+        "Finished goods": "811.800",
+        "Raw materials": "548.00"
       },
       "pledged": {
         "amount": "0.00",
@@ -2786,11 +2770,27 @@
         "edition": "IAS2_2026",
         "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
       },
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "write_down": "0.00",
+      "classes": [
+        "FG",
+        "RM",
+        "WIP"
+      ],
+      "expense": {
+        "cogs": "270.60",
+        "manufacturing_other": "137.00",
+        "write_down": "0.00",
+        "reversal": "0.00"
+      },
       "reversal": "0.00",
-      "carrying": {
-        "Finished goods": "811.800",
-        "Work in progress": "270.60",
-        "Raw materials": "548.00"
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
       }
     },
     "closing_inventory": "1630.400",
