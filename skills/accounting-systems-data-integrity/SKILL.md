@@ -1,8 +1,8 @@
 ---
 id: SKILL-SYS-001
 name: "Accounting Systems & Data Integrity"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "11"
 related_domains: ["02", "08", "09", "10", "11", "15"]
 description: Supplied accounting interface lineage, exact item/source-target/migration reconciliation and evidenced control requirements; no engineering writes.

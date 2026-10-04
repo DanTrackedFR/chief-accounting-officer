@@ -1,8 +1,8 @@
 ---
 id: SKILL-MODEL-001
 name: "Accounting Operating Model & Team Governance"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "01"
 related_domains: ["02", "08", "09", "10", "11", "15"]
 description: Supplied accounting service/team/RACI, measured peak capacity and evidenced cadence/transition/AI governance; no staffing prescriptions.

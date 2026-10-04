@@ -1,8 +1,8 @@
 ---
 id: SKILL-DB-001
 name: "Defined Benefit & Other Post-Employment Benefits"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "05"
 related_domains: ["02", "08", "09", "10", "11", "15"]
 description: Qualified actuarial plan/census/obligation/assets/funded-status accounting workpaper; event-free IFRS deficit pension bridge only.

@@ -1,8 +1,8 @@
 ---
 id: SKILL-CTRL-001
 name: "Accounting Controls & SOX / ICFR"
-version: 0.9.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "09"
 related_domains: ["02", "08", "09", "10", "11", "15"]
 description: Risk/control design, complete occurrence/evidence readiness and qualified deficiency/remediation workpapers; no effectiveness certification.
