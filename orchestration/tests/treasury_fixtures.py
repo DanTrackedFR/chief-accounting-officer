@@ -29,7 +29,7 @@ CURRENT=[('Cash','1720','asset'),('Debt','-880','liability'),('Derivative','40',
 FAMILIES={pkg:family for family,(pkg,_) in FACT_ADAPTERS.items()}
 
 def sources(clean=False):
- def raw(id,name,fmt,data,controlled=True):return RawSource(id,name,fmt,data,dict(entity=SCOPE['entity'],period=SPAN,currency='EUR',comparator='actual',version='frozen-1',source_system='Synthetic treasury export',controlled_export=controlled,as_of=SPAN[1],extracted_at='2027-02-01'))
+ def raw(id,name,fmt,data,controlled=True):return RawSource(id,name,fmt,data,dict(entity=SCOPE['entity'],period=['2025-01-01','2025-12-31'] if id=='prior' else SPAN,currency='EUR',comparator='prior_actual' if id=='prior' else 'actual',version='frozen-1',source_system='Synthetic treasury export',controlled_export=controlled,as_of='2025-12-31' if id=='prior' else SPAN[1],extracted_at='2027-02-01'))
  return [
  raw('debt','Debt register.csv','csv','loan,opening,principal,draws,fees,yield,interest,paid,repayment,base_closing,current,noncurrent,rights,rate_type\nloan,1000,1000,0,0,0.08,80,80,200,800,800,0,true,variable\n'),
  raw('lender','Lender statement.csv','csv','loan,legal_principal,original_currency,closing_carrying_foreign\nloan,800,USD,800\n'),
@@ -77,8 +77,31 @@ MAP=[
  ('cash-close','cash_activity','closing_cash','cash','closing',2,('__result__','closing'),'decimal'),
  ('rec-debt','reconciliation','debt_balance','rec','source',2,('reconciliations','Debt','source_closing'),'decimal'),
  ('fs-debt','statement','debt_balance','tb','balance',3,('current_tb','Debt','balance'),'decimal'),
+ ('prior-interest','analytics','prior_interest','prior','interest',2,('documents','interest-prior','content','amount'),'decimal'),
  ('analytics-interest','analytics','current_interest','pnl','interest',2,('accounts','cash-metric','amount'),'decimal'),
 ]
+
+for id,attr,source,col,path,method in [
+ ('draws','draws','debt','draws',('debt',0,'draws'),'decimal'),('fees','fees','debt','fees',('debt',0,'eligible_cost'),'decimal'),('class-current','current','debt','current',('debt',0,'current_carrying'),'decimal'),('class-noncurrent','noncurrent','debt','noncurrent',('debt',0,'noncurrent_carrying'),'decimal'),('rate-type','rate_type','debt','rate_type',('debt',0,'contractual_rate_type'),'identity'),('lender-principal','lender_principal','lender','legal_principal',('debt',0,'lender_principal'),'decimal')]:
+ MAP.append((id,'debt_population',attr,source,col,2,path,method))
+for i,payment in [(2,'current'),(3,'redemption')]:
+ for col in ['date','amount','principal']:
+  MAP.append(('payment-'+payment+'-'+col,'debt_population','payment_'+payment+'_'+col,'payments',col,i,('debt',0,'yield_validation','cashflows',payment,col),'iso_date' if col=='date' else 'decimal'))
+for col,path,method in [('opening_rate',('items','loan','opening_rate'),'decimal'),('settlement_rate',('items','loan','settlement_rate'),'decimal')]:
+ MAP.append(('fx-'+col,'currency_exposure',col,'fx',col,2,path,method))
+for col,path,method in [('instrument',('contracts','forward1','id'),'identity'),('notional',('contracts','forward1','notional'),'decimal'),('maturity',('contracts','forward1','maturity'),'iso_date'),('underlying',('contracts','forward1','underlying'),'identity')]:
+ MAP.append(('contract-'+col,'derivative_contract','contract_'+col,'derivative',col,2,path,method))
+for col in ['opening','change','settlement']:
+ MAP.append(('valuation-'+col,'derivative_contract','valuation_'+col,'valuation',col,2,('valuations','valuation1',col),'decimal'))
+for col,path,method in [('loan',('relationships','relationship1','hedged_item_id'),'identity'),('quantity',('relationships','relationship1','actual_item_quantity'),'decimal'),('risk',('relationships','relationship1','risk_id'),'identity')]:
+ MAP.append(('designation-'+col,'derivative_contract','designation_'+col,'designation',col,2,path,method))
+for col,path in [('instrument_cumulative',('relationships','relationship1','risk_measurement','instrument_cumulative')),('quantity',('relationships','relationship1','actual_instrument_quantity')),('opening_reserve',('relationships','relationship1','opening_reserve'))]:
+ MAP.append(('effectiveness-'+col,'derivative_contract','effectiveness_'+col,'effectiveness',col,2,path,'decimal'))
+for col,path in [('effective',('__result__','derivatives','forward1','effective')),('ineffective',('__result__','derivatives','forward1','ineffectiveness')),('closing_reserve',('__result__','hedge_reserves','relationship1','closing'))]:
+ MAP.append(('effectiveness-'+col,'derivative_contract',col,'effectiveness',col,2,path,'decimal'))
+for index,id in [(2,'BANK-INTEREST'),(3,'BANK-PRINCIPAL')]:
+ for col in ['date','kind','category','bank_id']:
+  MAP.append(('bank-'+id+'-'+col,'cash_activity','bank_'+id.lower().replace('-','_')+'_'+col,'bank',col,index,('transactions',id,col),'iso_date' if col=='date' else 'identity'))
 
 def selected(owner):
  if not owner:return {'debt-financing','foreign-currency','derivatives-hedge-accounting','cash-flow-reporting','balance-sheet-reconciliations','financial-statements','management-accounting-analytics'}
@@ -92,7 +115,7 @@ def proposal(raw,objective=OBJECTIVE,bounded=None):
  for id,family,attribute,source,column,index,path,method in MAP:
   owner=FACT_ADAPTERS[family][0]
   if owner not in wanted:continue
-  e=cell(inv,source,column,index);p.facts.append(FactCandidate(id,family,attribute,cl(transform(inv.fields()[e]['value'],method),[e],'EXTRACTED',.99),dict(entity=SCOPE['entity'],period=SPAN,currency='EUR',unit='currency',comparator='actual'),owner,confirmation_required=False,transformation=method))
+  e=cell(inv,source,column,index);p.facts.append(FactCandidate(id,family,attribute,cl(transform(inv.fields()[e]['value'],method),[e],'EXTRACTED',.99),dict(entity=SCOPE['entity'],period=['2025-01-01','2025-12-31'] if id=='prior-interest' else SPAN,currency='EUR',unit='currency',comparator='prior_actual' if id=='prior-interest' else 'actual'),owner,confirmation_required=False,transformation=method))
  if not bounded:
   for id,source,column,index in [('reported-financing','cash','financing',2),('bank-financing','bank_summary','financing',2)]:
    e=cell(inv,source,column,index);p.facts.append(FactCandidate(id,'cash_activity','financing_support',cl(transform(inv.fields()[e]['value'],'decimal'),[e],'EXTRACTED',.99),dict(entity=SCOPE['entity'],period=SPAN,currency='EUR',unit='currency',comparator='actual'),confirmation_required=False,transformation='decimal'))
@@ -101,6 +124,7 @@ def proposal(raw,objective=OBJECTIVE,bounded=None):
  for family in dict.fromkeys(f.family for f in p.facts):
   owner=FACT_ADAPTERS[family][0];facts=[f for f in p.facts if f.family==family];deps=[]
   if owner=='derivatives-hedge-accounting':deps=['debt-financing']
+  if owner=='cash-flow-reporting':deps=['debt-financing','foreign-currency']
   if owner in ('financial-statements','balance-sheet-reconciliations','management-accounting-analytics'):deps=sorted(wanted & {'debt-financing','foreign-currency','derivatives-hedge-accounting','cash-flow-reporting'})
   p.issues.append(cl(dict(id=owner,owner=owner,family=family,fact_ids=[f.id for f in facts],dependencies=deps,required_fields=[]),list(dict.fromkeys(e for f in facts for e in f.claim.evidence))))
  return p
@@ -116,6 +140,7 @@ def owners():
  f=fx();f['translation']['enabled']=False;f['items'][0].update(id='loan',side='liability',type='monetary',account='Debt monetary',foreign_currency='USD',foreign_amount='1000',initial_date='2025-12-31',initial_rate='1',opening_rate='1',opening_book='1000',opening_route='carried_monetary',settled_foreign='200',settlement_date='2026-12-31',settlement_rate='1',closing_rate='1.10');o['foreign-currency']=certify('foreign-currency',f)
  h=hedge_debt(route='cash_flow');h['imports']=[dict(id='debt1',package='debt-financing',case=o['debt-financing'],result=dr)]
  h['owner_links'][0]['amount']='800';r=h['relationships'][0];r.update(underlying_carrying='800',debt_notional='800',debt_maturity='2027-12-31',actual_instrument_quantity='800',actual_item_quantity='800',risk_id='benchmark_interest',objective='Future benchmark interest protection; not an FX principal hedge',forecast_quantity='800')
+ r.update(instrument_eligibility_memo='Eligible whole USD benchmark interest swap',item_eligibility_memo='Future interest on separately qualified USD term facility',risk_component_memo='Separately identifiable benchmark-interest component, not loan principal FX',forecast_memo='Separately reviewed future loan benchmark interest timing and notional',designation_memo='Contemporaneous signed inception designation of remaining facility benchmark interest')
  r['risk_measurement'].update(risk_id='benchmark_interest',quantity='800',current_change='-36',risk_cumulative='-36',instrument_cumulative='40')
  h['contracts'][0].update(kind='swap',underlying='USD benchmark',underlying_type='rate',notional='800',comparable_investment='800',maturity='2027-12-31');h['valuations'][0].update(notional='800',change='40',closing='40');h['population_review']['notional_total']='800'
  for g in h['gl']:g['closing']=g['statement']={'Derivative balance forward1':'40','Hedge P&L relationship1':'-4','Hedge reserve relationship1':'-36'}[g['id']]
@@ -124,7 +149,7 @@ def owners():
  c['transactions']=[approved(id,date='2026-12-31',amount=n,kind=kind,category=cat,cash=True,source_id=id,bank_id=id,classification_memo='Consistent actual pre-2027 IAS7 elected operating interest, gross financing principal') for id,n,kind,cat in [('BANK-INTEREST','-80','interest_paid','operating'),('BANK-PRINCIPAL','-200','debt_repayment','financing')]]
  c['noncash']=[approved(id,source_id=id,amount=n,type='other_reviewed',date=SPAN[1],accounting_memo='Qualified originating owner noncash effect') for id,n in [('FX-LOAN','80'),('FV-HEDGE','40')]];c['noncash_inventory']=[r['id'] for r in c['noncash']];c['noncash_source_total']='120'
  c['indirect'].update(start_amount='-156',net_profit='-156',adjustments=[approved(id,amount=n,basis_memo='Disjoint native FX/P&L adjustment',noncash_acquisition_fx_excluded=True) for id,n in [('FX','80'),('Hedge P&L','-4')]],adjustment_inventory=['FX','Hedge P&L'],working_capital=[],working_capital_inventory=[])
- c['statement'].update(opening='2000',closing='1720',balance_sheet_opening='2000',balance_sheet_closing='1720',operating='-80',investing='0',financing='-200',fx='0');c['handoffs']['fx']['amount']='0';c['handoffs']['profit']['amount']='-156';c['controls'].update(population_count=2,population_amount='280');o['cash-flow-reporting']=certify('cash-flow-reporting',c)
+ c['statement'].update(opening='2000',closing='1720',balance_sheet_opening='2000',balance_sheet_closing='1720',operating='-80',investing='0',financing='-200',fx='0');c['handoffs']['fx']['amount']='0';c['handoffs']['profit']['amount']='-156';c['controls'].update(population_count=2,population_amount='280');c['imports']=[approved(pkg,package=pkg,case=o[pkg],result=completed(pkg,o[pkg]),mode='evidence_only') for pkg in ('debt-financing','foreign-currency')];o['cash-flow-reporting']=certify('cash-flow-reporting',c)
  fs=reporting();fs['currency']='EUR'
  def tb(rs):return [dict(id=id,balance=n,category=cat,line=id,source_version='frozen-1',classification_memo='Native owner and actual rights support account class',cash_account=id=='Cash') for id,n,cat in rs]
  fs['current_tb']=tb(CURRENT);fs['comparative_tb']=tb(OPENING);fs['equity_bridge']=[dict(id='owners',opening='1000',profit='-156',oci='36',owner_transactions='0',retrospective_adjustments='0',other='0',closing='880',memo='Debt, FX and Hedge owner effects')]
@@ -155,7 +180,24 @@ def owners():
  a['diagnostic']=dict(component_ties=[dict(groups=['loan-rate'],current_owner=ref,baseline_field='interest',sign=1)],unit='EUR',metric='expense',presentation_basis=basis,current={'doc':'interest-current'},comparator=dict(doc='interest-prior',kind='actual',version='actual-v1',period=prior,frozen_on='2025-12-31'),groups=[dict(id='loan-rate',doc='interest-drivers',method='rate_quantity',sign=1,labels=dict(quantity='Opening principal contribution',rate='Reviewed effective-rate contribution'),accounting_check=dict(**ref,issue='Current interest accounting',reason='Recheck diagnostic interest against qualified debt schedule'))],group_inventory=['loan-rate'],tolerance='.01',materiality='5',hypotheses=[],signals=[],revenue=None)
  for doc in a['documents']:doc['content_hash']=digest(doc['content'])
  o['management-accounting-analytics']=ready('management-accounting-analytics',c=refresh_release(a))
- for pkg,case in o.items():completed(pkg,case)
+ # Exact full source qualification is independent scaffolding, not runtime approval.
+ raw=Inventory(sources(clean=True)).normalized()
+ source_owners={'debt':'debt-financing','lender':'debt-financing','terms':'debt-financing','payments':'debt-financing','fx':'foreign-currency','derivative':'derivatives-hedge-accounting','valuation':'derivatives-hedge-accounting','designation':'derivatives-hedge-accounting','effectiveness':'derivatives-hedge-accounting','bank':'cash-flow-reporting','bank_summary':'cash-flow-reporting','policy':'cash-flow-reporting','tb':'financial-statements','rec':'balance-sheet-reconciliations','pnl':'management-accounting-analytics','prior':'management-accounting-analytics'}
+ for src in raw:
+  data=src['source'];pkg=source_owners.get(data['id'])
+  if pkg:o[pkg].setdefault('source_material',{})[data['id']]=dict(fingerprint=data['fingerprint'],metadata=data['metadata'])
+ done={}
+ def qualify(pkg):
+  if pkg in done:return done[pkg]
+  c=o[pkg]
+  for imp in c.get('imports',[]):
+   imp['result']=qualify(imp['package']);imp['case']=copy.deepcopy(o[imp['package']])
+  if pkg=='derivatives-hedge-accounting':o[pkg]=hedge_ready(hedge_sources(c))
+  elif pkg=='management-accounting-analytics':o[pkg]=ready(pkg,c=refresh_release(c))
+  elif pkg=='debt-financing':o[pkg]=debt_ready(pkg,c=c)
+  else:o[pkg]=certify(pkg,c)
+  done[pkg]=completed(pkg,o[pkg]);return done[pkg]
+ for pkg in o:qualify(pkg)
  return o
 
 def reviewed_pack(prepared,objective=OBJECTIVE,bounded=None):
@@ -182,9 +224,10 @@ def reviewed_pack(prepared,objective=OBJECTIVE,bounded=None):
   req['journal_event_sources']=[dict(economic_id=e['economic_id'],entity=SCOPE['entity'],period=SPAN,currency='EUR',origin='bank' if e['economic_id'] in ('principal-paid','interest-paid') else 'loan' if e['economic_id'].startswith(('loan','interest-accrued')) else 'valuation',record='BANK-PRINCIPAL' if e['economic_id']=='principal-paid' else 'BANK-INTEREST' if e['economic_id']=='interest-paid' else 'loan' if e['economic_id'].startswith(('loan','interest-accrued')) else 'forward1',nature=e['economic_id']) for e in events]
   native=[dict(owner=i['value']['owner'],case_fingerprint=completed(i['value']['owner'],o[i['value']['owner']])['case_fingerprint'],journals=completed(i['value']['owner'],o[i['value']['owner']])['journal_entry_implications']) for i in prepared.proposal['issues']]
   req['journal_pack_review']=dict(preparer='Synthetic treasury preparer',reviewer='Synthetic independent event reviewer',approved=True,payload_fingerprint=digest(dict(mapping=mapping,native_owner_journals=native,journal_ownership=events,journal_event_sources=req['journal_event_sources'])))
- bindings=[Binding(id,FACT_ADAPTERS[f][0],path[1:] if path[0]=='__result__' else path,'owner_result' if path[0]=='__result__' else 'current') for id,f,attribute,source,col,index,path,method in MAP if FACT_ADAPTERS[f][0] in wanted]
+ bindings=[Binding(id,FACT_ADAPTERS[f][0],path[1:] if path[0]=='__result__' else path,'owner_result' if path[0]=='__result__' else 'comparator' if id=='prior-interest' else 'current') for id,f,attribute,source,col,index,path,method in MAP if FACT_ADAPTERS[f][0] in wanted]
  populations=[PopulationBinding('bank','bank_id','cash-flow-reporting',('transactions',),'bank_id')] if 'cash-flow-reporting' in wanted else []
- return ReviewedInputPack(req,bindings,populations)
+ documents=[DocumentBinding(id,pkg,('source_material',id)) for pkg,c in o.items() for id in c.get('source_material',{})]
+ return ReviewedInputPack(req,bindings,populations,documents)
 
 def flagship(clean=False,bounded=None,objective=OBJECTIVE):
  raw=sources(clean);engine=Intake(FixturePlanner(proposal(raw,objective,bounded)));p=engine.prepare(objective,raw,[],SCOPE);return engine,p,reviewed_pack(p,objective,bounded)

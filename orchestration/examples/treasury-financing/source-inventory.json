@@ -1,0 +1,2547 @@
+[
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "debt:1",
+        "location": {
+          "column": "loan",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:2",
+        "location": {
+          "column": "opening",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:3",
+        "location": {
+          "column": "principal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:4",
+        "location": {
+          "column": "draws",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:5",
+        "location": {
+          "column": "fees",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:6",
+        "location": {
+          "column": "yield",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:7",
+        "location": {
+          "column": "interest",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:8",
+        "location": {
+          "column": "paid",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:9",
+        "location": {
+          "column": "repayment",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:10",
+        "location": {
+          "column": "base_closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:11",
+        "location": {
+          "column": "current",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:12",
+        "location": {
+          "column": "noncurrent",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:13",
+        "location": {
+          "column": "rights",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      },
+      {
+        "field": "debt:14",
+        "location": {
+          "column": "rate_type",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "debt"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "2b1aac44b9a6735d9c84bb55bb236e55ac664222f28875890ae92ba02f2791c7",
+      "format": "csv",
+      "id": "debt",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Debt register.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "loan",
+          "opening",
+          "principal",
+          "draws",
+          "fees",
+          "yield",
+          "interest",
+          "paid",
+          "repayment",
+          "base_closing",
+          "current",
+          "noncurrent",
+          "rights",
+          "rate_type"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "base_closing": "debt:10",
+              "current": "debt:11",
+              "draws": "debt:4",
+              "fees": "debt:5",
+              "interest": "debt:7",
+              "loan": "debt:1",
+              "noncurrent": "debt:12",
+              "opening": "debt:2",
+              "paid": "debt:8",
+              "principal": "debt:3",
+              "rate_type": "debt:14",
+              "repayment": "debt:9",
+              "rights": "debt:13",
+              "yield": "debt:6"
+            },
+            "original": {
+              "base_closing": "800",
+              "current": "800",
+              "draws": "0",
+              "fees": "0",
+              "interest": "80",
+              "loan": "loan",
+              "noncurrent": "0",
+              "opening": "1000",
+              "paid": "80",
+              "principal": "1000",
+              "rate_type": "variable",
+              "repayment": "200",
+              "rights": "true",
+              "yield": "0.08"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "lender:1",
+        "location": {
+          "column": "loan",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "lender"
+      },
+      {
+        "field": "lender:2",
+        "location": {
+          "column": "legal_principal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "lender"
+      },
+      {
+        "field": "lender:3",
+        "location": {
+          "column": "original_currency",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "lender"
+      },
+      {
+        "field": "lender:4",
+        "location": {
+          "column": "closing_carrying_foreign",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "lender"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "7b40d151ebaffd4ae3bac3a9e219035def7a3e1aa7046321d72c630c11efbddf",
+      "format": "csv",
+      "id": "lender",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Lender statement.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "loan",
+          "legal_principal",
+          "original_currency",
+          "closing_carrying_foreign"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "closing_carrying_foreign": "lender:4",
+              "legal_principal": "lender:2",
+              "loan": "lender:1",
+              "original_currency": "lender:3"
+            },
+            "original": {
+              "closing_carrying_foreign": "800",
+              "legal_principal": "800",
+              "loan": "loan",
+              "original_currency": "USD"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "terms:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "terms:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "terms"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "8b60686d8a48bc7eaa055a98f6bc645bc9f25f6e467eaec0c8af419516243ba3",
+      "format": "markdown",
+      "id": "terms",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Facility extract.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "payments:1",
+        "location": {
+          "column": "payment_id",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:2",
+        "location": {
+          "column": "date",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:3",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:4",
+        "location": {
+          "column": "principal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:5",
+        "location": {
+          "column": "payment_id",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:6",
+        "location": {
+          "column": "date",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:7",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      },
+      {
+        "field": "payments:8",
+        "location": {
+          "column": "principal",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "payments"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "4118b79150176c0599657a5aa524d06dba2427038c60a1aa440532bbf79f037b",
+      "format": "csv",
+      "id": "payments",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Remaining contractual payments.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 2,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "payment_id",
+          "date",
+          "amount",
+          "principal"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "amount": "payments:3",
+              "date": "payments:2",
+              "payment_id": "payments:1",
+              "principal": "payments:4"
+            },
+            "original": {
+              "amount": "280",
+              "date": "2026-12-31",
+              "payment_id": "current",
+              "principal": "200"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "amount": "payments:7",
+              "date": "payments:6",
+              "payment_id": "payments:5",
+              "principal": "payments:8"
+            },
+            "original": {
+              "amount": "864",
+              "date": "2027-12-31",
+              "payment_id": "redemption",
+              "principal": "800"
+            },
+            "source_row": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "fx:1",
+        "location": {
+          "column": "loan",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:2",
+        "location": {
+          "column": "original_currency",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:3",
+        "location": {
+          "column": "foreign_amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:4",
+        "location": {
+          "column": "opening_book",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:5",
+        "location": {
+          "column": "opening_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:6",
+        "location": {
+          "column": "closing_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:7",
+        "location": {
+          "column": "settled",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:8",
+        "location": {
+          "column": "settlement_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:9",
+        "location": {
+          "column": "closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      },
+      {
+        "field": "fx:10",
+        "location": {
+          "column": "gain",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "fx"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "317e836c478b5116b19da4bc9f7e47b0e618fd1221985d6dea60b48374a3e74d",
+      "format": "csv",
+      "id": "fx",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Monetary FX report.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "loan",
+          "original_currency",
+          "foreign_amount",
+          "opening_book",
+          "opening_rate",
+          "closing_rate",
+          "settled",
+          "settlement_rate",
+          "closing",
+          "gain"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "closing": "fx:9",
+              "closing_rate": "fx:6",
+              "foreign_amount": "fx:3",
+              "gain": "fx:10",
+              "loan": "fx:1",
+              "opening_book": "fx:4",
+              "opening_rate": "fx:5",
+              "original_currency": "fx:2",
+              "settled": "fx:7",
+              "settlement_rate": "fx:8"
+            },
+            "original": {
+              "closing": "880",
+              "closing_rate": "1.10",
+              "foreign_amount": "1000",
+              "gain": "-80",
+              "loan": "loan",
+              "opening_book": "1000",
+              "opening_rate": "1",
+              "original_currency": "USD",
+              "settled": "200",
+              "settlement_rate": "1"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "derivative:1",
+        "location": {
+          "column": "instrument",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "derivative"
+      },
+      {
+        "field": "derivative:2",
+        "location": {
+          "column": "notional",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "derivative"
+      },
+      {
+        "field": "derivative:3",
+        "location": {
+          "column": "maturity",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "derivative"
+      },
+      {
+        "field": "derivative:4",
+        "location": {
+          "column": "underlying",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "derivative"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "5c73fd8672deacc07ca04923166477cc78e71b027799fac9b18eda4213e8625a",
+      "format": "csv",
+      "id": "derivative",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Swap confirmation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "instrument",
+          "notional",
+          "maturity",
+          "underlying"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "instrument": "derivative:1",
+              "maturity": "derivative:3",
+              "notional": "derivative:2",
+              "underlying": "derivative:4"
+            },
+            "original": {
+              "instrument": "forward1",
+              "maturity": "2027-12-31",
+              "notional": "800",
+              "underlying": "USD benchmark"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "valuation:1",
+        "location": {
+          "column": "instrument",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:2",
+        "location": {
+          "column": "notional",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:3",
+        "location": {
+          "column": "measurement_date",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:4",
+        "location": {
+          "column": "opening",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:5",
+        "location": {
+          "column": "change",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:6",
+        "location": {
+          "column": "settlement",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:7",
+        "location": {
+          "column": "closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "66fd01837f1cc29f0886773dd6b4a6895863968486e0da43ca6dedc296f7a32e",
+      "format": "csv",
+      "id": "valuation",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Independent valuation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "instrument",
+          "notional",
+          "measurement_date",
+          "opening",
+          "change",
+          "settlement",
+          "closing"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "change": "valuation:5",
+              "closing": "valuation:7",
+              "instrument": "valuation:1",
+              "measurement_date": "valuation:3",
+              "notional": "valuation:2",
+              "opening": "valuation:4",
+              "settlement": "valuation:6"
+            },
+            "original": {
+              "change": "40",
+              "closing": "40",
+              "instrument": "forward1",
+              "measurement_date": "2026-12-31",
+              "notional": "800",
+              "opening": "0",
+              "settlement": "0"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "designation:1",
+        "location": {
+          "column": "relationship",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      },
+      {
+        "field": "designation:2",
+        "location": {
+          "column": "instrument",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      },
+      {
+        "field": "designation:3",
+        "location": {
+          "column": "loan",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      },
+      {
+        "field": "designation:4",
+        "location": {
+          "column": "date",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      },
+      {
+        "field": "designation:5",
+        "location": {
+          "column": "quantity",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      },
+      {
+        "field": "designation:6",
+        "location": {
+          "column": "risk",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "designation"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "f50b1cc37de0993f60594e319eda93ddf50b9318b8379509356ecbdb468983e5",
+      "format": "csv",
+      "id": "designation",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Hedge designation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "relationship",
+          "instrument",
+          "loan",
+          "date",
+          "quantity",
+          "risk"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "date": "designation:4",
+              "instrument": "designation:2",
+              "loan": "designation:3",
+              "quantity": "designation:5",
+              "relationship": "designation:1",
+              "risk": "designation:6"
+            },
+            "original": {
+              "date": "2026-01-01",
+              "instrument": "forward1",
+              "loan": "loan",
+              "quantity": "800",
+              "relationship": "relationship1",
+              "risk": "benchmark_interest"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "effectiveness:1",
+        "location": {
+          "column": "relationship",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:2",
+        "location": {
+          "column": "instrument_cumulative",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:3",
+        "location": {
+          "column": "risk_cumulative",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:4",
+        "location": {
+          "column": "quantity",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:5",
+        "location": {
+          "column": "opening_reserve",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:6",
+        "location": {
+          "column": "effective",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:7",
+        "location": {
+          "column": "ineffective",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      },
+      {
+        "field": "effectiveness:8",
+        "location": {
+          "column": "closing_reserve",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "effectiveness"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "1a72c0b1ad90ec66b4f9081cf8e5272f46aa3251b0ba8cb6084f1dab5a2eb040",
+      "format": "csv",
+      "id": "effectiveness",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Independent hedged-risk schedule.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "relationship",
+          "instrument_cumulative",
+          "risk_cumulative",
+          "quantity",
+          "opening_reserve",
+          "effective",
+          "ineffective",
+          "closing_reserve"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "closing_reserve": "effectiveness:8",
+              "effective": "effectiveness:6",
+              "ineffective": "effectiveness:7",
+              "instrument_cumulative": "effectiveness:2",
+              "opening_reserve": "effectiveness:5",
+              "quantity": "effectiveness:4",
+              "relationship": "effectiveness:1",
+              "risk_cumulative": "effectiveness:3"
+            },
+            "original": {
+              "closing_reserve": "36",
+              "effective": "36",
+              "ineffective": "4",
+              "instrument_cumulative": "40",
+              "opening_reserve": "0",
+              "quantity": "800",
+              "relationship": "relationship1",
+              "risk_cumulative": "-36"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "bank:1",
+        "location": {
+          "column": "bank_id",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:2",
+        "location": {
+          "column": "date",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:3",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:4",
+        "location": {
+          "column": "kind",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:5",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:6",
+        "location": {
+          "column": "bank_id",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:7",
+        "location": {
+          "column": "date",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:8",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:9",
+        "location": {
+          "column": "kind",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      },
+      {
+        "field": "bank:10",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "83c4ed8c04b4022d12d896031a1737573b2c58caf18106dd185913bc1d0e54c4",
+      "format": "csv",
+      "id": "bank",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Bank activity.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 2,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "bank_id",
+          "date",
+          "amount",
+          "kind",
+          "category"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "amount": "bank:3",
+              "bank_id": "bank:1",
+              "category": "bank:5",
+              "date": "bank:2",
+              "kind": "bank:4"
+            },
+            "original": {
+              "amount": "-80",
+              "bank_id": "BANK-INTEREST",
+              "category": "operating",
+              "date": "2026-12-31",
+              "kind": "interest_paid"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "amount": "bank:8",
+              "bank_id": "bank:6",
+              "category": "bank:10",
+              "date": "bank:7",
+              "kind": "bank:9"
+            },
+            "original": {
+              "amount": "-200",
+              "bank_id": "BANK-PRINCIPAL",
+              "category": "financing",
+              "date": "2026-12-31",
+              "kind": "debt_repayment"
+            },
+            "source_row": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "bank_summary:1",
+        "location": {
+          "column": "financing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "bank_summary"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "64d013561c1128826b5810e9268c66fbe5ac4c9b1d087d61b081bfef34a12567",
+      "format": "csv",
+      "id": "bank_summary",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Bank movement summary.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "financing"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "financing": "bank_summary:1"
+            },
+            "original": {
+              "financing": "-200"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "tb:1",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:2",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:3",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:4",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:5",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:6",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:7",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:8",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:9",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:10",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:11",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:12",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:13",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:14",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:15",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:16",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:17",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:18",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:19",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 8,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:20",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 8,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:21",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 8,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:22",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 9,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:23",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 9,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      },
+      {
+        "field": "tb:24",
+        "location": {
+          "column": "category",
+          "record_id": null,
+          "row": 9,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tb"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "4e1b82d7e48f434e73c6edda2f870ba06b7878d5b68ff4386533dca868f9a68f",
+      "format": "csv",
+      "id": "tb",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Year-to-date trial balance.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 8,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "account",
+          "balance",
+          "category"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "account": "tb:1",
+              "balance": "tb:2",
+              "category": "tb:3"
+            },
+            "original": {
+              "account": "Cash",
+              "balance": "1720",
+              "category": "asset"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "account": "tb:4",
+              "balance": "tb:5",
+              "category": "tb:6"
+            },
+            "original": {
+              "account": "Debt",
+              "balance": "-880",
+              "category": "liability"
+            },
+            "source_row": 3
+          },
+          {
+            "fields": {
+              "account": "tb:7",
+              "balance": "tb:8",
+              "category": "tb:9"
+            },
+            "original": {
+              "account": "Derivative",
+              "balance": "40",
+              "category": "asset"
+            },
+            "source_row": 4
+          },
+          {
+            "fields": {
+              "account": "tb:10",
+              "balance": "tb:11",
+              "category": "tb:12"
+            },
+            "original": {
+              "account": "Opening equity",
+              "balance": "-1000",
+              "category": "equity"
+            },
+            "source_row": 5
+          },
+          {
+            "fields": {
+              "account": "tb:13",
+              "balance": "tb:14",
+              "category": "tb:15"
+            },
+            "original": {
+              "account": "Interest expense",
+              "balance": "80",
+              "category": "expense"
+            },
+            "source_row": 6
+          },
+          {
+            "fields": {
+              "account": "tb:16",
+              "balance": "tb:17",
+              "category": "tb:18"
+            },
+            "original": {
+              "account": "FX loss",
+              "balance": "80",
+              "category": "expense"
+            },
+            "source_row": 7
+          },
+          {
+            "fields": {
+              "account": "tb:19",
+              "balance": "tb:20",
+              "category": "tb:21"
+            },
+            "original": {
+              "account": "Hedge income",
+              "balance": "-4",
+              "category": "revenue"
+            },
+            "source_row": 8
+          },
+          {
+            "fields": {
+              "account": "tb:22",
+              "balance": "tb:23",
+              "category": "tb:24"
+            },
+            "original": {
+              "account": "Hedge OCI",
+              "balance": "-36",
+              "category": "oci"
+            },
+            "source_row": 9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "cash:1",
+        "location": {
+          "column": "opening",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      },
+      {
+        "field": "cash:2",
+        "location": {
+          "column": "closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      },
+      {
+        "field": "cash:3",
+        "location": {
+          "column": "operating",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      },
+      {
+        "field": "cash:4",
+        "location": {
+          "column": "investing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      },
+      {
+        "field": "cash:5",
+        "location": {
+          "column": "financing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      },
+      {
+        "field": "cash:6",
+        "location": {
+          "column": "fx",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "cash"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "bcd005fc4b2ac0e6788a60815d7a898890875c64573c014c872928f1e643980d",
+      "format": "csv",
+      "id": "cash",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Cash flow support.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "opening",
+          "closing",
+          "operating",
+          "investing",
+          "financing",
+          "fx"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "closing": "cash:2",
+              "financing": "cash:5",
+              "fx": "cash:6",
+              "investing": "cash:4",
+              "opening": "cash:1",
+              "operating": "cash:3"
+            },
+            "original": {
+              "closing": "1720",
+              "financing": "0",
+              "fx": "0",
+              "investing": "0",
+              "opening": "2000",
+              "operating": "-80"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "rec:1",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:2",
+        "location": {
+          "column": "source",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:3",
+        "location": {
+          "column": "gl",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:4",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:5",
+        "location": {
+          "column": "source",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:6",
+        "location": {
+          "column": "gl",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:7",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:8",
+        "location": {
+          "column": "source",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      },
+      {
+        "field": "rec:9",
+        "location": {
+          "column": "gl",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rec"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "ef0b74658e0c77993349189fadf900d63a258ddce297cd1fe91fe775483d5388",
+      "format": "csv",
+      "id": "rec",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Reconciliation pack.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 3,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "account",
+          "source",
+          "gl"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "account": "rec:1",
+              "gl": "rec:3",
+              "source": "rec:2"
+            },
+            "original": {
+              "account": "Debt",
+              "gl": "-880",
+              "source": "-880"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "account": "rec:4",
+              "gl": "rec:6",
+              "source": "rec:5"
+            },
+            "original": {
+              "account": "Derivative",
+              "gl": "40",
+              "source": "40"
+            },
+            "source_row": 3
+          },
+          {
+            "fields": {
+              "account": "rec:7",
+              "gl": "rec:9",
+              "source": "rec:8"
+            },
+            "original": {
+              "account": "Cash",
+              "gl": "1720",
+              "source": "1720"
+            },
+            "source_row": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "policy:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "policy:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "policy"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "c3cb590907705b2831f902593a41a479e0a7a6bda2a66c913f2f912cc619bf70",
+      "format": "markdown",
+      "id": "policy",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Treasury policy extract.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "pnl:1",
+        "location": {
+          "column": "interest",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "pnl"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "5e79efe640bc2aa7ba29efcf4dd305788b027c24edbf56ff7915cd2b49baca79",
+      "format": "csv",
+      "id": "pnl",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Year-to-date P&L.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "interest"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "interest": "pnl:1"
+            },
+            "original": {
+              "interest": "80"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "prior:1",
+        "location": {
+          "column": "principal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "prior"
+      },
+      {
+        "field": "prior:2",
+        "location": {
+          "column": "rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "prior"
+      },
+      {
+        "field": "prior:3",
+        "location": {
+          "column": "interest",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "prior"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "94bee77e0c28fc2723e501067861db7e6dd3ffc9428bdad681aca938364eae6f",
+      "format": "csv",
+      "id": "prior",
+      "metadata": {
+        "as_of": "2025-12-31",
+        "comparator": "prior_actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2025-01-01",
+          "2025-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Prior annual actual interest.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "principal",
+          "rate",
+          "interest"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "interest": "prior:3",
+              "principal": "prior:1",
+              "rate": "prior:2"
+            },
+            "original": {
+              "interest": "60",
+              "principal": "1000",
+              "rate": "0.06"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "commentary:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "commentary:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "commentary"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "35bce42564910952e944163de52bc3781c64f327fffca36cfb4412c41c21b912",
+      "format": "markdown",
+      "id": "commentary",
+      "metadata": {
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Synthetic treasury export",
+        "version": "frozen-1"
+      },
+      "mime": "",
+      "name": "Management commentary.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  }
+]

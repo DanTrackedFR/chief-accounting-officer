@@ -1,0 +1,722 @@
+[
+  {
+    "available_fact_ids": [
+      "debt-open",
+      "debt-principal",
+      "debt-yield",
+      "debt-rights",
+      "debt-repayment",
+      "debt-interest",
+      "debt-paid",
+      "debt-close",
+      "draws",
+      "fees",
+      "class-current",
+      "class-noncurrent",
+      "rate-type",
+      "lender-principal",
+      "payment-current-date",
+      "payment-current-amount",
+      "payment-current-principal",
+      "payment-redemption-date",
+      "payment-redemption-amount",
+      "payment-redemption-principal"
+    ],
+    "family": "debt_population",
+    "issue_id": "debt-financing",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independently_complete_source_population",
+      "reviewed_method",
+      "source_evidence",
+      "opening_balances",
+      "source_GL_statement_bridges",
+      "disclosure_checklist"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "debt-open",
+        "refs": [
+          "debt:2"
+        ]
+      },
+      {
+        "fact_id": "debt-principal",
+        "refs": [
+          "debt:3"
+        ]
+      },
+      {
+        "fact_id": "debt-yield",
+        "refs": [
+          "debt:6"
+        ]
+      },
+      {
+        "fact_id": "debt-rights",
+        "refs": [
+          "debt:13"
+        ]
+      },
+      {
+        "fact_id": "debt-repayment",
+        "refs": [
+          "debt:9"
+        ]
+      },
+      {
+        "fact_id": "debt-interest",
+        "refs": [
+          "debt:7"
+        ]
+      },
+      {
+        "fact_id": "debt-paid",
+        "refs": [
+          "debt:8"
+        ]
+      },
+      {
+        "fact_id": "debt-close",
+        "refs": [
+          "debt:10"
+        ]
+      },
+      {
+        "fact_id": "draws",
+        "refs": [
+          "debt:4"
+        ]
+      },
+      {
+        "fact_id": "fees",
+        "refs": [
+          "debt:5"
+        ]
+      },
+      {
+        "fact_id": "class-current",
+        "refs": [
+          "debt:11"
+        ]
+      },
+      {
+        "fact_id": "class-noncurrent",
+        "refs": [
+          "debt:12"
+        ]
+      },
+      {
+        "fact_id": "rate-type",
+        "refs": [
+          "debt:14"
+        ]
+      },
+      {
+        "fact_id": "lender-principal",
+        "refs": [
+          "lender:2"
+        ]
+      },
+      {
+        "fact_id": "payment-current-date",
+        "refs": [
+          "payments:2"
+        ]
+      },
+      {
+        "fact_id": "payment-current-amount",
+        "refs": [
+          "payments:3"
+        ]
+      },
+      {
+        "fact_id": "payment-current-principal",
+        "refs": [
+          "payments:4"
+        ]
+      },
+      {
+        "fact_id": "payment-redemption-date",
+        "refs": [
+          "payments:6"
+        ]
+      },
+      {
+        "fact_id": "payment-redemption-amount",
+        "refs": [
+          "payments:7"
+        ]
+      },
+      {
+        "fact_id": "payment-redemption-principal",
+        "refs": [
+          "payments:8"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "debt-financing",
+    "transformations": [
+      "transform-debt-open",
+      "transform-debt-principal",
+      "transform-debt-yield",
+      "transform-debt-rights",
+      "transform-debt-repayment",
+      "transform-debt-interest",
+      "transform-debt-paid",
+      "transform-debt-close",
+      "transform-draws",
+      "transform-fees",
+      "transform-class-current",
+      "transform-class-noncurrent",
+      "transform-lender-principal",
+      "transform-payment-current-date",
+      "transform-payment-current-amount",
+      "transform-payment-current-principal",
+      "transform-payment-redemption-date",
+      "transform-payment-redemption-amount",
+      "transform-payment-redemption-principal"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fx-original",
+      "fx-currency",
+      "fx-opening",
+      "fx-rate",
+      "fx-settled",
+      "fx-profit",
+      "fx-opening_rate",
+      "fx-settlement_rate"
+    ],
+    "family": "currency_exposure",
+    "issue_id": "foreign-currency",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "currency",
+      "items",
+      "translation",
+      "disposal"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fx-original",
+        "refs": [
+          "fx:3"
+        ]
+      },
+      {
+        "fact_id": "fx-currency",
+        "refs": [
+          "fx:2"
+        ]
+      },
+      {
+        "fact_id": "fx-opening",
+        "refs": [
+          "fx:4"
+        ]
+      },
+      {
+        "fact_id": "fx-rate",
+        "refs": [
+          "fx:6"
+        ]
+      },
+      {
+        "fact_id": "fx-settled",
+        "refs": [
+          "fx:7"
+        ]
+      },
+      {
+        "fact_id": "fx-profit",
+        "refs": [
+          "fx:10"
+        ]
+      },
+      {
+        "fact_id": "fx-opening_rate",
+        "refs": [
+          "fx:5"
+        ]
+      },
+      {
+        "fact_id": "fx-settlement_rate",
+        "refs": [
+          "fx:8"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "foreign-currency",
+    "transformations": [
+      "transform-fx-original",
+      "transform-fx-opening",
+      "transform-fx-rate",
+      "transform-fx-settled",
+      "transform-fx-profit",
+      "transform-fx-opening_rate",
+      "transform-fx-settlement_rate"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "hedge-value",
+      "hedge-date",
+      "hedge-notional",
+      "hedge-designation",
+      "hedge-risk",
+      "contract-instrument",
+      "contract-notional",
+      "contract-maturity",
+      "contract-underlying",
+      "valuation-opening",
+      "valuation-change",
+      "valuation-settlement",
+      "designation-loan",
+      "designation-quantity",
+      "designation-risk",
+      "effectiveness-instrument_cumulative",
+      "effectiveness-quantity",
+      "effectiveness-opening_reserve",
+      "effectiveness-effective",
+      "effectiveness-ineffective",
+      "effectiveness-closing_reserve"
+    ],
+    "family": "derivative_contract",
+    "issue_id": "derivatives-hedge-accounting",
+    "missing_fields": [],
+    "owner_contract_inputs": [],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "hedge-value",
+        "refs": [
+          "valuation:7"
+        ]
+      },
+      {
+        "fact_id": "hedge-date",
+        "refs": [
+          "valuation:3"
+        ]
+      },
+      {
+        "fact_id": "hedge-notional",
+        "refs": [
+          "valuation:2"
+        ]
+      },
+      {
+        "fact_id": "hedge-designation",
+        "refs": [
+          "designation:4"
+        ]
+      },
+      {
+        "fact_id": "hedge-risk",
+        "refs": [
+          "effectiveness:3"
+        ]
+      },
+      {
+        "fact_id": "contract-instrument",
+        "refs": [
+          "derivative:1"
+        ]
+      },
+      {
+        "fact_id": "contract-notional",
+        "refs": [
+          "derivative:2"
+        ]
+      },
+      {
+        "fact_id": "contract-maturity",
+        "refs": [
+          "derivative:3"
+        ]
+      },
+      {
+        "fact_id": "contract-underlying",
+        "refs": [
+          "derivative:4"
+        ]
+      },
+      {
+        "fact_id": "valuation-opening",
+        "refs": [
+          "valuation:4"
+        ]
+      },
+      {
+        "fact_id": "valuation-change",
+        "refs": [
+          "valuation:5"
+        ]
+      },
+      {
+        "fact_id": "valuation-settlement",
+        "refs": [
+          "valuation:6"
+        ]
+      },
+      {
+        "fact_id": "designation-loan",
+        "refs": [
+          "designation:3"
+        ]
+      },
+      {
+        "fact_id": "designation-quantity",
+        "refs": [
+          "designation:5"
+        ]
+      },
+      {
+        "fact_id": "designation-risk",
+        "refs": [
+          "designation:6"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-instrument_cumulative",
+        "refs": [
+          "effectiveness:2"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-quantity",
+        "refs": [
+          "effectiveness:4"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-opening_reserve",
+        "refs": [
+          "effectiveness:5"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-effective",
+        "refs": [
+          "effectiveness:6"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-ineffective",
+        "refs": [
+          "effectiveness:7"
+        ]
+      },
+      {
+        "fact_id": "effectiveness-closing_reserve",
+        "refs": [
+          "effectiveness:8"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "derivatives-hedge-accounting",
+    "transformations": [
+      "transform-hedge-value",
+      "transform-hedge-date",
+      "transform-hedge-notional",
+      "transform-hedge-designation",
+      "transform-hedge-risk",
+      "transform-contract-notional",
+      "transform-contract-maturity",
+      "transform-valuation-opening",
+      "transform-valuation-change",
+      "transform-valuation-settlement",
+      "transform-designation-quantity",
+      "transform-effectiveness-instrument_cumulative",
+      "transform-effectiveness-quantity",
+      "transform-effectiveness-opening_reserve",
+      "transform-effectiveness-effective",
+      "transform-effectiveness-ineffective",
+      "transform-effectiveness-closing_reserve"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "cash-interest",
+      "cash-principal",
+      "cash-close",
+      "bank-BANK-INTEREST-date",
+      "bank-BANK-INTEREST-kind",
+      "bank-BANK-INTEREST-category",
+      "bank-BANK-INTEREST-bank_id",
+      "bank-BANK-PRINCIPAL-date",
+      "bank-BANK-PRINCIPAL-kind",
+      "bank-BANK-PRINCIPAL-category",
+      "bank-BANK-PRINCIPAL-bank_id",
+      "reported-financing",
+      "bank-financing"
+    ],
+    "family": "cash_activity",
+    "issue_id": "cash-flow-reporting",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "cash_accounts",
+      "transactions",
+      "indirect",
+      "noncash",
+      "statement",
+      "cash_policy",
+      "cash_inventory",
+      "handoffs"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "cash-interest",
+        "refs": [
+          "bank:3"
+        ]
+      },
+      {
+        "fact_id": "cash-principal",
+        "refs": [
+          "bank:8"
+        ]
+      },
+      {
+        "fact_id": "cash-close",
+        "refs": [
+          "cash:2"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-INTEREST-date",
+        "refs": [
+          "bank:2"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-INTEREST-kind",
+        "refs": [
+          "bank:4"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-INTEREST-category",
+        "refs": [
+          "bank:5"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-INTEREST-bank_id",
+        "refs": [
+          "bank:1"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-PRINCIPAL-date",
+        "refs": [
+          "bank:7"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-PRINCIPAL-kind",
+        "refs": [
+          "bank:9"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-PRINCIPAL-category",
+        "refs": [
+          "bank:10"
+        ]
+      },
+      {
+        "fact_id": "bank-BANK-PRINCIPAL-bank_id",
+        "refs": [
+          "bank:6"
+        ]
+      },
+      {
+        "fact_id": "reported-financing",
+        "refs": [
+          "cash:5"
+        ]
+      },
+      {
+        "fact_id": "bank-financing",
+        "refs": [
+          "bank_summary:1"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "cash-flow-reporting",
+    "transformations": [
+      "transform-cash-interest",
+      "transform-cash-principal",
+      "transform-cash-close",
+      "transform-bank-BANK-INTEREST-date",
+      "transform-bank-BANK-PRINCIPAL-date",
+      "transform-reported-financing",
+      "transform-bank-financing"
+    ],
+    "unresolved_judgments": [
+      "reported-financing",
+      "bank-financing"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "rec-debt"
+    ],
+    "family": "reconciliation",
+    "issue_id": "balance-sheet-reconciliations",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "trial_balance",
+      "inventory",
+      "reconciliations"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "rec-debt",
+        "refs": [
+          "rec:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "balance-sheet-reconciliations",
+    "transformations": [
+      "transform-rec-debt"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fs-debt"
+    ],
+    "family": "statement",
+    "issue_id": "financial-statements",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "presentation",
+      "current_tb",
+      "comparative_tb",
+      "comparative",
+      "cash_flow",
+      "equity_bridge",
+      "notes",
+      "checklist",
+      "coverage"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fs-debt",
+        "refs": [
+          "tb:5"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "financial-statements",
+    "transformations": [
+      "transform-fs-debt"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "prior-interest",
+      "analytics-interest"
+    ],
+    "family": "analytics",
+    "issue_id": "management-accounting-analytics",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "prior-interest",
+        "refs": [
+          "prior:3"
+        ]
+      },
+      {
+        "fact_id": "analytics-interest",
+        "refs": [
+          "pnl:1"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "management-accounting-analytics",
+    "transformations": [
+      "transform-prior-interest",
+      "transform-analytics-interest"
+    ],
+    "unresolved_judgments": []
+  }
+]

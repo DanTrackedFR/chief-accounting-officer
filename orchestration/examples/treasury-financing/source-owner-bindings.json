@@ -1,0 +1,665 @@
+[
+  {
+    "fact_id": "debt-open",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "opening_carrying"
+    ]
+  },
+  {
+    "fact_id": "debt-principal",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "opening_principal"
+    ]
+  },
+  {
+    "fact_id": "debt-yield",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "annual_yield"
+    ]
+  },
+  {
+    "fact_id": "debt-rights",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "rights_at_reporting_date"
+    ]
+  },
+  {
+    "fact_id": "debt-repayment",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "schedule",
+      0,
+      "principal_payment"
+    ]
+  },
+  {
+    "fact_id": "debt-interest",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "schedule",
+      0,
+      "expected_interest"
+    ]
+  },
+  {
+    "fact_id": "debt-paid",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "schedule",
+      0,
+      "cash_interest"
+    ]
+  },
+  {
+    "fact_id": "debt-close",
+    "kind": "owner_result",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "closing"
+    ]
+  },
+  {
+    "fact_id": "fx-original",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "foreign_amount"
+    ]
+  },
+  {
+    "fact_id": "fx-currency",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "foreign_currency"
+    ]
+  },
+  {
+    "fact_id": "fx-opening",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "opening_book"
+    ]
+  },
+  {
+    "fact_id": "fx-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "closing_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-settled",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "settled_foreign"
+    ]
+  },
+  {
+    "fact_id": "fx-profit",
+    "kind": "owner_result",
+    "owner": "foreign-currency",
+    "path": [
+      "monetary_fx_profit"
+    ]
+  },
+  {
+    "fact_id": "hedge-value",
+    "kind": "owner_result",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "derivatives",
+      "forward1",
+      "closing"
+    ]
+  },
+  {
+    "fact_id": "hedge-date",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "valuations",
+      "valuation1",
+      "measurement_date"
+    ]
+  },
+  {
+    "fact_id": "hedge-notional",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "valuations",
+      "valuation1",
+      "notional"
+    ]
+  },
+  {
+    "fact_id": "hedge-designation",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "designation_date"
+    ]
+  },
+  {
+    "fact_id": "hedge-risk",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "risk_measurement",
+      "risk_cumulative"
+    ]
+  },
+  {
+    "fact_id": "cash-interest",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-INTEREST",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "cash-principal",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-PRINCIPAL",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "cash-close",
+    "kind": "owner_result",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "closing"
+    ]
+  },
+  {
+    "fact_id": "rec-debt",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "Debt",
+      "source_closing"
+    ]
+  },
+  {
+    "fact_id": "fs-debt",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Debt",
+      "balance"
+    ]
+  },
+  {
+    "fact_id": "prior-interest",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "interest-prior",
+      "content",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "analytics-interest",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "accounts",
+      "cash-metric",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "draws",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "draws"
+    ]
+  },
+  {
+    "fact_id": "fees",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "eligible_cost"
+    ]
+  },
+  {
+    "fact_id": "class-current",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "current_carrying"
+    ]
+  },
+  {
+    "fact_id": "class-noncurrent",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "noncurrent_carrying"
+    ]
+  },
+  {
+    "fact_id": "rate-type",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "contractual_rate_type"
+    ]
+  },
+  {
+    "fact_id": "lender-principal",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "lender_principal"
+    ]
+  },
+  {
+    "fact_id": "payment-current-date",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "current",
+      "date"
+    ]
+  },
+  {
+    "fact_id": "payment-current-amount",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "current",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "payment-current-principal",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "current",
+      "principal"
+    ]
+  },
+  {
+    "fact_id": "payment-redemption-date",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "redemption",
+      "date"
+    ]
+  },
+  {
+    "fact_id": "payment-redemption-amount",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "redemption",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "payment-redemption-principal",
+    "kind": "current",
+    "owner": "debt-financing",
+    "path": [
+      "debt",
+      0,
+      "yield_validation",
+      "cashflows",
+      "redemption",
+      "principal"
+    ]
+  },
+  {
+    "fact_id": "fx-opening_rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "opening_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-settlement_rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "loan",
+      "settlement_rate"
+    ]
+  },
+  {
+    "fact_id": "contract-instrument",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "contracts",
+      "forward1",
+      "id"
+    ]
+  },
+  {
+    "fact_id": "contract-notional",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "contracts",
+      "forward1",
+      "notional"
+    ]
+  },
+  {
+    "fact_id": "contract-maturity",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "contracts",
+      "forward1",
+      "maturity"
+    ]
+  },
+  {
+    "fact_id": "contract-underlying",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "contracts",
+      "forward1",
+      "underlying"
+    ]
+  },
+  {
+    "fact_id": "valuation-opening",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "valuations",
+      "valuation1",
+      "opening"
+    ]
+  },
+  {
+    "fact_id": "valuation-change",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "valuations",
+      "valuation1",
+      "change"
+    ]
+  },
+  {
+    "fact_id": "valuation-settlement",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "valuations",
+      "valuation1",
+      "settlement"
+    ]
+  },
+  {
+    "fact_id": "designation-loan",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "hedged_item_id"
+    ]
+  },
+  {
+    "fact_id": "designation-quantity",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "actual_item_quantity"
+    ]
+  },
+  {
+    "fact_id": "designation-risk",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "risk_id"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-instrument_cumulative",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "risk_measurement",
+      "instrument_cumulative"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-quantity",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "actual_instrument_quantity"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-opening_reserve",
+    "kind": "current",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "relationships",
+      "relationship1",
+      "opening_reserve"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-effective",
+    "kind": "owner_result",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "derivatives",
+      "forward1",
+      "effective"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-ineffective",
+    "kind": "owner_result",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "derivatives",
+      "forward1",
+      "ineffectiveness"
+    ]
+  },
+  {
+    "fact_id": "effectiveness-closing_reserve",
+    "kind": "owner_result",
+    "owner": "derivatives-hedge-accounting",
+    "path": [
+      "hedge_reserves",
+      "relationship1",
+      "closing"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-INTEREST-date",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-INTEREST",
+      "date"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-INTEREST-kind",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-INTEREST",
+      "kind"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-INTEREST-category",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-INTEREST",
+      "category"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-INTEREST-bank_id",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-INTEREST",
+      "bank_id"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-PRINCIPAL-date",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-PRINCIPAL",
+      "date"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-PRINCIPAL-kind",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-PRINCIPAL",
+      "kind"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-PRINCIPAL-category",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-PRINCIPAL",
+      "category"
+    ]
+  },
+  {
+    "fact_id": "bank-BANK-PRINCIPAL-bank_id",
+    "kind": "current",
+    "owner": "cash-flow-reporting",
+    "path": [
+      "transactions",
+      "BANK-PRINCIPAL",
+      "bank_id"
+    ]
+  }
+]

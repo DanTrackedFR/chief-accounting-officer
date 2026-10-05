@@ -1,0 +1,214 @@
+[
+  {
+    "downstream_handoff": {
+      "amount": "880.00",
+      "components": [
+        {
+          "metric_path": [
+            "monetary_fx_profit"
+          ],
+          "producer": "foreign-currency",
+          "sign": -1
+        }
+      ],
+      "consumer": "financial-statements",
+      "economic_id": "debt_base-financial-statements",
+      "fingerprint": "9ecb26fd3947f3ea711817430799415fb7faefc0700e02ad5002e6b931cc2f98",
+      "metric_path": [
+        "debt",
+        0,
+        "closing"
+      ],
+      "producer": "debt-financing",
+      "purpose": "report",
+      "qualification_evidence": "Separate synthetic exact-case source/owner review",
+      "semantic": "debt_base"
+    },
+    "final_public_amount": "880.00",
+    "owner_amount": "800.00",
+    "owner_result_path": [
+      "debt",
+      0,
+      "closing"
+    ],
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "debt:2"
+      ],
+      "fact_id": "debt-open",
+      "owner": "debt-financing",
+      "owner_input_path": [
+        "debt",
+        0,
+        "opening_carrying"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1",
+          "id": "debt:2",
+          "location": {
+            "column": "opening",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "2b1aac44b9a6735d9c84bb55bb236e55ac664222f28875890ae92ba02f2791c7",
+          "source_id": "debt",
+          "value": "1000"
+        }
+      ]
+    }
+  },
+  {
+    "downstream_handoff": {
+      "amount": "-80.00",
+      "components": [],
+      "consumer": "financial-statements",
+      "economic_id": "monetary_fx-financial-statements",
+      "fingerprint": "cfa98c0fb56a80946bf0ae74893f91f5bd3d142fe50c418dbcfbe1ad85171ed6",
+      "metric_path": [
+        "monetary_fx_profit"
+      ],
+      "producer": "foreign-currency",
+      "purpose": "report",
+      "qualification_evidence": "Separate synthetic exact-case source/owner review",
+      "semantic": "monetary_fx"
+    },
+    "final_public_amount": "-80.00",
+    "owner_amount": "-80.00",
+    "owner_result_path": [
+      "monetary_fx_profit"
+    ],
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "fx:6"
+      ],
+      "fact_id": "fx-rate",
+      "owner": "foreign-currency",
+      "owner_input_path": [
+        "items",
+        "loan",
+        "closing_rate"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "2bba8bd227c5f31309369957d115a72950933ae5bc468ba714b2d807fcfd26fc",
+          "id": "fx:6",
+          "location": {
+            "column": "closing_rate",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "317e836c478b5116b19da4bc9f7e47b0e618fd1221985d6dea60b48374a3e74d",
+          "source_id": "fx",
+          "value": "1.10"
+        }
+      ]
+    }
+  },
+  {
+    "downstream_handoff": {
+      "amount": "40",
+      "components": [],
+      "consumer": "financial-statements",
+      "economic_id": "derivative_balance-financial-statements",
+      "fingerprint": "7c04f3786cd32670321f0d6c62b7e2254d69012c297b28e08d9aadc50f0c63a5",
+      "metric_path": [
+        "derivatives",
+        "forward1",
+        "closing"
+      ],
+      "producer": "derivatives-hedge-accounting",
+      "purpose": "report",
+      "qualification_evidence": "Separate synthetic exact-case source/owner review",
+      "semantic": "derivative_balance"
+    },
+    "final_public_amount": "40",
+    "owner_amount": "40",
+    "owner_result_path": [
+      "derivatives",
+      "forward1",
+      "closing"
+    ],
+    "source": {
+      "binding_kind": "owner_result",
+      "extracted_fields": [
+        "valuation:7"
+      ],
+      "fact_id": "hedge-value",
+      "owner": "derivatives-hedge-accounting",
+      "owner_input_path": [
+        "derivatives",
+        "forward1",
+        "closing"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "d06074cc1e1fef695019c1bfe724f98a79bc8d7965845f3a5573d4b53ff3c8a7",
+          "id": "valuation:7",
+          "location": {
+            "column": "closing",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "66fd01837f1cc29f0886773dd6b4a6895863968486e0da43ca6dedc296f7a32e",
+          "source_id": "valuation",
+          "value": "40"
+        }
+      ]
+    }
+  },
+  {
+    "downstream_handoff": {
+      "amount": "-200",
+      "components": [],
+      "consumer": "financial-statements",
+      "economic_id": "financing_cash-financial-statements",
+      "fingerprint": "822e5b8b0e7857827f7240ab66d5e27b6e0d9fbe023507a6402e112be6347cf8",
+      "metric_path": [
+        "financing"
+      ],
+      "producer": "cash-flow-reporting",
+      "purpose": "report",
+      "qualification_evidence": "Separate synthetic exact-case source/owner review",
+      "semantic": "financing_cash"
+    },
+    "final_public_amount": "-200",
+    "owner_amount": "-200",
+    "owner_result_path": [
+      "financing"
+    ],
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "bank:8"
+      ],
+      "fact_id": "cash-principal",
+      "owner": "cash-flow-reporting",
+      "owner_input_path": [
+        "transactions",
+        "BANK-PRINCIPAL",
+        "amount"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "693267f6415237dedded179ffbd8b3631800fa861746a92d013f247b81fbf329",
+          "id": "bank:8",
+          "location": {
+            "column": "amount",
+            "record_id": null,
+            "row": 3,
+            "table": "table"
+          },
+          "source_fingerprint": "83c4ed8c04b4022d12d896031a1737573b2c58caf18106dd185913bc1d0e54c4",
+          "source_id": "bank",
+          "value": "-200"
+        }
+      ]
+    }
+  }
+]

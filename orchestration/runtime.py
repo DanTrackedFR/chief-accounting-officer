@@ -403,6 +403,10 @@ class CAO:
         if producer.status!='complete': raise ValueError('Incomplete owner handoff')
         if dimensions(inputs[producer.selected_skill]) != dimensions(inputs[consumer.selected_skill]): raise ValueError('Handoff dimensions differ')
         path=b['metric_path']; purpose=b['purpose']; semantic=b['semantic']
+        if producer.selected_skill=='derivatives-hedge-accounting' and consumer.selected_skill=='financial-statements':
+            calc=producer.result['calculations']; relationships=inputs[producer.selected_skill]['relationships']
+            if any(d['route']!='cash_flow' or number(d['opening']) or number(d['settlement']) for d in calc['derivatives']) or any(number(r[k]) for r in calc['hedge_reserves'] for k in ('opening','reclassification','basis_adjustment')) or any(r['status'] not in ('active','rebalanced') for r in relationships):
+                raise ValueError('Hedge reporting handoff supports first-year continuing cash-flow hedges only; prior movements require separate governed mapping')
         allowed={
             'debt_base':('debt-financing',None,'report'),
             'debt_current':('debt-financing',None,'report'),
@@ -461,6 +465,12 @@ class CAO:
             row=at(inputs[consumer.selected_skill],b['target_path'][:-1])
             category='asset' if semantic=='allowance' or value>=0 else 'liability'
             if row.get('category')!=category:raise ValueError('Owner balance statement classification differs')
+        if consumer.selected_skill=='financial-statements':
+            targets={'debt_base':('liability',-1),'interest_expense':('expense',1),'derivative_balance':('asset' if value>=0 else 'liability',1),'hedge_pnl':('revenue' if value>=0 else 'expense',-1),'hedge_oci':('oci',-1),'cash_balance':('asset',1)}
+            if semantic in targets:
+                expected_category,expected_sign=targets[semantic]
+                if len(b['target_path'])!=3 or b['target_path'][0]!='current_tb' or b['target_path'][2]!='balance' or sign!=expected_sign or at(inputs[consumer.selected_skill],b['target_path'][:-1]).get('category')!=expected_category:raise ValueError('Owner reporting semantic target/classification differs')
+            if semantic=='financing_cash' and b['target_path']!=['cash_flow','financing']:raise ValueError('Financing cash must bind actual statement cash flow')
         actual=number(at(inputs[consumer.selected_skill],b['target_path']))*sign
         if actual!=value or number(b['amount'])!=value: raise ValueError('Owner and consumer amount contradiction')
         if not isinstance(b.get('economic_id'),str) or not b['economic_id'] or not b.get('qualification_evidence'):
@@ -586,7 +596,7 @@ class CAO:
             for event,source in zip(request['journal_ownership'],sources):
                 if set(source)!={'economic_id','entity','period','currency','origin','record','nature'} or source['economic_id']!=event['economic_id']:raise ValueError('Event source binding differs')
                 if (source['entity'],source['period'],source['currency'])!=(c.entities[0],c.periods,currency(inputs[reporting.selected_skill])):raise ValueError('Event source dimensions differ')
-                key=tuple(source[k] for k in ('origin','record','nature'))
+                key=(source['origin'],source['record']) if source['origin']=='bank' else tuple(source[k] for k in ('origin','record','nature'))
                 if any(not isinstance(v,str) or not v.strip() for v in key) or key in seen:raise ValueError('Economic source counted twice under event aliases')
                 seen.add(key)
         if review.get('payload_fingerprint')!=digest(payload) or review.get('approved') is not True or not review.get('reviewer') or review.get('reviewer')==review.get('preparer'):
@@ -598,6 +608,19 @@ class CAO:
             for line in entry['lines']:
                 account=mapping.get(line['account'],line['account'])
                 delta[account]=delta.get(account,Decimal(0))+number(line['amount'])*(1 if line['side']=='Dr' else -1)
+        if request.get('journal_event_sources') is not None and 'cash-flow-reporting' in inputs:
+            cash_accounts={row['id'] for row in inputs[reporting.selected_skill]['current_tb'] if row.get('cash_account') is True}
+            bank={row['bank_id']:row for row in inputs['cash-flow-reporting']['transactions']}
+            consumed_bank=set()
+            for source,event in zip(request['journal_event_sources'],selected):
+                cash_amount=sum((number(line['amount'])*(1 if line['side']=='Dr' else -1) for line in event['lines'] if mapping.get(line['account'],line['account']) in cash_accounts),Decimal(0))
+                if cash_amount:
+                    if source['origin']!='bank' or source['record'] not in bank or source['record'] in consumed_bank:raise ValueError('Cash event needs unique original bank record')
+                    row=bank[source['record']]
+                    if number(row['amount'])!=cash_amount:raise ValueError('Posting cash amount differs from original bank event')
+                    consumed_bank.add(source['record'])
+                elif source['origin']=='bank':raise ValueError('Noncash event cannot claim bank cash ownership')
+            if consumed_bank!=set(bank):raise ValueError('Native bank cash population omitted from exact-once postings')
         source=inputs[reporting.selected_skill]
         current={row['id']:number(row['balance']) for row in source['current_tb']}
         opening={row['id']:number(row['balance']) for row in source['comparative_tb']}
@@ -731,6 +754,28 @@ class CAO:
                 if number(b['residual']):limits.append('Explicit '+name.replace('_',' ')+' bridge residual '+b['residual']+'.')
             if d['dso']['current'] is not None:values['snapshot_collection_days']=d['dso']['current'];values['prior_snapshot_collection_days']=d['dso']['prior']
             limits.append(d['dso']['formula']+'. '+d['dso']['limitation'])
+        debt=next((n for n in g.nodes.values() if n.selected_skill=='debt-financing' and n.status=='complete'),None)
+        cash_owner=next((n for n in g.nodes.values() if n.selected_skill=='cash-flow-reporting' and n.status=='complete'),None)
+        hedge=next((n for n in g.nodes.values() if n.selected_skill=='derivatives-hedge-accounting' and n.status=='complete'),None)
+        if debt:
+            balances=debt.result['calculations']['debt']
+            for label in ('opening','draws','eligible_cost','effective_interest','cash_interest','repayments','closing','current','noncurrent'):
+                values['debt_'+label]=str(sum((number(row[label]) for row in balances),Decimal(0)))
+            for handoff in c.handoff_ledger:
+                if handoff['consumer']=='financial-statements' and handoff['semantic'] in ('debt_base','debt_current','debt_noncurrent'):
+                    values[{'debt_base':'reported_debt','debt_current':'current_debt','debt_noncurrent':'noncurrent_debt'}[handoff['semantic']]]=handoff['amount']
+            text+=' The governed liability schedule closes at '+values['debt_closing']+' before the separately governed currency movement.'
+            if 'reported_debt' in values:text+=' Reported debt is '+values['reported_debt']+', with current '+values.get('current_debt','unresolved')+' and noncurrent '+values.get('noncurrent_debt','unresolved')+'.'
+            text+=' Accounting interest is '+values['debt_effective_interest']+'; cash interest is '+values['debt_cash_interest']+' and principal repaid is '+values['debt_repayments']+'. These are distinct from noncash currency and valuation effects. Classification relies on the supplied reporting-date rights and covenant evidence; no waiver or refinancing right is inferred.'
+        if cash_owner:
+            calc=cash_owner.result['calculations']
+            for metric in ('opening','closing','direct_operating','investing','financing','fx'):values['cash_'+metric]=str(number(calc[metric]))
+            text+=' Cash reconciles from '+values['cash_opening']+' to '+values['cash_closing']+': operating '+values['cash_direct_operating']+', investing '+values['cash_investing']+', financing '+values['cash_financing']+' and cash FX '+values['cash_fx']+'. Noncash debt remeasurement and derivative fair-value movements are excluded from bank flows; the supplied interest classification policy governs cash presentation.'
+        if hedge:
+            calc=hedge.result['calculations'];values['derivative_balance']=str(sum((number(row['closing']) for row in calc['derivatives']),Decimal(0)));values['hedge_pnl']=str(sum((number(row.get('ineffectiveness',0))+number(row.get('earnings_release',0)) for row in calc['derivatives']),Decimal(0)));values['hedge_reserve']=str(sum((number(row['closing']) for row in calc['hedge_reserves']),Decimal(0)));values['hedge_oci']=str(sum((number(row['recognized_oci']) for row in calc['hedge_reserves']),Decimal(0)))
+            text+=' The externally valued derivative closes at '+values['derivative_balance']+'. The governed hedge result allocates '+values['hedge_pnl']+' to earnings and '+values['hedge_oci']+' to OCI; the closing reserve is '+values['hedge_reserve']+'. Accounting effectiveness is based on the actual designated risk evidence and does not establish an offset of unrelated currency exposures. Valuation models and market inputs are supplied by the qualified valuation source.'
+        if debt or cash_owner:
+            text+=(' The reviewed accounting and cash reconciliations complete within scope.' if c.outcome=='complete' else ' The review remains partial: resolve the listed cash-flow/source or accounting exceptions before declaring the close clean.')
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
         if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,

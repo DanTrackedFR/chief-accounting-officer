@@ -1,0 +1,120 @@
+[
+  {
+    "capability": "debt_population",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "debt-financing",
+    "material": null,
+    "owner": "debt-financing",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "debt_population"
+    ]
+  },
+  {
+    "capability": "currency_exposure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "foreign-currency",
+    "material": null,
+    "owner": "foreign-currency",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "currency_exposure"
+    ]
+  },
+  {
+    "capability": "derivative_contract",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "debt-financing"
+    ],
+    "id": "derivatives-hedge-accounting",
+    "material": null,
+    "owner": "derivatives-hedge-accounting",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "derivative_contract"
+    ]
+  },
+  {
+    "capability": "cash_activity",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "debt-financing",
+      "foreign-currency"
+    ],
+    "id": "cash-flow-reporting",
+    "material": null,
+    "owner": "cash-flow-reporting",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "cash_activity"
+    ]
+  },
+  {
+    "capability": "reconciliation",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "cash-flow-reporting",
+      "debt-financing",
+      "derivatives-hedge-accounting",
+      "foreign-currency"
+    ],
+    "id": "balance-sheet-reconciliations",
+    "material": null,
+    "owner": "balance-sheet-reconciliations",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "reconciliation"
+    ]
+  },
+  {
+    "capability": "statement",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "cash-flow-reporting",
+      "debt-financing",
+      "derivatives-hedge-accounting",
+      "foreign-currency"
+    ],
+    "id": "financial-statements",
+    "material": null,
+    "owner": "financial-statements",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "statement"
+    ]
+  },
+  {
+    "capability": "analytics",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "cash-flow-reporting",
+      "debt-financing",
+      "derivatives-hedge-accounting",
+      "foreign-currency"
+    ],
+    "id": "management-accounting-analytics",
+    "material": null,
+    "owner": "management-accounting-analytics",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "analytics"
+    ]
+  }
+]
