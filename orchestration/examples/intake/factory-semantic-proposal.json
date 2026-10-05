@@ -1,0 +1,1009 @@
+{
+  "assumptions": [],
+  "bounded_owner": null,
+  "classifications": {
+    "ap": {
+      "confidence": 0.9,
+      "evidence": [
+        "ap:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "ap_export"
+      }
+    },
+    "assets": {
+      "confidence": 0.9,
+      "evidence": [
+        "assets:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "fixed_asset_register"
+      }
+    },
+    "billing": {
+      "confidence": 0.9,
+      "evidence": [
+        "billing:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "revenue_report"
+      }
+    },
+    "close": {
+      "confidence": 0.9,
+      "evidence": [
+        "close:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "close_checklist"
+      }
+    },
+    "commentary": {
+      "confidence": 0.9,
+      "evidence": [
+        "commentary:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "management_commentary"
+      }
+    },
+    "fx": {
+      "confidence": 0.9,
+      "evidence": [
+        "fx:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "fx_report"
+      }
+    },
+    "payroll": {
+      "confidence": 0.9,
+      "evidence": [
+        "payroll:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "payroll_export"
+      }
+    },
+    "pnl": {
+      "confidence": 0.9,
+      "evidence": [
+        "pnl:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "pnl"
+      }
+    },
+    "prior": {
+      "confidence": 0.9,
+      "evidence": [
+        "prior:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "pnl"
+      }
+    },
+    "production": {
+      "confidence": 0.9,
+      "evidence": [
+        "production:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "certainty": "probable",
+        "family": "inventory_report"
+      }
+    }
+  },
+  "column_mappings": [],
+  "context_candidates": {},
+  "disputed_facts": [],
+  "entities": [],
+  "facts": [
+    {
+      "attribute": "opening_cost",
+      "candidate_owner": "fixed-assets",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "assets:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "600000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "machinery",
+      "id": "asset-cost",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "amount",
+      "candidate_owner": "accounts-payable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "ap:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "120"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "supplier_cost",
+      "id": "ap-amount",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "rate",
+      "candidate_owner": "employee-benefits-payroll",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payroll:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "employee_cost",
+      "id": "pay-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "units",
+      "candidate_owner": "employee-benefits-payroll",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payroll:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "50"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "employee_cost",
+      "id": "pay-units",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "expected_charge",
+      "candidate_owner": "employee-benefits-payroll",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payroll:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "10800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "employee_cost",
+      "id": "pay-charge",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_book",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "110"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_cost",
+      "candidate_owner": "inventory-cost",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "production:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "510"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "inventory",
+      "id": "stock-rm",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "ssp",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "40000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "revenue-ssp",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_cost",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "600000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "statement-cost",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_cost",
+      "candidate_owner": "balance-sheet-reconciliations",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "33912.00"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "stock-rec",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "duration",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-duration",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "amount",
+      "candidate_owner": "accounting-systems-data-integrity",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "45726.00"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "interface",
+      "id": "interface-balance",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "threshold",
+      "candidate_owner": "accounting-controls-icfr",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "10"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "control",
+      "id": "control-threshold",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "profit",
+      "candidate_owner": "disclosure-management",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "close:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-16304.00"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "disclosure",
+      "id": "profit-disclosure",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "cogs",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "pnl:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "11304"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "analytic-cogs",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_profit",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "15000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-profit",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "factory_labour",
+      "candidate_owner": "employee-benefits-payroll",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payroll:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "10800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "employee_cost",
+      "id": "labour-export",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "factory_labour",
+      "candidate_owner": "employee-benefits-payroll",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "pnl:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "11000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "employee_cost",
+      "id": "labour-gl",
+      "transformation": "decimal"
+    }
+  ],
+  "frameworks": [],
+  "hypotheses": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "commentary:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "description": "FX is the main margin driver",
+        "id": "management-fx",
+        "tests": [
+          {
+            "factor": 0.5,
+            "left_owner": "foreign-currency",
+            "left_path": [
+              "monetary_fx_profit"
+            ],
+            "operator": "magnitude_above",
+            "right_owner": "management-accounting-analytics",
+            "right_path": [
+              "diagnostic",
+              "bridge",
+              "change"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "interpreted_objective": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "Explain current margin deterioration and assess close reliability from supplied source populations"
+  },
+  "issues": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "assets:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "asset-cost"
+        ],
+        "family": "machinery",
+        "id": "fixed-assets",
+        "owner": "fixed-assets",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "ap:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "ap-amount"
+        ],
+        "family": "supplier_cost",
+        "id": "accounts-payable",
+        "owner": "accounts-payable",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "payroll:3",
+        "payroll:4",
+        "payroll:5",
+        "payroll:6",
+        "pnl:10"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "pay-rate",
+          "pay-units",
+          "pay-charge",
+          "labour-export",
+          "labour-gl"
+        ],
+        "family": "employee_cost",
+        "id": "employee-benefits-payroll",
+        "owner": "employee-benefits-payroll",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "fx:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fx-opening"
+        ],
+        "family": "currency_exposure",
+        "id": "foreign-currency",
+        "owner": "foreign-currency",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "production:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "stock-rm"
+        ],
+        "family": "inventory",
+        "id": "inventory-cost",
+        "owner": "inventory-cost",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "billing:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "revenue-ssp"
+        ],
+        "family": "customer_contract",
+        "id": "revenue-recognition",
+        "owner": "revenue-recognition",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:7"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "statement-cost"
+        ],
+        "family": "statement",
+        "id": "financial-statements",
+        "owner": "financial-statements",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:3"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "stock-rec"
+        ],
+        "family": "reconciliation",
+        "id": "balance-sheet-reconciliations",
+        "owner": "balance-sheet-reconciliations",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "close-duration"
+        ],
+        "family": "close_calendar",
+        "id": "month-end-close",
+        "owner": "month-end-close",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "interface-balance"
+        ],
+        "family": "interface",
+        "id": "accounting-systems-data-integrity",
+        "owner": "accounting-systems-data-integrity",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:5"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "control-threshold"
+        ],
+        "family": "control",
+        "id": "accounting-controls-icfr",
+        "owner": "accounting-controls-icfr",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "close:6"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "profit-disclosure"
+        ],
+        "family": "disclosure",
+        "id": "disclosure-management",
+        "owner": "disclosure-management",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "pnl:4",
+        "prior:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "analytic-cogs",
+          "prior-profit"
+        ],
+        "family": "analytics",
+        "id": "management-accounting-analytics",
+        "owner": "management-accounting-analytics",
+        "required_fields": []
+      }
+    }
+  ],
+  "jurisdictions": [],
+  "missing_facts": [
+    {
+      "confidence": 0,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "UNRESOLVED",
+      "value": {
+        "attribute": "framework",
+        "kind": "blocking",
+        "owner": ""
+      }
+    }
+  ],
+  "objective": {
+    "confidence": 1,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "USER_STATED",
+    "value": "Our factory margins look terrible this month. Can you review the close and figure out what\u2019s going on? I have attached the P&L, production/inventory report, payroll export, AP accruals, fixed asset register, FX report and close checklist."
+  },
+  "periods": [],
+  "primary_mode": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "DIAGNOSTIC_ANALYTICS"
+  },
+  "requested_output": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "Diagnostic close workpaper"
+  },
+  "secondary_modes": [],
+  "supporting_modes": [
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "CLOSE_REVIEW"
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "RECONCILIATION_INVESTIGATION"
+    }
+  ]
+}

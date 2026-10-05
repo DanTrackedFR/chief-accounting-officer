@@ -290,6 +290,15 @@ class CAO:
                 except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
                     n.status='blocked'; n.result=None; n.open_items.append(str(exc))
         self._diagnostic_followups(c,graph,inputs,context)
+        # Optional intake extension returns validated material questions before
+        # challenge/synthesis/closure. Accounting work may proceed independently;
+        # unresolved intake evidence prevents a clean Case close.
+        if hasattr(self.planner, 'material_questions'):
+            questions=self.planner.material_questions()
+            if not isinstance(questions,list) or any(not isinstance(q,dict) or q.get('kind') not in ('blocking','confirmation') or not isinstance(q.get('question'),str) for q in questions):
+                raise ValueError('Invalid material intake questions')
+            public_record(dict(open_items=[q['question'] for q in questions]),route='answer_context')
+            c.open_questions.extend(copy.deepcopy(questions))
         c.transition('CHALLENGE')
         self._challenge(c,graph,inputs,request,context)
         analytics=next((n for n in graph.nodes.values() if n.selected_skill=='management-accounting-analytics'),None)

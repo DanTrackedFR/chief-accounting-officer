@@ -50,7 +50,7 @@ This foundation is intentionally bounded: it is not yet arbitrary natural-langua
 Do not rename these workstreams as a new numbered project phase unless the owner explicitly authorises that roadmap change.
 
 ### 1. CAO Intent & Diagnostic Analytics Foundation — COMPLETE
-Status: **complete**. Governed intent, bounded diagnostic methods and the manufacturing diagnostic flagship passed authored, independent adversarial and full repository regression, plus exact-head GitHub Actions on the integration candidate. See `orchestration/DIAGNOSTIC-INTEGRATION-HANDOFF.md`; final publication repeats CI after this documentation update. Semantic Planner + Document/Data Intake remains future work.
+Status: **complete**. Governed intent, bounded diagnostic methods and the manufacturing diagnostic flagship passed authored, independent adversarial and full repository regression, plus exact-head GitHub Actions on the integration candidate. See `orchestration/DIAGNOSTIC-INTEGRATION-HANDOFF.md`; final publication repeats CI after this documentation update. Semantic Planner + Document/Data Intake is described below.
 
 The CAO must determine not only which accounting topics are implicated, but what the user is actually trying to accomplish. Intent/work-mode decomposition should distinguish and combine, as appropriate:
 - diagnostic analytics;
@@ -104,7 +104,9 @@ Independent QA must challenge at least:
 - genuine economic deterioration mislabelled as an accounting error;
 - accounting conclusions made directly by analytics instead of the governed owner.
 
-### 2. Semantic Planner + Document/Data Intake
+### 2. Semantic Planner + Document/Data Intake — COMPLETE
+Status: **complete** within the bounded foundation. Structured semantic proposals, deterministic validation, inert source adapters, provenance/transformations, fact/conflict/context resolution, owner-input candidates and integration with the existing runtime passed authored and independent adversarial QA plus full repository regression. See `orchestration/INTAKE-INTEGRATION-HANDOFF.md`; final publication requires exact-head GitHub Actions before PR readiness. Native binary extraction, live model inference, authenticated approvals and persistence remain outside scope. Additional end-to-end flagship scenarios remain next.
+
 After the analytical-intent foundation is stable, allow the CAO to interpret genuinely free-form objectives and supplied company materials into governed facts, issues and workplan proposals.
 
 Target inputs include trial balances, monthly P&Ls, ERP/subledger exports, inventory reports, payroll data, contracts, policies, reconciliations, management commentary and other company documents.

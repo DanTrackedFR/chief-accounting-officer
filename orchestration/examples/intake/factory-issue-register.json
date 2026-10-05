@@ -1,0 +1,194 @@
+[
+  {
+    "capability": "machinery",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "fixed-assets",
+    "material": null,
+    "owner": "fixed-assets",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "machinery"
+    ]
+  },
+  {
+    "capability": "supplier_cost",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "accounts-payable",
+    "material": null,
+    "owner": "accounts-payable",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "supplier_cost"
+    ]
+  },
+  {
+    "capability": "employee_cost",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "employee-benefits-payroll",
+    "material": null,
+    "owner": "employee-benefits-payroll",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "employee_cost"
+    ]
+  },
+  {
+    "capability": "currency_exposure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "foreign-currency",
+    "material": null,
+    "owner": "foreign-currency",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "currency_exposure"
+    ]
+  },
+  {
+    "capability": "inventory",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "employee-benefits-payroll",
+      "accounts-payable",
+      "fixed-assets",
+      "foreign-currency"
+    ],
+    "id": "inventory-cost",
+    "material": null,
+    "owner": "inventory-cost",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "inventory"
+    ]
+  },
+  {
+    "capability": "customer_contract",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "revenue-recognition",
+    "material": null,
+    "owner": "revenue-recognition",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "customer_contract"
+    ]
+  },
+  {
+    "capability": "statement",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "financial-statements",
+    "material": null,
+    "owner": "financial-statements",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "statement"
+    ]
+  },
+  {
+    "capability": "reconciliation",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "balance-sheet-reconciliations",
+    "material": null,
+    "owner": "balance-sheet-reconciliations",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "reconciliation"
+    ]
+  },
+  {
+    "capability": "close_calendar",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "month-end-close",
+    "material": null,
+    "owner": "month-end-close",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "close_calendar"
+    ]
+  },
+  {
+    "capability": "interface",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "accounting-systems-data-integrity",
+    "material": null,
+    "owner": "accounting-systems-data-integrity",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "interface"
+    ]
+  },
+  {
+    "capability": "control",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "accounting-controls-icfr",
+    "material": null,
+    "owner": "accounting-controls-icfr",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "control"
+    ]
+  },
+  {
+    "capability": "disclosure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "financial-statements"
+    ],
+    "id": "disclosure-management",
+    "material": null,
+    "owner": "disclosure-management",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "disclosure"
+    ]
+  },
+  {
+    "capability": "analytics",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "inventory-cost",
+      "revenue-recognition"
+    ],
+    "id": "management-accounting-analytics",
+    "material": null,
+    "owner": "management-accounting-analytics",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "analytics"
+    ]
+  }
+]
