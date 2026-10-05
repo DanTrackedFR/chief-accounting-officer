@@ -1,0 +1,423 @@
+[
+  {
+    "format": "csv",
+    "id": "purchase",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "acquisition_model",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Acquisition completion and purchase model.csv",
+    "payload": "completed,cash_price,nci_value,ownership,cash_assets,land_uplift,debt,dtl,asset_id,acquisition_costs\n2026-07-01,800,200,0.8,900,100,200,25,LAND-1,0\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "tax",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "tax_evidence",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Reviewed acquisition tax workpaper.csv",
+    "payload": "tax_base,rate,carrying,effective_date,asset_id\n0,0.25,100,2026-07-01,LAND-1\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "rates",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "approved_rates",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Approved foreign operation rates.csv",
+    "payload": "closing,acquisition,post_average\n0.8,0.9,0.85\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "activity",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Full year subsidiary activity split.csv",
+    "payload": "pre_revenue,pre_expense,post_revenue,post_expense,post_profit\n200,50,250,150,100\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "ic",
+    "metadata": {
+      "amount_currency": "USD",
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Parent",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Bilateral loan confirmation.csv",
+    "payload": "principal,reciprocal,counterparty,transaction,principal_currency,parent_rate,subsidiary_rate,originated,terms\n125,125,Subsidiary-US,IC-LOAN-1,USD,0.8,1,2026-09-01,Repayable on demand; already posted before this reconciliation\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "valuation",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "independent_valuation",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Independent goodwill CGU valuation.csv",
+    "payload": "recoverable,goodwill,net_assets,fvlc,cashflow_year1,discount_rate,terminal_value,fair_value,undiscounted,operation_entity\n900,180,700,900,990,0.1,0,900,900,Subsidiary-US\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "rights",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "legal_entity_evidence",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Group rights and perimeter review.csv",
+    "payload": "power,returns,link\ntrue,true,true\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "pack",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "management_workpaper",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "final_consolidation_v9.csv",
+    "payload": "profit,nci\n285,176\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "analytics-source",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Group contribution support.csv",
+    "payload": "profit,parent,post_acquisition\n285,200,85\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "note-source",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Group note support.csv",
+    "payload": "profit,goodwill,nci,oci,tax,note\n285,180,176,-105,-20,Group performance\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "ic-parent",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Parent",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Parent IC ledger closing.csv",
+    "payload": "ic_closing\n105\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "ic-confirmed",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Parent",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Bilateral FX reconciliation.csv",
+    "payload": "ic_closing,confirmed_by\n100,bilateral-source\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "spa",
+    "metadata": {
+      "approval_status": "qualified_test_source",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_type": "legal_entity_evidence",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "SPA and completion extract.md",
+    "payload": "Signed completion 1 July 2026. Ordinary operating business acquired by Parent. Transferred experienced operating team, service-delivery systems and substantive documented processes with recurring customer outputs. 80% voting rights; substantive board appointment and operating decision rights; no participating rights held by minority. Price USD800; independent NCI fair value USD200. No earnout, prior interest or ownership change.",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "appraisal",
+    "metadata": {
+      "approval_status": "qualified_test_source",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_type": "independent_valuation",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Qualified acquisition appraisal.md",
+    "payload": "Asset LAND-1. Independent acquisition-date incremental land fair value USD100, supported by an approved valuation report. No depreciable FV uplift. Acquired cash USD900 and debt USD200. Independently valued non-controlling 20% equity interest fair value USD200.",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "policy",
+    "metadata": {
+      "approval_status": "qualified_test_source",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "EUR",
+      "entity": "Group",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_type": "accounting_policy",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Group and currency policy.md",
+    "payload": "Parent functional/presentation EUR; Subsidiary functional USD. Full-goodwill fair-value NCI election approved for this IFRS acquisition. Group adjustments only. Year-end goodwill CGU test consumes independently supplied valuation. Tax rate25% and zero uplift tax base are independently reviewed synthetic inputs, not law inferred from jurisdiction.",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "commentary",
+    "metadata": {
+      "approval_status": "qualified_test_source",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "EUR",
+      "entity": "Group",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_type": "management_commentary",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Management commentary.md",
+    "payload": "The acquisition contributed the subsidiary full-year profit of USD250 this year.",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "parent-tb",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Parent",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Parent trial balance.csv",
+    "payload": "account,balance\nparent cash,1380\ninvestment,720\nIC receivable,100\nparent equity,-2000\nparent revenue,-300\nparent expense,100\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "sub-tb",
+    "metadata": {
+      "approval_status": "reviewed_test_evidence",
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Subsidiary-US",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Controlled synthetic company export",
+      "source_type": "accounting_records",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Subsidiary USD trial balance.csv",
+    "payload": "account,balance\ncash,1125\ndebt,-200\nIC payable,-125\nsub equity,-550\nsub revenue,-450\nsub expense,200\n",
+    "raw_ref": ""
+  }
+]

@@ -1,0 +1,806 @@
+[
+  {
+    "available_fact_ids": [
+      "tax-asset",
+      "tax-effective",
+      "tax",
+      "tax-rate",
+      "tax-carrying"
+    ],
+    "family": "tax_temporary_difference",
+    "issue_id": "income-taxes",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independently_complete_source_population",
+      "reviewed_method",
+      "source_evidence",
+      "opening_balances",
+      "source_GL_statement_bridges",
+      "disclosure_checklist"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "tax-asset",
+        "refs": [
+          "tax:5"
+        ]
+      },
+      {
+        "fact_id": "tax-effective",
+        "refs": [
+          "tax:4"
+        ]
+      },
+      {
+        "fact_id": "tax",
+        "refs": [
+          "tax:1"
+        ]
+      },
+      {
+        "fact_id": "tax-rate",
+        "refs": [
+          "tax:2"
+        ]
+      },
+      {
+        "fact_id": "tax-carrying",
+        "refs": [
+          "tax:3"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "income-taxes",
+    "transformations": [
+      "transform-tax-effective",
+      "transform-tax",
+      "transform-tax-rate",
+      "transform-tax-carrying"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "bc-asset",
+      "bc-costs",
+      "bc-date",
+      "bc-price",
+      "bc-nci",
+      "bc-owned",
+      "bc-cash",
+      "bc-fv",
+      "bc-debt",
+      "bc-dtl"
+    ],
+    "family": "acquisition",
+    "issue_id": "business-combinations",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "acquisition",
+      "assets",
+      "liabilities",
+      "consideration",
+      "nci",
+      "costs",
+      "events",
+      "subsequent"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "bc-asset",
+        "refs": [
+          "purchase:9"
+        ]
+      },
+      {
+        "fact_id": "bc-costs",
+        "refs": [
+          "purchase:10"
+        ]
+      },
+      {
+        "fact_id": "bc-date",
+        "refs": [
+          "purchase:1"
+        ]
+      },
+      {
+        "fact_id": "bc-price",
+        "refs": [
+          "purchase:2"
+        ]
+      },
+      {
+        "fact_id": "bc-nci",
+        "refs": [
+          "purchase:3"
+        ]
+      },
+      {
+        "fact_id": "bc-owned",
+        "refs": [
+          "purchase:4"
+        ]
+      },
+      {
+        "fact_id": "bc-cash",
+        "refs": [
+          "purchase:5"
+        ]
+      },
+      {
+        "fact_id": "bc-fv",
+        "refs": [
+          "purchase:6"
+        ]
+      },
+      {
+        "fact_id": "bc-debt",
+        "refs": [
+          "purchase:7"
+        ]
+      },
+      {
+        "fact_id": "bc-dtl",
+        "refs": [
+          "purchase:8"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "business-combinations",
+    "transformations": [
+      "transform-bc-costs",
+      "transform-bc-date",
+      "transform-bc-price",
+      "transform-bc-nci",
+      "transform-bc-owned",
+      "transform-bc-cash",
+      "transform-bc-fv",
+      "transform-bc-debt",
+      "transform-bc-dtl"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fx-close",
+      "fx-open",
+      "fx-profit-rate",
+      "fx-post-profit",
+      "fx-pre-revenue",
+      "fx-pre-expense",
+      "fx-post-revenue",
+      "fx-post-expense",
+      "sub-tb-2",
+      "sub-tb-3",
+      "sub-tb-4",
+      "sub-tb-5",
+      "sub-tb-6",
+      "sub-tb-7"
+    ],
+    "family": "foreign_operation",
+    "issue_id": "foreign-currency",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "currency",
+      "items",
+      "translation",
+      "disposal"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fx-close",
+        "refs": [
+          "rates:1"
+        ]
+      },
+      {
+        "fact_id": "fx-open",
+        "refs": [
+          "rates:2"
+        ]
+      },
+      {
+        "fact_id": "fx-profit-rate",
+        "refs": [
+          "rates:3"
+        ]
+      },
+      {
+        "fact_id": "fx-post-profit",
+        "refs": [
+          "activity:5"
+        ]
+      },
+      {
+        "fact_id": "fx-pre-revenue",
+        "refs": [
+          "activity:1"
+        ]
+      },
+      {
+        "fact_id": "fx-pre-expense",
+        "refs": [
+          "activity:2"
+        ]
+      },
+      {
+        "fact_id": "fx-post-revenue",
+        "refs": [
+          "activity:3"
+        ]
+      },
+      {
+        "fact_id": "fx-post-expense",
+        "refs": [
+          "activity:4"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-2",
+        "refs": [
+          "sub-tb:2"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-3",
+        "refs": [
+          "sub-tb:4"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-4",
+        "refs": [
+          "sub-tb:6"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-5",
+        "refs": [
+          "sub-tb:8"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-6",
+        "refs": [
+          "sub-tb:10"
+        ]
+      },
+      {
+        "fact_id": "sub-tb-7",
+        "refs": [
+          "sub-tb:12"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "foreign-currency",
+    "transformations": [
+      "transform-fx-close",
+      "transform-fx-open",
+      "transform-fx-profit-rate",
+      "transform-fx-post-profit",
+      "transform-fx-pre-revenue",
+      "transform-fx-pre-expense",
+      "transform-fx-post-revenue",
+      "transform-fx-post-expense",
+      "transform-sub-tb-2",
+      "transform-sub-tb-3",
+      "transform-sub-tb-4",
+      "transform-sub-tb-5",
+      "transform-sub-tb-6",
+      "transform-sub-tb-7"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "ic-date",
+      "ic-denomination",
+      "ic-rate-a",
+      "ic-rate-b",
+      "ic-a",
+      "ic-b",
+      "ic-counterparty",
+      "ic-id",
+      "ic-parent",
+      "ic-confirmed"
+    ],
+    "family": "intercompany",
+    "issue_id": "intercompany-accounting",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "pairs",
+      "recharges",
+      "handoffs"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "ic-date",
+        "refs": [
+          "ic:8"
+        ]
+      },
+      {
+        "fact_id": "ic-denomination",
+        "refs": [
+          "ic:5"
+        ]
+      },
+      {
+        "fact_id": "ic-rate-a",
+        "refs": [
+          "ic:6"
+        ]
+      },
+      {
+        "fact_id": "ic-rate-b",
+        "refs": [
+          "ic:7"
+        ]
+      },
+      {
+        "fact_id": "ic-a",
+        "refs": [
+          "ic:1"
+        ]
+      },
+      {
+        "fact_id": "ic-b",
+        "refs": [
+          "ic:2"
+        ]
+      },
+      {
+        "fact_id": "ic-counterparty",
+        "refs": [
+          "ic:3"
+        ]
+      },
+      {
+        "fact_id": "ic-id",
+        "refs": [
+          "ic:4"
+        ]
+      },
+      {
+        "fact_id": "ic-parent",
+        "refs": [
+          "ic-parent:1"
+        ]
+      },
+      {
+        "fact_id": "ic-confirmed",
+        "refs": [
+          "ic-confirmed:1"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "intercompany-accounting",
+    "transformations": [
+      "transform-ic-date",
+      "transform-ic-rate-a",
+      "transform-ic-rate-b",
+      "transform-ic-a",
+      "transform-ic-b",
+      "transform-ic-parent",
+      "transform-ic-confirmed"
+    ],
+    "unresolved_judgments": [
+      "ic-parent",
+      "ic-confirmed"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "imp-fv",
+      "imp-recoverable",
+      "imp-cashflow",
+      "imp-rate",
+      "imp-terminal",
+      "imp-unit",
+      "imp-fairvalue",
+      "imp-undiscounted",
+      "imp-gw",
+      "imp-net"
+    ],
+    "family": "impairment_valuation",
+    "issue_id": "asset-impairment",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "unit",
+      "assets",
+      "valuation",
+      "reversal"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "imp-fv",
+        "refs": [
+          "valuation:4"
+        ]
+      },
+      {
+        "fact_id": "imp-recoverable",
+        "refs": [
+          "valuation:1"
+        ]
+      },
+      {
+        "fact_id": "imp-cashflow",
+        "refs": [
+          "valuation:5"
+        ]
+      },
+      {
+        "fact_id": "imp-rate",
+        "refs": [
+          "valuation:6"
+        ]
+      },
+      {
+        "fact_id": "imp-terminal",
+        "refs": [
+          "valuation:7"
+        ]
+      },
+      {
+        "fact_id": "imp-unit",
+        "refs": [
+          "valuation:10"
+        ]
+      },
+      {
+        "fact_id": "imp-fairvalue",
+        "refs": [
+          "valuation:8"
+        ]
+      },
+      {
+        "fact_id": "imp-undiscounted",
+        "refs": [
+          "valuation:9"
+        ]
+      },
+      {
+        "fact_id": "imp-gw",
+        "refs": [
+          "valuation:2"
+        ]
+      },
+      {
+        "fact_id": "imp-net",
+        "refs": [
+          "valuation:3"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "asset-impairment",
+    "transformations": [
+      "transform-imp-fv",
+      "transform-imp-recoverable",
+      "transform-imp-cashflow",
+      "transform-imp-rate",
+      "transform-imp-terminal",
+      "transform-imp-fairvalue",
+      "transform-imp-undiscounted",
+      "transform-imp-gw",
+      "transform-imp-net"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "cons-power",
+      "cons-link",
+      "cons-returns",
+      "parent-tb-2",
+      "parent-tb-3",
+      "parent-tb-4",
+      "parent-tb-5",
+      "parent-tb-6",
+      "parent-tb-7"
+    ],
+    "family": "group_structure",
+    "issue_id": "consolidation",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "case_facts",
+      "evidence",
+      "framework_and_period",
+      "policy_elections",
+      "reviewed_assumptions"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "cons-power",
+        "refs": [
+          "rights:1"
+        ]
+      },
+      {
+        "fact_id": "cons-link",
+        "refs": [
+          "rights:3"
+        ]
+      },
+      {
+        "fact_id": "cons-returns",
+        "refs": [
+          "rights:2"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-2",
+        "refs": [
+          "parent-tb:2"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-3",
+        "refs": [
+          "parent-tb:4"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-4",
+        "refs": [
+          "parent-tb:6"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-5",
+        "refs": [
+          "parent-tb:8"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-6",
+        "refs": [
+          "parent-tb:10"
+        ]
+      },
+      {
+        "fact_id": "parent-tb-7",
+        "refs": [
+          "parent-tb:12"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "consolidation",
+    "transformations": [
+      "transform-cons-power",
+      "transform-cons-link",
+      "transform-cons-returns",
+      "transform-parent-tb-2",
+      "transform-parent-tb-3",
+      "transform-parent-tb-4",
+      "transform-parent-tb-5",
+      "transform-parent-tb-6",
+      "transform-parent-tb-7"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fs-profit",
+      "fs-nci"
+    ],
+    "family": "statement",
+    "issue_id": "financial-statements",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "presentation",
+      "current_tb",
+      "comparative_tb",
+      "comparative",
+      "cash_flow",
+      "equity_bridge",
+      "notes",
+      "checklist",
+      "coverage"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fs-profit",
+        "refs": [
+          "pack:1"
+        ]
+      },
+      {
+        "fact_id": "fs-nci",
+        "refs": [
+          "pack:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "financial-statements",
+    "transformations": [
+      "transform-fs-profit",
+      "transform-fs-nci"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "analytics-post",
+      "analytics-parent",
+      "analytics-group"
+    ],
+    "family": "analytics",
+    "issue_id": "management-accounting-analytics",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "analytics-post",
+        "refs": [
+          "analytics-source:3"
+        ]
+      },
+      {
+        "fact_id": "analytics-parent",
+        "refs": [
+          "analytics-source:2"
+        ]
+      },
+      {
+        "fact_id": "analytics-group",
+        "refs": [
+          "analytics-source:1"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "management-accounting-analytics",
+    "transformations": [
+      "transform-analytics-post",
+      "transform-analytics-parent",
+      "transform-analytics-group"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "disclosure-profit",
+      "note-goodwill",
+      "note-nci",
+      "note-translation-oci",
+      "note-deferred-tax"
+    ],
+    "family": "disclosure",
+    "issue_id": "disclosure-management",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "disclosure-profit",
+        "refs": [
+          "note-source:1"
+        ]
+      },
+      {
+        "fact_id": "note-goodwill",
+        "refs": [
+          "note-source:2"
+        ]
+      },
+      {
+        "fact_id": "note-nci",
+        "refs": [
+          "note-source:3"
+        ]
+      },
+      {
+        "fact_id": "note-translation-oci",
+        "refs": [
+          "note-source:4"
+        ]
+      },
+      {
+        "fact_id": "note-deferred-tax",
+        "refs": [
+          "note-source:5"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "disclosure-management",
+    "transformations": [
+      "transform-disclosure-profit",
+      "transform-note-goodwill",
+      "transform-note-nci",
+      "transform-note-translation-oci",
+      "transform-note-deferred-tax"
+    ],
+    "unresolved_judgments": []
+  }
+]

@@ -1,0 +1,336 @@
+[
+  {
+    "amount": "225.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "180.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "goodwill"
+    ],
+    "handoff": {
+      "consumer": "consolidation",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
+      "producer": "business-combinations",
+      "purpose": "evidence_only",
+      "semantic": "acquisition_basis",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ]
+    },
+    "public_amount": "180.00",
+    "public_metric": "group_goodwill",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "purchase:2"
+      ],
+      "fact_id": "bc-price",
+      "owner": "business-combinations",
+      "owner_input_path": [
+        "consideration",
+        "cash"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",
+          "id": "purchase:2",
+          "location": {
+            "column": "cash_price",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "ca9658af4490481ccb797c42292cf05f87f5bd32fc2dd71548ff0f3a3008ba5f",
+          "source_id": "purchase",
+          "value": "800"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "initial_goodwill"
+    ]
+  },
+  {
+    "amount": "25.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "-20.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "Deferred tax liability"
+    ],
+    "handoff": {
+      "consumer": "business-combinations",
+      "consumer_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ],
+      "fingerprint": "0285afadc975ba51ff76ab1f087eb59b08617d5cc645126a91705ae644c75026",
+      "producer": "income-taxes",
+      "purpose": "evidence_only",
+      "semantic": "acquisition_dtl",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ]
+    },
+    "public_amount": "20.00",
+    "public_metric": "group_deferred_tax_liability",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "tax:3"
+      ],
+      "fact_id": "tax-carrying",
+      "owner": "income-taxes",
+      "owner_input_path": [
+        "jurisdictions",
+        0,
+        "differences",
+        0,
+        "carrying"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "d77ccb69e3f915ed75b4a2db3ff5893fdd0f433e02fdff100441fb843aae585b",
+          "id": "tax:3",
+          "location": {
+            "column": "carrying",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "fb7a9a002284a62de36a942ee9729ccf2332cf5115b2460e147d027f535afdac",
+          "source_id": "tax",
+          "value": "100"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "jurisdictions",
+      0,
+      "dtl"
+    ]
+  },
+  {
+    "amount": "-105.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "-105.00",
+    "financial_statement_path": [
+      "current",
+      "oci"
+    ],
+    "handoff": {
+      "consumer": "consolidation",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
+      "producer": "foreign-currency",
+      "purpose": "evidence_only",
+      "semantic": "nci_oci",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ]
+    },
+    "public_amount": "-105.00",
+    "public_metric": "translation_oci",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "rates:1"
+      ],
+      "fact_id": "fx-close",
+      "owner": "foreign-currency",
+      "owner_input_path": [
+        "translation",
+        "closing_rate"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "07d60e4fca0c599e4bec875eddb9d7a000f97e53180818f6524ac51ed0fe70e7",
+          "id": "rates:1",
+          "location": {
+            "column": "closing",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "61cd041ae02511c1e8786d405cb2c84c91a06a1c6b0e6d37597a4aae091b7fa6",
+          "source_id": "rates",
+          "value": "0.8"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "translation",
+      "cta_movement"
+    ]
+  },
+  {
+    "amount": "100.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "0.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "IC receivable"
+    ],
+    "handoff": {
+      "consumer": "consolidation",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "fingerprint": "12a35e391cfbca9b22fda0fb79834571a47b8be66917e11251db435f313192ff",
+      "producer": "intercompany-accounting",
+      "purpose": "evidence_only",
+      "semantic": "matched_intercompany",
+      "source_dimensions": [
+        "Parent",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ]
+    },
+    "public_amount": "100.00",
+    "public_metric": "qualified_intercompany_elimination",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "ic:1"
+      ],
+      "fact_id": "ic-a",
+      "owner": "intercompany-accounting",
+      "owner_input_path": [
+        "pairs",
+        0,
+        "confirmed_a"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "9b61792a6e7d4ea624fd08870dbdde568a9be66484c84f169edd50576070e825",
+          "id": "ic:1",
+          "location": {
+            "column": "principal",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "dbd53a18f72c47018296f7e9430a703f4156565c0091ff96d5d0535cf1b3809d",
+          "source_id": "ic",
+          "value": "125"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "pairs",
+      0,
+      "a_functional"
+    ]
+  },
+  {
+    "amount": "0",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "180.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "goodwill"
+    ],
+    "handoff": {
+      "consumer": "consolidation",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "fingerprint": "6da0aabe025d3164312cd7431d758f986271321231eb44a06172a1d768626276",
+      "producer": "asset-impairment",
+      "purpose": "evidence_only",
+      "semantic": "impairment",
+      "source_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ]
+    },
+    "public_amount": "0",
+    "public_metric": "goodwill_test_loss",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "valuation:2"
+      ],
+      "fact_id": "imp-gw",
+      "owner": "asset-impairment",
+      "owner_input_path": [
+        "assets",
+        "gw",
+        "carrying"
+      ],
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "0907b1f50b44ffdc490e3917fad5bb4b4752d30a29df3178853a36a7d7d6cc0e",
+          "id": "valuation:2",
+          "location": {
+            "column": "goodwill",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "de0dd708e653727a8340094a28027803f5fc404696a1aaaea75a483090d7363e",
+          "source_id": "valuation",
+          "value": "180"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "loss"
+    ]
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "audit_evidence_required": [
+    "Contract/legal/source evidence",
+    "Assumptions and alternatives",
+    "Calculation reperformance",
+    "Approval record"
+  ],
+  "calculations": {
+    "allocation": {
+      "gw": "0",
+      "net-assets": "0"
+    },
+    "carrying": "880.00",
+    "closing": {
+      "gw": "180.00",
+      "net-assets": "700.00"
+    },
+    "fair_value": "900.00",
+    "fv_less_costs": "900.00",
+    "headroom": "20.00",
+    "loss": "0",
+    "recoverable": "900.00",
+    "reversals": {
+      "gw": "0",
+      "net-assets": "0"
+    },
+    "undiscounted": "900.00",
+    "value_in_use": "900.00"
+  },
+  "case_fingerprint": "6da0aabe025d3164312cd7431d758f986271321231eb44a06172a1d768626276",
+  "conclusion": "Impairment test, asset allocation and carrying-value bridge reconcile.",
+  "confidence": "medium",
+  "controls_impacted": [
+    "Source population to GL tie-out",
+    "Independent route, estimate and journal review",
+    "Versioned accounting policy and disclosure review"
+  ],
+  "disclosures_impacted": [
+    "Events/indicators and unit composition",
+    "Loss/reversal by class, segment and statement line",
+    "Goodwill allocation and testing frequency",
+    "Valuation basis, forecast horizon, discount and growth inputs",
+    "Fair-value input hierarchy and uncertainty",
+    "Headroom and reasonably possible sensitivity changes"
+  ],
+  "documentation_required": [
+    "Accounting judgment memo",
+    "Input evidence",
+    "Calculation and reconciliation",
+    "Disclosure tie-out",
+    "Reviewer certification"
+  ],
+  "entities": [
+    "Group"
+  ],
+  "framework": "IFRS",
+  "journal_entry_implications": [],
+  "judgments": [
+    "Single independent unit",
+    "Test indicators reviewed",
+    "Other asset tests completed before unit",
+    "Independent EUR900 recoverable amount valuation for US-operation CGU; no forecast generated",
+    "No reversal"
+  ],
+  "jurisdiction": "NL",
+  "memory_candidates": [],
+  "method": {
+    "annual_test": true,
+    "indicator": true,
+    "model": "recoverable_amount"
+  },
+  "open_items": [],
+  "periods": [
+    "2026-01-01",
+    "2026-12-31"
+  ],
+  "recommendation_class": "REQUIRED",
+  "related_artifacts": [],
+  "reporting_impacted": [
+    "Framework-specific statement presentation and comparative-period consistency"
+  ],
+  "skill_id": "SKILL-IMP-001",
+  "status": "complete",
+  "systems_impacted": [
+    "Retain case ID, source IDs, policy version, rule route and journal lineage"
+  ],
+  "uncertainties": [
+    "Discount and terminal assumptions require valuation support. Ordinary cost-model units only; revaluation OCI, held-for-sale, financial assets and private-company alternatives are specialist methods.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+  ]
+}

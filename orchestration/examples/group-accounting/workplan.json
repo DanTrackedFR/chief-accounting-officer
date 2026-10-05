@@ -1,0 +1,2057 @@
+[
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "business-combinations"
+    ],
+    "entity": "Subsidiary-US",
+    "evidence": [
+      {
+        "claim_id": "TAX-IFRS-001",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-002",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-003",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-004",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-005",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-006",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-007",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-008",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-009",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-010",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-011",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-012",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-013",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-014",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-015",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      },
+      {
+        "claim_id": "TAX-IFRS-016",
+        "topic_id": "SUPPLEMENTAL_TAX"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "income-taxes",
+    "invalidated_results": [],
+    "issue": "tax_temporary_difference",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "etr": null,
+        "jurisdictions": [
+          {
+            "current": "0.00",
+            "current_payable": "0.00",
+            "deferred_profit": "0",
+            "dta_gross": "0",
+            "dta_net": "0",
+            "dtl": "25.00",
+            "etr": null,
+            "net_deferred_display": null,
+            "total_tax_expense": "0.00",
+            "uncertainty_charge": "0",
+            "valuation_allowance": "0"
+          }
+        ],
+        "pretax": "0",
+        "total_tax_expense": "0.00"
+      },
+      "case_fingerprint": "0285afadc975ba51ff76ab1f087eb59b08617d5cc645126a91705ae644c75026",
+      "conclusion": "Current/deferred tax, uncertainty and ETR workpapers reconciled",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+        "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Subsidiary-US"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [
+        [
+          {
+            "account": "Deferred tax liability",
+            "amount": "25.00",
+            "side": "Cr"
+          },
+          {
+            "account": "Acquisition tax clearing",
+            "amount": "25.00",
+            "side": "Dr"
+          }
+        ]
+      ],
+      "judgments": [
+        "Approved supplemental decision requirements remain model-derived and subject to authority audit",
+        "Rates, bases, recoverability, uncertainty, exceptions, allocation and offset rights are evidenced tax-specialist inputs",
+        "No tax-law determination, return filing, PillarTwo calculation or universal probability model is performed"
+      ],
+      "jurisdiction": "US",
+      "memory_candidates": [],
+      "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-TAX-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "income-taxes",
+    "source_inputs": [
+      "tax_temporary_difference"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "income-taxes"
+    ],
+    "downstream_consumers": [
+      "foreign-currency",
+      "consolidation"
+    ],
+    "entity": "Subsidiary-US",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-13-001-IFRS-001",
+        "topic_id": "TOPIC-13-001"
+      },
+      {
+        "claim_id": "TOPIC-13-001-IFRS-R001",
+        "topic_id": "TOPIC-13-001"
+      },
+      {
+        "claim_id": "TOPIC-13-002-IFRS-001",
+        "topic_id": "TOPIC-13-002"
+      },
+      {
+        "claim_id": "TOPIC-13-002-IFRS-R001",
+        "topic_id": "TOPIC-13-002"
+      },
+      {
+        "claim_id": "TOPIC-13-003-IFRS-001",
+        "topic_id": "TOPIC-13-003"
+      },
+      {
+        "claim_id": "TOPIC-13-003-IFRS-R001",
+        "topic_id": "TOPIC-13-003"
+      },
+      {
+        "claim_id": "TOPIC-13-003-IFRS-R005",
+        "topic_id": "TOPIC-13-003"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "business-combinations",
+    "invalidated_results": [],
+    "issue": "acquisition",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "income-taxes"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "acquisition_expense": "0.00",
+        "assets": "1000.00",
+        "bargain_gain": "0",
+        "closing_contingent_liability": "0",
+        "closing_goodwill": "225.00",
+        "consideration": "800.00",
+        "initial_goodwill": "225.00",
+        "liabilities": "225.00",
+        "measurement_adjustments": [],
+        "nci": "200.00",
+        "net_assets": "775.00"
+      },
+      "case_fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
+      "conclusion": "Reviewed acquisition PPA and subsequent movements reconcile; specialist valuations and tax bases remain external inputs.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Acquirer/control date and business definition",
+        "Consideration and contingent terms/valuation",
+        "Identifiable assets/liabilities and exceptions including tax",
+        "Goodwill or bargain gain factors and reassessment",
+        "Provisional items and measurement-period changes",
+        "NCI basis and subsequent goodwill movements",
+        "Acquisition expenses and pro-forma/revenue-profit information when required"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Subsidiary-US"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [
+        [
+          {
+            "account": "cash",
+            "amount": "900.00",
+            "side": "Dr"
+          },
+          {
+            "account": "land uplift",
+            "amount": "100.00",
+            "side": "Dr"
+          },
+          {
+            "account": "goodwill",
+            "amount": "225.00",
+            "side": "Dr"
+          },
+          {
+            "account": "debt",
+            "amount": "200.00",
+            "side": "Cr"
+          },
+          {
+            "account": "Deferred tax liability",
+            "amount": "25.00",
+            "side": "Cr"
+          },
+          {
+            "account": "cash",
+            "amount": "800.00",
+            "side": "Cr"
+          },
+          {
+            "account": "noncontrolling interest",
+            "amount": "200.00",
+            "side": "Cr"
+          }
+        ]
+      ],
+      "judgments": [
+        "Input/process/output business reviewed",
+        "Substantive ordinary control",
+        "Tax specialist supported amounts including nil additional tax",
+        "Recognition exceptions reviewed",
+        "Reviewed SPA",
+        "Independently qualified full-goodwill NCI valuation USD200",
+        "Supported service costs",
+        "Supported goodwill life and impairment review"
+      ],
+      "jurisdiction": "US",
+      "memory_candidates": [],
+      "method": {
+        "acquisition_date": "2026-07-01",
+        "cost_model": "expense services",
+        "framework": "IFRS",
+        "nci_method": "fair_value"
+      },
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-BC-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Tax and valuation conclusions are reviewed specialist inputs, not generated here. Ordinary acquisitions only; common control, asset deals, reverse/VIE acquisitions and private alternatives are separate methods.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "business-combinations",
+    "source_inputs": [
+      "acquisition"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "business-combinations"
+    ],
+    "downstream_consumers": [
+      "asset-impairment",
+      "consolidation",
+      "management-accounting-analytics"
+    ],
+    "entity": "Subsidiary-US",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-06-002-IFRS-001",
+        "topic_id": "TOPIC-06-002"
+      },
+      {
+        "claim_id": "TOPIC-06-002-IFRS-R001",
+        "topic_id": "TOPIC-06-002"
+      },
+      {
+        "claim_id": "TOPIC-06-003-IFRS-001",
+        "topic_id": "TOPIC-06-003"
+      },
+      {
+        "claim_id": "TOPIC-06-003-IFRS-R001",
+        "topic_id": "TOPIC-06-003"
+      },
+      {
+        "claim_id": "TOPIC-06-004-IFRS-001",
+        "topic_id": "TOPIC-06-004"
+      },
+      {
+        "claim_id": "TOPIC-06-004-IFRS-R001",
+        "topic_id": "TOPIC-06-004"
+      },
+      {
+        "claim_id": "TOPIC-07-006-IFRS-001",
+        "topic_id": "TOPIC-07-006"
+      },
+      {
+        "claim_id": "TOPIC-07-006-IFRS-R001",
+        "topic_id": "TOPIC-07-006"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "foreign-currency",
+    "invalidated_results": [],
+    "issue": "foreign_operation",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "business-combinations"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "monetary_fx_profit": "0",
+        "transactions": [],
+        "translation": {
+          "closing_cta": "-105.00",
+          "closing_net_translated": "880.00",
+          "cta_movement": "-105.00",
+          "nci_movement": "-21.00",
+          "opening_cta": "0.00",
+          "opening_net_translated": "900.00",
+          "owners_movement": "-84.00",
+          "profit_translated": "85.00",
+          "recycled_owners": "0",
+          "translated_tb": {
+            "Deferred tax liability": "-20.00",
+            "IC payable": "-100.00",
+            "acquisition adjustment equity": "-270.00",
+            "cash": "900.00",
+            "debt": "-160.00",
+            "goodwill": "180.00",
+            "land uplift": "80.00",
+            "sub equity": "-630.00",
+            "sub expense": "127.50",
+            "sub revenue": "-212.50"
+          }
+        }
+      },
+      "case_fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
+      "conclusion": "Functional-currency transaction schedule and separate presentation-currency bridge reconcile.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Functional/presentation currencies and changes",
+        "Transaction FX gains/losses separate from translation OCI",
+        "Translation reserve and NCI rollforwards",
+        "Disposal reclassification and ownership changes",
+        "Rate-source uncertainty and lack-of-exchangeability disclosures where relevant"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Subsidiary-US"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [
+        [
+          {
+            "account": "translation clearing",
+            "amount": "84.00",
+            "side": "Cr"
+          },
+          {
+            "account": "owners translation OCI",
+            "amount": "84.00",
+            "side": "Dr"
+          }
+        ],
+        [
+          {
+            "account": "translation clearing",
+            "amount": "21.00",
+            "side": "Cr"
+          },
+          {
+            "account": "NCI translation OCI",
+            "amount": "21.00",
+            "side": "Dr"
+          }
+        ]
+      ],
+      "judgments": [
+        "Primary price/cost economics reviewed",
+        "Synthetic approved spot feed"
+      ],
+      "jurisdiction": "US",
+      "memory_candidates": [],
+      "method": {
+        "framework": "IFRS",
+        "functional": "USD",
+        "layers": "remeasurement then translation",
+        "presentation": "EUR"
+      },
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-FX-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "foreign-currency",
+    "source_inputs": [
+      "foreign_operation"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "consolidation"
+    ],
+    "entity": "Parent",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-07-003-IFRS-R001",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "claim_id": "TOPIC-12-004-IFRS-E001",
+        "topic_id": "TOPIC-12-004"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "intercompany-accounting",
+    "invalidated_results": [],
+    "issue": "intercompany",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "journal_entities": [],
+        "pairs": [
+          {
+            "a_functional": "100.00",
+            "a_fx_gain": "0.00",
+            "b_functional": "125.00",
+            "b_fx_loss": "0.00",
+            "foreign_principal": "125",
+            "pair": "AB"
+          }
+        ],
+        "recharges": "0"
+      },
+      "case_fingerprint": "12a35e391cfbca9b22fda0fb79834571a47b8be66917e11251db435f313192ff",
+      "conclusion": "Bilateral principal, approved recharge allocations and local monetary balances reconciled.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Related-party transactions/balances, FX and recharge policies require entity and group presentation review."
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Parent"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Settlement cutoff and transaction FX require source evidence; balanced group totals do not prove reciprocal principal.",
+        "No arm's-length conclusion, group elimination or unrealized-profit plug is generated."
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-IC-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "intercompany-accounting",
+    "source_inputs": [
+      "intercompany"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "foreign-currency"
+    ],
+    "downstream_consumers": [
+      "consolidation"
+    ],
+    "entity": "Group",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-04-006-IFRS-01",
+        "topic_id": "TOPIC-04-006"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "asset-impairment",
+    "invalidated_results": [],
+    "issue": "impairment_valuation",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "allocation": {
+          "gw": "0",
+          "net-assets": "0"
+        },
+        "carrying": "880.00",
+        "closing": {
+          "gw": "180.00",
+          "net-assets": "700.00"
+        },
+        "fair_value": "900.00",
+        "fv_less_costs": "900.00",
+        "headroom": "20.00",
+        "loss": "0",
+        "recoverable": "900.00",
+        "reversals": {
+          "gw": "0",
+          "net-assets": "0"
+        },
+        "undiscounted": "900.00",
+        "value_in_use": "900.00"
+      },
+      "case_fingerprint": "6da0aabe025d3164312cd7431d758f986271321231eb44a06172a1d768626276",
+      "conclusion": "Impairment test, asset allocation and carrying-value bridge reconcile.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Events/indicators and unit composition",
+        "Loss/reversal by class, segment and statement line",
+        "Goodwill allocation and testing frequency",
+        "Valuation basis, forecast horizon, discount and growth inputs",
+        "Fair-value input hierarchy and uncertainty",
+        "Headroom and reasonably possible sensitivity changes"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Single independent unit",
+        "Test indicators reviewed",
+        "Other asset tests completed before unit",
+        "Independent EUR900 recoverable amount valuation for US-operation CGU; no forecast generated",
+        "No reversal"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": {
+        "annual_test": true,
+        "indicator": true,
+        "model": "recoverable_amount"
+      },
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-IMP-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Discount and terminal assumptions require valuation support. Ordinary cost-model units only; revaluation OCI, held-for-sale, financial assets and private-company alternatives are specialist methods.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "asset-impairment",
+    "source_inputs": [
+      "impairment_valuation"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "foreign-currency",
+      "intercompany-accounting",
+      "asset-impairment",
+      "business-combinations"
+    ],
+    "downstream_consumers": [
+      "financial-statements",
+      "management-accounting-analytics"
+    ],
+    "entity": "Group",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-07-001-IFRS-001",
+        "topic_id": "TOPIC-07-001"
+      },
+      {
+        "claim_id": "TOPIC-07-001-IFRS-R001",
+        "topic_id": "TOPIC-07-001"
+      },
+      {
+        "claim_id": "TOPIC-07-001-IFRS-R005",
+        "topic_id": "TOPIC-07-001"
+      },
+      {
+        "claim_id": "TOPIC-07-002-IFRS-001",
+        "topic_id": "TOPIC-07-002"
+      },
+      {
+        "claim_id": "TOPIC-07-002-IFRS-R001",
+        "topic_id": "TOPIC-07-002"
+      },
+      {
+        "claim_id": "TOPIC-07-003-IFRS-R001",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "claim_id": "TOPIC-07-004-IFRS-001",
+        "topic_id": "TOPIC-07-004"
+      },
+      {
+        "claim_id": "TOPIC-07-004-IFRS-R001",
+        "topic_id": "TOPIC-07-004"
+      },
+      {
+        "claim_id": "TOPIC-07-005-IFRS-R001",
+        "topic_id": "TOPIC-07-005"
+      },
+      {
+        "claim_id": "TOPIC-07-006-IFRS-001",
+        "topic_id": "TOPIC-07-006"
+      },
+      {
+        "claim_id": "TOPIC-07-006-IFRS-R001",
+        "topic_id": "TOPIC-07-006"
+      },
+      {
+        "claim_id": "TOPIC-07-007-IFRS-001",
+        "topic_id": "TOPIC-07-007"
+      },
+      {
+        "claim_id": "TOPIC-07-007-IFRS-R001",
+        "topic_id": "TOPIC-07-007"
+      },
+      {
+        "claim_id": "TOPIC-07-008-IFRS-001",
+        "topic_id": "TOPIC-07-008"
+      },
+      {
+        "claim_id": "TOPIC-07-008-IFRS-R001",
+        "topic_id": "TOPIC-07-008"
+      },
+      {
+        "claim_id": "TOPIC-07-009-IFRS-001",
+        "topic_id": "TOPIC-07-009"
+      },
+      {
+        "claim_id": "TOPIC-07-009-IFRS-R001",
+        "topic_id": "TOPIC-07-009"
+      },
+      {
+        "claim_id": "TOPIC-13-001-IFRS-001",
+        "topic_id": "TOPIC-13-001"
+      },
+      {
+        "claim_id": "TOPIC-13-001-IFRS-R001",
+        "topic_id": "TOPIC-13-001"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "consolidation",
+    "invalidated_results": [],
+    "issue": "group_structure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "foreign-currency",
+      "intercompany-accounting",
+      "asset-impairment"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "group_structure",
+      "ownership_and_rights",
+      "control_assessment",
+      "entity_trial_balances",
+      "reporting_period",
+      "framework",
+      "intercompany_balances"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "cash_flow": {
+          "cash_accounts": [
+            "parent cash",
+            "cash"
+          ],
+          "closing_cash": "2280",
+          "financing": "0",
+          "fx": "-95",
+          "investing": "90",
+          "memo": "Reviewed acquired cash810 less consideration720; post-acquisition cash85; Parent cash200; closing translation cash-95",
+          "opening_cash": "2000",
+          "operating": "285"
+        },
+        "consolidated_balances": {
+          "Deferred tax liability": "-20.00",
+          "IC payable": "0.00",
+          "IC receivable": "0.00",
+          "acquisition adjustment equity": "0.00",
+          "cash": "900.00",
+          "debt": "-160.00",
+          "goodwill": "180.00",
+          "investment": "0.00",
+          "land uplift": "80.00",
+          "noncontrolling interest": "-176.00",
+          "parent cash": "1380.00",
+          "parent equity": "-2004.00",
+          "parent expense": "100.00",
+          "parent revenue": "-300.00",
+          "sub equity": "0.00",
+          "sub expense": "127.50",
+          "sub revenue": "-212.50",
+          "translation reserve": "105.00"
+        },
+        "cta": {
+          "closing": "105",
+          "cta_accounts": [
+            "translation reserve"
+          ],
+          "disposals": "0",
+          "memo": "Debit balance represents EUR105 translation loss in OCI",
+          "opening": "0",
+          "other": "0",
+          "translation": "105"
+        },
+        "equity": {
+          "closing": "2360",
+          "memo": "Parent opening plus post-acquisition group results, CTA and NCI acquisition",
+          "oci": "-105",
+          "opening": "2000",
+          "other": "0",
+          "owner_transactions": "180",
+          "profit": "285"
+        },
+        "nci": [
+          {
+            "closing": "176.00",
+            "dividends": "0.00",
+            "oci": "-21.00",
+            "profit": "17.00",
+            "subsidiary": "Subsidiary-US"
+          }
+        ],
+        "perimeter": [
+          "Parent",
+          "Subsidiary-US"
+        ],
+        "statements": {
+          "assets": "2540.00",
+          "equity": "-2075.00",
+          "expenses": "227.50",
+          "income": "-512.50",
+          "liabilities": "-180.00"
+        },
+        "translations": []
+      },
+      "case_fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
+      "conclusion": "Consolidated 2 entities; balanced group trial balance after 3 consolidation entries.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Group composition and significant control judgments",
+        "NCI interests, restrictions and summarized financial information",
+        "Ownership changes and acquisitions/disposals",
+        "Foreign operation translation reserves",
+        "Associates/joint arrangements and unconsolidated structured entities when applicable",
+        "Reconcile consolidated statements, equity and cash-flow disclosures with applicable tier relief"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [
+        [
+          {
+            "account": "IC payable",
+            "amount": "100.00",
+            "side": "Dr"
+          },
+          {
+            "account": "IC receivable",
+            "amount": "100.00",
+            "side": "Cr"
+          }
+        ],
+        [
+          {
+            "account": "investment",
+            "amount": "720.00",
+            "side": "Cr"
+          },
+          {
+            "account": "sub equity",
+            "amount": "630.00",
+            "side": "Dr"
+          },
+          {
+            "account": "acquisition adjustment equity",
+            "amount": "270.00",
+            "side": "Dr"
+          },
+          {
+            "account": "noncontrolling interest",
+            "amount": "180.00",
+            "side": "Cr"
+          }
+        ],
+        [
+          {
+            "account": "noncontrolling interest",
+            "amount": "4.00",
+            "side": "Dr"
+          },
+          {
+            "account": "parent equity",
+            "amount": "4.00",
+            "side": "Cr"
+          }
+        ]
+      ],
+      "judgments": [
+        "Reviewed synthetic alternative routes and assumptions",
+        "Substantive voting rights control",
+        "Substantive voting rights control"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": "Framework control perimeter; aligned/translated source TBs; documented eliminations; NCI and cash-flow bridges",
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-CONS-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Acquisition fair values, historical FX, rights-specific NCI allocations, loss-of-control OCI and tax effects are independently reviewed specialist inputs.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "consolidation",
+    "source_inputs": [
+      "group_structure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "consolidation"
+    ],
+    "downstream_consumers": [
+      "management-accounting-analytics",
+      "disclosure-management",
+      "diagnostic-contribution-accounting"
+    ],
+    "entity": "Group",
+    "evidence": [
+      {
+        "claim_id": "TOPIC-08-001-IFRS-001",
+        "topic_id": "TOPIC-08-001"
+      },
+      {
+        "claim_id": "TOPIC-08-001-IFRS-R001",
+        "topic_id": "TOPIC-08-001"
+      },
+      {
+        "claim_id": "TOPIC-08-002-IFRS-001",
+        "topic_id": "TOPIC-08-002"
+      },
+      {
+        "claim_id": "TOPIC-08-002-IFRS-R001",
+        "topic_id": "TOPIC-08-002"
+      },
+      {
+        "claim_id": "TOPIC-08-003-IFRS-001",
+        "topic_id": "TOPIC-08-003"
+      },
+      {
+        "claim_id": "TOPIC-08-003-IFRS-R001",
+        "topic_id": "TOPIC-08-003"
+      },
+      {
+        "claim_id": "TOPIC-08-004-IFRS-001",
+        "topic_id": "TOPIC-08-004"
+      },
+      {
+        "claim_id": "TOPIC-08-004-IFRS-R001",
+        "topic_id": "TOPIC-08-004"
+      },
+      {
+        "claim_id": "TOPIC-08-005-IFRS-001",
+        "topic_id": "TOPIC-08-005"
+      },
+      {
+        "claim_id": "TOPIC-08-005-IFRS-R001",
+        "topic_id": "TOPIC-08-005"
+      },
+      {
+        "claim_id": "TOPIC-08-005-IFRS-R005",
+        "topic_id": "TOPIC-08-005"
+      },
+      {
+        "claim_id": "TOPIC-08-006-IFRS-001",
+        "topic_id": "TOPIC-08-006"
+      },
+      {
+        "claim_id": "TOPIC-08-006-IFRS-R001",
+        "topic_id": "TOPIC-08-006"
+      },
+      {
+        "claim_id": "TOPIC-08-007-IFRS-001",
+        "topic_id": "TOPIC-08-007"
+      },
+      {
+        "claim_id": "TOPIC-08-007-IFRS-R001",
+        "topic_id": "TOPIC-08-007"
+      },
+      {
+        "claim_id": "TOPIC-08-008-IFRS-001",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "claim_id": "TOPIC-08-008-IFRS-R001",
+        "topic_id": "TOPIC-08-008"
+      }
+    ],
+    "framework": "IFRS",
+    "id": "financial-statements",
+    "invalidated_results": [],
+    "issue": "statement",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "consolidation"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "cash_flow": {
+          "bs_cash_bridge": "0.00",
+          "closing": "2280.00",
+          "financing": "0.00",
+          "fx": "-95.00",
+          "investing": "90.00",
+          "opening": "2000.00",
+          "operating": "285.00"
+        },
+        "comparative": {
+          "assets": "2000.00",
+          "cash": "2000.00",
+          "closing_equity": "2000.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "0",
+          "lines": {
+            "parent cash": "2000.00",
+            "parent equity": "-2000.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "current": {
+          "assets": "2540.00",
+          "cash": "2280.00",
+          "closing_equity": "2360.00",
+          "comprehensive_income": "180.00",
+          "expenses": "227.50",
+          "liabilities": "180.00",
+          "lines": {
+            "Deferred tax liability": "-20.00",
+            "IC payable": "0.00",
+            "IC receivable": "0.00",
+            "acquisition adjustment equity": "0.00",
+            "cash": "900.00",
+            "debt": "-160.00",
+            "goodwill": "180.00",
+            "investment": "0.00",
+            "land uplift": "80.00",
+            "noncontrolling interest": "-176.00",
+            "parent cash": "1380.00",
+            "parent equity": "-2004.00",
+            "parent expense": "100.00",
+            "parent revenue": "-300.00",
+            "sub equity": "0.00",
+            "sub expense": "127.50",
+            "sub revenue": "-212.50",
+            "translation reserve": "105.00"
+          },
+          "oci": "-105.00",
+          "profit": "285.00",
+          "revenue": "512.50"
+        },
+        "equity_components": [
+          {
+            "closing": "2184",
+            "id": "owners",
+            "oci": "-84",
+            "opening": "2000",
+            "other": "0",
+            "owner_transactions": "0",
+            "profit": "268",
+            "retrospective_adjustments": "0"
+          },
+          {
+            "closing": "176",
+            "id": "nci",
+            "oci": "-21",
+            "opening": "0",
+            "other": "0",
+            "owner_transactions": "180",
+            "profit": "17",
+            "retrospective_adjustments": "0"
+          }
+        ],
+        "management_performance_measures": [],
+        "note_tieouts": [
+          {
+            "amount": "2280",
+            "id": "cash-note",
+            "target": "cash"
+          }
+        ]
+      },
+      "case_fingerprint": "1232ec47491931a569230bc56fcb7f8a909acf258f42ee2808f5bcc9620de644",
+      "conclusion": "Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Complete period/entity-specific requirement register",
+        "Accounting policies and significant judgments/estimation uncertainty",
+        "Current/noncurrent, covenant, cash restriction and offsetting assessments",
+        "Income/OCI disaggregation and equity components",
+        "Cash flow classification and noncash financing movements",
+        "Comparative/restatement and adoption reconciliation",
+        "Topic-specific notes, events, going concern and filing overlays"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Actual period and framework reviewed",
+        "No prior error; source bridge reviewed",
+        "All cash accounts and classifications reviewed"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": {
+        "checklist_version": "Synthetic applicable checklist",
+        "entity_overlay": "Reviewed for-profit tier/filer scope",
+        "framework": "IFRS",
+        "presentation": "IAS1"
+      },
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-FS-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "This is a governed reporting/tie-out pack, not an autonomous legal filing or a complete universal checklist. Tax conclusions and specialist note scopes require approved external workpapers. A numeric tie-out alone does not certify disclosure completeness.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "statement"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "financial-statements",
+      "foreign-currency",
+      "consolidation"
+    ],
+    "downstream_consumers": [
+      "diagnostic-contribution-accounting"
+    ],
+    "entity": "Group",
+    "evidence": [],
+    "framework": "IFRS",
+    "id": "management-accounting-analytics",
+    "invalidated_results": [],
+    "issue": "analytics",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "account_movements": [
+          {
+            "movement": "285",
+            "percentage": null
+          }
+        ],
+        "balance_diagnostics": null,
+        "current_management": "285",
+        "current_statutory": "285",
+        "diagnostic": {
+          "accounting_questions": [
+            {
+              "amount": "285.00",
+              "id": "contribution-accounting",
+              "issue": "Group acquisition contribution",
+              "materiality": "1",
+              "reason": "Confirm analytical contribution against qualified consolidated statement result",
+              "result_path": [
+                "current",
+                "profit"
+              ],
+              "source_evidence": [
+                "group-drivers"
+              ],
+              "status": "REQUIRES_OWNER",
+              "target_owner": "financial-statements"
+            }
+          ],
+          "attribution_ledger": [
+            [
+              "Group",
+              "EUR",
+              [
+                "2026-01-01",
+                "2026-12-31"
+              ],
+              "parent-result"
+            ],
+            [
+              "Group",
+              "EUR",
+              [
+                "2026-01-01",
+                "2026-12-31"
+              ],
+              "post-acquisition-result"
+            ]
+          ],
+          "bridge": {
+            "change": "285",
+            "comparator_kind": "actual",
+            "comparator_version": "actual-v1",
+            "drivers": [
+              {
+                "category": "mixed",
+                "confidence": "high",
+                "contribution": "285",
+                "evidence_class": "bridge_attribution",
+                "id": "contribution-movement",
+                "label": "Standalone and supported post-acquisition contribution",
+                "lineage": {
+                  "comparator": {
+                    "doc": "group-prior",
+                    "frozen_on": "2025-12-31",
+                    "kind": "actual",
+                    "period": [
+                      "2025-01-01",
+                      "2025-12-31"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "EUR",
+                  "economic_components": [
+                    [
+                      "Group",
+                      "EUR",
+                      [
+                        "2026-01-01",
+                        "2026-12-31"
+                      ],
+                      "parent-result"
+                    ],
+                    [
+                      "Group",
+                      "EUR",
+                      [
+                        "2026-01-01",
+                        "2026-12-31"
+                      ],
+                      "post-acquisition-result"
+                    ]
+                  ],
+                  "effect": "movement",
+                  "entity": "Group",
+                  "method": "source_flux",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-01-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "group-drivers",
+                  "source_metric": "group profit",
+                  "source_owner": "financial-statements",
+                  "unit": "EUR"
+                },
+                "status": "SUPPORTED"
+              }
+            ],
+            "ending": "285",
+            "explained_amount": "285",
+            "explained_percent": "100",
+            "materiality": "1",
+            "metric": "account_balance",
+            "presentation_basis": "signed_balance",
+            "residual": "0",
+            "starting": "0",
+            "status": "RECONCILED",
+            "tolerance": "0.01",
+            "unit": "EUR"
+          },
+          "hypotheses": [
+            {
+              "confidence": "low",
+              "disposition": "REJECTED",
+              "evidence": [
+                "group-drivers"
+              ],
+              "evidence_class": "bridge_attribution",
+              "hypothesis": "Full-year subsidiary profit is acquisition contribution",
+              "id": "full-year-contribution",
+              "observation": "Acquisition completed midyear"
+            }
+          ],
+          "methods": [
+            {
+              "baseline": "supplied comparator",
+              "group": "contribution",
+              "interaction": "none",
+              "method": "source_flux",
+              "sign": 1
+            }
+          ],
+          "observations": [],
+          "open_items": []
+        },
+        "gross_movement": "285",
+        "gross_statutory": "285",
+        "material_open_reconciliations": 0,
+        "on_time_reconciliation_count": 1,
+        "on_time_reconciliation_rate": "100",
+        "prior_statutory": "0",
+        "reconciliation_population": 1
+      },
+      "case_fingerprint": "338f4034073c0081441b4804c54e3eef5dc637daa73e94275d257a011ef3f25a",
+      "conclusion": "Controllership accounting-source, bridge and flux workpaper reconciled",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+        "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "governance_topic": "TOPIC-08-008",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Qualified management judgments remain distinct from calculated facts"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-ANALYTICS-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.",
+        "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "management-accounting-analytics",
+    "source_inputs": [
+      "analytics"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "financial-statements"
+    ],
+    "downstream_consumers": [],
+    "entity": "Group",
+    "evidence": [],
+    "framework": "IFRS",
+    "id": "disclosure-management",
+    "invalidated_results": [],
+    "issue": "disclosure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements"
+    ],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "applicable_count": 5,
+        "disclosure_compliance_certified": false,
+        "note_count": 5,
+        "requirement_count": 5
+      },
+      "case_fingerprint": "25b5c636e8e78f55f9d10a76a859ee28e82bf250faef594ef3e303873ac83ece",
+      "conclusion": "Current disclosure-management and comparative tie-out workpaper reconciled",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+        "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "governance_topic": "TOPIC-08-004",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Qualified management judgments remain distinct from calculated facts"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": "Approved canonical operational method; independently substantiated source-to-journal-to-GL proof",
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-DISC-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "Supplied qualified current requirement inventory and owner conclusions are inputs, not a universal disclosure rulebook. Unchanged comparatives only; reclassifications/restatements require accounting-owner analysis. No filing or compliance certification.",
+        "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "disclosure-management",
+    "source_inputs": [
+      "disclosure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "management-accounting-analytics",
+      "financial-statements"
+    ],
+    "downstream_consumers": [],
+    "entity": "Group",
+    "evidence": [],
+    "framework": "IFRS",
+    "id": "diagnostic-contribution-accounting",
+    "invalidated_results": [],
+    "issue": "diagnostic accounting follow-up",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [],
+    "reason_selected": "Confirm analytical contribution against qualified consolidated statement result",
+    "required": true,
+    "result": {
+      "assumptions": [
+        "Synthetic amounts and assumptions for regression only"
+      ],
+      "audit_evidence_required": [
+        "Contract/legal/source evidence",
+        "Assumptions and alternatives",
+        "Calculation reperformance",
+        "Approval record"
+      ],
+      "calculations": {
+        "cash_flow": {
+          "bs_cash_bridge": "0.00",
+          "closing": "2280.00",
+          "financing": "0.00",
+          "fx": "-95.00",
+          "investing": "90.00",
+          "opening": "2000.00",
+          "operating": "285.00"
+        },
+        "comparative": {
+          "assets": "2000.00",
+          "cash": "2000.00",
+          "closing_equity": "2000.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "0",
+          "lines": {
+            "parent cash": "2000.00",
+            "parent equity": "-2000.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "current": {
+          "assets": "2540.00",
+          "cash": "2280.00",
+          "closing_equity": "2360.00",
+          "comprehensive_income": "180.00",
+          "expenses": "227.50",
+          "liabilities": "180.00",
+          "lines": {
+            "Deferred tax liability": "-20.00",
+            "IC payable": "0.00",
+            "IC receivable": "0.00",
+            "acquisition adjustment equity": "0.00",
+            "cash": "900.00",
+            "debt": "-160.00",
+            "goodwill": "180.00",
+            "investment": "0.00",
+            "land uplift": "80.00",
+            "noncontrolling interest": "-176.00",
+            "parent cash": "1380.00",
+            "parent equity": "-2004.00",
+            "parent expense": "100.00",
+            "parent revenue": "-300.00",
+            "sub equity": "0.00",
+            "sub expense": "127.50",
+            "sub revenue": "-212.50",
+            "translation reserve": "105.00"
+          },
+          "oci": "-105.00",
+          "profit": "285.00",
+          "revenue": "512.50"
+        },
+        "equity_components": [
+          {
+            "closing": "2184",
+            "id": "owners",
+            "oci": "-84",
+            "opening": "2000",
+            "other": "0",
+            "owner_transactions": "0",
+            "profit": "268",
+            "retrospective_adjustments": "0"
+          },
+          {
+            "closing": "176",
+            "id": "nci",
+            "oci": "-21",
+            "opening": "0",
+            "other": "0",
+            "owner_transactions": "180",
+            "profit": "17",
+            "retrospective_adjustments": "0"
+          }
+        ],
+        "management_performance_measures": [],
+        "note_tieouts": [
+          {
+            "amount": "2280",
+            "id": "cash-note",
+            "target": "cash"
+          }
+        ]
+      },
+      "case_fingerprint": "1232ec47491931a569230bc56fcb7f8a909acf258f42ee2808f5bcc9620de644",
+      "conclusion": "Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.",
+      "confidence": "medium",
+      "controls_impacted": [
+        "Source population to GL tie-out",
+        "Independent route, estimate and journal review",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "disclosures_impacted": [
+        "Complete period/entity-specific requirement register",
+        "Accounting policies and significant judgments/estimation uncertainty",
+        "Current/noncurrent, covenant, cash restriction and offsetting assessments",
+        "Income/OCI disaggregation and equity components",
+        "Cash flow classification and noncash financing movements",
+        "Comparative/restatement and adoption reconciliation",
+        "Topic-specific notes, events, going concern and filing overlays"
+      ],
+      "documentation_required": [
+        "Accounting judgment memo",
+        "Input evidence",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Reviewer certification"
+      ],
+      "entities": [
+        "Group"
+      ],
+      "framework": "IFRS",
+      "journal_entry_implications": [],
+      "judgments": [
+        "Actual period and framework reviewed",
+        "No prior error; source bridge reviewed",
+        "All cash accounts and classifications reviewed"
+      ],
+      "jurisdiction": "NL",
+      "memory_candidates": [],
+      "method": {
+        "checklist_version": "Synthetic applicable checklist",
+        "entity_overlay": "Reviewed for-profit tier/filer scope",
+        "framework": "IFRS",
+        "presentation": "IAS1"
+      },
+      "open_items": [],
+      "periods": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "recommendation_class": "REQUIRED",
+      "related_artifacts": [],
+      "reporting_impacted": [
+        "Framework-specific statement presentation and comparative-period consistency"
+      ],
+      "skill_id": "SKILL-FS-001",
+      "status": "complete",
+      "systems_impacted": [
+        "Retain case ID, source IDs, policy version, rule route and journal lineage"
+      ],
+      "uncertainties": [
+        "This is a governed reporting/tie-out pack, not an autonomous legal filing or a complete universal checklist. Tax conclusions and specialist note scopes require approved external workpapers. A numeric tie-out alone does not certify disclosure completeness.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ]
+    },
+    "rework_triggered": false,
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "group-drivers"
+    ],
+    "status": "complete"
+  }
+]

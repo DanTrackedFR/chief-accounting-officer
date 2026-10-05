@@ -1,0 +1,96 @@
+[
+  {
+    "batch": [
+      "income-taxes",
+      "intercompany-accounting"
+    ],
+    "case_fingerprint": "0285afadc975ba51ff76ab1f087eb59b08617d5cc645126a91705ae644c75026",
+    "node": "income-taxes",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "income-taxes",
+      "intercompany-accounting"
+    ],
+    "case_fingerprint": "12a35e391cfbca9b22fda0fb79834571a47b8be66917e11251db435f313192ff",
+    "node": "intercompany-accounting",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "business-combinations"
+    ],
+    "case_fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
+    "node": "business-combinations",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "foreign-currency"
+    ],
+    "case_fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
+    "node": "foreign-currency",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "asset-impairment"
+    ],
+    "case_fingerprint": "6da0aabe025d3164312cd7431d758f986271321231eb44a06172a1d768626276",
+    "node": "asset-impairment",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "consolidation"
+    ],
+    "case_fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
+    "node": "consolidation",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "financial-statements"
+    ],
+    "case_fingerprint": "1232ec47491931a569230bc56fcb7f8a909acf258f42ee2808f5bcc9620de644",
+    "node": "financial-statements",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "management-accounting-analytics",
+      "disclosure-management"
+    ],
+    "case_fingerprint": "338f4034073c0081441b4804c54e3eef5dc637daa73e94275d257a011ef3f25a",
+    "node": "management-accounting-analytics",
+    "status": "complete"
+  },
+  {
+    "batch": [
+      "management-accounting-analytics",
+      "disclosure-management"
+    ],
+    "case_fingerprint": "25b5c636e8e78f55f9d10a76a859ee28e82bf250faef594ef3e303873ac83ece",
+    "node": "disclosure-management",
+    "status": "complete"
+  },
+  {
+    "action": "diagnostic owner recheck",
+    "batch": [
+      "diagnostic-contribution-accounting"
+    ],
+    "node": "diagnostic-contribution-accounting",
+    "reuses": [
+      "financial-statements"
+    ],
+    "status": "complete"
+  },
+  {
+    "level": "group",
+    "node": "consolidation",
+    "residual": "0",
+    "status": "qualified_source_assembly",
+    "target_entity": "Group"
+  }
+]

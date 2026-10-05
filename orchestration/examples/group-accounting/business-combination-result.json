@@ -1,0 +1,128 @@
+{
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "audit_evidence_required": [
+    "Contract/legal/source evidence",
+    "Assumptions and alternatives",
+    "Calculation reperformance",
+    "Approval record"
+  ],
+  "calculations": {
+    "acquisition_expense": "0.00",
+    "assets": "1000.00",
+    "bargain_gain": "0",
+    "closing_contingent_liability": "0",
+    "closing_goodwill": "225.00",
+    "consideration": "800.00",
+    "initial_goodwill": "225.00",
+    "liabilities": "225.00",
+    "measurement_adjustments": [],
+    "nci": "200.00",
+    "net_assets": "775.00"
+  },
+  "case_fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
+  "conclusion": "Reviewed acquisition PPA and subsequent movements reconcile; specialist valuations and tax bases remain external inputs.",
+  "confidence": "medium",
+  "controls_impacted": [
+    "Source population to GL tie-out",
+    "Independent route, estimate and journal review",
+    "Versioned accounting policy and disclosure review"
+  ],
+  "disclosures_impacted": [
+    "Acquirer/control date and business definition",
+    "Consideration and contingent terms/valuation",
+    "Identifiable assets/liabilities and exceptions including tax",
+    "Goodwill or bargain gain factors and reassessment",
+    "Provisional items and measurement-period changes",
+    "NCI basis and subsequent goodwill movements",
+    "Acquisition expenses and pro-forma/revenue-profit information when required"
+  ],
+  "documentation_required": [
+    "Accounting judgment memo",
+    "Input evidence",
+    "Calculation and reconciliation",
+    "Disclosure tie-out",
+    "Reviewer certification"
+  ],
+  "entities": [
+    "Subsidiary-US"
+  ],
+  "framework": "IFRS",
+  "journal_entry_implications": [
+    [
+      {
+        "account": "cash",
+        "amount": "900.00",
+        "side": "Dr"
+      },
+      {
+        "account": "land uplift",
+        "amount": "100.00",
+        "side": "Dr"
+      },
+      {
+        "account": "goodwill",
+        "amount": "225.00",
+        "side": "Dr"
+      },
+      {
+        "account": "debt",
+        "amount": "200.00",
+        "side": "Cr"
+      },
+      {
+        "account": "Deferred tax liability",
+        "amount": "25.00",
+        "side": "Cr"
+      },
+      {
+        "account": "cash",
+        "amount": "800.00",
+        "side": "Cr"
+      },
+      {
+        "account": "noncontrolling interest",
+        "amount": "200.00",
+        "side": "Cr"
+      }
+    ]
+  ],
+  "judgments": [
+    "Input/process/output business reviewed",
+    "Substantive ordinary control",
+    "Tax specialist supported amounts including nil additional tax",
+    "Recognition exceptions reviewed",
+    "Reviewed SPA",
+    "Independently qualified full-goodwill NCI valuation USD200",
+    "Supported service costs",
+    "Supported goodwill life and impairment review"
+  ],
+  "jurisdiction": "US",
+  "memory_candidates": [],
+  "method": {
+    "acquisition_date": "2026-07-01",
+    "cost_model": "expense services",
+    "framework": "IFRS",
+    "nci_method": "fair_value"
+  },
+  "open_items": [],
+  "periods": [
+    "2026-01-01",
+    "2026-12-31"
+  ],
+  "recommendation_class": "REQUIRED",
+  "related_artifacts": [],
+  "reporting_impacted": [
+    "Framework-specific statement presentation and comparative-period consistency"
+  ],
+  "skill_id": "SKILL-BC-001",
+  "status": "complete",
+  "systems_impacted": [
+    "Retain case ID, source IDs, policy version, rule route and journal lineage"
+  ],
+  "uncertainties": [
+    "Tax and valuation conclusions are reviewed specialist inputs, not generated here. Ordinary acquisitions only; common control, asset deals, reverse/VIE acquisitions and private alternatives are separate methods.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+  ]
+}

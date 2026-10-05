@@ -231,7 +231,8 @@ def reviewed_pack(prepared,objective=OBJECTIVE,bounded=None):
     document(ana,'balance-source',data);ana['balance_diagnostics']={'doc':'balance-source'}
     for d in ana['documents']:d['content_hash']=digest(d['content'])
     owners['management-accounting-analytics']=ready('management-accounting-analytics',c=refresh_release(ana));completed('management-accounting-analytics',owners['management-accounting-analytics'])
-    families={pkg:family for family,(pkg,_) in FACT_ADAPTERS.items()}
+    families={}
+    for family,(pkg,_) in FACT_ADAPTERS.items():families.setdefault(pkg,family)
     handoffs=[]
     def link(producer,consumer,semantic,path,target,amount,sign=1,purpose='report'):
         handoffs.append(dict(producer=producer,consumer=consumer,semantic=semantic,metric_path=path,target_path=target,amount=amount,sign=sign,purpose=purpose,economic_id=semantic+'-'+consumer,qualification_evidence='Controlled synthetic exact owner-result to current source field review'))

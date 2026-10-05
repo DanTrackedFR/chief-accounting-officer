@@ -105,7 +105,7 @@ Independent QA must challenge at least:
 - accounting conclusions made directly by analytics instead of the governed owner.
 
 ### 2. Semantic Planner + Document/Data Intake — COMPLETE
-Status: **complete** within the bounded foundation. Structured semantic proposals, deterministic validation, inert source adapters, provenance/transformations, fact/conflict/context resolution, owner-input candidates and integration with the existing runtime passed authored and independent adversarial QA plus full repository regression. See `orchestration/INTAKE-INTEGRATION-HANDOFF.md`; final publication requires exact-head GitHub Actions before PR readiness. Native binary extraction, live model inference, authenticated approvals and persistence remain outside scope. Additional end-to-end flagship scenarios remain next.
+Status: **complete** within the bounded foundation. Structured semantic proposals, deterministic validation, inert source adapters, provenance/transformations, fact/conflict/context resolution, owner-input candidates and integration with the existing runtime passed authored and independent adversarial QA plus full repository regression. See `orchestration/INTAKE-INTEGRATION-HANDOFF.md`; final publication requires exact-head GitHub Actions before PR readiness. Native binary extraction, live model inference, authenticated approvals and persistence remain outside scope. The three additional end-to-end flagships are now complete within their documented bounds; multi-entity and multi-period orchestration is next.
 
 After the analytical-intent foundation is stable, allow the CAO to interpret genuinely free-form objectives and supplied company materials into governed facts, issues and workplan proposals.
 
@@ -113,18 +113,18 @@ Target inputs include trial balances, monthly P&Ls, ERP/subledger exports, inven
 
 Model reasoning may propose facts/issues/workplans, but production status, owner boundaries, dependency controls, exact-once lineage, accounting authority and challenge gates remain governed by the deterministic runtime and production skill contracts.
 
-### 3. Additional end-to-end flagship scenarios
+### 3. Additional end-to-end flagship scenarios — COMPLETE
 Build broader orchestration coverage after semantic/data intake:
 1. **SaaS / month-end close — COMPLETE** — Revenue + AR + ECL + FX + Reconciliations + Close + Reporting + Disclosure + analytics.
 2. **Treasury / financing — COMPLETE** — Debt + FX + Derivatives/Hedge + Financial Instruments + Cash Flow + Reporting + analytics.
-3. **Group accounting — NEXT** — Business Combinations + Consolidation + NCI + FX + Impairment + Tax + Reporting.
+3. **Group accounting — COMPLETE** — Business Combinations + Consolidation + NCI + FX + Impairment + Tax + Reporting.
 
-SaaS uses the governed semantic/intake foundation, controlled sources, nine production owners, exact-once journal ownership, source conflicts, diagnostics and independent acceptance QA. See `orchestration/SAAS-INTEGRATION-HANDOFF.md`. Treasury now also proves governed Debt/FX/Hedge/Cash/reporting integration, raw-source qualification, exact-once ownership and independent adversarial acceptance. See `orchestration/TREASURY-INTEGRATION-HANDOFF.md`. Group Accounting remains NEXT; this additional-flagships section is not complete.
+SaaS uses the governed semantic/intake foundation, controlled sources, nine production owners, exact-once journal ownership, source conflicts, diagnostics and independent acceptance QA. See `orchestration/SAAS-INTEGRATION-HANDOFF.md`. Treasury now also proves governed Debt/FX/Hedge/Cash/reporting integration, raw-source qualification, exact-once ownership and independent adversarial acceptance. See `orchestration/TREASURY-INTEGRATION-HANDOFF.md`. Group now proves acquisition/Tax/FX/Intercompany/Impairment/Consolidation/NCI/reporting integration from company-shaped sources, with explicit entity/period dimensions, exact-once economics, a partial conflict Case and complete clean control. Authored and independent adversarial QA, deterministic artifacts and full regression passed. See `orchestration/GROUP-INTEGRATION-HANDOFF.md`. All three additional flagships are complete within their documented bounds; exact-head Actions remain the final publication gate.
 
 Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
 
-### 4. Multi-entity and multi-period orchestration
-Support parent/subsidiary, local/group framework, comparative-period, intercompany and multi-currency execution without mixing entity/framework/period dimensions.
+### 4. Multi-entity and multi-period orchestration — NEXT
+Support parent/subsidiary, local/group framework, comparative-period, intercompany and multi-currency execution without mixing entity/framework/period dimensions. Group adds only one controlled Parent/Sub/Group Case with a sourced acquisition cutoff; general entity graphs and multi-period execution are not complete. See `orchestration/GROUP-TO-MULTI-ENTITY-HANDOFF.md` for concrete remaining requirements.
 
 ### 5. Durable Case and Company Accounting Memory persistence
 Persist Company Context, Case history, decisions, artifacts and provenance while preserving status and temporal history such as PROPOSED, APPROVED and SUPERSEDED. Persistence must not silently promote memory candidates into approved company truth.
