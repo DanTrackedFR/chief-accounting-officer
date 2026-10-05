@@ -58,7 +58,7 @@ def assess(c,claims):
     if any(iso(t['approval_date'])>iso(lock['approval_date']) or actual_date(t,'actual_finish_day')>iso(lock['approval_date']) for t in tasks):raise ReviewRequired('Close lock predates task completion/certification')
     if lock['state']!='locked' or lock['exceptions'] or not flag(lock,'account_certifications_complete') or not flag(lock,'journal_population_reconciled'):raise ReviewRequired('Close lock certification incomplete')
     if flag(lock,'reopened'):
-        required(lock,'reopen_authorization','reclose_evidence')
+        texts(lock,'reopen_authorization','reclose_evidence')
     calcs={'task_finish_days':ends,'close_day':max(ends.values()),'posted_journal_count':len(js),'incremental_accrual':accrual_amount}
     return finish('Close calendar, journal population and lock certification reconciled.',calcs,entries,
       ['Invoice dates do not establish economic cutoff; prior errors and new estimates require separate framework analysis.','Reopening invalidates the prior lock certification and requires fresh independent approval.'],

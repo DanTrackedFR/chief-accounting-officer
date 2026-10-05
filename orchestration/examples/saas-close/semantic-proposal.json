@@ -1,0 +1,2762 @@
+{
+  "assumptions": [],
+  "bounded_owner": null,
+  "classifications": {},
+  "column_mappings": [],
+  "context_candidates": {
+    "currency": {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "CONTEXT_DERIVED",
+      "value": "USD"
+    }
+  },
+  "disputed_facts": [],
+  "entities": [],
+  "facts": [
+    {
+      "attribute": "recognised_revenue",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "500"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-period-result",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "consideration",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "12000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-price",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "progress",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0.125"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-progress",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_revenue",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_opening",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-contract-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_billings",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "revenue:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "rev-billings",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "domestic_invoice",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-opening-domestic",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "foreign_invoice_book",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:11"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "110"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-opening-foreign",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "new_invoice",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:19"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-billings",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "cash_receipt",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "receipts:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "250"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-receipt",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "cash_applied",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "receipts:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-applied",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_ar",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "ar_summary:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1520"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-gl",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "current_exposure",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-current-exposure",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "aged_exposure",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "720"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-aged-exposure",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "current_loss_rate",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0.01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-current-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "aged_loss_rate",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0.10"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-aged-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_allowance",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "allowance:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "20"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_book",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "110"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "initial_rate",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1.10"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-initial-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_rate",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1.20"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-closing-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "ar_balance",
+      "candidate_owner": "balance-sheet-reconciliations",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "rec_pack:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1520"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-ar",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_balance",
+      "candidate_owner": "balance-sheet-reconciliations",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "rec_pack:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-1300"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-contract",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "allowance",
+      "candidate_owner": "balance-sheet-reconciliations",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "rec_pack:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-allowance",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "billing_complete",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "checklist:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": true
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-task-complete",
+      "transformation": "boolean"
+    },
+    {
+      "attribute": "billing_duration",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "checklist:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "4"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-duration",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "manual_accrual",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "journals:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "25"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-journal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "revenue",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "tb:20"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-500"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "fs-revenue",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "gross_ar",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "tb:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1520"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "fs-ar",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_liability",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "tb:11"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-1300"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "fs-liability",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "allowance",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "tb:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "fs-allowance",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "allowance",
+      "candidate_owner": "disclosure-management",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "notes:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "disclosure",
+      "id": "disc-allowance",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_cash",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "receipts:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "5250"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "analytics-cash",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "journal_journal_id",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "journals:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "MANUAL-DEC"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-journal-journal_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "journal_effective_date",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "journals:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-journal-effective_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "journal_approved_at",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "journals:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2027-01-02"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-journal-approved_at",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "journal_posted_at",
+      "candidate_owner": "month-end-close",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "journals:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2027-01-02"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "close_calendar",
+      "id": "close-journal-posted_at",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "prior_revenue",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "400"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-revenue",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_billings",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "500"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-billings",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_cash_collections",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "450"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-cash_collections",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_gross_ar",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "910"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-gross_ar",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_allowance",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "20"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-allowance",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_contract_liability",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:12"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-contract_liability",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_contract_asset",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:14"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-contract_asset",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "invoice_id_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "old-domestic"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-invoice_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "customer_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Alpha"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-customer",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "invoice_date_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-10-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-invoice_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "due_date_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-11-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-due_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "original_currency_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "USD"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-original_currency",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "opening_old_domestic",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": true
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-domestic-opening",
+      "transformation": "boolean"
+    },
+    {
+      "attribute": "invoice_id_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "old-foreign"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-invoice_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "customer_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Beta"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-customer",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "invoice_date_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:12"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-10-15"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-invoice_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "due_date_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:13"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-11-15"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-due_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "original_currency_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:14"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "EUR"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-original_currency",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "opening_old_foreign",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:16"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": true
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-old-foreign-opening",
+      "transformation": "boolean"
+    },
+    {
+      "attribute": "invoice_id_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:17"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "current"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-invoice_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "customer_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:18"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Alpha"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-customer",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "invoice_date_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:20"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-invoice_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "due_date_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:21"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2027-01-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-due_date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "original_currency_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:22"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "USD"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-original_currency",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "opening_current",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:24"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": false
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-current-opening",
+      "transformation": "boolean"
+    },
+    {
+      "attribute": "original_foreign_amount",
+      "candidate_owner": "accounts-receivable",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "billing:15"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "100"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ar-foreign-original",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "review_effective_from",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-review-effective_from",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "review_reviewed_on",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-review-reviewed_on",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "review_as_of",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-review-as_of",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "review_source_version",
+      "candidate_owner": "financial-instruments-ecl",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "loss_rates:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "controlled-v1"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "credit_exposure",
+      "id": "ecl-review-source_version",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "prior_age_current",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:16"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-age-current",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_age_1_30",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:18"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "910"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-age-1_30",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_age_31_60",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:20"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-age-31_60",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_age_61_90",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:22"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-age-61_90",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_age_over90",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:24"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-age-over90",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "ageing_completeness",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "ageing:12"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1515"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ageing-file-total",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "ageing_completeness",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "ar_summary:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1520"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "receivable_population",
+      "id": "ageing-gl-total",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "open_reconciliation_difference",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "checklist:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-checklist",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "open_reconciliation_difference",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "rec_pack:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "5"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-pack-open",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_terms_0",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "contract:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Customer: Alpha. Hosted API processing services form one distinct series of services received and consumed as supplied."
+      },
+      "confirmation_required": true,
+      "conflicts": [],
+      "dimensions": {},
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "contract-wording-0",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "contract_terms_1",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "contract:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Term: 2026-10-01 to 2027-09-30. Fixed consideration USD 12000 for 12000 API processing units supplied over the term; no variable fees, refunds or cancellation rights."
+      },
+      "confirmation_required": true,
+      "conflicts": [],
+      "dimensions": {},
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "contract-wording-1",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "contract_terms_2",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "contract:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "The customer receives and consumes processing as supplied. Independently reviewed output progress is 1500 delivered units / 12000 contracted units = 0.125. October delivered 600, November 400 and December 500 units. Prior cumulative earned amount is USD 1000. No expiry, breakage or contract modification arises in this close."
+      },
+      "confirmation_required": true,
+      "conflicts": [],
+      "dimensions": {},
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "contract-wording-2",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "contract_terms_3",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "contract:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "Billing records are enforceable billed rights. Revenue is recognised as service is supplied; payment does not establish performance."
+      },
+      "confirmation_required": true,
+      "conflicts": [],
+      "dimensions": {},
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "contract-wording-3",
+      "transformation": "identity"
+    }
+  ],
+  "frameworks": [],
+  "hypotheses": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "commentary:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "description": "Collections only look worse because revenue grew",
+        "id": "collection-growth-explanation",
+        "tests": [
+          {
+            "factor": 1,
+            "left_owner": "accounts-receivable",
+            "left_path": [
+              "bank_receipts"
+            ],
+            "operator": "magnitude_above",
+            "right_owner": "management-accounting-analytics",
+            "right_path": [
+              "balance_diagnostics",
+              "cash_collections",
+              "prior"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "interpreted_objective": null,
+  "issues": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "revenue:9",
+        "revenue:2",
+        "revenue:3",
+        "revenue:4",
+        "revenue:5",
+        "revenue:7",
+        "contract:1",
+        "contract:2",
+        "contract:3",
+        "contract:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "rev-period-result",
+          "rev-price",
+          "rev-progress",
+          "rev-opening",
+          "rev-contract-opening",
+          "rev-billings",
+          "contract-wording-0",
+          "contract-wording-1",
+          "contract-wording-2",
+          "contract-wording-3"
+        ],
+        "family": "customer_contract",
+        "id": "revenue-recognition",
+        "owner": "revenue-recognition",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "billing:3",
+        "billing:11",
+        "billing:19",
+        "receipts:3",
+        "receipts:4",
+        "ar_summary:1",
+        "billing:1",
+        "billing:2",
+        "billing:4",
+        "billing:5",
+        "billing:6",
+        "billing:8",
+        "billing:9",
+        "billing:10",
+        "billing:12",
+        "billing:13",
+        "billing:14",
+        "billing:16",
+        "billing:17",
+        "billing:18",
+        "billing:20",
+        "billing:21",
+        "billing:22",
+        "billing:24",
+        "billing:15",
+        "ageing:12",
+        "ar_summary:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "ar-opening-domestic",
+          "ar-opening-foreign",
+          "ar-billings",
+          "ar-receipt",
+          "ar-applied",
+          "ar-gl",
+          "ar-old-domestic-invoice_id",
+          "ar-old-domestic-customer",
+          "ar-old-domestic-invoice_date",
+          "ar-old-domestic-due_date",
+          "ar-old-domestic-original_currency",
+          "ar-old-domestic-opening",
+          "ar-old-foreign-invoice_id",
+          "ar-old-foreign-customer",
+          "ar-old-foreign-invoice_date",
+          "ar-old-foreign-due_date",
+          "ar-old-foreign-original_currency",
+          "ar-old-foreign-opening",
+          "ar-current-invoice_id",
+          "ar-current-customer",
+          "ar-current-invoice_date",
+          "ar-current-due_date",
+          "ar-current-original_currency",
+          "ar-current-opening",
+          "ar-foreign-original",
+          "ageing-file-total",
+          "ageing-gl-total"
+        ],
+        "family": "receivable_population",
+        "id": "accounts-receivable",
+        "owner": "accounts-receivable",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "loss_rates:2",
+        "loss_rates:9",
+        "loss_rates:3",
+        "loss_rates:10",
+        "allowance:1",
+        "loss_rates:4",
+        "loss_rates:5",
+        "loss_rates:6",
+        "loss_rates:7"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "accounts-receivable"
+        ],
+        "fact_ids": [
+          "ecl-current-exposure",
+          "ecl-aged-exposure",
+          "ecl-current-rate",
+          "ecl-aged-rate",
+          "ecl-opening",
+          "ecl-review-effective_from",
+          "ecl-review-reviewed_on",
+          "ecl-review-as_of",
+          "ecl-review-source_version"
+        ],
+        "family": "credit_exposure",
+        "id": "financial-instruments-ecl",
+        "owner": "financial-instruments-ecl",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "fx:4",
+        "fx:6",
+        "fx:7"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fx-opening",
+          "fx-initial-rate",
+          "fx-closing-rate"
+        ],
+        "family": "currency_exposure",
+        "id": "foreign-currency",
+        "owner": "foreign-currency",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "rec_pack:2",
+        "rec_pack:6",
+        "rec_pack:9",
+        "checklist:3",
+        "rec_pack:3"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "revenue-recognition",
+          "accounts-receivable",
+          "financial-instruments-ecl",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "rec-ar",
+          "rec-contract",
+          "rec-allowance",
+          "rec-checklist",
+          "rec-pack-open"
+        ],
+        "family": "reconciliation",
+        "id": "balance-sheet-reconciliations",
+        "owner": "balance-sheet-reconciliations",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "checklist:5",
+        "checklist:2",
+        "journals:2",
+        "journals:1",
+        "journals:3",
+        "journals:4",
+        "journals:5"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "close-task-complete",
+          "close-duration",
+          "close-journal",
+          "close-journal-journal_id",
+          "close-journal-effective_date",
+          "close-journal-approved_at",
+          "close-journal-posted_at"
+        ],
+        "family": "close_calendar",
+        "id": "month-end-close",
+        "owner": "month-end-close",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "tb:20",
+        "tb:5",
+        "tb:11",
+        "tb:8"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "revenue-recognition",
+          "accounts-receivable",
+          "financial-instruments-ecl",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "fs-revenue",
+          "fs-ar",
+          "fs-liability",
+          "fs-allowance"
+        ],
+        "family": "statement",
+        "id": "financial-statements",
+        "owner": "financial-statements",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "notes:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "financial-statements",
+          "financial-instruments-ecl"
+        ],
+        "fact_ids": [
+          "disc-allowance"
+        ],
+        "family": "disclosure",
+        "id": "disclosure-management",
+        "owner": "disclosure-management",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "receipts:6",
+        "prior:2",
+        "prior:4",
+        "prior:6",
+        "prior:8",
+        "prior:10",
+        "prior:12",
+        "prior:14",
+        "prior:16",
+        "prior:18",
+        "prior:20",
+        "prior:22",
+        "prior:24"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "analytics-cash",
+          "prior-revenue",
+          "prior-billings",
+          "prior-cash_collections",
+          "prior-gross_ar",
+          "prior-allowance",
+          "prior-contract_liability",
+          "prior-contract_asset",
+          "prior-age-current",
+          "prior-age-1_30",
+          "prior-age-31_60",
+          "prior-age-61_90",
+          "prior-age-over90"
+        ],
+        "family": "analytics",
+        "id": "management-accounting-analytics",
+        "owner": "management-accounting-analytics",
+        "required_fields": []
+      }
+    }
+  ],
+  "jurisdictions": [],
+  "missing_facts": [],
+  "objective": {
+    "confidence": 1,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "USER_STATED",
+    "value": "Can you review our month-end close? Revenue is up, but cash collection looks worse, deferred revenue moved a lot, and I am not sure whether the close is clean. I have attached the P&L, balance sheet, AR ageing, billing export, revenue schedule, FX report and reconciliation pack."
+  },
+  "periods": [],
+  "primary_mode": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "CLOSE_REVIEW"
+  },
+  "requested_output": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "Month-end close review"
+  },
+  "secondary_modes": [
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "DIAGNOSTIC_ANALYTICS"
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "RECONCILIATION_INVESTIGATION"
+    }
+  ],
+  "supporting_modes": [
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "ACCOUNTING_DETERMINATION"
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "REPORTING"
+    }
+  ]
+}

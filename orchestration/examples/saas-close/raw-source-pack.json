@@ -1,0 +1,540 @@
+[
+  {
+    "format": "csv",
+    "id": "tb",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "GL December final.csv",
+    "payload": "account,balance,category\nCash,5250,asset\nAR,1520,asset\nAllowance,-80,asset\nContract liability,-1300,liability\nUnapplied cash,-50,liability\nOpening equity,-4890,equity\nRevenue,-500,revenue\nCredit loss expense,60,expense\nFX income,-10,expense\nManual accrual expense,25,expense\nAccrued liabilities,-25,liability\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "prior_tb",
+    "metadata": {
+      "as_of": "2026-11-30",
+      "comparator": "prior_actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-11-01",
+        "2026-11-30"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "November GL.csv",
+    "payload": "account,balance,category\nCash,5000,asset\nAR,910,asset\nAllowance,-20,asset\nContract liability,-1000,liability\nOpening equity,-4890,equity\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "pnl",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Monthly P&L.csv",
+    "payload": "metric,amount\nrevenue,500\ncredit_loss_expense,60\nfx_gain,10\nmanual_accrual,25\nprofit,425\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "balance_sheet",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Balance sheet.json",
+    "payload": [
+      {
+        "amount": "5250",
+        "line": "Cash"
+      },
+      {
+        "amount": "1520",
+        "line": "AR"
+      },
+      {
+        "amount": "-80",
+        "line": "Allowance"
+      },
+      {
+        "amount": "-1300",
+        "line": "Contract liability"
+      },
+      {
+        "amount": "-50",
+        "line": "Unapplied cash"
+      },
+      {
+        "amount": "-4890",
+        "line": "Opening equity"
+      },
+      {
+        "amount": "-25",
+        "line": "Accrued liabilities"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "billing",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Invoice download.csv",
+    "payload": "invoice_id,customer,book_amount,invoice_date,due_date,original_currency,original_amount,opening\nold-domestic,Alpha,800,2026-10-01,2026-11-01,USD,800,true\nold-foreign,Beta,110,2026-10-15,2026-11-15,EUR,100,true\ncurrent,Alpha,800,2026-12-01,2027-01-01,USD,800,false\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "receipts",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Bank receipts.csv",
+    "payload": "bank_id,customer,receipt,applied,unapplied,closing_cash\nBANK-DEC,Alpha,250,200,50,5250\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "ar_detail",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Customer ledger.json",
+    "payload": [
+      {
+        "closing": "1400",
+        "customer": "Alpha",
+        "opening": "800"
+      },
+      {
+        "closing": "120",
+        "customer": "Beta",
+        "opening": "110"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "ar_summary",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "AR control totals.csv",
+    "payload": "closing_ar,gl_control_total\n1520,1520\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "ageing",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "aged debt final_v3.csv",
+    "payload": "bucket,amount\ncurrent,800\n1_30,0\n31_60,720\n61_90,0\nover90,0\ntotal,1515\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "revenue",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Revenue schedule.csv",
+    "payload": "contract,price,progress,opening_revenue,opening_contract_net,opening_ar,billings,cash_applied,period_revenue,closing_contract_liability\nAlpha-platform,12000,0.125,1000,-1000,800,800,200,500,1300\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "contract",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Alpha customer order.md",
+    "payload": "Customer: Alpha. Hosted API processing services form one distinct series of services received and consumed as supplied.\n\nTerm: 2026-10-01 to 2027-09-30. Fixed consideration USD 12000 for 12000 API processing units supplied over the term; no variable fees, refunds or cancellation rights.\n\nThe customer receives and consumes processing as supplied. Independently reviewed output progress is 1500 delivered units / 12000 contracted units = 0.125. October delivered 600, November 400 and December 500 units. Prior cumulative earned amount is USD 1000. No expiry, breakage or contract modification arises in this close.\n\nBilling records are enforceable billed rights. Revenue is recognised as service is supplied; payment does not establish performance.",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "deferred",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Contract balances.csv",
+    "payload": "contract,opening_liability,billings,recognised,closing_liability,contract_asset\nAlpha-platform,1000,800,500,1300,0\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "loss_rates",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Reviewed credit loss assumptions.csv",
+    "payload": "bucket,exposure,loss_rate,effective_from,reviewed_on,as_of,source_version\ncurrent,800,0.01,2026-12-01,2026-12-31,2026-12-31,controlled-v1\n31_60,720,0.10,2026-12-01,2026-12-31,2026-12-31,controlled-v1\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "allowance",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Allowance rollforward.csv",
+    "payload": "opening,expense,writeoffs,recoveries,fx,closing\n20,60,0,0,0,80\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "fx",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Receivable FX.csv",
+    "payload": "invoice_id,foreign_currency,foreign_amount,opening_book,opening_rate,initial_rate,closing_rate,settled_foreign,closing_book,gain\nold-foreign,EUR,100,110,1.10,1.10,1.20,0,120,10\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "checklist",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Close checklist.json",
+    "payload": [
+      {
+        "complete": true,
+        "duration": "4",
+        "reconciliation_open_difference": "0",
+        "state": "complete",
+        "task": "billing"
+      },
+      {
+        "duration": "1",
+        "state": "complete",
+        "task": "reclose"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "rec_pack",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Reconciliation review.json",
+    "payload": [
+      {
+        "account": "AR",
+        "open_difference": "5",
+        "qualified_detail_balance": "1520",
+        "reported_ageing": "1515"
+      },
+      {
+        "account": "Contract liability",
+        "open_difference": "0",
+        "qualified_detail_balance": "-1300"
+      },
+      {
+        "account": "Allowance",
+        "open_difference": "0",
+        "qualified_detail_balance": "-80"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "journals",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Posted journals.csv",
+    "payload": "journal_id,amount,effective_date,approved_at,posted_at,classification\nMANUAL-DEC,25,2026-12-31,2027-01-02,2027-01-02,estimate\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "prior",
+    "metadata": {
+      "as_of": "2026-11-30",
+      "comparator": "prior_actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-11-01",
+        "2026-11-30"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "November management actual.csv",
+    "payload": "metric,amount\nrevenue,400\nbillings,500\ncash_collections,450\ngross_ar,910\nallowance,20\ncontract_liability,1000\ncontract_asset,0\ncurrent,0\n1_30,910\n31_60,0\n61_90,0\nover90,0\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "commentary",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Management close comments.md",
+    "payload": "Collections only look worse because revenue grew.\n\nDeferred revenue is up because invoices were raised before the service was supplied.",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "notes",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-05",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic accounting export",
+      "version": "controlled-v1"
+    },
+    "mime": "",
+    "name": "Monthly note scope.json",
+    "payload": [
+      {
+        "closing_allowance": "80",
+        "scope": "Internal monthly risk and balance support; not an external filing",
+        "topic": "credit loss"
+      }
+    ],
+    "raw_ref": ""
+  }
+]

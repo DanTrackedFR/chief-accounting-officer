@@ -38,3 +38,31 @@ Margin percentage points use GP driver/current revenue plus a separate denominat
 Hypotheses retain observation, hypothesis, controlled tests, evidence classes, confidence and calculated disposition. All tests true yields SUPPORTED; some PARTIALLY_SUPPORTED; all false REJECTED; no tests or association/management/model evidence UNRESOLVED. Direct evidence status must exist in the tested source, not only the hypothesis proposal. Supported means the supplied evidence tests hold within scope, not proof of unobserved causality. Bridge attribution is mathematical attribution, not an invented operational story. Threshold signals create observations/questions; unusual journal counts do not assert accounting errors.
 
 Accounting inquiries bind an actual numeric owner metric and source group, with issue/reason/amount/dimensions/materiality/evidence. They cannot contain treatment, journal or capitalization instructions. Runtime adds bounded follow-up nodes and reexecutes the existing production owner; actual original owner result and certification must remain unchanged and current. It records the owner conclusion internally and publishes a curated check status. Material unresolved diagnostics prevent a clean follow-up/Case close. No entries are reposted. Future intake adapters feed these structured source contracts; model-proposed intent/hypotheses never bypass them.
+
+## Governed balance and collections diagnostics (1.2.0)
+
+Optional `balance_diagnostics: {doc: <reviewed document ID>}` consumes a complete
+source-frozen preceding-month actual population and semantic current references
+to Revenue, AR, ECL and FX owners. It calculates revenue/billings/bank collection
+flux, full-bucket ageing movement, AR and signed contract-net bridges, allowance
+movement, FX effect and unapplied cash. Every bridge exposes a residual. Current
+allowance and recognised revenue are owner results, never Analytics estimates.
+Current exposure is tied to AR and ECL. One separately reviewed contract net is
+supported; unrelated contract balances cannot be offset or pooled by this method.
+
+The bounded snapshot collection indicator is ending gross billed AR / period
+net billings × actual calendar days, with the same numerator/denominator/day
+convention in both periods. Complete calendar months and positive denominators
+are required; invalid denominators remain unresolved. Prior net billings are
+explicit supplied actuals. This is not rolling or revenue-based DSO and does not
+become approved company policy. Annual billing mix and invoice timing limit it.
+Monthly factual account comparison is additionally supported with a frozen
+preceding-calendar-month source. No forecast or budget is generated.
+
+The management explanation that collections only look worse because revenue
+grew is tested against absolute governed bank collections and recognised revenue.
+Falling cash with rising recognised revenue rejects that narrow hypothesis,
+without inventing customer payment causes. Deteriorating ageing creates an ECL
+inquiry; the runtime must recheck the governed ECL owner. Unresolved accounting
+questions and material residuals prevent a clean close. No loss rates, FX rates,
+accounting recognition, posting or external compliance certification are inferred.

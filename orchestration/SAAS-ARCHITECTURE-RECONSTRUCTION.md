@@ -1,8 +1,7 @@
 # SaaS / month-end close: live architecture reconstruction
 
 Baseline main: `2700b3dd7c8cb43c21ff874ef44bd0832e73b351`.
-This is an architecture checkpoint, **not a completed flagship or integration candidate**.
-No roadmap completion or production promotion is claimed.
+The original live architecture reconstruction is retained below. The identified gaps have now been remediated in this branch; see `SAAS-INTEGRATION-HANDOFF.md` for final behavior and acceptance gates.
 
 ## Inspected live architecture
 
@@ -17,8 +16,9 @@ examples; all nine assigned owner contracts/methods; production.py, relevant nat
 workflows, authored/independent tests and all three GitHub workflows.
 
 The live registry has 47 production metadata packages. The assigned nine owners
-are available through production.assess_case. Revenue, AR, ECL, FX, Reconciliations,
-Close, Financial Statements and Disclosure remain 1.0.0; Analytics is 1.1.0.
+are available through production.assess_case. At baseline, Revenue, AR, ECL, FX, Reconciliations,
+Close, Financial Statements and Disclosure were 1.0.0; Analytics was 1.1.0.
+Final integration versions: AR 1.1.0, Close 1.0.1, Analytics 1.2.0.
 Government Grants, Borrowing Costs and Investment Property remain review /
 NONPRODUCTION; metadata availability and executable registration are separate.
 
@@ -36,7 +36,7 @@ Comparative analytic sources are not multi-period owner execution. Context Obser
 returns proposed memory candidates; persistence/authenticated approvals/UI are out
 of scope. Public output is curated independently of internal Case evidence.
 
-## Integration deficiencies to resolve before flagship execution
+## Baseline integration deficiencies (subsequently remediated)
 
 1. **AR and ECL semantic adapters are absent.** FACT_ADAPTERS has no AR or ECL
    family, and ProposalValidator rejects an issue whose family/owner is not in

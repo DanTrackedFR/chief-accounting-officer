@@ -1,7 +1,7 @@
 ---
 id: SKILL-ANALYTICS-001
 name: "Management Reporting & Accounting Analytics"
-version: 1.1.0
+version: 1.2.0
 status: production
 primary_domain: "08"
 related_domains: ["01", "02", "11"]
@@ -43,3 +43,31 @@ Run production.assess_case("management-accounting-analytics",case) through the e
 Require exact entity/framework/jurisdiction/period, current qualified scope and actual controlled independent populations, source snapshots/versions/content hashes, source-to-output reconciliation and reviewer/preparer separation. Underlying recognition remains with actual completed accounting owners or reviewed specialist conclusions. Imports are complete, unaltered, current and evidence-only, never reposted. Missing/stale case approval is partial; contradictory/unsupported routes block. Full completion is only the declared workpaper, never accounting compliance or external readiness certification.
 
 Public output is generated numeric/control workpaper and material limitations. Raw source contents, original memos, reviewer identities, evidence status/source notes and hashes remain internal across all seven routes. No communication, ERP posting, auditor procedure, legal/regulatory certification or filing occurs. Promotion requires individual knowledge sufficiency, comprehensive tests, genuine independent QA/remediation/rerun, examples, full regression and exact-head CI.
+
+## Governed balance and collections diagnostics (1.2.0)
+
+Optional `balance_diagnostics: {doc: <reviewed document ID>}` consumes a complete
+source-frozen preceding-month actual population and semantic current references
+to Revenue, AR, ECL and FX owners. It calculates revenue/billings/bank collection
+flux, full-bucket ageing movement, AR and signed contract-net bridges, allowance
+movement, FX effect and unapplied cash. Every bridge exposes a residual. Current
+allowance and recognised revenue are owner results, never Analytics estimates.
+Current exposure is tied to AR and ECL. One separately reviewed contract net is
+supported; unrelated contract balances cannot be offset or pooled by this method.
+
+The bounded snapshot collection indicator is ending gross billed AR / period
+net billings × actual calendar days, with the same numerator/denominator/day
+convention in both periods. Complete calendar months and positive denominators
+are required; invalid denominators remain unresolved. Prior net billings are
+explicit supplied actuals. This is not rolling or revenue-based DSO and does not
+become approved company policy. Annual billing mix and invoice timing limit it.
+Monthly factual account comparison is additionally supported with a frozen
+preceding-calendar-month source. No forecast or budget is generated.
+
+The management explanation that collections only look worse because revenue
+grew is tested against absolute governed bank collections and recognised revenue.
+Falling cash with rising recognised revenue rejects that narrow hypothesis,
+without inventing customer payment causes. Deteriorating ageing creates an ECL
+inquiry; the runtime must recheck the governed ECL owner. Unresolved accounting
+questions and material residuals prevent a clean close. No loss rates, FX rates,
+accounting recognition, posting or external compliance certification are inferred.

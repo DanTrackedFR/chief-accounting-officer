@@ -77,3 +77,11 @@ not remediation or flagship completion. Replace them with positive regression
 coverage when their specific boundaries are extended, retaining the adversarial
 counterexamples. No production package, evidence gate or owner approval was
 changed in this independent work.
+
+## Final integration status
+
+The historical gap assertions above have been replaced by current positive
+semantic-family coverage and retained fail-closed boundary regressions. The final
+independent acceptance review reconstructed and attacked the implementation:
+46 distinct methods passed after four documented findings were remediated and
+independently rerun. See `SAAS-ACCEPTANCE-INDEPENDENT-QA.md`.

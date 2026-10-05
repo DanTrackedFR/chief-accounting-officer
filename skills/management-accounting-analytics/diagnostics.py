@@ -238,3 +238,91 @@ def assess(c,docs):
         denominator=start*(1/r1-1/r0)*100
         bridge['margin_points']=dict(starting=str(start/r0*100),ending=str(end/r1*100),drivers=points,denominator_effect=str(denominator),residual=str(residual/r1*100),convention='driver GP contributions/current revenue; separate baseline-GP denominator effect')
     return dict(bridge=bridge,hypotheses=hypotheses,observations=observations,methods=method_records,accounting_questions=questions,attribution_ledger=sorted([list(x[:2])+[list(x[2]),x[3]] for x in used],key=str),open_items=open_items)
+
+
+def assess_balances(c,docs):
+    """1.2.0: governed receivable/contract/allowance flux and bounded collection KPI.
+
+    Accounting amounts come only from completed owners. Prior actuals and KPI
+    conventions are frozen reviewed evidence. No forecast, loss rate or revenue
+    recognition is generated here. This is an optional existing-skill method.
+    """
+    selector=c['balance_diagnostics']
+    require(isinstance(selector,dict) and set(selector)=={'doc'},'Balance diagnostics require one frozen source')
+    src=doc(docs,selector['doc'])['content']
+    require(set(src)=={'entity','currency','period','prior_period','prior','prior_kind','prior_posted_only','prior_version','prior_approved_on','refs','dso','management_hypothesis','materiality'},'Unsupported balance diagnostic field')
+    require(src['entity']==c['entity'] and src['currency']==c['governance_method']['currency'] and src['period']==[c['period_start'],c['reporting_period']],'Balance diagnostic scope mismatch')
+    oldspan=period(src['prior_period']);span=period(src['period'])
+    from datetime import timedelta
+    require(oldspan[1]+timedelta(days=1)==span[0] and oldspan[0].day==span[0].day==1,'Collection comparator must be preceding calendar month')
+    require((span[1]+timedelta(days=1)).day==1 and (oldspan[1]+timedelta(days=1)).day==1,'Full calendar month convention required')
+    require(src['prior_kind']=='actual' and src['prior_posted_only'] is True and bool(src['prior_version']) and date.fromisoformat(src['prior_approved_on'])<=span[0],'Prior accounting actuals need frozen posted evidence')
+    required_prior={'revenue','billings','cash_collections','gross_ar','allowance','contract_liability','contract_asset','ageing'}
+    require(set(src['prior'])==required_prior,'Complete prior metric population required')
+    prior=src['prior'];buckets={'current','1_30','31_60','61_90','over90'}
+    require(set(prior['ageing'])==buckets,'Prior ageing bucket population incomplete')
+    require(all(num(v)>=0 for v in prior['ageing'].values()),'Negative prior ageing exposure')
+    exact(sum((num(v) for v in prior['ageing'].values()),ZERO),prior['gross_ar'],'Prior ageing does not reconcile')
+    allowed={
+        'revenue':('revenue-recognition',('period_revenue',)),
+        'billings':('accounts-receivable',('billed',)),
+        'credits':('accounts-receivable',('credits',)),
+        'cash_collections':('accounts-receivable',('bank_receipts',)),
+        'cash_applied':('accounts-receivable',('applied_cash_and_deposits',)),
+        'gross_ar':('accounts-receivable',('closing_ar',)),
+        'opening_ar':('accounts-receivable',('opening_ar',)),
+        'unapplied_cash':('accounts-receivable',('unapplied_liability',)),
+        'ar_fx':('accounts-receivable',('fx_movement',)),
+        'fx_profit':('foreign-currency',('monetary_fx_profit',)),
+        'contract_opening':('revenue-recognition',('contract_bridge','opening')),
+        'contract_closing':('revenue-recognition',('contract_bridge','closing')),
+        'contract_billings':('revenue-recognition',('contract_bridge','billings')),
+        'allowance':('financial-instruments-ecl',('allowance',)),
+        'allowance_expense':('financial-instruments-ecl',('expense',)),
+    }
+    allowed.update({'ageing_'+b:('accounts-receivable',('ageing',b)) for b in buckets})
+    refs=src['refs'];require(set(refs)==set(allowed),'Current owner metric population incomplete')
+    values={}
+    for metric,ref in refs.items():
+        imp=accounting_owner(c,ref['owner_import'])
+        require((imp['package'],tuple(ref['result_path']))==allowed[metric],'Balance metric accounting authority mismatch')
+        values[metric]=owner_value(c,ref)
+    exact(values['opening_ar'],prior['gross_ar'],'AR opening differs from prior closing')
+    exact(values['ar_fx'],values['fx_profit'],'FX attribution requires the same qualified receivable population')
+    # This bounded bridge supports one reviewed contract net; unrelated contracts
+    # must never be netted. Portfolio expansion needs explicit contract grain.
+    exact(max(-values['contract_opening'],ZERO),prior['contract_liability'],'Contract liability opening mismatch')
+    exact(max(values['contract_opening'],ZERO),prior['contract_asset'],'Contract asset opening mismatch')
+    ar_owner=accounting_owner(c,refs['gross_ar']['owner_import'])
+    ecl_owner=accounting_owner(c,refs['allowance']['owner_import'])
+    exact(ecl_owner['result']['calculations']['gross_carrying_amount'],values['gross_ar'],'ECL gross exposure differs from AR')
+    if ecl_owner['case']['credit']['method']=='loss_rate':
+        for scenario in ecl_owner['case']['credit']['scenarios']:
+            exact(sum((num(t['exposure']) for t in scenario['terms']),ZERO),values['gross_ar'],'ECL scenario exposure population incomplete')
+    ageing={b:values['ageing_'+b] for b in sorted(buckets)}
+    exact(sum(ageing.values(),ZERO),values['gross_ar'],'Current ageing does not reconcile')
+    bridges={};open_items=[]
+    materiality=num(src['materiality']);require(materiality>=0,'Negative balance materiality')
+    def bridge(name,opening,closing,drivers):
+        residual=num(closing)-num(opening)-sum((num(d['amount']) for d in drivers),ZERO)
+        bridges[name]=dict(opening=str(opening),closing=str(closing),drivers=drivers,residual=str(residual),unit=src['currency'],source_doc=selector['doc'])
+        if residual and abs(residual)>=materiality:open_items.append('Material unexplained '+name.replace('_',' ')+' residual')
+    def term(label,amount,metric):return dict(label=label,amount=str(amount),owner_ref=refs[metric])
+    bridge('ar',values['opening_ar'],values['gross_ar'],[term('Billed enforceable receivables',values['billings'],'billings'),term('Cash and deposits applied',-values['cash_applied'],'cash_applied'),term('Approved credits',-values['credits'],'credits'),term('Receivable FX',values['ar_fx'],'ar_fx')])
+    bridge('contract_net',values['contract_opening'],values['contract_closing'],[term('Revenue recognised',values['revenue'],'revenue'),term('Contract billings',-values['contract_billings'],'contract_billings')])
+    ab=ecl_owner['result']['calculations']['allowance_bridge'];exact(ab['opening'],prior['allowance'],'Allowance opening mismatch')
+    bridge('allowance',num(ab['opening']),values['allowance'],[dict(label=k,amount=str(num(ab[k])*sign),owner_ref=dict(owner_import=refs['allowance']['owner_import'],result_path=['allowance_bridge',k],amount=str(ab[k]))) for k,sign in [('expense',1),('writeoffs',-1),('recoveries',1),('fx',1),('net_interest_adjustment',1)]])
+    definition=src['dso']
+    require(definition==dict(method='snapshot_gross_ar_net_billings',numerator='gross_ar',denominator='net_billings',day_convention='actual_calendar_days',status='bounded_analytical_method'),'Unsupported or silently changed DSO definition')
+    days=(span[1]-span[0]).days+1;prior_days=(oldspan[1]-oldspan[0]).days+1
+    net=values['billings']-values['credits'];old_net=num(prior['billings'])
+    dso_current=None if net<=0 else values['gross_ar']/net*days
+    dso_prior=None if old_net<=0 else num(prior['gross_ar'])/old_net*prior_days
+    if dso_current is None or dso_prior is None:open_items.append('Snapshot collection metric denominator is not positive')
+    dso=dict(definition=definition,formula='ending gross billed AR / period net billings * actual calendar days',current=None if dso_current is None else str(dso_current),prior=None if dso_prior is None else str(dso_prior),current_days=days,prior_days=prior_days,current_numerator=str(values['gross_ar']),current_denominator=str(net),prior_numerator=str(prior['gross_ar']),prior_denominator=str(old_net),source_doc=selector['doc'],limitation='Snapshot billings-based collection indicator; not rolling DSO, revenue-based DSO or approved company policy. Invoicing timing and annual billing mix affect comparability.')
+    require(src['management_hypothesis']=='collections_decline_only_revenue_growth','Unsupported management evidence test')
+    cash_change=values['cash_collections']-num(prior['cash_collections']);rev_change=values['revenue']-num(prior['revenue'])
+    # A falling amount of cash cannot be explained solely as an optical ratio
+    # change from revenue growth. This does not invent why a customer paid late.
+    hypothesis=dict(hypothesis='Collections only look worse because revenue grew',disposition='REJECTED' if cash_change<0 and rev_change>0 else 'UNRESOLVED',scope='Absolute bank collections and recognised revenue; customer payment reasons require evidence',accounting_authority=False)
+    return dict(bridges=bridges,revenue=dict(current=str(values['revenue']),prior=str(prior['revenue']),change=str(rev_change)),billings=dict(current=str(net),prior=str(old_net),change=str(net-old_net)),cash_collections=dict(current=str(values['cash_collections']),prior=str(prior['cash_collections']),change=str(cash_change)),ageing=dict(current={k:str(v) for k,v in ageing.items()},prior=prior['ageing'],change={k:str(v-num(prior['ageing'][k])) for k,v in ageing.items()}),contract_liability=str(max(-values['contract_closing'],ZERO)),contract_asset=str(max(values['contract_closing'],ZERO)),fx_effect=str(values['ar_fx']),unapplied_cash=str(values['unapplied_cash']),collection_ratio=None if net<=0 else str(values['cash_collections']/net),dso=dso,management_hypothesis=hypothesis,accounting_questions=[dict(target_owner='financial-instruments-ecl',issue='Ageing deterioration and reviewed allowance',result_path=['allowance'],amount=str(values['allowance']),source_evidence=[selector['doc']],status='REQUIRES_OWNER')],open_items=open_items)

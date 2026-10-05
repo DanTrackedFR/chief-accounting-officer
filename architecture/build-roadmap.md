@@ -115,9 +115,11 @@ Model reasoning may propose facts/issues/workplans, but production status, owner
 
 ### 3. Additional end-to-end flagship scenarios
 Build broader orchestration coverage after semantic/data intake:
-1. **SaaS / month-end close** — Revenue + AR + ECL + FX + Reconciliations + Close + Reporting + Disclosure + analytics.
+1. **SaaS / month-end close — COMPLETE** — Revenue + AR + ECL + FX + Reconciliations + Close + Reporting + Disclosure + analytics.
 2. **Treasury / financing** — Debt + FX + Derivatives/Hedge + Financial Instruments + Cash Flow + Reporting + analytics.
 3. **Group accounting** — Business Combinations + Consolidation + NCI + FX + Impairment + Tax + Reporting.
+
+SaaS uses the governed semantic/intake foundation, controlled sources, nine production owners, exact-once journal ownership, source conflicts, diagnostics and independent acceptance QA. See `orchestration/SAAS-INTEGRATION-HANDOFF.md`. Only this scenario is complete; Treasury / financing remains the next planned flagship.
 
 Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
 

@@ -1,0 +1,746 @@
+[
+  {
+    "fact_id": "rev-period-result",
+    "kind": "owner_result",
+    "owner": "revenue-recognition",
+    "path": [
+      "period_revenue"
+    ]
+  },
+  {
+    "fact_id": "rev-price",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "price_components",
+      "fixed"
+    ]
+  },
+  {
+    "fact_id": "rev-progress",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "obligations",
+      "platform",
+      "progress"
+    ]
+  },
+  {
+    "fact_id": "rev-opening",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "opening_revenue"
+    ]
+  },
+  {
+    "fact_id": "rev-contract-opening",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "opening_contract_net"
+    ]
+  },
+  {
+    "fact_id": "rev-billings",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "billings"
+    ]
+  },
+  {
+    "fact_id": "ar-opening-domestic",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "ar-opening-foreign",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "ar-billings",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "ar-receipt",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "receipts",
+      "cash",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "ar-applied",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "receipts",
+      "cash",
+      "allocations",
+      "allocation",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "ar-gl",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "gl_ar"
+    ]
+  },
+  {
+    "fact_id": "ecl-current-exposure",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "current",
+      "exposure"
+    ]
+  },
+  {
+    "fact_id": "ecl-aged-exposure",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "31_60",
+      "exposure"
+    ]
+  },
+  {
+    "fact_id": "ecl-current-rate",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "current",
+      "loss_rate"
+    ]
+  },
+  {
+    "fact_id": "ecl-aged-rate",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "31_60",
+      "loss_rate"
+    ]
+  },
+  {
+    "fact_id": "ecl-opening",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "allowance_bridge",
+      "opening"
+    ]
+  },
+  {
+    "fact_id": "fx-opening",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "opening_book"
+    ]
+  },
+  {
+    "fact_id": "fx-initial-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "initial_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-closing-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "closing_rate"
+    ]
+  },
+  {
+    "fact_id": "rec-ar",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "AR",
+      "source_closing"
+    ]
+  },
+  {
+    "fact_id": "rec-contract",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "Contract liability",
+      "source_closing"
+    ]
+  },
+  {
+    "fact_id": "rec-allowance",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "Allowance",
+      "source_closing"
+    ]
+  },
+  {
+    "fact_id": "close-task-complete",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "tasks",
+      "billing",
+      "complete"
+    ]
+  },
+  {
+    "fact_id": "close-duration",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "tasks",
+      "billing",
+      "duration"
+    ]
+  },
+  {
+    "fact_id": "close-journal",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "accruals",
+      "A1",
+      "received"
+    ]
+  },
+  {
+    "fact_id": "fs-revenue",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Revenue",
+      "balance"
+    ]
+  },
+  {
+    "fact_id": "fs-ar",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "AR",
+      "balance"
+    ]
+  },
+  {
+    "fact_id": "fs-liability",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Contract liability",
+      "balance"
+    ]
+  },
+  {
+    "fact_id": "fs-allowance",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Allowance",
+      "balance"
+    ]
+  },
+  {
+    "fact_id": "disc-allowance",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-1",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "analytics-cash",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "accounts",
+      "cash-metric",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "close-journal-journal_id",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "id"
+    ]
+  },
+  {
+    "fact_id": "close-journal-effective_date",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "posting_date"
+    ]
+  },
+  {
+    "fact_id": "close-journal-approved_at",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "approval_date"
+    ]
+  },
+  {
+    "fact_id": "close-journal-posted_at",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "posted_at"
+    ]
+  },
+  {
+    "fact_id": "prior-revenue",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "revenue"
+    ]
+  },
+  {
+    "fact_id": "prior-billings",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "billings"
+    ]
+  },
+  {
+    "fact_id": "prior-cash_collections",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "cash_collections"
+    ]
+  },
+  {
+    "fact_id": "prior-gross_ar",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "gross_ar"
+    ]
+  },
+  {
+    "fact_id": "prior-allowance",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "allowance"
+    ]
+  },
+  {
+    "fact_id": "prior-contract_liability",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "contract_liability"
+    ]
+  },
+  {
+    "fact_id": "prior-contract_asset",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "contract_asset"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "id"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "customer"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "invoice_date"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "due_date"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "currency"
+    ]
+  },
+  {
+    "fact_id": "ar-old-domestic-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "opening"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "id"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "customer"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "invoice_date"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "due_date"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "currency"
+    ]
+  },
+  {
+    "fact_id": "ar-old-foreign-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "opening"
+    ]
+  },
+  {
+    "fact_id": "ar-current-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "id"
+    ]
+  },
+  {
+    "fact_id": "ar-current-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "customer"
+    ]
+  },
+  {
+    "fact_id": "ar-current-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "invoice_date"
+    ]
+  },
+  {
+    "fact_id": "ar-current-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "due_date"
+    ]
+  },
+  {
+    "fact_id": "ar-current-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "currency"
+    ]
+  },
+  {
+    "fact_id": "ar-current-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "opening"
+    ]
+  },
+  {
+    "fact_id": "ar-foreign-original",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "foreign_amount"
+    ]
+  },
+  {
+    "fact_id": "ecl-review-effective_from",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "effective_from"
+    ]
+  },
+  {
+    "fact_id": "ecl-review-reviewed_on",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "reviewed_on"
+    ]
+  },
+  {
+    "fact_id": "ecl-review-as_of",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "as_of"
+    ]
+  },
+  {
+    "fact_id": "ecl-review-source_version",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "source_version"
+    ]
+  },
+  {
+    "fact_id": "prior-age-current",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "current"
+    ]
+  },
+  {
+    "fact_id": "prior-age-1_30",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "1_30"
+    ]
+  },
+  {
+    "fact_id": "prior-age-31_60",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "31_60"
+    ]
+  },
+  {
+    "fact_id": "prior-age-61_90",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "61_90"
+    ]
+  },
+  {
+    "fact_id": "prior-age-over90",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "over90"
+    ]
+  }
+]

@@ -414,6 +414,7 @@
       "version": 1
     }
   ],
+  "balance_diagnostics": {},
   "challenge_results": [
     {
       "checks": [
@@ -435,6 +436,7 @@
       "phase": "CHALLENGE"
     }
   ],
+  "close_observations": [],
   "closed_at": null,
   "conclusions": [
     {
@@ -450,6 +452,8 @@
         "closing_wip": "11304.00",
         "cogs": "11304.00",
         "completed_cost": "45216.00",
+        "contract_asset": "0.00",
+        "contract_liability": "0.00",
         "cost_of_sales": "56304.00",
         "diagnostic_change": "-31304",
         "diagnostic_explained": "-31304.00000000000000000000000",
@@ -462,6 +466,7 @@
         "gross_margin_percent": "-40.7600",
         "manufacturing_expense": "45000.00",
         "material": "600.00",
+        "monetary_fx_profit": "0",
         "period_revenue": "40000.00",
         "revenue_less_inventory_relief": "28696.00",
         "reversal": "0",
@@ -2650,7 +2655,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "d7062631d8552ab7e086ae6aa5055d628340faf1cb3ed615818bf38d92a3a5f3",
+      "case_fingerprint": "2fb7376f75d20ed4cf37bae9d954a459e648c06e2c24dbd4b4f2fbb8f01ec0e9",
       "node": "fixed-assets",
       "status": "complete"
     },
@@ -2665,7 +2670,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "54a6f0b3afd6b5e5b43aabe28afe7c46bce0f5add0861ba9d56c9f2235f741e7",
+      "case_fingerprint": "8bfe900ab45bbc0c8cfd36f148776e65fafa39fa1eb638d9067eca17e9daef13",
       "node": "accounts-payable",
       "status": "complete"
     },
@@ -2680,7 +2685,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "e37575d07c5a4f3f8bdf3d84faf9a287fe84c9dfa302046b76a1e139a45b4073",
+      "case_fingerprint": "048496c0943904e083046fe06acf2d1081f4137afc944945f67f98d069bd90f5",
       "node": "employee-benefits-payroll",
       "status": "complete"
     },
@@ -2695,7 +2700,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "e94fe66c8619158a71adb2ed780fe3196ee58c577c2c65c70c6cd98b9efd558f",
+      "case_fingerprint": "d62751657c91f3ee5923578507ebd70a80dc2fc5f8155d8e74fcda38837dfb19",
       "node": "foreign-currency",
       "status": "complete"
     },
@@ -2710,7 +2715,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "bd4c6beb1b724aab552108bdd3de920f83b47efeb3c1979d3d83b66163e6eac3",
+      "case_fingerprint": "375fdab47f1b1002b8005a1c5e6ea2dd04770b40f9365da2be449a8bb87e67ec",
       "node": "revenue-recognition",
       "status": "complete"
     },
@@ -2725,7 +2730,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "a4442776c27002cf5e5c840245045bb41bd6be4a085e63a2215f7c48dbbe31bb",
+      "case_fingerprint": "c48d9537295ae2f74818647363790a6a69a3e04cde6b3a85066562234cdb769d",
       "node": "month-end-close",
       "status": "complete"
     },
@@ -2740,7 +2745,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "036c0f9e5a2a420a072153be98244e375e102ac506a2259ff97451cc5c3a5d72",
+      "case_fingerprint": "cd5f2247bf9e6356af387f5abd68cf3ddd3842047b8dc1d261c9df2983d4ded3",
       "node": "accounting-systems-data-integrity",
       "status": "complete"
     },
@@ -2755,7 +2760,7 @@
         "accounting-systems-data-integrity",
         "accounting-controls-icfr"
       ],
-      "case_fingerprint": "97950f18c28fc9e6350d3a49a98cc4b371d668f96c72cb549fdd26e175be2640",
+      "case_fingerprint": "57e89fa2fea17846afdee8d06fdc51b976d2c30905da61aff701fad80543fe08",
       "node": "accounting-controls-icfr",
       "status": "complete"
     },
@@ -2763,7 +2768,7 @@
       "batch": [
         "inventory-cost"
       ],
-      "case_fingerprint": "a0b40f48e27c68e264b8200932838cfaa32579646b682611aa04ebe5b69bf194",
+      "case_fingerprint": "304afe3d3951dcb140a5128e831080dc3963e03e84fa6da0ec11b97c4afc9bf4",
       "node": "inventory-cost",
       "status": "complete"
     },
@@ -2773,7 +2778,7 @@
         "balance-sheet-reconciliations",
         "management-accounting-analytics"
       ],
-      "case_fingerprint": "7c19aca9c405295fd2ae5c5c0a5ee8cbc5ad593170ac5be9ec6db9128fb01391",
+      "case_fingerprint": "40d96727595464611fb90a91feb7f7e2f20bbf422bd4c4735ff613c3ceae99bc",
       "node": "financial-statements",
       "status": "complete"
     },
@@ -2783,7 +2788,7 @@
         "balance-sheet-reconciliations",
         "management-accounting-analytics"
       ],
-      "case_fingerprint": "2d3d2a9ab9b628195b666bb2f79b58e8886ca23b754348534f95bf2ea8015e56",
+      "case_fingerprint": "d1e1f018851987d64bf523d8999834c61f1cbb50b17ab33baa33529c04750002",
       "node": "balance-sheet-reconciliations",
       "status": "complete"
     },
@@ -2793,7 +2798,7 @@
         "balance-sheet-reconciliations",
         "management-accounting-analytics"
       ],
-      "case_fingerprint": "d375c1091e398d0b7a375b19f4c115007070544b34687319ff7301eadce5a2cc",
+      "case_fingerprint": "47340f963d4e34152ae4a5e8a99aee5f5e7b532efbf4a8cafa647094a9703b9d",
       "node": "management-accounting-analytics",
       "status": "complete"
     },
@@ -2801,7 +2806,7 @@
       "batch": [
         "disclosure-management"
       ],
-      "case_fingerprint": "972fd627dfe193a68d6624239cf0ace7724a976a41b460aeadb2e1cdc81d3f22",
+      "case_fingerprint": "4223162c451f21b8aa585f485c13d999518f23489bccceb189385822954f9f5f",
       "node": "disclosure-management",
       "status": "complete"
     },
@@ -2882,7 +2887,7 @@
       "amount": "10800.00",
       "consumer": "inventory-cost",
       "economic_id": "cost-labour",
-      "fingerprint": "e37575d07c5a4f3f8bdf3d84faf9a287fe84c9dfa302046b76a1e139a45b4073",
+      "fingerprint": "048496c0943904e083046fe06acf2d1081f4137afc944945f67f98d069bd90f5",
       "metric_path": [
         "expense"
       ],
@@ -2895,7 +2900,7 @@
       "amount": "120",
       "consumer": "inventory-cost",
       "economic_id": "cost-variable",
-      "fingerprint": "54a6f0b3afd6b5e5b43aabe28afe7c46bce0f5add0861ba9d56c9f2235f741e7",
+      "fingerprint": "8bfe900ab45bbc0c8cfd36f148776e65fafa39fa1eb638d9067eca17e9daef13",
       "metric_path": [
         "invoices"
       ],
@@ -2908,7 +2913,7 @@
       "amount": "90000.00",
       "consumer": "inventory-cost",
       "economic_id": "cost-fixed",
-      "fingerprint": "d7062631d8552ab7e086ae6aa5055d628340faf1cb3ed615818bf38d92a3a5f3",
+      "fingerprint": "2fb7376f75d20ed4cf37bae9d954a459e648c06e2c24dbd4b4f2fbb8f01ec0e9",
       "metric_path": [
         "depreciation"
       ],
@@ -2921,7 +2926,7 @@
       "amount": "110.00",
       "consumer": "inventory-cost",
       "economic_id": "economic-foreign-purchase",
-      "fingerprint": "e94fe66c8619158a71adb2ed780fe3196ee58c577c2c65c70c6cd98b9efd558f",
+      "fingerprint": "d62751657c91f3ee5923578507ebd70a80dc2fc5f8155d8e74fcda38837dfb19",
       "metric_path": [
         "transactions",
         "inventory-purchase",
@@ -2936,7 +2941,7 @@
       "amount": "11304.00",
       "consumer": "financial-statements",
       "economic_id": "inventory-cogs",
-      "fingerprint": "a0b40f48e27c68e264b8200932838cfaa32579646b682611aa04ebe5b69bf194",
+      "fingerprint": "304afe3d3951dcb140a5128e831080dc3963e03e84fa6da0ec11b97c4afc9bf4",
       "metric_path": [
         "cogs"
       ],
@@ -2949,7 +2954,7 @@
       "amount": "40000.00",
       "consumer": "financial-statements",
       "economic_id": "sales-revenue",
-      "fingerprint": "bd4c6beb1b724aab552108bdd3de920f83b47efeb3c1979d3d83b66163e6eac3",
+      "fingerprint": "375fdab47f1b1002b8005a1c5e6ea2dd04770b40f9365da2be449a8bb87e67ec",
       "metric_path": [
         "period_revenue"
       ],
@@ -2962,7 +2967,7 @@
       "amount": "45726.00",
       "consumer": "balance-sheet-reconciliations",
       "economic_id": "closing-stock",
-      "fingerprint": "a0b40f48e27c68e264b8200932838cfaa32579646b682611aa04ebe5b69bf194",
+      "fingerprint": "304afe3d3951dcb140a5128e831080dc3963e03e84fa6da0ec11b97c4afc9bf4",
       "metric_path": [
         "closing_inventory"
       ],
@@ -2977,6 +2982,7 @@
     "manufacturing"
   ],
   "journal_mapping_valid": true,
+  "journal_ownership_ledger": [],
   "judgments": [
     "Readiness starts depreciation independently of project budget closure; idleness does not automatically stop depreciation.",
     "US component policy and estimate/method changes differ from IAS16; FRS102 significant-change reviews must not be described as an automatic IAS16 annual requirement.",
@@ -5214,7 +5220,7 @@
           "depreciation": "90000.00",
           "excluded_expense": "0"
         },
-        "case_fingerprint": "d7062631d8552ab7e086ae6aa5055d628340faf1cb3ed615818bf38d92a3a5f3",
+        "case_fingerprint": "2fb7376f75d20ed4cf37bae9d954a459e648c06e2c24dbd4b4f2fbb8f01ec0e9",
         "conclusion": "Qualifying costs, components, depreciation, disposals and CIP reconcile to gross ledgers.",
         "confidence": "medium",
         "controls_impacted": [
@@ -5371,7 +5377,7 @@
           "payments": "100",
           "planned_reversals": []
         },
-        "case_fingerprint": "54a6f0b3afd6b5e5b43aabe28afe7c46bce0f5add0861ba9d56c9f2235f741e7",
+        "case_fingerprint": "8bfe900ab45bbc0c8cfd36f148776e65fafa39fa1eb638d9067eca17e9daef13",
         "conclusion": "Supplier invoices, payments and independently received unbilled liabilities reconciled.",
         "confidence": "medium",
         "controls_impacted": [
@@ -5562,7 +5568,7 @@
           "withholding_deductions": "1000",
           "withholding_remitted": "0"
         },
-        "case_fingerprint": "e37575d07c5a4f3f8bdf3d84faf9a287fe84c9dfa302046b76a1e139a45b4073",
+        "case_fingerprint": "048496c0943904e083046fe06acf2d1081f4137afc944945f67f98d069bd90f5",
         "conclusion": "Earned employee benefits and payroll clearing reconciled",
         "confidence": "medium",
         "controls_impacted": [
@@ -5742,7 +5748,7 @@
             }
           ]
         },
-        "case_fingerprint": "e94fe66c8619158a71adb2ed780fe3196ee58c577c2c65c70c6cd98b9efd558f",
+        "case_fingerprint": "d62751657c91f3ee5923578507ebd70a80dc2fc5f8155d8e74fcda38837dfb19",
         "conclusion": "Functional-currency transaction schedule and separate presentation-currency bridge reconcile.",
         "confidence": "medium",
         "controls_impacted": [
@@ -6186,7 +6192,7 @@
           "reversal": "0",
           "write_down": "0"
         },
-        "case_fingerprint": "a0b40f48e27c68e264b8200932838cfaa32579646b682611aa04ebe5b69bf194",
+        "case_fingerprint": "304afe3d3951dcb140a5128e831080dc3963e03e84fa6da0ec11b97c4afc9bf4",
         "conclusion": "Controlled inventory and manufacturing costs reconcile from supplied source populations through RM, WIP, finished goods and all journal offsets.",
         "confidence": "medium",
         "controls_impacted": [
@@ -6954,7 +6960,7 @@
           "receivable": "40000.00",
           "transaction_price": "40000.00"
         },
-        "case_fingerprint": "bd4c6beb1b724aab552108bdd3de920f83b47efeb3c1979d3d83b66163e6eac3",
+        "case_fingerprint": "375fdab47f1b1002b8005a1c5e6ea2dd04770b40f9365da2be449a8bb87e67ec",
         "conclusion": "Revenue assessment: period revenue 40000.00; closing contract asset 0.00 and liability 0.00; receivable 40000.00.",
         "confidence": "medium",
         "controls_impacted": [
@@ -7236,7 +7242,7 @@
             }
           ]
         },
-        "case_fingerprint": "7c19aca9c405295fd2ae5c5c0a5ee8cbc5ad593170ac5be9ec6db9128fb01391",
+        "case_fingerprint": "40d96727595464611fb90a91feb7f7e2f20bbf422bd4c4735ff613c3ceae99bc",
         "conclusion": "Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.",
         "confidence": "medium",
         "controls_impacted": [
@@ -7399,7 +7405,7 @@
           ],
           "gross_reconciling_items": "0.00"
         },
-        "case_fingerprint": "2d3d2a9ab9b628195b666bb2f79b58e8886ca23b754348534f95bf2ea8015e56",
+        "case_fingerprint": "d1e1f018851987d64bf523d8999834c61f1cbb50b17ab33baa33529c04750002",
         "conclusion": "Trial balance and independently substantiated balance-sheet inventory reconciled.",
         "confidence": "medium",
         "controls_impacted": [
@@ -7539,7 +7545,7 @@
             "statements": "6"
           }
         },
-        "case_fingerprint": "a4442776c27002cf5e5c840245045bb41bd6be4a085e63a2215f7c48dbbe31bb",
+        "case_fingerprint": "c48d9537295ae2f74818647363790a6a69a3e04cde6b3a85066562234cdb769d",
         "conclusion": "Close calendar, journal population and lock certification reconciled.",
         "confidence": "medium",
         "controls_impacted": [
@@ -7650,7 +7656,7 @@
           "signed_amount": "45726.00",
           "unresolved_records": 0
         },
-        "case_fingerprint": "036c0f9e5a2a420a072153be98244e375e102ac506a2259ff97451cc5c3a5d72",
+        "case_fingerprint": "cd5f2247bf9e6356af387f5abd68cf3ddd3842047b8dc1d261c9df2983d4ded3",
         "conclusion": "Accounting source-to-target integrity and control acceptance workpaper",
         "confidence": "medium",
         "controls_impacted": [
@@ -7763,7 +7769,7 @@
           "risks": 1,
           "unresolved_occurrences": 0
         },
-        "case_fingerprint": "97950f18c28fc9e6350d3a49a98cc4b371d668f96c72cb549fdd26e175be2640",
+        "case_fingerprint": "57e89fa2fea17846afdee8d06fdc51b976d2c30905da61aff701fad80543fe08",
         "conclusion": "Accounting control design and evidence-readiness workpaper; no effectiveness conclusion",
         "confidence": "medium",
         "controls_impacted": [
@@ -7880,7 +7886,7 @@
           "note_count": 1,
           "requirement_count": 1
         },
-        "case_fingerprint": "972fd627dfe193a68d6624239cf0ace7724a976a41b460aeadb2e1cdc81d3f22",
+        "case_fingerprint": "4223162c451f21b8aa585f485c13d999518f23489bccceb189385822954f9f5f",
         "conclusion": "Current disclosure-management and comparative tie-out workpaper reconciled",
         "confidence": "medium",
         "controls_impacted": [
@@ -8001,6 +8007,7 @@
               "percentage": null
             }
           ],
+          "balance_diagnostics": null,
           "current_management": "0",
           "current_statutory": "11304",
           "diagnostic": {
@@ -8840,7 +8847,7 @@
           "prior_statutory": "0",
           "reconciliation_population": 1
         },
-        "case_fingerprint": "d375c1091e398d0b7a375b19f4c115007070544b34687319ff7301eadce5a2cc",
+        "case_fingerprint": "47340f963d4e34152ae4a5e8a99aee5f5e7b532efbf4a8cafa647094a9703b9d",
         "conclusion": "Controllership accounting-source, bridge and flux workpaper reconciled",
         "confidence": "medium",
         "controls_impacted": [
@@ -9020,7 +9027,7 @@
           "reversal": "0",
           "write_down": "0"
         },
-        "case_fingerprint": "a0b40f48e27c68e264b8200932838cfaa32579646b682611aa04ebe5b69bf194",
+        "case_fingerprint": "304afe3d3951dcb140a5128e831080dc3963e03e84fa6da0ec11b97c4afc9bf4",
         "conclusion": "Controlled inventory and manufacturing costs reconcile from supplied source populations through RM, WIP, finished goods and all journal offsets.",
         "confidence": "medium",
         "controls_impacted": [

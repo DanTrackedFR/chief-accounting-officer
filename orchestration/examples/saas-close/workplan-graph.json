@@ -1,0 +1,461 @@
+[
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "balance-sheet-reconciliations",
+      "financial-statements",
+      "management-accounting-analytics"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "revenue-recognition",
+    "issue": "customer_contract",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "customer_contract",
+      "enforceable_rights",
+      "performance_obligations",
+      "transaction_price",
+      "variable_consideration",
+      "recognition_pattern",
+      "reporting_period"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "revenue-recognition",
+    "source_inputs": [
+      "customer_contract"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "foreign-currency"
+    ],
+    "downstream_consumers": [
+      "financial-instruments-ecl",
+      "balance-sheet-reconciliations",
+      "financial-statements",
+      "management-accounting-analytics"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "accounts-receivable",
+    "issue": "receivable_population",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "accounts-receivable",
+    "source_inputs": [
+      "receivable_population"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "accounts-receivable"
+    ],
+    "downstream_consumers": [
+      "balance-sheet-reconciliations",
+      "financial-statements",
+      "disclosure-management",
+      "management-accounting-analytics",
+      "diagnostic-balance-0"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "financial-instruments-ecl",
+    "issue": "credit_exposure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "accounts-receivable"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "instrument_type",
+      "business_model",
+      "contractual_cash_flows",
+      "carrying_amount",
+      "framework",
+      "reporting_period",
+      "exposure_data",
+      "credit_risk_evidence"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "financial-instruments-ecl",
+    "source_inputs": [
+      "credit_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "accounts-receivable",
+      "balance-sheet-reconciliations",
+      "financial-statements",
+      "management-accounting-analytics"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "foreign-currency",
+    "issue": "currency_exposure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "foreign-currency",
+    "source_inputs": [
+      "currency_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "balance-sheet-reconciliations",
+    "issue": "reconciliation",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "balance-sheet-reconciliations",
+    "source_inputs": [
+      "reconciliation"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "month-end-close",
+    "issue": "close_calendar",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "month-end-close",
+    "source_inputs": [
+      "close_calendar"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "downstream_consumers": [
+      "disclosure-management"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "financial-statements",
+    "issue": "statement",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "statement"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "financial-statements",
+      "financial-instruments-ecl"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "disclosure-management",
+    "issue": "disclosure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements",
+      "financial-instruments-ecl"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "disclosure-management",
+    "source_inputs": [
+      "disclosure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "downstream_consumers": [
+      "diagnostic-balance-0"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "management-accounting-analytics",
+    "issue": "analytics",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "management-accounting-analytics",
+    "source_inputs": [
+      "analytics"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "management-accounting-analytics",
+      "financial-instruments-ecl"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "diagnostic-balance-0",
+    "issue": "diagnostic accounting follow-up",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [],
+    "reason_selected": "Material receivable ageing requires governed accounting review",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "financial-instruments-ecl",
+    "source_inputs": [
+      "balance-source"
+    ],
+    "status": "complete"
+  }
+]

@@ -1,0 +1,229 @@
+{
+  "calculations": [
+    {
+      "amount": "500.00",
+      "label": "period revenue"
+    },
+    {
+      "amount": "1520.00",
+      "label": "closing ar"
+    },
+    {
+      "amount": "800",
+      "label": "billed"
+    },
+    {
+      "amount": "0",
+      "label": "credits"
+    },
+    {
+      "amount": "200",
+      "label": "applied cash and deposits"
+    },
+    {
+      "amount": "50",
+      "label": "unapplied liability"
+    },
+    {
+      "amount": "10.00",
+      "label": "fx movement"
+    },
+    {
+      "amount": "250",
+      "label": "bank receipts"
+    },
+    {
+      "amount": "80.00",
+      "label": "allowance"
+    },
+    {
+      "amount": "60.00",
+      "label": "expense"
+    },
+    {
+      "amount": "10.00",
+      "label": "monetary fx profit"
+    },
+    {
+      "amount": "0",
+      "label": "contract asset"
+    },
+    {
+      "amount": "1300.00",
+      "label": "contract liability"
+    },
+    {
+      "amount": "0.00",
+      "label": "ar residual"
+    },
+    {
+      "amount": "0.00",
+      "label": "contract net residual"
+    },
+    {
+      "amount": "0.00",
+      "label": "allowance residual"
+    },
+    {
+      "amount": "58.90",
+      "label": "snapshot collection days"
+    },
+    {
+      "amount": "54.60",
+      "label": "prior snapshot collection days"
+    }
+  ],
+  "confidence": "low",
+  "controls": [
+    "Independent route, estimate and journal review",
+    "Source population to GL tie-out",
+    "Versioned accounting policy and disclosure review"
+  ],
+  "effective_period": "2026-12-01 to 2026-12-31",
+  "entity_scope": "Synthetic Group",
+  "framework": "IFRS",
+  "guidance": "The close is partial: material source or close evidence remains unresolved. Revenue changed from 400 to 500.00, while bank collections changed from 450 to 250. Billings were 800; they are distinct from revenue and cash receipts. Gross billed receivables closed at 1520.00. Contract liability closed at 1300.00; it is not a receivable. The reviewed credit allowance closed at 80.00. Receivable FX contributed 10.00 to the AR movement, separately from billings and collections; it does not explain revenue growth. Unapplied cash of 50 remains a customer liability. The period was reopened and reclosed under reviewed authorization; a late-posted journal has supported economic cutoff and approval and is not automatically an accounting error. Older unpaid invoices require collection follow-up; the supplied evidence does not establish why each customer paid late. The claim that collections only look worse because revenue grew is rejected. The accounting owners support the recognition, credit allowance and FX amounts; these are accounting effects, not evidence of a commercial accounting error. Resolve the listed source/reconciliation contradictions before declaring the close clean. Preserve the original due dates and obtain the complete ageing export and reconciliation disposition. The allowance accounting check is supported by the reviewed workpaper.",
+  "journals": [
+    {
+      "lines": [
+        {
+          "account": "Contract liability",
+          "amount": "500.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Revenue",
+          "amount": "500.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "AR",
+          "amount": "800.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Contract liability",
+          "amount": "800.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "AR",
+          "amount": "10.00",
+          "side": "Dr"
+        },
+        {
+          "account": "FX income",
+          "amount": "10.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Cash",
+          "amount": "200",
+          "side": "Dr"
+        },
+        {
+          "account": "AR",
+          "amount": "200",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Cash",
+          "amount": "50",
+          "side": "Dr"
+        },
+        {
+          "account": "Unapplied cash",
+          "amount": "50",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Credit loss expense",
+          "amount": "60.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Allowance",
+          "amount": "60.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Manual accrual expense",
+          "amount": "25",
+          "side": "Dr"
+        },
+        {
+          "account": "Accrued liabilities",
+          "amount": "25",
+          "side": "Cr"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": "NL",
+  "limitations": [
+    "Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.",
+    "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+    "Contract clearing journals require mapping to the contract-specific asset/liability accounts; do not offset different contracts.",
+    "EIR, credit horizon, collateral recoveries and forecast assumptions are reviewed inputs; source forecast uncertainty remains.",
+    "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.",
+    "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+    "Supplied qualified current requirement inventory and owner conclusions are inputs, not a universal disclosure rulebook. Unchanged comparatives only; reclassifications/restatements require accounting-owner analysis. No filing or compliance certification.",
+    "This is a governed reporting/tie-out pack, not an autonomous legal filing or a complete universal checklist. Tax conclusions and specialist note scopes require approved external workpapers. A numeric tie-out alone does not certify disclosure completeness.",
+    "ending gross billed AR / period net billings * actual calendar days. Snapshot billings-based collection indicator; not rolling DSO, revenue-based DSO or approved company policy. Invoicing timing and annual billing mix affect comparability.",
+    "Management explanation rejected by the supplied accounting and diagnostic evidence; attribution remains scoped to that evidence."
+  ],
+  "open_items": [
+    "Resolve ageing completeness.",
+    "Resolve open reconciliation difference."
+  ],
+  "reporting": [
+    "Receivable FX is presented separately from revenue.",
+    "Revenue, billed receivables, allowance and contract balances tie to reviewed statements.",
+    "The scoped monthly credit-loss note consumes reviewed allowance and statement results; external filing compliance is outside this review."
+  ],
+  "required_approvals": [
+    "Accounting judgment memo",
+    "Calculation and reconciliation",
+    "Disclosure tie-out",
+    "Input evidence",
+    "Reviewer certification"
+  ],
+  "status": "partial",
+  "uncertainties": [
+    "Controlled synthetic company exports and separate fixture-only reviewer qualification.",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only"
+  ]
+}

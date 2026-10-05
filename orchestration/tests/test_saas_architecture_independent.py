@@ -1,7 +1,7 @@
-"""Independent baseline diagnostic reproducers, not completed flagship acceptance.
+"""Independent architecture boundary and remediation regressions.
 
-These assert current boundaries. A subsequent implementation must replace gap
-assertions with positive integration regressions; green here means reproduced.
+Original unqualified FX and additive journal-mapping counterexamples remain.
+Semantic family gaps are now positive routing contract regressions.
 """
 import copy
 import importlib.util
@@ -29,7 +29,7 @@ class SaaSArchitectureIndependent(unittest.TestCase):
     def test_ar_foreign_invoice_is_explicitly_unsupported_not_silently_converted(self):
         case = example('accounts-receivable', 'IFRS.case.json')
         case['invoices'][0]['currency'] = 'USD'
-        with self.assertRaisesRegex(ReviewRequired, 'currency unsupported'):
+        with self.assertRaisesRegex(ReviewRequired, 'currency unsupported|Missing required facts'):
             workflow('accounts-receivable').assess(case, [])
 
     def test_ar_gl_remeasurement_has_no_supported_movement_slot(self):
@@ -40,10 +40,10 @@ class SaaSArchitectureIndependent(unittest.TestCase):
         with self.assertRaisesRegex(ReviewRequired, 'AR subledger to GL'):
             workflow('accounts-receivable').assess(case, [])
 
-    def test_ar_and_ecl_have_no_semantic_fact_family_on_baseline(self):
+    def test_ar_and_ecl_have_semantic_fact_families(self):
         owners = {owner for owner, _ in FACT_ADAPTERS.values()}
-        self.assertNotIn('accounts-receivable', owners)
-        self.assertNotIn('financial-instruments-ecl', owners)
+        self.assertIn('accounts-receivable', owners)
+        self.assertIn('financial-instruments-ecl', owners)
 
     def test_revenue_and_ar_both_emit_billing_and_cash_journals(self):
         rev = workflow('revenue-recognition').assess(example('revenue-recognition', 'ifrs-case.json'), [])

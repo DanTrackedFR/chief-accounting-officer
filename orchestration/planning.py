@@ -11,6 +11,8 @@ from .intent import interpret
 # Fact families map to existing bounded owner contracts. Other families remain
 # visible open questions until an adapter is implemented; never guessed routes.
 FACT_ADAPTERS = {
+    'receivable_population': ('accounts-receivable', ('invoices',)),
+    'credit_exposure': ('financial-instruments-ecl', ('instrument',)),
     'inventory': ('inventory-cost', ('items', 'movements')),
     'machinery': ('fixed-assets', ('assets',)),
     'employee_cost': ('employee-benefits-payroll', ('benefits',)),
