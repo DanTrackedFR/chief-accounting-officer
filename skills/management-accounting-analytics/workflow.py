@@ -1,6 +1,6 @@
 """Reconciled controllership facts, never fabricated FP&A explanations."""
 from governance_accounting import *
-KEYS=('accounts','account_source','documents','imports','bridge_items','bridge_inventory','explanations','explanation_inventory','reconciliations','reconciliation_inventory','governance_method')
+KEYS=('accounts','account_source','documents','imports','bridge_items','bridge_inventory','explanations','explanation_inventory','reconciliations','reconciliation_inventory','governance_method','diagnostic')
 def assess(c,claims):
     rs,docs=start(c,'accounts');p=c['governance_method']
     if any(flag(p,k) for k in ('budgeting','forecasting','investment_analysis','commercial_planning','generic_bi','manufactured_explanations','automatic_gl_correction')):raise ReviewRequired('Accounting analytics cannot become FP&A/BI or manufacture explanations/entries')
@@ -66,5 +66,15 @@ def assess(c,claims):
             if iso(r['completed_on'])<=iso(r['due_date']):ontime+=1
     if material_open:open_items.append('Material incomplete reconciliation prevents clean accounting-quality review')
     enum(p,'kpi',{'on_time_reconciliation_rate'})
+    diagnostic = None
+    if c.get('diagnostic') is not None:
+        import importlib.util
+        spec=importlib.util.spec_from_file_location("accounting_diagnostics",ROOT/"skills/management-accounting-analytics/diagnostics.py")
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        diagnose=module.assess
+        try:diagnostic = diagnose(c,docs)
+        except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
+            raise ReviewRequired('Malformed diagnostic source, dimensions or comparator') from exc
+        open_items.extend(diagnostic['open_items'])
     review_release(c,KEYS)
-    return output(c,'Controllership accounting-source, bridge and flux workpaper reconciled',dict(**totals,account_movements=deltas,on_time_reconciliation_count=ontime,reconciliation_population=len(rec),on_time_reconciliation_rate=Decimal(ontime)/len(rec)*100,material_open_reconciliations=material_open),['Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, budgets, forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.'],open_items)
+    return output(c,'Controllership accounting-source, bridge and flux workpaper reconciled',dict(**totals,diagnostic=diagnostic,account_movements=deltas,on_time_reconciliation_count=ontime,reconciliation_population=len(rec),on_time_reconciliation_rate=Decimal(ontime)/len(rec)*100,material_open_reconciliations=material_open),['Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.'],open_items)

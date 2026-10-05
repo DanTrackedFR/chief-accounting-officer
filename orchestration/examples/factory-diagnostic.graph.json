@@ -1,0 +1,610 @@
+[
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "inventory-cost"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "fixed-assets",
+    "issue": "machinery",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied machinery population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "fixed-assets",
+    "source_inputs": [
+      "machinery"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "inventory-cost"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "accounts-payable",
+    "issue": "supplier_cost",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied supplier cost population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "accounts-payable",
+    "source_inputs": [
+      "supplier_cost"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "inventory-cost"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "employee-benefits-payroll",
+    "issue": "employee_cost",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied employee cost population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "employee-benefits-payroll",
+    "source_inputs": [
+      "employee_cost"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "inventory-cost"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "foreign-currency",
+    "issue": "currency_exposure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Supplied currency exposure population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "foreign-currency",
+    "source_inputs": [
+      "currency_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "employee-benefits-payroll",
+      "accounts-payable",
+      "fixed-assets",
+      "foreign-currency"
+    ],
+    "downstream_consumers": [
+      "financial-statements",
+      "balance-sheet-reconciliations",
+      "management-accounting-analytics",
+      "diagnostic-capacity-accounting"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "inventory-cost",
+    "issue": "inventory",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "employee-benefits-payroll",
+      "accounts-payable",
+      "fixed-assets",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied inventory population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "inventory-cost",
+    "source_inputs": [
+      "inventory"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "financial-statements",
+      "management-accounting-analytics"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "revenue-recognition",
+    "issue": "customer_contract",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "customer_contract",
+      "enforceable_rights",
+      "performance_obligations",
+      "transaction_price",
+      "variable_consideration",
+      "recognition_pattern",
+      "reporting_period"
+    ],
+    "reason_selected": "Supplied customer contract population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "revenue-recognition",
+    "source_inputs": [
+      "customer_contract"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "inventory-cost",
+      "revenue-recognition"
+    ],
+    "downstream_consumers": [
+      "disclosure-management"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "financial-statements",
+    "issue": "statement",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "reason_selected": "Supplied statement population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "statement"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "inventory-cost"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "balance-sheet-reconciliations",
+    "issue": "reconciliation",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied reconciliation population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "balance-sheet-reconciliations",
+    "source_inputs": [
+      "reconciliation"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "month-end-close",
+    "issue": "close_calendar",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied close calendar population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "month-end-close",
+    "source_inputs": [
+      "close_calendar"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "accounting-systems-data-integrity",
+    "issue": "interface",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "controls",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied interface population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "accounting-systems-data-integrity",
+    "source_inputs": [
+      "interface"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "accounting-controls-icfr",
+    "issue": "control",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "controls",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied control population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "accounting-controls-icfr",
+    "source_inputs": [
+      "control"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "financial-statements"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "disclosure-management",
+    "issue": "disclosure",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied disclosure population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "disclosure-management",
+    "source_inputs": [
+      "disclosure"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "inventory-cost",
+      "revenue-recognition"
+    ],
+    "downstream_consumers": [
+      "diagnostic-capacity-accounting"
+    ],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "management-accounting-analytics",
+    "issue": "analytics",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "inventory-cost",
+      "revenue-recognition"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "reason_selected": "Supplied analytics population affects the requested accounting work",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "management-accounting-analytics",
+    "source_inputs": [
+      "analytics"
+    ],
+    "status": "complete"
+  },
+  {
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "management-accounting-analytics",
+      "inventory-cost"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "framework": "IFRS",
+    "id": "diagnostic-capacity-accounting",
+    "issue": "diagnostic accounting follow-up",
+    "iterations": 1,
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "prerequisites": [],
+    "reason_selected": "Significant normal-capacity expense warrants governed accounting treatment recheck",
+    "required": true,
+    "rework_triggered": false,
+    "selected_skill": "inventory-cost",
+    "source_inputs": [
+      "capacity"
+    ],
+    "status": "complete"
+  }
+]

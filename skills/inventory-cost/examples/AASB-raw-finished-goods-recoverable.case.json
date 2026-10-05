@@ -838,14 +838,32 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "reversal_circumstances": {
+        "write_down": "0",
+        "pledged": {
+          "amount": "0",
           "reviewed": true,
-          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+          "evidence_memo": "Synthetic actual collateral register none"
         },
+        "reversal": "0",
         "carrying": {
           "Finished goods": "600",
           "Raw materials": "400",
           "Work in progress": "200"
+        },
+        "expense": {
+          "cogs": "200",
+          "manufacturing_other": "100",
+          "write_down": "0",
+          "reversal": "0"
+        },
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        },
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
         },
         "policy": {
           "framework": "AASB",
@@ -856,25 +874,7 @@
           "FG",
           "RM",
           "WIP"
-        ],
-        "expense": {
-          "cogs": "200",
-          "manufacturing_other": "100",
-          "write_down": "0",
-          "reversal": "0"
-        },
-        "reversal": "0",
-        "write_down": "0",
-        "formula": {
-          "materials": "FIFO",
-          "production": "FIFO",
-          "resale": "FIFO"
-        },
-        "pledged": {
-          "amount": "0",
-          "reviewed": true,
-          "evidence_memo": "Synthetic actual collateral register none"
-        }
+        ]
       },
       "content_hash": "71970d5a523049f8b93f210453f85fa55694acf25f93440ab667398144adb4c7"
     },
@@ -1998,14 +1998,32 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "reversal_circumstances": {
+      "write_down": "0",
+      "pledged": {
+        "amount": "0",
         "reviewed": true,
-        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        "evidence_memo": "Synthetic actual collateral register none"
       },
+      "reversal": "0",
       "carrying": {
         "Finished goods": "600",
         "Raw materials": "400",
         "Work in progress": "200"
+      },
+      "expense": {
+        "cogs": "200",
+        "manufacturing_other": "100",
+        "write_down": "0",
+        "reversal": "0"
+      },
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      },
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
       },
       "policy": {
         "framework": "AASB",
@@ -2016,25 +2034,7 @@
         "FG",
         "RM",
         "WIP"
-      ],
-      "expense": {
-        "cogs": "200",
-        "manufacturing_other": "100",
-        "write_down": "0",
-        "reversal": "0"
-      },
-      "reversal": "0",
-      "write_down": "0",
-      "formula": {
-        "materials": "FIFO",
-        "production": "FIFO",
-        "resale": "FIFO"
-      },
-      "pledged": {
-        "amount": "0",
-        "reviewed": true,
-        "evidence_memo": "Synthetic actual collateral register none"
-      }
+      ]
     },
     "closing_inventory": "1200",
     "cogs": "200",

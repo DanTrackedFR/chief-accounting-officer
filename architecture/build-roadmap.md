@@ -49,8 +49,8 @@ This foundation is intentionally bounded: it is not yet arbitrary natural-langua
 ## CAO runtime & intelligence workstreams — unnumbered
 Do not rename these workstreams as a new numbered project phase unless the owner explicitly authorises that roadmap change.
 
-### 1. CAO Intent & Diagnostic Analytics Foundation — NEXT
-Status: **next workstream**.
+### 1. CAO Intent & Diagnostic Analytics Foundation — COMPLETE
+Status: **complete**. Governed intent, bounded diagnostic methods and the manufacturing diagnostic flagship passed authored, independent adversarial and full repository regression, plus exact-head GitHub Actions on the integration candidate. See `orchestration/DIAGNOSTIC-INTEGRATION-HANDOFF.md`; final publication repeats CI after this documentation update. Semantic Planner + Document/Data Intake remains future work.
 
 The CAO must determine not only which accounting topics are implicated, but what the user is actually trying to accomplish. Intent/work-mode decomposition should distinguish and combine, as appropriate:
 - diagnostic analytics;

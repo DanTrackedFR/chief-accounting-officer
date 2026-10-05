@@ -1,0 +1,7 @@
+# Intent and diagnostic architecture reconstruction
+
+Live main inspected: 186b302877c1c63e4e5c224d846aefb032a378cf, following PR #28. Registry reads governed package contracts; Planner identifies facts and actual native imports; runtime executes production.assess_case and checks exact current owner results, handoffs, journal/reporting movements, challenge, public boundary and proposed memory candidates. Analytics SKILL-ANALYTICS-001 is production 1.0.0 with a narrow prior-year flux/reconciliation contract. This work extends that package and existing runtime; no parallel orchestrator or accounting-standard namespace.
+
+Read architecture/build-roadmap.md, system-overview.md, cao-agent.md, orchestration.md, case-management.md, skill-specification.md, company-accounting-memory.md; orchestration README, handoff, independent QA, planning/runtime/registry; interfaces and production.py; Analytics and manufacturing owner contracts; repository workflow gates. Current-main roadmap: 47 production; Government Grants, Borrowing Costs and Investment Property unavailable. They and PR #27 remain outside this work.
+
+The missing capability is structured work intent plus source-grounded diagnostic attribution. Implementation will separate accounting authority from analytics, preserve current native approvals and public filtering, and retain explicit residuals and accounting inquiries. Arbitrary semantic planning, ingestion, persistence and FP&A remain deferred. A separately delegated reviewer will challenge diagnostic methods independently.

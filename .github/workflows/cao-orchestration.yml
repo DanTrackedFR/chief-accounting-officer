@@ -1,12 +1,15 @@
 name: CAO orchestration integration
 on:
   push:
-    branches: [orchestration/cao-foundation]
+    branches: [orchestration/cao-foundation, orchestration/intent-diagnostic-analytics]
   pull_request:
-    types: [ready_for_review, reopened, synchronize]
+    types: [opened, ready_for_review, reopened, synchronize]
     paths:
       - 'orchestration/**'
       - 'interfaces/**'
+      - 'skills/management-accounting-analytics/**'
+      - 'skills/production.py'
+      - 'skills/tests/**'
       - '.github/workflows/cao-orchestration.yml'
   workflow_dispatch:
 jobs:
