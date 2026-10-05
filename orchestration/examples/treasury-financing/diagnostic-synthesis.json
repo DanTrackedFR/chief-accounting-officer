@@ -1,0 +1,329 @@
+{
+  "accounting": [
+    {
+      "calculations": {
+        "cash_closing": "1720",
+        "cash_direct_operating": "-80",
+        "cash_financing": "-200",
+        "cash_fx": "0",
+        "cash_investing": "0",
+        "cash_opening": "2000",
+        "current_debt": "880.00",
+        "debt_cash_interest": "80",
+        "debt_closing": "800.00",
+        "debt_current": "800",
+        "debt_draws": "0",
+        "debt_effective_interest": "80.00",
+        "debt_eligible_cost": "0",
+        "debt_noncurrent": "0",
+        "debt_opening": "1000",
+        "debt_repayments": "200",
+        "derivative_balance": "40",
+        "diagnostic_change": "20",
+        "diagnostic_explained": "20.00",
+        "diagnostic_explained_percent": "100.00",
+        "diagnostic_residual": "0.00",
+        "hedge_oci": "36",
+        "hedge_pnl": "4",
+        "hedge_reserve": "36",
+        "monetary_fx_profit": "-80.00",
+        "noncurrent_debt": "0",
+        "reported_debt": "880.00"
+      },
+      "conclusion": "The expense moved from 60.00 to 80.00. Explained signed movement is 20.00; explicit unexplained residual is 0.00. The review remains unresolved in the listed areas. Opening principal contribution: 0.00 (economic, high confidence; bridge contribution). Reviewed effective-rate contribution: 20.00 (economic, high confidence; bridge contribution). Accounting treatment remains with the reviewed accounting owner; diagnostic attribution does not authorize an adjustment. Accounting check Current interest accounting: supported by the completed accounting workpaper. The governed liability schedule closes at 800.00 before the separately governed currency movement. Reported debt is 880.00, with current 880.00 and noncurrent 0. Accounting interest is 80.00; cash interest is 80 and principal repaid is 200. These are distinct from noncash currency and valuation effects. Classification relies on the supplied reporting-date rights and covenant evidence; no waiver or refinancing right is inferred. Cash reconciles from 2000 to 1720: operating -80, investing 0, financing -200 and cash FX 0. Noncash debt remeasurement and derivative fair-value movements are excluded from bank flows; the supplied interest classification policy governs cash presentation. The externally valued derivative closes at 40. The governed hedge result allocates 4 to earnings and 36 to OCI; the closing reserve is 36. Accounting effectiveness is based on the actual designated risk evidence and does not establish an offset of unrelated currency exposures. Valuation models and market inputs are supplied by the qualified valuation source. The review remains partial: resolve the listed cash-flow/source or accounting exceptions before declaring the close clean.",
+      "confidence": "low",
+      "controls": [
+        "Independent route, estimate and journal review",
+        "Source population to GL tie-out",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "journals": [
+        {
+          "lines": [
+            {
+              "account": "Interest expense",
+              "amount": "80.00",
+              "side": "Dr"
+            },
+            {
+              "account": "Debt",
+              "amount": "80.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "debt-financing"
+        },
+        {
+          "lines": [
+            {
+              "account": "Debt",
+              "amount": "200",
+              "side": "Dr"
+            },
+            {
+              "account": "Cash",
+              "amount": "200",
+              "side": "Cr"
+            }
+          ],
+          "owner": "debt-financing"
+        },
+        {
+          "lines": [
+            {
+              "account": "Debt",
+              "amount": "80",
+              "side": "Dr"
+            },
+            {
+              "account": "Cash",
+              "amount": "80",
+              "side": "Cr"
+            }
+          ],
+          "owner": "debt-financing"
+        },
+        {
+          "lines": [
+            {
+              "account": "FX loss",
+              "amount": "80.00",
+              "side": "Dr"
+            },
+            {
+              "account": "Debt",
+              "amount": "80.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "foreign-currency"
+        },
+        {
+          "lines": [
+            {
+              "account": "Derivative",
+              "amount": "4.00",
+              "side": "Dr"
+            },
+            {
+              "account": "Hedge income",
+              "amount": "4.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "derivatives-hedge-accounting"
+        },
+        {
+          "lines": [
+            {
+              "account": "Derivative",
+              "amount": "36.00",
+              "side": "Dr"
+            },
+            {
+              "account": "Hedge OCI",
+              "amount": "36.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "derivatives-hedge-accounting"
+        }
+      ],
+      "limitations": [
+        "2026 operative basic full-instrument routes only. Advanced techniques and midperiod measurement splits require a governed specialist method.",
+        "Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.",
+        "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+        "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.",
+        "Qualified current evidence and the operative accounting model are required; source confidence remains bounded.",
+        "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+        "This is a governed reporting/tie-out pack, not an autonomous legal filing or a complete universal checklist. Tax conclusions and specialist note scopes require approved external workpapers. A numeric tie-out alone does not certify disclosure completeness.",
+        "Management explanation rejected by the supplied accounting and diagnostic evidence; attribution remains scoped to that evidence."
+      ],
+      "open_items": [],
+      "reporting": [
+        "Accounting policies and significant judgments/estimation uncertainty",
+        "Cash definition/restrictions, FX bridge, financing liability changes, noncash activity, supplier finance and adopted interest/dividend policy.",
+        "Cash flow classification and noncash financing movements",
+        "Comparative/restatement and adoption reconciliation",
+        "Complete period/entity-specific requirement register",
+        "Current/noncurrent, covenant, cash restriction and offsetting assessments",
+        "Disposal reclassification and ownership changes",
+        "Framework-specific instrument, risk, reserve and accounting-effect disclosure support",
+        "Framework-specific statement presentation and comparative-period consistency",
+        "Functional/presentation currencies and changes",
+        "Income/OCI disaggregation and equity components",
+        "Material prior errors, estimate changes and unexplained movements require the framework-specific reporting assessment.",
+        "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures",
+        "Rate-source uncertainty and lack-of-exchangeability disclosures where relevant",
+        "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+        "Topic-specific notes, events, going concern and filing overlays",
+        "Transaction FX gains/losses separate from translation OCI",
+        "Translation reserve and NCI rollforwards"
+      ],
+      "required_approvals": [
+        "Accounting judgment memo",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Input evidence",
+        "Reviewer certification"
+      ],
+      "status": "partial"
+    }
+  ],
+  "cash": "Interest80 operating, principal200 financing",
+  "diagnostic": {
+    "accounting_questions": [
+      {
+        "amount": "80.00",
+        "id": "loan-rate-accounting",
+        "issue": "Current interest accounting",
+        "materiality": "5",
+        "reason": "Recheck diagnostic interest against qualified debt schedule",
+        "result_path": [
+          "debt",
+          0,
+          "effective_interest"
+        ],
+        "source_evidence": [
+          "interest-drivers"
+        ],
+        "status": "REQUIRES_OWNER",
+        "target_owner": "debt-financing"
+      }
+    ],
+    "attribution_ledger": [
+      [
+        "Synthetic Group",
+        "EUR",
+        [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "loan-current-interest-ex-fx"
+      ]
+    ],
+    "bridge": {
+      "change": "20",
+      "comparator_kind": "actual",
+      "comparator_version": "actual-v1",
+      "drivers": [
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "0.00",
+          "evidence_class": "bridge_attribution",
+          "id": "loan-rate-quantity",
+          "label": "Opening principal contribution",
+          "lineage": {
+            "comparator": {
+              "doc": "interest-prior",
+              "frozen_on": "2025-12-31",
+              "kind": "actual",
+              "period": [
+                "2025-01-01",
+                "2025-12-31"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "EUR",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "EUR",
+                [
+                  "2026-01-01",
+                  "2026-12-31"
+                ],
+                "loan-current-interest-ex-fx"
+              ]
+            ],
+            "effect": "quantity",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": null,
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "source_doc": "interest-drivers",
+            "source_metric": "effective_interest",
+            "source_owner": "debt-financing",
+            "unit": "EUR"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "20.00",
+          "evidence_class": "bridge_attribution",
+          "id": "loan-rate-rate",
+          "label": "Reviewed effective-rate contribution",
+          "lineage": {
+            "comparator": {
+              "doc": "interest-prior",
+              "frozen_on": "2025-12-31",
+              "kind": "actual",
+              "period": [
+                "2025-01-01",
+                "2025-12-31"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "EUR",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "EUR",
+                [
+                  "2026-01-01",
+                  "2026-12-31"
+                ],
+                "loan-current-interest-ex-fx"
+              ]
+            ],
+            "effect": "rate",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": null,
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "source_doc": "interest-drivers",
+            "source_metric": "effective_interest",
+            "source_owner": "debt-financing",
+            "unit": "EUR"
+          },
+          "status": "SUPPORTED"
+        }
+      ],
+      "ending": "80",
+      "explained_amount": "20.00",
+      "explained_percent": "100.00",
+      "materiality": "5",
+      "metric": "expense",
+      "presentation_basis": "signed_balance",
+      "residual": "0.00",
+      "starting": "60",
+      "status": "RECONCILED",
+      "tolerance": "0.01",
+      "unit": "EUR"
+    },
+    "hypotheses": [],
+    "methods": [
+      {
+        "baseline": "supplied comparator",
+        "group": "loan-rate",
+        "interaction": "current quantity rate effect",
+        "method": "rate_quantity",
+        "sign": 1
+      }
+    ],
+    "observations": [],
+    "open_items": []
+  },
+  "economic": "Principal unchanged over interest interval; supplied EIR increased from 6% to 8%; attribution is evidence-bound",
+  "process": "Cash flow summary omits payment200"
+}

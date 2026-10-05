@@ -1,0 +1,260 @@
+{
+  "calculations": [
+    {
+      "amount": "-80.00",
+      "label": "monetary fx profit"
+    },
+    {
+      "amount": "20",
+      "label": "diagnostic change"
+    },
+    {
+      "amount": "20.00",
+      "label": "diagnostic explained"
+    },
+    {
+      "amount": "0.00",
+      "label": "diagnostic residual"
+    },
+    {
+      "amount": "100.00",
+      "label": "diagnostic explained percent"
+    },
+    {
+      "amount": "1000",
+      "label": "debt opening"
+    },
+    {
+      "amount": "0",
+      "label": "debt draws"
+    },
+    {
+      "amount": "0",
+      "label": "debt eligible cost"
+    },
+    {
+      "amount": "80.00",
+      "label": "debt effective interest"
+    },
+    {
+      "amount": "80",
+      "label": "debt cash interest"
+    },
+    {
+      "amount": "200",
+      "label": "debt repayments"
+    },
+    {
+      "amount": "800.00",
+      "label": "debt closing"
+    },
+    {
+      "amount": "800",
+      "label": "debt current"
+    },
+    {
+      "amount": "0",
+      "label": "debt noncurrent"
+    },
+    {
+      "amount": "880.00",
+      "label": "reported debt"
+    },
+    {
+      "amount": "880.00",
+      "label": "current debt"
+    },
+    {
+      "amount": "0",
+      "label": "noncurrent debt"
+    },
+    {
+      "amount": "2000",
+      "label": "cash opening"
+    },
+    {
+      "amount": "1720",
+      "label": "cash closing"
+    },
+    {
+      "amount": "-80",
+      "label": "cash direct operating"
+    },
+    {
+      "amount": "0",
+      "label": "cash investing"
+    },
+    {
+      "amount": "-200",
+      "label": "cash financing"
+    },
+    {
+      "amount": "0",
+      "label": "cash fx"
+    },
+    {
+      "amount": "40",
+      "label": "derivative balance"
+    },
+    {
+      "amount": "4",
+      "label": "hedge pnl"
+    },
+    {
+      "amount": "36",
+      "label": "hedge reserve"
+    },
+    {
+      "amount": "36",
+      "label": "hedge oci"
+    }
+  ],
+  "confidence": "low",
+  "controls": [
+    "Independent route, estimate and journal review",
+    "Source population to GL tie-out",
+    "Versioned accounting policy and disclosure review"
+  ],
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "entity_scope": "Synthetic Group",
+  "framework": "IFRS",
+  "guidance": "The expense moved from 60.00 to 80.00. Explained signed movement is 20.00; explicit unexplained residual is 0.00. The review remains unresolved in the listed areas. Opening principal contribution: 0.00 (economic, high confidence; bridge contribution). Reviewed effective-rate contribution: 20.00 (economic, high confidence; bridge contribution). Accounting treatment remains with the reviewed accounting owner; diagnostic attribution does not authorize an adjustment. Accounting check Current interest accounting: supported by the completed accounting workpaper. The governed liability schedule closes at 800.00 before the separately governed currency movement. Reported debt is 880.00, with current 880.00 and noncurrent 0. Accounting interest is 80.00; cash interest is 80 and principal repaid is 200. These are distinct from noncash currency and valuation effects. Classification relies on the supplied reporting-date rights and covenant evidence; no waiver or refinancing right is inferred. Cash reconciles from 2000 to 1720: operating -80, investing 0, financing -200 and cash FX 0. Noncash debt remeasurement and derivative fair-value movements are excluded from bank flows; the supplied interest classification policy governs cash presentation. The externally valued derivative closes at 40. The governed hedge result allocates 4 to earnings and 36 to OCI; the closing reserve is 36. Accounting effectiveness is based on the actual designated risk evidence and does not establish an offset of unrelated currency exposures. Valuation models and market inputs are supplied by the qualified valuation source. The review remains partial: resolve the listed cash-flow/source or accounting exceptions before declaring the close clean.",
+  "journals": [
+    {
+      "lines": [
+        {
+          "account": "Interest expense",
+          "amount": "80.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Debt",
+          "amount": "80.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Debt",
+          "amount": "200",
+          "side": "Dr"
+        },
+        {
+          "account": "Cash",
+          "amount": "200",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Debt",
+          "amount": "80",
+          "side": "Dr"
+        },
+        {
+          "account": "Cash",
+          "amount": "80",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "FX loss",
+          "amount": "80.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Debt",
+          "amount": "80.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Derivative",
+          "amount": "4.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Hedge income",
+          "amount": "4.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Derivative",
+          "amount": "36.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Hedge OCI",
+          "amount": "36.00",
+          "side": "Cr"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": "NL",
+  "limitations": [
+    "2026 operative basic full-instrument routes only. Advanced techniques and midperiod measurement splits require a governed specialist method.",
+    "Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.",
+    "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+    "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.",
+    "Qualified current evidence and the operative accounting model are required; source confidence remains bounded.",
+    "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods.",
+    "This is a governed reporting/tie-out pack, not an autonomous legal filing or a complete universal checklist. Tax conclusions and specialist note scopes require approved external workpapers. A numeric tie-out alone does not certify disclosure completeness.",
+    "Management explanation rejected by the supplied accounting and diagnostic evidence; attribution remains scoped to that evidence."
+  ],
+  "open_items": [
+    "Resolve financing support."
+  ],
+  "reporting": [
+    "Accounting policies and significant judgments/estimation uncertainty",
+    "Cash definition/restrictions, FX bridge, financing liability changes, noncash activity, supplier finance and adopted interest/dividend policy.",
+    "Cash flow classification and noncash financing movements",
+    "Comparative/restatement and adoption reconciliation",
+    "Complete period/entity-specific requirement register",
+    "Current/noncurrent, covenant, cash restriction and offsetting assessments",
+    "Disposal reclassification and ownership changes",
+    "Framework-specific instrument, risk, reserve and accounting-effect disclosure support",
+    "Framework-specific statement presentation and comparative-period consistency",
+    "Functional/presentation currencies and changes",
+    "Income/OCI disaggregation and equity components",
+    "Material prior errors, estimate changes and unexplained movements require the framework-specific reporting assessment.",
+    "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures",
+    "Rate-source uncertainty and lack-of-exchangeability disclosures where relevant",
+    "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+    "Topic-specific notes, events, going concern and filing overlays",
+    "Transaction FX gains/losses separate from translation OCI",
+    "Translation reserve and NCI rollforwards"
+  ],
+  "required_approvals": [
+    "Accounting judgment memo",
+    "Calculation and reconciliation",
+    "Disclosure tie-out",
+    "Input evidence",
+    "Reviewer certification"
+  ],
+  "status": "partial",
+  "uncertainties": [
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only"
+  ]
+}

@@ -10,6 +10,12 @@ from .semantic import RequestContext, ProposalValidator, transform
 # Explicit semantic contracts prevent equal numbers from substituting a different
 # accounting concept. Extensions require a governed producer calculation path.
 OWNER_RESULT_PATHS = {
+    ('derivative_contract','effective'): ('derivatives-hedge-accounting', ('derivatives','*','effective')),
+    ('derivative_contract','ineffective'): ('derivatives-hedge-accounting', ('derivatives','*','ineffectiveness')),
+    ('derivative_contract','closing_reserve'): ('derivatives-hedge-accounting', ('hedge_reserves','*','closing')),
+    ('debt_population','closing_base'): ('debt-financing', ('debt',0,'closing')),
+    ('cash_activity','closing_cash'): ('cash-flow-reporting', ('closing',)),
+    ('derivative_contract','derivative_closing'): ('derivatives-hedge-accounting', ('derivatives','*','closing')),
     ('customer_contract', 'recognised_revenue'): ('revenue-recognition', ('period_revenue',)),
     ('receivable_population', 'closing_ar'): ('accounts-receivable', ('closing_ar',)),
     ('credit_exposure', 'closing_allowance'): ('financial-instruments-ecl', ('allowance',)),
@@ -57,11 +63,19 @@ class PopulationBinding:
     owner_key: str = 'id'
     table: str = 'table'
 
+@dataclass(frozen=True)
+class DocumentBinding:
+    """Separately qualified source bytes and extraction dimensions for prose/evidence."""
+    source_id: str
+    owner: str
+    path: tuple
+
 @dataclass
 class ReviewedInputPack:
     request: dict
     bindings: list
     populations: list = field(default_factory=list)
+    documents: list = field(default_factory=list)
 
 class GovernedPlanner:
     """Implements the existing Planner using validated, evidence-backed issues."""
@@ -235,6 +249,14 @@ class Intake:
             for k,v in prepared._current.items():
                 if request.get('scope',{}).get(k)!=v:raise ValueError('Reviewed scope mismatch')
             candidates={r['id']:r for r in prepared.candidates};owners={FACT_ADAPTERS[f][0]:v for f,v in request.get('facts',{}).items() if f in FACT_ADAPTERS}
+            for binding in pack.documents:
+                if not isinstance(binding,DocumentBinding) or binding.owner not in owners:raise ValueError('Invalid reviewed source document binding')
+                source=prepared._inventory.extractions.get(binding.source_id)
+                if not source:raise ValueError('Reviewed source document missing')
+                expected=at(owners[binding.owner],list(binding.path))
+                actual=dict(fingerprint=source.source['fingerprint'],metadata=source.source['metadata'])
+                if canonical(expected)!=canonical(actual):raise ValueError('Source document changed after separate accounting qualification')
+                prepared.lineage.append(dict(source_document=binding.source_id,owner=binding.owner,owner_input_path=list(binding.path),binding_kind='qualified_document',source_description=source.source['name']))
             for population in pack.populations:
                 if not isinstance(population,PopulationBinding) or population.owner not in owners:raise ValueError('Invalid source population binding')
                 fields=[value for item in prepared.inventory for value in item['fields'].values() if value['source_id']==population.source_id and value['location'].get('table')==population.table and value['location'].get('column')==population.source_column]
@@ -265,7 +287,8 @@ class Intake:
                 if target in seen:raise ValueError('Duplicate owner target')
                 seen.add(target);bound.add(binding.fact_id)
                 if binding.kind=='owner_result':
-                    if OWNER_RESULT_PATHS.get((c['family'],c['attribute']))!=(binding.owner,binding.path):raise ValueError('Owner result semantic metric contract mismatch')
+                    contract=OWNER_RESULT_PATHS.get((c['family'],c['attribute']))
+                    if not contract or contract[0]!=binding.owner or len(contract[1])!=len(binding.path) or any(expected!='*' and expected!=actual for expected,actual in zip(contract[1],binding.path)):raise ValueError('Owner result semantic metric contract mismatch')
                     from orchestration.registry import production
                     result=production.assess_case(binding.owner,owners[binding.owner])
                     if result.get('status')!='complete':raise ValueError('Reviewed result binding requires qualified owner result')
