@@ -169,3 +169,20 @@ class AdditionalIntakeControls(unittest.TestCase):
         _,p=contract_control('Parties: Seller Z and Buyer Y.\n\nTerm: 3 months.\n\nCancellation: none stated.')
         self.assertTrue(any(c['claim']['value']=='Term: 3 months.' for c in p.candidates))
         self.assertEqual(p.case.outcome,'blocked')
+
+
+class SourceQuestionControls(unittest.TestCase):
+    def test_contract_wording_not_reasked_and_not_promoted(self):
+        _,p=contract_control()
+        self.assertEqual({q['attribute'] for q in p.questions},{'refund_rights','performance_obligations'})
+        self.assertTrue(all(c['promotion']=='unresolved' for c in p.candidates))
+        self.assertFalse(any(c['attribute']=='parties' for c in p.case.facts['established']))
+
+
+class SemanticDeclarationControls(unittest.TestCase):
+    def test_unbound_assumption_and_dispute_fail_closed(self):
+        for name in ('assumptions','disputed_facts'):
+            with self.subTest(name=name):
+                p=factory_proposal(factory_sources());getattr(p,name).append(cl('Unlinked source claim',status='ASSUMED' if name=='assumptions' else 'DISPUTED',confidence=.5))
+                result=Intake(FixturePlanner(p)).prepare(OBJECTIVE,factory_sources(),[],SCOPE)
+                self.assertFalse(result.validation['accepted'])

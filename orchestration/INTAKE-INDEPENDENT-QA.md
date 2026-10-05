@@ -99,3 +99,49 @@ being established using USD source metadata. Final independent command:
 **20 tests passed in 20.817 seconds.** Earlier 17-test totals above describe the
 prior review iteration; this 20-test rerun is the final independent evidence.
 No additional findings or implementation changes by the reviewer.
+
+## Additional material-question finding and final remediation
+
+**IQA-7 — Source-answerable document wording caused unnecessary questions.**
+The contract control initially asked seven separate confirmations for exact
+paragraphs already present in the supplied source: parties, term, consideration,
+billing timing, services, cancellation and variable amounts. This was an execution
+quality defect against the requested material-question boundary. The independent
+regression reproduced it: 21-test run had one failure listing all seven fields.
+
+Remediation suppresses questions for exact sourced EXTRACTED/OBSERVED text with
+identity transformation and no conflict. It retains the textual candidates as
+unresolved owner-review evidence; it does not promote wording or management
+positions to accounting truth. Required refund-rights and performance-obligation
+questions remain blocking, unresolved judgments remain in the owner-input pack,
+and the contract Case remains blocked. The reviewer independently inspected this
+narrow rule and verified the conditions in the regression.
+
+Final independent rerun after remediation:
+`python -m unittest orchestration.tests.test_intake_independent -q`
+
+**21 tests passed in 20.979 seconds.** This supersedes earlier iteration totals.
+Seven substantive findings are documented, remediated and executable. No remaining
+precise blocker was identified within the stated supported foundation scope.
+
+## Additional declaration-resolution finding
+
+**IQA-8 — Dangling semantic assumptions/disputes could be ignored.** Top-level
+assumptions and disputed-fact declarations were validated as envelopes but could
+remain disconnected from Fact Candidates. Candidate resolution would therefore
+not carry their material uncertainty forward. The independent parameterized
+regression reproduced both: the initial 22-test execution failed its assumptions
+and disputed_facts subcases because both proposals were accepted.
+
+Remediation requires each assumption declaration to match an ASSUMED candidate,
+and each dispute declaration to match a DISPUTED or UNRESOLVED candidate. Unbound
+declarations fail closed. The reviewer inspected both guards and independently
+reran the regression and entire suite.
+
+**Final independent result: 22 tests passed in 21.217 seconds**, using
+`python -m unittest orchestration.tests.test_intake_independent -q`.
+
+This supersedes all earlier iteration totals. Eight substantive findings have
+been documented, remediated and independently rerun as executable regressions.
+No remaining scoped architectural blocker identified; supported limitations above
+continue to apply. This reviewer changed only independent tests and this report.

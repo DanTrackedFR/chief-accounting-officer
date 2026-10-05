@@ -159,4 +159,20 @@ class IndependentIntakeQA(unittest.TestCase):
         intake=Intake(FixturePlanner(factory_proposal(sources)));result=intake.prepare(OBJECTIVE,sources,[],SCOPE)
         self.assertTrue(not result.validation['accepted'] or next(c for c in result.candidates if c['id']=='asset-cost')['promotion']!='established')
 
+    def test_contract_wording_does_not_trigger_repetitive_user_confirmation(self):
+        _,result=contract_control()
+        attributes={q['attribute'] for q in result.questions}
+        self.assertTrue({'refund_rights','performance_obligations'}<=attributes)
+        self.assertFalse({'parties','term','consideration','billing_timing','services','cancellation','variable_amounts'}&attributes)
+        self.assertTrue(all(c['promotion']=='unresolved' for c in result.candidates))
+        self.assertTrue(result.owner_inputs[0]['unresolved_judgments'])
+        self.assertEqual(result.case.outcome,'blocked')
+
+    def test_dangling_semantic_assumptions_and_disputes_fail_closed(self):
+        for field,status in [('assumptions','ASSUMED'),('disputed_facts','DISPUTED')]:
+            with self.subTest(field=field):
+                proposal=factory_proposal(factory_sources())
+                getattr(proposal,field).append(cl('Unresolved material declaration',status=status,confidence=.5))
+                self.assertFalse(self.prepare(proposal).validation['accepted'])
+
 if __name__=='__main__': unittest.main()

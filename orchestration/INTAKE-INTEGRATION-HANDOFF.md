@@ -79,7 +79,9 @@ Company Context is read through existing temporal/conflict principles. Intake
 returns PROPOSED memory candidates only; it cannot overwrite APPROVED/DOCUMENTED/
 CONFIRMED history. Material blocking, confirmation and nonblocking questions are
 distinct; known context and established source facts suppress unnecessary questions.
-The contract's missing refund/obligation facts remain material open work.
+The contract's missing refund/obligation facts remain material open work. Exact
+extracted document wording is answerable from source: it stays an internal
+owner-review candidate without asking the user to repeat the supplied terms.
 
 ## Owner input preparation and qualification boundary
 
@@ -144,12 +146,13 @@ analytic/close graph or unnecessary questions are added.
 
 ## Independent QA, artifacts and gates
 
-Separate reviewer/context documented six findings: framework conflict, ignored
+Separate reviewer/context documented eight findings: framework conflict, ignored
 candidate conflicts, economic aliases, inadequate contract extraction, detached
-prior comparator and untested management hypothesis. Each was remediated and
-became an executable regression. Final independent suite:20 PASS, including
+prior comparator, untested management hypothesis and unnecessary source-answerable
+contract confirmations and dangling assumption/dispute declarations. Each was remediated and
+became an executable regression. Final independent suite:22 PASS, including
 pre-challenge conflict closure, record-ID and mixed row-currency attacks.
-See INTAKE-INDEPENDENT-QA.md. Authored controls cover 51 tests; artifact/strict-wire
+See INTAKE-INDEPENDENT-QA.md. Authored controls cover 53 tests; artifact/strict-wire
 roundtrip controls2 tests. Existing orchestration/diagnostic tests remain120.
 
 26 generated JSON artifacts under orchestration/examples/intake include raw input,
@@ -161,16 +164,16 @@ point to the deterministic reproduction fixture; full owner evidence is recreate
 rather than duplicating canonical claim text. Artifacts are internal test evidence,
 not production persistence. All public routes continue through public_record.
 
-Final local regression: **1,840 distinct tests PASS**. All five supplemental
+Final local regression: **1,844 distinct tests PASS**. All five supplemental
 validators, canonical claims/approval validators and git diff --check PASS.
 Existing foundation/intent/diagnostic/manufacturing coverage remains120 tests;
-new authored51, independent20 and artifact/schema2 bring orchestration to193.
+new authored53, independent22 and artifact/schema2 bring orchestration to197.
 Artifact reproduction also passes under hash seeds17 and31 (6 tests each,
 repeats excluded from distinct totals). Exact final-head CI is recorded in PR30.
 
 | Gate | Distinct tests | Result |
 |---|---:|---|
-| Orchestration + intake + independent + artifacts | 193 | PASS |
+| Orchestration + intake + independent + artifacts | 197 | PASS |
 | Full shared production skills | 1176 | PASS |
 | Repository/public/canonical | 53 | PASS |
 | Lease vertical slice | 17 | PASS |
@@ -179,7 +182,7 @@ repeats excluded from distinct totals). Exact final-head CI is recorded in PR30.
 | Insurance supplement/claims | 35 | PASS |
 | Derivatives supplement/independent review | 11 | PASS |
 | Inventory supplement/independent claims | 262 | PASS |
-| Total | 1840 | PASS |
+| Total | 1844 | PASS |
 
 Roadmap marks this bounded intake foundation COMPLETE; later flagship work remains
 next. The final commit must pass exact-head GitHub Actions before PR readiness.

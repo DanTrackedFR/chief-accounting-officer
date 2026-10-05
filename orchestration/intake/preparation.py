@@ -164,6 +164,11 @@ class Intake:
                 for key in missing:self._question(result,'blocking',key,v['owner'])
                 for id in unresolved:
                     r=candidates[id]
+                    # Exact document wording is already answerable from source.
+                    # Preserve owner-review candidates without asking the user to
+                    # repeat quoted terms or treating them as accounting truth.
+                    sourced_wording=(r['claim']['status'] in ('EXTRACTED','OBSERVED') and r['transformation']=='identity' and isinstance(r['claim']['value'],str) and r['claim']['evidence'] and not r['conflicts'])
+                    if sourced_wording:continue
                     self._question(result,'blocking' if r['promotion']=='disputed' else 'confirmation',r['attribute'],v['owner'])
             for conflict in result.conflicts:self._question(result,'blocking',conflict['attribute'],'')
             for c in proposal.missing_facts:

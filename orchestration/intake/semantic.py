@@ -248,6 +248,12 @@ class ProposalValidator:
                         owner(test[side+'_owner'])
                         if not isinstance(test[side+'_path'],list) or not test[side+'_path'] or any(not isinstance(k,str) or len(k)>120 for k in test[side+'_path']):raise ValueError('Hypothesis metric path invalid')
                     if test['operator'] not in {'magnitude_above','magnitude_below','equal'} or type(test['factor']) not in (int,float) or not 0<=test['factor']<=1:raise ValueError('Hypothesis method invalid')
+            # Standalone declarations cannot disappear during candidate
+            # resolution. Link them to governed fact states or fail closed.
+            for declaration in proposal.assumptions:
+                if not any(f.claim.status=='ASSUMED' and f.claim.value==declaration.value for f in proposal.facts):raise ValueError('Unbound assumption declaration')
+            for declaration in proposal.disputed_facts:
+                if not any(f.claim.status in ('DISPUTED','UNRESOLVED') and f.claim.value==declaration.value for f in proposal.facts):raise ValueError('Unbound disputed fact declaration')
             referenced={id for i in proposal.issues for id in i.value['fact_ids']}
             if any(f.candidate_owner and f.id not in referenced for f in proposal.facts):raise ValueError('Owner-supported fact omitted from issue planning')
             # Validate DAG independently of runtime.
