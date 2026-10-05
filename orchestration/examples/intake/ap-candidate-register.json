@@ -1,0 +1,48 @@
+[
+  {
+    "attribute": "amount",
+    "candidate_owner": "accounts-payable",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "ap-simple:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "120"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "supplier_cost",
+    "id": "invoice-amount",
+    "lineage": [
+      {
+        "extracted_fingerprint": "a76c84eb73a7eedc5a5b8889f914f1facd2ab014a8b7ebd72dc8c121cc654b60",
+        "id": "ap-simple:2",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "6c28e0af061df903069b0a06c0a19ac9023bb5ee4b5c3321b8fa476269978e9f",
+        "source_id": "ap-simple",
+        "value": "120"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  }
+]

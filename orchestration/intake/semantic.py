@@ -63,6 +63,7 @@ class StructuredProposal:
     hypotheses: list = field(default_factory=list)
     context_candidates: dict = field(default_factory=dict)
     bounded_owner: Claim | None = None
+    interpreted_objective: Claim | None = None
 
     def record(self):return asdict(self)
 
@@ -81,7 +82,8 @@ class StructuredProposal:
             if key in data:data[key]=[claim(v) for v in data[key]]
         for key in ('classifications','context_candidates'):
             if key in data:data[key]={k:claim(v) for k,v in data[key].items()}
-        if data.get('bounded_owner'):data['bounded_owner']=claim(data['bounded_owner'])
+        for key in ('bounded_owner','interpreted_objective'):
+            if data.get(key):data[key]=claim(data[key])
         if 'facts' in data:
             facts=[]
             for raw in data['facts']:
@@ -162,6 +164,7 @@ class ProposalValidator:
             for name in ('classifications','context_candidates'):
                 for key,c in getattr(proposal,name).items():claim(c,name+key)
             if proposal.bounded_owner:claim(proposal.bounded_owner,'bounded_owner')
+            if proposal.interpreted_objective:claim(proposal.interpreted_objective,'interpreted_objective')
             modes=[proposal.primary_mode.value]+[c.value for c in proposal.secondary_modes+proposal.supporting_modes]
             if any(m not in {w.value for w in WorkMode} for m in modes) or len(modes)!=len(set(modes)):raise ValueError('Invalid/duplicated work mode')
             if proposal.bounded_owner and (len(modes)!=1 or proposal.primary_mode.value!='REPORTING'):raise ValueError('Bounded owner requires simple reporting')
@@ -212,6 +215,9 @@ class ProposalValidator:
                     if k=='period':period(v)
                     elif not isinstance(v,str) or not v or len(v)>120:raise ValueError('Dimension invalid')
                 if 'comparator' in f.dimensions and f.dimensions['comparator'] not in COMPARATORS:raise ValueError('Comparator invalid')
+                for key in ('entity','currency','jurisdiction'):
+                    if key in f.dimensions and context.get(key) and f.dimensions[key]!=context[key]:raise ValueError('Execution dimension mismatch')
+                if f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[context['period_start'],context['reporting_period']]:raise ValueError('Current fact period mismatch')
                 if 'framework' in f.dimensions and (f.dimensions['framework'] not in FRAMEWORKS or (context.get('framework') and f.dimensions['framework']!=context['framework'])):raise ValueError('Framework invalid or mismatched')
                 if 'currency' in f.dimensions and not re.fullmatch('[A-Z]{3}',f.dimensions['currency']):raise ValueError('Currency invalid')
                 if f.transformation not in {'identity','decimal','iso_date'}:raise ValueError('Unsafe transformation')

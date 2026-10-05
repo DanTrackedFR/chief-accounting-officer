@@ -147,3 +147,25 @@ class IntakeTests(unittest.TestCase):
         r=self.prepare(p);output=json.dumps(Intake(FixturePlanner(p)).public(r));self.assertNotIn('private',output)
 
 if __name__=='__main__':unittest.main()
+
+class AdditionalIntakeControls(unittest.TestCase):
+    def test_huge_source_record_id_rejected(self):
+        with self.assertRaises(ValueError):Inventory([RawSource('bad','x','json',[dict(record_id='a'*121,amount='1')])])
+    def test_mixed_currency_row_not_established(self):
+        from orchestration.tests.intake_fixtures import metadata,numeric,cl
+        sources=[RawSource('mixed','AP.csv','csv','record_id,amount,currency\nA,10,EUR\nB,20,USD',metadata())]
+        inv=Inventory(sources);f=numeric(inv,'amount','supplier_cost','amount','mixed','amount',2)
+        p=StructuredProposal(cl('Review',status='USER_STATED',confidence=1),cl('Review'),cl('ACCOUNTING_DETERMINATION'),facts=[f],issues=[cl(dict(id='ap',owner='accounts-payable',family='supplier_cost',fact_ids=[f.id],dependencies=[],required_fields=['amount']),f.claim.evidence)])
+        prepared=Intake(FixturePlanner(p)).prepare('Review',sources,[],SCOPE)
+        self.assertEqual(prepared.candidates[0]['promotion'],'unresolved')
+    def test_current_source_wrong_period_rejected(self):
+        p=factory_proposal(factory_sources());p.facts[0].dimensions['period']=['2026-11-01','2026-11-30']
+        r=Intake(FixturePlanner(p)).prepare(OBJECTIVE,factory_sources(),[],SCOPE)
+        self.assertFalse(r.validation['accepted'])
+    def test_conflict_never_closes_runtime_case(self):
+        engine,p=factory();engine.execute(p,factory_review_pack(p))
+        self.assertNotIn('CLOSED',p.case.transitions);self.assertIn('unresolved',p.case.conclusions[0]['conclusion'])
+    def test_contract_input_variants_retain_content(self):
+        _,p=contract_control('Parties: Seller Z and Buyer Y.\n\nTerm: 3 months.\n\nCancellation: none stated.')
+        self.assertTrue(any(c['claim']['value']=='Term: 3 months.' for c in p.candidates))
+        self.assertEqual(p.case.outcome,'blocked')

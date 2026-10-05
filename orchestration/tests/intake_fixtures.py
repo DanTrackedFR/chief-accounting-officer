@@ -66,6 +66,7 @@ FACTORY_MAPPINGS=[
 def factory_proposal(sources):
     inv=Inventory(sources)
     p=StructuredProposal(cl(OBJECTIVE,status='USER_STATED',confidence=1),cl('Diagnostic close workpaper'),cl('DIAGNOSTIC_ANALYTICS'),supporting_modes=[cl('CLOSE_REVIEW'),cl('RECONCILIATION_INVESTIGATION')])
+    p.interpreted_objective=cl('Explain current margin deterioration and assess close reliability from supplied source populations')
     p.facts=[numeric(inv,*m[:7],dimensions=dict(period=['2026-11-01','2026-11-30'],comparator='prior_actual') if m[0]=='prior-profit' else None) for m in FACTORY_MAPPINGS]
     for id,source in [('labour-export','payroll'),('labour-gl','pnl')]:
         p.facts.append(numeric(inv,id,'employee_cost','factory_labour',source,'factory_labour' if source=='payroll' else 'amount',None if source=='payroll' else 6))

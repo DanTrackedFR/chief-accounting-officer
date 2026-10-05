@@ -1,0 +1,32 @@
+[
+  {
+    "accounting_authority": false,
+    "description": "FX is the main margin driver",
+    "disposition": "REJECTED",
+    "evidence": [
+      {
+        "left": "0",
+        "right": "-15652.0",
+        "test": {
+          "factor": 0.5,
+          "left_owner": "foreign-currency",
+          "left_path": [
+            "monetary_fx_profit"
+          ],
+          "operator": "magnitude_above",
+          "right_owner": "management-accounting-analytics",
+          "right_path": [
+            "diagnostic",
+            "bridge",
+            "change"
+          ]
+        }
+      }
+    ],
+    "id": "management-fx",
+    "semantic_status": "INFERRED",
+    "source_refs": [
+      "commentary:1"
+    ]
+  }
+]

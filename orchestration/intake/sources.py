@@ -89,6 +89,7 @@ def extract(raw):
         columns = []; rows = []
         for index, record in enumerate(records, start):
             if not isinstance(record, dict) or not record: raise ValueError('Table row must be a flat object')
+            if 'record_id' in record and (not isinstance(record['record_id'],str) or not record['record_id'] or len(record['record_id'])>120):raise ValueError('Record identity invalid')
             ids = {}
             for column, value in record.items():
                 if isinstance(value, (dict,list)): raise ValueError('Nested table cell unsupported')

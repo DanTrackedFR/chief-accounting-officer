@@ -1,0 +1,527 @@
+[
+  {
+    "available_fact_ids": [
+      "asset-cost"
+    ],
+    "family": "machinery",
+    "issue_id": "fixed-assets",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "assets",
+      "costs",
+      "cip",
+      "gl",
+      "handoffs"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "asset-cost",
+        "refs": [
+          "assets:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "fixed-assets",
+    "transformations": [
+      "transform-asset-cost"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "ap-amount"
+    ],
+    "family": "supplier_cost",
+    "issue_id": "accounts-payable",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "invoices",
+      "accruals",
+      "payments",
+      "opening_ap",
+      "gl_ap",
+      "supplier_balances",
+      "gl_accrual",
+      "handoffs"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "ap-amount",
+        "refs": [
+          "ap:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "accounts-payable",
+    "transformations": [
+      "transform-ap-amount"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "pay-rate",
+      "pay-units",
+      "pay-charge",
+      "labour-export",
+      "labour-gl"
+    ],
+    "family": "employee_cost",
+    "issue_id": "employee-benefits-payroll",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independently_complete_source_population",
+      "reviewed_method",
+      "source_evidence",
+      "opening_balances",
+      "source_GL_statement_bridges",
+      "disclosure_checklist"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "pay-rate",
+        "refs": [
+          "payroll:3"
+        ]
+      },
+      {
+        "fact_id": "pay-units",
+        "refs": [
+          "payroll:4"
+        ]
+      },
+      {
+        "fact_id": "pay-charge",
+        "refs": [
+          "payroll:5"
+        ]
+      },
+      {
+        "fact_id": "labour-export",
+        "refs": [
+          "payroll:6"
+        ]
+      },
+      {
+        "fact_id": "labour-gl",
+        "refs": [
+          "pnl:10"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "employee-benefits-payroll",
+    "transformations": [
+      "transform-pay-rate",
+      "transform-pay-units",
+      "transform-pay-charge",
+      "transform-labour-export",
+      "transform-labour-gl"
+    ],
+    "unresolved_judgments": [
+      "labour-export",
+      "labour-gl"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "fx-opening"
+    ],
+    "family": "currency_exposure",
+    "issue_id": "foreign-currency",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "currency",
+      "items",
+      "translation",
+      "disposal"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fx-opening",
+        "refs": [
+          "fx:4"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "foreign-currency",
+    "transformations": [
+      "transform-fx-opening"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "stock-rm"
+    ],
+    "family": "inventory",
+    "issue_id": "inventory-cost",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independently_complete_source_population",
+      "reviewed_method",
+      "source_evidence",
+      "opening_balances",
+      "source_GL_statement_bridges",
+      "disclosure_checklist"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "stock-rm",
+        "refs": [
+          "production:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "inventory-cost",
+    "transformations": [
+      "transform-stock-rm"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "revenue-ssp"
+    ],
+    "family": "customer_contract",
+    "issue_id": "revenue-recognition",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "case_facts",
+      "evidence",
+      "framework_and_period",
+      "policy_elections",
+      "reviewed_assumptions"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "revenue-ssp",
+        "refs": [
+          "billing:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "revenue-recognition",
+    "transformations": [
+      "transform-revenue-ssp"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "statement-cost"
+    ],
+    "family": "statement",
+    "issue_id": "financial-statements",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "presentation",
+      "current_tb",
+      "comparative_tb",
+      "comparative",
+      "cash_flow",
+      "equity_bridge",
+      "notes",
+      "checklist",
+      "coverage"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "statement-cost",
+        "refs": [
+          "close:7"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "financial-statements",
+    "transformations": [
+      "transform-statement-cost"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "stock-rec"
+    ],
+    "family": "reconciliation",
+    "issue_id": "balance-sheet-reconciliations",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "trial_balance",
+      "inventory",
+      "reconciliations"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "stock-rec",
+        "refs": [
+          "close:3"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "balance-sheet-reconciliations",
+    "transformations": [
+      "transform-stock-rec"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "close-duration"
+    ],
+    "family": "close_calendar",
+    "issue_id": "month-end-close",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "tasks",
+      "journals",
+      "accruals",
+      "close"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "close-duration",
+        "refs": [
+          "close:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "month-end-close",
+    "transformations": [
+      "transform-close-duration"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "interface-balance"
+    ],
+    "family": "interface",
+    "issue_id": "accounting-systems-data-integrity",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_original_populations",
+      "actual_source_documents",
+      "current_qualified_method",
+      "accounting_owner_imports"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "interface-balance",
+        "refs": [
+          "close:4"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "accounting-systems-data-integrity",
+    "transformations": [
+      "transform-interface-balance"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "control-threshold"
+    ],
+    "family": "control",
+    "issue_id": "accounting-controls-icfr",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_original_populations",
+      "actual_source_documents",
+      "current_qualified_method",
+      "accounting_owner_imports"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "control-threshold",
+        "refs": [
+          "close:5"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "accounting-controls-icfr",
+    "transformations": [
+      "transform-control-threshold"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "profit-disclosure"
+    ],
+    "family": "disclosure",
+    "issue_id": "disclosure-management",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "profit-disclosure",
+        "refs": [
+          "close:6"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "disclosure-management",
+    "transformations": [
+      "transform-profit-disclosure"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "analytic-cogs",
+      "prior-profit"
+    ],
+    "family": "analytics",
+    "issue_id": "management-accounting-analytics",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "analytic-cogs",
+        "refs": [
+          "pnl:4"
+        ]
+      },
+      {
+        "fact_id": "prior-profit",
+        "refs": [
+          "prior:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "management-accounting-analytics",
+    "transformations": [
+      "transform-analytic-cogs",
+      "transform-prior-profit"
+    ],
+    "unresolved_judgments": []
+  }
+]

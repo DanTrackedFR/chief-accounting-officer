@@ -1,0 +1,435 @@
+[
+  {
+    "extracted_fields": [
+      "assets:2"
+    ],
+    "fact_id": "asset-cost",
+    "owner": "fixed-assets",
+    "owner_input_path": [
+      "assets",
+      "machine",
+      "opening_cost"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "6ed712c9861a45d9337c4be2723cf7b8d35431e3fea3fe552ed23799d5efeee7",
+        "id": "assets:2",
+        "location": {
+          "column": "opening_cost",
+          "record_id": "machine",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "ff6ab7b904bdccb0cdaeb6e097bea6a1ae40df3b273269a37c9b0117cfefbd3b",
+        "source_id": "assets",
+        "value": "600000"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "ap:2"
+    ],
+    "fact_id": "ap-amount",
+    "owner": "accounts-payable",
+    "owner_input_path": [
+      "invoices",
+      "I1",
+      "amount"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "a76c84eb73a7eedc5a5b8889f914f1facd2ab014a8b7ebd72dc8c121cc654b60",
+        "id": "ap:2",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "cc1490b344810bdd86e57dd3400ebcb47cc2b184a004db05f6d217ad91f9986b",
+        "source_id": "ap",
+        "value": "120"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "payroll:3"
+    ],
+    "fact_id": "pay-rate",
+    "owner": "employee-benefits-payroll",
+    "owner_input_path": [
+      "benefits",
+      "salary",
+      "rate"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0",
+        "id": "payroll:3",
+        "location": {
+          "column": "rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "200"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "payroll:4"
+    ],
+    "fact_id": "pay-units",
+    "owner": "employee-benefits-payroll",
+    "owner_input_path": [
+      "benefits",
+      "salary",
+      "units"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "4ec621b227e30e8a72d97865785a0bf20b5032024c589a56e1a6b18a099bdb7c",
+        "id": "payroll:4",
+        "location": {
+          "column": "units",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "50"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "payroll:5"
+    ],
+    "fact_id": "pay-charge",
+    "owner": "employee-benefits-payroll",
+    "owner_input_path": [
+      "benefits",
+      "salary",
+      "expected_charge"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "4f9f1702505bf36377677fdfa884301799d565a8317d5d889790fe05e6352227",
+        "id": "payroll:5",
+        "location": {
+          "column": "expected_charge",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "10800"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "fx:4"
+    ],
+    "fact_id": "fx-opening",
+    "owner": "foreign-currency",
+    "owner_input_path": [
+      "items",
+      "inventory-purchase",
+      "opening_book"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "d6d3c6318a4582617a85821b502962b17d7f38a93c7e408a0ecf22516f560f71",
+        "id": "fx:4",
+        "location": {
+          "column": "opening_book",
+          "record_id": "inventory-purchase",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "83607df038dc4182acbdb51246eeee727c07884fba67cea24ed6007a5491ad6b",
+        "source_id": "fx",
+        "value": "110"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "production:2"
+    ],
+    "fact_id": "stock-rm",
+    "owner": "inventory-cost",
+    "owner_input_path": [
+      "items",
+      "component",
+      "closing_cost"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "240da2dbdc17826d49e8d26e1d61a5fa54898be18a80e4a3e6538320a75ee394",
+        "id": "production:2",
+        "location": {
+          "column": "closing_cost",
+          "record_id": "RM",
+          "row": 1,
+          "table": "Stock"
+        },
+        "source_fingerprint": "17995cf267a0e8c8cba72ee42ae8c0dacb5aea7ffebc9ded656dff47f1b0e395",
+        "source_id": "production",
+        "value": "510"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "billing:2"
+    ],
+    "fact_id": "revenue-ssp",
+    "owner": "revenue-recognition",
+    "owner_input_path": [
+      "obligations",
+      "delivery",
+      "ssp"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "2dd9905fce44c3771a5ea25bc09148ee309554180345309629fe9a8a19ccb701",
+        "id": "billing:2",
+        "location": {
+          "column": "ssp",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "9fa6b6a58a0c8b1c300f1b03f15bac3d0769c269538989f9076378cd428530de",
+        "source_id": "billing",
+        "value": "40000"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:7"
+    ],
+    "fact_id": "statement-cost",
+    "owner": "financial-statements",
+    "owner_input_path": [
+      "current_tb",
+      "PPE gross",
+      "balance"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "6ed712c9861a45d9337c4be2723cf7b8d35431e3fea3fe552ed23799d5efeee7",
+        "id": "close:7",
+        "location": {
+          "column": "ppe",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "600000"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:3"
+    ],
+    "fact_id": "stock-rec",
+    "owner": "balance-sheet-reconciliations",
+    "owner_input_path": [
+      "reconciliations",
+      "Finished goods",
+      "source_closing"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "044f9b5d37a2815ffa661c91b9f4318d0e154a32cb56552640a33253c308934f",
+        "id": "close:3",
+        "location": {
+          "column": "finished_goods",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "33912.00"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:2"
+    ],
+    "fact_id": "close-duration",
+    "owner": "month-end-close",
+    "owner_input_path": [
+      "tasks",
+      "ap",
+      "duration"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "cc11310c456c3690d5a74c23aa31cc25b4e74cdae146c71e54ad9dbc1d109fde",
+        "id": "close:2",
+        "location": {
+          "column": "duration",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "2"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:4"
+    ],
+    "fact_id": "interface-balance",
+    "owner": "accounting-systems-data-integrity",
+    "owner_input_path": [
+      "interfaces",
+      "interface-1",
+      "amount"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "5de47078345336aeba6a502469e490d2e15060e76c52c77f0e9af56822542c5e",
+        "id": "close:4",
+        "location": {
+          "column": "interface_balance",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "45726.00"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:5"
+    ],
+    "fact_id": "control-threshold",
+    "owner": "accounting-controls-icfr",
+    "owner_input_path": [
+      "control_rows",
+      "control-1",
+      "threshold"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "536549599ec6c3b859cd3970025779a13d061783c73e663fea7f963e98379aa8",
+        "id": "close:5",
+        "location": {
+          "column": "control_threshold",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "close:6"
+    ],
+    "fact_id": "profit-disclosure",
+    "owner": "disclosure-management",
+    "owner_input_path": [
+      "requirements",
+      "requirement-1",
+      "amount"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "cfb75cbffb6c6620d789fe86011d2c0d1e49650a10f4a61584f89432ec6dd198",
+        "id": "close:6",
+        "location": {
+          "column": "profit",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "-16304.00"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "pnl:4"
+    ],
+    "fact_id": "analytic-cogs",
+    "owner": "management-accounting-analytics",
+    "owner_input_path": [
+      "accounts",
+      "cash-metric",
+      "amount"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "06477c3a872c79a33886cf44ed9bc22864afbb0e258de0f66f45674b25c91ad4",
+        "id": "pnl:4",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "source_fingerprint": "f6bd5e6f8c35be8f2e74ab2e7eeaefe631b4a6a693a62982a5bd53dca4f34c26",
+        "source_id": "pnl",
+        "value": "11304"
+      }
+    ]
+  },
+  {
+    "extracted_fields": [
+      "prior:2"
+    ],
+    "fact_id": "prior-profit",
+    "owner": "management-accounting-analytics",
+    "owner_input_path": [
+      "documents",
+      "diagnostic-prior",
+      "content",
+      "amount"
+    ],
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "3bc0f6e22232d9c6cec853a42d8e1b67e1926b1410d8df7e28ab40e3327333e5",
+        "id": "prior:2",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "076e29bf8242df1358fc50765caa78f1a306ea1ef0dd203734b271c41d76c4b3",
+        "source_id": "prior",
+        "value": "15000"
+      }
+    ]
+  }
+]

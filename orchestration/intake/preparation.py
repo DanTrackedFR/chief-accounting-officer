@@ -46,8 +46,10 @@ class ReviewedInputPack:
 
 class GovernedPlanner:
     """Implements the existing Planner using validated, evidence-backed issues."""
-    def __init__(self, proposal, candidates):
+    def __init__(self, proposal, candidates, questions=()):
         self.proposal=copy.deepcopy(proposal);self.candidates=copy.deepcopy(candidates)
+        self.questions=copy.deepcopy(list(questions))
+    def material_questions(self):return [copy.deepcopy(q) for q in self.questions if q['kind'] in ('blocking','confirmation')]
     def interpret(self,objective,facts,context,registry):
         p=self.proposal
         if objective!=p.objective.value:raise ValueError('Objective changed after validation')
@@ -115,6 +117,14 @@ class Intake:
                         for key in ('entity','period','currency','comparator'):
                             if key in f.dimensions and meta.get(key)!=f.dimensions[key]:dimensions_ok=False
                         if meta.get('controlled_export') is not True:dimensions_ok=False
+                        loc=ref['location']
+                        for table in inventory.extractions[ref['source_id']].tables:
+                            if table['name']!=loc.get('table'):continue
+                            for source_row in table['rows']:
+                                if source_row['source_row']!=loc.get('row'):continue
+                                for key in ('currency','entity','comparator','unit'):
+                                    original=source_row['original']
+                                    if original.get(key) and original[key]!=f.dimensions.get(key):dimensions_ok=False
                     if dimensions_ok and f.transformation=='decimal':row['promotion']='established'
                 if f.transformation!='identity' and refs:
                     value=transform(refs[0]['value'],f.transformation)
@@ -230,7 +240,7 @@ class Intake:
                 for r in matching:
                     for key in r['required_fields']:
                         if not any(candidates[id]['attribute']==key and id in bound for id in r['available_fact_ids']):raise ValueError('Required prepared input not bound')
-        cao=CAO(GovernedPlanner(prepared._proposal,prepared.candidates),self.registry)
+        cao=CAO(GovernedPlanner(prepared._proposal,prepared.candidates,prepared.questions),self.registry)
         case=cao.run(request)
         case.requested_output='Governed accounting intake review'
         for row in prepared.candidates:
@@ -240,11 +250,6 @@ class Intake:
             if bucket=='assumed':case.facts[bucket].append(dict(attribute=row['attribute'],value='Unconfirmed source assumption'))
             elif bucket:case.facts[bucket].append(public_fact)
         case.memory_candidates.extend(copy.deepcopy(prepared.memory_candidates))
-        unresolved=[q for q in prepared.questions if q['kind'] in ('blocking','confirmation')]
-        if unresolved:
-            case.open_questions.extend(copy.deepcopy(unresolved));case.outcome='partial' if case.skills_invoked else 'blocked'
-            if case.status=='CLOSED':case.status='DOCUMENTED';case.transitions=case.transitions[:-1]
-            for s in case.conclusions:s.update(status=case.outcome,confidence='low')
         # Evidence testing is arithmetic over already governed owner results;
         # it cannot generate accounting conclusions, journals or approval events.
         completed={n['selected_skill']:n['result'] for n in case.workplan_nodes if n['status']=='complete' and n['result']}

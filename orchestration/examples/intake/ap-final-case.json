@@ -1,0 +1,552 @@
+{
+  "accounting_issues": [
+    {
+      "capability": "supplier_cost",
+      "condition": null,
+      "considerations": [],
+      "dependencies": [],
+      "id": "ap-node",
+      "material": null,
+      "owner": "accounts-payable",
+      "reason": "Validated source-supported work issue",
+      "required": true,
+      "source_inputs": [
+        "supplier_cost"
+      ]
+    }
+  ],
+  "accounting_questions": [],
+  "alternatives": [],
+  "artifacts": [
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-case-record",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "case-record",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-workplan-graph",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "workplan-graph",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-issue-register",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "issue-register",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-skill-execution-ledger",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "skill-execution-ledger",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-handoff-ledger",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "handoff-ledger",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-reconciliation-summary",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "reconciliation-summary",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-journal-pack",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "journal-pack",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-challenge-report",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "challenge-report",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-cao-conclusion",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "cao-conclusion",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-public-answer",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "public-answer",
+      "version": 1
+    },
+    {
+      "entities": [
+        "Synthetic Group"
+      ],
+      "frameworks": [
+        "IFRS"
+      ],
+      "id": "case-memory-candidates",
+      "periods": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_case": "case",
+      "status": "DRAFT",
+      "type": "memory-candidates",
+      "version": 1
+    }
+  ],
+  "challenge_results": [
+    {
+      "checks": [
+        "facts",
+        "framework/jurisdiction",
+        "evidence conflicts",
+        "alternatives and estimates",
+        "policy/prior decisions",
+        "duplicate economics",
+        "current owner results",
+        "journals/reconciliations",
+        "controls",
+        "disclosures",
+        "systems",
+        "audit documentation"
+      ],
+      "findings": [],
+      "passed": true,
+      "phase": "CHALLENGE"
+    }
+  ],
+  "closed_at": null,
+  "conclusions": [
+    {
+      "calculations": {
+        "closing_ap": "20"
+      },
+      "conclusion": "The supplied accounting workpapers support the requested conclusion within the reviewed scope.",
+      "confidence": "medium",
+      "controls": [
+        "Independent route, estimate and journal review",
+        "Source population to GL tie-out",
+        "Versioned accounting policy and disclosure review"
+      ],
+      "journals": [
+        {
+          "lines": [
+            {
+              "account": "expense",
+              "amount": "120.00",
+              "side": "Dr"
+            },
+            {
+              "account": "accounts payable",
+              "amount": "120.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "ap-node"
+        },
+        {
+          "lines": [
+            {
+              "account": "accounts payable",
+              "amount": "100.00",
+              "side": "Dr"
+            },
+            {
+              "account": "cash",
+              "amount": "100.00",
+              "side": "Cr"
+            }
+          ],
+          "owner": "ap-node"
+        }
+      ],
+      "limitations": [
+        "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+        "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+      ],
+      "open_items": [],
+      "reporting": [
+        "Framework-specific statement presentation and comparative-period consistency",
+        "Material accrual uncertainty, expense/asset classification, related parties and supplier financing require separate disclosure review."
+      ],
+      "required_approvals": [
+        "Accounting judgment memo",
+        "Calculation and reconciliation",
+        "Disclosure tie-out",
+        "Input evidence",
+        "Reviewer certification"
+      ],
+      "status": "complete"
+    }
+  ],
+  "decisions": [],
+  "diagnostics": [],
+  "economic_ledger": [],
+  "entities": [
+    "Synthetic Group"
+  ],
+  "evidence_refs": [],
+  "execution_ledger": [
+    {
+      "batch": [
+        "ap-node"
+      ],
+      "case_fingerprint": "54a6f0b3afd6b5e5b43aabe28afe7c46bce0f5add0861ba9d56c9f2235f741e7",
+      "node": "ap-node",
+      "status": "complete"
+    }
+  ],
+  "facts": {
+    "assumed": [
+      "Synthetic amounts and assumptions for regression only"
+    ],
+    "disputed": [],
+    "established": [
+      {
+        "attribute": "entity",
+        "value": "Synthetic Group"
+      },
+      {
+        "attribute": "framework",
+        "value": "IFRS"
+      },
+      {
+        "attribute": "jurisdiction",
+        "value": "NL"
+      },
+      {
+        "attribute": "period_start",
+        "value": "2026-12-01"
+      },
+      {
+        "attribute": "reporting_period",
+        "value": "2026-12-31"
+      },
+      {
+        "attribute": "currency",
+        "value": "USD"
+      },
+      {
+        "attribute": "industry",
+        "value": "manufacturing"
+      },
+      {
+        "attribute": "materiality",
+        "value": "1000"
+      },
+      {
+        "attribute": "amount",
+        "id": "invoice-amount",
+        "semantic_status": "EXTRACTED",
+        "source_refs": [
+          "ap-simple:2"
+        ],
+        "value": "120"
+      }
+    ]
+  },
+  "frameworks": [
+    "IFRS"
+  ],
+  "handoff_ledger": [],
+  "id": "case",
+  "industries": [
+    "manufacturing"
+  ],
+  "journal_mapping_valid": false,
+  "judgments": [
+    "PO approval or invoice date alone does not prove receipt or asset/expense recognition.",
+    "Subsequent invoice differences require estimate/error and cutoff review before posting; reversal cannot erase an unsettled obligation."
+  ],
+  "jurisdictions": [
+    "NL"
+  ],
+  "knowledge_refs": [],
+  "materiality": "1000",
+  "memory_candidates": [
+    {
+      "attribute": "framework",
+      "conflict": false,
+      "effective_from": "2026-12-01",
+      "effective_to": null,
+      "id": "case-framework",
+      "learned_at": null,
+      "related_cases": [
+        "case"
+      ],
+      "source_case": "case",
+      "source_refs": [
+        "supplied-governed-context"
+      ],
+      "status": "PROPOSED",
+      "supersedes": [],
+      "value": "IFRS"
+    },
+    {
+      "attribute": "jurisdiction",
+      "conflict": false,
+      "effective_from": "2026-12-01",
+      "effective_to": null,
+      "id": "case-jurisdiction",
+      "learned_at": null,
+      "related_cases": [
+        "case"
+      ],
+      "source_case": "case",
+      "source_refs": [
+        "supplied-governed-context"
+      ],
+      "status": "PROPOSED",
+      "supersedes": [],
+      "value": "NL"
+    },
+    {
+      "attribute": "currency",
+      "conflict": false,
+      "effective_from": "2026-12-01",
+      "effective_to": null,
+      "id": "case-currency",
+      "learned_at": null,
+      "related_cases": [
+        "case"
+      ],
+      "source_case": "case",
+      "source_refs": [
+        "supplied-governed-context"
+      ],
+      "status": "PROPOSED",
+      "supersedes": [],
+      "value": "USD"
+    },
+    {
+      "attribute": "industry",
+      "conflict": false,
+      "effective_from": "2026-12-01",
+      "effective_to": null,
+      "id": "case-industry",
+      "learned_at": null,
+      "related_cases": [
+        "case"
+      ],
+      "source_case": "case",
+      "source_refs": [
+        "supplied-governed-context"
+      ],
+      "status": "PROPOSED",
+      "supersedes": [],
+      "value": "manufacturing"
+    }
+  ],
+  "objective": "What is the closing AP balance?",
+  "observer_ran": true,
+  "open_questions": [],
+  "opened_at": null,
+  "outcome": "complete",
+  "periods": [
+    "2026-12-01",
+    "2026-12-31"
+  ],
+  "requested_output": "Governed accounting intake review",
+  "skills_invoked": [
+    "accounts-payable"
+  ],
+  "status": "CLOSED",
+  "superseded_by": [],
+  "supersedes": [],
+  "title": "CAO accounting case",
+  "transitions": [
+    "OPEN",
+    "SCOPED",
+    "IN_PROGRESS",
+    "CHALLENGE",
+    "CONCLUDED",
+    "DOCUMENTED",
+    "CLOSED"
+  ],
+  "work_modes": {
+    "bounded_owner": "accounts-payable",
+    "interpretation": "Validated semantic work proposal",
+    "primary": "REPORTING",
+    "secondary": [],
+    "supporting": []
+  },
+  "workplan_nodes": [
+    {
+      "challenge_triggered": false,
+      "condition": null,
+      "dependencies": [],
+      "downstream_consumers": [],
+      "entity": "Synthetic Group",
+      "evidence": [
+        {
+          "native_evidence_fingerprint": "3627d1d3e11997ecb827aa1deb9dd33270d571518b8cae21ac11424e783a6018",
+          "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+        }
+      ],
+      "framework": "IFRS",
+      "id": "ap-node",
+      "invalidated_results": [],
+      "issue": "supplier_cost",
+      "iterations": 1,
+      "material": null,
+      "open_items": [],
+      "owner_result_dependencies": [],
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "prerequisites": [
+        "case_id",
+        "entity",
+        "entity_type",
+        "jurisdiction",
+        "framework",
+        "period_start",
+        "reporting_period",
+        "execution_date",
+        "policy_elections",
+        "applicability_review",
+        "evidence",
+        "judgment_memo",
+        "controls",
+        "knowledge_review"
+      ],
+      "reason_selected": "Validated source-supported work issue",
+      "required": true,
+      "result": {
+        "calculations": {
+          "accrual_backtests": [],
+          "closing_accruals": "0",
+          "closing_ap": "20",
+          "invoices": "120",
+          "opening_ap": "0",
+          "payments": "100",
+          "planned_reversals": []
+        },
+        "case_fingerprint": "54a6f0b3afd6b5e5b43aabe28afe7c46bce0f5add0861ba9d56c9f2235f741e7",
+        "conclusion": "Supplier invoices, payments and independently received unbilled liabilities reconciled.",
+        "open_items": [],
+        "skill_id": "SKILL-AP-001",
+        "status": "complete"
+      },
+      "rework_triggered": false,
+      "selected_skill": "accounts-payable",
+      "source_inputs": [
+        "supplier_cost"
+      ],
+      "status": "complete"
+    }
+  ]
+}
