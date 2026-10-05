@@ -1,0 +1,770 @@
+[
+  {
+    "id": "transform-rev-period-result",
+    "input_fingerprints": [
+      "5ac95f46dcda9e6a85f4d281cd691aea7b00846d8f8612d198d396136e9c5140"
+    ],
+    "method": "decimal",
+    "output": "500",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:9"
+    ]
+  },
+  {
+    "id": "transform-rev-price",
+    "input_fingerprints": [
+      "d43cdbcc87ebd9751e232d688fbaa4746e566e20d670926f7eea9cef9415e238"
+    ],
+    "method": "decimal",
+    "output": "12000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:2"
+    ]
+  },
+  {
+    "id": "transform-rev-progress",
+    "input_fingerprints": [
+      "0acdc25eb22b6771dffce825b3f0a4637d09fcff2a835cef88d354da638296da"
+    ],
+    "method": "decimal",
+    "output": "0.125",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:3"
+    ]
+  },
+  {
+    "id": "transform-rev-opening",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:4"
+    ]
+  },
+  {
+    "id": "transform-rev-contract-opening",
+    "input_fingerprints": [
+      "f9059394dbf69e4b30a098da8dc0e13cad5e0675265aa877cda3cdf128050f8b"
+    ],
+    "method": "decimal",
+    "output": "-1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:5"
+    ]
+  },
+  {
+    "id": "transform-rev-billings",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "revenue:7"
+    ]
+  },
+  {
+    "id": "transform-ar-opening-domestic",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:3"
+    ]
+  },
+  {
+    "id": "transform-ar-opening-foreign",
+    "input_fingerprints": [
+      "d6d3c6318a4582617a85821b502962b17d7f38a93c7e408a0ecf22516f560f71"
+    ],
+    "method": "decimal",
+    "output": "110",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:11"
+    ]
+  },
+  {
+    "id": "transform-ar-billings",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:19"
+    ]
+  },
+  {
+    "id": "transform-ar-receipt",
+    "input_fingerprints": [
+      "5790a680fefedbf19133663aaa8a9a440a0282ddc9c780269b28457d5281ec94"
+    ],
+    "method": "decimal",
+    "output": "250",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "receipts:3"
+    ]
+  },
+  {
+    "id": "transform-ar-applied",
+    "input_fingerprints": [
+      "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0"
+    ],
+    "method": "decimal",
+    "output": "200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "receipts:4"
+    ]
+  },
+  {
+    "id": "transform-ar-gl",
+    "input_fingerprints": [
+      "e77a381887476e075d64ffde5c8ae0c58f24ccc762061b649ed482a44a52ee91"
+    ],
+    "method": "decimal",
+    "output": "1520",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "ar_summary:1"
+    ]
+  },
+  {
+    "id": "transform-ecl-current-exposure",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:2"
+    ]
+  },
+  {
+    "id": "transform-ecl-aged-exposure",
+    "input_fingerprints": [
+      "595b499231f92b2bd7abf0211ed7607b1cb6831530fe4c1cd344aa174990ab88"
+    ],
+    "method": "decimal",
+    "output": "720",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:9"
+    ]
+  },
+  {
+    "id": "transform-ecl-current-rate",
+    "input_fingerprints": [
+      "6d759f8c2fc28d0a361935a3729383dbeefc6524993d130376c85a2129cb7950"
+    ],
+    "method": "decimal",
+    "output": "0.01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:3"
+    ]
+  },
+  {
+    "id": "transform-ecl-aged-rate",
+    "input_fingerprints": [
+      "be9ee1cca3388d3c57ab8b0c5bdec84fe69105d79969e162648d7d7cc3e29f70"
+    ],
+    "method": "decimal",
+    "output": "0.10",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:10"
+    ]
+  },
+  {
+    "id": "transform-ecl-opening",
+    "input_fingerprints": [
+      "046419ca5ecebeb34fdfe9dde8106ccee5ce39f8e4dd115e8ef20b869f8bed82"
+    ],
+    "method": "decimal",
+    "output": "20",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "allowance:1"
+    ]
+  },
+  {
+    "id": "transform-fx-opening",
+    "input_fingerprints": [
+      "d6d3c6318a4582617a85821b502962b17d7f38a93c7e408a0ecf22516f560f71"
+    ],
+    "method": "decimal",
+    "output": "110",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:4"
+    ]
+  },
+  {
+    "id": "transform-fx-initial-rate",
+    "input_fingerprints": [
+      "2bba8bd227c5f31309369957d115a72950933ae5bc468ba714b2d807fcfd26fc"
+    ],
+    "method": "decimal",
+    "output": "1.10",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:6"
+    ]
+  },
+  {
+    "id": "transform-fx-closing-rate",
+    "input_fingerprints": [
+      "c6c8b62a661fbde356147a070da7207352241528753db3756aa2efef8e59aac8"
+    ],
+    "method": "decimal",
+    "output": "1.20",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:7"
+    ]
+  },
+  {
+    "id": "transform-rec-ar",
+    "input_fingerprints": [
+      "e77a381887476e075d64ffde5c8ae0c58f24ccc762061b649ed482a44a52ee91"
+    ],
+    "method": "decimal",
+    "output": "1520",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "rec_pack:2"
+    ]
+  },
+  {
+    "id": "transform-rec-contract",
+    "input_fingerprints": [
+      "03145cc139ee502f482afba7be3546937b9390db15e8feadbd0904ebc69aa496"
+    ],
+    "method": "decimal",
+    "output": "-1300",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "rec_pack:6"
+    ]
+  },
+  {
+    "id": "transform-rec-allowance",
+    "input_fingerprints": [
+      "d0bb3cec1239d5ba4ba7b2b6123c5861f0ea33993f646d3f9a480c0f360c7eab"
+    ],
+    "method": "decimal",
+    "output": "-80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "rec_pack:9"
+    ]
+  },
+  {
+    "id": "transform-close-task-complete",
+    "input_fingerprints": [
+      "b5bea41b6c623f7c09f1bf24dcae58ebab3c0cdd90ad966bc43a45b44867e12b"
+    ],
+    "method": "boolean",
+    "output": true,
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "checklist:5"
+    ]
+  },
+  {
+    "id": "transform-close-duration",
+    "input_fingerprints": [
+      "2bf175f9655e7bb7357b9f0a7c6051465a5ae701104ffe741b98e852c0e4d460"
+    ],
+    "method": "decimal",
+    "output": "4",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "checklist:2"
+    ]
+  },
+  {
+    "id": "transform-close-journal",
+    "input_fingerprints": [
+      "21cee27a52b79f89fa2ccbfe8436f7fd5285a4f88027d07fc9a591f7a3178e80"
+    ],
+    "method": "decimal",
+    "output": "25",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "journals:2"
+    ]
+  },
+  {
+    "id": "transform-fs-revenue",
+    "input_fingerprints": [
+      "27c1cb9c7cf4dd1f82d7025e617d782759e1821ca881454fac52547d0df0782c"
+    ],
+    "method": "decimal",
+    "output": "-500",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "tb:20"
+    ]
+  },
+  {
+    "id": "transform-fs-ar",
+    "input_fingerprints": [
+      "e77a381887476e075d64ffde5c8ae0c58f24ccc762061b649ed482a44a52ee91"
+    ],
+    "method": "decimal",
+    "output": "1520",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "tb:5"
+    ]
+  },
+  {
+    "id": "transform-fs-liability",
+    "input_fingerprints": [
+      "03145cc139ee502f482afba7be3546937b9390db15e8feadbd0904ebc69aa496"
+    ],
+    "method": "decimal",
+    "output": "-1300",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "tb:11"
+    ]
+  },
+  {
+    "id": "transform-fs-allowance",
+    "input_fingerprints": [
+      "d0bb3cec1239d5ba4ba7b2b6123c5861f0ea33993f646d3f9a480c0f360c7eab"
+    ],
+    "method": "decimal",
+    "output": "-80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "tb:8"
+    ]
+  },
+  {
+    "id": "transform-disc-allowance",
+    "input_fingerprints": [
+      "9728ac83eb879c0a4dcb9544bf5aa3ec2050cf287d17966cca0572dd4cfc8ed1"
+    ],
+    "method": "decimal",
+    "output": "80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "notes:2"
+    ]
+  },
+  {
+    "id": "transform-analytics-cash",
+    "input_fingerprints": [
+      "ef9e4f2b658917d3d91ff2cee5288fd01874911b30662e8ded38e969d6cac187"
+    ],
+    "method": "decimal",
+    "output": "5250",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "receipts:6"
+    ]
+  },
+  {
+    "id": "transform-close-journal-effective_date",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "journals:3"
+    ]
+  },
+  {
+    "id": "transform-close-journal-approved_at",
+    "input_fingerprints": [
+      "4cb7f522c9ca5fb2d557edd6aafe1249e6f172ba5408c626ff527534e4267520"
+    ],
+    "method": "iso_date",
+    "output": "2027-01-02",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "journals:4"
+    ]
+  },
+  {
+    "id": "transform-close-journal-posted_at",
+    "input_fingerprints": [
+      "4cb7f522c9ca5fb2d557edd6aafe1249e6f172ba5408c626ff527534e4267520"
+    ],
+    "method": "iso_date",
+    "output": "2027-01-02",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "journals:5"
+    ]
+  },
+  {
+    "id": "transform-prior-revenue",
+    "input_fingerprints": [
+      "ec2e839dd4915639f27e89faafae41bb8ee7f8486ddc2a65d5ea83c11a613afe"
+    ],
+    "method": "decimal",
+    "output": "400",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:2"
+    ]
+  },
+  {
+    "id": "transform-prior-billings",
+    "input_fingerprints": [
+      "5ac95f46dcda9e6a85f4d281cd691aea7b00846d8f8612d198d396136e9c5140"
+    ],
+    "method": "decimal",
+    "output": "500",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:4"
+    ]
+  },
+  {
+    "id": "transform-prior-cash_collections",
+    "input_fingerprints": [
+      "ec1222ce9c7c365231224452297cd46b41f91e7ecbc50d1aeb683ccdd5852d45"
+    ],
+    "method": "decimal",
+    "output": "450",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:6"
+    ]
+  },
+  {
+    "id": "transform-prior-gross_ar",
+    "input_fingerprints": [
+      "775e1d008aaa4c8145b346ee51cd676a9342f583f0220bb0fcd3142d1e072976"
+    ],
+    "method": "decimal",
+    "output": "910",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:8"
+    ]
+  },
+  {
+    "id": "transform-prior-allowance",
+    "input_fingerprints": [
+      "046419ca5ecebeb34fdfe9dde8106ccee5ce39f8e4dd115e8ef20b869f8bed82"
+    ],
+    "method": "decimal",
+    "output": "20",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:10"
+    ]
+  },
+  {
+    "id": "transform-prior-contract_liability",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:12"
+    ]
+  },
+  {
+    "id": "transform-prior-contract_asset",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:14"
+    ]
+  },
+  {
+    "id": "transform-ar-old-domestic-invoice_date",
+    "input_fingerprints": [
+      "857dc79ced1b65cc16fe58145aacb1bfd1dc9a95240f3bfac06bd1eb6cf968c5"
+    ],
+    "method": "iso_date",
+    "output": "2026-10-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:4"
+    ]
+  },
+  {
+    "id": "transform-ar-old-domestic-due_date",
+    "input_fingerprints": [
+      "37e17f8cbb204123a1a93ab2ade330ee24a27cc4305b281cd507360510fb7fe1"
+    ],
+    "method": "iso_date",
+    "output": "2026-11-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:5"
+    ]
+  },
+  {
+    "id": "transform-ar-old-domestic-opening",
+    "input_fingerprints": [
+      "18d10c7d2b4b04aaf04254d1ae5d655a5dc0407cbcdd5a8c3986e985370f36ee"
+    ],
+    "method": "boolean",
+    "output": true,
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:8"
+    ]
+  },
+  {
+    "id": "transform-ar-old-foreign-invoice_date",
+    "input_fingerprints": [
+      "9770e6de784e0d441cb9cdf1499c69c839421b3882d2b00132e8b3f899ece9d9"
+    ],
+    "method": "iso_date",
+    "output": "2026-10-15",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:12"
+    ]
+  },
+  {
+    "id": "transform-ar-old-foreign-due_date",
+    "input_fingerprints": [
+      "68bbad58a1969b561d452f9d0d1029480bf2a576e56e3caa30766a8e150d1357"
+    ],
+    "method": "iso_date",
+    "output": "2026-11-15",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:13"
+    ]
+  },
+  {
+    "id": "transform-ar-old-foreign-opening",
+    "input_fingerprints": [
+      "18d10c7d2b4b04aaf04254d1ae5d655a5dc0407cbcdd5a8c3986e985370f36ee"
+    ],
+    "method": "boolean",
+    "output": true,
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:16"
+    ]
+  },
+  {
+    "id": "transform-ar-current-invoice_date",
+    "input_fingerprints": [
+      "6acf9310c02192cab48cdfeae19ab82af37f5c20d585b2916003e16d89ec701d"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:20"
+    ]
+  },
+  {
+    "id": "transform-ar-current-due_date",
+    "input_fingerprints": [
+      "ff883158e65e5b0a81c0913f90cbee1bc8f2ae3f181fe7f615e81a77ce3033d8"
+    ],
+    "method": "iso_date",
+    "output": "2027-01-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:21"
+    ]
+  },
+  {
+    "id": "transform-ar-current-opening",
+    "input_fingerprints": [
+      "076de6e730df0b4c3860877a0f619c6ac11f8aefd78313ac793a2a703c026869"
+    ],
+    "method": "boolean",
+    "output": false,
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:24"
+    ]
+  },
+  {
+    "id": "transform-ar-foreign-original",
+    "input_fingerprints": [
+      "d77ccb69e3f915ed75b4a2db3ff5893fdd0f433e02fdff100441fb843aae585b"
+    ],
+    "method": "decimal",
+    "output": "100",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "billing:15"
+    ]
+  },
+  {
+    "id": "transform-ecl-review-effective_from",
+    "input_fingerprints": [
+      "6acf9310c02192cab48cdfeae19ab82af37f5c20d585b2916003e16d89ec701d"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:4"
+    ]
+  },
+  {
+    "id": "transform-ecl-review-reviewed_on",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:5"
+    ]
+  },
+  {
+    "id": "transform-ecl-review-as_of",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "loss_rates:6"
+    ]
+  },
+  {
+    "id": "transform-prior-age-current",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:16"
+    ]
+  },
+  {
+    "id": "transform-prior-age-1_30",
+    "input_fingerprints": [
+      "775e1d008aaa4c8145b346ee51cd676a9342f583f0220bb0fcd3142d1e072976"
+    ],
+    "method": "decimal",
+    "output": "910",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:18"
+    ]
+  },
+  {
+    "id": "transform-prior-age-31_60",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:20"
+    ]
+  },
+  {
+    "id": "transform-prior-age-61_90",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:22"
+    ]
+  },
+  {
+    "id": "transform-prior-age-over90",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:24"
+    ]
+  },
+  {
+    "id": "transform-ageing-file-total",
+    "input_fingerprints": [
+      "a8f52fc775084f9d03284b0a66ad4f3f0ff80efd1828d2ddbc00fe108be8e593"
+    ],
+    "method": "decimal",
+    "output": "1515",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "ageing:12"
+    ]
+  },
+  {
+    "id": "transform-ageing-gl-total",
+    "input_fingerprints": [
+      "e77a381887476e075d64ffde5c8ae0c58f24ccc762061b649ed482a44a52ee91"
+    ],
+    "method": "decimal",
+    "output": "1520",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "ar_summary:2"
+    ]
+  },
+  {
+    "id": "transform-rec-checklist",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "checklist:3"
+    ]
+  },
+  {
+    "id": "transform-rec-pack-open",
+    "input_fingerprints": [
+      "d10a4bc9e0c1fa4e8f3d7ce2512b8756e47ca5fa451f373c39a1431bb88db49f"
+    ],
+    "method": "decimal",
+    "output": "5",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "rec_pack:3"
+    ]
+  }
+]

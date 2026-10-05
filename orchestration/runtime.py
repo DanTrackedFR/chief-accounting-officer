@@ -9,6 +9,7 @@ import hashlib
 import json
 from dataclasses import asdict, dataclass, field
 from decimal import Decimal
+from datetime import date
 from .registry import Registry, production
 from .intent import Intent, interpret
 from .planning import DeterministicPlanner, Graph, Node, Issue, FACT_ADAPTERS
@@ -91,8 +92,11 @@ class Case:
     economic_ledger: list = field(default_factory=list)
     observer_ran: bool = False
     journal_mapping_valid: bool = False
+    journal_ownership_ledger: list = field(default_factory=list)
     work_modes: dict = field(default_factory=dict)
     diagnostics: list = field(default_factory=list)
+    balance_diagnostics: dict = field(default_factory=dict)
+    close_observations: list = field(default_factory=list)
     accounting_questions: list = field(default_factory=list)
 
     def transition(self, target):
@@ -227,9 +231,17 @@ class CAO:
         # govern the actual upstream cost links inside Inventory/Analytics/etc.
         required_bridges=[('inventory-cost','financial-statements','cogs'),
             ('inventory-cost','balance-sheet-reconciliations','inventory_balance'),
-            ('revenue-recognition','financial-statements','revenue')]
+            ('revenue-recognition','financial-statements','revenue'),
+            ('accounts-receivable','financial-statements','ar_balance'),
+            ('financial-instruments-ecl','financial-statements','allowance'),
+            ('revenue-recognition','financial-statements','contract_balance'),
+            ('foreign-currency','financial-statements','monetary_fx'),
+            ('accounts-receivable','balance-sheet-reconciliations','ar_balance'),
+            ('financial-instruments-ecl','balance-sheet-reconciliations','allowance'),
+            ('revenue-recognition','balance-sheet-reconciliations','contract_balance')]
         for upstream,downstream,semantic in required_bridges:
             if upstream not in by_owner or downstream not in by_owner:continue
+            if semantic in ('contract_balance','monetary_fx') and 'accounts-receivable' not in by_owner:continue
             producer=by_owner[upstream];consumer=by_owner[downstream]
             if producer.id not in consumer.dependencies:consumer.dependencies.append(producer.id)
             matched=[b for b in bindings if b.get('producer')==producer.id and b.get('consumer')==consumer.id and b.get('semantic')==semantic]
@@ -303,7 +315,7 @@ class CAO:
         self._challenge(c,graph,inputs,request,context)
         analytics=next((n for n in graph.nodes.values() if n.selected_skill=='management-accounting-analytics'),None)
         if analytics and analytics.status not in ('complete','partial'):
-            c.diagnostics=[]
+            c.diagnostics=[];c.balance_diagnostics={}
         c.workplan_nodes=graph.record()
         unresolved=[n for n in graph.nodes.values() if n.status in ('blocked','partial')]
         critical=[n for n in unresolved if n.required or n.material is not False]
@@ -329,15 +341,20 @@ class CAO:
         analytics=next((n for n in g.nodes.values() if n.selected_skill=='management-accounting-analytics' and n.status in ('complete','partial')),None)
         if not analytics:return
         diagnostic=analytics.result['calculations'].get('diagnostic')
-        if not diagnostic:
+        balances=analytics.result['calculations'].get('balance_diagnostics')
+        if not diagnostic and not balances:
             if c.work_modes.get('primary')=='DIAGNOSTIC_ANALYTICS' or 'DIAGNOSTIC_ANALYTICS' in c.work_modes.get('secondary',[]):c.open_questions.append(dict(kind='blocking',question='Supply reviewed diagnostic periods, comparators and driver evidence to explain the movement'))
             return
         approval=inputs[analytics.selected_skill].get('reviewer_signoff',{})
         if approval.get('approved') is not True or approval.get('case_fingerprint')!=production.case_fingerprint(inputs[analytics.selected_skill]):return
-        if diagnostic['bridge']['metric']=='gross_profit' and diagnostic['bridge']['presentation_basis']!=context.get('gross_margin_basis'):
+        if diagnostic and diagnostic['bridge']['metric']=='gross_profit' and diagnostic['bridge']['presentation_basis']!=context.get('gross_margin_basis'):
             g.invalidate(analytics.id,'Diagnostic margin basis differs from approved company presentation policy');return
-        c.diagnostics=[copy.deepcopy(diagnostic)]
-        for question in diagnostic['accounting_questions']:
+        if diagnostic:c.diagnostics=[copy.deepcopy(diagnostic)]
+        if balances:c.balance_diagnostics=copy.deepcopy(balances)
+        questions=list(diagnostic['accounting_questions']) if diagnostic else []
+        for i,q in enumerate(balances.get('accounting_questions',[]) if balances else []):
+            questions.append(dict(q,id='balance-'+str(i),reason='Material receivable ageing requires governed accounting review'))
+        for question in questions:
             q=copy.deepcopy(question);owner=q['target_owner'];meta=self.registry.get(owner)
             existing=[n for n in g.nodes.values() if n.selected_skill==owner and n.issue!='diagnostic accounting follow-up']
             node=Node('diagnostic-'+q['id'],'diagnostic accounting follow-up',owner,q['reason'],context['entity'],context['framework'],c.periods,
@@ -382,14 +399,28 @@ class CAO:
             'inventory_balance':('inventory-cost',['closing_inventory'],'report'),
             'cogs':('inventory-cost',['cogs'],'report'),
             'revenue':('revenue-recognition',['period_revenue'],'report'),
+            'ar_balance':('accounts-receivable',['closing_ar'],'report'),
+            'allowance':('financial-instruments-ecl',['allowance'],'report'),
+            'credit_exposure':('accounts-receivable',['closing_ar'],'review'),
+            'contract_balance':('revenue-recognition',['contract_bridge','closing'],'report'),
+            'monetary_fx':('foreign-currency',['monetary_fx_profit'],'report'),
         }
+        if semantic.startswith('ar_ageing_') and semantic[10:] in ('current','1_30','31_60','61_90','over90'):
+            allowed[semantic]=('accounts-receivable',['ageing',semantic[10:]],'review')
         spec=allowed.get(semantic)
         if not spec or producer.selected_skill!=spec[0] or purpose!=spec[2] or (spec[1] is not None and path!=spec[1]):
             raise ValueError('Semantic owner metric mismatch')
         if semantic=='historical_purchase' and (len(path)!=3 or path[0]!='transactions' or path[2]!='initial'):
             raise ValueError('FX historical metric mismatch')
         value=number(at(producer.result['calculations'],path))
-        actual=number(at(inputs[consumer.selected_skill],b['target_path']))*number(b.get('sign',1))
+        sign=number(b.get('sign',1))
+        if semantic in ('ar_balance','credit_exposure') or semantic.startswith('ar_ageing_'):
+            if sign!=1:raise ValueError('Receivable exposure sign cannot invert')
+        if semantic in ('contract_balance','allowance') and consumer.selected_skill=='financial-statements':
+            row=at(inputs[consumer.selected_skill],b['target_path'][:-1])
+            category='asset' if semantic=='allowance' or value>=0 else 'liability'
+            if row.get('category')!=category:raise ValueError('Owner balance statement classification differs')
+        actual=number(at(inputs[consumer.selected_skill],b['target_path']))*sign
         if actual!=value or number(b['amount'])!=value: raise ValueError('Owner and consumer amount contradiction')
         if not isinstance(b.get('economic_id'),str) or not b['economic_id'] or not b.get('qualification_evidence'):
             raise ValueError('Economic identity and eligible-cost evidence required')
@@ -430,6 +461,28 @@ class CAO:
             if n.status=='complete':
                 fresh=production.assess_case(n.selected_skill,inputs[n.selected_skill])
                 if digest(fresh)!=digest(n.result): flag([n.id],'STALE_OWNER','Owner result changed during challenge')
+        ar=next((n for n in g.nodes.values() if n.selected_skill=='accounts-receivable' and n.status=='complete'),None)
+        ecl=next((n for n in g.nodes.values() if n.selected_skill=='financial-instruments-ecl' and n.status=='complete'),None)
+        if ar and ecl:
+            ec=inputs[ecl.selected_skill];ac=ar.result['calculations'];gross=ecl.result['calculations']['gross_carrying_amount']
+            valid=number(gross)==number(ac['closing_ar'])
+            if ec['credit']['method']=='loss_rate':
+                valid=valid and all(sum((number(t['exposure']) for t in scenario['terms']),Decimal(0))==number(gross) for scenario in ec['credit']['scenarios'])
+                review=ec['credit'].get('loss_rate_review',{})
+                try:
+                    dates={key:date.fromisoformat(review[key]) for key in ('as_of','effective_from','reviewed_on')}
+                    valid=valid and all(dates[key].isoformat()==review[key] for key in dates) and dates['as_of']==date.fromisoformat(c.periods[1]) and dates['effective_from']<=date.fromisoformat(c.periods[0])<=dates['reviewed_on']<=date.fromisoformat(ec['execution_date']) and bool(review['source_version'].strip())
+                    rows=review['rows']
+                    valid=valid and all(scenario['terms']==rows for scenario in ec['credit']['scenarios'])
+                    valid=valid and all(number(t['exposure'])==number(ac['ageing'][t['bucket']]) for t in rows)
+                    valid=valid and {t['bucket'] for t in rows}=={bucket for bucket,amount in ac['ageing'].items() if number(amount)!=0}
+                except (KeyError,TypeError,ValueError):valid=False
+            if not valid:flag([ecl.id],'AR_ECL_EXPOSURE','Reviewed credit exposure does not reconcile to current governed receivables')
+        close_owner=next((n for n in g.nodes.values() if n.selected_skill=='month-end-close' and n.status=='complete'),None)
+        if close_owner:
+            source=inputs['month-end-close']
+            c.close_observations=[dict(kind='late_posting',effective_date=j['posting_date'],posted_at=j['posted_at'],approval_date=j['approval_date'],amount=str(sum((number(l['amount']) for l in j['lines'] if l['side']=='Dr'),Decimal(0))),status='supported_cutoff_and_approval') for j in source['journals'] if j['posted_at']>c.periods[1]]
+            if source['close']['reopened']:c.close_observations.append(dict(kind='reopened_period',status='authorized_and_reclosed'))
         # Cross-owner delivered quantity is not established by a revenue amount.
         # Require a reconciliation if an actual contract source supplies units.
         inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
@@ -484,20 +537,73 @@ class CAO:
         native=[dict(owner=n.selected_skill,case_fingerprint=n.result['case_fingerprint'],journals=n.result.get('journal_entry_implications',[]))
             for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
         payload=dict(mapping=mapping,native_owner_journals=native)
+        if 'journal_ownership' in request:payload['journal_ownership']=request['journal_ownership']
         if review.get('payload_fingerprint')!=digest(payload) or review.get('approved') is not True or not review.get('reviewer') or review.get('reviewer')==review.get('preparer'):
             raise ValueError('Mapped journal pack requires independent exact-payload review')
         delta={}
-        for owner in native:
-            for journal in owner['journals']:
-                for line in journal:
-                    account=mapping.get(line['account'],line['account'])
-                    delta[account]=delta.get(account,Decimal(0))+number(line['amount'])*(1 if line['side']=='Dr' else -1)
+        selected,ledger=self._qualified_journals(native,mapping,request.get('journal_ownership'))
+        if c is not None:c.journal_ownership_ledger=ledger;c._journal_mapping=copy.deepcopy(mapping)
+        for entry in selected:
+            for line in entry['lines']:
+                account=mapping.get(line['account'],line['account'])
+                delta[account]=delta.get(account,Decimal(0))+number(line['amount'])*(1 if line['side']=='Dr' else -1)
         source=inputs[reporting.selected_skill]
         current={row['id']:number(row['balance']) for row in source['current_tb']}
         opening={row['id']:number(row['balance']) for row in source['comparative_tb']}
         for account in set(delta)|set(current)|set(opening):
             if delta.get(account,Decimal(0))!=current.get(account,Decimal(0))-opening.get(account,Decimal(0)):
                 raise ValueError('Mapped owner journals disagree with reviewed statement GL movement: '+account)
+
+    @staticmethod
+    def _qualified_journals(native,mapping,ownership=None):
+        """Retain all implications; count independently qualified economic events once.
+
+        Witness sets must match the entire mapped debit/credit population (gross,
+        not just net balance). Every native journal appears exactly once. Runtime
+        creates neither source-event identity nor reviewer authorization.
+        """
+        journals={(r['owner'],i):j for r in native for i,j in enumerate(r['journals'])}
+        if ownership is None:
+            return [dict(owner=owner,index=i,lines=copy.deepcopy(j)) for (owner,i),j in journals.items()],[]
+        if not isinstance(ownership,list) or not ownership:raise ValueError('Reviewed journal economic-event population required')
+        used={};events=set();selected=[];ledger=[]
+        atoms={(owner,i,line):number(v['amount']) for (owner,i),j in journals.items() for line,v in enumerate(j)}
+        def resolve(refs):
+            if not isinstance(refs,list) or not refs:raise ValueError('Journal reference population required')
+            out=[];total={}
+            for ref in refs:
+                if not isinstance(ref,dict) or set(ref) not in ({'owner','index'},{'owner','index','line','amount'}) or type(ref['index']) is not int:raise ValueError('Invalid journal reference')
+                key=(ref['owner'],ref['index'])
+                if key not in journals:raise ValueError('Native journal absent')
+                if 'line' in ref:
+                    if type(ref['line']) is not int or not 0<=ref['line']<len(journals[key]):raise ValueError('Native journal line absent')
+                    indexes=[ref['line']]
+                else:indexes=list(range(len(journals[key])))
+                lines=[]
+                for i in indexes:
+                    line=copy.deepcopy(journals[key][i]);token=key+(i,)
+                    amount=number(ref['amount']) if 'line' in ref else number(line['amount'])
+                    if line['side'] not in ('Dr','Cr') or amount<0 or amount>atoms[token]:raise ValueError('Invalid journal line allocation')
+                    if atoms[token]==0 and token in used:raise ValueError('Zero journal implication consumed twice')
+                    used[token]=used.get(token,Decimal(0))+amount
+                    if used[token]>atoms[token]:raise ValueError('Journal implications consumed twice')
+                    line['amount']=str(amount);lines.append(line)
+                    account=(mapping.get(line['account'],line['account']),line['side'])
+                    total[account]=total.get(account,Decimal(0))+amount
+                out.append(dict(owner=key[0],index=key[1],lines=lines))
+            if sum((v for (account,side),v in total.items() if side=='Dr'),Decimal(0))!=sum((v for (account,side),v in total.items() if side=='Cr'),Decimal(0)):raise ValueError('Economic journal allocation is not balanced')
+            return out,{k:v for k,v in total.items() if v}
+        for event in ownership:
+            if not isinstance(event,dict) or set(event)!={'economic_id','primary','witnesses','evidence'} or not isinstance(event['economic_id'],str) or not event['economic_id'] or not isinstance(event['evidence'],str) or not event['evidence']:raise ValueError('Qualified journal event identity/evidence required')
+            if event['economic_id'] in events:raise ValueError('Duplicate journal economic identity')
+            events.add(event['economic_id']);actual,totals=resolve(event['primary']);selected.append(dict(owner=actual[0]['owner'],lines=[line for part in actual for line in part['lines']]))
+            if not isinstance(event['witnesses'],list):raise ValueError('Invalid journal witnesses')
+            for witness in event['witnesses']:
+                _,other=resolve(witness)
+                if other!=totals:raise ValueError('Corroborating journal economics differ from posting owner')
+            ledger.append(copy.deepcopy(event))
+        if used!=atoms:raise ValueError('Native journal implication population omitted or partially allocated')
+        return selected,ledger
 
     def _synthesis(self,c,g,context):
         values={}; journals=[]; controls=[]; reporting=[]; limits=[]; approvals=[]
@@ -506,12 +612,22 @@ class CAO:
             r=n.result
             # Numeric accounting authority is extracted by owner semantic, not
             # added indiscriminately across results.
-            metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',)}
+            metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',),'accounts-receivable':('closing_ar','billed','credits','applied_cash_and_deposits','unapplied_liability','fx_movement','bank_receipts'),'financial-instruments-ecl':('allowance','expense'),'foreign-currency':('monetary_fx_profit',)}
             for metric in metrics.get(n.selected_skill,()):
                 if metric in r.get('calculations',{}): values[metric]=str(number(r['calculations'][metric]))
             for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
+        if c.journal_mapping_valid and c.journal_ownership_ledger:
+            native=[dict(owner=n.selected_skill,journals=n.result.get('journal_entry_implications',[])) for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
+            # Verified at challenge against the approved mapping. Line-grain
+            # allocations retain bank receipt residuals without duplicate cash.
+            selected,_=self._qualified_journals(native,c._journal_mapping,c.journal_ownership_ledger)
+            journals=[dict(owner=r['owner'],lines=r['lines']) for r in selected]
+        revenue_owner=next((n for n in g.nodes.values() if n.selected_skill=='revenue-recognition' and n.status=='complete'),None)
+        if revenue_owner:
+            contract=number(revenue_owner.result['calculations']['contract_bridge']['closing'])
+            values.update(contract_asset=str(max(contract,0)),contract_liability=str(max(-contract,0)))
         inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
         if inventory:
             calc=inventory.result['calculations']
@@ -549,6 +665,21 @@ class CAO:
             for h in d['hypotheses']:limits.append('Hypothesis: '+h['hypothesis']+'; '+h['disposition']+' ('+h['evidence_class'].replace('_',' ')+').')
             for observation in d['observations']:limits.append(observation['observation']+'; observation only. '+observation['question'])
             if b['comparator_kind']!='actual':limits.append('Supplied '+b['comparator_kind']+' is an analytical comparator, not accounting actual or a new forecast.')
+        if c.balance_diagnostics:
+            d=c.balance_diagnostics
+            reporting=['Revenue, billed receivables, allowance and contract balances tie to reviewed statements.','Receivable FX is presented separately from revenue.']
+            if any(n.selected_skill=='disclosure-management' and n.status=='complete' for n in g.nodes.values()):reporting.append('The scoped monthly credit-loss note consumes reviewed allowance and statement results; external filing compliance is outside this review.')
+            status='The reviewed close balances reconcile' if c.outcome=='complete' else 'The close is partial: material source or close evidence remains unresolved'
+            text=status+'. Revenue changed from '+d['revenue']['prior']+' to '+d['revenue']['current']+', while bank collections changed from '+d['cash_collections']['prior']+' to '+d['cash_collections']['current']+'. Billings were '+d['billings']['current']+'; they are distinct from revenue and cash receipts. Gross billed receivables closed at '+d['bridges']['ar']['closing']+'. Contract liability closed at '+d['contract_liability']+'; it is not a receivable. The reviewed credit allowance closed at '+d['bridges']['allowance']['closing']+'. Receivable FX contributed '+d['fx_effect']+' to the AR movement, separately from billings and collections; it does not explain revenue growth. Unapplied cash of '+d['unapplied_cash']+' remains a customer liability.'
+            if c.close_observations:text+=' The period was reopened and reclosed under reviewed authorization; a late-posted journal has supported economic cutoff and approval and is not automatically an accounting error.'
+            text+=' Older unpaid invoices require collection follow-up; the supplied evidence does not establish why each customer paid late. The claim that collections only look worse because revenue grew is '+d['management_hypothesis']['disposition'].lower()+'. The accounting owners support the recognition, credit allowance and FX amounts; these are accounting effects, not evidence of a commercial accounting error.'
+            if c.outcome!='complete':text+=' Resolve the listed source/reconciliation contradictions before declaring the close clean. Preserve the original due dates and obtain the complete ageing export and reconciliation disposition.'
+            for q in c.accounting_questions:text+=' The allowance accounting check is '+('supported by the reviewed workpaper' if q['status']=='OWNER_RECHECK_SUPPORTED' else 'unresolved')+'.'
+            for name,b in d['bridges'].items():
+                values[name+'_residual']=b['residual']
+                if number(b['residual']):limits.append('Explicit '+name.replace('_',' ')+' bridge residual '+b['residual']+'.')
+            if d['dso']['current'] is not None:values['snapshot_collection_days']=d['dso']['current'];values['prior_snapshot_collection_days']=d['dso']['prior']
+            limits.append(d['dso']['formula']+'. '+d['dso']['limitation'])
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
         if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,

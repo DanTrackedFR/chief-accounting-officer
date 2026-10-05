@@ -130,6 +130,10 @@ def transform(value, method):
         n=Decimal(str(value))
         if not n.is_finite() or len(str(value))>100:raise ValueError('Amount invalid')
         return str(n)
+    if method=='boolean':
+        if type(value) is bool:return value
+        if value not in ('true','false'):raise ValueError('Explicit boolean required')
+        return value=='true'
     if method=='iso_date':
         if not isinstance(value,str) or date.fromisoformat(value).isoformat()!=value:raise ValueError('Ambiguous date')
         return value
@@ -220,7 +224,7 @@ class ProposalValidator:
                 if f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[context['period_start'],context['reporting_period']]:raise ValueError('Current fact period mismatch')
                 if 'framework' in f.dimensions and (f.dimensions['framework'] not in FRAMEWORKS or (context.get('framework') and f.dimensions['framework']!=context['framework'])):raise ValueError('Framework invalid or mismatched')
                 if 'currency' in f.dimensions and not re.fullmatch('[A-Z]{3}',f.dimensions['currency']):raise ValueError('Currency invalid')
-                if f.transformation not in {'identity','decimal','iso_date'}:raise ValueError('Unsafe transformation')
+                if f.transformation not in {'identity','decimal','iso_date','boolean'}:raise ValueError('Unsafe transformation')
                 if f.claim.status in {'EXTRACTED','OBSERVED','CALCULATED'}:
                     if len(f.claim.evidence)!=1 or transform(fields[f.claim.evidence[0]]['value'],f.transformation)!=f.claim.value:raise ValueError('Extracted fact differs from source/transformation')
                     if f.claim.status=='CALCULATED' and f.transformation=='identity':raise ValueError('Calculation method absent')
@@ -265,7 +269,15 @@ class ProposalValidator:
                 for dep in edges[id]:walk(dep)
                 active.remove(id);done.add(id)
             for id in edges:walk(id)
-            if proposal.bounded_owner and any(i.value['owner']!=proposal.bounded_owner.value for i in proposal.issues):raise ValueError('Simple inquiry over-routing')
+            if proposal.bounded_owner:
+                roots=[i.value['id'] for i in proposal.issues if i.value['owner']==proposal.bounded_owner.value]
+                needed=set()
+                def require(id):
+                    if id in needed:return
+                    needed.add(id)
+                    for dep in edges[id]:require(dep)
+                for id in roots:require(id)
+                if not roots or needed!=set(edges):raise ValueError('Simple inquiry over-routing')
             selected={i.value['owner'] for i in proposal.issues}
             if proposal.primary_mode.value=='DIAGNOSTIC_ANALYTICS' and 'management-accounting-analytics' not in selected:raise ValueError('Diagnostic owner omitted')
             for missing in proposal.missing_facts:

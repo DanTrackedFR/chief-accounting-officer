@@ -4,7 +4,7 @@ KEYS=('accounts','account_source','documents','imports','bridge_items','bridge_i
 def assess(c,claims):
     rs,docs=start(c,'accounts');p=c['governance_method']
     if any(flag(p,k) for k in ('budgeting','forecasting','investment_analysis','commercial_planning','generic_bi','manufactured_explanations','automatic_gl_correction')):raise ReviewRequired('Accounting analytics cannot become FP&A/BI or manufacture explanations/entries')
-    enum(p,'comparison_basis',{'prior_year_calendar_balance'});texts(p,'currency','signed_convention','metric_dictionary','threshold_memo')
+    enum(p,'comparison_basis',{'prior_year_calendar_balance','prior_month_calendar_balance'});texts(p,'currency','signed_convention','metric_dictionary','threshold_memo')
     independent_population(c,'account_source',rs,('account','currency','current_source_doc','prior_source_doc'))
     if len({r['account'] for r in rs})!=len(rs):raise ReviewRequired('Duplicate accounting metric/account')
     bridge=pack(c,'bridge_items','bridge_inventory');explanations=pack(c,'explanations','explanation_inventory');rec=pack(c,'reconciliations','reconciliation_inventory')
@@ -36,7 +36,11 @@ def assess(c,claims):
         if current_doc['currency']!=r['currency'] or prior_doc['currency']!=r['currency']:raise ReviewRequired('Accounting source metadata currency contradiction')
         current=current_doc['content'];prior=prior_doc['content']
         if current['period']!=[c['period_start'],c['reporting_period']]:raise ReviewRequired('Current accounting source period mismatch')
-        comparison(c,prior['period'])
+        if p['comparison_basis']=='prior_year_calendar_balance':comparison(c,prior['period'])
+        else:
+            from datetime import date,timedelta
+            a,b=[date.fromisoformat(x) for x in prior['period']];current_start=date.fromisoformat(c['period_start'])
+            if a.day!=1 or current_start.day!=1 or b+timedelta(days=1)!=current_start:raise ReviewRequired('Prior-month accounting comparator period mismatch')
         for data in (current,prior):
             if data['account']!=r['account'] or data['currency']!=r['currency'] or data['posted_only'] is not True or data['signed_convention']!=p['signed_convention']:raise ReviewRequired('Accounting source/report semantic or posted-state mismatch')
             lines=rows(data['records'],False);inventory(data,'inventory',lines)
@@ -76,5 +80,12 @@ def assess(c,claims):
         except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
             raise ReviewRequired('Malformed diagnostic source, dimensions or comparator') from exc
         open_items.extend(diagnostic['open_items'])
+    balance_diagnostics=None
+    if c.get('balance_diagnostics') is not None:
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('accounting_balance_diagnostics',ROOT/'skills/management-accounting-analytics/diagnostics.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        balance_diagnostics=module.assess_balances(c,docs)
+        open_items.extend(balance_diagnostics['open_items'])
     review_release(c,KEYS)
-    return output(c,'Controllership accounting-source, bridge and flux workpaper reconciled',dict(**totals,diagnostic=diagnostic,account_movements=deltas,on_time_reconciliation_count=ontime,reconciliation_population=len(rec),on_time_reconciliation_rate=Decimal(ontime)/len(rec)*100,material_open_reconciliations=material_open),['Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.'],open_items)
+    return output(c,'Controllership accounting-source, bridge and flux workpaper reconciled',dict(**totals,diagnostic=diagnostic,balance_diagnostics=balance_diagnostics,account_movements=deltas,on_time_reconciliation_count=ontime,reconciliation_population=len(rec),on_time_reconciliation_rate=Decimal(ontime)/len(rec)*100,material_open_reconciliations=material_open),['Calculated accounting movements and reconciled KPI facts only. Factual driver evidence is separate from qualified management interpretation; no invented explanations, autonomous budgets/forecasts, investment advice, BI application, automatic GL correction or statutory filing conclusion. Gross exposures remain visible.'],open_items)

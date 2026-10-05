@@ -1,0 +1,242 @@
+{
+  "accounting_questions": [
+    {
+      "amount": "80.00",
+      "issue": "Ageing deterioration and reviewed allowance",
+      "result_path": [
+        "allowance"
+      ],
+      "source_evidence": [
+        "balance-source"
+      ],
+      "status": "REQUIRES_OWNER",
+      "target_owner": "financial-instruments-ecl"
+    }
+  ],
+  "ageing": {
+    "change": {
+      "1_30": "-910",
+      "31_60": "720.00",
+      "61_90": "0",
+      "current": "800",
+      "over90": "0"
+    },
+    "current": {
+      "1_30": "0",
+      "31_60": "720.00",
+      "61_90": "0",
+      "current": "800",
+      "over90": "0"
+    },
+    "prior": {
+      "1_30": "910",
+      "31_60": "0",
+      "61_90": "0",
+      "current": "0",
+      "over90": "0"
+    }
+  },
+  "billings": {
+    "change": "300",
+    "current": "800",
+    "prior": "500"
+  },
+  "bridges": {
+    "allowance": {
+      "closing": "80.00",
+      "drivers": [
+        {
+          "amount": "60.00",
+          "label": "expense",
+          "owner_ref": {
+            "amount": "60.00",
+            "owner_import": "financial-instruments-ecl",
+            "result_path": [
+              "allowance_bridge",
+              "expense"
+            ]
+          }
+        },
+        {
+          "amount": "-0",
+          "label": "writeoffs",
+          "owner_ref": {
+            "amount": "0",
+            "owner_import": "financial-instruments-ecl",
+            "result_path": [
+              "allowance_bridge",
+              "writeoffs"
+            ]
+          }
+        },
+        {
+          "amount": "0",
+          "label": "recoveries",
+          "owner_ref": {
+            "amount": "0",
+            "owner_import": "financial-instruments-ecl",
+            "result_path": [
+              "allowance_bridge",
+              "recoveries"
+            ]
+          }
+        },
+        {
+          "amount": "0",
+          "label": "fx",
+          "owner_ref": {
+            "amount": "0",
+            "owner_import": "financial-instruments-ecl",
+            "result_path": [
+              "allowance_bridge",
+              "fx"
+            ]
+          }
+        },
+        {
+          "amount": "0.00",
+          "label": "net_interest_adjustment",
+          "owner_ref": {
+            "amount": "0.00",
+            "owner_import": "financial-instruments-ecl",
+            "result_path": [
+              "allowance_bridge",
+              "net_interest_adjustment"
+            ]
+          }
+        }
+      ],
+      "opening": "20",
+      "residual": "0.00",
+      "source_doc": "balance-source",
+      "unit": "USD"
+    },
+    "ar": {
+      "closing": "1520.00",
+      "drivers": [
+        {
+          "amount": "800",
+          "label": "Billed enforceable receivables",
+          "owner_ref": {
+            "amount": "800",
+            "owner_import": "accounts-receivable",
+            "result_path": [
+              "billed"
+            ]
+          }
+        },
+        {
+          "amount": "-200",
+          "label": "Cash and deposits applied",
+          "owner_ref": {
+            "amount": "200",
+            "owner_import": "accounts-receivable",
+            "result_path": [
+              "applied_cash_and_deposits"
+            ]
+          }
+        },
+        {
+          "amount": "0",
+          "label": "Approved credits",
+          "owner_ref": {
+            "amount": "0",
+            "owner_import": "accounts-receivable",
+            "result_path": [
+              "credits"
+            ]
+          }
+        },
+        {
+          "amount": "10.00",
+          "label": "Receivable FX",
+          "owner_ref": {
+            "amount": "10",
+            "owner_import": "accounts-receivable",
+            "result_path": [
+              "fx_movement"
+            ]
+          }
+        }
+      ],
+      "opening": "910",
+      "residual": "0.00",
+      "source_doc": "balance-source",
+      "unit": "USD"
+    },
+    "contract_net": {
+      "closing": "-1300.00",
+      "drivers": [
+        {
+          "amount": "500.00",
+          "label": "Revenue recognised",
+          "owner_ref": {
+            "amount": "500",
+            "owner_import": "revenue-recognition",
+            "result_path": [
+              "period_revenue"
+            ]
+          }
+        },
+        {
+          "amount": "-800",
+          "label": "Contract billings",
+          "owner_ref": {
+            "amount": "800",
+            "owner_import": "revenue-recognition",
+            "result_path": [
+              "contract_bridge",
+              "billings"
+            ]
+          }
+        }
+      ],
+      "opening": "-1000",
+      "residual": "0.00",
+      "source_doc": "balance-source",
+      "unit": "USD"
+    }
+  },
+  "cash_collections": {
+    "change": "-200",
+    "current": "250",
+    "prior": "450"
+  },
+  "collection_ratio": "0.3125",
+  "contract_asset": "0",
+  "contract_liability": "1300.00",
+  "dso": {
+    "current": "58.90",
+    "current_days": 31,
+    "current_denominator": "800",
+    "current_numerator": "1520.00",
+    "definition": {
+      "day_convention": "actual_calendar_days",
+      "denominator": "net_billings",
+      "method": "snapshot_gross_ar_net_billings",
+      "numerator": "gross_ar",
+      "status": "bounded_analytical_method"
+    },
+    "formula": "ending gross billed AR / period net billings * actual calendar days",
+    "limitation": "Snapshot billings-based collection indicator; not rolling DSO, revenue-based DSO or approved company policy. Invoicing timing and annual billing mix affect comparability.",
+    "prior": "54.60",
+    "prior_days": 30,
+    "prior_denominator": "500",
+    "prior_numerator": "910",
+    "source_doc": "balance-source"
+  },
+  "fx_effect": "10.00",
+  "management_hypothesis": {
+    "accounting_authority": false,
+    "disposition": "REJECTED",
+    "hypothesis": "Collections only look worse because revenue grew",
+    "scope": "Absolute bank collections and recognised revenue; customer payment reasons require evidence"
+  },
+  "open_items": [],
+  "revenue": {
+    "change": "100.00",
+    "current": "500.00",
+    "prior": "400"
+  },
+  "unapplied_cash": "50"
+}

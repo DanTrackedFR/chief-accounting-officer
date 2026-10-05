@@ -1,0 +1,29 @@
+{
+  "collection_ratio": "0.3125",
+  "dso": {
+    "current": "58.90",
+    "current_days": 31,
+    "current_denominator": "800",
+    "current_numerator": "1520.00",
+    "definition": {
+      "day_convention": "actual_calendar_days",
+      "denominator": "net_billings",
+      "method": "snapshot_gross_ar_net_billings",
+      "numerator": "gross_ar",
+      "status": "bounded_analytical_method"
+    },
+    "formula": "ending gross billed AR / period net billings * actual calendar days",
+    "limitation": "Snapshot billings-based collection indicator; not rolling DSO, revenue-based DSO or approved company policy. Invoicing timing and annual billing mix affect comparability.",
+    "prior": "54.60",
+    "prior_days": 30,
+    "prior_denominator": "500",
+    "prior_numerator": "910",
+    "source_doc": "balance-source"
+  },
+  "management_hypothesis": {
+    "accounting_authority": false,
+    "disposition": "REJECTED",
+    "hypothesis": "Collections only look worse because revenue grew",
+    "scope": "Absolute bank collections and recognised revenue; customer payment reasons require evidence"
+  }
+}

@@ -1,0 +1,892 @@
+[
+  {
+    "available_fact_ids": [
+      "rev-period-result",
+      "rev-price",
+      "rev-progress",
+      "rev-opening",
+      "rev-contract-opening",
+      "rev-billings",
+      "contract-wording-0",
+      "contract-wording-1",
+      "contract-wording-2",
+      "contract-wording-3"
+    ],
+    "family": "customer_contract",
+    "issue_id": "revenue-recognition",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "case_facts",
+      "evidence",
+      "framework_and_period",
+      "policy_elections",
+      "reviewed_assumptions"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "rev-period-result",
+        "refs": [
+          "revenue:9"
+        ]
+      },
+      {
+        "fact_id": "rev-price",
+        "refs": [
+          "revenue:2"
+        ]
+      },
+      {
+        "fact_id": "rev-progress",
+        "refs": [
+          "revenue:3"
+        ]
+      },
+      {
+        "fact_id": "rev-opening",
+        "refs": [
+          "revenue:4"
+        ]
+      },
+      {
+        "fact_id": "rev-contract-opening",
+        "refs": [
+          "revenue:5"
+        ]
+      },
+      {
+        "fact_id": "rev-billings",
+        "refs": [
+          "revenue:7"
+        ]
+      },
+      {
+        "fact_id": "contract-wording-0",
+        "refs": [
+          "contract:1"
+        ]
+      },
+      {
+        "fact_id": "contract-wording-1",
+        "refs": [
+          "contract:2"
+        ]
+      },
+      {
+        "fact_id": "contract-wording-2",
+        "refs": [
+          "contract:3"
+        ]
+      },
+      {
+        "fact_id": "contract-wording-3",
+        "refs": [
+          "contract:4"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "revenue-recognition",
+    "transformations": [
+      "transform-rev-period-result",
+      "transform-rev-price",
+      "transform-rev-progress",
+      "transform-rev-opening",
+      "transform-rev-contract-opening",
+      "transform-rev-billings"
+    ],
+    "unresolved_judgments": [
+      "contract-wording-0",
+      "contract-wording-1",
+      "contract-wording-2",
+      "contract-wording-3"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "ar-opening-domestic",
+      "ar-opening-foreign",
+      "ar-billings",
+      "ar-receipt",
+      "ar-applied",
+      "ar-gl",
+      "ar-old-domestic-invoice_id",
+      "ar-old-domestic-customer",
+      "ar-old-domestic-invoice_date",
+      "ar-old-domestic-due_date",
+      "ar-old-domestic-original_currency",
+      "ar-old-domestic-opening",
+      "ar-old-foreign-invoice_id",
+      "ar-old-foreign-customer",
+      "ar-old-foreign-invoice_date",
+      "ar-old-foreign-due_date",
+      "ar-old-foreign-original_currency",
+      "ar-old-foreign-opening",
+      "ar-current-invoice_id",
+      "ar-current-customer",
+      "ar-current-invoice_date",
+      "ar-current-due_date",
+      "ar-current-original_currency",
+      "ar-current-opening",
+      "ar-foreign-original",
+      "ageing-file-total",
+      "ageing-gl-total"
+    ],
+    "family": "receivable_population",
+    "issue_id": "accounts-receivable",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "invoices",
+      "receipts",
+      "credits",
+      "opening_customers",
+      "closing_customers",
+      "gl_ar",
+      "collections",
+      "handoffs"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "ar-opening-domestic",
+        "refs": [
+          "billing:3"
+        ]
+      },
+      {
+        "fact_id": "ar-opening-foreign",
+        "refs": [
+          "billing:11"
+        ]
+      },
+      {
+        "fact_id": "ar-billings",
+        "refs": [
+          "billing:19"
+        ]
+      },
+      {
+        "fact_id": "ar-receipt",
+        "refs": [
+          "receipts:3"
+        ]
+      },
+      {
+        "fact_id": "ar-applied",
+        "refs": [
+          "receipts:4"
+        ]
+      },
+      {
+        "fact_id": "ar-gl",
+        "refs": [
+          "ar_summary:1"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-invoice_id",
+        "refs": [
+          "billing:1"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-customer",
+        "refs": [
+          "billing:2"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-invoice_date",
+        "refs": [
+          "billing:4"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-due_date",
+        "refs": [
+          "billing:5"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-original_currency",
+        "refs": [
+          "billing:6"
+        ]
+      },
+      {
+        "fact_id": "ar-old-domestic-opening",
+        "refs": [
+          "billing:8"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-invoice_id",
+        "refs": [
+          "billing:9"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-customer",
+        "refs": [
+          "billing:10"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-invoice_date",
+        "refs": [
+          "billing:12"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-due_date",
+        "refs": [
+          "billing:13"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-original_currency",
+        "refs": [
+          "billing:14"
+        ]
+      },
+      {
+        "fact_id": "ar-old-foreign-opening",
+        "refs": [
+          "billing:16"
+        ]
+      },
+      {
+        "fact_id": "ar-current-invoice_id",
+        "refs": [
+          "billing:17"
+        ]
+      },
+      {
+        "fact_id": "ar-current-customer",
+        "refs": [
+          "billing:18"
+        ]
+      },
+      {
+        "fact_id": "ar-current-invoice_date",
+        "refs": [
+          "billing:20"
+        ]
+      },
+      {
+        "fact_id": "ar-current-due_date",
+        "refs": [
+          "billing:21"
+        ]
+      },
+      {
+        "fact_id": "ar-current-original_currency",
+        "refs": [
+          "billing:22"
+        ]
+      },
+      {
+        "fact_id": "ar-current-opening",
+        "refs": [
+          "billing:24"
+        ]
+      },
+      {
+        "fact_id": "ar-foreign-original",
+        "refs": [
+          "billing:15"
+        ]
+      },
+      {
+        "fact_id": "ageing-file-total",
+        "refs": [
+          "ageing:12"
+        ]
+      },
+      {
+        "fact_id": "ageing-gl-total",
+        "refs": [
+          "ar_summary:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "accounts-receivable",
+    "transformations": [
+      "transform-ar-opening-domestic",
+      "transform-ar-opening-foreign",
+      "transform-ar-billings",
+      "transform-ar-receipt",
+      "transform-ar-applied",
+      "transform-ar-gl",
+      "transform-ar-old-domestic-invoice_date",
+      "transform-ar-old-domestic-due_date",
+      "transform-ar-old-domestic-opening",
+      "transform-ar-old-foreign-invoice_date",
+      "transform-ar-old-foreign-due_date",
+      "transform-ar-old-foreign-opening",
+      "transform-ar-current-invoice_date",
+      "transform-ar-current-due_date",
+      "transform-ar-current-opening",
+      "transform-ar-foreign-original",
+      "transform-ageing-file-total",
+      "transform-ageing-gl-total"
+    ],
+    "unresolved_judgments": [
+      "ageing-file-total",
+      "ageing-gl-total"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "ecl-current-exposure",
+      "ecl-aged-exposure",
+      "ecl-current-rate",
+      "ecl-aged-rate",
+      "ecl-opening",
+      "ecl-review-effective_from",
+      "ecl-review-reviewed_on",
+      "ecl-review-as_of",
+      "ecl-review-source_version"
+    ],
+    "family": "credit_exposure",
+    "issue_id": "financial-instruments-ecl",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "case_facts",
+      "evidence",
+      "framework_and_period",
+      "policy_elections",
+      "reviewed_assumptions"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "ecl-current-exposure",
+        "refs": [
+          "loss_rates:2"
+        ]
+      },
+      {
+        "fact_id": "ecl-aged-exposure",
+        "refs": [
+          "loss_rates:9"
+        ]
+      },
+      {
+        "fact_id": "ecl-current-rate",
+        "refs": [
+          "loss_rates:3"
+        ]
+      },
+      {
+        "fact_id": "ecl-aged-rate",
+        "refs": [
+          "loss_rates:10"
+        ]
+      },
+      {
+        "fact_id": "ecl-opening",
+        "refs": [
+          "allowance:1"
+        ]
+      },
+      {
+        "fact_id": "ecl-review-effective_from",
+        "refs": [
+          "loss_rates:4"
+        ]
+      },
+      {
+        "fact_id": "ecl-review-reviewed_on",
+        "refs": [
+          "loss_rates:5"
+        ]
+      },
+      {
+        "fact_id": "ecl-review-as_of",
+        "refs": [
+          "loss_rates:6"
+        ]
+      },
+      {
+        "fact_id": "ecl-review-source_version",
+        "refs": [
+          "loss_rates:7"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "financial-instruments-ecl",
+    "transformations": [
+      "transform-ecl-current-exposure",
+      "transform-ecl-aged-exposure",
+      "transform-ecl-current-rate",
+      "transform-ecl-aged-rate",
+      "transform-ecl-opening",
+      "transform-ecl-review-effective_from",
+      "transform-ecl-review-reviewed_on",
+      "transform-ecl-review-as_of"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fx-opening",
+      "fx-initial-rate",
+      "fx-closing-rate"
+    ],
+    "family": "currency_exposure",
+    "issue_id": "foreign-currency",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "currency",
+      "items",
+      "translation",
+      "disposal"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fx-opening",
+        "refs": [
+          "fx:4"
+        ]
+      },
+      {
+        "fact_id": "fx-initial-rate",
+        "refs": [
+          "fx:6"
+        ]
+      },
+      {
+        "fact_id": "fx-closing-rate",
+        "refs": [
+          "fx:7"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "foreign-currency",
+    "transformations": [
+      "transform-fx-opening",
+      "transform-fx-initial-rate",
+      "transform-fx-closing-rate"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "rec-ar",
+      "rec-contract",
+      "rec-allowance",
+      "rec-checklist",
+      "rec-pack-open"
+    ],
+    "family": "reconciliation",
+    "issue_id": "balance-sheet-reconciliations",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "trial_balance",
+      "inventory",
+      "reconciliations"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "rec-ar",
+        "refs": [
+          "rec_pack:2"
+        ]
+      },
+      {
+        "fact_id": "rec-contract",
+        "refs": [
+          "rec_pack:6"
+        ]
+      },
+      {
+        "fact_id": "rec-allowance",
+        "refs": [
+          "rec_pack:9"
+        ]
+      },
+      {
+        "fact_id": "rec-checklist",
+        "refs": [
+          "checklist:3"
+        ]
+      },
+      {
+        "fact_id": "rec-pack-open",
+        "refs": [
+          "rec_pack:3"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "balance-sheet-reconciliations",
+    "transformations": [
+      "transform-rec-ar",
+      "transform-rec-contract",
+      "transform-rec-allowance",
+      "transform-rec-checklist",
+      "transform-rec-pack-open"
+    ],
+    "unresolved_judgments": [
+      "rec-checklist",
+      "rec-pack-open"
+    ]
+  },
+  {
+    "available_fact_ids": [
+      "close-task-complete",
+      "close-duration",
+      "close-journal",
+      "close-journal-journal_id",
+      "close-journal-effective_date",
+      "close-journal-approved_at",
+      "close-journal-posted_at"
+    ],
+    "family": "close_calendar",
+    "issue_id": "month-end-close",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "tasks",
+      "journals",
+      "accruals",
+      "close"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "close-task-complete",
+        "refs": [
+          "checklist:5"
+        ]
+      },
+      {
+        "fact_id": "close-duration",
+        "refs": [
+          "checklist:2"
+        ]
+      },
+      {
+        "fact_id": "close-journal",
+        "refs": [
+          "journals:2"
+        ]
+      },
+      {
+        "fact_id": "close-journal-journal_id",
+        "refs": [
+          "journals:1"
+        ]
+      },
+      {
+        "fact_id": "close-journal-effective_date",
+        "refs": [
+          "journals:3"
+        ]
+      },
+      {
+        "fact_id": "close-journal-approved_at",
+        "refs": [
+          "journals:4"
+        ]
+      },
+      {
+        "fact_id": "close-journal-posted_at",
+        "refs": [
+          "journals:5"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "month-end-close",
+    "transformations": [
+      "transform-close-task-complete",
+      "transform-close-duration",
+      "transform-close-journal",
+      "transform-close-journal-effective_date",
+      "transform-close-journal-approved_at",
+      "transform-close-journal-posted_at"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "fs-revenue",
+      "fs-ar",
+      "fs-liability",
+      "fs-allowance"
+    ],
+    "family": "statement",
+    "issue_id": "financial-statements",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "presentation",
+      "current_tb",
+      "comparative_tb",
+      "comparative",
+      "cash_flow",
+      "equity_bridge",
+      "notes",
+      "checklist",
+      "coverage"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "fs-revenue",
+        "refs": [
+          "tb:20"
+        ]
+      },
+      {
+        "fact_id": "fs-ar",
+        "refs": [
+          "tb:5"
+        ]
+      },
+      {
+        "fact_id": "fs-liability",
+        "refs": [
+          "tb:11"
+        ]
+      },
+      {
+        "fact_id": "fs-allowance",
+        "refs": [
+          "tb:8"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "financial-statements",
+    "transformations": [
+      "transform-fs-revenue",
+      "transform-fs-ar",
+      "transform-fs-liability",
+      "transform-fs-allowance"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "disc-allowance"
+    ],
+    "family": "disclosure",
+    "issue_id": "disclosure-management",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "disc-allowance",
+        "refs": [
+          "notes:2"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "disclosure-management",
+    "transformations": [
+      "transform-disc-allowance"
+    ],
+    "unresolved_judgments": []
+  },
+  {
+    "available_fact_ids": [
+      "analytics-cash",
+      "prior-revenue",
+      "prior-billings",
+      "prior-cash_collections",
+      "prior-gross_ar",
+      "prior-allowance",
+      "prior-contract_liability",
+      "prior-contract_asset",
+      "prior-age-current",
+      "prior-age-1_30",
+      "prior-age-31_60",
+      "prior-age-61_90",
+      "prior-age-over90"
+    ],
+    "family": "analytics",
+    "issue_id": "management-accounting-analytics",
+    "missing_fields": [],
+    "owner_contract_inputs": [
+      "independent_source_inventory",
+      "current_approvals",
+      "qualified_framework_methods",
+      "reconciled_statement_population"
+    ],
+    "qualification_required": [
+      "native source evidence",
+      "knowledge review",
+      "applicability review",
+      "independent exact-case certification"
+    ],
+    "required_fields": [],
+    "review_required": true,
+    "source_mappings": [
+      {
+        "fact_id": "analytics-cash",
+        "refs": [
+          "receipts:6"
+        ]
+      },
+      {
+        "fact_id": "prior-revenue",
+        "refs": [
+          "prior:2"
+        ]
+      },
+      {
+        "fact_id": "prior-billings",
+        "refs": [
+          "prior:4"
+        ]
+      },
+      {
+        "fact_id": "prior-cash_collections",
+        "refs": [
+          "prior:6"
+        ]
+      },
+      {
+        "fact_id": "prior-gross_ar",
+        "refs": [
+          "prior:8"
+        ]
+      },
+      {
+        "fact_id": "prior-allowance",
+        "refs": [
+          "prior:10"
+        ]
+      },
+      {
+        "fact_id": "prior-contract_liability",
+        "refs": [
+          "prior:12"
+        ]
+      },
+      {
+        "fact_id": "prior-contract_asset",
+        "refs": [
+          "prior:14"
+        ]
+      },
+      {
+        "fact_id": "prior-age-current",
+        "refs": [
+          "prior:16"
+        ]
+      },
+      {
+        "fact_id": "prior-age-1_30",
+        "refs": [
+          "prior:18"
+        ]
+      },
+      {
+        "fact_id": "prior-age-31_60",
+        "refs": [
+          "prior:20"
+        ]
+      },
+      {
+        "fact_id": "prior-age-61_90",
+        "refs": [
+          "prior:22"
+        ]
+      },
+      {
+        "fact_id": "prior-age-over90",
+        "refs": [
+          "prior:24"
+        ]
+      }
+    ],
+    "status": "candidate",
+    "target_owner": "management-accounting-analytics",
+    "transformations": [
+      "transform-analytics-cash",
+      "transform-prior-revenue",
+      "transform-prior-billings",
+      "transform-prior-cash_collections",
+      "transform-prior-gross_ar",
+      "transform-prior-allowance",
+      "transform-prior-contract_liability",
+      "transform-prior-contract_asset",
+      "transform-prior-age-current",
+      "transform-prior-age-1_30",
+      "transform-prior-age-31_60",
+      "transform-prior-age-61_90",
+      "transform-prior-age-over90"
+    ],
+    "unresolved_judgments": []
+  }
+]

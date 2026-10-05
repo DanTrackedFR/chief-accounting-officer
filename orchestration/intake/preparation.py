@@ -7,6 +7,15 @@ from orchestration.planning import Issue, FACT_ADAPTERS
 from .sources import Inventory, fingerprint, canonical
 from .semantic import RequestContext, ProposalValidator, transform
 
+# Explicit semantic contracts prevent equal numbers from substituting a different
+# accounting concept. Extensions require a governed producer calculation path.
+OWNER_RESULT_PATHS = {
+    ('customer_contract', 'recognised_revenue'): ('revenue-recognition', ('period_revenue',)),
+    ('receivable_population', 'closing_ar'): ('accounts-receivable', ('closing_ar',)),
+    ('credit_exposure', 'closing_allowance'): ('financial-instruments-ecl', ('allowance',)),
+    ('currency_exposure', 'monetary_fx_profit'): ('foreign-currency', ('monetary_fx_profit',)),
+}
+
 @dataclass
 class IntakeResult:
     inventory: list = field(default_factory=list)
@@ -39,10 +48,20 @@ class Binding:
     path: tuple
     kind: str = 'current'
 
+@dataclass(frozen=True)
+class PopulationBinding:
+    source_id: str
+    source_column: str
+    owner: str
+    path: tuple
+    owner_key: str = 'id'
+    table: str = 'table'
+
 @dataclass
 class ReviewedInputPack:
     request: dict
     bindings: list
+    populations: list = field(default_factory=list)
 
 class GovernedPlanner:
     """Implements the existing Planner using validated, evidence-backed issues."""
@@ -125,7 +144,7 @@ class Intake:
                                 for key in ('currency','entity','comparator','unit'):
                                     original=source_row['original']
                                     if original.get(key) and original[key]!=f.dimensions.get(key):dimensions_ok=False
-                    if dimensions_ok and f.transformation=='decimal':row['promotion']='established'
+                    if dimensions_ok and (f.transformation in {'decimal','iso_date','boolean'} or (f.claim.status=='EXTRACTED' and f.transformation=='identity' and len(refs)==1 and refs[0]['location'].get('table'))):row['promotion']='established'
                 if f.transformation!='identity' and refs:
                     value=transform(refs[0]['value'],f.transformation)
                     result.transformations.append(dict(id='transform-'+f.id,source_fields=list(f.claim.evidence),
@@ -216,25 +235,45 @@ class Intake:
             for k,v in prepared._current.items():
                 if request.get('scope',{}).get(k)!=v:raise ValueError('Reviewed scope mismatch')
             candidates={r['id']:r for r in prepared.candidates};owners={FACT_ADAPTERS[f][0]:v for f,v in request.get('facts',{}).items() if f in FACT_ADAPTERS}
+            for population in pack.populations:
+                if not isinstance(population,PopulationBinding) or population.owner not in owners:raise ValueError('Invalid source population binding')
+                fields=[value for item in prepared.inventory for value in item['fields'].values() if value['source_id']==population.source_id and value['location'].get('table')==population.table and value['location'].get('column')==population.source_column]
+                ids=[value['value'] for value in fields]
+                native=at(owners[population.owner],list(population.path))
+                if not ids or not isinstance(native,list) or len(set(ids))!=len(ids) or sorted(ids)!=sorted(row[population.owner_key] for row in native):raise ValueError('Source and reviewed owner population differ')
             seen=set();bound=set()
             for binding in pack.bindings:
                 if not isinstance(binding,Binding) or binding.fact_id not in candidates or binding.owner not in owners:raise ValueError('Invalid owner binding')
                 c=candidates[binding.fact_id]
                 if c['promotion']!='established':raise ValueError('Unresolved source cannot become owner input')
-                if binding.kind=='current':
+                if binding.kind in ('current','owner_result'):
                     if c['dimensions'].get('comparator')!='actual':raise ValueError('Nonactual source cannot become current owner input')
                 elif binding.kind=='comparator':
-                    native=owners[binding.owner];comp=native.get('diagnostic',{}).get('comparator',{})
+                    native=owners[binding.owner];comp=(native.get('diagnostic') or {}).get('comparator',{})
                     kind=c['dimensions'].get('comparator');expected_kind='actual' if kind=='prior_actual' else kind
-                    if binding.owner!='management-accounting-analytics' or comp.get('kind')!=expected_kind or comp.get('period')!=c['dimensions'].get('period') or binding.path!=('documents',comp.get('doc'),'content','amount'):raise ValueError('Comparator binding contract mismatch')
+                    valid=comp.get('kind')==expected_kind and comp.get('period')==c['dimensions'].get('period') and binding.path==('documents',comp.get('doc'),'content','amount')
+                    balance=native.get('balance_diagnostics')
+                    if balance and isinstance(balance,dict) and set(balance)=={'doc'}:
+                        try:
+                            source=at(native,['documents',balance['doc'],'content'])
+                            valid=valid or (kind=='prior_actual' and source['prior_kind']=='actual' and source['prior_period']==c['dimensions'].get('period') and binding.path[:4]==('documents',balance['doc'],'content','prior') and len(binding.path) in (5,6))
+                        except (ValueError,KeyError,TypeError):pass
+                    if binding.owner!='management-accounting-analytics' or not valid:raise ValueError('Comparator binding contract mismatch')
                 else:raise ValueError('Unknown binding kind')
                 if c['candidate_owner'] and binding.owner!=c['candidate_owner']:raise ValueError('Owner binding crosses boundary')
                 target=(binding.owner,binding.path)
                 if target in seen:raise ValueError('Duplicate owner target')
                 seen.add(target);bound.add(binding.fact_id)
-                value=at(owners[binding.owner],list(binding.path))
-                if canonical(value)!=canonical(c['claim']['value']):raise ValueError('Reviewed owner input differs from prepared source fact')
-                prepared.lineage.append(dict(fact_id=c['id'],owner=binding.owner,owner_input_path=list(binding.path),
+                if binding.kind=='owner_result':
+                    if OWNER_RESULT_PATHS.get((c['family'],c['attribute']))!=(binding.owner,binding.path):raise ValueError('Owner result semantic metric contract mismatch')
+                    from orchestration.registry import production
+                    result=production.assess_case(binding.owner,owners[binding.owner])
+                    if result.get('status')!='complete':raise ValueError('Reviewed result binding requires qualified owner result')
+                    value=at(result['calculations'],list(binding.path))
+                else:value=at(owners[binding.owner],list(binding.path))
+                matches=number(value)==number(c['claim']['value']) if binding.kind=='owner_result' and c['transformation']=='decimal' else canonical(value)==canonical(c['claim']['value'])
+                if not matches:raise ValueError('Reviewed owner input differs from prepared source fact')
+                prepared.lineage.append(dict(fact_id=c['id'],owner=binding.owner,owner_input_path=list(binding.path),binding_kind=binding.kind,
                     extracted_fields=c['claim']['evidence'],source_lineage=c['lineage']))
             if any(c['promotion']=='established' and c['candidate_owner'] and c['id'] not in bound for c in candidates.values()):raise ValueError('Established owner fact omitted from reviewed mapping')
             selected={i.value['owner'] for i in prepared._proposal.issues}

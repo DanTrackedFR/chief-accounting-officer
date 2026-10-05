@@ -1,0 +1,40 @@
+{
+  "billings": "800",
+  "closing": "1300",
+  "formula": "opening contract liability + contract billings - recognised revenue = closing contract liability",
+  "governed_signed_contract_net": {
+    "closing": "-1300.00",
+    "drivers": [
+      {
+        "amount": "500.00",
+        "label": "Revenue recognised",
+        "owner_ref": {
+          "amount": "500",
+          "owner_import": "revenue-recognition",
+          "result_path": [
+            "period_revenue"
+          ]
+        }
+      },
+      {
+        "amount": "-800",
+        "label": "Contract billings",
+        "owner_ref": {
+          "amount": "800",
+          "owner_import": "revenue-recognition",
+          "result_path": [
+            "contract_bridge",
+            "billings"
+          ]
+        }
+      }
+    ],
+    "opening": "-1000",
+    "residual": "0.00",
+    "source_doc": "balance-source",
+    "unit": "USD"
+  },
+  "opening": "1000",
+  "recognised": "500",
+  "residual": "0"
+}

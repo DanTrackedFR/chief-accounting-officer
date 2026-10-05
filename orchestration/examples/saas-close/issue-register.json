@@ -1,0 +1,150 @@
+[
+  {
+    "capability": "customer_contract",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "revenue-recognition",
+    "material": null,
+    "owner": "revenue-recognition",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "customer_contract"
+    ]
+  },
+  {
+    "capability": "receivable_population",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "foreign-currency"
+    ],
+    "id": "accounts-receivable",
+    "material": null,
+    "owner": "accounts-receivable",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "receivable_population"
+    ]
+  },
+  {
+    "capability": "credit_exposure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "accounts-receivable"
+    ],
+    "id": "financial-instruments-ecl",
+    "material": null,
+    "owner": "financial-instruments-ecl",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "credit_exposure"
+    ]
+  },
+  {
+    "capability": "currency_exposure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "foreign-currency",
+    "material": null,
+    "owner": "foreign-currency",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "currency_exposure"
+    ]
+  },
+  {
+    "capability": "reconciliation",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "id": "balance-sheet-reconciliations",
+    "material": null,
+    "owner": "balance-sheet-reconciliations",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "reconciliation"
+    ]
+  },
+  {
+    "capability": "close_calendar",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [],
+    "id": "month-end-close",
+    "material": null,
+    "owner": "month-end-close",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "close_calendar"
+    ]
+  },
+  {
+    "capability": "statement",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "id": "financial-statements",
+    "material": null,
+    "owner": "financial-statements",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "statement"
+    ]
+  },
+  {
+    "capability": "disclosure",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "financial-statements",
+      "financial-instruments-ecl"
+    ],
+    "id": "disclosure-management",
+    "material": null,
+    "owner": "disclosure-management",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "disclosure"
+    ]
+  },
+  {
+    "capability": "analytics",
+    "condition": null,
+    "considerations": [],
+    "dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "id": "management-accounting-analytics",
+    "material": null,
+    "owner": "management-accounting-analytics",
+    "reason": "Validated source-supported work issue",
+    "required": true,
+    "source_inputs": [
+      "analytics"
+    ]
+  }
+]

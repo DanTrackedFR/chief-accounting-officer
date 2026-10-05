@@ -1,7 +1,7 @@
 ---
 id: SKILL-CLOSE-001
 name: Month-End Close & Journal Governance
-version: 1.0.0
+version: 1.0.1
 status: production
 primary_domain: "02"
 related_domains: ["02", "03", "04", "05", "07", "08", "09", "12"]
