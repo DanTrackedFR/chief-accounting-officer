@@ -36,6 +36,9 @@ def dimensions(c):
 def at(value, path):
     for k in path:
         if isinstance(value, list):
+            if type(k) is int:
+                if not 0 <= k < len(value): raise ValueError('Metric index absent')
+                value=value[k]; continue
             matches = [r for r in value if isinstance(r, dict) and r.get('id') == k]
             if len(matches) != 1: raise ValueError('Metric row absent or duplicated')
             value = matches[0]
@@ -239,14 +242,23 @@ class CAO:
             ('accounts-receivable','balance-sheet-reconciliations','ar_balance'),
             ('financial-instruments-ecl','balance-sheet-reconciliations','allowance'),
             ('revenue-recognition','balance-sheet-reconciliations','contract_balance')]
+        for upstream,semantics in [('debt-financing',['debt_base','debt_current','debt_noncurrent','interest_expense']),('derivatives-hedge-accounting',['derivative_balance','hedge_reserve','hedge_pnl','hedge_oci']),('cash-flow-reporting',['cash_balance','financing_cash','operating_cash'])]:
+            for semantic in semantics:required_bridges.append((upstream,'financial-statements',semantic))
+        if 'debt-financing' in by_owner and 'foreign-currency' in by_owner:required_bridges.append(('foreign-currency','financial-statements','monetary_fx'))
         for upstream,downstream,semantic in required_bridges:
             if upstream not in by_owner or downstream not in by_owner:continue
-            if semantic in ('contract_balance','monetary_fx') and 'accounts-receivable' not in by_owner:continue
+            if semantic=='contract_balance' and 'accounts-receivable' not in by_owner:continue
+            if semantic=='monetary_fx' and not {'accounts-receivable','debt-financing'} & set(by_owner):continue
             producer=by_owner[upstream];consumer=by_owner[downstream]
             if producer.id not in consumer.dependencies:consumer.dependencies.append(producer.id)
             matched=[b for b in bindings if b.get('producer')==producer.id and b.get('consumer')==consumer.id and b.get('semantic')==semantic]
             if len(matched)!=1:
                 consumer.status='blocked';consumer.open_items.append('Missing or duplicated qualified '+semantic+' owner bridge')
+        for b in bindings:
+            for component in b.get('components',[]):
+                dependency=component.get('producer')
+                if dependency not in graph.nodes:raise ValueError('Unknown composed owner dependency')
+                if dependency not in graph.nodes[b['consumer']].dependencies:graph.nodes[b['consumer']].dependencies.append(dependency)
         graph.validate(); c.accounting_issues=[asdict(i) for i in issues]
         c.transition('SCOPED'); c.transition('IN_PROGRESS')
         consumed=set(); owned={}; entries=set()
@@ -392,6 +404,17 @@ class CAO:
         if dimensions(inputs[producer.selected_skill]) != dimensions(inputs[consumer.selected_skill]): raise ValueError('Handoff dimensions differ')
         path=b['metric_path']; purpose=b['purpose']; semantic=b['semantic']
         allowed={
+            'debt_base':('debt-financing',None,'report'),
+            'debt_current':('debt-financing',None,'report'),
+            'debt_noncurrent':('debt-financing',None,'report'),
+            'interest_expense':('debt-financing',None,'report'),
+            'derivative_balance':('derivatives-hedge-accounting',None,'report'),
+            'hedge_reserve':('derivatives-hedge-accounting',None,'report'),
+            'hedge_pnl':('derivatives-hedge-accounting',None,'report'),
+            'hedge_oci':('derivatives-hedge-accounting',None,'report'),
+            'cash_balance':('cash-flow-reporting',['closing'],'report'),
+            'financing_cash':('cash-flow-reporting',['financing'],'report'),
+            'operating_cash':('cash-flow-reporting',['direct_operating'],'report'),
             'factory_labour':('employee-benefits-payroll',['expense'],'absorb'),
             'factory_depreciation':('fixed-assets',['depreciation'],'absorb'),
             'factory_supplier':('accounts-payable',['invoices'],'absorb'),
@@ -412,7 +435,25 @@ class CAO:
             raise ValueError('Semantic owner metric mismatch')
         if semantic=='historical_purchase' and (len(path)!=3 or path[0]!='transactions' or path[2]!='initial'):
             raise ValueError('FX historical metric mismatch')
+        tails={'debt_base':('debt','closing'),'debt_current':('debt','current'),'debt_noncurrent':('debt','noncurrent'),'interest_expense':('debt','effective_interest'),'derivative_balance':('derivatives','closing'),'hedge_reserve':('hedge_reserves','closing'),'hedge_pnl':('derivatives','ineffectiveness'),'hedge_oci':('hedge_reserves','recognized_oci')}
+        if semantic in tails and (len(path)!=3 or (path[0],path[2])!=tails[semantic]):raise ValueError('Owner metric path contradicts semantic')
         value=number(at(producer.result['calculations'],path))
+        components=b.get('components',[])
+        if components:
+            if semantic not in ('debt_base','debt_current','debt_noncurrent') or len(components)!=1:raise ValueError('Unsupported composed monetary balance')
+            component=components[0]
+            fxnode=graph.nodes.get(component.get('producer'))
+            if not fxnode or fxnode.selected_skill!='foreign-currency' or fxnode.status!='complete' or component.get('metric_path')!=['monetary_fx_profit'] or component.get('sign')!=-1:raise ValueError('Qualified monetary owner component required')
+            dc=inputs[producer.selected_skill];fc=inputs[fxnode.selected_skill]
+            if dimensions(dc)!=dimensions(fc) or len(dc['debt'])!=1 or len(fc['items'])!=1:raise ValueError('Monetary source population/dimensions differ')
+            debt=dc['debt'][0];item=fc['items'][0];base=producer.result['calculations']['debt'][0]
+            tx=fxnode.result['calculations']['transactions'][0]
+            if item['id']!=debt['id'] or item['side']!='liability' or item['type']!='monetary':raise ValueError('Wrong monetary debt source')
+            if number(debt['opening_carrying'])!=number(item['opening_book']) or number(base['repayments'])!=number(tx['settlement']) or number(base['effective_interest'])!=number(base['cash_interest']) or number(base['draws']) or number(base['eligible_cost']):raise ValueError('Monetary bridge outside qualified plain settled-interest liability scope')
+            if number(base['closing'])!=number(item['foreign_amount']-Decimal(0) if isinstance(item['foreign_amount'],Decimal) else item['foreign_amount'])*number(item['opening_rate'])-number(tx['settlement']):raise ValueError('Original currency base and principal differ')
+            if semantic!='debt_base' and number(value)!=number(base['closing']):raise ValueError('FX maturity allocation requires complete evidenced principal class')
+            value-=number(at(fxnode.result['calculations'],component['metric_path']))
+            if value!=number(tx['closing']):raise ValueError('Monetary closing liability bridge differs')
         sign=number(b.get('sign',1))
         if semantic in ('ar_balance','credit_exposure') or semantic.startswith('ar_ageing_'):
             if sign!=1:raise ValueError('Receivable exposure sign cannot invert')
@@ -431,7 +472,7 @@ class CAO:
         consumed.update((identity,metric_identity,target_identity))
         c.handoff_ledger.append(dict(producer=producer.id,consumer=consumer.id,semantic=semantic,
             metric_path=path,economic_id=b['economic_id'],amount=str(value),purpose=purpose,
-            fingerprint=producer.result['case_fingerprint'],qualification_evidence=b['qualification_evidence']))
+            fingerprint=producer.result['case_fingerprint'],components=copy.deepcopy(components),qualification_evidence=b['qualification_evidence']))
 
     def _economics(self,c,n,source,owned,entries):
         # Owner economic source identities are carried explicitly by source rows;
@@ -538,6 +579,16 @@ class CAO:
             for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
         payload=dict(mapping=mapping,native_owner_journals=native)
         if 'journal_ownership' in request:payload['journal_ownership']=request['journal_ownership']
+        if 'journal_event_sources' in request:payload['journal_event_sources']=request['journal_event_sources']
+        if request.get('journal_event_sources') is not None:
+            sources=request['journal_event_sources'];seen=set()
+            if not isinstance(sources,list) or len(sources)!=len(request.get('journal_ownership',[])):raise ValueError('Complete event source population required')
+            for event,source in zip(request['journal_ownership'],sources):
+                if set(source)!={'economic_id','entity','period','currency','origin','record','nature'} or source['economic_id']!=event['economic_id']:raise ValueError('Event source binding differs')
+                if (source['entity'],source['period'],source['currency'])!=(c.entities[0],c.periods,currency(inputs[reporting.selected_skill])):raise ValueError('Event source dimensions differ')
+                key=tuple(source[k] for k in ('origin','record','nature'))
+                if any(not isinstance(v,str) or not v.strip() for v in key) or key in seen:raise ValueError('Economic source counted twice under event aliases')
+                seen.add(key)
         if review.get('payload_fingerprint')!=digest(payload) or review.get('approved') is not True or not review.get('reviewer') or review.get('reviewer')==review.get('preparer'):
             raise ValueError('Mapped journal pack requires independent exact-payload review')
         delta={}

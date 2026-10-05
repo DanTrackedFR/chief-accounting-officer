@@ -54,11 +54,18 @@ def accounting_owner(c,id):
 
 def owner_assertion(c,r):
     imp=accounting_owner(c,r['owner_import']);path=r['result_path']
-    if not isinstance(path,list) or not path or any(not isinstance(x,str) or not x for x in path):raise ReviewRequired('Controlled owner result path required')
+    if not isinstance(path,list) or not path or any(not (isinstance(x,str) and x or type(x) is int and x>=0) for x in path):raise ReviewRequired('Controlled owner result path required')
     value=imp['result']['calculations']
     for k in path:
-        if not isinstance(value,dict) or k not in value:raise ReviewRequired('Owner result assertion is not available')
-        value=value[k]
+        if isinstance(value,list):
+            if type(k) is int and 0<=k<len(value):value=value[k]
+            elif isinstance(k,str):
+                matches=[row for row in value if isinstance(row,dict) and row.get('id')==k]
+                if len(matches)!=1:raise ReviewRequired('Owner result row absent or duplicated')
+                value=matches[0]
+            else:raise ReviewRequired('Owner result index outside population')
+        elif isinstance(value,dict) and isinstance(k,str) and k in value:value=value[k]
+        else:raise ReviewRequired('Owner result assertion is not available')
     if isinstance(value,(dict,list,bool)) or value is None:raise ReviewRequired('Only actual numeric owner facts may be imported')
     exact(r['amount'],value,'Completed accounting owner fact')
     return dec(value)

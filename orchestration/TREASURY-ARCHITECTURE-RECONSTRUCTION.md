@@ -1,0 +1,11 @@
+# Treasury architecture reconstruction
+
+Live main and PR #31 were read before branch creation. Baseline: a8e11237fbbfa0daeff74f47c75eae52b430c855, the actual merge commit of #31 (candidate a0c849046933a833fab25a1bf2b968d5870a0b8d). SaaS is integrated.
+
+Reconstructed architecture/system-overview, cao-agent, orchestration, case-management, company-accounting-memory, context-and-promotion and build-roadmap; interfaces public/semantic/diagnostic contracts; planning, intent, runtime, registry and intake source/semantic/preparation boundaries; all four existing integration handoffs and manufacturing/diagnostic/intake/SaaS fixtures, tests and generators; production execution and workflow gates.
+
+The architecture remains one CAO, existing Case graph and accounting execution boundary. Intake establishes source facts, never accounting approval. Synthetic reviewed workpapers are separately prepared in tests. Exact-case owner-result freshness, downstream invalidation, material questions, active challenge and public_record remain mandatory.
+
+Debt 1.0.0 executes narrowly evidenced actual/actual compound EIR, contractual PV, complete maturity and all-account GL bridges. FX 1.0.0 supplies monetary settlement/closing accounting. Hedge 1.0.0 consumes external whole-instrument valuations and separately measured designated risk; its existing first-year cash-flow reporting adapter excludes settlements/opening reserves. Cash 1.0.1 classifies actual bank activity using evidenced framework policy and reconciles direct/indirect/cash. FS 1.0.0 and reconciliations consume reviewed source rows. Analytics 1.2.0 already supports owner_flux, source_flux and rate_quantity; no version increase is warranted merely for using these methods. ECL and FV are excluded when no actual asset/valuation method requires them. Borrowing Costs is unavailable, distinct from debt-financing.
+
+Generic gaps: debt/cash semantic families and explicit owner/reporting metrics; independent event source identities across relabelled journal IDs. No second orchestrator, semantic engine or deduplication engine is introduced. Native debt base movement and separate monetary remeasurement must retain both accounting implications and one principal-payment posting.

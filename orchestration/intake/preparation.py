@@ -10,6 +10,9 @@ from .semantic import RequestContext, ProposalValidator, transform
 # Explicit semantic contracts prevent equal numbers from substituting a different
 # accounting concept. Extensions require a governed producer calculation path.
 OWNER_RESULT_PATHS = {
+    ('debt_population','closing_base'): ('debt-financing', ('debt',0,'closing')),
+    ('cash_activity','closing_cash'): ('cash-flow-reporting', ('closing',)),
+    ('derivative_contract','derivative_closing'): ('derivatives-hedge-accounting', ('derivatives','forward1','closing')),
     ('customer_contract', 'recognised_revenue'): ('revenue-recognition', ('period_revenue',)),
     ('receivable_population', 'closing_ar'): ('accounts-receivable', ('closing_ar',)),
     ('credit_exposure', 'closing_allowance'): ('financial-instruments-ecl', ('allowance',)),

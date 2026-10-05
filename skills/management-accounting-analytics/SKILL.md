@@ -1,7 +1,7 @@
 ---
 id: SKILL-ANALYTICS-001
 name: "Management Reporting & Accounting Analytics"
-version: 1.2.0
+version: 1.2.1
 status: production
 primary_domain: "08"
 related_domains: ["01", "02", "11"]
@@ -71,3 +71,6 @@ without inventing customer payment causes. Deteriorating ageing creates an ECL
 inquiry; the runtime must recheck the governed ECL owner. Unresolved accounting
 questions and material residuals prevent a clean close. No loss rates, FX rates,
 accounting recognition, posting or external compliance certification are inferred.
+
+## 1.2.1 integration correction
+Qualified numeric owner references may address an exact array index or unique native row ID as well as dictionary fields. This permits existing owner_flux/rate_quantity methods to consume Debt and Hedge outputs. Bounds, row uniqueness, fresh actual owner execution and exact-case review remain required; no accounting or analytical method is added.
