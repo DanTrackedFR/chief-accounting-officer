@@ -36,6 +36,12 @@ FACT_ADAPTERS = {
     'statement': ('financial-statements', ('current_tb',)),
     'disclosure': ('disclosure-management', ('requirements',)),
     'analytics': ('management-accounting-analytics', ('accounts',)),
+    'acquisition': ('business-combinations', ('acquisition',)),
+    'group_structure': ('consolidation', ('entities',)),
+    'intercompany': ('intercompany-accounting', ('pairs',)),
+    'foreign_operation': ('foreign-currency', ('translation',)),
+    'impairment_valuation': ('asset-impairment', ('unit',)),
+    'tax_temporary_difference': ('income-taxes', ('jurisdictions',)),
 }
 
 @dataclass

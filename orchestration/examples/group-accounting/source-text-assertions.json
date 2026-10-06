@@ -1,0 +1,112 @@
+[
+  {
+    "owner": "business-combinations",
+    "path": [
+      "qualified_legal_extract"
+    ],
+    "pattern": "\\A([\\s\\S]+)\\Z",
+    "source_id": "spa",
+    "transformation": "identity"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "consideration",
+      "cash"
+    ],
+    "pattern": "Price USD([0-9]+(?:\\.[0-9]+)?);",
+    "source_id": "spa",
+    "transformation": "decimal"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "nci",
+      "fair_value"
+    ],
+    "pattern": "NCI fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "source_id": "spa",
+    "transformation": "decimal"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "nci",
+      "ownership"
+    ],
+    "pattern": "([0-9]+(?:\\.[0-9]+)?)% voting rights",
+    "source_id": "spa",
+    "transformation": "percentage"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "acquisition",
+      "acquirer"
+    ],
+    "pattern": "acquired by ([A-Za-z][A-Za-z0-9-]*)\\.",
+    "source_id": "spa",
+    "transformation": "identity"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "acquisition",
+      "date"
+    ],
+    "pattern": "Signed completion (\\d{1,2} [A-Za-z]+ \\d{4})",
+    "source_id": "spa",
+    "transformation": "calendar_date"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "assets",
+      "land-uplift",
+      "asset_identity"
+    ],
+    "pattern": "Asset (LAND-[0-9]+)\\.",
+    "source_id": "appraisal",
+    "transformation": "identity"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "nci",
+      "fair_value"
+    ],
+    "pattern": "non-controlling 20% equity interest fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "source_id": "appraisal",
+    "transformation": "decimal"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "assets",
+      "land-uplift",
+      "amount"
+    ],
+    "pattern": "incremental land fair value USD([0-9]+(?:\\.[0-9]+)?), supported by an approved valuation report",
+    "source_id": "appraisal",
+    "transformation": "decimal"
+  },
+  {
+    "owner": "business-combinations",
+    "path": [
+      "qualified_nci_election"
+    ],
+    "pattern": "(Full-goodwill fair-value) NCI election approved",
+    "source_id": "policy",
+    "transformation": "identity"
+  },
+  {
+    "owner": "foreign-currency",
+    "path": [
+      "currency",
+      "functional"
+    ],
+    "pattern": "Subsidiary functional ([A-Z]{3})",
+    "source_id": "policy",
+    "transformation": "identity"
+  }
+]

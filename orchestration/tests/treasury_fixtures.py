@@ -26,7 +26,8 @@ SPAN=[SCOPE['period_start'],SCOPE['reporting_period']]
 OBJECTIVE='Can you review our treasury and financing position at December month-end, including the year-to-date movements? Interest expense is up, we have a USD loan and a derivative hedge, FX moved a lot, and the cash flow statement does not look right. I have attached the debt schedule, lender statements, FX report, derivative valuation, hedge documentation, bank activity, trial balance and cash flow support.'
 OPENING=[('Cash','2000','asset'),('Debt','-1000','liability'),('Opening equity','-1000','equity')]
 CURRENT=[('Cash','1720','asset'),('Debt','-880','liability'),('Derivative','40','asset'),('Opening equity','-1000','equity'),('Interest expense','80','expense'),('FX loss','80','expense'),('Hedge income','-4','revenue'),('Hedge OCI','-36','oci')]
-FAMILIES={pkg:family for family,(pkg,_) in FACT_ADAPTERS.items()}
+FAMILIES={}
+for family,(pkg,_) in FACT_ADAPTERS.items():FAMILIES.setdefault(pkg,family)
 
 def sources(clean=False):
  def raw(id,name,fmt,data,controlled=True):return RawSource(id,name,fmt,data,dict(entity=SCOPE['entity'],period=['2025-01-01','2025-12-31'] if id=='prior' else SPAN,currency='EUR',comparator='prior_actual' if id=='prior' else 'actual',version='frozen-1',source_system='Synthetic treasury export',controlled_export=controlled,as_of='2025-12-31' if id=='prior' else SPAN[1],extracted_at='2027-02-01'))

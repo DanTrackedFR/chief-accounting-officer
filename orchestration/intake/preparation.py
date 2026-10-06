@@ -1,5 +1,6 @@
 """Candidate resolution and audited owner preparation; never creates certification."""
 import copy
+import re
 from dataclasses import dataclass, field, asdict
 from orchestration.runtime import CAO, company_context, at, dimensions, digest, number
 from orchestration.intent import Intent
@@ -10,6 +11,7 @@ from .semantic import RequestContext, ProposalValidator, transform
 # Explicit semantic contracts prevent equal numbers from substituting a different
 # accounting concept. Extensions require a governed producer calculation path.
 OWNER_RESULT_PATHS = {
+    ('impairment_valuation','recoverable_value'): ('asset-impairment', ('recoverable',)),
     ('derivative_contract','effective'): ('derivatives-hedge-accounting', ('derivatives','*','effective')),
     ('derivative_contract','ineffective'): ('derivatives-hedge-accounting', ('derivatives','*','ineffectiveness')),
     ('derivative_contract','closing_reserve'): ('derivatives-hedge-accounting', ('hedge_reserves','*','closing')),
@@ -62,6 +64,7 @@ class PopulationBinding:
     path: tuple
     owner_key: str = 'id'
     table: str = 'table'
+    value_column: str = ''
 
 @dataclass(frozen=True)
 class DocumentBinding:
@@ -70,12 +73,26 @@ class DocumentBinding:
     owner: str
     path: tuple
 
+@dataclass(frozen=True)
+class TextAssertion:
+    """Reviewed single-capture extraction rule, tied to a native semantic input.
+
+    Patterns cannot authorize accounting. Missing/ambiguous passages block; the
+    original paragraph, source identity and exact owner target retain lineage.
+    """
+    source_id: str
+    owner: str
+    pattern: str
+    path: tuple
+    transformation: str = 'identity'
+
 @dataclass
 class ReviewedInputPack:
     request: dict
     bindings: list
     populations: list = field(default_factory=list)
     documents: list = field(default_factory=list)
+    text_assertions: list = field(default_factory=list)
 
 class GovernedPlanner:
     """Implements the existing Planner using validated, evidence-backed issues."""
@@ -249,6 +266,13 @@ class Intake:
             for k,v in prepared._current.items():
                 if request.get('scope',{}).get(k)!=v:raise ValueError('Reviewed scope mismatch')
             candidates={r['id']:r for r in prepared.candidates};owners={FACT_ADAPTERS[f][0]:v for f,v in request.get('facts',{}).items() if f in FACT_ADAPTERS}
+            for owner,native in owners.items():
+                manifest=native.get('source_semantic_controls')
+                if native.get('qualified_source_documents') and manifest is None:raise ValueError('Qualified source documents require reviewed semantic controls')
+                if manifest is not None:
+                    actual=dict(text_assertions=[asdict(x) for x in pack.text_assertions if x.owner==owner],
+                        populations=[asdict(x) for x in pack.populations if x.owner==owner])
+                    if canonical(manifest)!=canonical(actual):raise ValueError('Required reviewed source semantic-control population omitted or changed')
             for binding in pack.documents:
                 if not isinstance(binding,DocumentBinding) or binding.owner not in owners:raise ValueError('Invalid reviewed source document binding')
                 source=prepared._inventory.extractions.get(binding.source_id)
@@ -257,12 +281,37 @@ class Intake:
                 actual=dict(fingerprint=source.source['fingerprint'],metadata=source.source['metadata'])
                 if canonical(expected)!=canonical(actual):raise ValueError('Source document changed after separate accounting qualification')
                 prepared.lineage.append(dict(source_document=binding.source_id,owner=binding.owner,owner_input_path=list(binding.path),binding_kind='qualified_document',source_description=source.source['name']))
+            for assertion in pack.text_assertions:
+                if not isinstance(assertion,TextAssertion) or assertion.owner not in owners or len(assertion.pattern)>300:
+                    raise ValueError('Invalid reviewed text assertion')
+                extraction=prepared._inventory.extractions.get(assertion.source_id)
+                if not extraction or not extraction.blocks:raise ValueError('Text assertion source absent')
+                if assertion.transformation in ('decimal','calendar_date') and extraction.source['metadata'].get('entity')!=owners[assertion.owner]['entity']:raise ValueError('Text amount/date crosses source legal entity')
+                if assertion.transformation=='decimal' and extraction.source['metadata'].get('currency')!=dimensions(owners[assertion.owner])[-1]:raise ValueError('Text amount crosses source currency')
+                pattern=re.compile(assertion.pattern)
+                if pattern.groups!=1:raise ValueError('Single explicit text capture required')
+                matches=[(field,match.group(1)) for field in extraction.fields.values() for match in pattern.finditer(str(field['value']))]
+                if len(matches)!=1:raise ValueError('Missing or ambiguous source text assertion')
+                field,value=matches[0]
+                value=transform(value,assertion.transformation)
+                expected=at(owners[assertion.owner],list(assertion.path))
+                if canonical(value)!=canonical(expected):raise ValueError('Source text contradicts reviewed accounting input')
+                prepared.lineage.append(dict(source_document=assertion.source_id,extracted_fields=[field['id']],owner=assertion.owner,
+                    owner_input_path=list(assertion.path),binding_kind='reviewed_text_assertion',transformation=assertion.transformation))
             for population in pack.populations:
                 if not isinstance(population,PopulationBinding) or population.owner not in owners:raise ValueError('Invalid source population binding')
                 fields=[value for item in prepared.inventory for value in item['fields'].values() if value['source_id']==population.source_id and value['location'].get('table')==population.table and value['location'].get('column')==population.source_column]
                 ids=[value['value'] for value in fields]
                 native=at(owners[population.owner],list(population.path))
-                if not ids or not isinstance(native,list) or len(set(ids))!=len(ids) or sorted(ids)!=sorted(row[population.owner_key] for row in native):raise ValueError('Source and reviewed owner population differ')
+                expected_ids=list(native) if isinstance(native,dict) else [row[population.owner_key] for row in native] if isinstance(native,list) else []
+                if not ids or len(set(ids))!=len(ids) or sorted(ids)!=sorted(expected_ids):raise ValueError('Source and reviewed owner population differ')
+                if population.value_column:
+                    if not isinstance(native,dict):raise ValueError('Key/value population requires a native mapping')
+                    all_fields=prepared._inventory.fields()
+                    for keyfield in fields:
+                        related=[f for f in all_fields.values() if f['source_id']==population.source_id and f['location'].get('table')==population.table and f['location'].get('row')==keyfield['location'].get('row') and f['location'].get('column')==population.value_column]
+                        if len(related)!=1 or number(related[0]['value'])!=number(native[keyfield['value']]):raise ValueError('Keyed source population value differs')
+                    prepared.lineage.append(dict(source_document=population.source_id,owner=population.owner,owner_input_path=list(population.path),binding_kind='complete_keyed_population'))
             seen=set();bound=set()
             for binding in pack.bindings:
                 if not isinstance(binding,Binding) or binding.fact_id not in candidates or binding.owner not in owners:raise ValueError('Invalid owner binding')
@@ -283,6 +332,12 @@ class Intake:
                     if binding.owner!='management-accounting-analytics' or not valid:raise ValueError('Comparator binding contract mismatch')
                 else:raise ValueError('Unknown binding kind')
                 if c['candidate_owner'] and binding.owner!=c['candidate_owner']:raise ValueError('Owner binding crosses boundary')
+                native=owners[binding.owner]
+                if c['dimensions'].get('amount_currency'):
+                    if binding.owner!='intercompany-accounting' or binding.path[:1]!=('pairs',) or binding.path[-1] not in ('confirmed_a','confirmed_b') or at(native,list(binding.path[:-1])+['currency'])!=c['dimensions']['amount_currency']:raise ValueError('Nominal amount denomination differs from native owner contract')
+                if c['transformation']=='decimal' and c['dimensions'].get('entity')!=native['entity']:
+                    if len(binding.path)<4 or binding.path[:2]!=('entities',c['dimensions'].get('entity')) or binding.path[2]!='balances' or c['dimensions'].get('currency')!=dimensions(native)[-1]:
+                        raise ValueError('Numeric source entity/currency differs from semantic assembly target')
                 target=(binding.owner,binding.path)
                 if target in seen:raise ValueError('Duplicate owner target')
                 seen.add(target);bound.add(binding.fact_id)

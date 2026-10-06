@@ -1,0 +1,154 @@
+{
+  "account_movements": [
+    {
+      "movement": "285",
+      "percentage": null
+    }
+  ],
+  "balance_diagnostics": null,
+  "current_management": "285",
+  "current_statutory": "285",
+  "diagnostic": {
+    "accounting_questions": [
+      {
+        "amount": "285.00",
+        "id": "contribution-accounting",
+        "issue": "Group acquisition contribution",
+        "materiality": "1",
+        "reason": "Confirm analytical contribution against qualified consolidated statement result",
+        "result_path": [
+          "current",
+          "profit"
+        ],
+        "source_evidence": [
+          "group-drivers"
+        ],
+        "status": "REQUIRES_OWNER",
+        "target_owner": "financial-statements"
+      }
+    ],
+    "attribution_ledger": [
+      [
+        "Group",
+        "EUR",
+        [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "parent-result"
+      ],
+      [
+        "Group",
+        "EUR",
+        [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "post-acquisition-result"
+      ]
+    ],
+    "bridge": {
+      "change": "285",
+      "comparator_kind": "actual",
+      "comparator_version": "actual-v1",
+      "drivers": [
+        {
+          "category": "mixed",
+          "confidence": "high",
+          "contribution": "285",
+          "evidence_class": "bridge_attribution",
+          "id": "contribution-movement",
+          "label": "Standalone and supported post-acquisition contribution",
+          "lineage": {
+            "comparator": {
+              "doc": "group-prior",
+              "frozen_on": "2025-12-31",
+              "kind": "actual",
+              "period": [
+                "2025-01-01",
+                "2025-12-31"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "EUR",
+            "economic_components": [
+              [
+                "Group",
+                "EUR",
+                [
+                  "2026-01-01",
+                  "2026-12-31"
+                ],
+                "parent-result"
+              ],
+              [
+                "Group",
+                "EUR",
+                [
+                  "2026-01-01",
+                  "2026-12-31"
+                ],
+                "post-acquisition-result"
+              ]
+            ],
+            "effect": "movement",
+            "entity": "Group",
+            "method": "source_flux",
+            "native_component_allocation": null,
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "source_doc": "group-drivers",
+            "source_metric": "group profit",
+            "source_owner": "financial-statements",
+            "unit": "EUR"
+          },
+          "status": "SUPPORTED"
+        }
+      ],
+      "ending": "285",
+      "explained_amount": "285",
+      "explained_percent": "100",
+      "materiality": "1",
+      "metric": "account_balance",
+      "presentation_basis": "signed_balance",
+      "residual": "0",
+      "starting": "0",
+      "status": "RECONCILED",
+      "tolerance": "0.01",
+      "unit": "EUR"
+    },
+    "hypotheses": [
+      {
+        "confidence": "low",
+        "disposition": "REJECTED",
+        "evidence": [
+          "group-drivers"
+        ],
+        "evidence_class": "bridge_attribution",
+        "hypothesis": "Full-year subsidiary profit is acquisition contribution",
+        "id": "full-year-contribution",
+        "observation": "Acquisition completed midyear"
+      }
+    ],
+    "methods": [
+      {
+        "baseline": "supplied comparator",
+        "group": "contribution",
+        "interaction": "none",
+        "method": "source_flux",
+        "sign": 1
+      }
+    ],
+    "observations": [],
+    "open_items": []
+  },
+  "gross_movement": "285",
+  "gross_statutory": "285",
+  "material_open_reconciliations": 0,
+  "on_time_reconciliation_count": 1,
+  "on_time_reconciliation_rate": "100",
+  "prior_statutory": "0",
+  "reconciliation_population": 1
+}

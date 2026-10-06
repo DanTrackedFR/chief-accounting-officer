@@ -1,0 +1,666 @@
+[
+  {
+    "fact_id": "tax-asset",
+    "kind": "current",
+    "owner": "income-taxes",
+    "path": [
+      "jurisdictions",
+      0,
+      "differences",
+      0,
+      "asset_identity"
+    ]
+  },
+  {
+    "fact_id": "bc-asset",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "assets",
+      "land-uplift",
+      "asset_identity"
+    ]
+  },
+  {
+    "fact_id": "tax-effective",
+    "kind": "current",
+    "owner": "income-taxes",
+    "path": [
+      "acquisition_effective_date"
+    ]
+  },
+  {
+    "fact_id": "tax",
+    "kind": "current",
+    "owner": "income-taxes",
+    "path": [
+      "jurisdictions",
+      0,
+      "differences",
+      0,
+      "tax_base"
+    ]
+  },
+  {
+    "fact_id": "tax-rate",
+    "kind": "current",
+    "owner": "income-taxes",
+    "path": [
+      "jurisdictions",
+      0,
+      "differences",
+      0,
+      "reversal_rate"
+    ]
+  },
+  {
+    "fact_id": "tax-carrying",
+    "kind": "current",
+    "owner": "income-taxes",
+    "path": [
+      "jurisdictions",
+      0,
+      "differences",
+      0,
+      "carrying"
+    ]
+  },
+  {
+    "fact_id": "bc-costs",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "costs",
+      "direct"
+    ]
+  },
+  {
+    "fact_id": "bc-date",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "acquisition",
+      "date"
+    ]
+  },
+  {
+    "fact_id": "bc-price",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "consideration",
+      "cash"
+    ]
+  },
+  {
+    "fact_id": "bc-nci",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "nci",
+      "fair_value"
+    ]
+  },
+  {
+    "fact_id": "bc-owned",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "nci",
+      "ownership"
+    ]
+  },
+  {
+    "fact_id": "bc-cash",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "assets",
+      "cash",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "bc-fv",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "assets",
+      "land-uplift",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "bc-debt",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "liabilities",
+      "debt",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "bc-dtl",
+    "kind": "current",
+    "owner": "business-combinations",
+    "path": [
+      "liabilities",
+      "dtl",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "fx-close",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "translation",
+      "closing_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-open",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "translation",
+      "opening_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-profit-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "translation",
+      "profit_rate"
+    ]
+  },
+  {
+    "fact_id": "fx-post-profit",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "translation",
+      "profit"
+    ]
+  },
+  {
+    "fact_id": "fx-pre-revenue",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "records",
+      0,
+      "revenue"
+    ]
+  },
+  {
+    "fact_id": "fx-pre-expense",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "records",
+      0,
+      "expense"
+    ]
+  },
+  {
+    "fact_id": "fx-post-revenue",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "records",
+      1,
+      "revenue"
+    ]
+  },
+  {
+    "fact_id": "fx-post-expense",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "records",
+      1,
+      "expense"
+    ]
+  },
+  {
+    "fact_id": "ic-date",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "date"
+    ]
+  },
+  {
+    "fact_id": "ic-denomination",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "currency"
+    ]
+  },
+  {
+    "fact_id": "ic-rate-a",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "rate_a"
+    ]
+  },
+  {
+    "fact_id": "ic-rate-b",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "rate_b"
+    ]
+  },
+  {
+    "fact_id": "ic-a",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ]
+  },
+  {
+    "fact_id": "ic-b",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "confirmed_b"
+    ]
+  },
+  {
+    "fact_id": "ic-counterparty",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "entity_b"
+    ]
+  },
+  {
+    "fact_id": "ic-id",
+    "kind": "current",
+    "owner": "intercompany-accounting",
+    "path": [
+      "pairs",
+      0,
+      "transaction_id"
+    ]
+  },
+  {
+    "fact_id": "imp-fv",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "fv_less_costs"
+    ]
+  },
+  {
+    "fact_id": "imp-recoverable",
+    "kind": "owner_result",
+    "owner": "asset-impairment",
+    "path": [
+      "recoverable"
+    ]
+  },
+  {
+    "fact_id": "imp-cashflow",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "cash_flows",
+      0,
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "imp-rate",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "discount_rate"
+    ]
+  },
+  {
+    "fact_id": "imp-terminal",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "terminal_value"
+    ]
+  },
+  {
+    "fact_id": "imp-unit",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "unit",
+      "source_entity"
+    ]
+  },
+  {
+    "fact_id": "imp-fairvalue",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "fair_value"
+    ]
+  },
+  {
+    "fact_id": "imp-undiscounted",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "valuation",
+      "undiscounted"
+    ]
+  },
+  {
+    "fact_id": "imp-gw",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "assets",
+      "gw",
+      "carrying"
+    ]
+  },
+  {
+    "fact_id": "imp-net",
+    "kind": "current",
+    "owner": "asset-impairment",
+    "path": [
+      "assets",
+      "net-assets",
+      "carrying"
+    ]
+  },
+  {
+    "fact_id": "cons-power",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Subsidiary-US",
+      "control",
+      "substantive_power"
+    ]
+  },
+  {
+    "fact_id": "cons-link",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Subsidiary-US",
+      "control",
+      "power_returns_link"
+    ]
+  },
+  {
+    "fact_id": "cons-returns",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Subsidiary-US",
+      "control",
+      "variable_returns"
+    ]
+  },
+  {
+    "fact_id": "fs-profit",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "cash_flow",
+      "start_amount"
+    ]
+  },
+  {
+    "fact_id": "fs-nci",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "equity_bridge",
+      "nci",
+      "closing"
+    ]
+  },
+  {
+    "fact_id": "analytics-post",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "group-drivers",
+      "content",
+      "supported_post_profit"
+    ]
+  },
+  {
+    "fact_id": "analytics-parent",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "group-drivers",
+      "content",
+      "parent_profit"
+    ]
+  },
+  {
+    "fact_id": "analytics-group",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "accounts",
+      "cash-metric",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "disclosure-profit",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-1",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "note-goodwill",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-goodwill",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "note-nci",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-nci",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "note-translation-oci",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-translation-oci",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "note-deferred-tax",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-deferred-tax",
+      "amount"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-2",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "parent cash"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-3",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "investment"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-4",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "IC receivable"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-5",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "parent equity"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-6",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "parent revenue"
+    ]
+  },
+  {
+    "fact_id": "parent-tb-7",
+    "kind": "current",
+    "owner": "consolidation",
+    "path": [
+      "entities",
+      "Parent",
+      "balances",
+      "parent expense"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-2",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "cash"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-3",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "debt"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-4",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "IC payable"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-5",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "sub equity"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-6",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "sub revenue"
+    ]
+  },
+  {
+    "fact_id": "sub-tb-7",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "activity_selection",
+      "full_year_balances",
+      "sub expense"
+    ]
+  }
+]

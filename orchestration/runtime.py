@@ -5,6 +5,7 @@ actual upstream results; execution verifies them against this graph's fresh owne
 results. Future input preparation adapters must preserve that review boundary.
 """
 import copy
+import re
 import hashlib
 import json
 from dataclasses import asdict, dataclass, field
@@ -14,6 +15,7 @@ from .registry import Registry, production
 from .intent import Intent, interpret
 from .planning import DeterministicPlanner, Graph, Node, Issue, FACT_ADAPTERS
 from interfaces.public_output import public_record
+from .scopes import execution_scopes, scoped_context
 
 
 def digest(value):
@@ -175,7 +177,8 @@ class CAO:
         for k in ('entity', 'framework', 'jurisdiction', 'period_start', 'reporting_period', 'currency'):
             if not context.get(k): c.open_questions.append(dict(kind='blocking', question='Resolve '+k))
         if c.open_questions: raise ValueError('Resolve missing or disputed execution dimensions')
-        c.entities=[context['entity']]; c.periods=[context['period_start'],context['reporting_period']]
+        scopes=execution_scopes(context)
+        c.entities=[context['entity']]+sorted(e for e in scopes if e!=context['entity']); c.periods=[context['period_start'],context['reporting_period']]
         c.frameworks=[context['framework']]; c.jurisdictions=[context['jurisdiction']]
         c.industries = [context['industry']] if context.get('industry') else []
         c.materiality = context.get('materiality')
@@ -198,6 +201,7 @@ class CAO:
         inputs = {}
         for family, (owner, _) in FACT_ADAPTERS.items():
             if family in facts and isinstance(facts[family], dict):
+                if owner in inputs and digest(inputs[owner])!=digest(facts[family]):raise ValueError('Conflicting fact families for one production owner: '+owner)
                 inputs[owner] = copy.deepcopy(facts[family])
         # Find actual dependency source workpapers already contained in imports.
         queue = list(inputs.values())
@@ -211,7 +215,8 @@ class CAO:
         for i in issues:
             if not isinstance(i.id, str) or not i.id or not isinstance(i.owner, str): raise ValueError('Malformed issue identity')
             if type(i.required) is not bool or (i.material is not None and type(i.material) is not bool): raise ValueError('Invalid dependency materiality')
-            graph.add(Node(i.id, i.capability, i.owner, i.reason, context['entity'],context['framework'],c.periods,
+            node_context=scoped_context(context,inputs[i.owner]) if i.owner in inputs and self.registry.get(i.owner).get('production_available') else context
+            graph.add(Node(i.id, i.capability, i.owner, i.reason, node_context['entity'],node_context['framework'],[node_context['period_start'],node_context['reporting_period']],
                 prerequisites=self.registry.get(i.owner).get('context_requirements',{}).get('required',[]),
                 dependencies=list(i.dependencies),source_inputs=i.source_inputs,
                 owner_result_dependencies=list(i.dependencies),required=i.required,material=i.material,condition=i.condition))
@@ -228,6 +233,11 @@ class CAO:
             if b['consumer'] not in graph.nodes or b['producer'] not in graph.nodes: raise ValueError('Handoff owner node absent')
             n=graph.nodes[b['consumer']]
             if b['producer'] not in n.dependencies: n.dependencies.append(b['producer'])
+        for n in graph.nodes.values():
+            for receipt in inputs.get(n.selected_skill,{}).get('qualified_owner_results',[]):
+                upstream=receipt.get('producer')
+                if upstream not in graph.nodes:raise ValueError('Unknown specialist receipt producer')
+                if upstream not in n.dependencies:n.dependencies.append(upstream)
         by_owner={n.selected_skill:n for n in graph.nodes.values()}
         # Required combined-conclusion bridges are inferred, never made optional
         # by omission of caller-supplied handoffs. Native owner imports already
@@ -281,12 +291,17 @@ class CAO:
                 source=inputs.get(n.selected_skill)
                 if not isinstance(source, dict):
                     n.status='blocked'; n.open_items.append('Missing reviewed source workpaper for '+n.issue); continue
-                expected=(context['entity'],context['framework'],context['jurisdiction'],*c.periods,context['currency'])
+                node_context=scoped_context(context,source)
+                expected=(n.entity,n.framework,node_context['jurisdiction'],*n.period,node_context['currency'])
                 if dimensions(source) != expected:
                     n.status='blocked'; n.open_items.append('Owner entity/framework/jurisdiction/period/currency mismatch'); continue
                 if meta['applicable_frameworks'] and context['framework'] not in meta['applicable_frameworks']:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
+                    from .period_selection import validate_activity
+                    validate_activity(source)
+                    from .result_bindings import validate_receipts
+                    validate_receipts(n,graph,inputs,c)
                     for imp in source.get('imports', []):
                         matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package']]
                         producer=matches[0] if len(matches)==1 else None
@@ -301,7 +316,7 @@ class CAO:
                     production.to_public(r, 'answer_context')
                     if r.get('status')=='complete' and r.get('case_fingerprint')!=production.case_fingerprint(source):
                         raise ValueError('Stale exact-case certification')
-                    if r.get('status')=='complete' and (r.get('entities')!=[context['entity']] or r.get('framework')!=context['framework'] or r.get('jurisdiction')!=context['jurisdiction'] or r.get('periods')!=c.periods):
+                    if r.get('status')=='complete' and (r.get('entities')!=[n.entity] or r.get('framework')!=n.framework or r.get('jurisdiction')!=node_context['jurisdiction'] or r.get('periods')!=n.period):
                         raise ValueError('Owner result envelope dimensions differ')
                     n.result=r; n.status=r['status']; n.open_items=list(r.get('open_items',[])); n.evidence=copy.deepcopy(r.get('evidence',[]))
                     c.skills_invoked.append(n.selected_skill)
@@ -582,6 +597,12 @@ class CAO:
             findings=findings,passed=not findings)]
 
     def _journal_mapping(self,c,g,inputs,request,reporting):
+        if 'source_assembly_journals' in request:
+            from .journal_scopes import validate_assembly
+            native=[dict(owner=n.selected_skill,case_fingerprint=n.result['case_fingerprint'],journals=n.result.get('journal_entry_implications',[]))
+                for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
+            validate_assembly(c,g,inputs,request,native)
+            return
         mapping=request.get('journal_account_mapping');review=request.get('journal_pack_review',{})
         if not isinstance(mapping,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in mapping.items()):
             raise ValueError('Malformed journal mapping')
@@ -692,7 +713,9 @@ class CAO:
             for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
-        if c.journal_mapping_valid and c.journal_ownership_ledger:
+        if c.journal_mapping_valid and hasattr(c,'_scoped_postings'):
+            journals=[dict(owner=r['owner'],lines=r['lines']) for r in c._scoped_postings]
+        elif c.journal_mapping_valid and c.journal_ownership_ledger:
             native=[dict(owner=n.selected_skill,journals=n.result.get('journal_entry_implications',[])) for n in g.nodes.values() if n.issue!='diagnostic accounting follow-up' and n.status=='complete']
             # Verified at challenge against the approved mapping. Line-grain
             # allocations retain bank receipt residuals without duplicate cash.
@@ -776,6 +799,37 @@ class CAO:
             text+=' The externally valued derivative closes at '+values['derivative_balance']+'. The governed hedge result allocates '+values['hedge_pnl']+' to earnings and '+values['hedge_oci']+' to OCI; the closing reserve is '+values['hedge_reserve']+'. Accounting effectiveness is based on the actual designated risk evidence and does not establish an offset of unrelated currency exposures. Valuation models and market inputs are supplied by the qualified valuation source.'
         if debt or cash_owner:
             text+=(' The reviewed accounting and cash reconciliations complete within scope.' if c.outcome=='complete' else ' The review remains partial: resolve the listed cash-flow/source or accounting exceptions before declaring the close clean.')
+        assembly=next((n for n in g.nodes.values() if n.selected_skill=='consolidation' and n.status=='complete'),None)
+        statements=next((n for n in g.nodes.values() if n.selected_skill=='financial-statements' and n.status=='complete'),None)
+        if assembly and statements and any(r['consumer']==statements.id and r['semantic']=='consolidated_population' for r in c.handoff_ledger):
+            owners={n.selected_skill:n.result['calculations'] for n in g.nodes.values() if n.status=='complete'}
+            current=statements.result['calculations']['current'];con=assembly.result['calculations']
+            for label in ('assets','liabilities','closing_equity','revenue','expenses','profit','oci'):
+                values['consolidated_'+label]=str(number(current[label]))
+            values['closing_nci']=str(number(con['nci'][0]['closing']))
+            text=('The reviewed group accounts reconcile within the supplied scope. ' if c.outcome=='complete' else 'The group review is partial; material source evidence remains unresolved. ')
+            text+='Consolidated profit is '+values['consolidated_profit']+' and OCI is '+values['consolidated_oci']+' in the group presentation currency. Closing equity is '+values['consolidated_closing_equity']+', including NCI '+values['closing_nci']+'. '
+            if 'business-combinations' in owners:
+                acq=owners['business-combinations']
+                for label in ('consideration','net_assets','nci','initial_goodwill'):values['acquisition_'+label]=str(number(acq[label]))
+                text+='Acquisition-date amounts in the subsidiary functional currency are: consideration '+values['acquisition_consideration']+', identifiable net assets '+values['acquisition_net_assets']+', initial NCI '+values['acquisition_nci']+' and goodwill '+values['acquisition_initial_goodwill']+'. '
+            if 'foreign-currency' in owners:
+                fx=owners['foreign-currency']['translation'];values['post_acquisition_profit']=str(number(fx['profit_translated']));values['translation_oci']=str(number(fx['cta_movement']))
+                text+='Only the supported post-acquisition contribution of '+values['post_acquisition_profit']+' enters group profit. Translation contributes '+values['translation_oci']+' to OCI; it is separate from operating performance. '
+            if 'intercompany-accounting' in owners:
+                values['qualified_intercompany_elimination']=str(number(owners['intercompany-accounting']['pairs'][0]['a_functional']))
+            values['group_goodwill']=str(number(con['consolidated_balances'].get('goodwill',0)))
+            text+='Closing goodwill is '+values['group_goodwill']+'. '
+            if 'asset-impairment' in owners:
+                imp=owners['asset-impairment'];values['goodwill_test_loss']=str(number(imp['loss']));values['goodwill_test_headroom']=str(number(imp['headroom']))
+                text+='The supplied independent unit valuation supports impairment '+values['goodwill_test_loss']+' with headroom '+values['goodwill_test_headroom']+'. '
+            values['group_deferred_tax_liability']=str(-number(con['consolidated_balances'].get('Deferred tax liability',0)))
+            text+='The acquisition tax determination is included once in identifiable net assets and goodwill; the translated closing deferred-tax liability is '+values['group_deferred_tax_liability']+'. Bilateral intercompany balances are reconciled before consolidation-only elimination; unresolved source differences are never plugged. '
+            if c.diagnostics:
+                rejected=any(h['id']=='full-year-contribution' and h['disposition']=='REJECTED' for h in c.diagnostics[0]['hypotheses'])
+                if rejected:text+='Management’s full-year acquisition contribution claim is rejected: pre-acquisition results do not belong in group profit. '
+            if c.outcome!='complete':text+='Resolve the listed intercompany/source contradiction before declaring the accounts clean. '
+            reporting=['Qualified consolidated statements preserve goodwill, NCI and translation OCI.','Scoped acquisition, group performance and impairment evidence supports the reviewed disclosures; this is not filing certification.']
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
         if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,
@@ -809,6 +863,15 @@ class CAO:
             controls=s['controls'],reporting=s['reporting'],required_approvals=s['required_approvals'],
             limitations=s['limitations'],uncertainties=[str(a) for a in c.facts['assumed']],
             confidence=s.get('confidence','low'))
+        discrepancies={}
+        for fact in c.facts.get('disputed',[]):
+            label=fact.get('attribute','')
+            if not re.fullmatch(r'[a-z][a-z0-9_]{0,80}',label):continue
+            try:value=str(number(fact['value']))
+            except (ValueError,KeyError,ArithmeticError):continue
+            discrepancies.setdefault(label,[]).append(value)
+        for label,amounts in discrepancies.items():
+            if len(set(amounts))>1:record['open_items'].append('Source conflict for '+label.replace('_',' ')+': '+' versus '.join(dict.fromkeys(amounts))+'. Obtain a reviewed reconciliation; no balancing plug is accepted.')
         # Deny known reviewer identifiers even if inserted inside otherwise
         # allowlisted text. Do not mutate the internal approval evidence.
         private=[]

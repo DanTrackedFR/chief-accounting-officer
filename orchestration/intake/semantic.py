@@ -12,11 +12,12 @@ from typing import Protocol
 from orchestration.intent import Intent, WorkMode
 from orchestration.planning import FACT_ADAPTERS
 from .sources import canonical, bounded
+from orchestration.scopes import execution_scopes
 
 STATUSES = {'EXTRACTED','OBSERVED','INFERRED','USER_STATED','CONTEXT_DERIVED','CALCULATED','ASSUMED','DISPUTED','UNRESOLVED'}
 COMPARATORS = {'actual','prior_actual','budget','forecast','standard','target'}
 SOURCE_FAMILIES = {'trial_balance','general_ledger','pnl','balance_sheet','management_accounts','inventory_report','bom_routing','payroll_export','ap_export','ar_aging','bank_statement','fx_report','fixed_asset_register','lease_schedule','debt_schedule','revenue_report','contract','accounting_policy','reconciliation','close_checklist','control_matrix','audit_finding','management_commentary','management_memo','actuarial_report','valuation_report','unknown'}
-DIMENSIONS = {'entity','period','currency','unit','account_id','item_id','record_id','comparator','jurisdiction','framework','version'}
+DIMENSIONS = {'entity','period','currency','unit','account_id','item_id','record_id','comparator','jurisdiction','framework','version','amount_currency'}
 FRAMEWORKS = {'IFRS','US_GAAP','UK_GAAP','AASB'}
 CONTEXT_ATTRIBUTES = {'entity','framework','jurisdiction','currency','year_end','systems','policies','gross_margin_basis','industry'}
 
@@ -134,6 +135,12 @@ def transform(value, method):
         if type(value) is bool:return value
         if value not in ('true','false'):raise ValueError('Explicit boolean required')
         return value=='true'
+    if method=='percentage':
+        return str(Decimal(transform(value,'decimal'))/Decimal(100))
+    if method=='calendar_date':
+        from datetime import datetime
+        if not isinstance(value,str):raise ValueError('Explicit calendar date required')
+        return datetime.strptime(value,'%d %B %Y').date().isoformat()
     if method=='iso_date':
         if not isinstance(value,str) or date.fromisoformat(value).isoformat()!=value:raise ValueError('Ambiguous date')
         return value
@@ -219,11 +226,15 @@ class ProposalValidator:
                     if k=='period':period(v)
                     elif not isinstance(v,str) or not v or len(v)>120:raise ValueError('Dimension invalid')
                 if 'comparator' in f.dimensions and f.dimensions['comparator'] not in COMPARATORS:raise ValueError('Comparator invalid')
+                fact_scope=execution_scopes(context).get(f.dimensions.get('entity',context.get('entity')))
+                if not fact_scope:raise ValueError('Unknown fact execution scope')
                 for key in ('entity','currency','jurisdiction'):
-                    if key in f.dimensions and context.get(key) and f.dimensions[key]!=context[key]:raise ValueError('Execution dimension mismatch')
-                if f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[context['period_start'],context['reporting_period']]:raise ValueError('Current fact period mismatch')
+                    if key in f.dimensions and fact_scope.get(key) and f.dimensions[key]!=fact_scope[key]:raise ValueError('Execution dimension mismatch')
+                if f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[fact_scope['period_start'],fact_scope['reporting_period']]:raise ValueError('Current fact period mismatch')
                 if 'framework' in f.dimensions and (f.dimensions['framework'] not in FRAMEWORKS or (context.get('framework') and f.dimensions['framework']!=context['framework'])):raise ValueError('Framework invalid or mismatched')
                 if 'currency' in f.dimensions and not re.fullmatch('[A-Z]{3}',f.dimensions['currency']):raise ValueError('Currency invalid')
+                if 'amount_currency' in f.dimensions:
+                    if not re.fullmatch('[A-Z]{3}',f.dimensions['amount_currency']) or any(inventory.extractions[fields[e]['source_id']].source['metadata'].get('amount_currency')!=f.dimensions['amount_currency'] for e in f.claim.evidence):raise ValueError('Foreign amount denomination lacks matching source evidence')
                 if f.transformation not in {'identity','decimal','iso_date','boolean'}:raise ValueError('Unsafe transformation')
                 if f.claim.status in {'EXTRACTED','OBSERVED','CALCULATED'}:
                     if len(f.claim.evidence)!=1 or transform(fields[f.claim.evidence[0]]['value'],f.transformation)!=f.claim.value:raise ValueError('Extracted fact differs from source/transformation')

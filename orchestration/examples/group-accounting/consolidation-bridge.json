@@ -1,0 +1,142 @@
+{
+  "account_residuals": {
+    "Deferred tax liability": "0.00",
+    "IC payable": "0.00",
+    "IC receivable": "0.00",
+    "acquisition adjustment equity": "0.00",
+    "cash": "0.00",
+    "debt": "0.00",
+    "goodwill": "0.00",
+    "investment": "0.00",
+    "land uplift": "0.00",
+    "noncontrolling interest": "0.00",
+    "parent cash": "0.00",
+    "parent equity": "0.00",
+    "parent expense": "0.00",
+    "parent revenue": "0.00",
+    "sub equity": "0.00",
+    "sub expense": "0.00",
+    "sub revenue": "0.00",
+    "translation reserve": "0.00"
+  },
+  "adjustments": [
+    {
+      "lines": [
+        {
+          "account": "IC payable",
+          "amount": "100.00",
+          "side": "Dr"
+        },
+        {
+          "account": "IC receivable",
+          "amount": "100.00",
+          "side": "Cr"
+        }
+      ],
+      "owner": "consolidation"
+    },
+    {
+      "lines": [
+        {
+          "account": "investment",
+          "amount": "720.00",
+          "side": "Cr"
+        },
+        {
+          "account": "sub equity",
+          "amount": "630.00",
+          "side": "Dr"
+        },
+        {
+          "account": "acquisition adjustment equity",
+          "amount": "270.00",
+          "side": "Dr"
+        },
+        {
+          "account": "noncontrolling interest",
+          "amount": "180.00",
+          "side": "Cr"
+        }
+      ],
+      "owner": "consolidation"
+    },
+    {
+      "lines": [
+        {
+          "account": "noncontrolling interest",
+          "amount": "4.00",
+          "side": "Dr"
+        },
+        {
+          "account": "parent equity",
+          "amount": "4.00",
+          "side": "Cr"
+        }
+      ],
+      "owner": "consolidation"
+    }
+  ],
+  "final": {
+    "Deferred tax liability": "-20.00",
+    "IC payable": "0.00",
+    "IC receivable": "0.00",
+    "acquisition adjustment equity": "0.00",
+    "cash": "900.00",
+    "debt": "-160.00",
+    "goodwill": "180.00",
+    "investment": "0.00",
+    "land uplift": "80.00",
+    "noncontrolling interest": "-176.00",
+    "parent cash": "1380.00",
+    "parent equity": "-2004.00",
+    "parent expense": "100.00",
+    "parent revenue": "-300.00",
+    "sub equity": "0.00",
+    "sub expense": "127.50",
+    "sub revenue": "-212.50",
+    "translation reserve": "105.00"
+  },
+  "residual": "0",
+  "source_population": {
+    "Deferred tax liability": "-20.00",
+    "IC payable": "-100.00",
+    "IC receivable": "100",
+    "acquisition adjustment equity": "-270.00",
+    "cash": "900.00",
+    "debt": "-160.00",
+    "goodwill": "180.00",
+    "investment": "720",
+    "land uplift": "80.00",
+    "parent cash": "1380",
+    "parent equity": "-2000",
+    "parent expense": "100",
+    "parent revenue": "-300",
+    "sub equity": "-630.00",
+    "sub expense": "127.50",
+    "sub revenue": "-212.50",
+    "translation reserve": "105"
+  },
+  "sources": {
+    "Parent": {
+      "IC receivable": "100",
+      "investment": "720",
+      "parent cash": "1380",
+      "parent equity": "-2000",
+      "parent expense": "100",
+      "parent revenue": "-300"
+    },
+    "Subsidiary-US": {
+      "Deferred tax liability": "-20.00",
+      "IC payable": "-100.00",
+      "acquisition adjustment equity": "-270.00",
+      "cash": "900.00",
+      "debt": "-160.00",
+      "goodwill": "180.00",
+      "land uplift": "80.00",
+      "sub equity": "-630.00",
+      "sub expense": "127.50",
+      "sub revenue": "-212.50",
+      "translation reserve": "105"
+    }
+  }
+}

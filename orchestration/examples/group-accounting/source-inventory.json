@@ -1,0 +1,2131 @@
+[
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "purchase:1",
+        "location": {
+          "column": "completed",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:2",
+        "location": {
+          "column": "cash_price",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:3",
+        "location": {
+          "column": "nci_value",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:4",
+        "location": {
+          "column": "ownership",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:5",
+        "location": {
+          "column": "cash_assets",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:6",
+        "location": {
+          "column": "land_uplift",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:7",
+        "location": {
+          "column": "debt",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:8",
+        "location": {
+          "column": "dtl",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:9",
+        "location": {
+          "column": "asset_id",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      },
+      {
+        "field": "purchase:10",
+        "location": {
+          "column": "acquisition_costs",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "purchase"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "ca9658af4490481ccb797c42292cf05f87f5bd32fc2dd71548ff0f3a3008ba5f",
+      "format": "csv",
+      "id": "purchase",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "acquisition_model",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Acquisition completion and purchase model.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "completed",
+          "cash_price",
+          "nci_value",
+          "ownership",
+          "cash_assets",
+          "land_uplift",
+          "debt",
+          "dtl",
+          "asset_id",
+          "acquisition_costs"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "acquisition_costs": "purchase:10",
+              "asset_id": "purchase:9",
+              "cash_assets": "purchase:5",
+              "cash_price": "purchase:2",
+              "completed": "purchase:1",
+              "debt": "purchase:7",
+              "dtl": "purchase:8",
+              "land_uplift": "purchase:6",
+              "nci_value": "purchase:3",
+              "ownership": "purchase:4"
+            },
+            "original": {
+              "acquisition_costs": "0",
+              "asset_id": "LAND-1",
+              "cash_assets": "900",
+              "cash_price": "800",
+              "completed": "2026-07-01",
+              "debt": "200",
+              "dtl": "25",
+              "land_uplift": "100",
+              "nci_value": "200",
+              "ownership": "0.8"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "tax:1",
+        "location": {
+          "column": "tax_base",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tax"
+      },
+      {
+        "field": "tax:2",
+        "location": {
+          "column": "rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tax"
+      },
+      {
+        "field": "tax:3",
+        "location": {
+          "column": "carrying",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tax"
+      },
+      {
+        "field": "tax:4",
+        "location": {
+          "column": "effective_date",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tax"
+      },
+      {
+        "field": "tax:5",
+        "location": {
+          "column": "asset_id",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "tax"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "fb7a9a002284a62de36a942ee9729ccf2332cf5115b2460e147d027f535afdac",
+      "format": "csv",
+      "id": "tax",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "tax_evidence",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Reviewed acquisition tax workpaper.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "tax_base",
+          "rate",
+          "carrying",
+          "effective_date",
+          "asset_id"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "asset_id": "tax:5",
+              "carrying": "tax:3",
+              "effective_date": "tax:4",
+              "rate": "tax:2",
+              "tax_base": "tax:1"
+            },
+            "original": {
+              "asset_id": "LAND-1",
+              "carrying": "100",
+              "effective_date": "2026-07-01",
+              "rate": "0.25",
+              "tax_base": "0"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "rates:1",
+        "location": {
+          "column": "closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rates"
+      },
+      {
+        "field": "rates:2",
+        "location": {
+          "column": "acquisition",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rates"
+      },
+      {
+        "field": "rates:3",
+        "location": {
+          "column": "post_average",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rates"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "61cd041ae02511c1e8786d405cb2c84c91a06a1c6b0e6d37597a4aae091b7fa6",
+      "format": "csv",
+      "id": "rates",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "approved_rates",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Approved foreign operation rates.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "closing",
+          "acquisition",
+          "post_average"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "acquisition": "rates:2",
+              "closing": "rates:1",
+              "post_average": "rates:3"
+            },
+            "original": {
+              "acquisition": "0.9",
+              "closing": "0.8",
+              "post_average": "0.85"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "activity:1",
+        "location": {
+          "column": "pre_revenue",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "activity"
+      },
+      {
+        "field": "activity:2",
+        "location": {
+          "column": "pre_expense",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "activity"
+      },
+      {
+        "field": "activity:3",
+        "location": {
+          "column": "post_revenue",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "activity"
+      },
+      {
+        "field": "activity:4",
+        "location": {
+          "column": "post_expense",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "activity"
+      },
+      {
+        "field": "activity:5",
+        "location": {
+          "column": "post_profit",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "activity"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "9b551576aec4a4ea3e1fb364bb854ca4d1f68e91e220408912d9a227ba4dae68",
+      "format": "csv",
+      "id": "activity",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Full year subsidiary activity split.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "pre_revenue",
+          "pre_expense",
+          "post_revenue",
+          "post_expense",
+          "post_profit"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "post_expense": "activity:4",
+              "post_profit": "activity:5",
+              "post_revenue": "activity:3",
+              "pre_expense": "activity:2",
+              "pre_revenue": "activity:1"
+            },
+            "original": {
+              "post_expense": "150",
+              "post_profit": "100",
+              "post_revenue": "250",
+              "pre_expense": "50",
+              "pre_revenue": "200"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "ic:1",
+        "location": {
+          "column": "principal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:2",
+        "location": {
+          "column": "reciprocal",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:3",
+        "location": {
+          "column": "counterparty",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:4",
+        "location": {
+          "column": "transaction",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:5",
+        "location": {
+          "column": "principal_currency",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:6",
+        "location": {
+          "column": "parent_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:7",
+        "location": {
+          "column": "subsidiary_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:8",
+        "location": {
+          "column": "originated",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      },
+      {
+        "field": "ic:9",
+        "location": {
+          "column": "terms",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "dbd53a18f72c47018296f7e9430a703f4156565c0091ff96d5d0535cf1b3809d",
+      "format": "csv",
+      "id": "ic",
+      "metadata": {
+        "amount_currency": "USD",
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Parent",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Bilateral loan confirmation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "principal",
+          "reciprocal",
+          "counterparty",
+          "transaction",
+          "principal_currency",
+          "parent_rate",
+          "subsidiary_rate",
+          "originated",
+          "terms"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "counterparty": "ic:3",
+              "originated": "ic:8",
+              "parent_rate": "ic:6",
+              "principal": "ic:1",
+              "principal_currency": "ic:5",
+              "reciprocal": "ic:2",
+              "subsidiary_rate": "ic:7",
+              "terms": "ic:9",
+              "transaction": "ic:4"
+            },
+            "original": {
+              "counterparty": "Subsidiary-US",
+              "originated": "2026-09-01",
+              "parent_rate": "0.8",
+              "principal": "125",
+              "principal_currency": "USD",
+              "reciprocal": "125",
+              "subsidiary_rate": "1",
+              "terms": "Repayable on demand; already posted before this reconciliation",
+              "transaction": "IC-LOAN-1"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "valuation:1",
+        "location": {
+          "column": "recoverable",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:2",
+        "location": {
+          "column": "goodwill",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:3",
+        "location": {
+          "column": "net_assets",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:4",
+        "location": {
+          "column": "fvlc",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:5",
+        "location": {
+          "column": "cashflow_year1",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:6",
+        "location": {
+          "column": "discount_rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:7",
+        "location": {
+          "column": "terminal_value",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:8",
+        "location": {
+          "column": "fair_value",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:9",
+        "location": {
+          "column": "undiscounted",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      },
+      {
+        "field": "valuation:10",
+        "location": {
+          "column": "operation_entity",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "valuation"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "de0dd708e653727a8340094a28027803f5fc404696a1aaaea75a483090d7363e",
+      "format": "csv",
+      "id": "valuation",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "independent_valuation",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Independent goodwill CGU valuation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "recoverable",
+          "goodwill",
+          "net_assets",
+          "fvlc",
+          "cashflow_year1",
+          "discount_rate",
+          "terminal_value",
+          "fair_value",
+          "undiscounted",
+          "operation_entity"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "cashflow_year1": "valuation:5",
+              "discount_rate": "valuation:6",
+              "fair_value": "valuation:8",
+              "fvlc": "valuation:4",
+              "goodwill": "valuation:2",
+              "net_assets": "valuation:3",
+              "operation_entity": "valuation:10",
+              "recoverable": "valuation:1",
+              "terminal_value": "valuation:7",
+              "undiscounted": "valuation:9"
+            },
+            "original": {
+              "cashflow_year1": "990",
+              "discount_rate": "0.1",
+              "fair_value": "900",
+              "fvlc": "900",
+              "goodwill": "180",
+              "net_assets": "700",
+              "operation_entity": "Subsidiary-US",
+              "recoverable": "900",
+              "terminal_value": "0",
+              "undiscounted": "900"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "rights:1",
+        "location": {
+          "column": "power",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rights"
+      },
+      {
+        "field": "rights:2",
+        "location": {
+          "column": "returns",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rights"
+      },
+      {
+        "field": "rights:3",
+        "location": {
+          "column": "link",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "rights"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "6c72d3eec837e4a543843e6a1605909df0818ab71f108a46efe19f03e2c83bda",
+      "format": "csv",
+      "id": "rights",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "legal_entity_evidence",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Group rights and perimeter review.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "power",
+          "returns",
+          "link"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "link": "rights:3",
+              "power": "rights:1",
+              "returns": "rights:2"
+            },
+            "original": {
+              "link": "true",
+              "power": "true",
+              "returns": "true"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "pack:1",
+        "location": {
+          "column": "profit",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "pack"
+      },
+      {
+        "field": "pack:2",
+        "location": {
+          "column": "nci",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "pack"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "68be189ef0d0b5e5b5efb7346f8b3208f2a584fce7de24f16d97574cf315d22c",
+      "format": "csv",
+      "id": "pack",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "management_workpaper",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "final_consolidation_v9.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "profit",
+          "nci"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "nci": "pack:2",
+              "profit": "pack:1"
+            },
+            "original": {
+              "nci": "176",
+              "profit": "285"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "analytics-source:1",
+        "location": {
+          "column": "profit",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "analytics-source"
+      },
+      {
+        "field": "analytics-source:2",
+        "location": {
+          "column": "parent",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "analytics-source"
+      },
+      {
+        "field": "analytics-source:3",
+        "location": {
+          "column": "post_acquisition",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "analytics-source"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "84a5cdbc0b228fd09df96efd6b8edaadfaf3a5021760fcc5bc3768d9f399c42c",
+      "format": "csv",
+      "id": "analytics-source",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Group contribution support.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "profit",
+          "parent",
+          "post_acquisition"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "parent": "analytics-source:2",
+              "post_acquisition": "analytics-source:3",
+              "profit": "analytics-source:1"
+            },
+            "original": {
+              "parent": "200",
+              "post_acquisition": "85",
+              "profit": "285"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "note-source:1",
+        "location": {
+          "column": "profit",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      },
+      {
+        "field": "note-source:2",
+        "location": {
+          "column": "goodwill",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      },
+      {
+        "field": "note-source:3",
+        "location": {
+          "column": "nci",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      },
+      {
+        "field": "note-source:4",
+        "location": {
+          "column": "oci",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      },
+      {
+        "field": "note-source:5",
+        "location": {
+          "column": "tax",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      },
+      {
+        "field": "note-source:6",
+        "location": {
+          "column": "note",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "note-source"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "2b44068c6acd0449ee15fb5d29c2e6cf4a63205e605ea80fe74ffcb6a7348972",
+      "format": "csv",
+      "id": "note-source",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Group",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Group note support.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "profit",
+          "goodwill",
+          "nci",
+          "oci",
+          "tax",
+          "note"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "goodwill": "note-source:2",
+              "nci": "note-source:3",
+              "note": "note-source:6",
+              "oci": "note-source:4",
+              "profit": "note-source:1",
+              "tax": "note-source:5"
+            },
+            "original": {
+              "goodwill": "180",
+              "nci": "176",
+              "note": "Group performance",
+              "oci": "-105",
+              "profit": "285",
+              "tax": "-20"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "ic-parent:1",
+        "location": {
+          "column": "ic_closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic-parent"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "3eb418a8e26942d9a880c75b5787bd4916d9103ff7574290d0a03c200a9d9de0",
+      "format": "csv",
+      "id": "ic-parent",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Parent",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Parent IC ledger closing.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "ic_closing"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "ic_closing": "ic-parent:1"
+            },
+            "original": {
+              "ic_closing": "105"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "ic-confirmed:1",
+        "location": {
+          "column": "ic_closing",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic-confirmed"
+      },
+      {
+        "field": "ic-confirmed:2",
+        "location": {
+          "column": "confirmed_by",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "ic-confirmed"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "3db25819e1b03b4b04f71c64ef9ec469043dbdca26b0aa16c485e0f0d44e9207",
+      "format": "csv",
+      "id": "ic-confirmed",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Parent",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Bilateral FX reconciliation.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "ic_closing",
+          "confirmed_by"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "confirmed_by": "ic-confirmed:2",
+              "ic_closing": "ic-confirmed:1"
+            },
+            "original": {
+              "confirmed_by": "bilateral-source",
+              "ic_closing": "100"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "spa:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "spa:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "spa"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "1aac853eceaf8d1ac650336c445d1c139b92a9040da5a85d5173306e6acc8759",
+      "format": "markdown",
+      "id": "spa",
+      "metadata": {
+        "approval_status": "qualified_test_source",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_type": "legal_entity_evidence",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "SPA and completion extract.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "appraisal:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "appraisal:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "appraisal"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "f4bb1d14b492097472d06a9da6f39be3bcf4900b559b7656e0a972ec2d4092ea",
+      "format": "markdown",
+      "id": "appraisal",
+      "metadata": {
+        "approval_status": "qualified_test_source",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_type": "independent_valuation",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Qualified acquisition appraisal.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "policy:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "policy:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "policy"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "1ff54e4086242e17dbf7f51a248d63f33cc49bec1b126ce217b54220e3db1ec0",
+      "format": "markdown",
+      "id": "policy",
+      "metadata": {
+        "approval_status": "qualified_test_source",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "EUR",
+        "entity": "Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_type": "accounting_policy",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Group and currency policy.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [
+      {
+        "block": 1,
+        "field": "commentary:1"
+      }
+    ],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "commentary:1",
+        "location": {
+          "block": 1
+        },
+        "method": "inert extraction",
+        "source_id": "commentary"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 1,
+      "extraction_confidence": "high",
+      "fingerprint": "d6bdd0e7dcf7de99576707b93623aac7867024bc7336884da427097ae8578c3e",
+      "format": "markdown",
+      "id": "commentary",
+      "metadata": {
+        "approval_status": "qualified_test_source",
+        "comparator": "actual",
+        "controlled_export": false,
+        "currency": "EUR",
+        "entity": "Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_type": "management_commentary",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Management commentary.md",
+      "parser": "bounded-markdown-v1",
+      "raw_ref": "",
+      "rows": 0,
+      "unresolved_dimensions": []
+    },
+    "tables": []
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "parent-tb:1",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:2",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:3",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:4",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:5",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:6",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:7",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:8",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:9",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:10",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:11",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      },
+      {
+        "field": "parent-tb:12",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "parent-tb"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "8874bc979db6d926a941e5783b7c6a38f5f116b2fe6c35f53305ceaa309793e9",
+      "format": "csv",
+      "id": "parent-tb",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "Parent",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Parent trial balance.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 6,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "account",
+          "balance"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "account": "parent-tb:1",
+              "balance": "parent-tb:2"
+            },
+            "original": {
+              "account": "parent cash",
+              "balance": "1380"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "account": "parent-tb:3",
+              "balance": "parent-tb:4"
+            },
+            "original": {
+              "account": "investment",
+              "balance": "720"
+            },
+            "source_row": 3
+          },
+          {
+            "fields": {
+              "account": "parent-tb:5",
+              "balance": "parent-tb:6"
+            },
+            "original": {
+              "account": "IC receivable",
+              "balance": "100"
+            },
+            "source_row": 4
+          },
+          {
+            "fields": {
+              "account": "parent-tb:7",
+              "balance": "parent-tb:8"
+            },
+            "original": {
+              "account": "parent equity",
+              "balance": "-2000"
+            },
+            "source_row": 5
+          },
+          {
+            "fields": {
+              "account": "parent-tb:9",
+              "balance": "parent-tb:10"
+            },
+            "original": {
+              "account": "parent revenue",
+              "balance": "-300"
+            },
+            "source_row": 6
+          },
+          {
+            "fields": {
+              "account": "parent-tb:11",
+              "balance": "parent-tb:12"
+            },
+            "original": {
+              "account": "parent expense",
+              "balance": "100"
+            },
+            "source_row": 7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "ledger": [
+      {
+        "field": "sub-tb:1",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:2",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:3",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:4",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:5",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:6",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 4,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:7",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:8",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 5,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:9",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:10",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:11",
+        "location": {
+          "column": "account",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      },
+      {
+        "field": "sub-tb:12",
+        "location": {
+          "column": "balance",
+          "record_id": null,
+          "row": 7,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "sub-tb"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "5e75a39d390480e9f194ab9951330a38b60872b98ee41e744272916a26ae3c67",
+      "format": "csv",
+      "id": "sub-tb",
+      "metadata": {
+        "approval_status": "reviewed_test_evidence",
+        "as_of": "2026-12-31",
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "Subsidiary-US",
+        "extracted_at": "2027-02-01",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "source_system": "Controlled synthetic company export",
+        "source_type": "accounting_records",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "Subsidiary USD trial balance.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 6,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "account",
+          "balance"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "account": "sub-tb:1",
+              "balance": "sub-tb:2"
+            },
+            "original": {
+              "account": "cash",
+              "balance": "1125"
+            },
+            "source_row": 2
+          },
+          {
+            "fields": {
+              "account": "sub-tb:3",
+              "balance": "sub-tb:4"
+            },
+            "original": {
+              "account": "debt",
+              "balance": "-200"
+            },
+            "source_row": 3
+          },
+          {
+            "fields": {
+              "account": "sub-tb:5",
+              "balance": "sub-tb:6"
+            },
+            "original": {
+              "account": "IC payable",
+              "balance": "-125"
+            },
+            "source_row": 4
+          },
+          {
+            "fields": {
+              "account": "sub-tb:7",
+              "balance": "sub-tb:8"
+            },
+            "original": {
+              "account": "sub equity",
+              "balance": "-550"
+            },
+            "source_row": 5
+          },
+          {
+            "fields": {
+              "account": "sub-tb:9",
+              "balance": "sub-tb:10"
+            },
+            "original": {
+              "account": "sub revenue",
+              "balance": "-450"
+            },
+            "source_row": 6
+          },
+          {
+            "fields": {
+              "account": "sub-tb:11",
+              "balance": "sub-tb:12"
+            },
+            "original": {
+              "account": "sub expense",
+              "balance": "200"
+            },
+            "source_row": 7
+          }
+        ]
+      }
+    ]
+  }
+]

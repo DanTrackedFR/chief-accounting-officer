@@ -323,16 +323,10 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
-        "reversal_circumstances": {
-          "reviewed": true,
-          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-        },
-        "write_down": "70",
-        "expense": {
-          "cogs": "50",
-          "manufacturing_other": "0",
-          "write_down": "70",
-          "reversal": "0"
+        "policy": {
+          "framework": "AASB",
+          "edition": "AASB102_2026_Tier1",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
         },
         "carrying": {
           "Merchandise": "180"
@@ -342,20 +336,26 @@
           "reviewed": true,
           "evidence_memo": "Synthetic actual collateral register none"
         },
-        "policy": {
-          "framework": "AASB",
-          "edition": "AASB102_2026_Tier1",
-          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-        },
-        "reversal": "0",
-        "classes": [
-          "MERCH"
-        ],
         "formula": {
           "materials": "FIFO",
           "production": "FIFO",
           "resale": "FIFO"
-        }
+        },
+        "reversal": "0",
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        },
+        "classes": [
+          "MERCH"
+        ],
+        "expense": {
+          "cogs": "50",
+          "manufacturing_other": "0",
+          "write_down": "70",
+          "reversal": "0"
+        },
+        "write_down": "70"
       },
       "content_hash": "ddd622e33aed822cbafbbbd2e14ab05563e7ecd015ebdf2f66e91ebd6f0ebbda"
     },
@@ -998,16 +998,10 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
-      "reversal_circumstances": {
-        "reviewed": true,
-        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-      },
-      "write_down": "70",
-      "expense": {
-        "cogs": "50",
-        "manufacturing_other": "0",
-        "write_down": "70",
-        "reversal": "0"
+      "policy": {
+        "framework": "AASB",
+        "edition": "AASB102_2026_Tier1",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
       },
       "carrying": {
         "Merchandise": "180"
@@ -1017,20 +1011,26 @@
         "reviewed": true,
         "evidence_memo": "Synthetic actual collateral register none"
       },
-      "policy": {
-        "framework": "AASB",
-        "edition": "AASB102_2026_Tier1",
-        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
-      },
-      "reversal": "0",
-      "classes": [
-        "MERCH"
-      ],
       "formula": {
         "materials": "FIFO",
         "production": "FIFO",
         "resale": "FIFO"
-      }
+      },
+      "reversal": "0",
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      },
+      "classes": [
+        "MERCH"
+      ],
+      "expense": {
+        "cogs": "50",
+        "manufacturing_other": "0",
+        "write_down": "70",
+        "reversal": "0"
+      },
+      "write_down": "70"
     },
     "closing_inventory": "180",
     "cogs": "50",

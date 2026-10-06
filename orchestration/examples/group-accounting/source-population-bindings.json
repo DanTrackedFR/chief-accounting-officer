@@ -1,0 +1,27 @@
+[
+  {
+    "owner": "consolidation",
+    "owner_key": "id",
+    "path": [
+      "entities",
+      "Parent",
+      "balances"
+    ],
+    "source_column": "account",
+    "source_id": "parent-tb",
+    "table": "table",
+    "value_column": "balance"
+  },
+  {
+    "owner": "foreign-currency",
+    "owner_key": "id",
+    "path": [
+      "activity_selection",
+      "full_year_balances"
+    ],
+    "source_column": "account",
+    "source_id": "sub-tb",
+    "table": "table",
+    "value_column": "balance"
+  }
+]
