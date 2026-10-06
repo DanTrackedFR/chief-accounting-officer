@@ -71,3 +71,7 @@ To keep all other independent attacks runnable, the suite now constructs an expl
 Follow-up command remains `python -m unittest orchestration.tests.test_stage4_independent -v`. The first adapted 17-method run executed all attacks: 15 PASS, one coverage assertion FAIL and one positive integration ERROR caused by the expected safe rejection. The positive requirement was subsequently expressed as an explicit assertion failure for clearer reporting; latest rerun counts follow below. All earlier finding and run history above is retained.
 
 Latest follow-up rerun: **17 methods, 15 PASS, 2 FAIL, exit 1**. Both outstanding failures are intentional hard positive-acceptance requirements for OPEN IQA03; generic omission/roster rejection and real safe failure PASS. IQA01/IQA02 remain PASS. Stage 4 remains INCOMPLETE.
+
+## Fresh continuation separate-context review
+
+A fresh independent reviewer reconstructed current population and native owner contracts and reproduced S4-IQA04 (self-shortened legal perimeter). See `STAGE4-POPULATION-INDEPENDENT-QA.md` for original reproducers, generic remediation, four permanent attacks, seven fresh sealed replacement attacks, and independent rerun: 11 distinct tests PASS. This preserves prior IQA01/IQA02/IQA03 history. IQA03 and final Stage4 acceptance remain OPEN; this is not a zero-unresolved-final-findings claim.

@@ -15,8 +15,10 @@ from orchestration.periods import PeriodRegistry
 from orchestration.scopes import ScopeRegistry
 
 
-def execute(engine, prepared, pack):
-    if not prepared.validation.get('accepted'):return prepared
+def qualify(engine, prepared, pack):
+    """Qualify reviewed sources without running or replacing accounting results."""
+    if not prepared.validation.get('accepted'):
+        raise ValueError('Accepted sealed intake required')
     if not isinstance(pack,ReviewedInputPack) or not pack.scoped_packs:
         raise ValueError('Independently reviewed node input packs required')
     prepared._inventory.verify()
@@ -88,9 +90,75 @@ def execute(engine, prepared, pack):
         if source.get('pending_dependency_evidence') and child.bindings:raise ValueError('Pending evidence cannot certify accounting')
     if seen!=set(nodes) or bound!={key for key,row in candidates.items() if row['promotion']=='established' and row['candidate_owner']}:
         raise ValueError('Reviewed node/source population omitted')
+    return request, lineage
+
+
+def execute(engine, prepared, pack):
+    if not prepared.validation.get('accepted'):return prepared
+    request, lineage = qualify(engine, prepared, pack)
     # Runtime rejects fabricated pending nodes: blocked publication is derived
     # solely from actual unresolved required producer versions.
     case=CAO().run(request)
     case.work_modes=dict(primary=prepared._proposal.primary_mode.value,secondary=[c.value for c in prepared._proposal.secondary_modes])
     prepared.lineage.extend(lineage);prepared.case=case
     return prepared
+
+
+def qualify_replacement(engine, prepared, pack, case, node_id):
+    """Fresh sealed single-node intake against the retained ordinary Case graph.
+
+    This supplies no accounting approval and executes no owner. The ordinary
+    correction/rework APIs remain responsible for certification, exact current
+    dependencies, immutable publication and invalidation.
+    """
+    request, lineage = qualify(engine, prepared, pack)
+    session = case.governance
+    plan = request['governed_plan']
+    if node_id not in session.graph.nodes:
+        raise ValueError('Replacement requires an existing exact node')
+    expected_node = next(row for row in session.graph.record() if row['id'] == node_id)
+    if canonical(plan['nodes']) != canonical([expected_node]):
+        raise ValueError('Replacement cannot change governed execution identity')
+    if plan['root_case'] != case.id or request['objective'] != case.objective:
+        raise ValueError('Replacement belongs to another Case/objective')
+    if canonical(plan['scopes']) != canonical(session.cases.scopes.record()) or canonical(plan['periods']) != canonical(session.periods.record()):
+        raise ValueError('Replacement cannot alter governed registries')
+    expected_edges = [asdict(edge) for edge in session.edges.values() if edge.consumer_node == node_id]
+    if canonical(plan['dependencies']) != canonical(expected_edges):
+        raise ValueError('Replacement cannot alter incoming dependency contracts')
+    expected_cases = [dict(case_id=row.id,objective=row.objective,scope_id=row.scope_id,period_id=row.period_id,cycle=row.cycle,parent_id=row.parent_case_id,provenance=row.provenance) for row in session.cases.cases.values()]
+    if canonical(plan['cases']) != canonical(expected_cases):
+        raise ValueError('Replacement Case population differs')
+    source = plan['sources'][node_id]
+    if source.get('pending_dependency_evidence'):
+        raise ValueError('Replacement requires qualified evidence, not pending evidence')
+    # Matching observations need the same complete snapshot qualification as
+    # accounting inputs, even though they have no accounting Fact binding.
+    if expected_node['selected_skill'].startswith('orchestration-'):
+        manifest=source.get('qualified_input_snapshot')
+        if not isinstance(manifest,dict) or set(manifest)!={'source_id','fingerprint'}:
+            raise ValueError('Replacement observation requires a complete source snapshot')
+        extraction=prepared._inventory.extractions.get(manifest['source_id'])
+        original=prepared._inventory.raw.get(manifest['source_id'])
+        snapshot={k:copy.deepcopy(v) for k,v in source.items() if k not in ('reviewer_signoff','source_population','qualified_scope_sources','qualified_input_snapshot')}
+        expected=dict(record_id=expected_node['logical_id'],reviewed_input=json.dumps(snapshot,sort_keys=True,separators=(',',':')))
+        if extraction is None or original.format!='json' or original.payload!=[expected] or extraction.source['fingerprint']!=manifest['fingerprint']:
+            raise ValueError('Replacement observation snapshot differs from sealed inventory')
+        declared=source.get('source_population',[])
+        if len(declared)!=len(set(declared)) or set(declared)!={row['source_id'] for row in source.get('qualified_scope_sources',[])} or manifest['source_id'] not in declared:
+            raise ValueError('Replacement observation source population incomplete')
+        for row in source['qualified_scope_sources']:
+            actual=prepared._inventory.extractions.get(row['source_id'])
+            if actual is None or row!=dict(source_id=actual.source['id'],fingerprint=actual.source['fingerprint'],metadata=actual.source['metadata']):
+                raise ValueError('Replacement observation manifest differs from inventory')
+        meta=original.metadata;period=session.periods.get(expected_node['period_id'])
+        if (meta.get('scope_id'),meta.get('period_id'),meta.get('calendar_id'),meta.get('framework'),meta.get('currency'))!=(expected_node['scope_id'],period.period_id,period.calendar_id,expected_node['framework'],expected_node['functional_currency'] or expected_node['presentation_currency']):
+            raise ValueError('Replacement observation snapshot crosses governed dimensions')
+    # A source seal is insufficient if it faithfully seals an obsolete receipt.
+    incoming = [session.receipt(key) for key, edge in sorted(session.edges.items()) if edge.consumer_node == node_id]
+    if incoming and source.get('versioned_dependency_receipts') != incoming:
+        raise ValueError('Replacement intake consumes obsolete dependency receipts')
+    for receipt in incoming:
+        session.validate_receipt(receipt, node_id)
+    prepared.lineage.extend(lineage)
+    return copy.deepcopy(source)

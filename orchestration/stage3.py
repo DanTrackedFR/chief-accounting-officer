@@ -265,7 +265,26 @@ def validate_group_loan_population(session,node,source,receipts):
     if coverage is None:return  # Legacy explicitly bounded transaction chains.
     if not isinstance(coverage,dict) or set(coverage)!={'mode','required_legal_result_versions'} or coverage['mode']!='ALL_CURRENT_LOAN_SIDES':
         raise ValueError('Explicit complete Group loan population contract required')
-    scopes={entity['id'] for entity in source['entities']}
+    entities=source['entities']
+    scopes={entity['id'] for entity in entities}
+    if not scopes or len(scopes)!=len(entities) or any(session.cases.scopes.get(key).scope_type!='LEGAL_ENTITY' for key in scopes):
+        raise ValueError('Full Group accounting requires a distinct registered legal perimeter')
+    # ALL_CURRENT is a coverage promise over the governed Group's legal
+    # descendants, not a promise over an arbitrarily shortened input list.
+    # Hierarchy supplies only this completeness boundary; it supplies neither
+    # consolidation authority nor any execution/dependency edge.
+    governed=set()
+    for row in session.cases.scopes.record():
+        if row['scope_type']!='LEGAL_ENTITY' or row['status']!='CURRENT':continue
+        if row['effective_from'] and row['effective_from']>node.period[1]:continue
+        if row['effective_to'] and row['effective_to']<node.period[0]:continue
+        parent=row['parent_scope_id']
+        while parent is not None:
+            if parent==node.scope_id:
+                governed.add(row['scope_id']);break
+            parent=session.cases.scopes.get(parent).parent_scope_id
+    if scopes!=governed:
+        raise ValueError('Full Group source perimeter differs from governed legal scope population')
     expected=current_legal_loan_versions(session,node,scopes)
     if coverage['required_legal_result_versions']!=expected:raise ValueError('Reviewed full Group source inventory differs from actual current legal results')
     matched=[]

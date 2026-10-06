@@ -56,6 +56,7 @@ def artifacts():
         if 'Full Group accounting omits or duplicates current legal loan economics' not in str(error):raise
         # Capture the real governed refusal. No final accounting result is made.
         a['rework-refusal.json']=dict(error=str(error),required_action='Qualify all current loan populations through native owners before retrying the corrected clean control')
+        a['fresh-replacement-intake-checkpoint.json']=[dict(node=row['node'],raw_sources=[asdict(source) for source in row['raw_sources']],inventory=row['prepared'].inventory,validation=row['prepared'].validation,proposal=row['prepared'].proposal,lineage=row['prepared'].lineage,reviewed_pack=asdict(row['reviewed_pack']),accounting_acceptance='NOT_ESTABLISHED_BY_SOURCE_QUALIFICATION') for row in f.get('replacement_intakes',[])]
         a['result-versions-checkpoint.json']=record_versions()
         a['supersession-history.json']=dict(versions=e.versions.supersession,events=e.versions.history)
         a['public-answer-checkpoint.json']=CAO().public(f['case'])

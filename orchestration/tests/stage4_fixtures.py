@@ -232,14 +232,20 @@ def serialize(f):
 
 def correct(f):
     n=f['nodes']['mismatch-ENTITY-NL']
-    return CAO().correct(f['case'],n.id,legal_source(f,'mismatch','ENTITY-NL',True),'Qualified reciprocal confirmation and legal source correction')
+    c=qualified_replacement(f,n.id,legal_source(f,'mismatch','ENTITY-NL',True))
+    return CAO().correct(f['case'],n.id,c,'Qualified reciprocal confirmation and legal source correction')
 
 
 def reviewed_rework(f,plan):
     preview=copy.deepcopy(f);e=preview['session'];out={}
-    for key in plan['execution_order']:
-        label=e.graph.nodes[key].logical_id;c=source(preview,label)
-        e.execute(key,observation,c,'Dependency rework: '+plan['new_version']);out[key]=c
+    try:
+        for key in plan['execution_order']:
+            label=e.graph.nodes[key].logical_id;c=qualified_replacement(preview,key,source(preview,label))
+            e.execute(key,observation,c,'Dependency rework: '+plan['new_version']);out[key]=c
+    finally:
+        # Source qualification is review evidence, not successful accounting
+        # publication. Retain it even when the actual native guard refuses.
+        f.setdefault('replacement_intakes',[]).extend(preview.get('replacement_intakes',[])[len(f.get('replacement_intakes',[])):])
     return out
 
 
@@ -363,3 +369,50 @@ def transforms(f):
         out.append(b.translation(u.version_id,t.version_id,economic,('calculations','pairs',0,'a_functional'),('translation','tb',1,'balance'),('calculations','translation','translated_tb','ic loan'),EVIDENCE))
         out.append(b.intercompany_conversion(t.version_id,c.version_id,economic,('calculations','translation','translated_tb','ic loan'),EVIDENCE))
     return out
+
+
+def replacement_intake(f, key, supplied):
+    """Separately supplied correction/workpaper inventory, never original mutation."""
+    import json
+    from orchestration.intake import RawSource, Inventory, StructuredProposal, FactCandidate, FixturePlanner, Intake, Binding, ReviewedInputPack
+    from orchestration.intake.governed import qualify_replacement
+    from orchestration.tests.intake_fixtures import cl, cell
+    from orchestration.planning import FACT_ADAPTERS
+    from orchestration.runtime import digest, at
+    e=f['session'];n=e.graph.nodes[key];p=e.periods.get(n.period_id)
+    c={k:copy.deepcopy(v) for k,v in supplied.items() if k not in ('reviewer_signoff','source_population','qualified_scope_sources','qualified_input_snapshot')}
+    dims=dict(scope_id=n.scope_id,entity=n.scope_id,framework=n.framework,jurisdiction=n.jurisdiction,currency=n.functional_currency or n.presentation_currency,unit='currency',period=n.period,period_id=n.period_id,calendar_id=p.calendar_id,period_role='CURRENT',comparator='actual')
+    provenance=dict(dims,controlled_export=True,version='replacement-'+digest(c),unit_scale='million',provenance='Fresh separately reviewed correction/rework evidence; original source inventory retained')
+    proposal=StructuredProposal(cl(OBJECTIVE,status='USER_STATED',confidence=1),cl('Source qualification for retained execution'),cl('CLOSE_REVIEW'))
+    owner=n.selected_skill;native=not owner.startswith('orchestration-');raw=[];bindings=[]
+    if native:
+        path={'intercompany-accounting':('pairs',0,'confirmed_a'),'foreign-currency':('translation','tb',1,'balance'),'consolidation':('entities',0,'balances','cash'),'financial-statements':('current_tb',0,'balance'),'management-accounting-analytics':('accounts',0,'amount')}[owner]
+        value=at(c,path);source_id='replacement-value-'+digest([key,c])
+        r=RawSource(source_id,n.logical_id+'-replacement.csv','csv','record_id,amount\n'+n.logical_id+','+str(value)+'\n',provenance)
+        raw.append(r);inv=Inventory([r]);ref=cell(inv,r.id,'amount')
+        family=next(family for family,(candidate,_) in FACT_ADAPTERS.items() if candidate==owner)
+        fact=FactCandidate('replacement-fact-'+n.logical_id,family,'reviewed_value_'+n.logical_id.lower().replace('-','_'),cl(str(value),[ref],'EXTRACTED',.99),dims,owner,economic_id=n.economic_id if owner=='intercompany-accounting' and n.scope_type=='LEGAL_ENTITY' else '',confirmation_required=False,transformation='identity')
+        proposal.facts.append(fact);proposal.issues.append(cl(dict(id='replacement-issue-'+n.logical_id,owner=owner,family=family,scope_id=n.scope_id,period_id=n.period_id,fact_ids=[fact.id],dependencies=[],required_fields=[fact.attribute]),[ref]))
+        bindings=[Binding(fact.id,owner,path,'current',n.scope_id,n.period_id,p.calendar_id)]
+    snapshot=RawSource('replacement-snapshot-'+digest([key,c]),n.logical_id+'-replacement-workpaper.json','json',[dict(record_id=n.logical_id,reviewed_input=json.dumps(c,sort_keys=True,separators=(',',':')))],provenance)
+    raw.append(snapshot);inventory=Inventory(raw)
+    c['source_population']=[r.id for r in raw]
+    c['qualified_scope_sources']=[dict(source_id=row.source['id'],fingerprint=row.source['fingerprint'],metadata=row.source['metadata']) for row in inventory.extractions.values()]
+    c['qualified_input_snapshot']=dict(source_id=snapshot.id,fingerprint=inventory.extractions[snapshot.id].source['fingerprint'])
+    if native:c=certify(owner,c)
+    plan=serialize(f);plan['nodes']=[row for row in e.graph.record() if row['id']==key];plan['sources']={key:c}
+    plan['dependencies']=[asdict(edge) for edge in e.edges.values() if edge.consumer_node==key]
+    context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',period_id=f['periods']['CALENDAR-OCT'].period_id,scopes=e.cases.scopes.record(),period_registry=e.periods.record(),materiality='.1')
+    engine=Intake(FixturePlanner(proposal));prepared=engine.prepare(OBJECTIVE,raw,[],context)
+    if not prepared.validation['accepted']:raise ValueError(prepared.validation)
+    child=ReviewedInputPack(dict(objective=OBJECTIVE,node_id=key,source=copy.deepcopy(c)),bindings,scope_id=n.scope_id,period_id=n.period_id,calendar_id=p.calendar_id)
+    pack=ReviewedInputPack(dict(objective=OBJECTIVE,scope=copy.deepcopy(prepared._current),governed_plan=plan),[],scoped_packs=[child])
+    return engine,prepared,pack,raw
+
+
+def qualified_replacement(f,key,source):
+    from orchestration.intake.governed import qualify_replacement
+    engine,prepared,pack,raw=replacement_intake(f,key,source)
+    qualified=qualify_replacement(engine,prepared,pack,f['case'],key)
+    f.setdefault('replacement_intakes',[]).append(dict(node=key,raw_sources=raw,prepared=prepared,reviewed_pack=pack))
+    return qualified
