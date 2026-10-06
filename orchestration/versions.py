@@ -151,7 +151,12 @@ class VersionedExecution:
         from .runtime import at
         payload=version.payload(); value=at(payload,edge.metric_path)
         producer=self.graph.nodes[edge.producer_node];consumer=self.graph.nodes[edge.consumer_node]
-        return dict(dependency_id=edge.id,result_version=version.version_id,producer_node=edge.producer_node,consumer_node=edge.consumer_node,producer_scope=edge.producer_scope,consumer_scope=edge.consumer_scope,producer_period=edge.producer_period,consumer_period=edge.consumer_period,producer_framework=payload.get('framework',producer.framework),consumer_framework=consumer.framework,producer_functional_currency=producer.functional_currency,producer_presentation_currency=producer.presentation_currency,consumer_functional_currency=consumer.functional_currency,consumer_presentation_currency=consumer.presentation_currency,value_currency=payload.get('currency',producer.functional_currency or producer.presentation_currency),metric_path=list(edge.metric_path),currentness='CURRENT',result_fingerprint=version.result_fingerprint,value=copy.deepcopy(value))
+        value_currency=payload.get('currency',producer.functional_currency or producer.presentation_currency)
+        if producer.economic_id is not None and producer.selected_skill=='foreign-currency' and tuple(edge.metric_path)[:2]==('calculations','translation'):
+            native_source=self.sources[producer.id]
+            if fingerprint(native_source)!=version.source_fingerprint:raise ValueError('Translation source version differs')
+            value_currency=native_source['translation']['presentation_currency']
+        return dict(dependency_id=edge.id,result_version=version.version_id,producer_node=edge.producer_node,consumer_node=edge.consumer_node,producer_scope=edge.producer_scope,consumer_scope=edge.consumer_scope,producer_period=edge.producer_period,consumer_period=edge.consumer_period,producer_framework=payload.get('framework',producer.framework),consumer_framework=consumer.framework,producer_functional_currency=producer.functional_currency,producer_presentation_currency=producer.presentation_currency,consumer_functional_currency=consumer.functional_currency,consumer_presentation_currency=consumer.presentation_currency,value_currency=value_currency,metric_path=list(edge.metric_path),currentness='CURRENT',result_fingerprint=version.result_fingerprint,value=copy.deepcopy(value))
 
     def validate_receipt(self,receipt,consumer_node):
         if not isinstance(receipt,dict) or receipt.get('dependency_id') not in self.edges:raise ValueError('Undeclared dependency receipt')
@@ -171,7 +176,11 @@ class VersionedExecution:
         for receipt in receipts:self.validate_receipt(receipt,node.id)
         previous=self.versions.current(node.id,allow_stale=True)
         if node.selected_skill.startswith('orchestration-'):
-            result=executor(node,copy.deepcopy(source),copy.deepcopy(receipts))
+            if source.get('method') in ('STAGE3_MATCH','STAGE3_GROUP_OBSERVATION'):
+                from .stage3 import bounded_executor
+                result=bounded_executor(self,node,copy.deepcopy(source),copy.deepcopy(receipts))
+            else:
+                result=executor(node,copy.deepcopy(source),copy.deepcopy(receipts))
             if result.get('accounting_authority') is not False or result.get('journal_entry_implications'):raise ValueError('Bounded consumer cannot create accounting authority or postings')
         else:
             from .temporal_inputs import validate_native_sources
@@ -184,8 +193,11 @@ class VersionedExecution:
                 actual=imported.get('case',{})
                 matches=[r for r in receipts if self.graph.nodes[r['producer_node']].selected_skill==imported.get('package') and r['producer_scope']==actual.get('scope_id',actual.get('entity')) and r['producer_period']==actual.get('period_id')]
                 if len(matches)!=1 or fingerprint(imported.get('result'))!=self.versions.require_current(matches[0]['result_version']).result_fingerprint:raise ValueError('Imported native result lacks exact current producer version')
+            from .stage3 import validate_native_bindings
+            validate_native_bindings(self,node,source,receipts)
             result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
         version=self.versions.publish(node,result,source,[(r['dependency_id'],r['result_version']) for r in receipts],reason)
+        if hasattr(self,'sources'):self.sources[node.id]=copy.deepcopy(source)
         node.result=version.payload();node.status='complete';node.iterations+=1;node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT')
         self.receipts.extend(copy.deepcopy(receipts))
         if previous:self.invalidate(previous.version_id,version.version_id)
@@ -269,7 +281,11 @@ class VersionedExecution:
             node=self.graph.nodes[key]; payload=version.payload()
             journals=payload.get('journal_entry_implications',[])
             if not journals:continue
-            native.append(dict(owner=node.selected_skill,node=node.id,source_scope=node.scope_id,posting_scope=node.scope_id,accounting_layer=node.scope_type,currency=node.functional_currency or node.presentation_currency,period=node.period,period_id=node.period_id,result_version=version.version_id,journals=journals))
+            if node.economic_id is not None and node.selected_skill=='foreign-currency' and self.sources[node.id].get('translation',{}).get('enabled'):
+                raise ValueError('Translation implications require explicit reporting-layer disposition, never legal posting')
+            if node.selected_skill=='intercompany-accounting' and any(entity!=node.scope_id for entity in payload.get('calculations',{}).get('journal_entities',[])):
+                raise ValueError('IC journals belong to distinct legal books; qualified per-book owner required')
+            native.append(dict(economic_id=node.economic_id,owner=node.selected_skill,node=node.id,source_scope=node.scope_id,posting_scope=node.scope_id,accounting_layer=node.scope_type,currency=node.functional_currency or node.presentation_currency,period=node.period,period_id=node.period_id,result_version=version.version_id,journals=journals))
         for event in events:
             if event.get('result_version') is None:raise ValueError('Exact current journal result version required')
             version=self.versions.require_current(event['result_version'])

@@ -37,6 +37,7 @@ def run(c,request):
     for row in plan['nodes']:
         node=Node(**row);scope=scopes.get(node.scope_id);period=periods.get(node.period_id)
         context=dict(scope_id=scope.scope_id,scope_type=scope.scope_type,framework=scope.framework,jurisdiction=scope.jurisdiction,functional_currency=scope.functional_currency,presentation_currency=scope.presentation_currency,period_start=period.start,reporting_period=period.end,period_id=period.period_id)
+        if node.economic_id is not None:context['economic_id']=node.economic_id
         if node.id!=execution_identity(node.selected_skill,context) or node.period!=[period.start,period.end] or node.result is not None or node.status!='pending':raise ValueError('Governed execution-node substitution')
         if (node.scope_type,node.entity,node.framework,node.jurisdiction,node.functional_currency,node.presentation_currency)!=(scope.scope_type,scope.scope_id,scope.framework,scope.jurisdiction,scope.functional_currency,scope.presentation_currency):raise ValueError('Governed node framework/currency/Scope substitution')
         graph.add(node);cases.bind_node(node.case_id,node)

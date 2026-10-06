@@ -52,6 +52,7 @@ class CaseRegistry:
                 if node.status=='not_applicable':continue
                 current=versions.current(node.id,allow_stale=True)
                 if node.status!='complete' or current is None or versions.state(current.version_id)!='CURRENT':unresolved.append(node.id)
+                if current is not None and current.payload().get('unresolved_dependencies'):unresolved.append(node.id)
                 for edge in edges.values():
                     if edge.consumer_node==node.id and edge.required:
                         producer=versions.current(edge.producer_node,allow_stale=True)

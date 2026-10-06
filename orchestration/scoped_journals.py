@@ -18,6 +18,7 @@ def allocate_scoped(native,context,ownership):
         if not row.get('node') or not row.get('owner') or not row.get('currency') or len(row.get('period',[]))!=2: raise ValueError('Scoped native journal dimensions required')
         scope=scoped_context(context,dict(entity=row['posting_scope'],period_start=row['period'][0],reporting_period=row['period'][1],**({'period_id':row['period_id']} if 'period_id' in row else {})))
         qualification=qualify_journal(scope,row['source_scope'],row['posting_scope'],row['accounting_layer'])
+        if row.get('economic_id') is not None:scope=dict(scope,economic_id=row['economic_id'])
         if row['node']!=execution_identity(row['owner'],scope):raise ValueError('Journal node owner/Scope identity differs')
         if row['currency']!=scope['currency'] or row['period']!=[scope['period_start'],scope['reporting_period']]:raise ValueError('Native journal differs from governed Scope currency/period')
         rows.append(dict(owner=row['node'],journals=row['journals']))

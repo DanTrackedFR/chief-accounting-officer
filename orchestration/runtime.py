@@ -495,6 +495,7 @@ class CAO:
         if dimensions(source)!=(node.scope_id,node.framework,node.jurisdiction,*node.period,currency_from_node(node)):
             raise ValueError('Versioned owner Scope/Period dimensions differ')
         if source.get('period_id')!=node.period_id:raise ValueError('Versioned owner governed Period differs')
+        if node.economic_id is not None and source.get('economic_id')!=node.economic_id:raise ValueError('Transaction owner execution economic identity differs')
         result=production.assess_case(node.selected_skill,source)
         production.to_public(result,'answer_context')
         if result.get('status')!='complete' or result.get('case_fingerprint')!=production.case_fingerprint(source):
@@ -1034,6 +1035,9 @@ class CAO:
             view=sorted((node,key,c.governance.versions.state(key)) for node,key in c.governance.versions.active.items())
             changed_synthesis=bool(c.conclusions) and getattr(c,'_synthesis_currentness',None)!=view
             if changed_synthesis or (stale and not c.conclusions):return public_record(dict(guidance='Accounting work requires selective rework before current delivery.',status='partial',open_items=['Resolve stale dependent results.']),route=route)
+        if hasattr(c,'governance') and any(node.selected_skill=='orchestration-stage3-match' for node in c.graph.nodes.values()):
+            from .stage3 import public_result
+            return public_result(c,route)
         if hasattr(c,'governance') and not c.conclusions:
             observations=[]
             for node_id in sorted(c.governance.versions.active):

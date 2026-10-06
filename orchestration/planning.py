@@ -185,6 +185,7 @@ class Node:
     period_id: str = ''
     case_id: str = ''
     logical_id: str = ''
+    economic_id: str | None = None
     scope_id: str = ''
     scope_type: str = ''
     jurisdiction: str = ''
