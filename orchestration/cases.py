@@ -56,7 +56,7 @@ class CaseRegistry:
                 for edge in edges.values():
                     if edge.consumer_node==node.id and edge.required:
                         producer=versions.current(edge.producer_node,allow_stale=True)
-                        if producer is None or versions.state(producer.version_id)!='CURRENT' or graph.nodes[edge.producer_node].status!='complete':unresolved.append(edge.producer_node)
+                        if producer is None or versions.state(producer.version_id)!='CURRENT' or graph.nodes[edge.producer_node].status!='complete' or producer.payload().get('unresolved_dependencies'):unresolved.append(edge.producer_node)
             outcome='partial' if unresolved else 'complete' if required else 'blocked'
             if outcome!=case.outcome:
                 case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Required dependency currentness changed'))
