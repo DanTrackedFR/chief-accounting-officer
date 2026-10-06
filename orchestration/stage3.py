@@ -59,31 +59,50 @@ def validate_native_bindings(session, node, source, receipts):
         raise ValueError('Stage 3 native source mappings cannot be empty')
     if node.selected_skill == 'consolidation':
         matches = [r for r in receipts if tuple(r['metric_path']) == ('matching','classification')]
-        if len(matches) != 1 or matches[0]['value'] != 'MATCHED':
-            raise ValueError('Group elimination requires a qualified clean bilateral match')
-        match=session.versions.require_current(matches[0]['result_version']).payload()['matching']
+        if not matches or any(r['value'] != 'MATCHED' for r in matches):
+            raise ValueError('Group elimination requires qualified clean bilateral matches')
+        relationships={}
+        for receipt in matches:
+            match=session.versions.require_current(receipt['result_version']).payload()['matching']
+            side_roles={side['role']:side['scope_id'] for side in match['sides']}
+            economic={side['economic_id'] for side in match['sides']}
+            if len(economic)!=1:raise ValueError('Matching economic population differs')
+            key=next(iter(economic))
+            if key in relationships:raise ValueError('Duplicate qualified matching relationship')
+            relationships[key]=(side_roles.get('payable'),side_roles.get('receivable'))
         pairs=source['intercompany']
-        side_roles={s['role']:s['scope_id'] for s in match['sides']}
-        if len(pairs)!=1 or pairs[0]['transaction_id']!=node.economic_id or (pairs[0]['seller'],pairs[0]['buyer'])!=(side_roles.get('payable'),side_roles.get('receivable')):
-            raise ValueError('Elimination counterparties/economic identity differ from qualified matching')
+        if len(pairs)!=len(relationships) or len({pair.get('transaction_id') for pair in pairs})!=len(pairs):
+            raise ValueError('Elimination matching population omitted/duplicated')
+        for pair in pairs:
+            if (pair['seller'],pair['buyer'])!=relationships.get(pair['transaction_id']):
+                raise ValueError('Elimination counterparties/economic identity differ from qualified matching')
+            if node.economic_id is not None and pair['transaction_id']!=node.economic_id:
+                raise ValueError('Elimination execution economic identity differs')
         translations = [r for r in receipts if tuple(r['metric_path']) == ('calculations','translation','translated_tb')]
-        if len(translations) != 1:
-            raise ValueError('Exact translated source population required')
-        qualified = translations[0]['value']
-        covered = []
-        for entity in source['entities']:
-            if entity['id']==translations[0]['producer_scope'] and all(entity['balances'].get(k) == v for k,v in qualified.items()):
-                covered.append(entity)
-        mapped.add(translations[0]['dependency_id'])
-        if len(covered) != 1:
-            raise ValueError('Consolidation source population differs from qualified translation')
+        if not translations or len({r['producer_scope'] for r in translations})!=len(translations):
+            raise ValueError('Exact distinct translated source populations required')
         accounts=source['cta_bridge']['cta_accounts']
-        if len(accounts)!=1 or set(covered[0]['balances'])!=set(qualified)|set(accounts):
-            raise ValueError('Foreign-operation source population adds unsupported offsets')
-        for semantic in ('closing_cta','cta_movement'):
-            actual=[r for r in receipts if tuple(r['metric_path'])==('calculations','translation',semantic)]
-            if len(actual)!=1 or actual[0]['producer_node']!=translations[0]['producer_node']:
-                raise ValueError('Exact owner CTA dependency required')
+        if len(accounts)!=1:raise ValueError('Explicit native CTA account required')
+        closing=[];movement=[]
+        for translated in translations:
+            qualified=translated['value']
+            covered=[entity for entity in source['entities'] if entity['id']==translated['producer_scope']]
+            if len(covered)!=1 or set(covered[0]['balances'])!=set(qualified)|set(accounts) or any(covered[0]['balances'].get(k)!=v for k,v in qualified.items()):
+                raise ValueError('Foreign-operation source population adds unsupported offsets or differs from qualified translation')
+            mapped.add(translated['dependency_id'])
+            for semantic,collector in (('closing_cta',closing),('cta_movement',movement)):
+                actual=[r for r in receipts if tuple(r['metric_path'])==('calculations','translation',semantic) and r['producer_node']==translated['producer_node']]
+                if len(actual)!=1:raise ValueError('Exact owner CTA dependency required')
+                collector.append(actual[0])
+                if semantic=='closing_cta' and Decimal(str(covered[0]['balances'][accounts[0]]))!=-Decimal(str(actual[0]['value'])):
+                    raise ValueError('Entity CTA reserve differs from exact native owner')
+                mapped.add(actual[0]['dependency_id'])
+        # Validate separately reviewed aggregate native bridges. This verifies
+        # additive owner outputs; it generates no exchange-rate/accounting values.
+        close=sum((Decimal(str(r['value'])) for r in closing),Decimal(0))
+        move=sum((Decimal(str(r['value'])) for r in movement),Decimal(0))
+        if Decimal(str(source['cta_bridge']['closing']))!=-close or Decimal(str(source['cta_bridge']['translation']))!=-move or Decimal(str(source['equity_bridge']['oci']))!=move:
+            raise ValueError('Group CTA/OCI bridge differs from complete qualified owner population')
 
     if node.selected_skill == 'financial-statements':
         qualified = source.get('stage3_balances')

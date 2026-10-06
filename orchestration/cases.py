@@ -61,8 +61,9 @@ class CaseRegistry:
             if outcome!=case.outcome:
                 case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Required dependency currentness changed'))
                 case.outcome=outcome
-                if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
-                    case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
+            if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
+                case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Material dependencies require governed rework'))
+                case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
             case.result_version_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
             from .planning import node_record
             case.workplan_nodes=[node_record(graph.nodes[k]) for k in sorted(case.node_refs)]

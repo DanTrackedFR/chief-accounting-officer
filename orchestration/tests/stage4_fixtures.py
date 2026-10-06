@@ -1,0 +1,331 @@
+"""Controlled finance-holding Group sources; review is synthetic, never runtime authority.
+
+The company has ordinary loans, cash and wholly owned subsidiaries. General
+commercial revenue conversion is deliberately absent because no qualified owner
+contract exists. The material residual is EUR1m (figures expressed in millions).
+"""
+import copy
+from dataclasses import asdict
+from decimal import Decimal
+from orchestration.tests import stage3_fixtures as s3
+from orchestration.periods import Period, PeriodRelationship, EffectiveInterval
+from orchestration.runtime import CAO, Case
+from orchestration.cases import case_identity
+from orchestration.versions import Dependency
+from orchestration.governed_plan import observation
+from additional_cases import fx, reporting, certify
+from cases import consolidation
+
+OBJECTIVE='Review the Group close across our Netherlands, US and UK finance-holding businesses, investigate the material movements and intercompany differences, determine whether the Group reporting is supportable, and give me the final Group accounting/reporting conclusion.'
+EVIDENCE=s3.EVIDENCE
+
+
+def build():
+    f=s3.build();e=f['session']
+    # Replace only the fixture's initial Group objective, not runtime identity.
+    old=f['containers']['GROUP-EUR-OCT'];old.objective=OBJECTIVE
+    key=case_identity(old.scope_id,old.period_id,OBJECTIVE,old.cycle)
+    del e.cases.cases[old.id];previous=old.id;old.id=key;e.cases.cases[key]=old
+    for c in e.cases.cases.values():
+        if c.parent_case_id==previous:c.parent_case_id=key
+    for n in e.graph.nodes.values():
+        if n.case_id==previous:n.case_id=key
+    # Rebuild explicit dependency identities following the changed Case.
+    rows=[asdict(edge) for edge in e.edges.values()]
+    e.edges.clear();f['edges'].clear()
+    for n in e.graph.nodes.values():n.dependencies=[]
+    for row in rows:
+        if row['producer_case']==previous:row['producer_case']=key
+        if row['consumer_case']==previous:row['consumer_case']=key
+        edge=Dependency(**row);edge_key=e.add_dependency(edge)
+        a=e.graph.nodes[edge.producer_node].logical_id;b=e.graph.nodes[edge.consumer_node].logical_id
+        f['edges'][(a,b) if (a,b) not in f['edges'] else (a,b,edge.metric_path[-1])]=edge_key
+    f['basis'].contracts.clear();s3.declare_basis(f)
+    # Consolidation consumes a population, rather than one transaction. Preserve
+    # node identity by rebuilding just this fixture node before any publication.
+    rebuild_population_node(f,'elimination')
+    root=f['containers']['GROUP-EUR-OCT']
+    s3.add_node(f,'uk-translation','foreign-currency',f['containers']['ENTITY-UK-OCT'],'mismatch')
+    s3.add_node(f,'uk-conversion','intercompany-accounting',root,'mismatch')
+    for a,b,path in [
+        ('mismatch-ENTITY-UK','uk-translation',('calculations','pairs',0,'a_functional')),
+        ('uk-translation','uk-conversion',('calculations','translation','translated_tb','ic loan')),
+        ('mismatch-ENTITY-NL','uk-conversion',('calculations','pairs',0,'b_functional')),
+        ('match-mismatch','uk-conversion',('matching','classification')),
+        ('uk-conversion','elimination',('calculations','pairs',0,'a_functional')),
+        ('uk-translation','elimination',('calculations','translation','translated_tb')),
+        ('uk-translation','elimination',('calculations','translation','closing_cta')),
+        ('uk-translation','elimination',('calculations','translation','cta_movement')),
+        ('mismatch-ENTITY-NL','elimination',('calculations','pairs',0,'b_functional')),
+        ('match-mismatch','elimination',('matching','classification'))]:s3.add_edge(f,a,b,path)
+    p=f['periods'];e.periods.add_relationship(PeriodRelationship(p['CALENDAR-SEP'].period_id,p['CALENDAR-OCT'].period_id,'OPENING',EVIDENCE))
+    e.periods.add_relationship(PeriodRelationship(p['CALENDAR-SEP'].period_id,p['CALENDAR-OCT'].period_id,'COMPARATIVE',EVIDENCE))
+    partial=Period.create('CALENDAR','2026-09-20','2026-09-30',2026,'SEP-DRAWDOWN','PARTIAL_INCLUDED_PERIOD',provenance=EVIDENCE)
+    # Canonical registry reconstruction includes a dated loan agreement interval.
+    from orchestration.periods import PeriodRegistry
+    e.periods=PeriodRegistry(e.periods.calendars.values(),[*e.periods.periods.values(),partial],e.periods.relationships.values());e.cases.periods=e.periods
+    e.periods.add_relationship(PeriodRelationship(p['CALENDAR-SEP'].period_id,partial.period_id,'PARTIAL_INCLUDED_PERIOD',EVIDENCE))
+    f['effective_interval']=EffectiveInterval('ENTITY-NL','intercompany-accounting',p['CALENDAR-SEP'].period_id,partial.period_id,'BOUNDED_INCLUSION','2026-09-20',EVIDENCE).validate(e.periods,e.cases.scopes)
+    s3.add_node(f,'nl-opening','orchestration-opening-observation',f['containers']['ENTITY-NL-OCT'],None)
+    a=f['nodes']['timing-ENTITY-NL'];b=f['nodes']['nl-opening']
+    edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'OPENING','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
+    f['edges'][('timing-ENTITY-NL','nl-opening')]=e.add_dependency(edge)
+    s3.add_node(f,'analytics','management-accounting-analytics',root,None)
+    s3.add_edge(f,'reporting','analytics',('calculations','current','cash'))
+    s3.add_node(f,'nl-comparative','orchestration-comparative-observation',f['containers']['ENTITY-NL-OCT'],None)
+    a=f['nodes']['timing-ENTITY-NL'];b=f['nodes']['nl-comparative']
+    edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'COMPARATIVE','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
+    f['edges'][('timing-ENTITY-NL','nl-comparative')]=e.add_dependency(edge)
+    return f
+
+
+def rebuild_population_node(f,label):
+    from orchestration.scopes import execution_identity
+    e=f['session'];n=f['nodes'][label];old=n.id
+    n.economic_id=None
+    scope=e.cases.scopes.get(n.scope_id);p=e.periods.get(n.period_id)
+    n.id=execution_identity(n.selected_skill,dict(scope_id=scope.scope_id,scope_type=scope.scope_type,framework=scope.framework,jurisdiction=scope.jurisdiction,functional_currency=scope.functional_currency,presentation_currency=scope.presentation_currency,period_start=p.start,reporting_period=p.end,period_id=p.period_id))
+    del e.graph.nodes[old];e.graph.nodes[n.id]=n
+    case=e.cases.get(n.case_id);case.node_refs=[n.id if key==old else key for key in case.node_refs]
+    rows=[asdict(edge) for edge in e.edges.values()];e.edges.clear();f['edges'].clear()
+    for node in e.graph.nodes.values():node.dependencies=[]
+    for row in rows:
+        for key in ('producer_node','consumer_node'):
+            if row[key]==old:row[key]=n.id
+        edge=Dependency(**row);key=e.add_dependency(edge)
+        a=e.graph.nodes[edge.producer_node].logical_id;b=e.graph.nodes[edge.consumer_node].logical_id
+        f['edges'][(a,b) if (a,b) not in f['edges'] else (a,b,edge.metric_path[-1])]=key
+    # Cross-layer declarations are recreated against actual new dependency IDs.
+    f['basis'].contracts.clear()
+    # The source transaction contract stays exact; the population target does
+    # not falsely adopt one of its contributing transactions' identities.
+    s3.declare_basis(f)
+
+
+def legal_source(f,relationship,scope,corrected=False):
+    c=s3.legal_source(f,relationship,scope)
+    if relationship=='mismatch' and scope=='ENTITY-NL' and corrected:
+        p=c['pairs'][0]
+        p.update(opening_a='10',opening_b='10',confirmed_a='10',confirmed_b='10',
+            opening_book_a='10',opening_book_b='11',book_a='10',book_b='11',gl_a='10',gl_b='10',
+            version='v2',approved_version='v2')
+        c['controls']['population_amount']='10';row=c['intercompany_transactions'][0]
+        row.update(source_id='source-mismatch-ENTITY-NL-v2',transaction_amount='10',functional_amount='10.00')
+        c['correction_evidence']=dict(original='Original export duplicated EUR1m payable; retained',replacement='Reviewed loan confirmation EUR10m and corrected legal-book closing payable EUR10m',reviewed=True,version='v2')
+        c=certify('intercompany-accounting',c)
+    return c
+
+
+def matching_source(f,relationship):
+    source=s3.match_source(f,relationship)
+    if relationship=='mismatch':
+        amounts={side['transaction_amount'] for side in source['sides']}
+        source['decision']['classification']='MATCHED' if len(amounts)==1 else 'UNRESOLVED_MISMATCH'
+    return source
+
+
+def uk_translation(f):
+    n=f['nodes']['uk-translation'];c=s3.native_context(f,'uk-translation',fx('UK_GAAP'));c['items']=[]
+    c['currency'].update(functional='GBP',ledger='GBP',presentation='EUR')
+    # Independently supplied parity rate, not an orchestration FX calculation.
+    t=c['translation'];t.update(operation_id='mismatch',valuation_date=n.period[1],functional_currency='GBP',presentation_currency='EUR',
+        tb=[dict(id='uk cash',balance='100',category='asset',rate='1',memo='Supplied reviewed closing rate'),dict(id='ic loan',balance='10.00',category='asset',rate='1',memo='Exact UK native legal loan'),dict(id='uk equity',balance='-110',category='equity',rate='1',memo='Supplied historical rate')],
+        opening_net_assets='110',opening_rate='1',closing_rate='1',profit='0',profit_rate='1',other_oci='0',other_oci_rate='1',reported_closing_net_assets='110',ownership='1')
+    s3.bind(f,c,'mismatch-ENTITY-UK','uk-translation',('translation','tb',1,'balance'))
+    c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    return certify('foreign-currency',c)
+
+
+def uk_conversion(f):
+    from operational_cases import operational
+    n=f['nodes']['uk-conversion'];c=s3.native_context(f,'uk-conversion',operational('intercompany-accounting','IFRS'))
+    p=c['pairs'][0];p.update(id='mismatch',transaction_id='mismatch',entity_a='ENTITY-UK',entity_b='ENTITY-NL',currency='EUR',
+        opening_a='10',opening_b='10',opening_book_a='10',opening_book_b='10',book_a='10',book_b='10',gl_a='10',gl_b='10',confirmed_a='10',confirmed_b='10',rate_a='1',rate_b='1',initial_rate_a='1',initial_rate_b='1',date=n.period[1],approval_date=n.period[1])
+    c['controls'].update(population_count=1,population_amount='10');c['conversion_economic_id']='mismatch';c['stage3_contract']='ORDINARY_IC_REASSESSMENT'
+    s3.bind(f,c,'uk-translation','uk-conversion',('pairs',0,'gl_a'));s3.bind(f,c,'mismatch-ENTITY-NL','uk-conversion',('pairs',0,'gl_b'))
+    c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    return certify('intercompany-accounting',c)
+
+
+def group_source(f):
+    e=f['session'];n=f['nodes']['elimination'];c=s3.native_context(f,'elimination',consolidation('IFRS'))
+    control=copy.deepcopy(c['entities'][0]['control'])
+    nl={'cash':'300','investment':'290','ic payable':'-90','uk payable':'-10','equity':'-489','correction income':'-1'}
+    us=e.versions.current(f['nodes']['translation'].id).payload()['calculations']['translation']['translated_tb']
+    uk=e.versions.current(f['nodes']['uk-translation'].id).payload()['calculations']['translation']['translated_tb']
+    c['entities']=[dict(id='ENTITY-NL',parent=True,balances=nl,control=control,translation=None,policy_alignment=True,date_alignment=True),
+        dict(id='ENTITY-US',parent=False,balances=dict(us,CTA='0'),control=copy.deepcopy(control),translation=None,policy_alignment=True,date_alignment=True),
+        dict(id='ENTITY-UK',parent=False,balances=dict(uk,CTA='0'),control=copy.deepcopy(control),translation=None,policy_alignment=True,date_alignment=True)]
+    template=copy.deepcopy(c['investments'][0]);nt=copy.deepcopy(c['nci'][0])
+    c['investments']=[];c['nci']=[];c['intercompany']=[]
+    for entity,relationship,amount,equity,investment,payable in [('ENTITY-US','clean','90','sub equity','180','ic payable'),('ENTITY-UK','mismatch','10','uk equity','110','uk payable')]:
+        inv=copy.deepcopy(template);inv.update(subsidiary=entity,parent_entity='ENTITY-NL',investment=investment,acquisition_equity={equity:investment},nci_at_acquisition='0');c['investments'].append(inv)
+        nc=copy.deepcopy(nt);nc.update(subsidiary=entity,ownership='1',opening='0',adjusted_profit='0',adjusted_oci='0');c['nci'].append(nc)
+        c['intercompany'].append(dict(id=relationship,transaction_id=relationship,family='receivable_payable',source_id='reviewed-'+relationship,seller='ENTITY-NL',buyer=entity,amount=amount,debit_account=payable,credit_account='ic loan',matched=True,source_memo='Qualified exact match/translation/ordinary-loan framework reassessment'))
+    c['statement_mapping']={k:'assets' if k in ('cash','uk cash','investment','ic loan','goodwill') else 'liabilities' if k in ('ic payable','uk payable') else 'income' if k in ('FX income','correction income') else 'equity' for k in set(nl)|set(us)|set(uk)|{'CTA','noncontrolling interest','goodwill'}}
+    c['cash_flow_bridge'].update(opening_cash='489',closing_cash='490',operating='0',investing='0',financing='1',fx='0',cash_accounts=['cash','uk cash'])
+    c['equity_bridge'].update(opening='489',profit='1',oci='0',closing='490');c['cta_bridge'].update(translation='0',closing='0',cta_accounts=['CTA'])
+    for producer,target in [('clean-ENTITY-NL',('entities',0,'balances','ic payable')),('mismatch-ENTITY-NL',('entities',0,'balances','uk payable'))]:s3.bind(f,c,producer,'elimination',target,-1)
+    for index,producer in [(0,'conversion'),(1,'uk-conversion')]:s3.bind(f,c,producer,'elimination',('intercompany',index,'amount'))
+    # Each actual entity reserve is independently bound; shared bridges are
+    # validated against the complete qualified owner population by the runtime.
+    for index,label in [(1,'translation'),(2,'uk-translation')]:
+        c.setdefault('stage3_input_bindings',[]).append(dict(dependency_id=f['edges'][(label,'elimination','closing_cta')],target_path=['entities',index,'balances','CTA'],sign=-1,evidence=list(EVIDENCE)))
+    c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    return certify('consolidation',c)
+
+
+def reporting_source(f):
+    e=f['session'];n=f['nodes']['reporting'];c=s3.native_context(f,'reporting',reporting())
+    balances=e.versions.current(f['nodes']['elimination'].id).payload()['calculations']['consolidated_balances'];mapping=e.sources[f['nodes']['elimination'].id]['statement_mapping']
+    categories={'assets':'asset','liabilities':'liability','equity':'equity','income':'revenue','expenses':'expense'}
+    c['current_tb']=[dict(id=k,balance=v,category='oci' if k=='CTA' else categories[mapping[k]],performance_category='operating',line=k,source_version=e.versions.current(f['nodes']['elimination'].id).version_id,classification_memo='Exact qualified Consolidation account',cash_account=k in ('cash','uk cash')) for k,v in sorted(balances.items())]
+    c['comparative_tb']=[dict(id='cash',balance='489',category='asset',performance_category='operating',line='cash',source_version='reviewed-prior-v1',classification_memo='Reviewed prior issued books',cash_account=True),dict(id='equity',balance='-489',category='equity',performance_category='operating',line='equity',source_version='reviewed-prior-v1',classification_memo='Reviewed prior issued equity',cash_account=False)]
+    c['equity_bridge'][0].update(opening='489',profit='1',oci='0',closing='490')
+    c['cash_flow'].update(start_amount='1',adjustments=[dict(id='noncash',amount='-1',source='Qualified noncash payable correction',noncash_acquisition_fx_excluded=True,memo='Exclude noncash correction from operating cash')],investing='0',financing='1',fx='0',opening='489',closing='490',classifications=[dict(id='fin',date=n.period[1],kind='capital_receipt',**{'class':'financing'},amount='1',memo='Reviewed financing cash movement')])
+    c['comparative']['period_end']='2025-10-31'
+    c['notes'][0]['amount']='490';c['stage3_balances']=copy.deepcopy(balances)
+    s3.bind(f,c,'elimination','reporting',('stage3_balances',));c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    return certify('financial-statements',c)
+
+
+def source(f,label):
+    n=f['nodes'][label]
+    if label.startswith('match-'):return matching_source(f,label[6:])
+    if label=='uk-translation':return uk_translation(f)
+    if label=='uk-conversion':return uk_conversion(f)
+    if label=='elimination':return group_source(f)
+    if label=='reporting':return reporting_source(f)
+    if label=='analytics':return analytics_source(f)
+    if label in ('nl-opening','nl-comparative'):return dict(scope_id=n.scope_id,period_id=n.period_id,method='QUALIFIED_LOCAL_OBSERVATION',evidence=list(EVIDENCE),observation_currency='EUR')
+    if label in ('translation','conversion','group'):return s3.downstream_source(f,label)
+    return legal_source(f,n.economic_id,n.scope_id)
+
+
+def initial():
+    f=build();e=f['session'];plan=serialize(f)
+    # Prepare reviewed initial packs in an isolated source qualification session.
+    # Materially blocked consumers retain only source identity, not fabricated
+    # prospective accounting or certified inputs.
+    for key in e.topological(e.graph.nodes):
+        label=e.graph.nodes[key].logical_id
+        blockers=[e.graph.nodes[p] for p in e.graph.nodes[key].dependencies if e.graph.nodes[p].status!='complete' or e.versions.current(p).payload().get('unresolved_dependencies')]
+        c=dict(scope_id=e.graph.nodes[key].scope_id,period_id=e.graph.nodes[key].period_id,source_id='pending-'+label,evidence=list(EVIDENCE)) if blockers else source(f,label)
+        e.execute(key,observation,c,'Initial governed CAO execution')
+    plan['sources']=copy.deepcopy(e.sources)
+    case=CAO().run(dict(objective=OBJECTIVE,governed_plan=plan));f['case']=case;f['session']=case.governance
+    f['nodes']={label:case.graph.nodes[n.id] for label,n in f['nodes'].items()}
+    f['containers']={label:case.governance.cases.get(c.id) for label,c in f['containers'].items()}
+    return f
+
+
+def serialize(f):
+    e=f['session'];root=f['containers']['GROUP-EUR-OCT']
+    return dict(scopes=e.cases.scopes.record(),periods=e.periods.record(),cases=[dict(case_id=c.id,objective=c.objective,scope_id=c.scope_id,period_id=c.period_id,cycle=c.cycle,parent_id=c.parent_case_id,provenance=c.provenance) for c in e.cases.cases.values()],root_case=root.id,nodes=e.graph.record(),dependencies=[asdict(edge) for edge in e.edges.values()],sources={})
+
+
+def correct(f):
+    n=f['nodes']['mismatch-ENTITY-NL']
+    return CAO().correct(f['case'],n.id,legal_source(f,'mismatch','ENTITY-NL',True),'Qualified reciprocal confirmation and legal source correction')
+
+
+def reviewed_rework(f,plan):
+    preview=copy.deepcopy(f);e=preview['session'];out={}
+    for key in plan['execution_order']:
+        label=e.graph.nodes[key].logical_id;c=source(preview,label)
+        e.execute(key,observation,c,'Dependency rework: '+plan['new_version']);out[key]=c
+    return out
+
+
+def rework(f,plan):return CAO().selective_reexecute(f['case'],plan,reviewed_rework(f,plan))
+
+
+def analytics_source(f):
+    from governance_cases import case as governance_case, ready, refresh_release, row
+    from orchestration.runtime import digest
+    e=f['session'];n=f['nodes']['analytics'];c=governance_case('management-accounting-analytics')
+    def adapt(v):
+        if isinstance(v,dict):return {k:adapt(x) for k,x in v.items()}
+        if isinstance(v,list):
+            if v==['2026-01-01','2026-12-31']:return n.period
+            if v==['2025-01-01','2025-12-31']:return ['2025-10-01','2025-10-31']
+            return [adapt(x) for x in v]
+        if v in ('2026-12-31','2027-03-31'):return n.period[1]
+        if v=='2027-01-05':return '2026-10-31'
+        if v=='2027-01-04':return '2026-10-30'
+        if v=='Synthetic Group':return n.scope_id
+        if v=='USD':return 'EUR'
+        return v
+    c=adapt(c);c=s3.native_context(f,'analytics',c);c['functional_currency']='EUR'
+    v=e.versions.current(f['nodes']['reporting'].id);native=e.sources[v.node_id]
+    c['imports']=[row(c,'group-statements',package='financial-statements',case=copy.deepcopy(native),result=v.payload(),mode='evidence_only')]
+    c['accounts'][0].update(account='cash',amount='490.00',management_amount='490.00')
+    c['account_source']['records']=copy.deepcopy(c['accounts']);c['controls']['population_amount']='490.00'
+    for d in c['documents']:
+        data=d['content']
+        if d['id'] in ('current-books','prior-books'):
+            amount='490.00' if d['id']=='current-books' else '489.00';data.update(account='cash',statutory_amount=amount,management_amount=amount,gross_amount=amount);data['records'][0].update(account='cash',amount=amount)
+        if d['id']=='actual-drivers':data.update(account='cash',drivers=[dict(id='reviewed-financing-receipt',amount='1')],driver_inventory=['reviewed-financing-receipt'])
+    c['explanations'][0].update(account='cash',amount='1',interpretation_memo='Cash movement is the separately evidenced financing receipt, not the noncash payable correction')
+    # Native diagnostic source-flux analysis; owner accounting conclusion remains
+    # solely the current Financial Statements result.
+    from governance_cases import document
+    prior=['2025-10-01','2025-10-31'];base=dict(entity=n.scope_id,currency='EUR',unit='EUR million',metric='account_balance',presentation_basis='signed_balance')
+    ref=dict(owner_import='group-statements',result_path=['current','cash'],amount='490.00')
+    for label,amount,span,components in [('cash-current','490.00',n.period,[dict(sign=1,ref=ref)]),('cash-prior','489.00',prior,[])]:
+        document(c,label,dict(base,period=span,kind='actual',posted_only=True,amount=amount,records=[dict(id=label+'-posted',amount=amount)],inventory=[label+'-posted'],version='actual-v1',approved=True,supplied=True,approved_on='2026-09-30',owner_components=components,cash=amount),currency='EUR')
+    document(c,'cash-drivers',dict(base,period=n.period,baseline_period=prior,comparator_version='actual-v1',method='source_flux',source_owner='financial-statements',source_metric='group cash',category='economic',evidence_class='bridge_attribution',confidence='high',population_complete=True,records=[dict(id='financing-receipt',baseline_amount='489.00',current_amount='490.00',current_owner=ref,posted_only=True,economic_components=['supplied-financing-bank-receipt'])],inventory=['financing-receipt']),currency='EUR')
+    c['diagnostic']=dict(component_ties=[dict(groups=['cash-movement'],current_owner=ref,baseline_field='cash',sign=1)],unit='EUR million',metric='account_balance',presentation_basis='signed_balance',current={'doc':'cash-current'},comparator=dict(doc='cash-prior',kind='actual',version='actual-v1',period=prior,frozen_on='2026-09-30'),groups=[dict(id='cash-movement',doc='cash-drivers',method='source_flux',sign=1,labels=dict(movement='Reviewed financing cash receipt'),accounting_check=None)],group_inventory=['cash-movement'],tolerance='.01',materiality='.1',hypotheses=[],signals=[],revenue=None)
+    c=adapt(c)
+    for d in c['documents']:d['content_hash']=digest(d['content'])
+    s3.bind(f,c,'reporting','analytics',('accounts',0,'amount'))
+    c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    c=refresh_release(c);c['release_review']['approval_date']=n.period[1]
+    return ready('management-accounting-analytics',c=c)
+
+
+def intake_initial():
+    """Natural objective -> validated source proposal -> reviewed ordinary graph.
+
+    This milestone binds original source principal/rate input populations. Further
+    source coverage and correction evidence inventory gates remain explicit tests.
+    """
+    from orchestration.intake import RawSource, Inventory, StructuredProposal, FactCandidate, FixturePlanner, Intake, Binding, ReviewedInputPack
+    from orchestration.tests.intake_fixtures import cl,cell
+    from orchestration.planning import FACT_ADAPTERS
+    from orchestration.runtime import production
+    f=build();e=f['session'];plan=serialize(f);raw=[];facts=[];bindings={};children=[]
+    family={owner:family for family,(owner,_) in FACT_ADAPTERS.items()}
+    proposal=StructuredProposal(cl(OBJECTIVE,status='USER_STATED',confidence=1),cl('One supported Group close conclusion'),cl('CLOSE_REVIEW'),secondary_modes=[cl('RECONCILIATION_INVESTIGATION'),cl('REPORTING'),cl('DIAGNOSTIC_ANALYTICS')],supporting_modes=[cl('DOCUMENTATION')])
+    for key in e.topological(e.graph.nodes):
+        n=e.graph.nodes[key];label=n.logical_id;p=e.periods.get(n.period_id)
+        deps=[e.graph.nodes[q] for q in n.dependencies if e.graph.nodes[q].status!='complete' or e.versions.current(q).payload().get('unresolved_dependencies')]
+        c=dict(scope_id=n.scope_id,period_id=n.period_id,source_id='pending-'+label,pending_dependency_evidence='Current material dependencies required',evidence=list(EVIDENCE)) if deps else source(f,label)
+        dims=dict(scope_id=n.scope_id,entity=n.scope_id,framework=n.framework,jurisdiction=n.jurisdiction,currency=n.functional_currency or n.presentation_currency,unit='currency',period=n.period,period_id=n.period_id,calendar_id=p.calendar_id,period_role='CURRENT',comparator='actual')
+        owner=n.selected_skill;native=not owner.startswith('orchestration-');pending=bool(deps)
+        if native:
+            if pending:path=('pending_dependency_evidence',);value=c['pending_dependency_evidence'];attribute='pending_review';confirmation=True
+            elif owner=='intercompany-accounting':
+                role='a' if n.scope_id==c['pairs'][0]['entity_a'] or n.scope_type=='GROUP' else 'b';path=('pairs',0,'confirmed_'+role);value=c['pairs'][0]['confirmed_'+role];attribute='confirmed_principal';confirmation=False
+            elif owner=='foreign-currency':path=('translation','tb',1,'balance');value=c['translation']['tb'][1]['balance'];attribute='functional_loan';confirmation=False
+            else:raise ValueError('Fixture needs separately reviewed adapter for initial active owner')
+            source_id='source-'+label
+            r=RawSource(source_id,label+'-ledger.csv','csv','record_id,amount\n'+label+','+str(value)+'\n',dict(dims,controlled_export=True,version='v1',unit_scale='million',provenance='Independently supplied controlled company close source'))
+            raw.append(r);inv=Inventory([r]);ref=cell(inv,r.id,'amount');actual=inv.extractions[r.id].source
+            fact=FactCandidate('fact-'+label,family[owner],attribute+'_'+label.lower().replace('-','_'),cl(str(value),[ref],'EXTRACTED',.99),dims,owner,economic_id=n.economic_id if owner=='intercompany-accounting' and n.scope_type=='LEGAL_ENTITY' else '',confirmation_required=confirmation,transformation='identity')
+            proposal.facts.append(fact);proposal.issues.append(cl(dict(id='issue-'+label,owner=owner,family=family[owner],scope_id=n.scope_id,period_id=n.period_id,fact_ids=[fact.id],dependencies=[],required_fields=[fact.attribute]),[ref]))
+            if not pending:
+                c['source_population']=[r.id];c['qualified_scope_sources']=[dict(source_id=actual['id'],fingerprint=actual['fingerprint'],metadata=actual['metadata'])]
+                c=certify(owner,c)
+                bindings[key]=[Binding(fact.id,owner,path,'current',n.scope_id,n.period_id,p.calendar_id)]
+        e.execute(key,observation,c,'Initial governed CAO execution')
+        children.append(ReviewedInputPack(dict(objective=OBJECTIVE,node_id=key,source=copy.deepcopy(c)),bindings.get(key,[]),scope_id=n.scope_id,period_id=n.period_id,calendar_id=p.calendar_id))
+    context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',period_id=f['periods']['CALENDAR-OCT'].period_id,scopes=e.cases.scopes.record(),period_registry=e.periods.record(),materiality='.1')
+    plan['sources']=copy.deepcopy(e.sources)
+    engine=Intake(FixturePlanner(proposal));prepared=engine.prepare(OBJECTIVE,raw,[],context)
+    if not prepared.validation['accepted']:raise ValueError(prepared.validation)
+    pack=ReviewedInputPack(dict(objective=OBJECTIVE,scope=copy.deepcopy(prepared._current),governed_plan=plan),[],scoped_packs=children)
+    result=engine.execute(prepared,pack);case=result.case;f['case']=case;f['session']=case.governance
+    f['nodes']={label:case.graph.nodes[n.id] for label,n in f['nodes'].items()};f['containers']={label:case.governance.cases.get(c.id) for label,c in f['containers'].items()}
+    f.update(intake=result,raw_sources=raw,reviewed_pack=pack,intake_engine=engine)
+    return f

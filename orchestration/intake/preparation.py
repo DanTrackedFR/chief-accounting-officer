@@ -291,6 +291,9 @@ class Intake:
         Disputes keep the final Case partial even when independent qualified work
         can run. Disputed/inferred fields cannot be bound into owner source facts.
         """
+        if pack is not None and isinstance(pack,ReviewedInputPack) and 'governed_plan' in pack.request:
+            from .governed import execute
+            return execute(self,prepared,pack)
         if not prepared.validation.get('accepted'):return prepared
         prepared._inventory.verify()
         if prepared._seal!=self._seal(prepared):raise ValueError('Prepared proposal/candidates changed after validation')
