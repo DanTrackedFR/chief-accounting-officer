@@ -57,6 +57,7 @@ class Issue:
     considerations: list = field(default_factory=list)
     condition: object = None
     scope_id: str | None = None
+    period_id: str | None = None
 
 
 class Planner(Protocol):
@@ -94,10 +95,12 @@ class DeterministicPlanner:
                 if not isinstance(supplied,dict): continue
                 if not any(supplied.get(k) for k in populations): continue
                 scope_id=supplied.get('scope_id',supplied.get('entity'))
-                issues.append(Issue(owner+':'+str(scope_id) if isinstance(values,list) else owner, family, owner,
+                period_id=supplied.get('period_id')
+                suffix=':'+str(scope_id)+((':'+str(period_id)) if period_id is not None else '')
+                issues.append(Issue(owner+suffix if isinstance(values,list) else owner, family, owner,
                     'Supplied '+family.replace('_',' ')+' population affects requested accounting work',
                     [family], required=supplied.get('required_for_objective',True),
-                    material=supplied.get('material'), scope_id=scope_id))
+                    material=supplied.get('material'), scope_id=scope_id, period_id=period_id))
         # Cross-cutting architecture rules produce actual graph nodes when the
         # task attributes call for them, even if their workpapers are missing.
         rules = {
