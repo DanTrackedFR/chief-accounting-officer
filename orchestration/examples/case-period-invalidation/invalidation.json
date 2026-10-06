@@ -1,0 +1,61 @@
+{
+  "affected_cases": [
+    "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+    "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+    "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d"
+  ],
+  "affected_periods": [
+    "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+    "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+    "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70"
+  ],
+  "causes": [
+    {
+      "dependency": "dependency:7e635bd7203d75d4d9b40ca3fdb0ebf0648a9e40bbb16cdeed3a54b4b65cc57c",
+      "node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+      "upstream_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9"
+    },
+    {
+      "dependency": "dependency:35f6da18566fcba97a928a573bee5eca79b7308dad6424650d4417c6a4ae264b",
+      "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+      "upstream_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
+    },
+    {
+      "dependency": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
+      "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+      "upstream_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
+    },
+    {
+      "dependency": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
+      "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
+      "upstream_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
+    }
+  ],
+  "changed_upstream": "exec:revenue-recognition:ENTITY-US:9962e4bc0d7bf79488a41b8214db87f6ef4776ee7fe2e05853dd093c72b3ec30",
+  "direct": [
+    "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565"
+  ],
+  "execution_order": [
+    "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+    "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+    "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+    "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6"
+  ],
+  "new_version": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10",
+  "old_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9",
+  "transitive": [
+    "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+    "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
+    "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7"
+  ],
+  "unaffected": [
+    "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40",
+    "exec:orchestration-future-observation:ENTITY-US:804726295d73f6ae36def0efa08c5ebb84d09979bdfac83f3d25cce04e1dbc89",
+    "exec:orchestration-independent-observation:GROUP-EUR:73d40208440a3e3c989f38c0ee88d423cda5836c380040a6d58d1c9903748acf",
+    "exec:orchestration-process-observation:ENTITY-NL:eb3bfb62b3979a2fe6f5e220823ff4b236544867a9f4ec2c3f46a06b4b007e46",
+    "exec:orchestration-process-observation:ENTITY-UK:4aa4779b4b8c64dc9ff1ac7da4c88ae286fd7c0573eec23134d6fbdf4e62cf4c",
+    "exec:orchestration-treasury-observation:ENTITY-UK:b88d7f3b629eca846386ebb5906a3d01e32983304d70ba81d1d162422e5bdfc1",
+    "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192",
+    "exec:revenue-recognition:ENTITY-US:fe8170b7a8706a1e51df4215b9b8b705785859e5cfc354d07df1c0ff574ba985"
+  ]
+}

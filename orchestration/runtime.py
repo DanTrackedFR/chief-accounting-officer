@@ -112,6 +112,18 @@ class Case:
     reviewed_input_packs: list = field(default_factory=list)
     group_consumer: dict = field(default_factory=dict)
 
+    scope_id: str = ''
+    period_id: str = ''
+    case_type: str = ''
+    cycle: str = ''
+    parent_case_id: str | None = None
+    child_case_ids: list = field(default_factory=list)
+    node_refs: list = field(default_factory=list)
+    result_version_refs: list = field(default_factory=list)
+    governance_history: list = field(default_factory=list)
+    rework_state: dict = field(default_factory=dict)
+    provenance: list = field(default_factory=list)
+
     def transition(self, target):
         lifecycle = ['OPEN', 'SCOPED', 'IN_PROGRESS', 'CHALLENGE', 'CONCLUDED', 'DOCUMENTED', 'CLOSED']
         if lifecycle.index(target) != lifecycle.index(self.status)+1:
@@ -125,7 +137,12 @@ class Case:
         if target == 'CLOSED' and self.outcome != 'complete':
             raise ValueError('Unresolved Case remains DOCUMENTED; explicit blocked delivery is separate')
         self.status = target; self.transitions.append(target)
-    def record(self): return asdict(self)
+    def record(self):
+        value=asdict(self)
+        if hasattr(self,'governance'):
+            g=self.governance
+            value['governance']=dict(periods=g.periods.record(),cases=g.cases.record(),versions=g.versions.record(),dependencies=[dict(asdict(e),id=k) for k,e in sorted(g.edges.items())],receipts=g.receipts,rework=g.rework_history)
+        return value
 
 
 def company_context(records, scope):
@@ -169,11 +186,14 @@ class CAO:
             c.open_questions.append(dict(kind='blocking', question=str(exc)))
             c.outcome = 'blocked'
             # Preserve completed work/evidence on malformed planning/inputs.
-            c.workplan_nodes = graph.record()
+            c.workplan_nodes = c.graph.record()
         return c
 
     def _run(self, c, graph, request):
         if not c.objective.strip(): raise ValueError('User objective required')
+        if 'governed_plan' in request:
+            from .governed_plan import run
+            return run(c,request)
         scope = request.get('scope', {})
         context, conflicts = company_context(request.get('company_context', []), scope)
         for k, v in scope.items():
@@ -221,12 +241,12 @@ class CAO:
         for i in issues:
             if not isinstance(i.id, str) or not i.id or not isinstance(i.owner, str): raise ValueError('Malformed issue identity')
             if type(i.required) is not bool or (i.material is not None and type(i.material) is not bool): raise ValueError('Invalid dependency materiality')
-            candidates=[key for key in inputs if inputs.packages[key]==i.owner and (i.scope_id is None or inputs[key].get('scope_id',inputs[key].get('entity'))==i.scope_id)]
-            if len(candidates)>1:raise ValueError('Issue must identify exact Scope for repeated owner')
+            candidates=[key for key in inputs if inputs.packages[key]==i.owner and (i.scope_id is None or inputs[key].get('scope_id',inputs[key].get('entity'))==i.scope_id) and (getattr(i,'period_id',None) is None or inputs[key].get('period_id')==getattr(i,'period_id',None))]
+            if len(candidates)>1:raise ValueError('Issue must identify exact Scope/Period for repeated owner')
             node_context=scoped_context(context,inputs[candidates[0]]) if candidates else scoped_context(context,context)
             key=execution_identity(i.owner,node_context)
             graph.add(Node(key,i.capability,i.owner,i.reason,node_context['entity'],node_context['framework'],[node_context['period_start'],node_context['reporting_period']],
-                logical_id=i.id,scope_id=node_context['scope_id'],scope_type=node_context['scope_type'],jurisdiction=node_context['jurisdiction'],
+                logical_id=i.id,scope_id=node_context['scope_id'],scope_type=node_context['scope_type'],jurisdiction=node_context['jurisdiction'],period_id=node_context.get('period_id',''),
                 functional_currency=node_context['functional_currency'],presentation_currency=node_context['presentation_currency'],
                 prerequisites=self.registry.get(i.owner).get('context_requirements',{}).get('required',[]),
                 dependencies=list(i.dependencies),source_inputs=i.source_inputs,
@@ -286,6 +306,8 @@ class CAO:
                 if dependency not in graph.nodes:raise ValueError('Unknown composed owner dependency')
                 if dependency not in graph.nodes[b['consumer']].dependencies:graph.nodes[b['consumer']].dependencies.append(dependency)
         graph.validate(); c.accounting_issues=[asdict(i) for i in issues]
+        from .runtime_governance import attach,publish,finish
+        session=attach(c,graph,context,inputs,request)
         c.transition('SCOPED'); c.transition('IN_PROGRESS')
         consumed=set(); owned={}; entries=set()
         while any(n.status == 'pending' for n in graph.nodes.values()):
@@ -307,6 +329,7 @@ class CAO:
                 source=inputs.get(n.id)
                 if not isinstance(source, dict):
                     n.status='blocked'; n.open_items.append('Missing reviewed source workpaper for '+n.issue); continue
+                session.periods.authorize_execution(n.period_id,n.case_id,n.id)
                 node_context=scoped_context(context,source)
                 expected=(n.entity,n.framework,node_context['jurisdiction'],*n.period,node_context['currency'])
                 if dimensions(source) != expected:
@@ -314,6 +337,8 @@ class CAO:
                 if meta['applicable_frameworks'] and n.framework not in meta['applicable_frameworks']:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
+                    from .temporal_inputs import validate_native_sources
+                    validate_native_sources(context,n,source)
                     repeated=sum(x.selected_skill==n.selected_skill for x in graph.nodes.values())>1
                     if repeated:
                         population=source.get('source_population');manifest=source.get('qualified_scope_sources')
@@ -323,12 +348,15 @@ class CAO:
                             source_meta=row['metadata']
                             if source_meta.get('scope_id',source_meta.get('entity'))!=n.scope_id or source_meta.get('entity')!=n.scope_id:raise ValueError('Repeated owner source Scope contamination')
                             if (source_meta.get('currency'),source_meta.get('framework'),source_meta.get('jurisdiction'),source_meta.get('period'))!=(node_context['currency'],n.framework,n.jurisdiction,n.period) or not row.get('fingerprint'):raise ValueError('Repeated owner source dimensional contamination')
+                    if context.get('period_registry') and n.dependencies:
+                        exact_receipts=[session.receipt(k) for k,e in sorted(session.edges.items()) if e.consumer_node==n.id]
+                        if source.get('versioned_dependency_receipts')!=exact_receipts:raise ValueError('Explicit temporal native consumer requires separately reviewed exact-version receipts')
                     from .period_selection import validate_activity
                     validate_activity(source)
                     from .result_bindings import validate_receipts
                     validate_receipts(n,graph,inputs,c)
                     for imp in source.get('imports', []):
-                        matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package'] and node.scope_id==imp['case'].get('scope_id',imp['case'].get('entity'))]
+                        matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package'] and node.scope_id==imp['case'].get('scope_id',imp['case'].get('entity')) and (not imp['case'].get('period_id') or node.period_id==imp['case']['period_id'])]
                         producer=matches[0] if len(matches)==1 else None
                         if not producer or producer.status!='complete' or digest(imp['result'])!=digest(producer.result):
                             raise ValueError('Imported owner result stale, incomplete or contradictory')
@@ -345,6 +373,7 @@ class CAO:
                         raise ValueError('Owner result envelope dimensions differ')
                     n.result=r; n.status=r['status']; n.open_items=list(r.get('open_items',[])); n.evidence=copy.deepcopy(r.get('evidence',[]))
                     n.execution_receipt=self._result_receipt(n,source)
+                    if n.status=='complete':publish(session,n,source)
                     matches=[p for p in c.reviewed_input_packs if p['node']==n.id]
                     if matches:n.execution_receipt['reviewed_input_pack_fingerprint']=matches[0]['pack_fingerprint']
                     c.skills_invoked.append(n.selected_skill)
@@ -353,7 +382,7 @@ class CAO:
                         from .scoped_journals import qualify_journal
                         posting=source.get('posting_scope_id',n.scope_id)
                         layer=source.get('journal_layer',n.scope_type)
-                        qualify_journal(context,n.scope_id,posting,layer)
+                        qualify_journal(node_context,n.scope_id,posting,layer)
                         self._economics(c,n,source,owned,entries)
                     c.evidence_refs.extend(n.evidence); c.judgments.extend(r.get('judgments',[]))
                     c.knowledge_refs.extend(copy.deepcopy(r.get('knowledge_documents',[])))
@@ -379,6 +408,12 @@ class CAO:
         if request.get('group_consumer') is not None:
             from .scoped_receipts import consume_group
             c.group_consumer=consume_group(request['group_consumer'],graph,inputs,context,c)
+            from .runtime_governance import adopt
+            target=graph.nodes[c.group_consumer['node']]
+            target.result.update(status='complete',case_fingerprint=digest(request['group_consumer']))
+            adopt(session,target,request['group_consumer']);publish(session,target,request['group_consumer'])
+        from .runtime_governance import reconcile
+        reconcile(session)
         c.workplan_nodes=graph.record()
         unresolved=[n for n in graph.nodes.values() if n.status in ('blocked','partial')]
         critical=[n for n in unresolved if n.required or n.material is not False]
@@ -399,6 +434,7 @@ class CAO:
         # Verify the actual public adapter before allowing a clean close.
         self.public(c)
         if c.outcome == 'complete': c.transition('CLOSED')
+        finish(c)
 
     def _diagnostic_followups(self,c,g,inputs,context):
         analytics=next((n for n in g.nodes.values() if n.selected_skill=='management-accounting-analytics' and n.status in ('complete','partial')),None)
@@ -435,7 +471,9 @@ class CAO:
                 result=production.assess_case(owner,source);production.to_public(result,'answer_context')
                 if result['status']!='complete' or digest(result)!=digest(existing[0].result):raise ValueError('Accounting owner recheck unresolved or changed; rework required')
                 if number(at(result['calculations'],q['result_path']))!=number(q['amount']):raise ValueError('Analytical finding differs from accounting owner')
-                node.status='complete';node.result=result;node.execution_receipt=self._result_receipt(node,source);q['status']='OWNER_RECHECK_SUPPORTED'
+                from .runtime_governance import adopt,publish
+                adopt(c.governance,node,source)
+                node.status='complete';node.result=result;node.execution_receipt=self._result_receipt(node,source);publish(c.governance,node,source);q['status']='OWNER_RECHECK_SUPPORTED'
                 q['accounting_conclusion']=result['conclusion']
                 if owner=='inventory-cost' and q['result_path']==['manufacturing_expense']:
                     expense=sum((number(line['amount']) for journal in result.get('journal_entry_implications',[]) for line in journal if line['side']=='Dr' and line['account']=='Unallocated overhead expense'),Decimal(0))
@@ -444,6 +482,93 @@ class CAO:
                 node.status='blocked';node.open_items=[str(exc)];q['status']='UNRESOLVED'
             c.accounting_questions.append(q)
             c.execution_ledger.append(dict(node=node.id,batch=[node.id],status=node.status,action='diagnostic owner recheck',reuses=[n.id for n in existing]))
+
+    def execute_versioned_owner(self, node, source, receipts):
+        """Existing native production boundary for temporal/versioned execution.
+
+        Accounting consumer imports remain separately reviewed native contracts;
+        an orchestration receipt cannot manufacture a native accounting approval.
+        """
+        meta=self.registry.get(node.selected_skill)
+        if not meta.get('production_available') or not meta.get('execution_available'):
+            raise ValueError('Unavailable accounting owner')
+        if dimensions(source)!=(node.scope_id,node.framework,node.jurisdiction,*node.period,currency_from_node(node)):
+            raise ValueError('Versioned owner Scope/Period dimensions differ')
+        if source.get('period_id')!=node.period_id:raise ValueError('Versioned owner governed Period differs')
+        result=production.assess_case(node.selected_skill,source)
+        production.to_public(result,'answer_context')
+        if result.get('status')!='complete' or result.get('case_fingerprint')!=production.case_fingerprint(source):
+            raise ValueError('Versioned native accounting result not qualified')
+        if result.get('entities')!=[node.scope_id] or result.get('framework')!=node.framework or result.get('periods')!=node.period:
+            raise ValueError('Versioned native result dimensions differ')
+        return result
+
+    def correct(self, case, node_id, reviewed_source, reason):
+        """Publish a qualified correction on the retained ordinary Case graph.
+
+        Period reopening is separately governed. The caller supplies an already
+        reviewed native input, never an inferred replacement certification.
+        """
+        from .governed_plan import observation
+        session=case.governance
+        if node_id not in dict(session.graph.nodes):raise ValueError('Correction requires exact execution node')
+        if session.versions.current(node_id) is None:raise ValueError('Correction requires current original result')
+        session.cao=self
+        session.execute(node_id,observation,copy.deepcopy(reviewed_source),reason)
+        session.sources[node_id]=copy.deepcopy(reviewed_source)
+        plan=session.rework_history[-1]
+        self._refresh_versioned(case,final=False)
+        return copy.deepcopy(plan)
+
+    def restate(self, case, node_id, reviewed_source, reason, approval):
+        """Governed history classification, without accounting restatement authority."""
+        if not isinstance(approval,dict) or set(approval)!={'status','evidence','convention'} or approval['status']!='APPROVED' or approval['convention']!='SYNTHETIC_GOVERNED' or not approval['evidence']:
+            raise ValueError('Governed restatement lineage approval required')
+        session=case.governance
+        original=session.versions.current(node_id)
+        plan=self.correct(case,node_id,reviewed_source,reason)
+        session.versions.history.append(dict(event='RESTATEMENT_LINEAGE',original_version=original.version_id,restated_version=plan['new_version'],approval=copy.deepcopy(approval),accounting_authority=False))
+        return plan
+
+    def selective_reexecute(self, case, plan, reviewed_sources=None):
+        """Rerun only the current exact dependency plan, then refresh delivery."""
+        from .governed_plan import observation
+        session=case.governance;session.cao=self
+        sources=copy.deepcopy(dict(session.sources))
+        for key,value in (reviewed_sources or {}).items():
+            if key not in plan['execution_order']:raise ValueError('Unrelated reviewed rework input')
+            sources[key]=copy.deepcopy(value)
+        # Clear delivery before execution so a failed native recertification can
+        # never leave the previous public conclusion current.
+        self._refresh_versioned(case,final=False)
+        try:
+            ledger=session.reexecute(plan,{key:observation for key in plan['execution_order']},sources)
+            for key in plan['execution_order']:session.sources[key]=sources[key]
+            self._refresh_versioned(case,final=True)
+            return ledger
+        except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError):
+            self._refresh_versioned(case,final=False)
+            raise
+
+    def _refresh_versioned(self,case,final):
+        session=case.governance
+        case.conclusions=[];case.diagnostics=[];case.balance_diagnostics={}
+        case.journal_mapping_valid=False;case.journal_ownership_ledger=[]
+        if hasattr(case,'_scoped_postings'):del case._scoped_postings
+        case.group_consumer={}
+        session.cases.refresh(session.graph,session.versions,session.edges)
+        case.workplan_nodes=session.graph.record()
+        case.owner_results=[dict(n.execution_receipt) for n in session.graph.nodes.values() if n.status=='complete']
+        if final and hasattr(session,'request'):
+            # Revalidate existing native challenge contracts against the new
+            # independently supplied source/result population. No approvals are
+            # manufactured by the correction API.
+            self._challenge(case,session.graph,session.sources,session.request,session.context)
+            from .runtime_governance import reconcile
+            reconcile(session)
+            if case.outcome=='complete':case.conclusions=[self._synthesis(case,session.graph,session.context)]
+            case.workplan_nodes=session.graph.record()
+        case.execution_ledger.append(dict(action='selective-currentness-refresh',status=case.outcome))
 
     def rework(self, previous, revised_request):
         if revised_request.get('case_id') == previous.id:
@@ -750,6 +875,8 @@ class CAO:
         return selected,ledger
 
     def _synthesis(self,c,g,context):
+        if hasattr(c,'governance'):
+            c._synthesis_currentness=sorted((node,key,c.governance.versions.state(key)) for node,key in c.governance.versions.active.items())
         values={}; journals=[]; controls=[]; reporting=[]; limits=[]; approvals=[]
         for n in g.nodes.values():
             if n.issue=='diagnostic accounting follow-up' or n.status!='complete' or not n.result: continue
@@ -758,7 +885,7 @@ class CAO:
             # added indiscriminately across results.
             metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',),'accounts-receivable':('closing_ar','billed','credits','applied_cash_and_deposits','unapplied_liability','fx_movement','bank_receipts'),'financial-instruments-ecl':('allowance','expense'),'foreign-currency':('monetary_fx_profit',)}
             for metric in metrics.get(n.selected_skill,()):
-                if metric in r.get('calculations',{}): values[(n.scope_id+' '+n.framework+' '+currency_from_node(n)+' '+metric) if sum(x.selected_skill==n.selected_skill for x in g.nodes.values())>1 else metric]=str(number(r['calculations'][metric]))
+                if metric in r.get('calculations',{}): values[(n.scope_id+' '+n.framework+' '+currency_from_node(n)+(' '+n.period[0]+' to '+n.period[1] if sum(x.selected_skill==n.selected_skill and x.scope_id==n.scope_id for x in g.nodes.values())>1 else '')+' '+metric) if sum(x.selected_skill==n.selected_skill for x in g.nodes.values())>1 else metric]=str(number(r['calculations'][metric]))
             for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
@@ -902,6 +1029,20 @@ class CAO:
 
     def public(self,c,route='answer'):
         """Separate curated representation; internal evidence is never mutated."""
+        if hasattr(c,'governance'):
+            stale=any(c.governance.versions.state(key)!='CURRENT' for key in c.governance.versions.active.values())
+            view=sorted((node,key,c.governance.versions.state(key)) for node,key in c.governance.versions.active.items())
+            changed_synthesis=bool(c.conclusions) and getattr(c,'_synthesis_currentness',None)!=view
+            if changed_synthesis or (stale and not c.conclusions):return public_record(dict(guidance='Accounting work requires selective rework before current delivery.',status='partial',open_items=['Resolve stale dependent results.']),route=route)
+        if hasattr(c,'governance') and not c.conclusions:
+            observations=[]
+            for node_id in sorted(c.governance.versions.active):
+                node=c.graph.nodes[node_id]
+                version=c.governance.versions.current(node_id,allow_stale=True)
+                if node.case_id!=c.id or c.governance.versions.state(version.version_id)!='CURRENT':continue
+                payload=version.payload()
+                if 'observed_amount' in payload:observations.append(dict(label='Qualified local observation ('+payload['currency']+')',amount=payload['observed_amount']))
+            return public_record(dict(guidance='Qualified entity results and downstream reporting observations were refreshed; unrelated work did not require rerun.' if c.governance.rework_history else 'Qualified entity results and reporting observations are current.',status=c.outcome,calculations=observations,limitations=['Local observations retain their original framework and currency; no consolidated converted total is established.']),route=route)
         s=c.conclusions[0] if c.conclusions else dict(conclusion='Accounting work is blocked.',status=c.outcome,
             calculations={},journals=[],open_items=[],controls=[],reporting=[],limitations=[],required_approvals=[])
         # Owners' curated public boundary was executed already. Only accounting

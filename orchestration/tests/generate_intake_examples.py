@@ -6,7 +6,8 @@ from orchestration.tests.intake_fixtures import factory,factory_review_pack,ap_c
 
 
 def compact_case(case):
-    record=case.record()
+    from orchestration.tests.generate_examples import internal_record
+    record=internal_record(case)
     # Native owner workpapers are deterministically reproducible from fixture code,
     # not embedded repeatedly in every artifact. Keep result authority/dimensions,
     # calculations and open work; fingerprints remain internal references.
