@@ -1,0 +1,78 @@
+{
+  "affected_cases": [
+    "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0"
+  ],
+  "affected_periods": [
+    "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70"
+  ],
+  "causes": [
+    {
+      "dependency": "dependency:643d6e76360f083afa80e8bbd564c44a301c63eeb9b6a3c13dfd21b604666b11",
+      "node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+      "upstream_version": "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272"
+    },
+    {
+      "dependency": "dependency:ad9b017d965fa45db9edfe98dbd2fa274bfc32995edf9302664124902e3d5254",
+      "node": "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+      "upstream_version": "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272"
+    },
+    {
+      "dependency": "dependency:a83040ba768c9f11c6d7834bf6095f0e97b3ff01ac1ae1a47bd19f4ace18ed49",
+      "node": "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+      "upstream_version": "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272"
+    },
+    {
+      "dependency": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+      "node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+      "upstream_version": "version:030d13056f163ebadb1f5f9056f5f853fdaa2aec6552f69db3071e91dca32213"
+    },
+    {
+      "dependency": "dependency:37ec2ffa42d97e0762bdbb78a04de588f1f52c7af1d40420f358e3c1cc85306c",
+      "node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+      "upstream_version": "version:3bb9e16ba0472624d4b9dda433e5c2836f4052b54e7b838dbc1d67d9e790f54c"
+    },
+    {
+      "dependency": "dependency:a6a020c5fcaf7997fcc2f6669a2b79a2e75c957cabb483a21f003aa218a7b0b0",
+      "node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+      "upstream_version": "version:3bb9e16ba0472624d4b9dda433e5c2836f4052b54e7b838dbc1d67d9e790f54c"
+    }
+  ],
+  "changed_upstream": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+  "direct": [
+    "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece"
+  ],
+  "execution_order": [
+    "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+    "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+    "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620"
+  ],
+  "new_version": "version:03a571a73729f58c45eadbb056083220ccdd8c0620459284ffea1804e336bb3e",
+  "old_version": "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272",
+  "transitive": [
+    "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+    "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620"
+  ],
+  "unaffected": [
+    "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+    "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+    "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+    "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+    "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+    "exec:intercompany-accounting:ENTITY-US:7129b57483ab9050be42542803e9f1d5a8340e5265f953496d634a26c6008777",
+    "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "exec:orchestration-comparative-observation:ENTITY-NL:953b24c794c0949740e91e972af7155ed4b6dfb37a16c38ee1f45009a8d68f9a",
+    "exec:orchestration-opening-observation:ENTITY-NL:56d537ca1185540097326c363325b1e129863d1696ae58a5b1fd446d6068954d",
+    "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+    "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4"
+  ]
+}

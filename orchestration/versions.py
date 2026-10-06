@@ -236,6 +236,8 @@ class VersionedExecution:
             from .stage3 import validate_native_bindings
             validate_native_bindings(self,node,source,receipts)
             result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
+            if node.selected_skill=='intercompany-accounting' and node.scope_type=='GROUP' and source.get('stage3_contract')=='ORDINARY_IC_REASSESSMENT' and (result.get('journal_entry_implications') or result.get('calculations',{}).get('journal_entities')):
+                raise ValueError('Zero-adjustment framework reassessment cannot publish legal-book journals')
         version=self.versions.publish(node,result,source,[(r['dependency_id'],r['result_version']) for r in receipts],reason)
         if hasattr(self,'sources'):self.sources[node.id]=copy.deepcopy(source)
         node.result=version.payload();node.status='complete';node.iterations+=1;node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT')

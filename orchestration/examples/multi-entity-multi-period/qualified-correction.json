@@ -1,0 +1,210 @@
+{
+  "applicability_review": {
+    "effective_period": [
+      "2026-10-01",
+      "2026-10-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": [],
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ]
+  },
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "case_id": "stage3-mismatch-ENTITY-NL",
+  "controls": {
+    "as_of": "2026-10-31",
+    "complete": true,
+    "cutoff_memo": "Synthetic complete period end independent source",
+    "owner": "synthetic source owner",
+    "policy_version": "v1",
+    "population_amount": "10",
+    "population_count": 1,
+    "reviewer": "synthetic completeness reviewer",
+    "source_version": "v1"
+  },
+  "correction_evidence": {
+    "original": "Original export duplicated EUR1m payable; retained",
+    "replacement": "Reviewed loan confirmation EUR10m and corrected legal-book closing payable EUR10m",
+    "reviewed": true,
+    "version": "v2"
+  },
+  "economic_id": "mismatch",
+  "entity": "ENTITY-NL",
+  "entity_type": "for_profit",
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "execution_date": "2026-10-31",
+  "framework": "IFRS",
+  "functional_currency": "EUR",
+  "handoffs": {
+    "consolidation": {
+      "entity": "ENTITY-NL",
+      "evidence": "synthetic specialist memo",
+      "framework": "IFRS",
+      "reporting_period": "2026-10-31",
+      "resolved": true,
+      "reviewer": "synthetic technical reviewer",
+      "scope_memo": "Reviewed ordinary supported scope",
+      "target": "Consolidation"
+    },
+    "fx": {
+      "entity": "ENTITY-NL",
+      "evidence": "synthetic specialist memo",
+      "framework": "IFRS",
+      "reporting_period": "2026-10-31",
+      "resolved": true,
+      "reviewer": "synthetic technical reviewer",
+      "scope_memo": "Reviewed ordinary supported scope",
+      "target": "Foreign Currency"
+    },
+    "transfer_pricing": {
+      "entity": "ENTITY-NL",
+      "evidence": "synthetic specialist memo",
+      "framework": "IFRS",
+      "reporting_period": "2026-10-31",
+      "resolved": true,
+      "reviewer": "synthetic technical reviewer",
+      "scope_memo": "Reviewed ordinary supported scope",
+      "target": "Transfer Pricing"
+    }
+  },
+  "intercompany_transactions": [
+    {
+      "agreement_id": "agreement-mismatch",
+      "book_entry_id": "book-mismatch-ENTITY-NL",
+      "counterparty_scope": "ENTITY-UK",
+      "economic_id": "mismatch",
+      "functional_amount": "10.00",
+      "functional_currency": "EUR",
+      "network_id": "STAGE3-NETWORK",
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "role": "payable",
+      "scope_id": "ENTITY-NL",
+      "source_id": "source-mismatch-ENTITY-NL-v2",
+      "transaction_amount": "10",
+      "transaction_class": "loan",
+      "transaction_currency": "EUR"
+    }
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "jurisdiction": "NL",
+  "knowledge_review": {
+    "applied_claim_ids": [
+      "TOPIC-07-003-IFRS-R001",
+      "TOPIC-12-004-IFRS-E001"
+    ],
+    "claim_ids": [
+      "TOPIC-07-003-IFRS-R001",
+      "TOPIC-12-004-IFRS-E001"
+    ],
+    "documents": [
+      {
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md",
+        "sha256": "fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md",
+        "sha256": "cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md",
+        "sha256": "fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json",
+        "sha256": "b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5",
+        "topic_id": "TOPIC-07-003"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md",
+        "sha256": "92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725",
+        "topic_id": "TOPIC-12-004"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md",
+        "sha256": "e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6",
+        "topic_id": "TOPIC-12-004"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md",
+        "sha256": "fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071",
+        "topic_id": "TOPIC-12-004"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json",
+        "sha256": "ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd",
+        "topic_id": "TOPIC-12-004"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md",
+        "sha256": "e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c",
+        "topic_id": "TOPIC-12-004"
+      }
+    ],
+    "public_caveats": [
+      "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+    ],
+    "reviewer": "synthetic accounting reviewer",
+    "selection_memo": "Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope"
+  },
+  "pairs": [
+    {
+      "approval_date": "2026-10-31",
+      "approved": true,
+      "approved_version": "v2",
+      "book_a": "10",
+      "book_b": "11",
+      "confirmed_a": "10",
+      "confirmed_b": "10",
+      "currency": "EUR",
+      "date": "2026-10-31",
+      "entity_a": "ENTITY-UK",
+      "entity_b": "ENTITY-NL",
+      "evidence": "synthetic source",
+      "gl_a": "10",
+      "gl_b": "10",
+      "id": "mismatch",
+      "initial_rate_a": "1",
+      "initial_rate_b": "1",
+      "mismatch_items": [],
+      "opening_a": "10",
+      "opening_b": "10",
+      "opening_book_a": "10",
+      "opening_book_b": "11",
+      "opening_book_evidence": "Certified prior-close local book",
+      "owner": "synthetic owner",
+      "rate_a": "1",
+      "rate_b": "1",
+      "rate_evidence": "Synthetic local closing quotes",
+      "recharge": "0",
+      "reviewer": "synthetic independent reviewer",
+      "settled_a": "0",
+      "settled_b": "0",
+      "settlement_evidence": "No settlement",
+      "transaction_id": "mismatch",
+      "version": "v2"
+    }
+  ],
+  "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+  "period_start": "2026-10-01",
+  "policy_elections": {},
+  "preparer": "synthetic preparer",
+  "recharges": [],
+  "reporting_period": "2026-10-31",
+  "reviewer_signoff": {
+    "approved": true,
+    "case_fingerprint": "201f42d2997ff80b8206279688abb65152f7d8bbd360b39d8c35e1c8ae60b930",
+    "reviewer": "synthetic independent reviewer"
+  },
+  "scope_id": "ENTITY-NL",
+  "specialist_items": [],
+  "unit_scale": "million"
+}

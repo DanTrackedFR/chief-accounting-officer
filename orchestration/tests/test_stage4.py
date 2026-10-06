@@ -89,3 +89,102 @@ class Stage4Lifecycle(unittest.TestCase):
         for key in self.e.edges:
             r=self.e.receipt(key);self.e.validate_receipt(r,r['consumer_node'])
             self.assertEqual(r['result_version'],self.e.versions.current(r['producer_node']).version_id)
+
+
+class Stage4Intake(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from orchestration.tests.stage4_fixtures import intake_initial
+        cls.base=intake_initial()
+    def setUp(self):self.f=copy.deepcopy(self.base)
+    def test_objective_intake_preserves_controlled_sources_and_work_modes(self):
+        self.assertEqual(self.f['case'].outcome,'partial')
+        self.assertTrue(self.f['intake'].validation['accepted'])
+        self.assertGreater(len(self.f['raw_sources']),20)
+        self.assertEqual(self.f['case'].work_modes['primary'],'CLOSE_REVIEW')
+        self.assertIn('DIAGNOSTIC_ANALYTICS',self.f['case'].work_modes['secondary'])
+    def test_intake_correction_closes_same_governed_graph(self):
+        p=correct(self.f);rework(self.f,p)
+        self.assertEqual(self.f['case'].status,'CLOSED')
+    def attack(self,change):
+        engine=self.f['intake_engine'];prepared=self.f['intake'];pack=self.f['reviewed_pack']
+        change(pack)
+        with self.assertRaises(ValueError):engine.execute(prepared,pack)
+    def test_reused_reviewed_pack_rejected(self):
+        self.attack(lambda p:p.scoped_packs.append(copy.deepcopy(p.scoped_packs[0])))
+    def test_wrong_reviewed_pack_scope_rejected(self):
+        self.attack(lambda p:setattr(p.scoped_packs[0],'scope_id','ENTITY-UK'))
+    def test_wrong_reviewed_pack_period_rejected(self):
+        self.attack(lambda p:setattr(p.scoped_packs[0],'period_id','period:wrong'))
+    def test_wrong_fiscal_calendar_rejected(self):
+        self.attack(lambda p:setattr(p.scoped_packs[0],'calendar_id','Wrong-calendar'))
+    def test_wrong_source_input_selected_rejected(self):
+        self.attack(lambda p:p.scoped_packs[0].request.update(source=p.scoped_packs[1].request['source']))
+    def test_material_node_omission_rejected(self):
+        self.attack(lambda p:p.scoped_packs.pop())
+    def test_hidden_native_population_change_rejected(self):
+        def change(p):
+            child=next(c for c in p.scoped_packs if c.request['source'].get('translation'))
+            source=child.request['source'];source['translation']['tb'][0]['balance']='101'
+            p.request['governed_plan']['sources'][child.request['node_id']]=copy.deepcopy(source)
+        self.attack(change)
+    def test_source_manifest_omission_rejected(self):
+        def change(p):
+            child=next(c for c in p.scoped_packs if c.bindings)
+            child.request['source']['qualified_scope_sources']=[]
+            p.request['governed_plan']['sources'][child.request['node_id']]=copy.deepcopy(child.request['source'])
+        self.attack(change)
+    def test_source_economic_identity_reuse_rejected(self):
+        def change(p):
+            child=next(c for c in p.scoped_packs if c.bindings and 'pairs' in c.request['source'])
+            child.request['source']['economic_id']='unrelated'
+            p.request['governed_plan']['sources'][child.request['node_id']]=copy.deepcopy(child.request['source'])
+        self.attack(change)
+
+
+class Stage4PublicAndEconomics(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from orchestration.tests.stage4_fixtures import intake_initial
+        cls.base=intake_initial();cls.clean=copy.deepcopy(cls.base);cls.plan=correct(cls.clean);rework(cls.clean,cls.plan)
+    def test_conflict_answer_cannot_claim_group_report_supported(self):
+        p=CAO().public(self.base['case']);self.assertEqual(p['status'],'partial');self.assertNotIn('calculations',p)
+        self.assertIn('not yet supportable',p['guidance']);self.assertIn('10 EUR million versus 11 EUR million',str(p))
+    def test_clean_answer_has_native_totals_and_analytics_with_units(self):
+        p=CAO().public(self.clean['case']);self.assertEqual(p['status'],'complete')
+        self.assertIn('490.00',str(p));self.assertIn('EUR millions',str(p));self.assertIn('financing cash receipt',str(p))
+    def test_public_routes_preserve_same_private_boundary(self):
+        from interfaces.public_output import ROUTES
+        for route in ROUTES:
+            p=CAO().public(self.clean['case'],route)
+            for token in ('version:','dependency:','period:','case:','exec:','synthetic accounting reviewer','reviewer_signoff','source_fingerprint'):
+                self.assertNotIn(token,str(p))
+    def test_public_text_internals_fail_closed(self):
+        from interfaces.public_output import public_record,ROUTES
+        tokens=['exec:secret','version:secret','period:secret','case:secret','dependency:secret','node_id','case_id','result_version','reviewer_signoff','evidence_tier','routing_metadata','semantic_metadata']
+        for route in ROUTES:
+            for token in tokens:
+                with self.subTest(route=route,token=token),self.assertRaises(ValueError):public_record(dict(guidance=token),route=route)
+    def test_exact_once_current_layers_and_translation_dispositions(self):
+        from orchestration.tests.stage4_fixtures import journal_ledger
+        j=journal_ledger(self.clean);self.assertEqual(len(j['selected']),5)
+        self.assertEqual(sum(r['posting_scope']=='ENTITY-NL' for r in j['allocation']),1)
+        self.assertEqual(sum(r['posting_scope']=='GROUP-EUR' for r in j['allocation']),4)
+        self.assertEqual(len(j['dispositions']),2)
+    def test_posting_alias_duplication_rejected(self):
+        from orchestration.tests.stage4_fixtures import journal_ledger
+        from orchestration.scoped_journals import allocate_scoped
+        j=journal_ledger(self.clean);f=copy.deepcopy(self.clean);e=f['session']
+        duplicate=copy.deepcopy(j['events'][0]);duplicate['economic_id']='alias'
+        # Same current journal cannot appear twice under unrelated event labels.
+        events=j['events']+[duplicate]
+        context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',scopes=e.cases.scopes.record(),period_registry=e.periods.record())
+        with self.assertRaises(ValueError):f['basis'].current_journals(context,events,j['dispositions'])
+    def test_qualified_native_transformation_paths(self):
+        from orchestration.tests.stage4_fixtures import transforms
+        f=copy.deepcopy(self.clean);rs=transforms(f);self.assertEqual(len(rs),4)
+        for r in rs:f['basis'].validate_transformation(r)
+        self.assertEqual({r['source_framework'] for r in rs if r['kind']=='FRAMEWORK_CONVERSION'},{'US_GAAP','UK_GAAP'})
+    def test_current_unsupported_general_conversion_fails_closed(self):
+        e=self.clean['session'];v=e.versions.current(self.clean['nodes']['clean-ENTITY-US'].id)
+        self.assertEqual(self.clean['basis'].unsupported_conversion(v.version_id,'IFRS','general')['status'],'unresolved')

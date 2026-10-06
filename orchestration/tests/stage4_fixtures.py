@@ -8,6 +8,7 @@ import copy
 from dataclasses import asdict
 from decimal import Decimal
 from orchestration.tests import stage3_fixtures as s3
+from orchestration import stage3 as governed_stage3
 from orchestration.periods import Period, PeriodRelationship, EffectiveInterval
 from orchestration.runtime import CAO, Case
 from orchestration.cases import case_identity
@@ -76,6 +77,8 @@ def build():
     a=f['nodes']['timing-ENTITY-NL'];b=f['nodes']['nl-comparative']
     edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'COMPARATIVE','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
     f['edges'][('timing-ENTITY-NL','nl-comparative')]=e.add_dependency(edge)
+    s3.add_edge(f,'nl-opening','group',('observed_amount',))
+    s3.add_edge(f,'nl-comparative','group',('observed_amount',))
     return f
 
 
@@ -113,7 +116,8 @@ def legal_source(f,relationship,scope,corrected=False):
         row.update(source_id='source-mismatch-ENTITY-NL-v2',transaction_amount='10',functional_amount='10.00')
         c['correction_evidence']=dict(original='Original export duplicated EUR1m payable; retained',replacement='Reviewed loan confirmation EUR10m and corrected legal-book closing payable EUR10m',reviewed=True,version='v2')
         c=certify('intercompany-accounting',c)
-    return c
+    c['unit_scale']='million'
+    return certify('intercompany-accounting',c)
 
 
 def matching_source(f,relationship):
@@ -172,6 +176,7 @@ def group_source(f):
     for index,label in [(1,'translation'),(2,'uk-translation')]:
         c.setdefault('stage3_input_bindings',[]).append(dict(dependency_id=f['edges'][(label,'elimination','closing_cta')],target_path=['entities',index,'balances','CTA'],sign=-1,evidence=list(EVIDENCE)))
     c['versioned_dependency_receipts']=s3.receipts(f,n.id)
+    c['group_population_coverage']=dict(mode='ALL_CURRENT_LOAN_SIDES',required_legal_result_versions=governed_stage3.current_legal_loan_versions(e,n,{entity['id'] for entity in c['entities']}))
     return certify('consolidation',c)
 
 
@@ -183,6 +188,7 @@ def reporting_source(f):
     c['comparative_tb']=[dict(id='cash',balance='489',category='asset',performance_category='operating',line='cash',source_version='reviewed-prior-v1',classification_memo='Reviewed prior issued books',cash_account=True),dict(id='equity',balance='-489',category='equity',performance_category='operating',line='equity',source_version='reviewed-prior-v1',classification_memo='Reviewed prior issued equity',cash_account=False)]
     c['equity_bridge'][0].update(opening='489',profit='1',oci='0',closing='490')
     c['cash_flow'].update(start_amount='1',adjustments=[dict(id='noncash',amount='-1',source='Qualified noncash payable correction',noncash_acquisition_fx_excluded=True,memo='Exclude noncash correction from operating cash')],investing='0',financing='1',fx='0',opening='489',closing='490',classifications=[dict(id='fin',date=n.period[1],kind='capital_receipt',**{'class':'financing'},amount='1',memo='Reviewed financing cash movement')])
+    c['unit_scale']='million'
     c['comparative']['period_end']='2025-10-31'
     c['notes'][0]['amount']='490';c['stage3_balances']=copy.deepcopy(balances)
     s3.bind(f,c,'elimination','reporting',('stage3_balances',));c['versioned_dependency_receipts']=s3.receipts(f,n.id)
@@ -213,7 +219,7 @@ def initial():
         c=dict(scope_id=e.graph.nodes[key].scope_id,period_id=e.graph.nodes[key].period_id,source_id='pending-'+label,evidence=list(EVIDENCE)) if blockers else source(f,label)
         e.execute(key,observation,c,'Initial governed CAO execution')
     plan['sources']=copy.deepcopy(e.sources)
-    case=CAO().run(dict(objective=OBJECTIVE,governed_plan=plan));f['case']=case;f['session']=case.governance
+    case=CAO().run(dict(objective=OBJECTIVE,governed_plan=plan));f['case']=case;f['session']=case.governance;f['basis'].session=case.governance
     f['nodes']={label:case.graph.nodes[n.id] for label,n in f['nodes'].items()}
     f['containers']={label:case.governance.cases.get(c.id) for label,c in f['containers'].items()}
     return f
@@ -290,6 +296,7 @@ def intake_initial():
     This milestone binds original source principal/rate input populations. Further
     source coverage and correction evidence inventory gates remain explicit tests.
     """
+    import json
     from orchestration.intake import RawSource, Inventory, StructuredProposal, FactCandidate, FixturePlanner, Intake, Binding, ReviewedInputPack
     from orchestration.tests.intake_fixtures import cl,cell
     from orchestration.planning import FACT_ADAPTERS
@@ -315,7 +322,11 @@ def intake_initial():
             fact=FactCandidate('fact-'+label,family[owner],attribute+'_'+label.lower().replace('-','_'),cl(str(value),[ref],'EXTRACTED',.99),dims,owner,economic_id=n.economic_id if owner=='intercompany-accounting' and n.scope_type=='LEGAL_ENTITY' else '',confirmation_required=confirmation,transformation='identity')
             proposal.facts.append(fact);proposal.issues.append(cl(dict(id='issue-'+label,owner=owner,family=family[owner],scope_id=n.scope_id,period_id=n.period_id,fact_ids=[fact.id],dependencies=[],required_fields=[fact.attribute]),[ref]))
             if not pending:
-                c['source_population']=[r.id];c['qualified_scope_sources']=[dict(source_id=actual['id'],fingerprint=actual['fingerprint'],metadata=actual['metadata'])]
+                snapshot={k:copy.deepcopy(v) for k,v in c.items() if k not in ('reviewer_signoff','source_population','qualified_scope_sources','qualified_input_snapshot')}
+                reviewed=RawSource('review-'+label,label+'-reviewed-workpaper.json','json',[dict(record_id=label,reviewed_input=json.dumps(snapshot,sort_keys=True,separators=(',',':')))],dict(dims,controlled_export=True,version='v1',unit_scale='million',provenance='Separately reviewed complete native input population'))
+                raw.append(reviewed);reviewed_original=Inventory([reviewed]).extractions[reviewed.id].source
+                c['source_population']=[r.id,reviewed.id];c['qualified_scope_sources']=[dict(source_id=v['id'],fingerprint=v['fingerprint'],metadata=v['metadata']) for v in (actual,reviewed_original)]
+                c['qualified_input_snapshot']=dict(source_id=reviewed.id,fingerprint=reviewed_original['fingerprint'])
                 c=certify(owner,c)
                 bindings[key]=[Binding(fact.id,owner,path,'current',n.scope_id,n.period_id,p.calendar_id)]
         e.execute(key,observation,c,'Initial governed CAO execution')
@@ -325,7 +336,30 @@ def intake_initial():
     engine=Intake(FixturePlanner(proposal));prepared=engine.prepare(OBJECTIVE,raw,[],context)
     if not prepared.validation['accepted']:raise ValueError(prepared.validation)
     pack=ReviewedInputPack(dict(objective=OBJECTIVE,scope=copy.deepcopy(prepared._current),governed_plan=plan),[],scoped_packs=children)
-    result=engine.execute(prepared,pack);case=result.case;f['case']=case;f['session']=case.governance
+    result=engine.execute(prepared,pack);case=result.case;f['case']=case;f['session']=case.governance;f['basis'].session=case.governance
     f['nodes']={label:case.graph.nodes[n.id] for label,n in f['nodes'].items()};f['containers']={label:case.governance.cases.get(c.id) for label,c in f['containers'].items()}
     f.update(intake=result,raw_sources=raw,reviewed_pack=pack,intake_engine=engine)
     return f
+
+
+def journal_ledger(f):
+    e=f['session'];events=[]
+    for key in sorted(e.versions.active):
+        n=e.graph.nodes[key];v=e.versions.current(key)
+        if n.selected_skill=='foreign-currency':continue
+        for index,j in enumerate(v.payload().get('journal_entry_implications',[])):
+            events.append(dict(economic_id=n.logical_id+':journal:'+str(index),posting_scope=n.scope_id,period=n.period,currency=n.functional_currency or n.presentation_currency,period_id=n.period_id,result_version=v.version_id,primary=[dict(owner=key,index=index)],witnesses=[],evidence='Separately reviewed current native posting economics'))
+    g=e.versions.current(f['nodes']['elimination'].id)
+    dispositions=[dict(translation_version=e.versions.current(f['nodes'][label].id).version_id,group_version=g.version_id,source_path=['entities',index,'balances'],evidence=list(EVIDENCE)) for label,index in [('translation',1),('uk-translation',2)]]
+    context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',scopes=e.cases.scopes.record(),period_registry=e.periods.record())
+    selected,allocation=f['basis'].current_journals(context,events,dispositions)
+    return dict(events=events,dispositions=dispositions,selected=selected,allocation=allocation)
+
+
+def transforms(f):
+    e=f['session'];b=f['basis'];out=[]
+    for legal,label,conversion,economic in [('clean-ENTITY-US','translation','conversion','clean'),('mismatch-ENTITY-UK','uk-translation','uk-conversion','mismatch')]:
+        u=e.versions.current(f['nodes'][legal].id);t=e.versions.current(f['nodes'][label].id);c=e.versions.current(f['nodes'][conversion].id)
+        out.append(b.translation(u.version_id,t.version_id,economic,('calculations','pairs',0,'a_functional'),('translation','tb',1,'balance'),('calculations','translation','translated_tb','ic loan'),EVIDENCE))
+        out.append(b.intercompany_conversion(t.version_id,c.version_id,economic,('calculations','translation','translated_tb','ic loan'),EVIDENCE))
+    return out

@@ -4,6 +4,7 @@ ReviewedInputPacks are supplied separately. No model/source can approve a plan,
 certify accounting, fabricate a blocked dependency or select arbitrary owners.
 """
 import copy
+import json
 from dataclasses import asdict
 from .preparation import ReviewedInputPack
 from .sources import canonical
@@ -65,6 +66,23 @@ def execute(engine, prepared, pack):
                 if original['metadata'].get('scope_id')!=n['scope_id'] or original['metadata'].get('period_id')!=n['period_id']:
                     raise ValueError('Source lineage crosses Scope/Period')
             bound.add(binding.fact_id);lineage.append(dict(fact_id=binding.fact_id,node=key,scope_id=n['scope_id'],period_id=p.period_id,owner_input_path=list(binding.path),source_lineage=fact['lineage']))
+        if key in natives and not source.get('pending_dependency_evidence'):
+            manifest=source.get('qualified_input_snapshot')
+            if not isinstance(manifest,dict) or set(manifest)!={'source_id','fingerprint'}:raise ValueError('Complete independent native source snapshot required')
+            original=prepared._inventory.raw.get(manifest['source_id'])
+            if original is None or original.format!='json' or len(original.payload)!=1:raise ValueError('Native input source snapshot absent/ambiguous')
+            meta=original.metadata
+            if (meta.get('scope_id'),meta.get('period_id'),meta.get('calendar_id'),meta.get('framework'),meta.get('currency'))!=(n['scope_id'],p.period_id,p.calendar_id,n['framework'],n['functional_currency'] or n['presentation_currency']):raise ValueError('Native input snapshot crosses governed dimensions')
+            snapshot={k:copy.deepcopy(v) for k,v in source.items() if k not in ('reviewer_signoff','source_population','qualified_scope_sources','qualified_input_snapshot')}
+            expected=dict(record_id=n['logical_id'],reviewed_input=json.dumps(snapshot,sort_keys=True,separators=(',',':')))
+            actual=prepared._inventory.extractions[original.id].source
+            if original.payload[0]!=expected or actual['fingerprint']!=manifest['fingerprint']:raise ValueError('Complete reviewed native source population differs')
+            declared=source.get('source_population',[])
+            if manifest['source_id'] not in declared:raise ValueError('Complete input snapshot omitted from source population')
+            if len(set(declared))!=len(declared) or set(declared)!={row['source_id'] for row in source.get('qualified_scope_sources',[])}:raise ValueError('Native source population incomplete/duplicated')
+            for row in source['qualified_scope_sources']:
+                extraction=prepared._inventory.extractions.get(row['source_id'])
+                if extraction is None or row!=dict(source_id=extraction.source['id'],fingerprint=extraction.source['fingerprint'],metadata=extraction.source['metadata']):raise ValueError('Native source manifest differs from inventory')
         if key in natives and not source.get('pending_dependency_evidence') and not child.bindings:
             raise ValueError('Native execution requires source-qualified financial input')
         if source.get('pending_dependency_evidence') and child.bindings:raise ValueError('Pending evidence cannot certify accounting')

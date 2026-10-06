@@ -1,0 +1,290 @@
+[
+  {
+    "fact_id": "fact-clean-ENTITY-NL",
+    "node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_b"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-NL",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "c05204d076c56077c0cd2d1debe7ed7147d7f36e28e64ff2f22e21db5cf7aab6",
+        "id": "source-clean-ENTITY-NL:2",
+        "location": {
+          "column": "amount",
+          "record_id": "clean-ENTITY-NL",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "e0a15ef9aa0a5aca20ec31bd3c9431995eb6056441eebbc11b102aea5c84c613",
+        "source_id": "source-clean-ENTITY-NL",
+        "value": "90"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-mismatch-ENTITY-NL",
+    "node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_b"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-NL",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "f326bd84707ed76597becb832280595d1a5aaceb0905dc40e3553ebb861bde80",
+        "id": "source-mismatch-ENTITY-NL:2",
+        "location": {
+          "column": "amount",
+          "record_id": "mismatch-ENTITY-NL",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "af886e04b18d9a3d2d649355154a2e00686ddded6cf59f681044d7ce6937ead4",
+        "source_id": "source-mismatch-ENTITY-NL",
+        "value": "11"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-timing-ENTITY-NL",
+    "node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "scope_id": "ENTITY-NL",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "f20e4586c63ba3b2c06a97c4e585acea4a2977c3d8d81dc2d1f2275439ad90a7",
+        "id": "source-timing-ENTITY-NL:2",
+        "location": {
+          "column": "amount",
+          "record_id": "timing-ENTITY-NL",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "cf50dc30c1f908221a04437316164ad75eab99c1b795b844c8b24a8708c9f1a8",
+        "source_id": "source-timing-ENTITY-NL",
+        "value": "30"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-timing-ENTITY-UK",
+    "node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_b"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-UK",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "f20e4586c63ba3b2c06a97c4e585acea4a2977c3d8d81dc2d1f2275439ad90a7",
+        "id": "source-timing-ENTITY-UK:2",
+        "location": {
+          "column": "amount",
+          "record_id": "timing-ENTITY-UK",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "f796004d1105b7c19c8fd56af2691304157a3074400f7f5c1053278b9908a5b6",
+        "source_id": "source-timing-ENTITY-UK",
+        "value": "30"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-mismatch-ENTITY-UK",
+    "node": "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-UK",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "536549599ec6c3b859cd3970025779a13d061783c73e663fea7f963e98379aa8",
+        "id": "source-mismatch-ENTITY-UK:2",
+        "location": {
+          "column": "amount",
+          "record_id": "mismatch-ENTITY-UK",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "a388a9e32cbaeaa37d16e3eee146572ada41ea8ea5d09e002e82a48943a66d1d",
+        "source_id": "source-mismatch-ENTITY-UK",
+        "value": "10"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-fx-ENTITY-UK",
+    "node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-UK",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "046419ca5ecebeb34fdfe9dde8106ccee5ce39f8e4dd115e8ef20b869f8bed82",
+        "id": "source-fx-ENTITY-UK:2",
+        "location": {
+          "column": "amount",
+          "record_id": "fx-ENTITY-UK",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "a83b91db457d147df13e4a799d70b3108e82d7d203dffacf03ff4310f88be861",
+        "source_id": "source-fx-ENTITY-UK",
+        "value": "20"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-clean-ENTITY-US",
+    "node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "scope_id": "ENTITY-US",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "c05204d076c56077c0cd2d1debe7ed7147d7f36e28e64ff2f22e21db5cf7aab6",
+        "id": "source-clean-ENTITY-US:2",
+        "location": {
+          "column": "amount",
+          "record_id": "clean-ENTITY-US",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "9cfeb45252a1ef81e349ea1dd68939d0e2a800ca0d009785cde4380b04881fcd",
+        "source_id": "source-clean-ENTITY-US",
+        "value": "90"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-fx-ENTITY-US",
+    "node": "exec:intercompany-accounting:ENTITY-US:7129b57483ab9050be42542803e9f1d5a8340e5265f953496d634a26c6008777",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_b"
+    ],
+    "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "scope_id": "ENTITY-US",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "046419ca5ecebeb34fdfe9dde8106ccee5ce39f8e4dd115e8ef20b869f8bed82",
+        "id": "source-fx-ENTITY-US:2",
+        "location": {
+          "column": "amount",
+          "record_id": "fx-ENTITY-US",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "2b0092456a874c16c1856bfa1057792e125504c37934c36f306b9ded91051016",
+        "source_id": "source-fx-ENTITY-US",
+        "value": "20"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-uk-translation",
+    "node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "owner_input_path": [
+      "translation",
+      "tb",
+      1,
+      "balance"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-UK",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "ec9335bf03589dc278576ac8df8c2e022b653b4e4c9c95b5c8cb64ebb6880cc7",
+        "id": "source-uk-translation:2",
+        "location": {
+          "column": "amount",
+          "record_id": "uk-translation",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "10b47610410fa84599cde61ecd1e97f850bca2ba9f69ee10b0bc452a7a19634d",
+        "source_id": "source-uk-translation",
+        "value": "10.00"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-translation",
+    "node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "owner_input_path": [
+      "translation",
+      "tb",
+      1,
+      "balance"
+    ],
+    "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "scope_id": "ENTITY-US",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "451795fec7bc40ebfb086d5fa0d1c7f16d7fb5918a7d9edf7f21fa21b92cdc3e",
+        "id": "source-translation:2",
+        "location": {
+          "column": "amount",
+          "record_id": "translation",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "8c42077eccc7de57c2536f169561c6588b6f43eed89d8c74f5f3cd72d39fa684",
+        "source_id": "source-translation",
+        "value": "100.00"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-conversion",
+    "node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "GROUP-EUR",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "c05204d076c56077c0cd2d1debe7ed7147d7f36e28e64ff2f22e21db5cf7aab6",
+        "id": "source-conversion:2",
+        "location": {
+          "column": "amount",
+          "record_id": "conversion",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "fd89cdba0fb91646b0383ecf6c7d1809b6ed9b68fff47dc9ed5e7dc506ab02aa",
+        "source_id": "source-conversion",
+        "value": "90"
+      }
+    ]
+  }
+]

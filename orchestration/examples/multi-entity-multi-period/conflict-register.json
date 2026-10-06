@@ -1,0 +1,94 @@
+[
+  {
+    "accounting_authority": false,
+    "classification": "UNRESOLVED_MISMATCH",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:c0b36d6f29bff7a078ea0f2813342f1a941a78d2985269600a1fd6f1d628ba7d",
+    "residual_currency": null,
+    "result_versions": [
+      "version:2758d13b808d981d706cfd1d695b78a3c9245cb7a8b40a5da76a5437aa271a6d",
+      "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-mismatch",
+        "book_entry_id": "book-mismatch-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-NL",
+        "economic_id": "mismatch",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "10.00",
+        "functional_currency": "GBP",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:2758d13b808d981d706cfd1d695b78a3c9245cb7a8b40a5da76a5437aa271a6d",
+        "role": "receivable",
+        "scope_id": "ENTITY-UK",
+        "side_id": "ic-side:98b4fa26bb6197760aa64e64d995da6b9f54ec3bc79fdb3ccf3b3ce4519d551c",
+        "source_fingerprint": "116ae74a5729fbb2d9905ea0b6ec4f1626cc0fb50a653b545f1c094d3ea13cdc",
+        "source_id": "source-mismatch-ENTITY-UK",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "10",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      },
+      {
+        "agreement_id": "agreement-mismatch",
+        "book_entry_id": "book-mismatch-ENTITY-NL",
+        "case_id": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-UK",
+        "economic_id": "mismatch",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "11.00",
+        "functional_currency": "EUR",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:7244d4139fe4f907bfb2c026822cfcaddccac5fb4c7a5d443df164dcf5a22272",
+        "role": "payable",
+        "scope_id": "ENTITY-NL",
+        "side_id": "ic-side:5e4dad70f00de58167a630bd3b9f57d45c76e8e25cf9f225d862595386d418bd",
+        "source_fingerprint": "3c0355b2038f8630367d429aee0e53dcc2eb6fcc7d54e7fd7b794c86638e79fd",
+        "source_id": "source-mismatch-ENTITY-NL",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "11",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      }
+    ],
+    "transaction_residual": "-1",
+    "transaction_residual_currency": "EUR"
+  }
+]

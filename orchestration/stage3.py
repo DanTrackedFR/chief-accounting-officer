@@ -8,6 +8,9 @@ def validate_native_bindings(session, node, source, receipts):
     """Verify reviewed native inputs, never generate inputs or certification."""
     from .runtime import at
     bindings = source.get('stage3_input_bindings')
+    if node.selected_skill=='consolidation' and source.get('group_population_coverage') is not None:
+        validate_group_loan_population(session,node,source,receipts)
+        if not bindings:raise ValueError('Full Group accounting requires exact native population bindings')
     if bindings is None:
         if node.economic_id is not None and receipts:
             raise ValueError('Transaction-qualified native consumers require exact input mappings')
@@ -137,6 +140,8 @@ def validate_native_bindings(session, node, source, receipts):
                 raise ValueError('Translated carrying amount must bind native originating side')
             if receipt['dependency_id']==legal[0]['dependency_id'] and tuple(binding['target_path'])!=('pairs',0,'gl_b'):
                 raise ValueError('Counterparty carrying amount must bind actual native counterparty side')
+        if source.get('recharges') or any(Decimal(str(pair['recharge']))!=0 for pair in source['pairs']):
+            raise ValueError('Framework qualification supports ordinary loans only; services/recharges unavailable')
         pairs = source['pairs']
         scopes = session.cases.scopes
         for pair in pairs:
@@ -183,22 +188,90 @@ def bounded_executor(session, node, source, receipts):
 
 
 def public_result(case, route):
-    """Curated native reporting and residual projection through public_record."""
+    """One curated Group conclusion over current qualified owners and residuals."""
     from interfaces.public_output import public_record
     session=case.governance
-    reports=[];residuals=[]
+    reports=[];residuals=[];observations=[];analytics=[];report_units=[]
     for node_id in sorted(session.versions.active):
         node=session.graph.nodes[node_id]
         version=session.versions.require_current(session.versions.current(node_id).version_id)
         payload=version.payload()
-        if node.selected_skill=='financial-statements' and node.scope_type=='GROUP':
+        if node.status=='complete' and not payload.get('unresolved_dependencies') and node.selected_skill=='financial-statements' and node.scope_type=='GROUP':
             reports.append(payload['calculations']['current'])
-        if payload.get('matching',{}).get('classification')=='UNRESOLVED_MISMATCH':
-            residuals.append('An intercompany relationship remains unresolved; obtain owner-reviewed evidence. No correction or elimination is inferred.')
-    if len(reports)!=1:
-        return public_record(dict(status='partial',guidance='Qualified Group reporting requires further owner-reviewed work.',open_items=residuals),route=route)
-    report=reports[0]
-    calculations=[dict(label=label.replace('_',' '),amount=report[label]) for label in ('profit','oci','closing_equity') if label in report]
-    return public_record(dict(status=case.outcome,guidance='The bounded Group reporting chain is current. Other intercompany residuals remain visible.',
-        framework='IFRS',currency='EUR',calculations=calculations,open_items=residuals,
-        limitations=['Bounded Stage 3 proof; unresolved relationships are excluded from clean eliminations. General framework conversion and the Stage 4 integration flagship are not established.']),route=route)
+            scale=session.sources[node_id].get('unit_scale','units')
+            if scale not in ('units','million'):raise ValueError('Explicit supported presentation scale required')
+            report_units.append(scope_currency(node,scale))
+        match=payload.get('matching',{})
+        if match.get('classification')=='UNRESOLVED_MISMATCH':
+            sides=match['sides']
+            amounts=' versus '.join(str(side['transaction_amount'])+' '+side['transaction_currency']+(' million' if session.sources[side['owner_node']].get('unit_scale')=='million' else '') for side in sides)
+            names=' and '.join(session.cases.scopes.get(side['scope_id']).display_name for side in sides)
+            residuals.append('The intercompany balances between '+names+' remain unresolved ('+amounts+'). Obtain separately reviewed reciprocal confirmation and legal-book reconciliation; no correction or balancing plug is inferred.')
+        elif match.get('classification') in ('TIMING_DIFFERENCE','FX_DIFFERENCE'):
+            observations.append('An intercompany '+match['classification'].lower().replace('_',' ')+' remains separately classified; it has not been forced to zero or treated as a new Group adjustment.')
+        if node.status=='complete' and node.selected_skill=='management-accounting-analytics':
+            bridge=payload.get('calculations',{}).get('diagnostic',{}).get('bridge',{})
+            if bridge:
+                for driver in bridge['drivers']:
+                    analytics.append(driver['label']+': '+driver['contribution']+' '+bridge['unit']+'.')
+                analytics.append('The analytical bridge retains an unexplained residual of '+bridge['residual']+' '+bridge['unit']+'. Accounting treatment remains the qualified accounting owners’ conclusion.')
+    scope=session.cases.scopes.get(case.scope_id)
+    record=dict(status=case.outcome,framework=scope.framework,effective_period=' to '.join(case.periods),
+        guidance='The Group close and intercompany evidence were reviewed. Final Group reporting is not yet supportable because a required material dependency remains unresolved.' if residuals or len(reports)!=1 or case.outcome!='complete' else 'The material intercompany conflict is resolved and the required accounting and reporting results are current after selective revalidation.' if session.rework_history else 'The qualified Group accounting and reporting results are current.',
+        open_items=residuals,reporting=analytics+observations,
+        limitations=['Framework qualification is limited to independently reviewed ordinary intercompany loans. General framework conversion remains unavailable. Review approvals are controlled synthetic evidence; this is not an audit opinion.'])
+    if len(reports)==1 and not residuals and case.outcome=='complete':
+        record['reporting'].append('Statement amounts are presented in '+report_units[0]+'.')
+        record['calculations']=[dict(label=label.replace('_',' '),amount=reports[0][label]) for label in ('profit','oci','closing_equity','cash') if label in reports[0]]
+    # Dynamic identities must also be excluded inside allowed narrative fields.
+    private=[]
+    def visit(value):
+        if isinstance(value,dict):
+            for key,item in value.items():
+                if key in ('reviewer','approved_by','reviewer_identity') and isinstance(item,str) and item:private.append(item)
+                else:visit(item)
+        elif isinstance(value,list):
+            for item in value:visit(item)
+    visit(session.sources)
+    import json
+    text=json.dumps(record,ensure_ascii=False)
+    if any(token in text for token in private):raise ValueError('Internal reviewer identity in public result')
+    return public_record(record,route=route)
+
+
+def scope_currency(node,scale):
+    return node.presentation_currency+(' millions' if scale=='million' else ' currency units')
+
+
+def current_legal_loan_versions(session, group_node, legal_scopes):
+    """Current loan inventories inside an explicitly reviewed Group perimeter.
+
+    Scope membership supplies no dependencies. This validates accounting source
+    completeness; each included result still needs an explicit consuming edge.
+    """
+    versions=[]
+    for key in sorted(session.versions.active):
+        n=session.graph.nodes[key]
+        if n.scope_id not in legal_scopes or n.scope_type!='LEGAL_ENTITY' or n.selected_skill!='intercompany-accounting' or n.period!=group_node.period:continue
+        v=session.versions.current(key)
+        if session.sources[key].get('intercompany_transactions'):
+            session.versions.require_current(v.version_id);versions.append(v.version_id)
+    return sorted(versions)
+
+
+def validate_group_loan_population(session,node,source,receipts):
+    """Fail closed on missing legal economics in a full reviewed Group close."""
+    coverage=source.get('group_population_coverage')
+    if coverage is None:return  # Legacy explicitly bounded transaction chains.
+    if not isinstance(coverage,dict) or set(coverage)!={'mode','required_legal_result_versions'} or coverage['mode']!='ALL_CURRENT_LOAN_SIDES':
+        raise ValueError('Explicit complete Group loan population contract required')
+    scopes={entity['id'] for entity in source['entities']}
+    expected=current_legal_loan_versions(session,node,scopes)
+    if coverage['required_legal_result_versions']!=expected:raise ValueError('Reviewed full Group source inventory differs from actual current legal results')
+    matched=[]
+    for receipt in receipts:
+        if tuple(receipt['metric_path'])!=('matching','classification'):continue
+        payload=session.versions.require_current(receipt['result_version']).payload()['matching']
+        matched.extend(side['result_version'] for side in payload['sides'])
+    if len(matched)!=len(set(matched)) or set(matched)!=set(expected):
+        raise ValueError('Full Group accounting omits or duplicates current legal loan economics; qualify every relationship before a clean close')

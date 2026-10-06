@@ -1,0 +1,785 @@
+[
+  {
+    "format": "csv",
+    "id": "source-clean-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "clean-ENTITY-NL-ledger.csv",
+    "payload": "record_id,amount\nclean-ENTITY-NL,90\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-clean-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "clean-ENTITY-NL-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "clean-ENTITY-NL",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-clean-ENTITY-NL\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"90\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"clean\",\"entity\":\"ENTITY-NL\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"IFRS\",\"functional_currency\":\"EUR\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-clean\",\"book_entry_id\":\"book-clean-ENTITY-NL\",\"counterparty_scope\":\"ENTITY-US\",\"economic_id\":\"clean\",\"functional_amount\":\"90.00\",\"functional_currency\":\"EUR\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"role\":\"payable\",\"scope_id\":\"ENTITY-NL\",\"source_id\":\"source-clean-ENTITY-NL\",\"transaction_amount\":\"90\",\"transaction_class\":\"loan\",\"transaction_currency\":\"EUR\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"NL\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"100.00\",\"book_b\":\"90.00\",\"confirmed_a\":\"90\",\"confirmed_b\":\"90\",\"currency\":\"EUR\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-US\",\"entity_b\":\"ENTITY-NL\",\"evidence\":\"synthetic source\",\"gl_a\":\"100.00\",\"gl_b\":\"90.00\",\"id\":\"clean\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"90\",\"opening_b\":\"90\",\"opening_book_a\":\"100.00\",\"opening_book_b\":\"90.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1.1111111111111111111111\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"clean\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-NL\",\"specialist_items\":[],\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-mismatch-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "mismatch-ENTITY-NL-ledger.csv",
+    "payload": "record_id,amount\nmismatch-ENTITY-NL,11\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-mismatch-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "mismatch-ENTITY-NL-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "mismatch-ENTITY-NL",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-mismatch-ENTITY-NL\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"11\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"mismatch\",\"entity\":\"ENTITY-NL\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"IFRS\",\"functional_currency\":\"EUR\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-mismatch\",\"book_entry_id\":\"book-mismatch-ENTITY-NL\",\"counterparty_scope\":\"ENTITY-UK\",\"economic_id\":\"mismatch\",\"functional_amount\":\"11.00\",\"functional_currency\":\"EUR\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"role\":\"payable\",\"scope_id\":\"ENTITY-NL\",\"source_id\":\"source-mismatch-ENTITY-NL\",\"transaction_amount\":\"11\",\"transaction_class\":\"loan\",\"transaction_currency\":\"EUR\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"NL\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"11.00\",\"book_b\":\"11.00\",\"confirmed_a\":\"11\",\"confirmed_b\":\"11\",\"currency\":\"EUR\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-UK\",\"entity_b\":\"ENTITY-NL\",\"evidence\":\"synthetic source\",\"gl_a\":\"11.00\",\"gl_b\":\"11.00\",\"id\":\"mismatch\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"11\",\"opening_b\":\"11\",\"opening_book_a\":\"11.00\",\"opening_book_b\":\"11.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"mismatch\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-NL\",\"specialist_items\":[],\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-timing-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-09-01",
+        "2026-09-30"
+      ],
+      "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "timing-ENTITY-NL-ledger.csv",
+    "payload": "record_id,amount\ntiming-ENTITY-NL,30\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-timing-ENTITY-NL",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "ENTITY-NL",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-09-01",
+        "2026-09-30"
+      ],
+      "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-NL",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "timing-ENTITY-NL-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "timing-ENTITY-NL",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-09-01\",\"2026-09-30\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-timing-ENTITY-NL\",\"controls\":{\"as_of\":\"2026-09-30\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"30\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"timing\",\"entity\":\"ENTITY-NL\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-09-30\",\"framework\":\"IFRS\",\"functional_currency\":\"EUR\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-09-30\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-09-30\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-NL\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-09-30\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-timing\",\"book_entry_id\":\"book-timing-ENTITY-NL\",\"counterparty_scope\":\"ENTITY-UK\",\"economic_id\":\"timing\",\"functional_amount\":\"30.00\",\"functional_currency\":\"EUR\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f\",\"role\":\"receivable\",\"scope_id\":\"ENTITY-NL\",\"source_id\":\"source-timing-ENTITY-NL\",\"transaction_amount\":\"30\",\"transaction_class\":\"loan\",\"transaction_currency\":\"GBP\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"NL\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-09-30\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"30.00\",\"book_b\":\"30.00\",\"confirmed_a\":\"30\",\"confirmed_b\":\"30\",\"currency\":\"GBP\",\"date\":\"2026-09-30\",\"entity_a\":\"ENTITY-NL\",\"entity_b\":\"ENTITY-UK\",\"evidence\":\"synthetic source\",\"gl_a\":\"30.00\",\"gl_b\":\"30.00\",\"id\":\"timing\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"30\",\"opening_b\":\"30\",\"opening_book_a\":\"30.00\",\"opening_book_b\":\"30.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"timing\",\"version\":\"v1\"}],\"period_id\":\"period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f\",\"period_start\":\"2026-09-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-09-30\",\"scope_id\":\"ENTITY-NL\",\"specialist_items\":[],\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-timing-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "timing-ENTITY-UK-ledger.csv",
+    "payload": "record_id,amount\ntiming-ENTITY-UK,30\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-timing-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "timing-ENTITY-UK-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "timing-ENTITY-UK",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-timing-ENTITY-UK\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"30\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"timing\",\"entity\":\"ENTITY-UK\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"UK_GAAP\",\"functional_currency\":\"GBP\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-timing\",\"book_entry_id\":\"book-timing-ENTITY-UK\",\"counterparty_scope\":\"ENTITY-NL\",\"economic_id\":\"timing\",\"functional_amount\":\"30.00\",\"functional_currency\":\"GBP\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"role\":\"payable\",\"scope_id\":\"ENTITY-UK\",\"source_id\":\"source-timing-ENTITY-UK\",\"transaction_amount\":\"30\",\"transaction_class\":\"loan\",\"transaction_currency\":\"GBP\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"UK\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"30.00\",\"book_b\":\"30.00\",\"confirmed_a\":\"30\",\"confirmed_b\":\"30\",\"currency\":\"GBP\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-NL\",\"entity_b\":\"ENTITY-UK\",\"evidence\":\"synthetic source\",\"gl_a\":\"30.00\",\"gl_b\":\"30.00\",\"id\":\"timing\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"30\",\"opening_b\":\"30\",\"opening_book_a\":\"30.00\",\"opening_book_b\":\"30.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"timing\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{\"financial_instruments\":\"sections11_12\",\"section23_model\":\"revised_2026\"},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-UK\",\"specialist_items\":[],\"uk_standard\":\"FRS_102\",\"uk_standard_edition\":\"September2024\",\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-mismatch-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "mismatch-ENTITY-UK-ledger.csv",
+    "payload": "record_id,amount\nmismatch-ENTITY-UK,10\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-mismatch-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "mismatch-ENTITY-UK-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "mismatch-ENTITY-UK",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-mismatch-ENTITY-UK\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"10\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"mismatch\",\"entity\":\"ENTITY-UK\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"UK_GAAP\",\"functional_currency\":\"GBP\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-mismatch\",\"book_entry_id\":\"book-mismatch-ENTITY-UK\",\"counterparty_scope\":\"ENTITY-NL\",\"economic_id\":\"mismatch\",\"functional_amount\":\"10.00\",\"functional_currency\":\"GBP\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"role\":\"receivable\",\"scope_id\":\"ENTITY-UK\",\"source_id\":\"source-mismatch-ENTITY-UK\",\"transaction_amount\":\"10\",\"transaction_class\":\"loan\",\"transaction_currency\":\"EUR\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"UK\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"10.00\",\"book_b\":\"10.00\",\"confirmed_a\":\"10\",\"confirmed_b\":\"10\",\"currency\":\"EUR\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-UK\",\"entity_b\":\"ENTITY-NL\",\"evidence\":\"synthetic source\",\"gl_a\":\"10.00\",\"gl_b\":\"10.00\",\"id\":\"mismatch\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"10\",\"opening_b\":\"10\",\"opening_book_a\":\"10.00\",\"opening_book_b\":\"10.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"mismatch\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{\"financial_instruments\":\"sections11_12\",\"section23_model\":\"revised_2026\"},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-UK\",\"specialist_items\":[],\"uk_standard\":\"FRS_102\",\"uk_standard_edition\":\"September2024\",\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-fx-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "fx-ENTITY-UK-ledger.csv",
+    "payload": "record_id,amount\nfx-ENTITY-UK,20\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-fx-ENTITY-UK",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "fx-ENTITY-UK-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "fx-ENTITY-UK",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-fx-ENTITY-UK\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"20\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"fx\",\"entity\":\"ENTITY-UK\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"UK_GAAP\",\"functional_currency\":\"GBP\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-UK\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"UK_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-fx\",\"book_entry_id\":\"book-fx-ENTITY-UK\",\"counterparty_scope\":\"ENTITY-US\",\"economic_id\":\"fx\",\"functional_amount\":\"16.00\",\"functional_currency\":\"GBP\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"role\":\"receivable\",\"scope_id\":\"ENTITY-UK\",\"source_id\":\"source-fx-ENTITY-UK\",\"transaction_amount\":\"20\",\"transaction_class\":\"loan\",\"transaction_currency\":\"USD\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"UK\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"claim_ids\":[\"TOPIC-07-003-UK_GAAP-R003\",\"TOPIC-12-004-UK_GAAP-E003\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"16.00\",\"book_b\":\"20.00\",\"confirmed_a\":\"20\",\"confirmed_b\":\"20\",\"currency\":\"USD\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-UK\",\"entity_b\":\"ENTITY-US\",\"evidence\":\"synthetic source\",\"gl_a\":\"16.00\",\"gl_b\":\"20.00\",\"id\":\"fx\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"20\",\"opening_b\":\"20\",\"opening_book_a\":\"16.00\",\"opening_book_b\":\"20.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"0.8\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"fx\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{\"financial_instruments\":\"sections11_12\",\"section23_model\":\"revised_2026\"},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-UK\",\"specialist_items\":[],\"uk_standard\":\"FRS_102\",\"uk_standard_edition\":\"September2024\",\"unit_scale\":\"million\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-clean-ENTITY-US",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "clean-ENTITY-US-ledger.csv",
+    "payload": "record_id,amount\nclean-ENTITY-US,90\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-clean-ENTITY-US",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "clean-ENTITY-US-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "clean-ENTITY-US",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-clean-ENTITY-US\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"90\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"clean\",\"entity\":\"ENTITY-US\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"US_GAAP\",\"functional_currency\":\"USD\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-clean\",\"book_entry_id\":\"book-clean-ENTITY-US\",\"counterparty_scope\":\"ENTITY-NL\",\"economic_id\":\"clean\",\"functional_amount\":\"100.00\",\"functional_currency\":\"USD\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"role\":\"receivable\",\"scope_id\":\"ENTITY-US\",\"source_id\":\"source-clean-ENTITY-US\",\"transaction_amount\":\"90\",\"transaction_class\":\"loan\",\"transaction_currency\":\"EUR\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"US\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-US_GAAP-R002\",\"TOPIC-12-004-US_GAAP-E002\"],\"claim_ids\":[\"TOPIC-07-003-US_GAAP-R002\",\"TOPIC-12-004-US_GAAP-E002\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"100.00\",\"book_b\":\"90.00\",\"confirmed_a\":\"90\",\"confirmed_b\":\"90\",\"currency\":\"EUR\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-US\",\"entity_b\":\"ENTITY-NL\",\"evidence\":\"synthetic source\",\"gl_a\":\"100.00\",\"gl_b\":\"90.00\",\"id\":\"clean\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"90\",\"opening_b\":\"90\",\"opening_book_a\":\"100.00\",\"opening_book_b\":\"90.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1.1111111111111111111111\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"clean\",\"version\":\"v1\"}],\"period_id\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-US\",\"specialist_items\":[],\"unit_scale\":\"million\",\"us_entity_type\":\"public\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-fx-ENTITY-US",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "fx-ENTITY-US-ledger.csv",
+    "payload": "record_id,amount\nfx-ENTITY-US,20\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-fx-ENTITY-US",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "fx-ENTITY-US-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "fx-ENTITY-US",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-fx-ENTITY-US\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"20\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"economic_id\":\"fx\",\"entity\":\"ENTITY-US\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"US_GAAP\",\"functional_currency\":\"USD\",\"handoffs\":{\"consolidation\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"ENTITY-US\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"US_GAAP\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"intercompany_transactions\":[{\"agreement_id\":\"agreement-fx\",\"book_entry_id\":\"book-fx-ENTITY-US\",\"counterparty_scope\":\"ENTITY-UK\",\"economic_id\":\"fx\",\"functional_amount\":\"20.00\",\"functional_currency\":\"USD\",\"network_id\":\"STAGE3-NETWORK\",\"period_id\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"role\":\"payable\",\"scope_id\":\"ENTITY-US\",\"source_id\":\"source-fx-ENTITY-US\",\"transaction_amount\":\"20\",\"transaction_class\":\"loan\",\"transaction_currency\":\"USD\"}],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"US\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-US_GAAP-R002\",\"TOPIC-12-004-US_GAAP-E002\"],\"claim_ids\":[\"TOPIC-07-003-US_GAAP-R002\",\"TOPIC-12-004-US_GAAP-E002\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"16.00\",\"book_b\":\"20.00\",\"confirmed_a\":\"20\",\"confirmed_b\":\"20\",\"currency\":\"USD\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-UK\",\"entity_b\":\"ENTITY-US\",\"evidence\":\"synthetic source\",\"gl_a\":\"16.00\",\"gl_b\":\"20.00\",\"id\":\"fx\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"20\",\"opening_b\":\"20\",\"opening_book_a\":\"16.00\",\"opening_book_b\":\"20.00\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"0.8\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"fx\",\"version\":\"v1\"}],\"period_id\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-US\",\"specialist_items\":[],\"unit_scale\":\"million\",\"us_entity_type\":\"public\"}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-uk-translation",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "uk-translation-ledger.csv",
+    "payload": "record_id,amount\nuk-translation,10.00\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-uk-translation",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "GBP",
+      "entity": "ENTITY-UK",
+      "framework": "UK_GAAP",
+      "jurisdiction": "UK",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-UK",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "uk-translation-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "uk-translation",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-uk-translation\",\"currency\":{\"exchangeability\":true,\"functional\":\"GBP\",\"functional_change\":false,\"functional_memo\":\"Primary price/cost economics reviewed\",\"functional_review_complete\":true,\"hyperinflation\":false,\"ledger\":\"GBP\",\"net_investment_items\":false,\"presentation\":\"EUR\",\"rate_convention\":\"functional_per_foreign\",\"rate_source\":\"Synthetic approved spot feed\"},\"disposal\":{\"kind\":\"none\",\"memo\":\"No disposal\"},\"economic_id\":\"mismatch\",\"entity\":\"ENTITY-UK\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"framework\":\"UK_GAAP\",\"functional_currency\":\"GBP\",\"items\":[],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"UK\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-06-002-UK-001\",\"TOPIC-06-002-UK_GAAP-R003\",\"TOPIC-06-003-UK-001\",\"TOPIC-06-003-UK_GAAP-R003\",\"TOPIC-06-004-UK-001\",\"TOPIC-06-004-UK_GAAP-R003\",\"TOPIC-07-006-UK-001\",\"TOPIC-07-006-UK_GAAP-R003\"],\"claim_ids\":[\"TOPIC-06-002-UK-001\",\"TOPIC-06-002-UK_GAAP-R003\",\"TOPIC-06-003-UK-001\",\"TOPIC-06-003-UK_GAAP-R003\",\"TOPIC-06-004-UK-001\",\"TOPIC-06-004-UK_GAAP-R003\",\"TOPIC-07-006-UK-001\",\"TOPIC-07-006-UK_GAAP-R003\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md\",\"sha256\":\"ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md\",\"sha256\":\"eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json\",\"sha256\":\"ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md\",\"sha256\":\"925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md\",\"sha256\":\"e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md\",\"sha256\":\"4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md\",\"sha256\":\"ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/README.md\",\"sha256\":\"21bb034b5d63d1587cdb1de1e7d05167309fefd300865054d5707f20bb10b288\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/evidence-and-regression.md\",\"sha256\":\"736a6d1c23c37e0777e8db3bf46390d894139c58662817dbd6c6bfa61e6629a4\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/standards-claims.json\",\"sha256\":\"7391675cddf485703c39ea2b0fc82687d16500141cd22034eaea1e43a63cb244\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-fx-remeasurement-translation/README.md\",\"sha256\":\"4d7761e8c470e45ed102d72a4582b665e91c22fd9405db4c1eaf62f173c72e4d\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/README.md\",\"sha256\":\"37c3cc37fa9c54c6d0888a59e810a4c2865212a859d158f98738a5779a97c6ca\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/evidence-and-regression.md\",\"sha256\":\"135435381cc74112320dcc5dcdb478a4f6f55912edda9ae2c14f3128be5b40ee\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/functional-currency-case.md\",\"sha256\":\"e31a546b11c1238a7416f5e3b8230b4a77dd5a6ea540dc75f449dff1edb935e9\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/indicator-evidence-and-change-trigger.md\",\"sha256\":\"e7e5cc2dcc523d653de18681e863e34032a3080854d9343c2edaafcbae5c08f7\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/standards-claims.json\",\"sha256\":\"6efc14f774429008e29c2bbf9797cb643369e589617cc6d461b76f02d2db6e1d\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md\",\"sha256\":\"06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md\",\"sha256\":\"ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md\",\"sha256\":\"33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json\",\"sha256\":\"88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md\",\"sha256\":\"c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea\",\"topic_id\":\"TOPIC-07-006\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{\"financial_instruments\":\"sections11_12\",\"section23_model\":\"revised_2026\"},\"preparer\":\"synthetic preparer\",\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-UK\",\"specialist_items\":[],\"stage3_input_bindings\":[{\"dependency_id\":\"dependency:ed26ae15f1d391ad3e4ba1eb352ac41221d8c8853bed9ce69c898f20bc7cbe8f\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"sign\":1,\"target_path\":[\"translation\",\"tb\",1,\"balance\"]}],\"translation\":{\"closing_rate\":\"1\",\"enabled\":true,\"flows\":[],\"functional_currency\":\"GBP\",\"memo\":\"Separate foreign operation synthetic bridge\",\"opening_cta\":\"0\",\"opening_net_assets\":\"110\",\"opening_rate\":\"1\",\"operation_id\":\"mismatch\",\"other_oci\":\"0\",\"other_oci_rate\":\"1\",\"ownership\":\"1\",\"presentation_currency\":\"EUR\",\"profit\":\"0\",\"profit_rate\":\"1\",\"quote\":\"presentation_per_functional\",\"rates_approximate_dates\":true,\"reported_closing_net_assets\":\"110\",\"tb\":[{\"balance\":\"100\",\"category\":\"asset\",\"id\":\"uk cash\",\"memo\":\"Supplied reviewed closing rate\",\"rate\":\"1\"},{\"balance\":\"10.00\",\"category\":\"asset\",\"id\":\"ic loan\",\"memo\":\"Exact UK native legal loan\",\"rate\":\"1\"},{\"balance\":\"-110\",\"category\":\"equity\",\"id\":\"uk equity\",\"memo\":\"Supplied historical rate\",\"rate\":\"1\"}],\"valuation_date\":\"2026-10-31\"},\"uk_standard\":\"FRS_102\",\"uk_standard_edition\":\"September2024\",\"versioned_dependency_receipts\":[{\"consumer_framework\":\"UK_GAAP\",\"consumer_functional_currency\":\"GBP\",\"consumer_node\":\"exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a\",\"consumer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"consumer_presentation_currency\":null,\"consumer_scope\":\"ENTITY-UK\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:ed26ae15f1d391ad3e4ba1eb352ac41221d8c8853bed9ce69c898f20bc7cbe8f\",\"metric_path\":[\"calculations\",\"pairs\",0,\"a_functional\"],\"producer_framework\":\"UK_GAAP\",\"producer_functional_currency\":\"GBP\",\"producer_node\":\"exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde\",\"producer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"producer_presentation_currency\":null,\"producer_scope\":\"ENTITY-UK\",\"result_fingerprint\":\"03ea691c23918d84998ca21f950547e254dfb1823335e10b660f56e2255d6edf\",\"result_version\":\"version:2758d13b808d981d706cfd1d695b78a3c9245cb7a8b40a5da76a5437aa271a6d\",\"value\":\"10.00\",\"value_currency\":\"GBP\"}]}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-translation",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "translation-ledger.csv",
+    "payload": "record_id,amount\ntranslation,100.00\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-translation",
+    "metadata": {
+      "calendar_id": "US-FISCAL",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "ENTITY-US",
+      "framework": "US_GAAP",
+      "jurisdiction": "US",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "ENTITY-US",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "translation-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "translation",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-translation\",\"currency\":{\"exchangeability\":true,\"functional\":\"USD\",\"functional_change\":false,\"functional_memo\":\"Primary price/cost economics reviewed\",\"functional_review_complete\":true,\"hyperinflation\":false,\"ledger\":\"USD\",\"net_investment_items\":false,\"presentation\":\"EUR\",\"rate_convention\":\"functional_per_foreign\",\"rate_source\":\"Synthetic approved spot feed\"},\"disposal\":{\"kind\":\"none\",\"memo\":\"No disposal\"},\"economic_id\":\"clean\",\"entity\":\"ENTITY-US\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"framework\":\"US_GAAP\",\"functional_currency\":\"USD\",\"items\":[],\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"US\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-06-002-US-001\",\"TOPIC-06-002-US_GAAP-R002\",\"TOPIC-06-003-US-001\",\"TOPIC-06-003-US_GAAP-R002\",\"TOPIC-06-004-US-001\",\"TOPIC-06-004-US_GAAP-R002\",\"TOPIC-07-006-US-001\",\"TOPIC-07-006-US_GAAP-R002\"],\"claim_ids\":[\"TOPIC-06-002-US-001\",\"TOPIC-06-002-US_GAAP-R002\",\"TOPIC-06-003-US-001\",\"TOPIC-06-003-US_GAAP-R002\",\"TOPIC-06-004-US-001\",\"TOPIC-06-004-US_GAAP-R002\",\"TOPIC-07-006-US-001\",\"TOPIC-07-006-US_GAAP-R002\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/README.md\",\"sha256\":\"ea93408e88299eb9b38a89f404e4150def4a6544c8413a593e36c9c4c8f75b85\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/evidence-and-regression.md\",\"sha256\":\"eb36bd04cde3c966f3bd11395b5b0c184164ebde96dee3b22a7662d77296146a\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-foreign-currency-transactions/standards-claims.json\",\"sha256\":\"ab5dade05f45d629dc251509a6350b324ee58a13dab66eb98ae83c7818eb45c7\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/README.md\",\"sha256\":\"925ee44eccfa97562bcad52338a993314921fb4a89e3108b312b044bb785840f\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/methods/calculation-and-journals.md\",\"sha256\":\"e67a3cc568f9a361e2dd592ecc8db648da000c98e8b5ce2ed2d179ea2787500c\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/standards/framework-routing.md\",\"sha256\":\"4a579d514a518270e050eec63660cfe27185d5c5e32bb9c7a752a786f9e9f239\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-002-cash-classification-fx-transactions/tests/scenarios.md\",\"sha256\":\"ef5398f901dc2ff15cb86bc894844d708608a9b3db76345b61069d142c861577\",\"topic_id\":\"TOPIC-06-002\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/README.md\",\"sha256\":\"21bb034b5d63d1587cdb1de1e7d05167309fefd300865054d5707f20bb10b288\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/evidence-and-regression.md\",\"sha256\":\"736a6d1c23c37e0777e8db3bf46390d894139c58662817dbd6c6bfa61e6629a4\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-foreign-currency-remeasurement-translation/standards-claims.json\",\"sha256\":\"7391675cddf485703c39ea2b0fc82687d16500141cd22034eaea1e43a63cb244\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-003-fx-remeasurement-translation/README.md\",\"sha256\":\"4d7761e8c470e45ed102d72a4582b665e91c22fd9405db4c1eaf62f173c72e4d\",\"topic_id\":\"TOPIC-06-003\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/README.md\",\"sha256\":\"37c3cc37fa9c54c6d0888a59e810a4c2865212a859d158f98738a5779a97c6ca\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/evidence-and-regression.md\",\"sha256\":\"135435381cc74112320dcc5dcdb478a4f6f55912edda9ae2c14f3128be5b40ee\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/functional-currency-case.md\",\"sha256\":\"e31a546b11c1238a7416f5e3b8230b4a77dd5a6ea540dc75f449dff1edb935e9\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/indicator-evidence-and-change-trigger.md\",\"sha256\":\"e7e5cc2dcc523d653de18681e863e34032a3080854d9343c2edaafcbae5c08f7\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-06-004-fx-analysis-functional-currency/standards-claims.json\",\"sha256\":\"6efc14f774429008e29c2bbf9797cb643369e589617cc6d461b76f02d2db6e1d\",\"topic_id\":\"TOPIC-06-004\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/README.md\",\"sha256\":\"06d7c573831677589ac30f2979e3427daf2a100df490ea26ca06be245f7fd847\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/cta-and-rate-source-reconciliation.md\",\"sha256\":\"ee849ba4ae25323cf468afed09d0bc78210766aeca997511baaa2ae7121940d1\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/evidence-and-regression.md\",\"sha256\":\"33c15eec97633fa2935fb29c23169a77404f907387971c1c10c78b96b0e9eafe\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/standards-claims.json\",\"sha256\":\"88eaaa41ea679b64fd0986d7c26c43034502ff591d680ddba08879c68c04d3e5\",\"topic_id\":\"TOPIC-07-006\"},{\"path\":\"knowledge/topics/TOPIC-07-006-foreign-operations-group-coa/translation-mapping-case.md\",\"sha256\":\"c85ee8328d224aa52f0b42a796d8aef0eadd6db50700770cd2fc96867a3c24ea\",\"topic_id\":\"TOPIC-07-006\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"period_id\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"reporting_period\":\"2026-10-31\",\"scope_id\":\"ENTITY-US\",\"specialist_items\":[],\"stage3_input_bindings\":[{\"dependency_id\":\"dependency:60897b54b40de6beccd0915cf7b3f73ede78893a5e89fc72182abddde09b94cb\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"sign\":1,\"target_path\":[\"translation\",\"tb\",1,\"balance\"]}],\"translation\":{\"closing_rate\":\"0.9\",\"enabled\":true,\"flows\":[],\"functional_currency\":\"USD\",\"memo\":\"Separate foreign operation synthetic bridge\",\"opening_cta\":\"0\",\"opening_net_assets\":\"200\",\"opening_rate\":\"0.9\",\"operation_id\":\"clean\",\"other_oci\":\"0\",\"other_oci_rate\":\"0.9\",\"ownership\":\"1\",\"presentation_currency\":\"EUR\",\"profit\":\"0.00\",\"profit_rate\":\"0.9\",\"quote\":\"presentation_per_functional\",\"rates_approximate_dates\":true,\"reported_closing_net_assets\":\"200\",\"tb\":[{\"balance\":\"100.00\",\"category\":\"asset\",\"id\":\"cash\",\"memo\":\"Reviewed cash closing rate\",\"rate\":\"0.9\"},{\"balance\":\"100.00\",\"category\":\"asset\",\"id\":\"ic loan\",\"memo\":\"Exact native legal loan result\",\"rate\":\"0.9\"},{\"balance\":\"-200.00\",\"category\":\"equity\",\"id\":\"sub equity\",\"memo\":\"Historical equity\",\"rate\":\"0.9\"},{\"balance\":\"-0.00\",\"category\":\"profit\",\"id\":\"FX income\",\"memo\":\"Native IC remeasurement result\",\"rate\":\"0.9\"}],\"valuation_date\":\"2026-10-31\"},\"us_entity_type\":\"public\",\"versioned_dependency_receipts\":[{\"consumer_framework\":\"US_GAAP\",\"consumer_functional_currency\":\"USD\",\"consumer_node\":\"exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82\",\"consumer_period\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"consumer_presentation_currency\":null,\"consumer_scope\":\"ENTITY-US\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:60897b54b40de6beccd0915cf7b3f73ede78893a5e89fc72182abddde09b94cb\",\"metric_path\":[\"calculations\",\"pairs\",0,\"a_functional\"],\"producer_framework\":\"US_GAAP\",\"producer_functional_currency\":\"USD\",\"producer_node\":\"exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545\",\"producer_period\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"producer_presentation_currency\":null,\"producer_scope\":\"ENTITY-US\",\"result_fingerprint\":\"b8f1c242127a8e1b660d0be97e84c6322fa20d486906df6083eb4cb385f5c506\",\"result_version\":\"version:c425f1bef6d14c9783a4b38874631574ba635f0ef26b3b143bb2f2c509ac478c\",\"value\":\"100.00\",\"value_currency\":\"USD\"},{\"consumer_framework\":\"US_GAAP\",\"consumer_functional_currency\":\"USD\",\"consumer_node\":\"exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82\",\"consumer_period\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"consumer_presentation_currency\":null,\"consumer_scope\":\"ENTITY-US\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:ac1cd5e1798564c823c173bc34d51a8acce83f1df9541985b7d2c290966096b7\",\"metric_path\":[\"matching\",\"classification\"],\"producer_framework\":\"IFRS\",\"producer_functional_currency\":null,\"producer_node\":\"exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e\",\"producer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"producer_presentation_currency\":\"EUR\",\"producer_scope\":\"GROUP-EUR\",\"result_fingerprint\":\"42ee7d606965b8a392180aed60239fc196ee12a68f5eb7826a4aaca41ce15d95\",\"result_version\":\"version:34f0eaee5cc897da6c849c1336dce0ae4a468e50d013ebf1d4af3ba078ed2aec\",\"value\":\"MATCHED\",\"value_currency\":\"EUR\"}]}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-uk-conversion",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "uk-conversion-ledger.csv",
+    "payload": "record_id,amount\nuk-conversion,Current material dependencies required\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-conversion",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "conversion-ledger.csv",
+    "payload": "record_id,amount\nconversion,90\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "review-conversion",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Separately reviewed complete native input population",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "conversion-reviewed-workpaper.json",
+    "payload": [
+      {
+        "record_id": "conversion",
+        "reviewed_input": "{\"applicability_review\":{\"effective_period\":[\"2026-10-01\",\"2026-10-31\"],\"entity_scope\":\"for_profit\",\"exceptions\":[],\"reviewer\":\"synthetic accounting reviewer\",\"standard_versions\":[\"selected effective edition\"]},\"assumptions\":[\"Synthetic amounts and assumptions for regression only\"],\"case_id\":\"stage3-conversion\",\"controls\":{\"as_of\":\"2026-10-31\",\"complete\":true,\"cutoff_memo\":\"Synthetic complete period end independent source\",\"owner\":\"synthetic source owner\",\"policy_version\":\"v1\",\"population_amount\":\"90\",\"population_count\":1,\"reviewer\":\"synthetic completeness reviewer\",\"source_version\":\"v1\"},\"conversion_economic_id\":\"clean\",\"economic_id\":\"clean\",\"entity\":\"GROUP-EUR\",\"entity_type\":\"for_profit\",\"evidence\":[\"synthetic evidence set\"],\"execution_date\":\"2026-10-31\",\"framework\":\"IFRS\",\"functional_currency\":\"EUR\",\"handoffs\":{\"consolidation\":{\"entity\":\"GROUP-EUR\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Consolidation\"},\"fx\":{\"entity\":\"GROUP-EUR\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Foreign Currency\"},\"transfer_pricing\":{\"entity\":\"GROUP-EUR\",\"evidence\":\"synthetic specialist memo\",\"framework\":\"IFRS\",\"reporting_period\":\"2026-10-31\",\"resolved\":true,\"reviewer\":\"synthetic technical reviewer\",\"scope_memo\":\"Reviewed ordinary supported scope\",\"target\":\"Transfer Pricing\"}},\"judgment_memo\":\"Reviewed synthetic alternative routes and assumptions\",\"jurisdiction\":\"NL\",\"knowledge_review\":{\"applied_claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"claim_ids\":[\"TOPIC-07-003-IFRS-R001\",\"TOPIC-12-004-IFRS-E001\"],\"documents\":[{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/README.md\",\"sha256\":\"fbd3fb030a82d5d78386a91698008d1f97dfe3df615a2854bdaf716ac8abc9a5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/fx-timing-and-exception-resolution.md\",\"sha256\":\"cbb26440e515d213e474c53dd17765a4b9d1bc1fe15391179785a18d31177da8\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/intercompany-case.md\",\"sha256\":\"fe6e0620f52436b9b851d0c35483892f49e13baf35c7da7eee62aa2235fff854\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-07-003-intercompany-accounting-reconciliation/standards-claims.json\",\"sha256\":\"b38bdd033fc478452553008965078ab3c98d0c01c356671fb1afca98ac3614d5\",\"topic_id\":\"TOPIC-07-003\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/README.md\",\"sha256\":\"92e5182d9b379215826f52a6db7a387cd697b2b16cc64ad88e4805ec0dc65725\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/methods/three-subledger-proof.md\",\"sha256\":\"e366df575334abc9bf57b3517420039ed79cc5502db0ca0e329ff5568cbc1bb6\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/practice/asset-lease-ic-handoff.md\",\"sha256\":\"fd696d72e48ffac772ec500e14b2a04f630bbd397d573605ac8ea6483f6fd071\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/standards-claims.json\",\"sha256\":\"ab7c22449ca75ef4fb70210cba8f49a8a0f6094c33ebe92c8fae5f71b4fd83fd\",\"topic_id\":\"TOPIC-12-004\"},{\"path\":\"knowledge/topics/TOPIC-12-004-fa-lease-intercompany-process/tests/phase-2d-worker-scenarios.md\",\"sha256\":\"e9745be9440863cd976ac900ea6e7ae97b246342240546592896c8cb7835198c\",\"topic_id\":\"TOPIC-12-004\"}],\"public_caveats\":[\"Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.\"],\"reviewer\":\"synthetic accounting reviewer\",\"selection_memo\":\"Synthetic framework-specific selection; all claims in synthetic complete package population reviewed for scope\"},\"pairs\":[{\"approval_date\":\"2026-10-31\",\"approved\":true,\"approved_version\":\"v1\",\"book_a\":\"90\",\"book_b\":\"90\",\"confirmed_a\":\"90\",\"confirmed_b\":\"90\",\"currency\":\"EUR\",\"date\":\"2026-10-31\",\"entity_a\":\"ENTITY-US\",\"entity_b\":\"ENTITY-NL\",\"evidence\":\"synthetic source\",\"gl_a\":\"90\",\"gl_b\":\"90\",\"id\":\"clean\",\"initial_rate_a\":\"1\",\"initial_rate_b\":\"1\",\"mismatch_items\":[],\"opening_a\":\"90\",\"opening_b\":\"90\",\"opening_book_a\":\"90\",\"opening_book_b\":\"90\",\"opening_book_evidence\":\"Certified prior-close local book\",\"owner\":\"synthetic owner\",\"rate_a\":\"1\",\"rate_b\":\"1\",\"rate_evidence\":\"Synthetic local closing quotes\",\"recharge\":\"0\",\"reviewer\":\"synthetic independent reviewer\",\"settled_a\":\"0\",\"settled_b\":\"0\",\"settlement_evidence\":\"No settlement\",\"transaction_id\":\"clean\",\"version\":\"v1\"}],\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"period_start\":\"2026-10-01\",\"policy_elections\":{},\"preparer\":\"synthetic preparer\",\"recharges\":[],\"reporting_period\":\"2026-10-31\",\"scope_id\":\"GROUP-EUR\",\"specialist_items\":[],\"stage3_contract\":\"ORDINARY_IC_REASSESSMENT\",\"stage3_input_bindings\":[{\"dependency_id\":\"dependency:d22c91659412072defc52d38148da74bd3c00ec73d7c7aa23fa9e95f19949aaa\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"sign\":1,\"target_path\":[\"pairs\",0,\"gl_a\"]},{\"dependency_id\":\"dependency:e092ccc7b85925da37f5d29a93365e5e2a9866aca7ff5213a5f7ea2c5d481ccb\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"sign\":1,\"target_path\":[\"pairs\",0,\"gl_b\"]}],\"versioned_dependency_receipts\":[{\"consumer_framework\":\"IFRS\",\"consumer_functional_currency\":null,\"consumer_node\":\"exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a\",\"consumer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"consumer_presentation_currency\":\"EUR\",\"consumer_scope\":\"GROUP-EUR\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:d22c91659412072defc52d38148da74bd3c00ec73d7c7aa23fa9e95f19949aaa\",\"metric_path\":[\"calculations\",\"translation\",\"translated_tb\",\"ic loan\"],\"producer_framework\":\"US_GAAP\",\"producer_functional_currency\":\"USD\",\"producer_node\":\"exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82\",\"producer_period\":\"period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5\",\"producer_presentation_currency\":null,\"producer_scope\":\"ENTITY-US\",\"result_fingerprint\":\"c46cded0da898ebb251e6bf739ec4c43aebc8ad3cb309c87d7acc36bece3535f\",\"result_version\":\"version:e191f7d6de76d1fecdccbb974243169c7bf39a3ab7a98750068673d725bccbed\",\"value\":\"90.00\",\"value_currency\":\"EUR\"},{\"consumer_framework\":\"IFRS\",\"consumer_functional_currency\":null,\"consumer_node\":\"exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a\",\"consumer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"consumer_presentation_currency\":\"EUR\",\"consumer_scope\":\"GROUP-EUR\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:e092ccc7b85925da37f5d29a93365e5e2a9866aca7ff5213a5f7ea2c5d481ccb\",\"metric_path\":[\"calculations\",\"pairs\",0,\"b_functional\"],\"producer_framework\":\"IFRS\",\"producer_functional_currency\":\"EUR\",\"producer_node\":\"exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0\",\"producer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"producer_presentation_currency\":null,\"producer_scope\":\"ENTITY-NL\",\"result_fingerprint\":\"2e455ad4abef99e4caee28cd8f743758b15d6cdad0721968d8daa53292bea0a8\",\"result_version\":\"version:5fe8e5b7656587d27a1a042433d3d0d0e6e87eb314776071aae2c4ce64c1a569\",\"value\":\"90.00\",\"value_currency\":\"EUR\"},{\"consumer_framework\":\"IFRS\",\"consumer_functional_currency\":null,\"consumer_node\":\"exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a\",\"consumer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"consumer_presentation_currency\":\"EUR\",\"consumer_scope\":\"GROUP-EUR\",\"currentness\":\"CURRENT\",\"dependency_id\":\"dependency:fa2b6de72d1ad941385c663445c7c5f855eeed1ec865d86abf924b2809015efd\",\"metric_path\":[\"matching\",\"classification\"],\"producer_framework\":\"IFRS\",\"producer_functional_currency\":null,\"producer_node\":\"exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e\",\"producer_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"producer_presentation_currency\":\"EUR\",\"producer_scope\":\"GROUP-EUR\",\"result_fingerprint\":\"42ee7d606965b8a392180aed60239fc196ee12a68f5eb7826a4aaca41ce15d95\",\"result_version\":\"version:34f0eaee5cc897da6c849c1336dce0ae4a468e50d013ebf1d4af3ba078ed2aec\",\"value\":\"MATCHED\",\"value_currency\":\"EUR\"}]}"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-elimination",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "elimination-ledger.csv",
+    "payload": "record_id,amount\nelimination,Current material dependencies required\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-reporting",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "reporting-ledger.csv",
+    "payload": "record_id,amount\nreporting,Current material dependencies required\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "source-analytics",
+    "metadata": {
+      "calendar_id": "CALENDAR",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "GROUP-EUR",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "period_role": "CURRENT",
+      "provenance": "Independently supplied controlled company close source",
+      "scope_id": "GROUP-EUR",
+      "unit": "currency",
+      "unit_scale": "million",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "analytics-ledger.csv",
+    "payload": "record_id,amount\nanalytics,Current material dependencies required\n",
+    "raw_ref": ""
+  }
+]
