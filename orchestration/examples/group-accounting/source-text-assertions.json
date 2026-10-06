@@ -1,70 +1,89 @@
 [
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "qualified_legal_extract"
     ],
     "pattern": "\\A([\\s\\S]+)\\Z",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "identity"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "consideration",
       "cash"
     ],
     "pattern": "Price USD([0-9]+(?:\\.[0-9]+)?);",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "decimal"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "nci",
       "fair_value"
     ],
     "pattern": "NCI fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "decimal"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "nci",
       "ownership"
     ],
     "pattern": "([0-9]+(?:\\.[0-9]+)?)% voting rights",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "percentage"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "acquisition",
       "acquirer"
     ],
     "pattern": "acquired by ([A-Za-z][A-Za-z0-9-]*)\\.",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "identity"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "acquisition",
       "date"
     ],
     "pattern": "Signed completion (\\d{1,2} [A-Za-z]+ \\d{4})",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "spa",
     "transformation": "calendar_date"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "assets",
@@ -72,22 +91,28 @@
       "asset_identity"
     ],
     "pattern": "Asset (LAND-[0-9]+)\\.",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "appraisal",
     "transformation": "identity"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "nci",
       "fair_value"
     ],
     "pattern": "non-controlling 20% equity interest fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "appraisal",
     "transformation": "decimal"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "assets",
@@ -95,27 +120,35 @@
       "amount"
     ],
     "pattern": "incremental land fair value USD([0-9]+(?:\\.[0-9]+)?), supported by an approved valuation report",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "appraisal",
     "transformation": "decimal"
   },
   {
+    "calendar_id": null,
     "owner": "business-combinations",
     "path": [
       "qualified_nci_election"
     ],
     "pattern": "(Full-goodwill fair-value) NCI election approved",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "policy",
     "transformation": "identity"
   },
   {
+    "calendar_id": null,
     "owner": "foreign-currency",
     "path": [
       "currency",
       "functional"
     ],
     "pattern": "Subsidiary functional ([A-Z]{3})",
+    "period_id": null,
+    "relationship_id": null,
     "scope_id": null,
     "source_id": "policy",
     "transformation": "identity"

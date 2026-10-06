@@ -243,7 +243,7 @@ class Intake:
                     status='candidate',review_required=True,
                     owner_contract_inputs=copy.deepcopy(self.registry.get(v['owner']).get('inputs',[])),
                     qualification_required=['native source evidence','knowledge review','applicability review','independent exact-case certification']))
-                for key in missing:self._question(result,'blocking',key,v['owner'],issue_scope)
+                for key in missing:self._question(result,'blocking',key,v['owner'],issue_scope,v.get('period_id'))
                 for id in unresolved:
                     r=candidates[id]
                     # Exact document wording is already answerable from source.
@@ -251,7 +251,7 @@ class Intake:
                     # repeat quoted terms or treating them as accounting truth.
                     sourced_wording=(r['claim']['status'] in ('EXTRACTED','OBSERVED') and r['transformation']=='identity' and isinstance(r['claim']['value'],str) and r['claim']['evidence'] and not r['conflicts'])
                     if sourced_wording:continue
-                    self._question(result,'blocking' if r['promotion']=='disputed' else 'confirmation',r['attribute'],v['owner'],issue_scope)
+                    self._question(result,'blocking' if r['promotion']=='disputed' else 'confirmation',r['attribute'],v['owner'],issue_scope,v.get('period_id'))
             for conflict in result.conflicts:self._question(result,'blocking',conflict['attribute'],'',conflict.get('scope_id'))
             for c in proposal.missing_facts:
                 v=c.value;key=v['attribute']
@@ -260,8 +260,8 @@ class Intake:
                 question_scope=v.get('scope_id',current['entity'])
                 from orchestration.scopes import execution_scopes
                 scoped_current=execution_scopes(current)[question_scope]
-                answered=key in scoped_current or (question_scope==current['entity'] and key in current) or any(r['attribute']==key and r['promotion']=='established' and r['dimensions'].get('scope_id',r['dimensions'].get('entity'))==question_scope for r in result.candidates)
-                if not answered:self._question(result,v['kind'],key,v['owner'],question_scope)
+                answered=key in scoped_current or (question_scope==current['entity'] and key in current) or any(r['attribute']==key and r['promotion']=='established' and r['dimensions'].get('scope_id',r['dimensions'].get('entity'))==question_scope and (v.get('period_id') is None or r['dimensions'].get('period_id')==v['period_id']) for r in result.candidates)
+                if not answered:self._question(result,v['kind'],key,v['owner'],question_scope,v.get('period_id'))
             for key in ('entity','framework','jurisdiction','period_start','reporting_period','currency'):
                 if not current.get(key):self._question(result,'blocking',key,'')
             result._inventory=inventory;result._proposal=proposal;result._current=current
@@ -278,12 +278,12 @@ class Intake:
         return digest(dict(fields={k:getattr(result,k) for k in keys},proposal=result._proposal.record(),context=result._current))
 
     @staticmethod
-    def _question(result,kind,attribute,owner,scope_id=None):
+    def _question(result,kind,attribute,owner,scope_id=None,period_id=None):
         # Fixed/validated labels only; no source paragraphs or model rationale.
         multiple=hasattr(result,'_current') and len(result._current.get('scopes',result._current.get('execution_scopes',[])))>1
         multiple=multiple or any(r.get('dimensions',{}).get('entity')!=scope_id for r in result.candidates if r.get('dimensions',{}).get('entity'))
-        question=dict(kind=kind,attribute=attribute,owner=owner,scope_id=scope_id,question=('Resolve '+scope_id+'’s ' if scope_id and multiple else 'Resolve ')+attribute.replace('_',' ')+'.')
-        if not any(q['attribute']==attribute and q['kind']==kind and q.get('scope_id')==scope_id for q in result.questions):result.questions.append(question)
+        question=dict(kind=kind,attribute=attribute,owner=owner,scope_id=scope_id,period_id=period_id,question=('Resolve '+scope_id+'’s ' if scope_id and multiple else 'Resolve ')+attribute.replace('_',' ')+'.')
+        if not any(q['attribute']==attribute and q['kind']==kind and q.get('scope_id')==scope_id and q.get('period_id')==period_id for q in result.questions):result.questions.append(question)
 
     def execute(self, prepared, pack=None):
         """Run existing CAO against separately reviewed and exactly mapped inputs.
@@ -310,7 +310,7 @@ class Intake:
             def binding_key(binding):return owners.key(binding.owner,binding.scope_id,binding.period_id)
             from orchestration.scopes import scope_registry
             registered=scope_registry(request['scope'])
-            def qualify_source(source_id,key):
+            def qualify_source(source_id,key,binding):
                 extraction=prepared._inventory.extractions.get(source_id)
                 if extraction is None:raise ValueError('Source inventory identity absent')
                 meta=extraction.source['metadata'];native=owners[key];target=registered.get(native['entity'])
@@ -325,6 +325,8 @@ class Intake:
                     if target.scope_type=='LEGAL_ENTITY':
                         if origin.scope_type not in ('GROUP','SUBGROUP') or target.scope_id not in meta.get('applies_to_scope_ids',[]):raise ValueError('Legal owner source population crosses Scope')
                     elif target.scope_type not in ('GROUP','SUBGROUP'):raise ValueError('Source Scope mismatch')
+                from orchestration.temporal_inputs import validate_source
+                validate_source(request['scope'],native,meta,binding)
                 return extraction
             group_contract=request.get('group_consumer')
             if group_contract is not None:
@@ -381,7 +383,7 @@ class Intake:
                     if canonical(manifest)!=canonical(actual):raise ValueError('Required reviewed source semantic-control population omitted or changed')
             for binding in pack.documents:
                 if not isinstance(binding,DocumentBinding) or binding_key(binding) not in owners:raise ValueError('Invalid reviewed source document binding')
-                source=qualify_source(binding.source_id,binding_key(binding))
+                source=qualify_source(binding.source_id,binding_key(binding),binding)
                 expected=at(owners[binding_key(binding)],list(binding.path))
                 actual=dict(fingerprint=source.source['fingerprint'],metadata=source.source['metadata'])
                 if canonical(expected)!=canonical(actual):raise ValueError('Source document changed after separate accounting qualification')
@@ -389,7 +391,7 @@ class Intake:
             for assertion in pack.text_assertions:
                 if not isinstance(assertion,TextAssertion) or binding_key(assertion) not in owners or len(assertion.pattern)>300:
                     raise ValueError('Invalid reviewed text assertion')
-                extraction=qualify_source(assertion.source_id,binding_key(assertion))
+                extraction=qualify_source(assertion.source_id,binding_key(assertion),assertion)
                 if not extraction or not extraction.blocks:raise ValueError('Text assertion source absent')
                 if assertion.transformation in ('decimal','calendar_date') and extraction.source['metadata'].get('entity')!=owners[binding_key(assertion)]['entity']:raise ValueError('Text amount/date crosses source legal entity')
                 if assertion.transformation=='decimal' and extraction.source['metadata'].get('currency')!=dimensions(owners[binding_key(assertion)])[-1]:raise ValueError('Text amount crosses source currency')
@@ -405,7 +407,7 @@ class Intake:
                     owner_input_path=list(assertion.path),binding_kind='reviewed_text_assertion',transformation=assertion.transformation))
             for population in pack.populations:
                 if not isinstance(population,PopulationBinding) or binding_key(population) not in owners:raise ValueError('Invalid source population binding')
-                qualify_source(population.source_id,binding_key(population))
+                qualify_source(population.source_id,binding_key(population),population)
                 fields=[value for item in prepared.inventory for value in item['fields'].values() if value['source_id']==population.source_id and value['location'].get('table')==population.table and value['location'].get('column')==population.source_column]
                 ids=[value['value'] for value in fields]
                 native=at(owners[binding_key(population)],list(population.path))

@@ -90,3 +90,35 @@ def correction(f):
 
 def public(f):
     return CAO().public(f['case'])
+
+
+def subgroup():
+    """Structural Subgroup proof on the same ordinary governed-plan substrate."""
+    from orchestration.scopes import Scope
+    f=build();e=f['coordinator'];p=f['periods']['CALENDAR-OCT']
+    rows=e.cases.scopes.record()+[Scope('SUBGROUP-US','SUBGROUP','US reporting subgroup',parent_scope_id='GROUP-EUR',jurisdiction='US',framework='US_GAAP',presentation_currency='USD',reporting_calendar='CALENDAR',provenance=('reviewed-subgroup-profile',)).record()]
+    scopes=ScopeRegistry(rows);e.cases.scopes=scopes
+    root=e.cases.get(f['nodes']['GROUP'].case_id)
+    case=Case(case_identity('SUBGROUP-US',p.period_id,'Structural subgroup review','controlled-close'),'Structural subgroup review')
+    e.cases.register(case,'SUBGROUP-US',p.period_id,'controlled-close',root.id,('reviewed-subgroup-objective',))
+    s=scopes.get('SUBGROUP-US');ctx=dict(scope_id=s.scope_id,scope_type=s.scope_type,framework=s.framework,jurisdiction=s.jurisdiction,functional_currency=None,presentation_currency='USD',period_start=p.start,reporting_period=p.end,period_id=p.period_id)
+    node=Node(execution_identity('orchestration-subgroup-observation',ctx),'SUBGROUP','orchestration-subgroup-observation','Structural subgroup dependency',s.scope_id,s.framework,[p.start,p.end],scope_id=s.scope_id,scope_type=s.scope_type,jurisdiction=s.jurisdiction,presentation_currency='USD',period_id=p.period_id,case_id=case.id,logical_id='SUBGROUP')
+    e.graph.add(node);e.cases.bind_node(case.id,node);f['nodes']['SUBGROUP']=node
+    from orchestration.governed_plan import observation
+    f['sources'][node.id]=dict(scope_id=s.scope_id,period_id=p.period_id,value='0',method='QUALIFIED_LOCAL_OBSERVATION',evidence=['reviewed-local-subgroup'],observation_currency='USD');f['executors'][node.id]=observation
+    upstream=f['nodes']['US-OPEN'];target=f['nodes']['GROUP-CONTROL']
+    e.add_dependency(Dependency(upstream.id,node.id,upstream.case_id,node.case_id,upstream.scope_id,node.scope_id,upstream.period_id,node.period_id,'QUALIFIED_ALIGNMENT','EXPLICIT_CROSS_CASE',('observed_amount',),('reviewed-local-USD',),alignment_evidence=('same dated October across calendars; no conversion',)))
+    e.add_dependency(Dependency(node.id,target.id,node.case_id,target.case_id,node.scope_id,target.scope_id,node.period_id,target.period_id,'CURRENT','DECLARED_CHILD',('observed_amount',),('reviewed-subgroup-consumption',)))
+    f['sources'][target.id]['observation_currency']='USD'
+    return initial(f)
+
+
+def restatement(f):
+    e=f['coordinator'];node=f['nodes']['UK-SEP'];consumer=f['nodes']['UK-COMPARATIVE']
+    e.periods.close(node.period_id);e.periods.reopen(node.period_id,'Governed comparative correction',dict(status='APPROVED',evidence=['reviewed correction'],convention='SYNTHETIC_GOVERNED'),[node.case_id],[node.id])
+    source=copy.deepcopy(f['sources'][node.id]);source['obligations'][1]['progress']='0.75';source['source_population']=['UK-restated-v2'];source['evidence']=['independently reviewed restatement input'];source=finalize('revenue-recognition',source)
+    plan=CAO().restate(f['case'],node.id,source,'Governed original-to-restated lineage',dict(status='APPROVED',evidence=['reviewed restatement classification'],convention='SYNTHETIC_GOVERNED'))
+    f['sources'][node.id]=source
+    current=copy.deepcopy(f['sources'][consumer.id]);current['restated']=True
+    ledger=CAO().selective_reexecute(f['case'],plan,{consumer.id:current});f['sources'][consumer.id]=current
+    return plan,ledger

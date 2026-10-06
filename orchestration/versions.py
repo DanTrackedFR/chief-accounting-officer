@@ -162,6 +162,8 @@ class VersionedExecution:
     def execute(self,node_id,executor,source,reason):
         node=self.graph.nodes[node_id]
         if not isinstance(source,dict) or (source.get('scope_id',source.get('entity')),source.get('period_id'))!=(node.scope_id,node.period_id):raise ValueError('Execution source Scope/Period differs')
+        from .scopes import authorize_scope
+        authorize_scope(self.cases.scopes,node)
         self.cases.bind_node(node.case_id,node);self.periods.authorize_execution(node.period_id,node.case_id,node.id)
         receipts=[self.receipt(k) for k,e in sorted(self.edges.items()) if e.consumer_node==node.id]
         declared={self.edges[r['dependency_id']].producer_node for r in receipts}
@@ -172,7 +174,16 @@ class VersionedExecution:
             result=executor(node,copy.deepcopy(source),copy.deepcopy(receipts))
             if result.get('accounting_authority') is not False or result.get('journal_entry_implications'):raise ValueError('Bounded consumer cannot create accounting authority or postings')
         else:
+            from .temporal_inputs import validate_native_sources
+            context=dict(getattr(self,'context',{}),scopes=self.cases.scopes.record(),period_registry=self.periods.record())
+            validate_native_sources(context,node,source)
             if receipts and source.get('versioned_dependency_receipts')!=receipts:raise ValueError('Native consumer requires independently reviewed exact version bindings')
+            # Imported native results must match the exact registered producing
+            # version as well as their independently reviewed native contract.
+            for imported in source.get('imports',[]):
+                actual=imported.get('case',{})
+                matches=[r for r in receipts if self.graph.nodes[r['producer_node']].selected_skill==imported.get('package') and r['producer_scope']==actual.get('scope_id',actual.get('entity')) and r['producer_period']==actual.get('period_id')]
+                if len(matches)!=1 or fingerprint(imported.get('result'))!=self.versions.require_current(matches[0]['result_version']).result_fingerprint:raise ValueError('Imported native result lacks exact current producer version')
             result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
         version=self.versions.publish(node,result,source,[(r['dependency_id'],r['result_version']) for r in receipts],reason)
         node.result=version.payload();node.status='complete';node.iterations+=1;node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT')
@@ -184,7 +195,13 @@ class VersionedExecution:
     def invalidate(self,old_version,new_version):
         old=self.versions.versions[old_version];new=self.versions.require_current(new_version)
         if new.predecessor!=old_version or new.node_id!=old.node_id:raise ValueError('Broken supersession lineage')
-        direct=[];affected=set();causes=[];queue=[old_version]
+        # A second reviewed correction may arrive before the first rework.
+        # Active consumers can still bind an earlier immutable predecessor.
+        # Traverse only those actually consumed replaced versions.
+        lineage={old_version};previous=old.predecessor
+        while previous:
+            lineage.add(previous);previous=self.versions.versions[previous].predecessor
+        direct=[];affected=set();causes=[];queue=sorted(lineage)
         while queue:
             upstream=queue.pop(0)
             for node_id in sorted(self.versions.active):
@@ -192,7 +209,7 @@ class VersionedExecution:
                 if current is None or node_id in affected:continue
                 matches=[edge for edge,bound in current.dependency_bindings if bound==upstream]
                 if not matches:continue
-                if upstream==old_version:direct.append(node_id)
+                if upstream in lineage:direct.append(node_id)
                 affected.add(node_id);queue.append(current.version_id)
                 for edge in matches:
                     self.versions.mark_stale(current.version_id,edge,upstream);causes.append(dict(node=node_id,dependency=edge,upstream_version=upstream))
@@ -201,7 +218,7 @@ class VersionedExecution:
                 self.cases.get(node.case_id).challenge_results.append(dict(kind='dependency-rework',causes=[c for c in causes if c['node']==node_id]))
                 self.graph.history.append(dict(node=node_id,event='version-invalidation',upstream=upstream,dependencies=matches))
         order=self.topological(affected)
-        plan=dict(changed_upstream=old.node_id,old_version=old_version,new_version=new_version,direct=sorted(direct),transitive=sorted(affected-set(direct)),unaffected=sorted(set(self.graph.nodes)-affected-{old.node_id}),execution_order=order,affected_cases=sorted({self.graph.nodes[n].case_id for n in affected}),affected_periods=sorted({self.graph.nodes[n].period_id for n in affected}),causes=causes)
+        plan=dict(changed_upstream=old.node_id,old_version=old_version,new_version=new_version,direct=sorted(set(direct)),transitive=sorted(affected-set(direct)),unaffected=sorted(set(self.graph.nodes)-affected-{old.node_id}),execution_order=order,affected_cases=sorted({self.graph.nodes[n].case_id for n in affected}),affected_periods=sorted({self.graph.nodes[n].period_id for n in affected}),causes=causes)
         self.rework_history.append(plan);self.cases.refresh(self.graph,self.versions,self.edges)
         return plan
 

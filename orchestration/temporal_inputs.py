@@ -57,3 +57,23 @@ def validate_binding(context,native,binding,dimensions):
         key=binding.relationship_id
         edge=periods.relationships.get(key)
         if edge is None or key!=dimensions.get('relationship_id') or (edge.source_period,edge.target_period)!=(p.period_id,target.period_id):raise ValueError('Binding Period relationship differs')
+
+
+def validate_source(context,native,metadata,binding):
+    periods=registry(context)
+    if periods is None:return
+    qualify(context,metadata)
+    p=periods.get(native.get('period_id'))
+    if (binding.period_id,binding.calendar_id)!=(p.period_id,p.calendar_id) or binding.relationship_id is not None:raise ValueError('Auxiliary binding exact target Period/calendar required')
+    if metadata.get('period_id')!=p.period_id or metadata.get('period_role')!='CURRENT' or metadata.get('relationship_id') is not None:raise ValueError('Reviewed source cannot certify another Period or relationship')
+
+
+def validate_native_sources(context,node,source):
+    """Apply the same qualification at ordinary/correction production entry."""
+    periods=registry(context)
+    if periods is None:return
+    target=periods.get(node.period_id)
+    for row in source.get('qualified_scope_sources',[]):
+        meta=row.get('metadata',{})
+        qualify(context,meta)
+        if meta.get('scope_id',meta.get('entity'))!=node.scope_id or meta.get('period_id')!=target.period_id or meta.get('period_role')!='CURRENT' or meta.get('relationship_id') is not None:raise ValueError('Native source manifest cannot certify another Scope/Period/relationship')

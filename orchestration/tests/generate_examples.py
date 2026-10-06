@@ -15,6 +15,20 @@ def internal_record(case):
         for result in [node['result']]+node.get('invalidated_results',[]):
             if not result:continue
             for key in ('facts_used','reviewed_claims','knowledge_documents','evidence'):result.pop(key,None)
+    if 'governance' in record:
+        governance=record['governance']
+        for version in governance['versions']:
+            # Immutable full snapshots remain in the runtime; reference exports
+            # retain exact hashes, identity and bindings without copying native
+            # imported workpapers and claim registers again.
+            version.pop('payload_json',None)
+        for child in governance['cases']:
+            child['evidence_refs']=[{k:r[k] for k in ('topic_id','claim_id') if k in r} if isinstance(r,dict) else r for r in child['evidence_refs']]
+            for node in child['workplan_nodes']:
+                node['evidence']=[{k:r[k] for k in ('topic_id','claim_id') if k in r} if isinstance(r,dict) else r for r in node['evidence']]
+                for result in [node['result']]+node.get('invalidated_results',[]):
+                    if not result:continue
+                    for key in ('facts_used','reviewed_claims','knowledge_documents','evidence'):result.pop(key,None)
     return record
 
 def artifacts():

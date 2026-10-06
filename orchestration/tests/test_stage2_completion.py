@@ -59,3 +59,24 @@ class OrdinaryCorrection(unittest.TestCase):
         f=initial(build());node=f['nodes']['US-SEP'];e=f['coordinator'];old=e.versions.current(node.id);e.periods.close(node.period_id)
         with self.assertRaises(ValueError):CAO().correct(f['case'],node.id,f['sources'][node.id],'forbidden')
         self.assertEqual(e.versions.current(node.id),old)
+
+class AdditionalLineage(unittest.TestCase):
+    def test_original_comparative_history_preserved(self):
+        from orchestration.tests.stage2_fixtures import restatement
+        f=initial(build());e=f['coordinator'];old=e.versions.current(f['nodes']['UK-COMPARATIVE'].id);original=e.versions.current(f['nodes']['UK-SEP'].id);payload=old.payload()
+        plan,ledger=restatement(f)
+        self.assertEqual(plan['execution_order'],[f['nodes']['UK-COMPARATIVE'].id]);self.assertEqual(len(ledger),1)
+        self.assertEqual(e.versions.versions[old.version_id].payload(),payload);self.assertEqual(e.versions.state(old.version_id),'SUPERSEDED');self.assertEqual(e.versions.state(original.version_id),'SUPERSEDED')
+        new=e.versions.current(old.node_id);self.assertEqual(new.predecessor,old.version_id);self.assertTrue(new.payload()['restated']);self.assertEqual(new.payload()['observed_amount'],'900.00')
+        self.assertTrue(any(r['event']=='RESTATEMENT_LINEAGE' for r in e.versions.history))
+    def test_restatement_requires_governed_classification(self):
+        f=initial(build());n=f['nodes']['UK-SEP']
+        with self.assertRaises(ValueError):CAO().restate(f['case'],n.id,f['sources'][n.id],'restatement',{})
+    def test_subgroup_dependency_currentness_and_selective_rework(self):
+        from orchestration.tests.stage2_fixtures import subgroup
+        f=subgroup();e=f['coordinator'];node=f['nodes']['SUBGROUP'];case=e.cases.get(node.case_id)
+        self.assertEqual(case.case_type,'SUBGROUP_CASE');self.assertEqual(case.outcome,'complete')
+        receipt=next(e.receipt(key) for key,edge in e.edges.items() if edge.producer_node==node.id);e.validate_receipt(receipt,receipt['consumer_node'])
+        plan=correction(f);self.assertIn(node.id,plan['execution_order']);self.assertNotEqual(case.outcome,'complete')
+        with self.assertRaises(ValueError):e.validate_receipt(receipt,receipt['consumer_node'])
+        CAO().selective_reexecute(f['case'],plan);self.assertEqual(case.outcome,'complete');self.assertEqual(e.versions.current(node.id).payload()['observed_amount'],'900.00')

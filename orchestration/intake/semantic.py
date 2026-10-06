@@ -324,9 +324,12 @@ class ProposalValidator:
             for missing in proposal.missing_facts:
                 if not isinstance(missing,Claim):raise ValueError('Missing fact Claim required')
                 claim(missing,'missing');v=missing.value
-                if not isinstance(v,dict) or set(v)-{'scope_id'}!={'attribute','owner','kind'} or v['kind'] not in {'blocking','confirmation','nonblocking'}:raise ValueError('Missing fact schema invalid')
+                if not isinstance(v,dict) or set(v)-{'scope_id','period_id'}!={'attribute','owner','kind'} or v['kind'] not in {'blocking','confirmation','nonblocking'}:raise ValueError('Missing fact schema invalid')
                 if not isinstance(v['attribute'],str) or not re.fullmatch('[a-z][a-z0-9_]{0,80}',v['attribute']):raise ValueError('Unsafe missing field label')
                 if v.get('scope_id') and v['scope_id'] not in registered:raise ValueError('Unknown question Scope')
+                if context.get('period_registry'):
+                    from orchestration.temporal_inputs import registry
+                    registry(context).get(v.get('period_id'))
                 if v['owner']:owner(v['owner'])
             return Validation(True,[],copy.deepcopy(proposal))
         except (ValueError,TypeError,KeyError,AttributeError,InvalidOperation,OverflowError) as exc:

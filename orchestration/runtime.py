@@ -337,6 +337,8 @@ class CAO:
                 if meta['applicable_frameworks'] and n.framework not in meta['applicable_frameworks']:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
+                    from .temporal_inputs import validate_native_sources
+                    validate_native_sources(context,n,source)
                     repeated=sum(x.selected_skill==n.selected_skill for x in graph.nodes.values())>1
                     if repeated:
                         population=source.get('source_population');manifest=source.get('qualified_scope_sources')
@@ -346,6 +348,9 @@ class CAO:
                             source_meta=row['metadata']
                             if source_meta.get('scope_id',source_meta.get('entity'))!=n.scope_id or source_meta.get('entity')!=n.scope_id:raise ValueError('Repeated owner source Scope contamination')
                             if (source_meta.get('currency'),source_meta.get('framework'),source_meta.get('jurisdiction'),source_meta.get('period'))!=(node_context['currency'],n.framework,n.jurisdiction,n.period) or not row.get('fingerprint'):raise ValueError('Repeated owner source dimensional contamination')
+                    if context.get('period_registry') and n.dependencies:
+                        exact_receipts=[session.receipt(k) for k,e in sorted(session.edges.items()) if e.consumer_node==n.id]
+                        if source.get('versioned_dependency_receipts')!=exact_receipts:raise ValueError('Explicit temporal native consumer requires separately reviewed exact-version receipts')
                     from .period_selection import validate_activity
                     validate_activity(source)
                     from .result_bindings import validate_receipts
@@ -377,7 +382,7 @@ class CAO:
                         from .scoped_journals import qualify_journal
                         posting=source.get('posting_scope_id',n.scope_id)
                         layer=source.get('journal_layer',n.scope_type)
-                        qualify_journal(context,n.scope_id,posting,layer)
+                        qualify_journal(node_context,n.scope_id,posting,layer)
                         self._economics(c,n,source,owned,entries)
                     c.evidence_refs.extend(n.evidence); c.judgments.extend(r.get('judgments',[]))
                     c.knowledge_refs.extend(copy.deepcopy(r.get('knowledge_documents',[])))
@@ -514,6 +519,16 @@ class CAO:
         plan=session.rework_history[-1]
         self._refresh_versioned(case,final=False)
         return copy.deepcopy(plan)
+
+    def restate(self, case, node_id, reviewed_source, reason, approval):
+        """Governed history classification, without accounting restatement authority."""
+        if not isinstance(approval,dict) or set(approval)!={'status','evidence','convention'} or approval['status']!='APPROVED' or approval['convention']!='SYNTHETIC_GOVERNED' or not approval['evidence']:
+            raise ValueError('Governed restatement lineage approval required')
+        session=case.governance
+        original=session.versions.current(node_id)
+        plan=self.correct(case,node_id,reviewed_source,reason)
+        session.versions.history.append(dict(event='RESTATEMENT_LINEAGE',original_version=original.version_id,restated_version=plan['new_version'],approval=copy.deepcopy(approval),accounting_authority=False))
+        return plan
 
     def selective_reexecute(self, case, plan, reviewed_sources=None):
         """Rerun only the current exact dependency plan, then refresh delivery."""
