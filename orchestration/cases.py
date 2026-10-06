@@ -64,6 +64,7 @@ class CaseRegistry:
                 if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
                     case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
             case.result_version_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
-            case.workplan_nodes=[asdict(graph.nodes[k]) for k in sorted(case.node_refs)]
+            from .planning import node_record
+            case.workplan_nodes=[node_record(graph.nodes[k]) for k in sorted(case.node_refs)]
 
     def record(self):return [asdict(self.cases[k]) for k in sorted(self.cases)]

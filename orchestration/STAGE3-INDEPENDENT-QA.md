@@ -37,6 +37,14 @@ IC-QA-11: change conversion native gl_b 90 to 180 and rate_b 1 to 2. Native cert
 
 Pre-final independent run: 22 distinct tests; 20 passed, IC-QA-10 and IC-QA-11 failed. The author then added exact MATCHED role/Scope/principal verification and an exact-version payable carrying-value dependency; receipt reconstruction reruns those guards. Final independent rerun on 6 October 2026: **22 distinct tests passed, 0 failed, 0 errors**, in 8.278 seconds. IC-QA-10 and IC-QA-11 now reject independently. All findings were sent promptly to the author. Reviewer did not edit implementation or fixture files.
 
+## Final change review and fresh rerun
+
+The reviewer inspected `node_record` and its Graph/CaseRegistry serialization callers: only absent (`None`) economic identity is omitted, while actual transaction identity remains serialized. The reviewer also inspected the new monetary-FX rejection before embedded translation journal suppression.
+
+Two independent permanent tests were added: exact legacy serialization field preservation and a genuine certified/executed native FX monetary case whose translation-only disposition must reject. The latter republishes all downstream native owners and supplies current result versions, ensuring rejection is specifically the monetary-FX guard rather than stale receipts.
+
+Fresh final command: `PYTHONPATH=skills/tests:. python -m unittest orchestration.tests.test_stage3_independent -v`. **24 distinct tests passed, 0 failures, 0 errors**, in 7.662 seconds on 6 October 2026. The final two implementation changes introduce no open demonstrated finding in the reviewed scope.
+
 ## Acceptance status
 
 The independently reviewed Stage 3 contract scope is accepted after remediation and independent rerun: **zero open demonstrated findings** across IC-QA-01 through IC-QA-11. This is acceptance of the bounded orchestration contract scope and the adversarial suite, not a claim of new accounting authority, authenticated approval, general framework conversion, or Stage 4 completion. Full regression, deterministic artifact generation and migration release gates remain the parent owner's separate responsibility. Subsequent material implementation changes require a rerun.

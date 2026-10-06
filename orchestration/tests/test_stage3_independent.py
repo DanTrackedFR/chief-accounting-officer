@@ -256,6 +256,37 @@ class IndependentStage3Audit(unittest.TestCase):
         self.assertEqual(output['status'], 'partial')
         self.assertTrue(output['open_items'])
 
+    def test_legacy_serialization_omits_only_absent_economic_identity(self):
+        from dataclasses import asdict
+        from orchestration.planning import node_record
+        transaction = self.f['nodes']['clean-ENTITY-US']
+        self.assertEqual(node_record(transaction)['economic_id'], 'clean')
+        legacy = replace(transaction, economic_id=None)
+        expected = asdict(legacy)
+        expected.pop('economic_id')
+        self.assertEqual(node_record(legacy), expected)
+        self.assertEqual(node_record(replace(transaction, economic_id='')), dict(asdict(transaction), economic_id=''))
+
+    def test_translation_disposition_cannot_suppress_native_monetary_fx(self):
+        from orchestration.tests.stage3_fixtures import execute
+        from additional_cases import certify, fx
+        context, events, dispositions = self.journal_inputs()
+        source = downstream_source(self.f, 'translation', True)
+        source['items'] = copy.deepcopy(fx('US_GAAP')['items'])
+        item = source['items'][0]
+        item.update(initial_date='2026-10-01', settlement_date='2026-10-31')
+        translation = execute(self.f, 'translation', certify('foreign-currency', source))
+        for label in ('conversion', 'elimination', 'reporting', 'group'):
+            execute(self.f, label, downstream_source(self.f, label, True))
+        for event in events:
+            owner = event['primary'][0]['owner']
+            event['result_version'] = self.e.versions.current(owner).version_id
+        dispositions[0]['translation_version'] = translation.version_id
+        dispositions[0]['group_version'] = self.e.versions.current(self.f['nodes']['elimination'].id).version_id
+        self.assertTrue(translation.payload()['calculations']['monetary_fx_profit'])
+        with self.assertRaisesRegex(ValueError, 'monetary FX'):
+            self.f['basis'].current_journals(context, events, dispositions)
+
     def test_legal_owner_must_qualify_real_transaction_population(self):
         side = sides(self.f, 'clean')[0]
         node = self.f['nodes']['clean-ENTITY-US']

@@ -1,0 +1,111 @@
+[
+  {
+    "currentness": "CURRENT",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "US_GAAP",
+    "input_path": [
+      "translation",
+      "tb",
+      1,
+      "balance"
+    ],
+    "input_sign": 1,
+    "kind": "CURRENCY_TRANSLATION",
+    "output_metric": [
+      "calculations",
+      "translation",
+      "translated_tb",
+      "ic loan"
+    ],
+    "owner": "foreign-currency",
+    "rate_population": {
+      "closing_rate": "0.8181818181818181818182",
+      "enabled": true,
+      "flows": [],
+      "functional_currency": "USD",
+      "memo": "Separate foreign operation synthetic bridge",
+      "opening_cta": "0",
+      "opening_net_assets": "200",
+      "opening_rate": "0.9",
+      "operation_id": "clean",
+      "other_oci": "0",
+      "other_oci_rate": "0.8181818181818181818182",
+      "ownership": "1",
+      "presentation_currency": "EUR",
+      "profit": "10.00",
+      "profit_rate": "0.8181818181818181818182",
+      "quote": "presentation_per_functional",
+      "rates_approximate_dates": true,
+      "reported_closing_net_assets": "210",
+      "tb": [
+        {
+          "balance": "100.00",
+          "category": "asset",
+          "id": "cash",
+          "memo": "Reviewed cash closing rate",
+          "rate": "0.8181818181818181818182"
+        },
+        {
+          "balance": "110.00",
+          "category": "asset",
+          "id": "ic loan",
+          "memo": "Exact native legal loan result",
+          "rate": "0.8181818181818181818182"
+        },
+        {
+          "balance": "-200.00",
+          "category": "equity",
+          "id": "sub equity",
+          "memo": "Historical equity",
+          "rate": "0.9"
+        },
+        {
+          "balance": "-10.00",
+          "category": "profit",
+          "id": "FX income",
+          "memo": "Native IC remeasurement result",
+          "rate": "0.8181818181818181818182"
+        }
+      ],
+      "valuation_date": "2026-10-31"
+    },
+    "rate_source": "Synthetic approved spot feed",
+    "result_version": "version:dc83c4e0f47e817f294399a49e6e59f1de72b86064725ca3d41a76d019696b84",
+    "source_currency": "USD",
+    "source_metric": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "source_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "source_scope": "ENTITY-US",
+    "source_version": "version:8679ae28b07bc03c060ff98106ea693642cdfe5835a181a5368ff68adaac1540",
+    "target_currency": "EUR",
+    "value": "90.00"
+  },
+  {
+    "adjustment": "0",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "kind": "FRAMEWORK_CONVERSION",
+    "limitation": "Native ordinary IC reassessment only; not a general GAAP converter",
+    "owner": "intercompany-accounting",
+    "result_version": "version:812dc67baa3a85e4bf869b65ac5e3296db19a2c465098808641092bde1de4489",
+    "semantic_metric": "ordinary_reciprocal_balance",
+    "source_framework": "US_GAAP",
+    "source_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "source_scope": "ENTITY-US",
+    "source_version": "version:dc83c4e0f47e817f294399a49e6e59f1de72b86064725ca3d41a76d019696b84",
+    "target_framework": "IFRS"
+  }
+]

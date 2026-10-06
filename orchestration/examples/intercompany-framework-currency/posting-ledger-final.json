@@ -1,0 +1,184 @@
+{
+  "allocation": [
+    {
+      "allocated_identity": "8ecfbbed2ca24fe8970302dcabcb97e9bc08db1e997589d9dd8ed9e39da9b70b",
+      "currency": "USD",
+      "economic_id": "clean-ENTITY-US:journal:0",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "posting_scope": "ENTITY-US",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545"
+        }
+      ],
+      "result_version": "version:8679ae28b07bc03c060ff98106ea693642cdfe5835a181a5368ff68adaac1540",
+      "witnesses": []
+    },
+    {
+      "allocated_identity": "38da5a6d0f90cb2e219ef28a32a7fe74f2f1bd827af2ad3f8051fd12beab0c64",
+      "currency": "EUR",
+      "economic_id": "elimination:journal:0",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "posting_scope": "GROUP-EUR",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+        }
+      ],
+      "result_version": "version:fc8515de1695753e56d5e2590a073820a3524939d43cc94910d9ab112f07f634",
+      "witnesses": []
+    },
+    {
+      "allocated_identity": "e3373e1e1a7979cfd63c3e6753e5cc33dc346a33391f3b375931410ea989e8c1",
+      "currency": "EUR",
+      "economic_id": "elimination:journal:1",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "posting_scope": "GROUP-EUR",
+      "primary": [
+        {
+          "index": 1,
+          "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+        }
+      ],
+      "result_version": "version:fc8515de1695753e56d5e2590a073820a3524939d43cc94910d9ab112f07f634",
+      "witnesses": []
+    }
+  ],
+  "events": [
+    {
+      "currency": "USD",
+      "economic_id": "clean-ENTITY-US:journal:0",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+      "posting_scope": "ENTITY-US",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545"
+        }
+      ],
+      "result_version": "version:8679ae28b07bc03c060ff98106ea693642cdfe5835a181a5368ff68adaac1540",
+      "witnesses": []
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "elimination:journal:0",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "posting_scope": "GROUP-EUR",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+        }
+      ],
+      "result_version": "version:fc8515de1695753e56d5e2590a073820a3524939d43cc94910d9ab112f07f634",
+      "witnesses": []
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "elimination:journal:1",
+      "evidence": "Independently reviewed native current posting event",
+      "period": [
+        "2026-10-01",
+        "2026-10-31"
+      ],
+      "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+      "posting_scope": "GROUP-EUR",
+      "primary": [
+        {
+          "index": 1,
+          "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+        }
+      ],
+      "result_version": "version:fc8515de1695753e56d5e2590a073820a3524939d43cc94910d9ab112f07f634",
+      "witnesses": []
+    }
+  ],
+  "selected": [
+    {
+      "lines": [
+        {
+          "account": "intercompany receivable",
+          "amount": "10.00",
+          "side": "Dr"
+        },
+        {
+          "account": "FX gain or loss",
+          "amount": "10.00",
+          "side": "Cr"
+        }
+      ],
+      "owner": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545"
+    },
+    {
+      "lines": [
+        {
+          "account": "ic payable",
+          "amount": "90.00",
+          "side": "Dr"
+        },
+        {
+          "account": "ic loan",
+          "amount": "90.00",
+          "side": "Cr"
+        }
+      ],
+      "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+    },
+    {
+      "lines": [
+        {
+          "account": "investment",
+          "amount": "180.00",
+          "side": "Cr"
+        },
+        {
+          "account": "sub equity",
+          "amount": "180.00",
+          "side": "Dr"
+        }
+      ],
+      "owner": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493"
+    }
+  ],
+  "translation_evidence": [
+    {
+      "evidence": [
+        "Independent synthetic source, rate and accounting review; not authenticated approval"
+      ],
+      "group_version": "version:fc8515de1695753e56d5e2590a073820a3524939d43cc94910d9ab112f07f634",
+      "source_path": [
+        "entities",
+        1,
+        "balances"
+      ],
+      "translation_version": "version:dc83c4e0f47e817f294399a49e6e59f1de72b86064725ca3d41a76d019696b84"
+    }
+  ]
+}

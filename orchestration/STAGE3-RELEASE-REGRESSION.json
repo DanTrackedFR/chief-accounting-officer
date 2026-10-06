@@ -1,0 +1,275 @@
+{
+  "authored_stage3_tests": 43,
+  "determinism": {
+    "file_count": 265,
+    "generators": [
+      "generate_examples",
+      "generate_diagnostic_examples",
+      "generate_intake_examples",
+      "generate_saas_examples",
+      "generate_treasury_examples",
+      "generate_group_examples",
+      "generate_scope_examples",
+      "generate_stage2_examples",
+      "generate_stage3_examples"
+    ],
+    "manifest_sha256": "8b046ca4ff5370ae5d1145eea538ee0b0fa08d7c7dde99345cd9502ba21841f6",
+    "seeds": [
+      19,
+      941
+    ],
+    "status": "PASS"
+  },
+  "distinct_tests": 2370,
+  "final_head_ci": "Exact immutable head and Actions outcomes are recorded in PR #36 after publication; no self-referential commit hash is embedded here.",
+  "flagships": {
+    "Diagnostic": "PASS; existing committed artifacts unchanged",
+    "Group Accounting": "PASS; existing committed artifacts unchanged",
+    "Manufacturing": "PASS; existing committed artifacts unchanged",
+    "SaaS": "PASS; existing committed artifacts unchanged",
+    "Semantic/Data Intake": "PASS; existing committed artifacts unchanged",
+    "Stage 1 Scope": "PASS; existing committed artifacts unchanged",
+    "Stage 2 Case/Period/version": "PASS; existing committed artifacts unchanged",
+    "Treasury": "PASS; existing committed artifacts unchanged"
+  },
+  "historical_attempts": [
+    {
+      "ci": "FAIL; legacy optional economic_id null serialization",
+      "head": "e969e02e6a6d8214db5b0298f6bf4151c75c7497",
+      "remediation": "Omit absent qualifier through shared node_record; fresh independent compatibility attack and full 719-test rerun PASS"
+    },
+    {
+      "local_initial_orchestration_tests": 717,
+      "outcome": "FAIL; same legacy serializer issue in process started before correction",
+      "superseded_by": "full corrected 719-test PASS; counts are not added"
+    }
+  ],
+  "independent_qa": {
+    "demonstrated_findings": 11,
+    "fresh_rerun": "PASS",
+    "open_findings": 0,
+    "report": "STAGE3-INDEPENDENT-QA.md",
+    "tests": 24
+  },
+  "integration_base": "f07be7235f9e5d278ce37f6211a66141425acf19",
+  "results": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "orchestration/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "name": "orchestration",
+      "tests": 719
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "skills/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "name": "production_skills",
+      "tests": 1180
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "skills/lease-accounting/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "name": "leases",
+      "tests": 17
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit": 0,
+      "name": "repository_canonical",
+      "tests": 53
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/income-taxes/test_supplement.py"
+      ],
+      "exit": 0,
+      "name": "income_tax_tests",
+      "tests": 10
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/agriculture/test_supplement.py"
+      ],
+      "exit": 0,
+      "name": "agriculture_tests",
+      "tests": 12
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/agriculture/test_independent_claim_qa.py"
+      ],
+      "exit": 0,
+      "name": "agriculture_independent",
+      "tests": 71
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "knowledge/insurance-contracts",
+        "-p",
+        "test*.py"
+      ],
+      "exit": 0,
+      "name": "insurance_tests",
+      "tests": 35
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "knowledge/derivatives-hedge",
+        "-p",
+        "test*.py"
+      ],
+      "exit": 0,
+      "name": "derivatives_tests",
+      "tests": 4
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/derivatives-hedge/independent_review_tests.py"
+      ],
+      "exit": 0,
+      "name": "derivatives_independent",
+      "tests": 7
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "knowledge/inventory-cost",
+        "-p",
+        "test*.py"
+      ],
+      "exit": 0,
+      "name": "inventory_tests",
+      "tests": 262
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/standards-evidence/validate_claims.py"
+      ],
+      "exit": 0,
+      "name": "standards_evidence",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/standards-evidence/validate_approvals.py"
+      ],
+      "exit": 0,
+      "name": "canonical_approvals",
+      "tests": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "name": "whitespace",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/income-taxes/validate_supplement.py"
+      ],
+      "exit": 0,
+      "name": "income_tax_validator",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/agriculture/validate_supplement.py"
+      ],
+      "exit": 0,
+      "name": "agriculture_validator",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/insurance-contracts/validate_supplement.py"
+      ],
+      "exit": 0,
+      "name": "insurance_validator",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/derivatives-hedge/validate_supplement.py"
+      ],
+      "exit": 0,
+      "name": "derivatives_validator",
+      "tests": 0
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/inventory-cost/validate_supplement.py"
+      ],
+      "exit": 0,
+      "name": "inventory_validator",
+      "tests": 0
+    }
+  ],
+  "stage": 3,
+  "stage3_artifact_tests": 2,
+  "stage4_built": false,
+  "status": "PASS"
+}

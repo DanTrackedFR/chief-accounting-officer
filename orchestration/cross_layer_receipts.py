@@ -300,7 +300,8 @@ class ReportingBasis:
                 raise ValueError('Explicit embedded translation disposition required')
             translated = session.versions.require_current(disposition['translation_version'])
             group = session.versions.require_current(disposition['group_version'])
-            self._native(translated,'foreign-currency');group_source=self._native(group,'consolidation')
+            translation_source=self._native(translated,'foreign-currency');group_source=self._native(group,'consolidation')
+            if translation_source['items']:raise ValueError('Embedded translation disposition cannot hide monetary FX postings')
             if translated.version_id not in [v for _,v in group.dependency_bindings]:
                 raise ValueError('Group lacks exact translation dependency')
             population = translated.payload()['calculations']['translation']['translated_tb']

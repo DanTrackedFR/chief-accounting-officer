@@ -1,0 +1,370 @@
+[
+  {
+    "accounting_authority": false,
+    "classification": "MATCHED",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:330d81238c31d7f0128456bb1ad7ed4555eb5f7fbc735d6a9fbd5662bfd3ec68",
+    "residual_currency": null,
+    "result_versions": [
+      "version:15387e02aae498d2957aa18ad22f8e870aa9331355152b4061f9b898e103e392",
+      "version:43f9707b06c43af346d6299ba86e60b8ffef35ce2d4b3911e92cd528ca73c451"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-clean",
+        "book_entry_id": "book-clean-ENTITY-US",
+        "case_id": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+        "counterparty_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-NL",
+        "economic_id": "clean",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "100.00",
+        "functional_currency": "USD",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+        "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "result_version": "version:43f9707b06c43af346d6299ba86e60b8ffef35ce2d4b3911e92cd528ca73c451",
+        "role": "receivable",
+        "scope_id": "ENTITY-US",
+        "side_id": "ic-side:c8065ded4d6dd573bd6bc34a51eceff493e720a91d4e10d9ae7e7e33ccdb49f6",
+        "source_fingerprint": "9d9f043c2bf24a3d70680887791e12bc5dbd44b2f467c79bd854e5c80097e0b2",
+        "source_id": "source-clean-ENTITY-US",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "90",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      },
+      {
+        "agreement_id": "agreement-clean",
+        "book_entry_id": "book-clean-ENTITY-NL",
+        "case_id": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+        "counterparty_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "counterparty_scope": "ENTITY-US",
+        "economic_id": "clean",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "90.00",
+        "functional_currency": "EUR",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:15387e02aae498d2957aa18ad22f8e870aa9331355152b4061f9b898e103e392",
+        "role": "payable",
+        "scope_id": "ENTITY-NL",
+        "side_id": "ic-side:c7331b53603c3580178d26e0b8f1aee654c394e5a404d0acc641c4784198237c",
+        "source_fingerprint": "d302e2fcd0a48a17d86bd31e6ec3a9ee9f83f395e15835383b37bf4451a6c445",
+        "source_id": "source-clean-ENTITY-NL",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "90",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      }
+    ],
+    "transaction_residual": "0",
+    "transaction_residual_currency": "EUR"
+  },
+  {
+    "accounting_authority": false,
+    "classification": "FX_DIFFERENCE",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:491bd8c63478079bd6ba2f1953697452ac57f65b236daeaebbec1d7145f0696c",
+    "residual_currency": null,
+    "result_versions": [
+      "version:9aecbf6ee4a1d73558157c7053c3a7beb16c54578bac10d7fb339ecbaedeea16",
+      "version:e02914112bdcac8a74fb30eec92626404a46d669395ff7c740def59330fc12f5"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-fx",
+        "book_entry_id": "book-fx-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+        "counterparty_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "counterparty_scope": "ENTITY-US",
+        "economic_id": "fx",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "16.00",
+        "functional_currency": "GBP",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:9aecbf6ee4a1d73558157c7053c3a7beb16c54578bac10d7fb339ecbaedeea16",
+        "role": "receivable",
+        "scope_id": "ENTITY-UK",
+        "side_id": "ic-side:52e65c1b1afb56699e9583ae8421c310df3ddcd436a0c3f2b2a6fb89a1440959",
+        "source_fingerprint": "2b58a6b740544f376fdc8560ad1ecc4d657fa5c12c2b9a500741876ca6e3f805",
+        "source_id": "source-fx-ENTITY-UK",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "20",
+        "transaction_class": "loan",
+        "transaction_currency": "USD"
+      },
+      {
+        "agreement_id": "agreement-fx",
+        "book_entry_id": "book-fx-ENTITY-US",
+        "case_id": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+        "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-UK",
+        "economic_id": "fx",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "20.00",
+        "functional_currency": "USD",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-US:7129b57483ab9050be42542803e9f1d5a8340e5265f953496d634a26c6008777",
+        "period_id": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "result_version": "version:e02914112bdcac8a74fb30eec92626404a46d669395ff7c740def59330fc12f5",
+        "role": "payable",
+        "scope_id": "ENTITY-US",
+        "side_id": "ic-side:ce5bb5ae85d33d09ca93a3b41bc35b5db74b0157d4b818afa8dd82534289c404",
+        "source_fingerprint": "4ae09e82478085634b9a612e8d0f9c1ca14fd909537792b3ceb7417aae976c7b",
+        "source_id": "source-fx-ENTITY-US",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "20",
+        "transaction_class": "loan",
+        "transaction_currency": "USD"
+      }
+    ],
+    "transaction_residual": "0",
+    "transaction_residual_currency": "USD"
+  },
+  {
+    "accounting_authority": false,
+    "classification": "UNRESOLVED_MISMATCH",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:c0b36d6f29bff7a078ea0f2813342f1a941a78d2985269600a1fd6f1d628ba7d",
+    "residual_currency": null,
+    "result_versions": [
+      "version:00492db8a9e7e490bea8f0755050c186172e1e6365e546c3ac1ed9cabc9df6db",
+      "version:0b445a0e3e6a3a1cff4e049327f8f460b5e99f8bf112be9524c339d2b8887bb4"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-mismatch",
+        "book_entry_id": "book-mismatch-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-NL",
+        "economic_id": "mismatch",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "10.00",
+        "functional_currency": "GBP",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:0b445a0e3e6a3a1cff4e049327f8f460b5e99f8bf112be9524c339d2b8887bb4",
+        "role": "receivable",
+        "scope_id": "ENTITY-UK",
+        "side_id": "ic-side:98b4fa26bb6197760aa64e64d995da6b9f54ec3bc79fdb3ccf3b3ce4519d551c",
+        "source_fingerprint": "116ae74a5729fbb2d9905ea0b6ec4f1626cc0fb50a653b545f1c094d3ea13cdc",
+        "source_id": "source-mismatch-ENTITY-UK",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "10",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      },
+      {
+        "agreement_id": "agreement-mismatch",
+        "book_entry_id": "book-mismatch-ENTITY-NL",
+        "case_id": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-UK",
+        "economic_id": "mismatch",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "11.00",
+        "functional_currency": "EUR",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:00492db8a9e7e490bea8f0755050c186172e1e6365e546c3ac1ed9cabc9df6db",
+        "role": "payable",
+        "scope_id": "ENTITY-NL",
+        "side_id": "ic-side:5e4dad70f00de58167a630bd3b9f57d45c76e8e25cf9f225d862595386d418bd",
+        "source_fingerprint": "3c0355b2038f8630367d429aee0e53dcc2eb6fcc7d54e7fd7b794c86638e79fd",
+        "source_id": "source-mismatch-ENTITY-NL",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "11",
+        "transaction_class": "loan",
+        "transaction_currency": "EUR"
+      }
+    ],
+    "transaction_residual": "-1",
+    "transaction_residual_currency": "EUR"
+  },
+  {
+    "accounting_authority": false,
+    "classification": "TIMING_DIFFERENCE",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:ed8c1c328f0fa2bbdd45619b57b534ce2ecfea1aab6bf859a51abfce5bae48c3",
+    "residual_currency": null,
+    "result_versions": [
+      "version:494350f0ddc4606db4bf1aef7c35230f6d187d26a0a928d974d48aaad6548340",
+      "version:b791d1cdb4e746d631d3efbf23ad4234e60d9c3273dd559ee74af751fb58f6b1"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-timing",
+        "book_entry_id": "book-timing-ENTITY-NL",
+        "case_id": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+        "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-UK",
+        "economic_id": "timing",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "30.00",
+        "functional_currency": "EUR",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:b791d1cdb4e746d631d3efbf23ad4234e60d9c3273dd559ee74af751fb58f6b1",
+        "role": "receivable",
+        "scope_id": "ENTITY-NL",
+        "side_id": "ic-side:8d04268fa8b362adbc74f97bbe532858506b9f4f96354d55eeb61621abcee2be",
+        "source_fingerprint": "500d5d191855d85b92114b879133c748f3ee889acac878cc82fb446708202168",
+        "source_id": "source-timing-ENTITY-NL",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "30",
+        "transaction_class": "loan",
+        "transaction_currency": "GBP"
+      },
+      {
+        "agreement_id": "agreement-timing",
+        "book_entry_id": "book-timing-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+        "counterparty_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "counterparty_scope": "ENTITY-NL",
+        "economic_id": "timing",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "30.00",
+        "functional_currency": "GBP",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:494350f0ddc4606db4bf1aef7c35230f6d187d26a0a928d974d48aaad6548340",
+        "role": "payable",
+        "scope_id": "ENTITY-UK",
+        "side_id": "ic-side:44c295aacb5c8ec8b21b0533d18391d14b16f4abda7ca537e69e0d916d63e79c",
+        "source_fingerprint": "199e5e1c50330185b500cf67bb256ab2f4a09ffaec276bcd6ee649d3ebc490e8",
+        "source_id": "source-timing-ENTITY-UK",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "30",
+        "transaction_class": "loan",
+        "transaction_currency": "GBP"
+      }
+    ],
+    "transaction_residual": "0",
+    "transaction_residual_currency": "GBP"
+  }
+]
