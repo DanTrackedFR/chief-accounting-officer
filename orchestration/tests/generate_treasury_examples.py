@@ -22,7 +22,7 @@ def artifacts():
  cb=bridge(c['opening'],c['closing'],[component('Operating cash',c['direct_operating'],'cash-flow-reporting',['direct_operating'],'cash'),component('Investing cash',c['investing'],'cash-flow-reporting',['investing'],'cash'),component('Financing cash',c['financing'],'cash-flow-reporting',['financing'],'cash'),component('Cash FX',c['fx'],'cash-flow-reporting',['fx'],'noncash')])
  lineage=[]
  for fact,pkg,path,downstream,semantic in [('debt-open','debt-financing',['debt',0,'closing'],'financial-statements','debt_base'),('fx-rate','foreign-currency',['monetary_fx_profit'],'financial-statements','monetary_fx'),('hedge-value','derivatives-hedge-accounting',['derivatives','forward1','closing'],'financial-statements','derivative_balance'),('cash-principal','cash-flow-reporting',['financing'],'financial-statements','financing_cash')]:
-  source=next(row for row in r.lineage if row.get('fact_id')==fact);handoff=next(row for row in case.handoff_ledger if row['producer']==pkg and row['consumer']==downstream and row['semantic']==semantic)
+  source=next(row for row in r.lineage if row.get('fact_id')==fact);handoff=next(row for row in case.handoff_ledger if row['producer']==case.graph.nodes.resolve(pkg) and row['consumer']==case.graph.nodes.resolve(downstream) and row['semantic']==semantic)
   lineage.append(dict(source=source,owner_result_path=path,owner_amount=str(at(owner[pkg]['calculations'],path)),downstream_handoff=handoff,final_public_amount=handoff['amount']))
  clean_e,clean_p,clean_pack=flagship(clean=True);clean=clean_e.execute(clean_p,clean_pack)
  return {

@@ -6,7 +6,7 @@ from .scopes import execution_identity, scoped_context
 class NodeTable(dict):
     def resolve(self, key):
         if dict.__contains__(self,key): return key
-        matches=[n.id for n in self.values() if key in (n.selected_skill,n.logical_id)]
+        matches=[n.id for n in self.values() if key==n.logical_id or (key==n.selected_skill and n.issue!='diagnostic accounting follow-up')]
         if len(matches)>1: raise ValueError('Ambiguous execution alias; exact node required')
         return matches[0] if matches else key
     def __getitem__(self,key): return dict.__getitem__(self,self.resolve(key))
