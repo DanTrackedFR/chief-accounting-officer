@@ -6,7 +6,7 @@ import json
 
 
 def identity(kind, value):
-    return kind+':'+hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    return kind+':'+hashlib.sha256(json.dumps(value, sort_keys=True, default=str, separators=(',', ':')).encode()).hexdigest()
 
 
 def day(value):

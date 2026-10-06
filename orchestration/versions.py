@@ -102,7 +102,7 @@ class VersionRegistry:
         content=[result_id,old.version_id if old else None,exact,source_hash,result_hash,sorted(bindings),reason]
         key=identity('version',content)
         if key in self.versions:raise ValueError('Version overwrite')
-        version=ResultVersion(result_id,key,node.id,node.case_id,node.scope_id,node.period_id,exact,source_hash,result_hash,old.version_id if old else None,reason,tuple(sorted(bindings)),json.dumps(payload,sort_keys=True,separators=(',',':')))
+        version=ResultVersion(result_id,key,node.id,node.case_id,node.scope_id,node.period_id,exact,source_hash,result_hash,old.version_id if old else None,reason,tuple(sorted(bindings)),json.dumps(payload,sort_keys=True,default=str,separators=(',',':')))
         self.versions[key]=version;self.states[key]='CURRENT';self.active[node.id]=key
         if old:
             self.states[old.version_id]='SUPERSEDED';self.supersession[old.version_id]=key
