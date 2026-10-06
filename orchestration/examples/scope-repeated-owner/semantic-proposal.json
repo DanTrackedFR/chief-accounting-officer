@@ -1,0 +1,204 @@
+{
+  "assumptions": [],
+  "bounded_owner": null,
+  "classifications": {},
+  "column_mappings": [],
+  "context_candidates": {},
+  "disputed_facts": [],
+  "entities": [],
+  "facts": [
+    {
+      "attribute": "recognised_revenue",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "source-ENTITY-NL:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "ENTITY-NL",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-NL",
+        "unit": "currency"
+      },
+      "economic_id": "contract-1",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "fact-ENTITY-NL",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "recognised_revenue",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "source-ENTITY-US:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "USD",
+        "entity": "ENTITY-US",
+        "framework": "US_GAAP",
+        "jurisdiction": "US",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-US",
+        "unit": "currency"
+      },
+      "economic_id": "contract-1",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "fact-ENTITY-US",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "recognised_revenue",
+      "candidate_owner": "revenue-recognition",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "source-ENTITY-UK:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "GBP",
+        "entity": "ENTITY-UK",
+        "framework": "UK_GAAP",
+        "jurisdiction": "UK",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-UK",
+        "unit": "currency"
+      },
+      "economic_id": "contract-1",
+      "extraction_method": "semantic proposal",
+      "family": "customer_contract",
+      "id": "fact-ENTITY-UK",
+      "transformation": "decimal"
+    }
+  ],
+  "frameworks": [],
+  "hypotheses": [],
+  "interpreted_objective": null,
+  "issues": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "source-ENTITY-NL:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fact-ENTITY-NL"
+        ],
+        "family": "customer_contract",
+        "id": "revenue-ENTITY-NL",
+        "owner": "revenue-recognition",
+        "required_fields": [
+          "recognised_revenue"
+        ],
+        "scope_id": "ENTITY-NL"
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "source-ENTITY-US:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fact-ENTITY-US"
+        ],
+        "family": "customer_contract",
+        "id": "revenue-ENTITY-US",
+        "owner": "revenue-recognition",
+        "required_fields": [
+          "recognised_revenue"
+        ],
+        "scope_id": "ENTITY-US"
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "source-ENTITY-UK:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fact-ENTITY-UK"
+        ],
+        "family": "customer_contract",
+        "id": "revenue-ENTITY-UK",
+        "owner": "revenue-recognition",
+        "required_fields": [
+          "recognised_revenue"
+        ],
+        "scope_id": "ENTITY-UK"
+      }
+    }
+  ],
+  "jurisdictions": [],
+  "missing_facts": [],
+  "objective": {
+    "confidence": 1,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "USER_STATED",
+    "value": "Review revenue for our Netherlands, US and UK businesses and give me a Group summary."
+  },
+  "periods": [],
+  "primary_mode": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "CLOSE_REVIEW"
+  },
+  "requested_output": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "Scoped Group revenue review"
+  },
+  "secondary_modes": [],
+  "supporting_modes": []
+}

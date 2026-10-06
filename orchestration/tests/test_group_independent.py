@@ -37,7 +37,7 @@ class GroupIndependentContracts(unittest.TestCase):
         validate_activity(self.baseline['foreign-currency'])
 
     def test_scope_currency_contamination_rejected(self):
-        scope=copy.deepcopy(SCOPE);scope['execution_scopes'][0]['currency']='USD'
+        scope=copy.deepcopy(SCOPE);scope['scopes'][0]['presentation_currency']='USD'
         with self.assertRaises(ValueError):execution_scopes(scope)
 
     def test_stale_specialist_result_rejected(self):
@@ -277,7 +277,7 @@ class GroupIndependentEndToEnd(unittest.TestCase):
 
     def test_group_postings_cannot_target_a_scope_declared_legal_entity(self):
         request=copy.deepcopy(self.request)
-        request['scope']['execution_scopes'][0]['level']='entity'
+        request['scope']['scopes'][0]['scope_type']='LEGAL_ENTITY'
         self.rejected(request)
 
 
@@ -298,7 +298,7 @@ class GroupIndependentEndToEnd(unittest.TestCase):
         for index in (1,2):
             with self.subTest(source_scope=index):
                 request=copy.deepcopy(self.request)
-                request['scope']['execution_scopes'][index]['level']='group'
+                request['scope']['scopes'][index]['scope_type']='GROUP'
                 self.rejected(request)
 
 

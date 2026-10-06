@@ -1,0 +1,9 @@
+# Stage 1 resumable progress
+
+Baseline main e0735d5a45971c9dac0334f68cacbcad42685035. Same branch `orchestration/scope-repeated-owner-foundation`, Draft PR #34. Stage 1 is INCOMPLETE. Do not merge or start Stage 2.
+
+Implemented: generic Scope/registry/hierarchy with no three-scope cap; immediate single/legacy input normalization; deterministic multidimensional execution IDs; node-addressed owner inputs with unique aliases; three native Revenue executions; scope-aware semantic facts/issues/source validation and reviewed bindings; dimensional result envelopes; explicit Group local-result observation receipts; scoped layer qualification and inherited gross-line allocation; Group fixtures migrated to generic registry. Controlled proof reaches complete/CLOSED for the bounded observation, with local EUR/IFRS, USD/US_GAAP and GBP/UK_GAAP values and no converted consolidated total. Architecture reconstruction and deterministic Stage 1 generator exist.
+
+Authored suite initially 52 tests: one fixture attack targeted the wrong source and has been corrected. Initial manufacturing/Group migration failures were reproduced and remediated (alias dependency normalization, diagnostic input lookup and public rework reason). Rerun in progress. All useful artifacts generated so far are preserved; prior flagship generators still need migration fixes and regeneration. No substantive independent QA or full repository regression has yet completed.
+
+Next: finish authored and migration stabilization; push milestone; use fresh independent QA reviewer against all 25 categories; remediate/reproduce/rerun; strengthen runtime journal/receipt scope coverage where required; regenerate all deterministic artifacts; full regression and authority validators; Stage 2/integration handoffs and roadmap; freeze final SHA; exact-head workflows; mark existing PR ready. Do not treat this checkpoint as completion.

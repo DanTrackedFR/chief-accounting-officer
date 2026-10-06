@@ -1,38 +1,65 @@
 {
   "currency": "EUR",
   "entity": "Group",
-  "execution_scopes": [
-    {
-      "currency": "EUR",
-      "entity": "Group",
-      "framework": "IFRS",
-      "jurisdiction": "NL",
-      "level": "group",
-      "period_start": "2026-01-01",
-      "reporting_period": "2026-12-31"
-    },
-    {
-      "currency": "EUR",
-      "entity": "Parent",
-      "framework": "IFRS",
-      "jurisdiction": "NL",
-      "level": "entity",
-      "period_start": "2026-01-01",
-      "reporting_period": "2026-12-31"
-    },
-    {
-      "currency": "USD",
-      "entity": "Subsidiary-US",
-      "framework": "IFRS",
-      "jurisdiction": "US",
-      "level": "entity",
-      "period_start": "2026-01-01",
-      "reporting_period": "2026-12-31"
-    }
-  ],
   "framework": "IFRS",
   "jurisdiction": "NL",
   "materiality": "1",
   "period_start": "2026-01-01",
-  "reporting_period": "2026-12-31"
+  "reporting_period": "2026-12-31",
+  "scopes": [
+    {
+      "display_name": "Group",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": null,
+      "jurisdiction": "NL",
+      "legal_entity_id": null,
+      "parent_scope_id": null,
+      "presentation_currency": "EUR",
+      "provenance": [
+        "reviewed-group-profile"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Group",
+      "scope_type": "GROUP",
+      "status": "CURRENT"
+    },
+    {
+      "display_name": "Parent",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": "EUR",
+      "jurisdiction": "NL",
+      "legal_entity_id": "Parent",
+      "parent_scope_id": "Group",
+      "presentation_currency": null,
+      "provenance": [
+        "reviewed-legal-profile"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Parent",
+      "scope_type": "LEGAL_ENTITY",
+      "status": "CURRENT"
+    },
+    {
+      "display_name": "Subsidiary-US",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "US",
+      "legal_entity_id": "Subsidiary-US",
+      "parent_scope_id": "Group",
+      "presentation_currency": null,
+      "provenance": [
+        "reviewed-legal-profile"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Subsidiary-US",
+      "scope_type": "LEGAL_ENTITY",
+      "status": "CURRENT"
+    }
+  ]
 }

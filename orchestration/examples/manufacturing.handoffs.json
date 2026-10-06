@@ -2,13 +2,13 @@
   {
     "amount": "10800.00",
     "components": [],
-    "consumer": "inventory-cost",
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "economic_id": "cost-labour",
     "fingerprint": "106c2373e096cdf4efc20edd00f88526b7e3e841894e8835d24aa9a92e4e42a1",
     "metric_path": [
       "expense"
     ],
-    "producer": "employee-benefits-payroll",
+    "producer": "exec:employee-benefits-payroll:Synthetic Group:50addf66132e812c6c8938d4d0fb80d6a824e26de7ce281e8174d7856fc95b1c",
     "purpose": "absorb",
     "qualification_evidence": "labour-source",
     "semantic": "factory_labour"
@@ -16,13 +16,13 @@
   {
     "amount": "120",
     "components": [],
-    "consumer": "inventory-cost",
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "economic_id": "cost-variable",
     "fingerprint": "dffa5769a55831decc55c7249a7179cada4d2b7515bc9ed6e4f746c0bcc6c89b",
     "metric_path": [
       "invoices"
     ],
-    "producer": "accounts-payable",
+    "producer": "exec:accounts-payable:Synthetic Group:53d0fb0629ee5a51e3db3b72a18d33d88851eedff4b7efff97289430b9990706",
     "purpose": "absorb",
     "qualification_evidence": "variable-source",
     "semantic": "factory_supplier"
@@ -30,13 +30,13 @@
   {
     "amount": "90000.00",
     "components": [],
-    "consumer": "inventory-cost",
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "economic_id": "cost-fixed",
     "fingerprint": "0b89c1ab6762effd96fdc8f476710d4d931fb67b6be754372029f07cec692a00",
     "metric_path": [
       "depreciation"
     ],
-    "producer": "fixed-assets",
+    "producer": "exec:fixed-assets:Synthetic Group:b24f746312da09c98453cc0a0bb013136c17e7f69524916c58463c3d215d2470",
     "purpose": "absorb",
     "qualification_evidence": "fixed-source",
     "semantic": "factory_depreciation"
@@ -44,7 +44,7 @@
   {
     "amount": "110.00",
     "components": [],
-    "consumer": "inventory-cost",
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "economic_id": "economic-foreign-purchase",
     "fingerprint": "cde2f18874e14dccd07e4d6aed13da4a8f28cfe198a3dc4577416bb6a900d409",
     "metric_path": [
@@ -52,7 +52,7 @@
       "inventory-purchase",
       "initial"
     ],
-    "producer": "foreign-currency",
+    "producer": "exec:foreign-currency:Synthetic Group:502140112a17a9e221ed3ab354162d501a49ac399033fbae19a0553d5dd5fb2b",
     "purpose": "absorb",
     "qualification_evidence": "foreign-purchase-source",
     "semantic": "historical_purchase"
@@ -60,13 +60,13 @@
   {
     "amount": "11304.00",
     "components": [],
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Synthetic Group:3206dfcad01d1c75e29be686b49ae8ade2271eaaba5393bb144bc401b8e7b39a",
     "economic_id": "inventory-cogs",
     "fingerprint": "5639451d8cbcb004c2c2827dd4253ee5da081b600678f1c967a28da9db79fec9",
     "metric_path": [
       "cogs"
     ],
-    "producer": "inventory-cost",
+    "producer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "purpose": "report",
     "qualification_evidence": "Synthetic owned COGS to GL/statement mapping",
     "semantic": "cogs"
@@ -74,13 +74,13 @@
   {
     "amount": "40000.00",
     "components": [],
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Synthetic Group:3206dfcad01d1c75e29be686b49ae8ade2271eaaba5393bb144bc401b8e7b39a",
     "economic_id": "sales-revenue",
     "fingerprint": "6b7bd543eca17356de40eda3049245185efdb225621e2a7fcb03c4874b76e990",
     "metric_path": [
       "period_revenue"
     ],
-    "producer": "revenue-recognition",
+    "producer": "exec:revenue-recognition:Synthetic Group:2afdada895891737e2dc91679023b5b85ff9f5863d5c0360b47cd9a2ee01940d",
     "purpose": "report",
     "qualification_evidence": "Synthetic goods delivery to revenue GL mapping",
     "semantic": "revenue"
@@ -88,13 +88,13 @@
   {
     "amount": "45726.00",
     "components": [],
-    "consumer": "balance-sheet-reconciliations",
+    "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:a1abd973700a638ae62099407703e7f5b6a6eb37a46f5be0816fd03e5a341775",
     "economic_id": "closing-stock",
     "fingerprint": "5639451d8cbcb004c2c2827dd4253ee5da081b600678f1c967a28da9db79fec9",
     "metric_path": [
       "closing_inventory"
     ],
-    "producer": "inventory-cost",
+    "producer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
     "purpose": "report",
     "qualification_evidence": "Synthetic gross reconciliation total equals twice signed stock asset",
     "semantic": "inventory_balance"

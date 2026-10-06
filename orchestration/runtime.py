@@ -15,7 +15,7 @@ from .registry import Registry, production
 from .intent import Intent, interpret
 from .planning import DeterministicPlanner, Graph, Node, Issue, FACT_ADAPTERS
 from interfaces.public_output import public_record
-from .scopes import execution_scopes, scoped_context
+from .scopes import execution_scopes, scoped_context, execution_identity, scope_registry
 
 
 def digest(value):
@@ -28,6 +28,10 @@ def currency(c):
     if value: return value
     value = c.get('governance_method', {}).get('currency')
     return value
+
+
+def currency_from_node(n):
+    return n.functional_currency or n.presentation_currency or ''
 
 
 def dimensions(c):
@@ -103,6 +107,9 @@ class Case:
     balance_diagnostics: dict = field(default_factory=dict)
     close_observations: list = field(default_factory=list)
     accounting_questions: list = field(default_factory=list)
+    scope_registry: list = field(default_factory=list)
+    owner_results: list = field(default_factory=list)
+    group_consumer: dict = field(default_factory=dict)
 
     def transition(self, target):
         lifecycle = ['OPEN', 'SCOPED', 'IN_PROGRESS', 'CHALLENGE', 'CONCLUDED', 'DOCUMENTED', 'CLOSED']
@@ -179,7 +186,8 @@ class CAO:
         if c.open_questions: raise ValueError('Resolve missing or disputed execution dimensions')
         scopes=execution_scopes(context)
         c.entities=[context['entity']]+sorted(e for e in scopes if e!=context['entity']); c.periods=[context['period_start'],context['reporting_period']]
-        c.frameworks=[context['framework']]; c.jurisdictions=[context['jurisdiction']]
+        c.scope_registry=scope_registry(context).record()
+        c.frameworks=sorted({s['framework'] for s in scopes.values()}); c.jurisdictions=sorted({s['jurisdiction'] for s in scopes.values()})
         c.industries = [context['industry']] if context.get('industry') else []
         c.materiality = context.get('materiality')
         c.facts['established'] = [dict(attribute=k,value=v) for k,v in context.items()]
@@ -194,32 +202,35 @@ class CAO:
             raise ValueError('Planner must return bounded structured issues')
         if not issues: raise ValueError('No supported issue decomposition; supply accounting facts or a scoped planner')
         for family in set(facts)&set(FACT_ADAPTERS):
-            if not isinstance(facts[family], dict):
+            if not isinstance(facts[family], (dict,list)):
                 c.open_questions.append(dict(kind='blocking', question='Malformed supplied fact family: '+family))
         unknown = set(facts)-set(FACT_ADAPTERS)-{'task_attributes'}
         for family in sorted(unknown): c.open_questions.append(dict(kind='blocking', question='Unsupported fact family: '+family))
-        inputs = {}
-        for family, (owner, _) in FACT_ADAPTERS.items():
-            if family in facts and isinstance(facts[family], dict):
-                if owner in inputs and digest(inputs[owner])!=digest(facts[family]):raise ValueError('Conflicting fact families for one production owner: '+owner)
-                inputs[owner] = copy.deepcopy(facts[family])
-        # Find actual dependency source workpapers already contained in imports.
-        queue = list(inputs.values())
+        from .execution import OwnerInputs, populations
+        inputs=OwnerInputs(context)
+        for family,source in populations(facts):
+            if family in FACT_ADAPTERS and self.registry.get(FACT_ADAPTERS[family][0]).get('production_available'): inputs.add(FACT_ADAPTERS[family][0],copy.deepcopy(source))
+        queue=list(inputs.values())
+        inspected=set()
         for source in queue:
-            for imp in source.get('imports', []):
-                owner = imp.get('package'); actual = imp.get('case')
-                if owner in inputs and digest(inputs[owner]) != digest(actual):
-                    raise ValueError('Conflicting supplied owner cases: '+str(owner))
-                if owner not in inputs:
-                    inputs[owner]=copy.deepcopy(actual); queue.append(inputs[owner])
+            for imp in source.get('imports',[]):
+                key=inputs.add(imp['package'],copy.deepcopy(imp['case']))
+                if key not in inspected: inspected.add(key);queue.append(inputs[key])
         for i in issues:
             if not isinstance(i.id, str) or not i.id or not isinstance(i.owner, str): raise ValueError('Malformed issue identity')
             if type(i.required) is not bool or (i.material is not None and type(i.material) is not bool): raise ValueError('Invalid dependency materiality')
-            node_context=scoped_context(context,inputs[i.owner]) if i.owner in inputs and self.registry.get(i.owner).get('production_available') else context
-            graph.add(Node(i.id, i.capability, i.owner, i.reason, node_context['entity'],node_context['framework'],[node_context['period_start'],node_context['reporting_period']],
+            candidates=[key for key in inputs if inputs.packages[key]==i.owner and (i.scope_id is None or inputs[key].get('scope_id',inputs[key].get('entity'))==i.scope_id)]
+            if len(candidates)>1:raise ValueError('Issue must identify exact Scope for repeated owner')
+            node_context=scoped_context(context,inputs[candidates[0]]) if candidates else scoped_context(context,context)
+            key=execution_identity(i.owner,node_context)
+            graph.add(Node(key,i.capability,i.owner,i.reason,node_context['entity'],node_context['framework'],[node_context['period_start'],node_context['reporting_period']],
+                logical_id=i.id,scope_id=node_context['scope_id'],scope_type=node_context['scope_type'],jurisdiction=node_context['jurisdiction'],
+                functional_currency=node_context['functional_currency'],presentation_currency=node_context['presentation_currency'],
                 prerequisites=self.registry.get(i.owner).get('context_requirements',{}).get('required',[]),
                 dependencies=list(i.dependencies),source_inputs=i.source_inputs,
                 owner_result_dependencies=list(i.dependencies),required=i.required,material=i.material,condition=i.condition))
+        for n in graph.nodes.values():
+            n.dependencies=[graph.nodes.resolve(d) for d in n.dependencies]
         # Integrator bindings infer reporting/other dependencies as actual edges.
         bindings = request.get('handoffs', [])
         if proposal.bounded_owner:
@@ -230,15 +241,16 @@ class CAO:
         bindings=[b for b in bindings if b.get('consumer') in graph.nodes]
         request['challenge_assertions']=[a for a in request.get('challenge_assertions',[]) if a.get('node') in graph.nodes]
         for b in bindings:
+            b['consumer']=graph.nodes.resolve(b['consumer']);b['producer']=graph.nodes.resolve(b['producer'])
             if b['consumer'] not in graph.nodes or b['producer'] not in graph.nodes: raise ValueError('Handoff owner node absent')
             n=graph.nodes[b['consumer']]
             if b['producer'] not in n.dependencies: n.dependencies.append(b['producer'])
         for n in graph.nodes.values():
-            for receipt in inputs.get(n.selected_skill,{}).get('qualified_owner_results',[]):
-                upstream=receipt.get('producer')
+            for receipt in inputs.get(n.id,{}).get('qualified_owner_results',[]):
+                upstream=graph.nodes.resolve(receipt.get('producer'))
                 if upstream not in graph.nodes:raise ValueError('Unknown specialist receipt producer')
                 if upstream not in n.dependencies:n.dependencies.append(upstream)
-        by_owner={n.selected_skill:n for n in graph.nodes.values()}
+        by_owner={owner:[n for n in graph.nodes.values() if n.selected_skill==owner] for owner in {n.selected_skill for n in graph.nodes.values()}}
         # Required combined-conclusion bridges are inferred, never made optional
         # by omission of caller-supplied handoffs. Native owner imports already
         # govern the actual upstream cost links inside Inventory/Analytics/etc.
@@ -259,14 +271,16 @@ class CAO:
             if upstream not in by_owner or downstream not in by_owner:continue
             if semantic=='contract_balance' and 'accounts-receivable' not in by_owner:continue
             if semantic=='monetary_fx' and not {'accounts-receivable','debt-financing'} & set(by_owner):continue
-            producer=by_owner[upstream];consumer=by_owner[downstream]
+            producers=by_owner[upstream];consumers=by_owner[downstream]
+            if len(producers)!=1 or len(consumers)!=1:raise ValueError('Repeated-owner reporting requires explicit scoped consumer contracts')
+            producer=producers[0];consumer=consumers[0]
             if producer.id not in consumer.dependencies:consumer.dependencies.append(producer.id)
             matched=[b for b in bindings if b.get('producer')==producer.id and b.get('consumer')==consumer.id and b.get('semantic')==semantic]
             if len(matched)!=1:
                 consumer.status='blocked';consumer.open_items.append('Missing or duplicated qualified '+semantic+' owner bridge')
         for b in bindings:
             for component in b.get('components',[]):
-                dependency=component.get('producer')
+                dependency=graph.nodes.resolve(component.get('producer'));component['producer']=dependency
                 if dependency not in graph.nodes:raise ValueError('Unknown composed owner dependency')
                 if dependency not in graph.nodes[b['consumer']].dependencies:graph.nodes[b['consumer']].dependencies.append(dependency)
         graph.validate(); c.accounting_issues=[asdict(i) for i in issues]
@@ -288,14 +302,14 @@ class CAO:
                 meta=self.registry.get(n.selected_skill)
                 if not meta['production_available'] or not meta['execution_available']:
                     n.status='blocked'; n.open_items.append('Accounting owner unavailable for production: '+n.selected_skill); continue
-                source=inputs.get(n.selected_skill)
+                source=inputs.get(n.id)
                 if not isinstance(source, dict):
                     n.status='blocked'; n.open_items.append('Missing reviewed source workpaper for '+n.issue); continue
                 node_context=scoped_context(context,source)
                 expected=(n.entity,n.framework,node_context['jurisdiction'],*n.period,node_context['currency'])
                 if dimensions(source) != expected:
                     n.status='blocked'; n.open_items.append('Owner entity/framework/jurisdiction/period/currency mismatch'); continue
-                if meta['applicable_frameworks'] and context['framework'] not in meta['applicable_frameworks']:
+                if meta['applicable_frameworks'] and n.framework not in meta['applicable_frameworks']:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
                     from .period_selection import validate_activity
@@ -303,7 +317,7 @@ class CAO:
                     from .result_bindings import validate_receipts
                     validate_receipts(n,graph,inputs,c)
                     for imp in source.get('imports', []):
-                        matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package']]
+                        matches=[node for node in graph.nodes.values() if node.selected_skill == imp['package'] and node.scope_id==imp['case'].get('scope_id',imp['case'].get('entity'))]
                         producer=matches[0] if len(matches)==1 else None
                         if not producer or producer.status!='complete' or digest(imp['result'])!=digest(producer.result):
                             raise ValueError('Imported owner result stale, incomplete or contradictory')
@@ -319,9 +333,14 @@ class CAO:
                     if r.get('status')=='complete' and (r.get('entities')!=[n.entity] or r.get('framework')!=n.framework or r.get('jurisdiction')!=node_context['jurisdiction'] or r.get('periods')!=n.period):
                         raise ValueError('Owner result envelope dimensions differ')
                     n.result=r; n.status=r['status']; n.open_items=list(r.get('open_items',[])); n.evidence=copy.deepcopy(r.get('evidence',[]))
+                    n.execution_receipt=self._result_receipt(n,source)
                     c.skills_invoked.append(n.selected_skill)
                     c.execution_ledger.append(dict(node=n.id,batch=batch,status=n.status,case_fingerprint=r.get('case_fingerprint')))
                     if n.status == 'complete':
+                        from .scoped_journals import qualify_journal
+                        posting=source.get('posting_scope_id',n.scope_id)
+                        layer=source.get('journal_layer',n.scope_type)
+                        qualify_journal(context,n.scope_id,posting,layer)
                         self._economics(c,n,source,owned,entries)
                     c.evidence_refs.extend(n.evidence); c.judgments.extend(r.get('judgments',[]))
                     c.knowledge_refs.extend(copy.deepcopy(r.get('knowledge_documents',[])))
@@ -343,6 +362,10 @@ class CAO:
         analytics=next((n for n in graph.nodes.values() if n.selected_skill=='management-accounting-analytics'),None)
         if analytics and analytics.status not in ('complete','partial'):
             c.diagnostics=[];c.balance_diagnostics={}
+        c.owner_results=[n.execution_receipt for n in graph.nodes.values() if n.status=='complete']
+        if request.get('group_consumer') is not None:
+            from .scoped_receipts import consume_group
+            c.group_consumer=consume_group(request['group_consumer'],graph,inputs,context,c)
         c.workplan_nodes=graph.record()
         unresolved=[n for n in graph.nodes.values() if n.status in ('blocked','partial')]
         critical=[n for n in unresolved if n.required or n.material is not False]
@@ -372,8 +395,8 @@ class CAO:
         if not diagnostic and not balances:
             if c.work_modes.get('primary')=='DIAGNOSTIC_ANALYTICS' or 'DIAGNOSTIC_ANALYTICS' in c.work_modes.get('secondary',[]):c.open_questions.append(dict(kind='blocking',question='Supply reviewed diagnostic periods, comparators and driver evidence to explain the movement'))
             return
-        approval=inputs[analytics.selected_skill].get('reviewer_signoff',{})
-        if approval.get('approved') is not True or approval.get('case_fingerprint')!=production.case_fingerprint(inputs[analytics.selected_skill]):return
+        approval=inputs[analytics.id].get('reviewer_signoff',{})
+        if approval.get('approved') is not True or approval.get('case_fingerprint')!=production.case_fingerprint(inputs[analytics.id]):return
         if diagnostic and diagnostic['bridge']['metric']=='gross_profit' and diagnostic['bridge']['presentation_basis']!=context.get('gross_margin_basis'):
             g.invalidate(analytics.id,'Diagnostic margin basis differs from approved company presentation policy');return
         if diagnostic:c.diagnostics=[copy.deepcopy(diagnostic)]
@@ -384,10 +407,14 @@ class CAO:
         for question in questions:
             q=copy.deepcopy(question);owner=q['target_owner'];meta=self.registry.get(owner)
             existing=[n for n in g.nodes.values() if n.selected_skill==owner and n.issue!='diagnostic accounting follow-up']
-            node=Node('diagnostic-'+q['id'],'diagnostic accounting follow-up',owner,q['reason'],context['entity'],context['framework'],c.periods,
+            ctx=scoped_context(context,inputs[existing[0].id]) if len(existing)==1 else scoped_context(context,context)
+            key=execution_identity(owner,ctx)+':recheck:'+digest(q['id'])
+            node=Node(key,'diagnostic accounting follow-up',owner,q['reason'],ctx['entity'],ctx['framework'],c.periods,
+                logical_id='diagnostic-'+q['id'],scope_id=ctx['scope_id'],scope_type=ctx['scope_type'],jurisdiction=ctx['jurisdiction'],functional_currency=ctx['functional_currency'],presentation_currency=ctx['presentation_currency'],
                 dependencies=[analytics.id]+[n.id for n in existing],source_inputs=q['source_evidence'])
             g.add(node);g.validate();node.iterations=1
-            source=inputs.get(owner)
+            source=inputs.get(existing[0].id) if len(existing)==1 else None
+            inputs[node.id]=source
             try:
                 if analytics.status!='complete':raise ValueError('Material diagnostic evidence unresolved before accounting follow-up')
                 if not meta['production_available'] or not meta['execution_available']:raise ValueError('Accounting owner unavailable for diagnostic determination')
@@ -395,7 +422,7 @@ class CAO:
                 result=production.assess_case(owner,source);production.to_public(result,'answer_context')
                 if result['status']!='complete' or digest(result)!=digest(existing[0].result):raise ValueError('Accounting owner recheck unresolved or changed; rework required')
                 if number(at(result['calculations'],q['result_path']))!=number(q['amount']):raise ValueError('Analytical finding differs from accounting owner')
-                node.status='complete';node.result=result;q['status']='OWNER_RECHECK_SUPPORTED'
+                node.status='complete';node.result=result;node.execution_receipt=self._result_receipt(node,source);q['status']='OWNER_RECHECK_SUPPORTED'
                 q['accounting_conclusion']=result['conclusion']
                 if owner=='inventory-cost' and q['result_path']==['manufacturing_expense']:
                     expense=sum((number(line['amount']) for journal in result.get('journal_entry_implications',[]) for line in journal if line['side']=='Dr' and line['account']=='Unallocated overhead expense'),Decimal(0))
@@ -416,10 +443,10 @@ class CAO:
     def _handoff(self,c,graph,inputs,b,consumed):
         producer=graph.nodes[b['producer']]; consumer=graph.nodes[b['consumer']]
         if producer.status!='complete': raise ValueError('Incomplete owner handoff')
-        if dimensions(inputs[producer.selected_skill]) != dimensions(inputs[consumer.selected_skill]): raise ValueError('Handoff dimensions differ')
+        if dimensions(inputs[producer.id]) != dimensions(inputs[consumer.id]): raise ValueError('Handoff dimensions differ')
         path=b['metric_path']; purpose=b['purpose']; semantic=b['semantic']
         if producer.selected_skill=='derivatives-hedge-accounting' and consumer.selected_skill=='financial-statements':
-            calc=producer.result['calculations']; relationships=inputs[producer.selected_skill]['relationships']
+            calc=producer.result['calculations']; relationships=inputs[producer.id]['relationships']
             if any(d['route']!='cash_flow' or number(d['opening']) or number(d['settlement']) for d in calc['derivatives']) or any(number(r[k]) for r in calc['hedge_reserves'] for k in ('opening','reclassification','basis_adjustment')) or any(r['status'] not in ('active','rebalanced') for r in relationships):
                 raise ValueError('Hedge reporting handoff supports first-year continuing cash-flow hedges only; prior movements require separate governed mapping')
         allowed={
@@ -463,7 +490,7 @@ class CAO:
             component=components[0]
             fxnode=graph.nodes.get(component.get('producer'))
             if not fxnode or fxnode.selected_skill!='foreign-currency' or fxnode.status!='complete' or component.get('metric_path')!=['monetary_fx_profit'] or component.get('sign')!=-1:raise ValueError('Qualified monetary owner component required')
-            dc=inputs[producer.selected_skill];fc=inputs[fxnode.selected_skill]
+            dc=inputs[producer.id];fc=inputs[fxnode.id]
             if dimensions(dc)!=dimensions(fc) or len(dc['debt'])!=1 or len(fc['items'])!=1:raise ValueError('Monetary source population/dimensions differ')
             debt=dc['debt'][0];item=fc['items'][0];base=producer.result['calculations']['debt'][0]
             tx=fxnode.result['calculations']['transactions'][0]
@@ -477,16 +504,16 @@ class CAO:
         if semantic in ('ar_balance','credit_exposure') or semantic.startswith('ar_ageing_'):
             if sign!=1:raise ValueError('Receivable exposure sign cannot invert')
         if semantic in ('contract_balance','allowance') and consumer.selected_skill=='financial-statements':
-            row=at(inputs[consumer.selected_skill],b['target_path'][:-1])
+            row=at(inputs[consumer.id],b['target_path'][:-1])
             category='asset' if semantic=='allowance' or value>=0 else 'liability'
             if row.get('category')!=category:raise ValueError('Owner balance statement classification differs')
         if consumer.selected_skill=='financial-statements':
             targets={'debt_base':('liability',-1),'interest_expense':('expense',1),'derivative_balance':('asset' if value>=0 else 'liability',1),'hedge_pnl':('revenue' if value>=0 else 'expense',-1),'hedge_oci':('oci',-1),'cash_balance':('asset',1)}
             if semantic in targets:
                 expected_category,expected_sign=targets[semantic]
-                if len(b['target_path'])!=3 or b['target_path'][0]!='current_tb' or b['target_path'][2]!='balance' or sign!=expected_sign or at(inputs[consumer.selected_skill],b['target_path'][:-1]).get('category')!=expected_category:raise ValueError('Owner reporting semantic target/classification differs')
+                if len(b['target_path'])!=3 or b['target_path'][0]!='current_tb' or b['target_path'][2]!='balance' or sign!=expected_sign or at(inputs[consumer.id],b['target_path'][:-1]).get('category')!=expected_category:raise ValueError('Owner reporting semantic target/classification differs')
             if semantic=='financing_cash' and b['target_path']!=['cash_flow','financing']:raise ValueError('Financing cash must bind actual statement cash flow')
-        actual=number(at(inputs[consumer.selected_skill],b['target_path']))*sign
+        actual=number(at(inputs[consumer.id],b['target_path']))*sign
         if actual!=value or number(b['amount'])!=value: raise ValueError('Owner and consumer amount contradiction')
         if not isinstance(b.get('economic_id'),str) or not b['economic_id'] or not b.get('qualification_evidence'):
             raise ValueError('Economic identity and eligible-cost evidence required')
@@ -499,20 +526,29 @@ class CAO:
             metric_path=path,economic_id=b['economic_id'],amount=str(value),purpose=purpose,
             fingerprint=producer.result['case_fingerprint'],components=copy.deepcopy(components),qualification_evidence=b['qualification_evidence']))
 
+    @staticmethod
+    def _result_receipt(n, source):
+        return dict(producing_node=n.id,owner=n.selected_skill,scope_id=n.scope_id,scope_type=n.scope_type,
+            framework=n.framework,jurisdiction=n.jurisdiction,functional_currency=n.functional_currency,
+            presentation_currency=n.presentation_currency,period=n.period,
+            exact_case_fingerprint=n.result.get('case_fingerprint'),result_fingerprint=digest(n.result),currentness='CURRENT')
+
     def _economics(self,c,n,source,owned,entries):
         # Owner economic source identities are carried explicitly by source rows;
         # consumers may reference them via actual imports, never own them again.
         refs={r.get('economic_id') for r in source.get('owner_links',[])}
-        for population in ('movements','costs','benefits','invoices','assets','items'):
+        for population in ('movements','costs','benefits','invoices','assets','items','obligations'):
             rows=source.get(population,[])
             if not isinstance(rows,list): continue
             for row in rows:
                 id=row.get('economic_id')
                 if not id or id in refs: continue
-                if id in owned: raise ValueError('Duplicate economics across nodes: '+id)
-                owned[id]=n.id
-                c.economic_ledger.append(dict(economic_id=id,owner=n.id,population=population))
-        for j in n.result.get('journal_entry_implications',[]):
+                key=(n.scope_id,tuple(n.period),id)
+                if key in owned: raise ValueError('Duplicate economics within posting Scope: '+id)
+                owned[key]=n.id
+                c.economic_ledger.append(dict(economic_id=id,owner=n.id,population=population,source_scope=n.scope_id,posting_scope=n.scope_id,currency=currency(source),period=n.period))
+        for index,j in enumerate(n.result.get('journal_entry_implications',[])):
+            c.journal_ownership_ledger.append(dict(source_scope=n.scope_id,posting_scope=n.scope_id,accounting_layer=n.scope_type,owner=n.selected_skill,node=n.id,currency=currency(source),period=n.period,economic_identity=[n.scope_id,n.id,n.result['case_fingerprint'],index],posting=True))
             signature=(n.id,digest(j))
             if signature in entries: raise ValueError('Duplicate owner journal')
             entries.add(signature)
@@ -525,12 +561,12 @@ class CAO:
                 if id in g.nodes: g.invalidate(id,message)
         for n in list(g.nodes.values()):
             if n.status=='complete':
-                fresh=production.assess_case(n.selected_skill,inputs[n.selected_skill])
+                fresh=production.assess_case(n.selected_skill,inputs[n.id])
                 if digest(fresh)!=digest(n.result): flag([n.id],'STALE_OWNER','Owner result changed during challenge')
         ar=next((n for n in g.nodes.values() if n.selected_skill=='accounts-receivable' and n.status=='complete'),None)
         ecl=next((n for n in g.nodes.values() if n.selected_skill=='financial-instruments-ecl' and n.status=='complete'),None)
         if ar and ecl:
-            ec=inputs[ecl.selected_skill];ac=ar.result['calculations'];gross=ecl.result['calculations']['gross_carrying_amount']
+            ec=inputs[ecl.id];ac=ar.result['calculations'];gross=ecl.result['calculations']['gross_carrying_amount']
             valid=number(gross)==number(ac['closing_ar'])
             if ec['credit']['method']=='loss_rate':
                 valid=valid and all(sum((number(t['exposure']) for t in scenario['terms']),Decimal(0))==number(gross) for scenario in ec['credit']['scenarios'])
@@ -554,9 +590,9 @@ class CAO:
         inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
         revenue=next((n for n in g.nodes.values() if n.selected_skill=='revenue-recognition' and n.status=='complete'),None)
         if inventory and revenue:
-            sales=inputs[revenue.selected_skill].get('delivered_quantity')
+            sales=inputs[revenue.id].get('delivered_quantity')
             if sales is not None:
-                relieved=sum((number(m['quantity']) for m in inputs[inventory.selected_skill].get('movements',[]) if m.get('kind')=='sale'),Decimal(0))
+                relieved=sum((number(m['quantity']) for m in inputs[inventory.id].get('movements',[]) if m.get('kind')=='sale'),Decimal(0))
                 if number(sales)!=relieved:
                     flag([revenue.id,inventory.id],'SALES_RELIEF','Revenue delivered units differ from inventory sale relief; reconcile source populations')
         if inventory and revenue and context.get('gross_margin_basis') not in ('inventory_relief_only','inventory_relief_and_manufacturing_expense'):
@@ -566,7 +602,7 @@ class CAO:
         assertions=request.get('challenge_assertions',[])
         if not isinstance(assertions,list): raise ValueError('Challenge assertions must be a list')
         for a in assertions:
-            id=a['node']; n=g.nodes.get(id)
+            id=g.nodes.resolve(a['node']); n=g.nodes.get(id)
             if n is None: raise ValueError('Unknown challenged owner')
             if n.status!='complete': continue
             actual=at(n.result['calculations'],a['metric_path'])
@@ -616,7 +652,7 @@ class CAO:
             if not isinstance(sources,list) or len(sources)!=len(request.get('journal_ownership',[])):raise ValueError('Complete event source population required')
             for event,source in zip(request['journal_ownership'],sources):
                 if set(source)!={'economic_id','entity','period','currency','origin','record','nature'} or source['economic_id']!=event['economic_id']:raise ValueError('Event source binding differs')
-                if (source['entity'],source['period'],source['currency'])!=(c.entities[0],c.periods,currency(inputs[reporting.selected_skill])):raise ValueError('Event source dimensions differ')
+                if (source['entity'],source['period'],source['currency'])!=(c.entities[0],c.periods,currency(inputs[reporting.id])):raise ValueError('Event source dimensions differ')
                 key=(source['origin'],source['record']) if source['origin']=='bank' else tuple(source[k] for k in ('origin','record','nature'))
                 if any(not isinstance(v,str) or not v.strip() for v in key) or key in seen:raise ValueError('Economic source counted twice under event aliases')
                 seen.add(key)
@@ -630,7 +666,7 @@ class CAO:
                 account=mapping.get(line['account'],line['account'])
                 delta[account]=delta.get(account,Decimal(0))+number(line['amount'])*(1 if line['side']=='Dr' else -1)
         if request.get('journal_event_sources') is not None and 'cash-flow-reporting' in inputs:
-            cash_accounts={row['id'] for row in inputs[reporting.selected_skill]['current_tb'] if row.get('cash_account') is True}
+            cash_accounts={row['id'] for row in inputs[reporting.id]['current_tb'] if row.get('cash_account') is True}
             bank={row['bank_id']:row for row in inputs['cash-flow-reporting']['transactions']}
             consumed_bank=set()
             for source,event in zip(request['journal_event_sources'],selected):
@@ -642,7 +678,7 @@ class CAO:
                     consumed_bank.add(source['record'])
                 elif source['origin']=='bank':raise ValueError('Noncash event cannot claim bank cash ownership')
             if consumed_bank!=set(bank):raise ValueError('Native bank cash population omitted from exact-once postings')
-        source=inputs[reporting.selected_skill]
+        source=inputs[reporting.id]
         current={row['id']:number(row['balance']) for row in source['current_tb']}
         opening={row['id']:number(row['balance']) for row in source['comparative_tb']}
         for account in set(delta)|set(current)|set(opening):
@@ -709,7 +745,7 @@ class CAO:
             # added indiscriminately across results.
             metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',),'accounts-receivable':('closing_ar','billed','credits','applied_cash_and_deposits','unapplied_liability','fx_movement','bank_receipts'),'financial-instruments-ecl':('allowance','expense'),'foreign-currency':('monetary_fx_profit',)}
             for metric in metrics.get(n.selected_skill,()):
-                if metric in r.get('calculations',{}): values[metric]=str(number(r['calculations'][metric]))
+                if metric in r.get('calculations',{}): values[(n.scope_id+' '+n.framework+' '+currency_from_node(n)+' '+metric) if sum(x.selected_skill==n.selected_skill for x in g.nodes.values())>1 else metric]=str(number(r['calculations'][metric]))
             for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
@@ -722,7 +758,7 @@ class CAO:
             selected,_=self._qualified_journals(native,c._journal_mapping,c.journal_ownership_ledger)
             journals=[dict(owner=r['owner'],lines=r['lines']) for r in selected]
         revenue_owner=next((n for n in g.nodes.values() if n.selected_skill=='revenue-recognition' and n.status=='complete'),None)
-        if revenue_owner:
+        if revenue_owner and sum(n.selected_skill=='revenue-recognition' for n in g.nodes.values())==1:
             contract=number(revenue_owner.result['calculations']['contract_bridge']['closing'])
             values.update(contract_asset=str(max(contract,0)),contract_liability=str(max(-contract,0)))
         inventory=next((n for n in g.nodes.values() if n.selected_skill=='inventory-cost' and n.status=='complete'),None)
@@ -832,6 +868,9 @@ class CAO:
             reporting=['Qualified consolidated statements preserve goodwill, NCI and translation OCI.','Scoped acquisition, group performance and impairment evidence supports the reviewed disclosures; this is not filing certification.']
         if 'closing_inventory' in values: text+=' Supported closing inventory is '+values['closing_inventory']+'.'
         if 'gross_margin' in values: text+=' Gross margin under the supplied presentation policy is '+values['gross_margin']+'.'
+        if c.group_consumer:
+            text=c.group_consumer['summary']; limits.extend(c.group_consumer['limitations'])
+            journals=[]
         return dict(conclusion=text,status=c.outcome,calculations=values,journals=journals,open_items=open_items,
             controls=sorted(set(controls)),reporting=sorted(set(reporting)),limitations=sorted(set(limits)),
             required_approvals=sorted(set(approvals)),confidence='medium' if c.outcome=='complete' else 'low')
@@ -840,7 +879,7 @@ class CAO:
         for k in ('framework','jurisdiction','currency','year_end','industry','gross_margin_basis','policies','systems','known_processes'):
             if k in context:
                 c.memory_candidates.append(dict(id=c.id+'-'+k,attribute=k,value=copy.deepcopy(context[k]),
-                    status='PROPOSED',source_case=c.id,source_refs=['supplied-governed-context'],
+                    status='PROPOSED',scope_id=context['entity'],source_case=c.id,source_refs=['supplied-governed-context'],
                     effective_from=context.get('period_start'),effective_to=None,learned_at=None,
                     related_cases=[c.id],supersedes=[],conflict=False))
         for observation in request.get('observations',[]):

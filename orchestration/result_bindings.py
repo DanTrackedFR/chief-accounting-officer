@@ -31,7 +31,7 @@ CONTRACTS = {
 
 
 def validate_receipts(node, graph, inputs, case):
-    source=inputs[node.selected_skill]
+    source=inputs[node.id]
     receipts=source.get('qualified_owner_results',[])
     required={identity for identity in CONTRACTS if identity[1]==node.selected_skill and any(n.selected_skill==identity[0] for n in graph.nodes.values())}
     required={r for r in required if r[2] not in ('group_profit','post_acquisition_contribution') or (r[2]=='group_profit' and inputs[r[0]].get('qualified_consolidated_balances') is not None) or (r[2]=='post_acquisition_contribution' and inputs[r[0]].get('qualified_acquisition') is not None)}
@@ -49,9 +49,9 @@ def validate_receipts(node, graph, inputs, case):
         if not contract or identity in seen:raise ValueError('Unknown or duplicate semantic specialist receipt')
         seen.add(identity)
         if digest(receipt['result'])!=digest(producer.result):raise ValueError('Stale or substituted specialist result')
-        if tuple(receipt['source_dimensions'])!=dimensions(inputs[producer.selected_skill]) or tuple(receipt['consumer_dimensions'])!=dimensions(source):
+        if tuple(receipt['source_dimensions'])!=dimensions(inputs[producer.id]) or tuple(receipt['consumer_dimensions'])!=dimensions(source):
             raise ValueError('Specialist receipt entity/currency/period dimensions differ')
-        upstream=inputs[producer.selected_skill]
+        upstream=inputs[producer.id]
         if identity[:2] in (('income-taxes','business-combinations'),('business-combinations','foreign-currency')) and upstream['entity']!=source['entity']:
             raise ValueError('Specialist acquisition receipt crosses legal entities')
         if receipt['semantic']=='acquisition_dtl':
@@ -88,7 +88,7 @@ def validate_receipts(node, graph, inputs, case):
         target=[producer.entity if k=='@producer_entity' else k for k in contract[1]]
         expected=at(source,target)
         if receipt['semantic']=='acquisition_goodwill':
-            upstream=inputs[producer.selected_skill]
+            upstream=inputs[producer.id]
             if source['translation']['operation_id']!=source['entity']:
                 raise ValueError('Foreign operation differs from acquired source entity')
             if source.get('activity_selection',{}).get('effective_date')!=upstream['acquisition']['date']:
