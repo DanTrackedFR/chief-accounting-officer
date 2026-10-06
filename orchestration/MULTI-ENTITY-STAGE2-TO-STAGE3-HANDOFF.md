@@ -1,4 +1,7 @@
-# Stage 2 → Stage 3 architecture handoff
+# Stage 2 → Stage 3 architecture handoff — PROVISIONAL
+
+Release correction: Stage 2 is incomplete. The earlier completion wording on head `29f9ae126ac1a577187d3d6c5a44bbdff315ed89` was disproved by fresh executable independent review. This document is provisional; final architecture, regression and exact-head acceptance must be rewritten after the remaining gates pass. PR #35 is Draft and unmerged. See `STAGE2-PROGRESS-HANDOFF.md` and `STAGE2-FINAL-INDEPENDENT-QA.md`. No Stage 3 work is authorized.
+
 
 Stage 2 extends the Stage 1 Scope substrate with governed Case, Period, dependency and result-version semantics. Stage 3 must begin only after PR #35 is owner-reviewed and merged, from the resulting live main.
 

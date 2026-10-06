@@ -25,3 +25,14 @@ Governed calendar/Period registry; runtime Case registry composing explicit Scop
 ## Release gates
 
 Authored controls, genuinely independent attacks/remediation/rerun, all prior migration suites, deterministic artifacts, full repository authority regression and unchanged-head Actions. No roadmap completion before these pass. Government Grants/Borrowing Costs/Investment Property and all knowledge authority remain untouched.
+
+
+## Fresh continuation reconstruction and current runtime integration
+
+Live main remained `f2c47c03fd2faaafe99b73bf621cee473e53b675`; the existing Stage2 branch had advanced to `29f9ae126ac1a577187d3d6c5a44bbdff315ed89`, which was preserved rather than reset to the older quoted checkpoint. Its ready status/green CI and COMPLETE documentation did not establish the outstanding architecture gates. A fresh reviewer independently reproduced ordinary Case/version absence and CLOSED-Period bypass, plus missing executed comparative and unaffected controls. PR #35 was returned to Draft.
+
+`runtime_governance.py` now attaches the existing CaseRegistry/PeriodRegistry/VersionedExecution to ordinary CAO native execution, authorizes periods before owner invocation, publishes native immutable versions and augments existing execution receipts. Simple dated callers normalize through calendar-qualified compatibility Periods with explicitly unknown fiscal starts; native inputs/certifications are not rewritten. Stage1 node IDs remain unchanged for those callers. Supplied cross-Period registries require explicit dependency contracts. Organizational parentage does not infer Case or dependency parentage. Existing challenge invalidation marks affected current snapshots stale; Case refresh preserves active CHALLENGE transitions.
+
+`governed_plan.py` accepts serializable governed graph/Case/Period intake through CAO.run using the same existing Graph and VersionedExecution/production-owner boundary. It validates Scope/Period-derived execution IDs and all node framework/currency metadata. Bounded local observation consumers retain receipt currency and producer framework; no conversion or posting authority is introduced. Version receipts additionally qualify metric path, both framework/currency dimensions and observed value currency.
+
+The controlled fixture initially executes through CAO.run and uses the shared bounded consumer for selective rework. It now contains thirteen nodes/seven Cases, including executed UK comparative and independent Treasury, November and nonconsuming Group observations. It still corrects native US September Revenue800→900 and reruns four actual downstream consumers. Public artifacts now use CAO.public through public_record. Ordinary migration, temporal intake/ReviewedInputPack, restatement and Subgroup execution remain incomplete gates. These additions do not constitute final acceptance.

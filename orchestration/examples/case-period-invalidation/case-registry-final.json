@@ -5,14 +5,16 @@
     "alternatives": [],
     "artifacts": [
       {
-        "type": "controlled-proof"
+        "source_case": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+        "type": "governed-case-record"
       }
     ],
     "balance_diagnostics": {},
     "case_type": "GROUP_CASE",
     "challenge_results": [
       {
-        "kind": "qualified-controlled-observations",
+        "dependencies": 5,
+        "kind": "governed-currentness",
         "status": "PASS"
       },
       {
@@ -20,7 +22,7 @@
           {
             "dependency": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
             "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
-            "upstream_version": "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+            "upstream_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
           }
         ],
         "kind": "dependency-rework"
@@ -30,7 +32,7 @@
           {
             "dependency": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
             "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
-            "upstream_version": "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+            "upstream_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
           }
         ],
         "kind": "dependency-rework"
@@ -40,7 +42,7 @@
           {
             "dependency": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
             "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
-            "upstream_version": "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+            "upstream_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
           }
         ],
         "kind": "dependency-rework"
@@ -50,7 +52,7 @@
           {
             "dependency": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
             "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
-            "upstream_version": "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+            "upstream_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
           }
         ],
         "kind": "dependency-rework"
@@ -60,7 +62,7 @@
           {
             "dependency": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
             "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
-            "upstream_version": "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+            "upstream_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
           }
         ],
         "kind": "dependency-rework"
@@ -70,7 +72,7 @@
           {
             "dependency": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
             "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
-            "upstream_version": "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+            "upstream_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
           }
         ],
         "kind": "dependency-rework"
@@ -80,7 +82,7 @@
           {
             "dependency": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
             "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
-            "upstream_version": "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+            "upstream_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
           }
         ],
         "kind": "dependency-rework"
@@ -89,25 +91,27 @@
         "kind": "selective-rework-currentness",
         "reexecuted": [
           {
-            "new_version": "version:03790e4eebe2694f62b5eda8028898761b87649ef90aad4a10ebed9809402d4c",
+            "new_version": "version:6fe35f877d04a7e53ea9e26a32dd87cc5c67d24c99ca748d7eaad1d8cc937e89",
             "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
-            "old_version": "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+            "old_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
           },
           {
-            "new_version": "version:d95c88af7f146134e209cc593b752605caf52bc88041466c8fbbc617aa3904ed",
+            "new_version": "version:2d5ef46235c9eaa912af0c30844b017aa160b5fb87f3a509db773362ff660b07",
             "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
-            "old_version": "version:5eb4f1e40ad9a83d687f31cc1c1fa9e0956cf2e84d317d4d6434fd78ae839a4d"
+            "old_version": "version:23520e1907e808f9d932440cac8b0a942068ad4b2772b7a07b44df8a5b2f970a"
           }
         ],
         "status": "PASS",
-        "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+        "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
       }
     ],
     "child_case_ids": [
+      "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+      "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
       "case:90c0895286a48a34abc3bf760b6de5b89d1b346b2104bdbef7cc338866118417",
-      "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+      "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
       "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
-      "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3"
+      "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d"
     ],
     "close_observations": [],
     "closed_at": null,
@@ -116,28 +120,99 @@
     "decisions": [],
     "diagnostics": [],
     "economic_ledger": [],
-    "entities": [],
+    "entities": [
+      "GROUP-EUR"
+    ],
     "evidence_refs": [],
-    "execution_ledger": [],
+    "execution_ledger": [
+      {
+        "node": "exec:orchestration-future-observation:ENTITY-US:804726295d73f6ae36def0efa08c5ebb84d09979bdfac83f3d25cce04e1dbc89",
+        "result_version": "version:142f34e732a09ae1caeae8da2fdbc4123eb9299f681c28610c3c4311f756a219",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-independent-observation:GROUP-EUR:73d40208440a3e3c989f38c0ee88d423cda5836c380040a6d58d1c9903748acf",
+        "result_version": "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-process-observation:ENTITY-NL:eb3bfb62b3979a2fe6f5e220823ff4b236544867a9f4ec2c3f46a06b4b007e46",
+        "result_version": "version:ef641b885609ffe840dc96f0c36df156c6f2960c3cca826ae7e9912ba8328e63",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-process-observation:ENTITY-UK:4aa4779b4b8c64dc9ff1ac7da4c88ae286fd7c0573eec23134d6fbdf4e62cf4c",
+        "result_version": "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-treasury-observation:ENTITY-UK:b88d7f3b629eca846386ebb5906a3d01e32983304d70ba81d1d162422e5bdfc1",
+        "result_version": "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab",
+        "status": "complete"
+      },
+      {
+        "node": "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192",
+        "result_version": "version:9f589c541b4af1e5c1fc50b0efbfb5ff44d44466dcf36d85b35df352c030f856",
+        "status": "complete"
+      },
+      {
+        "node": "exec:revenue-recognition:ENTITY-US:9962e4bc0d7bf79488a41b8214db87f6ef4776ee7fe2e05853dd093c72b3ec30",
+        "result_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9",
+        "status": "complete"
+      },
+      {
+        "node": "exec:revenue-recognition:ENTITY-US:fe8170b7a8706a1e51df4215b9b8b705785859e5cfc354d07df1c0ff574ba985",
+        "result_version": "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40",
+        "result_version": "version:562cc9ac6cc80a591ba47d577bffd349c7923dc8ad7fd0b318c23466debb5783",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+        "result_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+        "result_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+        "result_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae",
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
+        "result_version": "version:23520e1907e808f9d932440cac8b0a942068ad4b2772b7a07b44df8a5b2f970a",
+        "status": "complete"
+      }
+    ],
     "facts": {
       "assumed": [],
       "disputed": [],
       "established": []
     },
-    "frameworks": [],
+    "frameworks": [
+      "IFRS"
+    ],
     "governance_history": [
       {
         "previous_outcome": "blocked",
-        "previous_status": "OPEN",
+        "previous_status": "IN_PROGRESS",
         "reason": "Required dependency currentness changed",
         "result_versions": []
       },
       {
         "previous_outcome": "partial",
-        "previous_status": "OPEN",
+        "previous_status": "IN_PROGRESS",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c"
+          "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae",
+          "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
         ]
       },
       {
@@ -145,8 +220,9 @@
         "previous_status": "CLOSED",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:53edf5c3fae75576c60cdd4a65468a0046509694706a627163e6ed2bf85af52c",
-          "version:5eb4f1e40ad9a83d687f31cc1c1fa9e0956cf2e84d317d4d6434fd78ae839a4d"
+          "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae",
+          "version:23520e1907e808f9d932440cac8b0a942068ad4b2772b7a07b44df8a5b2f970a",
+          "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
         ]
       },
       {
@@ -154,8 +230,9 @@
         "previous_status": "IN_PROGRESS",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:03790e4eebe2694f62b5eda8028898761b87649ef90aad4a10ebed9809402d4c",
-          "version:5eb4f1e40ad9a83d687f31cc1c1fa9e0956cf2e84d317d4d6434fd78ae839a4d"
+          "version:6fe35f877d04a7e53ea9e26a32dd87cc5c67d24c99ca748d7eaad1d8cc937e89",
+          "version:23520e1907e808f9d932440cac8b0a942068ad4b2772b7a07b44df8a5b2f970a",
+          "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
         ]
       }
     ],
@@ -166,38 +243,197 @@
     "journal_mapping_valid": false,
     "journal_ownership_ledger": [],
     "judgments": [],
-    "jurisdictions": [],
+    "jurisdictions": [
+      "NL"
+    ],
     "knowledge_refs": [],
     "materiality": null,
     "memory_candidates": [],
     "node_refs": [
       "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
-      "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6"
+      "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
+      "exec:orchestration-independent-observation:GROUP-EUR:73d40208440a3e3c989f38c0ee88d423cda5836c380040a6d58d1c9903748acf"
     ],
     "objective": "October local-result reporting",
     "observer_ran": true,
     "open_questions": [],
     "opened_at": null,
     "outcome": "complete",
-    "owner_results": [],
+    "owner_results": [
+      {
+        "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+        "currentness": "CURRENT",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "result_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9"
+      },
+      {
+        "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+        "currentness": "CURRENT",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "result_version": "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78"
+      },
+      {
+        "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+        "currentness": "STALE",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "result_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
+      },
+      {
+        "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+        "currentness": "STALE",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "result_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
+      },
+      {
+        "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+        "currentness": "STALE",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:7f73016c1095116fc87f1db239453b54c3715cd0a39b384e5d30dd820e58c5ae"
+      },
+      {
+        "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+        "currentness": "STALE",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:23520e1907e808f9d932440cac8b0a942068ad4b2772b7a07b44df8a5b2f970a"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:9f589c541b4af1e5c1fc50b0efbfb5ff44d44466dcf36d85b35df352c030f856"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155"
+      },
+      {
+        "case_id": "case:90c0895286a48a34abc3bf760b6de5b89d1b346b2104bdbef7cc338866118417",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:ef641b885609ffe840dc96f0c36df156c6f2960c3cca826ae7e9912ba8328e63"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab"
+      },
+      {
+        "case_id": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+        "currentness": "CURRENT",
+        "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+        "result_version": "version:142f34e732a09ae1caeae8da2fdbc4123eb9299f681c28610c3c4311f756a219"
+      },
+      {
+        "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
+      },
+      {
+        "case_id": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:562cc9ac6cc80a591ba47d577bffd349c7923dc8ad7fd0b318c23466debb5783"
+      }
+    ],
     "parent_case_id": null,
     "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
-    "periods": [],
+    "periods": [
+      "2026-10-01",
+      "2026-10-31"
+    ],
     "provenance": [
       "reviewed-objective"
     ],
     "requested_output": "Accounting review workpaper",
     "result_version_refs": [
-      "version:03790e4eebe2694f62b5eda8028898761b87649ef90aad4a10ebed9809402d4c",
-      "version:d95c88af7f146134e209cc593b752605caf52bc88041466c8fbbc617aa3904ed"
+      "version:6fe35f877d04a7e53ea9e26a32dd87cc5c67d24c99ca748d7eaad1d8cc937e89",
+      "version:2d5ef46235c9eaa912af0c30844b017aa160b5fb87f3a509db773362ff660b07",
+      "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
     ],
     "reviewed_input_packs": [],
     "rework_state": {
       "status": "CURRENT",
-      "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+      "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
     },
     "scope_id": "GROUP-EUR",
-    "scope_registry": [],
+    "scope_registry": [
+      {
+        "display_name": "Netherlands business",
+        "effective_from": null,
+        "effective_to": null,
+        "framework": "IFRS",
+        "functional_currency": "EUR",
+        "jurisdiction": "NL",
+        "legal_entity_id": "NL-001",
+        "parent_scope_id": "GROUP-EUR",
+        "presentation_currency": null,
+        "provenance": [
+          "reviewed-NL-profile"
+        ],
+        "reporting_calendar": "CALENDAR",
+        "scope_id": "ENTITY-NL",
+        "scope_type": "LEGAL_ENTITY",
+        "status": "CURRENT"
+      },
+      {
+        "display_name": "UK business",
+        "effective_from": null,
+        "effective_to": null,
+        "framework": "UK_GAAP",
+        "functional_currency": "GBP",
+        "jurisdiction": "UK",
+        "legal_entity_id": "UK-001",
+        "parent_scope_id": "GROUP-EUR",
+        "presentation_currency": null,
+        "provenance": [
+          "reviewed-UK-profile"
+        ],
+        "reporting_calendar": "CALENDAR",
+        "scope_id": "ENTITY-UK",
+        "scope_type": "LEGAL_ENTITY",
+        "status": "CURRENT"
+      },
+      {
+        "display_name": "US business",
+        "effective_from": null,
+        "effective_to": null,
+        "framework": "US_GAAP",
+        "functional_currency": "USD",
+        "jurisdiction": "US",
+        "legal_entity_id": "US-001",
+        "parent_scope_id": "GROUP-EUR",
+        "presentation_currency": null,
+        "provenance": [
+          "reviewed-US-profile"
+        ],
+        "reporting_calendar": "US-FISCAL",
+        "scope_id": "ENTITY-US",
+        "scope_type": "LEGAL_ENTITY",
+        "status": "CURRENT"
+      },
+      {
+        "display_name": "European reporting Group",
+        "effective_from": null,
+        "effective_to": null,
+        "framework": "IFRS",
+        "functional_currency": null,
+        "jurisdiction": "NL",
+        "legal_entity_id": null,
+        "parent_scope_id": null,
+        "presentation_currency": "EUR",
+        "provenance": [
+          "reviewed-group-profile"
+        ],
+        "reporting_calendar": "CALENDAR",
+        "scope_id": "GROUP-EUR",
+        "scope_type": "GROUP",
+        "status": "CURRENT"
+      }
+    ],
     "skills_invoked": [],
     "status": "CLOSED",
     "superseded_by": [],
@@ -235,7 +471,7 @@
           "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
           "currentness": "CURRENT",
           "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
-          "result_version": "version:03790e4eebe2694f62b5eda8028898761b87649ef90aad4a10ebed9809402d4c"
+          "result_version": "version:6fe35f877d04a7e53ea9e26a32dd87cc5c67d24c99ca748d7eaad1d8cc937e89"
         },
         "framework": "IFRS",
         "functional_currency": null,
@@ -259,18 +495,73 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "f3cd302b8ec7149643b31d4f892069b60bdaaabe93af51db42d3a34d321265a9",
+          "case_fingerprint": "32e71ceb58b205d367cd631ac8b8af90f54cd6fb4f16889eb9b64de34b2ba6b8",
           "currency": "USD",
+          "framework": "US_GAAP",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "900.00",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": true,
         "scope_id": "GROUP-EUR",
         "scope_type": "GROUP",
         "selected_skill": "orchestration-group-observation",
+        "source_inputs": [],
+        "status": "complete"
+      },
+      {
+        "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+        "challenge_triggered": false,
+        "condition": null,
+        "dependencies": [],
+        "downstream_consumers": [],
+        "entity": "GROUP-EUR",
+        "evidence": [],
+        "execution_receipt": {
+          "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+          "currentness": "CURRENT",
+          "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+          "result_version": "version:43d0614500fb888ba92b7d8a7b38c9b754755e631b95fc19f5866ae0cdbfafa7"
+        },
+        "framework": "IFRS",
+        "functional_currency": null,
+        "id": "exec:orchestration-independent-observation:GROUP-EUR:73d40208440a3e3c989f38c0ee88d423cda5836c380040a6d58d1c9903748acf",
+        "invalidated_results": [],
+        "issue": "GROUP-CONTROL",
+        "iterations": 1,
+        "jurisdiction": "NL",
+        "logical_id": "GROUP-CONTROL",
+        "material": null,
+        "open_items": [],
+        "owner_result_dependencies": [],
+        "period": [
+          "2026-10-01",
+          "2026-10-31"
+        ],
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "prerequisites": [],
+        "presentation_currency": "EUR",
+        "reason_selected": "Controlled dependency proof",
+        "required": true,
+        "result": {
+          "accounting_authority": false,
+          "case_fingerprint": "4f73436e9bb776c0f02e34f63ced5311591e1c9f3889a6e4038cc5e39b94204e",
+          "currency": "EUR",
+          "framework": "IFRS",
+          "limitations": [
+            "Local observation only; no framework/currency conversion or consolidated total."
+          ],
+          "observed_amount": "0",
+          "restated": false,
+          "status": "complete"
+        },
+        "rework_triggered": false,
+        "scope_id": "GROUP-EUR",
+        "scope_type": "GROUP",
+        "selected_skill": "orchestration-independent-observation",
         "source_inputs": [],
         "status": "complete"
       },
@@ -288,7 +579,7 @@
           "case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
           "currentness": "CURRENT",
           "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
-          "result_version": "version:d95c88af7f146134e209cc593b752605caf52bc88041466c8fbbc617aa3904ed"
+          "result_version": "version:2d5ef46235c9eaa912af0c30844b017aa160b5fb87f3a509db773362ff660b07"
         },
         "framework": "IFRS",
         "functional_currency": null,
@@ -312,12 +603,14 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "27534f33c828a0eb19823e45d695a28fcac3c5ad77d602c26c933145524310db",
+          "case_fingerprint": "d1f0f845d6e6544e531dcc71d582a668f6ad3b08d17c2289b5bc9a0d196e32cd",
           "currency": "USD",
+          "framework": "US_GAAP",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "900.00",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": true,
@@ -330,20 +623,210 @@
     ]
   },
   {
-    "accounting_issues": [],
+    "accounting_issues": [
+      {
+        "owner": "orchestration-future-observation",
+        "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+        "scope_id": "ENTITY-US"
+      }
+    ],
     "accounting_questions": [],
     "alternatives": [],
     "artifacts": [
       {
-        "type": "controlled-proof"
+        "source_case": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+        "type": "governed-case-record"
       }
     ],
     "balance_diagnostics": {},
     "case_type": "ENTITY_CASE",
     "challenge_results": [
       {
-        "kind": "qualified-controlled-observations",
-        "status": "PASS"
+        "node": "exec:orchestration-future-observation:ENTITY-US:804726295d73f6ae36def0efa08c5ebb84d09979bdfac83f3d25cce04e1dbc89",
+        "open_items": [],
+        "status": "complete"
+      }
+    ],
+    "child_case_ids": [],
+    "close_observations": [],
+    "closed_at": null,
+    "conclusions": [],
+    "cycle": "controlled-close",
+    "decisions": [],
+    "diagnostics": [],
+    "economic_ledger": [],
+    "entities": [],
+    "evidence_refs": [],
+    "execution_ledger": [],
+    "facts": {
+      "assumed": [],
+      "disputed": [],
+      "established": []
+    },
+    "frameworks": [],
+    "governance_history": [
+      {
+        "previous_outcome": "blocked",
+        "previous_status": "OPEN",
+        "reason": "Required dependency currentness changed",
+        "result_versions": []
+      }
+    ],
+    "group_consumer": {},
+    "handoff_ledger": [],
+    "id": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+    "industries": [],
+    "journal_mapping_valid": false,
+    "journal_ownership_ledger": [],
+    "judgments": [],
+    "jurisdictions": [],
+    "knowledge_refs": [],
+    "materiality": null,
+    "memory_candidates": [],
+    "node_refs": [
+      "exec:orchestration-future-observation:ENTITY-US:804726295d73f6ae36def0efa08c5ebb84d09979bdfac83f3d25cce04e1dbc89"
+    ],
+    "objective": "Independent future-period control",
+    "observer_ran": true,
+    "open_questions": [],
+    "opened_at": null,
+    "outcome": "complete",
+    "owner_results": [
+      {
+        "case_id": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+        "currentness": "CURRENT",
+        "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+        "result_version": "version:142f34e732a09ae1caeae8da2fdbc4123eb9299f681c28610c3c4311f756a219"
+      }
+    ],
+    "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+    "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+    "periods": [],
+    "provenance": [
+      "reviewed-objective"
+    ],
+    "requested_output": "Accounting review workpaper",
+    "result_version_refs": [
+      "version:142f34e732a09ae1caeae8da2fdbc4123eb9299f681c28610c3c4311f756a219"
+    ],
+    "reviewed_input_packs": [],
+    "rework_state": {},
+    "scope_id": "ENTITY-US",
+    "scope_registry": [],
+    "skills_invoked": [],
+    "status": "CLOSED",
+    "superseded_by": [],
+    "supersedes": [],
+    "title": "CAO accounting case",
+    "transitions": [
+      "OPEN",
+      "SCOPED",
+      "IN_PROGRESS",
+      "CHALLENGE",
+      "CONCLUDED",
+      "DOCUMENTED",
+      "CLOSED"
+    ],
+    "work_modes": {},
+    "workplan_nodes": [
+      {
+        "case_id": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+        "challenge_triggered": false,
+        "condition": null,
+        "dependencies": [],
+        "downstream_consumers": [],
+        "entity": "ENTITY-US",
+        "evidence": [],
+        "execution_receipt": {
+          "case_id": "case:1e3c82814a94bf2be4d3f4cd8ab4b913c87eab8a4f203f19d467157e3e12ec88",
+          "currentness": "CURRENT",
+          "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+          "result_version": "version:142f34e732a09ae1caeae8da2fdbc4123eb9299f681c28610c3c4311f756a219"
+        },
+        "framework": "US_GAAP",
+        "functional_currency": "USD",
+        "id": "exec:orchestration-future-observation:ENTITY-US:804726295d73f6ae36def0efa08c5ebb84d09979bdfac83f3d25cce04e1dbc89",
+        "invalidated_results": [],
+        "issue": "FUTURE",
+        "iterations": 1,
+        "jurisdiction": "US",
+        "logical_id": "FUTURE",
+        "material": null,
+        "open_items": [],
+        "owner_result_dependencies": [],
+        "period": [
+          "2026-11-01",
+          "2026-11-30"
+        ],
+        "period_id": "period:ce582ef0eaf5bb871d0e7b789faf29fbef60cde33761f6680916fe424e0316f5",
+        "prerequisites": [],
+        "presentation_currency": null,
+        "reason_selected": "Controlled dependency proof",
+        "required": true,
+        "result": {
+          "accounting_authority": false,
+          "case_fingerprint": "a43f33e3054970282c72f4431588d269dad43c386ce919ca39e5a4885498334d",
+          "currency": "USD",
+          "framework": "US_GAAP",
+          "limitations": [
+            "Local observation only; no framework/currency conversion or consolidated total."
+          ],
+          "observed_amount": "0",
+          "restated": false,
+          "status": "complete"
+        },
+        "rework_triggered": false,
+        "scope_id": "ENTITY-US",
+        "scope_type": "LEGAL_ENTITY",
+        "selected_skill": "orchestration-future-observation",
+        "source_inputs": [],
+        "status": "complete"
+      }
+    ]
+  },
+  {
+    "accounting_issues": [
+      {
+        "owner": "revenue-recognition",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "scope_id": "ENTITY-UK"
+      },
+      {
+        "owner": "orchestration-process-observation",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "scope_id": "ENTITY-UK"
+      },
+      {
+        "owner": "orchestration-treasury-observation",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "scope_id": "ENTITY-UK"
+      }
+    ],
+    "accounting_questions": [],
+    "alternatives": [],
+    "artifacts": [
+      {
+        "source_case": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "type": "governed-case-record"
+      }
+    ],
+    "balance_diagnostics": {},
+    "case_type": "ENTITY_CASE",
+    "challenge_results": [
+      {
+        "node": "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192",
+        "open_items": [],
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-process-observation:ENTITY-UK:4aa4779b4b8c64dc9ff1ac7da4c88ae286fd7c0573eec23134d6fbdf4e62cf4c",
+        "open_items": [],
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-treasury-observation:ENTITY-UK:b88d7f3b629eca846386ebb5906a3d01e32983304d70ba81d1d162422e5bdfc1",
+        "open_items": [],
+        "status": "complete"
       }
     ],
     "child_case_ids": [],
@@ -375,7 +858,8 @@
         "previous_status": "OPEN",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:c036dd4878c14a94778a76841aa1378398bda50dd3094db7a12a5e51591d72b2"
+          "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155",
+          "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab"
         ]
       }
     ],
@@ -392,14 +876,34 @@
     "memory_candidates": [],
     "node_refs": [
       "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192",
-      "exec:orchestration-process-observation:ENTITY-UK:4aa4779b4b8c64dc9ff1ac7da4c88ae286fd7c0573eec23134d6fbdf4e62cf4c"
+      "exec:orchestration-process-observation:ENTITY-UK:4aa4779b4b8c64dc9ff1ac7da4c88ae286fd7c0573eec23134d6fbdf4e62cf4c",
+      "exec:orchestration-treasury-observation:ENTITY-UK:b88d7f3b629eca846386ebb5906a3d01e32983304d70ba81d1d162422e5bdfc1"
     ],
     "objective": "UK September independent review",
     "observer_ran": true,
     "open_questions": [],
     "opened_at": null,
     "outcome": "complete",
-    "owner_results": [],
+    "owner_results": [
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:9f589c541b4af1e5c1fc50b0efbfb5ff44d44466dcf36d85b35df352c030f856"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "currentness": "CURRENT",
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "result_version": "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab"
+      }
+    ],
     "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
     "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
     "periods": [],
@@ -408,8 +912,9 @@
     ],
     "requested_output": "Accounting review workpaper",
     "result_version_refs": [
-      "version:3d3892bfd71af404a71b9aa9aac0827e86ecf91883968e4076b01d3597a57aca",
-      "version:c036dd4878c14a94778a76841aa1378398bda50dd3094db7a12a5e51591d72b2"
+      "version:9f589c541b4af1e5c1fc50b0efbfb5ff44d44466dcf36d85b35df352c030f856",
+      "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155",
+      "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab"
     ],
     "reviewed_input_packs": [],
     "rework_state": {},
@@ -443,7 +948,7 @@
           "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
           "currentness": "CURRENT",
           "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
-          "result_version": "version:c036dd4878c14a94778a76841aa1378398bda50dd3094db7a12a5e51591d72b2"
+          "result_version": "version:3369219a83883e02fd73c53b70322772865508fa599ade4b8d868b8459d27155"
         },
         "framework": "UK_GAAP",
         "functional_currency": "GBP",
@@ -467,12 +972,14 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "9f2710d1b249c4e8ad8d303f1634ec1d6387747361403f2623d1fd86e0f217f1",
+          "case_fingerprint": "d0a462b3bdf4dda7806a3d9867e65dc78318e2c7649820d0a6970dac8c817e86",
           "currency": "GBP",
+          "framework": "UK_GAAP",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "0",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": false,
@@ -494,7 +1001,62 @@
           "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
           "currentness": "CURRENT",
           "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
-          "result_version": "version:3d3892bfd71af404a71b9aa9aac0827e86ecf91883968e4076b01d3597a57aca"
+          "result_version": "version:a87511b86ffdb0facd935435b8fa4c1620b1d2722480d395ca4e3a9690d9bbab"
+        },
+        "framework": "UK_GAAP",
+        "functional_currency": "GBP",
+        "id": "exec:orchestration-treasury-observation:ENTITY-UK:b88d7f3b629eca846386ebb5906a3d01e32983304d70ba81d1d162422e5bdfc1",
+        "invalidated_results": [],
+        "issue": "TREASURY",
+        "iterations": 1,
+        "jurisdiction": "UK",
+        "logical_id": "TREASURY",
+        "material": null,
+        "open_items": [],
+        "owner_result_dependencies": [],
+        "period": [
+          "2026-09-01",
+          "2026-09-30"
+        ],
+        "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "prerequisites": [],
+        "presentation_currency": null,
+        "reason_selected": "Controlled dependency proof",
+        "required": true,
+        "result": {
+          "accounting_authority": false,
+          "case_fingerprint": "132b9c952d4e182757175cf95fa3d8c0ed54e7a0f3accb4b9ba8c4e5db00234b",
+          "currency": "GBP",
+          "framework": "UK_GAAP",
+          "limitations": [
+            "Local observation only; no framework/currency conversion or consolidated total."
+          ],
+          "observed_amount": "0",
+          "restated": false,
+          "status": "complete"
+        },
+        "rework_triggered": false,
+        "scope_id": "ENTITY-UK",
+        "scope_type": "LEGAL_ENTITY",
+        "selected_skill": "orchestration-treasury-observation",
+        "source_inputs": [],
+        "status": "complete"
+      },
+      {
+        "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+        "challenge_triggered": false,
+        "condition": null,
+        "dependencies": [],
+        "downstream_consumers": [
+          "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40"
+        ],
+        "entity": "ENTITY-UK",
+        "evidence": [],
+        "execution_receipt": {
+          "case_id": "case:2fe13c4b4524c04c74e93606134559899027e076368a30946428896057bf16a3",
+          "currentness": "CURRENT",
+          "period_id": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+          "result_version": "version:9f589c541b4af1e5c1fc50b0efbfb5ff44d44466dcf36d85b35df352c030f856"
         },
         "framework": "UK_GAAP",
         "functional_currency": "GBP",
@@ -3444,20 +4006,28 @@
     ]
   },
   {
-    "accounting_issues": [],
+    "accounting_issues": [
+      {
+        "owner": "orchestration-process-observation",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "scope_id": "ENTITY-NL"
+      }
+    ],
     "accounting_questions": [],
     "alternatives": [],
     "artifacts": [
       {
-        "type": "controlled-proof"
+        "source_case": "case:90c0895286a48a34abc3bf760b6de5b89d1b346b2104bdbef7cc338866118417",
+        "type": "governed-case-record"
       }
     ],
     "balance_diagnostics": {},
     "case_type": "ENTITY_CASE",
     "challenge_results": [
       {
-        "kind": "qualified-controlled-observations",
-        "status": "PASS"
+        "node": "exec:orchestration-process-observation:ENTITY-NL:eb3bfb62b3979a2fe6f5e220823ff4b236544867a9f4ec2c3f46a06b4b007e46",
+        "open_items": [],
+        "status": "complete"
       }
     ],
     "child_case_ids": [],
@@ -3483,6 +4053,12 @@
         "previous_status": "OPEN",
         "reason": "Required dependency currentness changed",
         "result_versions": []
+      },
+      {
+        "previous_outcome": "partial",
+        "previous_status": "OPEN",
+        "reason": "Required dependency currentness changed",
+        "result_versions": []
       }
     ],
     "group_consumer": {},
@@ -3504,7 +4080,14 @@
     "open_questions": [],
     "opened_at": null,
     "outcome": "complete",
-    "owner_results": [],
+    "owner_results": [
+      {
+        "case_id": "case:90c0895286a48a34abc3bf760b6de5b89d1b346b2104bdbef7cc338866118417",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:ef641b885609ffe840dc96f0c36df156c6f2960c3cca826ae7e9912ba8328e63"
+      }
+    ],
     "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
     "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
     "periods": [],
@@ -3513,7 +4096,7 @@
     ],
     "requested_output": "Accounting review workpaper",
     "result_version_refs": [
-      "version:e12908007dd1e1cd93370bc22003b827b282157b15a8f502aba25ad20b6a32af"
+      "version:ef641b885609ffe840dc96f0c36df156c6f2960c3cca826ae7e9912ba8328e63"
     ],
     "reviewed_input_packs": [],
     "rework_state": {},
@@ -3547,7 +4130,7 @@
           "case_id": "case:90c0895286a48a34abc3bf760b6de5b89d1b346b2104bdbef7cc338866118417",
           "currentness": "CURRENT",
           "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
-          "result_version": "version:e12908007dd1e1cd93370bc22003b827b282157b15a8f502aba25ad20b6a32af"
+          "result_version": "version:ef641b885609ffe840dc96f0c36df156c6f2960c3cca826ae7e9912ba8328e63"
         },
         "framework": "IFRS",
         "functional_currency": "EUR",
@@ -3571,12 +4154,14 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "cfd1b7d5c837c99147d78fc37d7f251a5ef2e90171af4de032e51b58ecd7e30e",
+          "case_fingerprint": "0509282c7a7ae9403fd89ca52d8da9b3b1ebe599060372000e78b1e6e3d4cdc3",
           "currency": "EUR",
+          "framework": "IFRS",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "0",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": false,
@@ -3589,27 +4174,215 @@
     ]
   },
   {
-    "accounting_issues": [],
+    "accounting_issues": [
+      {
+        "owner": "orchestration-comparative-observation",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "scope_id": "ENTITY-UK"
+      }
+    ],
     "accounting_questions": [],
     "alternatives": [],
     "artifacts": [
       {
-        "type": "controlled-proof"
+        "source_case": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+        "type": "governed-case-record"
       }
     ],
     "balance_diagnostics": {},
     "case_type": "ENTITY_CASE",
     "challenge_results": [
       {
-        "kind": "qualified-controlled-observations",
-        "status": "PASS"
+        "node": "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40",
+        "open_items": [],
+        "status": "complete"
+      }
+    ],
+    "child_case_ids": [],
+    "close_observations": [],
+    "closed_at": null,
+    "conclusions": [],
+    "cycle": "controlled-close",
+    "decisions": [],
+    "diagnostics": [],
+    "economic_ledger": [],
+    "entities": [],
+    "evidence_refs": [],
+    "execution_ledger": [],
+    "facts": {
+      "assumed": [],
+      "disputed": [],
+      "established": []
+    },
+    "frameworks": [],
+    "governance_history": [
+      {
+        "previous_outcome": "blocked",
+        "previous_status": "OPEN",
+        "reason": "Required dependency currentness changed",
+        "result_versions": []
+      },
+      {
+        "previous_outcome": "partial",
+        "previous_status": "OPEN",
+        "reason": "Required dependency currentness changed",
+        "result_versions": []
+      }
+    ],
+    "group_consumer": {},
+    "handoff_ledger": [],
+    "id": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+    "industries": [],
+    "journal_mapping_valid": false,
+    "journal_ownership_ledger": [],
+    "judgments": [],
+    "jurisdictions": [],
+    "knowledge_refs": [],
+    "materiality": null,
+    "memory_candidates": [],
+    "node_refs": [
+      "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40"
+    ],
+    "objective": "UK comparative presentation",
+    "observer_ran": true,
+    "open_questions": [],
+    "opened_at": null,
+    "outcome": "complete",
+    "owner_results": [
+      {
+        "case_id": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:562cc9ac6cc80a591ba47d577bffd349c7923dc8ad7fd0b318c23466debb5783"
+      }
+    ],
+    "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "periods": [],
+    "provenance": [
+      "reviewed-objective"
+    ],
+    "requested_output": "Accounting review workpaper",
+    "result_version_refs": [
+      "version:562cc9ac6cc80a591ba47d577bffd349c7923dc8ad7fd0b318c23466debb5783"
+    ],
+    "reviewed_input_packs": [],
+    "rework_state": {},
+    "scope_id": "ENTITY-UK",
+    "scope_registry": [],
+    "skills_invoked": [],
+    "status": "CLOSED",
+    "superseded_by": [],
+    "supersedes": [],
+    "title": "CAO accounting case",
+    "transitions": [
+      "OPEN",
+      "SCOPED",
+      "IN_PROGRESS",
+      "CHALLENGE",
+      "CONCLUDED",
+      "DOCUMENTED",
+      "CLOSED"
+    ],
+    "work_modes": {},
+    "workplan_nodes": [
+      {
+        "case_id": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+        "challenge_triggered": false,
+        "condition": null,
+        "dependencies": [
+          "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192"
+        ],
+        "downstream_consumers": [],
+        "entity": "ENTITY-UK",
+        "evidence": [],
+        "execution_receipt": {
+          "case_id": "case:98fd8a2a119f695f76c3be35dd39ed00396684f69382a0a74224ff304ad3bb88",
+          "currentness": "CURRENT",
+          "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+          "result_version": "version:562cc9ac6cc80a591ba47d577bffd349c7923dc8ad7fd0b318c23466debb5783"
+        },
+        "framework": "UK_GAAP",
+        "functional_currency": "GBP",
+        "id": "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40",
+        "invalidated_results": [],
+        "issue": "UK-COMPARATIVE",
+        "iterations": 1,
+        "jurisdiction": "UK",
+        "logical_id": "UK-COMPARATIVE",
+        "material": null,
+        "open_items": [],
+        "owner_result_dependencies": [],
+        "period": [
+          "2026-10-01",
+          "2026-10-31"
+        ],
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "prerequisites": [],
+        "presentation_currency": null,
+        "reason_selected": "Controlled dependency proof",
+        "required": true,
+        "result": {
+          "accounting_authority": false,
+          "case_fingerprint": "b0549712e934bd6b32d9509840b6bf1fc9b3fb60a6c3b0abf78161312c4c1f15",
+          "currency": "GBP",
+          "framework": "UK_GAAP",
+          "limitations": [
+            "Local observation only; no framework/currency conversion or consolidated total."
+          ],
+          "observed_amount": "800.00",
+          "restated": false,
+          "status": "complete"
+        },
+        "rework_triggered": false,
+        "scope_id": "ENTITY-UK",
+        "scope_type": "LEGAL_ENTITY",
+        "selected_skill": "orchestration-comparative-observation",
+        "source_inputs": [],
+        "status": "complete"
+      }
+    ]
+  },
+  {
+    "accounting_issues": [
+      {
+        "owner": "revenue-recognition",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "scope_id": "ENTITY-US"
+      },
+      {
+        "owner": "orchestration-opening-observation",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "scope_id": "ENTITY-US"
+      }
+    ],
+    "accounting_questions": [],
+    "alternatives": [],
+    "artifacts": [
+      {
+        "source_case": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+        "type": "governed-case-record"
+      }
+    ],
+    "balance_diagnostics": {},
+    "case_type": "ENTITY_CASE",
+    "challenge_results": [
+      {
+        "node": "exec:revenue-recognition:ENTITY-US:fe8170b7a8706a1e51df4215b9b8b705785859e5cfc354d07df1c0ff574ba985",
+        "open_items": [],
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+        "open_items": [],
+        "status": "complete"
       },
       {
         "causes": [
           {
             "dependency": "dependency:35f6da18566fcba97a928a573bee5eca79b7308dad6424650d4417c6a4ae264b",
             "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
-            "upstream_version": "version:67a00de5b6296b83188e0154a627b305dd5150fe193047065058dcf765af310f"
+            "upstream_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
           }
         ],
         "kind": "dependency-rework"
@@ -3619,7 +4392,7 @@
           {
             "dependency": "dependency:35f6da18566fcba97a928a573bee5eca79b7308dad6424650d4417c6a4ae264b",
             "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
-            "upstream_version": "version:67a00de5b6296b83188e0154a627b305dd5150fe193047065058dcf765af310f"
+            "upstream_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
           }
         ],
         "kind": "dependency-rework"
@@ -3628,13 +4401,13 @@
         "kind": "selective-rework-currentness",
         "reexecuted": [
           {
-            "new_version": "version:f6236e3b4925016d70e7b76014be62e554846ce21801d02bd65e641c6d3e1785",
+            "new_version": "version:e06467cd428ee5eaa459ae4361bbee3bba380dae60fb08200d46d0ceb621a4bf",
             "node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
-            "old_version": "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+            "old_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
           }
         ],
         "status": "PASS",
-        "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+        "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
       }
     ],
     "child_case_ids": [],
@@ -3666,7 +4439,7 @@
         "previous_status": "OPEN",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:b1667e351ec51fcbe3e6abf85d89104e21302c7944bdcde971bdcf0396d521ba"
+          "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78"
         ]
       },
       {
@@ -3674,8 +4447,8 @@
         "previous_status": "CLOSED",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:b1667e351ec51fcbe3e6abf85d89104e21302c7944bdcde971bdcf0396d521ba",
-          "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+          "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78",
+          "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
         ]
       },
       {
@@ -3683,8 +4456,8 @@
         "previous_status": "IN_PROGRESS",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:b1667e351ec51fcbe3e6abf85d89104e21302c7944bdcde971bdcf0396d521ba",
-          "version:0984f719d5630e4822cc1c6acb5cc2bea1733d91c660d78a4d2ca67b12ed5839"
+          "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78",
+          "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
         ]
       }
     ],
@@ -3708,7 +4481,20 @@
     "open_questions": [],
     "opened_at": null,
     "outcome": "complete",
-    "owner_results": [],
+    "owner_results": [
+      {
+        "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+        "currentness": "CURRENT",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "result_version": "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78"
+      },
+      {
+        "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+        "currentness": "CURRENT",
+        "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+        "result_version": "version:b0682316267fbac4c8bc6cc0692993e27b26a8249d8734e5879b013f6310be8b"
+      }
+    ],
     "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
     "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
     "periods": [],
@@ -3717,13 +4503,13 @@
     ],
     "requested_output": "Accounting review workpaper",
     "result_version_refs": [
-      "version:b1667e351ec51fcbe3e6abf85d89104e21302c7944bdcde971bdcf0396d521ba",
-      "version:f6236e3b4925016d70e7b76014be62e554846ce21801d02bd65e641c6d3e1785"
+      "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78",
+      "version:e06467cd428ee5eaa459ae4361bbee3bba380dae60fb08200d46d0ceb621a4bf"
     ],
     "reviewed_input_packs": [],
     "rework_state": {
       "status": "CURRENT",
-      "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+      "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
     },
     "scope_id": "ENTITY-US",
     "scope_registry": [],
@@ -3764,7 +4550,7 @@
           "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
           "currentness": "CURRENT",
           "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
-          "result_version": "version:f6236e3b4925016d70e7b76014be62e554846ce21801d02bd65e641c6d3e1785"
+          "result_version": "version:e06467cd428ee5eaa459ae4361bbee3bba380dae60fb08200d46d0ceb621a4bf"
         },
         "framework": "US_GAAP",
         "functional_currency": "USD",
@@ -3788,12 +4574,14 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "3b597f22e7db8ff2ace3655361e91fb4a5b17e793acd63091ab1a736acdd49dd",
+          "case_fingerprint": "6d14d14bf5620f62445e0c326d27567dea1eadd145d4f05de41a145446849c82",
           "currency": "USD",
+          "framework": "US_GAAP",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "900.00",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": true,
@@ -3815,7 +4603,7 @@
           "case_id": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
           "currentness": "CURRENT",
           "period_id": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
-          "result_version": "version:b1667e351ec51fcbe3e6abf85d89104e21302c7944bdcde971bdcf0396d521ba"
+          "result_version": "version:07e8a9ceff08e29d8eaef16cc509c4e358e845a6e5aaa7455b0217fbbd843f78"
         },
         "framework": "US_GAAP",
         "functional_currency": "USD",
@@ -6642,27 +7430,45 @@
     ]
   },
   {
-    "accounting_issues": [],
+    "accounting_issues": [
+      {
+        "owner": "revenue-recognition",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "scope_id": "ENTITY-US"
+      },
+      {
+        "owner": "orchestration-entity-observation",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "scope_id": "ENTITY-US"
+      }
+    ],
     "accounting_questions": [],
     "alternatives": [],
     "artifacts": [
       {
-        "type": "controlled-proof"
+        "source_case": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+        "type": "governed-case-record"
       }
     ],
     "balance_diagnostics": {},
     "case_type": "ENTITY_CASE",
     "challenge_results": [
       {
-        "kind": "qualified-controlled-observations",
-        "status": "PASS"
+        "node": "exec:revenue-recognition:ENTITY-US:9962e4bc0d7bf79488a41b8214db87f6ef4776ee7fe2e05853dd093c72b3ec30",
+        "open_items": [],
+        "status": "complete"
+      },
+      {
+        "node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+        "open_items": [],
+        "status": "complete"
       },
       {
         "causes": [
           {
             "dependency": "dependency:7e635bd7203d75d4d9b40ca3fdb0ebf0648a9e40bbb16cdeed3a54b4b65cc57c",
             "node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
-            "upstream_version": "version:df522704673df227f2a9fd5df15e2556b25055fe4e519a6b8fe2c66728ca4052"
+            "upstream_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9"
           }
         ],
         "kind": "dependency-rework"
@@ -6671,13 +7477,13 @@
         "kind": "selective-rework-currentness",
         "reexecuted": [
           {
-            "new_version": "version:6adf2c2f11b02e614c6110a19723e5fd9c8b98fbe9242b49fe0cbbc2ed54b499",
+            "new_version": "version:7248ab7fd6da7b2f7f57e2652cc0b269ff9bc5107c295f832a6dbe8f40c365a3",
             "node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
-            "old_version": "version:67a00de5b6296b83188e0154a627b305dd5150fe193047065058dcf765af310f"
+            "old_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
           }
         ],
         "status": "PASS",
-        "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+        "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
       }
     ],
     "child_case_ids": [],
@@ -6709,7 +7515,7 @@
         "previous_status": "OPEN",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:df522704673df227f2a9fd5df15e2556b25055fe4e519a6b8fe2c66728ca4052"
+          "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9"
         ]
       },
       {
@@ -6717,8 +7523,8 @@
         "previous_status": "CLOSED",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:df522704673df227f2a9fd5df15e2556b25055fe4e519a6b8fe2c66728ca4052",
-          "version:67a00de5b6296b83188e0154a627b305dd5150fe193047065058dcf765af310f"
+          "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9",
+          "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
         ]
       },
       {
@@ -6726,8 +7532,8 @@
         "previous_status": "IN_PROGRESS",
         "reason": "Required dependency currentness changed",
         "result_versions": [
-          "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68",
-          "version:67a00de5b6296b83188e0154a627b305dd5150fe193047065058dcf765af310f"
+          "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10",
+          "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
         ]
       }
     ],
@@ -6751,7 +7557,20 @@
     "open_questions": [],
     "opened_at": null,
     "outcome": "complete",
-    "owner_results": [],
+    "owner_results": [
+      {
+        "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+        "currentness": "CURRENT",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "result_version": "version:e8319034fd196984b717623d599338c2144977de88af5b3f6c4873151a2963f9"
+      },
+      {
+        "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+        "currentness": "CURRENT",
+        "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+        "result_version": "version:ef1f662fc3b38d1e679e1954db9ba13a751cd84dcd764326114e3ecfee91e720"
+      }
+    ],
     "parent_case_id": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
     "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
     "periods": [],
@@ -6760,13 +7579,13 @@
     ],
     "requested_output": "Accounting review workpaper",
     "result_version_refs": [
-      "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68",
-      "version:6adf2c2f11b02e614c6110a19723e5fd9c8b98fbe9242b49fe0cbbc2ed54b499"
+      "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10",
+      "version:7248ab7fd6da7b2f7f57e2652cc0b269ff9bc5107c295f832a6dbe8f40c365a3"
     ],
     "reviewed_input_packs": [],
     "rework_state": {
       "status": "CURRENT",
-      "upstream": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+      "upstream": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
     },
     "scope_id": "ENTITY-US",
     "scope_registry": [],
@@ -6807,7 +7626,7 @@
           "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
           "currentness": "CURRENT",
           "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
-          "result_version": "version:6adf2c2f11b02e614c6110a19723e5fd9c8b98fbe9242b49fe0cbbc2ed54b499"
+          "result_version": "version:7248ab7fd6da7b2f7f57e2652cc0b269ff9bc5107c295f832a6dbe8f40c365a3"
         },
         "framework": "US_GAAP",
         "functional_currency": "USD",
@@ -6831,12 +7650,14 @@
         "required": true,
         "result": {
           "accounting_authority": false,
-          "case_fingerprint": "2c31a2c8036ffddef70c69726048924092a5c7038a10ac9c360d8c9c1f730dc3",
+          "case_fingerprint": "f7e63105e39a729382050d353371c959150ccccc062919e9fdada386903baedc",
           "currency": "USD",
+          "framework": "US_GAAP",
           "limitations": [
             "Local observation only; no framework/currency conversion or consolidated total."
           ],
           "observed_amount": "900.00",
+          "restated": false,
           "status": "complete"
         },
         "rework_triggered": true,
@@ -6860,7 +7681,7 @@
           "case_id": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
           "currentness": "CURRENT",
           "period_id": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
-          "result_version": "version:bef3db8937aaa09cd3cac36ebc1f145ec9984d28d1b3b0e651609a21d2f6da68"
+          "result_version": "version:c07f8dcc9aa226c80ce8fa956dfe9b9175931550bc2cbd893e2db4a087b46d10"
         },
         "framework": "US_GAAP",
         "functional_currency": "USD",

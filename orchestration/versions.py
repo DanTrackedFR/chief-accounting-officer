@@ -150,7 +150,8 @@ class VersionedExecution:
         if version is None or self.graph.nodes[edge.producer_node].status!='complete':raise ValueError('Required producer blocked/absent')
         from .runtime import at
         payload=version.payload(); value=at(payload,edge.metric_path)
-        return dict(dependency_id=edge.id,result_version=version.version_id,producer_node=edge.producer_node,consumer_node=edge.consumer_node,producer_scope=edge.producer_scope,consumer_scope=edge.consumer_scope,producer_period=edge.producer_period,consumer_period=edge.consumer_period,currentness='CURRENT',result_fingerprint=version.result_fingerprint,value=copy.deepcopy(value))
+        producer=self.graph.nodes[edge.producer_node];consumer=self.graph.nodes[edge.consumer_node]
+        return dict(dependency_id=edge.id,result_version=version.version_id,producer_node=edge.producer_node,consumer_node=edge.consumer_node,producer_scope=edge.producer_scope,consumer_scope=edge.consumer_scope,producer_period=edge.producer_period,consumer_period=edge.consumer_period,producer_framework=payload.get('framework',producer.framework),consumer_framework=consumer.framework,producer_functional_currency=producer.functional_currency,producer_presentation_currency=producer.presentation_currency,consumer_functional_currency=consumer.functional_currency,consumer_presentation_currency=consumer.presentation_currency,value_currency=payload.get('currency',producer.functional_currency or producer.presentation_currency),metric_path=list(edge.metric_path),currentness='CURRENT',result_fingerprint=version.result_fingerprint,value=copy.deepcopy(value))
 
     def validate_receipt(self,receipt,consumer_node):
         if not isinstance(receipt,dict) or receipt.get('dependency_id') not in self.edges:raise ValueError('Undeclared dependency receipt')

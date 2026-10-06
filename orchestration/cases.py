@@ -46,9 +46,10 @@ class CaseRegistry:
 
     def refresh(self,graph,versions,edges):
         for case in self.cases.values():
-            required=[graph.nodes[k] for k in case.node_refs if graph.nodes[k].required]
+            required=[graph.nodes[k] for k in case.node_refs if graph.nodes[k].required or graph.nodes[k].material is not False]
             unresolved=[]
             for node in required:
+                if node.status=='not_applicable':continue
                 current=versions.current(node.id,allow_stale=True)
                 if node.status!='complete' or current is None or versions.state(current.version_id)!='CURRENT':unresolved.append(node.id)
                 for edge in edges.values():
@@ -59,9 +60,9 @@ class CaseRegistry:
             if outcome!=case.outcome:
                 case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Required dependency currentness changed'))
                 case.outcome=outcome
-                if unresolved and case.status not in ('OPEN','SCOPED'):
+                if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
                     case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
             case.result_version_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
             case.workplan_nodes=[asdict(graph.nodes[k]) for k in sorted(case.node_refs)]
 
-    def record(self):return [self.cases[k].record() for k in sorted(self.cases)]
+    def record(self):return [asdict(self.cases[k]) for k in sorted(self.cases)]

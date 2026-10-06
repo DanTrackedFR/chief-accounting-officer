@@ -27,6 +27,7 @@ class FiscalCalendar:
 
     def validate(self):
         if not self.calendar_id or not self.description or not self.provenance: raise ValueError('Governed calendar required')
+        if self.year_start_month is None and self.year_start_day is None:return self
         if type(self.year_start_month)!=int or type(self.year_start_day)!=int: raise ValueError('Calendar date required')
         try: date(2001,self.year_start_month,self.year_start_day)
         except ValueError: raise ValueError('Invalid fiscal calendar') from None
