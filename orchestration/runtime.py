@@ -233,12 +233,12 @@ class CAO:
         for i in issues:
             if not isinstance(i.id, str) or not i.id or not isinstance(i.owner, str): raise ValueError('Malformed issue identity')
             if type(i.required) is not bool or (i.material is not None and type(i.material) is not bool): raise ValueError('Invalid dependency materiality')
-            candidates=[key for key in inputs if inputs.packages[key]==i.owner and (i.scope_id is None or inputs[key].get('scope_id',inputs[key].get('entity'))==i.scope_id)]
-            if len(candidates)>1:raise ValueError('Issue must identify exact Scope for repeated owner')
+            candidates=[key for key in inputs if inputs.packages[key]==i.owner and (i.scope_id is None or inputs[key].get('scope_id',inputs[key].get('entity'))==i.scope_id) and (i.period_id is None or inputs[key].get('period_id')==i.period_id)]
+            if len(candidates)>1:raise ValueError('Issue must identify exact Scope/Period for repeated owner')
             node_context=scoped_context(context,inputs[candidates[0]]) if candidates else scoped_context(context,context)
             key=execution_identity(i.owner,node_context)
             graph.add(Node(key,i.capability,i.owner,i.reason,node_context['entity'],node_context['framework'],[node_context['period_start'],node_context['reporting_period']],
-                logical_id=i.id,scope_id=node_context['scope_id'],scope_type=node_context['scope_type'],jurisdiction=node_context['jurisdiction'],
+                logical_id=i.id,scope_id=node_context['scope_id'],scope_type=node_context['scope_type'],jurisdiction=node_context['jurisdiction'],period_id=node_context.get('period_id',''),
                 functional_currency=node_context['functional_currency'],presentation_currency=node_context['presentation_currency'],
                 prerequisites=self.registry.get(i.owner).get('context_requirements',{}).get('required',[]),
                 dependencies=list(i.dependencies),source_inputs=i.source_inputs,
