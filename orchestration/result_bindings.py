@@ -114,7 +114,10 @@ def validate_receipts(node, graph, inputs, case):
                 except (ValueError,ArithmeticError):return v
             if norm(actual)!=norm(expected):raise ValueError('Specialist semantic result binding differs')
         case.handoff_ledger.append(dict(producer=producer.id,consumer=node.id,semantic=receipt['semantic'],purpose='evidence_only',
-            fingerprint=producer.result['case_fingerprint'],source_dimensions=receipt['source_dimensions'],consumer_dimensions=receipt['consumer_dimensions']))
+            fingerprint=producer.result['case_fingerprint'],source_dimensions=receipt['source_dimensions'],consumer_dimensions=receipt['consumer_dimensions'],
+            source_owner=producer.selected_skill,source_node=producer.id,source_scope=producer.scope_id,target_node=node.id,target_scope=node.scope_id,
+            framework=producer.framework,currency=dimensions(inputs[producer.id])[-1],functional_currency=producer.functional_currency,presentation_currency=producer.presentation_currency,
+            result_fingerprint=digest(producer.result),currentness='CURRENT',economic_identity=[producer.scope_id,producer.id,receipt['semantic'],producer.result['case_fingerprint']]))
     if node.selected_skill=='financial-statements' and receipts:
         actual={r['id']:r['balance'] for r in source['current_tb']}
         if {k:str(number(v).normalize()) for k,v in actual.items()}!={k:str(number(v).normalize()) for k,v in source['qualified_consolidated_balances'].items()}:

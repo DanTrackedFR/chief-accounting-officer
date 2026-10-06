@@ -98,6 +98,7 @@ class ReviewedInputPack:
     documents: list = field(default_factory=list)
     text_assertions: list = field(default_factory=list)
     scope_id: str | None = None
+    scoped_packs: list = field(default_factory=list)
 
 class GovernedPlanner:
     """Implements the existing Planner using validated, evidence-backed issues."""
@@ -147,7 +148,7 @@ class Intake:
                 else:current[k]=copy.deepcopy(v)
             for k in set(ctx_conflicts):current.pop(k,None)
             req=RequestContext(objective,tuple(conversation),copy.deepcopy(result.inventory),
-                               copy.deepcopy(company_records),self.registry.snapshot())
+                               copy.deepcopy(company_records),self.registry.snapshot(),__import__('orchestration.scopes',fromlist=['scope_registry']).scope_registry(current).record())
             proposal=self.planner.propose(req)
             validation=ProposalValidator(self.registry).validate(proposal,inventory,current,objective)
             result.validation=validation.record()
@@ -163,7 +164,7 @@ class Intake:
                 row['lineage']=copy.deepcopy(refs)
                 if f.conflicts:
                     row['promotion']='disputed'
-                    result.conflicts.append(dict(id='declared-'+f.id,attribute=f.attribute,fact_ids=[f.id]+f.conflicts,kind='declared',status='DISPUTED'))
+                    result.conflicts.append(dict(id='declared-'+f.id,attribute=f.attribute,scope_id=f.dimensions.get('scope_id',f.dimensions.get('entity',current['entity'])),fact_ids=[f.id]+f.conflicts,kind='declared',status='DISPUTED'))
                 elif f.claim.status=='ASSUMED':row['promotion']='assumed'
                 elif f.claim.status=='DISPUTED':row['promotion']='disputed'
                 elif f.claim.status in {'EXTRACTED','OBSERVED','CALCULATED'} and f.claim.confidence>=.95 and not f.confirmation_required:
@@ -199,13 +200,20 @@ class Intake:
                 if len({canonical(r['claim']['value']) for r in rows})>1:
                     ids=[r['id'] for r in rows]
                     result.conflicts.append(dict(id='conflict-'+str(len(result.conflicts)+1),fact_ids=ids,
-                        attribute=key[1],kind='source',status='DISPUTED'))
+                        attribute=key[1],scope_id=rows[0]['dimensions'].get('scope_id',rows[0]['dimensions'].get('entity',current['entity'])),kind='source',status='DISPUTED'))
                     for r in rows:r['promotion']='disputed';r['conflicts']=ids
             for attribute,c in proposal.context_candidates.items():
-                conflict=attribute in current and current[attribute]!=c.value
-                result.memory_candidates.append(dict(attribute=attribute,value=copy.deepcopy(c.value),
+                candidate_scope=c.value['scope_id'] if isinstance(c.value,dict) else current['entity']
+                value=c.value['value'] if isinstance(c.value,dict) else c.value
+                from orchestration.scopes import execution_scopes
+                scoped_current=execution_scopes(current)[candidate_scope]
+                conflict=attribute in scoped_current and scoped_current[attribute]!=value
+                result.memory_candidates.append(dict(attribute=attribute,value=copy.deepcopy(value),scope_id=candidate_scope,
                     status='PROPOSED',semantic_status=c.status,source_refs=c.evidence,conflict=conflict))
-                if conflict:result.conflicts.append(dict(attribute=attribute,kind='context',status='DISPUTED'))
+                if conflict:result.conflicts.append(dict(attribute=attribute,scope_id=candidate_scope,kind='context',status='DISPUTED'))
+            for candidate in proposal.entities:
+                if candidate.status=='UNRESOLVED':
+                    result.questions.append(dict(kind='blocking',attribute='scope_candidate',scope_id=None,question='Resolve unregistered Scope Candidate before adding it to governed company context.'))
             candidates={r['id']:r for r in result.candidates}
             for issue in proposal.issues:
                 v=issue.value;available=[candidates[id] for id in v['fact_ids']]
@@ -229,13 +237,16 @@ class Intake:
                     sourced_wording=(r['claim']['status'] in ('EXTRACTED','OBSERVED') and r['transformation']=='identity' and isinstance(r['claim']['value'],str) and r['claim']['evidence'] and not r['conflicts'])
                     if sourced_wording:continue
                     self._question(result,'blocking' if r['promotion']=='disputed' else 'confirmation',r['attribute'],v['owner'],issue_scope)
-            for conflict in result.conflicts:self._question(result,'blocking',conflict['attribute'],'')
+            for conflict in result.conflicts:self._question(result,'blocking',conflict['attribute'],'',conflict.get('scope_id'))
             for c in proposal.missing_facts:
                 v=c.value;key=v['attribute']
                 # Context and actual extracted fields answer questions; a model
                 # missing-fact assertion does not override supplied evidence.
-                answered=key in current or any(r['attribute']==key and r['promotion']=='established' for r in result.candidates)
-                if not answered:self._question(result,v['kind'],key,v['owner'])
+                question_scope=v.get('scope_id',current['entity'])
+                from orchestration.scopes import execution_scopes
+                scoped_current=execution_scopes(current)[question_scope]
+                answered=key in scoped_current or (question_scope==current['entity'] and key in current) or any(r['attribute']==key and r['promotion']=='established' and r['dimensions'].get('scope_id',r['dimensions'].get('entity'))==question_scope for r in result.candidates)
+                if not answered:self._question(result,v['kind'],key,v['owner'],question_scope)
             for key in ('entity','framework','jurisdiction','period_start','reporting_period','currency'):
                 if not current.get(key):self._question(result,'blocking',key,'')
             result._inventory=inventory;result._proposal=proposal;result._current=current
@@ -254,7 +265,9 @@ class Intake:
     @staticmethod
     def _question(result,kind,attribute,owner,scope_id=None):
         # Fixed/validated labels only; no source paragraphs or model rationale.
-        question=dict(kind=kind,attribute=attribute,owner=owner,scope_id=scope_id,question=('Resolve '+scope_id+'’s ' if scope_id else 'Resolve ')+attribute.replace('_',' ')+'.')
+        multiple=hasattr(result,'_current') and len(result._current.get('scopes',result._current.get('execution_scopes',[])))>1
+        multiple=multiple or any(r.get('dimensions',{}).get('entity')!=scope_id for r in result.candidates if r.get('dimensions',{}).get('entity'))
+        question=dict(kind=kind,attribute=attribute,owner=owner,scope_id=scope_id,question=('Resolve '+scope_id+'’s ' if scope_id and multiple else 'Resolve ')+attribute.replace('_',' ')+'.')
         if not any(q['attribute']==attribute and q['kind']==kind and q.get('scope_id')==scope_id for q in result.questions):result.questions.append(question)
 
     def execute(self, prepared, pack=None):
@@ -280,8 +293,67 @@ class Intake:
             for family,native in populations(request.get('facts',{})):
                 if family in FACT_ADAPTERS:owners.add(FACT_ADAPTERS[family][0],native)
             def binding_key(binding):return owners.key(binding.owner,binding.scope_id)
+            from orchestration.scopes import scope_registry
+            registered=scope_registry(request['scope'])
+            def qualify_source(source_id,key):
+                extraction=prepared._inventory.extractions.get(source_id)
+                if extraction is None:raise ValueError('Source inventory identity absent')
+                meta=extraction.source['metadata'];native=owners[key];target=registered.get(native['entity'])
+                source_scope=meta.get('scope_id',meta.get('entity'))
+                if meta.get('scope_id') and meta.get('entity') and meta['scope_id']!=meta['entity']:raise ValueError('Source Scope/entity metadata conflict')
+                origin=registered.get(source_scope)
+                from orchestration.scopes import execution_scopes
+                origin_context=execution_scopes(request['scope'])[source_scope]
+                for dimension in ('currency','framework','jurisdiction'):
+                    if dimension in meta and meta[dimension]!=origin_context[dimension]:raise ValueError('Qualified source metadata differs from governed origin Scope')
+                if source_scope!=target.scope_id:
+                    if target.scope_type=='LEGAL_ENTITY':
+                        if origin.scope_type not in ('GROUP','SUBGROUP') or target.scope_id not in meta.get('applies_to_scope_ids',[]):raise ValueError('Legal owner source population crosses Scope')
+                    elif target.scope_type not in ('GROUP','SUBGROUP'):raise ValueError('Source Scope mismatch')
+                return extraction
+            group_contract=request.get('group_consumer')
+            if group_contract is not None:
+                group_source=group_contract.get('context_source',{})
+                extraction=prepared._inventory.extractions.get(group_source.get('source_id'))
+                if extraction is None:raise ValueError('Group context source missing from inventory')
+                meta=extraction.source['metadata']
+                if (meta.get('scope_id',meta.get('entity')),meta.get('framework'),meta.get('currency'))!=(group_source.get('scope_id'),group_source.get('framework'),group_source.get('currency')):raise ValueError('Group context source differs from actual scoped inventory')
+                if group_contract.get('qualified_context_fingerprint')!=extraction.source['fingerprint']:raise ValueError('Group context source fingerprint differs')
+
+            repeated={pkg for pkg in owners.packages.values() if list(owners.packages.values()).count(pkg)>1}
+            if repeated:
+                expected={key for key,pkg in owners.packages.items() if pkg in repeated};seen_packs=set();pack_records=[]
+                for child in pack.scoped_packs:
+                    if not isinstance(child,ReviewedInputPack) or not child.scope_id or child.scoped_packs:raise ValueError('Independent scoped ReviewedInputPack required')
+                    rows=list(populations(child.request.get('facts',{})))
+                    if len(rows)!=1 or rows[0][0] not in FACT_ADAPTERS:raise ValueError('Scoped pack must certify one exact execution')
+                    family,native=rows[0];key=owners.key(FACT_ADAPTERS[family][0],child.scope_id)
+                    if key not in expected or key in seen_packs or native.get('scope_id',native['entity'])!=child.scope_id or digest(native)!=digest(owners[key]):raise ValueError('Scoped pack reused across executions')
+                    if child.request.get('objective')!=request['objective']:raise ValueError('Scoped pack objective differs')
+                    if any(binding_key(x)!=key for x in child.bindings):raise ValueError('Scoped pack source population mixed')
+                    wanted=[asdict(x) for x in pack.bindings if binding_key(x)==key]
+                    if canonical([asdict(x) for x in child.bindings])!=canonical(wanted):raise ValueError('Scoped pack bindings differ from exact execution')
+                    for field in ('populations','documents','text_assertions'):
+                        wanted=[asdict(x) for x in getattr(pack,field) if binding_key(x)==key]
+                        if canonical([asdict(x) for x in getattr(child,field)])!=canonical(wanted):raise ValueError('Scoped pack source evidence differs')
+                    seen_packs.add(key);pack_records.append(dict(node=key,scope_id=child.scope_id,pack_fingerprint=digest(dict(request=child.request,bindings=[asdict(x) for x in child.bindings]))))
+                if seen_packs!=expected:raise ValueError('Repeated owners require separate ReviewedInputPacks')
+                request['reviewed_scope_packs']=pack_records
+
             if pack.scope_id is not None and any(native.get('scope_id',native['entity'])!=pack.scope_id for native in owners.values()):raise ValueError('ReviewedInputPack certifies another Scope')
             for owner,native in owners.items():
+                if owners.packages[owner] in repeated:
+                    actual_sources={ref['source_id'] for binding in pack.bindings if binding_key(binding)==owner for ref in candidates[binding.fact_id]['lineage']}
+                    declared=native.get('source_population')
+                    if not isinstance(declared,list) or not declared or len(set(declared))!=len(declared) or set(declared)!=actual_sources:raise ValueError('Repeated owner source population differs from exact scoped fact lineage')
+                    qualified=native.get('qualified_scope_sources')
+                    if not isinstance(qualified,list) or len(qualified)!=len(declared) or {r['source_id'] for r in qualified}!=set(declared):raise ValueError('Qualified scoped source manifest required')
+                    for row in qualified:
+                        actual=prepared._inventory.extractions[row['source_id']].source
+                        if canonical(row)!=canonical(dict(source_id=actual['id'],fingerprint=actual['fingerprint'],metadata=actual['metadata'])):raise ValueError('Scoped native source qualification differs from actual inventory')
+                    for source_id in declared:
+                        meta=prepared._inventory.extractions[source_id].source['metadata']
+                        if meta.get('scope_id',meta.get('entity'))!=native['entity']:raise ValueError('Owner source population crosses Scope')
                 manifest=native.get('source_semantic_controls')
                 if native.get('qualified_source_documents') and manifest is None:raise ValueError('Qualified source documents require reviewed semantic controls')
                 if manifest is not None:
@@ -290,8 +362,7 @@ class Intake:
                     if canonical(manifest)!=canonical(actual):raise ValueError('Required reviewed source semantic-control population omitted or changed')
             for binding in pack.documents:
                 if not isinstance(binding,DocumentBinding) or binding_key(binding) not in owners:raise ValueError('Invalid reviewed source document binding')
-                source=prepared._inventory.extractions.get(binding.source_id)
-                if not source:raise ValueError('Reviewed source document missing')
+                source=qualify_source(binding.source_id,binding_key(binding))
                 expected=at(owners[binding_key(binding)],list(binding.path))
                 actual=dict(fingerprint=source.source['fingerprint'],metadata=source.source['metadata'])
                 if canonical(expected)!=canonical(actual):raise ValueError('Source document changed after separate accounting qualification')
@@ -299,7 +370,7 @@ class Intake:
             for assertion in pack.text_assertions:
                 if not isinstance(assertion,TextAssertion) or binding_key(assertion) not in owners or len(assertion.pattern)>300:
                     raise ValueError('Invalid reviewed text assertion')
-                extraction=prepared._inventory.extractions.get(assertion.source_id)
+                extraction=qualify_source(assertion.source_id,binding_key(assertion))
                 if not extraction or not extraction.blocks:raise ValueError('Text assertion source absent')
                 if assertion.transformation in ('decimal','calendar_date') and extraction.source['metadata'].get('entity')!=owners[binding_key(assertion)]['entity']:raise ValueError('Text amount/date crosses source legal entity')
                 if assertion.transformation=='decimal' and extraction.source['metadata'].get('currency')!=dimensions(owners[binding_key(assertion)])[-1]:raise ValueError('Text amount crosses source currency')
@@ -315,6 +386,7 @@ class Intake:
                     owner_input_path=list(assertion.path),binding_kind='reviewed_text_assertion',transformation=assertion.transformation))
             for population in pack.populations:
                 if not isinstance(population,PopulationBinding) or binding_key(population) not in owners:raise ValueError('Invalid source population binding')
+                qualify_source(population.source_id,binding_key(population))
                 fields=[value for item in prepared.inventory for value in item['fields'].values() if value['source_id']==population.source_id and value['location'].get('table')==population.table and value['location'].get('column')==population.source_column]
                 ids=[value['value'] for value in fields]
                 native=at(owners[binding_key(population)],list(population.path))

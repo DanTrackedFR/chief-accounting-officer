@@ -99,6 +99,7 @@ class RequestContext:
     source_inventory: list
     company_context: list
     registry_metadata: list
+    registered_scopes: list = field(default_factory=list)
 
 class SemanticPlanner(Protocol):
     def propose(self, request: RequestContext) -> StructuredProposal: ...
@@ -154,7 +155,7 @@ class ProposalValidator:
         errors=[]
         def fail(code, location):errors.append(dict(kind='blocking',code=code,location=location))
         try:
-            inventory.verify();fields=inventory.fields()
+            inventory.verify();fields=inventory.fields();registered=execution_scopes(context)
             if not isinstance(proposal,StructuredProposal):raise ValueError('StructuredProposal required')
             bounded(proposal.record())
             # Envelope validation is recursive; every semantic assertion uses Claim.
@@ -165,7 +166,11 @@ class ProposalValidator:
                 if not isinstance(c.rationale,str) or not c.rationale.strip():raise ValueError('Rationale required: '+loc)
                 if not isinstance(c.evidence,list) or len(set(c.evidence))!=len(c.evidence) or any(e not in fields for e in c.evidence):raise ValueError('Evidence absent/duplicated: '+loc)
                 if c.status in {'EXTRACTED','OBSERVED','CALCULATED'} and not c.evidence:raise ValueError('Sourced status needs evidence: '+loc)
-                if c.status=='CONTEXT_DERIVED' and not any(c.value==v for v in context.values()):raise ValueError('Unknown context assertion: '+loc)
+                if c.status=='CONTEXT_DERIVED':
+                    known=any(c.value==v for v in context.values())
+                    if isinstance(c.value,dict) and set(c.value)=={'scope_id','value'} and c.value['scope_id'] in registered:
+                        known=any(c.value['value']==v for v in registered[c.value['scope_id']].values())
+                    if not known:raise ValueError('Unknown context assertion: '+loc)
                 if c.status in {'UNRESOLVED','DISPUTED','ASSUMED'} and c.confidence>0.5:raise ValueError('Impossible confidence/status: '+loc)
                 if c.status=='USER_STATED' and c.value!=objective:raise ValueError('User-stated assertion not in request: '+loc)
             for name in ('objective','requested_output','primary_mode'):claim(getattr(proposal,name),name)
@@ -187,7 +192,11 @@ class ProposalValidator:
                 if c.value not in FRAMEWORKS or c.status in {'INFERRED','ASSUMED','UNRESOLVED'}:raise ValueError('Unqualified/fabricated framework')
             for key,c in proposal.context_candidates.items():
                 if key not in CONTEXT_ATTRIBUTES:raise ValueError('Invalid context candidate')
-                if key=='framework' and c.value not in FRAMEWORKS:raise ValueError('Fabricated framework')
+                if isinstance(c.value,dict):
+                    if set(c.value)!={'scope_id','value'} or c.value['scope_id'] not in registered:raise ValueError('Unknown scoped context candidate')
+                    value=c.value['value']
+                else:value=c.value
+                if key=='framework' and value not in FRAMEWORKS:raise ValueError('Fabricated framework')
             def owner(value):
                 m=self.registry.get(value)
                 if not m.get('production_available') or not m.get('execution_available'):raise ValueError('Unknown/NONPRODUCTION owner')
@@ -310,8 +319,9 @@ class ProposalValidator:
             for missing in proposal.missing_facts:
                 if not isinstance(missing,Claim):raise ValueError('Missing fact Claim required')
                 claim(missing,'missing');v=missing.value
-                if not isinstance(v,dict) or set(v)!={'attribute','owner','kind'} or v['kind'] not in {'blocking','confirmation','nonblocking'}:raise ValueError('Missing fact schema invalid')
+                if not isinstance(v,dict) or set(v)-{'scope_id'}!={'attribute','owner','kind'} or v['kind'] not in {'blocking','confirmation','nonblocking'}:raise ValueError('Missing fact schema invalid')
                 if not isinstance(v['attribute'],str) or not re.fullmatch('[a-z][a-z0-9_]{0,80}',v['attribute']):raise ValueError('Unsafe missing field label')
+                if v.get('scope_id') and v['scope_id'] not in registered:raise ValueError('Unknown question Scope')
                 if v['owner']:owner(v['owner'])
             return Validation(True,[],copy.deepcopy(proposal))
         except (ValueError,TypeError,KeyError,AttributeError,InvalidOperation,OverflowError) as exc:

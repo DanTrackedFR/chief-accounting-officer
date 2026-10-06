@@ -45,6 +45,8 @@ def native_cases():
         native['evidence']=['independently reviewed source-'+s.scope_id]
         native['obligations'][0]['economic_id']='contract-1'
         native['source_population']=['source-'+s.scope_id]
+        actual=Inventory(source_pack()).extractions['source-'+s.scope_id].source
+        native['qualified_scope_sources']=[dict(source_id=actual['id'],fingerprint=actual['fingerprint'],metadata=actual['metadata'])]
         native['balance_bridge']['opening_revenue']='0'
         native['balance_bridge']['billings']={'ENTITY-NL':'400','ENTITY-US':'500','ENTITY-UK':'600'}[s.scope_id]
         from cases import finalize
@@ -61,10 +63,12 @@ def reviewed_pack():
         receipts.append(dict(source_owner='revenue-recognition',source_node=key,source_scope=s['scope_id'],target_node=target,target_scope='GROUP-EUR',
             semantic_metric='period_revenue',framework=s['framework'],currency=s['currency'],functional_currency=s['functional_currency'],presentation_currency=s['presentation_currency'],
             result_fingerprint=digest(result),exact_case_fingerprint=result['case_fingerprint'],currentness='CURRENT',economic_identity=[s['scope_id'],key,'period_revenue',result['case_fingerprint']],result=result,evidence=['independent current local Revenue workpaper'],consumption_type='LOCAL_RESULT_OBSERVATION'))
-    consumer=dict(scope_id='GROUP-EUR',expected_producers=[r['source_node'] for r in receipts],receipts=receipts,
+    consumer=dict(qualified_context_fingerprint=Inventory(source_pack()).extractions['source-GROUP-EUR'].source['fingerprint'],scope_id='GROUP-EUR',expected_producers=[r['source_node'] for r in receipts],receipts=receipts,
         context_source=dict(source_id='source-GROUP-EUR',scope_id='GROUP-EUR',framework='IFRS',currency='EUR',evidence=['reviewed-group-profile']))
     request=dict(case_id='stage1-scoped-revenue',objective=OBJECTIVE,scope=copy.deepcopy(SCOPE),facts=dict(customer_contract=cases),group_consumer=consumer)
-    return ReviewedInputPack(request,[Binding('fact-'+s.scope_id,'revenue-recognition',('period_revenue',),'owner_result',s.scope_id) for s in ROWS[1:]])
+    bindings=[Binding('fact-'+s.scope_id,'revenue-recognition',('period_revenue',),'owner_result',s.scope_id) for s in ROWS[1:]]
+    children=[ReviewedInputPack(dict(objective=OBJECTIVE,facts=dict(customer_contract=copy.deepcopy(native))),[bindings[i]],scope_id=native['entity']) for i,native in enumerate(cases)]
+    return ReviewedInputPack(request,bindings,scoped_packs=children)
 
 
 def run():

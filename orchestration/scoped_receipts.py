@@ -1,7 +1,7 @@
 """Explicit current-result observations across Scopes, without conversion authority."""
 import copy
 from .runtime import digest, number
-from .scopes import execution_scopes, execution_identity
+from .scopes import execution_scopes, execution_identity,scoped_context
 from .planning import Node
 
 
@@ -29,9 +29,10 @@ def validate_scoped_receipt(receipt,graph,inputs,target,context):
 
 
 def consume_group(contract,graph,inputs,context,case):
-    if not isinstance(contract,dict) or set(contract)!={'scope_id','expected_producers','receipts','context_source'}: raise ValueError('Explicit Group observation contract required')
+    if not isinstance(contract,dict) or set(contract)-{'qualified_context_fingerprint'}!={'scope_id','expected_producers','receipts','context_source'}: raise ValueError('Explicit Group observation contract required')
     scopes=execution_scopes(context);scope=scopes.get(contract['scope_id'])
     if not scope or scope['scope_type'] not in ('GROUP','SUBGROUP'): raise ValueError('Group consumer needs reporting Scope')
+    scope=scoped_context(context,{'entity':contract['scope_id']})
     source=contract['context_source']
     if not isinstance(source,dict) or set(source)!={'source_id','scope_id','framework','currency','evidence'} or not source['source_id'] or not source['evidence']: raise ValueError('Group context source required')
     if (source['scope_id'],source['framework'],source['currency'])!=(scope['scope_id'],scope['framework'],scope['currency']): raise ValueError('Group context source contamination')
@@ -58,8 +59,8 @@ def consume_group(contract,graph,inputs,context,case):
         case.handoff_ledger.append(copy.deepcopy({k:v for k,v in receipt.items() if k!='result'}))
     if seen!=set(producers): raise ValueError('Scoped result observation population omitted or added')
     observations.sort(key=lambda r:r['scope_id'])
-    summary='Revenue reviewed separately: '+'; '.join(r['scope_id']+' '+r['amount']+' '+r['currency']+' ('+r['framework']+')' for r in observations)+'. No consolidated IFRS/EUR total is established; local results retain their original accounting basis.'
+    summary='Revenue reviewed separately: '+'; '.join(r['scope_id']+' '+r['amount']+' '+r['currency']+' ('+r['framework']+')' for r in observations)+'. No consolidated '+scope['framework']+'/'+scope['currency']+' total is established; local results retain their original accounting basis.'
     target.status='complete';target.result=dict(observations=observations,accounting_authority=False,currentness='CURRENT')
     graph.add(target);graph.validate()
     return dict(scope_id=scope['scope_id'],node=key,observations=observations,summary=summary,limitations=limits,
-        consolidated_total=None,accounting_authority=False,context_lineage=copy.deepcopy(source))
+        consolidated_total=None,accounting_authority=False,context_lineage=dict(copy.deepcopy(source),qualified_context_fingerprint=contract.get('qualified_context_fingerprint')))

@@ -103,7 +103,7 @@ class RepeatedOwners(unittest.TestCase):
         self.assertFalse(Intake(FixturePlanner(p)).prepare(OBJECTIVE,sources,[],SCOPE).validation['accepted'])
     def test_unknown_scope_candidate_remains_unresolved(self):
         sources=source_pack();p=semantic_proposal(sources);p.entities=[cl('NEW-ENTITY',status='UNRESOLVED',confidence=0)]
-        r=Intake(FixturePlanner(p)).prepare(OBJECTIVE,sources,[],SCOPE);self.assertTrue(r.validation['accepted']);self.assertNotIn('NEW-ENTITY',[s['scope_id'] for s in SCOPE['scopes']])
+        r=Intake(FixturePlanner(p)).prepare(OBJECTIVE,sources,[],SCOPE);self.assertTrue(r.validation['accepted']);self.assertTrue(any(q['attribute']=='scope_candidate' for q in r.questions));self.assertNotIn('NEW-ENTITY',[s['scope_id'] for s in SCOPE['scopes']])
     def test_wrong_scope_reviewed_pack(self):
         sources=source_pack();e=Intake(FixturePlanner(semantic_proposal(sources)));r=e.prepare(OBJECTIVE,sources,[],SCOPE);p=reviewed_pack();p.scope_id='ENTITY-UK'
         with self.assertRaises(ValueError):e.execute(r,p)

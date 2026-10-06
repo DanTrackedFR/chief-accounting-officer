@@ -1,9 +1,10 @@
 """Accounting-layer qualification around the inherited gross-line allocator."""
-from .scopes import scope_registry
+from .scopes import scope_registry,execution_scopes,execution_identity,scoped_context
 
 
 def qualify_journal(context,source_scope,posting_scope,layer):
     registry=scope_registry(context);source=registry.get(source_scope);target=registry.get(posting_scope)
+    scoped_context(context,{'entity':source_scope});scoped_context(context,{'entity':posting_scope})
     if layer not in ('LEGAL_ENTITY','SUBGROUP','GROUP') or target.scope_type!=layer: raise ValueError('Journal posting layer differs from Scope')
     if source.scope_type!=layer or source_scope!=posting_scope: raise ValueError('Journal source/posting Scope contamination; explicit accounting conversion owner required')
     return dict(source_scope=source_scope,posting_scope=posting_scope,accounting_layer=layer)
@@ -16,6 +17,9 @@ def allocate_scoped(native,context,ownership):
     for row in native:
         qualification=qualify_journal(context,row['source_scope'],row['posting_scope'],row['accounting_layer'])
         if not row.get('node') or not row.get('owner') or not row.get('currency') or len(row.get('period',[]))!=2: raise ValueError('Scoped native journal dimensions required')
+        scope=execution_scopes(context)[row['posting_scope']]
+        if row['node']!=execution_identity(row['owner'],scope):raise ValueError('Journal node owner/Scope identity differs')
+        if row['currency']!=scope['currency'] or row['period']!=[scope['period_start'],scope['reporting_period']]:raise ValueError('Native journal differs from governed Scope currency/period')
         rows.append(dict(owner=row['node'],journals=row['journals']))
     events=[]
     for event in ownership:

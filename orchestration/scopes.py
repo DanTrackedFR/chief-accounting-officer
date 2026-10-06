@@ -133,6 +133,10 @@ def scoped_context(context, source):
     scope=execution_scopes(context).get(key)
     if scope is None: raise ValueError('Owner outside registered Scopes')
     if source.get('entity')!=key: raise ValueError('Owner entity differs from Scope ID')
+    registered=scope_registry(context).get(key)
+    if registered.status!='CURRENT':raise ValueError('Inactive Scope cannot execute as current')
+    if registered.effective_from and registered.effective_from>scope['period_start']:raise ValueError('Scope not effective for bounded execution')
+    if registered.effective_to and registered.effective_to<scope['reporting_period']:raise ValueError('Scope expired for bounded execution')
     return dict(context, **scope)
 
 

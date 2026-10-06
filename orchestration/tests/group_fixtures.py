@@ -286,7 +286,7 @@ def group_sources(clean=False):
     sources.append(raw('parent-tb','Parent trial balance.csv',PARENT,'EUR','account,balance\nparent cash,1380\ninvestment,720\nIC receivable,100\nparent equity,-2000\nparent revenue,-300\nparent expense,100\n'))
     sources.append(raw('sub-tb','Subsidiary USD trial balance.csv',SUB,'USD','account,balance\ncash,1125\ndebt,-200\nIC payable,-125\nsub equity,-550\nsub revenue,-450\nsub expense,200\n'))
     from dataclasses import replace
-    sources=[replace(s,metadata=dict(s.metadata,amount_currency='USD')) if s.id=='ic' else s for s in sources]
+    sources=[replace(s,metadata=dict(s.metadata,amount_currency='USD')) if s.id=='ic' else replace(s,metadata=dict(s.metadata,applies_to_scope_ids=[PARENT,SUB])) if s.id=='policy' else s for s in sources]
     return sources
 
 

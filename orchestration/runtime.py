@@ -109,6 +109,7 @@ class Case:
     accounting_questions: list = field(default_factory=list)
     scope_registry: list = field(default_factory=list)
     owner_results: list = field(default_factory=list)
+    reviewed_input_packs: list = field(default_factory=list)
     group_consumer: dict = field(default_factory=dict)
 
     def transition(self, target):
@@ -186,6 +187,7 @@ class CAO:
         if c.open_questions: raise ValueError('Resolve missing or disputed execution dimensions')
         scopes=execution_scopes(context)
         c.entities=[context['entity']]+sorted(e for e in scopes if e!=context['entity']); c.periods=[context['period_start'],context['reporting_period']]
+        c.reviewed_input_packs=copy.deepcopy(request.get('reviewed_scope_packs',[]))
         c.scope_registry=scope_registry(context).record()
         c.frameworks=sorted({s['framework'] for s in scopes.values()}); c.jurisdictions=sorted({s['jurisdiction'] for s in scopes.values()})
         c.industries = [context['industry']] if context.get('industry') else []
@@ -312,6 +314,15 @@ class CAO:
                 if meta['applicable_frameworks'] and n.framework not in meta['applicable_frameworks']:
                     n.status='blocked'; n.open_items.append('Framework outside owner contract'); continue
                 try:
+                    repeated=sum(x.selected_skill==n.selected_skill for x in graph.nodes.values())>1
+                    if repeated:
+                        population=source.get('source_population');manifest=source.get('qualified_scope_sources')
+                        if not isinstance(population,list) or not population or not isinstance(manifest,list) or not manifest:raise ValueError('Repeated owner requires exact scoped source qualification')
+                        if len(set(population))!=len(population) or {r['source_id'] for r in manifest}!=set(population) or len(manifest)!=len(population):raise ValueError('Scoped owner source population differs')
+                        for row in manifest:
+                            source_meta=row['metadata']
+                            if source_meta.get('scope_id',source_meta.get('entity'))!=n.scope_id or source_meta.get('entity')!=n.scope_id:raise ValueError('Repeated owner source Scope contamination')
+                            if (source_meta.get('currency'),source_meta.get('framework'),source_meta.get('jurisdiction'),source_meta.get('period'))!=(node_context['currency'],n.framework,n.jurisdiction,n.period) or not row.get('fingerprint'):raise ValueError('Repeated owner source dimensional contamination')
                     from .period_selection import validate_activity
                     validate_activity(source)
                     from .result_bindings import validate_receipts
@@ -334,6 +345,8 @@ class CAO:
                         raise ValueError('Owner result envelope dimensions differ')
                     n.result=r; n.status=r['status']; n.open_items=list(r.get('open_items',[])); n.evidence=copy.deepcopy(r.get('evidence',[]))
                     n.execution_receipt=self._result_receipt(n,source)
+                    matches=[p for p in c.reviewed_input_packs if p['node']==n.id]
+                    if matches:n.execution_receipt['reviewed_input_pack_fingerprint']=matches[0]['pack_fingerprint']
                     c.skills_invoked.append(n.selected_skill)
                     c.execution_ledger.append(dict(node=n.id,batch=batch,status=n.status,case_fingerprint=r.get('case_fingerprint')))
                     if n.status == 'complete':
