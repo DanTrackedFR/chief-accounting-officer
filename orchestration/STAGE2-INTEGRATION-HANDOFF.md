@@ -1,44 +1,39 @@
-# Stage 2 integration handoff — INCOMPLETE
+# Stage 2 integration handoff
 
-Release correction: Stage 2 is incomplete. The earlier completion wording on head `29f9ae126ac1a577187d3d6c5a44bbdff315ed89` was disproved by fresh executable independent review. This document is provisional; final architecture, regression and exact-head acceptance must be rewritten after the remaining gates pass. PR #35 is Draft and unmerged. See `STAGE2-PROGRESS-HANDOFF.md` and `STAGE2-FINAL-INDEPENDENT-QA.md`. No Stage 3 work is authorized.
-
-
-Stage 2 — Case Hierarchy + Multi-Period + Dependency Invalidation/Rework.
-
-Baseline main: `f2c47c03fd2faaafe99b73bf621cee473e53b675` (Stage 1 merged). Delivery branch: `orchestration/case-period-invalidation`, PR #35. The immutable final SHA and exact-head workflow conclusions belong in PR metadata after finalization to avoid a self-referential committed hash.
+Delivery: existing `orchestration/case-period-invalidation`, PR #35. Baseline live main `f2c47c03fd2faaafe99b73bf621cee473e53b675`; final immutable SHA and exact-head workflow conclusions are recorded in PR metadata, avoiding a self-referential committed hash. No merge.
 
 ## Delivered architecture
 
-Stage 2 composes the Stage 1 Scope substrate with governed Case, Period, dependency and result-version identity. ENTITY_CASE, SUBGROUP_CASE and GROUP_CASE retain independent governance; Scope hierarchy, Case hierarchy and dependency graph are separate. Periods are deterministic and calendar-qualified, with explicit opening/prior/comparative/partial relationships, effective intervals and close/reopen history.
+The existing CAO.run, Graph and production boundary compose with ScopeRegistry, PeriodRegistry, CaseRegistry and VersionedExecution. ENTITY_CASE, SUBGROUP_CASE and GROUP_CASE retain objective/cycle identity, lifecycle and result references. Scope parentage, Case parentage and execution dependencies remain separate; membership never infers consumption or invalidation. Simple legacy callers normalize through compatibility Periods with unknown fiscal starts explicitly retained, while supplied Period registries require exact calendar identity.
 
-Ordinary runtime repeated-owner issue/input selection is Scope + governed Period aware. Governed `period_id` is propagated into ordinary workplan nodes when supplied, while simple legacy callers retain the Stage 1 compatibility path.
+Issue.period_id is a real serialized field. Planner source/import traversal, semantic proposals, OwnerInputs, ReviewedInputPacks and all bindings retain exact owner + Scope + Period. Temporal facts and native/auxiliary source manifests bind actual Period/calendar/relationship role and exact source inventory. Ambiguous material Periods produce blocking questions; same-Scope questions retain their separate Periods. September evidence cannot certify October or be relabelled as opening/current/comparative. Scope activity is authorized using the actual execution interval; valid historical journals use their own interval.
 
-Dependencies bind exact producer/consumer nodes, Cases, Scopes and Periods. Immutable result versions preserve CURRENT / STALE / SUPERSEDED state and exact dependency bindings. Supersession preserves history. Stale/superseded/wrong-Scope/wrong-Period receipts cannot satisfy current dependencies.
+Dependency contracts bind producer/consumer nodes, Cases, Scopes, Periods, semantic metric and declared relationship. Receipts bind exact immutable producer result version, currentness, fingerprint, metric and both framework/currency contexts. STALE/SUPERSEDED, wrong-period, wrong-dimension and equal-value substituted receipts fail. Native dependent corrections require separately reviewed exact-version receipts and native certification; orchestration never manufactures accounting approvals.
 
-Invalidation traverses actual dependency bindings only. Selective re-execution is topological and rejects unrelated reruns. Reopening is a governance/version event and does not create an accounting reversal. Period-aware journals admit only current exact-version economics through the inherited scoped exact-once allocator.
+CAO.correct publishes a reviewed new native or bounded version on the existing graph. CAO.selective_reexecute validates the exact topological plan, reruns only actual consumers, checks currentness and refreshes ordinary delivery. Consecutive corrections retain pending consumers bound to any replaced predecessor. Ordinary synthesis captures its exact version/currentness view; changed views cannot republish historical conclusions. Correctly qualified partial diagnostic bridges preserve their residuals and limitations.
 
-## Controlled proof
+Closed Periods require explicit synthetic governed reopening with qualified Case/node authorization. History is retained and can reclose. CAO.restate adds governed original-to-new-version lineage without granting accounting restatement authority. Supersession/reopening creates no reversal. Only exact current versions contribute through the inherited scoped gross-line journal allocator; aliases and historical versions cannot double count economics.
 
-The bounded proof uses GROUP-EUR, ENTITY-NL, ENTITY-US and ENTITY-UK with calendar-year and US fiscal-calendar identities. It includes September/October, opening/comparative relationships and a bounded effective interval.
+## Executable proofs
 
-A qualified native US September Revenue result is corrected from 800 to 900. The old result is superseded. Actual downstream US reporting → US October opening observation → Group October observation → Group analytics observation becomes stale and is selectively re-executed. UK and independent controls remain current. The Group/analytics observations remain non-authoritative and do not manufacture framework conversion, FX translation or consolidated-EUR accounting.
+Central ordinary proof: native Revenue / ENTITY-US / September 800 -> US September reporting -> US October opening/downstream -> Group October local reporting -> Group October local analytics. The independently reviewed correction changes Revenue to 900; v1 remains immutable SUPERSEDED and v2 is CURRENT. Exactly US-REPORT, US-OPEN, GROUP and ANALYTICS stale and rerun in topological order. Public Group observations update to900 USD.
 
-## QA and deterministic evidence
+Eight unaffected controls keep their exact CURRENT versions: US-OCT native Revenue, UK-SEP Revenue, UK-CONTROL, NL-CONTROL, TREASURY, FUTURE (November), GROUP-CONTROL (nonconsuming) and UK-COMPARATIVE. Treasury is an unrelated observation control, not a new Treasury accounting treatment. Opening lineage carries exact prior-closing producer version into the actual next-period consumer.
 
-Authored and independent Stage 2 suites cover Case/Period identity, hierarchy separation, exact-version receipts, stale/superseded rejection, invalidation, selective rework, reopening, journal currentness, privacy and deterministic graph behavior. The independent QA record preserves the substantive finding/remediation history rather than erasing it.
+A separate UK restatement proof preserves original September and comparative payloads, supersedes their delivery versions and reruns only the actual October comparative consumer. Structural SUBGROUP proof uses the same ordinary governed-plan execution, Case/Period identity and current receipts; US correction propagates only through its declared subgroup/Group edges. Bounded observations produce no journals or converted accounting totals. Three native Revenue executions contribute18 current journal implications; corrected history adds no extra current implications.
 
-Deterministic Stage 2 artifacts under `orchestration/examples/case-period-invalidation/` provide before/after result versions, dependency/invalidation/rework ledgers, Case/Period registries, journals, receipts, lineages and public output. Final exact-head regression and workflow results are recorded in PR #35 metadata.
+## Independent QA and release validation
 
-## Migration
+All earlier eight intermediate finding classes and final F1-F14 history are preserved in the two QA documents. Final separate-context reviewer reran 118 distinct Stage2 methods plus the existing diagnostic residual migration regression; zero unresolved substantive findings. Permanent tests cover auxiliary/native temporal evidence, material questions, consecutive correction, Scope activity, prior-period journal qualification and public synthesis currentness, alongside original receipt/period/journal attacks.
 
-Stage 1, Group Accounting, Treasury, SaaS, Semantic/Data Intake, Diagnostic Analytics, Manufacturing and ordinary single-entity execution remain migration gates. Existing Group acquisition cutoff logic is normalized through generic Period/EffectiveInterval infrastructure without changing specialist accounting authority.
+Final local release: 2301 distinct tests PASS:650 orchestration,1180 production skills,17 leases,53 repository/canonical and401 supplemental/independent knowledge. Stage2 has133 distinct methods; the118 independent-review run is a subset and reruns are never added to totals. All Stage1, Group, Treasury, SaaS, Intake, Diagnostic, Manufacturing and ordinary compatibility suites pass. Both canonical approval and standards-evidence validators, all supplemental validators and diff check pass. Details: STAGE2-RELEASE-REGRESSION.json.
 
-## Boundaries
+All eight governed generators regenerated their artifacts; all reproduce under independent PYTHONHASHSEED 19/941. Stage2 has 37 artifacts covering versions before/after, receipts, invalidation, unaffected nodes, topological rerun, journals, close/reopen, opening/comparative/restatement, SUBGROUP, intake, adversarial controls and public output. Existing reference exports retain version hashes/bindings without duplicating native imported workpapers; full immutable runtime snapshots and Stage2 version witnesses remain preserved.
 
-Stage 2 introduces no generalized intercompany network, general framework-conversion engine, generalized multi-step FX translation, durable persistence, authenticated governance or new accounting authority. Stage 3 and Stage 4 remain unimplemented.
+## Limits and next work
 
-Government Grants PR #27/package, Borrowing Costs and Investment Property remain untouched.
+In-memory serializable governance only; approvals are synthetic regression conventions. No authenticated governance, persistence, generalized intercompany network, framework conversion or translation chains. Local reporting/opening/comparative/subgroup/analytics observations prove orchestration lineage, not new accounting treatment, formal restatement approval or consolidated-EUR totals. Production owners remain authority. Missing native mappings/certifications and unsupported temporal input assemblies fail closed; no model inference or automatic recertification fills them.
 
-## Next
+Stage 1 COMPLETE; Stage 2 COMPLETE; Stage 3 NEXT (only after owner review/merge); Stage 4 PENDING; overall Multi-Entity/Multi-Period IN PROGRESS; Durable Case/Company Accounting Memory NOT YET NEXT. Stage 3/4/persistence were not started. Government Grants PR27/package, Borrowing Costs, Investment Property and canonical/supplemental knowledge are unchanged. Only the authorized generated roadmap protection witness is regenerated.
 
-After owner review and merge, Stage 3 starts from the resulting live main and follows `orchestration/MULTI-ENTITY-STAGE2-TO-STAGE3-HANDOFF.md`.
+After immutable-head required CI succeeds, PR35 is ready for owner integration review and remains unmerged. Follow MULTI-ENTITY-STAGE2-TO-STAGE3-HANDOFF.md only after owner integration.

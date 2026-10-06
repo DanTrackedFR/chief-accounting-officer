@@ -1,3 +1,11 @@
+# Stage 2 final substantive release record
+
+This section supersedes all preserved incomplete checkpoints below. The SAME branch and PR35 now deliver the final Case/Period/version/dependency architecture, temporal intake and reviewed evidence, ordinary correction/public refresh, opening/comparative/restatement lineage, structural SUBGROUP and current-version journal gates. Final independent QA has zero unresolved substantive findings;2301 distinct final local tests pass. Eight generators reproduce under seeds19/941;37 Stage2 artifacts are governed outputs. Final handoffs and limitations are in STAGE2-INTEGRATION-HANDOFF.md and MULTI-ENTITY-STAGE2-TO-STAGE3-HANDOFF.md; exact validation is in STAGE2-RELEASE-REGRESSION.json.
+
+The final immutable SHA, required workflow results and PR readiness are recorded in PR35 metadata. No file changes are permitted after successful final CI. No merge, replacement branch/PR, Stage3/4, persistence or residual accounting backlog work. Previous findings and checkpoints remain historical evidence, not current outstanding gates.
+
+---
+
 # Stage 2 continuation checkpoint — INCOMPLETE, SAME PR #35
 
 This section supersedes the historical checkpoint below. Continue only `orchestration/case-period-invalidation`, PR #35; no replacement branch/PR, no merge, no Stage3/4/persistence. The durable pushed SHA is recorded in PR metadata to avoid a self-referential committed hash.

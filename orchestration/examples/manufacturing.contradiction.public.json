@@ -1,7 +1,201 @@
 {
-  "guidance": "Accounting work requires selective rework before current delivery.",
-  "open_items": [
-    "Resolve stale dependent results."
+  "calculations": [
+    {
+      "amount": "20",
+      "label": "closing ap"
+    },
+    {
+      "amount": "0",
+      "label": "monetary fx profit"
+    },
+    {
+      "amount": "40000.00",
+      "label": "period revenue"
+    },
+    {
+      "amount": "0.00",
+      "label": "contract asset"
+    },
+    {
+      "amount": "0.00",
+      "label": "contract liability"
+    }
   ],
-  "status": "partial"
+  "confidence": "low",
+  "controls": [
+    "Independent route, estimate and journal review",
+    "Source population to GL tie-out",
+    "Versioned accounting policy and disclosure review"
+  ],
+  "effective_period": "2026-01-01 to 2026-12-31",
+  "entity_scope": "Synthetic Group",
+  "framework": "IFRS",
+  "guidance": "The accounting review is unresolved in the areas listed below; completed workpapers are retained.",
+  "journals": [
+    {
+      "lines": [
+        {
+          "account": "depreciation expense",
+          "amount": "90000.00",
+          "side": "Dr"
+        },
+        {
+          "account": "accumulated depreciation",
+          "amount": "90000.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "expense",
+          "amount": "120.00",
+          "side": "Dr"
+        },
+        {
+          "account": "accounts payable",
+          "amount": "120.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "accounts payable",
+          "amount": "100.00",
+          "side": "Dr"
+        },
+        {
+          "account": "cash",
+          "amount": "100.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Employee benefit payable",
+          "amount": "10800.00",
+          "side": "Cr"
+        },
+        {
+          "account": "Employee benefit expense",
+          "amount": "10800.00",
+          "side": "Dr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "Employee benefit payable",
+          "amount": "5000.00",
+          "side": "Dr"
+        },
+        {
+          "account": "Cash",
+          "amount": "4000.00",
+          "side": "Cr"
+        },
+        {
+          "account": "Employee withholding payable",
+          "amount": "1000.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "contract clearing",
+          "amount": "40000.00",
+          "side": "Dr"
+        },
+        {
+          "account": "revenue",
+          "amount": "40000.00",
+          "side": "Cr"
+        }
+      ]
+    },
+    {
+      "lines": [
+        {
+          "account": "receivable",
+          "amount": "40000.00",
+          "side": "Dr"
+        },
+        {
+          "account": "contract clearing",
+          "amount": "40000.00",
+          "side": "Cr"
+        }
+      ]
+    }
+  ],
+  "jurisdiction": "NL",
+  "limitations": [
+    "Accounting source/target data-integrity workpaper only; no production migration, database/ERP write, access change or technical-completeness certification.",
+    "Actual legal applicability, risk severity and precision remain qualified judgments; an RCM or test plan is not testing evidence.",
+    "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+    "Contract clearing journals require mapping to the contract-specific asset/liability accounts; do not offset different contracts.",
+    "Control design and evidence readiness only; no operating-effectiveness, audit/ICFR opinion, management certification or SOX compliance conclusion.",
+    "Mappings, accounting conclusions, control thresholds and system metadata must be independently supplied; this is not a reporting/FP&A or generic engineering engine.",
+    "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope.",
+    "Qualified actual sources and current framework/period review required. No actuarial, legal, audit or external compliance certification.",
+    "Rates and functional currency are reviewed inputs. Monetary FX is not eliminated merely because an intragroup balance is eliminated. Hyperinflation, exchangeability, net investments and hedges require specialist methods."
+  ],
+  "open_items": [
+    "inventory: Contradictory INVENTORY_GL evidence requires rework",
+    "statement: Upstream challenged: inventory-cost (Synthetic Group)",
+    "reconciliation: Upstream challenged: inventory-cost (Synthetic Group)",
+    "disclosure: Upstream challenged: financial-statements (Synthetic Group)",
+    "analytics: Upstream challenged: inventory-cost (Synthetic Group)"
+  ],
+  "reporting": [
+    "Apply US nonpublic, UK small entity and AASB tier relief only when eligible",
+    "Class gross/accumulated rollforwards, depreciation methods/lives, impairment, disposals and CIP commitments; AASB Tier2 disclosures use applicable reduced-disclosure requirements.",
+    "Contract cost balances, amortization and impairment",
+    "Disaggregate revenue by meaningful categories",
+    "Disposal reclassification and ownership changes",
+    "Framework-specific statement presentation and comparative-period consistency",
+    "Functional/presentation currencies and changes",
+    "Material accrual estimates, corrections, subsequent events and presentation changes require financial reporting review.",
+    "Material accrual uncertainty, expense/asset classification, related parties and supplier financing require separate disclosure review.",
+    "Performance obligations, payment terms and remaining obligations",
+    "Policies, movements, significant judgments and unrecognized or specialist-dependent exposures",
+    "Rate-source uncertainty and lack-of-exchangeability disclosures where relevant",
+    "Reconcile receivables and contract assets/liabilities",
+    "Reviewed operative-framework disclosure checklist; source and GL amounts tie to statement/note population",
+    "Timing, progress, price constraint and SSP judgments",
+    "Transaction FX gains/losses separate from translation OCI",
+    "Translation reserve and NCI rollforwards"
+  ],
+  "required_approvals": [
+    "Accounting judgment memo",
+    "Calculation and reconciliation",
+    "Disclosure tie-out",
+    "Input evidence",
+    "Reviewer certification"
+  ],
+  "status": "partial",
+  "uncertainties": [
+    "Controlled synthetic company and source data, for deterministic regression only.",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only",
+    "Synthetic amounts and assumptions for regression only"
+  ]
 }

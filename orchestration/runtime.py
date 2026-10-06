@@ -875,6 +875,8 @@ class CAO:
         return selected,ledger
 
     def _synthesis(self,c,g,context):
+        if hasattr(c,'governance'):
+            c._synthesis_currentness=sorted((node,key,c.governance.versions.state(key)) for node,key in c.governance.versions.active.items())
         values={}; journals=[]; controls=[]; reporting=[]; limits=[]; approvals=[]
         for n in g.nodes.values():
             if n.issue=='diagnostic accounting follow-up' or n.status!='complete' or not n.result: continue
@@ -1029,7 +1031,9 @@ class CAO:
         """Separate curated representation; internal evidence is never mutated."""
         if hasattr(c,'governance'):
             stale=any(c.governance.versions.state(key)!='CURRENT' for key in c.governance.versions.active.values())
-            if stale:return public_record(dict(guidance='Accounting work requires selective rework before current delivery.',status='partial',open_items=['Resolve stale dependent results.']),route=route)
+            view=sorted((node,key,c.governance.versions.state(key)) for node,key in c.governance.versions.active.items())
+            changed_synthesis=bool(c.conclusions) and getattr(c,'_synthesis_currentness',None)!=view
+            if changed_synthesis or (stale and not c.conclusions):return public_record(dict(guidance='Accounting work requires selective rework before current delivery.',status='partial',open_items=['Resolve stale dependent results.']),route=route)
         if hasattr(c,'governance') and not c.conclusions:
             observations=[]
             for node_id in sorted(c.governance.versions.active):

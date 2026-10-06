@@ -70,6 +70,13 @@ def artifacts():
         try:e.validate_receipt(bad,valid['consumer_node'])
         except ValueError:attacks.append(dict(attack=field,result='REJECTED'))
         else:raise AssertionError('Adversarial receipt accepted: '+field)
+    from orchestration.periods import Period,PeriodRegistry
+    base=f['periods']['US-FISCAL-SEP']
+    for kind,label,as_of in [('fiscal-label-alias','LABEL-ALIAS',base.as_of),('as-of-alias',base.fiscal_period,'2026-10-01')]:
+        alias=Period.create(base.calendar_id,base.start,base.end,base.fiscal_year,label,base.period_type,as_of,('adversarial-alias',))
+        try:PeriodRegistry(e.periods.calendars.values(),[*e.periods.periods.values(),alias])
+        except ValueError:attacks.append(dict(attack=kind,result='REJECTED'))
+        else:raise AssertionError('Period interval alias accepted')
     result['adversarial-results.json']=attacks
     result['architecture-reconstruction-witness.json']=dict(runtime='CAO.run -> existing Graph/CaseRegistry/PeriodRegistry/VersionedExecution -> production owners or bounded observations -> CAO.public/public_record',correction='CAO.correct -> deterministic dependency invalidation -> CAO.selective_reexecute -> current delivery',central_affected=plan['execution_order'],unaffected=plan['unaffected'],authority='Existing production accounting owners only',persistence=False,authenticated_governance=False,stage3_started=False,stage4_started=False)
     result['stage3-handoff-witness.json']=dict(path='orchestration/MULTI-ENTITY-STAGE2-TO-STAGE3-HANDOFF.md',provided_contracts=['Scope/Period-qualified Cases','exact immutable result versions','typed dependency receipts','opening/comparative/restatement history','selective rework','structural SUBGROUP'],deferred=['generalized intercompany networks','framework conversion','currency translation chains','durable persistence','authenticated approvals'])

@@ -1,9 +1,6 @@
-# Stage 2 → Stage 3 architecture handoff — PROVISIONAL
+# Stage 2 -> Stage 3 architecture handoff
 
-Release correction: Stage 2 is incomplete. The earlier completion wording on head `29f9ae126ac1a577187d3d6c5a44bbdff315ed89` was disproved by fresh executable independent review. This document is provisional; final architecture, regression and exact-head acceptance must be rewritten after the remaining gates pass. PR #35 is Draft and unmerged. See `STAGE2-PROGRESS-HANDOFF.md` and `STAGE2-FINAL-INDEPENDENT-QA.md`. No Stage 3 work is authorized.
-
-
-Stage 2 extends the Stage 1 Scope substrate with governed Case, Period, dependency and result-version semantics. Stage 3 must begin only after PR #35 is owner-reviewed and merged, from the resulting live main.
+Stage2 local substantive gates are complete. Final exact-head CI and owner integration are recorded in PR35 metadata. Stage3 must begin only after owner review/merge from the resulting live main. See STAGE2-INTEGRATION-HANDOFF.md and STAGE2-RELEASE-REGRESSION.json. No Stage3 code was built in this workstream.
 
 ## Stable Stage 2 substrate
 
@@ -21,6 +18,12 @@ Stage 2 extends the Stage 1 Scope substrate with governed Case, Period, dependen
 ## Controlled proof
 
 The bounded proof uses GROUP-EUR, ENTITY-NL, ENTITY-US and ENTITY-UK. A qualified US September Revenue result is corrected from 800 to 900. The original version is superseded; actual downstream US reporting → US October opening observation → Group October observation → Group analytics observation becomes stale and is selectively re-executed. UK and independent controls remain current. No framework conversion, generalized FX translation or consolidated-EUR accounting authority is manufactured.
+
+## Ordinary correction and temporal input contract
+
+Use CAO.correct, CAO.restate and CAO.selective_reexecute on the retained ordinary graph. Supply independently reviewed native corrected inputs and exact-version receipts; authorize closed Periods separately. Refresh synthesis against exact version/currentness views. Preserve original snapshots, comparative history and explicit relationship IDs. Same-Scope repeated owners and material questions must retain exact Period/calendar identity. Auxiliary/native source manifests, Scope activity and historical journals are checked against the actual selected interval.
+
+Structural SUBGROUP and comparative/restatement executions are proved by separate governed generators and permanent tests. Central correction reruns exactly four consumers while eight controls retain CURRENT versions. General conversions/aggregation are deliberately unavailable; bounded local observations retain producer currency/framework and create no postings.
 
 ## Stage 3 implementation scope
 

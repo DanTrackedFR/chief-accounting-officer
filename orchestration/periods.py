@@ -109,6 +109,10 @@ class PeriodRegistry:
             if isinstance(period,dict): period=Period(**period)
             period.validate()
             if period.calendar_id not in self.calendars or period.period_id in self.periods: raise ValueError('Unknown calendar or duplicate Period')
+            # Fiscal labels or evidence as-of revisions do not create another
+            # execution interval. Corrections/restatements belong to versions.
+            interval=(period.calendar_id,period.start,period.end,period.period_type)
+            if any((p.calendar_id,p.start,p.end,p.period_type)==interval for p in self.periods.values()):raise ValueError('Period interval alias; preserve canonical identity and create a result version')
             self.periods[period.period_id]=period; self.status[period.period_id]='OPEN'
         for relationship in relationships: self.add_relationship(relationship)
 

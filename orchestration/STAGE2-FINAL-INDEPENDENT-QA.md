@@ -81,3 +81,204 @@ Current dispositions:
 - F6/F7: permanent currency and node metadata attacks independently rerun PASS; original finding history preserved.
 
 There are zero failing assertions in the nine-method checkpoint audit. This is **intermediate acceptance only**, not zero unresolved substantive findings across the complete requested Stage 2 architecture. Remaining gates include temporal semantic/intake ambiguity and material questions, period-aware source and ReviewedInputPack certification, structural Subgroup execution/governance, comparative/restatement lineage, full native receipt/rework contracts, final deterministic artifacts, complete migration/authority regression, final independent expanded review, accurate final handoff/roadmap and immutable exact-head CI. Stage 2 must remain INCOMPLETE until those gates pass.
+
+## Expanded release review — independent continuation
+
+A separately delegated final reviewer inspected the current runtime, planner,
+intake/preparation/semantic contracts, temporal qualification, Scope/Case/Period
+registries, governed-plan loader, version publication/invalidation/receipts and
+current scoped journals. Implementation and git were not edited by this reviewer.
+Permanent new attacks are in `tests/test_stage2_release_independent.py`; historical
+41-method and nine-method reports above remain intact.
+
+### F8 — auxiliary reviewed source evidence bypasses temporal qualification
+
+Independent executable reproduction: use the two-period temporal intake fixture;
+attach the actual October source fingerprint and metadata to the September native
+input, re-certify that reviewed native input, and supply an exact September
+DocumentBinding. Before remediation `Intake.execute` completed both native owners.
+Auxiliary source qualification checked Scope/framework/currency but omitted
+Period/calendar/relationship and auxiliary binding target identity. The new
+`test_october_document_cannot_certify_september` preserves this attack; a separate
+calendar substitution attack and same-period positive control prevent acceptance
+through unconditional rejection. Root remediated central auxiliary qualification;
+all three independently reran PASS.
+
+### F9 — material questions lose same-Scope temporal identity
+
+Independent code inspection found missing-fact declarations could not carry a
+Period, question deduplication used only kind/attribute/Scope, and answered-fact
+selection accepted any established fact in that Scope. Root remediated these
+contracts during review. New tests independently confirm September and October
+confirmation questions retain separate exact Period IDs, and an established
+September amount does not suppress an October missing-fact question. Both PASS.
+This finding's pre-remediation evidence is inspection, not a claimed saved failing
+execution; the permanent regressions were executed after concurrent remediation.
+
+### F10 — consecutive corrections can omit still-pending consumers
+
+Root independently found that replacing a producer again before its first rework
+could make the latest plan ignore consumers still bound to an older predecessor.
+The reviewer independently derived a new attack through ordinary `CAO.correct`:
+correct US September twice without rerunning consumers, reject the obsolete first
+plan, and require the latest plan to include/reexecute the same four actual
+consumers. Root's predecessor-lineage traversal remediation independently passes.
+This is root-originated finding evidence with an independent permanent regression,
+not a claim that the reviewer discovered or ran the unremediated defect.
+
+### F11 — ordinary native source manifests can substitute governed Period identity
+
+Independent reproduction: keep October source dates and all accounting dimensions,
+replace its qualified source manifest `metadata.period_id` with September's ID,
+re-certify the native Revenue input, and invoke ordinary `CAO.run` directly. Both
+native owners completed; the permanent fail-closed test independently FAILed.
+Intake qualification had protected its own path, but ordinary native execution
+checked manifest dates without the governed Period/calendar/role/relationship.
+Root added central native source qualification to ordinary and versioned production
+entry. The original attack independently reran PASS; a separate native correction
+attack proves correction does not bypass that gate or publish a new version.
+
+### F12 — governed temporal Scope activity qualification bypasses
+
+Independent executable reproduction of the root's Scope-effective-date concern:
+set US Scope `effective_to=2026-09-30` in the two-period ordinary request with a
+September default context. October native execution still completed because Scope
+activity was checked before the source's governed Period replaced default dates.
+A separate independently discovered attack marks US Scope INACTIVE in the governed
+plan: initial native US executions still completed. Permanent regressions cover
+both paths. Their disposition and final combined rerun will be appended after
+remediation; no final stable acceptance is claimed by this paragraph.
+
+### New independent coverage beyond reproduced findings
+
+The new module also verifies exact reviewed native receipt omission and imported
+result-fingerprint substitution, equal-value replacement receipt rejection,
+downstream CLOSED Period protection, bounded reopened authorization, ordinary
+correction/public refresh and privacy, comparative/restatement original payload
+preservation and stale receipt rejection, structural SUBGROUP Case selective
+currentness and no posting authority, current journal alias/wrong-owner/version
+rejection, and current restated journal economics without counting original
+history. The immutable payload and posting assertions use actual native Revenue
+results; bounded observations retain local currency and claim no accounting
+restatement/conversion/consolidation authority.
+
+### F12 remediation and positive journal migration control
+
+Root moved ordinary Scope effective-date checks after actual governed Period
+selection and added pre-owner governed/versioned Scope authorization. Both
+original activity attacks independently reran PASS. The reviewer also independently
+reproduced an adjacent false rejection: actual valid September native journals in
+an October Group context, with the US Scope effective through September, failed
+because scoped journal qualification still used October defaults. Root now selects
+the row's actual governed Period before journal qualification; ordinary native
+posting qualification uses its already qualified actual node context. The positive
+`test_valid_prior_period_journals_use_actual_scope_effective_interval` independently
+passes and allocates the six actual September implications exactly once. This
+fix preserves prior-period economics while expired later executions fail closed.
+
+## Final independent stable-architecture rerun
+
+After the final demonstrated Scope/journal remediation, independently executed:
+
+`python -m unittest orchestration.tests.test_stage2 orchestration.tests.test_stage2_independent orchestration.tests.test_stage2_final_independent orchestration.tests.test_stage2_release_independent -q`
+
+**113 distinct methods PASS, 0 FAIL, 0 ERROR**: 41 authored Stage2, 41 historical
+independent Stage2, nine checkpoint final-independent and 22 new release-independent
+methods. Counts were separately verified through unittest loading. Intermediate
+reruns (including 108, 110 and 112 methods while new attacks were being added) are
+not additional distinct tests. `git diff --check` independently passes.
+
+For the inspected completed Stage2 architecture, there are **zero unresolved
+substantive findings**: F1–F12 are remediated in their documented scopes, with
+permanent regressions and independent reruns. The new review covers ordinary and
+serialized governed execution, exact owner/Scope/Period selection, temporal intake
+and reviewed/native source qualification, material questions, comparative/restated
+history, structural SUBGROUP execution, immutable versions and native/bounded
+receipts, ordinary correction including pending repeated corrections, selective
+rework/public currentness/privacy, Scope activity, closed/reopened Periods and
+current exact-once scoped journal economics. Bounded observations remain explicit
+local non-authoritative observations; production owners retain accounting authority.
+
+This is final independent **architecture acceptance**, not a claim that this
+reviewer executed every repository/production/knowledge validator, independently
+regenerated every flagship artifact, verified an immutable pushed SHA or observed
+all required exact-head workflows. Those separate release gates remain the
+integrator's responsibility and must be evidenced before readiness. No Stage3/4,
+general conversion/intercompany authority, durable persistence or authenticated
+governance is certified by this review.
+
+## F13 — migration residual bridge lost at public currentness boundary
+
+The integrator's full migration regression found the permanent existing
+`test_diagnostic_independent.IndependentResidualRuntimeQA.test_material_residual_keeps_valid_bridge_and_limits_publicly`
+failed: a global stale-result public guard removed a correctly qualified partial
+diagnostic bridge, including its unexplained residual and limitations. A partial
+conclusion synthesized against the current challenged view must retain qualified
+work and unresolved residuals rather than disappear.
+
+Root remediated synthesis/public integration: ordinary synthesis captures the
+exact active version/currentness view; public delivery rejects a changed view but
+retains a qualified partial synthesis against its unchanged challenged view.
+Governed no-conclusion stale delivery still blocks. This is integrator-originated
+finding evidence, not a claimed independent discovery or pre-remediation rerun.
+
+The reviewer independently reran the existing permanent migration test PASS on
+all public routes. A new independent permanent adversarial test,
+`test_low_level_native_rework_cannot_republish_old_ordinary_synthesis`, also PASSes:
+initial ordinary native synthesis contains 800; direct versioned native correction
+and reexecution leave all active versions CURRENT, but the old ordinary conclusion
+is refused because its captured version view changed. This protects against
+allowing a historical synthesis merely because downstream currentness has recovered.
+The two focused methods independently passed; final combined rerun follows below.
+
+### Final post-F13 independent rerun
+
+Independently reran the same four Stage2 modules after F13 remediation and the
+new synthesis attack: **114 distinct methods PASS, 0 FAIL, 0 ERROR** (41 authored,
+41 intermediate independent, nine checkpoint independent, 23 release independent).
+The separately executed existing diagnostic residual migration method also PASSes;
+the new focused synthesis method is already included in 114 and is not counted
+twice. `git diff --check` PASSes.
+
+There are **zero unresolved substantive findings F1–F13 in the inspected completed
+Stage2 architecture and this demonstrated migration scope**. This supersedes the
+113-method architecture rerun above for the additional F13 change; original finding
+history remains intact. The same boundaries apply: broader repository validators,
+flagship artifact reproduction, immutable commit and exact-head workflows remain
+separate integrator release evidence, not claims made by this independent reviewer.
+
+## F14 — fiscal-label/as-of aliases create duplicate actual Period identities
+
+Root's final alias inspection identified a possible duplicate-period identity
+attack. The reviewer independently reproduced both variants before remediation:
+create a second Period for the same calendar/start/end/type with a new fiscal label,
+or with an altered evidence as-of date. Both produced distinct IDs and both were
+accepted together by `PeriodRegistry`. This could treat one actual governed
+interval as separate execution/economic identities; the saved pre-remediation
+reproduction establishes registry acceptance, not a claimed end-to-end duplicate
+posting execution.
+
+Root added a narrow registry uniqueness gate over calendar/start/end/period_type.
+It rejects distinct IDs for the same actual interval/type; it does not introduce
+generalized overlapping-period restrictions. Four new permanent independent
+methods PASS: fiscal-label alias rejection, as-of alias rejection, direct ordinary
+native request alias rejection, and positive preservation of cross-calendar
+Periods plus REPORTING/OPENING/PARTIAL_INCLUDED_PERIOD type distinctions. The native
+alias request is independently blocked before any completed owner execution.
+
+Final combined post-F14 rerun follows; root-originated concern, independent
+reproduction, remediation and positive controls are all preserved here.
+
+### Final post-F14 independent rerun
+
+Independently reran all four Stage2 modules after the alias gate: **118 distinct
+methods PASS, 0 FAIL, 0 ERROR** (41 authored, 41 intermediate independent, nine
+checkpoint independent, 27 release independent). The four focused alias methods
+are included in 118, not additional distinct tests. `git diff --check` PASSes.
+
+There are **zero unresolved substantive findings F1–F14 in the independently
+inspected completed Stage2 architecture and demonstrated migration scope**. This
+post-F14 result supersedes the earlier combined method counts while retaining their
+history. Broader repository validation, deterministic flagship reproduction,
+immutable final publication and exact-head workflows remain separate integrator
+release gates; this reviewer makes no independent claim to have executed them.
