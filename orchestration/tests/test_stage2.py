@@ -108,7 +108,7 @@ class VersionControls(unittest.TestCase):
         plan=copy.deepcopy(correction(self.f));plan['execution_order'].append(self.n['UK-SEP'].id)
         with self.assertRaises(ValueError):self.e.reexecute(plan,self.f['executors'],self.f['sources'])
     def test_old_versions_not_current_economics(self):
-        correction(self.f);self.e.reexecute(self.e.rework_history[-1],self.f['executors'],self.f['sources']);self.assertEqual(len(self.e.current_payloads()),8);self.assertEqual(len(self.e.versions.versions),13)
+        correction(self.f);self.e.reexecute(self.e.rework_history[-1],self.f['executors'],self.f['sources']);self.assertEqual(len(self.e.current_payloads()),9);self.assertEqual(len(self.e.versions.versions),14)
     def test_current_dependency_wrong_calendar(self):
         edge=next(e for e in self.e.edges.values() if e.consumer_node==self.n['GROUP'].id)
         with self.assertRaises(ValueError):replace(edge,dependency_type='CURRENT').validate(self.e.graph,self.e.cases,self.e.periods)

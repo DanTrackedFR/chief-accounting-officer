@@ -14,7 +14,8 @@ class CaseRegistry:
     def __init__(self,scopes,periods): self.scopes=scopes;self.periods=periods;self.cases={}
 
     def register(self,case,scope_id,period_id,cycle,parent_id=None,provenance=()):
-        scope=self.scopes.get(scope_id); self.periods.get(period_id)
+        scope=self.scopes.get(scope_id); period=self.periods.get(period_id)
+        if scope.reporting_calendar and scope.reporting_calendar!=period.calendar_id:raise ValueError('Wrong Case fiscal calendar')
         expected=case_identity(scope_id,period_id,case.objective,cycle)
         if case.id!=expected or case.id in self.cases or not provenance: raise ValueError('Duplicate/substituted/unqualified Case identity')
         if parent_id is not None:
@@ -53,7 +54,7 @@ class CaseRegistry:
                 for edge in edges.values():
                     if edge.consumer_node==node.id and edge.required:
                         producer=versions.current(edge.producer_node,allow_stale=True)
-                        if producer is None or versions.state(producer.version_id)!='CURRENT':unresolved.append(edge.producer_node)
+                        if producer is None or versions.state(producer.version_id)!='CURRENT' or graph.nodes[edge.producer_node].status!='complete':unresolved.append(edge.producer_node)
             outcome='partial' if unresolved else 'complete' if required else 'blocked'
             if outcome!=case.outcome:
                 case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Required dependency currentness changed'))

@@ -84,8 +84,9 @@ class EffectiveInterval:
     provenance: tuple
 
     def validate(self,periods,scopes):
-        scopes.get(self.scope_id)
+        scope=scopes.get(self.scope_id)
         source=periods.get(self.source_period); included=periods.get(self.included_period)
+        if scope.reporting_calendar and scope.reporting_calendar!=source.calendar_id:raise ValueError('Effective interval Scope fiscal calendar differs')
         if not self.owner or not self.provenance or self.effective_event not in ('ACQUISITION','DISPOSAL','BOUNDED_INCLUSION'): raise ValueError('Governed effective event required')
         effective=day(self.effective_date)
         if included.period_type!='PARTIAL_INCLUDED_PERIOD' or source.calendar_id!=included.calendar_id or not day(source.start)<=day(included.start)<=day(included.end)<=day(source.end): raise ValueError('Impossible included interval')
@@ -109,6 +110,23 @@ class PeriodRegistry:
             if period.calendar_id not in self.calendars or period.period_id in self.periods: raise ValueError('Unknown calendar or duplicate Period')
             self.periods[period.period_id]=period; self.status[period.period_id]='OPEN'
         for relationship in relationships: self.add_relationship(relationship)
+
+    @classmethod
+    def from_record(cls,record):
+        if set(record)!={'calendars','periods','relationships','history'}:raise ValueError('Canonical Period registry record required')
+        periods=[{k:v for k,v in row.items() if k!='status'} for row in record['periods']]
+        relationships=[]
+        for row in record['relationships']:
+            edge=PeriodRelationship(**{k:v for k,v in row.items() if k!='id'})
+            if edge.id!=row.get('id'):raise ValueError('Period relationship identity relabelled')
+            relationships.append(edge)
+        registry=cls(record['calendars'],periods,relationships)
+        for event in record['history']:
+            if event.get('event')=='CLOSED':registry.close(event['period_id'])
+            elif event.get('event')=='REOPENED':registry.reopen(event['period_id'],event['reason'],event['approval'],event['case_ids'],event['node_ids'])
+            else:raise ValueError('Unknown governed Period event')
+        if json.dumps(registry.record(),sort_keys=True)!=json.dumps(record,sort_keys=True):raise ValueError('Period registry lifecycle/history differs')
+        return registry
 
     def get(self,key):
         if key not in self.periods: raise ValueError('Unknown governed Period')
@@ -139,7 +157,7 @@ class PeriodRegistry:
 
     def close(self,key):
         self.get(key)
-        if self.status[key]!='OPEN': raise ValueError('Period cannot close')
+        if self.status[key] not in ('OPEN','REOPENED'): raise ValueError('Period cannot close')
         self.status[key]='CLOSED'; self.history.append(dict(period_id=key,event='CLOSED'))
 
     def reopen(self,key,reason,approval,case_ids,node_ids):

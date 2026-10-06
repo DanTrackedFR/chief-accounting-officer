@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 20719)
-Total output lines: 973
-
 """Governed Case runtime. Accounting authority stays behind assess_case.
 
 No approval is generated here. Reviewed consumer workpapers must already bind
@@ -546,7 +543,36 @@ class CAO:
             if number(debt['opening_carrying'])!=number(item['opening_book']) or number(base['repayments'])!=number(tx['settlement']) or number(base['effective_interest'])!=number(base['cash_interest']) or number(base['draws']) or number(base['eligible_cost']):raise ValueError('Monetary bridge outside qualified plain settled-interest liability scope')
             if number(base['closing'])!=number(item['foreign_amount']-Decimal(0) if isinstance(item['foreign_amount'],Decimal) else item['foreign_amount'])*number(item['opening_rate'])-number(tx['settlement']):raise ValueError('Original currency base and principal differ')
             if semantic!='debt_base' and number(value)!=number(base['closing']):raise ValueError('FX maturity allocation requires complete evidenced principal class')
-            value-=number(at(fxnode.res…719 tokens truncated… source):
+            value-=number(at(fxnode.result['calculations'],component['metric_path']))
+            if value!=number(tx['closing']):raise ValueError('Monetary closing liability bridge differs')
+        sign=number(b.get('sign',1))
+        if semantic in ('ar_balance','credit_exposure') or semantic.startswith('ar_ageing_'):
+            if sign!=1:raise ValueError('Receivable exposure sign cannot invert')
+        if semantic in ('contract_balance','allowance') and consumer.selected_skill=='financial-statements':
+            row=at(inputs[consumer.id],b['target_path'][:-1])
+            category='asset' if semantic=='allowance' or value>=0 else 'liability'
+            if row.get('category')!=category:raise ValueError('Owner balance statement classification differs')
+        if consumer.selected_skill=='financial-statements':
+            targets={'debt_base':('liability',-1),'interest_expense':('expense',1),'derivative_balance':('asset' if value>=0 else 'liability',1),'hedge_pnl':('revenue' if value>=0 else 'expense',-1),'hedge_oci':('oci',-1),'cash_balance':('asset',1)}
+            if semantic in targets:
+                expected_category,expected_sign=targets[semantic]
+                if len(b['target_path'])!=3 or b['target_path'][0]!='current_tb' or b['target_path'][2]!='balance' or sign!=expected_sign or at(inputs[consumer.id],b['target_path'][:-1]).get('category')!=expected_category:raise ValueError('Owner reporting semantic target/classification differs')
+            if semantic=='financing_cash' and b['target_path']!=['cash_flow','financing']:raise ValueError('Financing cash must bind actual statement cash flow')
+        actual=number(at(inputs[consumer.id],b['target_path']))*sign
+        if actual!=value or number(b['amount'])!=value: raise ValueError('Owner and consumer amount contradiction')
+        if not isinstance(b.get('economic_id'),str) or not b['economic_id'] or not b.get('qualification_evidence'):
+            raise ValueError('Economic identity and eligible-cost evidence required')
+        identity=(b['economic_id'],purpose if purpose=='absorb' else (purpose,consumer.id))
+        metric_identity=('metric',producer.id,tuple(path),purpose if purpose=='absorb' else (purpose,consumer.id))
+        target_identity=('target',consumer.id,tuple(b['target_path']),purpose)
+        if identity in consumed or metric_identity in consumed or target_identity in consumed: raise ValueError('Economic source consumed twice')
+        consumed.update((identity,metric_identity,target_identity))
+        c.handoff_ledger.append(dict(producer=producer.id,consumer=consumer.id,semantic=semantic,
+            metric_path=path,economic_id=b['economic_id'],amount=str(value),purpose=purpose,
+            fingerprint=producer.result['case_fingerprint'],components=copy.deepcopy(components),qualification_evidence=b['qualification_evidence']))
+
+    @staticmethod
+    def _result_receipt(n, source):
         return dict(producing_node=n.id,owner=n.selected_skill,scope_id=n.scope_id,scope_type=n.scope_type,
             framework=n.framework,jurisdiction=n.jurisdiction,functional_currency=n.functional_currency,
             presentation_currency=n.presentation_currency,period=n.period,

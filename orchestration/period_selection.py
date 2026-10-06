@@ -19,6 +19,7 @@ def validate_activity(source):
     start,end,effective=[date.fromisoformat(selection[k]) for k in ('source_start','source_end','effective_date')]
     if start>=end or not start<=effective<=end or selection['source_end']!=source['reporting_period']:
         raise ValueError('Invalid source or effective-date population')
+    governed_activity_interval(source)
     records=selection['records'];ids=[r['id'] for r in records]
     if len(ids)!=len(set(ids)) or sorted(ids)!=sorted(selection['inventory']):raise ValueError('Dated activity population incomplete')
     if source['translation']['operation_id']!=source['entity']:raise ValueError('Foreign operation entity differs from activity source')
@@ -53,3 +54,23 @@ def validate_activity(source):
     pre_profit=total_revenue-total_expense-profit
     if balances.get(selection['equity_account'])!=full.get(selection['equity_account'],Decimal(0))-pre_profit:
         raise ValueError('Acquisition equity does not preserve pre-acquisition retained profit')
+
+
+def governed_activity_interval(source):
+    """Normalize the existing qualified cutoff through generic Period dimensions.
+
+    Native specialist acquisition-date receipts and full population checks still
+    establish the cutoff's authority. No date inference or amount proration.
+    """
+    from .periods import FiscalCalendar,Period,PeriodRegistry,PeriodRelationship,EffectiveInterval
+    from .scopes import Scope,ScopeRegistry
+    selection=source['activity_selection']
+    calendar=source.get('reporting_calendar') or 'UNSPECIFIED:'+source['entity']
+    provenance=tuple(selection['evidence']) if isinstance(selection['evidence'],list) else (selection['evidence'],)
+    whole=Period.create(calendar,selection['source_start'],selection['source_end'],date.fromisoformat(selection['source_end']).year,'BOUNDED-SOURCE',provenance=provenance)
+    included=Period.create(calendar,selection['effective_date'],selection['source_end'],whole.fiscal_year,'BOUNDED-INCLUDED','PARTIAL_INCLUDED_PERIOD',provenance=provenance)
+    periods=PeriodRegistry([FiscalCalendar(calendar,'Supplied bounded source calendar',1,1,provenance)],[whole,included],[PeriodRelationship(whole.period_id,included.period_id,'PARTIAL_INCLUDED_PERIOD',provenance)])
+    scopes=ScopeRegistry([Scope(source['entity'],'LEGAL_ENTITY',source['entity'],source['entity'],provenance=provenance)])
+    interval=EffectiveInterval(source['entity'],'business-combinations',whole.period_id,included.period_id,'ACQUISITION',selection['effective_date'],provenance).validate(periods,scopes)
+    from dataclasses import asdict
+    return dict(period_registry=periods.record(),effective_interval=asdict(interval))

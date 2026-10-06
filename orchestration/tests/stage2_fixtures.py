@@ -47,7 +47,7 @@ def build():
         n=Node(key,label,owner,'Controlled dependency proof',s.scope_id,s.framework,[p.start,p.end],scope_id=s.scope_id,scope_type=s.scope_type,jurisdiction=s.jurisdiction,functional_currency=s.functional_currency,presentation_currency=s.presentation_currency,period_id=p.period_id,case_id=c.id,logical_id=label)
         graph.add(n);cases.bind_node(c.id,n);nodes[label]=n
         return n
-    for label,owner,c in [('US-SEP','revenue-recognition',us_sep),('US-REPORT','orchestration-entity-observation',us_sep),('US-OPEN','orchestration-opening-observation',us_oct),('GROUP','orchestration-group-observation',group),('ANALYTICS','orchestration-local-analytics',group),('UK-SEP','revenue-recognition',uk),('UK-CONTROL','orchestration-process-observation',uk),('NL-CONTROL','orchestration-process-observation',nl)]:node(label,owner,c)
+    for label,owner,c in [('US-SEP','revenue-recognition',us_sep),('US-OCT','revenue-recognition',us_oct),('US-REPORT','orchestration-entity-observation',us_sep),('US-OPEN','orchestration-opening-observation',us_oct),('GROUP','orchestration-group-observation',group),('ANALYTICS','orchestration-local-analytics',group),('UK-SEP','revenue-recognition',uk),('UK-CONTROL','orchestration-process-observation',uk),('NL-CONTROL','orchestration-process-observation',nl)]:node(label,owner,c)
     coordinator=VersionedExecution(graph,cases,registry)
     for a,b,typ in [('US-SEP','US-REPORT','CURRENT'),('US-REPORT','US-OPEN','OPENING'),('US-OPEN','GROUP','QUALIFIED_ALIGNMENT'),('GROUP','ANALYTICS','CURRENT')]:
         producer,consumer=nodes[a],nodes[b]
@@ -56,7 +56,7 @@ def build():
         return dict(status='complete',case_fingerprint=digest([source,receipts]),observed_amount=receipts[0]['value'] if receipts else source['value'],accounting_authority=False,currency='USD' if n.scope_id=='GROUP-EUR' else n.functional_currency,limitations=['Local observation only; no framework/currency conversion or consolidated total.'])
     for label,n in nodes.items():
         if n.selected_skill=='revenue-recognition':
-            s=scopes.get(n.scope_id);c=revenue(s.framework,'2026-09-01');c.update(entity=s.scope_id,scope_id=s.scope_id,jurisdiction=s.jurisdiction,reporting_period='2026-09-30',period_id=n.period_id,functional_currency=s.functional_currency,case_id=label)
+            s=scopes.get(n.scope_id);c=revenue(s.framework,n.period[0]);c.update(entity=s.scope_id,scope_id=s.scope_id,jurisdiction=s.jurisdiction,reporting_period=n.period[1],period_id=n.period_id,functional_currency=s.functional_currency,case_id=label)
             c['applicability_review']['effective_period']=n.period; c['balance_bridge']['opening_revenue']='0';c['source_population']=['source-'+label+'-v1'];c['evidence']=['synthetically reviewed contract source '+label]
             sources[n.id]=finalize('revenue-recognition',c);executors[n.id]=CAO().execute_versioned_owner
         else:sources[n.id]=dict(value='0',scope_id=n.scope_id,period_id=n.period_id,source_id='source-'+label);executors[n.id]=observation

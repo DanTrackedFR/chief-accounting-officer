@@ -141,7 +141,7 @@ def scoped_context(context, source):
         from .periods import PeriodRegistry
         temporal=context.get('period_registry')
         if not isinstance(temporal,dict):raise ValueError('Governed Period registry required')
-        periods=PeriodRegistry(temporal['calendars'],temporal['periods'],temporal.get('relationships',[]))
+        periods=PeriodRegistry.from_record(temporal) if 'history' in temporal else PeriodRegistry(temporal['calendars'],temporal['periods'],temporal.get('relationships',[]))
         period=periods.get(source['period_id'])
         if registered.reporting_calendar and period.calendar_id!=registered.reporting_calendar:raise ValueError('Wrong Scope fiscal calendar')
         if (source.get('period_start'),source.get('reporting_period'))!=(period.start,period.end):raise ValueError('Owner Period dates differ')

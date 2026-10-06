@@ -73,7 +73,8 @@ class ResultVersion:
 
 
 class VersionRegistry:
-    def __init__(self): self.versions={};self.states={};self.active={};self.supersession={};self.history=[]
+    def __init__(self,graph=None,edges=None):
+        self.graph=graph;self.edges=edges;self.versions={};self.states={};self.active={};self.supersession={};self.history=[]
 
     def current(self,node_id,allow_stale=False):
         key=self.active.get(node_id)
@@ -88,7 +89,9 @@ class VersionRegistry:
 
     def require_current(self,key):
         if self.state(key)!='CURRENT' or self.active[self.versions[key].node_id]!=key: raise ValueError('Stale/superseded result rejected')
-        return self.versions[key]
+        version=self.versions[key]
+        for edge,bound in version.dependency_bindings:self.require_current(bound)
+        return version
 
     def publish(self,node,payload,source,bindings,reason):
         import json
@@ -98,7 +101,13 @@ class VersionRegistry:
         source_hash=fingerprint(source);result_hash=fingerprint(payload)
         exact=payload.get('case_fingerprint')
         if not isinstance(exact,str) or not exact:raise ValueError('Exact-case fingerprint required')
-        for edge,version in bindings:self.require_current(version)
+        for edge,version in bindings:
+            producer=self.require_current(version)
+            contract=self.edges.get(edge) if self.edges is not None else None
+            if contract is None or contract.producer_node!=producer.node_id or contract.consumer_node!=node.id:raise ValueError('Wrong dependency version producer/consumer')
+            if (producer.scope_id,producer.period_id,producer.case_id)!=(contract.producer_scope,contract.producer_period,contract.producer_case):raise ValueError('Dependency binding dimensions differ')
+        expected={k for k,e in (self.edges or {}).items() if e.consumer_node==node.id}
+        if {edge for edge,version in bindings}!=expected or len(bindings)!=len(expected):raise ValueError('Dependency binding omitted/duplicated')
         content=[result_id,old.version_id if old else None,exact,source_hash,result_hash,sorted(bindings),reason]
         key=identity('version',content)
         if key in self.versions:raise ValueError('Version overwrite')
@@ -118,10 +127,13 @@ class VersionRegistry:
 
 class VersionedExecution:
     def __init__(self,graph,cases,periods):
-        self.graph=graph;self.cases=cases;self.periods=periods;self.edges={};self.versions=VersionRegistry();self.receipts=[];self.rework_history=[]
+        from .runtime import CAO
+        self.cao=CAO()
+        self.graph=graph;self.cases=cases;self.periods=periods;self.edges={};self.versions=VersionRegistry(graph,self.edges);self.receipts=[];self.rework_history=[]
 
     def add_dependency(self,edge):
         edge.validate(self.graph,self.cases,self.periods)
+        if self.versions.current(edge.consumer_node,allow_stale=True) is not None:raise ValueError('Dependency contracts cannot silently change after qualified execution')
         if edge.id in self.edges:raise ValueError('Duplicate dependency')
         target=self.graph.nodes[edge.consumer_node]
         dependencies=list(target.dependencies)
@@ -148,13 +160,19 @@ class VersionedExecution:
 
     def execute(self,node_id,executor,source,reason):
         node=self.graph.nodes[node_id]
+        if not isinstance(source,dict) or (source.get('scope_id',source.get('entity')),source.get('period_id'))!=(node.scope_id,node.period_id):raise ValueError('Execution source Scope/Period differs')
         self.cases.bind_node(node.case_id,node);self.periods.authorize_execution(node.period_id,node.case_id,node.id)
         receipts=[self.receipt(k) for k,e in sorted(self.edges.items()) if e.consumer_node==node.id]
         declared={self.edges[r['dependency_id']].producer_node for r in receipts}
         if set(node.dependencies)!=declared:raise ValueError('Workplan has unqualified dependencies')
         for receipt in receipts:self.validate_receipt(receipt,node.id)
         previous=self.versions.current(node.id,allow_stale=True)
-        result=executor(node,copy.deepcopy(source),copy.deepcopy(receipts))
+        if node.selected_skill.startswith('orchestration-'):
+            result=executor(node,copy.deepcopy(source),copy.deepcopy(receipts))
+            if result.get('accounting_authority') is not False or result.get('journal_entry_implications'):raise ValueError('Bounded consumer cannot create accounting authority or postings')
+        else:
+            if receipts and source.get('versioned_dependency_receipts')!=receipts:raise ValueError('Native consumer requires independently reviewed exact version bindings')
+            result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
         version=self.versions.publish(node,result,source,[(r['dependency_id'],r['result_version']) for r in receipts],reason)
         node.result=version.payload();node.status='complete';node.iterations+=1;node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT')
         self.receipts.extend(copy.deepcopy(receipts))
@@ -203,7 +221,41 @@ class VersionedExecution:
             old=self.versions.current(node,allow_stale=True)
             new=self.execute(node,executors[node],sources[node],'Dependency rework: '+plan['new_version'])
             ledger.append(dict(node=node,old_version=old.version_id,new_version=new.version_id))
+        for case_id in plan['affected_cases']:
+            case=self.cases.get(case_id)
+            if case.outcome!='complete':continue
+            for node_id in case.node_refs:
+                node=self.graph.nodes[node_id]
+                if node.required:self.versions.require_current(self.versions.current(node_id).version_id)
+                for receipt in [self.receipt(k) for k,e in self.edges.items() if e.consumer_node==node_id]:self.validate_receipt(receipt,node_id)
+            case.challenge_results.append(dict(kind='selective-rework-currentness',status='PASS',upstream=plan['new_version'],reexecuted=[r for r in ledger if self.graph.nodes[r['node']].case_id==case_id]))
+            case.rework_state=dict(status='CURRENT',upstream=plan['new_version'])
+            if case.status=='IN_PROGRESS':
+                for status in ('CHALLENGE','CONCLUDED','DOCUMENTED'):case.transition(status)
+                if case.observer_ran and case.artifacts:case.transition('CLOSED')
         return ledger
 
     def current_payloads(self):
-        return {n:self.versions.current(n).payload() for n in sorted(self.versions.active)}
+        return {n:self.versions.require_current(self.versions.current(n).version_id).payload() for n in sorted(self.versions.active)}
+
+    def current_journals(self,context,events):
+        """Only exact current result versions may contribute posting economics.
+
+        Opening/comparative observations are lineage, not owner postings. Event
+        declarations remain reviewed input; supersession creates no reversal.
+        """
+        from .scoped_journals import allocate_scoped
+        native=[]
+        for key in sorted(self.versions.active):
+            version=self.versions.current(key)
+            node=self.graph.nodes[key]; payload=version.payload()
+            journals=payload.get('journal_entry_implications',[])
+            if not journals:continue
+            native.append(dict(owner=node.selected_skill,node=node.id,source_scope=node.scope_id,posting_scope=node.scope_id,accounting_layer=node.scope_type,currency=node.functional_currency or node.presentation_currency,period=node.period,period_id=node.period_id,result_version=version.version_id,journals=journals))
+        for event in events:
+            if event.get('result_version') is None:raise ValueError('Exact current journal result version required')
+            version=self.versions.require_current(event['result_version'])
+            if (version.scope_id,version.period_id)!=(event.get('posting_scope'),event.get('period_id')):raise ValueError('Journal Scope/Period relabelled')
+            refs=event['primary']+[r for witness in event['witnesses'] for r in witness]
+            if any(r['owner']!=version.node_id for r in refs):raise ValueError('Journal references wrong version producing node')
+        return allocate_scoped(native,context,events)

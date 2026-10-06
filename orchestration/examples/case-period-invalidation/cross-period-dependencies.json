@@ -1,0 +1,48 @@
+[
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+    "consumer_node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+    "consumer_period": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+    "consumer_scope": "ENTITY-US",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_type": "OPENING",
+    "evidence": [
+      "explicit-reviewed-dependency"
+    ],
+    "id": "dependency:35f6da18566fcba97a928a573bee5eca79b7308dad6424650d4417c6a4ae264b",
+    "material": null,
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_case": "case:f3475916e2c8e1a54af00784de0060defe507c50afca4525fd41827b7e70840d",
+    "producer_node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+    "producer_period": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Reviewed local USD observation across calendars; no EUR translation"
+    ],
+    "consumer_case": "case:0ad1e0fbf03ddc930d377eb8fe4baaaa425199ed1e53caae559bd90c9450eab2",
+    "consumer_node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "DECLARED_CHILD",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "explicit-reviewed-dependency"
+    ],
+    "id": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
+    "material": null,
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_case": "case:ad9173595b43af82f186b5401bc4ff5f9f2adf5e330655d1a7706c155f7a96a7",
+    "producer_node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+    "producer_period": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  }
+]
