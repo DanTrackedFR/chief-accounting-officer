@@ -326,5 +326,5 @@ class ProposalValidator:
             return Validation(True,[],copy.deepcopy(proposal))
         except (ValueError,TypeError,KeyError,AttributeError,InvalidOperation,OverflowError) as exc:
             # Do not echo model content or source text into questions/errors.
-            fail('INVALID_PROPOSAL','validation')
+            fail('UNRESOLVED_SCOPE' if str(exc) in ('Ambiguous Scope Candidate','Unknown fact execution scope','Unknown issue Scope Candidate') else 'INVALID_PROPOSAL','validation')
             return Validation(False,errors)

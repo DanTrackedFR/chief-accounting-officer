@@ -1,5 +1,5 @@
 """Deterministic Stage 1 source-to-public execution witnesses; never patch outputs."""
-import json
+import json, hashlib, unittest
 from pathlib import Path
 from orchestration.runtime import CAO
 from orchestration.tests.scope_fixtures import run,reviewed_pack,SCOPE,ROWS,source_pack,semantic_proposal
@@ -7,6 +7,21 @@ from orchestration.scopes import ScopeRegistry
 from orchestration.scoped_journals import allocate_scoped
 
 ROOT=Path(__file__).resolve().parents[1]
+
+def adversarial_results():
+    """Execute the permanent authored controls, recording outcomes without timings."""
+    from orchestration.tests import test_scopes
+    suite=unittest.defaultTestLoader.loadTestsFromModule(test_scopes)
+    class Witness(unittest.TestResult):
+        def __init__(self):super().__init__();self.passed=[]
+        def addSuccess(self,test):super().addSuccess(test);self.passed.append(test.id())
+    result=Witness();suite.run(result)
+    assert result.wasSuccessful(), result.errors+result.failures
+    return dict(tests=[dict(test=name,status='PASS') for name in sorted(result.passed)],distinct_tests=result.testsRun)
+
+def document_witness(name):
+    path=ROOT/name
+    return dict(path='orchestration/'+name,sha256=hashlib.sha256(path.read_bytes()).hexdigest())
 
 def artifacts():
     result=run();case=result.case
@@ -35,6 +50,9 @@ def artifacts():
         'execution-nodes.json':case.workplan_nodes,'owner-result-registry.json':case.owner_results,'receipt-ledger.json':case.handoff_ledger,
         'journal-event-ledger.json':dict(native=native,allocation=ledger,selected=selected),'exact-once.json':dict(passed=True,event_count=len(ledger),posting_count=len(selected)),
         'group-consumer.json':case.group_consumer,'lineage.json':lineage,'public-answer.json':CAO().public(case),
+        'reviewed-input-packs.json':case.reviewed_input_packs,
+        'architecture-reconstruction.json':document_witness('STAGE1-ARCHITECTURE-RECONSTRUCTION.md'),
+        'stage2-handoff.json':document_witness('STAGE1-TO-STAGE2-HANDOFF.md'),
     }
     for n in case.graph.nodes.values():
         if n.selected_skill=='revenue-recognition':out[n.scope_id.lower()+'-revenue-result.json']=n.result
@@ -43,6 +61,7 @@ def artifacts():
 
 def main():
     target=ROOT/'examples/scope-repeated-owner';target.mkdir(exist_ok=True)
-    for name,value in artifacts().items():(target/name).write_text(json.dumps(value,sort_keys=True,indent=2,default=str)+'\n')
+    values=artifacts();values['adversarial-results.json']=adversarial_results()
+    for name,value in values.items():(target/name).write_text(json.dumps(value,sort_keys=True,indent=2,default=str)+'\n')
 
 if __name__=='__main__':main()

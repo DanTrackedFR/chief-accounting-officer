@@ -48,4 +48,24 @@ A suspected metadata contradiction bypass was retracted after correcting a posit
 
 ## Validation status
 
-Initial review demonstrated real acceptance failures for QA-S1-01 through QA-S1-05. These tests deliberately assert fail-closed expected behavior and remain permanent regression coverage. Final independent rerun pending remediation; do not claim final readiness from this intermediate report.
+Initial review demonstrated real acceptance failures for QA-S1-01 through QA-S1-05. These tests deliberately assert fail-closed expected behavior and remain permanent regression coverage.
+
+Final independent rerun against pushed remediation milestone `ee7ee0b357e071108eca9f39948f3218a245a2df` (tree `eda4ab16962b5c65d02de1f34da02af73993edc1`):
+
+`python -m unittest orchestration.tests.test_scope_independent -v`
+
+**44 distinct independent tests passed, 18.273 seconds, zero failures/errors.** No implementation or fixture was changed by the reviewer. The only post-rerun reviewer change is this report.
+
+Verified remediation:
+
+- QA-S1-01: separate exact scoped child ReviewedInputPacks, exact declared source population versus actual fact lineage, and reviewed inventory fingerprint/metadata manifests; direct repeated-owner runtime independently checks source dimensions.
+- QA-S1-02: deterministic producing node must match supplied owner plus governed posting Scope dimensions; native/event currency and bounded period must match governed Scope; allocation uses the existing gross-line exact-once allocator.
+- QA-S1-03: qualified documents, population bindings and text assertions require registered origin Scope; supplied metadata agrees with origin framework/currency/jurisdiction. Shared Group policy is explicitly qualified through `applies_to_scope_ids`, retaining its Group origin; hierarchy does not authorize it automatically.
+- QA-S1-04: selected execution and journal source/posting qualification reject inactive or outside-effective Scopes. This is bounded currentness validation, not a Case lifecycle engine.
+- QA-S1-05: Group context id, exact source fingerprint and Scope/framework/currency must match actual Intake inventory; no fictional fourth lineage is accepted.
+
+The supplemental same-Scope document metadata attack and effective interval/posting-currentness attacks passed on the stable rerun. Rejected inputs cannot yield a complete result; legitimate equal-value cross-Scope postings remain distinct. Existing clean Group execution used generic Scope registry and deterministic node identities. Ordinary single-entity Revenue executed complete through automatic one-Scope normalization.
+
+Public artifact review: `examples/scope-repeated-owner/public-answer.json` reports NL EUR/IFRS, US USD/US GAAP, and UK GBP/UK GAAP separately. It explicitly states that no consolidated IFRS/EUR total is established, exposes unresolved US/UK conversion requirements, emits no posting journals, and leaks no internal execution IDs, source population identifiers or exact fingerprints. Its complete status means the bounded local-result observation objective is complete; conversion authority remains unresolved and outside Stage 1. Two independent complete artifact generations matched canonical JSON exactly.
+
+**Unresolved substantive Stage 1 independent architecture findings: 0.** This reviewer acceptance does not assert repository-wide regression or exact-head CI completion; those remain parent-owned final gates.

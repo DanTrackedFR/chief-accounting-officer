@@ -153,7 +153,7 @@ class IndependentSaaSAcceptance(unittest.TestCase):
         owners={r['owner'] for r in self.result.lineage}
         self.assertTrue({'revenue-recognition','accounts-receivable','financial-instruments-ecl'}<=owners)
         for r in self.result.lineage:self.assertTrue(r['extracted_fields']);self.assertTrue(r['source_lineage'])
-        self.assertTrue(any(r['producer']=='accounts-receivable' and r['consumer']=='financial-statements' for r in self.result.case.handoff_ledger))
+        self.assertTrue(any(r['producer']==self.result.case.graph.nodes.resolve('accounts-receivable') and r['consumer']==self.result.case.graph.nodes.resolve('financial-statements') for r in self.result.case.handoff_ledger))
     def test_material_unresolved_reconciliation_not_clean(self):
         public=CAO().public(self.result.case)
         self.assertIn('partial',public['status'].lower())

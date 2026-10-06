@@ -153,8 +153,8 @@ class Intake:
             validation=ProposalValidator(self.registry).validate(proposal,inventory,current,objective)
             result.validation=validation.record()
             if not validation.accepted:
-                result.questions=[dict(kind='blocking',attribute='proposal',question='Resolve invalid semantic proposal.')];return result
-            proposal=validation.proposal;result.proposal=proposal.record()
+                result.questions=[dict(kind='blocking',attribute='scope_candidate',question='Resolve ambiguous or unregistered Scope Candidate before qualifying accounting work.')] if any(e.get('code')=='UNRESOLVED_SCOPE' for e in validation.errors) else [dict(kind='blocking',attribute='proposal',question='Resolve invalid semantic proposal.')];return result
+            proposal=validation.proposal;result.proposal=proposal.record();result._current=current
             fields=inventory.fields()
             for key in sorted(set(ctx_conflicts)):
                 result.conflicts.append(dict(attribute=key,kind='context',status='DISPUTED'))

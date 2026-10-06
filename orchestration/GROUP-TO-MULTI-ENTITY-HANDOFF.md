@@ -31,3 +31,7 @@ Document identity alone is insufficient. Reviewed text assertions and complete k
 | Approval | Real authenticated preparer/reviewer separation and scope-specific approval events, rather than synthetic test certificates. |
 
 The dedicated next workstream must independently specify these contracts and migration behavior. Do not generalize by increasing the three-scope cap or weakening receipt/source/journal gates. Existing Manufacturing, Diagnostic, Intake, SaaS and Treasury regressions remain mandatory migration controls.
+
+## Stage 1 migration
+
+The generic Scope and deterministic node substrate now supersedes the historical three-Scope runtime limitation described above. The bounded Group flagship executes through the same ScopeRegistry and node-addressed owner input/result primitives as ordinary and repeated-owner work. Its accounting owners, source replay, perimeter conclusions and exact-once gross-line controls remain unchanged. See STAGE1-TO-STAGE2-HANDOFF.md for the current substrate and the remaining lifecycle/conversion boundaries.

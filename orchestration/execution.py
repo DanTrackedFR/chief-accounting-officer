@@ -44,5 +44,5 @@ def populations(facts):
         if family=='task_attributes':continue
         rows=value if isinstance(value,list) else [value]
         for source in rows:
-            if not isinstance(source,dict):raise ValueError('Malformed scoped fact population')
+            if not isinstance(source,dict):raise ValueError('Malformed supplied fact family: '+(family if family in __import__('orchestration.planning',fromlist=['FACT_ADAPTERS']).FACT_ADAPTERS else 'unregistered'))
             yield family,source

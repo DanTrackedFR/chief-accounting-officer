@@ -834,7 +834,7 @@ class CAO:
             for label in ('opening','draws','eligible_cost','effective_interest','cash_interest','repayments','closing','current','noncurrent'):
                 values['debt_'+label]=str(sum((number(row[label]) for row in balances),Decimal(0)))
             for handoff in c.handoff_ledger:
-                if handoff['consumer']=='financial-statements' and handoff['semantic'] in ('debt_base','debt_current','debt_noncurrent'):
+                if g.nodes.get(handoff['consumer']) is not None and g.nodes[handoff['consumer']].selected_skill=='financial-statements' and handoff['semantic'] in ('debt_base','debt_current','debt_noncurrent'):
                     values[{'debt_base':'reported_debt','debt_current':'current_debt','debt_noncurrent':'noncurrent_debt'}[handoff['semantic']]]=handoff['amount']
             text+=' The governed liability schedule closes at '+values['debt_closing']+' before the separately governed currency movement.'
             if 'reported_debt' in values:text+=' Reported debt is '+values['reported_debt']+', with current '+values.get('current_debt','unresolved')+' and noncurrent '+values.get('noncurrent_debt','unresolved')+'.'

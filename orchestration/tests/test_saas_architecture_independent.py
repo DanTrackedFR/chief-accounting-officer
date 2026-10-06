@@ -71,4 +71,4 @@ class SaaSArchitectureIndependent(unittest.TestCase):
         request={'journal_account_mapping':mapping,'journal_pack_review':{'payload_fingerprint':digest(dict(mapping=mapping,native_owner_journals=native)),'approved':True,'preparer':'P','reviewer':'R'}}
         source={'current_tb':[{'id':'AR','balance':'100'},{'id':'CL','balance':'-100'}], 'comparative_tb':[{'id':'AR','balance':'0'},{'id':'CL','balance':'0'}]}
         with self.assertRaisesRegex(ValueError, 'disagree with reviewed statement GL movement'):
-            CAO()._journal_mapping(None,graph,{'financial-statements':source},request,reporting)
+            CAO()._journal_mapping(None,graph,{reporting.id:source},request,reporting)
