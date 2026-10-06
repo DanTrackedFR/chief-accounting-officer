@@ -52,6 +52,7 @@ class CaseRegistry:
                 if node.status=='not_applicable':continue
                 current=versions.current(node.id,allow_stale=True)
                 if node.status!='complete' or current is None or versions.state(current.version_id)!='CURRENT':unresolved.append(node.id)
+                if current is not None and current.payload().get('unresolved_dependencies'):unresolved.append(node.id)
                 for edge in edges.values():
                     if edge.consumer_node==node.id and edge.required:
                         producer=versions.current(edge.producer_node,allow_stale=True)
@@ -63,6 +64,7 @@ class CaseRegistry:
                 if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
                     case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
             case.result_version_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
-            case.workplan_nodes=[asdict(graph.nodes[k]) for k in sorted(case.node_refs)]
+            from .planning import node_record
+            case.workplan_nodes=[node_record(graph.nodes[k]) for k in sorted(case.node_refs)]
 
     def record(self):return [asdict(self.cases[k]) for k in sorted(self.cases)]

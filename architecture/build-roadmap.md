@@ -155,8 +155,8 @@ The controlled proof corrects a qualified US September Revenue result and invali
 
 Stage 2 does not implement generalized intercompany networks, framework conversion, generalized currency-translation chains, durable persistence or authenticated governance.
 
-#### Stage 3 — Intercompany Network + Framework/Currency Conversion — NEXT
-After Stage 2 is merged, generalize cross-scope interaction:
+#### Stage 3 — Intercompany Network + Framework/Currency Conversion — COMPLETE
+Stage 3 delivers the bounded intercompany network and governed cross-layer execution described in `orchestration/STAGE3-INTEGRATION-HANDOFF.md`, `orchestration/STAGE3-INDEPENDENT-QA.md` and `orchestration/STAGE3-RELEASE-REGRESSION.json`. Exact-head Actions and readiness are recorded in PR #36. Implemented cross-scope interaction:
 - multi-counterparty intercompany graph and transaction-level matching;
 - business-relationship cycles without orchestration-DAG cycles;
 - cross-period and multi-currency intercompany relationships;
@@ -167,7 +167,7 @@ After Stage 2 is merged, generalize cross-scope interaction:
 
 Critical proof: a multi-entity intercompany network reconciles across periods/currencies, local-framework results cannot masquerade as group-framework results, and group eliminations remain distinct from legal-book entries. Produce a committed Stage-4 handoff.
 
-#### Stage 4 — Full Multi-Entity / Multi-Period Integration Flagship — PENDING
+#### Stage 4 — Full Multi-Entity / Multi-Period Integration Flagship — NEXT
 After Stages 1–3 are merged, prove the architecture end-to-end with a controlled multi-entity Group objective using at least three legal entities plus Group scope, repeated owners, multiple periods, multiple functional currencies, local/group framework differences, multiple intercompany edges, group reporting and analytics.
 
 The flagship must deliberately change one qualified upstream entity/period result and prove dependency-driven invalidation, selective rework and an updated Group result without rerunning unrelated work. It must include a material-conflict Case that fails safely and a corrected clean control that reaches COMPLETE/CLOSED.

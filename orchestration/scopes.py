@@ -154,6 +154,9 @@ def execution_identity(owner, context):
     payload=[owner,context['scope_id'],context['scope_type'],context['framework'],context['jurisdiction'],
         context.get('functional_currency'),context.get('presentation_currency'),context['period_start'],context['reporting_period']]
     if context.get('period_id') is not None:payload.append(context['period_id'])
+    if context.get('economic_id') is not None:
+        if not isinstance(context['economic_id'],str) or not context['economic_id'].strip():raise ValueError('Explicit transaction execution identity required')
+        payload.append({'economic_id':context['economic_id']})
     key=hashlib.sha256(json.dumps(payload,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
     return 'exec:'+owner+':'+context['scope_id']+':'+key
 

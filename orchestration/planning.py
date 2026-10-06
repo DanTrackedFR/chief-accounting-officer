@@ -185,6 +185,7 @@ class Node:
     period_id: str = ''
     case_id: str = ''
     logical_id: str = ''
+    economic_id: str | None = None
     scope_id: str = ''
     scope_type: str = ''
     jurisdiction: str = ''
@@ -194,6 +195,12 @@ class Node:
     required: bool = True
     material: object = None
     condition: object = None
+
+
+def node_record(node):
+    row=asdict(node)
+    if row.get('economic_id') is None:row.pop('economic_id',None)
+    return row
 
 
 class Graph:
@@ -234,4 +241,4 @@ class Graph:
         n = self.nodes[id]; n.status='pending'; n.result=None; n.open_items=[]; n.rework_triggered=True
         self.history.append(dict(node=id, event='reopen'))
         for child in n.downstream_consumers: self.reopen(child)
-    def record(self): return [asdict(n) for n in self.nodes.values()]
+    def record(self): return [node_record(n) for n in self.nodes.values()]
