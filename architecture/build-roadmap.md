@@ -130,22 +130,23 @@ The Group flagship proved only one controlled Parent/Sub/Group Case with a sourc
 
 This roadmap item is intentionally split into four sequential PRs. Each stage starts from the newly merged `main` produced by the previous stage. Do not run the four stages in parallel and do not mark the overall workstream COMPLETE until Stage 4 passes its final integration gates.
 
-#### Stage 1 — Scope Graph + Case Hierarchy Foundation — NEXT
-Build the dimensional execution foundation:
+#### Stage 1 — Scope + Repeated-Owner Execution Foundation — NEXT
+Build the stable dimensional execution substrate:
 - arbitrary LEGAL_ENTITY / GROUP / SUBGROUP scope registry without a hard three-scope cap;
-- stable deterministic multidimensional node identity;
-- hierarchical Entity/Subgroup/Group Cases;
+- stable deterministic scope and multidimensional execution-node identity;
 - repeated execution of the same production owner across different scopes without package-key collision;
-- scope-aware facts, source lineage, owner-result receipts and material questions;
-- explicit functional/presentation currency and framework dimensions;
-- legal-entity versus subgroup/group journal scope;
-- bounded migration of the Group flagship entity concepts without claiming multi-period execution;
+- scope-aware facts, source lineage, owner inputs/results and semantic receipts;
+- explicit functional/presentation currency, framework and jurisdiction dimensions;
+- legal-entity versus subgroup/group journal/event scope;
+- scoped exact-once economics;
+- migration of the bounded Group flagship to the generic scope primitives;
 - complete backwards compatibility with Manufacturing, Diagnostic, Intake, SaaS, Treasury and Group flagships.
 
-Stage 1 success requires executable proof that the same owner can run independently for multiple entities/scopes with separate fingerprints, evidence, journals, status and downstream consumers, while cross-entity/currency/framework contamination fails closed. Produce a committed Stage-2 handoff. Do not build general period invalidation or the full intercompany network in Stage 1.
+Stage 1 success requires executable proof that one production owner can run independently for at least three legal-entity scopes with separate fingerprints, evidence, results, journals and consumers; wrong-scope/currency/framework substitution fails closed; and existing Group/single-entity execution remains green. Produce a committed Stage-2 handoff. Do not build general Case hierarchy lifecycle, multi-period invalidation, or the full intercompany network in Stage 1.
 
-#### Stage 2 — Multi-Period + Dependency Invalidation/Rework
+#### Stage 2 — Case Hierarchy + Multi-Period + Dependency Invalidation/Rework
 After Stage 1 is merged, add:
+- hierarchical Entity/Subgroup/Group Cases with independent governance and dependency-aware status propagation;
 - governed period identity for opening/current/prior/comparative/partial periods;
 - acquisition/disposal effective intervals and fiscal-calendar differences;
 - opening-to-closing and comparative lineage;
