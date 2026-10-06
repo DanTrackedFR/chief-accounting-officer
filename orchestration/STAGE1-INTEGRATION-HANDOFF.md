@@ -27,3 +27,13 @@ Authored permanent Stage 1 controls: 52 tests. Independent reviewer: 44 coordina
 Stage 2 handoff: STAGE1-TO-STAGE2-HANDOFF.md. Stage 1 provides Scope and execution identity, not general hierarchical Case lifecycle, opening/prior/comparative period chains, cross-period invalidation, reopening/supersession, acquisition/disposal histories, intercompany networks, framework conversion or new currency translation. No durable persistence or new accounting authority is introduced. Government Grants PR #27/package, Borrowing Costs and Investment Property are untouched. Canonical and supplemental accounting knowledge invariants remain protected.
 
 Roadmap: Stage 1 implementation COMPLETE with publication gates still required; Stage 2 NEXT only after owner merge; Stages 3/4 PENDING; overall workstream IN PROGRESS; Durable Case/Memory NOT YET NEXT.
+
+## Final local acceptance
+
+All 2,168 distinct tests PASS: orchestration 517 (including authored 52 and independent 44), production skills 1,180, leases 17, repository/canonical53, supplemental/independent knowledge 401. Orchestration migration partitions: Manufacturing/foundation 70, Diagnostic 50, Intake 77, SaaS 83, Treasury 80, Group 61, Stage 1 96. Repeated reruns are not added to these totals.
+
+Knowledge partition: taxes 10, agriculture 12 plus independent 71, insurance 35, derivatives 4 plus independent 7, inventory 262. All supplemental validators pass. Canonical approval validator: 157 topics approved, 1,598 claims, zero errors. Standards-evidence validator: zero errors/warnings. git diff --check PASS.
+
+All seven deterministic generators succeed. All 197 committed JSON artifacts reproduce byte-for-byte under PYTHONHASHSEED 17 and 91, including the 23 Stage1 proof artifacts (22 payloads plus the executable 52-test adversarial witness). The independent reviewer separately reproduced these payloads/witnesses. No manual generated-artifact edits. Five independent finding classes have permanent coordinated-mutation regression and zero unresolved findings.
+
+The immutable candidate is formed by the final documentation commit/push. Required exact-head Actions are CAO orchestration integration, Phase 3 skill regression and Standards evidence structural audit. Read their exact SHA, conclusions and readiness status in PR #34. No repository changes are permitted after successful final exact-head CI unless a real defect invalidates the candidate.
