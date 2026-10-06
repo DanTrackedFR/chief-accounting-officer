@@ -332,6 +332,78 @@
       "transformation": "identity"
     },
     {
+      "attribute": "confirmed_principal_timing_current_entity_nl",
+      "candidate_owner": "intercompany-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "source-timing-current-ENTITY-NL:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "30"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "calendar_id": "CALENDAR",
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "ENTITY-NL",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-10-01",
+          "2026-10-31"
+        ],
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "period_role": "CURRENT",
+        "scope_id": "ENTITY-NL",
+        "unit": "currency"
+      },
+      "economic_id": "timing",
+      "extraction_method": "semantic proposal",
+      "family": "intercompany",
+      "id": "fact-timing-current-ENTITY-NL",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "confirmed_principal_timing_effective_entity_nl",
+      "candidate_owner": "intercompany-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "source-timing-effective-ENTITY-NL:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "30"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "calendar_id": "CALENDAR",
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "ENTITY-NL",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-09-20",
+          "2026-09-30"
+        ],
+        "period_id": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
+        "period_role": "CURRENT",
+        "scope_id": "ENTITY-NL",
+        "unit": "currency"
+      },
+      "economic_id": "timing",
+      "extraction_method": "semantic proposal",
+      "family": "intercompany",
+      "id": "fact-timing-effective-ENTITY-NL",
+      "transformation": "identity"
+    },
+    {
       "attribute": "functional_loan_translation",
       "candidate_owner": "foreign-currency",
       "claim": {
@@ -748,6 +820,50 @@
           "functional_loan_uk_translation"
         ],
         "scope_id": "ENTITY-UK"
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "source-timing-current-ENTITY-NL:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fact-timing-current-ENTITY-NL"
+        ],
+        "family": "intercompany",
+        "id": "issue-timing-current-ENTITY-NL",
+        "owner": "intercompany-accounting",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "required_fields": [
+          "confirmed_principal_timing_current_entity_nl"
+        ],
+        "scope_id": "ENTITY-NL"
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "source-timing-effective-ENTITY-NL:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fact-timing-effective-ENTITY-NL"
+        ],
+        "family": "intercompany",
+        "id": "issue-timing-effective-ENTITY-NL",
+        "owner": "intercompany-accounting",
+        "period_id": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
+        "required_fields": [
+          "confirmed_principal_timing_effective_entity_nl"
+        ],
+        "scope_id": "ENTITY-NL"
       }
     },
     {

@@ -79,6 +79,21 @@ def build():
     f['edges'][('timing-ENTITY-NL','nl-comparative')]=e.add_dependency(edge)
     s3.add_edge(f,'nl-opening','group',('observed_amount',))
     s3.add_edge(f,'nl-comparative','group',('observed_amount',))
+    # Prior closing is not itself an October legal balance. A separately
+    # reviewed current native owner consumes the exact opening carrying value.
+    s3.add_node(f,'timing-current-ENTITY-NL','intercompany-accounting',f['containers']['ENTITY-NL-OCT'],'timing')
+    a=f['nodes']['timing-ENTITY-NL'];b=f['nodes']['timing-current-ENTITY-NL']
+    edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'OPENING','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
+    f['edges'][('timing-ENTITY-NL','timing-current-ENTITY-NL')]=e.add_dependency(edge)
+    objective='Review the supplied loan closing balance within the governed September effective interval'
+    effective_case=Case(case_identity('ENTITY-NL',partial.period_id,objective,old.cycle),objective)
+    e.cases.register(effective_case,'ENTITY-NL',partial.period_id,old.cycle,root.id,EVIDENCE)
+    f['containers']['ENTITY-NL-EFFECTIVE']=effective_case
+    s3.add_node(f,'timing-effective-ENTITY-NL','intercompany-accounting',effective_case,'timing')
+    a=f['nodes']['timing-ENTITY-NL'];b=f['nodes']['timing-effective-ENTITY-NL']
+    edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'PARTIAL_INCLUDED_PERIOD','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
+    f['edges'][('timing-ENTITY-NL','timing-effective-ENTITY-NL')]=e.add_dependency(edge)
+    s3.add_edge(f,'timing-effective-ENTITY-NL','group',('calculations','pairs',0,'a_functional'))
     return f
 
 
@@ -197,6 +212,18 @@ def reporting_source(f):
 
 def source(f,label):
     n=f['nodes'][label]
+    if label in ('timing-current-ENTITY-NL','timing-effective-ENTITY-NL'):
+        c=s3.native_context(f,label,s3.legal_source(f,'timing','ENTITY-NL'))
+        pair=c['pairs'][0];pair.update(date=n.period[1],approval_date=n.period[1])
+        row=c['intercompany_transactions'][0]
+        row.update(source_id='source-'+label,book_entry_id='book-'+label,period_id=n.period_id)
+        c['opening_lineage_evidence']='Separately reviewed October loan rollforward; exact September legal closing carrying value EUR30m supplies October opening book, independently confirmed GBP30m principal and unchanged reviewed rate remain separate source facts'
+        s3.bind(f,c,'timing-ENTITY-NL',label,('pairs',0,'opening_book_a'))
+        if label=='timing-effective-ENTITY-NL':
+            c['governed_effective_interval']=asdict(f['effective_interval'])
+            c['opening_lineage_evidence']='Supplied loan book EUR30m and independently confirmed GBP30m closing principal within the reviewed included interval; no drawdown, recognition or allocation treatment inferred from dates'
+        c['versioned_dependency_receipts']=s3.receipts(f,n.id);c['unit_scale']='million'
+        return certify('intercompany-accounting',c)
     if label.startswith('match-'):return matching_source(f,label[6:])
     if label=='uk-translation':return uk_translation(f)
     if label=='uk-conversion':return uk_conversion(f)

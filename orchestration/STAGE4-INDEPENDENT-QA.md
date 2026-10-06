@@ -75,3 +75,5 @@ Latest follow-up rerun: **17 methods, 15 PASS, 2 FAIL, exit 1**. Both outstandin
 ## Fresh continuation separate-context review
 
 A fresh independent reviewer reconstructed current population and native owner contracts and reproduced S4-IQA04 (self-shortened legal perimeter). See `STAGE4-POPULATION-INDEPENDENT-QA.md` for original reproducers, generic remediation, four permanent attacks, seven fresh sealed replacement attacks, and independent rerun: 11 distinct tests PASS. This preserves prior IQA01/IQA02/IQA03 history. IQA03 and final Stage4 acceptance remain OPEN; this is not a zero-unresolved-final-findings claim.
+
+The separate-context continuation reviewer also accepted the bounded native opening/effective-interval step, adding five ordinary-runtime tests. Independent continuation suite now has 16 distinct methods, all PASS. Prior IQA03 remains OPEN and all final release gates remain outstanding. See the appended population QA report rather than interpreting this step as final clean-control approval.

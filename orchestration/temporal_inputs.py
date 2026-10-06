@@ -73,6 +73,14 @@ def validate_native_sources(context,node,source):
     periods=registry(context)
     if periods is None:return
     target=periods.get(node.period_id)
+    interval=source.get('governed_effective_interval')
+    if interval is not None:
+        from .periods import EffectiveInterval
+        if not isinstance(interval,dict):raise ValueError('Governed effective interval required')
+        interval=EffectiveInterval(**interval).validate(periods,scope_registry(context))
+        if (interval.scope_id,interval.owner,interval.included_period)!=(node.scope_id,node.selected_skill,node.period_id):
+            raise ValueError('Effective interval does not qualify this exact execution')
+        periods.require_relationship(interval.source_period,interval.included_period,'PARTIAL_INCLUDED_PERIOD')
     for row in source.get('qualified_scope_sources',[]):
         meta=row.get('metadata',{})
         qualify(context,meta)

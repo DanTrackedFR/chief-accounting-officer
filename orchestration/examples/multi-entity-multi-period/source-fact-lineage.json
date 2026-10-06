@@ -235,6 +235,58 @@
     ]
   },
   {
+    "fact_id": "fact-timing-current-ENTITY-NL",
+    "node": "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "scope_id": "ENTITY-NL",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "f20e4586c63ba3b2c06a97c4e585acea4a2977c3d8d81dc2d1f2275439ad90a7",
+        "id": "source-timing-current-ENTITY-NL:2",
+        "location": {
+          "column": "amount",
+          "record_id": "timing-current-ENTITY-NL",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "3fdb8169a10c2f26af614eb6e0c4c7aaad39c964e44f77679e7f03e04afd0c9c",
+        "source_id": "source-timing-current-ENTITY-NL",
+        "value": "30"
+      }
+    ]
+  },
+  {
+    "fact_id": "fact-timing-effective-ENTITY-NL",
+    "node": "exec:intercompany-accounting:ENTITY-NL:60af489b8cdbd122d804acab82fc26ad6460d25d95d782c4744a7fafbbc4c4ff",
+    "owner_input_path": [
+      "pairs",
+      0,
+      "confirmed_a"
+    ],
+    "period_id": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
+    "scope_id": "ENTITY-NL",
+    "source_lineage": [
+      {
+        "extracted_fingerprint": "f20e4586c63ba3b2c06a97c4e585acea4a2977c3d8d81dc2d1f2275439ad90a7",
+        "id": "source-timing-effective-ENTITY-NL:2",
+        "location": {
+          "column": "amount",
+          "record_id": "timing-effective-ENTITY-NL",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "05cb7968278453d3a4fc2ef0c7ff86784024d7194bf462a4d71f22966f7ba5b5",
+        "source_id": "source-timing-effective-ENTITY-NL",
+        "value": "30"
+      }
+    ]
+  },
+  {
     "fact_id": "fact-translation",
     "node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
     "owner_input_path": [
