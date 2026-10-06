@@ -28,7 +28,7 @@ def artifacts():
         for key in path:
             value = value[key]
         assert Decimal(value) == Decimal(amount)
-        handoff = next(r for r in case.handoff_ledger if r['producer'] == package and r['consumer'] == downstream and r['semantic'] == metric)
+        handoff = next(r for r in case.handoff_ledger if r['producer'] == case.graph.nodes.resolve(package) and r['consumer'] == case.graph.nodes.resolve(downstream) and r['semantic'] == metric)
         lineage.append(dict(source_fact=source, accounting_owner=package, owner_result_path=path,
                             owner_result_amount=str(value), downstream_handoff=handoff,
                             analytical_result=copy.deepcopy(balances), final_public_amount=str(value)))

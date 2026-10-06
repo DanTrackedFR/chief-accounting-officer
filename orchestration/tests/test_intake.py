@@ -37,9 +37,9 @@ class IntakeTests(unittest.TestCase):
     def test_lineage_final_driver_to_source_row(self):
         p=self.prepared;driver=next(d for d in p.case.diagnostics[0]['bridge']['drivers'] if d['label']=='Labour rate')
         self.assertEqual(Decimal(driver['contribution']),Decimal('-160'))
-        owner=next(n['result'] for n in p.case.workplan_nodes if n['id']=='inventory-cost')
+        owner=next(n['result'] for n in p.case.workplan_nodes if n['selected_skill']=='inventory-cost' and n['issue']!='diagnostic accounting follow-up')
         self.assertEqual(Decimal(owner['calculations']['order-1']['direct_labour']),Decimal('10800'))
-        pay=next(n['result'] for n in p.case.workplan_nodes if n['id']=='employee-benefits-payroll')
+        pay=next(n['result'] for n in p.case.workplan_nodes if n['selected_skill']=='employee-benefits-payroll' and n['issue']!='diagnostic accounting follow-up')
         self.assertEqual(Decimal(pay['calculations']['expense']),Decimal('10800'))
         lineage=next(l for l in p.lineage if l['fact_id']=='pay-charge')
         self.assertEqual(lineage['source_lineage'][0]['source_id'],'payroll')

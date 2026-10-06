@@ -18,9 +18,10 @@ from governance_cases import case as governance_case, ready as governance_ready,
 
 PARENT='Parent'; SUB='Subsidiary-US'; GROUP='Group'
 SPAN=['2026-01-01','2026-12-31']; ACQUIRED='2026-07-01'
+from orchestration.scopes import Scope
 SCOPE=dict(entity=GROUP,framework='IFRS',jurisdiction='NL',period_start=SPAN[0],reporting_period=SPAN[1],currency='EUR',materiality='1',
-    execution_scopes=[dict(entity=e,framework='IFRS',jurisdiction=j,period_start=SPAN[0],reporting_period=SPAN[1],currency=cur,level=level)
-        for e,j,cur,level in [(GROUP,'NL','EUR','group'),(PARENT,'NL','EUR','entity'),(SUB,'US','USD','entity')]])
+    scopes=[Scope(GROUP,'GROUP',GROUP,jurisdiction='NL',framework='IFRS',presentation_currency='EUR',provenance=('reviewed-group-profile',)).record()]+[
+        Scope(e,'LEGAL_ENTITY',e,e,GROUP,j,'IFRS',cur,provenance=('reviewed-legal-profile',)).record() for e,j,cur in [(PARENT,'NL','EUR'),(SUB,'US','USD')]])
 OBJECTIVE="Can you review our year-end group accounts? We acquired 80% of a US business on 1 July, the subsidiary reports in USD, there are intercompany balances, goodwill looks high, and I want to know whether the consolidated accounts are right. I've attached the acquisition model, entity trial balances, intercompany schedules, FX rates, tax workpapers, impairment model and consolidation pack. Please test management's claim that the acquisition added the full-year subsidiary profit."
 
 
@@ -285,7 +286,7 @@ def group_sources(clean=False):
     sources.append(raw('parent-tb','Parent trial balance.csv',PARENT,'EUR','account,balance\nparent cash,1380\ninvestment,720\nIC receivable,100\nparent equity,-2000\nparent revenue,-300\nparent expense,100\n'))
     sources.append(raw('sub-tb','Subsidiary USD trial balance.csv',SUB,'USD','account,balance\ncash,1125\ndebt,-200\nIC payable,-125\nsub equity,-550\nsub revenue,-450\nsub expense,200\n'))
     from dataclasses import replace
-    sources=[replace(s,metadata=dict(s.metadata,amount_currency='USD')) if s.id=='ic' else s for s in sources]
+    sources=[replace(s,metadata=dict(s.metadata,amount_currency='USD')) if s.id=='ic' else replace(s,metadata=dict(s.metadata,applies_to_scope_ids=[PARENT,SUB])) if s.id=='policy' else s for s in sources]
     return sources
 
 
@@ -308,7 +309,7 @@ def group_proposal(sources):
         'management-accounting-analytics':['financial-statements'],'disclosure-management':['financial-statements']}
     for family in dict.fromkeys(f.family for f in p.facts):
         fs=[f for f in p.facts if f.family==family];owner=FACT_ADAPTERS[family][0]
-        p.issues.append(cl(dict(id=owner,owner=owner,family=family,fact_ids=[f.id for f in fs],dependencies=dependencies.get(owner,[]),required_fields=[]),[e for f in fs for e in f.claim.evidence]))
+        p.issues.append(cl(dict(id=owner,scope_id=GROUP if owner in ('consolidation','asset-impairment','financial-statements','disclosure-management','management-accounting-analytics') else PARENT if owner=='intercompany-accounting' else SUB,owner=owner,family=family,fact_ids=[f.id for f in fs],dependencies=dependencies.get(owner,[]),required_fields=[]),[e for f in fs for e in f.claim.evidence]))
     return p
 
 

@@ -1,0 +1,399 @@
+[
+  {
+    "blocks": [],
+    "errors": [],
+    "fields": {
+      "source-ENTITY-NL:1": {
+        "extracted_fingerprint": "9bafaa2f581a7beceedda3acc67e084c830d473c66a6b9763209599e476a34c8",
+        "id": "source-ENTITY-NL:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-NL",
+        "value": "contract-1"
+      },
+      "source-ENTITY-NL:2": {
+        "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",
+        "id": "source-ENTITY-NL:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-NL",
+        "value": "800"
+      }
+    },
+    "ledger": [
+      {
+        "field": "source-ENTITY-NL:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-NL"
+      },
+      {
+        "field": "source-ENTITY-NL:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-NL"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+      "format": "csv",
+      "id": "source-ENTITY-NL",
+      "metadata": {
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "ENTITY-NL",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-NL",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "revenue-export.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "record_id",
+          "recognised_revenue"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "recognised_revenue": "source-ENTITY-NL:2",
+              "record_id": "source-ENTITY-NL:1"
+            },
+            "original": {
+              "recognised_revenue": "800",
+              "record_id": "contract-1"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "fields": {
+      "source-ENTITY-UK:1": {
+        "extracted_fingerprint": "9bafaa2f581a7beceedda3acc67e084c830d473c66a6b9763209599e476a34c8",
+        "id": "source-ENTITY-UK:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-UK",
+        "value": "contract-1"
+      },
+      "source-ENTITY-UK:2": {
+        "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",
+        "id": "source-ENTITY-UK:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-UK",
+        "value": "800"
+      }
+    },
+    "ledger": [
+      {
+        "field": "source-ENTITY-UK:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-UK"
+      },
+      {
+        "field": "source-ENTITY-UK:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-UK"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+      "format": "csv",
+      "id": "source-ENTITY-UK",
+      "metadata": {
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "GBP",
+        "entity": "ENTITY-UK",
+        "framework": "UK_GAAP",
+        "jurisdiction": "UK",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-UK",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "revenue-export.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "record_id",
+          "recognised_revenue"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "recognised_revenue": "source-ENTITY-UK:2",
+              "record_id": "source-ENTITY-UK:1"
+            },
+            "original": {
+              "recognised_revenue": "800",
+              "record_id": "contract-1"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "fields": {
+      "source-ENTITY-US:1": {
+        "extracted_fingerprint": "9bafaa2f581a7beceedda3acc67e084c830d473c66a6b9763209599e476a34c8",
+        "id": "source-ENTITY-US:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-US",
+        "value": "contract-1"
+      },
+      "source-ENTITY-US:2": {
+        "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",
+        "id": "source-ENTITY-US:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+        "source_id": "source-ENTITY-US",
+        "value": "800"
+      }
+    },
+    "ledger": [
+      {
+        "field": "source-ENTITY-US:1",
+        "location": {
+          "column": "record_id",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-US"
+      },
+      {
+        "field": "source-ENTITY-US:2",
+        "location": {
+          "column": "recognised_revenue",
+          "record_id": "contract-1",
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-ENTITY-US"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "41aa461f093f48bd5410489f5fae74fa028e3488e43a72e1c62d755ce7ab64d4",
+      "format": "csv",
+      "id": "source-ENTITY-US",
+      "metadata": {
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "USD",
+        "entity": "ENTITY-US",
+        "framework": "US_GAAP",
+        "jurisdiction": "US",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "ENTITY-US",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "revenue-export.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "record_id",
+          "recognised_revenue"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "recognised_revenue": "source-ENTITY-US:2",
+              "record_id": "source-ENTITY-US:1"
+            },
+            "original": {
+              "recognised_revenue": "800",
+              "record_id": "contract-1"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "blocks": [],
+    "errors": [],
+    "fields": {
+      "source-GROUP-EUR:1": {
+        "extracted_fingerprint": "87ef325635aa32dd785d818665ee8fe141d7fae0566c7ea09701c82a524452ba",
+        "id": "source-GROUP-EUR:1",
+        "location": {
+          "column": "reporting_currency",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "41859e63edd48c6f0930b46e104552ea112a91c1ac76178a0e7e158a0c78a625",
+        "source_id": "source-GROUP-EUR",
+        "value": "EUR"
+      }
+    },
+    "ledger": [
+      {
+        "field": "source-GROUP-EUR:1",
+        "location": {
+          "column": "reporting_currency",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "method": "inert extraction",
+        "source_id": "source-GROUP-EUR"
+      }
+    ],
+    "source": {
+      "accounting_authority": false,
+      "blocks": 0,
+      "extraction_confidence": "high",
+      "fingerprint": "41859e63edd48c6f0930b46e104552ea112a91c1ac76178a0e7e158a0c78a625",
+      "format": "csv",
+      "id": "source-GROUP-EUR",
+      "metadata": {
+        "comparator": "actual",
+        "controlled_export": true,
+        "currency": "EUR",
+        "entity": "GROUP-EUR",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "scope_id": "GROUP-EUR",
+        "version": "v1"
+      },
+      "mime": "",
+      "name": "reporting-profile.csv",
+      "parser": "bounded-csv-v1",
+      "raw_ref": "",
+      "rows": 1,
+      "unresolved_dimensions": []
+    },
+    "tables": [
+      {
+        "name": "table",
+        "original_columns": [
+          "reporting_currency"
+        ],
+        "rows": [
+          {
+            "fields": {
+              "reporting_currency": "source-GROUP-EUR:1"
+            },
+            "original": {
+              "reporting_currency": "EUR"
+            },
+            "source_row": 2
+          }
+        ]
+      }
+    ]
+  }
+]

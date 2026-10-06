@@ -10,6 +10,7 @@
       "owner": "accounts-payable",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "supplier_cost"
       ]
@@ -256,7 +257,7 @@
               "side": "Cr"
             }
           ],
-          "owner": "ap-node"
+          "owner": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3"
         },
         {
           "lines": [
@@ -271,7 +272,7 @@
               "side": "Cr"
             }
           ],
-          "owner": "ap-node"
+          "owner": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3"
         }
       ],
       "limitations": [
@@ -303,10 +304,10 @@
   "execution_ledger": [
     {
       "batch": [
-        "ap-node"
+        "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3"
       ],
       "case_fingerprint": "52055b1e5d2c7b8b3ff4ed29d445b591a0ced5c4e1a7e300cdd78ffe5f748d98",
-      "node": "ap-node",
+      "node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
       "status": "complete"
     }
   ],
@@ -351,6 +352,7 @@
       {
         "attribute": "amount",
         "id": "invoice-amount",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "ap-simple:2"
@@ -362,13 +364,53 @@
   "frameworks": [
     "IFRS"
   ],
+  "group_consumer": {},
   "handoff_ledger": [],
   "id": "case",
   "industries": [
     "manufacturing"
   ],
   "journal_mapping_valid": false,
-  "journal_ownership_ledger": [],
+  "journal_ownership_ledger": [
+    {
+      "accounting_layer": "LEGAL_ENTITY",
+      "currency": "USD",
+      "economic_identity": [
+        "Synthetic Group",
+        "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+        "52055b1e5d2c7b8b3ff4ed29d445b591a0ced5c4e1a7e300cdd78ffe5f748d98",
+        0
+      ],
+      "node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+      "owner": "accounts-payable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "posting": true,
+      "posting_scope": "Synthetic Group",
+      "source_scope": "Synthetic Group"
+    },
+    {
+      "accounting_layer": "LEGAL_ENTITY",
+      "currency": "USD",
+      "economic_identity": [
+        "Synthetic Group",
+        "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+        "52055b1e5d2c7b8b3ff4ed29d445b591a0ced5c4e1a7e300cdd78ffe5f748d98",
+        1
+      ],
+      "node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+      "owner": "accounts-payable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "posting": true,
+      "posting_scope": "Synthetic Group",
+      "source_scope": "Synthetic Group"
+    }
+  ],
   "judgments": [
     "PO approval or invoice date alone does not prove receipt or asset/expense recognition.",
     "Subsequent invoice differences require estimate/error and cutoff review before posting; reversal cannot erase an unsettled obligation."
@@ -389,6 +431,7 @@
       "related_cases": [
         "case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "case",
       "source_refs": [
         "supplied-governed-context"
@@ -407,6 +450,7 @@
       "related_cases": [
         "case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "case",
       "source_refs": [
         "supplied-governed-context"
@@ -425,6 +469,7 @@
       "related_cases": [
         "case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "case",
       "source_refs": [
         "supplied-governed-context"
@@ -443,6 +488,7 @@
       "related_cases": [
         "case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "case",
       "source_refs": [
         "supplied-governed-context"
@@ -457,11 +503,51 @@
   "open_questions": [],
   "opened_at": null,
   "outcome": "complete",
+  "owner_results": [
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "52055b1e5d2c7b8b3ff4ed29d445b591a0ced5c4e1a7e300cdd78ffe5f748d98",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounts-payable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+      "result_fingerprint": "9de99a3b83ee41a7e22cb42de510af1ac7192b3bfee14e9c048b4c81bf6065ed",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    }
+  ],
   "periods": [
     "2026-12-01",
     "2026-12-31"
   ],
   "requested_output": "Governed accounting intake review",
+  "reviewed_input_packs": [],
+  "scope_registry": [
+    {
+      "display_name": "Synthetic Group",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "legal_entity_id": "Synthetic Group",
+      "parent_scope_id": null,
+      "presentation_currency": null,
+      "provenance": [
+        "supplied-governed-context"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
+      "status": "CURRENT"
+    }
+  ],
   "skills_invoked": [
     "accounts-payable"
   ],
@@ -498,11 +584,31 @@
           "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "52055b1e5d2c7b8b3ff4ed29d445b591a0ced5c4e1a7e300cdd78ffe5f748d98",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "accounts-payable",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+        "result_fingerprint": "9de99a3b83ee41a7e22cb42de510af1ac7192b3bfee14e9c048b4c81bf6065ed",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "ap-node",
+      "functional_currency": "USD",
+      "id": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
       "invalidated_results": [],
       "issue": "supplier_cost",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "ap-node",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [],
@@ -526,6 +632,7 @@
         "controls",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -545,6 +652,8 @@
         "status": "complete"
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "accounts-payable",
       "source_inputs": [
         "supplier_cost"

@@ -31,7 +31,7 @@ CONTRACTS = {
 
 
 def validate_receipts(node, graph, inputs, case):
-    source=inputs[node.selected_skill]
+    source=inputs[node.id]
     receipts=source.get('qualified_owner_results',[])
     required={identity for identity in CONTRACTS if identity[1]==node.selected_skill and any(n.selected_skill==identity[0] for n in graph.nodes.values())}
     required={r for r in required if r[2] not in ('group_profit','post_acquisition_contribution') or (r[2]=='group_profit' and inputs[r[0]].get('qualified_consolidated_balances') is not None) or (r[2]=='post_acquisition_contribution' and inputs[r[0]].get('qualified_acquisition') is not None)}
@@ -49,9 +49,9 @@ def validate_receipts(node, graph, inputs, case):
         if not contract or identity in seen:raise ValueError('Unknown or duplicate semantic specialist receipt')
         seen.add(identity)
         if digest(receipt['result'])!=digest(producer.result):raise ValueError('Stale or substituted specialist result')
-        if tuple(receipt['source_dimensions'])!=dimensions(inputs[producer.selected_skill]) or tuple(receipt['consumer_dimensions'])!=dimensions(source):
+        if tuple(receipt['source_dimensions'])!=dimensions(inputs[producer.id]) or tuple(receipt['consumer_dimensions'])!=dimensions(source):
             raise ValueError('Specialist receipt entity/currency/period dimensions differ')
-        upstream=inputs[producer.selected_skill]
+        upstream=inputs[producer.id]
         if identity[:2] in (('income-taxes','business-combinations'),('business-combinations','foreign-currency')) and upstream['entity']!=source['entity']:
             raise ValueError('Specialist acquisition receipt crosses legal entities')
         if receipt['semantic']=='acquisition_dtl':
@@ -88,7 +88,7 @@ def validate_receipts(node, graph, inputs, case):
         target=[producer.entity if k=='@producer_entity' else k for k in contract[1]]
         expected=at(source,target)
         if receipt['semantic']=='acquisition_goodwill':
-            upstream=inputs[producer.selected_skill]
+            upstream=inputs[producer.id]
             if source['translation']['operation_id']!=source['entity']:
                 raise ValueError('Foreign operation differs from acquired source entity')
             if source.get('activity_selection',{}).get('effective_date')!=upstream['acquisition']['date']:
@@ -114,7 +114,10 @@ def validate_receipts(node, graph, inputs, case):
                 except (ValueError,ArithmeticError):return v
             if norm(actual)!=norm(expected):raise ValueError('Specialist semantic result binding differs')
         case.handoff_ledger.append(dict(producer=producer.id,consumer=node.id,semantic=receipt['semantic'],purpose='evidence_only',
-            fingerprint=producer.result['case_fingerprint'],source_dimensions=receipt['source_dimensions'],consumer_dimensions=receipt['consumer_dimensions']))
+            fingerprint=producer.result['case_fingerprint'],source_dimensions=receipt['source_dimensions'],consumer_dimensions=receipt['consumer_dimensions'],
+            source_owner=producer.selected_skill,source_node=producer.id,source_scope=producer.scope_id,target_node=node.id,target_scope=node.scope_id,
+            framework=producer.framework,currency=dimensions(inputs[producer.id])[-1],functional_currency=producer.functional_currency,presentation_currency=producer.presentation_currency,
+            result_fingerprint=digest(producer.result),currentness='CURRENT',economic_identity=[producer.scope_id,producer.id,receipt['semantic'],producer.result['case_fingerprint']]))
     if node.selected_skill=='financial-statements' and receipts:
         actual={r['id']:r['balance'] for r in source['current_tb']}
         if {k:str(number(v).normalize()) for k,v in actual.items()}!={k:str(number(v).normalize()) for k,v in source['qualified_consolidated_balances'].items()}:

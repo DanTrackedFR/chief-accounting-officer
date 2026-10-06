@@ -56,6 +56,7 @@ class Issue:
     material: object = None
     considerations: list = field(default_factory=list)
     condition: object = None
+    scope_id: str | None = None
 
 
 class Planner(Protocol):
@@ -88,13 +89,15 @@ class DeterministicPlanner:
         for family in families:
             if family not in FACT_ADAPTERS: continue
             owner, populations = FACT_ADAPTERS[family]
-            supplied = facts.get(family)
-            if not isinstance(supplied, dict): continue
-            if not any(supplied.get(k) for k in populations): continue
-            issues.append(Issue(owner, family, owner,
-                'Supplied '+family.replace('_', ' ')+' population affects the requested accounting work',
-                [family], required=supplied.get('required_for_objective', True),
-                material=supplied.get('material')))
+            values=facts.get(family)
+            for supplied in values if isinstance(values,list) else [values]:
+                if not isinstance(supplied,dict): continue
+                if not any(supplied.get(k) for k in populations): continue
+                scope_id=supplied.get('scope_id',supplied.get('entity'))
+                issues.append(Issue(owner+':'+str(scope_id) if isinstance(values,list) else owner, family, owner,
+                    'Supplied '+family.replace('_',' ')+' population affects requested accounting work',
+                    [family], required=supplied.get('required_for_objective',True),
+                    material=supplied.get('material'), scope_id=scope_id))
         # Cross-cutting architecture rules produce actual graph nodes when the
         # task attributes call for them, even if their workpapers are missing.
         rules = {
@@ -126,7 +129,7 @@ class DeterministicPlanner:
         by = {i.owner:i for i in issues}
         # Walk actual source imports transitively. Track owner populations so a
         # recursive import remains a graph cycle for validation, never an infinite walk.
-        queue = [(i, next((facts[k] for k in i.source_inputs), {})) for i in issues]
+        queue = [(i, next((v for k in i.source_inputs for v in (facts[k] if isinstance(facts[k],list) else [facts[k]]) if v.get('scope_id',v.get('entity'))==i.scope_id), {})) for i in issues]
         inspected = set()
         for issue, supplied in queue:
             if issue.owner in inspected: continue
@@ -167,18 +170,28 @@ class Node:
     challenge_triggered: bool = False
     iterations: int = 0
     invalidated_results: list = field(default_factory=list)
+    logical_id: str = ''
+    scope_id: str = ''
+    scope_type: str = ''
+    jurisdiction: str = ''
+    functional_currency: str | None = None
+    presentation_currency: str | None = None
+    execution_receipt: dict = field(default_factory=dict)
     required: bool = True
     material: object = None
     condition: object = None
 
 
 class Graph:
-    def __init__(self): self.nodes = {}; self.history = []
+    def __init__(self):
+        from .execution import NodeTable
+        self.nodes = NodeTable(); self.history = []
     def add(self, node):
         if node.id in self.nodes: raise ValueError('Duplicate workplan node')
         self.nodes[node.id] = node
     def validate(self):
         for n in self.nodes.values():
+            n.dependencies=[self.nodes.resolve(d) for d in n.dependencies]
             if len(set(n.dependencies)) != len(n.dependencies): raise ValueError('Duplicate dependency')
             if any(d not in self.nodes for d in n.dependencies): raise ValueError('Unknown dependency')
         active = set(); visited = set()
@@ -202,7 +215,7 @@ class Graph:
         if reason not in n.open_items: n.open_items.append(reason)
         self.history.append(dict(node=id, event='invalidate', reason=reason))
         for child in n.downstream_consumers:
-            if self.nodes[child].status != 'blocked': self.invalidate(child, 'Upstream challenged: '+id)
+            if self.nodes[child].status != 'blocked': self.invalidate(child, 'Upstream challenged: '+n.selected_skill+' ('+n.scope_id+')')
     def reopen(self, id):
         n = self.nodes[id]; n.status='pending'; n.result=None; n.open_items=[]; n.rework_triggered=True
         self.history.append(dict(node=id, event='reopen'))

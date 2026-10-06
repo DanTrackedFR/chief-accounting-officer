@@ -1,6 +1,6 @@
 [
   {
-    "consumer": "business-combinations",
+    "consumer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
     "consumer_dimensions": [
       "Subsidiary-US",
       "IFRS",
@@ -9,9 +9,21 @@
       "2026-12-31",
       "USD"
     ],
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+      "acquisition_dtl",
+      "0285afadc975ba51ff76ab1f087eb59b08617d5cc645126a91705ae644c75026"
+    ],
     "fingerprint": "0285afadc975ba51ff76ab1f087eb59b08617d5cc645126a91705ae644c75026",
-    "producer": "income-taxes",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
     "purpose": "evidence_only",
+    "result_fingerprint": "af26500d51c6e8828a7410fe73037c67f507f6c55f6049b238b74ce4111a8b5b",
     "semantic": "acquisition_dtl",
     "source_dimensions": [
       "Subsidiary-US",
@@ -20,10 +32,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+    "source_owner": "income-taxes",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+    "target_scope": "Subsidiary-US"
   },
   {
-    "consumer": "foreign-currency",
+    "consumer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "consumer_dimensions": [
       "Subsidiary-US",
       "IFRS",
@@ -32,9 +49,21 @@
       "2026-12-31",
       "USD"
     ],
-    "fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
-    "producer": "business-combinations",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "acquisition_goodwill",
+      "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19"
+    ],
+    "fingerprint": "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
     "purpose": "evidence_only",
+    "result_fingerprint": "7c553d50dd4dabbe296753ee8b0722f48b71001e576fe96db6961cd6cb46dfcf",
     "semantic": "acquisition_goodwill",
     "source_dimensions": [
       "Subsidiary-US",
@@ -43,10 +72,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+    "source_owner": "business-combinations",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "target_scope": "Subsidiary-US"
   },
   {
-    "consumer": "foreign-currency",
+    "consumer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "consumer_dimensions": [
       "Subsidiary-US",
       "IFRS",
@@ -55,9 +89,21 @@
       "2026-12-31",
       "USD"
     ],
-    "fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
-    "producer": "business-combinations",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "acquisition_basis",
+      "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19"
+    ],
+    "fingerprint": "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
     "purpose": "evidence_only",
+    "result_fingerprint": "7c553d50dd4dabbe296753ee8b0722f48b71001e576fe96db6961cd6cb46dfcf",
     "semantic": "acquisition_basis",
     "source_dimensions": [
       "Subsidiary-US",
@@ -66,10 +112,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+    "source_owner": "business-combinations",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "target_scope": "Subsidiary-US"
   },
   {
-    "consumer": "asset-impairment",
+    "consumer": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -78,9 +129,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "unit_carrying",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "unit_carrying",
     "source_dimensions": [
       "Subsidiary-US",
@@ -89,10 +152,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+    "target_scope": "Group"
   },
   {
-    "consumer": "asset-impairment",
+    "consumer": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -101,9 +169,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "goodwill_carrying",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "goodwill_carrying",
     "source_dimensions": [
       "Subsidiary-US",
@@ -112,10 +192,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -124,9 +209,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "3676ce09f3c646231ab32b9de498cbf26b02df96b5e899e90f1dae892e7347b2",
-    "producer": "business-combinations",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "acquisition_basis",
+      "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19"
+    ],
+    "fingerprint": "80d3f71dbb8905b367347ff69fad11fcd6bf72cbc6bfb93c5508b998b1ed9f19",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
     "purpose": "evidence_only",
+    "result_fingerprint": "7c553d50dd4dabbe296753ee8b0722f48b71001e576fe96db6961cd6cb46dfcf",
     "semantic": "acquisition_basis",
     "source_dimensions": [
       "Subsidiary-US",
@@ -135,10 +232,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+    "source_owner": "business-combinations",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -147,9 +249,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "translated_population",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "translated_population",
     "source_dimensions": [
       "Subsidiary-US",
@@ -158,10 +272,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -170,9 +289,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "post_acquisition_profit",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "post_acquisition_profit",
     "source_dimensions": [
       "Subsidiary-US",
@@ -181,10 +312,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -193,9 +329,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "nci_oci",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "nci_oci",
     "source_dimensions": [
       "Subsidiary-US",
@@ -204,10 +352,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -216,9 +369,21 @@
       "2026-12-31",
       "EUR"
     ],
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Parent",
+      "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+      "matched_intercompany",
+      "12a35e391cfbca9b22fda0fb79834571a47b8be66917e11251db435f313192ff"
+    ],
     "fingerprint": "12a35e391cfbca9b22fda0fb79834571a47b8be66917e11251db435f313192ff",
-    "producer": "intercompany-accounting",
+    "framework": "IFRS",
+    "functional_currency": "EUR",
+    "presentation_currency": null,
+    "producer": "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
     "purpose": "evidence_only",
+    "result_fingerprint": "35fd2d628c48445aff05b7c32dfa47adece655c9e630b66bef5358df7a540a17",
     "semantic": "matched_intercompany",
     "source_dimensions": [
       "Parent",
@@ -227,10 +392,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+    "source_owner": "intercompany-accounting",
+    "source_scope": "Parent",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "consolidation",
+    "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -239,9 +409,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "6da0aabe025d3164312cd7431d758f986271321231eb44a06172a1d768626276",
-    "producer": "asset-impairment",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+      "impairment",
+      "1c27891d1d508674d8704ce22d2ce38dc98d062ca4bb0d93617ca0c1e4b96202"
+    ],
+    "fingerprint": "1c27891d1d508674d8704ce22d2ce38dc98d062ca4bb0d93617ca0c1e4b96202",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
     "purpose": "evidence_only",
+    "result_fingerprint": "43f2a7a4b54a709e1e393afcf5e970f97c8917f581edff9eeaf3f2aaf596c150",
     "semantic": "impairment",
     "source_dimensions": [
       "Group",
@@ -250,10 +432,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+    "source_owner": "asset-impairment",
+    "source_scope": "Group",
+    "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "target_scope": "Group"
   },
   {
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -262,9 +449,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
-    "producer": "consolidation",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "consolidated_population",
+      "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd"
+    ],
+    "fingerprint": "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "purpose": "evidence_only",
+    "result_fingerprint": "388c6ae1b828526efeeaaca8de7c02ca2ed15e4e9418eda5fd3f9ae3dd2db309",
     "semantic": "consolidated_population",
     "source_dimensions": [
       "Group",
@@ -273,10 +472,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "source_owner": "consolidation",
+    "source_scope": "Group",
+    "target_node": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+    "target_scope": "Group"
   },
   {
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -285,9 +489,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
-    "producer": "consolidation",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "nci_closing",
+      "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd"
+    ],
+    "fingerprint": "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "purpose": "evidence_only",
+    "result_fingerprint": "388c6ae1b828526efeeaaca8de7c02ca2ed15e4e9418eda5fd3f9ae3dd2db309",
     "semantic": "nci_closing",
     "source_dimensions": [
       "Group",
@@ -296,10 +512,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "source_owner": "consolidation",
+    "source_scope": "Group",
+    "target_node": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+    "target_scope": "Group"
   },
   {
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -308,9 +529,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
-    "producer": "consolidation",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "nci_profit",
+      "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd"
+    ],
+    "fingerprint": "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "purpose": "evidence_only",
+    "result_fingerprint": "388c6ae1b828526efeeaaca8de7c02ca2ed15e4e9418eda5fd3f9ae3dd2db309",
     "semantic": "nci_profit",
     "source_dimensions": [
       "Group",
@@ -319,10 +552,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "source_owner": "consolidation",
+    "source_scope": "Group",
+    "target_node": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+    "target_scope": "Group"
   },
   {
-    "consumer": "financial-statements",
+    "consumer": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -331,9 +569,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
-    "producer": "consolidation",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "nci_oci",
+      "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd"
+    ],
+    "fingerprint": "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "purpose": "evidence_only",
+    "result_fingerprint": "388c6ae1b828526efeeaaca8de7c02ca2ed15e4e9418eda5fd3f9ae3dd2db309",
     "semantic": "nci_oci",
     "source_dimensions": [
       "Group",
@@ -342,10 +592,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "source_owner": "consolidation",
+    "source_scope": "Group",
+    "target_node": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+    "target_scope": "Group"
   },
   {
-    "consumer": "management-accounting-analytics",
+    "consumer": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -354,9 +609,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "5528a33d13dcc5c8be0e7f94540eb03901b11255b0fa9b867a761be43c5e9f32",
-    "producer": "foreign-currency",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Subsidiary-US",
+      "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "post_acquisition_contribution",
+      "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc"
+    ],
+    "fingerprint": "dc0acbed89e6694ad245d8303842caeef903a27a4a30bc7cc431b21eb8c06cfc",
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "presentation_currency": null,
+    "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
     "purpose": "evidence_only",
+    "result_fingerprint": "36b0c0846c28b8722484a680b81da45f8b773457df715dfdd5269bb1315191db",
     "semantic": "post_acquisition_contribution",
     "source_dimensions": [
       "Subsidiary-US",
@@ -365,10 +632,15 @@
       "2026-01-01",
       "2026-12-31",
       "USD"
-    ]
+    ],
+    "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+    "source_owner": "foreign-currency",
+    "source_scope": "Subsidiary-US",
+    "target_node": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
+    "target_scope": "Group"
   },
   {
-    "consumer": "management-accounting-analytics",
+    "consumer": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -377,9 +649,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "1232ec47491931a569230bc56fcb7f8a909acf258f42ee2808f5bcc9620de644",
-    "producer": "financial-statements",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+      "group_profit",
+      "219d004eabc2e55754ac9f034f62fddffc6ffa62398a0bcfe6c8795b717519ec"
+    ],
+    "fingerprint": "219d004eabc2e55754ac9f034f62fddffc6ffa62398a0bcfe6c8795b717519ec",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
     "purpose": "evidence_only",
+    "result_fingerprint": "6f1f756f1b6bb3537b14a031740bc48fe1e2435543b6da08e348bcf0c1162fb6",
     "semantic": "group_profit",
     "source_dimensions": [
       "Group",
@@ -388,10 +672,15 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:financial-statements:Group:9b3ad1c182ad689f5f163ec1e2f448b157277dce11036dfa3c8f13add3e9567f",
+    "source_owner": "financial-statements",
+    "source_scope": "Group",
+    "target_node": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
+    "target_scope": "Group"
   },
   {
-    "consumer": "management-accounting-analytics",
+    "consumer": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
     "consumer_dimensions": [
       "Group",
       "IFRS",
@@ -400,9 +689,21 @@
       "2026-12-31",
       "EUR"
     ],
-    "fingerprint": "009dd95ca34b6869afb0d810c64f0cbec732fe0ff4edbae44b68e7f3b8e8c546",
-    "producer": "consolidation",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "economic_identity": [
+      "Group",
+      "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "entity_contribution_population",
+      "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd"
+    ],
+    "fingerprint": "d8b7d169ff437d99e0797fa3d879cf277cd251b240e09ee42c761916f21677dd",
+    "framework": "IFRS",
+    "functional_currency": null,
+    "presentation_currency": "EUR",
+    "producer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
     "purpose": "evidence_only",
+    "result_fingerprint": "388c6ae1b828526efeeaaca8de7c02ca2ed15e4e9418eda5fd3f9ae3dd2db309",
     "semantic": "entity_contribution_population",
     "source_dimensions": [
       "Group",
@@ -411,6 +712,11 @@
       "2026-01-01",
       "2026-12-31",
       "EUR"
-    ]
+    ],
+    "source_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "source_owner": "consolidation",
+    "source_scope": "Group",
+    "target_node": "exec:management-accounting-analytics:Group:4e36591a7a0b6279857f13d92535d740405e1b0a4cd7627db1edd4ae81e3da15",
+    "target_scope": "Group"
   }
 ]

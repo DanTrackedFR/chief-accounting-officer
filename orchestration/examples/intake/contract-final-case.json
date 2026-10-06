@@ -10,6 +10,7 @@
       "owner": "revenue-recognition",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "customer_contract"
       ]
@@ -228,7 +229,7 @@
           "code": "OPEN_OWNER",
           "finding": "Missing reviewed source workpaper for customer_contract",
           "nodes": [
-            "revenue"
+            "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0"
           ]
         }
       ],
@@ -250,7 +251,7 @@
         {
           "issue": "customer_contract",
           "material": null,
-          "node": "revenue",
+          "node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
           "reason": "Missing reviewed source workpaper for customer_contract",
           "required": true
         }
@@ -309,6 +310,7 @@
   "frameworks": [
     "IFRS"
   ],
+  "group_consumer": {},
   "handoff_ledger": [],
   "id": "intake-case",
   "industries": [
@@ -333,6 +335,7 @@
       "related_cases": [
         "intake-case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "intake-case",
       "source_refs": [
         "supplied-governed-context"
@@ -351,6 +354,7 @@
       "related_cases": [
         "intake-case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "intake-case",
       "source_refs": [
         "supplied-governed-context"
@@ -369,6 +373,7 @@
       "related_cases": [
         "intake-case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "intake-case",
       "source_refs": [
         "supplied-governed-context"
@@ -387,6 +392,7 @@
       "related_cases": [
         "intake-case"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "intake-case",
       "source_refs": [
         "supplied-governed-context"
@@ -403,22 +409,46 @@
       "attribute": "performance_obligations",
       "kind": "blocking",
       "owner": "revenue-recognition",
-      "question": "Resolve performance obligations."
+      "question": "Resolve performance obligations.",
+      "scope_id": "Synthetic Group"
     },
     {
       "attribute": "refund_rights",
       "kind": "blocking",
       "owner": "revenue-recognition",
-      "question": "Resolve refund rights."
+      "question": "Resolve refund rights.",
+      "scope_id": "Synthetic Group"
     }
   ],
   "opened_at": null,
   "outcome": "blocked",
+  "owner_results": [],
   "periods": [
     "2026-12-01",
     "2026-12-31"
   ],
   "requested_output": "Governed accounting intake review",
+  "reviewed_input_packs": [],
+  "scope_registry": [
+    {
+      "display_name": "Synthetic Group",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "legal_entity_id": "Synthetic Group",
+      "parent_scope_id": null,
+      "presentation_currency": null,
+      "provenance": [
+        "supplied-governed-context"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
+      "status": "CURRENT"
+    }
+  ],
   "skills_invoked": [],
   "status": "DOCUMENTED",
   "superseded_by": [],
@@ -447,11 +477,15 @@
       "downstream_consumers": [],
       "entity": "Synthetic Group",
       "evidence": [],
+      "execution_receipt": {},
       "framework": "IFRS",
-      "id": "revenue",
+      "functional_currency": "USD",
+      "id": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "invalidated_results": [],
       "issue": "customer_contract",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "revenue",
       "material": null,
       "open_items": [
         "Missing reviewed source workpaper for customer_contract"
@@ -470,10 +504,13 @@
         "recognition_pattern",
         "reporting_period"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": null,
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "revenue-recognition",
       "source_inputs": [
         "customer_contract"

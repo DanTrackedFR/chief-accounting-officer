@@ -246,13 +246,13 @@
     "downstream_handoff": {
       "amount": "500.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "revenue-financial-statements",
       "fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
       "metric_path": [
         "period_revenue"
       ],
-      "producer": "revenue-recognition",
+      "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "revenue"
@@ -274,6 +274,8 @@
         "platform",
         "progress"
       ],
+      "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "scope_id": "Synthetic Group",
       "source_lineage": [
         {
           "extracted_fingerprint": "0acdc25eb22b6771dffce825b3f0a4637d09fcff2a835cef88d354da638296da",
@@ -538,13 +540,13 @@
     "downstream_handoff": {
       "amount": "1520.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "ar_balance-financial-statements",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "closing_ar"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "ar_balance"
@@ -568,6 +570,8 @@
         "allocation",
         "amount"
       ],
+      "producing_node": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "scope_id": "Synthetic Group",
       "source_lineage": [
         {
           "extracted_fingerprint": "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0",
@@ -832,14 +836,14 @@
     "downstream_handoff": {
       "amount": "-1300.00",
       "components": [],
-      "consumer": "balance-sheet-reconciliations",
+      "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "economic_id": "contract_balance-balance-sheet-reconciliations",
       "fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
       "metric_path": [
         "contract_bridge",
         "closing"
       ],
-      "producer": "revenue-recognition",
+      "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "contract_balance"
@@ -861,6 +865,8 @@
         "balance_bridge",
         "billings"
       ],
+      "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "scope_id": "Synthetic Group",
       "source_lineage": [
         {
           "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",

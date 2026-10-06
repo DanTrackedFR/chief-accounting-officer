@@ -5,6 +5,7 @@
       "qualified_legal_extract"
     ],
     "pattern": "\\A([\\s\\S]+)\\Z",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "identity"
   },
@@ -15,6 +16,7 @@
       "cash"
     ],
     "pattern": "Price USD([0-9]+(?:\\.[0-9]+)?);",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "decimal"
   },
@@ -25,6 +27,7 @@
       "fair_value"
     ],
     "pattern": "NCI fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "decimal"
   },
@@ -35,6 +38,7 @@
       "ownership"
     ],
     "pattern": "([0-9]+(?:\\.[0-9]+)?)% voting rights",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "percentage"
   },
@@ -45,6 +49,7 @@
       "acquirer"
     ],
     "pattern": "acquired by ([A-Za-z][A-Za-z0-9-]*)\\.",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "identity"
   },
@@ -55,6 +60,7 @@
       "date"
     ],
     "pattern": "Signed completion (\\d{1,2} [A-Za-z]+ \\d{4})",
+    "scope_id": null,
     "source_id": "spa",
     "transformation": "calendar_date"
   },
@@ -66,6 +72,7 @@
       "asset_identity"
     ],
     "pattern": "Asset (LAND-[0-9]+)\\.",
+    "scope_id": null,
     "source_id": "appraisal",
     "transformation": "identity"
   },
@@ -76,6 +83,7 @@
       "fair_value"
     ],
     "pattern": "non-controlling 20% equity interest fair value USD([0-9]+(?:\\.[0-9]+)?)\\.",
+    "scope_id": null,
     "source_id": "appraisal",
     "transformation": "decimal"
   },
@@ -87,6 +95,7 @@
       "amount"
     ],
     "pattern": "incremental land fair value USD([0-9]+(?:\\.[0-9]+)?), supported by an approved valuation report",
+    "scope_id": null,
     "source_id": "appraisal",
     "transformation": "decimal"
   },
@@ -96,6 +105,7 @@
       "qualified_nci_election"
     ],
     "pattern": "(Full-goodwill fair-value) NCI election approved",
+    "scope_id": null,
     "source_id": "policy",
     "transformation": "identity"
   },
@@ -106,6 +116,7 @@
       "functional"
     ],
     "pattern": "Subsidiary functional ([A-Z]{3})",
+    "scope_id": null,
     "source_id": "policy",
     "transformation": "identity"
   }

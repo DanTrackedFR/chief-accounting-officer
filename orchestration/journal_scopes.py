@@ -57,6 +57,6 @@ def validate_assembly(c,graph,inputs,request,native):
     final=node.result['calculations']['consolidated_balances']
     if any(assembled.get(k,Decimal(0))!=number(final.get(k,0)) for k in set(assembled)|set(final)):
         raise ValueError('Scoped source plus exactly-once journals differs from governed assembly')
-    c.journal_ownership_ledger=[dict(r,source_entity=target,target_entity=target,level='group',posting=True) for r in ledger]+evidence
+    c.journal_ownership_ledger=[dict(r,source_entity=target,target_entity=target,level='group',posting=True,source_scope=target,posting_scope=target,accounting_layer='GROUP',node=node.id,owner=owner,currency=dimensions(source)[-1],period=node.period) for r in ledger]+[dict(r,source_scope=r['source_entity'],posting_scope=target,accounting_layer='GROUP') for r in evidence]
     c._scoped_postings=selected;c._journal_mapping={}
     c.execution_ledger.append(dict(node=node.id,status='qualified_source_assembly',target_entity=target,level='group',residual='0'))

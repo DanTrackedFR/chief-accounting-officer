@@ -1,9 +1,18 @@
 [
   {
+    "accounting_layer": "GROUP",
+    "currency": "EUR",
     "economic_id": "consolidation-source-entry-0",
     "evidence": "Qualified consolidation-only source identity 0",
     "level": "group",
+    "node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "owner": "consolidation",
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
     "posting": true,
+    "posting_scope": "Group",
     "primary": [
       {
         "index": 0,
@@ -11,14 +20,24 @@
       }
     ],
     "source_entity": "Group",
+    "source_scope": "Group",
     "target_entity": "Group",
     "witnesses": []
   },
   {
+    "accounting_layer": "GROUP",
+    "currency": "EUR",
     "economic_id": "consolidation-source-entry-1",
     "evidence": "Qualified consolidation-only source identity 1",
     "level": "group",
+    "node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "owner": "consolidation",
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
     "posting": true,
+    "posting_scope": "Group",
     "primary": [
       {
         "index": 1,
@@ -26,14 +45,24 @@
       }
     ],
     "source_entity": "Group",
+    "source_scope": "Group",
     "target_entity": "Group",
     "witnesses": []
   },
   {
+    "accounting_layer": "GROUP",
+    "currency": "EUR",
     "economic_id": "consolidation-source-entry-2",
     "evidence": "Qualified consolidation-only source identity 2",
     "level": "group",
+    "node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+    "owner": "consolidation",
+    "period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
     "posting": true,
+    "posting_scope": "Group",
     "primary": [
       {
         "index": 2,
@@ -41,59 +70,72 @@
       }
     ],
     "source_entity": "Group",
+    "source_scope": "Group",
     "target_entity": "Group",
     "witnesses": []
   },
   {
+    "accounting_layer": "GROUP",
     "index": 0,
     "level": "group",
     "mode": "included_in_qualified_source",
     "native_journal_fingerprint": "6ce3a29d0fe2b2ef4250430f21d3f9cdccc8c00c129082d0362183a465a749a6",
     "owner": "income-taxes",
     "posting": false,
+    "posting_scope": "Group",
     "receipt_consumer": "business-combinations",
     "semantic": "acquisition_dtl",
     "source_currency": "USD",
     "source_entity": "Subsidiary-US",
+    "source_scope": "Subsidiary-US",
     "target_entity": "Group"
   },
   {
+    "accounting_layer": "GROUP",
     "index": 0,
     "level": "group",
     "mode": "included_in_qualified_source",
     "native_journal_fingerprint": "df8ddde5ad5cb143c972af61c76bc6779577967a2fd34a970d7c5413173a67d1",
     "owner": "business-combinations",
     "posting": false,
+    "posting_scope": "Group",
     "receipt_consumer": "foreign-currency",
     "semantic": "acquisition_basis",
     "source_currency": "USD",
     "source_entity": "Subsidiary-US",
+    "source_scope": "Subsidiary-US",
     "target_entity": "Group"
   },
   {
+    "accounting_layer": "GROUP",
     "index": 0,
     "level": "group",
     "mode": "included_in_qualified_source",
     "native_journal_fingerprint": "31acb3ae0f3a3883de1cd55ff4d1fd178b3b4996fe8aa83652dc2b8f11c7fe40",
     "owner": "foreign-currency",
     "posting": false,
+    "posting_scope": "Group",
     "receipt_consumer": "consolidation",
     "semantic": "translated_population",
     "source_currency": "USD",
     "source_entity": "Subsidiary-US",
+    "source_scope": "Subsidiary-US",
     "target_entity": "Group"
   },
   {
+    "accounting_layer": "GROUP",
     "index": 1,
     "level": "group",
     "mode": "included_in_qualified_source",
     "native_journal_fingerprint": "208bca1ce0cb37631b5463566e4201b73c5661ffaa4d29af170adf5c9611f1e1",
     "owner": "foreign-currency",
     "posting": false,
+    "posting_scope": "Group",
     "receipt_consumer": "consolidation",
     "semantic": "translated_population",
     "source_currency": "USD",
     "source_entity": "Subsidiary-US",
+    "source_scope": "Subsidiary-US",
     "target_entity": "Group"
   }
 ]

@@ -36,7 +36,7 @@ class Foundation(unittest.TestCase):
         ledger={x['node']:i for i,x in enumerate(self.result.execution_ledger)}
         for n in self.result.graph.nodes.values():
             for dep in n.dependencies:self.assertLess(ledger[dep],ledger[n.id])
-        first=self.result.execution_ledger[0]['batch'];self.assertIn('fixed-assets',first);self.assertIn('employee-benefits-payroll',first)
+        first=self.result.execution_ledger[0]['batch'];self.assertIn(self.result.graph.nodes.resolve('fixed-assets'),first);self.assertIn(self.result.graph.nodes.resolve('employee-benefits-payroll'),first)
     def test_conditional_fx_selection(self):
         r=manufacturing(False);c=self.cao.run(r);self.assertEqual('complete',c.outcome,c.open_questions);self.assertNotIn('foreign-currency',c.graph.nodes)
         self.assertEqual('45616.00',c.conclusions[0]['calculations']['closing_inventory'])

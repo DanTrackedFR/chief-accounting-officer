@@ -10,6 +10,7 @@
       "owner": "revenue-recognition",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "customer_contract"
       ]
@@ -26,6 +27,7 @@
       "owner": "accounts-receivable",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "receivable_population"
       ]
@@ -42,6 +44,7 @@
       "owner": "financial-instruments-ecl",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "credit_exposure"
       ]
@@ -56,6 +59,7 @@
       "owner": "foreign-currency",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "currency_exposure"
       ]
@@ -75,6 +79,7 @@
       "owner": "balance-sheet-reconciliations",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "reconciliation"
       ]
@@ -89,6 +94,7 @@
       "owner": "month-end-close",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "close_calendar"
       ]
@@ -108,6 +114,7 @@
       "owner": "financial-statements",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "statement"
       ]
@@ -125,6 +132,7 @@
       "owner": "disclosure-management",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "disclosure"
       ]
@@ -144,6 +152,7 @@
       "owner": "management-accounting-analytics",
       "reason": "Validated source-supported work issue",
       "required": true,
+      "scope_id": null,
       "source_inputs": [
         "analytics"
       ]
@@ -637,7 +646,8 @@
   "conclusions": [
     {
       "calculations": {
-        "allowance": "80.00",
+        "Synthetic Group IFRS USD allowance": "80.00",
+        "Synthetic Group IFRS USD expense": "60.00",
         "allowance_residual": "0.00",
         "applied_cash_and_deposits": "200",
         "ar_residual": "0.00",
@@ -648,7 +658,6 @@
         "contract_liability": "1300.00",
         "contract_net_residual": "0.00",
         "credits": "0",
-        "expense": "60.00",
         "fx_movement": "10.00",
         "monetary_fx_profit": "10.00",
         "period_revenue": "500.00",
@@ -1886,96 +1895,96 @@
   "execution_ledger": [
     {
       "batch": [
-        "revenue-recognition",
-        "foreign-currency",
-        "month-end-close"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+        "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec"
       ],
       "case_fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
-      "node": "revenue-recognition",
+      "node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "status": "complete"
     },
     {
       "batch": [
-        "revenue-recognition",
-        "foreign-currency",
-        "month-end-close"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+        "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec"
       ],
       "case_fingerprint": "9d7c4d1fe6384b004ef0996545aca59a0cf6b7a126b775d6bdb500d8842f0af0",
-      "node": "foreign-currency",
+      "node": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
       "status": "complete"
     },
     {
       "batch": [
-        "revenue-recognition",
-        "foreign-currency",
-        "month-end-close"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+        "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec"
       ],
       "case_fingerprint": "d9d50ae8812367f3aaa9b853782156c099a6fe715fc177e61dd7bb00d7e5bbf0",
-      "node": "month-end-close",
+      "node": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
       "status": "complete"
     },
     {
       "batch": [
-        "accounts-receivable"
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b"
       ],
       "case_fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
-      "node": "accounts-receivable",
+      "node": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "status": "complete"
     },
     {
       "batch": [
-        "financial-instruments-ecl"
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
       ],
       "case_fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
-      "node": "financial-instruments-ecl",
+      "node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "status": "complete"
     },
     {
       "batch": [
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "case_fingerprint": "bee665b1231a2366de9e57360606cdb0f40e746bc4681c93c5376e8849c6560b",
-      "node": "balance-sheet-reconciliations",
+      "node": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "status": "complete"
     },
     {
       "batch": [
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "case_fingerprint": "e23617e3ffdf729c0e8c908ba4ad6c7e11128160c6dad3e4d4a6237e387e6b8b",
-      "node": "financial-statements",
+      "node": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "status": "complete"
     },
     {
       "batch": [
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "case_fingerprint": "ab462d1bcd328a093518a165cd1ee0fa119a8ff9c345178bdc21bc7e8bf03642",
-      "node": "management-accounting-analytics",
+      "node": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
       "status": "complete"
     },
     {
       "batch": [
-        "disclosure-management"
+        "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2"
       ],
       "case_fingerprint": "573238283a58274ed394f67a8fafcf5c6d4d1a6388d78035608811ebe72c911b",
-      "node": "disclosure-management",
+      "node": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
       "status": "complete"
     },
     {
       "action": "diagnostic owner recheck",
       "batch": [
-        "diagnostic-balance-0"
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699"
       ],
-      "node": "diagnostic-balance-0",
+      "node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
       "reuses": [
-        "financial-instruments-ecl"
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
       ],
       "status": "complete"
     }
@@ -1997,6 +2006,7 @@
       {
         "attribute": "ageing_completeness",
         "id": "ageing-file-total",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "ageing:12"
@@ -2006,6 +2016,7 @@
       {
         "attribute": "ageing_completeness",
         "id": "ageing-gl-total",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "ar_summary:2"
@@ -2015,6 +2026,7 @@
       {
         "attribute": "open_reconciliation_difference",
         "id": "rec-checklist",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "checklist:3"
@@ -2024,6 +2036,7 @@
       {
         "attribute": "open_reconciliation_difference",
         "id": "rec-pack-open",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "rec_pack:3"
@@ -2067,6 +2080,7 @@
       {
         "attribute": "recognised_revenue",
         "id": "rev-period-result",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:9"
@@ -2076,6 +2090,7 @@
       {
         "attribute": "consideration",
         "id": "rev-price",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:2"
@@ -2085,6 +2100,7 @@
       {
         "attribute": "progress",
         "id": "rev-progress",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:3"
@@ -2094,6 +2110,7 @@
       {
         "attribute": "opening_revenue",
         "id": "rev-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:4"
@@ -2103,6 +2120,7 @@
       {
         "attribute": "contract_opening",
         "id": "rev-contract-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:5"
@@ -2112,6 +2130,7 @@
       {
         "attribute": "contract_billings",
         "id": "rev-billings",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "revenue:7"
@@ -2121,6 +2140,7 @@
       {
         "attribute": "domestic_invoice",
         "id": "ar-opening-domestic",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:3"
@@ -2130,6 +2150,7 @@
       {
         "attribute": "foreign_invoice_book",
         "id": "ar-opening-foreign",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:11"
@@ -2139,6 +2160,7 @@
       {
         "attribute": "new_invoice",
         "id": "ar-billings",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:19"
@@ -2148,6 +2170,7 @@
       {
         "attribute": "cash_receipt",
         "id": "ar-receipt",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "receipts:3"
@@ -2157,6 +2180,7 @@
       {
         "attribute": "cash_applied",
         "id": "ar-applied",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "receipts:4"
@@ -2166,6 +2190,7 @@
       {
         "attribute": "closing_ar",
         "id": "ar-gl",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "ar_summary:1"
@@ -2175,6 +2200,7 @@
       {
         "attribute": "current_exposure",
         "id": "ecl-current-exposure",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:2"
@@ -2184,6 +2210,7 @@
       {
         "attribute": "aged_exposure",
         "id": "ecl-aged-exposure",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:9"
@@ -2193,6 +2220,7 @@
       {
         "attribute": "current_loss_rate",
         "id": "ecl-current-rate",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:3"
@@ -2202,6 +2230,7 @@
       {
         "attribute": "aged_loss_rate",
         "id": "ecl-aged-rate",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:10"
@@ -2211,6 +2240,7 @@
       {
         "attribute": "opening_allowance",
         "id": "ecl-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "allowance:1"
@@ -2220,6 +2250,7 @@
       {
         "attribute": "opening_book",
         "id": "fx-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "fx:4"
@@ -2229,6 +2260,7 @@
       {
         "attribute": "initial_rate",
         "id": "fx-initial-rate",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "fx:6"
@@ -2238,6 +2270,7 @@
       {
         "attribute": "closing_rate",
         "id": "fx-closing-rate",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "fx:7"
@@ -2247,6 +2280,7 @@
       {
         "attribute": "ar_balance",
         "id": "rec-ar",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "rec_pack:2"
@@ -2256,6 +2290,7 @@
       {
         "attribute": "contract_balance",
         "id": "rec-contract",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "rec_pack:6"
@@ -2265,6 +2300,7 @@
       {
         "attribute": "allowance",
         "id": "rec-allowance",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "rec_pack:9"
@@ -2274,6 +2310,7 @@
       {
         "attribute": "billing_complete",
         "id": "close-task-complete",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "checklist:5"
@@ -2283,6 +2320,7 @@
       {
         "attribute": "billing_duration",
         "id": "close-duration",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "checklist:2"
@@ -2292,6 +2330,7 @@
       {
         "attribute": "manual_accrual",
         "id": "close-journal",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "journals:2"
@@ -2301,6 +2340,7 @@
       {
         "attribute": "revenue",
         "id": "fs-revenue",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "tb:20"
@@ -2310,6 +2350,7 @@
       {
         "attribute": "gross_ar",
         "id": "fs-ar",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "tb:5"
@@ -2319,6 +2360,7 @@
       {
         "attribute": "contract_liability",
         "id": "fs-liability",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "tb:11"
@@ -2328,6 +2370,7 @@
       {
         "attribute": "allowance",
         "id": "fs-allowance",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "tb:8"
@@ -2337,6 +2380,7 @@
       {
         "attribute": "allowance",
         "id": "disc-allowance",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "notes:2"
@@ -2346,6 +2390,7 @@
       {
         "attribute": "closing_cash",
         "id": "analytics-cash",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "receipts:6"
@@ -2355,6 +2400,7 @@
       {
         "attribute": "journal_journal_id",
         "id": "close-journal-journal_id",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "journals:1"
@@ -2364,6 +2410,7 @@
       {
         "attribute": "journal_effective_date",
         "id": "close-journal-effective_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "journals:3"
@@ -2373,6 +2420,7 @@
       {
         "attribute": "journal_approved_at",
         "id": "close-journal-approved_at",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "journals:4"
@@ -2382,6 +2430,7 @@
       {
         "attribute": "journal_posted_at",
         "id": "close-journal-posted_at",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "journals:5"
@@ -2391,6 +2440,7 @@
       {
         "attribute": "prior_revenue",
         "id": "prior-revenue",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:2"
@@ -2400,6 +2450,7 @@
       {
         "attribute": "prior_billings",
         "id": "prior-billings",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:4"
@@ -2409,6 +2460,7 @@
       {
         "attribute": "prior_cash_collections",
         "id": "prior-cash_collections",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:6"
@@ -2418,6 +2470,7 @@
       {
         "attribute": "prior_gross_ar",
         "id": "prior-gross_ar",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:8"
@@ -2427,6 +2480,7 @@
       {
         "attribute": "prior_allowance",
         "id": "prior-allowance",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:10"
@@ -2436,6 +2490,7 @@
       {
         "attribute": "prior_contract_liability",
         "id": "prior-contract_liability",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:12"
@@ -2445,6 +2500,7 @@
       {
         "attribute": "prior_contract_asset",
         "id": "prior-contract_asset",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:14"
@@ -2454,6 +2510,7 @@
       {
         "attribute": "invoice_id_old_domestic",
         "id": "ar-old-domestic-invoice_id",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:1"
@@ -2463,6 +2520,7 @@
       {
         "attribute": "customer_old_domestic",
         "id": "ar-old-domestic-customer",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:2"
@@ -2472,6 +2530,7 @@
       {
         "attribute": "invoice_date_old_domestic",
         "id": "ar-old-domestic-invoice_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:4"
@@ -2481,6 +2540,7 @@
       {
         "attribute": "due_date_old_domestic",
         "id": "ar-old-domestic-due_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:5"
@@ -2490,6 +2550,7 @@
       {
         "attribute": "original_currency_old_domestic",
         "id": "ar-old-domestic-original_currency",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:6"
@@ -2499,6 +2560,7 @@
       {
         "attribute": "opening_old_domestic",
         "id": "ar-old-domestic-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:8"
@@ -2508,6 +2570,7 @@
       {
         "attribute": "invoice_id_old_foreign",
         "id": "ar-old-foreign-invoice_id",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:9"
@@ -2517,6 +2580,7 @@
       {
         "attribute": "customer_old_foreign",
         "id": "ar-old-foreign-customer",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:10"
@@ -2526,6 +2590,7 @@
       {
         "attribute": "invoice_date_old_foreign",
         "id": "ar-old-foreign-invoice_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:12"
@@ -2535,6 +2600,7 @@
       {
         "attribute": "due_date_old_foreign",
         "id": "ar-old-foreign-due_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:13"
@@ -2544,6 +2610,7 @@
       {
         "attribute": "original_currency_old_foreign",
         "id": "ar-old-foreign-original_currency",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:14"
@@ -2553,6 +2620,7 @@
       {
         "attribute": "opening_old_foreign",
         "id": "ar-old-foreign-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:16"
@@ -2562,6 +2630,7 @@
       {
         "attribute": "invoice_id_current",
         "id": "ar-current-invoice_id",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:17"
@@ -2571,6 +2640,7 @@
       {
         "attribute": "customer_current",
         "id": "ar-current-customer",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:18"
@@ -2580,6 +2650,7 @@
       {
         "attribute": "invoice_date_current",
         "id": "ar-current-invoice_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:20"
@@ -2589,6 +2660,7 @@
       {
         "attribute": "due_date_current",
         "id": "ar-current-due_date",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:21"
@@ -2598,6 +2670,7 @@
       {
         "attribute": "original_currency_current",
         "id": "ar-current-original_currency",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:22"
@@ -2607,6 +2680,7 @@
       {
         "attribute": "opening_current",
         "id": "ar-current-opening",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:24"
@@ -2616,6 +2690,7 @@
       {
         "attribute": "original_foreign_amount",
         "id": "ar-foreign-original",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "billing:15"
@@ -2625,6 +2700,7 @@
       {
         "attribute": "review_effective_from",
         "id": "ecl-review-effective_from",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:4"
@@ -2634,6 +2710,7 @@
       {
         "attribute": "review_reviewed_on",
         "id": "ecl-review-reviewed_on",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:5"
@@ -2643,6 +2720,7 @@
       {
         "attribute": "review_as_of",
         "id": "ecl-review-as_of",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:6"
@@ -2652,6 +2730,7 @@
       {
         "attribute": "review_source_version",
         "id": "ecl-review-source_version",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "loss_rates:7"
@@ -2661,6 +2740,7 @@
       {
         "attribute": "prior_age_current",
         "id": "prior-age-current",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:16"
@@ -2670,6 +2750,7 @@
       {
         "attribute": "prior_age_1_30",
         "id": "prior-age-1_30",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:18"
@@ -2679,6 +2760,7 @@
       {
         "attribute": "prior_age_31_60",
         "id": "prior-age-31_60",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:20"
@@ -2688,6 +2770,7 @@
       {
         "attribute": "prior_age_61_90",
         "id": "prior-age-61_90",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:22"
@@ -2697,6 +2780,7 @@
       {
         "attribute": "prior_age_over90",
         "id": "prior-age-over90",
+        "scope_id": "Synthetic Group",
         "semantic_status": "EXTRACTED",
         "source_refs": [
           "prior:24"
@@ -2708,17 +2792,18 @@
   "frameworks": [
     "IFRS"
   ],
+  "group_consumer": {},
   "handoff_ledger": [
     {
       "amount": "1520.00",
       "components": [],
-      "consumer": "financial-instruments-ecl",
+      "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "economic_id": "credit_exposure-financial-instruments-ecl",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "closing_ar"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "review",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "credit_exposure"
@@ -2726,14 +2811,14 @@
     {
       "amount": "800",
       "components": [],
-      "consumer": "financial-instruments-ecl",
+      "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "economic_id": "ar_ageing_current-financial-instruments-ecl",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "ageing",
         "current"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "review",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "ar_ageing_current"
@@ -2741,14 +2826,14 @@
     {
       "amount": "720.00",
       "components": [],
-      "consumer": "financial-instruments-ecl",
+      "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "economic_id": "ar_ageing_31_60-financial-instruments-ecl",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "ageing",
         "31_60"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "review",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "ar_ageing_31_60"
@@ -2756,13 +2841,13 @@
     {
       "amount": "1520.00",
       "components": [],
-      "consumer": "balance-sheet-reconciliations",
+      "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "economic_id": "ar_balance-balance-sheet-reconciliations",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "closing_ar"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "ar_balance"
@@ -2770,13 +2855,13 @@
     {
       "amount": "80.00",
       "components": [],
-      "consumer": "balance-sheet-reconciliations",
+      "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "economic_id": "allowance-balance-sheet-reconciliations",
       "fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
       "metric_path": [
         "allowance"
       ],
-      "producer": "financial-instruments-ecl",
+      "producer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "allowance"
@@ -2784,14 +2869,14 @@
     {
       "amount": "-1300.00",
       "components": [],
-      "consumer": "balance-sheet-reconciliations",
+      "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "economic_id": "contract_balance-balance-sheet-reconciliations",
       "fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
       "metric_path": [
         "contract_bridge",
         "closing"
       ],
-      "producer": "revenue-recognition",
+      "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "contract_balance"
@@ -2799,13 +2884,13 @@
     {
       "amount": "500.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "revenue-financial-statements",
       "fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
       "metric_path": [
         "period_revenue"
       ],
-      "producer": "revenue-recognition",
+      "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "revenue"
@@ -2813,13 +2898,13 @@
     {
       "amount": "1520.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "ar_balance-financial-statements",
       "fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
       "metric_path": [
         "closing_ar"
       ],
-      "producer": "accounts-receivable",
+      "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "ar_balance"
@@ -2827,13 +2912,13 @@
     {
       "amount": "80.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "allowance-financial-statements",
       "fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
       "metric_path": [
         "allowance"
       ],
-      "producer": "financial-instruments-ecl",
+      "producer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "allowance"
@@ -2841,14 +2926,14 @@
     {
       "amount": "-1300.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "contract_balance-financial-statements",
       "fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
       "metric_path": [
         "contract_bridge",
         "closing"
       ],
-      "producer": "revenue-recognition",
+      "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "contract_balance"
@@ -2856,13 +2941,13 @@
     {
       "amount": "10.00",
       "components": [],
-      "consumer": "financial-statements",
+      "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "economic_id": "monetary_fx-financial-statements",
       "fingerprint": "9d7c4d1fe6384b004ef0996545aca59a0cf6b7a126b775d6bdb500d8842f0af0",
       "metric_path": [
         "monetary_fx_profit"
       ],
-      "producer": "foreign-currency",
+      "producer": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
       "purpose": "report",
       "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
       "semantic": "monetary_fx"
@@ -4552,6 +4637,7 @@
       "related_cases": [
         "synthetic-saas-close"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "synthetic-saas-close",
       "source_refs": [
         "supplied-governed-context"
@@ -4570,6 +4656,7 @@
       "related_cases": [
         "synthetic-saas-close"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "synthetic-saas-close",
       "source_refs": [
         "supplied-governed-context"
@@ -4588,6 +4675,7 @@
       "related_cases": [
         "synthetic-saas-close"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "synthetic-saas-close",
       "source_refs": [
         "supplied-governed-context"
@@ -4606,6 +4694,7 @@
       "related_cases": [
         "synthetic-saas-close"
       ],
+      "scope_id": "Synthetic Group",
       "source_case": "synthetic-saas-close",
       "source_refs": [
         "supplied-governed-context"
@@ -4617,6 +4706,7 @@
     {
       "attribute": "currency",
       "conflict": false,
+      "scope_id": "Synthetic Group",
       "semantic_status": "CONTEXT_DERIVED",
       "source_refs": [],
       "status": "PROPOSED",
@@ -4630,22 +4720,217 @@
       "attribute": "ageing_completeness",
       "kind": "blocking",
       "owner": "accounts-receivable",
-      "question": "Resolve ageing completeness."
+      "question": "Resolve ageing completeness.",
+      "scope_id": "Synthetic Group"
     },
     {
       "attribute": "open_reconciliation_difference",
       "kind": "blocking",
       "owner": "balance-sheet-reconciliations",
-      "question": "Resolve open reconciliation difference."
+      "question": "Resolve open reconciliation difference.",
+      "scope_id": "Synthetic Group"
     }
   ],
   "opened_at": null,
   "outcome": "partial",
+  "owner_results": [
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "revenue-recognition",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "result_fingerprint": "c4e2b883e8960966ac65eddc3da22cc9731c8812cef2cfb5f5d19bf901790811",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounts-receivable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "result_fingerprint": "793a3a2286286ccc2ca9031832613585b55c8d64a04518c05c5eab7ec60b5aab",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-instruments-ecl",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "result_fingerprint": "8c2ce1f89139fdbae84d40a232bfb684fd7404ba9ddc4d16fd5a4aa81913d09b",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "9d7c4d1fe6384b004ef0996545aca59a0cf6b7a126b775d6bdb500d8842f0af0",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "foreign-currency",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+      "result_fingerprint": "9fe2a3868820fa4dcdd5b66161f5cc727dfdb2c522719f1418362631dc64ce48",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "bee665b1231a2366de9e57360606cdb0f40e746bc4681c93c5376e8849c6560b",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "balance-sheet-reconciliations",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "result_fingerprint": "fd86bb462baaec7e575b9c9a29d464bc39c7daefa011a8ef0ab789873d877ad8",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "d9d50ae8812367f3aaa9b853782156c099a6fe715fc177e61dd7bb00d7e5bbf0",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "month-end-close",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+      "result_fingerprint": "73aefd23d37360354bd4f5992205df14cdda8d3f1c63660eb6265d4519c3ccf6",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "e23617e3ffdf729c0e8c908ba4ad6c7e11128160c6dad3e4d4a6237e387e6b8b",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-statements",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "result_fingerprint": "77ba43559a2533b855427f3bd44c3e8aaabbb4c2c440b78d565e1dd8847eaf9b",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "573238283a58274ed394f67a8fafcf5c6d4d1a6388d78035608811ebe72c911b",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "disclosure-management",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+      "result_fingerprint": "ee4a429192ce4aa2a2faf95d733f0cebf3b692fa59aee3736442093cbe207174",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "ab462d1bcd328a093518a165cd1ee0fa119a8ff9c345178bdc21bc7e8bf03642",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "management-accounting-analytics",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "result_fingerprint": "81502bd7ae33f736a5409baf0c79ffe41ec2d0961b23d8e59c0358bb9dbbb2f0",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    {
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-instruments-ecl",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "presentation_currency": null,
+      "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
+      "result_fingerprint": "8c2ce1f89139fdbae84d40a232bfb684fd7404ba9ddc4d16fd5a4aa81913d09b",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    }
+  ],
   "periods": [
     "2026-12-01",
     "2026-12-31"
   ],
   "requested_output": "Governed accounting intake review",
+  "reviewed_input_packs": [],
+  "scope_registry": [
+    {
+      "display_name": "Synthetic Group",
+      "effective_from": null,
+      "effective_to": null,
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "legal_entity_id": "Synthetic Group",
+      "parent_scope_id": null,
+      "presentation_currency": null,
+      "provenance": [
+        "supplied-governed-context"
+      ],
+      "reporting_calendar": null,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
+      "status": "CURRENT"
+    }
+  ],
   "skills_invoked": [
     "revenue-recognition",
     "foreign-currency",
@@ -4694,9 +4979,9 @@
       "condition": null,
       "dependencies": [],
       "downstream_consumers": [
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "entity": "Synthetic Group",
       "evidence": [
@@ -5249,11 +5534,31 @@
           "topic_id": "TOPIC-03-012"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "4b39f37b1d93b7f838c2a83c2d68f73a861f553ec979d4f455f8dd35d7c796c9",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "revenue-recognition",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "result_fingerprint": "c4e2b883e8960966ac65eddc3da22cc9731c8812cef2cfb5f5d19bf901790811",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "revenue-recognition",
+      "functional_currency": "USD",
+      "id": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
       "invalidated_results": [],
       "issue": "customer_contract",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "revenue-recognition",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [],
@@ -5270,6 +5575,7 @@
         "recognition_pattern",
         "reporting_period"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -5397,6 +5703,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "revenue-recognition",
       "source_inputs": [
         "customer_contract"
@@ -5407,13 +5715,13 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "foreign-currency"
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
       ],
       "downstream_consumers": [
-        "financial-instruments-ecl",
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "entity": "Synthetic Group",
       "evidence": [
@@ -5650,11 +5958,31 @@
           "topic_id": "TOPIC-12-002"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "28f853ce68db6e35024d655b338d05991a6bd40a552c5a43c6d85efd04d2454f",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "accounts-receivable",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+        "result_fingerprint": "793a3a2286286ccc2ca9031832613585b55c8d64a04518c05c5eab7ec60b5aab",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "accounts-receivable",
+      "functional_currency": "USD",
+      "id": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
       "invalidated_results": [],
       "issue": "receivable_population",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "accounts-receivable",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -5680,6 +6008,7 @@
         "controls",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -5804,6 +6133,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "accounts-receivable",
       "source_inputs": [
         "receivable_population"
@@ -5814,14 +6145,14 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "accounts-receivable"
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b"
       ],
       "downstream_consumers": [
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "disclosure-management",
-        "management-accounting-analytics",
-        "diagnostic-balance-0"
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699"
       ],
       "entity": "Synthetic Group",
       "evidence": [
@@ -5994,11 +6325,31 @@
           "topic_id": "TOPIC-03-009"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "financial-instruments-ecl",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+        "result_fingerprint": "8c2ce1f89139fdbae84d40a232bfb684fd7404ba9ddc4d16fd5a4aa81913d09b",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "financial-instruments-ecl",
+      "functional_currency": "USD",
+      "id": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
       "invalidated_results": [],
       "issue": "credit_exposure",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "financial-instruments-ecl",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -6018,6 +6369,7 @@
         "exposure_data",
         "credit_risk_evidence"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -6128,6 +6480,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "financial-instruments-ecl",
       "source_inputs": [
         "credit_exposure"
@@ -6139,10 +6493,10 @@
       "condition": null,
       "dependencies": [],
       "downstream_consumers": [
-        "accounts-receivable",
-        "balance-sheet-reconciliations",
-        "financial-statements",
-        "management-accounting-analytics"
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+        "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
       ],
       "entity": "Synthetic Group",
       "evidence": [
@@ -6179,11 +6533,31 @@
           "topic_id": "TOPIC-07-006"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "9d7c4d1fe6384b004ef0996545aca59a0cf6b7a126b775d6bdb500d8842f0af0",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "foreign-currency",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+        "result_fingerprint": "9fe2a3868820fa4dcdd5b66161f5cc727dfdb2c522719f1418362631dc64ce48",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "foreign-currency",
+      "functional_currency": "USD",
+      "id": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
       "invalidated_results": [],
       "issue": "currency_exposure",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "foreign-currency",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [],
@@ -6204,6 +6578,7 @@
         "judgment_memo",
         "assumptions"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -6303,6 +6678,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "foreign-currency",
       "source_inputs": [
         "currency_exposure"
@@ -6313,10 +6690,10 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "revenue-recognition",
-        "accounts-receivable",
-        "financial-instruments-ecl",
-        "foreign-currency"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
       ],
       "downstream_consumers": [],
       "entity": "Synthetic Group",
@@ -6326,11 +6703,31 @@
           "topic_id": "TOPIC-02-008"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "bee665b1231a2366de9e57360606cdb0f40e746bc4681c93c5376e8849c6560b",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "balance-sheet-reconciliations",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+        "result_fingerprint": "fd86bb462baaec7e575b9c9a29d464bc39c7daefa011a8ef0ab789873d877ad8",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "balance-sheet-reconciliations",
+      "functional_currency": "USD",
+      "id": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
       "invalidated_results": [],
       "issue": "reconciliation",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "balance-sheet-reconciliations",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -6359,6 +6756,7 @@
         "controls",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -6475,6 +6873,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "balance-sheet-reconciliations",
       "source_inputs": [
         "reconciliation"
@@ -6513,11 +6913,31 @@
           "topic_id": "TOPIC-12-006"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "d9d50ae8812367f3aaa9b853782156c099a6fe715fc177e61dd7bb00d7e5bbf0",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "month-end-close",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+        "result_fingerprint": "73aefd23d37360354bd4f5992205df14cdda8d3f1c63660eb6265d4519c3ccf6",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "month-end-close",
+      "functional_currency": "USD",
+      "id": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
       "invalidated_results": [],
       "issue": "close_calendar",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "month-end-close",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [],
@@ -6541,6 +6961,7 @@
         "controls",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -6629,6 +7050,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "month-end-close",
       "source_inputs": [
         "close_calendar"
@@ -6639,13 +7062,13 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "revenue-recognition",
-        "accounts-receivable",
-        "financial-instruments-ecl",
-        "foreign-currency"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
       ],
       "downstream_consumers": [
-        "disclosure-management"
+        "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2"
       ],
       "entity": "Synthetic Group",
       "evidence": [
@@ -6718,11 +7141,31 @@
           "topic_id": "TOPIC-08-008"
         }
       ],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "e23617e3ffdf729c0e8c908ba4ad6c7e11128160c6dad3e4d4a6237e387e6b8b",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "financial-statements",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "result_fingerprint": "77ba43559a2533b855427f3bd44c3e8aaabbb4c2c440b78d565e1dd8847eaf9b",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "financial-statements",
+      "functional_currency": "USD",
+      "id": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
       "invalidated_results": [],
       "issue": "statement",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "financial-statements",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -6748,6 +7191,7 @@
         "judgment_memo",
         "assumptions"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -6896,6 +7340,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "financial-statements",
       "source_inputs": [
         "statement"
@@ -6906,17 +7352,37 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "financial-statements",
-        "financial-instruments-ecl"
+        "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
       ],
       "downstream_consumers": [],
       "entity": "Synthetic Group",
       "evidence": [],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "573238283a58274ed394f67a8fafcf5c6d4d1a6388d78035608811ebe72c911b",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "disclosure-management",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+        "result_fingerprint": "ee4a429192ce4aa2a2faf95d733f0cebf3b692fa59aee3736442093cbe207174",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "disclosure-management",
+      "functional_currency": "USD",
+      "id": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
       "invalidated_results": [],
       "issue": "disclosure",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "disclosure-management",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -6944,6 +7410,7 @@
         "disclosure_review",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -7014,6 +7481,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "disclosure-management",
       "source_inputs": [
         "disclosure"
@@ -7024,21 +7493,41 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "revenue-recognition",
-        "accounts-receivable",
-        "financial-instruments-ecl",
-        "foreign-currency"
+        "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+        "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+        "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
       ],
       "downstream_consumers": [
-        "diagnostic-balance-0"
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699"
       ],
       "entity": "Synthetic Group",
       "evidence": [],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "ab462d1bcd328a093518a165cd1ee0fa119a8ff9c345178bdc21bc7e8bf03642",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "management-accounting-analytics",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+        "result_fingerprint": "81502bd7ae33f736a5409baf0c79ffe41ec2d0961b23d8e59c0358bb9dbbb2f0",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "management-accounting-analytics",
+      "functional_currency": "USD",
+      "id": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
       "invalidated_results": [],
       "issue": "analytics",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "management-accounting-analytics",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [
@@ -7068,6 +7557,7 @@
         "disclosure_review",
         "knowledge_review"
       ],
+      "presentation_currency": null,
       "reason_selected": "Validated source-supported work issue",
       "required": true,
       "result": {
@@ -7392,6 +7882,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "management-accounting-analytics",
       "source_inputs": [
         "analytics"
@@ -7402,17 +7894,37 @@
       "challenge_triggered": false,
       "condition": null,
       "dependencies": [
-        "management-accounting-analytics",
-        "financial-instruments-ecl"
+        "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+        "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
       ],
       "downstream_consumers": [],
       "entity": "Synthetic Group",
       "evidence": [],
+      "execution_receipt": {
+        "currentness": "CURRENT",
+        "exact_case_fingerprint": "9e6f5bc33a3c5b6a8bd161ceff154f8e7fcd064b8af853338a9fa733b9ff76f6",
+        "framework": "IFRS",
+        "functional_currency": "USD",
+        "jurisdiction": "NL",
+        "owner": "financial-instruments-ecl",
+        "period": [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "presentation_currency": null,
+        "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
+        "result_fingerprint": "8c2ce1f89139fdbae84d40a232bfb684fd7404ba9ddc4d16fd5a4aa81913d09b",
+        "scope_id": "Synthetic Group",
+        "scope_type": "LEGAL_ENTITY"
+      },
       "framework": "IFRS",
-      "id": "diagnostic-balance-0",
+      "functional_currency": "USD",
+      "id": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
       "invalidated_results": [],
       "issue": "diagnostic accounting follow-up",
       "iterations": 1,
+      "jurisdiction": "NL",
+      "logical_id": "diagnostic-balance-0",
       "material": null,
       "open_items": [],
       "owner_result_dependencies": [],
@@ -7421,6 +7933,7 @@
         "2026-12-31"
       ],
       "prerequisites": [],
+      "presentation_currency": null,
       "reason_selected": "Material receivable ageing requires governed accounting review",
       "required": true,
       "result": {
@@ -7531,6 +8044,8 @@
         ]
       },
       "rework_triggered": false,
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY",
       "selected_skill": "financial-instruments-ecl",
       "source_inputs": [
         "balance-source"
