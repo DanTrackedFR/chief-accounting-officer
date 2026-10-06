@@ -124,7 +124,55 @@ SaaS uses the governed semantic/intake foundation, controlled sources, nine prod
 Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
 
 ### 4. Multi-entity and multi-period orchestration — NEXT
-Support parent/subsidiary, local/group framework, comparative-period, intercompany and multi-currency execution without mixing entity/framework/period dimensions. Group adds only one controlled Parent/Sub/Group Case with a sourced acquisition cutoff; general entity graphs and multi-period execution are not complete. See `orchestration/GROUP-TO-MULTI-ENTITY-HANDOFF.md` for concrete remaining requirements.
+Status: **in delivery as one workstream split into four sequential gated stages**.
+
+The Group flagship proved only one controlled Parent/Sub/Group Case with a sourced acquisition cutoff. General multi-entity and multi-period execution remains incomplete. The authoritative architecture handoff is `orchestration/GROUP-TO-MULTI-ENTITY-HANDOFF.md`.
+
+This roadmap item is intentionally split into four sequential PRs. Each stage starts from the newly merged `main` produced by the previous stage. Do not run the four stages in parallel and do not mark the overall workstream COMPLETE until Stage 4 passes its final integration gates.
+
+#### Stage 1 — Scope Graph + Case Hierarchy Foundation — NEXT
+Build the dimensional execution foundation:
+- arbitrary LEGAL_ENTITY / GROUP / SUBGROUP scope registry without a hard three-scope cap;
+- stable deterministic multidimensional node identity;
+- hierarchical Entity/Subgroup/Group Cases;
+- repeated execution of the same production owner across different scopes without package-key collision;
+- scope-aware facts, source lineage, owner-result receipts and material questions;
+- explicit functional/presentation currency and framework dimensions;
+- legal-entity versus subgroup/group journal scope;
+- bounded migration of the Group flagship entity concepts without claiming multi-period execution;
+- complete backwards compatibility with Manufacturing, Diagnostic, Intake, SaaS, Treasury and Group flagships.
+
+Stage 1 success requires executable proof that the same owner can run independently for multiple entities/scopes with separate fingerprints, evidence, journals, status and downstream consumers, while cross-entity/currency/framework contamination fails closed. Produce a committed Stage-2 handoff. Do not build general period invalidation or the full intercompany network in Stage 1.
+
+#### Stage 2 — Multi-Period + Dependency Invalidation/Rework
+After Stage 1 is merged, add:
+- governed period identity for opening/current/prior/comparative/partial periods;
+- acquisition/disposal effective intervals and fiscal-calendar differences;
+- opening-to-closing and comparative lineage;
+- cross-period and cross-entity dependency edges;
+- deterministic stale-result propagation and selective re-execution;
+- reopening, supersession and in-memory/serializable version lineage.
+
+Critical proof: a changed upstream entity/period result invalidates only its actual downstream entity/group/next-period consumers while unrelated entity work remains current. Produce a committed Stage-3 handoff.
+
+#### Stage 3 — Intercompany Network + Framework/Currency Conversion
+After Stage 2 is merged, generalize cross-scope interaction:
+- multi-counterparty intercompany graph and transaction-level matching;
+- business-relationship cycles without orchestration-DAG cycles;
+- cross-period and multi-currency intercompany relationships;
+- explicit residual classification and elimination dependencies;
+- local-framework → group-framework conversion receipts;
+- multiple functional currencies and group presentation currency;
+- governed translation chains and exact-once economics across legal-book/counterparty/group layers.
+
+Critical proof: a multi-entity intercompany network reconciles across periods/currencies, local-framework results cannot masquerade as group-framework results, and group eliminations remain distinct from legal-book entries. Produce a committed Stage-4 handoff.
+
+#### Stage 4 — Full Multi-Entity / Multi-Period Integration Flagship
+After Stages 1–3 are merged, prove the architecture end-to-end with a controlled multi-entity Group objective using at least three legal entities plus Group scope, repeated owners, multiple periods, multiple functional currencies, local/group framework differences, multiple intercompany edges, group reporting and analytics.
+
+The flagship must deliberately change one qualified upstream entity/period result and prove dependency-driven invalidation, selective rework and an updated Group result without rerunning unrelated work. It must include a material-conflict Case that fails safely and a corrected clean control that reaches COMPLETE/CLOSED.
+
+Only after Stage 4 passes authored tests, genuinely independent adversarial QA/remediation/rerun, all prior flagship migration regressions, deterministic artifacts, full repository regression and exact-head GitHub Actions may this roadmap item be marked **COMPLETE** and Durable Case + Company Accounting Memory persistence become NEXT.
 
 ### 5. Durable Case and Company Accounting Memory persistence
 Persist Company Context, Case history, decisions, artifacts and provenance while preserving status and temporal history such as PROPOSED, APPROVED and SUPERSEDED. Persistence must not silently promote memory candidates into approved company truth.
