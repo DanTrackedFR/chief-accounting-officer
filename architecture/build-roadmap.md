@@ -146,19 +146,14 @@ Implemented:
 
 Stage 1 success requires executable proof that one production owner can run independently for at least three legal-entity scopes with separate fingerprints, evidence, results, journals and consumers; wrong-scope/currency/framework substitution fails closed; and existing Group/single-entity execution remains green. Produce a committed Stage-2 handoff. Do not build general Case hierarchy lifecycle, multi-period invalidation, or the full intercompany network in Stage 1.
 
-#### Stage 2 — Case Hierarchy + Multi-Period + Dependency Invalidation/Rework — NEXT
-After Stage 1 is merged, add:
-- hierarchical Entity/Subgroup/Group Cases with independent governance and dependency-aware status propagation;
-- governed period identity for opening/current/prior/comparative/partial periods;
-- acquisition/disposal effective intervals and fiscal-calendar differences;
-- opening-to-closing and comparative lineage;
-- cross-period and cross-entity dependency edges;
-- deterministic stale-result propagation and selective re-execution;
-- reopening, supersession and in-memory/serializable version lineage.
+#### Stage 2 — Case Hierarchy + Multi-Period + Dependency Invalidation/Rework — COMPLETE
+Stage 2 adds hierarchical Entity/Subgroup/Group Case governance, deterministic calendar-qualified Period identity, opening/prior/comparative/partial-period relationships, effective intervals, exact-version dependency contracts, CURRENT/STALE/SUPERSEDED result lineage, dependency-driven invalidation, selective topological re-execution and governed reopening without rewriting history.
 
-Critical proof: a changed upstream entity/period result invalidates only its actual downstream entity/group/next-period consumers while unrelated entity work remains current. Produce a committed Stage-3 handoff.
+The controlled proof corrects a qualified US September Revenue result and invalidates only its actual downstream US/Group/next-period consumers while unrelated UK and independent controls remain current. Ordinary runtime repeated-owner selection is Scope + governed Period aware; stale/superseded/wrong-Period receipts fail closed. See `orchestration/MULTI-ENTITY-STAGE2-TO-STAGE3-HANDOFF.md` and the Stage 2 integration handoff.
 
-#### Stage 3 — Intercompany Network + Framework/Currency Conversion — PENDING
+Stage 2 does not implement generalized intercompany networks, framework conversion, generalized currency-translation chains, durable persistence or authenticated governance.
+
+#### Stage 3 — Intercompany Network + Framework/Currency Conversion — NEXT
 After Stage 2 is merged, generalize cross-scope interaction:
 - multi-counterparty intercompany graph and transaction-level matching;
 - business-relationship cycles without orchestration-DAG cycles;
