@@ -23,9 +23,9 @@ class OwnerInputs(MutableMapping):
         if key in self.data and digest(self.data[key])!=digest(source): raise ValueError('Conflicting supplied owner cases for execution')
         self.data[key]=source;self.packages[key]=owner
         return key
-    def key(self,owner,scope_id=None):
-        matches=[id for id,pkg in self.packages.items() if pkg==owner and (scope_id is None or self.data[id].get('scope_id',self.data[id].get('entity'))==scope_id)]
-        if len(matches)!=1:raise ValueError('Exact reviewed owner Scope required')
+    def key(self,owner,scope_id=None,period_id=None):
+        matches=[id for id,pkg in self.packages.items() if pkg==owner and (scope_id is None or self.data[id].get('scope_id',self.data[id].get('entity'))==scope_id) and (period_id is None or self.data[id].get('period_id')==period_id)]
+        if len(matches)!=1:raise ValueError('Exact reviewed owner Scope/Period required')
         return matches[0]
     def resolve(self,key):
         if key in self.data:return key
