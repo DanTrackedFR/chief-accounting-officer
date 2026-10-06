@@ -215,6 +215,3 @@ class IndependentStage2(unittest.TestCase):
         self.assertIn(nodes[1].id,plan['unaffected']);self.assertEqual(oct_before,self.e.versions.current(nodes[1].id))
 
 if __name__=='__main__':unittest.main()
-
-
-
