@@ -122,7 +122,7 @@ def execution_scopes(context):
             level={'LEGAL_ENTITY':'entity','SUBGROUP':'subgroup','GROUP':'group'}[s.scope_type],
             framework=s.framework,jurisdiction=s.jurisdiction,currency=execution_currency,
             functional_currency=s.functional_currency,presentation_currency=s.presentation_currency,
-            period_start=period['period_start'],reporting_period=period['reporting_period'])
+            period_start=period['period_start'],reporting_period=period['reporting_period'],reporting_calendar=s.reporting_calendar)
     primary=out.get(context.get('entity'))
     if not primary or any(primary[k]!=context[k] for k in ('entity','framework','jurisdiction','currency','period_start','reporting_period')): raise ValueError('Case reporting Scope absent or contradictory')
     return out
@@ -137,6 +137,15 @@ def scoped_context(context, source):
     if registered.status!='CURRENT':raise ValueError('Inactive Scope cannot execute as current')
     if registered.effective_from and registered.effective_from>scope['period_start']:raise ValueError('Scope not effective for bounded execution')
     if registered.effective_to and registered.effective_to<scope['reporting_period']:raise ValueError('Scope expired for bounded execution')
+    if source.get('period_id') is not None:
+        from .periods import PeriodRegistry
+        temporal=context.get('period_registry')
+        if not isinstance(temporal,dict):raise ValueError('Governed Period registry required')
+        periods=PeriodRegistry(temporal['calendars'],temporal['periods'],temporal.get('relationships',[]))
+        period=periods.get(source['period_id'])
+        if registered.reporting_calendar and period.calendar_id!=registered.reporting_calendar:raise ValueError('Wrong Scope fiscal calendar')
+        if (source.get('period_start'),source.get('reporting_period'))!=(period.start,period.end):raise ValueError('Owner Period dates differ')
+        scope=dict(scope,period_start=period.start,reporting_period=period.end,period_id=period.period_id,reporting_calendar=period.calendar_id)
     return dict(context, **scope)
 
 
@@ -144,5 +153,6 @@ def execution_identity(owner, context):
     """JSON tuple plus SHA256; no order, display name or filename participates."""
     payload=[owner,context['scope_id'],context['scope_type'],context['framework'],context['jurisdiction'],
         context.get('functional_currency'),context.get('presentation_currency'),context['period_start'],context['reporting_period']]
+    if context.get('period_id') is not None:payload.append(context['period_id'])
     key=hashlib.sha256(json.dumps(payload,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
     return 'exec:'+owner+':'+context['scope_id']+':'+key

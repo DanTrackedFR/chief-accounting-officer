@@ -170,6 +170,8 @@ class Node:
     challenge_triggered: bool = False
     iterations: int = 0
     invalidated_results: list = field(default_factory=list)
+    period_id: str = ''
+    case_id: str = ''
     logical_id: str = ''
     scope_id: str = ''
     scope_type: str = ''
