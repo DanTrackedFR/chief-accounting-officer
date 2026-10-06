@@ -40,7 +40,8 @@ def artifacts():
     }
     plan=correction(f)
     result.update({'upstream-correction.json':dict(old_version=original['US-SEP'].version_id,new_version=e.versions.current(n['US-SEP'].id).version_id,source=f['sources'][n['US-SEP'].id]),'invalidation.json':copy.deepcopy(plan),'stale-node-ledger.json':[dict(node=node,version=e.versions.current(node,allow_stale=True).version_id,state='STALE') for node in plan['execution_order']],'unaffected-node-ledger.json':[dict(node=node,version=e.versions.current(node).version_id,state='CURRENT') for node in plan['unaffected']],'selective-rework-plan.json':copy.deepcopy(plan)})
-    ledger=e.reexecute(plan,f['executors'],f['sources'])
+    from orchestration.runtime import CAO
+    ledger=CAO().selective_reexecute(f['case'],plan)
     context,events=journal_inputs(f);selected,allocation=e.current_journals(context,events)
     result.update({'reexecution-ledger.json':ledger,'result-versions-final.json':e.versions.record(),'supersession-ledger.json':dict(sorted(e.versions.supersession.items())),'receipt-ledger-final-current.json':[e.receipt(key) for key in sorted(e.edges)],'journal-event-ledger-final.json':dict(events=events,allocation=allocation,selected=selected),'case-registry-final.json':e.cases.record(),'case-statuses-final.json':[dict(case=c.id,status=c.status,outcome=c.outcome) for c in e.cases.cases.values()],'period-reopening-history.json':e.periods.record(),'group-before-after.json':dict(before=original['GROUP'].payload(),after=e.versions.current(n['GROUP'].id).payload()),'analytics-before-after.json':dict(before=original['ANALYTICS'].payload(),after=e.versions.current(n['ANALYTICS'].id).payload()),'public-answer.json':public(f)})
     def lineage(label,version):

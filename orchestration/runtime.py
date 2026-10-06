@@ -498,6 +498,63 @@ class CAO:
             raise ValueError('Versioned native result dimensions differ')
         return result
 
+    def correct(self, case, node_id, reviewed_source, reason):
+        """Publish a qualified correction on the retained ordinary Case graph.
+
+        Period reopening is separately governed. The caller supplies an already
+        reviewed native input, never an inferred replacement certification.
+        """
+        from .governed_plan import observation
+        session=case.governance
+        if node_id not in dict(session.graph.nodes):raise ValueError('Correction requires exact execution node')
+        if session.versions.current(node_id) is None:raise ValueError('Correction requires current original result')
+        session.cao=self
+        session.execute(node_id,observation,copy.deepcopy(reviewed_source),reason)
+        session.sources[node_id]=copy.deepcopy(reviewed_source)
+        plan=session.rework_history[-1]
+        self._refresh_versioned(case,final=False)
+        return copy.deepcopy(plan)
+
+    def selective_reexecute(self, case, plan, reviewed_sources=None):
+        """Rerun only the current exact dependency plan, then refresh delivery."""
+        from .governed_plan import observation
+        session=case.governance;session.cao=self
+        sources=copy.deepcopy(dict(session.sources))
+        for key,value in (reviewed_sources or {}).items():
+            if key not in plan['execution_order']:raise ValueError('Unrelated reviewed rework input')
+            sources[key]=copy.deepcopy(value)
+        # Clear delivery before execution so a failed native recertification can
+        # never leave the previous public conclusion current.
+        self._refresh_versioned(case,final=False)
+        try:
+            ledger=session.reexecute(plan,{key:observation for key in plan['execution_order']},sources)
+            for key in plan['execution_order']:session.sources[key]=sources[key]
+            self._refresh_versioned(case,final=True)
+            return ledger
+        except (ValueError,KeyError,TypeError,AttributeError,ArithmeticError):
+            self._refresh_versioned(case,final=False)
+            raise
+
+    def _refresh_versioned(self,case,final):
+        session=case.governance
+        case.conclusions=[];case.diagnostics=[];case.balance_diagnostics={}
+        case.journal_mapping_valid=False;case.journal_ownership_ledger=[]
+        if hasattr(case,'_scoped_postings'):del case._scoped_postings
+        case.group_consumer={}
+        session.cases.refresh(session.graph,session.versions,session.edges)
+        case.workplan_nodes=session.graph.record()
+        case.owner_results=[dict(n.execution_receipt) for n in session.graph.nodes.values() if n.status=='complete']
+        if final and hasattr(session,'request'):
+            # Revalidate existing native challenge contracts against the new
+            # independently supplied source/result population. No approvals are
+            # manufactured by the correction API.
+            self._challenge(case,session.graph,session.sources,session.request,session.context)
+            from .runtime_governance import reconcile
+            reconcile(session)
+            if case.outcome=='complete':case.conclusions=[self._synthesis(case,session.graph,session.context)]
+            case.workplan_nodes=session.graph.record()
+        case.execution_ledger.append(dict(action='selective-currentness-refresh',status=case.outcome))
+
     def rework(self, previous, revised_request):
         if revised_request.get('case_id') == previous.id:
             raise ValueError('Rework requires a new versioned Case identity')
@@ -811,7 +868,7 @@ class CAO:
             # added indiscriminately across results.
             metrics={'inventory-cost':('closing_inventory','cogs'),'revenue-recognition':('period_revenue',),'accounts-payable':('closing_ap',),'accounts-receivable':('closing_ar','billed','credits','applied_cash_and_deposits','unapplied_liability','fx_movement','bank_receipts'),'financial-instruments-ecl':('allowance','expense'),'foreign-currency':('monetary_fx_profit',)}
             for metric in metrics.get(n.selected_skill,()):
-                if metric in r.get('calculations',{}): values[(n.scope_id+' '+n.framework+' '+currency_from_node(n)+' '+metric) if sum(x.selected_skill==n.selected_skill for x in g.nodes.values())>1 else metric]=str(number(r['calculations'][metric]))
+                if metric in r.get('calculations',{}): values[(n.scope_id+' '+n.framework+' '+currency_from_node(n)+(' '+n.period[0]+' to '+n.period[1] if sum(x.selected_skill==n.selected_skill and x.scope_id==n.scope_id for x in g.nodes.values())>1 else '')+' '+metric) if sum(x.selected_skill==n.selected_skill for x in g.nodes.values())>1 else metric]=str(number(r['calculations'][metric]))
             for j in r.get('journal_entry_implications',[]): journals.append(dict(owner=n.id,lines=copy.deepcopy(j)))
             controls.extend(r.get('controls_impacted',[])); reporting.extend(r.get('reporting_impacted',[])+r.get('disclosures_impacted',[]))
             limits.extend(r.get('uncertainties',[])); approvals.extend(r.get('documentation_required',[]))
@@ -955,6 +1012,9 @@ class CAO:
 
     def public(self,c,route='answer'):
         """Separate curated representation; internal evidence is never mutated."""
+        if hasattr(c,'governance'):
+            stale=any(c.governance.versions.state(key)!='CURRENT' for key in c.governance.versions.active.values())
+            if stale:return public_record(dict(guidance='Accounting work requires selective rework before current delivery.',status='partial',open_items=['Resolve stale dependent results.']),route=route)
         if hasattr(c,'governance') and not c.conclusions:
             observations=[]
             for node_id in sorted(c.governance.versions.active):

@@ -53,7 +53,7 @@ def attach(c,graph,context,inputs,request):
             by[(n.scope_id,p.period_id)]=child
         n.case_id=by[(n.scope_id,p.period_id)].id;cases.bind_node(n.case_id,n)
     session=VersionedExecution(graph,cases,periods);c.governance=session
-    session.sources=inputs;session.context=context
+    session.sources=inputs;session.context=context;session.request=request
     explicit_edges={}
     for row in request.get('temporal_dependencies',[]):
         edge=Dependency(**row);explicit_edges[(edge.producer_node,edge.consumer_node)]=edge

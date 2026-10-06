@@ -84,7 +84,7 @@ def correction(f):
     e.periods.reopen(n.period_id,'Correct reviewed US contract progress',dict(status='APPROVED',evidence=['synthetic independent reopening review'],convention='SYNTHETIC_GOVERNED'),[n.case_id],[n.id,f['nodes']['US-REPORT'].id])
     source=copy.deepcopy(f['sources'][n.id]);source['obligations'][1]['progress']='0.75';source['source_population']=['source-US-SEP-v2'];source['evidence']=['synthetically reviewed corrected contract progress']
     f['sources'][n.id]=finalize('revenue-recognition',source)
-    e.execute(n.id,f['executors'][n.id],f['sources'][n.id],'Qualified source correction after governed reopening')
+    CAO().correct(f['case'],n.id,f['sources'][n.id],'Qualified source correction after governed reopening')
     return e.rework_history[-1]
 
 

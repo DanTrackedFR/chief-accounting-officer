@@ -57,6 +57,7 @@ class Issue:
     considerations: list = field(default_factory=list)
     condition: object = None
     scope_id: str | None = None
+    period_id: str | None = None
 
 
 class Planner(Protocol):
@@ -130,25 +131,32 @@ class DeterministicPlanner:
                 'PROCESS_CONTROL_REVIEW': [('accounting-systems-data-integrity','requested process/data review'), ('accounting-controls-icfr','requested control review')]}
             for owner, reason in required_modes.get(intent.primary, []):
                 if not any(i.owner==owner for i in issues):issues.append(Issue(owner, reason, owner, reason))
-        by = {i.owner:i for i in issues}
-        # Walk actual source imports transitively. Track owner populations so a
-        # recursive import remains a graph cycle for validation, never an infinite walk.
-        queue = [(i, next((v for k in i.source_inputs for v in (facts[k] if isinstance(facts[k],list) else [facts[k]]) if v.get('scope_id',v.get('entity'))==i.scope_id), {})) for i in issues]
-        inspected = set()
-        for issue, supplied in queue:
-            if issue.owner in inspected: continue
-            inspected.add(issue.owner)
-            for imp in supplied.get('imports', []):
-                upstream = imp.get('package')
-                if not isinstance(upstream, str) or not upstream: raise ValueError('Malformed imported owner identity')
-                if upstream not in by:
-                    dep = Issue(upstream, 'owner dependency', upstream,
-                        'Actual supplied accounting workpaper requires this owner result')
-                    by[upstream] = dep; issues.append(dep)
-                if upstream not in issue.dependencies: issue.dependencies.append(upstream)
-                actual = imp.get('case')
-                if not isinstance(actual, dict): raise ValueError('Actual imported owner case required')
-                queue.append((by[upstream], actual))
+        # Imports are addressed by exact owner + Scope + governed Period. A
+        # package alias is retained only for a unique legacy execution.
+        def source_for(issue):
+            rows=[v for k in issue.source_inputs for v in (facts[k] if isinstance(facts[k],list) else [facts[k]])
+                  if v.get('scope_id',v.get('entity'))==issue.scope_id and v.get('period_id')==issue.period_id]
+            if len(rows)>1:raise ValueError('Ambiguous exact issue source')
+            return rows[0] if rows else {}
+        queue=[(i,source_for(i)) for i in issues];inspected=set()
+        for issue,supplied in queue:
+            identity=(issue.owner,issue.scope_id,issue.period_id)
+            if identity in inspected:continue
+            inspected.add(identity)
+            for imp in supplied.get('imports',[]):
+                upstream=imp.get('package');actual=imp.get('case')
+                if not isinstance(upstream,str) or not upstream or not isinstance(actual,dict):raise ValueError('Actual imported owner case required')
+                scope=actual.get('scope_id',actual.get('entity'));period=actual.get('period_id')
+                matches=[i for i in issues if (i.owner,i.scope_id,i.period_id)==(upstream,scope,period)]
+                if len(matches)>1:raise ValueError('Ambiguous imported execution')
+                if matches:dep=matches[0]
+                else:
+                    repeated=any(i.owner==upstream for i in issues)
+                    key=upstream+':'+str(scope)+':'+str(period) if repeated or period else upstream
+                    dep=Issue(key,'owner dependency',upstream,'Actual supplied accounting workpaper requires this owner result',scope_id=scope,period_id=period)
+                    issues.append(dep)
+                if dep.id not in issue.dependencies:issue.dependencies.append(dep.id)
+                queue.append((dep,actual))
         return issues
 
 

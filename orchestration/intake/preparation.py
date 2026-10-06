@@ -56,6 +56,9 @@ class Binding:
     path: tuple
     kind: str = 'current'
     scope_id: str | None = None
+    period_id: str | None = None
+    calendar_id: str | None = None
+    relationship_id: str | None = None
 
 @dataclass(frozen=True)
 class PopulationBinding:
@@ -67,6 +70,9 @@ class PopulationBinding:
     table: str = 'table'
     value_column: str = ''
     scope_id: str | None = None
+    period_id: str | None = None
+    calendar_id: str | None = None
+    relationship_id: str | None = None
 
 @dataclass(frozen=True)
 class DocumentBinding:
@@ -75,6 +81,9 @@ class DocumentBinding:
     owner: str
     path: tuple
     scope_id: str | None = None
+    period_id: str | None = None
+    calendar_id: str | None = None
+    relationship_id: str | None = None
 
 @dataclass(frozen=True)
 class TextAssertion:
@@ -89,6 +98,9 @@ class TextAssertion:
     path: tuple
     transformation: str = 'identity'
     scope_id: str | None = None
+    period_id: str | None = None
+    calendar_id: str | None = None
+    relationship_id: str | None = None
 
 @dataclass
 class ReviewedInputPack:
@@ -98,6 +110,9 @@ class ReviewedInputPack:
     documents: list = field(default_factory=list)
     text_assertions: list = field(default_factory=list)
     scope_id: str | None = None
+    period_id: str | None = None
+    calendar_id: str | None = None
+    relationship_id: str | None = None
     scoped_packs: list = field(default_factory=list)
 
 class GovernedPlanner:
@@ -119,14 +134,14 @@ class GovernedPlanner:
             v=c.value;meta=registry.get(v['owner'])
             if not meta.get('production_available') or not meta.get('execution_available'):raise ValueError('Owner unavailable after proposal validation')
             out.append(Issue(v['id'],v['family'],v['owner'],'Validated source-supported work issue',
-                             [v['family']],list(v['dependencies']),scope_id=v.get('scope_id')))
+                             [v['family']],list(v['dependencies']),scope_id=v.get('scope_id'),period_id=v.get('period_id')))
         by_owner={(i.owner,i.scope_id):i for i in out}
         for issue in out:
             supplied=facts.get(issue.source_inputs[0],{})
             if isinstance(supplied,list):
-                supplied=next((r for r in supplied if r.get('scope_id',r.get('entity'))==issue.scope_id),{})
+                supplied=next((r for r in supplied if r.get('scope_id',r.get('entity'))==issue.scope_id and r.get('period_id')==issue.period_id),{})
             for imp in supplied.get('imports',[]):
-                matches=[i for i in out if i.owner==imp.get('package') and (i.scope_id is None or i.scope_id==imp['case'].get('scope_id',imp['case'].get('entity')))]
+                matches=[i for i in out if i.owner==imp.get('package') and (i.scope_id is None or i.scope_id==imp['case'].get('scope_id',imp['case'].get('entity'))) and (i.period_id is None or i.period_id==imp['case'].get('period_id'))]
                 if len(matches)!=1:raise ValueError('Required exact owner dependency absent from semantic issues')
                 upstream=matches[0].id
                 if upstream not in issue.dependencies:issue.dependencies.append(upstream)
@@ -153,7 +168,7 @@ class Intake:
             validation=ProposalValidator(self.registry).validate(proposal,inventory,current,objective)
             result.validation=validation.record()
             if not validation.accepted:
-                result.questions=[dict(kind='blocking',attribute='scope_candidate',question='Resolve ambiguous or unregistered Scope Candidate before qualifying accounting work.')] if any(e.get('code')=='UNRESOLVED_SCOPE' for e in validation.errors) else [dict(kind='blocking',attribute='proposal',question='Resolve invalid semantic proposal.')];return result
+                result.questions=[dict(kind='blocking',attribute='period_candidate',question='Resolve exact material Period and calendar before qualifying accounting work.')] if any(e.get('code')=='UNRESOLVED_PERIOD' for e in validation.errors) else [dict(kind='blocking',attribute='scope_candidate',question='Resolve ambiguous or unregistered Scope Candidate before qualifying accounting work.')] if any(e.get('code')=='UNRESOLVED_SCOPE' for e in validation.errors) else [dict(kind='blocking',attribute='proposal',question='Resolve invalid semantic proposal.')];return result
             proposal=validation.proposal;result.proposal=proposal.record();result._current=current
             fields=inventory.fields()
             for key in sorted(set(ctx_conflicts)):
@@ -221,7 +236,7 @@ class Intake:
                 present={r['attribute'] for r in available if r['promotion']=='established'}
                 missing=sorted(set(v['required_fields'])-present)
                 issue_scope=v.get('scope_id') or next(iter({r['dimensions'].get('scope_id',r['dimensions'].get('entity',current['entity'])) for r in available}))
-                result.owner_inputs.append(dict(issue_id=v['id'],target_owner=v['owner'],scope_id=issue_scope,family=v['family'],
+                result.owner_inputs.append(dict(issue_id=v['id'],target_owner=v['owner'],scope_id=issue_scope,period_id=v.get('period_id'),family=v['family'],
                     available_fact_ids=v['fact_ids'],required_fields=v['required_fields'],missing_fields=missing,
                     unresolved_judgments=unresolved,source_mappings=[dict(fact_id=r['id'],refs=r['claim']['evidence']) for r in available],
                     transformations=[t['id'] for t in result.transformations if t['id'][10:] in v['fact_ids']],
@@ -292,7 +307,7 @@ class Intake:
             owners=OwnerInputs(request['scope'])
             for family,native in populations(request.get('facts',{})):
                 if family in FACT_ADAPTERS:owners.add(FACT_ADAPTERS[family][0],native)
-            def binding_key(binding):return owners.key(binding.owner,binding.scope_id)
+            def binding_key(binding):return owners.key(binding.owner,binding.scope_id,binding.period_id)
             from orchestration.scopes import scope_registry
             registered=scope_registry(request['scope'])
             def qualify_source(source_id,key):
@@ -327,7 +342,7 @@ class Intake:
                     if not isinstance(child,ReviewedInputPack) or not child.scope_id or child.scoped_packs:raise ValueError('Independent scoped ReviewedInputPack required')
                     rows=list(populations(child.request.get('facts',{})))
                     if len(rows)!=1 or rows[0][0] not in FACT_ADAPTERS:raise ValueError('Scoped pack must certify one exact execution')
-                    family,native=rows[0];key=owners.key(FACT_ADAPTERS[family][0],child.scope_id)
+                    family,native=rows[0];key=owners.key(FACT_ADAPTERS[family][0],child.scope_id,child.period_id)
                     if key not in expected or key in seen_packs or native.get('scope_id',native['entity'])!=child.scope_id or digest(native)!=digest(owners[key]):raise ValueError('Scoped pack reused across executions')
                     if child.request.get('objective')!=request['objective']:raise ValueError('Scoped pack objective differs')
                     if any(binding_key(x)!=key for x in child.bindings):raise ValueError('Scoped pack source population mixed')
@@ -336,10 +351,14 @@ class Intake:
                     for field in ('populations','documents','text_assertions'):
                         wanted=[asdict(x) for x in getattr(pack,field) if binding_key(x)==key]
                         if canonical([asdict(x) for x in getattr(child,field)])!=canonical(wanted):raise ValueError('Scoped pack source evidence differs')
+                    from orchestration.temporal_inputs import validate_pack
+                    validate_pack(request['scope'],child,[native])
                     seen_packs.add(key);pack_records.append(dict(node=key,scope_id=child.scope_id,pack_fingerprint=digest(dict(request=child.request,bindings=[asdict(x) for x in child.bindings]))))
                 if seen_packs!=expected:raise ValueError('Repeated owners require separate ReviewedInputPacks')
                 request['reviewed_scope_packs']=pack_records
 
+            from orchestration.temporal_inputs import validate_pack
+            validate_pack(request['scope'],pack,list(owners.values()))
             if pack.scope_id is not None and any(native.get('scope_id',native['entity'])!=pack.scope_id for native in owners.values()):raise ValueError('ReviewedInputPack certifies another Scope')
             for owner,native in owners.items():
                 if owners.packages[owner] in repeated:
@@ -357,8 +376,8 @@ class Intake:
                 manifest=native.get('source_semantic_controls')
                 if native.get('qualified_source_documents') and manifest is None:raise ValueError('Qualified source documents require reviewed semantic controls')
                 if manifest is not None:
-                    actual=dict(text_assertions=[asdict(x) for x in pack.text_assertions if owners.key(x.owner,x.scope_id)==owner],
-                        populations=[asdict(x) for x in pack.populations if owners.key(x.owner,x.scope_id)==owner])
+                    actual=dict(text_assertions=[asdict(x) for x in pack.text_assertions if binding_key(x)==owner],
+                        populations=[asdict(x) for x in pack.populations if binding_key(x)==owner])
                     if canonical(manifest)!=canonical(actual):raise ValueError('Required reviewed source semantic-control population omitted or changed')
             for binding in pack.documents:
                 if not isinstance(binding,DocumentBinding) or binding_key(binding) not in owners:raise ValueError('Invalid reviewed source document binding')
@@ -420,6 +439,8 @@ class Intake:
                 else:raise ValueError('Unknown binding kind')
                 if c['candidate_owner'] and binding.owner!=c['candidate_owner']:raise ValueError('Owner binding crosses boundary')
                 native=owners[binding_key(binding)]
+                from orchestration.temporal_inputs import validate_binding
+                validate_binding(request['scope'],native,binding,c['dimensions'])
                 if c['dimensions'].get('amount_currency'):
                     if binding.owner!='intercompany-accounting' or binding.path[:1]!=('pairs',) or binding.path[-1] not in ('confirmed_a','confirmed_b') or at(native,list(binding.path[:-1])+['currency'])!=c['dimensions']['amount_currency']:raise ValueError('Nominal amount denomination differs from native owner contract')
                 if c['dimensions'].get('scope_id',c['dimensions'].get('entity'))!=native['entity']:
@@ -444,7 +465,7 @@ class Intake:
             selected={i.value['owner'] for i in prepared._proposal.issues}
             if set(owners.packages.values())-selected:raise ValueError('Reviewed pack includes unselected owners')
             for owner in owners:
-                matching=[r for r in prepared.owner_inputs if r['target_owner']==owners.packages[owner] and r['scope_id']==owners[owner]['entity']]
+                matching=[r for r in prepared.owner_inputs if r['target_owner']==owners.packages[owner] and r['scope_id']==owners[owner]['entity'] and (r.get('period_id') is None or r['period_id']==owners[owner].get('period_id'))]
                 if not matching or not any(candidates[id]['promotion']=='established' and id in bound for r in matching for id in r['available_fact_ids']):raise ValueError('Owner has no traceable established input')
                 for r in matching:
                     for key in r['required_fields']:

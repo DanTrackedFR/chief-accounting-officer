@@ -17,7 +17,7 @@ from orchestration.scopes import execution_scopes
 STATUSES = {'EXTRACTED','OBSERVED','INFERRED','USER_STATED','CONTEXT_DERIVED','CALCULATED','ASSUMED','DISPUTED','UNRESOLVED'}
 COMPARATORS = {'actual','prior_actual','budget','forecast','standard','target'}
 SOURCE_FAMILIES = {'trial_balance','general_ledger','pnl','balance_sheet','management_accounts','inventory_report','bom_routing','payroll_export','ap_export','ar_aging','bank_statement','fx_report','fixed_asset_register','lease_schedule','debt_schedule','revenue_report','contract','accounting_policy','reconciliation','close_checklist','control_matrix','audit_finding','management_commentary','management_memo','actuarial_report','valuation_report','unknown'}
-DIMENSIONS = {'scope_id','entity','period','currency','unit','account_id','item_id','record_id','comparator','jurisdiction','framework','version','amount_currency'}
+DIMENSIONS = {'period_id','calendar_id','relationship_id','period_role','scope_id','entity','period','currency','unit','account_id','item_id','record_id','comparator','jurisdiction','framework','version','amount_currency'}
 FRAMEWORKS = {'IFRS','US_GAAP','UK_GAAP','AASB'}
 CONTEXT_ATTRIBUTES = {'entity','framework','jurisdiction','currency','year_end','systems','policies','gross_margin_basis','industry'}
 
@@ -217,7 +217,7 @@ class ProposalValidator:
             for issue in proposal.issues:
                 if not isinstance(issue,Claim):raise ValueError('Issue Claim required')
                 claim(issue,'issue');v=issue.value
-                if not isinstance(v,dict) or set(v)-{'scope_id'}!={'id','owner','family','fact_ids','dependencies','required_fields'}:raise ValueError('Issue schema invalid')
+                if not isinstance(v,dict) or set(v)-{'scope_id','period_id'}!={'id','owner','family','fact_ids','dependencies','required_fields'}:raise ValueError('Issue schema invalid')
                 if not isinstance(v['id'],str) or not v['id'] or v['id'] in issue_ids:raise ValueError('Duplicate issue identity')
                 issue_ids.add(v['id']);owner(v['owner'])
                 if v.get('scope_id') and v['scope_id'] not in registered:raise ValueError('Unknown issue Scope Candidate')
@@ -246,7 +246,7 @@ class ProposalValidator:
                 if not fact_scope:raise ValueError('Unknown fact execution scope')
                 for key in ('entity','currency','jurisdiction'):
                     if key in f.dimensions and fact_scope.get(key) and f.dimensions[key]!=fact_scope[key]:raise ValueError('Execution dimension mismatch')
-                if f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[fact_scope['period_start'],fact_scope['reporting_period']]:raise ValueError('Current fact period mismatch')
+                if not context.get('period_registry') and f.dimensions.get('comparator')=='actual' and context.get('period_start') and f.dimensions.get('period')!=[fact_scope['period_start'],fact_scope['reporting_period']]:raise ValueError('Current fact period mismatch')
                 if 'framework' in f.dimensions and (f.dimensions['framework'] not in FRAMEWORKS or (fact_scope.get('framework') and f.dimensions['framework']!=fact_scope['framework'])):raise ValueError('Framework invalid or mismatched')
                 if 'currency' in f.dimensions and not re.fullmatch('[A-Z]{3}',f.dimensions['currency']):raise ValueError('Currency invalid')
                 if 'amount_currency' in f.dimensions:
@@ -257,6 +257,8 @@ class ProposalValidator:
                         if metadata.get('scope_id',metadata.get('entity'))!=scope_id:raise ValueError('Fact source Scope differs or ambiguous')
                         for key in ('framework','jurisdiction'):
                             if metadata.get(key) is not None and metadata[key]!=fact_scope[key]:raise ValueError('Fact source metadata contamination')
+                from orchestration.temporal_inputs import validate_fact
+                validate_fact(context,f.dimensions,[inventory.extractions[fields[e]['source_id']].source['metadata'] for e in f.claim.evidence])
                 if f.transformation not in {'identity','decimal','iso_date','boolean'}:raise ValueError('Unsafe transformation')
                 if f.claim.status in {'EXTRACTED','OBSERVED','CALCULATED'}:
                     if len(f.claim.evidence)!=1 or transform(fields[f.claim.evidence[0]]['value'],f.transformation)!=f.claim.value:raise ValueError('Extracted fact differs from source/transformation')
@@ -268,13 +270,16 @@ class ProposalValidator:
                 # sources of the same metric are conflicts, not silently deduped.
                 identity=(tuple(f.claim.evidence),f.attribute,canonical(f.dimensions))
                 if f.transformation=='decimal':identity=('numeric-source',tuple(f.claim.evidence))
-                if identity in economic or (f.economic_id and ('economic',scope_id,f.economic_id) in economic):raise ValueError('Duplicate economic identity')
+                if identity in economic or (f.economic_id and ('economic',scope_id,f.dimensions.get('period_id'),f.economic_id) in economic):raise ValueError('Duplicate economic identity')
                 economic.add(identity)
-                if f.economic_id:economic.add(('economic',scope_id,f.economic_id))
+                if f.economic_id:economic.add(('economic',scope_id,f.dimensions.get('period_id'),f.economic_id))
             for issue in proposal.issues:
                 v=issue.value
                 if any(id not in ids for id in v['fact_ids']) or any(d not in issue_ids for d in v['dependencies']):raise ValueError('Unknown fact/dependency')
                 selected=[f for f in proposal.facts if f.id in v['fact_ids']]
+                if context.get('period_registry'):
+                    temporal={f.dimensions.get('period_id') for f in selected}
+                    if not v.get('period_id') or temporal!={v['period_id']}:raise ValueError('Ambiguous material Period Candidate')
                 if not selected or any(f.family!=v['family'] for f in selected):raise ValueError('Issue lacks matching source facts')
                 scopes={f.dimensions.get('scope_id',f.dimensions.get('entity',context['entity'])) for f in selected}
                 if len(scopes)>1 and not (v.get('scope_id') and registered[v['scope_id']]['scope_type'] in ('GROUP','SUBGROUP')):raise ValueError('Mixed-entity issue source population')
@@ -326,5 +331,5 @@ class ProposalValidator:
             return Validation(True,[],copy.deepcopy(proposal))
         except (ValueError,TypeError,KeyError,AttributeError,InvalidOperation,OverflowError) as exc:
             # Do not echo model content or source text into questions/errors.
-            fail('UNRESOLVED_SCOPE' if str(exc) in ('Ambiguous Scope Candidate','Unknown fact execution scope','Unknown issue Scope Candidate') else 'INVALID_PROPOSAL','validation')
+            fail('UNRESOLVED_PERIOD' if 'Period' in str(exc) else 'UNRESOLVED_SCOPE' if str(exc) in ('Ambiguous Scope Candidate','Unknown fact execution scope','Unknown issue Scope Candidate') else 'INVALID_PROPOSAL','validation')
             return Validation(False,errors)
