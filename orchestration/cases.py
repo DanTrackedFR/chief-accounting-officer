@@ -56,14 +56,21 @@ class CaseRegistry:
                 for edge in edges.values():
                     if edge.consumer_node==node.id and edge.required:
                         producer=versions.current(edge.producer_node,allow_stale=True)
-                        if producer is None or versions.state(producer.version_id)!='CURRENT' or graph.nodes[edge.producer_node].status!='complete':unresolved.append(edge.producer_node)
+                        if producer is None or versions.state(producer.version_id)!='CURRENT' or graph.nodes[edge.producer_node].status!='complete' or producer.payload().get('unresolved_dependencies'):unresolved.append(edge.producer_node)
             outcome='partial' if unresolved else 'complete' if required else 'blocked'
             if outcome!=case.outcome:
                 case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Required dependency currentness changed'))
                 case.outcome=outcome
-                if unresolved and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
-                    case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
-            case.result_version_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
+            current_refs=[v.version_id for n in case.node_refs if (v:=versions.current(n,allow_stale=True)) is not None]
+            changed=current_refs!=case.result_version_refs
+            stale=any(versions.state(v)=='STALE' for v in current_refs)
+            # A documented partial conclusion may faithfully describe current
+            # unresolved evidence. Reopen only for new/stale versions, not
+            # merely because the same retained blocker is still unresolved.
+            if unresolved and (changed or stale) and case.status in ('CLOSED','DOCUMENTED','CONCLUDED'):
+                case.governance_history.append(dict(previous_status=case.status,previous_outcome=case.outcome,result_versions=list(case.result_version_refs),reason='Material dependencies require governed rework'))
+                case.status='IN_PROGRESS';case.transitions.append('REWORK');case.rework_state=dict(required_nodes=sorted(set(unresolved)))
+            case.result_version_refs=current_refs
             from .planning import node_record
             case.workplan_nodes=[node_record(graph.nodes[k]) for k in sorted(case.node_refs)]
 

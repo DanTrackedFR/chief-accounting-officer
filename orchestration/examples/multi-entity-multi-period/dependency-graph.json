@@ -1,0 +1,1017 @@
+[
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:085512ecec87af41f87bb1456abbdc5e30c99be8182454500160f79b7eb5840c",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:0a82db3d0e22676ea1cdd798df4db14b054b4aaee3c583c83583c922b3b5c92b",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:60af489b8cdbd122d804acab82fc26ad6460d25d95d782c4744a7fafbbc4c4ff",
+    "producer_period": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:0862a3686e22effbfe804b9f647980a9e07b102b2572467060540c4cd1200c78",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "closing_cta"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "consumer_node": "exec:orchestration-comparative-observation:ENTITY-NL:953b24c794c0949740e91e972af7155ed4b6dfb37a16c38ee1f45009a8d68f9a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "ENTITY-NL",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:0bbf593f41e27fea2d9e773019f9ea46e2521c8a18329177ef9234a38a25dc89",
+    "dependency_type": "COMPARATIVE",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:0cc11131aa593587138d19b26769201c942f975e9ff5b21c76c8c84025503e9a",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "translated_tb"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:13423690209dbca6e5c79e28b68d0470205b723e023d8c80654fc6790d7692d8",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:1aae03442ab0009b8f98d6131cb02779062e8a04d2696d638f4fb05641d522da",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:orchestration-comparative-observation:ENTITY-NL:953b24c794c0949740e91e972af7155ed4b6dfb37a16c38ee1f45009a8d68f9a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "consumer_node": "exec:orchestration-opening-observation:ENTITY-NL:56d537ca1185540097326c363325b1e129863d1696ae58a5b1fd446d6068954d",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "ENTITY-NL",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:1eaf08945dc7ee646c217b82ce82c5a88530e902f2f6f414a5a5e4bae9d6fbef",
+    "dependency_type": "OPENING",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:0a82db3d0e22676ea1cdd798df4db14b054b4aaee3c583c83583c922b3b5c92b",
+    "consumer_node": "exec:intercompany-accounting:ENTITY-NL:60af489b8cdbd122d804acab82fc26ad6460d25d95d782c4744a7fafbbc4c4ff",
+    "consumer_period": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
+    "consumer_scope": "ENTITY-NL",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:20eb4f6c81473705e67881147ba1a960b836fcea77452d59061926c3e88863b2",
+    "dependency_type": "PARTIAL_INCLUDED_PERIOD",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:37ec2ffa42d97e0762bdbb78a04de588f1f52c7af1d40420f358e3c1cc85306c",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "current",
+      "cash"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:5389c465ddeb89904b82212df340683f6fdf8ed894c3830cd10fe14da1a5a937",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "cta_movement"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:53b0891922a48de04ba4bee00989e6fa8097a4faa821251cc06894c52d5fc940",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:5b16bfd9278231c5b323e6b466bc5d4499a60e134849c718db64d2d7649d994c",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:intercompany-accounting:ENTITY-US:7129b57483ab9050be42542803e9f1d5a8340e5265f953496d634a26c6008777",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:5d7d44bbcf607b62f0db44c1a727fc2f7a2b3873044c7cf9e2abe9f9932776df",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "translated_tb",
+      "ic loan"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "consumer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "consumer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "consumer_scope": "ENTITY-US",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:60897b54b40de6beccd0915cf7b3f73ede78893a5e89fc72182abddde09b94cb",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:643d6e76360f083afa80e8bbd564c44a301c63eeb9b6a3c13dfd21b604666b11",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "consolidated_balances"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:77c4a2d05fcc9b6ade4385dafbf6144d0f19bbaaf57083944e63aafcdbdf6deb",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "matching",
+      "classification"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:8b6885f37191caae57a7382fa702f722d6141c2471733d1a79152dad3a6f9679",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:939078fdce6a0882813b6cfb306db1d784904f10b01cbac08fd50249acf12fc1",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:a5f3a5669c64c2a00585fa51edb678913d45b63d8a0977c34dd027a9583b81c3",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:a6a020c5fcaf7997fcc2f6669a2b79a2e75c957cabb483a21f003aa218a7b0b0",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:a83040ba768c9f11c6d7834bf6095f0e97b3ff01ac1ae1a47bd19f4ace18ed49",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "consumer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "consumer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "consumer_scope": "ENTITY-US",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:ac1cd5e1798564c823c173bc34d51a8acce83f1df9541985b7d2c290966096b7",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "matching",
+      "classification"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:ad9b017d965fa45db9edfe98dbd2fa274bfc32995edf9302664124902e3d5254",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:b77030048e6ee7a5d35ecc1174e72603297f8f0b2c4ddecc1d9308a7ae119e60",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "translated_tb"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:b79713e0a85edb6d21411d22a5c0cc85b6cc1a13c7797396a6bdfbffbb2f75b8",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:b9a4076747f13d6bacbe35275a7656bcaefb015a944a7fa514b6a9412f074282",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "closing_cta"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "consumer_node": "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "ENTITY-NL",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:bbd0fcd0a7a26f2e28761b2909af5efcf496f721d1487d13bae3767944ed0c16",
+    "dependency_type": "OPENING",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:c94087dd6161b4cc531e7953d1597fafdc82015f6859266fb6a7fb0c3555616b",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:cedebcf4749ec313567671b0e742473db8c56c5800e3204d45b9d7b9f06825d9",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:orchestration-opening-observation:ENTITY-NL:56d537ca1185540097326c363325b1e129863d1696ae58a5b1fd446d6068954d",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:d0add04f77e5332eb3d959bf8a1d64b323be248d8665237699516cb2367515ed",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:d22c91659412072defc52d38148da74bd3c00ec73d7c7aa23fa9e95f19949aaa",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "translated_tb",
+      "ic loan"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:d51cdffca3f6d65394c1c011d217e5028e4086aaa32210b5311dc5f7f019c65e",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "matching",
+      "classification"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:d8493df3175b1d0abf8ec83e29d9ffbba5ecd70d29df579bb7866d8f699db192",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "translation",
+      "cta_movement"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:d8f7e1ce1b242fdc4a067e82825d3af19ea9f9f2a9db86d86413de65994f493c",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:e092ccc7b85925da37f5d29a93365e5e2a9866aca7ff5213a5f7ea2c5d481ccb",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:e6f2dd98454c2ae3730cb8d16fdd4a6183d6768a5fbb88d646305ecff6ec8d8d",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "b_functional"
+    ],
+    "producer_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "consumer_node": "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "ENTITY-UK",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:ed26ae15f1d391ad3e4ba1eb352ac41221d8c8853bed9ce69c898f20bc7cbe8f",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+    "producer_node": "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "ENTITY-UK",
+    "required": true
+  },
+  {
+    "alignment_evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:f2fd7e63f11f0e080bcedb82577bf6e09eaefaaf869bf6efe0bab934659d3deb",
+    "dependency_type": "QUALIFIED_ALIGNMENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:85c602edcc9e8cb7c4aee5a153d73a5bd604bc51897473648af7f76eaeeaecd6",
+    "producer_node": "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_scope": "ENTITY-NL",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:fa2b6de72d1ad941385c663445c7c5f855eeed1ec865d86abf924b2809015efd",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "matching",
+      "classification"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  },
+  {
+    "alignment_evidence": [],
+    "consumer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "consumption": "EXPLICIT_CROSS_CASE",
+    "dependency_id": "dependency:fbd03f54ebddd480d688a65fd98b1650d8adac1a15d85387b74cd80f6cacee05",
+    "dependency_type": "CURRENT",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "material": null,
+    "metric_path": [
+      "matching",
+      "classification"
+    ],
+    "producer_case": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required": true
+  }
+]

@@ -11,7 +11,7 @@ PUBLIC_TEXT = ('topic_id', 'guidance', 'framework', 'jurisdiction', 'entity_scop
 PUBLIC_LISTS = ('limitations', 'uncertainties', 'open_items', 'controls', 'reporting', 'required_approvals')
 ROUTES = ('answer_context', 'answer', 'retrieval_snippet', 'citation', 'tool_output', 'user_log', 'export')
 INTERNAL_TOKEN = re.compile(
-    r'(?im)\bSource\s*:|\b(?:SOURCE_VERIFIED|MODEL_DERIVED_AUDIT_REQUIRED|'
+    r'(?im)\b(?:exec|version|period|case|dependency|ic-side|ic-relationship|fingerprint):(?=\S)|\b(?:node_id|case_id|period_id|result_version|dependency_id|receipt_internals|source_fingerprint|reviewer_signoff|evidence_tier|routing_metadata|semantic_metadata)\b|\bSource\s*:|\b(?:SOURCE_VERIFIED|MODEL_DERIVED_AUDIT_REQUIRED|'
     r'ChatGPT\s+training\s+data|\b[0-9a-f]{64}\b|\b(?:case_fingerprint|source_hash|claim_register|reviewer_identity)\b|'
     r'PRIMARY_CORROBORATED|SECONDARY_CORROBORATED|DIRECT_SOURCE_CHECKED|TRAINING_DATA_CHECKED)\b|'
     r'\b(?:source_note|approval_track|evidence_status|audit_required|approval_review)\b'

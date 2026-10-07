@@ -1,0 +1,104 @@
+{
+  "accounting_authority": false,
+  "case_fingerprint": "971462858e5a706c4884c9bcd97ab6402d734c459c6364975c56bbe4870b616f",
+  "currency": "EUR",
+  "framework": "IFRS",
+  "journal_entry_implications": [],
+  "limitations": [
+    "Matching is relationship lineage; unresolved residuals remain visible."
+  ],
+  "matching": {
+    "accounting_authority": false,
+    "classification": "MATCHED",
+    "correction": null,
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "functional_residual": null,
+    "network_id": "STAGE3-NETWORK",
+    "relationship_id": "ic-relationship:ed8c1c328f0fa2bbdd45619b57b534ce2ecfea1aab6bf859a51abfce5bae48c3",
+    "residual_currency": null,
+    "result_versions": [
+      "version:0746828eed2e4b2359f9fdca3c531ae95ec6edfda892cf7749404d605c82715a",
+      "version:0d61a742592b9c16135eebc1c2e3b189241355fbb6af46bd97f715841b675676"
+    ],
+    "sides": [
+      {
+        "agreement_id": "agreement-timing",
+        "book_entry_id": "book-timing-current-ENTITY-NL",
+        "case_id": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-UK",
+        "economic_id": "timing",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "30.00",
+        "functional_currency": "EUR",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:0d61a742592b9c16135eebc1c2e3b189241355fbb6af46bd97f715841b675676",
+        "role": "receivable",
+        "scope_id": "ENTITY-NL",
+        "side_id": "ic-side:67c27f568218e3d49c8e964ee0b64789f979bf9e7506b76b79d398907b3d7f19",
+        "source_fingerprint": "978b0d812c5e607cafccab20c6947284a2333ba839d826e33b9d1c99a027cb98",
+        "source_id": "source-timing-current-ENTITY-NL",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "30",
+        "transaction_class": "loan",
+        "transaction_currency": "GBP"
+      },
+      {
+        "agreement_id": "agreement-timing",
+        "book_entry_id": "book-timing-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+        "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "counterparty_scope": "ENTITY-NL",
+        "economic_id": "timing",
+        "evidence": [
+          "Independent synthetic source, rate and accounting review; not authenticated approval"
+        ],
+        "functional_amount": "30.00",
+        "functional_currency": "GBP",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "network_id": "STAGE3-NETWORK",
+        "owner_node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:0746828eed2e4b2359f9fdca3c531ae95ec6edfda892cf7749404d605c82715a",
+        "role": "payable",
+        "scope_id": "ENTITY-UK",
+        "side_id": "ic-side:44c295aacb5c8ec8b21b0533d18391d14b16f4abda7ca537e69e0d916d63e79c",
+        "source_fingerprint": "199e5e1c50330185b500cf67bb256ab2f4a09ffaec276bcd6ee649d3ebc490e8",
+        "source_id": "source-timing-ENTITY-UK",
+        "source_path": [
+          "intercompany_transactions",
+          0
+        ],
+        "transaction_amount": "30",
+        "transaction_class": "loan",
+        "transaction_currency": "GBP"
+      }
+    ],
+    "transaction_residual": "0",
+    "transaction_residual_currency": "GBP"
+  },
+  "status": "complete",
+  "unresolved_dependencies": []
+}

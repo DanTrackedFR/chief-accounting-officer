@@ -11,6 +11,24 @@ from .periods import identity
 def fingerprint(value): return identity('fingerprint',value).split(':',1)[1]
 
 
+def blocked_payload(node, source, bindings, blockers):
+    """A dependency-governance record, never an accounting result or journal."""
+    return dict(status='blocked', case_fingerprint=fingerprint([source, sorted(bindings), sorted(blockers)]),
+        unresolved_dependencies=sorted(blockers), accounting_authority=False,
+        journal_entry_implications=[], framework=node.framework,
+        currency=node.functional_currency or node.presentation_currency,
+        limitations=['Required material accounting dependencies remain unresolved.'])
+
+
+def unresolved_bindings(graph, versions, edges, node_id, bindings):
+    """Only actual required/material dependency contracts propagate conflicts."""
+    return [key for key, version in bindings
+        if (edges[key].required or edges[key].material is not False)
+        and (graph.nodes[versions.versions[version].node_id].status != 'complete'
+             or versions.versions[version].payload().get('unresolved_dependencies'))]
+
+
+
 @dataclass(frozen=True)
 class Dependency:
     producer_node: str
@@ -95,7 +113,7 @@ class VersionRegistry:
 
     def publish(self,node,payload,source,bindings,reason):
         import json
-        if not reason or not isinstance(payload,dict) or payload.get('status')!='complete':raise ValueError('Qualified complete result/version reason required')
+        if not reason or not isinstance(payload,dict) or payload.get('status') not in ('complete','blocked'):raise ValueError('Qualified result/version reason required')
         old=self.current(node.id,allow_stale=True)
         result_id=identity('result',[node.id,node.case_id,node.scope_id,node.period_id])
         source_hash=fingerprint(source);result_hash=fingerprint(payload)
@@ -108,6 +126,9 @@ class VersionRegistry:
             if (producer.scope_id,producer.period_id,producer.case_id)!=(contract.producer_scope,contract.producer_period,contract.producer_case):raise ValueError('Dependency binding dimensions differ')
         expected={k for k,e in (self.edges or {}).items() if e.consumer_node==node.id}
         if {edge for edge,version in bindings}!=expected or len(bindings)!=len(expected):raise ValueError('Dependency binding omitted/duplicated')
+        blockers=unresolved_bindings(self.graph,self,self.edges,node.id,bindings)
+        if blockers and payload!=blocked_payload(node,source,bindings,blockers):raise ValueError('Unresolved material dependency cannot support accounting result')
+        if not blockers and payload.get('status')=='blocked':raise ValueError('Blocked result requires actual unresolved dependency')
         content=[result_id,old.version_id if old else None,exact,source_hash,result_hash,sorted(bindings),reason]
         key=identity('version',content)
         if key in self.versions:raise ValueError('Version overwrite')
@@ -147,7 +168,7 @@ class VersionedExecution:
     def receipt(self,edge_id):
         edge=self.edges[edge_id];edge.validate(self.graph,self.cases,self.periods)
         version=self.versions.current(edge.producer_node)
-        if version is None or self.graph.nodes[edge.producer_node].status!='complete':raise ValueError('Required producer blocked/absent')
+        if version is None or self.graph.nodes[edge.producer_node].status!='complete' or version.payload().get('unresolved_dependencies'):raise ValueError('Required producer blocked/absent/unresolved')
         from .runtime import at
         payload=version.payload(); value=at(payload,edge.metric_path)
         producer=self.graph.nodes[edge.producer_node];consumer=self.graph.nodes[edge.consumer_node]
@@ -170,6 +191,25 @@ class VersionedExecution:
         from .scopes import authorize_scope
         authorize_scope(self.cases.scopes,node)
         self.cases.bind_node(node.case_id,node);self.periods.authorize_execution(node.period_id,node.case_id,node.id)
+        bindings=[]
+        for key,edge in sorted(self.edges.items()):
+            if edge.consumer_node!=node.id:continue
+            producer=self.versions.current(edge.producer_node)
+            if producer is None:raise ValueError('Required producer absent')
+            self.versions.require_current(producer.version_id)
+            bindings.append((key,producer.version_id))
+        if set(node.dependencies)!={self.edges[key].producer_node for key,_ in bindings}:raise ValueError('Workplan has unqualified dependencies')
+        blockers=unresolved_bindings(self.graph,self.versions,self.edges,node.id,bindings)
+        if blockers:
+            result=blocked_payload(node,source,bindings,blockers)
+            previous=self.versions.current(node.id,allow_stale=True)
+            version=self.versions.publish(node,result,source,bindings,reason)
+            if hasattr(self,'sources'):self.sources[node.id]=copy.deepcopy(source)
+            node.result=version.payload();node.status='blocked';node.iterations+=1
+            node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT',status='blocked')
+            if previous:self.invalidate(previous.version_id,version.version_id)
+            self.cases.refresh(self.graph,self.versions,self.edges)
+            return version
         receipts=[self.receipt(k) for k,e in sorted(self.edges.items()) if e.consumer_node==node.id]
         declared={self.edges[r['dependency_id']].producer_node for r in receipts}
         if set(node.dependencies)!=declared:raise ValueError('Workplan has unqualified dependencies')
@@ -196,6 +236,8 @@ class VersionedExecution:
             from .stage3 import validate_native_bindings
             validate_native_bindings(self,node,source,receipts)
             result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
+            if node.selected_skill=='intercompany-accounting' and node.scope_type=='GROUP' and source.get('stage3_contract')=='ORDINARY_IC_REASSESSMENT' and (result.get('journal_entry_implications') or result.get('calculations',{}).get('journal_entities')):
+                raise ValueError('Zero-adjustment framework reassessment cannot publish legal-book journals')
         version=self.versions.publish(node,result,source,[(r['dependency_id'],r['result_version']) for r in receipts],reason)
         if hasattr(self,'sources'):self.sources[node.id]=copy.deepcopy(source)
         node.result=version.payload();node.status='complete';node.iterations+=1;node.execution_receipt=dict(result_version=version.version_id,period_id=node.period_id,case_id=node.case_id,currentness='CURRENT')

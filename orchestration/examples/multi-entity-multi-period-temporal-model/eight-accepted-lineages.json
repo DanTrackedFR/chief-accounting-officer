@@ -1,0 +1,1334 @@
+[
+  {
+    "nodes": [
+      "clean-ENTITY-NL",
+      "elimination",
+      "reporting"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:e6f2dd98454c2ae3730cb8d16fdd4a6183d6768a5fbb88d646305ecff6ec8d8d",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": "EUR",
+        "producer_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-NL",
+        "result_fingerprint": "f0b38b722595bcd95bfa1a4af454b1e41ee7af77ba0d9350a0b5dae1e952e4b2",
+        "result_version": "version:7708c5363225261e2757671698f6da00fb6eb4714ab34222c8f7decc325effa2",
+        "value": "90.00",
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+        "metric_path": [
+          "calculations",
+          "consolidated_balances"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "6f33a27de3ff05eddf923bb38ce1fe539092db2759b3d8d9f7f68e6530a53064",
+        "result_version": "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+        "value": {
+          "CTA": "0.00",
+          "cash": "390.00",
+          "clean loan": "0.00",
+          "clean-ENTITY-US profit": "0.00",
+          "correction income": "-1.00",
+          "equity": "-487.00",
+          "fx loan": "0.00",
+          "fx payable": "0.00",
+          "fx-ENTITY-UK profit": "-2.00",
+          "fx-ENTITY-US profit": "0.00",
+          "goodwill": "0",
+          "ic payable": "0.00",
+          "investment": "0.00",
+          "mismatch loan": "0.00",
+          "mismatch-ENTITY-UK profit": "0.00",
+          "noncontrolling interest": "0",
+          "sub equity": "0.00",
+          "timing loan": "0.00",
+          "timing payable": "0.00",
+          "timing-ENTITY-UK profit": "0.00",
+          "uk cash": "100.00",
+          "uk equity": "0.00",
+          "uk payable": "0.00"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:7708c5363225261e2757671698f6da00fb6eb4714ab34222c8f7decc325effa2",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8"
+    ],
+    "source_snapshot": {
+      "fingerprint": "a2d48bae89b6411aa9ca90cd0920149f48b7ea9e80eec996862130df34508cc8",
+      "source_id": "review-clean-ENTITY-NL"
+    },
+    "status": "ACCEPTED",
+    "title": "NL legal source to Group"
+  },
+  {
+    "nodes": [
+      "clean-ENTITY-US",
+      "whole-translation-ENTITY-US",
+      "elimination",
+      "reporting"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "US_GAAP",
+        "consumer_functional_currency": "USD",
+        "consumer_node": "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+        "consumer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "consumer_presentation_currency": null,
+        "consumer_scope": "ENTITY-US",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:48bc61cf73442df92b1e9dbf4d6224dae4abd566b00839026885af7dd47dd0cc",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "a82648ecade731af0b9b32fbd5008e1088c034865d5e541ad9b986f420d88e0d",
+        "result_version": "version:530b263a35cb01778774df7e123ab93c7b819b7dd0e18e14bd21cc5faa6d5680",
+        "value": "100.00",
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "US_GAAP",
+        "consumer_functional_currency": "USD",
+        "consumer_node": "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+        "consumer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "consumer_presentation_currency": null,
+        "consumer_scope": "ENTITY-US",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:ef3700ffeba40c3169cca74eb3909bf0e139af8ad95064b590acd95cf88f1f8e",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_fx_gain"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "a82648ecade731af0b9b32fbd5008e1088c034865d5e541ad9b986f420d88e0d",
+        "result_version": "version:530b263a35cb01778774df7e123ab93c7b819b7dd0e18e14bd21cc5faa6d5680",
+        "value": "0.00",
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:8b9d9221f9f417bfa963aee4161935090fe3053766136c9ed56dafc801a726e4",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "translated_tb"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "1d32e9a6231ef6666548fde8f59fad26c48edc4c4cd2af6469ea039e4715db9f",
+        "result_version": "version:2ec31f28114d16952af910972d8538fb4eec158317ebdb088fa014cf549bcba5",
+        "value": {
+          "cash": "90.00",
+          "clean loan": "90.00",
+          "clean-ENTITY-US profit": "0.00",
+          "fx payable": "-18.00",
+          "fx-ENTITY-US profit": "0.00",
+          "sub equity": "-162.00"
+        },
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:4cdefaef970d4c59a0221d514386d106a3ec8c050b45ef9b3e26147f8d013589",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "closing_cta"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "1d32e9a6231ef6666548fde8f59fad26c48edc4c4cd2af6469ea039e4715db9f",
+        "result_version": "version:2ec31f28114d16952af910972d8538fb4eec158317ebdb088fa014cf549bcba5",
+        "value": "0.00",
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:689ba99a26f6089609e3c464a352ba2384ff0f4c896c6f08c221e1cadd218a80",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "cta_movement"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "1d32e9a6231ef6666548fde8f59fad26c48edc4c4cd2af6469ea039e4715db9f",
+        "result_version": "version:2ec31f28114d16952af910972d8538fb4eec158317ebdb088fa014cf549bcba5",
+        "value": "0.00",
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+        "metric_path": [
+          "calculations",
+          "consolidated_balances"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "6f33a27de3ff05eddf923bb38ce1fe539092db2759b3d8d9f7f68e6530a53064",
+        "result_version": "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+        "value": {
+          "CTA": "0.00",
+          "cash": "390.00",
+          "clean loan": "0.00",
+          "clean-ENTITY-US profit": "0.00",
+          "correction income": "-1.00",
+          "equity": "-487.00",
+          "fx loan": "0.00",
+          "fx payable": "0.00",
+          "fx-ENTITY-UK profit": "-2.00",
+          "fx-ENTITY-US profit": "0.00",
+          "goodwill": "0",
+          "ic payable": "0.00",
+          "investment": "0.00",
+          "mismatch loan": "0.00",
+          "mismatch-ENTITY-UK profit": "0.00",
+          "noncontrolling interest": "0",
+          "sub equity": "0.00",
+          "timing loan": "0.00",
+          "timing payable": "0.00",
+          "timing-ENTITY-UK profit": "0.00",
+          "uk cash": "100.00",
+          "uk equity": "0.00",
+          "uk payable": "0.00"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:530b263a35cb01778774df7e123ab93c7b819b7dd0e18e14bd21cc5faa6d5680",
+      "version:2ec31f28114d16952af910972d8538fb4eec158317ebdb088fa014cf549bcba5",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8"
+    ],
+    "source_snapshot": {
+      "fingerprint": "500701e8ec4dc45a2d6ea29e9f976edba36b07485fa4c78d03473c8d4688547b",
+      "source_id": "review-clean-ENTITY-US"
+    },
+    "status": "ACCEPTED",
+    "title": "US legal source through native translation to Group"
+  },
+  {
+    "nodes": [
+      "fx-ENTITY-UK",
+      "whole-translation-ENTITY-UK",
+      "elimination",
+      "reporting"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "UK_GAAP",
+        "consumer_functional_currency": "GBP",
+        "consumer_node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": null,
+        "consumer_scope": "ENTITY-UK",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:36ba91d82e688e49539bc2fa7c515bc8531ae8246205e8a3d8d0b60457e4d82e",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "a1509be863ded4a923d029370d338acb118a4e15eab8755d6d9ecd449c449265",
+        "result_version": "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+        "value": "18.00",
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "UK_GAAP",
+        "consumer_functional_currency": "GBP",
+        "consumer_node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": null,
+        "consumer_scope": "ENTITY-UK",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:18bf35c3f94a06f34b7eeed812724e600c54476b4d9eabfa67bbded2c8db7c60",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_fx_gain"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "a1509be863ded4a923d029370d338acb118a4e15eab8755d6d9ecd449c449265",
+        "result_version": "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+        "value": "2.00",
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:3c32c771e7e0533af3d1678f53b7f7234d571058e978e528e06e35b2eaa5f04c",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "translated_tb"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "39c39692c57a7d8c153e2abd7cd3ccda3e66b55a842872a8ca00568891e403e8",
+        "result_version": "version:9cb47e6414525a02645484fe3848b7c88a46665572eabc9553f8b739a790442c",
+        "value": {
+          "fx loan": "18.00",
+          "fx-ENTITY-UK profit": "-2.00",
+          "mismatch loan": "10.00",
+          "mismatch-ENTITY-UK profit": "0.00",
+          "timing payable": "-30.00",
+          "timing-ENTITY-UK profit": "0.00",
+          "uk cash": "100.00",
+          "uk equity": "-96.00"
+        },
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:d646ef95d78a68ffdc5757910437013b351ab0c7a074f260cc10b5e0d1382349",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "closing_cta"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "39c39692c57a7d8c153e2abd7cd3ccda3e66b55a842872a8ca00568891e403e8",
+        "result_version": "version:9cb47e6414525a02645484fe3848b7c88a46665572eabc9553f8b739a790442c",
+        "value": "0.00",
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:9d1b8f9aff9f5e7d6c8873f87eac959c1f90a6303e0d043f8043af16e2d0f1ec",
+        "metric_path": [
+          "calculations",
+          "translation",
+          "cta_movement"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "39c39692c57a7d8c153e2abd7cd3ccda3e66b55a842872a8ca00568891e403e8",
+        "result_version": "version:9cb47e6414525a02645484fe3848b7c88a46665572eabc9553f8b739a790442c",
+        "value": "0.00",
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+        "metric_path": [
+          "calculations",
+          "consolidated_balances"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "6f33a27de3ff05eddf923bb38ce1fe539092db2759b3d8d9f7f68e6530a53064",
+        "result_version": "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+        "value": {
+          "CTA": "0.00",
+          "cash": "390.00",
+          "clean loan": "0.00",
+          "clean-ENTITY-US profit": "0.00",
+          "correction income": "-1.00",
+          "equity": "-487.00",
+          "fx loan": "0.00",
+          "fx payable": "0.00",
+          "fx-ENTITY-UK profit": "-2.00",
+          "fx-ENTITY-US profit": "0.00",
+          "goodwill": "0",
+          "ic payable": "0.00",
+          "investment": "0.00",
+          "mismatch loan": "0.00",
+          "mismatch-ENTITY-UK profit": "0.00",
+          "noncontrolling interest": "0",
+          "sub equity": "0.00",
+          "timing loan": "0.00",
+          "timing payable": "0.00",
+          "timing-ENTITY-UK profit": "0.00",
+          "uk cash": "100.00",
+          "uk equity": "0.00",
+          "uk payable": "0.00"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+      "version:9cb47e6414525a02645484fe3848b7c88a46665572eabc9553f8b739a790442c",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8"
+    ],
+    "source_snapshot": {
+      "fingerprint": "659565e9de42b76693f7defed8eff3d4fe1c847862b114349501afc6c14c2801",
+      "source_id": "replacement-snapshot-dedb3eb3a797f20b82b9ae8a521aa396bcf7943cbe91d4f20dd747a9c2159b4b"
+    },
+    "status": "ACCEPTED",
+    "title": "UK legal source through native translation to Group"
+  },
+  {
+    "nodes": [
+      "clean-ENTITY-US",
+      "match-clean",
+      "elimination"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:c94087dd6161b4cc531e7953d1597fafdc82015f6859266fb6a7fb0c3555616b",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "producer_framework": "US_GAAP",
+        "producer_functional_currency": "USD",
+        "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+        "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-US",
+        "result_fingerprint": "a82648ecade731af0b9b32fbd5008e1088c034865d5e541ad9b986f420d88e0d",
+        "result_version": "version:530b263a35cb01778774df7e123ab93c7b819b7dd0e18e14bd21cc5faa6d5680",
+        "value": "100.00",
+        "value_currency": "USD"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:d51cdffca3f6d65394c1c011d217e5028e4086aaa32210b5311dc5f7f019c65e",
+        "metric_path": [
+          "matching",
+          "classification"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "afcdeb4dcbfa71d55d04b36b230814e1ddf60193a55bc65fac168a012687ae2e",
+        "result_version": "version:e4efb1bf836499cf020a1111a38b625bf8c37ad2711f70bb3ef92f6e8d687f96",
+        "value": "MATCHED",
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:530b263a35cb01778774df7e123ab93c7b819b7dd0e18e14bd21cc5faa6d5680",
+      "version:e4efb1bf836499cf020a1111a38b625bf8c37ad2711f70bb3ef92f6e8d687f96",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc"
+    ],
+    "source_snapshot": {
+      "fingerprint": "500701e8ec4dc45a2d6ea29e9f976edba36b07485fa4c78d03473c8d4688547b",
+      "source_id": "review-clean-ENTITY-US"
+    },
+    "status": "ACCEPTED",
+    "title": "First reciprocal side through match to elimination"
+  },
+  {
+    "nodes": [
+      "clean-ENTITY-NL",
+      "match-clean",
+      "elimination"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:939078fdce6a0882813b6cfb306db1d784904f10b01cbac08fd50249acf12fc1",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "b_functional"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": "EUR",
+        "producer_node": "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-NL",
+        "result_fingerprint": "f0b38b722595bcd95bfa1a4af454b1e41ee7af77ba0d9350a0b5dae1e952e4b2",
+        "result_version": "version:7708c5363225261e2757671698f6da00fb6eb4714ab34222c8f7decc325effa2",
+        "value": "90.00",
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:d51cdffca3f6d65394c1c011d217e5028e4086aaa32210b5311dc5f7f019c65e",
+        "metric_path": [
+          "matching",
+          "classification"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "afcdeb4dcbfa71d55d04b36b230814e1ddf60193a55bc65fac168a012687ae2e",
+        "result_version": "version:e4efb1bf836499cf020a1111a38b625bf8c37ad2711f70bb3ef92f6e8d687f96",
+        "value": "MATCHED",
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:7708c5363225261e2757671698f6da00fb6eb4714ab34222c8f7decc325effa2",
+      "version:e4efb1bf836499cf020a1111a38b625bf8c37ad2711f70bb3ef92f6e8d687f96",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc"
+    ],
+    "source_snapshot": {
+      "fingerprint": "a2d48bae89b6411aa9ca90cd0920149f48b7ea9e80eec996862130df34508cc8",
+      "source_id": "review-clean-ENTITY-NL"
+    },
+    "status": "ACCEPTED",
+    "title": "Second reciprocal side through match to elimination"
+  },
+  {
+    "nodes": [
+      "adjacent-closing",
+      "current-opening",
+      "reporting"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:5181ff5ac05c8844603d09588634a4fea74764c1c7897f72922185e9164db815",
+        "consumer_period": "period:17effde82c7027428348a9f7053bf9882e2527ebd48f9d179f9d2430ce45d254",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:c7344f029223e480d1e70f8146b8cecbd3e4d36e0e08bf5e008252ccb1830db4",
+        "metric_path": [
+          "calculations",
+          "current"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:financial-statements:GROUP-EUR:d18177eebdd94220782a8dec89588257cfff4dc7877f2e5c3ebc8185ede018bd",
+        "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "f1f9ed5ab1a451616cdb42a2c26c1158932b74f48478dd766b7dc74fb9e6da25",
+        "result_version": "version:331c4137ad6107c3c5e45f68c893f66d515929fec61acfea27a83f4b10378e91",
+        "value": {
+          "assets": "516.00",
+          "cash": "490.00",
+          "closing_equity": "487.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "29.00",
+          "lines": {
+            "cash": "490.00",
+            "equity": "-487.00",
+            "fx payable": "-18.00",
+            "fx receivable": "16.00",
+            "mismatch payable": "-11.00",
+            "mismatch receivable": "10.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:676257289dcb15841897f6bc6d24414c62d25f8253b83ea3df59912f4671e01b",
+        "metric_path": [
+          "calculations",
+          "current"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:financial-statements:GROUP-EUR:5181ff5ac05c8844603d09588634a4fea74764c1c7897f72922185e9164db815",
+        "producer_period": "period:17effde82c7027428348a9f7053bf9882e2527ebd48f9d179f9d2430ce45d254",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "6c553b7e6bd6f38028a7f02343a5b36c133ee7d392d7b7575f3a29a62b2bbe1b",
+        "result_version": "version:fc93494b9177863cd2bc73ee6c8b81c759ea3f6824863f5a0f5304e1c2881297",
+        "value": {
+          "assets": "516.00",
+          "cash": "490.00",
+          "closing_equity": "487.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "29.00",
+          "lines": {
+            "cash": "490.00",
+            "equity": "-487.00",
+            "fx payable": "-18.00",
+            "fx receivable": "16.00",
+            "mismatch payable": "-11.00",
+            "mismatch receivable": "10.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:331c4137ad6107c3c5e45f68c893f66d515929fec61acfea27a83f4b10378e91",
+      "version:fc93494b9177863cd2bc73ee6c8b81c759ea3f6824863f5a0f5304e1c2881297",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8"
+    ],
+    "source_snapshot": {
+      "fingerprint": "048d9f88b42ba87a207a72eb27248769ceae421616f7365d25249216af610f34",
+      "source_id": "review-adjacent-closing"
+    },
+    "status": "ACCEPTED",
+    "title": "Adjacent closing through native opening to Financial Statements"
+  },
+  {
+    "nodes": [
+      "prior-year-comparative",
+      "reporting"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:791799e500e216a3aaf815c4d4b2b2153ffb0e8c66365a129c2fcc39a229762e",
+        "metric_path": [
+          "calculations",
+          "current"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:financial-statements:GROUP-EUR:a2efdea00cc374b5acdb7f6e3b334295c2a52cbd306de575a0a53d864b950c34",
+        "producer_period": "period:254fa10b04074f806d2e29d3684b79b4424ef353c1e883208982d988a3e5d82e",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "c7c1d3a41c4f2103b08ac90c5d0356a7b9da62e189f4ad1944f9f40fac0ab4de",
+        "result_version": "version:c09768b5be55ddebdb91708b36cf56ef0c99e6807e1b5a0f29a0972edbf7d546",
+        "value": {
+          "assets": "489.00",
+          "cash": "489.00",
+          "closing_equity": "489.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "0",
+          "lines": {
+            "cash": "489.00",
+            "equity": "-489.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:c09768b5be55ddebdb91708b36cf56ef0c99e6807e1b5a0f29a0972edbf7d546",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8"
+    ],
+    "source_snapshot": {
+      "fingerprint": "ce7a64408825e5598862c12cb46088f8cdd92362521c673389e3be50d86dbb1a",
+      "source_id": "review-prior-year-comparative"
+    },
+    "status": "ACCEPTED",
+    "title": "Prior-year comparative to current reporting"
+  },
+  {
+    "correction": {
+      "case_status": "CLOSED",
+      "current_version": "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+      "invalidation": {
+        "affected_cases": [
+          "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+          "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0"
+        ],
+        "affected_periods": [
+          "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70"
+        ],
+        "causes": [
+          {
+            "dependency": "dependency:9e80a494a042ac7a3842f45916d3a90422983798ebade71e383444ec577a05e5",
+            "node": "exec:foreign-currency:ENTITY-UK:1e938b764d1bc1739909b09743e2e96b8da68ed288896046657cace4b9f0e8ac",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:ec970481a282aed33d4fa31f24ea8736e666a8cf2eb33eadafbb32cb197cfd05",
+            "node": "exec:foreign-currency:ENTITY-UK:1e938b764d1bc1739909b09743e2e96b8da68ed288896046657cace4b9f0e8ac",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:18bf35c3f94a06f34b7eeed812724e600c54476b4d9eabfa67bbded2c8db7c60",
+            "node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:36ba91d82e688e49539bc2fa7c515bc8531ae8246205e8a3d8d0b60457e4d82e",
+            "node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:87b4cc7ed870be66375a40b8a114dcfee007a642f987917db270b9e407ba8b2f",
+            "node": "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:13423690209dbca6e5c79e28b68d0470205b723e023d8c80654fc6790d7692d8",
+            "node": "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+            "upstream_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a"
+          },
+          {
+            "dependency": "dependency:f1aeee202bb3961007e3bf705ded83789b0cce869905dd6a8a8848566677bce5",
+            "node": "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+            "upstream_version": "version:ca5c56f21cc92299a6c12036ca38a45c7e3dd90d06a852e8c35d4004249cd635"
+          },
+          {
+            "dependency": "dependency:3c32c771e7e0533af3d1678f53b7f7234d571058e978e528e06e35b2eaa5f04c",
+            "node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+            "upstream_version": "version:e13480468d76d23a128a9a2663d8d0be22b87dd3f008ba711383a92afa76dca2"
+          },
+          {
+            "dependency": "dependency:9d1b8f9aff9f5e7d6c8873f87eac959c1f90a6303e0d043f8043af16e2d0f1ec",
+            "node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+            "upstream_version": "version:e13480468d76d23a128a9a2663d8d0be22b87dd3f008ba711383a92afa76dca2"
+          },
+          {
+            "dependency": "dependency:d646ef95d78a68ffdc5757910437013b351ab0c7a074f260cc10b5e0d1382349",
+            "node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+            "upstream_version": "version:e13480468d76d23a128a9a2663d8d0be22b87dd3f008ba711383a92afa76dca2"
+          },
+          {
+            "dependency": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+            "node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+            "upstream_version": "version:68f6a667dffa7892534412b6ab8d061328179ab7c98b0d2ab45d34e3c1bc60b2"
+          },
+          {
+            "dependency": "dependency:37ec2ffa42d97e0762bdbb78a04de588f1f52c7af1d40420f358e3c1cc85306c",
+            "node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+            "upstream_version": "version:903fe42cc689e0b32d72f48c64e79ad3c718073d144d064007afd545a4098597"
+          },
+          {
+            "dependency": "dependency:a6a020c5fcaf7997fcc2f6669a2b79a2e75c957cabb483a21f003aa218a7b0b0",
+            "node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+            "upstream_version": "version:903fe42cc689e0b32d72f48c64e79ad3c718073d144d064007afd545a4098597"
+          }
+        ],
+        "changed_upstream": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+        "direct": [
+          "exec:foreign-currency:ENTITY-UK:1e938b764d1bc1739909b09743e2e96b8da68ed288896046657cace4b9f0e8ac",
+          "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+          "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+          "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2"
+        ],
+        "execution_order": [
+          "exec:foreign-currency:ENTITY-UK:1e938b764d1bc1739909b09743e2e96b8da68ed288896046657cace4b9f0e8ac",
+          "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+          "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+          "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+          "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+          "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+          "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+          "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+          "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620"
+        ],
+        "new_version": "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+        "old_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a",
+        "transitive": [
+          "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+          "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+          "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+          "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+          "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620"
+        ],
+        "unaffected": [
+          "exec:financial-statements:GROUP-EUR:5181ff5ac05c8844603d09588634a4fea74764c1c7897f72922185e9164db815",
+          "exec:financial-statements:GROUP-EUR:a2efdea00cc374b5acdb7f6e3b334295c2a52cbd306de575a0a53d864b950c34",
+          "exec:financial-statements:GROUP-EUR:d18177eebdd94220782a8dec89588257cfff4dc7877f2e5c3ebc8185ede018bd",
+          "exec:foreign-currency:ENTITY-UK:792b85742492bfdd1a44404eee083734b9a3fb2bc163e3cad15f4282c1615782",
+          "exec:foreign-currency:ENTITY-UK:fc3370eb030be787296c45143aecf8bd4505e5192d5872a83b03e5872aa3230a",
+          "exec:foreign-currency:ENTITY-US:3c2704d82d44f03f09c6177713868c81248b84fce211e8da5a58f3911c62b1f4",
+          "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+          "exec:foreign-currency:ENTITY-US:ebd375c99e4bcc2a23887aa39ac982e5fae8db2003850669037b8b1858948d65",
+          "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+          "exec:intercompany-accounting:ENTITY-NL:60af489b8cdbd122d804acab82fc26ad6460d25d95d782c4744a7fafbbc4c4ff",
+          "exec:intercompany-accounting:ENTITY-NL:9eadd060f42a29d5a3a22f8b443b98b0b669c1b2c5c7ee84d90a86d7a714d1c0",
+          "exec:intercompany-accounting:ENTITY-NL:d89a425dd248b86467b63b851d6a1d0272bf6bb7c83cffe8c68371af67f1396a",
+          "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6",
+          "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+          "exec:intercompany-accounting:ENTITY-UK:1fde9a08cce06e90a9d5ba5ee63e10f9aa58a5b13482512f2e5745ea514f3fde",
+          "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+          "exec:intercompany-accounting:ENTITY-US:7129b57483ab9050be42542803e9f1d5a8340e5265f953496d634a26c6008777",
+          "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+          "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
+          "exec:intercompany-accounting:GROUP-EUR:eb95c4cf871b84c3612133e9ca2407ea8a0d581f4c8a31f5fad580d72512e563",
+          "exec:orchestration-comparative-observation:ENTITY-NL:953b24c794c0949740e91e972af7155ed4b6dfb37a16c38ee1f45009a8d68f9a",
+          "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+          "exec:orchestration-opening-observation:ENTITY-NL:56d537ca1185540097326c363325b1e129863d1696ae58a5b1fd446d6068954d",
+          "exec:orchestration-stage3-match:GROUP-EUR:3861cc74fefc74903bc3543aa6973b9fb9da46a7ef55fdda78a770fd9ae4938e",
+          "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4",
+          "exec:orchestration-stage3-match:GROUP-EUR:dd4982ad3808495d7e3aa04c541d688f7e3278eff9e405827fec0578f8aa9ece"
+        ]
+      },
+      "original_state": "SUPERSEDED",
+      "original_version": "version:f382be287592ef457de070773d61f389ff1e002a89e9f8e743613cc113d1257a",
+      "public_answer": {
+        "calculations": [
+          {
+            "amount": "3.00",
+            "label": "profit"
+          },
+          {
+            "amount": "0.00",
+            "label": "oci"
+          },
+          {
+            "amount": "490.00",
+            "label": "closing equity"
+          },
+          {
+            "amount": "490.00",
+            "label": "cash"
+          }
+        ],
+        "effective_period": "2026-10-01 to 2026-10-31",
+        "framework": "IFRS",
+        "guidance": "The material intercompany conflict is resolved and the required accounting and reporting results are current after selective revalidation.",
+        "limitations": [
+          "Framework qualification is limited to independently reviewed ordinary intercompany loans. General framework conversion remains unavailable. Review approvals are controlled synthetic evidence; this is not an audit opinion."
+        ],
+        "open_items": [],
+        "reporting": [
+          "Observed prior-year cash stock difference; intervening movements not inferred: 1.00 EUR million.",
+          "The analytical bridge retains an unexplained residual of 0.00 EUR million. Accounting treatment remains the qualified accounting owners\u2019 conclusion.",
+          "An intercompany fx difference remains separately classified; it has not been forced to zero or treated as a new Group adjustment.",
+          "An intercompany timing difference remains separately classified; it has not been forced to zero or treated as a new Group adjustment.",
+          "Statement amounts are presented in EUR millions."
+        ],
+        "status": "complete"
+      },
+      "reviewed_source": {
+        "agreement_id": "agreement-fx",
+        "book_entry_id": "book-fx-ENTITY-UK",
+        "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+        "counterparty_scope": "ENTITY-US",
+        "economic_id": "fx",
+        "eur_per_gbp": "1.00",
+        "eur_per_usd": "0.90",
+        "framework": "UK_GAAP",
+        "functional_currency": "GBP",
+        "gbp_per_usd": "0.90",
+        "legal_side": "receivable",
+        "opening_operation": {
+          "capital": "116",
+          "cash": "100",
+          "memo": "Separately retained opening operation ledger; closing quote changes no opening capital",
+          "receivable": "16"
+        },
+        "original_gbp_per_usd": "0.80",
+        "original_quote_date": "2026-09-30",
+        "original_source_id": "source-fx-ENTITY-UK",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "provenance": "Separately supplied controlled treasury closing quote sheet; stale September UK quote found in October export",
+        "reason": "October closing export used an obsolete September quote",
+        "reporting_books": {
+          "a": "18.00",
+          "b": "18.00",
+          "provenance": "Separately reviewed current EUR carrying ledger after native legal close and translation"
+        },
+        "reviewed": true,
+        "reviewed_opening_book": "16",
+        "scope_id": "ENTITY-UK",
+        "source_id": "TREASURY-CLOSE-2026-10-31-03",
+        "synthetic": true,
+        "transaction_currency": "USD",
+        "uk_gl": "18.00",
+        "uk_opening_book": "16",
+        "uk_opening_operation": {
+          "capital": "116",
+          "cash": "100",
+          "memo": "Separately retained opening operation ledger; closing quote changes no opening capital",
+          "receivable": "16"
+        },
+        "valuation_date": "2026-10-31"
+      },
+      "rework": [
+        {
+          "new_version": "version:423ee7ea84a344aacdd94c44b8989e392d612d96f4e61febbba2a33585b9070a",
+          "node": "exec:foreign-currency:ENTITY-UK:1e938b764d1bc1739909b09743e2e96b8da68ed288896046657cace4b9f0e8ac",
+          "old_version": "version:ca5c56f21cc92299a6c12036ca38a45c7e3dd90d06a852e8c35d4004249cd635"
+        },
+        {
+          "new_version": "version:9cb47e6414525a02645484fe3848b7c88a46665572eabc9553f8b739a790442c",
+          "node": "exec:foreign-currency:ENTITY-UK:97fcc3c6530efd9d4c952b1fbfe2633758c4bce9bf3fa4f592d3dde9d0e999b3",
+          "old_version": "version:e13480468d76d23a128a9a2663d8d0be22b87dd3f008ba711383a92afa76dca2"
+        },
+        {
+          "new_version": "version:cc866ea4bd9a59195cc22be00f1fdd1c2e1d22915d0626df85cf825735930163",
+          "node": "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+          "old_version": "version:3dce6b88890769dfe3311b9b493b22323f0852b09f7ce381feb86a0687842b25"
+        },
+        {
+          "new_version": "version:45f79ed22b4213a8f00a955c6b8aa131295b44ba6c1c4e55713e71d4177a1756",
+          "node": "exec:orchestration-stage3-match:GROUP-EUR:3aa7cd6a2b4446f2d209ab749d2eb53bf7d36e4108ef0ef5eea6f17eec1b78a2",
+          "old_version": "version:4ea5cae7bf6ff7190ce436406c0bff4ba703bc6436cd0f1c91525f6a73f88fff"
+        },
+        {
+          "new_version": "version:0676d4e2e6dffa6ad9f00e57f0196cd1d7ef045ab1b9ce85a5b2adafed382b6e",
+          "node": "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+          "old_version": "version:5806957c2cf1ab70ee93447b5e8e90a7047b5acfa15604143908a0ef654c961c"
+        },
+        {
+          "new_version": "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+          "node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+          "old_version": "version:68f6a667dffa7892534412b6ab8d061328179ab7c98b0d2ab45d34e3c1bc60b2"
+        },
+        {
+          "new_version": "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8",
+          "node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+          "old_version": "version:903fe42cc689e0b32d72f48c64e79ad3c718073d144d064007afd545a4098597"
+        },
+        {
+          "new_version": "version:8557845afafd211e87618d157b5bcce0aca8b1f168b1e868c6e485579a880531",
+          "node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+          "old_version": "version:49ba5010be0c5e7ce39bb719b06981b9719ecb25200fa93762868b80164d1df5"
+        },
+        {
+          "new_version": "version:4e1c0993849e835dea251f39291cfa9c16ece6cf996c8f0cc3c7864b8c1098eb",
+          "node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+          "old_version": "version:df19eea062578424e1d16092884ed5e232c8ccc3c3168d4a7b510be72227fc20"
+        }
+      ]
+    },
+    "nodes": [
+      "fx-ENTITY-UK",
+      "match-fx-current",
+      "fx-reassessment",
+      "elimination",
+      "reporting",
+      "analytics",
+      "group"
+    ],
+    "receipts": [
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:87b4cc7ed870be66375a40b8a114dcfee007a642f987917db270b9e407ba8b2f",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "producer_framework": "UK_GAAP",
+        "producer_functional_currency": "GBP",
+        "producer_node": "exec:intercompany-accounting:ENTITY-UK:e5740f0adc4b16d595de8af3dabbec1c218a1b41e4c9ce6e3c3a9b5b1313e970",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": null,
+        "producer_scope": "ENTITY-UK",
+        "result_fingerprint": "a1509be863ded4a923d029370d338acb118a4e15eab8755d6d9ecd449c449265",
+        "result_version": "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+        "value": "18.00",
+        "value_currency": "GBP"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:a2acdb92db329106f505110e9211795db9217fd6065f65d62332ff751b968a45",
+        "metric_path": [
+          "matching",
+          "classification"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:orchestration-current-match:GROUP-EUR:7712f098b51bb8885f00c223a6f5cb3a018f17a28a3a7c9a001d33bb5e1c53c8",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "ca2ed8800b036fbf7278839682c248d1d4a53d4f54aee6cdffc889df3399fe5c",
+        "result_version": "version:cc866ea4bd9a59195cc22be00f1fdd1c2e1d22915d0626df85cf825735930163",
+        "value": "MATCHED",
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:a5f1c7115ea8c828d2c5a136e43b3e8f92d61fdc2359204a45ff35608f8bf30a",
+        "metric_path": [
+          "calculations",
+          "pairs",
+          0,
+          "a_functional"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:intercompany-accounting:GROUP-EUR:1cb88b781cbd7d2c092710cecc925084c419bee55dd11883b659093b16724b36",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "eb639e9d8c4760e4f3cd543d2d2aebe48fa1670e66387d6604f0ba1030b2104c",
+        "result_version": "version:0676d4e2e6dffa6ad9f00e57f0196cd1d7ef045ab1b9ce85a5b2adafed382b6e",
+        "value": "18.00",
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:71e7786db9980ca4ba278f9ae4b93468462001669f068b83923f60be67976807",
+        "metric_path": [
+          "calculations",
+          "consolidated_balances"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "6f33a27de3ff05eddf923bb38ce1fe539092db2759b3d8d9f7f68e6530a53064",
+        "result_version": "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+        "value": {
+          "CTA": "0.00",
+          "cash": "390.00",
+          "clean loan": "0.00",
+          "clean-ENTITY-US profit": "0.00",
+          "correction income": "-1.00",
+          "equity": "-487.00",
+          "fx loan": "0.00",
+          "fx payable": "0.00",
+          "fx-ENTITY-UK profit": "-2.00",
+          "fx-ENTITY-US profit": "0.00",
+          "goodwill": "0",
+          "ic payable": "0.00",
+          "investment": "0.00",
+          "mismatch loan": "0.00",
+          "mismatch-ENTITY-UK profit": "0.00",
+          "noncontrolling interest": "0",
+          "sub equity": "0.00",
+          "timing loan": "0.00",
+          "timing payable": "0.00",
+          "timing-ENTITY-UK profit": "0.00",
+          "uk cash": "100.00",
+          "uk equity": "0.00",
+          "uk payable": "0.00"
+        },
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:37ec2ffa42d97e0762bdbb78a04de588f1f52c7af1d40420f358e3c1cc85306c",
+        "metric_path": [
+          "calculations",
+          "current",
+          "cash"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "3a581fe6c24659a35d78fb34e50983e91e67aaa64445e8ca67ddd26dedcca231",
+        "result_version": "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8",
+        "value": "490.00",
+        "value_currency": "EUR"
+      },
+      {
+        "consumer_framework": "IFRS",
+        "consumer_functional_currency": null,
+        "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+        "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "consumer_presentation_currency": "EUR",
+        "consumer_scope": "GROUP-EUR",
+        "currentness": "CURRENT",
+        "dependency_id": "dependency:fe510a9893ff22761067b2fe7a5f84cbb81c3bb73e3d56e1b90b932b7794047b",
+        "metric_path": [
+          "calculations",
+          "diagnostic",
+          "bridge"
+        ],
+        "producer_framework": "IFRS",
+        "producer_functional_currency": null,
+        "producer_node": "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+        "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "producer_presentation_currency": "EUR",
+        "producer_scope": "GROUP-EUR",
+        "result_fingerprint": "bec88a04f844c697a26ecec45af006e2b460bbf22c23264564ac01ebffbfed96",
+        "result_version": "version:8557845afafd211e87618d157b5bcce0aca8b1f168b1e868c6e485579a880531",
+        "value": {
+          "change": "1.00",
+          "comparator_kind": "actual",
+          "comparator_version": "actual-v1",
+          "drivers": [
+            {
+              "category": "economic",
+              "confidence": "high",
+              "contribution": "1.00",
+              "evidence_class": "bridge_attribution",
+              "id": "cash-movement-movement",
+              "label": "Observed prior-year cash stock difference; intervening movements not inferred",
+              "lineage": {
+                "comparator": {
+                  "doc": "cash-prior",
+                  "frozen_on": "2026-09-30",
+                  "kind": "actual",
+                  "period": [
+                    "2025-10-01",
+                    "2025-10-31"
+                  ],
+                  "version": "actual-v1"
+                },
+                "currency": "EUR",
+                "economic_components": [
+                  [
+                    "GROUP-EUR",
+                    "EUR",
+                    [
+                      "2026-10-01",
+                      "2026-10-31"
+                    ],
+                    "qualified-comparative-and-current-stock"
+                  ]
+                ],
+                "effect": "movement",
+                "entity": "GROUP-EUR",
+                "method": "source_flux",
+                "native_component_allocation": null,
+                "period": [
+                  "2026-10-01",
+                  "2026-10-31"
+                ],
+                "source_doc": "cash-drivers",
+                "source_metric": "group cash",
+                "source_owner": "financial-statements",
+                "unit": "EUR million"
+              },
+              "status": "SUPPORTED"
+            }
+          ],
+          "ending": "490.00",
+          "explained_amount": "1.00",
+          "explained_percent": "100",
+          "materiality": "0.1",
+          "metric": "account_balance",
+          "presentation_basis": "signed_balance",
+          "residual": "0.00",
+          "starting": "489.00",
+          "status": "RECONCILED",
+          "tolerance": "0.01",
+          "unit": "EUR million"
+        },
+        "value_currency": "EUR"
+      }
+    ],
+    "result_versions": [
+      "version:69ebf621ba49d88ab0d0489ca446b6ec43e02988ec1d85cc1616a5896a293fef",
+      "version:cc866ea4bd9a59195cc22be00f1fdd1c2e1d22915d0626df85cf825735930163",
+      "version:0676d4e2e6dffa6ad9f00e57f0196cd1d7ef045ab1b9ce85a5b2adafed382b6e",
+      "version:1a73663f40c0f8b3aeda016a08efd6de31c14194583cfcd641b1c638499c55cc",
+      "version:2b77fbdfbb29973afae6a774ed5fcaa8ebc0877f09af815e942dee271980f6e8",
+      "version:8557845afafd211e87618d157b5bcce0aca8b1f168b1e868c6e485579a880531",
+      "version:4e1c0993849e835dea251f39291cfa9c16ece6cf996c8f0cc3c7864b8c1098eb"
+    ],
+    "source_snapshot": {
+      "fingerprint": "659565e9de42b76693f7defed8eff3d4fe1c847862b114349501afc6c14c2801",
+      "source_id": "replacement-snapshot-dedb3eb3a797f20b82b9ae8a521aa396bcf7943cbe91d4f20dd747a9c2159b4b"
+    },
+    "status": "ACCEPTED",
+    "title": "Reviewed correction through rematch reporting analytics and observation"
+  }
+]
