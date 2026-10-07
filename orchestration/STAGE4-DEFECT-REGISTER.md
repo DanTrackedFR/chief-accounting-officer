@@ -71,3 +71,22 @@ IQA03 final acceptance stays OPEN, as do all final Stage4 release gates.
 The native parent P&L exact binding and complete-operation cashbridge validation
 were proactive risk fixes; not invented additional independently reproduced
 findings. See `STAGE4-CLOSING-MILESTONE.md` and independent QA report.
+
+## TQA01 — full Group reporting lacks exact comparative/opening qualification — OPEN
+
+Separate-context temporal review reproduced native/arithmetic and ordinary reporting
+acceptance with a fabricated recertified comparator and unsupported cash bridge.
+The graph binds only current Consolidation; textual prior source labels do not
+establish exact Group prior/opening result lineage. Permanent required-rejection
+test remains hard FAIL (12 independent methods11PASS/1FAIL under19/941). No
+expected-failure marker, acceptance rewrite or accounting source manufacture.
+Details: `STAGE4-TEMPORAL-INDEPENDENT-QA.md`.
+
+Actual unmodified source still correctly refuses: comparative equity/cash489 at
+2025-10-31 versus October2026 opening equity487/cash490. Missing full intervening
+Group TB/equity/cash history prevents supported OutcomeA/B/C. OutcomeD is retained;
+no fabricated temporal source/version/restatement is supplied. Generic complete
+native temporal mappings and evidence remain required; zero unresolved temporal
+findings/final acceptance is not claimed. Current solved FX/Group accounting stays
+unchanged. Full audit: `STAGE4-TEMPORAL-EVIDENCE-AUDIT.md` and governed temporal audit
+artifact. Stop after durable same-branch publication; Stage4 remains incomplete.

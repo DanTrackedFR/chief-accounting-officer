@@ -240,3 +240,38 @@ Both standards/canonical validators report zero errors. No final regression,
 lineage, roadmap completion, handoff acceptance or exact-head green CI/readiness
 claim. Publish all useful work to the SAME branch/PR and stop for owner review of
 the exact documented comparative/opening accounting evidence requirement.
+
+## Comparative/opening reconstruction — Outcome D, evidence still unsupported
+
+Starting actual PR37/remote head2b8f827077fc3018868b7e3f64809eaa7ed11ce8.
+See `STAGE4-TEMPORAL-EVIDENCE-AUDIT.md` and separate-context
+`STAGE4-TEMPORAL-INDEPENDENT-QA.md`. Inherited comparative489 is dated2025-10-31;
+current opening487/cash490 is October2026. No complete intervening Group history,
+September2026 Group closing TB, issued comparative population or error/policy
+chronology establishes the equity-2/cash+1 differences. Neither number is presumed
+wrong. Current NLgain1/UKFXgain2 is noncash current profit, not a retrospective
+bridge. Existing owner authority cannot infer missing historical accounting.
+
+Native Financial Statements correctly refuses actual evidence. Reporting/analytics/
+Group stay STALE, Casepartial/IN_PROGRESS, publicpartial. New governed audit artifact
+retains source/registry/contracts/hashes/original/current versions; no new temporal
+accounting version/restatement/supersession/invalidation is invented. Original44
+artifacts and all solved current Group accounting are unchanged.
+
+Independent TQA01 is OPEN: recertified fabricated numerical comparative/cash inputs
+can pass the current-only reporting qualification because complete Group
+comparative/opening version dependencies are missing. Permanent rejection regression
+is retained as a hard FAIL, not weakened to acceptance.12 temporal methods11PASS/
+1FAIL independently19/941; this is not all22 positive temporal attacks or zero
+findings.572 distinct retained focused compatibility methodsPASS; original48
+acceptance38PASS/2FAIL/8ERROR. Both validators zero errors; new audit byte-identical
+19/941; diff checkPASS. No full release/finalQA/roadmap/CI/readiness claim.
+
+Next requires separately reviewed full comparative and adjacent prior/opening
+Group TB/equity/cash populations, intervening owner-supported movements and exact
+Stage2 native temporal receipts consumed by reporting. If evidence establishes an
+error/transition, execute Accounting Changes and preserve original/corrected lineage;
+otherwise do not invent restatement. Read detailed contract/evidence audit before
+implementation. Same branch/PR remains draft/open/unmerged. Protected work unchanged;
+persistence/authenticated governance not started. Publish this useful audit durably
+and stop under OutcomeD; no further unsupported accounting loop.
