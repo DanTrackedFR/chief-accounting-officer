@@ -164,7 +164,7 @@ def validate_reassessment_sides(session, node, source, receipts, bindings, sides
     from .runtime import at
     pair=source['pairs'][0]
     translated={r['producer_scope']:r for r in translations}
-    if len(translated)!=len(translations) or set(translated) not in ({pair['entity_a']}, {pair['entity_a'],pair['entity_b']}):
+    if len(translated)!=len(translations) or set(translated) not in ({pair['entity_a']}, {pair['entity_b']}, {pair['entity_a'],pair['entity_b']}):
         raise ValueError('Native conversion requires distinct exact translated legal sides')
     for role,entity,field in [('receivable',pair['entity_a'],'gl_a'),('payable',pair['entity_b'],'gl_b')]:
         side=next(s for s in sides if s['role']==role)
