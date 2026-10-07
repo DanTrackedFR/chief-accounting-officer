@@ -93,6 +93,9 @@ class ResultVersion:
 class VersionRegistry:
     def __init__(self,graph=None,edges=None):
         self.graph=graph;self.edges=edges;self.versions={};self.states={};self.active={};self.supersession={};self.history=[]
+        # Immutable source payloads belong to their exact versions, not the
+        # mutable latest-input table. Persistence never reconstructs old evidence.
+        self.source_snapshots={}
 
     def current(self,node_id,allow_stale=False):
         key=self.active.get(node_id)
@@ -134,6 +137,7 @@ class VersionRegistry:
         if key in self.versions:raise ValueError('Version overwrite')
         version=ResultVersion(result_id,key,node.id,node.case_id,node.scope_id,node.period_id,exact,source_hash,result_hash,old.version_id if old else None,reason,tuple(sorted(bindings)),json.dumps(payload,sort_keys=True,default=str,separators=(',',':')))
         self.versions[key]=version;self.states[key]='CURRENT';self.active[node.id]=key
+        self.source_snapshots[key]=copy.deepcopy(source)
         if old:
             self.states[old.version_id]='SUPERSEDED';self.supersession[old.version_id]=key
         self.history.append(dict(event='PUBLISH',version=key,predecessor=version.predecessor,reason=reason))

@@ -101,6 +101,9 @@ def execute(engine, prepared, pack):
     case=CAO().run(request)
     case.work_modes=dict(primary=prepared._proposal.primary_mode.value,secondary=[c.value for c in prepared._proposal.secondary_modes])
     prepared.lineage.extend(lineage);prepared.case=case
+    if hasattr(case, 'governance'):
+        from orchestration.persistence.evidence import retain
+        retain(case.governance, prepared, pack)
     return prepared
 
 
@@ -161,4 +164,6 @@ def qualify_replacement(engine, prepared, pack, case, node_id):
     for receipt in incoming:
         session.validate_receipt(receipt, node_id)
     prepared.lineage.extend(lineage)
+    from orchestration.persistence.evidence import retain
+    retain(session, prepared, pack)
     return copy.deepcopy(source)

@@ -503,7 +503,11 @@ class Intake:
                 evidence=refs,source_refs=h.evidence,semantic_status=h.status,accounting_authority=False))
             for conclusion in case.conclusions:
                 conclusion['limitations'].append('Management explanation '+disposition.lower().replace('_',' ')+' by the supplied accounting and diagnostic evidence; attribution remains scoped to that evidence.')
-        prepared.case=case;return prepared
+        prepared.case=case
+        if pack is not None and hasattr(case, 'governance'):
+            from orchestration.persistence.evidence import retain
+            retain(case.governance, prepared, pack)
+        return prepared
 
     def public(self, prepared, route='answer'):
         from interfaces.public_output import public_record
