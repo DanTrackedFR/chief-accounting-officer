@@ -2,7 +2,13 @@
 import copy
 import unittest
 from dataclasses import replace
-from orchestration.tests.stage4_fixtures import initial,correct,rework
+from orchestration.tests.stage4_fixtures import correct
+from orchestration.tests.stage4_temporal_fixtures import initial, intake_initial, finish
+
+def rework(f,plan):
+    # Positive acceptance now includes separately reviewed treasury correction;
+    # retained incomplete fixtures continue to prove safe population rejection.
+    _,record=finish(f,plan);f['accepted_lifecycle']=record;return record['ledger']
 from orchestration.tests.stage3_fixtures import sides
 from orchestration.runtime import CAO
 
@@ -22,7 +28,7 @@ class Stage4Lifecycle(unittest.TestCase):
     def test_qualified_correction_reaches_ordinary_closed_case(self):
         p=correct(self.f);ledger=rework(self.f,p)
         self.assertEqual(self.f['case'].outcome,'complete');self.assertEqual(self.f['case'].status,'CLOSED')
-        self.assertEqual(len(ledger),6)
+        self.assertEqual(len(ledger),9)
         self.assertTrue(self.f['case'].observer_ran);self.assertTrue(self.f['case'].artifacts)
     def test_actual_selective_rework_set(self):
         p=correct(self.f)
@@ -37,11 +43,12 @@ class Stage4Lifecycle(unittest.TestCase):
     def test_unrelated_results_are_not_reexecuted(self):
         before={key:(v,self.e.graph.nodes[key].iterations) for key in self.e.graph.nodes if (v:=self.e.versions.current(key)) is not None}
         p=correct(self.f);rework(self.f,p)
-        for key in p['unaffected']:self.assertEqual(before[key],(self.e.versions.current(key),self.e.graph.nodes[key].iterations))
+        record=self.f['accepted_lifecycle']
+        for key in record['closing_correction']['unaffected']:self.assertEqual(record['before_closing'][key],(self.e.versions.current(key),self.e.graph.nodes[key].iterations))
     def test_owner_group_result_replayed_not_hardcoded(self):
         p=correct(self.f);rework(self.f,p);v=self.e.versions.current(self.n['reporting'].id)
         self.assertEqual(v.payload()['calculations']['current']['closing_equity'],'490.00')
-        self.assertEqual(v.payload()['calculations']['current']['profit'],'1.00')
+        self.assertEqual(v.payload()['calculations']['current']['profit'],'3.00')
         self.assertEqual(v.payload()['calculations']['current']['cash'],'490.00')
     def test_frameworks_currencies_remain_distinct(self):
         values={(n.scope_id,n.framework,n.functional_currency or n.presentation_currency) for n in self.n.values()}
@@ -94,7 +101,7 @@ class Stage4Lifecycle(unittest.TestCase):
 class Stage4Intake(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        from orchestration.tests.stage4_fixtures import intake_initial
+        from orchestration.tests.stage4_temporal_fixtures import intake_initial
         cls.base=intake_initial()
     def setUp(self):self.f=copy.deepcopy(self.base)
     def test_objective_intake_preserves_controlled_sources_and_work_modes(self):
@@ -145,14 +152,14 @@ class Stage4Intake(unittest.TestCase):
 class Stage4PublicAndEconomics(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        from orchestration.tests.stage4_fixtures import intake_initial
+        from orchestration.tests.stage4_temporal_fixtures import intake_initial
         cls.base=intake_initial();cls.clean=copy.deepcopy(cls.base);cls.plan=correct(cls.clean);rework(cls.clean,cls.plan)
     def test_conflict_answer_cannot_claim_group_report_supported(self):
         p=CAO().public(self.base['case']);self.assertEqual(p['status'],'partial');self.assertNotIn('calculations',p)
         self.assertIn('not yet supportable',p['guidance']);self.assertIn('10 EUR million versus 11 EUR million',str(p))
     def test_clean_answer_has_native_totals_and_analytics_with_units(self):
         p=CAO().public(self.clean['case']);self.assertEqual(p['status'],'complete')
-        self.assertIn('490.00',str(p));self.assertIn('EUR millions',str(p));self.assertIn('financing cash receipt',str(p))
+        self.assertIn('490.00',str(p));self.assertIn('EUR millions',str(p));self.assertIn('Observed prior-year cash stock difference',str(p));self.assertNotIn('financing cash receipt',str(p))
     def test_public_routes_preserve_same_private_boundary(self):
         from interfaces.public_output import ROUTES
         for route in ROUTES:
@@ -167,9 +174,10 @@ class Stage4PublicAndEconomics(unittest.TestCase):
                 with self.subTest(route=route,token=token),self.assertRaises(ValueError):public_record(dict(guidance=token),route=route)
     def test_exact_once_current_layers_and_translation_dispositions(self):
         from orchestration.tests.stage4_fixtures import journal_ledger
-        j=journal_ledger(self.clean);self.assertEqual(len(j['selected']),5)
+        j=journal_ledger(self.clean);self.assertEqual(len(j['selected']),8)
         self.assertEqual(sum(r['posting_scope']=='ENTITY-NL' for r in j['allocation']),1)
-        self.assertEqual(sum(r['posting_scope']=='GROUP-EUR' for r in j['allocation']),4)
+        self.assertEqual(sum(r['posting_scope']=='GROUP-EUR' for r in j['allocation']),6)
+        self.assertEqual(sum(r['posting_scope']=='ENTITY-UK' for r in j['allocation']),1)
         self.assertEqual(len(j['dispositions']),2)
     def test_posting_alias_duplication_rejected(self):
         from orchestration.tests.stage4_fixtures import journal_ledger

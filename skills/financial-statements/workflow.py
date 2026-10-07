@@ -158,7 +158,7 @@ def assess(c,claims):
         if n['target'] not in totals or cash(dec(n['amount']))!=totals[n['target']]:raise ReviewRequired('Note amount does not tie to primary statement')
     return result('Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.',
       {'framework':fw,'presentation':p['model'],'entity_overlay':p['entity_overlay'],'checklist_version':coverage['checklist_version']},
-      {'current':current,'comparative':prior,'opening':opening_statement,'management_performance_measures':mdps,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
+      {'current':current,'comparative':prior,**({'opening':opening_statement} if 'opening_tb' in c else {}),'management_performance_measures':mdps,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
        'financing':cash(dec(cf['financing'])),'fx':cash(dec(cf['fx'])),'opening':cash(opening),'closing':cash(closing),'bs_cash_bridge':cash(bridge)},'note_tieouts':[{k:n[k] for k in ('id','target','amount')} for n in c['notes']]},[],
       [p['adoption_memo'],q['adjustments_memo'],cf['population_memo']],
       ['Complete period/entity-specific requirement register','Accounting policies and significant judgments/estimation uncertainty',

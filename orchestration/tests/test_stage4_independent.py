@@ -77,23 +77,27 @@ class IndependentStage4(unittest.TestCase):
 
     def test_iqa03_current_relationships_have_group_population_dispositions(self):
         """Whole-close completeness needs inclusion or explicit reviewed exclusion."""
-        eliminated = {p['transaction_id'] for p in self.e.sources[self.f['nodes']['elimination'].id]['intercompany']}
+        from orchestration.tests import stage4_temporal_fixtures as temporal
+        f, _ = temporal.run()
+        e = f['session']
+        eliminated = {p['transaction_id'] for p in e.sources[f['nodes']['elimination'].id]['intercompany']}
         # September evidence is not assumed to be a current closing balance;
         # the actual October UK timing side and both FX sides are current.
-        required = {n.economic_id for n in self.f['nodes'].values()
+        required = {n.economic_id for n in f['nodes'].values()
                     if n.scope_type == 'LEGAL_ENTITY' and n.selected_skill == 'intercompany-accounting'
                     and n.period == ['2026-10-01', '2026-10-31']}
-        dispositions = self.e.sources[self.f['nodes']['elimination'].id].get('relationship_dispositions', [])
+        dispositions = e.sources[f['nodes']['elimination'].id].get('relationship_dispositions', [])
         excluded = {r['economic_id'] for r in dispositions
                     if r.get('status') == 'REVIEWED_EXCLUSION' and r.get('evidence')}
         self.assertEqual(required - eliminated - excluded, set())
 
     def test_iqa03_uncovered_current_relationships_cannot_close_full_group_objective(self):
-        f = copy.deepcopy(self.initial)
-        # Final positive acceptance stays a hard requirement. Today this raises
-        # on missing populations; safe rejection is necessary but not acceptance.
+        from orchestration.tests import stage4_temporal_fixtures as temporal
+        # Positive acceptance uses the complete, separately supplied controlled
+        # population and native closing/opening evidence. Legacy omissions remain
+        # rejection controls in the neighboring tests.
         try:
-            fixture.rework(f, fixture.correct(f))
+            f, _ = temporal.run()
         except ValueError as exc:
             self.fail('Positive full-Group accounting integration remains incomplete: ' + str(exc))
         self.assertEqual(f['case'].outcome, 'complete')

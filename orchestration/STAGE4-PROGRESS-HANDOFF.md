@@ -327,3 +327,24 @@ artifacts; every prior migration; full release/validators; final integration and
 Durable Memory documentation handoffs; gated roadmap; immutable SHA; exact-head
 required CI; unchanged-head ready protocol. No persistence/authenticated
 governance, protected knowledge/accounting edits, new branch/PR or merge.
+
+## Complete controlled acceptance checkpoint — 2026-10-07
+
+Continuation from durable temporal milestone2549e979. Complete sealed intake now
+executes50 sources, the distinct September30 closing/October1 opening/October
+reporting and October2025 comparative chains, eight accepted exact lineages,
+eight selected native journals (NL1/UK1/Group6), native cash490/profit3 and ordinary
+CLOSED/public complete. Authored Stage4 acceptance39 PASS; temporal authored11,
+independent temporal25, retained TQA12 and prior independent17 all PASS (65 distinct
+methods in that combined run). Fresh final independent review30 methods passes;
+its broader rerun is pending. Historical refusal controls remain intact.
+
+Generated historical workpapers were requalified by existing generators because
+native review fingerprints include the globally changed owner contract. First
+production1180 run exposed five stale generated-certificate failures; full rerun
+follows regeneration. Do not claim final release from that failed run. Leases17,
+repository53, supplemental knowledge401 and approval/standards validators passed.
+Full orchestration/production final runs, deterministic final seeds, final handoffs,
+gated roadmap, immutable candidate and exact-head CI/readiness remain pending.
+No protected substantive accounting or knowledge changes, persistence, authenticated
+governance, new branch/PR or merge. This is useful acceptance work, not final release.

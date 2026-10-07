@@ -48,6 +48,7 @@ def build():
     a=f['nodes']['adjacent-closing'];b=f['nodes']['current-opening']
     edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'OPENING','EXPLICIT_CROSS_CASE',('calculations','current'),EVIDENCE)
     f['edges'][('adjacent-closing','current-opening')]=e.add_dependency(edge)
+    s3.add_edge(f,'analytics','group',('calculations','diagnostic','bridge'))
     return f
 
 
@@ -128,10 +129,10 @@ def reviewed_rework(f,plan):
     f.setdefault('replacement_intakes',[]).extend(preview.get('replacement_intakes',[])[len(f.get('replacement_intakes',[])):]);return out
 
 
-def run():
+def finish(f, first_plan=None):
     from orchestration.tests import stage4_closing_fixtures as closing
-    f=initial();e=f['session'];before={k:e.versions.current(n.id) for k,n in f['nodes'].items()}
-    p=s4.correct(f)
+    e=f['session'];before={k:e.versions.current(n.id,allow_stale=True) for k,n in f['nodes'].items()}
+    p=first_plan or s4.correct(f)
     # Before reviewed FX correction, only producers supported by current evidence
     # can refresh. Original residual and blocked downstream history are retained.
     for key in p['execution_order']:
@@ -140,6 +141,44 @@ def run():
         except ValueError as error:
             if n.logical_id!='elimination' or 'Native input differs from exact producer metric' not in str(error):raise
             break
+    before_closing={key:(e.versions.current(key,allow_stale=True),e.graph.nodes[key].iterations) for key in e.graph.nodes}
     n=f['nodes']['fx-ENTITY-UK'];p2=CAO().correct(f['case'],n.id,s4.qualified_replacement(f,n.id,closing.correction(f)),'Separately reviewed October closing treasury quote and legal ledger')
     ledger=CAO().selective_reexecute(f['case'],p2,reviewed_rework(f,p2))
-    return f,dict(before=before,payable_correction=p,closing_correction=p2,ledger=ledger)
+    return f,dict(before=before,before_closing=before_closing,payable_correction=p,closing_correction=p2,ledger=ledger)
+
+
+def run():
+    return finish(intake_initial())
+
+
+def intake_initial():
+    return s4.intake_initial(build,source)
+
+
+def lineages(f,record):
+    e=f['session'];out=[]
+    chains=[('NL legal source to Group',['clean-ENTITY-NL','elimination','reporting']),
+            ('US legal source through native translation to Group',['clean-ENTITY-US','whole-translation-ENTITY-US','elimination','reporting']),
+            ('UK legal source through native translation to Group',['fx-ENTITY-UK','whole-translation-ENTITY-UK','elimination','reporting']),
+            ('First reciprocal side through match to elimination',['clean-ENTITY-US','match-clean','elimination']),
+            ('Second reciprocal side through match to elimination',['clean-ENTITY-NL','match-clean','elimination']),
+            ('Adjacent closing through native opening to Financial Statements',['adjacent-closing','current-opening','reporting']),
+            ('Prior-year comparative to current reporting',['prior-year-comparative','reporting']),
+            ('Reviewed correction through rematch reporting analytics and observation',['fx-ENTITY-UK','match-fx-current','fx-reassessment','elimination','reporting','analytics','group'])]
+    for title,labels in chains:
+        versions=[e.versions.require_current(e.versions.current(f['nodes'][label].id).version_id) for label in labels]
+        edges=[]
+        for a,b in zip(versions,versions[1:]):
+            exact=[key for key,edge in e.edges.items() if (edge.producer_node,edge.consumer_node)==(a.node_id,b.node_id)]
+            if not exact:raise ValueError('Accepted lineage lacks explicit dependency')
+            for key in exact:
+                receipt=e.receipt(key);e.validate_receipt(receipt,b.node_id)
+                if dict(b.dependency_bindings).get(key)!=a.version_id:raise ValueError('Accepted lineage wrong immutable version')
+                edges.append(receipt)
+        source=e.sources[versions[0].node_id]
+        if not source.get('qualified_input_snapshot'):raise ValueError('Accepted lineage lacks independently sealed full source')
+        out.append(dict(title=title,nodes=labels,result_versions=[v.version_id for v in versions],source_snapshot=source['qualified_input_snapshot'],receipts=edges,status='ACCEPTED'))
+    old=record['before']['fx-ENTITY-UK'];current=versions[0]
+    out[-1]['correction']=dict(original_version=old.version_id,current_version=e.versions.current(old.node_id).version_id,original_state=e.versions.state(old.version_id),reviewed_source=e.sources[old.node_id]['correction_evidence'],invalidation=record['closing_correction'],rework=record['ledger'],case_status=f['case'].status,public_answer=CAO().public(f['case']))
+    if len(out)!=8 or f['case'].status!='CLOSED':raise ValueError('Eight accepted complete lineages required')
+    return out

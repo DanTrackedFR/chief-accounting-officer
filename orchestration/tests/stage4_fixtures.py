@@ -350,7 +350,7 @@ def analytics_source(f):
     return ready('management-accounting-analytics',c=c)
 
 
-def intake_initial():
+def intake_initial(builder=None, source_factory=None):
     """Natural objective -> validated source proposal -> reviewed ordinary graph.
 
     This milestone binds original source principal/rate input populations. Further
@@ -361,13 +361,13 @@ def intake_initial():
     from orchestration.tests.intake_fixtures import cl,cell
     from orchestration.planning import FACT_ADAPTERS
     from orchestration.runtime import production
-    f=build();e=f['session'];plan=serialize(f);raw=[];facts=[];bindings={};children=[]
+    f=(builder or build)();selected_source=source_factory or source;e=f['session'];plan=serialize(f);raw=[];facts=[];bindings={};children=[]
     family={owner:family for family,(owner,_) in FACT_ADAPTERS.items()}
     proposal=StructuredProposal(cl(OBJECTIVE,status='USER_STATED',confidence=1),cl('One supported Group close conclusion'),cl('CLOSE_REVIEW'),secondary_modes=[cl('RECONCILIATION_INVESTIGATION'),cl('REPORTING'),cl('DIAGNOSTIC_ANALYTICS')],supporting_modes=[cl('DOCUMENTATION')])
     for key in e.topological(e.graph.nodes):
         n=e.graph.nodes[key];label=n.logical_id;p=e.periods.get(n.period_id)
         deps=[e.graph.nodes[q] for q in n.dependencies if e.graph.nodes[q].status!='complete' or e.versions.current(q).payload().get('unresolved_dependencies')]
-        c=dict(scope_id=n.scope_id,period_id=n.period_id,source_id='pending-'+label,pending_dependency_evidence='Current material dependencies required',evidence=list(EVIDENCE)) if deps else source(f,label)
+        c=dict(scope_id=n.scope_id,period_id=n.period_id,source_id='pending-'+label,pending_dependency_evidence='Current material dependencies required',evidence=list(EVIDENCE)) if deps else selected_source(f,label)
         dims=dict(scope_id=n.scope_id,entity=n.scope_id,framework=n.framework,jurisdiction=n.jurisdiction,currency=n.functional_currency or n.presentation_currency,unit='currency',period=n.period,period_id=n.period_id,calendar_id=p.calendar_id,period_role='CURRENT',comparator='actual')
         owner=n.selected_skill;native=not owner.startswith('orchestration-');pending=bool(deps)
         if native:
@@ -375,6 +375,7 @@ def intake_initial():
             elif owner=='intercompany-accounting':
                 role='a' if n.scope_id==c['pairs'][0]['entity_a'] or n.scope_type=='GROUP' else 'b';path=('pairs',0,'confirmed_'+role);value=c['pairs'][0]['confirmed_'+role];attribute='confirmed_principal';confirmation=False
             elif owner=='foreign-currency':path=('translation','tb',1,'balance');value=c['translation']['tb'][1]['balance'];attribute='functional_loan';confirmation=False
+            elif owner=='financial-statements':path=('current_tb',0,'balance');value=c['current_tb'][0]['balance'];attribute='authorized_stock';confirmation=False
             else:raise ValueError('Fixture needs separately reviewed adapter for initial active owner')
             source_id='source-'+label
             r=RawSource(source_id,label+'-ledger.csv','csv','record_id,amount\n'+label+','+str(value)+'\n',dict(dims,controlled_export=True,version='v1',unit_scale='million',provenance='Independently supplied controlled company close source'))
@@ -410,7 +411,7 @@ def journal_ledger(f):
         for index,j in enumerate(v.payload().get('journal_entry_implications',[])):
             events.append(dict(economic_id=n.logical_id+':journal:'+str(index),posting_scope=n.scope_id,period=n.period,currency=n.functional_currency or n.presentation_currency,period_id=n.period_id,result_version=v.version_id,primary=[dict(owner=key,index=index)],witnesses=[],evidence='Separately reviewed current native posting economics'))
     g=e.versions.current(f['nodes']['elimination'].id)
-    dispositions=[dict(translation_version=e.versions.current(f['nodes'][label].id).version_id,group_version=g.version_id,source_path=['entities',index,'balances'],evidence=list(EVIDENCE)) for label,index in [('translation',1),('uk-translation',2)]]
+    dispositions=[dict(translation_version=e.versions.current(f['nodes'][label].id).version_id,group_version=g.version_id,source_path=['entities',index,'balances'],evidence=list(EVIDENCE)) for label,index in ([('whole-translation-ENTITY-US',1),('whole-translation-ENTITY-UK',2)] if 'whole-translation-ENTITY-US' in f['nodes'] else [('translation',1),('uk-translation',2)])]
     context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',scopes=e.cases.scopes.record(),period_registry=e.periods.record())
     selected,allocation=f['basis'].current_journals(context,events,dispositions)
     return dict(events=events,dispositions=dispositions,selected=selected,allocation=allocation)
