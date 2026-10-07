@@ -117,3 +117,71 @@ Shared public execution bytes are part of synthetic native certification fingerp
 This continuation stops at a context/runtime reliability boundary and preserves all useful work on the same branch and PR. It is not a completed Stage4 workstream and not an external accounting blocker. IQA03 and every previously listed substantive final lifecycle/lineage/QA/release/roadmap/readiness gate remain outstanding. TSIQA01, PCIQA01, PCIQA02 and CRIQA01 are resolved within their intermediate independently rerun scopes. IQA01/IQA02/IQA04 history remains preserved. Do not treat these bounded suites as final independent acceptance. No persistence, authenticated governance, general GAAP/FX conversion or parallel consolidation was started. Roadmap remains in progress. Protected Government Grants, Borrowing Costs, Investment Property, canonical approvals and supplemental knowledge remain untouched.
 
 The additional broad Group/Group-independent/conflict regression command was interrupted at this reliability boundary rather than certified from a partial run. Its 61 Group methods are not claimed green or added to distinct passing totals. The native Group artifact generator and separate-context material-conflict acceptance reproducer passed after the Case refresh remediation. Complete Group migration regression remains an explicit continuation release gate, alongside all other prior flagships and full orchestration discovery.
+
+## Recovered-head continuation — current October timing match
+
+Live PR #37 was verified Draft/open/unmerged at recovered remote head
+`38ca7739f3434af6bd04da78b227229f0a7468d7`. The supplied setup pack, all ten
+requested committed handoffs/reviews and live owner contracts were inspected.
+No remote reset, new branch/PR or merge was performed.
+
+The real fixture now executes `match-timing-current` through the existing
+`STAGE3_MATCH` contract. Its distinct observation purpose
+`orchestration-current-match` separates the current October review from the
+retained cross-period observation, without changing either transaction's
+`timing` economic identity. Exact dependencies consume October
+`timing-current-ENTITY-NL` and `timing-ENTITY-UK`; current matching uses their
+native source-row fingerprints, signed roles, agreement, counterparties,
+Cases, Periods and result versions. The original `match-timing` still records
+the September/October TIMING_DIFFERENCE. No matching accounting authority or
+journal was created. Current matching is not yet qualified Group elimination.
+
+Prior-closing replacement now additionally invalidates this current matching
+node transitively through the actual NL opening owner. The five direct temporal
+consumers remain unchanged; transitive consumers are Group observation and
+current timing match. Unrelated work remains current. Existing executable
+temporal expectations were expanded, rather than weakened.
+
+Separate-context intermediate review authored eight permanent attacks/controls
+in `tests/test_stage4_current_timing_independent.py`; all PASS. Full review:
+`STAGE4-CURRENT-TIMING-INDEPENDENT-QA.md`. Historical substitution, omitted side,
+wrong economic/counterparty/Scope lineage and stale/superseded current versions
+reject. No new substantive finding was identified in this bounded review; it
+does not constitute final independent Stage 4 acceptance.
+
+The reviewer also independently confirmed that unchanged EUR16/EUR18 cannot be
+fully eliminated by existing ordinary-loan owner contracts. Source-supported
+native legal remeasurement and a complete reviewed operation TB containing its
+FX profit are a possible supported correction route. Fresh independently
+supplied closing-rate/book evidence is necessary; rates must not be selected
+solely to solve equality. No residual adjustment or CTA plug was invented.
+
+Checkpoint validation: 112 distinct retained Stage2/Stage3/conflict/native
+opening/replacement methods PASS; 54 distinct population/two-side/public/Case
+methods PASS. New current timing methods and Stage3 independent coverage are
+recorded in the PR publication result. Full Stage4 authored/intermediate
+acceptance still runs 48 methods with two FAIL and eight ERROR at IQA03's
+unchanged positive population requirements. These failures were not skipped,
+weakened or reclassified. No release regression or final CI claim is made.
+
+The governed generator now produces 37 truthful INCOMPLETE checkpoint JSON
+artifacts, including `current-timing-match.json`. File sets and SHA-256 hashes
+reproduce identically under independent hash seeds 19 and 941. No manual JSON
+patching occurred. The full-population guard remains enabled.
+
+**IQA03 remains OPEN and Stage4 remains INCOMPLETE.** Next integrate all current
+timing/FX rows into complete reviewed native foreign-operation TBs, preserving
+per-row transaction and signed legal lineage when an operation has multiple
+transactions. Qualify current timing matching and both FX sides into Group
+dependencies. If correction evidence legitimately supports native legal
+remeasurement, retain original GBP16/USD20 and EUR16/EUR18 results, seal fresh
+correction intake, supersede/rework exact dependencies and carry FX P&L once.
+Unsupported asymmetric treatment must fail closed. Do not weaken the guard or
+use isolated bounded controls as full-population acceptance.
+
+Every outstanding final population/temporal/exact-once/lineage/adversarial/QA,
+migration/release, final handoff, roadmap and immutable-head CI/readiness gate
+listed above remains outstanding. PR stays Draft. Protected accounting packages
+and knowledge remain untouched. Persistence and authenticated governance were
+not started. Useful work is published on the same branch as an intermediate
+checkpoint, never represented as the immutable final candidate.

@@ -94,6 +94,12 @@ def build():
     edge=Dependency(a.id,b.id,a.case_id,b.case_id,a.scope_id,b.scope_id,a.period_id,b.period_id,'PARTIAL_INCLUDED_PERIOD','EXPLICIT_CROSS_CASE',('calculations','pairs',0,'a_functional'),EVIDENCE)
     f['edges'][('timing-ENTITY-NL','timing-effective-ENTITY-NL')]=e.add_dependency(edge)
     s3.add_edge(f,'timing-effective-ENTITY-NL','group',('calculations','pairs',0,'a_functional'))
+    # A fresh October relationship consumes the actual October legal owners.
+    # The September/October timing observation remains a separate immutable
+    # execution; equal principal amounts alone never select either side.
+    s3.add_node(f,'match-timing-current','orchestration-current-match',root,'timing')
+    s3.add_edge(f,'timing-current-ENTITY-NL','match-timing-current',('calculations','pairs',0,'a_functional'))
+    s3.add_edge(f,'timing-ENTITY-UK','match-timing-current',('calculations','pairs',0,'b_functional'))
     return f
 
 
@@ -141,6 +147,26 @@ def matching_source(f,relationship):
         amounts={side['transaction_amount'] for side in source['sides']}
         source['decision']['classification']='MATCHED' if len(amounts)==1 else 'UNRESOLVED_MISMATCH'
     return source
+
+
+def current_timing_match(f):
+    from orchestration.intercompany_network import TransactionSide, MatchingDecision
+    from orchestration.versions import fingerprint
+    e=f['session'];node=f['nodes']['match-timing-current'];sides=[]
+    labels=('timing-current-ENTITY-NL','timing-ENTITY-UK')
+    for index,label in enumerate(labels):
+        n=f['nodes'][label];other=f['nodes'][labels[1-index]]
+        version=e.versions.current(n.id);row=e.sources[n.id]['intercompany_transactions'][0]
+        sides.append(TransactionSide(**row,case_id=n.case_id,owner_node=n.id,
+            result_version=version.version_id,metric_path=('calculations','pairs',0,'a_functional' if index==0 else 'b_functional'),
+            source_path=('intercompany_transactions',0),source_fingerprint=fingerprint(row),evidence=EVIDENCE,
+            counterparty_case=other.case_id,counterparty_period=other.period_id))
+    decision=MatchingDecision(sides[0].relationship_id,tuple(s.side_id for s in sides),'MATCHED',
+        EVIDENCE,tuple(s.result_version for s in sides),'synthetic independent October timing reviewer',
+        'Separately reviewed October confirmations under agreement-timing: exact current NL receivable and UK payable, GBP30 principal; September timing difference is retained history')
+    return dict(scope_id=node.scope_id,period_id=node.period_id,method='STAGE3_MATCH',network_id='STAGE3-NETWORK',
+        sides=[asdict(s) for s in sides],decision=asdict(decision),evidence=list(EVIDENCE),
+        versioned_dependency_receipts=s3.receipts(f,node.id))
 
 
 def uk_translation(f):
@@ -224,6 +250,7 @@ def source(f,label):
             c['opening_lineage_evidence']='Supplied loan book EUR30m and independently confirmed GBP30m closing principal within the reviewed included interval; no drawdown, recognition or allocation treatment inferred from dates'
         c['versioned_dependency_receipts']=s3.receipts(f,n.id);c['unit_scale']='million'
         return certify('intercompany-accounting',c)
+    if label=='match-timing-current':return current_timing_match(f)
     if label.startswith('match-'):return matching_source(f,label[6:])
     if label=='uk-translation':return uk_translation(f)
     if label=='uk-conversion':return uk_conversion(f)

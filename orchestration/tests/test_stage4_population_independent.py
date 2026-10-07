@@ -167,8 +167,9 @@ class IndependentPopulationGuard(unittest.TestCase):
         plan=CAO().correct(f['case'],key,source,'Independent prior source correction')
         direct={f['nodes'][label].id for label in ('match-timing','nl-opening','nl-comparative','timing-current-ENTITY-NL','timing-effective-ENTITY-NL')}
         self.assertEqual(set(plan['direct']),direct)
-        self.assertEqual(set(plan['transitive']),{f['nodes']['group'].id})
-        self.assertEqual(set(plan['unaffected']),set(e.graph.nodes)-direct-{key,f['nodes']['group'].id})
+        transitive={f['nodes'][label].id for label in ('group','match-timing-current')}
+        self.assertEqual(set(plan['transitive']),transitive)
+        self.assertEqual(set(plan['unaffected']),set(e.graph.nodes)-direct-{key}-transitive)
         for label in ('clean-ENTITY-US','fx-ENTITY-UK','mismatch-ENTITY-NL'):
             version=e.versions.current(f['nodes'][label].id)
             self.assertEqual(e.versions.require_current(version.version_id).version_id,version.version_id)

@@ -39,6 +39,7 @@ def artifacts():
         'result-versions-initial.json':record_versions(),
         'current-receipts-initial.json':receipts(),
         'intercompany-network-initial.json':network(f).record(),
+        'current-timing-match.json':before['match-timing-current'].payload(),
         'group-accounting-initial.json':before['elimination'].payload(),
         'group-reporting-initial.json':before['reporting'].payload(),
         'analytics-initial.json':before['analytics'].payload(),

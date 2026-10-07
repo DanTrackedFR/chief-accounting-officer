@@ -3148,7 +3148,8 @@
         "condition": null,
         "dependencies": [],
         "downstream_consumers": [
-          "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4"
+          "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4",
+          "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458"
         ],
         "economic_id": "timing",
         "entity": "ENTITY-UK",
@@ -4431,7 +4432,7 @@
     "case_type": "GROUP_CASE",
     "challenge_results": [
       {
-        "dependencies": 39,
+        "dependencies": 41,
         "kind": "governed-currentness",
         "status": "PASS"
       }
@@ -4551,6 +4552,11 @@
         "status": "blocked"
       },
       {
+        "node": "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+        "result_version": "version:e42b574d2f7ddefecc8a421541b25fe872a022d73b1c51c776371f539cc28d62",
+        "status": "complete"
+      },
+      {
         "node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
         "result_version": "version:a4cb6f42cdd425e254da977734746e9f67d942a4851bebff0977cba614af8c3f",
         "status": "complete"
@@ -4615,7 +4621,8 @@
       "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
       "exec:consolidation:GROUP-EUR:d1deb9d3f3055c69e0f33aaaaee1dc1b5f52b0a21843a49f1457293d3fa9447b",
       "exec:intercompany-accounting:GROUP-EUR:963f5044cc99eeeb7e71a8ed4f514fab5514ab59bc1ee9f95c5737692840f24e",
-      "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784"
+      "exec:management-accounting-analytics:GROUP-EUR:e21659c3a4fbd71f32ac97044c7e1979291c14ccccd1a074260afff3fd341784",
+      "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458"
     ],
     "objective": "Review the Group close across our Netherlands, US and UK finance-holding businesses, investigate the material movements and intercompany differences, determine whether the Group reporting is supportable, and give me the final Group accounting/reporting conclusion.",
     "observer_ran": true,
@@ -4736,6 +4743,12 @@
         "currentness": "CURRENT",
         "period_id": "period:8dd1eaff17019510a353a2f5ee9b86be5ed38dc1cffb3d077bee44634ab3e921",
         "result_version": "version:38d353cf62fb47ff717d4e2a8f5d54e397e123c9c84d6489abf6be38a5f4e37c"
+      },
+      {
+        "case_id": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+        "currentness": "CURRENT",
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "result_version": "version:e42b574d2f7ddefecc8a421541b25fe872a022d73b1c51c776371f539cc28d62"
       }
     ],
     "parent_case_id": null,
@@ -4758,7 +4771,8 @@
       "version:b21a3cc6276fc580d5ff12b567b1ba5c922975f8acf56d672d3cbced9cca3794",
       "version:fabbc9139d7fe18a1697074abe903ad875d5327455ff82bbb3b6aaa349216266",
       "version:486c9c14181a0b9ff748aef09a4e3bc3dcf7890d1bc7fc1ebb5fabba737f00f3",
-      "version:3d1627e846b59630557c21a3729348f2ad25781c39340f2ee0d4d2a7d9215174"
+      "version:3d1627e846b59630557c21a3729348f2ad25781c39340f2ee0d4d2a7d9215174",
+      "version:e42b574d2f7ddefecc8a421541b25fe872a022d73b1c51c776371f539cc28d62"
     ],
     "reviewed_input_packs": [],
     "rework_state": {},
@@ -6283,7 +6297,8 @@
         "condition": null,
         "dependencies": [],
         "downstream_consumers": [
-          "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4"
+          "exec:orchestration-stage3-match:GROUP-EUR:68b534667e487eef2981432738168855318be0718d27d9bb27405c4110047be4",
+          "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458"
         ],
         "economic_id": "timing",
         "entity": "ENTITY-UK",
@@ -11174,7 +11189,9 @@
         "dependencies": [
           "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6"
         ],
-        "downstream_consumers": [],
+        "downstream_consumers": [
+          "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458"
+        ],
         "economic_id": "timing",
         "entity": "ENTITY-NL",
         "evidence": [],
@@ -12103,6 +12120,155 @@
         "selected_skill": "intercompany-accounting",
         "source_inputs": [],
         "status": "complete"
+      },
+      {
+        "case_id": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+        "challenge_triggered": false,
+        "condition": null,
+        "dependencies": [
+          "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+          "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01"
+        ],
+        "downstream_consumers": [],
+        "economic_id": "timing",
+        "entity": "GROUP-EUR",
+        "evidence": [],
+        "execution_receipt": {
+          "case_id": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+          "currentness": "CURRENT",
+          "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+          "result_version": "version:e42b574d2f7ddefecc8a421541b25fe872a022d73b1c51c776371f539cc28d62"
+        },
+        "framework": "IFRS",
+        "functional_currency": null,
+        "id": "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+        "invalidated_results": [],
+        "issue": "match-timing-current",
+        "iterations": 1,
+        "jurisdiction": "NL",
+        "logical_id": "match-timing-current",
+        "material": null,
+        "open_items": [],
+        "owner_result_dependencies": [],
+        "period": [
+          "2026-10-01",
+          "2026-10-31"
+        ],
+        "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+        "prerequisites": [],
+        "presentation_currency": "EUR",
+        "reason_selected": "Bounded Stage 3 production route",
+        "required": true,
+        "result": {
+          "accounting_authority": false,
+          "case_fingerprint": "8dbd1c648a02b513494203a63647b750461c14d5c65045cef6012c70284bc539",
+          "currency": "EUR",
+          "framework": "IFRS",
+          "journal_entry_implications": [],
+          "limitations": [
+            "Matching is relationship lineage; unresolved residuals remain visible."
+          ],
+          "matching": {
+            "accounting_authority": false,
+            "classification": "MATCHED",
+            "correction": null,
+            "evidence": [
+              "Independent synthetic source, rate and accounting review; not authenticated approval"
+            ],
+            "functional_residual": null,
+            "network_id": "STAGE3-NETWORK",
+            "relationship_id": "ic-relationship:ed8c1c328f0fa2bbdd45619b57b534ce2ecfea1aab6bf859a51abfce5bae48c3",
+            "residual_currency": null,
+            "result_versions": [
+              "version:0ea77d0069834f88525bcfa34edf7a8b0e0a80ff82ef8b0890d20f55204aaffc",
+              "version:f3ee40da9929d9708cb8ded7663945b5e792a0c510ba7ef7cd4c917a415962b5"
+            ],
+            "sides": [
+              {
+                "agreement_id": "agreement-timing",
+                "book_entry_id": "book-timing-current-ENTITY-NL",
+                "case_id": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+                "counterparty_case": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+                "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+                "counterparty_scope": "ENTITY-UK",
+                "economic_id": "timing",
+                "evidence": [
+                  "Independent synthetic source, rate and accounting review; not authenticated approval"
+                ],
+                "functional_amount": "30.00",
+                "functional_currency": "EUR",
+                "metric_path": [
+                  "calculations",
+                  "pairs",
+                  0,
+                  "a_functional"
+                ],
+                "network_id": "STAGE3-NETWORK",
+                "owner_node": "exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b",
+                "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+                "result_version": "version:0ea77d0069834f88525bcfa34edf7a8b0e0a80ff82ef8b0890d20f55204aaffc",
+                "role": "receivable",
+                "scope_id": "ENTITY-NL",
+                "side_id": "ic-side:67c27f568218e3d49c8e964ee0b64789f979bf9e7506b76b79d398907b3d7f19",
+                "source_fingerprint": "978b0d812c5e607cafccab20c6947284a2333ba839d826e33b9d1c99a027cb98",
+                "source_id": "source-timing-current-ENTITY-NL",
+                "source_path": [
+                  "intercompany_transactions",
+                  0
+                ],
+                "transaction_amount": "30",
+                "transaction_class": "loan",
+                "transaction_currency": "GBP"
+              },
+              {
+                "agreement_id": "agreement-timing",
+                "book_entry_id": "book-timing-ENTITY-UK",
+                "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
+                "counterparty_case": "case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc",
+                "counterparty_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+                "counterparty_scope": "ENTITY-NL",
+                "economic_id": "timing",
+                "evidence": [
+                  "Independent synthetic source, rate and accounting review; not authenticated approval"
+                ],
+                "functional_amount": "30.00",
+                "functional_currency": "GBP",
+                "metric_path": [
+                  "calculations",
+                  "pairs",
+                  0,
+                  "b_functional"
+                ],
+                "network_id": "STAGE3-NETWORK",
+                "owner_node": "exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01",
+                "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+                "result_version": "version:f3ee40da9929d9708cb8ded7663945b5e792a0c510ba7ef7cd4c917a415962b5",
+                "role": "payable",
+                "scope_id": "ENTITY-UK",
+                "side_id": "ic-side:44c295aacb5c8ec8b21b0533d18391d14b16f4abda7ca537e69e0d916d63e79c",
+                "source_fingerprint": "199e5e1c50330185b500cf67bb256ab2f4a09ffaec276bcd6ee649d3ebc490e8",
+                "source_id": "source-timing-ENTITY-UK",
+                "source_path": [
+                  "intercompany_transactions",
+                  0
+                ],
+                "transaction_amount": "30",
+                "transaction_class": "loan",
+                "transaction_currency": "GBP"
+              }
+            ],
+            "transaction_residual": "0",
+            "transaction_residual_currency": "GBP"
+          },
+          "status": "complete",
+          "unresolved_dependencies": []
+        },
+        "rework_triggered": false,
+        "scope_id": "GROUP-EUR",
+        "scope_type": "GROUP",
+        "selected_skill": "orchestration-current-match",
+        "source_inputs": [],
+        "status": "complete"
       }
     ]
   },
@@ -12841,7 +13007,9 @@
         "dependencies": [
           "exec:intercompany-accounting:ENTITY-NL:e6b47f89945c5b21b756ea03cfceba3b6c9be4a4b8db95da3b1b5d38b24f46e6"
         ],
-        "downstream_consumers": [],
+        "downstream_consumers": [
+          "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458"
+        ],
         "economic_id": "timing",
         "entity": "ENTITY-NL",
         "evidence": [],

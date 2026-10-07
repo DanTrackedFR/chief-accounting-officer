@@ -492,6 +492,32 @@
     "version_id": "version:d7e84772b14aef8a5f8eacda172147e44b398717bf7f878302bfe35703cfb6a5"
   },
   {
+    "case_id": "case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0",
+    "dependency_bindings": [
+      [
+        "dependency:8b6885f37191caae57a7382fa702f722d6141c2471733d1a79152dad3a6f9679",
+        "version:f3ee40da9929d9708cb8ded7663945b5e792a0c510ba7ef7cd4c917a415962b5"
+      ],
+      [
+        "dependency:d8f7e1ce1b242fdc4a067e82825d3af19ea9f9f2a9db86d86413de65994f493c",
+        "version:0ea77d0069834f88525bcfa34edf7a8b0e0a80ff82ef8b0890d20f55204aaffc"
+      ]
+    ],
+    "exact_case_fingerprint": "8dbd1c648a02b513494203a63647b750461c14d5c65045cef6012c70284bc539",
+    "node_id": "exec:orchestration-current-match:GROUP-EUR:314a244a40e05cd224335505478c4fca57869b187ff2819f12fa926e59742458",
+    "payload_json": "{\"accounting_authority\":false,\"case_fingerprint\":\"8dbd1c648a02b513494203a63647b750461c14d5c65045cef6012c70284bc539\",\"currency\":\"EUR\",\"framework\":\"IFRS\",\"journal_entry_implications\":[],\"limitations\":[\"Matching is relationship lineage; unresolved residuals remain visible.\"],\"matching\":{\"accounting_authority\":false,\"classification\":\"MATCHED\",\"correction\":null,\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"functional_residual\":null,\"network_id\":\"STAGE3-NETWORK\",\"relationship_id\":\"ic-relationship:ed8c1c328f0fa2bbdd45619b57b534ce2ecfea1aab6bf859a51abfce5bae48c3\",\"residual_currency\":null,\"result_versions\":[\"version:0ea77d0069834f88525bcfa34edf7a8b0e0a80ff82ef8b0890d20f55204aaffc\",\"version:f3ee40da9929d9708cb8ded7663945b5e792a0c510ba7ef7cd4c917a415962b5\"],\"sides\":[{\"agreement_id\":\"agreement-timing\",\"book_entry_id\":\"book-timing-current-ENTITY-NL\",\"case_id\":\"case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc\",\"counterparty_case\":\"case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb\",\"counterparty_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"counterparty_scope\":\"ENTITY-UK\",\"economic_id\":\"timing\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"functional_amount\":\"30.00\",\"functional_currency\":\"EUR\",\"metric_path\":[\"calculations\",\"pairs\",0,\"a_functional\"],\"network_id\":\"STAGE3-NETWORK\",\"owner_node\":\"exec:intercompany-accounting:ENTITY-NL:52f88ba7a342caa5f0495be1e800612965400e0974c12f3b199db80b96dc8f3b\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"result_version\":\"version:0ea77d0069834f88525bcfa34edf7a8b0e0a80ff82ef8b0890d20f55204aaffc\",\"role\":\"receivable\",\"scope_id\":\"ENTITY-NL\",\"side_id\":\"ic-side:67c27f568218e3d49c8e964ee0b64789f979bf9e7506b76b79d398907b3d7f19\",\"source_fingerprint\":\"978b0d812c5e607cafccab20c6947284a2333ba839d826e33b9d1c99a027cb98\",\"source_id\":\"source-timing-current-ENTITY-NL\",\"source_path\":[\"intercompany_transactions\",0],\"transaction_amount\":\"30\",\"transaction_class\":\"loan\",\"transaction_currency\":\"GBP\"},{\"agreement_id\":\"agreement-timing\",\"book_entry_id\":\"book-timing-ENTITY-UK\",\"case_id\":\"case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb\",\"counterparty_case\":\"case:f3297a7694f024611c7bd236b74ff72bc55dc83faaa6c9be7c346b71ba6162fc\",\"counterparty_period\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"counterparty_scope\":\"ENTITY-NL\",\"economic_id\":\"timing\",\"evidence\":[\"Independent synthetic source, rate and accounting review; not authenticated approval\"],\"functional_amount\":\"30.00\",\"functional_currency\":\"GBP\",\"metric_path\":[\"calculations\",\"pairs\",0,\"b_functional\"],\"network_id\":\"STAGE3-NETWORK\",\"owner_node\":\"exec:intercompany-accounting:ENTITY-UK:09b6d353276019bb83b4801870bf6149d0b9f793bd994359fec35aae7902eb01\",\"period_id\":\"period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70\",\"result_version\":\"version:f3ee40da9929d9708cb8ded7663945b5e792a0c510ba7ef7cd4c917a415962b5\",\"role\":\"payable\",\"scope_id\":\"ENTITY-UK\",\"side_id\":\"ic-side:44c295aacb5c8ec8b21b0533d18391d14b16f4abda7ca537e69e0d916d63e79c\",\"source_fingerprint\":\"199e5e1c50330185b500cf67bb256ab2f4a09ffaec276bcd6ee649d3ebc490e8\",\"source_id\":\"source-timing-ENTITY-UK\",\"source_path\":[\"intercompany_transactions\",0],\"transaction_amount\":\"30\",\"transaction_class\":\"loan\",\"transaction_currency\":\"GBP\"}],\"transaction_residual\":\"0\",\"transaction_residual_currency\":\"GBP\"},\"status\":\"complete\",\"unresolved_dependencies\":[]}",
+    "period_id": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "predecessor": null,
+    "reason": "Initial governed CAO execution",
+    "result_fingerprint": "8ba4c589fdc0d9ec166b2624563d6d0338d7f69f059ca15eb8ebe30b547a266c",
+    "result_id": "result:69438ad2c540455ecec9663a062451709407e51eec8dfbcee7d1dee9158139e6",
+    "scope_id": "GROUP-EUR",
+    "source_fingerprint": "f8078bd58791de54461cab82682c6d223dc4a6c21f94d7b4821f6d8424797b43",
+    "state": "CURRENT",
+    "superseded_by": null,
+    "version_id": "version:e42b574d2f7ddefecc8a421541b25fe872a022d73b1c51c776371f539cc28d62"
+  },
+  {
     "case_id": "case:11c2b3b8de6dba2dfb49b8c61916318a7cad8288063352d9a967d0724dfc20bb",
     "dependency_bindings": [],
     "exact_case_fingerprint": "eaa4cae5d152652c83a5db9378ddb204228e3be3d275fede0e7c5c564aee85b1",

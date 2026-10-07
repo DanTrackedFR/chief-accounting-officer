@@ -39,7 +39,7 @@ class NativeOpening(unittest.TestCase):
         qualified=fixture.qualified_replacement(self.f,prior.id,source)
         plan=CAO().correct(self.f['case'],prior.id,qualified,'Separately reviewed prior closing correction')
         affected={self.e.graph.nodes[k].logical_id for k in plan['execution_order']}
-        self.assertEqual(affected,{'timing-current-ENTITY-NL','timing-effective-ENTITY-NL','nl-opening','nl-comparative','match-timing','group'})
+        self.assertEqual(affected,{'timing-current-ENTITY-NL','timing-effective-ENTITY-NL','nl-opening','nl-comparative','match-timing','match-timing-current','group'})
         self.assertEqual(self.e.versions.state(self.e.versions.current(current.id,allow_stale=True).version_id),'STALE')
         self.assertEqual(old.payload(),payload)
         for label in ('clean-ENTITY-US','mismatch-ENTITY-UK','fx-ENTITY-US','translation','conversion'):
