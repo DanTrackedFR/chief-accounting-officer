@@ -197,3 +197,46 @@ Original and refreshed EUR16/EUR18 leave material EUR-2.00 **million**. Opening 
 Independent CQA01 exposed hardcoded translationprofit/openingbook under alternate opening14/nativegain2 evidence. Generic reviewed-ledger validation and an exact native-profit dependency remediate it;15 independent and17 authored correction methods PASS under19/941. Unresolved substantive correction-path QA findings0; material accounting residual remains unresolved. Focused retained/new suites230distinct PASS;10 selected native-owner and3 privacy tests PASS (243distinct total). Full Stage4 acceptance remains48methods/twoFAIL/eightERROR at IQA03, with no weakened assertion.40governed artifacts reproduce under19/941 (37 unchanged remote checkpoint +3 new correction files); no manualJSON editing.
 
 Detailed evidence, version IDs, all affected/unaffected nodes, accounting/evidence limitation and exact remaining release gates: `STAGE4-CORRECTION-MILESTONE.md`. Independent history: `STAGE4-CORRECTION-INDEPENDENT-QA.md`. Existing QA history/guards are preserved. Stable focused work is to be published durably to the SAME branch/PR, then STOP; PR stays Draft, roadmap incomplete, no final release lifecycle or merge. Obtain actual ending head from live PR rather than embedding a self-referential commit SHA.
+
+## Reviewed closing-date milestone — current accounting resolved, historical reporting evidence refused
+
+Starting actual live head `99d15a5c711cd7bd3e0f0f7099ad0f002a856901`.
+Fresh synthetic closing treasury/GL evidence now drives existing native legal
+remeasurement: unchanged USD20/openingGBP16 → closingGBP18/FXgain2 → EUR18;
+US EUR18 remains current. Original EUR16/EUR18 conflict is immutable. A fresh
+same-date coherent quote sheet is validated against retained presentation quotes;
+no rate solve, Group plug or rewritten original evidence. The earlier opening
+correction fixture and all40 prior artifacts remain unchanged.
+
+A new complete-operation control represents all8 current legal sides and4
+relationships. Whole-operation signed carrying/native-profit rows and the parent
+native correction profit have exact version dependencies. Native Consolidation
+executes6 entries and genuinely produces cash490/profit3/closingequity490, with
+all loan/investment accounts zero. The nine-consumer closing rework order and23
+unrelated exact versions are derived from actual edges. Native current accounting
+is proved; this is not merely a qualified receipt.
+
+Financial Statements now legitimately refuses the inherited comparative489
+against reviewed openingequity487. Separately reviewed complete comparative/
+opening Group TB, legal carrying and cash/net-assets history are still required.
+Do not rewrite the comparative, invent a residual liability3 or restatement,
+or force completion. Ordinary CAO selective reexecution preserves current native
+Group accounting while reporting/analytics/Group remain STALE and publicpartial.
+Global journal release also correctly refuses stale downstream versions; native
+journal inventory8 is not falsely called a released full exact-once ledger.
+
+Pre-implementation inspected contract: `STAGE4-CLOSING-CONTRACT.md`.
+Full durable evidence/results/version/order/blocker/remaining gates:
+`STAGE4-CLOSING-MILESTONE.md`. Separate-context QA:
+`STAGE4-CLOSING-INDEPENDENT-QA.md`. CLQA01 ignored presentation quote was
+reproduced, generically remediated and independently rerun. New15 authored and32
+independent tests pass; independent32 pass19/941. Unresolved substantive findings
+within this reviewed milestone0; final IQA03 end-to-end acceptance remains OPEN.
+
+277 focused orchestration +18 selected native/privacy methods pass (295 distinct).
+Original48-method positive acceptance remains2 FAIL/8 ERROR, with unchanged
+assertions.44 governed artifacts reproduce under19/941, original40 unchanged.
+Both standards/canonical validators report zero errors. No final regression,
+lineage, roadmap completion, handoff acceptance or exact-head green CI/readiness
+claim. Publish all useful work to the SAME branch/PR and stop for owner review of
+the exact documented comparative/opening accounting evidence requirement.

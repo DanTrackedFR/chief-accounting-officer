@@ -43,3 +43,31 @@ The inherited S4-D02 implementation reopened any documented unresolved Case even
 ## CQA01 — focused correction translation ignored native profit / reviewed books
 
 Independent correction-path review reproduced alternate opening14/nativegain2 translating as fixedprofit1/opening115. The source builder had selected accounting values from a correction-evidence boolean. Generic role-qualified preparation now reads and validates separately reviewed opening cash/position/capital, derives native actual gain/loss and binds the signed profit TB row through an exact dependency. Alternate corrected opening14 legitimately yieldsgain2/profit2/opening114 with unchangedclosing16. Permanent15-method independent suite plus17authored attacks independently PASS under19/941; unresolved correction-path findings0. See `STAGE4-CORRECTION-INDEPENDENT-QA.md`. This correction does not supply Group residual accounting authority. IQA03 remains OPEN; original/refreshedEUR16/EUR18 remains materialEUR-2million and theCase stayspartial. Full-population, lineage and release gates are unchanged.
+
+## CLQA01 — reviewed presentation quote ignored during closing evidence preparation
+
+Separate reviewer reproduced new closing sheet EUR/GBP1.20 being ignored while
+retained native translation used1.00 and reported residual0. Generic
+`closing_evidence.validate_quote_sheet` verifies finite positive supplied quotes,
+triangle consistency and exact retained presentation inputs before new native
+correction qualification. No rate/accounting output is calculated. Permanent
+independent regression and32-method closing/population reruns under19/941 PASS.
+Resolved within this milestone; prior histories preserved.
+
+## IQA03 closing/current-population milestone and remaining reporting evidence
+
+New same-date reviewed treasury/GL evidence through unchanged owners yields
+GBP18/gain2, translatedEUR18/EUR18, residual0. Complete current population has
+8legal sides,4matches and6native Group entries; Groupcash490/profit3/equity490.
+Current population omission protection remains enabled. This establishes current
+native Group accounting, not final end-to-end IQA03 closure.
+
+Native Financial Statements refuses inherited comparativeequity489 versus actual
+reviewed openingequity487. Separately reviewed full comparative/opening legal/TB,
+net-assets/equity/cash history remains unavailable. No comparative overwrite,
+invented residual liability/restatement or status override. Reporting/analytics/
+Group observation remain STALE; Casepartial, globaljournalrelease refused.
+IQA03 final acceptance stays OPEN, as do all final Stage4 release gates.
+The native parent P&L exact binding and complete-operation cashbridge validation
+were proactive risk fixes; not invented additional independently reproduced
+findings. See `STAGE4-CLOSING-MILESTONE.md` and independent QA report.
