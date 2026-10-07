@@ -8,6 +8,11 @@ def validate_native_bindings(session, node, source, receipts):
     """Verify reviewed native inputs, never generate inputs or certification."""
     from .runtime import at
     bindings = source.get('stage3_input_bindings')
+    if node.selected_skill=='foreign-currency' and bindings and source.get('translation',{}).get('enabled'):
+        if source['translation']['functional_currency']!=node.functional_currency or source['currency']['functional']!=node.functional_currency:
+            raise ValueError('Native translation functional currency differs from governed legal book')
+        if source['translation']['presentation_currency']!=source['currency']['presentation']:
+            raise ValueError('Native translation presentation currencies differ')
     if node.selected_skill=='consolidation' and source.get('group_population_coverage') is not None:
         validate_group_loan_population(session,node,source,receipts)
         if not bindings:raise ValueError('Full Group accounting requires exact native population bindings')
@@ -117,7 +122,7 @@ def validate_native_bindings(session, node, source, receipts):
         if source.get('stage3_contract') != 'ORDINARY_IC_REASSESSMENT':
             raise ValueError('Explicit bounded framework conversion contract required')
         translations = [r for r in receipts if tuple(r['metric_path'])[:3] == ('calculations','translation','translated_tb')]
-        if len(translations) != 1 or len(source['pairs']) != 1:
+        if len(translations) not in (1, 2) or len(source['pairs']) != 1:
             raise ValueError('Unsupported general intercompany conversion')
         if source['conversion_economic_id'] != node.economic_id or source['pairs'][0]['transaction_id'] != node.economic_id:
             raise ValueError('Conversion economic identity differs')
@@ -127,19 +132,11 @@ def validate_native_bindings(session, node, source, receipts):
         match=session.versions.require_current(matching_receipts[0]['result_version']).payload()['matching']
         sides=match['sides'];pair=source['pairs'][0]
         receivable=[s for s in sides if s['role']=='receivable'];payable=[s for s in sides if s['role']=='payable']
-        if len(receivable)!=1 or len(payable)!=1 or (pair['entity_a'],pair['entity_b'])!=(receivable[0]['scope_id'],payable[0]['scope_id']) or translations[0]['producer_scope']!=pair['entity_a']:
+        if len(receivable)!=1 or len(payable)!=1 or (pair['entity_a'],pair['entity_b'])!=(receivable[0]['scope_id'],payable[0]['scope_id']):
             raise ValueError('Native conversion counterparties differ from exact qualified legal sides')
         if pair['currency']!=receivable[0]['transaction_currency'] or Decimal(pair['opening_a'])+Decimal(pair['recharge'])-Decimal(pair['settled_a'])!=Decimal(receivable[0]['transaction_amount']):
             raise ValueError('Native conversion principal differs from original commercial transaction')
-        legal=[r for r in receipts if r['producer_scope']==pair['entity_b'] and tuple(r['metric_path'])[:2]==('calculations','pairs')]
-        if len(legal)!=1 or legal[0]['value_currency']!=(node.functional_currency or node.presentation_currency) or Decimal(pair['gl_b'])!=Decimal(str(legal[0]['value'])):
-            raise ValueError('Other legal carrying value lacks exact current reporting-currency qualification')
-        for binding in bindings:
-            receipt=next(r for r in receipts if r['dependency_id']==binding['dependency_id'])
-            if receipt['dependency_id']==translations[0]['dependency_id'] and tuple(binding['target_path'])!=('pairs',0,'gl_a'):
-                raise ValueError('Translated carrying amount must bind native originating side')
-            if receipt['dependency_id']==legal[0]['dependency_id'] and tuple(binding['target_path'])!=('pairs',0,'gl_b'):
-                raise ValueError('Counterparty carrying amount must bind actual native counterparty side')
+        validate_reassessment_sides(session, node, source, receipts, bindings, sides, translations)
         if source.get('recharges') or any(Decimal(str(pair['recharge']))!=0 for pair in source['pairs']):
             raise ValueError('Framework qualification supports ordinary loans only; services/recharges unavailable')
         pairs = source['pairs']
@@ -156,6 +153,61 @@ def validate_native_bindings(session, node, source, receipts):
             mapped.add(receipt['dependency_id'])
     if mapped!={r['dependency_id'] for r in receipts}:
         raise ValueError('Native mappings omit declared economically material dependencies')
+
+
+def validate_reassessment_sides(session, node, source, receipts, bindings, sides, translations):
+    """Bound each carrying input to its exact matched legal side and signed row.
+
+    This qualifies supplied native loan accounting; it supplies no rate,
+    balancing adjustment, residual disposition or general conversion authority.
+    """
+    from .runtime import at
+    pair=source['pairs'][0]
+    translated={r['producer_scope']:r for r in translations}
+    if len(translated)!=len(translations) or set(translated) not in ({pair['entity_a']}, {pair['entity_a'],pair['entity_b']}):
+        raise ValueError('Native conversion requires distinct exact translated legal sides')
+    for role,entity,field in [('receivable',pair['entity_a'],'gl_a'),('payable',pair['entity_b'],'gl_b')]:
+        side=next(s for s in sides if s['role']==role)
+        if entity in translated:
+            receipt=translated[entity]
+            version=session.versions.require_current(receipt['result_version'])
+            native=session.sources[version.node_id]
+            if fingerprint(native)!=version.source_fingerprint:
+                raise ValueError('Translation native source version differs')
+            if receipt['value_currency']!=(node.functional_currency or node.presentation_currency) or native['translation']['operation_id']!=node.economic_id:
+                raise ValueError('Translated side currency/economic identity differs')
+            legal_node=session.graph.nodes[side['owner_node']]
+            if native['translation']['functional_currency']!=legal_node.functional_currency or native['currency']['functional']!=legal_node.functional_currency:
+                raise ValueError('Translated side functional currency differs from exact legal book')
+            # The translation must consume this exact current matched legal
+            # result, not an equal-value different loan or earlier result.
+            rows=[]
+            for binding in native.get('stage3_input_bindings',[]):
+                edge=session.edges[binding['dependency_id']]
+                if edge.producer_node!=side['owner_node']:continue
+                if dict(version.dependency_bindings).get(edge.id)!=side['result_version'] or tuple(edge.metric_path)!=tuple(side['metric_path']):continue
+                path=tuple(binding['target_path'])
+                if len(path)!=4 or path[:2]!=('translation','tb') or path[3]!='balance':continue
+                row=native['translation']['tb'][path[2]]
+                if tuple(receipt['metric_path'])!=('calculations','translation','translated_tb',row['id']):continue
+                sign=1 if role=='receivable' else -1
+                if binding['sign']!=sign or row['category']!=('asset' if role=='receivable' else 'liability'):
+                    raise ValueError('Translated row must preserve signed legal side')
+                legal=session.versions.require_current(side['result_version'])
+                if Decimal(str(at(native,path)))!=Decimal(str(at(legal.payload(),tuple(side['metric_path']))))*sign:
+                    raise ValueError('Translated row differs from exact matched legal carrying value')
+                rows.append(binding)
+            if len(rows)!=1:raise ValueError('Translated side lacks exact matched legal row lineage')
+            sign=1 if role=='receivable' else -1
+        else:
+            candidates=[r for r in receipts if r['producer_scope']==entity and tuple(r['metric_path'])==tuple(side['metric_path']) and r['result_version']==side['result_version']]
+            if len(candidates)!=1:raise ValueError('Other legal carrying value lacks exact current reporting-currency qualification')
+            receipt=candidates[0];sign=1
+            if receipt['value_currency']!=(node.functional_currency or node.presentation_currency):
+                raise ValueError('Other legal carrying value lacks exact current reporting-currency qualification')
+        exact=[b for b in bindings if b['dependency_id']==receipt['dependency_id']]
+        if len(exact)!=1 or tuple(exact[0]['target_path'])!=('pairs',0,field) or exact[0]['sign']!=sign:
+            raise ValueError('Carrying amount must bind exact signed native counterparty side')
 
 
 def bounded_executor(session, node, source, receipts):

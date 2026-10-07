@@ -134,9 +134,14 @@ class ReportingBasis:
             self._native(version, owner)
             if basis['producer_layer']=='FRAMEWORK_ADJUSTMENT' and owner=='intercompany-accounting':
                 sources=[v for _,v in version.dependency_bindings if self.session.graph.nodes[self.session.versions.versions[v].node_id].selected_skill=='foreign-currency']
-                if len(sources)!=1:raise ValueError('Qualified conversion source version required')
+                if len(sources) not in (1,2):raise ValueError('Qualified conversion source version required')
                 start=len(self.history)
-                try:self.intercompany_conversion(sources[0],version.version_id,basis['economic_id'],('calculations','translation','translated_tb','ic loan'),basis['evidence'])
+                try:
+                    for source_version in sources:
+                        source_node=self.session.versions.versions[source_version].node_id
+                        edges=[e for e in self.session.edges.values() if e.producer_node==source_node and e.consumer_node==version.node_id and tuple(e.metric_path)[:3]==('calculations','translation','translated_tb')]
+                        if len(edges)!=1:raise ValueError('Exact translated carrying row required')
+                        self.intercompany_conversion(source_version,version.version_id,basis['economic_id'],tuple(edges[0].metric_path),basis['evidence'])
                 finally:del self.history[start:]
         if basis['producer_layer'] == 'LEGAL_ENTITY' and node.scope_type != 'LEGAL_ENTITY':
             raise ValueError('Group result cannot replace legal-side result')
@@ -247,7 +252,11 @@ class ReportingBasis:
         if len(native['pairs']) != 1 or native['recharges'] or native['pairs'][0]['transaction_id'] != economic_id:
             raise ValueError('General framework conversion remains unresolved')
         pair = native['pairs'][0]
-        if Decimal(str(at(source.payload(), source_metric))) != Decimal(pair['gl_a']):
+        fields=[b for b in native.get('stage3_input_bindings',[]) if self.session.edges[b['dependency_id']].producer_node==source.node_id and tuple(self.session.edges[b['dependency_id']].metric_path)==tuple(source_metric)]
+        if len(fields)!=1 or tuple(fields[0]['target_path']) not in (('pairs',0,'gl_a'),('pairs',0,'gl_b')):
+            raise ValueError('Exact translated reassessment side required')
+        field=fields[0]['target_path'][-1];sign=fields[0]['sign']
+        if Decimal(str(at(source.payload(), source_metric)))*sign != Decimal(pair[field]):
             raise ValueError('IFRS owner legal carrying input differs from qualified translation')
         from .stage3 import validate_native_bindings
         receipts=[self.session.receipt(k) for k,e in sorted(self.session.edges.items()) if e.consumer_node==target.node_id]
@@ -261,6 +270,10 @@ class ReportingBasis:
             consumer_scope=target.scope_id, consumer_period=target.period_id,
             evidence=list(evidence), currentness='CURRENT',
             limitation='Native ordinary IC reassessment only; not a general GAAP converter')
+        # Preserve existing single-receivable receipts byte-for-byte. The
+        # two-sided route carries its exact signed row for faithful reruns.
+        if field!='gl_a' or tuple(source_metric)!=('calculations','translation','translated_tb','ic loan'):
+            record.update(source_metric=list(source_metric),input_sign=sign,native_side=field)
         self.history.append(record)
         return copy.deepcopy(record)
 
@@ -275,7 +288,7 @@ class ReportingBasis:
                     tuple(record['output_metric']), record['evidence'], record.get('input_sign',1))
             elif record.get('kind') == 'FRAMEWORK_CONVERSION' and record.get('owner') == 'intercompany-accounting':
                 expected = self.intercompany_conversion(record['source_version'],record['result_version'],
-                    record['economic_id'],('calculations','translation','translated_tb','ic loan'),record['evidence'])
+                    record['economic_id'],tuple(record.get('source_metric',('calculations','translation','translated_tb','ic loan'))),record['evidence'])
             else:
                 raise ValueError('Unsupported transformation receipt')
             if expected != record:

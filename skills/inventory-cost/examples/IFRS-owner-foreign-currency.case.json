@@ -295,7 +295,7 @@
         "reviewer_signoff": {
           "reviewer": "synthetic independent reviewer",
           "approved": true,
-          "case_fingerprint": "456e9eec43167eefdfe6cb0b7b8a38655a4a3f2f41cc5265c141d683e1ceea51"
+          "case_fingerprint": "7eb940592f21ac493e1e91c57239ce2a813cb3aabbe23c477f7397d96030dc5b"
         }
       },
       "result": {
@@ -853,7 +853,7 @@
         "systems_impacted": [
           "Retain case ID, source IDs, policy version, rule route and journal lineage"
         ],
-        "case_fingerprint": "456e9eec43167eefdfe6cb0b7b8a38655a4a3f2f41cc5265c141d683e1ceea51",
+        "case_fingerprint": "7eb940592f21ac493e1e91c57239ce2a813cb3aabbe23c477f7397d96030dc5b",
         "status": "complete"
       },
       "mode": "evidence_only"
@@ -1132,13 +1132,28 @@
       "currency": "USD",
       "as_of": "2026-12-31",
       "content": {
+        "classes": [
+          "MERCH"
+        ],
+        "carrying": {
+          "Merchandise": "178.5"
+        },
+        "reversal": "0.00",
         "policy": {
           "framework": "IFRS",
           "edition": "IAS2_2026",
           "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
         },
-        "carrying": {
-          "Merchandise": "178.5"
+        "write_down": "0.00",
+        "reversal_circumstances": {
+          "reviewed": true,
+          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+        },
+        "expense": {
+          "cogs": "68.50",
+          "manufacturing_other": "0",
+          "write_down": "0.00",
+          "reversal": "0.00"
         },
         "pledged": {
           "amount": "0.00",
@@ -1149,22 +1164,7 @@
           "materials": "FIFO",
           "production": "FIFO",
           "resale": "FIFO"
-        },
-        "reversal": "0.00",
-        "reversal_circumstances": {
-          "reviewed": true,
-          "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-        },
-        "classes": [
-          "MERCH"
-        ],
-        "expense": {
-          "cogs": "68.50",
-          "manufacturing_other": "0",
-          "write_down": "0.00",
-          "reversal": "0.00"
-        },
-        "write_down": "0.00"
+        }
       },
       "content_hash": "38d63c58f954d5e4ad88f5765ae0c432645e42418682512a33f9eb9a7ffb997c"
     },
@@ -1561,7 +1561,7 @@
       "2026-12-31"
     ],
     "review_memo": "Synthetic independent exact original source release",
-    "payload_fingerprint": "4d047380ea6e91ae298c2c6693d65e7260dbc8de59fea95b1bc5aa39e1141499"
+    "payload_fingerprint": "143ce6ecd51dfeaad0505a2ba3a7e67fdecde3f87799663b63ca4526bb3fd3d2"
   },
   "currency": "USD",
   "owner_links": [
@@ -1748,13 +1748,28 @@
     "source_doc": "disclosures-source",
     "checked_on": "2027-03-31",
     "requirements": {
+      "classes": [
+        "MERCH"
+      ],
+      "carrying": {
+        "Merchandise": "178.5"
+      },
+      "reversal": "0.00",
       "policy": {
         "framework": "IFRS",
         "edition": "IAS2_2026",
         "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
       },
-      "carrying": {
-        "Merchandise": "178.5"
+      "write_down": "0.00",
+      "reversal_circumstances": {
+        "reviewed": true,
+        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
+      },
+      "expense": {
+        "cogs": "68.50",
+        "manufacturing_other": "0",
+        "write_down": "0.00",
+        "reversal": "0.00"
       },
       "pledged": {
         "amount": "0.00",
@@ -1765,22 +1780,7 @@
         "materials": "FIFO",
         "production": "FIFO",
         "resale": "FIFO"
-      },
-      "reversal": "0.00",
-      "reversal_circumstances": {
-        "reviewed": true,
-        "evidence_memo": "Synthetic current evidence of value recovery/no reversal"
-      },
-      "classes": [
-        "MERCH"
-      ],
-      "expense": {
-        "cogs": "68.50",
-        "manufacturing_other": "0",
-        "write_down": "0.00",
-        "reversal": "0.00"
-      },
-      "write_down": "0.00"
+      }
     },
     "closing_inventory": "178.5",
     "cogs": "68.50",

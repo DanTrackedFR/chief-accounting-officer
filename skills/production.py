@@ -284,6 +284,26 @@ def case_fingerprint(case):
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
 
+def _public_requirement_text(text):
+    """Name missing workflow inputs without publishing internal field keys.
+
+    Only the deterministic missing-fact refusal is curated here. Arbitrary
+    contaminated conclusions, calculations and identifiers still fail closed
+    at the shared public boundary; no substantive requirement is removed.
+    """
+    marker='Missing required facts: '
+    prefix='Accounting case cannot be completed: '
+    if text.startswith(prefix+marker):lead=prefix+marker
+    elif text.startswith(marker):lead=marker
+    else:return text
+    names={'case_id':'accounting case identity','node_id':'accounting execution identity',
+           'period_id':'governed accounting period','result_version':'current accounting result',
+           'dependency_id':'qualified accounting dependency','source_fingerprint':'qualified source identity',
+           'reviewer_signoff':'independent accounting review'}
+    fields=text[len(lead):].split(', ')
+    return lead+', '.join(names.get(field,field) for field in fields)
+
+
 def to_public(result, route='answer'):
     standard_titles={
       'SKILL-REV-001':{'IFRS':'IFRS 15','US_GAAP':'ASC 606','UK_GAAP':'FRS 102 Section 23','AASB':'AASB 15'},
@@ -344,7 +364,7 @@ def to_public(result, route='answer'):
     if diagnostic:
         bridge=diagnostic['bridge']
         public_calculations['diagnostic_bridge']={k:bridge[k] for k in ('starting','ending','change','explained_amount','explained_percent','residual','status')}
-    guidance=result['conclusion']+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(public_calculations,default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
+    guidance=_public_requirement_text(result['conclusion'])+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(public_calculations,default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
     if result.get('specialist_routing'):
         route_info=result['specialist_routing']
         guidance+='\nSpecialist handoff: '+route_info['target']+'; required evidence: '+route_info['required_evidence']+'; '+route_info['completion_gate']
@@ -352,7 +372,8 @@ def to_public(result, route='answer'):
     rec={'topic_id':public_topic,'guidance':guidance,
          'framework':result['framework'],'jurisdiction':result['jurisdiction'],
          'entity_scope':result['entities'][0],'effective_period':' to '.join(result['periods']),
-         'limitations':result.get('uncertainties',[]),'uncertainties':result.get('open_items',[]),'citations':citations}
+         'limitations':[_public_requirement_text(text) for text in result.get('uncertainties',[])],
+         'uncertainties':[_public_requirement_text(text) for text in result.get('open_items',[])],'citations':citations}
     return public_record(rec,route=route)
 
 def serializable(obj):
