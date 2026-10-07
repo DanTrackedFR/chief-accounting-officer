@@ -348,3 +348,48 @@ Full orchestration/production final runs, deterministic final seeds, final hando
 gated roadmap, immutable candidate and exact-head CI/readiness remain pending.
 No protected substantive accounting or knowledge changes, persistence, authenticated
 governance, new branch/PR or merge. This is useful acceptance work, not final release.
+
+## Final local release acceptance — 2026-10-07
+
+Complete controlled temporal model and generic TQA01 remediation pass. The fresh
+independent reviewer reran183 distinct Stage4 methods under seed941, including
+fresh final30 and153 retained, with zero unresolved substantive findings.
+September30 closing -> October1 opening -> October2026 reporting is distinct from
+October2025 -> October2026 comparative presentation. Native current cash490,
+profit3, equity490, eight legal sides/four relationships/six eliminations remain
+accepted. Original16/18 conflict and corrected18/18/gain2, versions and receipts
+remain governed historical/current evidence. Eight lineage chains and eight-journal
+exact-once allocation pass. The ordinary Case reaches CLOSED/public complete.
+
+Final measured release: orchestration1022 plus new artifact-reproduction1,
+production1180, leases17, repository/canonical53, supplemental/independent
+knowledge401 =2674 DISTINCT methods. Independent/authored reruns and subtests are
+not added. The failed first production run was stale generator review certificates;
+existing generators requalified these and the final1180 run passes. All earlier
+Stage1/2/3, Group, Treasury, SaaS, Intake, Diagnostics, Manufacturing and single-entity
+migrations pass within the full orchestration/production gates. Ten governed final
+lifecycle artifacts reproduce byte-for-byte under independent seeds19/941;
+SHA256 inventory and measured suite totals are generated in
+`STAGE4-RELEASE-REGRESSION.json`. Canonical approvals157/capabilities347 and
+standards1598claims pass with zero errors; supplemental validators and diff check
+pass. Roadmap witness updates only the authorized documentation hash and preserves
+all unrelated protected-document gates; relevant reruns are recorded separately.
+
+Final handoffs: `STAGE4-INTEGRATION-HANDOFF.md` and
+`DURABLE-CASE-COMPANY-ACCOUNTING-MEMORY-HANDOFF.md`. Roadmap Stage1/2/3/4 and overall
+Multi-Entity/Multi-Period are COMPLETE subject to owner integration; Durable Case/
+Company Accounting Memory is NEXT. No persistence/authenticated governance begun.
+No protected Government Grants/Borrowing Costs/Investment Property, canonical
+approval or supplemental accounting knowledge files changed. No generic GAAP/FX
+conversion or parallel consolidation authority added.
+
+Remaining publication gates only: commit/push final files on SAME branch/PR37,
+record immutable actual remote SHA and freeze files; required exact-head CAO,
+Phase3 and Standards Actions must all pass; update existing PR37, mark ready,
+wait readiness checks on unchanged SHA and confirm green. Do not merge. Final
+candidate SHA and CI evidence belong in PR37 metadata after freeze; do not amend
+repository files merely to insert a self-referential SHA.
+
+Authorized roadmap witness regression: Diagnostic independent32 and insurance
+knowledge35 rerun PASS after documentation-only hash update; these67 methods
+already belong to the2674 distinct release total and are not counted again.

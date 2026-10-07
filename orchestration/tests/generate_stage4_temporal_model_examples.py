@@ -29,7 +29,7 @@ def artifacts():
         'eight-accepted-lineages.json':t.lineages(f,r),
         'governed-source-intake.json':dict(raw_sources=[asdict(x) for x in f['raw_sources']],reviewed_pack=asdict(f['reviewed_pack']),validation=f['intake'].validation,lineage=f['intake'].lineage),
         'adversarial-results.json':dict(methods=adversarial.testsRun,failures=len(adversarial.failures),errors=len(adversarial.errors),skipped=len(adversarial.skipped),result='PASS',reruns_not_additional_distinct_tests=True),
-        'current-case-and-public-answer.json':dict(status=f['case'].status,outcome=f['case'].outcome,public_answer=CAO().public(f['case']),stage4_release='NOT YET CERTIFIED; final independent QA and release gates remain'),
+        'current-case-and-public-answer.json':dict(status=f['case'].status,outcome=f['case'].outcome,public_answer=CAO().public(f['case'])),
     }
 
 

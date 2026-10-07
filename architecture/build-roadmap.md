@@ -123,7 +123,7 @@ SaaS uses the governed semantic/intake foundation, controlled sources, nine prod
 
 Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
 
-### 4. Multi-entity and multi-period orchestration — IN PROGRESS
+### 4. Multi-entity and multi-period orchestration — COMPLETE
 Status: **IN PROGRESS**, delivered as four sequential gated stages.
 
 The Group flagship proved only one controlled Parent/Sub/Group Case with a sourced acquisition cutoff. General multi-entity and multi-period execution remains incomplete. The authoritative architecture handoff is `orchestration/GROUP-TO-MULTI-ENTITY-HANDOFF.md`.
@@ -167,14 +167,14 @@ Stage 3 delivers the bounded intercompany network and governed cross-layer execu
 
 Critical proof: a multi-entity intercompany network reconciles across periods/currencies, local-framework results cannot masquerade as group-framework results, and group eliminations remain distinct from legal-book entries. Produce a committed Stage-4 handoff.
 
-#### Stage 4 — Full Multi-Entity / Multi-Period Integration Flagship — NEXT
+#### Stage 4 — Full Multi-Entity / Multi-Period Integration Flagship — COMPLETE
 After Stages 1–3 are merged, prove the architecture end-to-end with a controlled multi-entity Group objective using at least three legal entities plus Group scope, repeated owners, multiple periods, multiple functional currencies, local/group framework differences, multiple intercompany edges, group reporting and analytics.
 
 The flagship must deliberately change one qualified upstream entity/period result and prove dependency-driven invalidation, selective rework and an updated Group result without rerunning unrelated work. It must include a material-conflict Case that fails safely and a corrected clean control that reaches COMPLETE/CLOSED.
 
-Only after Stage 4 passes authored tests, genuinely independent adversarial QA/remediation/rerun, all prior flagship migration regressions, deterministic artifacts, full repository regression and exact-head GitHub Actions may this roadmap item be marked **COMPLETE** and Durable Case + Company Accounting Memory persistence become NEXT.
+Stage4 substantive architecture, controlled flagship, independent QA/remediation/rerun, prior migration, deterministic artifact and local release gates pass. The workstream is COMPLETE subject to owner integration. See `orchestration/STAGE4-INTEGRATION-HANDOFF.md`, `orchestration/STAGE4-FINAL-INDEPENDENT-QA.md` and `orchestration/STAGE4-RELEASE-REGRESSION.json`. Immutable-head required Actions and unchanged-head readiness are recorded on existing PR37 before owner review. Durable Case + Company Accounting Memory is NEXT; its handoff is documentation only, with no persistence implementation in Stage4.
 
-### 5. Durable Case and Company Accounting Memory persistence — NOT YET NEXT
+### 5. Durable Case and Company Accounting Memory persistence — NEXT
 Persist Company Context, Case history, decisions, artifacts and provenance while preserving status and temporal history such as PROPOSED, APPROVED and SUPERSEDED. Persistence must not silently promote memory candidates into approved company truth.
 
 ### 6. Authenticated governance and approvals

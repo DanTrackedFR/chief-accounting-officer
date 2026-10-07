@@ -108,3 +108,23 @@ generically and permanently tested; additive independent report is
 `STAGE4-TEMPORAL-MODEL-INDEPENDENT-QA.md`. Expanded opening-chain independent
 review/release acceptance remains pending at this checkpoint. No final-zero-QA,
 roadmap completion or readiness claim is made.
+
+## Final architecture disposition — 2026-10-07
+
+Historical checkpoint OPEN/failed records above remain immutable review history.
+IQA03 is now resolved by genuine complete current legal/translation/elimination
+population through native Financial Statements, analytics and ordinary CLOSED;
+the two retained hard positive tests pass. TQA01 is resolved generically by exact
+separate adjacent OPENING and prior-year COMPARATIVE dependencies in
+`reporting_temporal.py`, including native closing -> opening -> reporting versions.
+The original hard rejection regression remains enabled and passes.
+
+New temporal review reproduced three defects, all generically remediated and
+permanently rerun: omitted required temporal declarations/receipts bypass;
+empty-evidence zero-movement authorization; and missing declaration when only
+the opening alignment edge remained. Full temporal independent25 passes under
+seeds19/941. Fresh final30 independently attacks both opening/comparative roles;
+all183 distinct Stage4 independent methods pass under seed941. See additive
+`STAGE4-TEMPORAL-MODEL-INDEPENDENT-QA.md` and `STAGE4-FINAL-INDEPENDENT-QA.md`.
+Unresolved substantive independent architecture findings =0. Release, artifact,
+immutable-head CI and readiness remain separately recorded gates.
