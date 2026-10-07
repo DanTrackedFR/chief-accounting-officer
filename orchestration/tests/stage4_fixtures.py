@@ -453,7 +453,11 @@ def replacement_intake(f, key, supplied):
     c['source_population']=[r.id for r in raw]
     c['qualified_scope_sources']=[dict(source_id=row.source['id'],fingerprint=row.source['fingerprint'],metadata=row.source['metadata']) for row in inventory.extractions.values()]
     c['qualified_input_snapshot']=dict(source_id=snapshot.id,fingerprint=inventory.extractions[snapshot.id].source['fingerprint'])
-    if native:c=certify(owner,c)
+    if native:
+        # Requalify the supplied reviewed workpaper without rewriting its
+        # knowledge selection after the complete snapshot has been sealed.
+        from production import case_fingerprint
+        c['reviewer_signoff']=dict(reviewer='synthetic independent reviewer',approved=True,case_fingerprint=case_fingerprint(c))
     plan=serialize(f);plan['nodes']=[row for row in e.graph.record() if row['id']==key];plan['sources']={key:c}
     plan['dependencies']=[asdict(edge) for edge in e.edges.values() if edge.consumer_node==key]
     context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',period_id=f['periods']['CALENDAR-OCT'].period_id,scopes=e.cases.scopes.record(),period_registry=e.periods.record(),materiality='.1')

@@ -275,3 +275,55 @@ otherwise do not invent restatement. Read detailed contract/evidence audit befor
 implementation. Same branch/PR remains draft/open/unmerged. Protected work unchanged;
 persistence/authenticated governance not started. Publish this useful audit durably
 and stop under OutcomeD; no further unsupported accounting loop.
+
+## Temporal model and generic TQA01 continuation checkpoint
+
+Starting verified live head `1c480514e4ce36df8f1c85ee68f9b5821cf6905e`.
+Same branch and draft/open/unmerged PR37. New controlled fixture
+`tests/stage4_temporal_fixtures.py` preserves all earlier bounded controls and
+historical evidence. Adjacent September2026 closing -> governed October1 opening
+-> October2026 reporting have distinct native immutable versions. Prior-year
+October2025 comparative489 remains separate presentation history.
+
+Adjacent authorized gross TB retains cash490, receivables10/16, payables11/18,
+and equity487. These are the original nonreciprocal loans, not a balancing
+liability, fabricated year bridge or retrospective current profit. Current native
+corrections legitimately produce profit3/equity490/cash490 as before. The controlled
+stock evidence is synthetic supplied review; external company history and
+approval authentication are not claimed. No twelve months are generated.
+
+`reporting_temporal.py` generically qualifies exact producer/consumer identities,
+versions/currentness, source fingerprints, Scope/Case/Period/calendar/framework/
+currency, distinct relationship types and whole authorized TB populations.
+Financial Statements now accepts a separately reviewed adjacent opening TB,
+using it for equity/cash ties; comparative presentation is independent. An
+empty classified cash population requires evidenced actual zero movements.
+The full controlled new path executes native Financial Statements, reporting,
+analytics, Group observation and normal CLOSED/complete. This is a positive
+checkpoint, not final Stage4 acceptance.
+
+Public synthesis now selects exact current Group Scope/Period reporting, keeping
+historical native statements from multiplying the current result count.
+Analytics describes the observed prior-year cash stock difference only; no
+unsupported financing receipt or intervening-year movement is inferred.
+Replacement fixture review preserves the sealed workpaper knowledge selection
+rather than rewriting it after sealing. All original positive full-release gates
+remain enabled; their inherited incomplete fixture must still be integrated
+without weakening requirements.
+
+Original TQA0112-method suite and112 combined Stage2/Stage3/replacement/temporal
+methods PASS. New authored11-method positive/temporal/exact-once/rework suite and
+initial20 independent methods passed before the explicit opening-version
+extension; expanded independent rerun follows. Two independently reproduced new
+findings were fixed and permanently tested. Exact current acceptance counts
+must be reverified after final changes; seed reruns are never double counted.
+New governed generator: `tests/generate_stage4_temporal_model_examples.py`.
+New artifacts: `examples/multi-entity-multi-period-temporal-model/`.
+
+Remaining: expanded independent temporal-chain rerun and required individual
+rejections; full eight-lineage/source-intake proof; every retained Stage4 positive
+acceptance gate; fresh complete final independent QA; deterministic accepted
+artifacts; every prior migration; full release/validators; final integration and
+Durable Memory documentation handoffs; gated roadmap; immutable SHA; exact-head
+required CI; unchanged-head ready protocol. No persistence/authenticated
+governance, protected knowledge/accounting edits, new branch/PR or merge.

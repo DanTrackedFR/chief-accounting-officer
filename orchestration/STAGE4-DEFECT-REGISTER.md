@@ -90,3 +90,21 @@ native temporal mappings and evidence remain required; zero unresolved temporal
 findings/final acceptance is not claimed. Current solved FX/Group accounting stays
 unchanged. Full audit: `STAGE4-TEMPORAL-EVIDENCE-AUDIT.md` and governed temporal audit
 artifact. Stop after durable same-branch publication; Stage4 remains incomplete.
+
+## Temporal-model continuation (TQA01 remediation milestone)
+
+The current implementation separates native adjacent opening stocks from
+prior-year comparative presentation. New generic qualification is
+`reporting_temporal.py`; full Group reporting cannot omit separately declared
+exact opening/comparative dependencies. An explicit OPENING as-of native result
+consumes its adjacent closing version and is separately consumed by reporting.
+The original hard-failing TQA01 fabricated comparator regression now rejects.
+Historical actual-source refusal controls remain retained.
+
+Separate-context review reproduced two new defects: required temporal graph
+edges could bypass qualification when source declarations/receipts were omitted,
+and native zero-movement review accepted empty evidence. Both are remediated
+generically and permanently tested; additive independent report is
+`STAGE4-TEMPORAL-MODEL-INDEPENDENT-QA.md`. Expanded opening-chain independent
+review/release acceptance remains pending at this checkpoint. No final-zero-QA,
+roadmap completion or readiness claim is made.

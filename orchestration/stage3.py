@@ -7,6 +7,9 @@ from .intercompany_network import IntercompanyNetwork, TransactionSide, Matching
 def validate_native_bindings(session, node, source, receipts):
     """Verify reviewed native inputs, never generate inputs or certification."""
     from .runtime import at
+    if node.selected_skill == 'financial-statements':
+        from .reporting_temporal import validate_reporting_temporal
+        validate_reporting_temporal(session, node, source, receipts)
     bindings = source.get('stage3_input_bindings')
     if node.selected_skill=='foreign-currency' and bindings and source.get('translation',{}).get('enabled'):
         if source['translation']['functional_currency']!=node.functional_currency or source['currency']['functional']!=node.functional_currency:
@@ -112,7 +115,7 @@ def validate_native_bindings(session, node, source, receipts):
         if Decimal(str(source['cta_bridge']['closing']))!=-close or Decimal(str(source['cta_bridge']['translation']))!=-move or Decimal(str(source['equity_bridge']['oci']))!=move:
             raise ValueError('Group CTA/OCI bridge differs from complete qualified owner population')
 
-    if node.selected_skill == 'financial-statements':
+    if node.selected_skill == 'financial-statements' and session.periods.get(node.period_id).period_type != 'OPENING':
         qualified = source.get('stage3_balances')
         if not isinstance(qualified,dict) or {row['id']:row['balance'] for row in source['current_tb']} != qualified:
             raise ValueError('Reporting TB differs from exact qualified consolidated population')
@@ -248,7 +251,7 @@ def public_result(case, route):
         node=session.graph.nodes[node_id]
         version=session.versions.require_current(session.versions.current(node_id).version_id)
         payload=version.payload()
-        if node.status=='complete' and not payload.get('unresolved_dependencies') and node.selected_skill=='financial-statements' and node.scope_type=='GROUP':
+        if node.status=='complete' and not payload.get('unresolved_dependencies') and node.selected_skill=='financial-statements' and node.scope_type=='GROUP' and node.scope_id==case.scope_id and node.period_id==case.period_id:
             reports.append(payload['calculations']['current'])
             scale=session.sources[node_id].get('unit_scale','units')
             if scale not in ('units','million'):raise ValueError('Explicit supported presentation scale required')

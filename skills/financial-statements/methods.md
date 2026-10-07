@@ -31,3 +31,28 @@ Synthetic priorcash100/equity100. Currentcash290, otherassets210, liabilities200
 Fail balanced TB with equity profit allocation201, stale comparative100 versus opening99, missing narrative review, unreviewed covenant classification, omitted restricted cash, all-new-requirements unsupported N/A, incomplete statement/checklist sets, future IFRS18 imported into2026, missing2027 transition, unclassified interest, noncash acquisition included as cash and internally tying notes without source population.
 
 The generated public workpaper contains numeric components and curated disclosure controls, not raw internal note/equity evidence memos. Retain assertion-to-source/version/formula/output map, current and comparative signed accounts, specialist notes, regulator/tier scope, disclosure checklist, journal changes, source hashes and independent review. No filing or audit opinion is issued. Tax is external reviewed work, not a claim that the blocked income-tax skill is complete.
+
+## Separate opening stock and reporting comparative
+
+A supplied `opening_tb` is a separately reviewed adjacent prior closing stock,
+with `opening.period_end` exactly one day before current execution starts.
+Equity and cash opening ties use that stock. The independently balanced
+comparative TB remains presentation history and is not required to equal the
+current opening when the comparison spans a different interval. Absence of this
+optional contract preserves the bounded legacy consecutive-period tie; it does
+not supply missing intervening history. A governed OPENING execution represents
+the exact reporting-boundary stock, not an extra accounting movement.
+
+An empty cash-classification population is accepted only with a complete,
+nonempty-evidence zero-movement review, integer movement count zero and zero
+actual operating/investing/financing/FX totals. No zero-valued fictitious capital
+transaction is inserted. This is controlled supplied review, not authenticated
+external approval.
+
+Complete governed Group reporting additionally consumes exact native opening and
+comparative versions through `orchestration/reporting_temporal.py`. Opening and
+comparative declarations remain distinct. Scope, Case, calendar, Period,
+framework, currency, source fingerprint, TB population and recursive currentness
+are qualified against Stage2 contracts. An as-of opening version binds its exact
+adjacent closing and then feeds current reporting through an explicit alignment;
+no relabeling or arbitrary framework/currency conversion is authorized.

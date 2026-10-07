@@ -137,7 +137,7 @@ def refresh(f,plan):
         supplied[key]=c
         try:e.execute(key,observation,c,'Dependency rework: '+plan['new_version'])
         except ValueError as error:
-            if n.logical_id!='reporting' or str(error)!='Versioned native accounting result not qualified':raise
+            if n.logical_id!='reporting' or str(error) not in ('Versioned native accounting result not qualified','Reporting requires separate exact opening and comparative dependencies'):raise
             preparation_refusal=dict(node=n.logical_id,error=str(error));break
     f.setdefault('replacement_intakes',[]).extend(preview.get('replacement_intakes',[])[len(f.get('replacement_intakes',[])):])
     try:
