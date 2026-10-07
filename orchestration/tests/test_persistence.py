@@ -128,7 +128,12 @@ class DurableAttacks(unittest.TestCase):
     def test_superseded_reactivated(self):
         old=next(k for k,s in self.d['states'].items() if s=='SUPERSEDED');self.d['active'][self.d['versions'][old]['node_id']]=old;self.reject()
     def test_wrong_version_receipt(self):self.receipt()['result_version']=next(iter(self.d['versions']));self.reject()
-    def test_wrong_layer_receipt(self):self.receipt()['consumer_presentation_currency']='GBP';self.reject()
+    def test_wrong_layer_receipt(self):
+        # Native typed receipts derive accounting layer from the consumer Scope.
+        # Substitute a real Group consumer for this legal-entity receipt.
+        group=next(n for n in self.d['nodes'] if n['scope_type']=='GROUP')
+        self.receipt().update(consumer_node=group['id'],consumer_scope=group['scope_id'])
+        self.reject()
     def test_wrong_scope_receipt(self):self.receipt()['producer_scope']='ENTITY-NL';self.reject()
     def test_wrong_period_receipt(self):self.receipt()['producer_period']='period:other';self.reject()
     def test_equal_value_wrong_lineage(self):self.receipt()['producer_node']=self.node()['id'];self.reject()

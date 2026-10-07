@@ -66,6 +66,16 @@ See the additive independent report. Full repository regression, deterministic
 seed evidence and immutable-head CI are separately recorded in the release
 manifest and PR; local checkpoint acceptance alone is not a CI claim.
 
+Final local acceptance: **2,772 distinct tests PASS** (orchestration1,121,
+production1,180, leases17, repository53, supplemental401). The orchestration total
+includes98 new persistence methods and the existing complete temporal artifact
+reproduction. Reruns/subtests are not additional tests. Five supplemental validators,
+standards evidence and canonical approval validators pass with zero errors.
+Restart artifacts are byte-identical under hash seeds19 and941. Final receipt-layer
+coverage was strengthened without runtime changes; authored59 reran PASS and the
+independent reviewer confirmed real legal-to-Group substitution rejection.
+Immutable final-head Actions and release SHA are recorded in PR38 metadata.
+
 ## Boundaries and continuation
 
 This is local trusted-runtime persistence, not authenticated human governance,
