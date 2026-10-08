@@ -196,11 +196,11 @@ class StorageAttacks(unittest.TestCase):
         self.save();self.store.connection.execute("DELETE FROM objects WHERE kind='source'")
         with self.assertRaises(IntegrityError):self.load()
     def test_future_schema(self):
-        self.store.connection.execute('PRAGMA user_version=2')
+        self.store.connection.execute('PRAGMA user_version=3')
         with self.assertRaises(IntegrityError):self.load()
-        with self.assertRaises(IntegrityError):self.store.migrate(2)
+        with self.assertRaises(IntegrityError):self.store.migrate(3)
     def test_noop_migration_fixture(self):
-        self.save();before=self.path.read_bytes();self.assertEqual(self.store.migrate(1),1)
+        self.save();before=self.path.read_bytes();self.assertEqual(self.store.migrate(2),2)
         self.assertEqual(self.path.read_bytes(),before)
     def test_failed_schema_initialization_rollback(self):
         path=Path(self.tmp.name)/'unknown.db';conn=sqlite3.connect(path);conn.execute('CREATE TABLE unrelated(value TEXT)');conn.close()
