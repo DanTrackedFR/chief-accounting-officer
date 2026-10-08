@@ -196,7 +196,7 @@ class StorageAttacks(unittest.TestCase):
         self.save();self.store.connection.execute("DELETE FROM objects WHERE kind='source'")
         with self.assertRaises(IntegrityError):self.load()
     def test_future_schema(self):
-        self.store.connection.execute('PRAGMA user_version=3')
+        self.store.connection.execute('PRAGMA user_version=4')
         with self.assertRaises(IntegrityError):self.load()
         with self.assertRaises(IntegrityError):self.store.migrate(3)
     def test_noop_migration_fixture(self):

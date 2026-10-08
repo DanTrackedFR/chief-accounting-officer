@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_restored_decision_cannot_claim_approval_on_documented_position (orchestration.tests.test_persistence_stage3_independent.IndependentExtractedMemoryAttacks.test_restored_decision_cannot_claim_approval_on_documented_position)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/tests/test_persistence_stage3_independent.py", line 104, in test_restored_decision_cannot_claim_approval_on_documented_position
+    with self.assertRaises(IntegrityError):self.memory.audit(self.company)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 2.094s
+
+FAILED (failures=1)

@@ -1,0 +1,23 @@
+.F.F
+======================================================================
+FAIL: test_supersession_cannot_use_self_as_successor (orchestration.tests.test_persistence_stage3_independent.IndependentMemoryAttacks.test_supersession_cannot_use_self_as_successor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 45, in test_supersession_cannot_use_self_as_successor
+    with self.assertRaises(IntegrityError):self.memory.transition(COMPANY,self.record['record_id'],g,expected_revision=2,recorded_at=EXACT,successor=self.record['record_id'])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+======================================================================
+FAIL: test_unknown_historical_consumption_version_rejected (orchestration.tests.test_persistence_stage3_independent.IndependentMemoryAttacks.test_unknown_historical_consumption_version_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 41, in test_unknown_historical_consumption_version_rejected
+    with self.assertRaises(IntegrityError):self.memory.audit(COMPANY)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 9.591s
+
+FAILED (failures=2)

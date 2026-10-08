@@ -73,8 +73,8 @@ class CompanyMemoryTests(unittest.TestCase):
         self.promote();row=self.s.connection.execute('SELECT payload FROM memory_events WHERE sequence=2').fetchone();e=loads(row[0]);e['value']['source']['case_id']='another';e['value']['version_id']=ident('memory-version',{k:v for k,v in e['value'].items() if k!='version_id'});wire=dumps(e);checksum=sha(wire)
         self.s.connection.execute('UPDATE memory_events SET payload=?,sha256=?,event_id=? WHERE sequence=2',(wire,checksum,ident('memory-event',e)));self.s.connection.execute('UPDATE memory_heads SET sha256=?',(checksum,))
         with self.assertRaises(ValueError):self.m.audit(COMPANY)
-    def test_stale_result_refused(self):
-        self.promote();self.c.governance.invalidate(next(iter(self.c.governance.graph.nodes)),'Reviewed challenge')
+    def test_superseded_result_refused(self):
+        self.promote();correction(self.c)
         self.s.save(self.c,COMPANY,[],1);self.assertFalse(self.query()['qualified'])
     def test_retracted_record_refused(self):self.promote('RETRACTED');self.assertFalse(self.query()['qualified'])
     def test_old_retracted_record_cannot_reapprove(self):
@@ -145,6 +145,34 @@ class CompanyMemoryTests(unittest.TestCase):
     def test_five_linked_projections(self):
         a=self.m.audit(COMPANY)
         for key in ['company_context','case_library','artifact_library','provenance','decision_register']:self.assertTrue(a[key])
+
+    def test_nonoverlapping_historical_positions_not_conflict(self):
+        # Both are actual sealed source/native Case candidates; exact dates are
+        # explicit contextual applicability, not accounting result authority.
+        a=capture(self.s,self.c,subject='consecutive-policy',effective_to=dict(value='2026-12-15',precision='exact'))
+        self.m.transition(COMPANY,a['record_id'],governance(a),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
+        c=build('Successive December policy',value='Xero');self.s.save(c,COMPANY,[],0)
+        b=capture(self.s,c,subject='consecutive-policy',effective_from=dict(value='2026-12-16',precision='exact'))
+        self.m.transition(COMPANY,b['record_id'],governance(b),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
+        result=self.m.retrieve(COMPANY,self.c.id,self.c.id,'consecutive-policy','systems');self.assertFalse(result['conflicts'])
+    def test_governed_decision_lifecycle(self):
+        self.promote();r=self.r
+        for status in ['documented','implemented','reversed']:
+            decision=copy.deepcopy(r['decision']);decision['status']=status
+            g=governance(r);g['target_status']=r['status'];g['prior_status']=r['status']
+            r=self.m.decide(COMPANY,r['record_id'],decision,g,expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
+        self.assertEqual(self.m.audit(COMPANY)['decision_register'][0]['decision']['status'],'reversed')
+        self.assertEqual(len([e for e in self.m.history(COMPANY,r['record_id']) if e['kind']=='DECISION']),3)
+    def test_candidate_cannot_approve_decision(self):
+        d=copy.deepcopy(self.r['decision']);d['status']='approved';self.bad_capture(decision=d)
+    def test_qualified_intake_context_suppresses_question(self):
+        self.promote()
+        b=build('Independent context-informed Case',memory=dict(memory=self.m,company_id=COMPANY,qualification_root=self.c.id,qualification_case=self.c.id,subjects=[('finance','systems')]))
+        self.assertEqual(b.governance.context['systems'],'NetSuite');self.assertNotEqual(b.id,self.c.id)
+    def test_partial_effective_period_does_not_reuse(self):
+        r=capture(self.s,self.c,subject='partial-context',effective_from=dict(value='2026-12-15',precision='exact'))
+        self.m.transition(COMPANY,r['record_id'],governance(r),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
+        result=self.m.retrieve(COMPANY,self.c.id,self.c.id,'partial-context','systems');self.assertFalse(result['qualified'])
 
 class MemoryMigration(unittest.TestCase):
     def test_schema2_migration_retains_bytes(self):

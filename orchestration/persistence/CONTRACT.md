@@ -175,3 +175,11 @@ All operation payloads, receipts, reviewed sources, selections and status histor
 are private. Public delivery remains CAO.public; no operation DTO is a public answer.
 The existing trusted-runtime, synthetic-review, local-file, confidentiality and
 security limits remain unchanged. Stage3 approved company-memory reuse is absent.
+
+## Stage 3 extension (schema3, checkpoint contract1)
+
+Schema3 registers exact transactional schema2→3 migration, adding Company-scoped
+append-only memory_events and revision/hash memory_heads. Original schema1/schema2
+checkpoint and Stage2 operations remain unchanged. See MEMORY-CONTRACT.md for
+explicit candidate, documentary/synthetic governance, cross-Case context and strict
+historical/restoration semantics. No authenticated approval infrastructure is added.

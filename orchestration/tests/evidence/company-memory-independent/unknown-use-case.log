@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_unknown_consuming_case_in_history_rejected (orchestration.tests.test_persistence_stage3_independent.IndependentMemoryAttacks.test_unknown_consuming_case_in_history_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 52, in test_unknown_consuming_case_in_history_rejected
+    with self.assertRaises(IntegrityError):self.memory.audit(COMPANY)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 2.354s
+
+FAILED (failures=1)

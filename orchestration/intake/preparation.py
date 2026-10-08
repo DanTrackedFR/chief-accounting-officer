@@ -153,6 +153,43 @@ class Intake:
         from orchestration.registry import Registry
         self.planner=planner;self.registry=registry or Registry()
 
+    def prepare_with_memory(self, objective, sources, company_records, scope, memory,
+                            company_id, qualification_root, qualification_case, subjects, conversation=()):
+        """Qualified institutional context through the existing semantic boundary.
+
+        This supplies context only, never financial owner inputs or review packs.
+        The qualification Case establishes native dimensions; after execution the
+        caller saves the new Case and binds exact context consumption separately.
+        """
+        from orchestration.persistence.codec import IntegrityError
+        records=copy.deepcopy(company_records);references=[]
+        for subject,attribute in subjects:
+            result=memory.retrieve(company_id,qualification_root,qualification_case,subject,attribute)
+            q=result['query']
+            from orchestration.scopes import scope_registry
+            target_scope=scope_registry(scope).get(scope['entity'])
+            if (target_scope.scope_type,target_scope.legal_entity_id)!=(q['scope_type'],q['legal_entity_id']):raise IntegrityError('Planning memory Scope identity differs')
+            for field in ('calendar_id','reporting_calendar'):
+                if scope.get(field) is not None and scope[field]!=q['calendar_id']:raise IntegrityError('Planning memory calendar differs')
+            if scope.get('period_id') is not None and scope['period_id'] not in q['period_ids']:raise IntegrityError('Planning memory Period identity differs')
+            if scope.get('period_registry'):
+                from orchestration.periods import PeriodRegistry
+                periods=PeriodRegistry.from_record(scope['period_registry'])
+                matches=[p for p in periods.periods.values() if p.start==scope.get('period_start') and p.end==scope.get('reporting_period') and (not target_scope.reporting_calendar or p.calendar_id==target_scope.reporting_calendar)]
+                if len(matches)!=1 or matches[0].period_id not in q['period_ids']:raise IntegrityError('Planning memory temporal registry differs')
+            if any(scope.get(k)!=q[field] for k,field in [('entity','scope_id'),('framework','framework'),('jurisdiction','jurisdiction'),('currency','currency')]):raise IntegrityError('Planning memory applicability differs')
+            if result['conflicts'] or result['refused'] or not result['qualified']:raise IntegrityError('Requested memory context is unresolved or unavailable')
+            for entry in result['qualified']:
+                r=entry['record']
+                # Reuse the native governed Company Context contract. Period
+                # qualification is exact and also checked against supplied dates.
+                source,_,_,_=memory._transaction(False,lambda:memory._native(company_id,qualification_root))
+                p=source.governance.periods.get(q['period_ids'][0])
+                if scope.get('period_start')!=p.start or scope.get('reporting_period')!=p.end:raise IntegrityError('Planning memory Period differs')
+                records.append(dict(id=r['record_id'],attribute=r['attribute'],value=copy.deepcopy(r['value']),status=r['status'],scope=dict(entities=[q['scope_id']],framework=q['framework']),effective_from=r['effective_from']['value'],effective_to=r['effective_to']['value'],provenance=[r['version_id']]))
+                references.append(dict(record_id=r['record_id'],version_id=r['version_id'],source_case=r['source']['case_id'],use='CONTEXT_ONLY'))
+        return self.prepare(objective,sources,records,scope,conversation),references
+
     def prepare(self, objective, sources, company_records, scope, conversation=()):
         result=IntakeResult()
         try:

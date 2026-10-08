@@ -1,0 +1,23 @@
+E
+======================================================================
+ERROR: test_compound_resolution_is_idempotent_after_lost_ack (orchestration.tests.test_persistence_stage3_independent.IndependentExtractedMemoryAttacks.test_compound_resolution_is_idempotent_after_lost_ack)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 107, in test_compound_resolution_is_idempotent_after_lost_ack
+    replay=self.memory.resolve_conflict(self.company,new['record_id'],chosen_g,alternatives,expected_revision=3,recorded_at=LEARNED)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 298, in resolve_conflict
+    return self._transaction(True,write)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 222, in _transaction
+    result=fn()
+           ^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 288, in write
+    if seq!=expected_revision:raise RevisionConflict('Company memory revision changed')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+orchestration.persistence.store.RevisionConflict: Company memory revision changed
+
+----------------------------------------------------------------------
+Ran 1 test in 5.645s
+
+FAILED (errors=1)
