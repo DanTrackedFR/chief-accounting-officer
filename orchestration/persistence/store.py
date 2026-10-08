@@ -11,7 +11,11 @@ SCHEMA_VERSION = 3
 
 
 def _current_schema(connection):
-    """Registered schema2 no-op; schema1 migration retains checkpoint bytes."""
+    """Exact schema3 read-only no-op; unknown or mixed schemas fail closed."""
+    actual = dict(connection.execute("SELECT name,sql FROM sqlite_master WHERE type='table'"))
+    expected = {statement.split('(')[0].split()[-1]: statement for statement in DDL}
+    if connection.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION or actual != expected:
+        raise IntegrityError('Partial/unknown current schema rejected')
     return SCHEMA_VERSION
 
 
@@ -158,12 +162,13 @@ class SQLiteStore:
             raise
 
     def migrate(self, version):
-        """Registered compatibility entrypoint; exact schema1 migrates to schema2.
+        """Registered compatibility entrypoint; exact schema1/2 migrates to schema3.
 
         No speculative migrations. Future registered steps must run in the caller's
         transaction and preserve historical checkpoint bytes, not rewrite results.
         """
         if type(version) is not int or version not in SCHEMA_HANDLERS: raise IntegrityError('Unsupported storage schema version')
+        if version != self.connection.execute('PRAGMA user_version').fetchone()[0]: raise IntegrityError('Migration version differs from actual schema')
         return SCHEMA_HANDLERS[version](self.connection)
 
     def _schema(self):

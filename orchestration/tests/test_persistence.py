@@ -200,7 +200,7 @@ class StorageAttacks(unittest.TestCase):
         with self.assertRaises(IntegrityError):self.load()
         with self.assertRaises(IntegrityError):self.store.migrate(3)
     def test_noop_migration_fixture(self):
-        self.save();before=self.path.read_bytes();self.assertEqual(self.store.migrate(2),2)
+        self.save();before=self.path.read_bytes();self.assertEqual(self.store.migrate(3),3)
         self.assertEqual(self.path.read_bytes(),before)
     def test_failed_schema_initialization_rollback(self):
         path=Path(self.tmp.name)/'unknown.db';conn=sqlite3.connect(path);conn.execute('CREATE TABLE unrelated(value TEXT)');conn.close()

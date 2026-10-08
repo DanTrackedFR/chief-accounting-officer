@@ -70,11 +70,12 @@ class CompanyMemory:
         for i,(seq,key,wire,checksum,prev) in enumerate(rows,1):
             if seq!=i or sha(wire)!=checksum or prev!=previous: raise IntegrityError('Missing/corrupt memory history')
             event=loads(wire)
-            if set(event)!={'contract','company_id','kind','record_id','previous_version','value','reason','recorded_at','qualification'} or event['contract']!=1 or event['company_id']!=company or ident('memory-event',event)!=key:
+            if type(event) is not dict or set(event)!={'contract','company_id','kind','record_id','previous_version','value','reason','recorded_at','qualification'} or type(event['contract']) is not int or event['contract']!=1 or event['company_id']!=company or ident('memory-event',event)!=key:
                 raise IntegrityError('Unknown memory event contract/identity')
             kind=event['kind'];rid=event['record_id'];old=records.get(rid)
             receipt=event['qualification']
             if type(receipt) is not dict or set(receipt)!={'root_case','revision','sha256'}:raise IntegrityError('Missing exact memory qualification snapshot')
+            if type(receipt['revision']) is not int or receipt['revision']<1:raise IntegrityError('Invalid memory qualification revision')
             source_case,_,source_checksum,_=self._native(company,receipt['root_case'],receipt['revision'])
             if source_checksum!=receipt['sha256']:raise IntegrityError('Changed memory qualification snapshot')
             if kind=='CAPTURE':
@@ -87,7 +88,7 @@ class CompanyMemory:
                 record=event['value'];self._record(record)
                 if record['status'] not in TRANSITIONS[old['status']]: raise IntegrityError('Invalid historical transition')
                 immutable=set(old)-{'status','governance','version_id','superseded_by'}
-                if any(old[k]!=record[k] for k in immutable): raise IntegrityError('Rewritten memory provenance')
+                if any(dumps(old[k])!=dumps(record[k]) for k in immutable): raise IntegrityError('Rewritten memory provenance')
                 if record['status']=='SUPERSEDED':
                     successor=records.get(record['superseded_by'])
                     if record['superseded_by']==rid or successor is None or successor['status'] not in {'DOCUMENTED','APPROVED'} or rid not in successor['supersedes'] or successor['applicability']!=record['applicability'] or (successor['subject'],successor['attribute'])!=(record['subject'],record['attribute']):raise IntegrityError('Inconsistent supersession history')
@@ -101,13 +102,14 @@ class CompanyMemory:
                 allowed={'proposed':{'documented','approved'},'documented':{'approved','implemented','reversed','superseded'},'approved':{'implemented','reversed','superseded'},'implemented':{'reversed','superseded'},'reversed':set(),'superseded':set()}
                 if record['decision']['status']=='approved' and old['status']!='APPROVED':raise IntegrityError('Historical decision approval not governed')
                 if record['decision']['status'] not in allowed[old['decision']['status']]:raise IntegrityError('Invalid decision lifecycle')
-                if any(old[k]!=record[k] for k in set(old)-{'decision','governance','version_id'}):raise IntegrityError('Decision rewrote company position')
+                if any(dumps(old[k])!=dumps(record[k]) for k in set(old)-{'decision','governance','version_id'}):raise IntegrityError('Decision rewrote company position')
                 self._governance(record,record['governance'],old['status'],historical=True)
             elif kind=='USE':
                 if old is None or event['previous_version']!=event['value']['memory_version'] or event['previous_version'] not in versions.get(rid,set()): raise IntegrityError('Unbound consumption')
                 u=event['value']
                 if receipt['root_case']!=old['source']['root_case'] or receipt['revision']!=u.get('source_revision') or receipt['sha256']!=u.get('source_sha256'):raise IntegrityError('Consumed source receipt differs')
                 if set(u)!={'root_case','case_id','case_revision','case_sha256','memory_version','use','source_revision','source_sha256'} or u['use']!='CONTEXT_ONLY' or old['version_id']!=u['memory_version'] or old['status'] not in {'CONFIRMED','DOCUMENTED','APPROVED'}:raise IntegrityError('Invalid historical context consumption')
+                if any(type(u[k]) is not int or u[k]<1 for k in ('case_revision','source_revision')):raise IntegrityError('Invalid historical consumption revision')
                 consumer,consumer_doc,consumer_checksum,_=self._native(company,u['root_case'],u['case_revision']);c=consumer.governance.cases.get(u['case_id'])
                 self._context_binding(consumer_doc,old)
                 query=applicability(consumer,c.scope_id,[c.period_id],old['applicability']['relationship_id'])
@@ -139,7 +141,9 @@ class CompanyMemory:
 
     def _record(self, r):
         fields={'contract','identity','record_id','version_id','company_id','original_candidate','category','subject','attribute','value','assertion','source','applicability','effective_from','effective_to','learned_at','confidence','uncertainty','questions','decision','status','governance','supersedes','superseded_by'}
-        if type(r) is not dict or set(r)!=fields or r['contract']!=1: raise IntegrityError('Unknown memory record contract')
+        if type(r) is not dict or set(r)!=fields or type(r['contract']) is not int or r['contract']!=1: raise IntegrityError('Unknown memory record contract')
+        candidate=r['original_candidate']
+        if type(candidate) is not dict or not {'attribute','value'}<=set(candidate) or dumps(r['attribute'])!=dumps(candidate['attribute']) or dumps(r['value'])!=dumps(candidate['value']):raise IntegrityError('Memory assertion differs from exact original candidate')
         if r['category'] not in CATEGORIES or r['assertion'] not in ASSERTIONS or r['status'] not in STATES: raise IntegrityError('Unknown memory record type')
         for k in ('subject','attribute','company_id'):text(r[k])
         if type(r['source']) is not dict or set(r['source'])!={'root_case','case_id','revision','checkpoint_sha256','bundle_ids','result_versions'}:raise IntegrityError('Unknown memory provenance contract')
@@ -149,7 +153,7 @@ class CompanyMemory:
         if type(r['applicability']) is not dict or set(r['applicability'])!=DIMENSIONS: raise IntegrityError('Incomplete applicability')
         temporal(r['learned_at']);temporal(r['effective_from']);temporal(r['effective_to'])
         if r['effective_from']['precision']=='exact' and r['effective_to']['precision']=='exact' and r['effective_from']['value']>r['effective_to']['value']: raise IntegrityError('Invalid effective interval')
-        if r['identity']!=dict(company=r['company_id'],case=r['source']['case_id'],candidate=r['original_candidate'],category=r['category'],subject=r['subject'],source=r['source'],dimensions=r['applicability'],effective_from=r['effective_from'],effective_to=r['effective_to']):raise IntegrityError('Memory stable identity differs')
+        if dumps(r['identity'])!=dumps(dict(company=r['company_id'],case=r['source']['case_id'],candidate=r['original_candidate'],category=r['category'],subject=r['subject'],source=r['source'],dimensions=r['applicability'],effective_from=r['effective_from'],effective_to=r['effective_to'])):raise IntegrityError('Memory stable identity differs')
         if r['confidence'] not in {'high','medium','low','unknown'}: raise IntegrityError('Unknown confidence')
         if r['decision'] is not None:
             d=r['decision']
@@ -170,13 +174,13 @@ class CompanyMemory:
             relation=next((row for row in original.governance.periods.record()['relationships'] if row['id']==r['applicability']['relationship_id']),None)
             if relation is None:raise IntegrityError('Unknown memory accounting temporal relationship')
             if native.period_id!=relation['source_period']:raise IntegrityError('Memory original Case has different accounting temporal role')
-        if r['applicability']!=applicability(original,r['applicability']['scope_id'],r['applicability']['period_ids'],r['applicability']['relationship_id']): raise IntegrityError('Substituted applicability')
+        if dumps(r['applicability'])!=dumps(applicability(original,r['applicability']['scope_id'],r['applicability']['period_ids'],r['applicability']['relationship_id'])): raise IntegrityError('Substituted applicability')
         bundles=latest['session'].get('evidence_bundles',{})
         if not src['bundle_ids'] or any(k not in bundles or bundles[k]!=doc['session'].get('evidence_bundles',{}).get(k) for k in src['bundle_ids']): raise IntegrityError('Missing/changed sealed evidence')
         # Archive validity is proven by native restore. Bundle membership alone
         # does not prove candidate wording: bind actual observer context or intake.
         candidate=r['original_candidate'];attribute=r['attribute']
-        observed=(candidate.get('source_refs')==['supplied-governed-context'] and attribute in doc['session']['context'] and doc['session']['context'][attribute]==r['value'])
+        observed=(candidate.get('source_refs')==['supplied-governed-context'] and attribute in doc['session']['context'] and dumps(doc['session']['context'][attribute])==dumps(r['value']))
         extracted=any(candidate in bundles[k]['fields']['memory_candidates'] for k in src['bundle_ids'])
         if observed and any(ref.get('attribute')==attribute for ref in doc['session']['context'].get('memory_context_dependencies',[])):
             raise IntegrityError('Inherited memory context requires independent source evidence before recapture')
@@ -242,7 +246,7 @@ class CompanyMemory:
         event=dict(contract=1,company_id=company,kind=kind,record_id=rid,previous_version=previous,value=value,reason=text(reason),recorded_at=temporal(recorded_at),qualification=receipt)
         key=ident('memory-event',event)
         for old_event in events:
-            if all(old_event.get(k)==event[k] for k in event if k!='qualification'):return old_event['event_id']
+            if all(dumps(old_event.get(k))==dumps(event[k]) for k in event if k!='qualification'):return old_event['event_id']
         existing=self.db.execute('SELECT payload FROM memory_events WHERE event_id=?',(key,)).fetchone()
         if existing:
             if existing[0]!=dumps(event):raise IntegrityError('Duplicate memory event identity')
@@ -286,7 +290,7 @@ class CompanyMemory:
             r['version_id']=ident('memory-version',r);self._record(r);self._qualification(r)
             existing=self._ledger(company)[0].get(rid)
             if existing:
-                if existing['identity']!=identity:raise IntegrityError('Candidate identity collision')
+                if dumps(existing['identity'])!=dumps(identity):raise IntegrityError('Candidate identity collision')
                 return copy.deepcopy(existing)
             self._append(company,'CAPTURE',rid,None,r,'Material reusable candidate retained without promotion',learned_at,expected_revision)
             return copy.deepcopy(r)
@@ -301,7 +305,7 @@ class CompanyMemory:
         if old is None:raise IntegrityError('Unknown Company memory')
         # Lost-ack retry must match exact already persisted intent, not merely
         # the target label; it cannot refresh currentness or native authority.
-        if old['governance']==governance:return copy.deepcopy(old)
+        if dumps(old['governance'])==dumps(governance):return copy.deepcopy(old)
         target=governance.get('target_status')
         if target not in TRANSITIONS[old['status']]:raise IntegrityError('Prior state transition invalid')
         r=copy.deepcopy(old);r.update(status=target,governance=copy.deepcopy(governance),superseded_by=successor)
@@ -329,8 +333,8 @@ class CompanyMemory:
         def write():
             records,_,_,seq,_=self._ledger(company)
             new=records.get(successor_id)
-            if new is not None and new['governance']==governance and new['status'] in {'DOCUMENTED','APPROVED'} and set(new['supersedes'])==set(alternatives) and alternatives:
-                if all(records.get(key,{}).get('governance')==g and records[key]['status']=='SUPERSEDED' and records[key]['superseded_by']==successor_id for key,g in alternatives.items()):return copy.deepcopy(new)
+            if new is not None and dumps(new['governance'])==dumps(governance) and new['status'] in {'DOCUMENTED','APPROVED'} and set(new['supersedes'])==set(alternatives) and alternatives:
+                if all(dumps(records.get(key,{}).get('governance'))==dumps(g) and records[key]['status']=='SUPERSEDED' and records[key]['superseded_by']==successor_id for key,g in alternatives.items()):return copy.deepcopy(new)
             if seq!=expected_revision:raise RevisionConflict('Company memory revision changed')
             if new is None or new['status']!='PROPOSED' or set(new['supersedes'])!=set(alternatives) or not alternatives:raise IntegrityError('Exact supersession alternatives required')
             for key,g in alternatives.items():
@@ -346,7 +350,7 @@ class CompanyMemory:
         def write():
             records,_,_,seq,_=self._ledger(company);old=records.get(record_id)
             if old is None or old['decision'] is None:raise IntegrityError('Material proposed decision required')
-            if old['decision']==decision and old['governance']==governance:return copy.deepcopy(old)
+            if dumps(old['decision'])==dumps(decision) and dumps(old['governance'])==dumps(governance):return copy.deepcopy(old)
             allowed={'proposed':{'documented','approved'},'documented':{'approved','implemented','reversed','superseded'},'approved':{'implemented','reversed','superseded'},'implemented':{'reversed','superseded'},'reversed':set(),'superseded':set()}
             if decision.get('status') not in allowed[old['decision']['status']]:raise IntegrityError('Invalid material decision transition')
             if decision['status']=='approved' and old['status']!='APPROVED':raise IntegrityError('Decision approval requires explicit governed approved position')

@@ -13,6 +13,18 @@ UNKNOWN={'value':None,'precision':'unknown'}
 EXACT={'value':'2026-12-01','precision':'exact'}
 COMPANY='company:independent-stage3'
 
+class IndependentMigrationBoundary(unittest.TestCase):
+    def test_future_actual_schema_cannot_use_current_migration_handler(self):
+        with tempfile.TemporaryDirectory() as path,SQLiteStore(Path(path)/'memory.db') as store:
+            store.connection.execute('PRAGMA user_version=4')
+            with self.assertRaises(IntegrityError):store.migrate(3)
+            self.assertEqual(store.connection.execute('PRAGMA user_version').fetchone()[0],4)
+    def test_current_migration_handler_rejects_mixed_table_contract(self):
+        with tempfile.TemporaryDirectory() as path,SQLiteStore(Path(path)/'memory.db') as store:
+            store.connection.execute('CREATE TABLE undeclared_memory_authority(value TEXT)')
+            with self.assertRaises(IntegrityError):store.migrate(3)
+            self.assertIsNotNone(store.connection.execute("SELECT name FROM sqlite_master WHERE name='undeclared_memory_authority'").fetchone())
+
 class IndependentMemoryAttacks(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory(); self.store=SQLiteStore(Path(self.tmp.name)/'memory.db')
@@ -238,6 +250,24 @@ class IndependentExtractedMemoryAttacks(unittest.TestCase):
         self.assertEqual(r,again);self.assertEqual(self.memory.audit(self.company)['revision'],2)
 
 class IndependentApprovalSemantics(unittest.TestCase):
+    def test_rehashed_observer_value_cannot_substitute_bool_for_integer(self):
+        from unittest.mock import patch
+        from orchestration.tests.intake_fixtures import SCOPE
+        from orchestration.persistence.codec import loads
+        with patch.dict(SCOPE,{'systems':1}):
+            _,prepared=ap_control();case=prepared.case
+        with tempfile.TemporaryDirectory() as path,SQLiteStore(Path(path)/'memory.db') as store:
+            store.save(case,COMPANY,[],0);m=store.memory()
+            index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='systems')
+            r=m.capture(COMPANY,case.id,case.id,index,category='systems_data',subject='finance',assertion='USER_STATED',bundle_ids=list(case.governance.evidence_bundles),result_versions=list(case.governance.versions.versions),dimensions=applicability(case,case.scope_id,[case.period_id]),effective_from=EXACT,effective_to=UNKNOWN,learned_at=EXACT,expected_revision=0,material=True,reusable=True)
+            self.assertIs(type(r['original_candidate']['value']),int)
+            event=loads(store.connection.execute('SELECT payload FROM memory_events WHERE sequence=1').fetchone()[0])
+            event['value']['value']=True
+            event['value']['version_id']=ident('memory-version',{k:v for k,v in event['value'].items() if k!='version_id'})
+            wire=dumps(event);checksum=sha(wire)
+            store.connection.execute('UPDATE memory_events SET payload=?,sha256=?,event_id=? WHERE sequence=1',(wire,checksum,ident('memory-event',event)))
+            store.connection.execute('UPDATE memory_heads SET sha256=?',(checksum,))
+            with self.assertRaises(IntegrityError):m.audit(COMPANY)
     def test_decision_language_preserves_proposal_unknown_dates_without_approval(self):
         from orchestration.tests.persistence_stage3_fixtures import build,capture,governance,COMPANY,LEARNED
         case=build(value='Management approved: going forward we decided to use NetSuite from next month')

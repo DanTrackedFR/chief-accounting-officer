@@ -1,0 +1,207 @@
+﻿2026-10-08T20:55:09.1880498Z Current runner version: '2.337.0'
+2026-10-08T20:55:09.1897633Z ##[group]Runner Image Provisioner
+2026-10-08T20:55:09.1898257Z Hosted Compute Agent
+2026-10-08T20:55:09.1898646Z Version: 20261002.596
+2026-10-08T20:55:09.1899015Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-08T20:55:09.1899492Z Build Date: 2026-10-02T22:28:27Z
+2026-10-08T20:55:09.1899893Z Worker ID: {133401f8-86a6-4079-957c-292faef4c637}
+2026-10-08T20:55:09.1900327Z Region: centralus
+2026-10-08T20:55:09.1900676Z Cloud: Azure
+2026-10-08T20:55:09.1901038Z ##[endgroup]
+2026-10-08T20:55:09.1901922Z ##[group]Operating System
+2026-10-08T20:55:09.1902285Z Ubuntu
+2026-10-08T20:55:09.1902809Z 24.04.5
+2026-10-08T20:55:09.1903176Z LTS
+2026-10-08T20:55:09.1903503Z ##[endgroup]
+2026-10-08T20:55:09.1903874Z ##[group]Runner Image
+2026-10-08T20:55:09.1904239Z Image: ubuntu-24.04
+2026-10-08T20:55:09.1904570Z Version: 20261004.327.1
+2026-10-08T20:55:09.1905401Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-08T20:55:09.1906579Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-08T20:55:09.1907133Z ##[endgroup]
+2026-10-08T20:55:09.1907908Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T20:55:09.1909214Z Contents: read
+2026-10-08T20:55:09.1909618Z Metadata: read
+2026-10-08T20:55:09.1909972Z Packages: read
+2026-10-08T20:55:09.1910306Z ##[endgroup]
+2026-10-08T20:55:09.1911675Z Secret source: Actions
+2026-10-08T20:55:09.1912208Z Cache mode: write
+2026-10-08T20:55:09.1912850Z Prepare workflow directory
+2026-10-08T20:55:09.2146528Z Prepare all required actions
+2026-10-08T20:55:09.2177316Z Getting action download info
+2026-10-08T20:55:09.4219055Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-08T20:55:09.5073627Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-08T20:55:09.6610614Z Complete job name: integration-regression
+2026-10-08T20:55:09.7119906Z ##[group]Run actions/checkout@v4
+2026-10-08T20:55:09.7120525Z with:
+2026-10-08T20:55:09.7120914Z   ref: 53f57e2a02ad8b11289c46f618c514b297d6da58
+2026-10-08T20:55:09.7121352Z   fetch-depth: 2
+2026-10-08T20:55:09.7121677Z   repository: DanTrackedFR/chief-accounting-officer
+2026-10-08T20:55:09.7123958Z   token: ***
+2026-10-08T20:55:09.7124195Z   ssh-strict: true
+2026-10-08T20:55:09.7124437Z   ssh-user: git
+2026-10-08T20:55:09.7124688Z   persist-credentials: true
+2026-10-08T20:55:09.7124961Z   clean: true
+2026-10-08T20:55:09.7125216Z   sparse-checkout-cone-mode: true
+2026-10-08T20:55:09.7125502Z   fetch-tags: false
+2026-10-08T20:55:09.7125753Z   show-progress: true
+2026-10-08T20:55:09.7125999Z   lfs: false
+2026-10-08T20:55:09.7126230Z   submodules: false
+2026-10-08T20:55:09.7126481Z   set-safe-directory: true
+2026-10-08T20:55:09.7126765Z   allow-unsafe-pr-checkout: false
+2026-10-08T20:55:09.7127165Z ##[endgroup]
+2026-10-08T20:55:09.7805690Z Syncing repository: DanTrackedFR/chief-accounting-officer
+2026-10-08T20:55:09.7807356Z ##[group]Getting Git version info
+2026-10-08T20:55:09.7808131Z Working directory is '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-08T20:55:09.7809164Z [command]/usr/bin/git version
+2026-10-08T20:55:09.7848793Z git version 2.55.0
+2026-10-08T20:55:09.7864172Z ##[endgroup]
+2026-10-08T20:55:09.7877114Z Temporarily overriding HOME='/home/runner/work/_temp/c085cbda-72b2-4622-8246-0bfef36b9877' before making global git config changes
+2026-10-08T20:55:09.7878033Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T20:55:09.7882505Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-08T20:55:09.7931911Z Deleting the contents of '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-08T20:55:09.7935715Z ##[group]Initializing the repository
+2026-10-08T20:55:09.7939346Z [command]/usr/bin/git init /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-08T20:55:09.8033688Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-08T20:55:09.8034488Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-08T20:55:09.8035143Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-08T20:55:09.8035772Z hint: call:
+2026-10-08T20:55:09.8036138Z hint:
+2026-10-08T20:55:09.8036610Z hint: 	git config --global init.defaultBranch <name>
+2026-10-08T20:55:09.8037047Z hint:
+2026-10-08T20:55:09.8037566Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-08T20:55:09.8038352Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-08T20:55:09.8038976Z hint:
+2026-10-08T20:55:09.8039311Z hint: 	git branch -m <name>
+2026-10-08T20:55:09.8039698Z hint:
+2026-10-08T20:55:09.8040246Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-08T20:55:09.8041118Z Initialized empty Git repository in /home/runner/work/chief-accounting-officer/chief-accounting-officer/.git/
+2026-10-08T20:55:09.8042695Z [command]/usr/bin/git remote add origin https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-08T20:55:09.8091120Z ##[endgroup]
+2026-10-08T20:55:09.8091698Z ##[group]Disabling automatic garbage collection
+2026-10-08T20:55:09.8100229Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-08T20:55:09.8131504Z ##[endgroup]
+2026-10-08T20:55:09.8132157Z ##[group]Setting up auth
+2026-10-08T20:55:09.8138310Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T20:55:09.8172252Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T20:55:09.8459413Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T20:55:09.8489121Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T20:55:09.8669221Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T20:55:09.8698686Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T20:55:09.8877772Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-08T20:55:09.8914883Z ##[endgroup]
+2026-10-08T20:55:09.8920832Z ##[group]Fetching the repository
+2026-10-08T20:55:09.8921577Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=2 origin 53f57e2a02ad8b11289c46f618c514b297d6da58
+2026-10-08T20:55:12.7878497Z From https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-08T20:55:12.7879417Z  * branch            53f57e2a02ad8b11289c46f618c514b297d6da58 -> FETCH_HEAD
+2026-10-08T20:55:12.7881679Z ##[endgroup]
+2026-10-08T20:55:12.7882331Z ##[group]Determining the checkout info
+2026-10-08T20:55:12.7884162Z ##[endgroup]
+2026-10-08T20:55:12.7889483Z [command]/usr/bin/git sparse-checkout disable
+2026-10-08T20:55:12.8494640Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-08T20:55:12.8918843Z ##[group]Checking out the ref
+2026-10-08T20:55:12.8922898Z [command]/usr/bin/git checkout --progress --force 53f57e2a02ad8b11289c46f618c514b297d6da58
+2026-10-08T20:55:13.2492167Z Note: switching to '53f57e2a02ad8b11289c46f618c514b297d6da58'.
+2026-10-08T20:55:13.2493939Z 
+2026-10-08T20:55:13.2494189Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-08T20:55:13.2494669Z changes and commit them, and you can discard any commits you make in this
+2026-10-08T20:55:13.2495202Z state without impacting any branches by switching back to a branch.
+2026-10-08T20:55:13.2495802Z 
+2026-10-08T20:55:13.2496010Z If you want to create a new branch to retain commits you create, you may
+2026-10-08T20:55:13.2496472Z do so (now or later) by using -c with the switch command. Example:
+2026-10-08T20:55:13.2496711Z 
+2026-10-08T20:55:13.2496832Z   git switch -c <new-branch-name>
+2026-10-08T20:55:13.2497006Z 
+2026-10-08T20:55:13.2497130Z Or undo this operation with:
+2026-10-08T20:55:13.2497290Z 
+2026-10-08T20:55:13.2497650Z   git switch -
+2026-10-08T20:55:13.2497843Z 
+2026-10-08T20:55:13.2498091Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-08T20:55:13.2498424Z 
+2026-10-08T20:55:13.2498864Z HEAD is now at 53f57e2 feat: integrate controlled company memory, independent remediation and seven-process durable proof
+2026-10-08T20:55:13.2531784Z ##[endgroup]
+2026-10-08T20:55:13.2604909Z [command]/usr/bin/git log -1 --format=%H
+2026-10-08T20:55:13.2627906Z 53f57e2a02ad8b11289c46f618c514b297d6da58
+2026-10-08T20:55:13.3108209Z ##[group]Run actions/setup-python@v5
+2026-10-08T20:55:13.3108459Z with:
+2026-10-08T20:55:13.3108613Z   python-version: 3.12
+2026-10-08T20:55:13.3108767Z   check-latest: false
+2026-10-08T20:55:13.3110080Z   token: ***
+2026-10-08T20:55:13.3110223Z   update-environment: true
+2026-10-08T20:55:13.3110384Z   allow-prereleases: false
+2026-10-08T20:55:13.3110561Z   freethreaded: false
+2026-10-08T20:55:13.3110709Z ##[endgroup]
+2026-10-08T20:55:13.3990603Z ##[group]Installed versions
+2026-10-08T20:55:13.4054861Z (node:2080) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T20:55:13.4055358Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T20:55:13.4056001Z Successfully set up CPython (3.12.15)
+2026-10-08T20:55:13.4056530Z ##[endgroup]
+2026-10-08T20:55:13.4405345Z ##[group]Run python -m unittest discover -s orchestration/tests -p 'test_*.py'
+2026-10-08T20:55:13.4405816Z [36;1mpython -m unittest discover -s orchestration/tests -p 'test_*.py'[0m
+2026-10-08T20:55:13.4636501Z shell: /usr/bin/bash -e {0}
+2026-10-08T20:55:13.4636737Z env:
+2026-10-08T20:55:13.4636942Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-08T20:55:13.4637229Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-08T20:55:13.4637499Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-08T20:55:13.4637743Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-08T20:55:13.4637989Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-08T20:55:13.4638233Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-08T20:55:13.4638450Z ##[endgroup]
+2026-10-08T21:45:22.0533378Z ...........................................................................................................................................................................................................................................................................................................................F..E........................................................................................................................................................................................E.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2026-10-08T21:45:22.0536861Z ======================================================================
+2026-10-08T21:45:22.0537318Z ERROR: test_noop_migration_fixture (test_persistence.StorageAttacks.test_noop_migration_fixture)
+2026-10-08T21:45:22.0537776Z ----------------------------------------------------------------------
+2026-10-08T21:45:22.0538267Z Traceback (most recent call last):
+2026-10-08T21:45:22.0543805Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/tests/test_persistence.py", line 203, in test_noop_migration_fixture
+2026-10-08T21:45:22.0544626Z     self.save();before=self.path.read_bytes();self.assertEqual(self.store.migrate(2),2)
+2026-10-08T21:45:22.0545027Z                                                                ^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0545686Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/persistence/store.py", line 167, in migrate
+2026-10-08T21:45:22.0546262Z     return SCHEMA_HANDLERS[version](self.connection)
+2026-10-08T21:45:22.0546536Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0547074Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/persistence/store.py", line 31, in _migrate_v2
+2026-10-08T21:45:22.0547701Z     if actual != expected: raise IntegrityError('Partial/unknown schema2 rejected')
+2026-10-08T21:45:22.0548064Z                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0548459Z orchestration.persistence.codec.IntegrityError: Partial/unknown schema2 rejected
+2026-10-08T21:45:22.0548781Z 
+2026-10-08T21:45:22.0548885Z ======================================================================
+2026-10-08T21:45:22.0550125Z ERROR: test_planning_cannot_substitute_valid_other_fiscal_calendar_same_dates (test_persistence_stage3_independent.IndependentExtractedMemoryAttacks.test_planning_cannot_substitute_valid_other_fiscal_calendar_same_dates)
+2026-10-08T21:45:22.0550944Z ----------------------------------------------------------------------
+2026-10-08T21:45:22.0551245Z Traceback (most recent call last):
+2026-10-08T21:45:22.0552017Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 137, in test_planning_cannot_substitute_valid_other_fiscal_calendar_same_dates
+2026-10-08T21:45:22.0553148Z     restored=PeriodRegistry.from_record(registry);self.assertEqual(restored.get(period.period_id).calendar_id,calendar.calendar_id)
+2026-10-08T21:45:22.0553644Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0554149Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/periods.py", line 133, in from_record
+2026-10-08T21:45:22.0554940Z     if json.dumps(registry.record(),sort_keys=True)!=json.dumps(record,sort_keys=True):raise ValueError('Period registry lifecycle/history differs')
+2026-10-08T21:45:22.0555560Z                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0555935Z ValueError: Period registry lifecycle/history differs
+2026-10-08T21:45:22.0556126Z 
+2026-10-08T21:45:22.0556223Z ======================================================================
+2026-10-08T21:45:22.0556632Z FAIL: test_future_schema (test_persistence.StorageAttacks.test_future_schema)
+2026-10-08T21:45:22.0557023Z ----------------------------------------------------------------------
+2026-10-08T21:45:22.0557303Z Traceback (most recent call last):
+2026-10-08T21:45:22.0557891Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/orchestration/tests/test_persistence.py", line 201, in test_future_schema
+2026-10-08T21:45:22.0558519Z     with self.assertRaises(IntegrityError):self.store.migrate(3)
+2026-10-08T21:45:22.0558806Z          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-08T21:45:22.0559043Z AssertionError: IntegrityError not raised
+2026-10-08T21:45:22.0559209Z 
+2026-10-08T21:45:22.0559527Z ----------------------------------------------------------------------
+2026-10-08T21:45:22.0559811Z Ran 1281 tests in 3007.096s
+2026-10-08T21:45:22.0559938Z 
+2026-10-08T21:45:22.0560026Z FAILED (failures=1, errors=2)
+2026-10-08T21:45:24.3220171Z ##[error]Process completed with exit code 1.
+2026-10-08T21:45:24.3325577Z Post job cleanup.
+2026-10-08T21:45:24.3902320Z [command]/usr/bin/git version
+2026-10-08T21:45:24.3939784Z git version 2.55.0
+2026-10-08T21:45:24.3966157Z Temporarily overriding HOME='/home/runner/work/_temp/0b25b056-9acf-477b-894e-38da0eb55d5a' before making global git config changes
+2026-10-08T21:45:24.3966704Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T21:45:24.3970243Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-08T21:45:24.4003022Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T21:45:24.4029704Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-08T21:45:24.4231980Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T21:45:24.4267961Z http.https://github.com/.extraheader
+2026-10-08T21:45:24.4277209Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-08T21:45:24.4318864Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-08T21:45:24.4527141Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T21:45:24.4558820Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-08T21:45:24.4857006Z Cleaning up orphan processes
+2026-10-08T21:45:24.5066841Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

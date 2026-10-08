@@ -15,6 +15,11 @@ currentness are rechecked inside one SQLite snapshot. Material/reusable intent i
 required; observations remain PROPOSED. Missing/changed original evidence rejects.
 Original semantic assertion cannot be relabeled. Inferred, assumed, disputed and
 unresolved records cannot qualify reusable truth or approved policies.
+Record attribute/value and observer context bind to the original candidate through
+the canonical closed codec. Python-equal but differently typed values (for example
+integer 1 and boolean true) cannot substitute. Immutable transitions, identities
+and retry comparisons also preserve exact typed encoding. Contract/revision fields
+require actual integers rather than boolean aliases.
 
 TRANSITION requires explicit intent, exact prior state, subject/record/applicability,
 current qualified evidence, reason, time precision and TRUSTED_CALLER_ASSERTION.
