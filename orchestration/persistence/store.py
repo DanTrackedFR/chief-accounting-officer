@@ -1,0 +1,208 @@
+"""Transactional local durable repository. SQLite is an adapter, not accounting."""
+import hashlib
+import os
+from pathlib import Path
+import sqlite3
+from typing import Protocol
+from .codec import dumps, loads, IntegrityError
+from .state import snapshot, restore
+
+SCHEMA_VERSION = 1
+
+
+def _current_schema(connection):
+    """Registered v1 no-op. Future reviewed steps belong to this boundary."""
+    return SCHEMA_VERSION
+
+
+SCHEMA_HANDLERS = {SCHEMA_VERSION: _current_schema}
+
+
+class RevisionConflict(ValueError): pass
+class StorageError(ValueError): pass
+
+
+class CheckpointStore(Protocol):
+    def save(self, case, company_id, company_context, expected_revision): ...
+    def load(self, company_id, case_id, revision=None): ...
+    def close(self): ...
+
+
+DDL = (
+    'CREATE TABLE checkpoints(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL CHECK(revision>0),payload TEXT NOT NULL,sha256 TEXT NOT NULL,previous_sha256 TEXT,object_count INTEGER NOT NULL,PRIMARY KEY(company_id,case_id,revision))',
+    'CREATE TABLE objects(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL,kind TEXT NOT NULL,object_id TEXT NOT NULL,payload TEXT NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(company_id,case_id,revision,kind,object_id),FOREIGN KEY(company_id,case_id,revision) REFERENCES checkpoints(company_id,case_id,revision))',
+    'CREATE TABLE heads(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL,PRIMARY KEY(company_id,case_id),FOREIGN KEY(company_id,case_id,revision) REFERENCES checkpoints(company_id,case_id,revision))',
+)
+
+
+def sha(text): return hashlib.sha256(text.encode('utf-8')).hexdigest()
+
+
+def objects(doc):
+    rows = [('company', doc['company_id'], doc['company_context'])]
+    rows += [('scope', r['scope_id'], r) for r in doc['scopes']]
+    rows += [('case', r['id'], r) for r in doc['cases']]
+    rows += [('node', r['id'], r) for r in doc['nodes']]
+    for kind, key in [('version', 'versions'), ('source', 'source_snapshots'), ('dependency', 'dependencies')]:
+        rows += [(kind, k, v) for k, v in doc[key].items()]
+    for kind, key, id_key in [('calendar', 'calendars', 'calendar_id'), ('period', 'periods', 'period_id'), ('period_relationship', 'relationships', 'id')]:
+        rows += [(kind, r[id_key], r) for r in doc['periods'][key]]
+    rows += [('evidence_bundle', k, v) for k, v in doc['session'].get('evidence_bundles', {}).items()]
+    return sorted((kind, key, dumps(value), sha(dumps(value))) for kind, key, value in rows)
+
+
+def validate_extension(previous, current):
+    """A new revision cannot erase/overwrite previously committed history."""
+    for name in ('versions', 'source_snapshots', 'dependencies'):
+        if any(k not in current[name] or current[name][k] != v for k, v in previous[name].items()):
+            raise IntegrityError('Committed immutable history removed/changed: '+name)
+    for name in ('version_history', 'graph_history', 'rework_history'):
+        if current[name][:len(previous[name])] != previous[name]:
+            raise IntegrityError('Committed history is not an extension: '+name)
+    for key, bundle in previous['session'].get('evidence_bundles', {}).items():
+        if current['session'].get('evidence_bundles', {}).get(key) != bundle:
+            raise IntegrityError('Committed source qualification removed')
+    old_cases = {c['id']: c for c in previous['cases']}
+    new_cases = {c['id']: c for c in current['cases']}
+    for key, old in old_cases.items():
+        new = new_cases.get(key)
+        if new is None: raise IntegrityError('Committed Case removed')
+        for name in ('objective', 'scope_id', 'period_id', 'case_type', 'cycle', 'parent_case_id', 'provenance'):
+            if new[name] != old[name]: raise IntegrityError('Committed Case identity changed')
+        for name in ('transitions', 'governance_history'):
+            if new[name][:len(old[name])] != old[name]: raise IntegrityError('Committed Case history removed')
+
+
+class SQLiteStore:
+    """BEGIN IMMEDIATE writer + revision CAS; deferred read snapshot isolation.
+
+    Retain immutable checkpoint revisions. Readers validate full manifests before
+    native reconstruction. Failures roll back, never expose partial governance.
+    """
+    def __init__(self, path, timeout=5.0):
+        self.path = Path(path)
+        if str(path) == ':memory:': raise StorageError('Durable file path required')
+        if self.path.is_symlink(): raise StorageError('Symlink database rejected')
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+            os.close(fd)
+        except FileExistsError: pass
+        self.connection = sqlite3.connect(str(self.path), timeout=timeout, isolation_level=None)
+        self.connection.execute('PRAGMA foreign_keys=ON')
+        self.connection.execute('PRAGMA synchronous=FULL')
+        try: self.initialize()
+        except Exception:
+            self.connection.close(); raise
+
+    def initialize(self):
+        try:
+            self.connection.execute('BEGIN IMMEDIATE')
+            version = self.connection.execute('PRAGMA user_version').fetchone()[0]
+            tables = {r[0] for r in self.connection.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            if version == 0 and not tables:
+                for statement in DDL: self.connection.execute(statement)
+                self.connection.execute('PRAGMA user_version=1')
+            else: self.migrate(version)
+            self._schema()
+            self.connection.execute('COMMIT')
+        except (ValueError, sqlite3.Error):
+            if self.connection.in_transaction: self.connection.execute('ROLLBACK')
+            raise
+
+    def migrate(self, version):
+        """Registered compatibility entrypoint; v1 is deliberately the sole schema.
+
+        No speculative migrations. Future registered steps must run in the caller's
+        transaction and preserve historical checkpoint bytes, not rewrite results.
+        """
+        if type(version) is not int or version not in SCHEMA_HANDLERS: raise IntegrityError('Unsupported storage schema version')
+        return SCHEMA_HANDLERS[version](self.connection)
+
+    def _schema(self):
+        if self.connection.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION: raise IntegrityError('Unsupported storage schema')
+        expected = {statement.split('(')[0].split()[-1]: statement for statement in DDL}
+        actual = dict(self.connection.execute("SELECT name,sql FROM sqlite_master WHERE type='table'"))
+        if actual != expected: raise IntegrityError('Storage schema differs from versioned contract')
+        if self.connection.execute('PRAGMA quick_check').fetchone()[0] != 'ok': raise IntegrityError('Corrupt database')
+        if self.connection.execute('PRAGMA foreign_key_check').fetchall(): raise IntegrityError('Broken storage reference')
+
+    def _head(self, company_id, case_id):
+        row = self.connection.execute('SELECT revision FROM heads WHERE company_id=? AND case_id=?', (company_id, case_id)).fetchone()
+        latest = self.connection.execute('SELECT max(revision) FROM checkpoints WHERE company_id=? AND case_id=?', (company_id, case_id)).fetchone()[0]
+        if (row[0] if row else None) != latest: raise IntegrityError('Checkpoint head contradicts committed history')
+        return row[0] if row else 0
+
+    def _write_objects(self, company_id, case_id, revision, manifest):
+        # Separate seam supports deterministic interrupted-write testing. A fault
+        # at any row is contained by the surrounding actual SQLite transaction.
+        for kind, key, payload, checksum in manifest:
+            self.connection.execute('INSERT INTO objects VALUES(?,?,?,?,?,?,?)', (company_id, case_id, revision, kind, key, payload, checksum))
+
+    def save(self, case, company_id, company_context, expected_revision):
+        if type(expected_revision) is not int or expected_revision < 0: raise RevisionConflict('Explicit expected revision required')
+        doc = snapshot(case, company_id, company_context)
+        payload = dumps(doc); checksum = sha(payload); manifest = objects(doc)
+        try:
+            self.connection.execute('BEGIN IMMEDIATE'); self._schema()
+            current = self._head(company_id, case.id)
+            if current != expected_revision: raise RevisionConflict('Checkpoint revision changed')
+            previous = None
+            if current:
+                # Validate the retained head before extending its immutable chain.
+                prior_doc, previous = self._read(company_id, case.id, current)
+                restore(prior_doc, company_id, case.id)
+                validate_extension(prior_doc, doc)
+            revision = current + 1
+            self.connection.execute('INSERT INTO checkpoints VALUES(?,?,?,?,?,?,?)', (company_id, case.id, revision, payload, checksum, previous, len(manifest)))
+            self._write_objects(company_id, case.id, revision, manifest)
+            self.connection.execute('INSERT INTO heads VALUES(?,?,?) ON CONFLICT(company_id,case_id) DO UPDATE SET revision=excluded.revision', (company_id, case.id, revision))
+            self.connection.execute('COMMIT')
+            return revision
+        except (ValueError, sqlite3.Error, OSError) as exc:
+            if self.connection.in_transaction: self.connection.execute('ROLLBACK')
+            if isinstance(exc, ValueError): raise
+            raise StorageError('Checkpoint write failed; previous committed revision retained') from exc
+        except BaseException:
+            if self.connection.in_transaction: self.connection.execute('ROLLBACK')
+            raise
+
+    def _read(self, company_id, case_id, revision):
+        row = self.connection.execute('SELECT payload,sha256,previous_sha256,object_count FROM checkpoints WHERE company_id=? AND case_id=? AND revision=?', (company_id, case_id, revision)).fetchone()
+        if row is None: raise IntegrityError('Missing committed checkpoint')
+        payload, checksum, previous, count = row
+        if sha(payload) != checksum: raise IntegrityError('Corrupted checkpoint payload')
+        doc = loads(payload)
+        if not isinstance(doc, dict) or (doc.get('company_id'), doc.get('root_case')) != (company_id, case_id): raise IntegrityError('Wrong checkpoint namespace')
+        manifest = self.connection.execute('SELECT kind,object_id,payload,sha256 FROM objects WHERE company_id=? AND case_id=? AND revision=? ORDER BY kind,object_id', (company_id, case_id, revision)).fetchall()
+        if len(manifest) != count or manifest != objects(doc): raise IntegrityError('Missing/changed durable object manifest')
+        if revision == 1:
+            if previous is not None: raise IntegrityError('Unexpected initial checkpoint predecessor')
+        else:
+            old = self.connection.execute('SELECT sha256 FROM checkpoints WHERE company_id=? AND case_id=? AND revision=?', (company_id, case_id, revision - 1)).fetchone()
+            if old is None or old[0] != previous: raise IntegrityError('Broken checkpoint revision chain')
+        return doc, checksum
+
+    def load(self, company_id, case_id, revision=None):
+        try:
+            self.connection.execute('BEGIN'); self._schema()
+            head = self._head(company_id, case_id)
+            revision = head if revision is None else revision
+            if type(revision) is not int or not 1 <= revision <= head: raise IntegrityError('Unknown checkpoint revision')
+            doc, _ = self._read(company_id, case_id, revision)
+            root = restore(doc, company_id, case_id)
+            self.connection.execute('COMMIT')
+            return root, revision, copy_context(doc)
+        except (ValueError, sqlite3.Error) as exc:
+            if self.connection.in_transaction: self.connection.execute('ROLLBACK')
+            if isinstance(exc, ValueError): raise
+            raise StorageError('Checkpoint read failed closed') from exc
+
+    def close(self): self.connection.close()
+    def __enter__(self): return self
+    def __exit__(self, *args): self.close()
+
+
+def copy_context(doc):
+    import copy
+    return copy.deepcopy(doc['company_context'])

@@ -124,9 +124,9 @@ SaaS uses the governed semantic/intake foundation, controlled sources, nine prod
 Each flagship must test issue discovery, positive/negative skill selection, owner handoffs, exact-once economics, challenge/rework, analytics where appropriate and one coherent CAO result.
 
 ### 4. Multi-entity and multi-period orchestration — COMPLETE
-Status: **IN PROGRESS**, delivered as four sequential gated stages.
+Status: **COMPLETE and integrated on live main** through merged PR37.
 
-The Group flagship proved only one controlled Parent/Sub/Group Case with a sourced acquisition cutoff. General multi-entity and multi-period execution remains incomplete. The authoritative architecture handoff is `orchestration/GROUP-TO-MULTI-ENTITY-HANDOFF.md`.
+The four stages below established the existing governed multi-entity and multi-period architecture. The original Group-to-multi-entity handoff remains historical; the current compatibility baseline is `orchestration/STAGE4-INTEGRATION-HANDOFF.md`.
 
 This roadmap item is intentionally split into four sequential PRs. Each stage starts from the newly merged `main` produced by the previous stage. Do not run the four stages in parallel and do not mark the overall workstream COMPLETE until Stage 4 passes its final integration gates.
 
@@ -174,8 +174,20 @@ The flagship must deliberately change one qualified upstream entity/period resul
 
 Stage4 substantive architecture, controlled flagship, independent QA/remediation/rerun, prior migration, deterministic artifact and local release gates pass. The workstream is COMPLETE subject to owner integration. See `orchestration/STAGE4-INTEGRATION-HANDOFF.md`, `orchestration/STAGE4-FINAL-INDEPENDENT-QA.md` and `orchestration/STAGE4-RELEASE-REGRESSION.json`. Immutable-head required Actions and unchanged-head readiness are recorded on existing PR37 before owner review. Durable Case + Company Accounting Memory is NEXT; its handoff is documentation only, with no persistence implementation in Stage4.
 
-### 5. Durable Case and Company Accounting Memory persistence — NEXT
-Persist Company Context, Case history, decisions, artifacts and provenance while preserving status and temporal history such as PROPOSED, APPROVED and SUPERSEDED. Persistence must not silently promote memory candidates into approved company truth.
+### 5. Durable Case and Company Accounting Memory persistence — IN PROGRESS
+This new workstream follows the merged four-stage multi-entity architecture. Its sequential four-stage plan is the current implementation assignment, not a retroactive historical specification. Accounting owners and native governance remain authoritative. See `orchestration/DURABLE-CASE-COMPANY-ACCOUNTING-MEMORY-HANDOFF.md`.
+
+#### Stage 1 — Durable Case State & Persistence Foundation
+Implementation and independent QA are complete on the single Draft PR38. Measured local release gates are recorded in the release manifest; immutable-head Actions and owner integration remain the publication boundary. The versioned SQLite adapter provides atomic immutable checkpoints, optimistic revision concurrency, exact native restoration, sealed evidence/history validation, schema compatibility and bounded recovery. Independent findings have executable regressions. See `orchestration/PERSISTENCE-STAGE1-INTEGRATION-HANDOFF.md`, `orchestration/PERSISTENCE-STAGE1-INDEPENDENT-QA.md` and `orchestration/PERSISTENCE-STAGE1-RELEASE-REGRESSION.json`. Restoration runs no accounting owner or journal release. Company memory approval/reuse is not delivered.
+
+#### Stage 2 — Durable Dependency, Rework & Recovery Lifecycle — FUTURE
+After Stage1 owner integration, extend persistence to restart-safe invalidation/selective execution, closed-period correction governance, exact-once journal selection and interruption recovery. Preserve Stage1 immutable history and schema boundaries; see `orchestration/PERSISTENCE-STAGE1-TO-STAGE2-HANDOFF.md`.
+
+#### Stage 3 — Company Accounting Memory & Controlled Promotion — FUTURE
+Evidence-backed company-specific candidates, proposal/approval/supersession, provenance, qualified retrieval and safe reuse. Persistence must never promote candidates into approved company truth.
+
+#### Stage 4 — Full Durable CAO Integration Flagship — FUTURE
+Prove the complete durable lifecycle and controlled company-memory promotion/reuse against the existing multi-entity/multi-period flagship, including restart, recovery, selective rework, preserved conflicts and independent release acceptance. Stages2–4 are not implemented in Stage1.
 
 ### 6. Authenticated governance and approvals
 Add real user identity, roles, preparer/reviewer separation, approval events and audit trail. Synthetic reviewer identities/fingerprints remain regression evidence only.
