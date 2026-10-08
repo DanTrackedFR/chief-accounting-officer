@@ -7,15 +7,25 @@ from typing import Protocol
 from .codec import dumps, loads, IntegrityError
 from .state import snapshot, restore
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 def _current_schema(connection):
-    """Registered v1 no-op. Future reviewed steps belong to this boundary."""
+    """Registered schema2 no-op; schema1 migration retains checkpoint bytes."""
     return SCHEMA_VERSION
 
 
-SCHEMA_HANDLERS = {SCHEMA_VERSION: _current_schema}
+def _migrate_v1(connection):
+    actual = dict(connection.execute("SELECT name,sql FROM sqlite_master WHERE type='table'"))
+    expected = {statement.split('(')[0].split()[-1]: statement for statement in DDL_V1}
+    if actual != expected: raise IntegrityError('Partial/unknown schema1 rejected')
+    for statement in OPERATION_DDL: connection.execute(statement)
+    connection.execute('ALTER TABLE checkpoints ADD COLUMN '+OPERATION_COLUMN)
+    connection.execute('PRAGMA user_version=2')
+    return SCHEMA_VERSION
+
+
+SCHEMA_HANDLERS = {1: _migrate_v1, 2: _current_schema}
 
 
 class RevisionConflict(ValueError): pass
@@ -25,14 +35,26 @@ class StorageError(ValueError): pass
 class CheckpointStore(Protocol):
     def save(self, case, company_id, company_context, expected_revision): ...
     def load(self, company_id, case_id, revision=None): ...
+    def prepare(self, case, company_id, company_context, expected_revision, intent): ...
+    def recover(self, company_id, case_id, operation_id): ...
+    def operation(self, company_id, case_id, operation_id): ...
+    def abandon(self, company_id, case_id, operation_id, reason): ...
     def close(self): ...
 
 
-DDL = (
+DDL_V1 = (
     'CREATE TABLE checkpoints(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL CHECK(revision>0),payload TEXT NOT NULL,sha256 TEXT NOT NULL,previous_sha256 TEXT,object_count INTEGER NOT NULL,PRIMARY KEY(company_id,case_id,revision))',
     'CREATE TABLE objects(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL,kind TEXT NOT NULL,object_id TEXT NOT NULL,payload TEXT NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(company_id,case_id,revision,kind,object_id),FOREIGN KEY(company_id,case_id,revision) REFERENCES checkpoints(company_id,case_id,revision))',
     'CREATE TABLE heads(company_id TEXT NOT NULL,case_id TEXT NOT NULL,revision INTEGER NOT NULL,PRIMARY KEY(company_id,case_id),FOREIGN KEY(company_id,case_id,revision) REFERENCES checkpoints(company_id,case_id,revision))',
 )
+
+
+OPERATION_DDL = (
+    'CREATE TABLE operations(company_id TEXT NOT NULL,case_id TEXT NOT NULL,operation_id TEXT NOT NULL,base_revision INTEGER NOT NULL,prepared_revision INTEGER NOT NULL,payload TEXT NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(operation_id),FOREIGN KEY(company_id,case_id,prepared_revision) REFERENCES checkpoints(company_id,case_id,revision))',
+    'CREATE TABLE operation_events(operation_id TEXT NOT NULL,sequence INTEGER NOT NULL,status TEXT NOT NULL,payload TEXT NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(operation_id,sequence),FOREIGN KEY(operation_id) REFERENCES operations(operation_id))',
+)
+OPERATION_COLUMN = 'operation_id TEXT REFERENCES operations(operation_id) DEFERRABLE INITIALLY DEFERRED'
+DDL = (DDL_V1[0].replace(',PRIMARY KEY', ', '+OPERATION_COLUMN+',PRIMARY KEY', 1),) + DDL_V1[1:] + OPERATION_DDL
 
 
 def sha(text): return hashlib.sha256(text.encode('utf-8')).hexdigest()
@@ -56,12 +78,21 @@ def validate_extension(previous, current):
     for name in ('versions', 'source_snapshots', 'dependencies'):
         if any(k not in current[name] or current[name][k] != v for k, v in previous[name].items()):
             raise IntegrityError('Committed immutable history removed/changed: '+name)
-    for name in ('version_history', 'graph_history', 'rework_history'):
+    for name in ('version_history', 'graph_history', 'rework_history', 'receipts'):
         if current[name][:len(previous[name])] != previous[name]:
             raise IntegrityError('Committed history is not an extension: '+name)
     for key, bundle in previous['session'].get('evidence_bundles', {}).items():
         if current['session'].get('evidence_bundles', {}).get(key) != bundle:
             raise IntegrityError('Committed source qualification removed')
+    for key in ('calendars', 'relationships'):
+        old = previous['periods'][key]
+        new = current['periods'][key]
+        if any(row not in new for row in old): raise IntegrityError('Committed Period identity history changed')
+    old_periods = {r['period_id']: {k:v for k,v in r.items() if k != 'status'} for r in previous['periods']['periods']}
+    new_periods = {r['period_id']: {k:v for k,v in r.items() if k != 'status'} for r in current['periods']['periods']}
+    if any(new_periods.get(k) != v for k,v in old_periods.items()): raise IntegrityError('Committed Period identity changed')
+    if current['periods']['history'][:len(previous['periods']['history'])] != previous['periods']['history']:
+        raise IntegrityError('Committed Period governance history changed')
     old_cases = {c['id']: c for c in previous['cases']}
     new_cases = {c['id']: c for c in current['cases']}
     for key, old in old_cases.items():
@@ -102,7 +133,7 @@ class SQLiteStore:
             tables = {r[0] for r in self.connection.execute("SELECT name FROM sqlite_master WHERE type='table'")}
             if version == 0 and not tables:
                 for statement in DDL: self.connection.execute(statement)
-                self.connection.execute('PRAGMA user_version=1')
+                self.connection.execute('PRAGMA user_version=2')
             else: self.migrate(version)
             self._schema()
             self.connection.execute('COMMIT')
@@ -111,7 +142,7 @@ class SQLiteStore:
             raise
 
     def migrate(self, version):
-        """Registered compatibility entrypoint; v1 is deliberately the sole schema.
+        """Registered compatibility entrypoint; exact schema1 migrates to schema2.
 
         No speculative migrations. Future registered steps must run in the caller's
         transaction and preserve historical checkpoint bytes, not rewrite results.
@@ -147,16 +178,9 @@ class SQLiteStore:
             self.connection.execute('BEGIN IMMEDIATE'); self._schema()
             current = self._head(company_id, case.id)
             if current != expected_revision: raise RevisionConflict('Checkpoint revision changed')
-            previous = None
-            if current:
-                # Validate the retained head before extending its immutable chain.
-                prior_doc, previous = self._read(company_id, case.id, current)
-                restore(prior_doc, company_id, case.id)
-                validate_extension(prior_doc, doc)
-            revision = current + 1
-            self.connection.execute('INSERT INTO checkpoints VALUES(?,?,?,?,?,?,?)', (company_id, case.id, revision, payload, checksum, previous, len(manifest)))
-            self._write_objects(company_id, case.id, revision, manifest)
-            self.connection.execute('INSERT INTO heads VALUES(?,?,?) ON CONFLICT(company_id,case_id) DO UPDATE SET revision=excluded.revision', (company_id, case.id, revision))
+            from .recovery import reject_pending
+            reject_pending(self, company_id, case.id)
+            revision = self._save_doc(doc, expected_revision)
             self.connection.execute('COMMIT')
             return revision
         except (ValueError, sqlite3.Error, OSError) as exc:
@@ -167,10 +191,64 @@ class SQLiteStore:
             if self.connection.in_transaction: self.connection.execute('ROLLBACK')
             raise
 
+    def _save_doc(self, doc, expected_revision, operation_id=None):
+        """Caller owns BEGIN/COMMIT; operation outcome and head publish together."""
+        company_id, case_id = doc['company_id'], doc['root_case']
+        current = self._head(company_id, case_id)
+        if current != expected_revision: raise RevisionConflict('Checkpoint revision changed')
+        payload = dumps(doc); checksum = sha(payload); manifest = objects(doc)
+        previous = None
+        if current:
+            # Validate the retained head before extending its immutable chain.
+            prior_doc, previous = self._read(company_id, case_id, current)
+            restore(prior_doc, company_id, case_id)
+            validate_extension(prior_doc, doc)
+        revision = current + 1
+        self.connection.execute('INSERT INTO checkpoints VALUES(?,?,?,?,?,?,?,?)', (company_id, case_id, revision, payload, checksum, previous, len(manifest), operation_id))
+        self._write_objects(company_id, case_id, revision, manifest)
+        self.connection.execute('INSERT INTO heads VALUES(?,?,?) ON CONFLICT(company_id,case_id) DO UPDATE SET revision=excluded.revision', (company_id, case_id, revision))
+        return revision
+
+    def prepare(self, case, company_id, company_context, expected_revision, intent):
+        from .recovery import prepare
+        return prepare(self, case, company_id, company_context, expected_revision, intent)
+
+    def recover(self, company_id, case_id, operation_id):
+        from .recovery import recover
+        return recover(self, company_id, case_id, operation_id)
+
+    def abandon(self, company_id, case_id, operation_id, reason):
+        from .recovery import abandon
+        return abandon(self, company_id, case_id, operation_id, reason)
+
+    def operation(self, company_id, case_id, operation_id):
+        from .recovery import read_operation
+        try:
+            self.connection.execute('BEGIN'); self._schema()
+            value = read_operation(self, company_id, case_id, operation_id)
+            self.connection.execute('COMMIT')
+            return value
+        except BaseException:
+            if self.connection.in_transaction: self.connection.execute('ROLLBACK')
+            raise
+
     def _read(self, company_id, case_id, revision):
-        row = self.connection.execute('SELECT payload,sha256,previous_sha256,object_count FROM checkpoints WHERE company_id=? AND case_id=? AND revision=?', (company_id, case_id, revision)).fetchone()
+        row = self.connection.execute('SELECT payload,sha256,previous_sha256,object_count,operation_id FROM checkpoints WHERE company_id=? AND case_id=? AND revision=?', (company_id, case_id, revision)).fetchone()
         if row is None: raise IntegrityError('Missing committed checkpoint')
-        payload, checksum, previous, count = row
+        payload, checksum, previous, count, operation_id = row
+        if operation_id is not None:
+            binding = self.connection.execute('SELECT company_id,case_id,base_revision,prepared_revision FROM operations WHERE operation_id=?', (operation_id,)).fetchone()
+            if binding is None or binding[:2] != (company_id, case_id) or revision not in (binding[3], binding[3]+1):
+                raise IntegrityError('Missing/wrong durable operation checkpoint binding')
+            events = self.connection.execute('SELECT sequence,status,payload,sha256 FROM operation_events WHERE operation_id=? ORDER BY sequence', (operation_id,)).fetchall()
+            if not events or events[0][:2] != (0, 'PREPARED') or any(seq != i or sha(wire) != checksum for i,(seq,status,wire,checksum) in enumerate(events)):
+                raise IntegrityError('Missing/corrupt durable operation event population')
+            if revision == binding[3]+1:
+                if events[-1][1] != 'COMMITTED': raise IntegrityError('Outcome checkpoint lacks committed operation')
+                outcome = loads(events[-1][2])
+                if not isinstance(outcome, dict) or outcome.get('revision') != revision or outcome.get('checkpoint_sha256') != checksum:
+                    raise IntegrityError('Operation outcome checkpoint hash differs')
+
         if sha(payload) != checksum: raise IntegrityError('Corrupted checkpoint payload')
         doc = loads(payload)
         if not isinstance(doc, dict) or (doc.get('company_id'), doc.get('root_case')) != (company_id, case_id): raise IntegrityError('Wrong checkpoint namespace')
@@ -191,6 +269,11 @@ class SQLiteStore:
             if type(revision) is not int or not 1 <= revision <= head: raise IntegrityError('Unknown checkpoint revision')
             doc, _ = self._read(company_id, case_id, revision)
             root = restore(doc, company_id, case_id)
+            # A valid native head alone cannot hide damaged recovery markers.
+            # All marker reads share this same SQLite read snapshot.
+            from .recovery import read_operation
+            for (operation_id,) in self.connection.execute('SELECT operation_id FROM operations WHERE company_id=? AND case_id=? ORDER BY prepared_revision', (company_id, case_id)):
+                read_operation(self, company_id, case_id, operation_id)
             self.connection.execute('COMMIT')
             return root, revision, copy_context(doc)
         except (ValueError, sqlite3.Error) as exc:

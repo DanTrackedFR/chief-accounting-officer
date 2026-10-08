@@ -100,3 +100,78 @@ assumes a durable local filesystem honoring fsync and locking. Back up a closed
 store or use SQLite's consistent backup mechanism; do not copy a live file without
 its transaction state. Backup scheduling, retention and external disaster recovery
 remain the host application's responsibility.
+
+## Stage 2 durable operation extension (schema2, checkpoint contract1)
+
+The checkpoint wire contract remains1. SQLite schema2 adds immutable `operations`
+plus append-only `operation_events` and a nullable deferred checkpoint foreign-key
+binding back to its operation. Plain checkpoint reads validate marker populations,
+event transitions and committed outcomes against native history; operation deletion
+or contradictory returned plans/selections reject. Prepared selection hashes bind
+the already-qualified native allocation into immutable operation identity. A registered transactional migration from
+exact schema1 adds those lifecycle tables and the nullable checkpoint binding;
+original checkpoint/object payloads,
+hashes and identities are untouched. Unknown/mixed schemas reject. Initialization,
+migration and outcome failures roll back. Existing expected-revision semantics
+remain authoritative.
+
+`SQLiteStore.prepare(case, company_id, context, expected_revision, intent)` binds
+an operation identity to Company/root Case, exact committed base revision/hash,
+prepared state hash and complete native intent. Preparation may retain already
+sealed reviewed evidence, but cannot smuggle uncommitted accounting state. Every
+replacement source must occur in the actual prepared session's sealed evidence.
+An identical preparation retry returns the original operation identity. Human
+display labels are never sufficient identities.
+
+`recover(company_id, case_id, operation_id)` loads a fresh prepared native runtime
+for each uncommitted attempt. States are PREPARED, EXECUTING, COMMITTED, BLOCKED,
+ABORTED and UNCERTAIN. No operation record means not begun. PREPARED has not executed;
+EXECUTING is unresolved but safely replayable for the supported pure native units.
+Native correction and full selected rework each form an atomic unit: intermediate
+owner versions/invalidation are never a committed checkpoint. An upstream correction
+commits before its separate downstream rework unit. Replay uses the exact original
+reviewed inputs and deterministic native graph order. No arbitrary callback or
+execution code is stored. The trusted host must not add side effects to native
+owners while relying on this replay guarantee.
+
+Native CORRECT/REWORK/REOPEN/CLOSE_PERIOD/SELECT_JOURNALS remain the sole authorities.
+A writer lock spans outcome execution/publication; checkpoint head and COMMITTED
+outcome publish in the same transaction. Competing recovery workers serialize.
+An obsolete revision rejects. COMMITTED retries load the durable outcome and latest
+head without executing owners or journal selection again. Returned `outcome_current`
+distinguishes historical operation outcomes from the latest checkpoint; old
+selection receipts are historical, never permission to release superseded journals.
+Reads/deserialization do not resume accounting. `operation` exposes private durable
+status; the prepared checkpoint still describes the previously committed accounting,
+not an assertion that a pending correction completed.
+
+Native qualification failure produces BLOCKED with no outcome checkpoint. The
+caller may explicitly `abandon` a pure uncommitted operation and prepare separately
+qualified evidence. Abandonment is durable; it is not an approval or accounting
+result. Pending operations block uncoordinated saves and competing intents.
+Native closure requires current ordinary CLOSED/complete Cases and current exact
+receipt/version prerequisites, in addition to PeriodRegistry's native close route.
+Reopening uses its existing exact synthetic reviewed Case/node authorization.
+Historical closure and reopening records must extend, never replace, prior history.
+
+SELECT_JOURNALS durably records the native gross-line allocation with exact immutable
+versions. It is internal idempotent selection, not a posting ledger or an external
+ERP call. Legal/Group, translation/reassessment and current/superseded boundaries
+remain native. An UNCERTAIN_EXTERNAL marker binds the exact latest committed
+selection and supplied uncertainty evidence. Recovery fails closed and blocks further
+publication; explicit external reconciliation is required. No automatic repost,
+external acknowledgement fabrication or external exactly-once guarantee exists.
+This stage deliberately provides no posting/reconciliation connector.
+
+Crash boundaries: before preparation leaves the original checkpoint; preparation
+transaction failure leaves no intent/head; after preparation permits exact replay;
+during owner execution, invalidation, selected rework, closure or journal selection
+leaves EXECUTING and the complete prepared checkpoint; before/during outcome
+transaction publication rolls back the whole outcome; after COMMIT/lost caller
+confirmation returns the same committed operation on retry. Ordinary lifecycle
+completion within selective rework is part of that same atomic unit.
+
+All operation payloads, receipts, reviewed sources, selections and status histories
+are private. Public delivery remains CAO.public; no operation DTO is a public answer.
+The existing trusted-runtime, synthetic-review, local-file, confidentiality and
+security limits remain unchanged. Stage3 approved company-memory reuse is absent.
