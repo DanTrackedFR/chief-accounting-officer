@@ -63,7 +63,7 @@ class CompanyMemory:
 
     def _ledger(self, company):
         rows=self.db.execute('SELECT sequence,event_id,payload,sha256,previous_sha256 FROM memory_events WHERE company_id=? ORDER BY sequence',(company,)).fetchall()
-        previous=None;records={};events=[];uses=[]
+        previous=None;records={};events=[];uses=[];versions={}
         for i,(seq,key,wire,checksum,prev) in enumerate(rows,1):
             if seq!=i or sha(wire)!=checksum or prev!=previous: raise IntegrityError('Missing/corrupt memory history')
             event=loads(wire)
@@ -73,6 +73,7 @@ class CompanyMemory:
             if kind=='CAPTURE':
                 if old is not None or event['previous_version'] is not None: raise IntegrityError('Duplicate memory record')
                 record=event['value'];self._record(record)
+                if record['decision'] is not None and record['decision']['status']!='proposed':raise IntegrityError('Candidate decision is not governed')
                 if rid!=ident('memory',record['identity']) or record['company_id']!=company or record['status']!='PROPOSED': raise IntegrityError('Unsafe initial memory authority')
             elif kind=='TRANSITION':
                 if old is None or event['previous_version']!=old['version_id']: raise IntegrityError('Missing historical promotion')
@@ -82,12 +83,28 @@ class CompanyMemory:
                 if any(old[k]!=record[k] for k in immutable): raise IntegrityError('Rewritten memory provenance')
                 if record['governance'] is None: raise IntegrityError('Missing governance provenance')
                 self._governance(record,record['governance'],old['status'],historical=True)
+            elif kind=='DECISION':
+                if old is None or event['previous_version']!=old['version_id']:raise IntegrityError('Unknown material decision predecessor')
+                record=event['value'];self._record(record)
+                if old['decision'] is None or record['decision'] is None:raise IntegrityError('Missing material decision')
+                allowed={'proposed':{'documented','approved'},'documented':{'approved','implemented','reversed','superseded'},'approved':{'implemented','reversed','superseded'},'implemented':{'reversed','superseded'},'reversed':set(),'superseded':set()}
+                if record['decision']['status'] not in allowed[old['decision']['status']]:raise IntegrityError('Invalid decision lifecycle')
+                if any(old[k]!=record[k] for k in set(old)-{'decision','governance','version_id'}):raise IntegrityError('Decision rewrote company position')
+                self._governance(record,record['governance'],old['status'],historical=True)
             elif kind=='USE':
-                if old is None or event['previous_version']!=event['value']['memory_version']: raise IntegrityError('Unbound consumption')
+                if old is None or event['previous_version']!=event['value']['memory_version'] or event['previous_version'] not in versions.get(rid,set()): raise IntegrityError('Unbound consumption')
+                u=event['value']
+                if set(u)!={'root_case','case_id','case_revision','case_sha256','memory_version','use','source_revision','source_sha256'} or u['use']!='CONTEXT_ONLY' or old['version_id']!=u['memory_version'] or old['status'] not in {'CONFIRMED','DOCUMENTED','APPROVED'}:raise IntegrityError('Invalid historical context consumption')
+                consumer,_,checksum,_=self._native(company,u['root_case'],u['case_revision']);c=consumer.governance.cases.get(u['case_id'])
+                query=applicability(consumer,c.scope_id,[c.period_id],old['applicability']['relationship_id'])
+                if checksum!=u['case_sha256'] or any(query[k]!=old['applicability'][k] for k in DIMENSIONS-{'period_ids'}) or c.period_id not in old['applicability']['period_ids']:raise IntegrityError('Historical consuming Case binding differs')
+                source,_,source_sha,_=self._native(company,old['source']['root_case'],u['source_revision'])
+                if source_sha!=u['source_sha256'] or any(source.governance.versions.states.get(v)!='CURRENT' for v in old['source']['result_versions']):raise IntegrityError('Historical source qualification differs')
+                if any(other['record_id']!=rid and other['status'] not in {'SUPERSEDED','RETRACTED'} and self._overlap(old,other) and dumps(old['value'])!=dumps(other['value']) for other in records.values()):raise IntegrityError('Historical use had unresolved conflict')
                 uses.append(event);events.append(dict(event_id=key,**event));previous=checksum;continue
             else: raise IntegrityError('Unknown memory event')
             if record['record_id']!=rid or record['version_id']!=ident('memory-version',{k:v for k,v in record.items() if k!='version_id'}): raise IntegrityError('Wrong memory version')
-            records[rid]=record;events.append(dict(event_id=key,**event));previous=checksum
+            versions.setdefault(rid,set()).add(record['version_id']);records[rid]=record;events.append(dict(event_id=key,**event));previous=checksum
         head=self.db.execute('SELECT sequence,sha256 FROM memory_heads WHERE company_id=?',(company,)).fetchone()
         if (head or (0,None))!=(len(rows),previous): raise IntegrityError('Memory head contradicts retained events')
         return records,events,uses,len(rows),previous
@@ -100,6 +117,7 @@ class CompanyMemory:
         if type(r['applicability']) is not dict or set(r['applicability'])!=DIMENSIONS: raise IntegrityError('Incomplete applicability')
         temporal(r['learned_at']);temporal(r['effective_from']);temporal(r['effective_to'])
         if r['effective_from']['precision']=='exact' and r['effective_to']['precision']=='exact' and r['effective_from']['value']>r['effective_to']['value']: raise IntegrityError('Invalid effective interval')
+        if r['identity']!=dict(company=r['company_id'],case=r['source']['case_id'],candidate=r['original_candidate'],category=r['category'],subject=r['subject'],dimensions=r['applicability'],effective_from=r['effective_from'],effective_to=r['effective_to']):raise IntegrityError('Memory stable identity differs')
         if r['confidence'] not in {'high','medium','low','unknown'}: raise IntegrityError('Unknown confidence')
         if r['decision'] is not None:
             d=r['decision']
@@ -123,9 +141,20 @@ class CompanyMemory:
         observed=(candidate.get('source_refs')==['supplied-governed-context'] and attribute in doc['session']['context'] and doc['session']['context'][attribute]==r['value'])
         extracted=any(candidate in bundles[k]['fields']['memory_candidates'] for k in src['bundle_ids'])
         if not observed and not extracted: raise IntegrityError('Candidate evidence linkage unsupported')
+        semantic=candidate.get('semantic_status','USER_STATED')
+        allowed={'EXTRACTED':{'EXTRACTED','SOURCE_FACT'},'USER_STATED':{'USER_STATED'},'INFERRED':{'INFERRED'},'UNRESOLVED':{'DISPUTED'}}
+        if r['assertion'] not in allowed.get(semantic,set()): raise IntegrityError('Original semantic assertion relabeled')
+        if extracted:
+            from orchestration.intake.sources import Inventory,RawSource
+            import json
+            fields={k:field for key in src['bundle_ids'] for raw in bundles[key]['raw_sources'] for k,field in Inventory([RawSource(**json.loads(raw))]).fields().items()}
+            if not candidate.get('source_refs') or any(k not in fields for k in candidate['source_refs']):raise IntegrityError('Missing extracted candidate source')
+            if semantic=='EXTRACTED' and not any(dumps(fields[k]['value'])==dumps(r['value']) for k in candidate['source_refs']):raise IntegrityError('Extracted candidate value differs from source')
         versions=src['result_versions']
         for v in versions:
             if v not in original.governance.versions.versions: raise IntegrityError('Unknown supporting result')
+            version=original.governance.versions.versions[v]
+            if version.case_id!=src['case_id'] or version.scope_id!=r['applicability']['scope_id']:raise IntegrityError('Unrelated supporting result lineage')
         reasons=[]
         for v in versions:
             if case.governance.versions.states.get(v)!='CURRENT': reasons.append('supporting-result-'+str(case.governance.versions.states.get(v)))
@@ -144,10 +173,19 @@ class CompanyMemory:
             # Documentary approval must be present as exact source wording in the
             # sealed original archive; caller explicitly asserts its applicability.
             _,doc,_,_=self._native(r['company_id'],r['source']['root_case'],r['source']['revision'])
-            wording='APPROVED '+r['subject']+' '+r['attribute']+' '+dumps(r['value'])
-            raws=[raw for k in g['bundle_ids'] for raw in doc['session']['evidence_bundles'][k]['raw_sources']]
+            from orchestration.intake.sources import Inventory,RawSource
             import json
-            if not any(wording in str(json.loads(raw)['payload']) for raw in raws): raise IntegrityError('Documentary approval assertion not evidenced')
+            dimensions=r['applicability'];periods=[original for original in doc['periods']['periods'] if original['period_id'] in dimensions['period_ids']]
+            expected=dict(subject=r['subject'],attribute=r['attribute'],value=r['value'],status='APPROVED',scope_id=dimensions['scope_id'],framework=dimensions['framework'],period=[min(p['start'] for p in periods),max(p['end'] for p in periods)],currency=dimensions['currency'],jurisdiction=dimensions['jurisdiction'],convention='DOCUMENTARY_ASSERTION')
+            approved=False
+            for key in g['bundle_ids']:
+                for wire in doc['session']['evidence_bundles'][key]['raw_sources']:
+                    raw=RawSource(**json.loads(wire))
+                    # Narrow supported documentary envelope, not substring/model
+                    # text or an asserted reviewer display label.
+                    if raw.format=='json' and isinstance(raw.payload,list):
+                        approved |= any(isinstance(row,dict) and row.get('memory_governance')==__import__('json').dumps(expected,sort_keys=True,separators=(',',':')) for row in raw.payload)
+            if not approved:raise IntegrityError('Documentary approval assertion not evidenced')
         if not historical and r['status'] not in {'RETRACTED','SUPERSEDED'} and self._qualification(r): raise IntegrityError('Evidence not currently qualified')
 
     def _append(self,company,kind,rid,previous,value,reason,recorded_at,expected):
@@ -172,7 +210,7 @@ class CompanyMemory:
             if self.db.in_transaction:self.db.execute('ROLLBACK')
             raise
 
-    def capture(self,company,root,case_id,candidate_index,*,category,subject,assertion,bundle_ids,result_versions,dimensions,effective_from,effective_to,learned_at,expected_revision,material,reusable,confidence='unknown',uncertainty=None,questions=None,decision=None):
+    def capture(self,company,root,case_id,candidate_index,*,category,subject,assertion,bundle_ids,result_versions,dimensions,effective_from,effective_to,learned_at,expected_revision,material,reusable,confidence='unknown',uncertainty=None,questions=None,decision=None,supersedes=None):
         def write():
             if material is not True or reusable is not True: raise IntegrityError('Material/reusable gate required')
             case,doc,checksum,revision=self._native(company,root)
@@ -183,7 +221,8 @@ class CompanyMemory:
             source=dict(root_case=root,case_id=case_id,revision=revision,checkpoint_sha256=checksum,bundle_ids=sorted(set(bundle_ids)),result_versions=sorted(set(result_versions)))
             identity=dict(company=company,case=case_id,candidate=candidate,category=category,subject=subject,dimensions=dimensions,effective_from=effective_from,effective_to=effective_to)
             rid=ident('memory',identity)
-            r=dict(contract=1,identity=identity,record_id=rid,company_id=company,original_candidate=candidate,category=category,subject=subject,attribute=candidate['attribute'],value=candidate['value'],assertion=assertion,source=source,applicability=copy.deepcopy(dimensions),effective_from=effective_from,effective_to=effective_to,learned_at=learned_at,confidence=confidence,uncertainty=uncertainty,questions=questions or [],decision=decision,status='PROPOSED',governance=None,supersedes=[],superseded_by=None)
+            r=dict(contract=1,identity=identity,record_id=rid,company_id=company,original_candidate=candidate,category=category,subject=subject,attribute=candidate['attribute'],value=candidate['value'],assertion=assertion,source=source,applicability=copy.deepcopy(dimensions),effective_from=effective_from,effective_to=effective_to,learned_at=learned_at,confidence=confidence,uncertainty=uncertainty,questions=questions or [],decision=decision,status='PROPOSED',governance=None,supersedes=sorted(set(supersedes or [])),superseded_by=None)
+            if decision is not None and decision.get('status')!='proposed':raise IntegrityError('Candidate decision must remain proposed')
             r['version_id']=ident('memory-version',r);self._record(r);self._qualification(r)
             existing=self._ledger(company)[0].get(rid)
             if existing:
@@ -194,37 +233,75 @@ class CompanyMemory:
         return self._transaction(True,write)
 
     def transition(self,company,record_id,governance,*,expected_revision,recorded_at,successor=None):
+        return self._transaction(True,lambda:self._transition_write(company,record_id,governance,expected_revision,recorded_at,successor,set()))
+
+    def _transition_write(self,company,record_id,governance,expected_revision,recorded_at,successor,resolving):
+        records,events,_,seq,_=self._ledger(company)
+        old=records.get(record_id)
+        if old is None:raise IntegrityError('Unknown Company memory')
+        # Lost-ack retry must match exact already persisted intent, not merely
+        # the target label; it cannot refresh currentness or native authority.
+        if old['governance']==governance:return copy.deepcopy(old)
+        target=governance.get('target_status')
+        if target not in TRANSITIONS[old['status']]:raise IntegrityError('Prior state transition invalid')
+        r=copy.deepcopy(old);r.update(status=target,governance=copy.deepcopy(governance),superseded_by=successor)
+        if target=='SUPERSEDED':
+            new=records.get(successor)
+            if successor==record_id or new is None or record_id not in new['supersedes'] or new['status'] not in {'DOCUMENTED','APPROVED'} or new['subject']!=r['subject'] or new['attribute']!=r['attribute'] or new['applicability']!=r['applicability']:raise IntegrityError('Qualified successor required')
+            if self._qualification(new):raise IntegrityError('Unqualified successor')
+        elif successor is not None:raise IntegrityError('Unexpected supersession')
+        r['version_id']=ident('memory-version',{k:v for k,v in r.items() if k!='version_id'})
+        self._record(r);self._governance(r,governance,old['status'])
+        if target in {'CONFIRMED','DOCUMENTED','APPROVED'}:
+            for other in records.values():
+                if other['record_id']==record_id or other['record_id'] in resolving or other['status'] in {'SUPERSEDED','RETRACTED'}:continue
+                if self._overlap(r,other) and dumps(other['value'])!=dumps(r['value']):raise IntegrityError('Unresolved overlapping contradiction; preserve both alternatives')
+                if target=='APPROVED' and other['status']=='APPROVED' and self._overlap(r,other):raise IntegrityError('Duplicate current approved position')
+        self._append(company,'TRANSITION',record_id,old['version_id'],r,governance['reason'],recorded_at,expected_revision)
+        return copy.deepcopy(r)
+
+    def resolve_conflict(self,company,successor_id,governance,alternatives,*,expected_revision,recorded_at):
+        """Explicit complete alternative disposition, atomic local transition set.
+
+        alternatives maps predecessor IDs to exact SUPERSEDED governance intents.
+        Every predecessor is retained; none silently disappears on a new proposal.
+        """
         def write():
-            records,events,_,seq,_=self._ledger(company)
-            old=records.get(record_id)
-            if old is None:raise IntegrityError('Unknown Company memory')
-            # Lost-ack retry must match exact already persisted intent, not merely
-            # the target label; it cannot refresh currentness or native authority.
-            if old['governance']==governance:return copy.deepcopy(old)
-            target=governance.get('target_status')
-            if target not in TRANSITIONS[old['status']]:raise IntegrityError('Prior state transition invalid')
-            r=copy.deepcopy(old);r.update(status=target,governance=copy.deepcopy(governance),superseded_by=successor)
-            if target=='SUPERSEDED':
-                new=records.get(successor)
-                if new is None or new['status'] not in {'DOCUMENTED','APPROVED'} or new['subject']!=r['subject'] or new['attribute']!=r['attribute'] or new['applicability']!=r['applicability']:raise IntegrityError('Qualified successor required')
-                if self._qualification(new):raise IntegrityError('Unqualified successor')
-            elif successor is not None:raise IntegrityError('Unexpected supersession')
-            r['version_id']=ident('memory-version',{k:v for k,v in r.items() if k!='version_id'})
+            records,_,_,seq,_=self._ledger(company)
+            if seq!=expected_revision:raise RevisionConflict('Company memory revision changed')
+            new=records.get(successor_id)
+            if new is None or new['status']!='PROPOSED' or set(new['supersedes'])!=set(alternatives) or not alternatives:raise IntegrityError('Exact supersession alternatives required')
+            for key,g in alternatives.items():
+                old=records.get(key)
+                if key==successor_id or old is None or not self._overlap(new,old) or old['applicability']!=new['applicability'] or g.get('target_status')!='SUPERSEDED':raise IntegrityError('Invalid conflict resolution alternative')
+            chosen=self._transition_write(company,successor_id,governance,seq,recorded_at,None,set(alternatives))
+            for key,g in sorted(alternatives.items()):
+                seq+=1;self._transition_write(company,key,g,seq,recorded_at,successor_id,set())
+            return chosen
+        return self._transaction(True,write)
+
+    def decide(self,company,record_id,decision,governance,*,expected_revision,recorded_at):
+        def write():
+            records,_,_,seq,_=self._ledger(company);old=records.get(record_id)
+            if old is None or old['decision'] is None:raise IntegrityError('Material proposed decision required')
+            if old['decision']==decision and old['governance']==governance:return copy.deepcopy(old)
+            allowed={'proposed':{'documented','approved'},'documented':{'approved','implemented','reversed','superseded'},'approved':{'implemented','reversed','superseded'},'implemented':{'reversed','superseded'},'reversed':set(),'superseded':set()}
+            if decision.get('status') not in allowed[old['decision']['status']]:raise IntegrityError('Invalid material decision transition')
+            if decision['status']=='approved' and old['status']!='APPROVED':raise IntegrityError('Decision approval requires explicit governed approved position')
+            r=copy.deepcopy(old);r.update(decision=copy.deepcopy(decision),governance=copy.deepcopy(governance));r['version_id']=ident('memory-version',{k:v for k,v in r.items() if k!='version_id'})
             self._record(r);self._governance(r,governance,old['status'])
-            if target in {'CONFIRMED','DOCUMENTED','APPROVED'}:
-                for other in records.values():
-                    if other['record_id']==record_id or other['status'] in {'SUPERSEDED','RETRACTED'}:continue
-                    if self._overlap(r,other) and dumps(other['value'])!=dumps(r['value']):raise IntegrityError('Unresolved overlapping contradiction; preserve both alternatives')
-                    if target=='APPROVED' and other['status']=='APPROVED' and self._overlap(r,other):raise IntegrityError('Duplicate current approved position')
-            self._append(company,'TRANSITION',record_id,old['version_id'],r,governance['reason'],recorded_at,expected_revision)
+            self._append(company,'DECISION',record_id,old['version_id'],r,decision['reason'],recorded_at,expected_revision)
             return copy.deepcopy(r)
         return self._transaction(True,write)
 
-    @staticmethod
-    def _overlap(a,b):
+    def history(self,company,record_id):
+        return self._transaction(False,lambda:[event for event in self._ledger(company)[1] if event['record_id']==record_id])
+
+    def _overlap(self,a,b):
         if (a['subject'],a['attribute'])!=(b['subject'],b['attribute']):return False
         da,db=a['applicability'],b['applicability']
-        if any(da[k]!=db[k] for k in DIMENSIONS-{'period_ids'}):return False
+        if any(da[k]!=db[k] for k in {'calendar_id','framework','jurisdiction','currency','relationship_id'}):return False
+        if any(da[k]!=db[k] for k in {'scope_id','legal_entity_id','scope_type'}):return False
         if not set(da['period_ids'])&set(db['period_ids']):return False
         start=lambda r:r['effective_from']['value'] if r['effective_from']['precision']=='exact' else '0001-01-01'
         end=lambda r:r['effective_to']['value'] if r['effective_to']['precision']=='exact' else '9999-12-31'
@@ -262,7 +339,8 @@ class CompanyMemory:
             result=self._retrieve(company,root,case_id,r['subject'],r['attribute'],r['applicability']['relationship_id'])
             if not any(v['record']['version_id']==version_id for v in result['qualified']):raise IntegrityError('Memory not qualified for this Case')
             _,doc,checksum,revision=self._native(company,root)
-            value=dict(root_case=root,case_id=case_id,case_revision=revision,case_sha256=checksum,memory_version=version_id,use='CONTEXT_ONLY')
+            source,_,source_sha,source_revision=self._native(company,r['source']['root_case'])
+            value=dict(root_case=root,case_id=case_id,case_revision=revision,case_sha256=checksum,memory_version=version_id,use='CONTEXT_ONLY',source_revision=source_revision,source_sha256=source_sha)
             self._append(company,'USE',record_id,version_id,value,'Exact qualified context consumption; no native input authority',recorded_at,expected_revision)
             return value
         return self._transaction(True,write)
