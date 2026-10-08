@@ -174,7 +174,7 @@ completion within selective rework is part of that same atomic unit.
 All operation payloads, receipts, reviewed sources, selections and status histories
 are private. Public delivery remains CAO.public; no operation DTO is a public answer.
 The existing trusted-runtime, synthetic-review, local-file, confidentiality and
-security limits remain unchanged. Stage3 approved company-memory reuse is absent.
+security limits remain unchanged. At the Stage2 release, approved company-memory reuse was absent; the Stage3 extension below defines its controlled boundary.
 
 ## Stage 3 extension (schema3, checkpoint contract1)
 
@@ -183,3 +183,5 @@ append-only memory_events and revision/hash memory_heads. Original schema1/schem
 checkpoint and Stage2 operations remain unchanged. See MEMORY-CONTRACT.md for
 explicit candidate, documentary/synthetic governance, cross-Case context and strict
 historical/restoration semantics. No authenticated approval infrastructure is added.
+
+The registered migration entrypoint requires the actual database version and exact table contract. Current-schema no-op migration is strictly read-only and rejects future/mixed schemas rather than falsely acknowledging them.
