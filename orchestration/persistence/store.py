@@ -7,7 +7,7 @@ from typing import Protocol
 from .codec import dumps, loads, IntegrityError
 from .state import snapshot, restore
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 
 def _current_schema(connection):
@@ -22,10 +22,19 @@ def _migrate_v1(connection):
     for statement in OPERATION_DDL: connection.execute(statement)
     connection.execute('ALTER TABLE checkpoints ADD COLUMN '+OPERATION_COLUMN)
     connection.execute('PRAGMA user_version=2')
+    return _migrate_v2(connection)
+
+
+def _migrate_v2(connection):
+    actual = dict(connection.execute("SELECT name,sql FROM sqlite_master WHERE type='table'"))
+    expected = {statement.split('(')[0].split()[-1]: statement for statement in DDL_V2}
+    if actual != expected: raise IntegrityError('Partial/unknown schema2 rejected')
+    for statement in MEMORY_DDL: connection.execute(statement)
+    connection.execute('PRAGMA user_version=3')
     return SCHEMA_VERSION
 
 
-SCHEMA_HANDLERS = {1: _migrate_v1, 2: _current_schema}
+SCHEMA_HANDLERS = {1: _migrate_v1, 2: _migrate_v2, 3: _current_schema}
 
 
 class RevisionConflict(ValueError): pass
@@ -54,7 +63,14 @@ OPERATION_DDL = (
     'CREATE TABLE operation_events(operation_id TEXT NOT NULL,sequence INTEGER NOT NULL,status TEXT NOT NULL,payload TEXT NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(operation_id,sequence),FOREIGN KEY(operation_id) REFERENCES operations(operation_id))',
 )
 OPERATION_COLUMN = 'operation_id TEXT REFERENCES operations(operation_id) DEFERRABLE INITIALLY DEFERRED'
-DDL = (DDL_V1[0].replace(',PRIMARY KEY', ', '+OPERATION_COLUMN+',PRIMARY KEY', 1),) + DDL_V1[1:] + OPERATION_DDL
+DDL_V2 = (DDL_V1[0].replace(',PRIMARY KEY', ', '+OPERATION_COLUMN+',PRIMARY KEY', 1),) + DDL_V1[1:] + OPERATION_DDL
+
+
+MEMORY_DDL = (
+    'CREATE TABLE memory_events(company_id TEXT NOT NULL,sequence INTEGER NOT NULL,event_id TEXT NOT NULL UNIQUE,payload TEXT NOT NULL,sha256 TEXT NOT NULL,previous_sha256 TEXT,PRIMARY KEY(company_id,sequence))',
+    'CREATE TABLE memory_heads(company_id TEXT NOT NULL,sequence INTEGER NOT NULL,sha256 TEXT NOT NULL,PRIMARY KEY(company_id),FOREIGN KEY(company_id,sequence) REFERENCES memory_events(company_id,sequence))',
+)
+DDL = DDL_V2 + MEMORY_DDL
 
 
 def sha(text): return hashlib.sha256(text.encode('utf-8')).hexdigest()
@@ -133,7 +149,7 @@ class SQLiteStore:
             tables = {r[0] for r in self.connection.execute("SELECT name FROM sqlite_master WHERE type='table'")}
             if version == 0 and not tables:
                 for statement in DDL: self.connection.execute(statement)
-                self.connection.execute('PRAGMA user_version=2')
+                self.connection.execute('PRAGMA user_version=3')
             else: self.migrate(version)
             self._schema()
             self.connection.execute('COMMIT')
@@ -280,6 +296,10 @@ class SQLiteStore:
             if self.connection.in_transaction: self.connection.execute('ROLLBACK')
             if isinstance(exc, ValueError): raise
             raise StorageError('Checkpoint read failed closed') from exc
+
+    def memory(self):
+        from .memory import CompanyMemory
+        return CompanyMemory(self)
 
     def close(self): self.connection.close()
     def __enter__(self): return self
