@@ -187,8 +187,10 @@ class Intake:
                 p=source.governance.periods.get(q['period_ids'][0])
                 if scope.get('period_start')!=p.start or scope.get('reporting_period')!=p.end:raise IntegrityError('Planning memory Period differs')
                 records.append(dict(id=r['record_id'],attribute=r['attribute'],value=copy.deepcopy(r['value']),status=r['status'],scope=dict(entities=[q['scope_id']],framework=q['framework']),effective_from=r['effective_from']['value'],effective_to=r['effective_to']['value'],provenance=[r['version_id']]))
-                references.append(dict(record_id=r['record_id'],version_id=r['version_id'],source_case=r['source']['case_id'],use='CONTEXT_ONLY'))
-        return self.prepare(objective,sources,records,scope,conversation),references
+                references.append(dict(record_id=r['record_id'],version_id=r['version_id'],source_case=r['source']['case_id'],attribute=r['attribute'],use='CONTEXT_ONLY'))
+        governed_scope=copy.deepcopy(scope)
+        governed_scope['memory_context_dependencies']=copy.deepcopy(references)
+        return self.prepare(objective,sources,records,governed_scope,conversation),references
 
     def prepare(self, objective, sources, company_records, scope, conversation=()):
         result=IntakeResult()

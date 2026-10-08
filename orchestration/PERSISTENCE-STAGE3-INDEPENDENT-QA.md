@@ -40,3 +40,26 @@ The independent fresh-process cross-Case test runs Cases A/B separately, persist
 ## Outstanding final reviewer gates
 
 Refresh detached worktree to the complete committed implementation; independently execute full seven-process positive generator and decode/hash-check its lossless checkpoint envelopes; run the 31-test independent suite on that same immutable tree; verify generated public output and current/historical qualification after correction and unresolved conflict. Only then may this register state final independent QA PASS.
+
+## Frozen checkpoint generator review
+
+At detached local checkpoint `e1d1c12`, reviewer independently executed the complete seven-process proof under seed19: PASS, all eight files byte-identical to committed checkpoint artifacts. Six nested lossless envelopes decoded with exact SHA256 checks; all three embedded native checkpoints restored CLOSED with 1, 2 and 1 immutable result versions respectively. This checkpoint's earlier 32-test run had 31 PASS plus a reviewer-only canonical PeriodRegistry construction error; sorting native registry rows fixed that fixture and the alternate valid-calendar planning refusal then independently PASS.
+
+A final artifact-linked finding was identified: fixture Decision Register `new_position=NetSuite` was hardcoded even for Xero context successors. Frozen production also allowed a proposed linked decision whose new position contradicted its context value.
+
+| ID | Severity | Original actual result | Generic remediation | Permanent regression | Current disposition |
+|---|---|---|---|---|---|
+| IQA13 | Medium | Frozen e1d1c12 capture accepted conflicting linked Decision new_position; FAIL retained in `decision-value-calendar-e1d1c12.log`. | Bind linked new position to exact context typed value; generate actual candidate positions and preserve known previous positions. | `test_linked_decision_new_position_cannot_contradict_context_value` | Fix in progress; independent corrected-tree rerun pending |
+
+Independent permanent test count now 33. Final corrected immutable checkpoint suite/proof remain outstanding.
+
+## Final temporal and inherited-context review
+
+| ID | Severity | Original actual result | Generic remediation | Permanent regression | Latest independent disposition |
+|---|---|---|---|---|---|
+| IQA14 | High | Frozen e1d1c12 accepted real registered relationship whose endpoints exclude selected memory Period; FAIL. | Bind selected target/endpoints and original native source Case role. | `test_registered_relationship_of_other_period_cannot_qualify_memory` | Targeted WIP PASS |
+| IQA15 | High | Frozen e1d1c12 accepted real registered Period belonging to another Scope calendar; FAIL. | Enforce Scope reporting calendar and original native source Case calendar. | `test_registered_period_of_wrong_scope_calendar_cannot_qualify_memory` | Targeted WIP PASS |
+| IQA16 | High | Case B inherited systems only from memory A, with sealed raw archive containing AP evidence but no system-policy; recapture as USER_STATED then DOCUMENTARY DOCUMENTED succeeded, laundering inherited knowledge into independent truth; FAIL. | Preserve exact memory dependencies in sealed native context and refuse derived observer recertification without independent extraction. | `test_memory_derived_context_cannot_launder_into_independent_documented_truth` | Targeted WIP PASS |
+| IQA17 | Preventive review | Read-only concern: consumed version could differ from sealed planning origin despite equal values. Guard landed before execution; no original FAIL claimed. | Exact planned record/version/sourceCase/use binding in publication and restoration. | `test_planning_memory_use_cannot_substitute_equal_value_wrong_provenance` | WIP PASS |
+
+Targeted IQA14/15/16 rerun: 3 PASS in20.276s. Planning provenance attack after preventive guard: PASS in10.189s. Original failures and rerun logs committed with this register. Independent permanent suite count is now **37**, including the separate real other-calendar planning boundary test. Final immutable complete suite/generator still required.

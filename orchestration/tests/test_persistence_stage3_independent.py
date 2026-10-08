@@ -133,7 +133,7 @@ class IndependentExtractedMemoryAttacks(unittest.TestCase):
         self.transition()
         calendar=FiscalCalendar('independent-other-fiscal','Different fiscal year',7,1,('Explicit reviewed alternate calendar',))
         period=Period.create(calendar.calendar_id,'2026-12-01','2026-12-31',2027,'DEC',provenance=('Explicit reviewed alternate Period',))
-        registry=copy.deepcopy(self.case.governance.periods.record());registry['calendars'].append(asdict(calendar));registry['periods'].append(dict(period.record(),status='OPEN'))
+        registry=copy.deepcopy(self.case.governance.periods.record());registry['calendars'].append(asdict(calendar));registry['periods'].append(dict(period.record(),status='OPEN'));registry['calendars'].sort(key=lambda row:row['calendar_id']);registry['periods'].sort(key=lambda row:row['period_id'])
         restored=PeriodRegistry.from_record(registry);self.assertEqual(restored.get(period.period_id).calendar_id,calendar.calendar_id)
         scope=copy.deepcopy(SCOPE);scope.update(calendar_id=calendar.calendar_id,reporting_calendar=calendar.calendar_id,period_id=period.period_id,period_registry=registry)
         planner=FixturePlanner(StructuredProposal(cl('Different fiscal review',status='USER_STATED'),cl('Context'),cl('REPORTING')))
@@ -166,6 +166,35 @@ class IndependentExtractedMemoryAttacks(unittest.TestCase):
         db=self.store.connection;wire=dumps(event);checksum=sha(wire);previous=db.execute('SELECT sha256 FROM memory_events WHERE sequence=2').fetchone()[0]
         db.execute('INSERT INTO memory_events VALUES(?,?,?,?,?,?)',(self.company,3,ident('memory-event',event),wire,checksum,previous));db.execute('UPDATE memory_heads SET sequence=3,sha256=?',(checksum,))
         with self.assertRaises(IntegrityError):self.memory.audit(self.company)
+    def test_planning_memory_use_cannot_substitute_equal_value_wrong_provenance(self):
+        from orchestration.tests.persistence_stage3_fixtures import build,capture,governance,LEARNED
+        old=self.transition()
+        inherited=build(objective='Case planned from exact original system memory',memory=dict(memory=self.memory,company_id=self.company,qualification_root=self.case.id,qualification_case=self.case.id,subjects=[('finance','systems')]))
+        self.store.save(inherited,self.company,[],0)
+        replacement=build(objective='Independent equal-value system evidence')
+        self.store.save(replacement,self.company,[],0);new=capture(self.store,replacement)
+        self.memory.transition(self.company,old['record_id'],governance(old,'RETRACTED'),expected_revision=self.memory.audit(self.company)['revision'],recorded_at=LEARNED)
+        new=self.memory.transition(self.company,new['record_id'],governance(new),expected_revision=self.memory.audit(self.company)['revision'],recorded_at=LEARNED)
+        self.assertEqual(old['value'],new['value']);self.assertNotEqual(old['record_id'],new['record_id'])
+        with self.assertRaises(IntegrityError):self.memory.consume_context(self.company,inherited.id,inherited.id,new['record_id'],new['version_id'],expected_revision=self.memory.audit(self.company)['revision'],recorded_at=LEARNED)
+    def test_memory_derived_context_cannot_launder_into_independent_documented_truth(self):
+        from orchestration.tests.persistence_stage3_fixtures import build,capture,governance,LEARNED
+        old=self.transition()
+        inherited=build(objective='Case inherits systems solely from qualified memory',memory=dict(memory=self.memory,company_id=self.company,qualification_root=self.case.id,qualification_case=self.case.id,subjects=[('finance','systems')]))
+        self.store.save(inherited,self.company,[],0)
+        # The new source archive contains AP evidence, no independent systems document.
+        import json
+        for bundle in inherited.governance.evidence_bundles.values():
+            self.assertNotIn('system-policy',[json.loads(raw)['id'] for raw in bundle['raw_sources']])
+        with self.assertRaises(IntegrityError):
+            copied=capture(self.store,inherited,assertion='USER_STATED')
+            self.memory.transition(self.company,copied['record_id'],governance(copied,kind='DOCUMENTARY'),expected_revision=self.memory.audit(self.company)['revision'],recorded_at=LEARNED)
+        self.memory.transition(self.company,old['record_id'],governance(old,'RETRACTED'),expected_revision=self.memory.audit(self.company)['revision'],recorded_at=LEARNED)
+        self.assertEqual(self.memory.retrieve(self.company,inherited.id,inherited.id,'finance','systems')['qualified'],[])
+    def test_linked_decision_new_position_cannot_contradict_context_value(self):
+        from orchestration.tests.persistence_stage3_fixtures import capture
+        decision=copy.deepcopy(self.record['decision']);decision['new_position']='Different unsupported position'
+        with self.assertRaises(IntegrityError):capture(self.store,self.case,subject='contradictory-decision',decision=decision)
     def test_candidate_cannot_assert_approved_decision_without_governance(self):
         from orchestration.tests.persistence_stage3_fixtures import capture
         decision=copy.deepcopy(self.record['decision']);decision['status']='approved'
@@ -283,5 +312,32 @@ class IndependentNativeSupportingCaseBoundary(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder,SQLiteStore(Path(folder)/'memory.db') as store:
             store.save(case,COMPANY,CONTEXT,0)
             with self.assertRaises(IntegrityError):store.memory().capture(COMPANY,case.id,case.id,candidate_index,category='reporting_profile',subject='reporting',assertion='USER_STATED',bundle_ids=list(e.evidence_bundles),result_versions=[foreign],dimensions=applicability(case,case.scope_id,[case.period_id]),effective_from=dict(value='2026-10-01',precision='exact'),effective_to=dict(value='2026-10-31',precision='exact'),learned_at=dict(value='2026-11-01',precision='exact'),expected_revision=0,material=True,reusable=True)
+
+    def test_registered_relationship_of_other_period_cannot_qualify_memory(self):
+        from orchestration.tests.persistence_stage2_fixtures import baseline,COMPANY,CONTEXT
+        from orchestration.runtime import CAO
+        f=baseline();case=f['case'];e=case.governance
+        e.context.update(entity=case.scope_id,framework=e.cases.scopes.get(case.scope_id).framework);CAO()._observe(case,e.context,{})
+        relation=next(r for r in e.periods.record()['relationships'] if case.period_id not in {r['source_period'],r['target_period']})
+        candidate_index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='framework')
+        with tempfile.TemporaryDirectory() as folder,SQLiteStore(Path(folder)/'memory.db') as store:
+            store.save(case,COMPANY,CONTEXT,0)
+            with self.assertRaises(IntegrityError):
+                dims=applicability(case,case.scope_id,[case.period_id],relation['id'])
+                store.memory().capture(COMPANY,case.id,case.id,candidate_index,category='reporting_profile',subject='reporting',assertion='USER_STATED',bundle_ids=list(e.evidence_bundles),result_versions=[],dimensions=dims,effective_from=dict(value='2026-10-01',precision='exact'),effective_to=dict(value='2026-10-31',precision='exact'),learned_at=dict(value='2026-11-01',precision='exact'),expected_revision=0,material=True,reusable=True)
+
+    def test_registered_period_of_wrong_scope_calendar_cannot_qualify_memory(self):
+        from orchestration.tests.persistence_stage2_fixtures import baseline,COMPANY,CONTEXT
+        from orchestration.runtime import CAO
+        f=baseline();case=f['case'];e=case.governance;scope=e.cases.scopes.get(case.scope_id)
+        self.assertTrue(scope.reporting_calendar)
+        wrong=next(p for p in e.periods.periods.values() if p.calendar_id!=scope.reporting_calendar)
+        e.context.update(entity=case.scope_id,framework=scope.framework);CAO()._observe(case,e.context,{})
+        candidate_index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='framework')
+        with tempfile.TemporaryDirectory() as folder,SQLiteStore(Path(folder)/'memory.db') as store:
+            store.save(case,COMPANY,CONTEXT,0)
+            with self.assertRaises(IntegrityError):
+                dims=applicability(case,case.scope_id,[wrong.period_id])
+                store.memory().capture(COMPANY,case.id,case.id,candidate_index,category='reporting_profile',subject='reporting',assertion='USER_STATED',bundle_ids=list(e.evidence_bundles),result_versions=[],dimensions=dims,effective_from=dict(value=wrong.start,precision='exact'),effective_to=dict(value=wrong.end,precision='exact'),learned_at=dict(value='2026-11-01',precision='exact'),expected_revision=0,material=True,reusable=True)
 
 if __name__=='__main__':unittest.main()

@@ -33,6 +33,10 @@ Exact registered Scope, entity, calendar, Period IDs, framework, jurisdiction,
 currency and relationship IDs qualify. Group membership conveys no implicit policy
 inheritance; explicit broad entity coverage is not yet supported. OPENING and
 COMPARATIVE identities remain separate. Equal values never transfer provenance.
+The source Case calendar and declared Scope reporting calendar must agree with
+selected registered Periods. A relationship must bind its exact source Case
+Period and selected target Period; merely supplying an existing relationship ID
+does not establish the accounting role.
 
 Overlapping incompatible candidates preserve both alternatives and block only the
 affected subject/attribute. Confidence/newness never resolves conflict. Consecutive
@@ -47,6 +51,7 @@ and new position, decision date and implications. Capture cannot assert an appro
 or implemented decision. `decide` records explicit governed documented/approved/
 implemented/reversed/superseded history separately from Company Context status.
 An implemented process decision supplies no accounting-standard authority.
+The linked decision's new position must equal its Company Context typed value.
 
 Five stores are projections over one ledger: Company Context records; exact native
 Case Library references; Artifact Library references to sealed bundles/checkpoints;
@@ -63,6 +68,10 @@ binds exact memory version to exact consuming Case revision/hash, source revisio
 hash and CONTEXT_ONLY use. Ledger restoration validates as-of-use governance,
 provenance, currentness, conflicts and temporal applicability. Later invalidation
 preserves historical consumption and current retrieval refuses stale support.
+Exact inherited context references also travel through the sealed native context.
+An observer cannot recapture an inherited attribute as independent USER_STATED
+truth using unrelated evidence; a new candidate requires independent extracted
+source evidence. Context reuse therefore cannot launder its original dependency.
 No actual native execution dependency is manufactured by contextual reuse; any
 financial input still needs the existing native reviewed source/owner/dependency
 boundary. Thus context invalidation does not indiscriminately rerun accounting.

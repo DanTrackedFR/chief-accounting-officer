@@ -163,6 +163,8 @@ class CompanyMemoryTests(unittest.TestCase):
             r=self.m.decide(COMPANY,r['record_id'],decision,g,expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
         self.assertEqual(self.m.audit(COMPANY)['decision_register'][0]['decision']['status'],'reversed')
         self.assertEqual(len([e for e in self.m.history(COMPANY,r['record_id']) if e['kind']=='DECISION']),3)
+    def test_decision_new_position_must_match_context(self):
+        d=copy.deepcopy(self.r['decision']);d['new_position']='Invented alternative';self.bad_capture(decision=d)
     def test_candidate_cannot_approve_decision(self):
         d=copy.deepcopy(self.r['decision']);d['status']='approved';self.bad_capture(decision=d)
     def test_qualified_intake_context_suppresses_question(self):

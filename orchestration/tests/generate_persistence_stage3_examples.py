@@ -40,7 +40,7 @@ def phase(path,action):
             s.save(b,'company:isolated',[],0);assert not m.retrieve('company:isolated',b.id,b.id,'finance','systems')['qualified']
             return dict(root=b.id,retrieval=result,use=use,known_system=b.governance.context['systems'],questions_suppressed=True,public=CAO().public(b),journal_fingerprints=[v.result_fingerprint for v in b.governance.versions.versions.values()],checkpoint=envelope(snapshot(b,COMPANY,[])))
         if action=='conflict':
-            c=build('Contradictory systems source',value='Xero');s.save(c,COMPANY,[],0);r=capture(s,c,supersedes=[original['record_id']])
+            c=build('Contradictory systems source',value='Xero');s.save(c,COMPANY,[],0);r=capture(s,c,supersedes=[original['record_id']],decision=dict(previous_position=original['value'],new_position='Xero',reason='Reviewed finance-system change replaces prior NetSuite position',decision_date=UNKNOWN,status='proposed',implications=['Recurring close system context']))
             refused=m.retrieve(COMPANY,root,root,'finance','systems');assert refused['conflicts'] and not refused['qualified']
             try:m.transition(COMPANY,r['record_id'],governance(r),expected_revision=m.audit(COMPANY)['revision'],recorded_at=LEARNED)
             except IntegrityError:pass

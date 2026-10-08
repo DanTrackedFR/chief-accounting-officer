@@ -24,6 +24,7 @@ def build(objective='Document our recurring close control',value='NetSuite',sema
     if memory is None:prepared=intake.prepare(objective,raws,[],scope)
     else:
         p.context_candidates={}
+        raws=[r for r in raws if r.id!='system-policy']
         p.missing_facts=[cl(dict(attribute='systems',owner='',kind='confirmation'),status='UNRESOLVED',confidence=0)]
         intake=Intake(FixturePlanner(p))
         prepared,refs=intake.prepare_with_memory(objective,raws,[],scope,**memory)
@@ -34,7 +35,9 @@ def build(objective='Document our recurring close control',value='NetSuite',sema
     intake.execute(prepared,pack);return prepared.case
 
 def capture(store,case,company=COMPANY,**overrides):
-    m=store.memory();options=dict(category='systems_data',subject='finance',assertion='EXTRACTED',bundle_ids=sorted(case.governance.evidence_bundles),result_versions=sorted(k for k in case.governance.versions.versions if case.governance.versions.states[k]=='CURRENT'),dimensions=applicability(case,case.scope_id,[case.period_id]),effective_from=FROM,effective_to=TO,learned_at=LEARNED,expected_revision=m.audit(company)['revision'],material=True,reusable=True,decision=dict(previous_position=None,new_position='NetSuite',reason='Recurring controlled finance-system documentation',decision_date=UNKNOWN,status='proposed',implications=['Recurring close context']))
+    index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='systems')
+    value=case.memory_candidates[index]['value']
+    m=store.memory();options=dict(category='systems_data',subject='finance',assertion='EXTRACTED',bundle_ids=sorted(case.governance.evidence_bundles),result_versions=sorted(k for k in case.governance.versions.versions if case.governance.versions.states[k]=='CURRENT'),dimensions=applicability(case,case.scope_id,[case.period_id]),effective_from=FROM,effective_to=TO,learned_at=LEARNED,expected_revision=m.audit(company)['revision'],material=True,reusable=True,decision=dict(previous_position=None,new_position=value,reason='Recurring controlled finance-system documentation',decision_date=UNKNOWN,status='proposed',implications=['Recurring close context']))
     options.update(overrides)
     index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='systems')
     return m.capture(company,case.id,case.id,index,**options)

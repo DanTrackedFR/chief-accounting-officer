@@ -40,8 +40,11 @@ def temporal(value):
 def applicability(case, scope_id, period_ids, relationship_id=None):
     e=case.governance;s=e.cases.scopes.get(scope_id)
     ps=[e.periods.get(p) for p in period_ids]
+    if s.reporting_calendar is not None and any(p.calendar_id!=s.reporting_calendar for p in ps):raise IntegrityError('Scope reporting calendar differs')
     if not ps or len({p.calendar_id for p in ps})!=1: raise IntegrityError('Exact single-calendar applicability required')
-    if relationship_id is not None and relationship_id not in {r['id'] for r in e.periods.record()['relationships']}: raise IntegrityError('Unknown temporal relationship')
+    if relationship_id is not None:
+        relation=next((r for r in e.periods.record()['relationships'] if r['id']==relationship_id),None)
+        if relation is None or relation['target_period'] not in period_ids or any(p not in {relation['source_period'],relation['target_period']} for p in period_ids):raise IntegrityError('Unrelated temporal relationship')
     return dict(scope_id=s.scope_id,legal_entity_id=s.legal_entity_id,scope_type=s.scope_type,calendar_id=ps[0].calendar_id,
                 period_ids=sorted(set(period_ids)),framework=s.framework,jurisdiction=s.jurisdiction,
                 currency=s.functional_currency or s.presentation_currency,relationship_id=relationship_id)
@@ -105,7 +108,8 @@ class CompanyMemory:
                 u=event['value']
                 if receipt['root_case']!=old['source']['root_case'] or receipt['revision']!=u.get('source_revision') or receipt['sha256']!=u.get('source_sha256'):raise IntegrityError('Consumed source receipt differs')
                 if set(u)!={'root_case','case_id','case_revision','case_sha256','memory_version','use','source_revision','source_sha256'} or u['use']!='CONTEXT_ONLY' or old['version_id']!=u['memory_version'] or old['status'] not in {'CONFIRMED','DOCUMENTED','APPROVED'}:raise IntegrityError('Invalid historical context consumption')
-                consumer,_,consumer_checksum,_=self._native(company,u['root_case'],u['case_revision']);c=consumer.governance.cases.get(u['case_id'])
+                consumer,consumer_doc,consumer_checksum,_=self._native(company,u['root_case'],u['case_revision']);c=consumer.governance.cases.get(u['case_id'])
+                self._context_binding(consumer_doc,old)
                 query=applicability(consumer,c.scope_id,[c.period_id],old['applicability']['relationship_id'])
                 if consumer_checksum!=u['case_sha256'] or any(query[k]!=old['applicability'][k] for k in DIMENSIONS-{'period_ids'}) or c.period_id not in old['applicability']['period_ids']:raise IntegrityError('Historical consuming Case binding differs')
                 source,_,source_sha,_=self._native(company,old['source']['root_case'],u['source_revision'])
@@ -151,6 +155,7 @@ class CompanyMemory:
             d=r['decision']
             if set(d)!={'previous_position','new_position','reason','decision_date','status','implications'} or d['status'] not in {'proposed','documented','approved','implemented','reversed','superseded'}: raise IntegrityError('Invalid Decision Register')
             text(d['reason']);temporal(d['decision_date'])
+            if dumps(d['new_position'])!=dumps(r['value']):raise IntegrityError('Decision new position contradicts linked Company Context')
         dumps(r)
 
     def _qualification(self, r):
@@ -160,6 +165,11 @@ class CompanyMemory:
         case,latest,_,_=self._native(company,src['root_case'])
         native=original.governance.cases.get(src['case_id'])
         if not any(dumps(c)==dumps(r['original_candidate']) for c in native.memory_candidates): raise IntegrityError('Candidate not originally observed')
+        if original.governance.periods.get(native.period_id).calendar_id!=r['applicability']['calendar_id']:raise IntegrityError('Original Case fiscal calendar differs')
+        if r['applicability']['relationship_id'] is not None:
+            relation=next((row for row in original.governance.periods.record()['relationships'] if row['id']==r['applicability']['relationship_id']),None)
+            if relation is None:raise IntegrityError('Unknown memory accounting temporal relationship')
+            if native.period_id!=relation['source_period']:raise IntegrityError('Memory original Case has different accounting temporal role')
         if r['applicability']!=applicability(original,r['applicability']['scope_id'],r['applicability']['period_ids'],r['applicability']['relationship_id']): raise IntegrityError('Substituted applicability')
         bundles=latest['session'].get('evidence_bundles',{})
         if not src['bundle_ids'] or any(k not in bundles or bundles[k]!=doc['session'].get('evidence_bundles',{}).get(k) for k in src['bundle_ids']): raise IntegrityError('Missing/changed sealed evidence')
@@ -168,6 +178,8 @@ class CompanyMemory:
         candidate=r['original_candidate'];attribute=r['attribute']
         observed=(candidate.get('source_refs')==['supplied-governed-context'] and attribute in doc['session']['context'] and doc['session']['context'][attribute]==r['value'])
         extracted=any(candidate in bundles[k]['fields']['memory_candidates'] for k in src['bundle_ids'])
+        if observed and any(ref.get('attribute')==attribute for ref in doc['session']['context'].get('memory_context_dependencies',[])):
+            raise IntegrityError('Inherited memory context requires independent source evidence before recapture')
         if not observed and not extracted: raise IntegrityError('Candidate evidence linkage unsupported')
         semantic=candidate.get('semantic_status','USER_STATED')
         allowed={'EXTRACTED':{'EXTRACTED','SOURCE_FACT'},'USER_STATED':{'USER_STATED'},'INFERRED':{'INFERRED'},'UNRESOLVED':{'DISPUTED'}}
@@ -376,6 +388,12 @@ class CompanyMemory:
     def retrieve(self,company,root,case_id,subject,attribute,*,relationship_id=None,historical=False):
         return self._transaction(False,lambda:self._retrieve(company,root,case_id,subject,attribute,relationship_id,historical))
 
+    @staticmethod
+    def _context_binding(doc,record):
+        refs=[ref for ref in doc['session']['context'].get('memory_context_dependencies',[]) if ref.get('attribute')==record['attribute']]
+        if refs and not any(ref.get('record_id')==record['record_id'] and ref.get('version_id')==record['version_id'] and ref.get('source_case')==record['source']['case_id'] and ref.get('use')=='CONTEXT_ONLY' for ref in refs):
+            raise IntegrityError('Consumed memory differs from sealed planning dependency')
+
     def consume_context(self,company,root,case_id,record_id,version_id,*,expected_revision,recorded_at):
         def write():
             records,_,_,_,_=self._ledger(company);r=records.get(record_id)
@@ -383,6 +401,7 @@ class CompanyMemory:
             result=self._retrieve(company,root,case_id,r['subject'],r['attribute'],r['applicability']['relationship_id'])
             if not any(v['record']['version_id']==version_id for v in result['qualified']):raise IntegrityError('Memory not qualified for this Case')
             _,doc,checksum,revision=self._native(company,root)
+            self._context_binding(doc,r)
             source,_,source_sha,source_revision=self._native(company,r['source']['root_case'])
             value=dict(root_case=root,case_id=case_id,case_revision=revision,case_sha256=checksum,memory_version=version_id,use='CONTEXT_ONLY',source_revision=source_revision,source_sha256=source_sha)
             self._append(company,'USE',record_id,version_id,value,'Exact qualified context consumption; no native input authority',recorded_at,expected_revision)
