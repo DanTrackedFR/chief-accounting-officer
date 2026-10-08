@@ -1,0 +1,152 @@
+{
+  "authority_invariants": {
+    "canonical_topics": 157,
+    "primary_capabilities": 347,
+    "standards_claims": 1598
+  },
+  "branch": "persistence/durable-rework-recovery",
+  "checkpoint_contract": 1,
+  "deterministic_artifacts": {
+    "hash_seeds": [
+      19,
+      941
+    ],
+    "result": "RUNNING"
+  },
+  "development_failed_runs": [
+    {
+      "failures": 3,
+      "remediation": "Actual missing-rework-history defect generically rejected; legal-layer fixture now selects an actual legal journal; stale release test executes prepare rather than asserting helper raises.",
+      "run": "initial 43 authored methods, 723.004s"
+    },
+    {
+      "failures": 3,
+      "remediation": "Run imported superseded edits; final corrected 100-method run PASS91.349s.",
+      "run": "superseded history targeted 100 methods, 99.788s"
+    },
+    {
+      "remediation": "Worker module explicit rather than __main__ entrypoint.",
+      "run": "artifact first launch"
+    },
+    {
+      "remediation": "Mixed parent/worker format refused; frozen final generator rerun in distinct processes.",
+      "run": "artifact generation during operation-format edits"
+    },
+    {
+      "remediation": "Predates final authored/state corrections; final discovery separately launched on intended production tree.",
+      "result": "RUNNING",
+      "run": "superseded full discovery"
+    }
+  ],
+  "distinct_tests": 2841,
+  "exact_head_ci": "Final immutable-head run links and SHA belong to PR39 metadata after freeze; no self-referential CI assertion.",
+  "future_stages_implemented": false,
+  "independent_qa": {
+    "author_discovered_history_defect": 1,
+    "report": "PERSISTENCE-STAGE2-INDEPENDENT-QA.md",
+    "result": "PASS",
+    "reviewer_methods": 21,
+    "separate_context_and_worktree": true,
+    "substantive_independent_findings": 3,
+    "unresolved": 0
+  },
+  "limitations": [
+    "Trusted local runtime; synthetic review, no authenticated human approval or encryption",
+    "Pure native deterministic units only; no side-effectful-owner replay authorization",
+    "Exactly-once internal qualified selection, no external ERP posting connector or posting guarantee",
+    "Uncertain external outcomes remain blocked for explicit reconciliation",
+    "Full native validation can be expensive"
+  ],
+  "pull_request": 39,
+  "repository": "DanTrackedFR/chief-accounting-officer",
+  "reruns_and_subtests_not_added": true,
+  "schema_version": 2,
+  "stage": 2,
+  "stage1_methods_already_in_orchestration": 98,
+  "stage2_methods_already_in_orchestration": {
+    "authored": 47,
+    "deterministic_artifact": 1,
+    "independent": 21,
+    "total": 69
+  },
+  "starting_live_main": "d202e910e17de559d908df478939ce10042e41db",
+  "status": "RELEASE REGRESSION IN PROGRESS",
+  "suites": [
+    {
+      "category": "orchestration",
+      "command": "python -m unittest discover -s orchestration/tests -p 'test_*.py'",
+      "methods": 1190,
+      "result": "RUNNING"
+    },
+    {
+      "category": "production skills",
+      "command": "python -m unittest discover -s skills/tests -p 'test_*.py'",
+      "methods": 1180,
+      "result": "PASS"
+    },
+    {
+      "category": "lease vertical",
+      "command": "python -m unittest discover -s skills/lease-accounting/tests -p 'test_*.py'",
+      "methods": 17,
+      "result": "PASS"
+    },
+    {
+      "category": "repository canonical/public",
+      "command": "python -m unittest discover -s tests -p 'test_*.py'",
+      "methods": 53,
+      "result": "PASS"
+    },
+    {
+      "category": "income tax",
+      "command": "python knowledge/income-taxes/test_supplement.py",
+      "methods": 10,
+      "result": "PASS"
+    },
+    {
+      "category": "agriculture",
+      "command": "python knowledge/agriculture/test_supplement.py",
+      "methods": 12,
+      "result": "PASS"
+    },
+    {
+      "category": "agriculture independent",
+      "command": "python knowledge/agriculture/test_independent_claim_qa.py",
+      "methods": 71,
+      "result": "PASS"
+    },
+    {
+      "category": "insurance",
+      "command": "python -m unittest discover -s knowledge/insurance-contracts -p 'test*.py'",
+      "methods": 35,
+      "result": "PASS"
+    },
+    {
+      "category": "derivatives",
+      "command": "python -m unittest discover -s knowledge/derivatives-hedge -p 'test*.py'",
+      "methods": 4,
+      "result": "PASS"
+    },
+    {
+      "category": "derivatives independent",
+      "command": "python knowledge/derivatives-hedge/independent_review_tests.py",
+      "methods": 7,
+      "result": "PASS"
+    },
+    {
+      "category": "inventory",
+      "command": "python -m unittest discover -s knowledge/inventory-cost -p 'test*.py'",
+      "methods": 262,
+      "result": "PASS"
+    }
+  ],
+  "targeted_reruns_not_added": {
+    "binding_2": "PASS",
+    "history_and_stage1_100": "PASS",
+    "migration_and_prepare_4": "PASS",
+    "outcome_2": "PASS",
+    "roadmap_diagnostic_32": "PASS",
+    "roadmap_insurance_35": "PASS",
+    "stage1_59": "PASS"
+  },
+  "workstream": "Durable Case + Company Accounting Memory"
+}

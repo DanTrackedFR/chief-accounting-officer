@@ -109,7 +109,8 @@ binding back to its operation. Plain checkpoint reads validate marker population
 event transitions and committed outcomes against native history; operation deletion
 or contradictory returned plans/selections reject. Prepared selection hashes bind
 the already-qualified native allocation into immutable operation identity. A registered transactional migration from
-exact schema1 creates only those tables; original checkpoint/object payloads,
+exact schema1 adds those lifecycle tables and the nullable checkpoint binding;
+original checkpoint/object payloads,
 hashes and identities are untouched. Unknown/mixed schemas reject. Initialization,
 migration and outcome failures roll back. Existing expected-revision semantics
 remain authoritative.
