@@ -93,10 +93,12 @@ def read_operation(store, company_id, case_id, key):
     company, root, base, prepared, payload, checksum = row
     if sha(payload) != checksum: raise IntegrityError('Corrupt durable operation')
     doc = loads(payload)
-    if set(doc) != {'company_id', 'case_id', 'base_revision', 'base_sha256', 'prepared_sha256', 'intent'} or (doc['company_id'], doc['case_id'], doc['base_revision']) != (company, root, base):
+    if set(doc) != {'company_id', 'case_id', 'base_revision', 'base_sha256', 'prepared_sha256', 'intent', 'selection_sha256'} or (doc['company_id'], doc['case_id'], doc['base_revision']) != (company, root, base):
         raise IntegrityError('Wrong operation identity contract')
     if type(base) is not int or base < 1 or prepared != base + 1 or identity('operation', doc) != key:
         raise IntegrityError('Operation semantics identity differs')
+    bindings = store.connection.execute('SELECT revision FROM checkpoints WHERE company_id=? AND case_id=? AND operation_id=? ORDER BY revision', (company, root, key)).fetchall()
+    if not bindings or bindings[0][0] != prepared or len(bindings) > 2: raise IntegrityError('Operation checkpoint reverse binding differs')
     _, base_sha = store._read(company, root, base)
     prepared_doc, prepared_sha = store._read(company, root, prepared)
     if (base_sha, prepared_sha) != (doc['base_sha256'], doc['prepared_sha256']): raise IntegrityError('Operation checkpoint binding differs')
@@ -123,13 +125,41 @@ def read_operation(store, company_id, case_id, key):
             result_doc, result_sha = store._read(company, root, value['revision'])
             if result_sha != value['checkpoint_sha256']: raise IntegrityError('Committed outcome checkpoint differs')
             restore(result_doc, company, root)
+            validate_outcome(doc, prepared_doc, result_doc, value['result'])
         if status == 'UNCERTAIN' and (doc['intent']['kind'] != 'UNCERTAIN_EXTERNAL' or value != {'requires': 'explicit external reconciliation; never automatic repost'}):
             raise IntegrityError('Uncertain external marker differs')
         if status == 'BLOCKED' and set(value) != {'error_type', 'requires'}: raise IntegrityError('Invalid blocked operation')
         if status == 'ABORTED' and (set(value) != {'reason'} or not value['reason']): raise IntegrityError('Missing safe abandonment reason')
         events.append(dict(status=status, value=value)); state = status
     if state is None: raise IntegrityError('Operation has no durable preparation')
+    if bindings != ([(prepared,), (prepared+1,)] if state == 'COMMITTED' else [(prepared,)]): raise IntegrityError('Operation outcome/head binding differs')
     return dict(operation_id=key, prepared_revision=prepared, intent=doc['intent'], status=state, events=events)
+
+
+def validate_outcome(operation, prepared, current, result):
+    """Cross-check commit receipts against native history; execute no accounting.
+
+    Internal selection was already qualified at preparation; its digest is bound
+    into the immutable operation identity, so reads need not allocate it again.
+    """
+    intent=operation['intent'];kind=intent['kind']
+    if kind=='CORRECT':
+        key=intent['node_id'];version=current['active'][key]
+        if not current['rework_history'] or result!=current['rework_history'][-1] or result['new_version']!=version or result['old_version']!=prepared['active'][key] or current['source_snapshots'][version]!=intent['source']:
+            raise IntegrityError('Correction outcome differs from native version/invalidation history')
+    elif kind=='REWORK':
+        expected=[dict(node=n,old_version=prepared['active'][n],new_version=current['active'][n]) for n in intent['plan']['execution_order']]
+        if result!=expected or any(current['versions'][row['new_version']]['predecessor']!=row['old_version'] for row in expected):
+            raise IntegrityError('Selective rework outcome differs from exact native version history')
+    elif kind in ('REOPEN','CLOSE_PERIOD'):
+        history=current['periods']['history'];old=prepared['periods']['history']
+        if len(history)!=len(old)+1 or history[:-1]!=old or result!=history[-1] or result['period_id']!=intent['period_id'] or result['event']!=('REOPENED' if kind=='REOPEN' else 'CLOSED'):
+            raise IntegrityError('Period operation outcome differs from native governance history')
+    elif kind=='SELECT_JOURNALS':
+        if operation['selection_sha256'] is None or sha(dumps(result))!=operation['selection_sha256']:
+            raise IntegrityError('Journal selection outcome differs from prepared native qualification')
+    else:raise IntegrityError('Uncertain external operation cannot claim committed economics')
+    if kind!='SELECT_JOURNALS' and operation['selection_sha256'] is not None:raise IntegrityError('Nonselection operation has journal authority')
 
 
 def reject_pending(store, company_id, case_id, except_id=None):
@@ -164,7 +194,11 @@ def prepare(store, case, company_id, company_context, expected_revision, intent)
                 stripped['case_private'][key]['_source_qualification_refs'] = base['case_private'][key]['_source_qualification_refs']
             else: stripped['case_private'][key].pop('_source_qualification_refs', None)
         if dumps(stripped) != dumps(base): raise IntegrityError('Preparation may retain evidence only, not uncommitted accounting')
-        operation = dict(company_id=company_id, case_id=case.id, base_revision=expected_revision, base_sha256=base_sha, prepared_sha256=sha(dumps(doc)), intent=intent)
+        selection_hash = None
+        if intent['kind'] == 'SELECT_JOURNALS':
+            selected, allocation = case.governance.current_journals(intent['context'], intent['events'])
+            selection_hash = sha(dumps(dict(selected=selected, allocation=allocation, boundary='internal selection only; no external posting')))
+        operation = dict(company_id=company_id, case_id=case.id, base_revision=expected_revision, base_sha256=base_sha, prepared_sha256=sha(dumps(doc)), intent=intent, selection_sha256=selection_hash)
         key = identity('operation', operation)
         if store.connection.execute('SELECT 1 FROM operations WHERE operation_id=?', (key,)).fetchone():
             read_operation(store, company_id, case.id, key); return key
@@ -173,7 +207,7 @@ def prepare(store, case, company_id, company_context, expected_revision, intent)
             selected = read_operation(store, company_id, case.id, intent['selection_operation'])
             if selected['status'] != 'COMMITTED' or selected['intent']['kind'] != 'SELECT_JOURNALS' or selected['events'][-1]['value']['revision'] != expected_revision:
                 raise IntegrityError('Uncertain action requires exact latest committed internal selection')
-        revision = store._save_doc(doc, expected_revision)
+        revision = store._save_doc(doc, expected_revision, key)
         payload = dumps(operation)
         store.connection.execute('INSERT INTO operations VALUES(?,?,?,?,?,?,?)', (company_id, case.id, key, expected_revision, revision, payload, sha(payload)))
         _event(store, key, 'PREPARED', {})
@@ -236,7 +270,7 @@ def recover(store, company_id, case_id, key):
         result = execute_native(case, actual['intent'])
         _phase('after_native', store, key)
         doc = snapshot(case, company_id, prepared_doc['company_context'])
-        revision = store._save_doc(doc, actual['prepared_revision'])
+        revision = store._save_doc(doc, actual['prepared_revision'], key)
         _event(store, key, 'COMMITTED', dict(revision=revision, checkpoint_sha256=sha(dumps(doc)), result=result))
         _phase('outcome_transaction', store, key)
         return read_operation(store, company_id, case_id, key)

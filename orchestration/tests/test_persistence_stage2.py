@@ -210,14 +210,44 @@ class DurableLifecycleTests(unittest.TestCase):
         with self.assertRaises(RecoveryBlocked):self.store.recover(COMPANY,self.case_id,key)
         c,rev,ctx=self.store.load(COMPANY,self.case_id);self.assertEqual(self.store.save(c,COMPANY,ctx,rev),3)
 
+    def test_interrupted_reopening_has_no_partial_authorization(self):
+        n=next(n for n in self.case.graph.nodes.values() if n.logical_id=='adjacent-closing');period=n.period_id
+        key=self.store.prepare(self.case,COMPANY,self.ctx,1,dict(kind='CLOSE_PERIOD',period_id=period));c,r=self.store.recover(COMPANY,self.case_id,key)
+        key=self.store.prepare(c,COMPANY,self.ctx,r['head_revision'],reopening(c,period))
+        def fault(name,*args):
+            if name=='after_native':raise RuntimeError('after reopening before checkpoint')
+        with patch('orchestration.persistence.recovery._phase',side_effect=fault):
+            with self.assertRaises(RuntimeError):self.store.recover(COMPANY,self.case_id,key)
+        c,_,_=self.store.load(COMPANY,self.case_id);self.assertEqual(c.governance.periods.status[period],'CLOSED')
+        c,r=self.store.recover(COMPANY,self.case_id,key);self.assertEqual(c.governance.periods.status[period],'REOPENED')
+    def test_interrupted_journal_selection_replays_same_inventory(self):
+        key=self.store.prepare(self.case,COMPANY,self.ctx,1,journal_intent(self.case))
+        def fault(name,*args):
+            if name=='after_native':raise RuntimeError('selected in memory only')
+        with patch('orchestration.persistence.recovery._phase',side_effect=fault):
+            with self.assertRaises(RuntimeError):self.store.recover(COMPANY,self.case_id,key)
+        self.assertEqual(self.store.load(COMPANY,self.case_id)[1],2)
+        c,r=self.store.recover(COMPANY,self.case_id,key)
+        self.assertEqual(len(r['events'][-1]['value']['result']['selected']),8)
+    def test_old_committed_outcome_is_explicitly_historical(self):
+        key=self.store.prepare(self.case,COMPANY,self.ctx,1,journal_intent(self.case));c,r=self.store.recover(COMPANY,self.case_id,key)
+        self.store.save(c,COMPANY,self.ctx,r['head_revision'])
+        c,r=self.store.recover(COMPANY,self.case_id,key);self.assertFalse(r['outcome_current']);self.assertEqual(r['head_revision'],4)
+    def test_period_history_cannot_be_erased_by_new_revision(self):
+        n=next(n for n in self.case.graph.nodes.values() if n.logical_id=='adjacent-closing');period=n.period_id
+        key=self.store.prepare(self.case,COMPANY,self.ctx,1,dict(kind='CLOSE_PERIOD',period_id=period));c,r=self.store.recover(COMPANY,self.case_id,key)
+        key=self.store.prepare(c,COMPANY,self.ctx,r['head_revision'],reopening(c,period));c,r=self.store.recover(COMPANY,self.case_id,key)
+        c.governance.periods.history=[];c.governance.periods.reopenings=[];c.governance.periods.status[period]='OPEN'
+        with self.assertRaises(IntegrityError):self.store.save(c,COMPANY,self.ctx,r['head_revision'])
+
 
 class SchemaMigrationTests(unittest.TestCase):
     def test_schema1_migration_preserves_original_bytes(self):
         with tempfile.TemporaryDirectory() as p:
             path=Path(p)/'v1.db';f=baseline()
-            with SQLiteStore(path) as s:s.save(f['case'],COMPANY,CONTEXT,0);before=s.connection.execute('SELECT * FROM checkpoints').fetchall();s.connection.execute('DROP TABLE operation_events');s.connection.execute('DROP TABLE operations');s.connection.execute('PRAGMA user_version=1')
+            with SQLiteStore(path) as s:s.save(f['case'],COMPANY,CONTEXT,0);before=s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall();s.connection.execute('DROP TABLE operation_events');s.connection.execute('ALTER TABLE checkpoints DROP COLUMN operation_id');s.connection.execute('DROP TABLE operations');s.connection.execute('PRAGMA user_version=1')
             with SQLiteStore(path) as s:
-                self.assertEqual(s.connection.execute('PRAGMA user_version').fetchone()[0],2);self.assertEqual(before,s.connection.execute('SELECT * FROM checkpoints').fetchall());self.assertEqual(s.load(COMPANY,f['case'].id)[1],1)
+                self.assertEqual(s.connection.execute('PRAGMA user_version').fetchone()[0],2);self.assertEqual(before,s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall());self.assertEqual(s.load(COMPANY,f['case'].id)[1],1)
     def test_migration_failure_rolls_back(self):
         import orchestration.persistence.store as module
         with tempfile.TemporaryDirectory() as p:

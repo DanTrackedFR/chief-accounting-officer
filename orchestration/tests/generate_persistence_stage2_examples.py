@@ -25,7 +25,7 @@ def worker(path, action):
             intent=correction_intent(case);key=store.prepare(case,COMPANY,context,revision,intent)
             case,record=store.recover(COMPANY,case_id,key)
             return dict(checkpoint=snapshot(case,COMPANY,context),operation=record)
-        if action=='interrupt':
+        if action in ('interrupt','rework'):
             row=store.connection.execute('SELECT operation_id FROM operations WHERE company_id=? ORDER BY prepared_revision DESC',(COMPANY,)).fetchone()
             plan=store.operation(COMPANY,case_id,row[0])['events'][-1]['value']['result']
             intent=rework_intent(case,plan);key=store.prepare(case,COMPANY,context,revision,intent)
@@ -35,6 +35,9 @@ def worker(path, action):
                 if name=='after_native':
                     import os
                     os._exit(73)
+            if action=='rework':
+                case,record=store.recover(COMPANY,case_id,key)
+                return dict(operation=record,checkpoint=snapshot(case,COMPANY,context),public=CAO().public(case))
             with patch('orchestration.persistence.recovery._phase',side_effect=die):store.recover(COMPANY,case_id,key)
             raise AssertionError('Controlled death did not occur')
         if action=='resume':
@@ -53,6 +56,11 @@ def worker(path, action):
                 case,record=store.recover(COMPANY,case_id,key)
             if before!=dumps(snapshot(case,COMPANY,context)):raise AssertionError('Committed repeat changed governed state')
             return dict(operation=record,public=CAO().public(case),checkpoint=snapshot(case,COMPANY,context),no_repeat_execution=True)
+        if action=='reclose':
+            period=attach(case)['nodes']['adjacent-closing'].period_id
+            key=store.prepare(case,COMPANY,context,revision,dict(kind='CLOSE_PERIOD',period_id=period))
+            case,record=store.recover(COMPANY,case_id,key)
+            return dict(operation=record,checkpoint=snapshot(case,COMPANY,context),public=CAO().public(case))
         if action=='periods':
             f=attach(case);period=f['nodes']['adjacent-closing'].period_id
             key=store.prepare(case,COMPANY,context,revision,dict(kind='CLOSE_PERIOD',period_id=period));case,r=store.recover(COMPANY,case_id,key)
@@ -77,7 +85,8 @@ def artifacts():
     with tempfile.TemporaryDirectory() as p:
         path=str(Path(p)/'proof.db');original=run(path,'baseline');corrected=run(path,'correction')
         run(path,'interrupt',73);resumed=run(path,'resume');selected=run(path,'selection');repeat=run(path,'repeat')
-        periods=run(path,'periods')
+        periods=run(path,'periods');after_reopen=run(path,'correction');reclosed_work=run(path,'rework');reclosed=run(path,'reclose');reclosure_repeat=run(path,'repeat')
+    if reclosed['checkpoint']!=reclosure_repeat['checkpoint'] or reclosed['public']!=reclosure_repeat['public']:raise AssertionError('Repeated reclosure recovery changed state')
     plan=corrected['operation']['events'][-1]['value']['result']
     old=original['checkpoint'];new=resumed['checkpoint']
     for key in plan['unaffected']:
@@ -97,16 +106,39 @@ def artifacts():
         s.save(c,COMPANY,CONTEXT,0);c,_,_=s.load(COMPANY,c.id)
         if c.outcome=='complete' or c.status=='CLOSED':raise AssertionError('Unresolved conflict manufactured success')
         blocked=dict(public=CAO().public(c),checkpoint=snapshot(c,COMPANY,CONTEXT))
-    summary=dict(result='PASS',producer_terminated=True,fresh_processes=7,controlled_process_exit=73,
+    summary=dict(result='PASS',producer_terminated=True,fresh_processes=11,controlled_process_exit=73,
         interrupted_boundary='native selective rework executed, before durable outcome commit',
         recovery_unit='replay exact authorized native unit from prepared checkpoint; no partial owner state committed',
         exact_selective_order=plan['execution_order'],unaffected_versions_preserved=True,immutable_history_preserved=True,
-        current_journal_count=8,internal_selection_only=True,external_posting_proved=False,
+        current_journal_count=8,closed_period_reopened_then_corrected_reworked_reclosed=True,internal_selection_only=True,external_posting_proved=False,
         resumed_public_complete=True,resumed_case_closed=True,repeat_recovery_identical=True,
         unresolved_control_outcome=c.outcome,synthetic_review=True,schema_version=2,checkpoint_contract=1)
-    return {'restart-recovery-proof.json':summary,'original-checkpoint.json':old,'corrected-interrupted-checkpoint.json':corrected,
+    values = {'restart-recovery-proof.json':summary,'original-checkpoint.json':old,'corrected-interrupted-checkpoint.json':corrected,
             'resumed-checkpoint.json':resumed,'current-journals-and-repeat.json':dict(selection=selected,repeat=repeat),
-            'closed-reopened-period.json':periods,'blocked-control.json':blocked,'public-answer.json':repeat['public']}
+            'closed-reopened-period.json':dict(reopening=periods,correction_after_restart=after_reopen,rework=reclosed_work,reclosure=reclosed,repeat_reclosure=reclosure_repeat),'blocked-control.json':blocked,'public-answer.json':repeat['public']}
+    return {name:project(value) for name,value in values.items()}
+
+
+def project(value):
+    """Compact audit views, not restorable wire snapshots or hand-edited outcomes.
+
+    Exact full checkpoint hashes bind source/archive populations; actual native
+    source snapshots, version payloads, receipts and lifecycle histories remain.
+    Repeated bulky intake proposals/requests are represented by exact hashes.
+    """
+    if isinstance(value,list):return [project(v) for v in value]
+    if not isinstance(value,dict):return value
+    if 'contract_version' in value and 'source_snapshots' in value:
+        doc=value
+        result={k:doc[k] for k in ('contract_version','company_id','root_case','company_context','scopes','periods','dependencies','versions','source_snapshots','active','states','supersession','version_history','receipts','rework_history','graph_history')}
+        result['checkpoint_sha256']=hashlib.sha256(dumps(doc).encode()).hexdigest()
+        result['cases']=[{k:c[k] for k in ('id','objective','scope_id','period_id','case_type','status','outcome','transitions','governance_history','result_version_refs','parent_case_id','child_case_ids','rework_state')} for c in doc['cases']]
+        result['nodes']=[{k:n[k] for k in ('id','logical_id','selected_skill','scope_id','case_id','period_id','framework','functional_currency','presentation_currency','economic_id','status','dependencies','execution_receipt')} for n in doc['nodes']]
+        result['retained_evidence']={key:dict(seal=b['seal'],archive_sha256=hashlib.sha256(dumps(b).encode()).hexdigest(),reviewed_pack_sha256=hashlib.sha256(dumps(b['pack']).encode()).hexdigest(),raw_source_sha256=[hashlib.sha256(raw.encode()).hexdigest() for raw in b['raw_sources']]) for key,b in doc['session'].get('evidence_bundles',{}).items()}
+        result['session_sha256']=hashlib.sha256(dumps(doc['session']).encode()).hexdigest()
+        result['artifact_boundary']='Generated audit view of exact checkpoint; full sealed archives remain in SQLite'
+        return result
+    return {k:project(v) for k,v in value.items()}
 
 
 def main():

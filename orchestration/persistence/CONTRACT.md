@@ -104,7 +104,11 @@ remain the host application's responsibility.
 ## Stage 2 durable operation extension (schema2, checkpoint contract1)
 
 The checkpoint wire contract remains1. SQLite schema2 adds immutable `operations`
-plus append-only `operation_events`. A registered transactional migration from
+plus append-only `operation_events` and a nullable deferred checkpoint foreign-key
+binding back to its operation. Plain checkpoint reads validate marker populations,
+event transitions and committed outcomes against native history; operation deletion
+or contradictory returned plans/selections reject. Prepared selection hashes bind
+the already-qualified native allocation into immutable operation identity. A registered transactional migration from
 exact schema1 creates only those tables; original checkpoint/object payloads,
 hashes and identities are untouched. Unknown/mixed schemas reject. Initialization,
 migration and outcome failures roll back. Existing expected-revision semantics
