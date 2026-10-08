@@ -1,5 +1,7 @@
 """Real SQLite and fresh-process interrupted/resumed native accounting proof."""
 import hashlib
+import base64
+import gzip
 import json
 from pathlib import Path
 import subprocess
@@ -113,10 +115,24 @@ def artifacts():
         current_journal_count=8,closed_period_reopened_then_corrected_reworked_reclosed=True,internal_selection_only=True,external_posting_proved=False,
         resumed_public_complete=True,resumed_case_closed=True,repeat_recovery_identical=True,
         unresolved_control_outcome=c.outcome,synthetic_review=True,schema_version=2,checkpoint_contract=1)
-    values = {'restart-recovery-proof.json':summary,'original-checkpoint.json':old,'corrected-interrupted-checkpoint.json':corrected,
+    def archived(doc):
+        wire=dumps(doc).encode();compressed=gzip.compress(wire,mtime=0)
+        # Canonical platform-independent gzip OS header; no filename/time metadata.
+        compressed=compressed[:9]+bytes([255])+compressed[10:]
+        return dict(encoding='gzip-base64 canonical checkpoint JSON',sha256=hashlib.sha256(wire).hexdigest(),payload=base64.b64encode(compressed).decode('ascii'))
+    values = {'full-native-checkpoints.json':dict(original=archived(old),resumed=archived(new)), 'restart-recovery-proof.json':summary,'original-checkpoint.json':old,'corrected-interrupted-checkpoint.json':corrected,
             'resumed-checkpoint.json':resumed,'current-journals-and-repeat.json':dict(selection=selected,repeat=repeat),
-            'closed-reopened-period.json':dict(reopening=periods,correction_after_restart=after_reopen,rework=reclosed_work,reclosure=reclosed,repeat_reclosure=reclosure_repeat),'blocked-control.json':blocked,'public-answer.json':repeat['public']}
-    return {name:project(value) for name,value in values.items()}
+            'closed-reopened-period.json':dict(reopening=periods,correction_after_restart=after_reopen,rework=reclosed_work,reclosure=reclosed,repeat_reclosure=reclosure_repeat),'blocked-control.json':blocked,'public-answer.json':reclosure_repeat['public']}
+    result = {}
+    for name, value in values.items():
+        view = project(value)
+        # Lossless packaging only: retain every audit field without publishing
+        # repeated multi-megabyte histories as oversized connector requests.
+        if name != 'full-native-checkpoints.json' and len(dumps(view).encode()) > 1_000_000:
+            view = archived(view)
+            view['encoding'] = 'gzip-base64 canonical audit JSON'
+        result[name] = view
+    return result
 
 
 def project(value):

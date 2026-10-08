@@ -6,12 +6,28 @@
   },
   "branch": "persistence/durable-rework-recovery",
   "checkpoint_contract": 1,
+  "continuation_evidence": "Recovered local commits and seed outputs preserved. Historical exact-head CI logs prove 2840-method release regression. Lost fresh seed reruns are explicitly unverified.",
   "deterministic_artifacts": {
+    "audit_envelope_digest_and_decode": "PASS (fresh decode/hash check)",
+    "byte_identical": true,
+    "execution_evidence": "Preserved seed19 reference artifacts and seed941 outputs match byte-for-byte and recorded SHA256 hashes. Lost fresh sessions have no verified result.",
+    "full_native_checkpoint_digest_and_restore": "Preserved PASS; final exact-tree executable artifact test pending",
     "hash_seeds": [
       19,
       941
     ],
-    "result": "RUNNING"
+    "result": "PRESERVED OUTPUT COMPARISON PASS; FRESH EXECUTION RESULTS UNAVAILABLE",
+    "sha256": {
+      "blocked-control.json": "ada40af238c933956f87c51ee5d0264b4b1a9f49043beb9b1f526d6c80ad630d",
+      "closed-reopened-period.json": "57d89973313b73745e4daabb8f16427151a1aab6c02fe773330dd7611bc51e0b",
+      "corrected-interrupted-checkpoint.json": "84a63d2f85b1a6faf10f78b3f7d91b3f82d6f0571352a371a246e2cc78a05f7e",
+      "current-journals-and-repeat.json": "33b50c5912bfec08611ba6ac28bc5a1844f2b2e41046e7c6be60d298a4ed4927",
+      "full-native-checkpoints.json": "90c0b95c0006b812530551de1f2da22ffe2ab3f4f84a12386bb5e4de80714d76",
+      "original-checkpoint.json": "ed01d0d566f81d895b26b2537652b046d6c4d94eddb55c0276f5ae72e1c6c852",
+      "public-answer.json": "27d351e67005b5cbd6a54d8a9589073a9fe73b3139ab4b22385af9ef2f92e657",
+      "restart-recovery-proof.json": "28a889517afc970d4371a1461ae6e7ec2568186baa58183bd42d4b5bd7ed8631",
+      "resumed-checkpoint.json": "67cad16475ce351c748b27cf105379d60d809abe451bfda3165f9cc490225ab3"
+    }
   },
   "development_failed_runs": [
     {
@@ -34,12 +50,29 @@
     },
     {
       "remediation": "Predates final authored/state corrections; final discovery separately launched on intended production tree.",
-      "result": "RUNNING",
+      "result": "Outcome not retained after prior stop",
       "run": "superseded full discovery"
+    },
+    {
+      "remediation": "Lossless deterministic audit envelopes generated through unchanged native proof; both seeds and native checkpoint restoration pass.",
+      "result": "No branch advance; local commit 116fc872019fabf5e5fe63bd09755fdfd4b00835 preserved",
+      "run": "Oversized artifact blob publication"
     }
   ],
   "distinct_tests": 2841,
   "exact_head_ci": "Final immutable-head run links and SHA belong to PR39 metadata after freeze; no self-referential CI assertion.",
+  "fresh_execution_attempts": [
+    {
+      "command": "PYTHONHASHSEED=19 python -m unittest orchestration.tests.test_persistence_stage2_artifacts",
+      "result": "UNVERIFIED \u2014 session unavailable, empty log, no retained exit status",
+      "seed": 19
+    },
+    {
+      "command": "PYTHONHASHSEED=941 python -m unittest orchestration.tests.test_persistence_stage2_artifacts",
+      "result": "UNVERIFIED \u2014 session unavailable, empty log, no retained exit status",
+      "seed": 941
+    }
+  ],
   "future_stages_implemented": false,
   "independent_qa": {
     "author_discovered_history_defect": 1,
@@ -58,6 +91,23 @@
     "Full native validation can be expensive"
   ],
   "pull_request": 39,
+  "recovery_publication": {
+    "artifacts": "Nine complete lossless recovered references; no manual accounting output edits",
+    "excluded_unrelated_changes": "Stage1 generator and restart proof kept at remote bytes; prior local variations retained in preserved history",
+    "preserved_local_head": "a95c0630e31d474bf598a52ee5f0e8a9892dd171",
+    "production_and_independent_qa_bytes": "Identical to accepted remote implementation",
+    "starting_remote_head": "76496ca9be19a3b7f2356c313c7bb91b9bfcc8c3",
+    "workspace_preservation": "Complete pre-reconciliation workspace including Git history, index and merge metadata archived before resolving index"
+  },
+  "release_regression_evidence": {
+    "distinct_methods": 2840,
+    "head_sha": "76496ca9be19a3b7f2356c313c7bb91b9bfcc8c3",
+    "job_id": 113223938793,
+    "note": "Complete suite verified from job logs; recovered artifact test adds one expected method, not yet verified in fresh execution.",
+    "result": "PASS",
+    "run_id": 37751009909,
+    "url": "https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/37751009909"
+  },
   "repository": "DanTrackedFR/chief-accounting-officer",
   "reruns_and_subtests_not_added": true,
   "schema_version": 2,
@@ -70,13 +120,14 @@
     "total": 69
   },
   "starting_live_main": "d202e910e17de559d908df478939ce10042e41db",
-  "status": "RELEASE REGRESSION IN PROGRESS",
+  "status": "RECOVERED RELEASE CHECKPOINT \u2014 FINAL VALIDATION PENDING",
   "suites": [
     {
       "category": "orchestration",
       "command": "python -m unittest discover -s orchestration/tests -p 'test_*.py'",
       "methods": 1190,
-      "result": "RUNNING"
+      "result": "PASS (1189 methods on remote head); recovered artifact method pending",
+      "verified_methods": 1189
     },
     {
       "category": "production skills",
@@ -148,5 +199,11 @@
     "roadmap_insurance_35": "PASS",
     "stage1_59": "PASS"
   },
+  "tested_code_reference": {
+    "commit": "6a8aee473bbb84c2e6cf2b785c23f20aaeb6820e",
+    "note": "Recovered production/test/artifact content; native production and prior test bytes equal successful remote CI. New artifact method and final immutable-head CI pending.",
+    "tree": "6a0ff0cd005360c4003793b31b2fe0f89002c9dc"
+  },
+  "verified_distinct_tests": 2840,
   "workstream": "Durable Case + Company Accounting Memory"
 }
