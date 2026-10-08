@@ -210,6 +210,10 @@ def _history_references(e):
         elif kind == 'reopen':
             if set(event) != {'node', 'event'}: raise IntegrityError('Invalid graph reopening history')
         else: raise IntegrityError('Unknown graph history event')
+    from collections import Counter
+    expected = Counter((v.predecessor, v.version_id) for v in e.versions.versions.values() if v.predecessor is not None)
+    actual = Counter((p.get('old_version'), p.get('new_version')) for p in e.rework_history)
+    if expected != actual: raise IntegrityError('Missing/duplicated native correction/rework history population')
     for plan in e.rework_history:
         required = {'changed_upstream', 'old_version', 'new_version', 'direct', 'transitive', 'unaffected', 'execution_order', 'affected_cases', 'affected_periods', 'causes'}
         if set(plan) != required: raise IntegrityError('Unknown rework history contract')

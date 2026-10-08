@@ -169,11 +169,11 @@ class DurableLifecycleTests(unittest.TestCase):
         i=journal_intent(self.case);group=next(ev for ev in i['events'] if ev['posting_scope']=='GROUP-EUR');i['events'].append(copy.deepcopy(group))
         with self.assertRaises(ValueError):self.store.prepare(self.case,COMPANY,self.ctx,1,i)
     def test_legal_group_layer_substitution_refused(self):
-        i=journal_intent(self.case);i['events'][0]['posting_scope']='GROUP-EUR'
+        i=journal_intent(self.case);next(ev for ev in i['events'] if ev['posting_scope']=='ENTITY-NL')['posting_scope']='GROUP-EUR'
         with self.assertRaises(ValueError):self.store.prepare(self.case,COMPANY,self.ctx,1,i)
     def test_stale_dependency_cannot_select_journals(self):
         c,r,p=self.corrected()
-        with self.assertRaises(ValueError):journal_intent(c)
+        with self.assertRaises(ValueError):self.store.prepare(c,COMPANY,self.ctx,r['head_revision'],journal_intent(c))
     def test_uncertain_external_outcome_fails_closed(self):
         key=self.store.prepare(self.case,COMPANY,self.ctx,1,journal_intent(self.case));c,r=self.store.recover(COMPANY,self.case_id,key)
         uncertain=self.store.prepare(c,COMPANY,self.ctx,r['head_revision'],dict(kind='UNCERTAIN_EXTERNAL',selection_operation=key,evidence=['External system may have received this population; acknowledgement absent']))

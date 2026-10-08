@@ -108,6 +108,40 @@ class IndependentRecoveryTests(unittest.TestCase):
         key=self.prepare();self.store.recover(COMPANY,self.case_id,key)
         self.store.connection.execute("UPDATE operation_events SET status='PREPARED' WHERE operation_id=? AND sequence=1",(key,))
         with self.assertRaises(IntegrityError):self.store.load(COMPANY,self.case_id)
+    def test_mid_selective_owner_interruption_replays_exact_native_unit(self):
+        key=self.prepare();case,record=self.store.recover(COMPANY,self.case_id,key)
+        plan=record['events'][-1]['value']['result'];f=attach(case)
+        sources=temporal.reviewed_rework(f,plan)
+        for row in f.get('replacement_intakes',[]):retain(case.governance,row['prepared'],row['reviewed_pack'])
+        key=self.store.prepare(case,COMPANY,self.context,record['head_revision'],dict(kind='REWORK',plan=plan,reviewed_sources=sources))
+        prepared,revision,context=self.store.load(COMPANY,self.case_id)
+        from orchestration.versions import VersionedExecution
+        original=VersionedExecution.execute;completed=[]
+        def interrupt(session,*args,**kwargs):
+            value=original(session,*args,**kwargs);completed.append(value.node_id)
+            if len(completed)==1:raise RuntimeError('Interrupted after first actual native selective owner publication')
+            return value
+        with patch.object(VersionedExecution,'execute',interrupt):
+            with self.assertRaises(RuntimeError):self.store.recover(COMPANY,self.case_id,key)
+        self.assertEqual(completed,[plan['execution_order'][0]])
+        retained,head,_=self.store.load(COMPANY,self.case_id)
+        self.assertEqual(head,revision);self.assertEqual(snapshot(prepared,COMPANY,context),snapshot(retained,COMPANY,context))
+        recovered,record=self.store.recover(COMPANY,self.case_id,key)
+        self.assertEqual([row['node'] for row in record['events'][-1]['value']['result']],plan['execution_order'])
+        self.assertEqual((recovered.status,CAO().public(recovered)['status']),('CLOSED','complete'))
+        for node in plan['unaffected']:self.assertEqual(recovered.governance.versions.active[node],prepared.governance.versions.active[node])
+    def test_all_native_rework_history_cannot_be_erased(self):
+        from orchestration.persistence import restore
+        doc=snapshot(self.case,COMPANY,self.context);self.assertTrue(doc['rework_history']);doc['rework_history']=[]
+        with self.assertRaises(IntegrityError):restore(doc,COMPANY,self.case_id)
+    def test_one_native_rework_transition_cannot_be_omitted(self):
+        from orchestration.persistence import restore
+        doc=snapshot(self.case,COMPANY,self.context);self.assertTrue(doc['rework_history']);doc['rework_history'].pop(0)
+        with self.assertRaises(IntegrityError):restore(doc,COMPANY,self.case_id)
+    def test_native_rework_transition_cannot_be_duplicated(self):
+        from orchestration.persistence import restore
+        doc=snapshot(self.case,COMPANY,self.context);self.assertTrue(doc['rework_history']);doc['rework_history'].append(copy.deepcopy(doc['rework_history'][0]))
+        with self.assertRaises(IntegrityError):restore(doc,COMPANY,self.case_id)
     def test_old_current_receipt_cannot_qualify_equal_value_new_lineage(self):
         old=copy.deepcopy(self.case.governance.receipts);key=self.prepare();c,r=self.store.recover(COMPANY,self.case_id,key)
         replaced=r['events'][-1]['value']['result']['old_version'];seen=0
