@@ -102,3 +102,16 @@ Protected Government Grants PR27, Borrowing Costs, Investment Property, canonica
 approvals, supplemental knowledge and standards mappings remain unchanged. Only
 the existing roadmap documentation witness may be refreshed. Stage3 company-memory
 approval/reuse is future; see PERSISTENCE-STAGE2-TO-STAGE3-HANDOFF.md.
+
+## Recovered release validation
+
+The recovered nine references are durably committed under the documented example
+path. Published checkpoint 804147c476d81956d626b55222845a3e3eafe393 passed complete
+2,841-method exact-tree CI, including executable eleven-process artifact reproduction,
+audit envelope decoding and full native restoration. A separate bounded check
+restored both published native checkpoints with exact canonical roundtrip and
+ordinary CLOSED/complete output. Preserved seed19/941 files are byte-identical and
+match the manifest SHA256 inventory. Two later lost local fresh seed sessions have
+no verified result and remain explicitly UNVERIFIED. Accepted production and
+independent QA bytes are unchanged. Final documentation/witness-only head and
+required Actions/readiness are recorded in PR metadata after freeze.
