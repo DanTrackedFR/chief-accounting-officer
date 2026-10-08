@@ -52,6 +52,11 @@ or implemented decision. `decide` records explicit governed documented/approved/
 implemented/reversed/superseded history separately from Company Context status.
 An implemented process decision supplies no accounting-standard authority.
 The linked decision's new position must equal its Company Context typed value.
+Material candidate wording such as "we decided", "going forward", "from next
+month", "we changed", "instead of", "management approved", "audit asked" or
+"implemented" produces only an unresolved proposed decision when none was supplied.
+Its decision date stays unknown and a qualification question blocks promotion.
+These phrases cannot establish rationale, implementation or approval by themselves.
 
 Five stores are projections over one ledger: Company Context records; exact native
 Case Library references; Artifact Library references to sealed bundles/checkpoints;

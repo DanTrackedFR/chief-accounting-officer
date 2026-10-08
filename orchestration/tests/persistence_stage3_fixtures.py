@@ -10,8 +10,9 @@ LEARNED=dict(value='2027-01-02',precision='exact')
 FROM=dict(value='2026-12-01',precision='exact')
 TO=dict(value='2026-12-31',precision='exact')
 
-def build(objective='Document our recurring close control',value='NetSuite',semantic='EXTRACTED',approval=False,source_version='v1',memory=None):
+def build(objective='Document our recurring close control',value='NetSuite',semantic='EXTRACTED',approval=False,source_version='v1',memory=None,framework=None):
     scope=copy.deepcopy(SCOPE)
+    if framework is not None:scope['framework']=framework
     raws=[RawSource('ap-simple','invoice_export.csv','csv','supplier,amount\nS1,120\n',dict(metadata(),version=source_version)),
           RawSource('system-policy','Finance system.json','json',[dict(record_id='system',systems=value)],metadata())]
     if approval:

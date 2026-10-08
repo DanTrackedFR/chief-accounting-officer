@@ -238,6 +238,20 @@ class IndependentExtractedMemoryAttacks(unittest.TestCase):
         self.assertEqual(r,again);self.assertEqual(self.memory.audit(self.company)['revision'],2)
 
 class IndependentApprovalSemantics(unittest.TestCase):
+    def test_decision_language_preserves_proposal_unknown_dates_without_approval(self):
+        from orchestration.tests.persistence_stage3_fixtures import build,capture,governance,COMPANY,LEARNED
+        case=build(value='Management approved: going forward we decided to use NetSuite from next month')
+        with tempfile.TemporaryDirectory() as path,SQLiteStore(Path(path)/'memory.db') as store:
+            store.save(case,COMPANY,[],0);r=capture(store,case,decision=None)
+            self.assertEqual(r['status'],'PROPOSED')
+            self.assertEqual(r['decision']['status'],'proposed')
+            self.assertEqual(r['decision']['decision_date'],UNKNOWN)
+            self.assertEqual(r['decision']['new_position'],r['value'])
+            self.assertIsNone(r['governance'])
+            self.assertTrue(r['questions'])
+            with self.assertRaises(IntegrityError):
+                store.memory().transition(COMPANY,r['record_id'],governance(r,'APPROVED','DOCUMENTARY'),expected_revision=1,recorded_at=LEARNED)
+            self.assertEqual(store.memory().audit(COMPANY)['company_context'][0]['status'],'PROPOSED')
     def test_negative_documentary_wording_never_approves(self):
         from unittest.mock import patch
         from orchestration.intake import RawSource
@@ -339,5 +353,28 @@ class IndependentNativeSupportingCaseBoundary(unittest.TestCase):
             with self.assertRaises(IntegrityError):
                 dims=applicability(case,case.scope_id,[wrong.period_id])
                 store.memory().capture(COMPANY,case.id,case.id,candidate_index,category='reporting_profile',subject='reporting',assertion='USER_STATED',bundle_ids=list(e.evidence_bundles),result_versions=[],dimensions=dims,effective_from=dict(value=wrong.start,precision='exact'),effective_to=dict(value=wrong.end,precision='exact'),learned_at=dict(value='2026-11-01',precision='exact'),expected_revision=0,material=True,reusable=True)
+
+    def test_native_durable_correction_stales_dependent_memory_support(self):
+        from orchestration.tests.persistence_stage2_fixtures import baseline,correction_intent,COMPANY,CONTEXT
+        from orchestration.tests.persistence_stage3_fixtures import governance
+        from orchestration.runtime import CAO
+        f=baseline();case=f['case'];e=case.governance
+        e.context.update(entity=case.scope_id,framework=e.cases.scopes.get(case.scope_id).framework);CAO()._observe(case,e.context,{})
+        candidate_index=next(i for i,c in enumerate(case.memory_candidates) if c['attribute']=='framework')
+        supported=e.versions.current(f['nodes']['reporting'].id).version_id
+        self.assertEqual(e.versions.versions[supported].case_id,case.id)
+        when=dict(value='2026-11-01',precision='exact')
+        with tempfile.TemporaryDirectory() as folder,SQLiteStore(Path(folder)/'memory.db') as store:
+            store.save(case,COMPANY,CONTEXT,0);m=store.memory()
+            r=m.capture(COMPANY,case.id,case.id,candidate_index,category='reporting_profile',subject='reporting',assertion='USER_STATED',bundle_ids=list(e.evidence_bundles),result_versions=[supported],dimensions=applicability(case,case.scope_id,[case.period_id]),effective_from=dict(value='2026-10-01',precision='exact'),effective_to=dict(value='2026-10-31',precision='exact'),learned_at=when,expected_revision=0,material=True,reusable=True)
+            r=m.transition(COMPANY,r['record_id'],governance(r),expected_revision=1,recorded_at=when)
+            self.assertEqual(len(m.retrieve(COMPANY,case.id,case.id,'reporting','framework')['qualified']),1)
+            intent=correction_intent(case);operation=store.prepare(case,COMPANY,CONTEXT,1,intent)
+            corrected,outcome=store.recover(COMPANY,case.id,operation)
+            self.assertEqual(outcome['status'],'COMMITTED');self.assertEqual(corrected.governance.versions.states[supported],'STALE')
+            query=m.retrieve(COMPANY,case.id,case.id,'reporting','framework')
+            self.assertEqual(query['qualified'],[]);self.assertIn('supporting-result-STALE',query['refused'][0]['reasons'])
+            historical=m.retrieve(COMPANY,case.id,case.id,'reporting','framework',historical=True)
+            self.assertEqual(historical['qualified'][0]['record']['version_id'],r['version_id'])
 
 if __name__=='__main__':unittest.main()

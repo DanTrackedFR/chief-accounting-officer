@@ -44,6 +44,12 @@ approve. SYNTHETIC and DOCUMENTARY remain visibly distinct; authenticated is alw
 false. This delivers documentary assertion representation, NOT authenticated human
 governance, tenant authorization, accounts or role enforcement.
 
+Material source wording such as "we decided", "going forward", "from next month",
+"we changed", "instead of", "management approved", "audit asked" or "implemented"
+triggers only a proposed linked decision when no qualified decision was supplied.
+The decision date remains unknown and an unresolved rationale/authority/applicability
+question blocks promotion. Source wording never proves approval or implementation.
+
 ## Currentness, applicability and conflicts
 
 Record status is independent of current qualified reuse. Exact Company/Scope/type/
@@ -131,3 +137,7 @@ node can be compared exactly; it changes no accounting output or authority. Hist
 schema tests construct exact old tables and unsupported future version4 correctly.
 Government Grants PR27 and unrelated accounting packages/approvals/mappings remain
 unchanged; only the authorized roadmap witness is refreshed.
+
+## Additional independent lineage controls
+
+The linked Decision Register new position must match the Company Context typed value. Registered temporal relationships must bind the source Case Period and selected target; the source Case calendar, selected Period calendar and declared Scope reporting calendar agree. Intake seals inherited exact memory record/version/source Case/attribute references in native context. Observer recapture cannot convert inherited context into independent user-stated documentary truth. Context consumption and restoration reject substitution of equal-value memory with different planned provenance. These are authority controls, not authenticated identity checks.

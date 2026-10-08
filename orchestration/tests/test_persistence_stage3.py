@@ -155,6 +155,20 @@ class CompanyMemoryTests(unittest.TestCase):
         b=capture(self.s,c,subject='consecutive-policy',effective_from=dict(value='2026-12-16',precision='exact'))
         self.m.transition(COMPANY,b['record_id'],governance(b),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
         result=self.m.retrieve(COMPANY,self.c.id,self.c.id,'consecutive-policy','systems');self.assertFalse(result['conflicts'])
+    def test_different_framework_positions_are_not_combined(self):
+        self.promote()
+        other=build('Different framework policy',value='Xero',framework='US_GAAP');self.s.save(other,COMPANY,[],0)
+        r=capture(self.s,other);r=self.m.transition(COMPANY,r['record_id'],governance(r),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
+        a=self.query();b=self.m.retrieve(COMPANY,other.id,other.id,'finance','systems')
+        self.assertFalse(a['conflicts']);self.assertFalse(b['conflicts'])
+        self.assertEqual([v['record']['value'] for v in a['qualified']],['NetSuite']);self.assertEqual([v['record']['value'] for v in b['qualified']],['Xero'])
+    def test_case_checkpoint_without_memory_publication_grants_no_authority(self):
+        other=build('Case published before interrupted memory',value='Xero');self.s.save(other,COMPANY,[],0)
+        original=self.m._append
+        def fail(*a,**k):original(*a,**k);raise RuntimeError('memory publication interrupted')
+        with patch.object(type(self.m),'_append',side_effect=fail),self.assertRaises(RuntimeError):capture(self.s,other,subject='orphan-policy')
+        self.assertEqual(self.s.load(COMPANY,other.id)[0].id,other.id)
+        self.assertEqual(self.m.retrieve(COMPANY,other.id,other.id,'orphan-policy','systems')['qualified'],[])
     def test_governed_decision_lifecycle(self):
         self.promote();r=self.r
         for status in ['documented','implemented','reversed']:
@@ -167,6 +181,13 @@ class CompanyMemoryTests(unittest.TestCase):
         d=copy.deepcopy(self.r['decision']);d['new_position']='Invented alternative';self.bad_capture(decision=d)
     def test_candidate_cannot_approve_decision(self):
         d=copy.deepcopy(self.r['decision']);d['status']='approved';self.bad_capture(decision=d)
+    def test_decision_language_is_only_an_unresolved_proposal(self):
+        for phrase in ['we decided','going forward','from next month','we changed','instead of','management approved','audit asked','implemented']:
+            with self.subTest(phrase=phrase):
+                c=build('Decision signal '+phrase,value=phrase+' NetSuite');self.s.save(c,COMPANY,[],0)
+                r=capture(self.s,c,subject='decision-signal:'+phrase,decision=None)
+                self.assertEqual(r['status'],'PROPOSED');self.assertEqual(r['decision']['status'],'proposed');self.assertEqual(r['decision']['decision_date'],UNKNOWN)
+                with self.assertRaises(IntegrityError):self.m.transition(COMPANY,r['record_id'],governance(r),expected_revision=self.m.audit(COMPANY)['revision'],recorded_at=LEARNED)
     def test_qualified_intake_context_suppresses_question(self):
         self.promote()
         b=build('Independent context-informed Case',memory=dict(memory=self.m,company_id=COMPANY,qualification_root=self.c.id,qualification_case=self.c.id,subjects=[('finance','systems')]))

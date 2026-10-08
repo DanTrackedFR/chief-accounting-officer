@@ -276,6 +276,12 @@ class CompanyMemory:
             identity=dict(company=company,case=case_id,candidate=candidate,category=category,subject=subject,source=source,dimensions=dimensions,effective_from=effective_from,effective_to=effective_to)
             rid=ident('memory',identity)
             r=dict(contract=1,identity=identity,record_id=rid,company_id=company,original_candidate=candidate,category=category,subject=subject,attribute=candidate['attribute'],value=candidate['value'],assertion=assertion,source=source,applicability=copy.deepcopy(dimensions),effective_from=effective_from,effective_to=effective_to,learned_at=learned_at,confidence=confidence,uncertainty=uncertainty,questions=questions or [],decision=decision,status='PROPOSED',governance=None,supersedes=sorted(set(supersedes or [])),superseded_by=None)
+            if decision is None and isinstance(candidate['value'],str):
+                import re
+                signal=re.search(r'\b(?:we decided|going forward|from next month|we changed|instead of|management approved|audit asked|implemented)\b',candidate['value'],re.IGNORECASE)
+                if signal:
+                    r['decision']=dict(previous_position=None,new_position=copy.deepcopy(candidate['value']),reason='Potential material decision language observed; actual decision rationale not yet qualified',decision_date=dict(value=None,precision='unknown'),status='proposed',implications=[])
+                    r['questions']=list(r['questions'])+['Qualify actual decision rationale, authority and effective applicability']
             if decision is not None and decision.get('status')!='proposed':raise IntegrityError('Candidate decision must remain proposed')
             r['version_id']=ident('memory-version',r);self._record(r);self._qualification(r)
             existing=self._ledger(company)[0].get(rid)

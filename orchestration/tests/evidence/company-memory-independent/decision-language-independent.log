@@ -1,0 +1,15 @@
+test_decision_language_preserves_proposal_unknown_dates_without_approval (orchestration.tests.test_persistence_stage3_independent.IndependentApprovalSemantics.test_decision_language_preserves_proposal_unknown_dates_without_approval) ... ERROR
+
+======================================================================
+ERROR: test_decision_language_preserves_proposal_unknown_dates_without_approval (orchestration.tests.test_persistence_stage3_independent.IndependentApprovalSemantics.test_decision_language_preserves_proposal_unknown_dates_without_approval)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 254, in test_decision_language_preserves_proposal_unknown_dates_without_approval
+    self.assertEqual(store.memory().audit(COMPANY)['records'][0]['status'],'PROPOSED')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'records'
+
+----------------------------------------------------------------------
+Ran 1 test in 2.314s
+
+FAILED (errors=1)
