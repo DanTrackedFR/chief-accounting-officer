@@ -17,3 +17,23 @@ Separately supplied corrected company-system evidence produces only a new propos
 Artifacts are deterministic lossless gzip/base64 canonical envelopes with SHA256, preserving every native snapshot/receipt/source and memory audit field. Decode base64 then gzip, verify SHA256 of canonical wire, then codec.loads. Full native checkpoint envelopes restore through native restore and roundtrip snapshot. Artifact/reference acceptance and seed19/941 remain pending release gates. The final reconstruction contains five root Cases: four legitimately complete reporting/context review Cases and one unresolved partial investigation Case. Context succession preserves the primary native checkpoint exactly; it does not blanket-rerun financial owners.
 
 Public answers remain CAO.public and existing allowlisted output; private source archives, operations and CompanyMemory payloads remain internal. Synthetic/documentary governance is trusted local caller assertion, never authenticated human approval. Only deterministic pure native owners may replay. No ERP connector, external exactly-once guarantee, distributed transaction, authentication, tenant authorization, encryption or product/API/UI is delivered. Protected accounting knowledge and parallel Government Grants PR27 remain untouched except the authorized roadmap documentation witness.
+
+
+## Controlled company and native boundaries
+
+Stable namespace: `company:full-durable-cao`. Each reporting objective has its own native root and nine hierarchical Case records; five roots are retained in the final Company reconstruction. The primary graph has36 native nodes, including repeated intercompany owners, FX/framework qualification, temporal stock reporting, Consolidation, Financial Statements and analytics. Graph identities, owner versions and typed receipts come from the existing runtime.
+
+| Scope | Native framework | Functional currency | Presentation | Calendar |
+|---|---|---|---|---|
+| ENTITY-NL / NL-001 | IFRS | EUR | Legal currency | CALENDAR |
+| ENTITY-US / US-001 | US_GAAP | USD | Legal currency | US-FISCAL, July year |
+| ENTITY-UK / UK-001 | UK_GAAP | GBP | Legal currency | CALENDAR |
+| GROUP-EUR | IFRS | None | EUR | CALENDAR |
+
+Seven Period records preserve September2026 and October2026 under both calendars, a September partial included interval, the October1 OPENING boundary, and October2025 prior-year reporting. Exact OPENING and COMPARATIVE relationships remain distinct even for equal-valued evidence. The reviewed opening stock487 and original comparative489 are retained; no intervening-year financial bridge is inferred. September's governed close/reopen/correction/reclose history survives restart; legitimate Case closure does not silently close every registered Period.
+
+Four reciprocal intercompany relationships retain complete legal-side populations. The accepted clean current inventory has NL1 legal journal, UK1 legal journal and6 Group eliminations. Reassessment and translation qualify existing economics without adding legal postings. Primary durable selection is idempotent after committed recovery; this is internal journal selection only. Native financial reporting has cash490/profit3 in the original controlled statement units (the public answer labels EUR millions), UK carryingGBP18/FXgainGBP2, historical materialEUR16/EUR18 and reviewed currentEUR18/EUR18.
+
+Group memory applicability is exact-Scope/enumerated-Period. No Group-to-entity policy inheritance is introduced. Five projections remain Company Context, qualified Case Library, Artifact Library references, append-preserving Provenance/History and separate Decision Register. Historical context consumption preserves the exact old NetSuite version while later qualified reuse selects the explicitly governed Xero successor. Active proposed/stale alternatives still refuse current reliance, including equal values.
+
+Run `python -m orchestration.tests.generate_persistence_stage4_examples` to regenerate the15 reference artifacts through14 fresh OS processes. `test_persistence_stage4_artifacts.py` reproduces the generator, verifies references, hashes, native restoration, immutable histories, unaffected bindings, historical USE and the separate unresolved public control. Hash manifest: `tests/evidence/durable-stage4-authored/final-seed19-941-determinism.json`. Full exact-tree release and independent acceptance remain explicitly pending until their recorded gates finish.

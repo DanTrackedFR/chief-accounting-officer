@@ -2,6 +2,7 @@ name: Standards evidence structural audit
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "knowledge/topics/**/standards-claims.json"
       - "knowledge/standards-evidence/**"

@@ -88,6 +88,41 @@
       "result": "FAIL",
       "reason": "Qualified current Xero rejected alongside retired historical NetSuite; corrected retired-anchor current conflict detection and narrow Intake refusal filter. Active proposed/stale alternatives still refuse.",
       "finding": "DIQA04"
+    },
+    {
+      "attempt": "Intermediate GitHub Actions60965d13 orchestration",
+      "result": "FAIL",
+      "run": 37883303178,
+      "reason": "JSONDecodeError in truncated authorized witness from first transport; exact local blob repaired and verified before ba625 remote checkpoint. 1313methods attempted; not release PASS.",
+      "log": "tests/evidence/durable-stage4-authored/ci-113667639293-failed.log.json"
+    },
+    {
+      "attempt": "Intermediate GitHub Actions38cc2f09 full release",
+      "result": "FAIL at final whitespace gate",
+      "run": 37884318714,
+      "reason": "Two retained original failure logs contained blank EOF; preserved exact content in lossless JSON envelopes at52e65f2 without trimming original evidence. All prior steps succeeded; not release PASS.",
+      "log": "tests/evidence/durable-stage4-authored/ci-113670782784-failed.log.json"
+    },
+    {
+      "attempt": "cache-seed19 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/cache-seed19-failed.log.json"
+    },
+    {
+      "attempt": "cache-seed941 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/cache-seed941-failed.log.json"
+    },
+    {
+      "attempt": "seed941 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/seed941-failed.log.json"
     }
   ],
   "merged": false,
@@ -118,5 +153,30 @@
       }
     },
     "original_release_manifest_retained": true
+  },
+  "retained_artifact_native_validation": {
+    "result": "PASS",
+    "seconds": 36.524,
+    "scope": "Hash decoding, all retained native checkpoint roundtrips, immutable/current/negative assertions. Uses completed generator outputs; does not claim fresh full generator rerun.",
+    "log": "tests/evidence/durable-stage4-authored/retained-artifact-native-validation.log"
+  },
+  "workflow_coverage": "Narrow Stage4 branch push filters plus standards ready_for_review event; existing test commands and event coverage retained. All three required workflows must run after readiness at unchanged final SHA.",
+  "integrated_observed_invariants": {
+    "native_nodes": 36,
+    "case_records_per_objective": 9,
+    "root_cases_final": 5,
+    "period_records": 7,
+    "selective_consumers": 4,
+    "unaffected_node_bindings": 31,
+    "period_close_reopen_reclose_events": 3,
+    "current_journals": {
+      "NL_legal": 1,
+      "UK_legal": 1,
+      "Group": 6
+    },
+    "positive_public": "complete",
+    "negative_public": "partial",
+    "current_memory_records_qualified_for_finance": 1,
+    "historical_context_uses": 2
   }
 }
