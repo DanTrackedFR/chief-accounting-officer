@@ -17,7 +17,13 @@
     "seconds": 324.275,
     "log": "tests/evidence/durable-stage4-independent/c96c5f4-final25-pass.log.json",
     "retained_stage3_independent_methods": 42,
-    "corrected_full14": "PENDING"
+    "corrected_full14": "PASS",
+    "decoded_envelopes": 29,
+    "unique_native_checkpoint_roundtrips": 10,
+    "committed_artifact_byte_comparison": "PASS all15",
+    "substantive_findings": 4,
+    "unresolved_substantive_findings": 0,
+    "report": "PERSISTENCE-STAGE4-INDEPENDENT-QA.md"
   },
   "determinism": {
     "result": "PASS",
@@ -29,8 +35,9 @@
     "fresh_processes_per_seed": 14,
     "total_bytes": 30579028,
     "manifest": "tests/evidence/durable-stage4-authored/final-seed19-941-determinism.json",
-    "immutable_independent_comparison": "PENDING",
-    "exact_tree_artifact_reexecution": "PENDING"
+    "immutable_independent_comparison": "PASS immutablec96 seed19 identical to all15 committed reference files; production/fixture/generator code equivalence to current candidate verified independently",
+    "exact_tree_artifact_reexecution": "PENDING",
+    "immutable_seed941_permanent_artifact_test": "RUNNING detachedf9ee5d2; actual fresh14 generator execution and reference/native roundtrip"
   },
   "full_regression": "PENDING",
   "exact_head_ci": "PENDING",
