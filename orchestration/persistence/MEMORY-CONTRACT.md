@@ -97,3 +97,11 @@ allowlisted public DTOs; no private ledger/bundle/source/governance route is pub
 Trusted runtime, local durable fsync/locking, file/backup protection remain host
 assumptions. Authentication, authorization, encryption, external posting and full
 Stage4 integration are outside this Stage3 foundation.
+
+Stage4 bounds repeated native reconstruction with a transaction-local cache.
+Its key includes Company, root Case, exact resolved checkpoint revision and
+current head inside the same SQLite snapshot. The first encounter performs full
+native restore and operation integrity validation. The cache is cleared before
+final memory-write ledger validation and on commit or rollback; later retrieval
+or correction always validates native state afresh. It is neither persistent
+memory authority nor a substitute for source, receipt or currentness checks.

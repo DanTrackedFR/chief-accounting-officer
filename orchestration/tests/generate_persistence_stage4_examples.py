@@ -110,16 +110,22 @@ def phase(path,action):
             first=capture(s,c,subject='unresolved-control');first=m.transition(COMPANY,first['record_id'],governance(first),expected_revision=m.audit(COMPANY)['revision'],recorded_at=LEARNED)
             candidate=capture(s,a,subject='unresolved-control');refusal=m.retrieve(COMPANY,root,root,'unresolved-control','systems');assert refusal['conflicts'] and not refusal['qualified']
             assert m.retrieve(COMPANY,root,root,'finance','systems')['qualified']
-            # The unresolved contextual subject never fabricates accounting closure
-            # or invalidates unrelated current native financial dependencies.
-            return dict(first=first,candidate=candidate,refusal=refusal,outcome='BLOCKED_CONTEXT',public=CAO().public(a),unrelated_accounting_current=True)
+            # A separate native Case retains genuinely unresolved accounting
+            # evidence. Memory cannot certify its inputs or fabricate closure.
+            negative=initial(NEGATIVE_OBJECTIVE,systems='NetSuite')['case']
+            s.save(negative,COMPANY,CONTEXT,0);public=CAO().public(negative)
+            assert negative.status!='CLOSED' and public['status']!='complete'
+            return dict(first=first,candidate=candidate,refusal=refusal,outcome='BLOCKED_CONTEXT',root=negative.id,checkpoint=envelope(snapshot(negative,COMPANY,CONTEXT)),public=public,unrelated_accounting_current=native_invariants(a))
         if action=='restore':
             with patch.object(CAO,'run',side_effect=AssertionError('Restoration executed runtime')),patch.object(CAO,'execute_versioned_owner',side_effect=AssertionError('Restoration executed owner')):
                 audit=m.audit(COMPANY);assert len(audit['uses'])==2
                 roots=[]
                 for (key,) in root_id(s):
-                    c,_,context=s.load(COMPANY,key);roots.append(dict(root=key,checkpoint=envelope(snapshot(c,COMPANY,context)),public=CAO().public(c)))
-            assert all(x['public']['status']=='complete' for x in roots)
+                    c,_,context=s.load(COMPANY,key);public=CAO().public(c)
+                    if c.objective==NEGATIVE_OBJECTIVE:assert c.status!='CLOSED' and public['status']!='complete'
+                    else:assert public['status']=='complete'
+                    roots.append(dict(root=key,checkpoint=envelope(snapshot(c,COMPANY,context)),public=public))
+            assert len(roots)==5 and sum(x['public']['status']!='complete' for x in roots)==1
             return dict(result='PASS',audit=audit,roots=roots,current=native_invariants(a),qualified=m.retrieve(COMPANY,root,root,'finance','systems'),historical_original=m.history(COMPANY,original['record_id']),authenticated=False,external_posting=False)
         raise ValueError(action)
 

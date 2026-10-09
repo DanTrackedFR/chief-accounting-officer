@@ -14,6 +14,7 @@ LEARNED=dict(value='2026-11-02',precision='exact')
 UNKNOWN=dict(value=None,precision='unknown')
 OBJECTIVE=prior.OBJECTIVE
 REUSE_OBJECTIVE=OBJECTIVE+' Use the documented company finance-system context for a separate reporting review.'
+NEGATIVE_OBJECTIVE=OBJECTIVE+' Investigate the unresolved reciprocal evidence and company-system contradiction without a new reviewed correction.'
 
 
 def attach(case):

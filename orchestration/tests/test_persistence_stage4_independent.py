@@ -126,6 +126,45 @@ class DurableIntegrationIndependent(unittest.TestCase):
         q=self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems');self.assertFalse(q['qualified'])
         self.assertTrue(any('supporting-result-STALE' in x['reasons'] for x in q['refused']))
 
+    def test_warm_memory_lookup_cannot_hide_later_operation_history_corruption(self):
+        key=self.s.prepare(self.c,f.COMPANY,self.ctx,self.rev,f.correction_intent(self.c))
+        self.assertTrue(self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')['qualified'])
+        self.s.connection.execute('DELETE FROM operation_events WHERE operation_id=?',(key,))
+        with self.assertRaises(IntegrityError):self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')
+        self.assertIsNone(self.m._native_cache)
+    def test_failed_sqlite_transition_clears_cache_without_promoting_memory(self):
+        import sqlite3
+        self.assertTrue(self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')['qualified'])
+        self.s.connection.execute("CREATE TRIGGER reviewer_abort BEFORE INSERT ON memory_events BEGIN SELECT RAISE(ABORT,'independent interrupted transition'); END")
+        with self.assertRaises(sqlite3.IntegrityError):self.m.transition(f.COMPANY,self.record['record_id'],f.governance(self.record,'APPROVED'),expected_revision=2,recorded_at=f.LEARNED)
+        self.assertIsNone(self.m._native_cache);self.s.connection.execute('DROP TRIGGER reviewer_abort')
+        audit=self.m.audit(f.COMPANY);self.assertEqual(audit['revision'],2);self.assertEqual(audit['company_context'][0]['status'],'DOCUMENTED')
+        self.assertIsNone(self.m._native_cache)
+    def test_cached_native_read_never_survives_commit_to_later_corrupt_checkpoint(self):
+        self.assertTrue(self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')['qualified'])
+        self.assertIsNone(self.m._native_cache)
+        self.s.connection.execute("UPDATE checkpoints SET payload=payload||' ' WHERE company_id=? AND case_id=?",(f.COMPANY,self.root))
+        with self.assertRaises(IntegrityError):self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')
+        self.assertIsNone(self.m._native_cache)
+
+    def test_current_unresolved_company_case_remains_partial_after_restart(self):
+        negative=f.initial(f.OBJECTIVE+' Evaluate an unresolved current negative reporting control.',systems='Xero')['case']
+        self.s.save(negative,f.COMPANY,f.CONTEXT,0)
+        with patch.object(CAO,'run',side_effect=AssertionError('Restoration ran accounting')),patch.object(CAO,'execute_versioned_owner',side_effect=AssertionError('Restoration ran owner')):
+            restored,_,_=self.s.load(f.COMPANY,negative.id)
+        self.assertNotEqual(restored.status,'CLOSED');self.assertEqual(CAO().public(restored)['status'],'partial')
+        self.assertTrue(CAO().public(restored)['open_items'])
+        self.assertEqual(CAO().public(self.c)['status'],'complete')
+        first=f.capture(self.s,self.c,subject='negative-systems')
+        self.m.transition(f.COMPANY,first['record_id'],f.governance(first),expected_revision=3,recorded_at=f.LEARNED)
+        other=f.capture(self.s,restored,subject='negative-systems')
+        self.assertEqual(other['status'],'PROPOSED')
+        refusal=self.m.retrieve(f.COMPANY,self.root,self.root,'negative-systems','systems')
+        self.assertTrue(refusal['conflicts']);self.assertFalse(refusal['qualified'])
+        self.assertEqual(CAO().public(self.c)['status'],'complete')
+        historical=[v.payload() for v in restored.governance.versions.versions.values() if v.node_id==next(n.id for n in restored.graph.nodes.values() if n.logical_id=='fx-ENTITY-UK')]
+        self.assertTrue(any(Decimal(v['calculations']['pairs'][0]['a_functional'])==16 for v in historical))
+
     def test_restore_and_current_retrieval_are_read_only(self):
         before=dumps(snapshot(self.c,f.COMPANY,self.ctx))
         with patch.object(CAO,'run',side_effect=AssertionError('Native run on read')),patch.object(CAO,'execute_versioned_owner',side_effect=AssertionError('Native owner on read')):
