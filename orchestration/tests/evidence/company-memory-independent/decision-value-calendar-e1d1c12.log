@@ -1,0 +1,14 @@
+.F
+======================================================================
+FAIL: test_linked_decision_new_position_cannot_contradict_context_value (orchestration.tests.test_persistence_stage3_independent.IndependentExtractedMemoryAttacks.test_linked_decision_new_position_cannot_contradict_context_value)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/stage3-review-final/orchestration/tests/test_persistence_stage3_independent.py", line 172, in test_linked_decision_new_position_cannot_contradict_context_value
+    with self.assertRaises(IntegrityError):capture(self.store,self.case,subject='contradictory-decision',decision=decision)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.833s
+
+FAILED (failures=1)

@@ -120,7 +120,8 @@ def qualify_replacement(engine, prepared, pack, case, node_id):
     if node_id not in session.graph.nodes:
         raise ValueError('Replacement requires an existing exact node')
     expected_node = next(row for row in session.graph.record() if row['id'] == node_id)
-    if canonical(plan['nodes']) != canonical([expected_node]):
+    from orchestration.persistence.codec import dumps as native_wire
+    if native_wire(plan['nodes']) != native_wire([expected_node]):
         raise ValueError('Replacement cannot change governed execution identity')
     if plan['root_case'] != case.id or request['objective'] != case.objective:
         raise ValueError('Replacement belongs to another Case/objective')

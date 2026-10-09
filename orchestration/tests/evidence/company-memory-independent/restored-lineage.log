@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_restored_supersession_must_validate_successor_lineage (orchestration.tests.test_persistence_stage3_independent.IndependentMemoryAttacks.test_restored_supersession_must_validate_successor_lineage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3_independent.py", line 66, in test_restored_supersession_must_validate_successor_lineage
+    with self.assertRaises(IntegrityError):self.memory.audit(COMPANY)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: IntegrityError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 2.063s
+
+FAILED (failures=1)

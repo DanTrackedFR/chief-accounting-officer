@@ -245,9 +245,9 @@ class SchemaMigrationTests(unittest.TestCase):
     def test_schema1_migration_preserves_original_bytes(self):
         with tempfile.TemporaryDirectory() as p:
             path=Path(p)/'v1.db';f=baseline()
-            with SQLiteStore(path) as s:s.save(f['case'],COMPANY,CONTEXT,0);before=s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall();s.connection.execute('DROP TABLE operation_events');s.connection.execute('ALTER TABLE checkpoints DROP COLUMN operation_id');s.connection.execute('DROP TABLE operations');s.connection.execute('PRAGMA user_version=1')
+            with SQLiteStore(path) as s:s.save(f['case'],COMPANY,CONTEXT,0);before=s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall();s.connection.execute('DROP TABLE memory_heads');s.connection.execute('DROP TABLE memory_events');s.connection.execute('DROP TABLE operation_events');s.connection.execute('ALTER TABLE checkpoints DROP COLUMN operation_id');s.connection.execute('DROP TABLE operations');s.connection.execute('PRAGMA user_version=1')
             with SQLiteStore(path) as s:
-                self.assertEqual(s.connection.execute('PRAGMA user_version').fetchone()[0],2);self.assertEqual(before,s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall());self.assertEqual(s.load(COMPANY,f['case'].id)[1],1)
+                self.assertEqual(s.connection.execute('PRAGMA user_version').fetchone()[0],3);self.assertEqual(before,s.connection.execute('SELECT company_id,case_id,revision,payload,sha256,previous_sha256,object_count FROM checkpoints').fetchall());self.assertEqual(s.load(COMPANY,f['case'].id)[1],1)
     def test_migration_failure_rolls_back(self):
         import orchestration.persistence.store as module
         with tempfile.TemporaryDirectory() as p:
