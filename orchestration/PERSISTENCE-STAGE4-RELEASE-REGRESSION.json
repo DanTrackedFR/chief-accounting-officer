@@ -36,8 +36,18 @@
     "total_bytes": 30579028,
     "manifest": "tests/evidence/durable-stage4-authored/final-seed19-941-determinism.json",
     "immutable_independent_comparison": "PASS immutablec96 seed19 identical to all15 committed reference files; production/fixture/generator code equivalence to current candidate verified independently",
-    "exact_tree_artifact_reexecution": "PENDING",
-    "immutable_seed941_permanent_artifact_test": "RUNNING detachedf9ee5d2; actual fresh14 generator execution and reference/native roundtrip"
+    "exact_tree_artifact_reexecution": "PASS detachedf9ee5d2 seed941, unchanged implementation/fixture/generator/permanent method from current candidate",
+    "immutable_seed941_permanent_artifact_test": {
+      "result": "PASS",
+      "methods": 1,
+      "seed": 941,
+      "source_sha": "f9ee5d2f0a4dc99dc7de81e9a4d6615d94c186dc",
+      "fresh_processes": 14,
+      "reference_comparison": "all15 match; full native checkpoint/history/currentness/recovery assertions passed",
+      "log": "tests/evidence/durable-stage4-authored/immutable-seed941-artifact.log",
+      "exit": 0,
+      "seconds": 2170.571
+    }
   },
   "full_regression": "PENDING",
   "exact_head_ci": "PENDING",
@@ -101,14 +111,18 @@
       "result": "FAIL",
       "run": 37883303178,
       "reason": "JSONDecodeError in truncated authorized witness from first transport; exact local blob repaired and verified before ba625 remote checkpoint. 1313methods attempted; not release PASS.",
-      "log": "tests/evidence/durable-stage4-authored/ci-113667639293-failed.log.json"
+      "log": "tests/evidence/durable-stage4-authored/ci-113667639293-failed.log.json",
+      "paired_run": 37883308719,
+      "paired_log": "tests/evidence/durable-stage4-authored/ci-113667655848-failed.log.json"
     },
     {
       "attempt": "Intermediate GitHub Actions38cc2f09 full release",
       "result": "FAIL at final whitespace gate",
       "run": 37884318714,
       "reason": "Two retained original failure logs contained blank EOF; preserved exact content in lossless JSON envelopes at52e65f2 without trimming original evidence. All prior steps succeeded; not release PASS.",
-      "log": "tests/evidence/durable-stage4-authored/ci-113670782784-failed.log.json"
+      "log": "tests/evidence/durable-stage4-authored/ci-113670782784-failed.log.json",
+      "paired_run": 37884313688,
+      "paired_log": "tests/evidence/durable-stage4-authored/ci-113670768277-failed.log.json"
     },
     {
       "attempt": "cache-seed19 controlled probe",
@@ -185,5 +199,15 @@
     "negative_public": "partial",
     "current_memory_records_qualified_for_finance": 1,
     "historical_context_uses": 2
-  }
+  },
+  "historical_full_regression": {
+    "result": "PASS",
+    "scope": "Earlier candidate ba625, not finalStage4 release; protects prior flagships and baseline native owners.",
+    "sha": "ba6253cf4add719f5f0e2767ddb1a7a0f5c54b28",
+    "run": 37883625996,
+    "orchestration_methods": 1313,
+    "distinct_total": 2964,
+    "log": "tests/evidence/durable-stage4-authored/ci-113668634870-pass.log.json"
+  },
+  "source_equivalence_manifest": "tests/evidence/durable-stage4-authored/actual-source-equivalence.json"
 }
