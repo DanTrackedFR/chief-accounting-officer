@@ -1,6 +1,6 @@
 # Durable Stage4 adversarial acceptance matrix
 
-Permanent native-boundary tests remain cumulative. This matrix identifies all 50 requested attacks; previous accepted tests are regression requirements, not new Stage4 test-count credit. Connected generator additionally exercises interruption, lost ack, stale support, historical USE, explicit successor and negative material conflict in one Company. Results remain pending full release validation.
+Permanent native-boundary tests remain cumulative. This matrix identifies all 50 requested attacks; previous accepted tests are regression requirements, not new Stage4 test-count credit. Connected generator additionally exercises interruption, lost ack, stale support, historical USE, explicit successor and negative material conflict in one Company. All current2995 distinct methods PASS through actual full-source CI plus the sole added full14 artifact method on an immutable source-equivalent checkout. Final immutable-head and readiness Actions remain mandatory publication gates recorded in PR41. New Stage4 population is23 authored+25 independent+1 artifact=49; prior methods and reruns are not counted as new.
 
 | # | Attack | Permanent method |
 |---|---|---|

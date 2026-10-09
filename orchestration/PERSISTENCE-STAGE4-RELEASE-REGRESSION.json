@@ -1,6 +1,6 @@
 {
   "stage": 4,
-  "status": "ACTIVE \u2014 RELEASE GATES PENDING",
+  "status": "COMPLETE SUBJECT TO OWNER INTEGRATION",
   "repository": "DanTrackedFR/chief-accounting-officer",
   "baseline_main": "092f9deaac2a85e39f02092c77ebbecd1ddec0e3",
   "branch": "persistence/durable-cao-integration-flagship",
@@ -49,11 +49,55 @@
       "seconds": 2170.571
     }
   },
-  "full_regression": "PENDING",
-  "exact_head_ci": "PENDING",
+  "full_regression": {
+    "result": "PASS",
+    "distinct_methods": 2995,
+    "counts": {
+      "orchestration": 1344,
+      "production_skills": 1180,
+      "lease": 17,
+      "repository": 53,
+      "supplemental_and_independent_knowledge": 401
+    },
+    "existing_method_ci": {
+      "sha": "f59e0440094cfee891bc82ffe60863c710d6dfdb",
+      "runs": [
+        37888647804,
+        37888642292
+      ],
+      "orchestration_methods": 1343,
+      "distinct_methods": 2994,
+      "orchestration_seconds": 4894.176,
+      "result": "PASS entire actual workflow, all validators and diff check",
+      "log": "tests/evidence/durable-stage4-authored/ci-f59-complete-release-pass.log.json"
+    },
+    "added_method": {
+      "source_sha": "f9ee5d2f0a4dc99dc7de81e9a4d6615d94c186dc",
+      "methods": 1,
+      "result": "PASS2170.571s seed941 actual full14 native proof",
+      "log": "tests/evidence/durable-stage4-authored/immutable-seed941-artifact.log"
+    },
+    "source_equivalence": "Actual fetched f59 versus immutablef9 differs in Python only by the added artifact method; skills/knowledge/interfaces/roadmap/prior memory references unchanged. All2995 distinct current methods executed. Final immutable-head full workflow remains a mandatory publication/readiness gate; its results are recorded in PR41."
+  },
+  "exact_head_ci": {
+    "gate": "Three required workflows must PASS on the final unchanged remoteSHA, then readiness-triggered workflows must PASS on that sameSHA. Results recorded in PR41 after repository freeze; no post-CI repository edits.",
+    "workflows": [
+      "CAO orchestration integration",
+      "Phase 3 skill regression",
+      "Standards evidence structural audit"
+    ],
+    "merged": false
+  },
   "validators": {
     "canonical": "PASS",
-    "standards": "PASS"
+    "standards": "PASS",
+    "supplemental": "PASS all actual workflow commands",
+    "diff_check": "PASS full source CI and final local check; final immutable-head workflow revalidates",
+    "final_logs": [
+      "tests/evidence/durable-stage4-authored/final-canonical.log",
+      "tests/evidence/durable-stage4-authored/final-standards.log",
+      "tests/evidence/durable-stage4-authored/final-diff-check.log"
+    ]
   },
   "failed_attempts": [
     {
@@ -144,6 +188,11 @@
       "exit": 1,
       "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
       "log": "tests/evidence/durable-stage4-authored/seed941-failed.log.json"
+    },
+    {
+      "attempt": "Final roadmap witness second refresh before commit",
+      "result": "REFUSED safely",
+      "reason": "Additional roadmap clarification changed bytes after first uncommitted witness refresh. Restored only exact HEAD authorized roadmap row after verifying all unrelated protected entries; regenerated final exact bytes. No baseline/helper weakening."
     }
   ],
   "merged": false,
@@ -209,5 +258,28 @@
     "distinct_total": 2964,
     "log": "tests/evidence/durable-stage4-authored/ci-113668634870-pass.log.json"
   },
-  "source_equivalence_manifest": "tests/evidence/durable-stage4-authored/actual-source-equivalence.json"
+  "source_equivalence_manifest": "tests/evidence/durable-stage4-authored/actual-source-equivalence.json",
+  "previous_flagships": {
+    "result": "PASS included in complete current-method population",
+    "coverage": [
+      "Manufacturing",
+      "Diagnostic Analytics",
+      "Semantic Planner and Intake",
+      "SaaS Close",
+      "Treasury/Financing",
+      "Group Accounting",
+      "Multi-Entity Stages1\u20134 temporal flagship",
+      "Durable Case Stages1\u20133",
+      "Ordinary single-entity accounting"
+    ]
+  },
+  "roadmap": {
+    "status": "COMPLETE SUBJECT TO OWNER INTEGRATION",
+    "sha256": "1d6805cb998afc0d8cd444868366adc19a1332fdfb862d6ca8c05b3fcdbd1125",
+    "stage1_2_3": "COMPLETE (MERGED)",
+    "stage3_merge": "092f9deaac2a85e39f02092c77ebbecd1ddec0e3",
+    "witness": "tests/evidence/durable-stage4-authored/final-roadmap-witness.json",
+    "only_authorized_roadmap_row_changed": true
+  },
+  "final_code_equivalence": "No Python file changes from the tested immutablef9 source to final handoffs/roadmap tree. Final exact-head CI revalidates updated documentation witness and all2995 methods."
 }
