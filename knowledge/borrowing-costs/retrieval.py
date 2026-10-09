@@ -17,7 +17,7 @@ def load_register(path=None):
  if any(not isinstance(i,str) or not i for i in ids) or len(ids)!=len(set(ids)):raise ValueError('Invalid Borrowing Costs identities')
  return d
 
-def retrieve(framework,period,entity_scope,path=None,decisions=None,period_start=None,borrowing_model=None,early_presentation_adoption=False):
+def retrieve(framework,period,entity_scope,path=None,decisions=None,period_start=None,early_presentation_adoption=False):
  if framework not in FRAMEWORKS or entity_scope!=SCOPES.get(framework):raise ValueError('Explicit supported Borrowing Costs framework/entity scope required')
  if early_presentation_adoption is not False:raise ValueError('Early presentation/disclosure adoption not reviewed')
  try:
