@@ -11,8 +11,27 @@
     "seconds": 234.279,
     "log": "tests/evidence/durable-stage4-authored/successor-authored23.log"
   },
-  "independent_qa": "PENDING final25 and corrected full14",
-  "determinism": "PENDING",
+  "independent_qa": {
+    "targeted_suite": "PASS",
+    "methods": 25,
+    "seconds": 324.275,
+    "log": "tests/evidence/durable-stage4-independent/c96c5f4-final25-pass.log.json",
+    "retained_stage3_independent_methods": 42,
+    "corrected_full14": "PENDING"
+  },
+  "determinism": {
+    "result": "PASS",
+    "seeds": [
+      19,
+      941
+    ],
+    "files": 15,
+    "fresh_processes_per_seed": 14,
+    "total_bytes": 30579028,
+    "manifest": "tests/evidence/durable-stage4-authored/final-seed19-941-determinism.json",
+    "immutable_independent_comparison": "PENDING",
+    "exact_tree_artifact_reexecution": "PENDING"
+  },
   "full_regression": "PENDING",
   "exact_head_ci": "PENDING",
   "validators": {
@@ -61,7 +80,7 @@
     {
       "attempt": "Corrected pre-cache full Company generator",
       "result": "FAIL",
-      "reason": "Actual successor phase exceeded600-second bound after genuine exit73/recovery and exit74/committed retry. Exact transaction-local native restoration cache added; fresh complete proof pending.",
+      "reason": "Actual successor phase exceeded600-second bound after genuine exit73/recovery and exit74/committed retry. Exact transaction-local native restoration cache added and per-phase ceiling bounded at1800; corrected fresh complete independent proof pending.",
       "log": "tests/evidence/durable-stage4-authored/bounded-successor600-failed.log.json"
     },
     {
@@ -73,12 +92,16 @@
   ],
   "merged": false,
   "discovered_current_methods_not_release_pass": {
-    "orchestration": 1333,
+    "orchestration": 1344,
     "skills": 1180,
     "lease": 17,
     "repository": 53,
-    "prior_supplemental": 401,
-    "independent_stage4_not_yet_integrated": 17
+    "supplemental": 401,
+    "total": 2995,
+    "stage4_authored": 23,
+    "stage4_independent": 25,
+    "stage4_artifact": 1,
+    "rule": "Distinct methods; reruns, seeds and subtests not counted. Full release pending."
   },
   "stage3_reference_query_migration": {
     "result": "PASS",
