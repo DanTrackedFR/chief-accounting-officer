@@ -350,7 +350,7 @@ def analytics_source(f):
     return ready('management-accounting-analytics',c=c)
 
 
-def intake_initial(builder=None, source_factory=None):
+def intake_initial(builder=None, source_factory=None, *, company_system=None, memory=None):
     """Natural objective -> validated source proposal -> reviewed ordinary graph.
 
     This milestone binds original source principal/rate input populations. Further
@@ -394,7 +394,17 @@ def intake_initial(builder=None, source_factory=None):
         children.append(ReviewedInputPack(dict(objective=OBJECTIVE,node_id=key,source=copy.deepcopy(c)),bindings.get(key,[]),scope_id=n.scope_id,period_id=n.period_id,calendar_id=p.calendar_id))
     context=dict(entity='GROUP-EUR',framework='IFRS',jurisdiction='NL',currency='EUR',period_start='2026-10-01',reporting_period='2026-10-31',period_id=f['periods']['CALENDAR-OCT'].period_id,scopes=e.cases.scopes.record(),period_registry=e.periods.record(),materiality='.1')
     plan['sources']=copy.deepcopy(e.sources)
-    engine=Intake(FixturePlanner(proposal));prepared=engine.prepare(OBJECTIVE,raw,[],context)
+    if company_system is not None:
+        policy=RawSource('company-system','Company finance system.json','json',[dict(record_id='systems',systems=company_system)],dict(scope_id=context['entity'],framework=context['framework'],currency=context['currency'],jurisdiction=context['jurisdiction'],period=[context['period_start'],context['reporting_period']],controlled_export=True))
+        raw.append(policy)
+        ref=cell(Inventory([policy]),policy.id,'systems')
+        proposal.context_candidates['systems']=cl(company_system,[ref],'EXTRACTED',.99)
+    engine=Intake(FixturePlanner(proposal))
+    if memory is None:prepared=engine.prepare(OBJECTIVE,raw,[],context)
+    else:
+        proposal.missing_facts.append(cl(dict(attribute='systems',owner='',kind='confirmation'),status='UNRESOLVED',confidence=0))
+        prepared,refs=engine.prepare_with_memory(OBJECTIVE,raw,[],context,**memory)
+        f['memory_references']=refs
     if not prepared.validation['accepted']:raise ValueError(prepared.validation)
     pack=ReviewedInputPack(dict(objective=OBJECTIVE,scope=copy.deepcopy(prepared._current),governed_plan=plan),[],scoped_packs=children)
     result=engine.execute(prepared,pack);case=result.case;f['case']=case;f['session']=case.governance;f['basis'].session=case.governance
