@@ -66,3 +66,11 @@ Accepted exact implementation/support SHA-256 values (subsequent change requires
 | orchestration/planning.py | 0424f84ed12e34208b40410949a383c97daaa7acdc2752d03a2f494169adb264 |
 | orchestration/tests/test_borrowing_costs_integration.py | 97c871aaa79d9e987302ee5ec13ea51a8b336c41269de04a1e691f0644e9fe04 |
 | skills/tests/test_independent_borrowing_costs.py | 658df5b0baab39b1059f04887801d25591880c1dee779625750352e48fa1eeec |
+
+## Prior synthetic example certification refresh review
+
+Independently recomputed recursive JSON leaf differences against HEAD for all changed pre-existing non-borrowing skills/examples JSON: exactly153 leaves changed, all restricted to case_fingerprint, owner_result_fingerprint, content_hash, body_hash and payload_fingerprint. No key-set/list-shape/type/economic value/journal-line differences. Independently computed path population exactly equals release-evidence/prior-synthetic-certificate-refresh.json; its PASS is corroborated rather than accepted on assertion alone.
+
+All eight original Borrowing Costs0.1.0 case/public snapshot files remain byte-for-byte identical to HEAD. Inspected test_presentation_workflows narrow handling: current historical borrowing cases must still return blocked, empty calculations and no journals; current CLI must exactly reproduce current public output; the preserved old public snapshot retains blocked guidance. Every other skill keeps exact snapshot equality. Independently executed this test:1 PASS in2.109s. This historical exception does not weaken the positive production Borrowing Costs example tests.
+
+Independently reran current author53 + own44 borrowing methods and six integration methods together:103 PASS in4.735s (`PYTHONPATH=.:skills:skills/tests python -m unittest skills.tests.test_borrowing_costs skills.tests.test_independent_borrowing_costs orchestration.tests.test_borrowing_costs_integration -q`). Own44 count remains separate; standalone borrowing total97. All16 accepted implementation/support hashes above remain unchanged. The synthetic refresh does not invalidate substantive acceptance. No unresolved substantive finding. Orchestration example integrity refresh is a separate root-controlled review and is not implicitly approved by this skills-example comparison.
