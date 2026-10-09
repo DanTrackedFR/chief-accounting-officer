@@ -136,6 +136,10 @@ def artifacts(log_directory=None):
             if child.returncode!=expected:raise RuntimeError(action+': '+child.stderr)
             if expected:out[action+'.json']=dict(actual_exit=child.returncode,producer_terminated=True,boundary='after native before commit' if action=='interrupt' else 'after durable commit before acknowledgement')
             else:out[action+'.json']=envelope(loads(child.stdout.strip()))
+            if log_directory:
+                # Retain each completed lossless proof before the next expensive
+                # process; a later failure cannot erase these successful states.
+                (Path(log_directory)/(action+'.envelope.json')).write_text(json.dumps(out[action+'.json'],sort_keys=True,indent=2)+'\n')
     out['proof-summary.json']=dict(result='PASS',fresh_processes=len(actions),schema=3,checkpoint_contract=1,native_group_cash='490',native_group_profit='3',current_journals=8,context_only_no_financial_edges=True,actual_source_dependency_rework=True,producer_exit=73,lost_ack_exit=74,independent_review='separate release gate',authenticated_approval=False,external_erp_posting=False)
     return out
 

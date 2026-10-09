@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 147, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 146, in main
+    for name,value in artifacts(os.environ.get('DURABLE_STAGE4_LOG_DIRECTORY')).items():(target/name).write_text(json.dumps(value,sort_keys=True,indent=2)+'\n')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 136, in artifacts
+    if child.returncode!=expected:raise RuntimeError(action+': '+child.stderr)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: reuse: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 147, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 144, in main
+    if len(sys.argv)>1 and sys.argv[1]=='--phase':print(dumps(phase(sys.argv[2],sys.argv[3])));return
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 51, in phase
+    return dict(root=b.id,context=source['value'],references=f['memory_references'],use=use,no_memory_financial_edge=True,checkpoint=envelope(snapshot(b,COMPANY,CONTEXT)),current=native_invariants(b))
+                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/persistence_stage4_fixtures.py", line 56, in native_invariants
+    f=attach(case);r=current_results(case)
+      ^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/persistence_stage2_fixtures.py", line 22, in attach
+    f['containers']={k:e.cases.get(c.id) for k,c in f['containers'].items()}
+                       ^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/cases.py", line 31, in get
+    if key not in self.cases: raise ValueError('Unknown governed Case')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unknown governed Case
+

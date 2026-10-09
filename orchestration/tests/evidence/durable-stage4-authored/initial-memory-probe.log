@@ -1,0 +1,23 @@
+initial DOCUMENTED [{'attribute': 'systems', 'value': 'NetSuite', 'scope_id': 'GROUP-EUR', 'status': 'PROPOSED', 'semantic_status': 'EXTRACTED', 'source_refs': ['company-system:2'], 'conflict': False}]
+final CLOSED
+dict_keys(['results', 'journals', 'public'])
+capture PROPOSED
+documented DOCUMENTED
+reuse NetSuite [{'record_id': 'memory:ba3389a212f7593ca1bc7dc3924ff81411e092f660d37fc5f9aadfea38aa19f3', 'version_id': 'memory-version:f775b411807b0912ac5610793c179e774f85d89f8c75451e9e01d97fef51048d', 'source_case': 'case:5ac01138f620920c635e6bce924348061036c86ce99854ab1159886c535700f0', 'attribute': 'systems', 'use': 'CONTEXT_ONLY'}]
+Traceback (most recent call last):
+  File "<stdin>", line 13, in <module>
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/persistence_stage4_fixtures.py", line 27, in finish
+    f,record=t.finish(f)
+             ^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/stage4_temporal_fixtures.py", line 135, in finish
+    p=first_plan or s4.correct(f)
+                    ^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/stage4_fixtures.py", line 289, in correct
+    c=qualified_replacement(f,n.id,legal_source(f,'mismatch','ENTITY-NL',True))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/stage4_fixtures.py", line 485, in qualified_replacement
+    qualified=qualify_replacement(engine,prepared,pack,f['case'],key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/intake/governed.py", line 131, in qualify_replacement
+    raise ValueError('Replacement belongs to another Case/objective')
+ValueError: Replacement belongs to another Case/objective

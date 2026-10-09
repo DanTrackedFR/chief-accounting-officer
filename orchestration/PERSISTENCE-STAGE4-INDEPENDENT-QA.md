@@ -1,0 +1,28 @@
+# Durable Stage 4 independent integration QA
+
+Fresh separate reviewer context; detached worktree `durable-stage4-review` at starting main `092f9deaac2a85e39f02092c77ebbecd1ddec0e3`, then implementation checkpoint `dda26ffd9774d4fd5d9389bc6fd648905b49e653` and corrected `b94afee`. Reviewer changes only independent tests, execution evidence and this report. Production and fixture remediation remain implementation-owned.
+
+Status: **PENDING corrected full-suite and fourteen-process acceptance.** No final acceptance or release approval is asserted here.
+
+The reviewer reconstructed original accepted temporal Stage4, Stage1 checkpoint, Stage2 prepared/recovery and Stage3 CompanyMemory contracts, native owner/receipt/source/Case/Period boundaries and the new governed intake retention seam. Separate starting-main accepted Stage4 final architecture suite: **30 methods PASS, 15.569s, seed19, exit0**. This is baseline evidence, not new integration acceptance.
+
+`test_persistence_stage4_independent.py` contains **17 distinct methods** using actual governed Group intake, production owners, real SQLite, exact memory history and native qualification. It independently checks candidate retention without promotion; preserved historical16/current18/nativegain2; profit3/cash490, adjacent opening487 and original comparative489; eight native journals/six eliminations; native source-Case support and five projections; wrong namespace/Case and unauthorized Group-to-entity applicability; documentary/synthetic authority refusal; memory-to-receipt and memory-to-reviewed-input bypass refusal; actual prepared correction creating exactly four stale consumers with unaffected versions unchanged; separate memory-aware Group Case and no contextual financial edge; exact old consumption after retraction; OPENING memory substitution; real simultaneous independent SQLite source correction versus promotion; read-only restore and all native public routes.
+
+## Retained attempts and findings
+
+| ID | Original reproduced result | Remediation or disposition | Independent current status |
+|---|---|---|---|
+| DIQA01 | Immutable `dda26ff` fourteen-process generator failed at reuse: Stage2 fixture `attach(case)` reconstructed original objective Case IDs; separate objective root raised `Unknown governed Case`. | Implementation fixture wrapper reconstructs against exact supplied `case.objective`. Permanent reviewer context-reuse method calls native invariant/journal reconstruction on the distinct objective. No production/accounting authority change. | Permanent distinct-objective test PASS in corrected17 run; full generator progressed beyond reuse. Final complete proof pending. |
+| RQA01 | First16 reviewer run:15PASS/1FAIL259.106s. Test replaced only `temporal_summaries` while invoking the narrower TB/receipt temporal validator. | Reviewer selected wrong boundary: full native dependency execution owns summary binding. Attack corrected to replace actual required OPENING receipt with context-only memory reference. Original FAIL retained; no production finding claimed. | Corrected actual receipt attack PASS in corrected17 run. |
+
+A preliminary shared mutable-tree baseline probe raised a WIP `company_system` NameError during implementer editing. No immutable commit contained that transient edit and no baseline defect is claimed. Detached immutable starting-main rerun passed. Original generator failure and first reviewer test log remain under `tests/evidence/durable-stage4-independent/`.
+
+Independent full generator runs real fresh OS producers, controlled exit73 after actual rework before COMMIT and exit74 after committed selection before acknowledgement. Its original genuine material-conflict Group control is native PARTIAL with ordinary public caveat. Separate unresolved memory subject is BLOCKED_CONTEXT while unrelated current accounting can stay usable; unrelated complete financial delivery is not described as public resolution of the contextual subject.
+
+Final reviewer acceptance requires full corrected17 PASS; all fourteen fresh processes PASS; lossless decoded hashes and native checkpoint reconstruction; exact committed artifact comparison when published; original immutable versions/unaffected versions/historical USE preservation and qualified current successor; public privacy. Repository-wide release, seed19/941 comparison, exact-head Actions/readiness and owner integration remain separate implementer gates. No merge, authenticated approval or external ERP exactly-once claim is authorized.
+
+## Corrected boundary and concurrency reruns
+
+At corrected `b94afee`, first expanded17 run produced **16PASS/1FAIL281.475s**. Its sole failure was a real concurrent memory writer hitting SQLite's default bounded busy timeout while native source correction safely committed. No memory partial publication or stale qualified authority was observed. This is an operational lock wait limitation, not an accounting/governance defect. The reviewer explicitly set `PRAGMA busy_timeout=120000` on both independent test connections to exercise serialized authority outcomes under bounded load. Targeted actual source-correction/promotion race then **PASS93.241s, seed941, exit0**. Original default-timeout failure remains retained. This adds no production timeout or concurrency behavior change.
+
+A final unchanged17-method suite is running under seed941 with timeout600. Corrected fourteen-process generator has passed company, promotion, distinct-objective reuse, closed-period refusal/reopening, actual reviewed correction, producer exit73 and fresh recovery; later selection/lost-ack/successor/restore acceptance remains pending.
