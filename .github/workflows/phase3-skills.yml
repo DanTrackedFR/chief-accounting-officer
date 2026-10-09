@@ -12,10 +12,11 @@ on:
       - "knowledge/agriculture/**"
       - "knowledge/inventory-cost/**"
       - "knowledge/derivatives-hedge/**"
+      - "knowledge/borrowing-costs/**"
       - "knowledge/insurance-contracts/**"
       - ".github/workflows/phase3-skills.yml"
   push:
-    branches: [persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting, phase-3/derivatives-hedge-accounting, phase-3/insurance-contracts-accounting]
+    branches: [phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting, phase-3/derivatives-hedge-accounting, phase-3/insurance-contracts-accounting]
     paths:
       - "orchestration/**"
       - "skills/**"
@@ -23,6 +24,7 @@ on:
       - "knowledge/agriculture/**"
       - "knowledge/inventory-cost/**"
       - "knowledge/derivatives-hedge/**"
+      - "knowledge/borrowing-costs/**"
       - "knowledge/insurance-contracts/**"
       - ".github/workflows/phase3-skills.yml"
   workflow_dispatch:
@@ -45,6 +47,8 @@ jobs:
         run: |
           python -m unittest discover -s skills/lease-accounting/tests -p "test_*.py"
           python -m unittest discover -s skills/tests -p "test_*.py"
+          python knowledge/borrowing-costs/validate_supplement.py
+          python -m unittest discover -s knowledge/borrowing-costs -p "test*.py"
           python knowledge/income-taxes/test_supplement.py
           python knowledge/income-taxes/validate_supplement.py
           python knowledge/agriculture/validate_supplement.py

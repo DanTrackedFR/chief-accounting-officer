@@ -1,7 +1,7 @@
 name: CAO orchestration integration
 on:
   push:
-    branches: [persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
+    branches: [phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
@@ -33,6 +33,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Supplemental knowledge and independent knowledge QA
         run: |
+          python knowledge/borrowing-costs/validate_supplement.py
+          python -m unittest discover -s knowledge/borrowing-costs -p "test*.py"
           python knowledge/income-taxes/test_supplement.py
           python knowledge/income-taxes/validate_supplement.py
           python knowledge/agriculture/validate_supplement.py
