@@ -52,17 +52,24 @@ def applicability(case, scope_id, period_ids, relationship_id=None):
 
 class CompanyMemory:
     """Trusted caller supplies explicit decisions; names/tokens authenticate nobody."""
-    def __init__(self, store): self.store=store;self.db=store.connection
+    def __init__(self, store): self.store=store;self.db=store.connection;self._native_cache=None
 
     def _native(self, company, root, revision=None):
         head=self.store._head(company,root)
         if not head: raise IntegrityError('Unknown Company/Case namespace')
+        # Repeated ledger events refer to the same immutable native checkpoint.
+        # Reuse its full validation only inside this SQLite transaction snapshot.
+        cache_key=(company,root,head if revision is None else revision,head)
+        if self._native_cache is not None and cache_key in self._native_cache:
+            return self._native_cache[cache_key]
         doc,checksum=self.store._read(company,root,head if revision is None else revision)
         case=restore(doc,company,root)
         from .recovery import read_operation
         for (key,) in self.db.execute('SELECT operation_id FROM operations WHERE company_id=? AND case_id=?',(company,root)):
             read_operation(self.store,company,root,key)
-        return case,doc,checksum,head
+        result=case,doc,checksum,head
+        if self._native_cache is not None:self._native_cache[cache_key]=result
+        return result
 
     def _ledger(self, company, pending=False):
         rows=self.db.execute('SELECT sequence,event_id,payload,sha256,previous_sha256 FROM memory_events WHERE company_id=? ORDER BY sequence',(company,)).fetchall()
@@ -260,13 +267,18 @@ class CompanyMemory:
     def _transaction(self,write,fn):
         try:
             self.db.execute('BEGIN IMMEDIATE' if write else 'BEGIN');self.store._schema()
+            self._native_cache={}
             result=fn()
             if write:
+                # Revalidate native state after the write, including rollback
+                # hooks or corruption; cached pre-write authority cannot certify it.
+                self._native_cache={}
                 for (company,) in self.db.execute('SELECT company_id FROM memory_heads'):self._ledger(company)
             self.db.execute('COMMIT');return result
         except BaseException:
             if self.db.in_transaction:self.db.execute('ROLLBACK')
             raise
+        finally:self._native_cache=None
 
     def capture(self,company,root,case_id,candidate_index,*,category,subject,assertion,bundle_ids,result_versions,dimensions,effective_from,effective_to,learned_at,expected_revision,material,reusable,confidence='unknown',uncertainty=None,questions=None,decision=None,supersedes=None):
         def write():
@@ -389,7 +401,7 @@ class CompanyMemory:
             if not historical:
                 if r['status'] not in {'CONFIRMED','DOCUMENTED','APPROVED'}:reasons.append('governance-'+r['status'])
                 reasons.extend(self._qualification(r))
-                alternatives=[other['record_id'] for other in records.values() if other['record_id']!=r['record_id'] and other['status'] not in {'SUPERSEDED','RETRACTED'} and self._overlap(r,other) and dumps(r['value'])!=dumps(other['value'])]
+                alternatives=[] if r['status'] in {'SUPERSEDED','RETRACTED'} else [other['record_id'] for other in records.values() if other['record_id']!=r['record_id'] and other['status'] not in {'SUPERSEDED','RETRACTED'} and self._overlap(r,other) and dumps(r['value'])!=dumps(other['value'])]
                 if alternatives:reasons.append('unresolved-conflict');conflicts.extend(alternatives)
             entry=dict(record=copy.deepcopy(r),qualification='HISTORICAL' if historical else 'CURRENT_CONTEXT',limitations=['Context only; native ReviewedInputPack and owner qualification still required','No authenticated human approval'],reasons=sorted(set(reasons)))
             (refused if reasons else matches).append(entry)

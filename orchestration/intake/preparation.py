@@ -178,7 +178,11 @@ class Intake:
                 matches=[p for p in periods.periods.values() if p.start==scope.get('period_start') and p.end==scope.get('reporting_period') and (not target_scope.reporting_calendar or p.calendar_id==target_scope.reporting_calendar)]
                 if len(matches)!=1 or matches[0].period_id not in q['period_ids']:raise IntegrityError('Planning memory temporal registry differs')
             if any(scope.get(k)!=q[field] for k,field in [('entity','scope_id'),('framework','framework'),('jurisdiction','jurisdiction'),('currency','currency')]):raise IntegrityError('Planning memory applicability differs')
-            if result['conflicts'] or result['refused'] or not result['qualified']:raise IntegrityError('Requested memory context is unresolved or unavailable')
+            # Retired positions remain in the audit response, but cannot veto
+            # an explicitly governed current successor. Active refusals still
+            # block reliance, including unapproved equal-value alternatives.
+            active_refusals=[entry for entry in result['refused'] if entry['record']['status'] not in {'SUPERSEDED','RETRACTED'}]
+            if result['conflicts'] or active_refusals or not result['qualified']:raise IntegrityError('Requested memory context is unresolved or unavailable')
             for entry in result['qualified']:
                 r=entry['record']
                 # Reuse the native governed Company Context contract. Period

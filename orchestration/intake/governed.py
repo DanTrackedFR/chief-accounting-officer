@@ -99,6 +99,10 @@ def execute(engine, prepared, pack):
     # Runtime rejects fabricated pending nodes: blocked publication is derived
     # solely from actual unresolved required producer versions.
     case=CAO().run(request)
+    # Match ordinary intake: retain validated context candidates without granting
+    # policy approval or financial-input authority. The sealed preparation remains
+    # the evidence source for later explicit CompanyMemory.capture.
+    case.memory_candidates.extend(copy.deepcopy(prepared.memory_candidates))
     case.work_modes=dict(primary=prepared._proposal.primary_mode.value,secondary=[c.value for c in prepared._proposal.secondary_modes])
     prepared.lineage.extend(lineage);prepared.case=case
     if hasattr(case, 'governance'):
