@@ -3,6 +3,7 @@ import copy
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 from orchestration.persistence import SQLiteStore, restore, snapshot, IntegrityError
 from orchestration.persistence.codec import dumps
 from orchestration.tests import persistence_stage4_fixtures as f
@@ -84,4 +85,21 @@ class DurableIntegration(unittest.TestCase):
             text=dumps(public)
             for marker in ('memory_events','memory_governance','source_snapshots','memory_context_dependencies','qualified_input_snapshot','raw_sources','Company finance system.json'):
                 self.assertNotIn(marker,text)
+    def test_warm_memory_does_not_hide_later_checkpoint_corruption(self):
+        self.promote()
+        self.assertTrue(self.memory.retrieve(f.COMPANY,self.case.id,self.case.id,'finance','systems')['qualified'])
+        self.store.connection.execute("UPDATE checkpoints SET payload=payload || ' ' WHERE company_id=? AND case_id=?",(f.COMPANY,self.case.id))
+        with self.assertRaises(IntegrityError):self.memory.retrieve(f.COMPANY,self.case.id,self.case.id,'finance','systems')
+    def test_memory_write_revalidates_native_state_before_commit(self):
+        r=self.capture();append=self.memory._append
+        def corrupt_after_append(*args,**kwargs):
+            result=append(*args,**kwargs)
+            self.store.connection.execute("UPDATE checkpoints SET payload=payload || ' ' WHERE company_id=? AND case_id=?",(f.COMPANY,self.case.id))
+            return result
+        with patch.object(self.memory,'_append',side_effect=corrupt_after_append):
+            with self.assertRaises(IntegrityError):self.memory.transition(f.COMPANY,r['record_id'],f.governance(r),expected_revision=1,recorded_at=f.LEARNED)
+        audit=self.memory.audit(f.COMPANY)
+        self.assertEqual(audit['revision'],1);self.assertEqual(audit['company_context'][0]['status'],'PROPOSED')
+        restored,_,_=self.store.load(f.COMPANY,self.case.id)
+        self.assertEqual(dumps(snapshot(restored,f.COMPANY,f.CONTEXT)),dumps(self.doc))
 if __name__=='__main__':unittest.main()
