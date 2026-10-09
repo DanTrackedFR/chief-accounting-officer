@@ -102,4 +102,30 @@ class DurableIntegration(unittest.TestCase):
         self.assertEqual(audit['revision'],1);self.assertEqual(audit['company_context'][0]['status'],'PROPOSED')
         restored,_,_=self.store.load(f.COMPANY,self.case.id)
         self.assertEqual(dumps(snapshot(restored,f.COMPANY,f.CONTEXT)),dumps(self.doc))
+    def successor_source(self,value):
+        fixture=f.initial(f.OBJECTIVE+' Review separate governed '+value+' systems evidence.',systems=value)
+        fixture,_=f.finish(fixture);case=fixture['case'];self.store.save(case,f.COMPANY,f.CONTEXT,0)
+        return case
+    def test_governed_successor_reuses_current_context_with_retired_history(self):
+        old=self.promote();case=self.successor_source('Xero')
+        new=f.capture(self.store,case,supersedes=[old['record_id']])
+        self.memory.resolve_conflict(f.COMPANY,new['record_id'],f.governance(new),{old['record_id']:f.governance(old,'SUPERSEDED')},expected_revision=3,recorded_at=f.LEARNED)
+        result=self.memory.retrieve(f.COMPANY,case.id,case.id,'finance','systems')
+        self.assertEqual(result['conflicts'],[]);self.assertEqual([r['record']['value'] for r in result['qualified']],['Xero'])
+        self.assertEqual(result['refused'][0]['record']['status'],'SUPERSEDED')
+        reused=f.initial(f.REUSE_OBJECTIVE,memory=f.memory_request(self.memory,case.id))
+        self.assertEqual(reused['session'].context['systems'],'Xero')
+        self.assertEqual([r['record_id'] for r in reused['memory_references']],[new['record_id']])
+    def test_unapproved_equal_value_alternative_still_blocks_intake(self):
+        self.promote();case=self.successor_source('NetSuite');f.capture(self.store,case)
+        result=self.memory.retrieve(f.COMPANY,case.id,case.id,'finance','systems')
+        self.assertTrue(result['qualified']);self.assertEqual(result['refused'][0]['record']['status'],'PROPOSED')
+        with self.assertRaises(IntegrityError):f.initial(f.REUSE_OBJECTIVE,memory=f.memory_request(self.memory,case.id))
+    def test_retracted_history_cannot_veto_or_substitute_current_context(self):
+        old=self.promote();self.memory.transition(f.COMPANY,old['record_id'],f.governance(old,'RETRACTED'),expected_revision=2,recorded_at=f.LEARNED)
+        case=self.successor_source('Xero');new=f.capture(self.store,case)
+        self.memory.transition(f.COMPANY,new['record_id'],f.governance(new),expected_revision=4,recorded_at=f.LEARNED)
+        reused=f.initial(f.REUSE_OBJECTIVE,memory=f.memory_request(self.memory,case.id))
+        self.assertEqual(reused['session'].context['systems'],'Xero')
+        self.assertEqual([r['record_id'] for r in reused['memory_references']],[new['record_id']])
 if __name__=='__main__':unittest.main()

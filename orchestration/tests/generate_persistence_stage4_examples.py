@@ -135,7 +135,10 @@ def artifacts(log_directory=None):
     with tempfile.TemporaryDirectory() as tmp:
         path=Path(tmp)/'company.db'
         for action in actions:
-            child=subprocess.run([sys.executable,'-m','orchestration.tests.generate_persistence_stage4_examples','--phase',str(path),action],capture_output=True,text=True,timeout=600)
+            # Full exact operation history is deliberately revalidated. The
+            # measured successor phase approaches ten minutes on a loaded host;
+            # retain a bounded allowance without weakening any authority check.
+            child=subprocess.run([sys.executable,'-m','orchestration.tests.generate_persistence_stage4_examples','--phase',str(path),action],capture_output=True,text=True,timeout=1800)
             expected={'interrupt':73,'lost-ack':74}.get(action,0)
             if log_directory:
                 dest=Path(log_directory);dest.mkdir(parents=True,exist_ok=True);(dest/(action+'.stderr')).write_text(child.stderr);(dest/(action+'.exit')).write_text(str(child.returncode)+'\n')

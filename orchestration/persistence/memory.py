@@ -401,7 +401,7 @@ class CompanyMemory:
             if not historical:
                 if r['status'] not in {'CONFIRMED','DOCUMENTED','APPROVED'}:reasons.append('governance-'+r['status'])
                 reasons.extend(self._qualification(r))
-                alternatives=[other['record_id'] for other in records.values() if other['record_id']!=r['record_id'] and other['status'] not in {'SUPERSEDED','RETRACTED'} and self._overlap(r,other) and dumps(r['value'])!=dumps(other['value'])]
+                alternatives=[] if r['status'] in {'SUPERSEDED','RETRACTED'} else [other['record_id'] for other in records.values() if other['record_id']!=r['record_id'] and other['status'] not in {'SUPERSEDED','RETRACTED'} and self._overlap(r,other) and dumps(r['value'])!=dumps(other['value'])]
                 if alternatives:reasons.append('unresolved-conflict');conflicts.extend(alternatives)
             entry=dict(record=copy.deepcopy(r),qualification='HISTORICAL' if historical else 'CURRENT_CONTEXT',limitations=['Context only; native ReviewedInputPack and owner qualification still required','No authenticated human approval'],reasons=sorted(set(reasons)))
             (refused if reasons else matches).append(entry)

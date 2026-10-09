@@ -7,11 +7,11 @@
   "pull_request": 41,
   "authored": {
     "result": "PASS",
-    "methods": 20,
-    "seconds": 126.288,
-    "log": "tests/evidence/durable-stage4-authored/transaction-cache-authored20.log"
+    "methods": 23,
+    "seconds": 234.279,
+    "log": "tests/evidence/durable-stage4-authored/successor-authored23.log"
   },
-  "independent_qa": "PENDING fresh20 plus retained42",
+  "independent_qa": "PENDING final25 and corrected full14",
   "determinism": "PENDING",
   "full_regression": "PENDING",
   "exact_head_ci": "PENDING",
@@ -63,6 +63,12 @@
       "result": "FAIL",
       "reason": "Actual successor phase exceeded600-second bound after genuine exit73/recovery and exit74/committed retry. Exact transaction-local native restoration cache added; fresh complete proof pending.",
       "log": "tests/evidence/durable-stage4-authored/bounded-successor600-failed.log.json"
+    },
+    {
+      "attempt": "Independent full Company successor reuse",
+      "result": "FAIL",
+      "reason": "Qualified current Xero rejected alongside retired historical NetSuite; corrected retired-anchor current conflict detection and narrow Intake refusal filter. Active proposed/stale alternatives still refuse.",
+      "finding": "DIQA04"
     }
   ],
   "merged": false,
@@ -73,5 +79,21 @@
     "repository": 53,
     "prior_supplemental": 401,
     "independent_stage4_not_yet_integrated": 17
+  },
+  "stage3_reference_query_migration": {
+    "result": "PASS",
+    "seed19_941_byte_identical": true,
+    "reason": "Retired memory records no longer anchor active conflicts; only current-query conflicts/refusal-reason arrays differ. Decoded native checkpoints, immutable memory records/events/uses and accounting are unchanged.",
+    "changed_files": {
+      "correction.json": {
+        "before_sha256": "c201d8f2dd067eba4543aa888dff01b1ec6a5c17832b5dd4a01c431fadc9f8c1",
+        "after_sha256": "8cea7407787ba6e43f786df035eb9abe3dd09a8d7af9334b362a64ccf1359ee2"
+      },
+      "restore.json": {
+        "before_sha256": "85d8aa119c5db68d580b33e0f9543c0a637df69d376b8741e82b5e8794e3b51c",
+        "after_sha256": "90839a93f2739d0616ddb022c5396ec032c89d7716e43abc572d442600dc9c46"
+      }
+    },
+    "original_release_manifest_retained": true
   }
 }

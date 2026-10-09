@@ -165,6 +165,47 @@ class DurableIntegrationIndependent(unittest.TestCase):
         historical=[v.payload() for v in restored.governance.versions.versions.values() if v.node_id==next(n.id for n in restored.graph.nodes.values() if n.logical_id=='fx-ENTITY-UK')]
         self.assertTrue(any(Decimal(v['calculations']['pairs'][0]['a_functional'])==16 for v in historical))
 
+    def test_governed_successor_can_be_reused_without_historical_position_substitution(self):
+        newer,_=f.finish(f.initial(f.OBJECTIVE+' Independently review corrected systems context.',systems='Xero'))
+        case=newer['case'];self.s.save(case,f.COMPANY,f.CONTEXT,0)
+        candidate=f.capture(self.s,case,supersedes=[self.record['record_id']])
+        successor=self.m.resolve_conflict(f.COMPANY,candidate['record_id'],f.governance(candidate),{self.record['record_id']:f.governance(self.record,'SUPERSEDED')},expected_revision=3,recorded_at=f.LEARNED)
+        retrieval=self.m.retrieve(f.COMPANY,case.id,case.id,'finance','systems')
+        self.assertEqual([v['record']['value'] for v in retrieval['qualified']],['Xero'])
+        self.assertTrue(any(r['record']['status']=='SUPERSEDED' for r in retrieval['refused']))
+        separate=f.initial(f.REUSE_OBJECTIVE+' Use qualified successor in separate Case.',memory=f.memory_request(self.m,case.id))
+        self.assertEqual(separate['session'].context['systems'],'Xero')
+        self.assertEqual(separate['memory_references'][0]['version_id'],successor['version_id'])
+        self.assertNotEqual(separate['memory_references'][0]['version_id'],self.record['version_id'])
+
+    def test_equal_value_unapproved_active_alternative_still_blocks_intake(self):
+        newer,_=f.finish(f.initial(f.OBJECTIVE+' Review equal-value unapproved alternative.',systems='NetSuite'))
+        case=newer['case'];self.s.save(case,f.COMPANY,f.CONTEXT,0);candidate=f.capture(self.s,case)
+        self.assertEqual(candidate['status'],'PROPOSED')
+        retrieval=self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')
+        self.assertTrue(retrieval['qualified']);self.assertTrue(any(v['record']['status']=='PROPOSED' for v in retrieval['refused']))
+        with self.assertRaises(IntegrityError):f.initial(f.REUSE_OBJECTIVE+' Reject unapproved active alternative.',memory=f.memory_request(self.m,self.root))
+    def test_retracted_alternative_cannot_veto_or_substitute_current_exact_version(self):
+        newer,_=f.finish(f.initial(f.OBJECTIVE+' Review then retract erroneous systems source.',systems='Xero'))
+        case=newer['case'];self.s.save(case,f.COMPANY,f.CONTEXT,0);candidate=f.capture(self.s,case)
+        retracted=self.m.transition(f.COMPANY,candidate['record_id'],f.governance(candidate,'RETRACTED'),expected_revision=3,recorded_at=f.LEARNED)
+        retrieval=self.m.retrieve(f.COMPANY,self.root,self.root,'finance','systems')
+        self.assertFalse(retrieval['conflicts']);self.assertEqual([x['record']['version_id'] for x in retrieval['qualified']],[self.record['version_id']])
+        separate=f.initial(f.REUSE_OBJECTIVE+' Retain qualified current context after retraction.',memory=f.memory_request(self.m,self.root))
+        self.assertEqual(separate['session'].context['systems'],'NetSuite')
+        self.assertEqual(separate['memory_references'][0]['version_id'],self.record['version_id'])
+        with self.assertRaises(IntegrityError):self.m.consume_context(f.COMPANY,self.root,self.root,retracted['record_id'],retracted['version_id'],expected_revision=4,recorded_at=f.LEARNED)
+
+    def test_active_stale_support_cannot_be_hidden_by_new_equal_value_position(self):
+        key=self.s.prepare(self.c,f.COMPANY,self.ctx,self.rev,f.correction_intent(self.c));self.s.recover(f.COMPANY,self.root,key)
+        newer,_=f.finish(f.initial(f.OBJECTIVE+' Review independently qualified same-value context.',systems='NetSuite'))
+        case=newer['case'];self.s.save(case,f.COMPANY,f.CONTEXT,0);candidate=f.capture(self.s,case)
+        current=self.m.transition(f.COMPANY,candidate['record_id'],f.governance(candidate),expected_revision=3,recorded_at=f.LEARNED)
+        retrieval=self.m.retrieve(f.COMPANY,case.id,case.id,'finance','systems')
+        self.assertEqual([x['record']['version_id'] for x in retrieval['qualified']],[current['version_id']])
+        self.assertTrue(any(x['record']['status']=='DOCUMENTED' and 'supporting-result-STALE' in x['reasons'] for x in retrieval['refused']))
+        with self.assertRaises(IntegrityError):f.initial(f.REUSE_OBJECTIVE+' Refuse active stale support.',memory=f.memory_request(self.m,case.id))
+
     def test_restore_and_current_retrieval_are_read_only(self):
         before=dumps(snapshot(self.c,f.COMPANY,self.ctx))
         with patch.object(CAO,'run',side_effect=AssertionError('Native run on read')),patch.object(CAO,'execute_versioned_owner',side_effect=AssertionError('Native owner on read')):
