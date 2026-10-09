@@ -2,7 +2,7 @@
 import copy
 from unittest.mock import patch
 from orchestration.tests import stage4_temporal_fixtures as t, stage4_fixtures as prior
-from orchestration.tests.persistence_stage2_fixtures import attach, correction_intent, rework_intent, journal_intent, reopening
+from orchestration.tests.persistence_stage2_fixtures import attach as stage2_attach, correction_intent, rework_intent, journal_intent, reopening
 from orchestration.persistence import snapshot
 from orchestration.persistence.evidence import retain
 from orchestration.persistence.memory import applicability
@@ -14,6 +14,11 @@ LEARNED=dict(value='2026-11-02',precision='exact')
 UNKNOWN=dict(value=None,precision='unknown')
 OBJECTIVE=prior.OBJECTIVE
 REUSE_OBJECTIVE=OBJECTIVE+' Use the documented company finance-system context for a separate reporting review.'
+
+
+def attach(case):
+    with patch.object(prior,'OBJECTIVE',case.objective):
+        return stage2_attach(case)
 
 
 def initial(objective=OBJECTIVE,systems=None,memory=None):
