@@ -2,7 +2,7 @@
 
 Build1 implementation is published as Draft PR44 from live main
 `ea19ee62c938dba06f3faf758a75e17a7da27e15`; no merge occurred. The branch is
-`mvp/local-cao-execution-contract`. Independent QA is complete with27 tests, and
+`mvp/local-cao-execution-contract`. Independent QA is complete with30 tests, and
 25 authored tests cover the local facade. Two native owner scenarios and two
 insufficient-evidence questions are proven through fresh processes. Local Claude
 Code itself is unavailable; owner live-client validation remains explicit.

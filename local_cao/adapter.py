@@ -93,6 +93,7 @@ class ExecutionInterface:
 
     def read_json(self, relative):
         path = self._path(relative)
+        if not path.is_file(): raise Failure('workspace_boundary')
         if path.stat().st_size > MAX_BYTES: raise Failure('invalid_request')
         value = decode(path.read_text()); bounded(value)
         return value
@@ -116,6 +117,7 @@ class ExecutionInterface:
         if marker != {'contract_version': VERSION, 'company_id': company}:
             raise Failure('identity_conflict')
         path = self._path('company-context.md')
+        if not path.is_file(): raise Failure('workspace_boundary')
         if path.stat().st_size > 100_000: raise Failure('invalid_context')
         try: context = parse(path.read_text())
         except (ValueError, ArithmeticError): raise Failure('invalid_context') from None
@@ -149,12 +151,15 @@ class ExecutionInterface:
 
     def _store(self):
         path = self._path('accounting.sqlite3')
+        if path.exists() and not path.is_file(): raise Failure('workspace_boundary')
         try: return SQLiteStore(path)
         except (ValueError, sqlite3.Error): raise Failure('storage_failure') from None
 
     def _call(self, r, company, operation):
         if operation == 'initialize':
             path = self._path('company-context.md')
+            if not path.is_file(): raise Failure('workspace_boundary')
+            if path.stat().st_size > 100_000: raise Failure('invalid_context')
             try: config = parse(path.read_text())
             except (ValueError, ArithmeticError): raise Failure('invalid_context') from None
             if config['company']['company_id'] != company: raise Failure('identity_conflict')

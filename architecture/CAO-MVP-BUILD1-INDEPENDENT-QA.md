@@ -8,7 +8,7 @@ local guide, execution contract and TrackedFR finance-context requirements.
 
 ## Executed acceptance
 
-`python -m unittest local_cao.tests.test_independent_qa -q` passed **27 distinct
+`python -m unittest local_cao.tests.test_independent_qa -q` passed **30 distinct
 independent tests** (exit 0). The test population includes two owner scenarios,
 multiple separate-process CLI resumes, and three target-substitution attacks.
 Counting subtests or routes again would inflate the distinct test count.
@@ -23,7 +23,7 @@ Counting subtests or routes again would inflate the distinct test count.
 | Company identity | Other company cannot resume known Case; changed context cannot rebind immutable workspace marker |
 | Retry economics | Lost submission acknowledgment after committed execution returns safe acknowledgment without owner execution or revision change |
 | Public safety | Exact native public parity, fixed error text hides confidential exceptions, no arbitrary public route |
-| Paths and private files | Absolute/traversal evidence and symlink workspace/database rejected; new state files have mode 0600 |
+| Paths and private files | Absolute/traversal evidence, symlink workspace/database, directory/FIFO evidence and FIFO SQLite file rejected; oversized context rejected before read; new state files have mode 0600 |
 | Malformed wire | Unknown operation/authority fields, duplicate JSON keys, nonfinite JSON and non-object requests reject without traceback |
 | Staged-read safety | Pending status/questions do not invoke CAO.run, publish journals or create checkpoints; result/resume safely report not-found |
 | Atomic input staging | Injected fsync failure publishes no partial evidence and cleans temporary file; exact typed identity distinguishes boolean from integer |
