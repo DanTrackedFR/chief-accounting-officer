@@ -5,6 +5,10 @@ on:
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
+      - 'local_cao/**'
+      - 'CLAUDE.md'
+      - 'company-context.example.md'
+      - 'docs/LOCAL-CAO.md'
       - 'orchestration/**'
       - 'interfaces/**'
       - 'skills/management-accounting-analytics/**'
@@ -23,6 +27,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Local execution authored and independent QA
+        run: |
+          python -m unittest discover -s local_cao/tests -p 'test_*.py'
+          python -m local_cao.tests.prove_cli > /tmp/local-cao-proof.json
+          cmp local_cao/examples/cli-proof.json /tmp/local-cao-proof.json
       - name: Orchestration authored and independent QA
         run: python -m unittest discover -s orchestration/tests -p 'test_*.py'
       - name: Existing skills and lease vertical slice

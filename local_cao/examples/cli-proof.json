@@ -1,0 +1,267 @@
+{
+  "claude_code_executed": false,
+  "contract_version": "1.0",
+  "fresh_process_operations": true,
+  "live_claude_requires_owner_validation": true,
+  "scenarios": [
+    {
+      "input_sha256": "c61e2432a23a49e411c635b673c2cf336499623cf513e371a5e55a6d0f5e93ac",
+      "package": "fixed-assets",
+      "response": {
+        "case_id": "case:b1fab2107de65c5ae902a9c04e15cc1df2b79d4b02457f8027f1e4ae800b416f",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "complete",
+        "lifecycle_state": "CLOSED",
+        "ok": true,
+        "operation": "execute",
+        "public_result": {
+          "calculations": [],
+          "confidence": "medium",
+          "controls": [
+            "Independent route, estimate and journal review",
+            "Source population to GL tie-out",
+            "Versioned accounting policy and disclosure review"
+          ],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "The supplied accounting workpapers support the requested conclusion within the reviewed scope.",
+          "journals": [
+            {
+              "lines": [
+                {
+                  "account": "depreciation expense",
+                  "amount": "90000.00",
+                  "side": "Dr"
+                },
+                {
+                  "account": "accumulated depreciation",
+                  "amount": "90000.00",
+                  "side": "Cr"
+                }
+              ]
+            }
+          ],
+          "jurisdiction": "NL",
+          "limitations": [
+            "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ],
+          "open_items": [],
+          "reporting": [
+            "Class gross/accumulated rollforwards, depreciation methods/lives, impairment, disposals and CIP commitments; AASB Tier2 disclosures use applicable reduced-disclosure requirements.",
+            "Framework-specific statement presentation and comparative-period consistency"
+          ],
+          "required_approvals": [
+            "Accounting judgment memo",
+            "Calculation and reconciliation",
+            "Disclosure tie-out",
+            "Input evidence",
+            "Reviewer certification"
+          ],
+          "status": "complete",
+          "uncertainties": [
+            "Synthetic amounts and assumptions for regression only"
+          ]
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "complete"
+          }
+        ]
+      },
+      "resumed_identical": true,
+      "retry_identical": true
+    },
+    {
+      "input_sha256": "4e4e9cbf0c9b3d3307b79f31b6df03392b1b98a98da2774ca8bddaf63df7841d",
+      "package": "accounts-payable",
+      "response": {
+        "case_id": "case:c46b6b5a934eca2d2f30093b0dec3ba721c00272b899f3ea433cc25edd4c7e01",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "complete",
+        "lifecycle_state": "CLOSED",
+        "ok": true,
+        "operation": "execute",
+        "public_result": {
+          "calculations": [
+            {
+              "amount": "20",
+              "label": "closing ap"
+            }
+          ],
+          "confidence": "medium",
+          "controls": [
+            "Independent route, estimate and journal review",
+            "Source population to GL tie-out",
+            "Versioned accounting policy and disclosure review"
+          ],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "The supplied accounting workpapers support the requested conclusion within the reviewed scope.",
+          "journals": [
+            {
+              "lines": [
+                {
+                  "account": "expense",
+                  "amount": "120.00",
+                  "side": "Dr"
+                },
+                {
+                  "account": "accounts payable",
+                  "amount": "120.00",
+                  "side": "Cr"
+                }
+              ]
+            },
+            {
+              "lines": [
+                {
+                  "account": "professional services expense",
+                  "amount": "9600.00",
+                  "side": "Dr"
+                },
+                {
+                  "account": "accrued expenses",
+                  "amount": "9600.00",
+                  "side": "Cr"
+                }
+              ]
+            },
+            {
+              "lines": [
+                {
+                  "account": "accounts payable",
+                  "amount": "100.00",
+                  "side": "Dr"
+                },
+                {
+                  "account": "cash",
+                  "amount": "100.00",
+                  "side": "Cr"
+                }
+              ]
+            }
+          ],
+          "jurisdiction": "NL",
+          "limitations": [
+            "Company recognition, valuation, legal rights and tax conclusions require supplied evidence and independent review. No universal ERP posting authorization is inferred.",
+            "Precise authority is not asserted where the governed register has no verified paragraph; apply actual effective edition and entity scope."
+          ],
+          "open_items": [],
+          "reporting": [
+            "Framework-specific statement presentation and comparative-period consistency",
+            "Material accrual uncertainty, expense/asset classification, related parties and supplier financing require separate disclosure review."
+          ],
+          "required_approvals": [
+            "Accounting judgment memo",
+            "Calculation and reconciliation",
+            "Disclosure tie-out",
+            "Input evidence",
+            "Reviewer certification"
+          ],
+          "status": "complete",
+          "uncertainties": [
+            "Synthetic amounts and assumptions for regression only"
+          ]
+        },
+        "workplan": [
+          {
+            "owner": "accounts-payable",
+            "state": "complete"
+          }
+        ]
+      },
+      "resumed_identical": true,
+      "retry_identical": true
+    },
+    {
+      "question": "How should we recognize revenue from this new customer agreement?",
+      "response": {
+        "case_id": "case:c098db1dd47fa9f0b9ae46ad42e1042f63bf1ae47c99538f70053f5064743d3a",
+        "checkpoint_revision": null,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "NOT_EXECUTED",
+        "durable": false,
+        "execution_state": "blocked",
+        "lifecycle_state": "OPEN",
+        "ok": true,
+        "operation": "execute",
+        "public_result": {
+          "calculations": [],
+          "confidence": "low",
+          "controls": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "Accounting work is blocked.",
+          "journals": [],
+          "jurisdiction": "NL",
+          "limitations": [],
+          "open_items": [
+            "No supported issue decomposition; supply accounting facts or a scoped planner",
+            "Supply controlled structured evidence and independently reviewed native workpapers before execution.",
+            "Provide customer contract workpaper including obligations.",
+            "Supply the signed agreement, transaction price, performance obligations, delivery evidence and reviewed revenue workpaper.",
+            "Consult the revenue-recognition input contract and preserve its source and review references."
+          ],
+          "reporting": [],
+          "required_approvals": [],
+          "status": "blocked",
+          "uncertainties": []
+        },
+        "workplan": []
+      }
+    },
+    {
+      "question": "Our prepayments have jumped this month. Investigate.",
+      "response": {
+        "case_id": "case:8f4858bf4428704e13e4b18dd316c53d37d1ea3b98402f5f0785471c30245bcd",
+        "checkpoint_revision": null,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "NOT_EXECUTED",
+        "durable": false,
+        "execution_state": "blocked",
+        "lifecycle_state": "OPEN",
+        "ok": true,
+        "operation": "execute",
+        "public_result": {
+          "calculations": [],
+          "confidence": "low",
+          "controls": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "Accounting work is blocked.",
+          "journals": [],
+          "jurisdiction": "NL",
+          "limitations": [],
+          "open_items": [
+            "No supported issue decomposition; supply accounting facts or a scoped planner",
+            "Supply controlled structured evidence and independently reviewed native workpapers before execution.",
+            "Provide reconciliation workpaper including reconciliations.",
+            "Supply the account reconciliation, current and comparative trial balances, additions and consumption support, and investigation thresholds.",
+            "Consult the balance-sheet-reconciliations input contract and preserve its source and review references."
+          ],
+          "reporting": [],
+          "required_approvals": [],
+          "status": "blocked",
+          "uncertainties": []
+        },
+        "workplan": []
+      }
+    }
+  ]
+}
