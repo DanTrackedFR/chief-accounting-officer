@@ -35,3 +35,11 @@ reproduced fresh HTTP proofs under seeds19/941: SHA256
 Actual crash-before/after-native-commit and PARTIAL outcome tests inspected.
 Roadmap is append-only; existing authorized witness tool changed only its
 documentation hash, with all other1100 protected entries unchanged.
+
+Independent readiness review: reviewer-owned test_readiness_gate.py adds8 distinct
+executable tests of the exact workflow script. Wrong SHA/workflow/current run,
+failed or unfinished runs, every missing/failed/skipped/cancelled required step,
+API failures, absent proof and cached-readiness chaining all fail closed. Only a
+full successful same-workflow exact-head run permits reuse on ready_for_review;
+other events always execute full regression. Eight tests PASS; zero substantive
+findings. Combined reviewer-owned population20, combined new population44.

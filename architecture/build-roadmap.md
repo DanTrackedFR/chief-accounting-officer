@@ -214,12 +214,14 @@ Build 1 — COMPLETE (MERGED PR #44): local Claude Code operation and shared exe
 contract1.0 reuse native accounting, durable Cases and Company Accounting Memory.
 Live main merge b3b6d3c7a57682985f66dc76985f99fe42b4dbd2;3,050 distinct tests passed.
 
-Build 2A — IMPLEMENTED; RELEASE GATES IN PROGRESS (Draft PR #45): separately runnable
+Build 2A — IMPLEMENTED AND LOCALLY VERIFIED; FINAL ACTIONS GATE (PR #45): separately runnable
 Python /v1 HTTP wrapper, scoped server authentication, company workspace isolation,
 durable operational jobs and native checkpoint reconciliation.24 authored/12
-independent tests pass; two real synthetic owners retain exact local public parity.
+independent service tests plus8 independent release-gate tests pass. Full local
+regression passes3,094 distinct tests and seven validators; two real synthetic
+owners retain exact local public parity.
 No native accounting authority or protected milestone changes. Completion requires
-full regression, deterministic fresh-process proofs and exact-head Actions; see
+exact-head Actions and unchanged-head readiness; deterministic seeds19/941 pass. See
 architecture/CAO-MVP-BUILD2A-ARCHITECTURE.md and hosted_cao/release/.
 
 Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mapping,
