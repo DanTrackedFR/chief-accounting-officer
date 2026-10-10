@@ -5,6 +5,7 @@ on:
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
+      - "hosted_cao/**"
       - 'local_cao/**'
       - 'CLAUDE.md'
       - 'company-context.example.md'
@@ -27,6 +28,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Hosted service authored and independent QA
+        run: |
+          python -m unittest discover -s hosted_cao/tests -p "test_*.py"
+          PYTHONHASHSEED=19 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-19.json
+          PYTHONHASHSEED=941 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-941.json
+          cmp hosted_cao/release/http-proof.json /tmp/hosted-proof-19.json
+          cmp /tmp/hosted-proof-19.json /tmp/hosted-proof-941.json
       - name: Local execution authored and independent QA
         run: |
           python -m unittest discover -s local_cao/tests -p 'test_*.py'

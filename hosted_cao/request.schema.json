@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trackedfr:cao:http:request:1.0",
+  "title": "CAO HTTP Request 1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "operation",
+    "company_id"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "operation": {
+      "enum": [
+        "initialize",
+        "diagnose",
+        "context",
+        "capabilities",
+        "start",
+        "status",
+        "questions",
+        "submit",
+        "execute",
+        "result",
+        "resume",
+        "list"
+      ]
+    },
+    "company_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "target_family": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "route": {
+      "enum": [
+        "answer_context",
+        "answer",
+        "retrieval_snippet",
+        "citation",
+        "tool_output",
+        "user_log",
+        "export"
+      ]
+    },
+    "staged_file_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "start"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "request_id",
+          "objective",
+          "target_family"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "status",
+              "questions",
+              "submit",
+              "execute",
+              "result",
+              "resume"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "submit"
+          }
+        }
+      },
+      "then": {
+        "oneOf": [
+          {
+            "required": [
+              "evidence"
+            ],
+            "not": {
+              "required": [
+                "staged_file_id"
+              ]
+            }
+          },
+          {
+            "required": [
+              "staged_file_id"
+            ],
+            "not": {
+              "required": [
+                "evidence"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "initialize"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "diagnose"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "context"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "capabilities"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "start"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "request_id",
+            "objective",
+            "target_family"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "status"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "questions"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "submit"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id",
+            "evidence",
+            "staged_file_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "execute"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "result"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "resume"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route",
+            "case_id"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "list"
+          }
+        }
+      },
+      "then": {
+        "propertyNames": {
+          "enum": [
+            "contract_version",
+            "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    }
+  ]
+}
