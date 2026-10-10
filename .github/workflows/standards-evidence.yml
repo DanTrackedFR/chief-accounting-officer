@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "knowledge/topics/**/standards-claims.json"
+      - "knowledge/borrowing-costs/**"
       - "knowledge/standards-evidence/**"
       - "interfaces/**"
       - "orchestration/**"
@@ -13,9 +14,10 @@ on:
       - "knowledge/phase-2d-topic-manifest.json"
       - ".github/workflows/standards-evidence.yml"
   push:
-    branches: [persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship]
+    branches: [phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship]
     paths:
       - "knowledge/topics/**/standards-claims.json"
+      - "knowledge/borrowing-costs/**"
       - "knowledge/standards-evidence/**"
       - "interfaces/**"
       - "orchestration/**"
@@ -35,6 +37,10 @@ jobs:
           python-version: "3.12"
       - name: Validate claim registers
         run: python knowledge/standards-evidence/validate_claims.py
+      - name: Borrowing costs supplemental knowledge
+        run: |
+          python knowledge/borrowing-costs/validate_supplement.py
+          python -m unittest discover -s knowledge/borrowing-costs -p "test*.py"
       - name: Validate canonical approval contract
         run: python knowledge/standards-evidence/validate_approvals.py
       - name: Test accounting regressions and public output boundary contract
