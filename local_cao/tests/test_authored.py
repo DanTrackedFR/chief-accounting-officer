@@ -147,6 +147,14 @@ class Authored(unittest.TestCase):
         with self.assertRaises(ValueError):decode('{"a":1,"a":2}')
         self.assertFalse(self.api.call({'contract_version':'future'})['ok'])
 
+    def test_staged_read_does_not_execute(self):
+        r=self.start();self.assertTrue(self.call('submit',case_id=r['case_id'],evidence=evidence('fixed-assets'))['ok'])
+        with patch.object(CAO, 'run', side_effect=AssertionError('read executed')):
+            s=self.call('status',case_id=r['case_id'])
+            self.assertTrue(s['ok']);self.assertEqual(s['currentness'],'NOT_EXECUTED')
+            self.assertFalse(s['public_result'].get('calculations'))
+            self.assertFalse(self.call('result',case_id=r['case_id'])['ok'])
+
     def test_list(self):
         r=self.start();self.assertEqual(self.call('list')['cases'],[{'case_id':r['case_id']}])
 

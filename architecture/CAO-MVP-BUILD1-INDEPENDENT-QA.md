@@ -8,7 +8,7 @@ local guide, execution contract and TrackedFR finance-context requirements.
 
 ## Executed acceptance
 
-`python -m unittest local_cao.tests.test_independent_qa -q` passed **24 distinct
+`python -m unittest local_cao.tests.test_independent_qa -q` passed **27 distinct
 independent tests** (exit 0). The test population includes two owner scenarios,
 multiple separate-process CLI resumes, and three target-substitution attacks.
 Counting subtests or routes again would inflate the distinct test count.
@@ -25,6 +25,8 @@ Counting subtests or routes again would inflate the distinct test count.
 | Public safety | Exact native public parity, fixed error text hides confidential exceptions, no arbitrary public route |
 | Paths and private files | Absolute/traversal evidence and symlink workspace/database rejected; new state files have mode 0600 |
 | Malformed wire | Unknown operation/authority fields, duplicate JSON keys, nonfinite JSON and non-object requests reject without traceback |
+| Staged-read safety | Pending status/questions do not invoke CAO.run, publish journals or create checkpoints; result/resume safely report not-found |
+| Atomic input staging | Injected fsync failure publishes no partial evidence and cleans temporary file; exact typed identity distinguishes boolean from integer |
 | Historical input | Changed objective cannot overwrite original request bytes |
 | Currentness | Native in-memory stale result version maps to STALE; this mapping test does not claim a new persisted selective-rework demonstration |
 | Availability | Registry metadata/executor parity is discovered dynamically; unavailable pending specialists cannot complete |
@@ -47,6 +49,12 @@ Counting subtests or routes again would inflate the distinct test count.
    family, meaningful required populations, and actual completed native target-owner
    work before complete delivery. Permanent independent regressions cover both the
    original substitution and all three reproduced bypasses.
+
+4. **Staged status could execute accounting before execute.** The implementation
+   author separately identified this defect and changed pending read operations
+   to return unexecuted curated staging information. Independent regression blocks
+   CAO.run, verifies status/questions stay safe, result/resume report not-found,
+   and confirms that only explicit execute creates the legitimate result.
 
 No significant reproduced defect remains unresolved in this reviewed bounded
 facade. This statement is limited to executed tests and inspected code, not a

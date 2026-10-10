@@ -147,7 +147,10 @@ class ExecutionInterface:
                     ok=False, error={'code': code, 'message': ERRORS[code]},
                     public_result=public_record(dict(status='blocked', guidance=ERRORS[code]), route='tool_output'))
 
-    def _store(self): return SQLiteStore(self._path('accounting.sqlite3'))
+    def _store(self):
+        path = self._path('accounting.sqlite3')
+        try: return SQLiteStore(path)
+        except (ValueError, sqlite3.Error): raise Failure('storage_failure') from None
 
     def _call(self, r, company, operation):
         if operation == 'initialize':
@@ -199,11 +202,19 @@ class ExecutionInterface:
                 return dict(case_id=d['case_id'], execution_state='evidence_staged',
                             evidence_authority='supplied_native_workpaper_not_adapter_approved')
             if head:
-                case, revision, _ = store.load(company, d['case_id'])
+                try: case, revision, _ = store.load(company, d['case_id'])
+                except (ValueError, sqlite3.Error): raise Failure('storage_failure') from None
                 return self._delivery(case, revision, r.get('route', 'tool_output'))
+            if operation in ('result', 'resume'): raise Failure('not_found')
             evidence_path = folder / 'evidence.json'
             evidence = self.read_json(str(evidence_path.relative_to(checked_path(self.workspace)))) if evidence_path.exists() else {}
-            native = copy.deepcopy(d['native_request']); native.update(evidence)
+            native = copy.deepcopy(d['native_request'])
+            if operation == 'execute': native.update(evidence)
+            elif evidence:
+                return dict(case_id=d['case_id'], lifecycle_state='OPEN', execution_state='blocked',
+                    checkpoint_revision=None, durable=False, currentness='NOT_EXECUTED', workplan=[],
+                    public_result=public_record(dict(status='blocked', guidance='Reviewed workpaper is staged; accounting has not executed.',
+                        open_items=['Invoke execute for the staged workpaper before requesting an accounting result.']), route=r.get('route', 'tool_output')))
             case = CAO().run(native)
             if case.outcome == 'complete':
                 owner = FACT_ADAPTERS[d['target_family']][0]

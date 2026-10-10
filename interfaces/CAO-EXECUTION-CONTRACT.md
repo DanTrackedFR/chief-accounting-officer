@@ -8,7 +8,9 @@ No HTTP, MCP, network, model-inference, authentication or approval adapter exist
 Input envelope: contract_version (exact string1.0), operation, explicit company_id.
 Unknown fields, duplicate wire keys, future versions, nonfinite numbers, excessive
 size/depth and invalid stable IDs reject. Native intake bounds apply (2MB, depth12,
-10,000 entries). Request schema: local_cao/execution.schema.json. Operation-specific
+10,000 entries). Request schema: local_cao/execution.schema.json. Response structure:
+local_cao/response.schema.json. The public-output code remains the stricter
+accounting-content authorization boundary, not JSON Schema. Operation-specific
 requirements below are enforced by code; examples use docs/LOCAL-CAO.md.
 
 | Operation | Additional input | Governed behavior |
@@ -75,7 +77,7 @@ the exposed subset in1.0. Preserve their original authority contracts; later
 operations must compose SQLiteStore.prepare/recover and actual sealed evidence.
 No approval, period closure, journal posting or memory promotion endpoint exists.
 
-Errors: invalid_request, invalid_context, workspace_boundary, identity_conflict,
+Errors: runtime_installation, invalid_request, invalid_context, workspace_boundary, identity_conflict,
 immutable_submission, not_found, storage_failure, public_boundary. Responses are
 safe fixed messages plus curated blocked public_result, never exceptions or raw
 source content. Internal/private diagnostics are separate; no response claims
