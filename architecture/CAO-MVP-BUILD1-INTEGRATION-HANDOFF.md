@@ -60,7 +60,9 @@ inspection must establish actual database column mappings. Preserve TrackedFR
 onboarding/preferences ownership and CAO approved-position/currentness ownership.
 
 Independent QA report: architecture/CAO-MVP-BUILD1-INDEPENDENT-QA.md. Release results
-and exact tested source hashes: local_cao/release/release-regression.json once
-completed. Completion report records the final gate status. Exact final-head and
+and exact tested source hashes: local_cao/release/release-regression.json.
+All 3,050 distinct repository tests and seven validators passed locally; 25 authored
+and 30 independent tests are included. Two deterministic fresh-process CLI proofs
+are byte-identical. Completion report records the final gate status. Exact final-head and
 readiness-triggered Actions are recorded on PR44; do not infer CI PASS from a local
 count or from another SHA. Specialist PRs27/42/43 were neither modified nor merged.
