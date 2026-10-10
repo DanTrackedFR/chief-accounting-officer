@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import tempfile
 import threading
+import subprocess
+import sys
 import unittest
 from unittest.mock import patch
 from hosted_cao.service import Service, Server
@@ -55,7 +57,10 @@ class Authored(unittest.TestCase):
         for request in (self.envelope('list',extra=True),{**self.envelope('list'),'contract_version':'2.0'},self.envelope('execute',case_id='foo')):
             self.assertEqual(self.http('/v1/operations',request)[0],400)
     def test_payload_limit(self):
-        self.assertEqual(self.http('/v1/operations','x'*(2_000_001))[0],413)
+        c=http.client.HTTPConnection(*self.server.server_address,timeout=10)
+        c.putrequest('POST','/v1/operations')
+        for k,v in {'Authorization':'Bearer '+TOKEN,'X-CAO-Company':COMPANY,'Content-Type':'application/json','Content-Length':'2000001'}.items():c.putheader(k,v)
+        c.endheaders();r=c.getresponse();self.assertEqual(r.status,413);r.read();c.close()
     def test_malformed(self):
         for data in ('[]','{"operation":"a","operation":"b"}','{"x":NaN}'):
             self.assertEqual(self.http('/v1/operations',data)[0],400)
@@ -121,6 +126,49 @@ class Authored(unittest.TestCase):
         with self.assertLogs('hosted_cao',level='INFO') as logs:
             status,r=self.http('/v1/operations','SECRET-invalid')
         self.assertNotIn('SECRET',json.dumps(r));self.assertNotIn(TOKEN,str(logs.output));self.assertNotIn('SECRET',str(logs.output))
+    def crash_child(self,cid,after_commit):
+        script="""
+import os,sys
+from unittest.mock import patch
+from hosted_cao.service import Service
+from orchestration.persistence import SQLiteStore
+from orchestration.runtime import CAO
+company='synthetic-demo-001'
+service=Service(sys.argv[1],{company:sys.argv[2]},[{'caller_id':'crash','token':'x'*40,'companies':[company]}])
+if sys.argv[3]=='commit':
+    original=SQLiteStore.save
+    def crash(*args,**kwargs):
+        original(*args,**kwargs)
+        os._exit(77)
+    with patch.object(SQLiteStore,'save',crash):service.run_one()
+else:
+    original=CAO.run
+    def crash(*args,**kwargs):
+        case=original(*args,**kwargs)
+        if case.governance.versions.active:os._exit(78)
+        return case
+    with patch.object(CAO,'run',crash):service.run_one()
+"""
+        r=subprocess.run([sys.executable,'-c',script,str(self.root/'jobs'),str(self.workspace),'commit' if after_commit else 'owner'],capture_output=True,timeout=60)
+        self.assertEqual(r.returncode,77 if after_commit else 78,r.stderr)
+    def test_actual_process_crash_after_checkpoint_commit(self):
+        cid=self.stage();_,j=self.job(cid);self.crash_child(cid,True)
+        self.assertEqual(self.service.job(COMPANY,j['id'])['state'],'EXECUTING')
+        with patch.object(CAO,'run',side_effect=AssertionError('repeated economics')):self.service.run_one()
+        self.assertEqual(self.service.job(COMPANY,j['id'])['accounting']['checkpoint_revision'],1)
+    def test_actual_process_crash_before_checkpoint_commit(self):
+        cid=self.stage();_,j=self.job(cid);self.crash_child(cid,False)
+        self.assertEqual(self.service.job(COMPANY,j['id'])['state'],'EXECUTING')
+        self.service.run_one();r=self.service.job(COMPANY,j['id'])
+        self.assertEqual(r['accounting']['execution_state'],'complete');self.assertEqual(r['accounting']['checkpoint_revision'],1)
+    def test_partial_job_preserves_actual_native_outcome(self):
+        cid=self.start();e=evidence('fixed-assets');e['facts']['supplier_cost']=evidence('accounts-payable')['facts']['supplier_cost'];e['facts']['supplier_cost']['reviewer_signoff']=None
+        self.assertEqual(self.call('submit',case_id=cid,evidence=e)[0],200)
+        _,j=self.job(cid);self.service.run_one();r=self.service.job(COMPANY,j['id'])
+        native=ExecutionInterface(self.workspace).call(self.envelope('resume',case_id=cid))
+        self.assertEqual(r['accounting']['public_result'],native['public_result'])
+        self.assertEqual(r['accounting']['execution_state'],'partial')
+
     def test_cross_company_job(self):
         cid=self.stage();_,j=self.job(cid)
         self.assertEqual(self.http('/v1/jobs/'+j['id'],headers={'Authorization':'Bearer '+'y'*40,'X-CAO-Company':'other-company'})[0],404)
