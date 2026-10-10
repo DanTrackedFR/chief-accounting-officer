@@ -28,3 +28,10 @@ hard process restart and same-job retry with two native synthetic owners. Tests 
 not invent real authenticated accounting approvals. Host-controlled disk/credential
 configuration and proxy/TLS are deployment trust assumptions, not adversarial host
 security. Full repository/exact-head CI results belong to completion/release evidence.
+
+Latest independent36-test targeted rerun passes (20.928s). Reviewer independently
+reproduced fresh HTTP proofs under seeds19/941: SHA256
+`d34769d24cea1dd384ccda256e4010e87656263e903552ee0537f9d947f77d45`.
+Actual crash-before/after-native-commit and PARTIAL outcome tests inspected.
+Roadmap is append-only; existing authorized witness tool changed only its
+documentation hash, with all other1100 protected entries unchanged.

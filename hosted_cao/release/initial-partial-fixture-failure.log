@@ -1,0 +1,13 @@
+======================================================================
+FAIL: test_partial_job_preserves_actual_native_outcome (hosted_cao.tests.test_authored.Authored.test_partial_job_preserves_actual_native_outcome)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/5ba5d036291d/cao/hosted_cao/tests/test_authored.py", line 166, in test_partial_job_preserves_actual_native_outcome
+    self.assertEqual(r['accounting']['public_result'],native['public_result'])
+AssertionError: {'calculations': [], 'confidence': 'low', '[588 chars]: []} != {'guidance': 'The selected Case or evidence[65 chars]ked'}
+Diff is 964 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 24 tests in 13.601s
+
+FAILED (failures=1)

@@ -207,3 +207,22 @@ These should use the same standalone knowledge-extension / independent-QA / prom
 Complete: 157/157 individually processed and approved; no remaining canonical accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found.
 
 Runtime public-output integration and verification are now implemented in the CAO orchestration foundation. Future application adapters must continue to enforce the same public boundary. Exact-commit GitHub Actions remain the integration standard.
+
+## CAO MVP product builds
+
+Build 1 — COMPLETE (MERGED PR #44): local Claude Code operation and shared execution
+contract1.0 reuse native accounting, durable Cases and Company Accounting Memory.
+Live main merge b3b6d3c7a57682985f66dc76985f99fe42b4dbd2;3,050 distinct tests passed.
+
+Build 2A — IMPLEMENTED; RELEASE GATES IN PROGRESS (Draft PR #45): separately runnable
+Python /v1 HTTP wrapper, scoped server authentication, company workspace isolation,
+durable operational jobs and native checkpoint reconciliation.24 authored/12
+independent tests pass; two real synthetic owners retain exact local public parity.
+No native accounting authority or protected milestone changes. Completion requires
+full regression, deterministic fresh-process proofs and exact-head Actions; see
+architecture/CAO-MVP-BUILD2A-ARCHITECTURE.md and hosted_cao/release/.
+
+Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mapping,
+existing UI/document rendering and private-source exchange remain separate work.
+See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
+INCOMPLETE. No production deployment or merge is performed by Build2A.
