@@ -7,6 +7,7 @@ on:
   pull_request:
     types: [ready_for_review, reopened]
     paths:
+      - "hosted_cao/**"
       - "skills/**"
       - "knowledge/income-taxes/**"
       - "knowledge/agriculture/**"
@@ -15,8 +16,9 @@ on:
       - "knowledge/insurance-contracts/**"
       - ".github/workflows/phase3-skills.yml"
   push:
-    branches: [persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting, phase-3/derivatives-hedge-accounting, phase-3/insurance-contracts-accounting]
+    branches: [mvp/hosted-cao-service, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation, phase-3/agriculture-biological-assets, phase-3/inventory-cost-accounting, phase-3/derivatives-hedge-accounting, phase-3/insurance-contracts-accounting]
     paths:
+      - "hosted_cao/**"
       - "orchestration/**"
       - "skills/**"
       - "knowledge/income-taxes/**"

@@ -1,0 +1,24 @@
+name: CAO hosted service acceptance
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['hosted_cao/**', 'local_cao/**', 'interfaces/**', '.github/workflows/cao-service.yml']
+  workflow_dispatch:
+jobs:
+  service-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: HTTP authored and independent acceptance
+        run: python -m unittest discover -s hosted_cao/tests -p 'test_*.py'
+      - name: Fresh-process deterministic HTTP proof
+        run: |
+          PYTHONHASHSEED=19 python -m hosted_cao.tests.prove_http > /tmp/proof19.json
+          PYTHONHASHSEED=941 python -m hosted_cao.tests.prove_http > /tmp/proof941.json
+          cmp hosted_cao/release/http-proof.json /tmp/proof19.json
+          cmp /tmp/proof19.json /tmp/proof941.json
