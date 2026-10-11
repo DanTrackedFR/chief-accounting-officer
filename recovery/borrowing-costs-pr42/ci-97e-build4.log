@@ -1,0 +1,254 @@
+﻿2026-10-11T21:44:51.1213140Z Current runner version: '2.337.0'
+2026-10-11T21:44:51.1238112Z ##[group]Runner Image Provisioner
+2026-10-11T21:44:51.1239081Z Hosted Compute Agent
+2026-10-11T21:44:51.1239686Z Version: 20261002.596
+2026-10-11T21:44:51.1240425Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-11T21:44:51.1241397Z Build Date: 2026-10-02T22:28:27Z
+2026-10-11T21:44:51.1242090Z Worker ID: {90526842-fa00-4ce0-bae8-0be53bd2600f}
+2026-10-11T21:44:51.1242929Z Region: canadaeast
+2026-10-11T21:44:51.1243523Z Cloud: Azure
+2026-10-11T21:44:51.1244150Z ##[endgroup]
+2026-10-11T21:44:51.1245998Z ##[group]Operating System
+2026-10-11T21:44:51.1246640Z Ubuntu
+2026-10-11T21:44:51.1247308Z 24.04.5
+2026-10-11T21:44:51.1247846Z LTS
+2026-10-11T21:44:51.1248434Z ##[endgroup]
+2026-10-11T21:44:51.1249060Z ##[group]Runner Image
+2026-10-11T21:44:51.1249652Z Image: ubuntu-24.04
+2026-10-11T21:44:51.1250304Z Version: 20261004.327.1
+2026-10-11T21:44:51.1252045Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-11T21:44:51.1253720Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-11T21:44:51.1254722Z ##[endgroup]
+2026-10-11T21:44:51.1255881Z ##[group]GITHUB_TOKEN Permissions
+2026-10-11T21:44:51.1257947Z Contents: read
+2026-10-11T21:44:51.1258718Z Metadata: read
+2026-10-11T21:44:51.1259389Z ##[endgroup]
+2026-10-11T21:44:51.1261867Z Secret source: Actions
+2026-10-11T21:44:51.1262843Z Cache mode: write
+2026-10-11T21:44:51.1263511Z Prepare workflow directory
+2026-10-11T21:44:51.1597864Z Prepare all required actions
+2026-10-11T21:44:51.1645813Z Getting action download info
+2026-10-11T21:44:51.4324586Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-11T21:44:51.5465091Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-11T21:44:51.7267372Z Complete job name: integrated-acceptance
+2026-10-11T21:44:51.8049452Z ##[group]Run actions/checkout@v4
+2026-10-11T21:44:51.8050366Z with:
+2026-10-11T21:44:51.8050870Z   ref: 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:44:51.8051850Z   repository: DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.8055542Z   token: ***
+2026-10-11T21:44:51.8055990Z   ssh-strict: true
+2026-10-11T21:44:51.8056445Z   ssh-user: git
+2026-10-11T21:44:51.8056912Z   persist-credentials: true
+2026-10-11T21:44:51.8057472Z   clean: true
+2026-10-11T21:44:51.8057937Z   sparse-checkout-cone-mode: true
+2026-10-11T21:44:51.8058487Z   fetch-depth: 1
+2026-10-11T21:44:51.8058941Z   fetch-tags: false
+2026-10-11T21:44:51.8059405Z   show-progress: true
+2026-10-11T21:44:51.8059868Z   lfs: false
+2026-10-11T21:44:51.8060295Z   submodules: false
+2026-10-11T21:44:51.8060760Z   set-safe-directory: true
+2026-10-11T21:44:51.8061450Z   allow-unsafe-pr-checkout: false
+2026-10-11T21:44:51.8062287Z ##[endgroup]
+2026-10-11T21:44:51.9086242Z Syncing repository: DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.9089144Z ##[group]Getting Git version info
+2026-10-11T21:44:51.9090652Z Working directory is '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-11T21:44:51.9092925Z [command]/usr/bin/git version
+2026-10-11T21:44:51.9187274Z git version 2.55.0
+2026-10-11T21:44:51.9215337Z ##[endgroup]
+2026-10-11T21:44:51.9237470Z Temporarily overriding HOME='/home/runner/work/_temp/0a0e29c5-f15e-4041-9422-1a2919332874' before making global git config changes
+2026-10-11T21:44:51.9239660Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:44:51.9243828Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:44:51.9298213Z Deleting the contents of '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-11T21:44:51.9309920Z ##[group]Initializing the repository
+2026-10-11T21:44:51.9316994Z [command]/usr/bin/git init /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:44:51.9468331Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-11T21:44:51.9470006Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-11T21:44:51.9471851Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-11T21:44:51.9473107Z hint: call:
+2026-10-11T21:44:51.9473744Z hint:
+2026-10-11T21:44:51.9474599Z hint: 	git config --global init.defaultBranch <name>
+2026-10-11T21:44:51.9475619Z hint:
+2026-10-11T21:44:51.9476540Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-11T21:44:51.9478034Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-11T21:44:51.9479302Z hint:
+2026-10-11T21:44:51.9480017Z hint: 	git branch -m <name>
+2026-10-11T21:44:51.9480777Z hint:
+2026-10-11T21:44:51.9482008Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-11T21:44:51.9489140Z Initialized empty Git repository in /home/runner/work/chief-accounting-officer/chief-accounting-officer/.git/
+2026-10-11T21:44:51.9501276Z [command]/usr/bin/git remote add origin https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.9552204Z ##[endgroup]
+2026-10-11T21:44:51.9553538Z ##[group]Disabling automatic garbage collection
+2026-10-11T21:44:51.9555530Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-11T21:44:51.9593481Z ##[endgroup]
+2026-10-11T21:44:51.9594788Z ##[group]Setting up auth
+2026-10-11T21:44:51.9600653Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:44:51.9636229Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:44:52.0027899Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:44:52.0065013Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:44:52.0286526Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:44:52.0322966Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:44:52.0544934Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-11T21:44:52.0585475Z ##[endgroup]
+2026-10-11T21:44:52.0586491Z ##[group]Fetching the repository
+2026-10-11T21:44:52.0596210Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:01.2785297Z From https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-11T21:45:01.2787902Z  * branch            97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5 -> FETCH_HEAD
+2026-10-11T21:45:01.2793207Z ##[endgroup]
+2026-10-11T21:45:01.2795338Z ##[group]Determining the checkout info
+2026-10-11T21:45:01.2797619Z ##[endgroup]
+2026-10-11T21:45:01.2800009Z [command]/usr/bin/git sparse-checkout disable
+2026-10-11T21:45:01.2857288Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-11T21:45:01.2888800Z ##[group]Checking out the ref
+2026-10-11T21:45:01.2892307Z [command]/usr/bin/git checkout --progress --force 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:02.1358807Z Note: switching to '97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5'.
+2026-10-11T21:45:02.1359457Z 
+2026-10-11T21:45:02.1359905Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-11T21:45:02.1360718Z changes and commit them, and you can discard any commits you make in this
+2026-10-11T21:45:02.1361944Z state without impacting any branches by switching back to a branch.
+2026-10-11T21:45:02.1362424Z 
+2026-10-11T21:45:02.1363079Z If you want to create a new branch to retain commits you create, you may
+2026-10-11T21:45:02.1363864Z do so (now or later) by using -c with the switch command. Example:
+2026-10-11T21:45:02.1365221Z 
+2026-10-11T21:45:02.1365429Z   git switch -c <new-branch-name>
+2026-10-11T21:45:02.1365714Z 
+2026-10-11T21:45:02.1365916Z Or undo this operation with:
+2026-10-11T21:45:02.1366209Z 
+2026-10-11T21:45:02.1366385Z   git switch -
+2026-10-11T21:45:02.1366601Z 
+2026-10-11T21:45:02.1366954Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-11T21:45:02.1367453Z 
+2026-10-11T21:45:02.1367921Z HEAD is now at 97e21c5 Publish complete 3371-test release acceptance and preserved recovery evidence
+2026-10-11T21:45:02.1467394Z ##[endgroup]
+2026-10-11T21:45:02.1520848Z [command]/usr/bin/git log -1 --format=%H
+2026-10-11T21:45:02.1549254Z 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:02.1810860Z ##[group]Run actions/setup-python@v5
+2026-10-11T21:45:02.1811481Z with:
+2026-10-11T21:45:02.1811774Z   python-version: 3.12
+2026-10-11T21:45:02.1812066Z   check-latest: false
+2026-10-11T21:45:02.1814478Z   token: ***
+2026-10-11T21:45:02.1814746Z   update-environment: true
+2026-10-11T21:45:02.1815044Z   allow-prereleases: false
+2026-10-11T21:45:02.1880131Z   freethreaded: false
+2026-10-11T21:45:02.1880715Z ##[endgroup]
+2026-10-11T21:45:02.3210910Z ##[group]Installed versions
+2026-10-11T21:45:02.3345854Z (node:2308) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-11T21:45:02.3347072Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-11T21:45:02.3348075Z Successfully set up CPython (3.12.15)
+2026-10-11T21:45:02.3349128Z ##[endgroup]
+2026-10-11T21:45:02.3530928Z ##[group]Run pip install -r intelligence/requirements.txt reportlab
+2026-10-11T21:45:02.3531903Z [36;1mpip install -r intelligence/requirements.txt reportlab[0m
+2026-10-11T21:45:02.3877176Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:02.3877637Z env:
+2026-10-11T21:45:02.3878030Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.3878637Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:02.3879221Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.3879744Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.3880274Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.3880811Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:02.3881473Z ##[endgroup]
+2026-10-11T21:45:03.7047979Z Collecting reportlab
+2026-10-11T21:45:03.7601623Z   Downloading reportlab-5.0.1-py3-none-any.whl.metadata (1.6 kB)
+2026-10-11T21:45:03.8057937Z Collecting openpyxl<4,>=3.1.5 (from -r intelligence/requirements.txt (line 1))
+2026-10-11T21:45:03.8139450Z   Downloading openpyxl-3.1.5-py2.py3-none-any.whl.metadata (2.5 kB)
+2026-10-11T21:45:03.8548590Z Collecting python-docx<2,>=1.2.0 (from -r intelligence/requirements.txt (line 2))
+2026-10-11T21:45:03.8605854Z   Downloading python_docx-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+2026-10-11T21:45:03.9208620Z Collecting pypdf<7,>=6.10.0 (from -r intelligence/requirements.txt (line 3))
+2026-10-11T21:45:03.9267159Z   Downloading pypdf-6.20.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-11T21:45:03.9692578Z Collecting et-xmlfile (from openpyxl<4,>=3.1.5->-r intelligence/requirements.txt (line 1))
+2026-10-11T21:45:03.9754641Z   Downloading et_xmlfile-2.0.0-py3-none-any.whl.metadata (2.7 kB)
+2026-10-11T21:45:04.2966072Z Collecting lxml>=3.1.0 (from python-docx<2,>=1.2.0->-r intelligence/requirements.txt (line 2))
+2026-10-11T21:45:04.3040729Z   Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+2026-10-11T21:45:04.3531675Z Collecting typing_extensions>=4.9.0 (from python-docx<2,>=1.2.0->-r intelligence/requirements.txt (line 2))
+2026-10-11T21:45:04.3591573Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-11T21:45:04.5697796Z Collecting pillow>=9.0.0 (from reportlab)
+2026-10-11T21:45:04.5756116Z   Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+2026-10-11T21:45:04.7234219Z Collecting charset-normalizer (from reportlab)
+2026-10-11T21:45:04.7302266Z   Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+2026-10-11T21:45:04.7471292Z Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+2026-10-11T21:45:04.7657687Z Downloading python_docx-1.2.0-py3-none-any.whl (252 kB)
+2026-10-11T21:45:04.7795719Z Downloading pypdf-6.20.0-py3-none-any.whl (401 kB)
+2026-10-11T21:45:04.8037517Z Downloading reportlab-5.0.1-py3-none-any.whl (2.0 MB)
+2026-10-11T21:45:04.8279864Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 79.1 MB/s  0:00:00
+2026-10-11T21:45:04.8347907Z Downloading lxml-6.1.3-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-10-11T21:45:04.8793665Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 156.9 MB/s  0:00:00
+2026-10-11T21:45:04.8854518Z Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+2026-10-11T21:45:04.9286171Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 163.3 MB/s  0:00:00
+2026-10-11T21:45:04.9350490Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-11T21:45:04.9443331Z Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (257 kB)
+2026-10-11T21:45:04.9531729Z Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+2026-10-11T21:45:05.0445292Z Installing collected packages: typing_extensions, pypdf, pillow, lxml, et-xmlfile, charset-normalizer, reportlab, python-docx, openpyxl
+2026-10-11T21:45:06.8547253Z 
+2026-10-11T21:45:06.8563090Z Successfully installed charset-normalizer-3.5.2 et-xmlfile-2.0.0 lxml-6.1.3 openpyxl-3.1.5 pillow-12.3.0 pypdf-6.20.0 python-docx-1.2.0 reportlab-5.0.1 typing_extensions-4.16.0
+2026-10-11T21:45:06.9164577Z ##[group]Run python -m unittest discover -s build4/tests -p 'test_*.py'
+2026-10-11T21:45:06.9165116Z [36;1mpython -m unittest discover -s build4/tests -p 'test_*.py'[0m
+2026-10-11T21:45:06.9231628Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:06.9231899Z env:
+2026-10-11T21:45:06.9232185Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:06.9232649Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:06.9233138Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:06.9233547Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:06.9233960Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:06.9234381Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:06.9234745Z ##[endgroup]
+2026-10-11T21:49:03.4968109Z ............................................................
+2026-10-11T21:49:03.4969204Z ----------------------------------------------------------------------
+2026-10-11T21:49:03.4969851Z Ran 60 tests in 236.055s
+2026-10-11T21:49:03.4970080Z 
+2026-10-11T21:49:03.4970203Z OK
+2026-10-11T21:49:03.5443022Z ##[group]Run PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/proof283.json
+2026-10-11T21:49:03.5443931Z [36;1mPYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/proof283.json[0m
+2026-10-11T21:49:03.5444523Z [36;1mPYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/proof1709.json[0m
+2026-10-11T21:49:03.5445412Z [36;1mcmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/integrated-proof.json /tmp/proof283.json[0m
+2026-10-11T21:49:03.5446099Z [36;1mcmp /tmp/proof283.json /tmp/proof1709.json[0m
+2026-10-11T21:49:03.5446645Z [36;1mPYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory283.json[0m
+2026-10-11T21:49:03.5447205Z [36;1mPYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory1709.json[0m
+2026-10-11T21:49:03.5448223Z [36;1mcmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/memory-proof.json /tmp/memory283.json[0m
+2026-10-11T21:49:03.5449041Z [36;1mcmp /tmp/memory283.json /tmp/memory1709.json[0m
+2026-10-11T21:49:03.5517578Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:49:03.5517832Z env:
+2026-10-11T21:49:03.5518100Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:49:03.5518551Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:49:03.5518982Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:49:03.5519386Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:49:03.5519788Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:49:03.5520178Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:49:03.5520505Z ##[endgroup]
+2026-10-11T21:50:41.8570281Z ##[group]Run python -m build4.verify_release
+2026-10-11T21:50:41.8570642Z [36;1mpython -m build4.verify_release[0m
+2026-10-11T21:50:41.8635011Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:50:41.8635271Z env:
+2026-10-11T21:50:41.8635542Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:50:41.8635993Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:50:41.8636433Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:50:41.8636841Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:50:41.8637247Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:50:41.8637646Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:50:41.8637977Z ##[endgroup]
+2026-10-11T21:50:42.9825931Z Traceback (most recent call last):
+2026-10-11T21:50:42.9834844Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-11T21:50:42.9835608Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-11T21:50:42.9836592Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/build4/verify_release.py", line 66, in <module>
+2026-10-11T21:50:42.9837653Z     if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+2026-10-11T21:50:42.9838228Z                                              ^^^^^^^^
+2026-10-11T21:50:42.9839154Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/build4/verify_release.py", line 34, in verify
+2026-10-11T21:50:42.9840443Z     assert input_hashes()==manifest['tested_execution_inputs_sha256'],'Execution inputs changed since full regression'
+2026-10-11T21:50:42.9841555Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-11T21:50:42.9842148Z AssertionError: Execution inputs changed since full regression
+2026-10-11T21:50:42.9950830Z ##[error]Process completed with exit code 1.
+2026-10-11T21:50:43.0097650Z Post job cleanup.
+2026-10-11T21:50:43.0961728Z [command]/usr/bin/git version
+2026-10-11T21:50:43.0997351Z git version 2.55.0
+2026-10-11T21:50:43.1036341Z Temporarily overriding HOME='/home/runner/work/_temp/3b9e649b-5210-4c23-ba5e-ff16b394c13b' before making global git config changes
+2026-10-11T21:50:43.1037678Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:50:43.1042296Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:50:43.1081287Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:50:43.1117286Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:50:43.1377009Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:50:43.1413346Z http.https://github.com/.extraheader
+2026-10-11T21:50:43.1432397Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-11T21:50:43.1472694Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:50:43.1747170Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:50:43.1788571Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:50:43.2190319Z Cleaning up orphan processes
+2026-10-11T21:50:43.2586503Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

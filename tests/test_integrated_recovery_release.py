@@ -37,13 +37,22 @@ class IntegratedRecoveryRelease(unittest.TestCase):
     def test_current_integrated_proofs_change_only_consistent_identities(self):
         manifest = json.loads((HERE/'main-proof-migration.json').read_text())
         review = REVIEW.Transition()
+        pairs = []
         for name, record in manifest['files'].items():
             old = ROOT/name
             current = ROOT/record['current_path']
             self.assertTrue(current.resolve().is_relative_to(HERE/'integration-fresh'))
             self.assertEqual(hashlib.sha256(old.read_bytes()).hexdigest(), record['original_sha256'])
             self.assertEqual(hashlib.sha256(current.read_bytes()).hexdigest(), record['current_sha256'])
-            review.compare(REVIEW.expand(json.loads(old.read_bytes())), REVIEW.expand(json.loads(current.read_bytes())), name)
+            pairs.append((name, REVIEW.expand(json.loads(old.read_bytes())), REVIEW.expand(json.loads(current.read_bytes()))))
+        # Anchor all native versions before inspecting hash-keyed receipt maps.
+        # Set iteration order must never decide whether an authority is known.
+        for phase in ('versions', 'bundles'):
+            review.phase = phase
+            for name, old, current in pairs:
+                review.seed(old, current, name)
+        for name, old, current in pairs:
+            review.compare(old, current, name)
         self.assertFalse(review.errors, str(review.errors[:3]))
 
 

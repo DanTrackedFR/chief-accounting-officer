@@ -58,3 +58,11 @@ CI reconciliation found a Build4 engineering test that hard-coded old proof-refe
 Final local acceptance: canonical pr42-final-002 PASS, 3,371 distinct tests, 15 suites, 24 successful gates, zero skips/errors/failures, source/input inventories unchanged. Detailed final source-bound evidence and preserved baselines are linked by build4/release/accepted-release.json. Exact-final-head GitHub Actions and unchanged-head readiness checks remain the review-state gates. No merge authorized.
 
 Final release witness PASS. One truncated module log was recovered by unchanged-source reexecution of the same five methods; original log/records retained and explicit hashes/source checks documented in the accepted manifest. Exact-final-head CI remains required before readiness.
+
+### Final source-bound acceptance: pr42-final-003
+
+The fresh full regression passes 3,371 distinct tests across 15 suites and 24 gates, with no failures/errors/skips and unchanged source/input inventories. All execution inputs are now present in Git, including four unchanged prior serial-release JSON outputs omitted from checkpoint 97e21c55. Eight hash seeds validate the corrected integrated historical test setup.
+
+Two retained logs did not match their recorded completion hashes (the 41-test Stage 2 version-control shard and 262-test inventory knowledge suite). Their original logs and full result records remain in pr42-final-003/before-log-repair. Both exact populations were rerun on unchanged source/inputs and pass with identical IDs; the accepted record explicitly references log-evidence-recovery.json. No tests are duplicated in the distinct count. The filesystem cause of log retention discrepancies is not established.
+
+The read-only release witness passes: 3,371 tests, 1,848 historical files, 377 Python files and two seeded proof authorities. See final-release-witness-003.log. Original accounting/reference artifacts and prior acceptance records remain preserved; no accounting artifacts were regenerated to resolve these publication/evidence issues. Exact-head GitHub Actions and unchanged-head readiness checks remain the final external gates.

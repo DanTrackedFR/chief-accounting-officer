@@ -39,3 +39,17 @@ Interrupted serial and first canonical attempts remain explicitly incomplete and
 One retained orchestration module log was truncated despite its completed five-test PASS record. The original log and records are preserved. Those same five native-opening tests were reexecuted successfully on unchanged source and inputs; the accepted witness binds their complete replacement log. `build4/release/pr42-final-002/log-evidence-recovery.json` records the exact reason, original/replacement hashes, unchanged-source checks and matching distinct method IDs. This does not add duplicate tests to the 3,371 distinct-test count.
 
 Final release witness: PASS, 3,371 distinct tests, 1,848 protected historical files, 377 Python files and two Build4 seeded proof witnesses.
+
+### Exact-head CI discovery and deterministic authority setup
+
+The first final checkpoint (97e21c55) exposed a hash-seed-dependent integrated historical comparison in the Standards job. That test had omitted the native-version seeding phase already used by the Stage 2/4 checker. It now anchors every proof pair before comparing receipt maps, retaining the same strict bijection and scalar checks. Eight hash seeds pass; see integrated-proof-hash-seeds.log. The pr42-final-002 acceptance remains preserved; a new full pr42-final-003 run binds this final test change. No accounting/reference artifact was regenerated.
+
+The 97e21c55 Build 4 witness also correctly rejected four local input hashes whose prior serial-release JSON files were untracked. Those four unchanged skills/borrowing-costs/release-evidence JSON files are now explicitly included; their byte hashes already match both the pr42-final-002 and pr42-final-003 input inventories. No source or input bytes were changed to address this publication omission.
+
+### Final source-bound acceptance: pr42-final-003
+
+The fresh full regression passes 3,371 distinct tests across 15 suites and 24 gates, with no failures/errors/skips and unchanged source/input inventories. All execution inputs are now present in Git, including four unchanged prior serial-release JSON outputs omitted from checkpoint 97e21c55. Eight hash seeds validate the corrected integrated historical test setup.
+
+Two retained logs did not match their recorded completion hashes (the 41-test Stage 2 version-control shard and 262-test inventory knowledge suite). Their original logs and full result records remain in pr42-final-003/before-log-repair. Both exact populations were rerun on unchanged source/inputs and pass with identical IDs; the accepted record explicitly references log-evidence-recovery.json. No tests are duplicated in the distinct count. The filesystem cause of log retention discrepancies is not established.
+
+The read-only release witness passes: 3,371 tests, 1,848 historical files, 377 Python files and two seeded proof authorities. See final-release-witness-003.log. Original accounting/reference artifacts and prior acceptance records remain preserved; no accounting artifacts were regenerated to resolve these publication/evidence issues. Exact-head GitHub Actions and unchanged-head readiness checks remain the final external gates.
