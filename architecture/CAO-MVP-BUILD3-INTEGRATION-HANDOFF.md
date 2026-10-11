@@ -1,5 +1,3 @@
-Corrected-source release verification pending: subsidiary framework qualification and scoped-policy conflict preservation were additionally repaired. Previous full-regression figures below are historical. PR46 remains Draft until corrected-tree full regression and final exact-head/readiness gates pass.
-
 # Build 3 integration handoff
 
 Repository: DanTrackedFR/chief-accounting-officer. Branch:
@@ -35,7 +33,7 @@ native supported owners remain accessible via their existing qualified contracts
 Build3 does not invent generic reviewed facts from arbitrary prose. Complex replacement
 packs must meet the native governed-plan contract. Bounds/warnings are in the shared
 contract. Authored/independent tests cover wrong versions, injected instructions,
-isolation, restart, correction and duplicate execution. Full repository regression passes3,160 distinct tests,13 suites/seven validators
+isolation, restart, correction and duplicate execution. Corrected full repository regression passes3,166 distinct tests,13 suites/seven validators
 exit0. Final exact-head Actions and unchanged-SHA readiness gates are recorded on
 PR46 after freeze; a failed gate leaves the PR Draft.
 
@@ -43,3 +41,5 @@ Build4 remains incomplete: authenticated accounting roles/events and preparer/re
 separation, TrackedFR Build2B integration, production monitoring/backup/retention,
 production data and live model/client operational acceptance, deployment and owner
 review. Specialist PR27/42/43 were neither modified nor depended upon.
+
+The initial release invocation exited2 only at whitespace checking of two partial raw unittest logs. Both originals/failed gate are losslessly retained; fresh25/62-method transcript reruns and final whitespace checking exit0, adding no distinct tests. Accounting/Python source bytes were unchanged. Exact final-head and unchanged-head readiness evidence is recorded on PR46 after freeze.

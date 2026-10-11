@@ -1,5 +1,3 @@
-RELEASE REOPENED: framework-qualified subsidiary selection and policy-conflict preservation received additional corrections. Prior full-regression/proof figures below are superseded; corrected-source full regression and exact-head CI are pending. PR46 remains Draft.
-
 # Build 3 completion report — locally verified release
 
 One integrated Build3 implementation on mvp/context-investigation-documents, PR46.
@@ -14,16 +12,19 @@ movement analysis; copied structured model boundary with bounded retries; native
 qualified owner execution, correction and selective rework/recovery; additive local
 and hosted routes using Build2A durable jobs. No additional database or planner.
 
-Independent separate reviewer reproduced twelve substantive findings and verified
-remediation in47 independent methods. Authored19 methods add component/integration
+Independent separate reviewer reproduced fourteen substantive findings and verified
+remediation in51 independent methods. Authored21 methods add component/integration
 coverage. Details and limitations in CAO-MVP-BUILD3-INDEPENDENT-QA.md. Live model
 credentials unavailable; no live-model PASS is claimed.
 
-Complete repository regression passed3160 distinct methods:13 suites exit0,
-seven validators exit0 and git diff --check exit0. The prior3094 baseline is historical
-and is not credited as Build3 evidence. All recorded Python source hashes match
-the final source. Immutable exact-head Actions/readiness remain mandatory publication
-gates, with final SHA and run evidence recorded externally on PR46 after freeze.
+Complete corrected-source repository regression passed3166 distinct methods:13 suites
+exit0, seven validators exit0 and the final git diff --check rerun exit0. The earlier3160
+and prior3094 counts are historical. Two partial raw unittest transcripts caused
+initial release-process exit2 at the whitespace gate; their raw bytes and failed gate
+are retained losslessly. Fresh25/62-method affected reruns and whitespace rerun pass,
+with zero additional distinct tests and no Python source changes. All recorded Python
+source hashes match final source. Exact-head Actions/readiness remain mandatory
+publication gates; immutable final SHA and run evidence are recorded on PR46.
 See intelligence/release/release-regression.json for
 actual distinct IDs, suite exit statuses, validator logs and tested source hashes.
 Historical accounting artifacts are not regenerated for release. Proof uses only new
@@ -47,7 +48,7 @@ the investigation remains BLOCKED without independently reviewed accounting fact
 No invoice observation is presented as a concluded journal.
 
 Seed19/941 integrated proofs pass byte-identically at SHA256
-9800feb7b90aafdc11a3324e378ba90ac0d3cf568c87230cdf9dfa20c5cdee69.
+51cb8df87c36d6b64995594b54c1196a28e1ed6d8d4e3e922600224849832920.
 All six retained source files are exact original bytes. Explicit GROUP produces a
 native GROUP_CASE with no legal-entity identifier; the separate UK subsidiary retains
 UK_GAAP/GBP. Fresh processes restore identical Case snapshots and requests. Another
