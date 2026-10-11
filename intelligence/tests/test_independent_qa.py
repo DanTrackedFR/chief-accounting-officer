@@ -311,3 +311,25 @@ class IndependentQA(unittest.TestCase):
             case,_,_=store.load(COMPANY,cid);self.assertTrue(case.governance.versions.active);self.assertEqual(case.governance.versions.record(),version_history)
         self.assertEqual(x['currentness'],original['currentness'])
         restored=self.call('resume',case_id=cid);self.assertNotEqual(restored['execution_state'],'complete')
+
+    def test_received_specific_invoice_not_requested_again(self):
+        p=self.path/'company-context.md';p.write_text(p.read_text().replace('investigation_threshold: UNKNOWN','investigation_threshold: 500'))
+        cid=self.start('reconciliation')['case_id'];before=self.prepayment_docs(cid)
+        wanted=[q for q in before['investigation']['requests'] if q['status']=='OPEN' and 'ORION-573' in q['needed']];self.assertTrue(wanted)
+        x=self.call('document',case_id=cid,event_id='requested-invoice',document=document(b'Invoice ORION-573. Fixed amount EUR 4500. Coverage eighteen months; allocation review missing.',role='invoice',id='ORION-573'))
+        self.assertTrue(x['ok'],x);requests=x['investigation']['requests']
+        self.assertFalse(any(q['status']=='OPEN' and q['id']==wanted[0]['id'] for q in requests),'Exact supplied invoice must close the missing-document request')
+        followups=[q for q in requests if q['status']=='OPEN' and 'ORION-573' in q['needed']]
+        self.assertTrue(followups,'Unreviewed supplied invoice still needs targeted service dates/allocation followup')
+        self.assertTrue(any(q['source_fields'] for q in followups),'Followup must bind actual received invoice observations')
+        self.assertEqual(x['execution_state'],'blocked');self.assertFalse(x['investigation']['accounting_qualified'])
+        retry=self.call('continue_investigation',case_id=cid,event_id='after-invoice')
+        self.assertEqual({q['id'] for q in requests if q['status']=='OPEN'},{q['id'] for q in retry['investigation']['requests'] if q['status']=='OPEN'})
+
+    def test_distinct_supporting_invoices_do_not_create_population_conflict(self):
+        p=self.path/'company-context.md';p.write_text(p.read_text().replace('investigation_threshold: UNKNOWN','investigation_threshold: 500'))
+        cid=self.start('reconciliation')['case_id'];self.prepayment_docs(cid)
+        for i,ref in enumerate(('ORION-573','SUPPORT-EXTRA-81')):
+            x=self.call('document',case_id=cid,event_id='invoice-'+str(i),document=document(('Invoice '+ref+'. Service dates require review.').encode(),role='invoice',id=ref))
+            self.assertTrue(x['ok'],x)
+        self.assertFalse(x['investigation']['conflicts']);self.assertEqual(x['investigation']['observations'][0]['increase'],'4100');self.assertEqual(x['execution_state'],'blocked')

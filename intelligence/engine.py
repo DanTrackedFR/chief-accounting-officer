@@ -52,6 +52,7 @@ def money(v):
 def movement(state, docs):
     roles={}
     for d in docs:
+        if d['role'] not in {'reconciliation_current','reconciliation_comparative','movements'}:continue
         if d['role'] in roles:raise ValueError('Ambiguous reconciliation role; explicitly supersede old version')
         roles[d['role']]=d
     for role in ('reconciliation_current','reconciliation_comparative','movements'):
@@ -88,8 +89,13 @@ def movement(state, docs):
             if residual or abs(increase)>threshold:
                 ref=row['invoice_ref']
                 if not isinstance(ref,str) or not ref.strip():raise ValueError('Anomalous transaction missing supporting reference')
-                request(state,'support-'+fingerprint([key,ref]),'Provide invoice/agreement '+ref+' supporting movement '+key+'.',
-                    'Observed increase '+str(increase)+'; reconciliation residual '+str(residual)+'. Confirm service dates and allocation.',role='invoice')
+                support=next((d for d in docs if d['role']=='invoice' and d['id']==ref),None)
+                if support is None:
+                    request(state,'support-'+fingerprint([key,ref]),'Provide invoice/agreement '+ref+' supporting movement '+key+'.',
+                        'Observed increase '+str(increase)+'; reconciliation residual '+str(residual)+'. Confirm service dates and allocation.',role='invoice')
+                else:
+                    request(state,'allocation-'+fingerprint([key,ref]),'Confirm reviewed service coverage dates and allocation for invoice/agreement '+ref+' supporting movement '+key+'.',
+                        'Received source observations require qualified period allocation and accounting review.',list(support['extraction']['fields']),role='invoice')
         state['calculations']=[dict(kind='OBSERVATION_ONLY',current_total=str(sum(c.values())),prior_total=str(sum(p.values())),
             increase=str(sum(c.values())-sum(p.values())),transactions=analysis)]
     except (ValueError,ArithmeticError):
@@ -108,7 +114,7 @@ def examine(state, boundary, supplied=None):
     for r in state['requests']:r['status']='HISTORICAL'
     docs=active_documents(state)
     for role in {d['role'] for d in docs}:
-        if sum(d['role']==role for d in docs)>1:
+        if role in {'contract','reconciliation_current','reconciliation_comparative','movements','trial_balance'} and sum(d['role']==role for d in docs)>1:
             state['conflicts'].append('ambiguous-'+role)
     # Any unresolved context conflict blocks accounting, preserving both versions.
     for conflict in state['conflicts']:
@@ -329,6 +335,7 @@ def handle(api,r,company,config):
             for q in state['requests']:q['status']='QUALIFIED_BY_NATIVE_INTAKE'
         elif op in {'correct_investigation','rework_investigation'}:
             if not state['qualified'] or state['conflicts']:raise ValueError('Qualified original/consistent replacement required')
+            if op=='rework_investigation' and not case.governance.rework_history:raise ValueError('No native rework plan')
             staged=next((x for x in state.get('native_events',[]) if x['id']==event_id),None)
             if staged:
                 intent=staged['intent']

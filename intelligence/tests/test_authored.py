@@ -84,3 +84,12 @@ class Authored(unittest.TestCase):
         self.assertEqual(self.api.call(wire('resume',case_id=r['case_id']))['checkpoint_revision'],rev)
     def test_local_invalid_route_rejected(self):
         self.assertFalse(self.api.call(wire('investigate',request_id='invalid-route',objective=OBJECTIVE,target_family='customer_contract',route='arbitrary'))['ok'])
+
+    def test_rework_without_native_plan_fails_safely(self):
+        r=self.start();cid=r['case_id']
+        self.assertTrue(self.api.call(wire('document',case_id=cid,event_id='original',document=doc(self.scope)))['ok'])
+        self.assertTrue(self.api.call(wire('submit',case_id=cid,evidence=revenue_evidence(self.api,cid)))['ok'])
+        executed=self.api.call(wire('execute',case_id=cid));self.assertTrue(executed['ok'],executed)
+        r=self.api.call(wire('rework_investigation',case_id=cid,event_id='no-plan',evidence={}))
+        self.assertFalse(r['ok']);self.assertEqual(r['public_result']['status'],'blocked')
+        self.assertEqual(self.api.call(wire('resume',case_id=cid))['checkpoint_revision'],executed['checkpoint_revision'])
