@@ -1,5 +1,11 @@
 # Shared CAO execution contract 1.0
 
+Current merged-build note: the foundational operation tables below describe Build1/
+Build2A. Additive Build3 investigation/document/native correction/rework operations
+are authoritative in `CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md`; Build4 acceptance
+and TrackedFR mapping are in architecture/CAO-MVP-BUILD4-BUILD2B-HANDOFF.md.
+No memory promotion or authenticated reviewer endpoint is introduced.
+
 `local_cao.ExecutionInterface(workspace).call(request)` accepts/returns JSON-safe
 values without exposing internal classes. `python -m local_cao --workspace PATH`
 is the stdin/stdout transport. The host selects PATH; it is not a wire field.

@@ -106,6 +106,7 @@ def movement(state, docs):
 
 def examine(state, boundary, supplied=None):
     state['calculations']=[];state['conflicts']=list(state['snapshot']['conflicts'])
+    state['conflicts'].extend('memory-'+x['attribute'] for x in state.get('memory_refusals',[]))
     claims={}
     for inference in state['inferences']:
         for c in inference['output']['claims']:
@@ -173,9 +174,17 @@ def prepared_intake(state,evidence,scope):
     proposal=StructuredProposal.from_record(evidence['proposal'])
     import json
     scope=json.loads(canonical(scope))
+    if state['snapshot'].get('memory_references'):
+        scope['memory_context_dependencies']=copy.deepcopy(state['snapshot']['memory_references'])
     engine=Intake(FixturePlanner(proposal));prepared=engine.prepare(state['objective'],raws,state['snapshot']['governed_records'],scope)
     if not prepared.validation.get('accepted'):raise ValueError('Invalid native intake')
     pack=pack_from_record(evidence['pack'])
+    refs=state['snapshot'].get('memory_references',[])
+    if refs and 'scope' in pack.request:
+        supplied_scope=copy.deepcopy(pack.request['scope'])
+        expected_scope=copy.deepcopy(scope);expected_scope.pop('memory_context_dependencies',None)
+        if canonical(supplied_scope)!=canonical(expected_scope):raise ValueError('Reviewed scope differs from investigation memory consumer')
+        pack.request['scope']=copy.deepcopy(prepared._current)
     # Every ingested document must be explicitly bound by the supplied native pack;
     # arbitrary unrelated workpapers cannot stand in for the investigated contract.
     bindings=[b.source_id for b in pack.documents+pack.populations+pack.text_assertions]
@@ -238,13 +247,44 @@ def native_event(store,company,case,rev,state,event_id,fp,intent):
     return case,rev,state
 
 
+def memory_guard(store, company, case):
+    """Requalify immutable context versions before use; publish native USE receipts.
+
+    A crash between Case publication and consumption is repaired before delivery.
+    No policy reference grants accounting input authority.
+    """
+    state=case._investigation;refs=state['snapshot'].get('memory_references',[])
+    if not refs:return True
+    failures=[];memory=store.memory();audit=memory.audit(company)
+    records={r['record_id']:r for r in audit['company_context']}
+    for ref in refs:
+        record=records.get(ref['record_id'])
+        if record is None:
+            failures.append(dict(attribute=ref['attribute'],reason='memory-record-unavailable'));continue
+        result=memory.retrieve(company,case.id,case.id,record['subject'],record['attribute'])
+        if not any(x['record']['record_id']==ref['record_id'] and x['record']['version_id']==ref['version_id'] and x['qualification']=='CURRENT_CONTEXT' for x in result['qualified']):
+            failures.append(dict(attribute=ref['attribute'],reason='memory-version-not-current'));continue
+        uses=memory.audit(company)['uses']
+        if not any(u['value'].get('root_case')==case.id and u['value'].get('case_id')==case.id and u['value'].get('memory_version')==ref['version_id'] for u in uses):
+            memory.consume_context(company,case.id,case.id,ref['record_id'],ref['version_id'],
+                expected_revision=memory.audit(company)['revision'],recorded_at=dict(value=None,precision='unknown'))
+    state['memory_refusals']=failures
+    for failure in failures:
+        conflict='memory-'+failure['attribute']
+        if conflict not in state['conflicts']:state['conflicts'].append(conflict)
+        request(state,'context-'+conflict,'Requalify the company accounting position for '+failure['attribute']+'.',
+                'The historical memory version is no longer qualified for current use.')
+    return not failures
+
+
 def preview(api,case,revision):
     state=case._investigation
     out=api._delivery(case,revision,'tool_output')
     if not state.get('qualified') or state.get('pending_correction') or state['conflicts']:
-        out.update(execution_state='blocked',currentness='STALE' if state.get('pending_correction') else out['currentness'] if state.get('qualified') else 'NOT_EXECUTED')
+        out.update(execution_state='blocked',currentness='STALE' if state.get('pending_correction') or (state.get('qualified') and state.get('memory_refusals')) else out['currentness'] if state.get('qualified') else 'NOT_EXECUTED')
         out['public_result']=public_record(dict(status='blocked',guidance='Investigation requires qualified evidence or conflict resolution.',
-            open_items=[r['needed'] for r in state['requests'] if r['status']=='OPEN']), route='tool_output')
+            open_items=[r['needed'] for r in state['requests'] if r['status']=='OPEN'],
+            **({'limitations':['Lifecycle and workplan retain native accounting history; current delivery requires requalified company context.']} if state.get('memory_refusals') else {})), route='tool_output')
     out['investigation']=dict(context_snapshot_id=state['snapshot']['snapshot_id'],
         requests=copy.deepcopy(state['requests']),documents=[dict(id=d['id'],version=d['version'],role=d['role'],qualification=d['qualification'],warnings=list(d['warnings'])) for d in state['documents']],
         conflicts=list(state['conflicts']),round=state['round'],accounting_qualified=state.get('qualified',False),pending_correction=state.get('pending_correction',False))
@@ -281,7 +321,8 @@ def handle(api,r,company,config):
         immutable(folder/(cycle+'.json'),d)
         submissions=api._path('submissions/'+hashlib.sha256(cid.encode()).hexdigest());submissions.mkdir(mode=0o700,parents=True,exist_ok=True)
         with api._store() as store:
-            if store._head(company,cid):case,rev,_=store.load(company,cid);return preview(api,case,rev)
+            if store._head(company,cid):
+                case,rev,_=store.load(company,cid);memory_guard(store,company,case);return preview(api,case,rev)
             native=d['native_request'];case=CAO().run(native)
             if not hasattr(case,'governance'):attach(case,case.graph,s,{},native)
             rev=0
@@ -290,13 +331,17 @@ def handle(api,r,company,config):
             case._investigation=state;examine(state,boundary,inference or r.get('interpretation'))
             rev=store.save(case,company,[],rev)
             state['snapshot']=resolve(config,r.get('context'),store.memory(),company,case)
+            if state['snapshot']['memory_references']:
+                case.governance.context['memory_context_dependencies']=copy.deepcopy(state['snapshot']['memory_references'])
             examine(state,boundary,inference or r.get('interpretation'))
-            rev=store.save(case,company,[],rev)
+            rev=store.save(case,company,state['snapshot']['governed_records'],rev)
+            memory_guard(store,company,case)
             return preview(api,case,rev)
     d,_=api._request(r.get('case_id'),config)
     if 'context_snapshot' not in d:raise ValueError('Not a Build 3 investigation')
     with api._store() as store:
         case,rev,_=store.load(company,d['case_id']);state=case._investigation
+        if not memory_guard(store,company,case):return preview(api,case,rev)
         if op in {'investigation','status','questions','resume','result'}:return preview(api,case,rev)
         event_id=identity(r.get('event_id')) if op!='execute' else None
         if event_id:

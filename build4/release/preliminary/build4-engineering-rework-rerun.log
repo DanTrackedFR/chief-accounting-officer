@@ -1,0 +1,21 @@
+test_sigkill_rework_after_recovery_commit_then_exact_event_retry (build4.tests.test_engineering_qa.EngineeringAcceptance.test_sigkill_rework_after_recovery_commit_then_exact_event_retry) ... FAIL
+
+======================================================================
+FAIL: test_sigkill_rework_after_recovery_commit_then_exact_event_retry (build4.tests.test_engineering_qa.EngineeringAcceptance.test_sigkill_rework_after_recovery_commit_then_exact_event_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/tests/test_engineering_qa.py", line 107, in test_sigkill_rework_after_recovery_commit_then_exact_event_retry
+    def test_sigkill_rework_after_recovery_commit_then_exact_event_retry(self):self.correction_restart('recover','rework')
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/tests/test_engineering_qa.py", line 84, in correction_restart
+    cid,node,evidence,original,history=self.corrected_revenue_stage()
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/tests/test_engineering_qa.py", line 62, in corrected_revenue_stage
+    original=self.call('execute',case_id=cid);self.assertTrue(original['ok'],original);self.assertEqual(original['execution_state'],'complete')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : {'contract_version': '1.0', 'operation': 'execute', 'ok': False, 'error': {'code': 'invalid_request', 'message': 'Check contract version, operation and required input fields.'}, 'public_result': {'guidance': 'Check contract version, operation and required input fields.', 'status': 'blocked'}}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.602s
+
+FAILED (failures=1)
