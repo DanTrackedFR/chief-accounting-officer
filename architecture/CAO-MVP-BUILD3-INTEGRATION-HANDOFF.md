@@ -1,3 +1,5 @@
+Corrected-source release verification pending: subsidiary framework qualification and scoped-policy conflict preservation were additionally repaired. Previous full-regression figures below are historical. PR46 remains Draft until corrected-tree full regression and final exact-head/readiness gates pass.
+
 # Build 3 integration handoff
 
 Repository: DanTrackedFR/chief-accounting-officer. Branch:

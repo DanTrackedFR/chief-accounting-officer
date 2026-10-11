@@ -51,3 +51,5 @@ fail. Synthetic approvals only exist in test fixture helpers. Controlled inferen
 accepts a provider callback or client-supplied structured output, never accounting
 approval. No live credentials were available. Details: shared contract and integration
 handoff; independent adversarial report owns findings and rerun evidence.
+
+Framework qualification is applied before constructing a nondefault entity execution scope. A framework declaration must qualify itself; each currency, jurisdiction and calendar source must apply to the selected framework. Irrelevant framework assertions stay in historical context and cannot create scope conflicts. Policy and other narrative disagreements remain Case-bound snapshot conflicts; only conflicting execution dimensions prevent scope construction. Neither an editable APPROVED label nor a framework qualifier grants accounting authority.

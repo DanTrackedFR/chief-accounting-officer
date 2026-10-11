@@ -1,6 +1,6 @@
 # CAO MVP Build 3 — independent adversarial QA
 
-Status: FINAL LOCAL RELEASE ACCEPTANCE PASS. Exact final-head GitHub Actions and ready-for-review publication remain external gates.
+Status: CORRECTED COMPONENT/INTEGRATION QA PASS — 51 independent tests; fourteen resolved findings. Previous full local acceptance is historical; corrected-tree proof, full regression and exact-head publication gates remain pending.
 
 Separate reviewer inspected Build 1/2A handoffs, local adapter, context resolver, document adapters, inference boundary, investigation loop, private durable Case metadata, native correction/recovery and HTTP jobs. Reviewer authored `intelligence/tests/test_independent_qa.py` without production implementation ownership. Synthetic reviewed packs are explicitly test-only and come from authored fixtures; independent tests mutate/substitute them adversarially. Production does not import test certification helpers.
 
@@ -20,6 +20,8 @@ Separate reviewer inspected Build 1/2A handoffs, local adapter, context resolver
 | B3-IQA-10 | Post-execution inference conflict still delivered COMPLETE | `test_post_execution_inference_conflict_blocks_delivery` | Current delivery blocks unresolved conflict, native history/currentness remain exact; independent rerun PASS |
 | B3-IQA-11 | Requested invoice remained missing/OPEN after exact invoice arrival | `test_received_specific_invoice_not_requested_again` | Acquisition question closes; source-referenced qualification followup remains stable and blocked; independent rerun PASS |
 | B3-IQA-12 | Explicit native GROUP Scope type was unsupported, selection defaulted to legal entity | `test_explicit_group_scope_retained_in_durable_case`, `test_group_cannot_masquerade_as_legal_entity` | Existing ScopeRegistry validates true GROUP/GROUP_CASE with no legal identifier; durable restore and masquerade rejection rerun PASS |
+| B3-IQA-13 | Nondefault execution dimensions bypassed framework qualification | Three selection-qualification tests | Resolve self-applicable framework then qualify execution dimensions before conflicts/scope; rerun PASS |
+| B3-IQA-14 | Nondefault policy conflict rejected snapshot instead of preserving durable context alternatives | `test_nondefault_policy_conflict_preserved_in_blocked_case` | Restrict selection collector to execution dimensions; scoped policy conflict and blocked Case survive restart; rerun PASS |
 
 Zero unresolved substantive findings in the reviewed paths. This does not substitute for complete repository regression or exact-head Actions.
 
@@ -27,7 +29,7 @@ Zero unresolved substantive findings in the reviewed paths. This does not substi
 
 Command: `python -m unittest intelligence.tests.test_independent_qa -q`.
 
-47 distinct independently authored tests; exit 0; all PASS; elapsed 59.970 seconds. The strengthened post-execution conflict regression additionally passed a targeted independent rerun (1 test, exit 0), without double counting. Reruns are not added to this count.
+51 distinct independently authored tests; exit 0; all PASS; elapsed 66.636 seconds. The strengthened post-execution conflict regression additionally passed a targeted independent rerun (1 test, exit 0), without double counting. Reruns are not added to this count.
 
 Coverage includes untrusted APPROVED context, other-entity exclusion, conflicting currencies, effective dates, wrong-company/currency source rejection, CSV population completeness, duplicate headers, formula refusal, hidden row retention, forged XLSX dimensions, scanned/active PDF refusal, inert prompt injection, fabricated inference references, retry bounds, missing evidence refusal, request deduplication, immutable event retry, frozen Case snapshots after onboarding edits, cross-company isolation, document supersession identity, native source bindings, altered contract amounts, altered reviewer-certified economics and wrong Case packs.
 
@@ -47,15 +49,15 @@ Deterministic fault injection interrupts immediately after native prepare and im
 
 ## Remaining release review
 
-Complete local repository regression, validators, source hashes and final proof are independently accepted as below. Exact final-head GitHub Actions and readiness-triggered publication remain external gates. No live-model evaluation has been verified by this reviewer. DOCX body-only extraction warning and PDF reading-order uncertainty must remain visible. Specialist PRs and historical artifacts were not modified by this reviewer. No commit, push or merge performed.
+The prior complete local regression is retained historical evidence below. Corrected-tree full local regression, validators/source hashes and exact-head publication gates are pending. Current corrected proof and component/integration tests are independently accepted. No live-model evaluation has been verified by this reviewer. DOCX body-only extraction warning and PDF reading-order uncertainty must remain visible. Specialist PRs and historical artifacts were not modified by this reviewer. No commit, push or merge performed.
 
 ## Final proof and release-gate review
 
-Final integrated proof SHA256: `9800feb7b90aafdc11a3324e378ba90ac0d3cf568c87230cdf9dfa20c5cdee69`. The seed manifest records PYTHONHASHSEED 19 and 941 with exit statuses 0/0 and byte-identical output. Reviewer independently checked that manifest hash equals the actual final proof hash, all six retained original sources decode to the stated bytes/length/hash/format and match the separate committed originals under intelligence/release/sources/, both context snapshot hashes verify, and original immutable native version hashes survive correction. There are two revenue DOCX versions, three reconciliation/movement CSVs and one supporting invoice text source.
+Final integrated proof SHA256: `51cb8df87c36d6b64995594b54c1196a28e1ed6d8d4e3e922600224849832920`. The seed manifest records PYTHONHASHSEED 19 and 941 with exit statuses 0/0 and byte-identical output. Reviewer independently checked that manifest hash equals the actual final proof hash, all six retained original sources decode to the stated bytes/length/hash/format and match the separate committed originals under intelligence/release/sources/, both context snapshot hashes verify, and original immutable native version hashes survive correction. There are two revenue DOCX versions, three reconciliation/movement CSVs and one supporting invoice text source.
 
 Final proof preserves source lineage, context/history, requests, calculations and exact Case/version identities. Native corrected revenue is COMPLETE; prepayment increase is 8100 and its invoice request is derived from movement QX-7826. Prepayment accounting remains explicitly BLOCKED because no independent native accounting pack was supplied. Live model evaluation is false, with absent credentials accurately stated. Synthetic fixture review is not represented as production authenticated reviewer approval.
 
-Structural contract review of ten proof investigation outputs and nested evidence requests passed. Readiness caching explicitly requires the Build 3 intelligence and deterministic proof step; a legacy green run lacking that step cannot satisfy the final gate. No unresolved substantive findings remain in independently reviewed component/integration/proof paths; complete local release regression is accepted; exact final-head Actions/readiness remain external gates.
+Structural contract review of ten proof investigation outputs and nested evidence requests passed. Readiness caching explicitly requires the Build 3 intelligence and deterministic proof step; a legacy green run lacking that step cannot satisfy the final gate. No unresolved substantive findings remain in independently reviewed component/integration/proof paths; the prior complete local release regression is historical; corrected-tree local and exact-head Actions/readiness gates remain pending.
 
 ## Exhaustive orchestration sharding review
 
@@ -67,11 +69,11 @@ The interrupted original sequential orchestration attempt has no successful full
 
 Distinct supporting invoices do not falsely make the three reconciliation populations ambiguous; independent regression retains increase4100, no false conflict and legitimate BLOCKED. Exact received invoice replaces its acquisition request with a targeted dates/allocation qualification request referencing actual invoice fields. Continuation preserves request IDs and does not certify source observations.
 
-Reviewer also inspected the no-native-rework-plan guard and independently executed an original native COMPLETE Case followed by rework without a plan: safe blocked envelope, unchanged checkpoint and exact public result. This one-off check is not counted as a new unittest or a duplicated test. Final frozen proof/source/followup review verifies the regenerated hash recorded above, all six retained original files and a source-referenced QX-7826 qualification request replacing acquisition. Independent47/twelve-resolved status remains current; final full local regression is independently accepted; exact-head CI/readiness remain external gates.
+Reviewer also inspected the no-native-rework-plan guard and independently executed an original native COMPLETE Case followed by rework without a plan: safe blocked envelope, unchanged checkpoint and exact public result. This one-off check is not counted as a new unittest or a duplicated test. Final frozen proof/source/followup review verifies the regenerated hash recorded above, all six retained original files and a source-referenced QX-7826 qualification request replacing acquisition. Independent47/twelve-resolved status remains current; the prior full local regression is historical; corrected-tree local and exact-head CI/readiness gates remain pending.
 
 ## Group Scope qualification
 
-Reviewer reproduced the original explicit GROUP item rejection against the prior committed resolver. The corrected resolver consumes typed scope assertions through the existing native Scope/ScopeRegistry, not a separate scope authority. Independent tests verify GROUP/no legal entity ID, actual native GROUP_CASE and GROUP Scope registry binding, exact durable snapshot restoration and rejection of a group masquerading as a legal entity. Whole47 independent suite passes after this final context extension. Final regenerated proof independently verifies explicit GROUP_CASE, native GROUP/no legal identifier and exact group snapshot hash while the subsidiary retains UK_GAAP/GBP. The fresh-process proof script asserts durable GROUP_CASE binding and restart parity. Final hash above matches the actual regenerated proof and seed manifest; all six original retained sources remain exact. Full local regression is independently accepted; exact-head CI/readiness remain external gates.
+Reviewer reproduced the original explicit GROUP item rejection against the prior committed resolver. The corrected resolver consumes typed scope assertions through the existing native Scope/ScopeRegistry, not a separate scope authority. Independent tests verify GROUP/no legal entity ID, actual native GROUP_CASE and GROUP Scope registry binding, exact durable snapshot restoration and rejection of a group masquerading as a legal entity. Whole47 independent suite passes after this final context extension. Final regenerated proof independently verifies explicit GROUP_CASE, native GROUP/no legal identifier and exact group snapshot hash while the subsidiary retains UK_GAAP/GBP. The fresh-process proof script asserts durable GROUP_CASE binding and restart parity. Final hash above matches the actual regenerated proof and seed manifest; all six original retained sources remain exact. The prior full local regression is historical; corrected-tree local and exact-head CI/readiness gates remain pending.
 
 ## Full orchestration release evidence review
 
@@ -79,10 +81,26 @@ Reviewer independently verified completed suite0: 1,344 distinct tests, 61 isola
 
 Interrupted sequential attempt is retained separately: exit130, complete=false, credited_as_pass=false, credited_distinct_tests=0. Reviewer verified both compressed and original decompressed log hashes. It is not counted as a successful run. This preliminary review was followed by the complete final local acceptance below; exact-head CI/readiness remain external gates.
 
-## Complete final local release acceptance
+## Superseded prior local release acceptance (historical)
 
 Reviewer independently audited `intelligence/release/release-regression.json` (SHA256 `0857ff56bee6f7a2f143cc7bc056e966d8a3a5fc3cc2c9e33e53a1f2df4fc156`): complete=true; **3,160 distinct tests**, counted once; 13 suites with actual populations 1344/1180/17/53/10/83/35/4/7/262/55/44/66; every suite exit0/PASS; zero failures, errors or skipped tests. All 21 successful execution logs (13 suites, seven validators and whitespace check) match retained byte counts/SHA256. Seven validator outputs show no errors; `git diff --check` log is empty and exit0. All 298 recorded Python file hashes match current source and exactly cover the six declared engine/interface source namespaces. Independent Build3 tests (47) and authored tests (19) are included in the 66-test suite, not added again to the total.
 
 The sole protected metadata change in the merged insurance `LIVE-BASELINE.json` is its exact roadmap SHA witness. Reviewer normalized only that entry and independently compared current metadata to user baseline `0523543fb1da0e8b8d05f05e93148ffc3b29cd70`: all other metadata and all 1,101 protected entries match. The current roadmap witness equals actual roadmap bytes; the permanent protected-roadmap regression rerun passes. This is authorized roadmap metadata maintenance, not regeneration of historical accounting sources, examples or economic results. The historical full-company artifact suite passed unchanged.
 
-Zero unresolved substantive findings remain in final locally reviewed implementation, integration and proof. Final local acceptance is PASS. Exact immutable remote-head Actions and readiness-triggered checks must still be verified externally before publication acceptance; local results do not imply those remote gates passed. Specialist PRs were not modified by the reviewer, and no merge occurred in this review.
+The previously accepted twelve findings remain resolved. Subsequent B3-IQA-13 reopened final local acceptance; its three permanent regressions and the full50 independent rerun now pass. Previous local acceptance must not be treated as approval of the forthcoming corrected tree. Exact immutable remote-head Actions and readiness-triggered checks must still be verified externally before publication acceptance; local results do not imply those remote gates passed. Specialist PRs were not modified by the reviewer, and no merge occurred in this review.
+
+## B3-IQA-13 — framework-qualified execution dimensions
+
+RESOLVED by independent targeted3 and whole50 reruns. Nondefault entity selection constructed native scope before applying optional item.framework qualification. Three independent permanent regressions reproduce: wrong-framework-only currencies/calendar are accepted; valid UK_GAAP/GBP plus irrelevant IFRS/USD falsely conflicts; a framework value UK_GAAP itself qualified only IFRS is accepted. Targeted old-source run:3 tests, exit1,2 failures/1error. Tests: `test_selection_rejects_wrong_framework_only_dimensions`, `test_selection_ignores_inapplicable_framework_dimension_conflict`, `test_selection_rejects_self_inapplicable_framework_item`.
+
+Superseded/retracted/unknown/inferred and future-dated dimension variants reject correctly in standalone review. Fix must establish a self-applicable framework then qualify dimensions before constructing scope or detecting conflicts. Whole50 distinct independent methods pass, exit0,53.275 seconds. Final regression/source/proof/CI evidence must bind the new corrected immutable tree, not the superseded freeze.
+
+Current corrected-source independent component/integration acceptance:50 distinct tests, zero failures/errors, exit0. New complete local release and remote publication gates are not yet accepted.
+
+## Corrected context release review
+
+B3-IQA-14 is RESOLVED. Reviewer reproduced the old committed resolver rejecting applicable UK policy alternatives as an execution-selection error. Permanent regression now verifies retained alternatives, omitted conflicted policy value, native UK_GAAP/GBP scope, durable BLOCKED Case, targeted context-policies request and exact restart parity. Whole51 independent suite passes (exit0,66.636 seconds), including all three framework-qualification regressions.
+
+Corrected proof SHA256 `51cb8df87c36d6b64995594b54c1196a28e1ed6d8d4e3e922600224849832920` matches actual bytes and seed manifest (19/941, exit0/0, byte-identical). Reviewer verifies all six exact retained original source files, snapshots and immutable historical version hashes. Applicable per-entity framework-qualified inputs select UK_GAAP/GBP while an IFRS-only USD item is retained in history and excluded from selected items without false conflict. GROUP remains a native GROUP_CASE.
+
+Fourteen findings are now resolved; zero unresolved substantive findings remain in corrected component/integration/proof review. The previously complete3,160-test manifest and prior remote-head checks are preserved historical evidence; final corrected-tree full13-suite regression, validators, source hashes and exact-head/readiness checks remain pending. They must not be inferred from the superseded accepted tree.

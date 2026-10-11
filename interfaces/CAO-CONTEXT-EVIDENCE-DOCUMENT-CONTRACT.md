@@ -71,3 +71,5 @@ private review packs never enter public output. Existing privacy boundary govern
 accounting results and user-controlled request/observation strings.
 
 Structured context may specify `scope_type` as `LEGAL_ENTITY`, `GROUP` or `SUBGROUP` and `legal_entity_id`. The resolver validates these through the existing native ScopeRegistry. Group/Subgroup scopes cannot carry a legal-entity identity; absent an explicit type, the legacy legal-entity default remains. The resolved scope binds the native Case type and survives restart. Group membership never supplies a subsidiary framework or currency.
+
+Framework qualification is applied before constructing a nondefault entity execution scope. A framework declaration must qualify itself; each currency, jurisdiction and calendar source must apply to the selected framework. Irrelevant framework assertions stay in historical context and cannot create scope conflicts. Policy and other narrative disagreements remain Case-bound snapshot conflicts; only conflicting execution dimensions prevent scope construction. Neither an editable APPROVED label nor a framework qualifier grants accounting authority.

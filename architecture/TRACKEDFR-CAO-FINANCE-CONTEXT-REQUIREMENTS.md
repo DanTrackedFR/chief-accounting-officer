@@ -190,3 +190,5 @@ Build2A durable jobs. Build2B/UI/connectors and authenticated accounting approva
 not included. See Build3 integration handoff for exact synthetic proof and limits.
 
 Build3 accepts explicit `scope_type` and `legal_entity_id` context items. Native ScopeRegistry validates LEGAL_ENTITY/GROUP/SUBGROUP, including prohibition of legal-entity identity on Group/Subgroup scopes. The exact selected scope binds the durable native Case; parent Group context never substitutes for subsidiary accounting dimensions.
+
+Framework qualification is applied before constructing a nondefault entity execution scope. A framework declaration must qualify itself; each currency, jurisdiction and calendar source must apply to the selected framework. Irrelevant framework assertions stay in historical context and cannot create scope conflicts. Policy and other narrative disagreements remain Case-bound snapshot conflicts; only conflicting execution dimensions prevent scope construction. Neither an editable APPROVED label nor a framework qualifier grants accounting authority.
