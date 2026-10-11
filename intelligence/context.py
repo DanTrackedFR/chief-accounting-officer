@@ -73,6 +73,7 @@ def resolve(config, structured=None, memory=None, company=None, qualification_ca
         if e.get('source_state') in {'retracted','superseded'}:continue
         if not e['effective_from'] or e['effective_from']>base['period_start'] or (e['effective_to'] and e['effective_to']<base['reporting_period']):continue
         selected.append(e);key=e['key'];value=e['value']
+        if e.get('source_state')=='unknown':unknown.append(key);continue
         if value is None:unknown.append(key);continue
         if e['authority']=='inferred':continue
         if key in values and canonical(values[key])!=canonical(value):conflicts.append(key)

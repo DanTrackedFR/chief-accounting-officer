@@ -43,3 +43,9 @@ Deterministic fault injection interrupts immediately after native prepare and im
 ## Remaining release review
 
 Review final synthetic proof under both hash seeds, exact source hashes, full repository regression evidence, validators and final remote Actions before declaring release acceptance. No live-model evaluation has been verified by this reviewer. DOCX body-only extraction warning and PDF reading-order uncertainty must remain visible. Specialist PRs and historical artifacts were not modified by this reviewer. No commit, push or merge performed.
+
+## Release review continuation
+
+B3-IQA-08 OPEN: context item explicitly marked `source_state=unknown` with a non-null investigation threshold was applied as asserted context, potentially suppressing anomaly requests. Independent regression `test_unknown_context_value_cannot_be_applied` fails before remediation. Unknown qualification must remain unresolved; caller-supplied placeholder values do not resolve it. Parser warnings visible in preview regression passes. Independent suite now contains 41 distinct tests; final rerun pending.
+
+Reviewer inspected deterministic proof and bounded release runner. Proof retains original document bytes/hashes, both context/evidence versions, native version immutable-field hashes, fresh-process continuation, actual native revenue/correction, unfamiliar prepayment movement/request, entity isolation and policy conflict. No live model is claimed. Readiness gate explicitly requires the Build 3 intelligence/proof step; a legacy green run lacking that step cannot satisfy it.

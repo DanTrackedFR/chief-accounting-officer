@@ -289,3 +289,11 @@ class IndependentQA(unittest.TestCase):
         with self.api._store() as store:case,_,_=store.load(COMPANY,cid)
         x=self.call('document',case_id=cid,event_id='docx',document=doc(case._investigation['snapshot']['scope']))
         self.assertTrue(x['ok'],x);self.assertTrue(x['investigation']['documents'][0]['warnings'])
+
+    def test_parser_warning_cannot_leak_private_source_notes(self):
+        from openpyxl import Workbook
+        w=Workbook();s=w.active;s.title='Visible';s.append(['record_id','amount']);s.append(['a',1])
+        hidden=w.create_sheet('ChatGPT training data');hidden.sheet_state='hidden';hidden.append(['record_id','amount']);hidden.append(['b',2]);b=io.BytesIO();w.save(b)
+        r=self.start();d=document(b.getvalue(),fmt='xlsx');d['metadata'].update(row_count=2,complete_population=True)
+        x=self.call('document',case_id=r['case_id'],event_id='warning-private',document=d)
+        self.assertNotIn('ChatGPT training data',str(x))

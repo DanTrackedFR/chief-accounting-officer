@@ -1,0 +1,26 @@
+name: CAO Build 3 intelligence acceptance
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['intelligence/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', '.github/workflows/cao-intelligence.yml']
+  workflow_dispatch:
+jobs:
+  intelligence-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded parsers
+        run: pip install -r intelligence/requirements.txt reportlab
+      - name: Authored and independent intelligence acceptance
+        run: python -m unittest discover -s intelligence/tests -p 'test_*.py'
+      - name: Deterministic fresh-process integrated proof
+        run: |
+          PYTHONHASHSEED=19 python -m intelligence.tests.prove_integrated > /tmp/proof19.json
+          PYTHONHASHSEED=941 python -m intelligence.tests.prove_integrated > /tmp/proof941.json
+          cmp intelligence/release/integrated-proof.json /tmp/proof19.json
+          cmp /tmp/proof19.json /tmp/proof941.json

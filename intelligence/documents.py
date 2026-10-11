@@ -85,7 +85,7 @@ def _ingest(doc, company, scope):
                 if rows:
                     width=max(len(x) for x in rows);rows=[x+[None]*(width-len(x)) for x in rows]
                     table(sheet.title,rows)
-                    if sheet.sheet_state!='visible':warnings.append('Hidden sheet retained: '+sheet.title)
+                    if sheet.sheet_state!='visible':warnings.append('Hidden sheet retained; include its population in review')
         finally:book.close()
     elif fmt=='docx':
         from docx import Document
@@ -124,7 +124,7 @@ def _ingest(doc, company, scope):
         loc=f['location']
         if tables:loc['row']+=1;loc['sheet']=loc.get('table')
         elif 'block' in loc and loc['block']<=len(blocks):loc.update(blocks[loc['block']-1]['location'])
-    result=dict(contract='cao-document/1',id=doc['id'],version=doc['version'],role=doc['role'],
+    result=dict(contract='cao-document/1',id=doc['id'],version=doc['version'],role=doc['role'],format=doc['format'],
         original_sha256=hashlib.sha256(data).hexdigest(),original_bytes=len(data),original_content_base64=doc['content_base64'],metadata=meta,
         raw_source=dict(id=raw.id,name=raw.name,format=raw.format,payload=raw.payload,metadata=raw.metadata,raw_ref=raw.raw_ref),
         extraction=extraction,tables=tables,blocks=blocks,warnings=warnings,
