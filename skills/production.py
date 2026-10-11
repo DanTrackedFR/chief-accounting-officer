@@ -212,6 +212,8 @@ def execute(package, case):
     if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
     if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
+    if 'package' in case and case['package'] != package:
+        raise ReviewRequired('Case implementation owner differs from selected accounting skill')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
     if (package=='borrowing-costs' or package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH) and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
@@ -262,32 +264,8 @@ def execute(package, case):
     return result
 
 def case_fingerprint(case):
-    files=[ROOT/'skills/core_accounting.py',ROOT/'skills/production.py',ROOT/'interfaces/public_output.py']
-    files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
-    files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
-    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
-    files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
-    files += [ROOT/'skills/presentation_accounting.py']
-    files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
-    files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
-    if case.get('package')=='derivatives-hedge-accounting':
-        files += [ROOT/'skills/derivatives-hedge-accounting/handoffs.py']
-        files += [ROOT/'skills/hedge_knowledge.py',ROOT/'skills/derivatives-hedge-accounting/CANONICAL-KNOWLEDGE-MAP.json',ROOT/'skills/derivatives-hedge-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/derivatives-hedge').glob('*.py')]
-    if case.get('package')=='inventory-cost':
-        files += [ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/inventory-cost').glob('*.py')]
-    if case.get('package')=='borrowing-costs':
-        files += [ROOT/'skills/borrowing_knowledge.py', ROOT/'skills/borrowing-costs/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += list((ROOT/'knowledge/borrowing-costs').glob('*.py'))
-    if case.get('package')=='insurance-contracts-accounting':
-        files += [ROOT/'skills/insurance_knowledge.py', ROOT/'skills/insurance-contracts-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/insurance-contracts').glob('*.py')]
-        files += [p for p in (ROOT/'skills/insurance-contracts-accounting').glob('handoffs.py')]
-    if case.get('package')=='agriculture-biological-assets':
-        files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
-    files += [ROOT/'skills/management-accounting-analytics/diagnostics.py']
+    from implementation_scope import fingerprint_files
+    files=fingerprint_files(case, ROOT, PACKAGES)
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()

@@ -16,3 +16,9 @@ Remaining: reconstruct owner-scoped fingerprint repair; repair missing reviewed-
 Missing company/Scope identity now retains the planned owner with missing reviewed-source evidence, rather than aborting graph construction. Explicit wrong or incomplete Scope identity still fails closed. Both original test bodies remain unchanged and pass. Three additional adversarial tests pass. Borrowing authored plus existing independently authored QA: 97 tests pass. Supplemental knowledge: 16 tests pass. Foundation and Treasury modules: 54 tests, one historical Treasury artifact reproduction failure; 53 behavior checks pass. No historical references were updated to silence this failure. Logs retain the actual failure.
 
 This is not release acceptance or independent fresh-agent approval. Owner-scoped fingerprints, Stage 2/4 provenance, main integration and full regression remain open.
+
+## Owner fingerprint reconstruction — under review
+
+Global owner workflow, engine and skill metadata coupling is replaced with the selected owner's files and statically imported shared helper closure. Exact canonical document topic sets identify legacy owners; ambiguous sets bind both owners and unknown cases bind all owners. Shared production/public/core boundaries remain bound. Cases explicitly targeting another package are refused, preventing forged implementation-scope certification. Changed case bytes invalidate review; signoff bytes remain excluded. Ten mutation/adversarial scope tests pass.
+
+All 1,662 published example files are byte-identical to the original PR head (the previous-agent 1,660 count was not reproduced). Stage 2 and Stage 4 fresh proof capture is separate from original targets. No migration is approved. Stable-source specialist and provenance runs remain in progress. Interrupted preliminary attempts are retained and excluded from acceptance because source edits overlapped execution.
