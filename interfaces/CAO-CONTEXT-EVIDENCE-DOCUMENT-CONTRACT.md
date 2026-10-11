@@ -73,3 +73,13 @@ accounting results and user-controlled request/observation strings.
 Structured context may specify `scope_type` as `LEGAL_ENTITY`, `GROUP` or `SUBGROUP` and `legal_entity_id`. The resolver validates these through the existing native ScopeRegistry. Group/Subgroup scopes cannot carry a legal-entity identity; absent an explicit type, the legacy legal-entity default remains. The resolved scope binds the native Case type and survives restart. Group membership never supplies a subsidiary framework or currency.
 
 Framework qualification is applied before constructing a nondefault entity execution scope. A framework declaration must qualify itself; each currency, jurisdiction and calendar source must apply to the selected framework. Irrelevant framework assertions stay in historical context and cannot create scope conflicts. Policy and other narrative disagreements remain Case-bound snapshot conflicts; only conflicting execution dimensions prevent scope construction. Neither an editable APPROVED label nor a framework qualifier grants accounting authority.
+
+Build4 binds reused CompanyMemory record/version/source references into the native
+sealed context and records exact native CONTEXT_ONLY USE receipts before delivery.
+Every continuation/intake/delivery rechecks current qualification of the immutable
+position. Interrupted Case-save/USE publication is repaired on retry before delivery.
+Stale/retracted/superseded positions block and preserve the historical snapshot;
+qualified accounting with refused memory reports STALE. lifecycle_state and workplan
+retain truthful native history (including historical CLOSED), while execution_state
+and curated public_result express blocked current delivery. No automatic lifecycle
+reopening, authenticated approval or accounting input certification is implied.

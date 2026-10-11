@@ -1,0 +1,1945 @@
+{
+  "actual_result": {
+    "case_id": "case:5fa4181871ad63db70024eee9f78c021fc8fbb169926aa2b4572d8016d8d05c8",
+    "checkpoint_revision": 2,
+    "company_id": "synthetic-demo-001",
+    "contract_version": "1.0",
+    "currentness": "NOT_EXECUTED",
+    "durable": true,
+    "execution_state": "blocked",
+    "investigation": {
+      "accounting_qualified": false,
+      "conflicts": [],
+      "context_snapshot_id": "14ccd81684c1d6fdb1cec2c286209c94fa480403ae0ef02cfb1799c26e37661e",
+      "documents": [],
+      "observations": [],
+      "pending_correction": false,
+      "requests": [
+        {
+          "blocking": true,
+          "id": "request-0b4e4c2a677c5f229cd0b3318c5b430edac0ad68d0d52bef27a8f85271973303",
+          "key": "contract",
+          "needed": "Provide the signed customer contract including schedules and amendments.",
+          "owner": "revenue-recognition",
+          "period": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "role": "contract",
+          "scope_id": "ENTITY-DEMO",
+          "source_fields": [],
+          "source_status": "missing_or_unqualified",
+          "status": "OPEN",
+          "why": "Identify promises, pricing, enforceability and recognition terms."
+        },
+        {
+          "blocking": true,
+          "id": "request-5070f48500f81574d6f85705e5989315b0e9ac1828173f58bb845d1ffc123e67",
+          "key": "qualification",
+          "needed": "Provide an independently reviewed native intake pack binding this exact document population and accounting facts.",
+          "owner": "revenue-recognition",
+          "period": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "role": null,
+          "scope_id": "ENTITY-DEMO",
+          "source_fields": [],
+          "source_status": "missing_or_unqualified",
+          "status": "OPEN",
+          "why": "Extracted text, movement observations and model claims are not reviewed accounting evidence."
+        }
+      ],
+      "round": 0
+    },
+    "lifecycle_state": "OPEN",
+    "ok": true,
+    "operation": "investigate",
+    "public_result": {
+      "guidance": "Investigation requires qualified evidence or conflict resolution.",
+      "open_items": [
+        "Provide the signed customer contract including schedules and amendments.",
+        "Provide an independently reviewed native intake pack binding this exact document population and accounting facts."
+      ],
+      "status": "blocked"
+    },
+    "workplan": []
+  },
+  "company_id": "synthetic-demo-001",
+  "consumer_case": "case:5fa4181871ad63db70024eee9f78c021fc8fbb169926aa2b4572d8016d8d05c8",
+  "context_snapshot": {
+    "company_id": "synthetic-demo-001",
+    "conflicts": [],
+    "contract": "cao-context/1",
+    "governed_records": [
+      {
+        "attribute": "systems",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "id": "memory:7d65bc9374028943a200ccdaf044cd7831c421f5649051c765bceac1acd425bb",
+        "provenance": [
+          "memory-version:06ebc078e931997712a497d14c91eac31c16159d3e1b057dbd550be222923c04"
+        ],
+        "scope": {
+          "entities": [
+            "ENTITY-DEMO"
+          ],
+          "framework": "IFRS"
+        },
+        "status": "APPROVED",
+        "value": "Oracle ERP"
+      }
+    ],
+    "history": [
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "company_id",
+        "source": "markdown:company",
+        "value": "synthetic-demo-001",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "legal_name",
+        "source": "markdown:company",
+        "value": "Synthetic Group",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "business_description",
+        "source": "markdown:company",
+        "value": "Synthetic accounting demonstration",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "industry",
+        "source": "markdown:company",
+        "value": "SaaS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "operating_model",
+        "source": "markdown:company",
+        "value": "Subscription service",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "products_services",
+        "source": "markdown:company",
+        "value": "Hosted software",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "revenue_model",
+        "source": "markdown:company",
+        "value": "Subscription fees",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "main_jurisdictions",
+        "source": "markdown:company",
+        "value": "NL",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "ownership_group_structure",
+        "source": "markdown:company",
+        "value": "Standalone demonstration entity",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "context_state",
+        "source": "markdown:company",
+        "value": "user_assertion",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "context_source_reference",
+        "source": "markdown:company",
+        "value": "Owner supplied onboarding",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "effective_from",
+        "source": "markdown:company",
+        "value": "2026-01-01",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "effective_to",
+        "source": "markdown:company",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "entity_id",
+        "source": "markdown:execution",
+        "value": "ENTITY-DEMO",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "framework",
+        "source": "markdown:execution",
+        "value": "IFRS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "jurisdiction",
+        "source": "markdown:execution",
+        "value": "NL",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "period_start",
+        "source": "markdown:execution",
+        "value": "2026-12-01",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "period_end",
+        "source": "markdown:execution",
+        "value": "2026-12-31",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "functional_currency",
+        "source": "markdown:execution",
+        "value": "USD",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "presentation_currency",
+        "source": "markdown:execution",
+        "value": "USD",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "calendar_id",
+        "source": "markdown:execution",
+        "value": "CAL-DEMO",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "materiality",
+        "source": "markdown:execution",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "statutory_requirements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "group_requirements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "entity_framework_differences",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "financial_year_end",
+        "source": "markdown:financial_reporting",
+        "value": "12-31",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "calendar_reference",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "consolidation_requirements",
+        "source": "markdown:financial_reporting",
+        "value": "None asserted",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "investigation_threshold",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "relevant_regulators",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "external_auditor",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "audit_arrangements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reporting_deadlines",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "team_roles",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "close_responsibilities",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "process_owners",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "external_service_providers",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "known_accounting_problem_areas",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "historical_risks",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "erp",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "billing",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "payroll",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "procurement",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "banking",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "expense_management",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "consolidation_reporting",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "data_warehouse_bi",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "revenue_recognition",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "financial_instruments_ecl",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "inventory",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "fixed_assets",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "leases",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "capitalization",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "fx",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "accruals",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "provisions",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "other_policies",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "policy_status",
+        "source": "markdown:policy_references",
+        "value": "unverified",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "accounting_policies",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "signed_contracts",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "month_end_close",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "trial_balances",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reconciliations",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "audit_evidence",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "journal_support",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reporting_packs",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "process_documentation",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "drive_folder_url",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "role",
+        "source": "markdown:user",
+        "value": "Financial Controller",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "responsibilities",
+        "source": "markdown:user",
+        "value": "Accounting close and reporting",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "preferred_detail",
+        "source": "markdown:user",
+        "value": "Practical workpaper detail",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "framework_familiarity",
+        "source": "markdown:user",
+        "value": "IFRS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "recurring_responsibilities",
+        "source": "markdown:user",
+        "value": "Monthly close",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      }
+    ],
+    "items": [
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "company_id",
+        "source": "markdown:company",
+        "value": "synthetic-demo-001",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "legal_name",
+        "source": "markdown:company",
+        "value": "Synthetic Group",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "business_description",
+        "source": "markdown:company",
+        "value": "Synthetic accounting demonstration",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "industry",
+        "source": "markdown:company",
+        "value": "SaaS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "operating_model",
+        "source": "markdown:company",
+        "value": "Subscription service",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "products_services",
+        "source": "markdown:company",
+        "value": "Hosted software",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "revenue_model",
+        "source": "markdown:company",
+        "value": "Subscription fees",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "main_jurisdictions",
+        "source": "markdown:company",
+        "value": "NL",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "ownership_group_structure",
+        "source": "markdown:company",
+        "value": "Standalone demonstration entity",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "context_state",
+        "source": "markdown:company",
+        "value": "user_assertion",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "context_source_reference",
+        "source": "markdown:company",
+        "value": "Owner supplied onboarding",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "effective_from",
+        "source": "markdown:company",
+        "value": "2026-01-01",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "effective_to",
+        "source": "markdown:company",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "entity_id",
+        "source": "markdown:execution",
+        "value": "ENTITY-DEMO",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "framework",
+        "source": "markdown:execution",
+        "value": "IFRS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "jurisdiction",
+        "source": "markdown:execution",
+        "value": "NL",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "period_start",
+        "source": "markdown:execution",
+        "value": "2026-12-01",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "period_end",
+        "source": "markdown:execution",
+        "value": "2026-12-31",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "functional_currency",
+        "source": "markdown:execution",
+        "value": "USD",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "presentation_currency",
+        "source": "markdown:execution",
+        "value": "USD",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "calendar_id",
+        "source": "markdown:execution",
+        "value": "CAL-DEMO",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "materiality",
+        "source": "markdown:execution",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "statutory_requirements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "group_requirements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "entity_framework_differences",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "financial_year_end",
+        "source": "markdown:financial_reporting",
+        "value": "12-31",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "calendar_reference",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "consolidation_requirements",
+        "source": "markdown:financial_reporting",
+        "value": "None asserted",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "investigation_threshold",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "relevant_regulators",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "external_auditor",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "audit_arrangements",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reporting_deadlines",
+        "source": "markdown:financial_reporting",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "team_roles",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "close_responsibilities",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "process_owners",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "external_service_providers",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "known_accounting_problem_areas",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "historical_risks",
+        "source": "markdown:finance_organization",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "erp",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "billing",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "payroll",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "procurement",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "banking",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "expense_management",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "consolidation_reporting",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "data_warehouse_bi",
+        "source": "markdown:systems",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "revenue_recognition",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "financial_instruments_ecl",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "inventory",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "fixed_assets",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "leases",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "capitalization",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "fx",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "accruals",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "provisions",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "other_policies",
+        "source": "markdown:policy_references",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "policy_status",
+        "source": "markdown:policy_references",
+        "value": "unverified",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "accounting_policies",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "signed_contracts",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "month_end_close",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "trial_balances",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reconciliations",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "audit_evidence",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "journal_support",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "reporting_packs",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "process_documentation",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "drive_folder_url",
+        "source": "markdown:source_locations",
+        "value": null,
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "role",
+        "source": "markdown:user",
+        "value": "Financial Controller",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "responsibilities",
+        "source": "markdown:user",
+        "value": "Accounting close and reporting",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "preferred_detail",
+        "source": "markdown:user",
+        "value": "Practical workpaper detail",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "framework_familiarity",
+        "source": "markdown:user",
+        "value": "IFRS",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-12-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "ENTITY-DEMO",
+        "key": "recurring_responsibilities",
+        "source": "markdown:user",
+        "value": "Monthly close",
+        "version": "989b49e381aeb854f7afd40e013d6970a7ff84929bc2bb846f2f9e01b2c79cfd"
+      }
+    ],
+    "memory_references": [
+      {
+        "attribute": "systems",
+        "record_id": "memory:7d65bc9374028943a200ccdaf044cd7831c421f5649051c765bceac1acd425bb",
+        "source_case": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc",
+        "use": "CONTEXT_ONLY",
+        "version_id": "memory-version:06ebc078e931997712a497d14c91eac31c16159d3e1b057dbd550be222923c04"
+      }
+    ],
+    "refused_memory": [],
+    "scope": {
+      "company_id": "synthetic-demo-001",
+      "currency": "USD",
+      "entity": "ENTITY-DEMO",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "period_id": "period:3d4136745bc97e78c1cdeb6204316d21dbd9dec07942afb6c2dc13c9cb802b42",
+      "period_registry": {
+        "calendars": [
+          {
+            "calendar_id": "CAL-DEMO",
+            "description": "Explicit bounded investigation calendar",
+            "provenance": [
+              "asserted-context"
+            ],
+            "year_start_day": null,
+            "year_start_month": null
+          }
+        ],
+        "history": [],
+        "periods": [
+          {
+            "as_of": "2026-12-31",
+            "calendar_id": "CAL-DEMO",
+            "end": "2026-12-31",
+            "fiscal_period": "BOUNDED:2026-12-01:2026-12-31",
+            "fiscal_year": 2026,
+            "period_id": "period:3d4136745bc97e78c1cdeb6204316d21dbd9dec07942afb6c2dc13c9cb802b42",
+            "period_type": "REPORTING",
+            "provenance": [
+              "supplied-governed-context"
+            ],
+            "start": "2026-12-01",
+            "status": "OPEN"
+          }
+        ],
+        "relationships": []
+      },
+      "period_start": "2026-12-01",
+      "presentation_currency": "USD",
+      "reporting_calendar": "CAL-DEMO",
+      "reporting_period": "2026-12-31",
+      "scope_id": "ENTITY-DEMO",
+      "scopes": [
+        {
+          "display_name": "ENTITY-DEMO",
+          "effective_from": "2026-12-01",
+          "effective_to": "2026-12-31",
+          "framework": "IFRS",
+          "functional_currency": "USD",
+          "jurisdiction": "NL",
+          "legal_entity_id": "ENTITY-DEMO",
+          "parent_scope_id": null,
+          "presentation_currency": "USD",
+          "provenance": [
+            "user-asserted-execution-dimensions"
+          ],
+          "reporting_calendar": "CAL-DEMO",
+          "scope_id": "ENTITY-DEMO",
+          "scope_type": "LEGAL_ENTITY",
+          "status": "CURRENT"
+        }
+      ]
+    },
+    "snapshot_id": "14ccd81684c1d6fdb1cec2c286209c94fa480403ae0ef02cfb1799c26e37661e",
+    "unknowns": [
+      "accounting_policies",
+      "accruals",
+      "audit_arrangements",
+      "audit_evidence",
+      "banking",
+      "billing",
+      "calendar_reference",
+      "capitalization",
+      "close_responsibilities",
+      "consolidation_reporting",
+      "data_warehouse_bi",
+      "drive_folder_url",
+      "effective_to",
+      "entity_framework_differences",
+      "erp",
+      "expense_management",
+      "external_auditor",
+      "external_service_providers",
+      "financial_instruments_ecl",
+      "fixed_assets",
+      "fx",
+      "group_requirements",
+      "historical_risks",
+      "inventory",
+      "investigation_threshold",
+      "journal_support",
+      "known_accounting_problem_areas",
+      "leases",
+      "materiality",
+      "month_end_close",
+      "other_policies",
+      "payroll",
+      "process_documentation",
+      "process_owners",
+      "procurement",
+      "provisions",
+      "reconciliations",
+      "relevant_regulators",
+      "reporting_deadlines",
+      "reporting_packs",
+      "revenue_recognition",
+      "signed_contracts",
+      "statutory_requirements",
+      "team_roles",
+      "trial_balances"
+    ],
+    "values": {
+      "business_description": "Synthetic accounting demonstration",
+      "calendar_id": "CAL-DEMO",
+      "company_id": "synthetic-demo-001",
+      "consolidation_requirements": "None asserted",
+      "context_source_reference": "Owner supplied onboarding",
+      "context_state": "user_assertion",
+      "effective_from": "2026-01-01",
+      "entity_id": "ENTITY-DEMO",
+      "financial_year_end": "12-31",
+      "framework": "IFRS",
+      "framework_familiarity": "IFRS",
+      "functional_currency": "USD",
+      "industry": "SaaS",
+      "jurisdiction": "NL",
+      "legal_name": "Synthetic Group",
+      "main_jurisdictions": "NL",
+      "operating_model": "Subscription service",
+      "ownership_group_structure": "Standalone demonstration entity",
+      "period_end": "2026-12-31",
+      "period_start": "2026-12-01",
+      "policy_status": "unverified",
+      "preferred_detail": "Practical workpaper detail",
+      "presentation_currency": "USD",
+      "products_services": "Hosted software",
+      "recurring_responsibilities": "Monthly close",
+      "responsibilities": "Accounting close and reporting",
+      "revenue_model": "Subscription fees",
+      "role": "Financial Controller",
+      "systems": "Oracle ERP"
+    }
+  },
+  "contract": "cao-build4-memory-proof/1",
+  "cross_entity_result": {
+    "case_id": "case:d0227d370b2d52ed264dbe7df7966ac930b919923412affa1e41e16da502946a",
+    "checkpoint_revision": 2,
+    "company_id": "synthetic-demo-001",
+    "contract_version": "1.0",
+    "currentness": "NOT_EXECUTED",
+    "durable": true,
+    "execution_state": "blocked",
+    "investigation": {
+      "accounting_qualified": false,
+      "conflicts": [],
+      "context_snapshot_id": "14ccd81684c1d6fdb1cec2c286209c94fa480403ae0ef02cfb1799c26e37661e",
+      "documents": [],
+      "observations": [],
+      "pending_correction": false,
+      "requests": [
+        {
+          "blocking": true,
+          "id": "request-df4bca52bfbcf38d7ab75349c907a2c1ba1f6bd1911db8cc31e733f348f2d1c6",
+          "key": "contract",
+          "needed": "Provide the signed customer contract including schedules and amendments.",
+          "owner": "revenue-recognition",
+          "period": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "role": "contract",
+          "scope_id": "ENTITY-DEMO",
+          "source_fields": [],
+          "source_status": "missing_or_unqualified",
+          "status": "OPEN",
+          "why": "Identify promises, pricing, enforceability and recognition terms."
+        },
+        {
+          "blocking": true,
+          "id": "request-e95fd767061a6867357dacfafb26e88b2464b8c5484ec50622d3d55f0c75ebaf",
+          "key": "qualification",
+          "needed": "Provide an independently reviewed native intake pack binding this exact document population and accounting facts.",
+          "owner": "revenue-recognition",
+          "period": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "role": null,
+          "scope_id": "ENTITY-DEMO",
+          "source_fields": [],
+          "source_status": "missing_or_unqualified",
+          "status": "OPEN",
+          "why": "Extracted text, movement observations and model claims are not reviewed accounting evidence."
+        }
+      ],
+      "round": 0
+    },
+    "lifecycle_state": "OPEN",
+    "ok": true,
+    "operation": "investigate",
+    "public_result": {
+      "guidance": "Investigation requires qualified evidence or conflict resolution.",
+      "open_items": [
+        "Provide the signed customer contract including schedules and amendments.",
+        "Provide an independently reviewed native intake pack binding this exact document population and accounting facts."
+      ],
+      "status": "blocked"
+    },
+    "workplan": []
+  },
+  "execution_boundary": "ExecutionInterface.call investigate/resume",
+  "foreign_case": "case:c87a77acc70d381aad346aadb2452284a346c0aed49e2f7c823cf0ecef96140a",
+  "foreign_record": "memory:7d061999ecc1a91c5cc44aba3ab4e9ab39c923961c6c669136aad70f08451553",
+  "governance_setup": "Native SQLiteStore.memory; synthetic trusted caller, authenticated=false",
+  "ledger_uses": [],
+  "limitation": "Context reuse grants no accounting input authority; signed contract and reviewed native pack remain required.",
+  "memory_record": {
+    "applicability": {
+      "calendar_id": "CAL-DEMO",
+      "currency": "USD",
+      "framework": "IFRS",
+      "jurisdiction": "NL",
+      "legal_entity_id": "ENTITY-DEMO",
+      "period_ids": [
+        "period:3d4136745bc97e78c1cdeb6204316d21dbd9dec07942afb6c2dc13c9cb802b42"
+      ],
+      "relationship_id": null,
+      "scope_id": "ENTITY-DEMO",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "assertion": "EXTRACTED",
+    "attribute": "systems",
+    "category": "systems_data",
+    "company_id": "synthetic-demo-001",
+    "confidence": "unknown",
+    "contract": 1,
+    "decision": {
+      "decision_date": {
+        "precision": "unknown",
+        "value": null
+      },
+      "implications": [
+        "Recurring close context"
+      ],
+      "new_position": "Oracle ERP",
+      "previous_position": null,
+      "reason": "Recurring controlled finance-system documentation",
+      "status": "proposed"
+    },
+    "effective_from": {
+      "precision": "exact",
+      "value": "2026-12-01"
+    },
+    "effective_to": {
+      "precision": "exact",
+      "value": "2026-12-31"
+    },
+    "governance": {
+      "applicability": {
+        "calendar_id": "CAL-DEMO",
+        "currency": "USD",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "legal_entity_id": "ENTITY-DEMO",
+        "period_ids": [
+          "period:3d4136745bc97e78c1cdeb6204316d21dbd9dec07942afb6c2dc13c9cb802b42"
+        ],
+        "relationship_id": null,
+        "scope_id": "ENTITY-DEMO",
+        "scope_type": "LEGAL_ENTITY"
+      },
+      "approval_date": {
+        "precision": "unknown",
+        "value": null
+      },
+      "authenticated": false,
+      "authority": "TRUSTED_CALLER_ASSERTION",
+      "bundle_ids": [
+        "5130b343da8c0cf13bb6f33252099a80eabea3c71531f3f9b2493ebdc38b21c7"
+      ],
+      "decision_date": {
+        "precision": "unknown",
+        "value": null
+      },
+      "evidence_kind": "SYNTHETIC",
+      "intent": "EXPLICIT_MEMORY_TRANSITION",
+      "prior_status": "PROPOSED",
+      "reason": "Explicit bounded review of retained system evidence",
+      "record_id": "memory:7d65bc9374028943a200ccdaf044cd7831c421f5649051c765bceac1acd425bb",
+      "target_status": "APPROVED"
+    },
+    "identity": {
+      "candidate": {
+        "attribute": "systems",
+        "conflict": false,
+        "scope_id": "ENTITY-DEMO",
+        "semantic_status": "EXTRACTED",
+        "source_refs": [
+          "system-policy:2"
+        ],
+        "status": "PROPOSED",
+        "value": "Oracle ERP"
+      },
+      "case": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc",
+      "category": "systems_data",
+      "company": "synthetic-demo-001",
+      "dimensions": {
+        "calendar_id": "CAL-DEMO",
+        "currency": "USD",
+        "framework": "IFRS",
+        "jurisdiction": "NL",
+        "legal_entity_id": "ENTITY-DEMO",
+        "period_ids": [
+          "period:3d4136745bc97e78c1cdeb6204316d21dbd9dec07942afb6c2dc13c9cb802b42"
+        ],
+        "relationship_id": null,
+        "scope_id": "ENTITY-DEMO",
+        "scope_type": "LEGAL_ENTITY"
+      },
+      "effective_from": {
+        "precision": "exact",
+        "value": "2026-12-01"
+      },
+      "effective_to": {
+        "precision": "exact",
+        "value": "2026-12-31"
+      },
+      "source": {
+        "bundle_ids": [
+          "5130b343da8c0cf13bb6f33252099a80eabea3c71531f3f9b2493ebdc38b21c7"
+        ],
+        "case_id": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc",
+        "checkpoint_sha256": "7d41299024b53836671f8d3cd730bc7489be2ffd5d4fd50a31bd1374e164b0d2",
+        "result_versions": [],
+        "revision": 1,
+        "root_case": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc"
+      },
+      "subject": "finance"
+    },
+    "learned_at": {
+      "precision": "exact",
+      "value": "2027-01-02"
+    },
+    "original_candidate": {
+      "attribute": "systems",
+      "conflict": false,
+      "scope_id": "ENTITY-DEMO",
+      "semantic_status": "EXTRACTED",
+      "source_refs": [
+        "system-policy:2"
+      ],
+      "status": "PROPOSED",
+      "value": "Oracle ERP"
+    },
+    "questions": [],
+    "record_id": "memory:7d65bc9374028943a200ccdaf044cd7831c421f5649051c765bceac1acd425bb",
+    "source": {
+      "bundle_ids": [
+        "5130b343da8c0cf13bb6f33252099a80eabea3c71531f3f9b2493ebdc38b21c7"
+      ],
+      "case_id": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc",
+      "checkpoint_sha256": "7d41299024b53836671f8d3cd730bc7489be2ffd5d4fd50a31bd1374e164b0d2",
+      "result_versions": [],
+      "revision": 1,
+      "root_case": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc"
+    },
+    "status": "APPROVED",
+    "subject": "finance",
+    "superseded_by": null,
+    "supersedes": [],
+    "uncertainty": null,
+    "value": "Oracle ERP",
+    "version_id": "memory-version:06ebc078e931997712a497d14c91eac31c16159d3e1b057dbd550be222923c04"
+  },
+  "source_case": "case:b9042cd6956d64876970bab841d128ee90299e8753f8b706c42fdc1a3ce0e0bc",
+  "source_result_versions": []
+}

@@ -6,7 +6,10 @@ from orchestration.intake.sources import fingerprint,canonical
 
 def validate(state,case_id):
     required={'contract','case_id','objective','family','snapshot','documents','requests','calculations','conflicts','inferences','round','events','qualified','pending_correction'}
-    if not isinstance(state,dict) or not required<=set(state) or set(state)-required-{'native_events'} or state['contract']!='cao-investigation/1' or state['case_id']!=case_id:raise ValueError('Investigation checkpoint contract')
+    if not isinstance(state,dict) or not required<=set(state) or set(state)-required-{'native_events','memory_refusals'} or state['contract']!='cao-investigation/1' or state['case_id']!=case_id:raise ValueError('Investigation checkpoint contract')
+    if 'memory_refusals' in state and not isinstance(state['memory_refusals'],list):raise ValueError('Memory refusal population')
+    for refusal in state.get('memory_refusals',[]):
+        if not isinstance(refusal,dict) or set(refusal)!={'attribute','reason'} or not all(isinstance(v,str) and v for v in refusal.values()):raise ValueError('Memory refusal contract')
     s=state['snapshot']
     if s.get('snapshot_id')!=fingerprint({k:v for k,v in s.items() if k!='snapshot_id'}):raise ValueError('Context snapshot changed')
     if type(state['qualified']) is not bool or type(state['pending_correction']) is not bool or type(state['round']) is not int or not 0<=state['round']<=64:raise ValueError('Investigation state type')

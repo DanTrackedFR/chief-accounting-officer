@@ -1,5 +1,11 @@
 # CAO HTTP API 1.0
 
+Current merged-build note: the foundational operation tables below describe Build1/
+Build2A. Additive Build3 investigation/document/native correction/rework operations
+are authoritative in `CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md`; Build4 acceptance
+and TrackedFR mapping are in architecture/CAO-MVP-BUILD4-BUILD2B-HANDOFF.md.
+No memory promotion or authenticated reviewer endpoint is introduced.
+
 Python 3.12+, POSIX, standard library. Base path `/v1`. JSON request/response;
 Content-Type must be `application/json`. Maximum body 2,000,000 bytes, native
 maximum depth12/10,000 entries. Duplicate keys, nonfinite numbers, unknown fields,

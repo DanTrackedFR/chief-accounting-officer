@@ -1,5 +1,11 @@
 # TrackedFR Build 2B integration requirements
 
+Current integration precedence: this is the preserved Build2A foundation. Merged
+Build3 adds bounded binary document observations, investigation, structured context
+and native CORRECT/REWORK through durable jobs. Statements below excluding those
+capabilities are historical. Use CAO-MVP-BUILD4-BUILD2B-HANDOFF.md and the current
+Context/Evidence/Document contract for implementation and acceptance.
+
 Build2A is the CAO backend; Build2B and the full MVP remain incomplete.
 This repository does not contain TrackedFR source. The supplied March2026 setup
 pack is background. React/Express/Supabase/private storage/PostgreSQL/Drizzle/chat/

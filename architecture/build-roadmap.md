@@ -229,17 +229,27 @@ existing UI/document rendering and private-source exchange remain separate work.
 See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
 INCOMPLETE. No production deployment or merge is performed by Build2A.
 
-Build 3 — IMPLEMENTED AND LOCALLY RELEASE-VERIFIED (PR #46): Case-specific versioned context,
-bounded document observations, iterative evidence requests, controlled interpretation,
-and existing native intake/correction/rework through local and hosted contracts.
-Independent adversarial rerun records51 distinct tests after fourteen findings were fixed.
-Corrected full regression passed3,166 distinct tests,13 suites and seven validators. Initial whitespace-only process exit2 and rawpartiallogs are retained; affected transcript/whitespace reruns exit0 without source changes or duplicate test credit. Final exact-head/readiness CI gates remain required.
-New integrated proof is byte-identical under seeds19/941; historical reference files
-were retained. Final release completion requires exact-head Actions and unchanged-SHA
-readiness checks recorded on PR46; any failed gate leaves it Draft. No merge,
-deployment or authenticated accounting approval.
+Build 3 — COMPLETE (MERGED PR #46): Case-specific immutable context, bounded
+financial document observations, iterative evidence discovery, controlled
+interpretation and native owner intake/correction/rework through both clients.
+Merged as495d4e7fccd5863c971423a5fb130f82e37b9604 on2026-10-11. Final exact-head
+and unchanged-head readiness receipts passed on PR46. Fourteen independently
+reproduced findings resolved;3,166 distinct repository methods passed. Source
+assurance/synthetic identities/live inference limitations remain explicit.
 See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
 
-Build 4 — INCOMPLETE: authenticated preparer/reviewer accounting governance,
-TrackedFR application integration and production operational acceptance remain.
-Build 2B and the full MVP remain incomplete.
+Build 4 — INTEGRATED ACCEPTANCE IMPLEMENTED; RELEASE GATES REQUIRED:
+new customer-contract correction, prepayments evidence discovery with unresolved
+residual/allocation, repeated framework-qualified legal-entity/period owners,
+Group scope conflict/isolation, genuine interrupted native CORRECT/REWORK and
+safe exact-version CompanyMemory reuse. Bounded remediation binds native memory
+consumption and rechecks currentness; no parallel engine or authenticated approval.
+See architecture/CAO-MVP-BUILD4-ARCHITECTURE.md and completion report; final local
+regression, deterministic proofs, independent QA, exact-head/readiness CI and
+owner integration remain the release standard recorded on the sole Build4 PR.
+
+Engine engineering acceptance must be distinguished from unverified live model/
+Claude Code user operation, outstanding TrackedFR Build2B application acceptance,
+authenticated preparer/reviewer governance and production deployment/security/
+operational acceptance. Government Grants#34, Borrowing Costs#35 and Investment
+Property#37 remain separately managed. Build2B and the commercial MVP are INCOMPLETE.

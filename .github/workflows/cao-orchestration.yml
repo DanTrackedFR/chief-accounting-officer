@@ -5,6 +5,7 @@ on:
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
+      - "build4/**"
       - "intelligence/**"
       - "hosted_cao/**"
       - 'local_cao/**'
@@ -55,7 +56,8 @@ jobs:
                   required = {'Orchestration authored and independent QA', 'Hosted service authored and independent QA',
                       'Local execution authored and independent QA', 'Existing skills and lease vertical slice',
                       'Repository public-output and canonical tests', 'Supplemental knowledge and independent knowledge QA',
-                      'Canonical authority invariants and whitespace', 'Build 3 intelligence and deterministic integrated proof'}
+                      'Canonical authority invariants and whitespace', 'Build 3 intelligence and deterministic integrated proof',
+                      'Build 4 integrated accounting intelligence acceptance'}
                   for run in runs['workflow_runs']:
                       if run['id'] == current['id'] or run['workflow_id'] != current['workflow_id'] or run['head_sha'] != os.environ['HEAD_SHA']:
                           continue
@@ -75,6 +77,19 @@ jobs:
           PYCODE
       - name: Install bounded document parsers
         run: pip install -r intelligence/requirements.txt reportlab
+      - name: Build 4 integrated accounting intelligence acceptance
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s build4/tests -p 'test_*.py'
+          PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/build4-283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/build4-1709.json
+          cmp build4/release/integrated-proof.json /tmp/build4-283.json
+          cmp /tmp/build4-283.json /tmp/build4-1709.json
+          PYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory-283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory-1709.json
+          cmp build4/release/memory-proof.json /tmp/memory-283.json
+          cmp /tmp/memory-283.json /tmp/memory-1709.json
+          python -m build4.verify_release
       - name: Build 3 intelligence and deterministic integrated proof
         if: steps.prior.outputs.cached != 'true'
         run: |
