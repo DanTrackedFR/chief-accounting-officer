@@ -43,3 +43,12 @@ Integrated checks: 1,289 specialist tests, 55 local execution tests, 44 hosted-s
 Synthetic reference lookup binds original bytes to the published-head manifest and reviewed current bytes to explicit migration records. It does not recertify live company evidence. All 1,662 original example files remain unchanged.
 
 Stage 4 final comparison: PASS, 15 expanded retained artifacts and 105,554 changed identity leaves, zero accounting/nonidentity/provenance errors. Only `bundle_ids` sorting was additionally normalized after verifying `memory.capture` explicitly stores sorted sets. Ordered histories remain ordered. Original interruption/lost-ack/proof summaries remain exact. Current synthetic references are separately recorded in `durable-migration.json`; original authorities are unchanged. Full regression is running.
+
+
+## Latest main acceptance reconciliation
+
+The exact-head hosted acceptance exposed stale frozen proof identities after owner fingerprint isolation. All five integrated main proofs reexecute successfully; expanded comparisons find 306 consistently mapped identity leaves and zero accounting/nonidentity changes. The four independently seeded proofs are byte identical across seeds. Current proof versions are separate and bound in `main-proof-migration.json`; original main proofs remain unchanged. CI retains exact byte and cross-seed comparisons against these explicit versions.
+
+Main's historical inventory includes 145 saved authorities whose identity bytes differ from the original PR42 baseline. Both histories are retained: PR42 originals at their original paths and exact main bytes under `main-original`, verified against main's original inventory and commit. Their strict expanded comparison has zero nonidentity errors. Three additional integrity tests pass. Build4 preservation checks validate both baselines.
+
+The initial serial release attempt was interrupted with exit 130 after skills 1,289, leases 17 and repository 53 passed. It is retained as incomplete evidence. Final regression uses the latest main canonical sharded release runner, extended to include Borrowing Costs knowledge and validator gates, binding reviewed recovery inputs to the exact tested source tree.

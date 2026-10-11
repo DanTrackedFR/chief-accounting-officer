@@ -58,7 +58,7 @@ def release():
     (OUT/'start-source-hashes.json').write_text(json.dumps(source_hashes(),sort_keys=True,indent=2)+'\n')
     (OUT/'start-input-hashes.json').write_text(json.dumps(input_hashes(),sort_keys=True,indent=2)+'\n')
     prior=json.loads((ROOT/'local_cao/release/release-regression.json').read_text())
-    suites=[(x['suite'],x['pattern']) for x in prior['suite_results']]+[('hosted_cao/tests','test_*.py'),('intelligence/tests','test_*.py'),('build4/tests','test_*.py')]
+    suites=[(x['suite'],x['pattern']) for x in prior['suite_results']]+[('knowledge/borrowing-costs','test*.py'),('hosted_cao/tests','test_*.py'),('intelligence/tests','test_*.py'),('build4/tests','test_*.py')]
     records=[];logs=[]
     def run(args,name,timeout=14400):
         path=OUT/(name+'.log');started=time.monotonic()
@@ -75,7 +75,8 @@ def release():
         print(json.dumps({'suite':directory,'tests':record['tests'],'exit_code':code}),flush=True)
         save(records,logs)
         if code:raise SystemExit(code)
-    for i,v in enumerate(prior['validators']):
+    validators=prior['validators']+[{'command':'knowledge/borrowing-costs/validate_supplement.py'}]
+    for i,v in enumerate(validators):
         code=run([sys.executable,v['command']],f'validator-{i}',600);save(records,logs)
         if code:raise SystemExit(code)
     code=run(['git','diff','--check'],'diff-check',30);save(records,logs)
@@ -89,6 +90,8 @@ def input_hashes():
     folders=['build4','intelligence','hosted_cao','local_cao','orchestration','skills','interfaces','knowledge','.github']
     paths=[p for folder in folders for p in (ROOT/folder).rglob('*') if p.is_file() and p.suffix in {'.py','.json','.md','.csv','.yml','.yaml','.txt'} and '/release/' not in str(p.relative_to(ROOT)) and '/examples/' not in str(p.relative_to(ROOT))]
     paths += list(ROOT.glob('*.py'))
+    recovery=subprocess.check_output(['git','ls-files','recovery/borrowing-costs-pr42'],cwd=ROOT,text=True).splitlines()
+    paths += [ROOT/name for name in recovery if Path(name).suffix in {'.py','.json'} or '.tar.xz.part' in name]
     return {str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(paths))}
 
 def save(records,logs):
@@ -97,7 +100,7 @@ def save(records,logs):
     start=json.loads((OUT/'start-source-hashes.json').read_text())
     inputs=input_hashes()
     unchanged=sources==start and inputs==json.loads((OUT/'start-input-hashes.json').read_text())
-    value={'baseline':'495d4e7fccd5863c971423a5fb130f82e37b9604','executed_distinct_tests':len(ids),'attempt':ATTEMPT,'source_unchanged':unchanged,'suite_results':records,'logs':logs,'tested_python_sha256':sources,'tested_execution_inputs_sha256':inputs,'complete':len(records)==14 and len(logs)==22 and unchanged and all(x['exit_code']==0 for x in logs) and all(r['passed'] and not r['skipped'] for r in records),'historical_artifacts_regenerated':False}
+    value={'baseline':'495d4e7fccd5863c971423a5fb130f82e37b9604','executed_distinct_tests':len(ids),'attempt':ATTEMPT,'source_unchanged':unchanged,'suite_results':records,'logs':logs,'tested_python_sha256':sources,'tested_execution_inputs_sha256':inputs,'complete':len(records)==15 and len(logs)==24 and unchanged and all(x['exit_code']==0 for x in logs) and all(r['passed'] and not r['skipped'] for r in records),'historical_artifacts_regenerated':False}
     (OUT/'release-regression.json').write_text(json.dumps(value,indent=2)+'\n')
 
 if __name__=='__main__':
