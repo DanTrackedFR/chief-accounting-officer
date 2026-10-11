@@ -214,7 +214,7 @@ Build 1 — COMPLETE (MERGED PR #44): local Claude Code operation and shared exe
 contract1.0 reuse native accounting, durable Cases and Company Accounting Memory.
 Live main merge b3b6d3c7a57682985f66dc76985f99fe42b4dbd2;3,050 distinct tests passed.
 
-Build 2A — IMPLEMENTED AND LOCALLY VERIFIED; FINAL ACTIONS GATE (PR #45): separately runnable
+Build 2A — COMPLETE (MERGED PR #45): separately runnable
 Python /v1 HTTP wrapper, scoped server authentication, company workspace isolation,
 durable operational jobs and native checkpoint reconciliation.24 authored/12
 independent service tests plus8 independent release-gate tests pass. Full local
@@ -228,3 +228,18 @@ Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mappi
 existing UI/document rendering and private-source exchange remain separate work.
 See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
 INCOMPLETE. No production deployment or merge is performed by Build2A.
+
+Build 3 — IMPLEMENTED AND LOCALLY RELEASE-VERIFIED (PR #46): Case-specific versioned context,
+bounded document observations, iterative evidence requests, controlled interpretation,
+and existing native intake/correction/rework through local and hosted contracts.
+Independent adversarial rerun records51 distinct tests after fourteen findings were fixed.
+Corrected full regression passed3,166 distinct tests,13 suites and seven validators. Initial whitespace-only process exit2 and rawpartiallogs are retained; affected transcript/whitespace reruns exit0 without source changes or duplicate test credit. Final exact-head/readiness CI gates remain required.
+New integrated proof is byte-identical under seeds19/941; historical reference files
+were retained. Final release completion requires exact-head Actions and unchanged-SHA
+readiness checks recorded on PR46; any failed gate leaves it Draft. No merge,
+deployment or authenticated accounting approval.
+See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
+
+Build 4 — INCOMPLETE: authenticated preparer/reviewer accounting governance,
+TrackedFR application integration and production operational acceptance remain.
+Build 2B and the full MVP remain incomplete.

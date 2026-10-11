@@ -26,7 +26,13 @@
         "execute",
         "result",
         "resume",
-        "list"
+        "list",
+        "investigate",
+        "document",
+        "continue_investigation",
+        "investigation",
+        "correct_investigation",
+        "rework_investigation"
       ]
     },
     "company_id": {
@@ -66,6 +72,27 @@
     "staged_file_id": {
       "type": "string",
       "pattern": "^[A-Za-z0-9_-]{1,80}$"
+    },
+    "context": {
+      "type": "object"
+    },
+    "interpretation": {
+      "type": "object"
+    },
+    "document": {
+      "type": "object"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "allOf": [
@@ -372,6 +399,169 @@
           "enum": [
             "contract_version",
             "company_id",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "investigate"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "objective",
+          "request_id"
+        ],
+        "propertyNames": {
+          "enum": [
+            "company_id",
+            "context",
+            "contract_version",
+            "interpretation",
+            "objective",
+            "operation",
+            "request_id",
+            "route",
+            "target_family"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "document"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id",
+          "document",
+          "event_id"
+        ],
+        "propertyNames": {
+          "enum": [
+            "case_id",
+            "company_id",
+            "contract_version",
+            "document",
+            "event_id",
+            "interpretation",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "continue_investigation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id",
+          "event_id"
+        ],
+        "propertyNames": {
+          "enum": [
+            "case_id",
+            "company_id",
+            "contract_version",
+            "event_id",
+            "interpretation",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "investigation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id"
+        ],
+        "propertyNames": {
+          "enum": [
+            "case_id",
+            "company_id",
+            "contract_version",
+            "operation",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "correct_investigation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id",
+          "event_id",
+          "evidence",
+          "node_id",
+          "reason"
+        ],
+        "propertyNames": {
+          "enum": [
+            "case_id",
+            "company_id",
+            "contract_version",
+            "event_id",
+            "evidence",
+            "node_id",
+            "operation",
+            "reason",
+            "route"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "rework_investigation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "case_id",
+          "event_id",
+          "evidence"
+        ],
+        "propertyNames": {
+          "enum": [
+            "case_id",
+            "company_id",
+            "contract_version",
+            "event_id",
+            "evidence",
             "operation",
             "route"
           ]

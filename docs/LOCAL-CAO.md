@@ -103,3 +103,15 @@ its public results”; “Resume the Case without rerunning accounting”; “Sh
 questions for the revenue Case”; “Can I mark my Markdown policy APPROVED?”
 Actual live Claude Code execution was unavailable in this development environment
 and still requires owner validation. CLI proof is not a live Claude test.
+
+## Build3 context, documents and investigation
+
+Install `python -m pip install -r intelligence/requirements.txt`. Use additive
+`investigate`, `document`, `continue_investigation`, `investigation` operations on the
+same JSON CLI. Natural-language objectives require an existing family or validated
+structured interpretation/provider. Preserve request_id/event_id and exact document
+id/version; retries are immutable. Use `submit` with native proposal/pack/sources,
+then `execute`; extracted files alone never authorize accounting. New evidence after
+execution requires `correct_investigation`/`rework_investigation`. Resume restores the
+same snapshot/history. See interfaces/CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md for
+bounds, parser warnings and authority distinctions. No live model provider is shipped.

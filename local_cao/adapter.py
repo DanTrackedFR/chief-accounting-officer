@@ -24,7 +24,8 @@ from interfaces.public_output import public_record
 
 VERSION = '1.0'
 OPERATIONS = ('initialize', 'diagnose', 'context', 'capabilities', 'start', 'status',
-              'questions', 'submit', 'execute', 'result', 'resume', 'list')
+              'questions', 'submit', 'execute', 'result', 'resume', 'list',
+              'investigate', 'document', 'continue_investigation', 'investigation', 'correct_investigation', 'rework_investigation')
 ERRORS = {'runtime_installation': 'Use Python 3.12 or newer on Linux/macOS or WSL with POSIX file locking.', 'invalid_request': 'Check contract version, operation and required input fields.',
           'invalid_context': 'Correct missing, duplicate or contradictory company-context fields.',
           'workspace_boundary': 'Use regular files inside the selected private workspace; symlinks are rejected.',
@@ -81,7 +82,8 @@ def immutable(path, value):
 
 class ExecutionInterface:
     """Caller supplies a trusted host-selected workspace, never a wire-level path."""
-    def __init__(self, workspace): self.workspace = Path(workspace)
+    def __init__(self, workspace, model_provider=None):
+        self.workspace = Path(workspace); self.model_provider = model_provider
 
     def _path(self, relative):
         root = checked_path(self.workspace)
@@ -135,8 +137,11 @@ class ExecutionInterface:
             if request.get('contract_version') != VERSION or operation not in OPERATIONS:
                 raise Failure('invalid_request')
             allowed = {'contract_version', 'operation', 'company_id', 'case_id', 'objective',
-                       'request_id', 'target_family', 'evidence', 'evidence_file', 'route'}
+                       'request_id', 'target_family', 'evidence', 'evidence_file', 'route',
+                       'context', 'interpretation', 'document', 'event_id', 'node_id', 'reason'}
             if set(request)-allowed: raise Failure('invalid_request')
+            from intelligence.contracts import validate as validate_intelligence_request
+            validate_intelligence_request(request)
             with self._lock(): result = self._call(request, company, operation)
             return dict(contract_version=VERSION, operation=operation, company_id=company,
                         ok=True, **result)
@@ -167,6 +172,8 @@ class ExecutionInterface:
             with self._store(): pass
             return {'execution_state': 'workspace_ready', 'context_authority': 'user_assertion'}
         config = self._configuration(company)
+        from intelligence.engine import OPS, handle
+        if operation in OPS: return handle(self, r, company, config)
         if operation == 'context':
             # Only execution configuration, never private narrative/policy contents.
             s = {k: v for k, v in scope(config).items() if k != 'scopes'}
@@ -194,6 +201,14 @@ class ExecutionInterface:
                     items.append({'case_id': d['case_id']})
             return {'cases': items}
         d, folder = self._request(r.get('case_id'), config)
+        if 'context_snapshot' in d:
+            if operation == 'submit':
+                if 'evidence_file' in r: evidence = self.read_json(r['evidence_file'])
+                else: evidence = r.get('evidence')
+                if not isinstance(evidence,dict): raise Failure('invalid_request')
+                immutable(folder / 'intake.json', evidence)
+                return dict(case_id=d['case_id'], execution_state='evidence_staged', evidence_authority='native_intake_required')
+            return handle(self,r,company,config)
         with self._store() as store:
             head = store.connection.execute('SELECT revision FROM heads WHERE company_id=? AND case_id=?',
                                              (company, d['case_id'])).fetchone()
@@ -283,7 +298,7 @@ class ExecutionInterface:
         n = d['native_request']; s = n['scope']; p = compatibility_period(s)
         if case_identity(s['entity'], p.period_id, n['objective'], n['case_id']) != cid:
             raise Failure('identity_conflict')
-        if s != scope(config): raise Failure('identity_conflict')
+        if 'context_snapshot' not in d and s != scope(config): raise Failure('identity_conflict')
         return d, self._path('submissions/'+hashlib.sha256(cid.encode()).hexdigest())
 
     def _evidence(self, e, d):

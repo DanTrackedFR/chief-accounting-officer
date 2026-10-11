@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 WORKFLOW=Path(__file__).resolve().parents[2]/'.github/workflows/cao-orchestration.yml'
 SCRIPT=textwrap.dedent(WORKFLOW.read_text().split("python - <<'PYCODE'\n",1)[1].split('          PYCODE',1)[0])
-NAMES={'Orchestration authored and independent QA','Hosted service authored and independent QA','Local execution authored and independent QA','Existing skills and lease vertical slice','Repository public-output and canonical tests','Supplemental knowledge and independent knowledge QA','Canonical authority invariants and whitespace'}
+NAMES={'Orchestration authored and independent QA','Hosted service authored and independent QA','Local execution authored and independent QA','Existing skills and lease vertical slice','Repository public-output and canonical tests','Supplemental knowledge and independent knowledge QA','Canonical authority invariants and whitespace','Build 3 intelligence and deterministic integrated proof'}
 SHA='a'*40
 
 class IndependentReadinessGateQA(unittest.TestCase):
