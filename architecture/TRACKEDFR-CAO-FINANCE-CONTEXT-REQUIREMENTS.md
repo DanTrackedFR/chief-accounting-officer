@@ -188,3 +188,5 @@ produce structured interpretation, but CAO validates it and executes accounting 
 through separately qualified native contracts. Execute/correction/rework use existing
 Build2A durable jobs. Build2B/UI/connectors and authenticated accounting approval are
 not included. See Build3 integration handoff for exact synthetic proof and limits.
+
+Build3 accepts explicit `scope_type` and `legal_entity_id` context items. Native ScopeRegistry validates LEGAL_ENTITY/GROUP/SUBGROUP, including prohibition of legal-entity identity on Group/Subgroup scopes. The exact selected scope binds the durable native Case; parent Group context never substitutes for subsidiary accounting dimensions.

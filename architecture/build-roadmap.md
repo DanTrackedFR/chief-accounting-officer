@@ -232,7 +232,7 @@ INCOMPLETE. No production deployment or merge is performed by Build2A.
 Build 3 — IMPLEMENTED; RELEASE GATES PENDING (PR #46): Case-specific versioned context,
 bounded document observations, iterative evidence requests, controlled interpretation,
 and existing native intake/correction/rework through local and hosted contracts.
-Independent adversarial rerun records 45 distinct tests after eleven findings were fixed.
+Independent adversarial rerun records 47 distinct tests after twelve findings were fixed.
 Full regression, deterministic integrated proof and exact-head Actions are required
 before ready-for-review. No merge, deployment or authenticated accounting approval.
 See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.

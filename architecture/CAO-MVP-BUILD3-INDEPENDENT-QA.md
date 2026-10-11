@@ -19,6 +19,7 @@ Separate reviewer inspected Build 1/2A handoffs, local adapter, context resolver
 | B3-IQA-09 | Raw hidden-sheet parser warning exposed private source-note wording | `test_parser_warning_cannot_leak_private_source_notes` | Curated warning preserves limitation without arbitrary sheet title; independent rerun PASS |
 | B3-IQA-10 | Post-execution inference conflict still delivered COMPLETE | `test_post_execution_inference_conflict_blocks_delivery` | Current delivery blocks unresolved conflict, native history/currentness remain exact; independent rerun PASS |
 | B3-IQA-11 | Requested invoice remained missing/OPEN after exact invoice arrival | `test_received_specific_invoice_not_requested_again` | Acquisition question closes; source-referenced qualification followup remains stable and blocked; independent rerun PASS |
+| B3-IQA-12 | Explicit native GROUP Scope type was unsupported, selection defaulted to legal entity | `test_explicit_group_scope_retained_in_durable_case`, `test_group_cannot_masquerade_as_legal_entity` | Existing ScopeRegistry validates true GROUP/GROUP_CASE with no legal identifier; durable restore and masquerade rejection rerun PASS |
 
 Zero unresolved substantive findings in the reviewed paths. This does not substitute for complete repository regression or exact-head Actions.
 
@@ -26,7 +27,7 @@ Zero unresolved substantive findings in the reviewed paths. This does not substi
 
 Command: `python -m unittest intelligence.tests.test_independent_qa -q`.
 
-45 distinct independently authored tests; exit 0; all PASS; elapsed 70.676 seconds. The strengthened post-execution conflict regression additionally passed a targeted independent rerun (1 test, exit 0), without double counting. Reruns are not added to this count.
+47 distinct independently authored tests; exit 0; all PASS; elapsed 59.970 seconds. The strengthened post-execution conflict regression additionally passed a targeted independent rerun (1 test, exit 0), without double counting. Reruns are not added to this count.
 
 Coverage includes untrusted APPROVED context, other-entity exclusion, conflicting currencies, effective dates, wrong-company/currency source rejection, CSV population completeness, duplicate headers, formula refusal, hidden row retention, forged XLSX dimensions, scanned/active PDF refusal, inert prompt injection, fabricated inference references, retry bounds, missing evidence refusal, request deduplication, immutable event retry, frozen Case snapshots after onboarding edits, cross-company isolation, document supersession identity, native source bindings, altered contract amounts, altered reviewer-certified economics and wrong Case packs.
 
@@ -66,4 +67,8 @@ The interrupted original sequential orchestration attempt has no successful full
 
 Distinct supporting invoices do not falsely make the three reconciliation populations ambiguous; independent regression retains increase4100, no false conflict and legitimate BLOCKED. Exact received invoice replaces its acquisition request with a targeted dates/allocation qualification request referencing actual invoice fields. Continuation preserves request IDs and does not certify source observations.
 
-Reviewer also inspected the no-native-rework-plan guard and independently executed an original native COMPLETE Case followed by rework without a plan: safe blocked envelope, unchanged checkpoint and exact public result. This one-off check is not counted as a new unittest or a duplicated test. Final frozen proof/source/followup review verifies the regenerated hash recorded above, all six retained original files and a source-referenced QX-7826 qualification request replacing acquisition. Independent45/eleven-resolved status remains current; final full regression and exact-head CI acceptance remain pending.
+Reviewer also inspected the no-native-rework-plan guard and independently executed an original native COMPLETE Case followed by rework without a plan: safe blocked envelope, unchanged checkpoint and exact public result. This one-off check is not counted as a new unittest or a duplicated test. Final frozen proof/source/followup review verifies the regenerated hash recorded above, all six retained original files and a source-referenced QX-7826 qualification request replacing acquisition. Independent47/twelve-resolved status remains current; final full regression and exact-head CI acceptance remain pending.
+
+## Group Scope qualification
+
+Reviewer reproduced the original explicit GROUP item rejection against the prior committed resolver. The corrected resolver consumes typed scope assertions through the existing native Scope/ScopeRegistry, not a separate scope authority. Independent tests verify GROUP/no legal entity ID, actual native GROUP_CASE and GROUP Scope registry binding, exact durable snapshot restoration and rejection of a group masquerading as a legal entity. Whole47 independent suite passes after this final context extension. Proof regeneration is required because selected native scope metadata changed; the preceding proof hash is historical until replaced by the new final hash.

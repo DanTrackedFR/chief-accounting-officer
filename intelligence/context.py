@@ -9,7 +9,7 @@ from orchestration.intake.sources import bounded, fingerprint, canonical
 VERSION = 'cao-context/1'
 FIELDS = {'framework','jurisdiction','functional_currency','presentation_currency','calendar_id',
           'materiality','investigation_threshold','business_model','revenue_model','policies',
-          'historical_positions','responsibilities','locations','fiscal_calendar','period_start','period_end'}
+          'historical_positions','responsibilities','locations','fiscal_calendar','period_start','period_end','scope_type','legal_entity_id'}
 
 
 def resolve(config, structured=None, memory=None, company=None, qualification_case=None):
@@ -102,6 +102,12 @@ def resolve(config, structured=None, memory=None, company=None, qualification_ca
             if not n.is_finite() or n<0:raise ValueError('Numeric context value')
     for key in conflicts:values.pop(key,None)
     if 'materiality' in values and values['materiality'] is not None:base['materiality']=str(values['materiality'])
+    from orchestration.scopes import Scope,ScopeRegistry
+    row=copy.deepcopy(base['scopes'][0]);kind=values.get('scope_type',row['scope_type'])
+    row['scope_type']=kind
+    row['legal_entity_id']=values.get('legal_entity_id',base['entity'] if kind=='LEGAL_ENTITY' else None)
+    row['effective_from']=base['period_start'];row['effective_to']=base['reporting_period']
+    base['scopes']=ScopeRegistry([Scope(**row)]).record()
     from orchestration.periods import compatibility_period,PeriodRegistry,FiscalCalendar
     period=compatibility_period(base)
     base['period_registry']=PeriodRegistry([FiscalCalendar(period.calendar_id,'Explicit bounded investigation calendar',None,None,('asserted-context',))],[period]).record()

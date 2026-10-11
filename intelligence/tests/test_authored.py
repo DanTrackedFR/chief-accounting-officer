@@ -93,3 +93,13 @@ class Authored(unittest.TestCase):
         r=self.api.call(wire('rework_investigation',case_id=cid,event_id='no-plan',evidence={}))
         self.assertFalse(r['ok']);self.assertEqual(r['public_result']['status'],'blocked')
         self.assertEqual(self.api.call(wire('resume',case_id=cid))['checkpoint_revision'],executed['checkpoint_revision'])
+
+    def test_explicit_group_scope_binds_native_case(self):
+        item=dict(id='group-kind',key='scope_type',value='GROUP',entity_id=self.scope['entity'],effective_from='2026-01-01',effective_to='2026-12-31',source_state='user_asserted',source_ref='onboarding',source_version='v1')
+        r=self.start(context=dict(version='v1',company_id=COMPANY,items=[item]))
+        with self.api._store() as store:
+            case,_,_=store.load(COMPANY,r['case_id']);row=case.governance.cases.scopes.get(case.scope_id)
+            self.assertEqual(row.scope_type,'GROUP');self.assertIsNone(row.legal_entity_id)
+    def test_group_cannot_masquerade_as_legal_entity(self):
+        items=[dict(id=key,key=key,value=value,entity_id=self.scope['entity'],effective_from='2026-01-01',effective_to='2026-12-31',source_state='approved',source_ref='editable',source_version='v1') for key,value in [('scope_type','GROUP'),('legal_entity_id','fake-legal-id')]]
+        with self.assertRaises(ValueError):resolve(parse(context()),dict(version='v1',company_id=COMPANY,items=items))

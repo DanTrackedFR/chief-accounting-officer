@@ -333,3 +333,19 @@ class IndependentQA(unittest.TestCase):
             x=self.call('document',case_id=cid,event_id='invoice-'+str(i),document=document(('Invoice '+ref+'. Service dates require review.').encode(),role='invoice',id=ref))
             self.assertTrue(x['ok'],x)
         self.assertFalse(x['investigation']['conflicts']);self.assertEqual(x['investigation']['observations'][0]['increase'],'4100');self.assertEqual(x['execution_state'],'blocked')
+
+    def group_context(self,scope_type='GROUP',legal_entity=None):
+        keys={'framework':'IFRS','jurisdiction':'GB','functional_currency':'GBP','presentation_currency':'GBP','calendar_id':'QA-GROUP-CAL','scope_type':scope_type}
+        if legal_entity is not None:keys['legal_entity_id']=legal_entity
+        items=[item(k,v,entity='QA-GROUP') for k,v in keys.items()]
+        return dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='QA-GROUP',period_start='2026-01-01',period_end='2026-12-31'))
+    def test_explicit_group_scope_retained_in_durable_case(self):
+        ctx=self.group_context();snapshot=resolve(config(),ctx)
+        self.assertEqual(snapshot['scope']['scopes'][0]['scope_type'],'GROUP');self.assertIsNone(snapshot['scope']['scopes'][0]['legal_entity_id'])
+        x=self.call('investigate',request_id='qa-group',objective='Review consolidated group context',target_family='customer_contract',context=ctx);self.assertTrue(x['ok'],x)
+        with self.api._store() as store:
+            case,_,_=store.load(COMPANY,x['case_id']);self.assertEqual(case.case_type,'GROUP_CASE');self.assertEqual(case.governance.cases.scopes.get('QA-GROUP').scope_type,'GROUP');row=case._investigation['snapshot']['scope']['scopes'][0]
+            self.assertEqual(row['scope_type'],'GROUP');self.assertIsNone(row['legal_entity_id']);self.assertEqual(row['functional_currency'],'GBP')
+        self.api=ExecutionInterface(self.path);restored=self.call('resume',case_id=x['case_id']);self.assertTrue(restored['ok'],restored);self.assertEqual(restored['investigation']['context_snapshot_id'],snapshot['snapshot_id'])
+    def test_group_cannot_masquerade_as_legal_entity(self):
+        with self.assertRaises(ValueError):resolve(config(),self.group_context(legal_entity='LEGAL-OTHER'))

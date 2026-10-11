@@ -12,7 +12,7 @@
       "conflicts": [
         "policies"
       ],
-      "context_snapshot_id": "6754a46d28248feac3c3d61c7c5be5b5fb834f6d09cbd7f7ea5b158574d16412",
+      "context_snapshot_id": "94eddd44bfabfe1b3b7abc4a88b2fa33e36d7ea08157320b483cf5a07fbc4b55",
       "documents": [],
       "observations": [],
       "pending_correction": false,
@@ -966,6 +966,19 @@
         "source_version": "v1",
         "value": "FISCAL-UK",
         "version": "v1"
+      },
+      {
+        "authority": "user_asserted",
+        "effective_from": "2026-01-01",
+        "effective_to": "2026-12-31",
+        "entity_id": "GROUP",
+        "id": "group-scope",
+        "key": "scope_type",
+        "source_ref": "asserted-onboarding",
+        "source_state": "user_asserted",
+        "source_version": "v1",
+        "value": "GROUP",
+        "version": "v1"
       }
     ],
     "items": [
@@ -1084,8 +1097,8 @@
       "scopes": [
         {
           "display_name": "UK-SUB",
-          "effective_from": null,
-          "effective_to": null,
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
           "framework": "UK_GAAP",
           "functional_currency": "GBP",
           "jurisdiction": "GB",
@@ -1102,7 +1115,7 @@
         }
       ]
     },
-    "snapshot_id": "50af148a068bbc838769b002ac165bfa46af14264d83847f6d95cbc300d5d978",
+    "snapshot_id": "b89d8f688c7eb4d348cab615be45986ebc4be8f1726234000db873b4ac2d880f",
     "unknowns": [],
     "values": {
       "calendar_id": "FISCAL-UK",
@@ -1110,6 +1123,1149 @@
       "functional_currency": "GBP",
       "jurisdiction": "GB",
       "presentation_currency": "GBP"
+    }
+  },
+  "multi_entity_group": {
+    "case_type": "GROUP_CASE",
+    "response": {
+      "case_id": "case:2b8fa03a7a323f07a83fc41703c5035d43c4b6f132b8e911ca59930c5e071b73",
+      "checkpoint_revision": 2,
+      "company_id": "synthetic-demo-001",
+      "contract_version": "1.0",
+      "currentness": "NOT_EXECUTED",
+      "durable": true,
+      "execution_state": "blocked",
+      "investigation": {
+        "accounting_qualified": false,
+        "conflicts": [],
+        "context_snapshot_id": "93b8ae940422c02f83cd536d3e543e4146dc9f787b049b777415941496e12eb5",
+        "documents": [],
+        "observations": [],
+        "pending_correction": false,
+        "requests": [
+          {
+            "blocking": true,
+            "id": "request-db4888b832aec5292aee0e0ccaecf7e13a5421685e3a37f1eeb81dc8a5d5914c",
+            "key": "reconciliation_current",
+            "needed": "Supply reconciliation current with complete populations and record identities.",
+            "owner": "balance-sheet-reconciliations",
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "role": "reconciliation_current",
+            "scope_id": "GROUP",
+            "source_fields": [],
+            "source_status": "missing_or_unqualified",
+            "status": "OPEN",
+            "why": "Compare current and previous balances and trace movements to transactions."
+          },
+          {
+            "blocking": true,
+            "id": "request-4dae69ace8294e4cfecb4ee07aadc593a17b4839941965a87c09768f3b63ad72",
+            "key": "reconciliation_comparative",
+            "needed": "Supply reconciliation comparative with complete populations and record identities.",
+            "owner": "balance-sheet-reconciliations",
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "role": "reconciliation_comparative",
+            "scope_id": "GROUP",
+            "source_fields": [],
+            "source_status": "missing_or_unqualified",
+            "status": "OPEN",
+            "why": "Compare current and previous balances and trace movements to transactions."
+          },
+          {
+            "blocking": true,
+            "id": "request-a60055eb4f741d55f785369ff86a73d278bccfae07b61837bb41fa7dc4ea0216",
+            "key": "movements",
+            "needed": "Supply movements with complete populations and record identities.",
+            "owner": "balance-sheet-reconciliations",
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "role": "movements",
+            "scope_id": "GROUP",
+            "source_fields": [],
+            "source_status": "missing_or_unqualified",
+            "status": "OPEN",
+            "why": "Compare current and previous balances and trace movements to transactions."
+          },
+          {
+            "blocking": true,
+            "id": "request-d9a2f48e52a66cc32f0e9e243770940a1dbe379a61025c9c155ae197f85cbd9f",
+            "key": "qualification",
+            "needed": "Provide an independently reviewed native intake pack binding this exact document population and accounting facts.",
+            "owner": "balance-sheet-reconciliations",
+            "period": [
+              "2026-01-01",
+              "2026-12-31"
+            ],
+            "role": null,
+            "scope_id": "GROUP",
+            "source_fields": [],
+            "source_status": "missing_or_unqualified",
+            "status": "OPEN",
+            "why": "Extracted text, movement observations and model claims are not reviewed accounting evidence."
+          }
+        ],
+        "round": 0
+      },
+      "lifecycle_state": "OPEN",
+      "ok": true,
+      "operation": "investigate",
+      "public_result": {
+        "guidance": "Investigation requires qualified evidence or conflict resolution.",
+        "open_items": [
+          "Supply reconciliation current with complete populations and record identities.",
+          "Supply reconciliation comparative with complete populations and record identities.",
+          "Supply movements with complete populations and record identities.",
+          "Provide an independently reviewed native intake pack binding this exact document population and accounting facts."
+        ],
+        "status": "blocked"
+      },
+      "workplan": []
+    },
+    "snapshot": {
+      "company_id": "synthetic-demo-001",
+      "conflicts": [],
+      "contract": "cao-context/1",
+      "governed_records": [],
+      "history": [
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "company_id",
+          "source": "markdown:company",
+          "value": "synthetic-demo-001",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "legal_name",
+          "source": "markdown:company",
+          "value": "Synthetic Group",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "business_description",
+          "source": "markdown:company",
+          "value": "Synthetic accounting demonstration",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "industry",
+          "source": "markdown:company",
+          "value": "SaaS",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "operating_model",
+          "source": "markdown:company",
+          "value": "Subscription service",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "products_services",
+          "source": "markdown:company",
+          "value": "Hosted software",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "revenue_model",
+          "source": "markdown:company",
+          "value": "Subscription fees",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "main_jurisdictions",
+          "source": "markdown:company",
+          "value": "NL",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "ownership_group_structure",
+          "source": "markdown:company",
+          "value": "Standalone demonstration entity",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "context_state",
+          "source": "markdown:company",
+          "value": "user_assertion",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "context_source_reference",
+          "source": "markdown:company",
+          "value": "Owner supplied onboarding",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "effective_from",
+          "source": "markdown:company",
+          "value": "2026-01-01",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "effective_to",
+          "source": "markdown:company",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "entity_id",
+          "source": "markdown:execution",
+          "value": "ENTITY-DEMO",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "framework",
+          "source": "markdown:execution",
+          "value": "IFRS",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "jurisdiction",
+          "source": "markdown:execution",
+          "value": "NL",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "period_start",
+          "source": "markdown:execution",
+          "value": "2026-01-01",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "period_end",
+          "source": "markdown:execution",
+          "value": "2026-12-31",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "functional_currency",
+          "source": "markdown:execution",
+          "value": "EUR",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "presentation_currency",
+          "source": "markdown:execution",
+          "value": "EUR",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "calendar_id",
+          "source": "markdown:execution",
+          "value": "CAL-DEMO",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "materiality",
+          "source": "markdown:execution",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "statutory_requirements",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "group_requirements",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "entity_framework_differences",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "financial_year_end",
+          "source": "markdown:financial_reporting",
+          "value": "12-31",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "calendar_reference",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "consolidation_requirements",
+          "source": "markdown:financial_reporting",
+          "value": "None asserted",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "investigation_threshold",
+          "source": "markdown:financial_reporting",
+          "value": "700",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "relevant_regulators",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "external_auditor",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "audit_arrangements",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "reporting_deadlines",
+          "source": "markdown:financial_reporting",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "team_roles",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "close_responsibilities",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "process_owners",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "external_service_providers",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "known_accounting_problem_areas",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "historical_risks",
+          "source": "markdown:finance_organization",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "erp",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "billing",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "payroll",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "procurement",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "banking",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "expense_management",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "consolidation_reporting",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "data_warehouse_bi",
+          "source": "markdown:systems",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "revenue_recognition",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "financial_instruments_ecl",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "inventory",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "fixed_assets",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "leases",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "capitalization",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "fx",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "accruals",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "provisions",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "other_policies",
+          "source": "markdown:policy_references",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "policy_status",
+          "source": "markdown:policy_references",
+          "value": "unverified",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "accounting_policies",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "signed_contracts",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "month_end_close",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "trial_balances",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "reconciliations",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "audit_evidence",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "journal_support",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "reporting_packs",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "process_documentation",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "drive_folder_url",
+          "source": "markdown:source_locations",
+          "value": null,
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "role",
+          "source": "markdown:user",
+          "value": "Financial Controller",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "responsibilities",
+          "source": "markdown:user",
+          "value": "Accounting close and reporting",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "preferred_detail",
+          "source": "markdown:user",
+          "value": "Practical workpaper detail",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "framework_familiarity",
+          "source": "markdown:user",
+          "value": "IFRS",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "ENTITY-DEMO",
+          "key": "recurring_responsibilities",
+          "source": "markdown:user",
+          "value": "Monthly close",
+          "version": "63d75bd4e1b6cbf1df3bb20e1b78aec54a2bd19e85e099f6bbaf8d88a1fb568e"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "UK-SUB",
+          "id": "UK-SUB-framework",
+          "key": "framework",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "UK_GAAP",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "UK-SUB",
+          "id": "UK-SUB-jurisdiction",
+          "key": "jurisdiction",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "GB",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "UK-SUB",
+          "id": "UK-SUB-functional_currency",
+          "key": "functional_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "GBP",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "UK-SUB",
+          "id": "UK-SUB-presentation_currency",
+          "key": "presentation_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "GBP",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "UK-SUB",
+          "id": "UK-SUB-calendar_id",
+          "key": "calendar_id",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "FISCAL-UK",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-framework",
+          "key": "framework",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "IFRS",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-jurisdiction",
+          "key": "jurisdiction",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "GB",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-functional_currency",
+          "key": "functional_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "EUR",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-presentation_currency",
+          "key": "presentation_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "EUR",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-calendar_id",
+          "key": "calendar_id",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "FISCAL-UK",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "group-scope",
+          "key": "scope_type",
+          "source_ref": "asserted-onboarding",
+          "source_state": "user_asserted",
+          "source_version": "v1",
+          "value": "GROUP",
+          "version": "v1"
+        }
+      ],
+      "items": [
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-framework",
+          "key": "framework",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "IFRS",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-jurisdiction",
+          "key": "jurisdiction",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "GB",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-functional_currency",
+          "key": "functional_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "EUR",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-presentation_currency",
+          "key": "presentation_currency",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "EUR",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "GROUP-calendar_id",
+          "key": "calendar_id",
+          "source_ref": "asserted-onboarding",
+          "source_state": "approved",
+          "source_version": "v1",
+          "value": "FISCAL-UK",
+          "version": "v1"
+        },
+        {
+          "authority": "user_asserted",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "entity_id": "GROUP",
+          "id": "group-scope",
+          "key": "scope_type",
+          "source_ref": "asserted-onboarding",
+          "source_state": "user_asserted",
+          "source_version": "v1",
+          "value": "GROUP",
+          "version": "v1"
+        }
+      ],
+      "memory_references": [],
+      "refused_memory": [],
+      "scope": {
+        "company_id": "synthetic-demo-001",
+        "currency": "EUR",
+        "entity": "GROUP",
+        "framework": "IFRS",
+        "functional_currency": "EUR",
+        "jurisdiction": "GB",
+        "period_id": "period:9cc939a18b6d88183beef7f6e76d0c8512df91d54d0e509e333d8d0a4d27ae8e",
+        "period_registry": {
+          "calendars": [
+            {
+              "calendar_id": "FISCAL-UK",
+              "description": "Explicit bounded investigation calendar",
+              "provenance": [
+                "asserted-context"
+              ],
+              "year_start_day": null,
+              "year_start_month": null
+            }
+          ],
+          "history": [],
+          "periods": [
+            {
+              "as_of": "2026-12-31",
+              "calendar_id": "FISCAL-UK",
+              "end": "2026-12-31",
+              "fiscal_period": "BOUNDED:2026-01-01:2026-12-31",
+              "fiscal_year": 2026,
+              "period_id": "period:9cc939a18b6d88183beef7f6e76d0c8512df91d54d0e509e333d8d0a4d27ae8e",
+              "period_type": "REPORTING",
+              "provenance": [
+                "supplied-governed-context"
+              ],
+              "start": "2026-01-01",
+              "status": "OPEN"
+            }
+          ],
+          "relationships": []
+        },
+        "period_start": "2026-01-01",
+        "presentation_currency": "EUR",
+        "reporting_calendar": "FISCAL-UK",
+        "reporting_period": "2026-12-31",
+        "scope_id": "GROUP",
+        "scopes": [
+          {
+            "display_name": "GROUP",
+            "effective_from": "2026-01-01",
+            "effective_to": "2026-12-31",
+            "framework": "IFRS",
+            "functional_currency": "EUR",
+            "jurisdiction": "GB",
+            "legal_entity_id": null,
+            "parent_scope_id": null,
+            "presentation_currency": "EUR",
+            "provenance": [
+              "user-asserted-execution-dimensions"
+            ],
+            "reporting_calendar": "FISCAL-UK",
+            "scope_id": "GROUP",
+            "scope_type": "GROUP",
+            "status": "CURRENT"
+          }
+        ]
+      },
+      "snapshot_id": "93b8ae940422c02f83cd536d3e543e4146dc9f787b049b777415941496e12eb5",
+      "unknowns": [],
+      "values": {
+        "calendar_id": "FISCAL-UK",
+        "framework": "IFRS",
+        "functional_currency": "EUR",
+        "jurisdiction": "GB",
+        "presentation_currency": "EUR",
+        "scope_type": "GROUP"
+      }
     }
   },
   "prepayments": {
@@ -1125,7 +2281,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "b89f8b4213ed86a87bb22c9915ba94abf9e1a23c38e02f67e13ac2b46b1858f1",
+        "context_snapshot_id": "82c5d694aeac6440c71cf3b8d0f4c9f8259786b62b967175801523f962d71923",
         "documents": [
           {
             "id": "reconciliation_comparative",
@@ -1318,7 +2474,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "b89f8b4213ed86a87bb22c9915ba94abf9e1a23c38e02f67e13ac2b46b1858f1",
+        "context_snapshot_id": "82c5d694aeac6440c71cf3b8d0f4c9f8259786b62b967175801523f962d71923",
         "documents": [
           {
             "id": "reconciliation_comparative",
@@ -1486,7 +2642,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "b89f8b4213ed86a87bb22c9915ba94abf9e1a23c38e02f67e13ac2b46b1858f1",
+        "context_snapshot_id": "82c5d694aeac6440c71cf3b8d0f4c9f8259786b62b967175801523f962d71923",
         "documents": [],
         "observations": [],
         "pending_correction": false,
@@ -3450,8 +4606,8 @@
           "scopes": [
             {
               "display_name": "ENTITY-DEMO",
-              "effective_from": null,
-              "effective_to": null,
+              "effective_from": "2026-01-01",
+              "effective_to": "2026-12-31",
               "framework": "IFRS",
               "functional_currency": "EUR",
               "jurisdiction": "NL",
@@ -3468,7 +4624,7 @@
             }
           ]
         },
-        "snapshot_id": "b89f8b4213ed86a87bb22c9915ba94abf9e1a23c38e02f67e13ac2b46b1858f1",
+        "snapshot_id": "82c5d694aeac6440c71cf3b8d0f4c9f8259786b62b967175801523f962d71923",
         "unknowns": [
           "accounting_policies",
           "accruals",
@@ -3562,7 +4718,7 @@
       "investigation": {
         "accounting_qualified": true,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",
@@ -3725,7 +4881,7 @@
       "investigation": {
         "accounting_qualified": true,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",
@@ -3902,7 +5058,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",
@@ -4031,7 +5187,7 @@
       "investigation": {
         "accounting_qualified": true,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",
@@ -4250,7 +5406,7 @@
       "investigation": {
         "accounting_qualified": true,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",
@@ -4470,7 +5626,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [],
         "observations": [],
         "pending_correction": false,
@@ -4627,7 +5783,7 @@
           "operation": "document"
         },
         {
-          "hash": "c2ce31e7abde7827ab316f8d16ffe82b2117b369fa1397d4075a20013f15d29d",
+          "hash": "c492489206d01013fd42e1aa3a01ad18def0dba074254796cbf448b43039d028",
           "id": "correction",
           "operation": "correct_investigation"
         },
@@ -4641,7 +5797,7 @@
       "inferences": [
         {
           "authority": "INFERRED",
-          "input_hash": "9711aed8b9e9f2c88bf70cac1c6455b2d4e820762edf6b8f32dbacee5cda93c3",
+          "input_hash": "3a1684b27b8b83249de3d5d7d4ce2eb38cfd0d5bedd2e5c700c8ed42bf9c2bd7",
           "output": {
             "claims": [],
             "family": "customer_contract",
@@ -4650,7 +5806,7 @@
         },
         {
           "authority": "INFERRED",
-          "input_hash": "9711aed8b9e9f2c88bf70cac1c6455b2d4e820762edf6b8f32dbacee5cda93c3",
+          "input_hash": "3a1684b27b8b83249de3d5d7d4ce2eb38cfd0d5bedd2e5c700c8ed42bf9c2bd7",
           "output": {
             "claims": [],
             "family": "customer_contract",
@@ -4659,7 +5815,7 @@
         },
         {
           "authority": "INFERRED",
-          "input_hash": "39ce8982e625f8453c0b54fcb9071123623f2ea11031a4a27d1fdd152b43e926",
+          "input_hash": "1a7bd698a4a83174d593278912e67c246245f91e6bfa94a632a6a05302853e17",
           "output": {
             "claims": [
               {
@@ -6313,8 +7469,8 @@
           "scopes": [
             {
               "display_name": "ENTITY-DEMO",
-              "effective_from": null,
-              "effective_to": null,
+              "effective_from": "2026-01-01",
+              "effective_to": "2026-12-31",
               "framework": "IFRS",
               "functional_currency": "EUR",
               "jurisdiction": "NL",
@@ -6331,7 +7487,7 @@
             }
           ]
         },
-        "snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "unknowns": [
           "accounting_policies",
           "accruals",
@@ -6422,7 +7578,7 @@
       "investigation": {
         "accounting_qualified": false,
         "conflicts": [],
-        "context_snapshot_id": "5edcfa869c7c4711b782ce2bcf0868820a41353946ea388c1dd9efca4056c1c4",
+        "context_snapshot_id": "10d508555c9eece8c5e4c03af11be80390ca156f8b709cde1ba8d53527d59a02",
         "documents": [
           {
             "id": "halcyon-agreement",

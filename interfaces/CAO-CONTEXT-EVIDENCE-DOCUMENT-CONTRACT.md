@@ -69,3 +69,5 @@ shapes fail rather than invent evidence. Resume replays neither owners nor journ
 Opaque operational references remain outside curated public_result; raw bytes and
 private review packs never enter public output. Existing privacy boundary governs
 accounting results and user-controlled request/observation strings.
+
+Structured context may specify `scope_type` as `LEGAL_ENTITY`, `GROUP` or `SUBGROUP` and `legal_entity_id`. The resolver validates these through the existing native ScopeRegistry. Group/Subgroup scopes cannot carry a legal-entity identity; absent an explicit type, the legacy legal-entity default remains. The resolved scope binds the native Case type and survives restart. Group membership never supplies a subsidiary framework or currency.
