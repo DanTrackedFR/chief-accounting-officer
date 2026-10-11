@@ -6,7 +6,7 @@ Current main reconstructed at0523543fb1da0e8b8d05f05e93148ffc3b29cd70.
 
 Use interfaces/CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md and intelligence schemas.
 TrackedFR should map its existing finance_context into the versioned structured
-context envelope, choose exact legal entity/reporting period, and keep user assertions
+context envelope, choose exact legal entity or typed Group/Subgroup and reporting period, and keep user assertions
 separate from native approved memory. Retain original file identity/version and send
 bounded base64 envelopes with exact dimensions. Display requested evidence and parser
 warnings. Supply validated interpretation via existing Anthropic integration; never
@@ -33,8 +33,9 @@ native supported owners remain accessible via their existing qualified contracts
 Build3 does not invent generic reviewed facts from arbitrary prose. Complex replacement
 packs must meet the native governed-plan contract. Bounds/warnings are in the shared
 contract. Authored/independent tests cover wrong versions, injected instructions,
-isolation, restart, correction and duplicate execution. Full repository regression and
-exact-head Actions remain release gates recorded in completion report/PR evidence.
+isolation, restart, correction and duplicate execution. Full repository regression passes3,160 distinct tests,13 suites/seven validators
+exit0. Final exact-head Actions and unchanged-SHA readiness gates are recorded on
+PR46 after freeze; a failed gate leaves the PR Draft.
 
 Build4 remains incomplete: authenticated accounting roles/events and preparer/reviewer
 separation, TrackedFR Build2B integration, production monitoring/backup/retention,

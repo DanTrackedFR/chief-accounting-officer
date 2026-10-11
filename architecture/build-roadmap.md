@@ -229,12 +229,15 @@ existing UI/document rendering and private-source exchange remain separate work.
 See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
 INCOMPLETE. No production deployment or merge is performed by Build2A.
 
-Build 3 — IMPLEMENTED; RELEASE GATES PENDING (PR #46): Case-specific versioned context,
+Build 3 — IMPLEMENTED AND LOCALLY RELEASE-VERIFIED (PR #46): Case-specific versioned context,
 bounded document observations, iterative evidence requests, controlled interpretation,
 and existing native intake/correction/rework through local and hosted contracts.
 Independent adversarial rerun records 47 distinct tests after twelve findings were fixed.
-Full regression, deterministic integrated proof and exact-head Actions are required
-before ready-for-review. No merge, deployment or authenticated accounting approval.
+Full regression passed3,160 distinct tests,13 suites and seven validators, all exit0.
+New integrated proof is byte-identical under seeds19/941; historical reference files
+were retained. Final release completion requires exact-head Actions and unchanged-SHA
+readiness checks recorded on PR46; any failed gate leaves it Draft. No merge,
+deployment or authenticated accounting approval.
 See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
 
 Build 4 — INCOMPLETE: authenticated preparer/reviewer accounting governance,
