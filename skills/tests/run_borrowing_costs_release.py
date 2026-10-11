@@ -4,7 +4,8 @@ import hashlib,inspect,json,os,subprocess,sys,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 EVIDENCE=ROOT/'skills/borrowing-costs/release-evidence'
-SUITES=[('skills','skills/tests','test_*.py'),('leases','skills/lease-accounting/tests','test_*.py'),('repository','tests','test_*.py'),('orchestration','orchestration/tests','test_*.py'),('tax','knowledge/income-taxes','test_supplement.py'),('agriculture','knowledge/agriculture','test*.py'),('insurance','knowledge/insurance-contracts','test*.py'),('derivatives','knowledge/derivatives-hedge','test*.py'),('derivatives-independent','knowledge/derivatives-hedge','independent_review_tests.py'),('inventory','knowledge/inventory-cost','test*.py'),('borrowing-knowledge','knowledge/borrowing-costs','test*.py')]
+SUITES=[('skills','skills/tests','test_*.py'),('leases','skills/lease-accounting/tests','test_*.py'),('repository','tests','test_*.py'),('orchestration','orchestration/tests','test_*.py'),('tax','knowledge/income-taxes','test_supplement.py'),('agriculture','knowledge/agriculture','test*.py'),('insurance','knowledge/insurance-contracts','test*.py'),('derivatives','knowledge/derivatives-hedge','test*.py'),('derivatives-independent','knowledge/derivatives-hedge','independent_review_tests.py'),('inventory','knowledge/inventory-cost','test*.py'),('borrowing-knowledge','knowledge/borrowing-costs','test*.py'),('local','local_cao/tests','test_*.py'),('hosted','hosted_cao/tests','test_*.py'),('intelligence','intelligence/tests','test_*.py'),('build4','build4/tests','test_*.py')]
+PROOFS=[('local-proof',['-m','local_cao.tests.prove_cli'])]+[(name+'-proof-'+seed,['-m',module]) for name,module,seeds in [('hosted','hosted_cao.tests.prove_http',('19','941')),('intelligence','intelligence.tests.prove_integrated',('19','941')),('build4','build4.prove_integrated',('283','1709')),('memory','build4.prove_memory',('283','1709'))] for seed in seeds]+[('build4-release',['-m','build4.verify_release'])]
 VALIDATORS=[('claims',['knowledge/standards-evidence/validate_claims.py']),('approvals',['knowledge/standards-evidence/validate_approvals.py'])]+[(name+'-validation',['knowledge/'+name+'/validate_supplement.py']) for name in ('income-taxes','agriculture','insurance-contracts','derivatives-hedge','inventory-cost','borrowing-costs')]+[('whitespace',None)]
 
 def leaves(s):
@@ -30,10 +31,11 @@ def main():
  if len(sys.argv)>1 and sys.argv[1]=='--suite':return suite(*sys.argv[2:5])
  commands=[(name,[sys.executable,str(Path(__file__).resolve()),'--suite',name,path,pattern]) for name,path,pattern in SUITES]+[(name,[sys.executable]+args if args else ['git','diff','--check']) for name,args in VALIDATORS]
  outcomes=[];distinct=set()
+ commands += [(name,[sys.executable]+args) for name,args in PROOFS]
  for name,cmd in commands:
   logfile=EVIDENCE/(name+'.log')
   with logfile.open('wb') as log:
-   try:exitcode=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,timeout=1800).returncode
+   try:exitcode=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,env=dict(os.environ,**({'PYTHONHASHSEED':name.rsplit('-',1)[-1]} if '-proof-' in name else {})),timeout=14400 if name=='orchestration' else 1800).returncode
    except subprocess.TimeoutExpired:exitcode=124;log.write(b'\nUNVERIFIED: bounded execution timeout\n')
   row=dict(gate=name,command=cmd[1:] if cmd[0]==sys.executable else cmd,exit_code=exitcode,status='PASS' if exitcode==0 else 'FAIL' if exitcode!=124 else 'UNVERIFIED',log=str(logfile.relative_to(ROOT)),log_sha256=hashlib.sha256(logfile.read_bytes()).hexdigest())
   resultfile=EVIDENCE/(name+'.tests.json')

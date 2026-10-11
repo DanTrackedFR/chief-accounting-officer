@@ -30,3 +30,16 @@ All 1,662 published example files are byte-identical to the original PR head (th
 Latest main independently reverified as 8e256701e555db3b7308694526242d7379e43e0f before integration. Main was merged in a separate checkout. CI branch conflict retains Borrowing Costs and hosted-service coverage plus newer intelligence paths. Protected-baseline roadmap hash binds the combined roadmap only; all other protected hashes preserve main. Four protected-baseline checks pass. Shared accounting, public boundary, versions, persistence and recovery code is byte-identical to the frozen comparison checkout. Builds 1/2A/3/4 remain present. No merge to main was performed.
 
 Stage 2 intercompany provenance and Stage 4 historical comparison remain IN PROGRESS. No durable historical migration is authorized by this checkpoint. Full repository/exact-head CI and readiness gates are outstanding. PR remains Draft.
+
+
+## Historical provenance recovery — continuation
+
+Stage 2: complete replay of historical commit ea19ee62c938dba06f3faf758a75e17a7da27e15 reproduces all nine original reference artifacts exactly. Ten complete historical/current worker authority archives are retained losslessly as canonical JSON in `.tar.xz` archives, including the late receipt and reclosed version authorities absent from the slim published proof. `review_stage2_archives.py` passes 28 record comparisons with a globally bijective identity map anchored to native node/version depth, sources and result identities. Amounts, journal ownership, predecessor chains, Case history and ordered operations are preserved. The apparent intercompany receipt/version discrepancy is an implementation fingerprint transition, not a substituted accounting producer or source.
+
+Orchestration: 323 fresh artifacts compared without modifying originals; 125 changed synthetic references are separately retained. Expanded authority comparisons allow only consistent identity transitions and explicitly hash-sorted inventory lists. Eight adversarial qualification tests reject money, population, status, wrong receipt and nonbijective identity mutations. Accounting public outputs remain exact.
+
+Integrated checks: 1,289 specialist tests, 55 local execution tests, 44 hosted-service tests, 72 document-intelligence tests and 17 targeted historical/control tests pass. These include pre-existing independently authored accounting tests; no new independent human signoff is asserted. Full repository regression and exact-final-head Actions are pending. PR remains Draft. Stage 4 review is pending at this checkpoint.
+
+Synthetic reference lookup binds original bytes to the published-head manifest and reviewed current bytes to explicit migration records. It does not recertify live company evidence. All 1,662 original example files remain unchanged.
+
+Stage 4 final comparison: PASS, 15 expanded retained artifacts and 105,554 changed identity leaves, zero accounting/nonidentity/provenance errors. Only `bundle_ids` sorting was additionally normalized after verifying `memory.capture` explicitly stores sorted sets. Ordered histories remain ordered. Original interruption/lost-ack/proof summaries remain exact. Current synthetic references are separately recorded in `durable-migration.json`; original authorities are unchanged. Full regression is running.

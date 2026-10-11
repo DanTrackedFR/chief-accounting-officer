@@ -1,4 +1,5 @@
 """Authored Treasury source-to-public acceptance and owner-bound regressions."""
+from orchestration.history_references import reference_path
 import copy,json,unittest
 from decimal import Decimal
 from pathlib import Path
@@ -49,7 +50,7 @@ class TreasuryAuthored(unittest.TestCase):
   req=copy.deepcopy(self.cpack);i=next(i for i,b in enumerate(req.bindings) if b.fact_id=='debt-close');req.bindings[i]=Binding('debt-close','debt-financing',('debt',0,'principal'),'owner_result')
   with self.assertRaises(ValueError):self.ce.execute(copy.deepcopy(self.cp),req)
  def test_artifacts_match_saved(self):
-  for name,value in artifacts().items():self.assertEqual(json.loads((Path(__file__).resolve().parents[1]/'examples/treasury-financing'/name).read_text()),json.loads(json.dumps(value,default=str)))
+  for name,value in artifacts().items():self.assertEqual(json.loads((reference_path(Path(__file__).resolve().parents[1]/'examples/treasury-financing'/name)).read_text()),json.loads(json.dumps(value,default=str)))
  def test_four_executable_lineages(self):self.assertEqual(len(artifacts()['end-to-end-lineage.json']),4)
  def test_all_bridges_no_plugs(self):
   out=artifacts()
