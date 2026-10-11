@@ -103,3 +103,18 @@ class Authored(unittest.TestCase):
     def test_group_cannot_masquerade_as_legal_entity(self):
         items=[dict(id=key,key=key,value=value,entity_id=self.scope['entity'],effective_from='2026-01-01',effective_to='2026-12-31',source_state='approved',source_ref='editable',source_version='v1') for key,value in [('scope_type','GROUP'),('legal_entity_id','fake-legal-id')]]
         with self.assertRaises(ValueError):resolve(parse(context()),dict(version='v1',company_id=COMPANY,items=items))
+
+    def _qualified_uk_context(self):
+        items=[dict(id='uk-'+key,key=key,value=value,entity_id='QUALIFIED-UK',effective_from='2026-01-01',effective_to='2026-12-31',source_state='user_asserted',source_ref='onboarding',source_version='v1',framework='UK_GAAP') for key,value in [('framework','UK_GAAP'),('jurisdiction','GB'),('functional_currency','GBP'),('presentation_currency','GBP'),('calendar_id','UK-CALENDAR')]]
+        return dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='QUALIFIED-UK',period_start='2026-01-01',period_end='2026-12-31'))
+    def test_execution_dimensions_require_applicable_framework(self):
+        for key in ('framework','functional_currency','presentation_currency','calendar_id'):
+            with self.subTest(key=key):
+                value=self._qualified_uk_context()
+                next(x for x in value['items'] if x['key']==key)['framework']='IFRS'
+                with self.assertRaises(ValueError):resolve(parse(context()),value)
+    def test_irrelevant_framework_dimensions_do_not_conflict(self):
+        value=self._qualified_uk_context();foreign=dict(value['items'][2],id='ifrs-currency',value='USD',framework='IFRS');value['items'].append(foreign)
+        snapshot=resolve(parse(context()),value)
+        self.assertEqual(snapshot['scope']['framework'],'UK_GAAP');self.assertEqual(snapshot['scope']['currency'],'GBP');self.assertEqual(snapshot['conflicts'],[])
+        self.assertNotIn('ifrs-currency',[x.get('id') for x in snapshot['items']]);self.assertIn('ifrs-currency',[x.get('id') for x in snapshot['history']])

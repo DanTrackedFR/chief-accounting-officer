@@ -52,14 +52,15 @@ def proof():
   denied=api.call(dict(wire('resume',case_id=cid),company_id='other-company'));assert not denied['ok']
   items=[]
   for entity,fw,cur in [('UK-SUB','UK_GAAP','GBP'),('GROUP','IFRS','EUR')]:
-   for key,val in [('framework',fw),('jurisdiction','GB'),('functional_currency',cur),('presentation_currency',cur),('calendar_id','FISCAL-UK')]:items.append(dict(id=entity+'-'+key,key=key,value=val,entity_id=entity,effective_from='2026-01-01',effective_to='2026-12-31',source_state='approved',source_ref='asserted-onboarding',source_version='v1'))
+   for key,val in [('framework',fw),('jurisdiction','GB'),('functional_currency',cur),('presentation_currency',cur),('calendar_id','FISCAL-UK')]:items.append(dict(id=entity+'-'+key,key=key,value=val,entity_id=entity,effective_from='2026-01-01',effective_to='2026-12-31',source_state='approved',source_ref='asserted-onboarding',source_version='v1',framework=fw))
+  items.append(dict(id='ifrs-only-uk-currency',key='functional_currency',value='USD',entity_id='UK-SUB',effective_from='2026-01-01',effective_to='2026-12-31',source_state='approved',source_ref='foreign-framework-onboarding',source_version='v1',framework='IFRS'))
   items.append(dict(id='group-scope',key='scope_type',value='GROUP',entity_id='GROUP',effective_from='2026-01-01',effective_to='2026-12-31',source_state='user_asserted',source_ref='asserted-onboarding',source_version='v1'))
   group=call('investigate',request_id='group-proof',objective='Investigate the group reconciliation',target_family='reconciliation',context=dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='GROUP',period_start='2026-01-01',period_end='2026-12-31')))
   with api._store() as st:
    gc,_,_=st.load(COMPANY,group['case_id']);group_snapshot=copy.deepcopy(gc._investigation['snapshot']);group_case_type=gc.case_type
   assert group_case_type=='GROUP_CASE' and group_snapshot['scope']['scopes'][0]['scope_type']=='GROUP' and group_snapshot['scope']['scopes'][0]['legal_entity_id'] is None
   assert call('resume',case_id=group['case_id'])['investigation']==group['investigation']
-  uk=resolve(parse(context()),dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='UK-SUB',period_start='2026-01-01',period_end='2026-12-31')));assert uk['scope']['framework']=='UK_GAAP' and uk['scope']['currency']=='GBP';assert not uk['governed_records']
+  uk=resolve(parse(context()),dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='UK-SUB',period_start='2026-01-01',period_end='2026-12-31')));assert uk['scope']['framework']=='UK_GAAP' and uk['scope']['currency']=='GBP';assert not uk['governed_records'];assert not uk['conflicts'];assert not any(x.get('id')=='ifrs-only-uk-currency' for x in uk['items']);assert any(x.get('id')=='ifrs-only-uk-currency' for x in uk['history'])
   conflict_items=[dict(id=k,key='policies',value=v,entity_id=scope['entity'],effective_from='2026-01-01',effective_to=None,source_state='approved',source_ref='asserted-policy',source_version='v1') for k,v in [('a','Recognize immediately'),('b','Defer until delivery')]]
   conflict=call('investigate',request_id='conflict-proof',objective='Determine conflicting policy treatment',target_family='customer_contract',context=dict(version='v1',company_id=COMPANY,items=conflict_items));assert conflict['execution_state']=='blocked' and 'policies' in conflict['investigation']['conflicts']
   with api._store() as st:pc,_,_=st.load(COMPANY,pcid);prepay_state=copy.deepcopy(pc._investigation)

@@ -1,3 +1,5 @@
+RELEASE REOPENED: framework-qualified subsidiary selection and policy-conflict preservation received additional corrections. Prior full-regression/proof figures below are superseded; corrected-source full regression and exact-head CI are pending. PR46 remains Draft.
+
 # Build 3 completion report — locally verified release
 
 One integrated Build3 implementation on mvp/context-investigation-documents, PR46.

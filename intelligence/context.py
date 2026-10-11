@@ -40,6 +40,7 @@ def resolve(config, structured=None, memory=None, company=None, qualification_ca
             for k in ('effective_from','effective_to'):
                 if r[k] is not None and (not isinstance(r[k],str) or date.fromisoformat(r[k]).isoformat()!=r[k]): raise ValueError('Context dates')
             if r['effective_from'] and r['effective_to'] and r['effective_from']>r['effective_to']: raise ValueError('Context interval')
+            if 'framework' in r and (not isinstance(r['framework'],str) or not r['framework'].strip()):raise ValueError('Context framework qualifier')
             r['authority']='inferred' if r['source_state']=='inferred' else 'user_asserted'
             # A reference alone does not establish document retrieval or qualification.
             if r['source_state']=='document_backed':r['authority']='document_reference_unqualified'
@@ -54,12 +55,19 @@ def resolve(config, structured=None, memory=None, company=None, qualification_ca
         start,end=selection['period_start'],selection['period_end']
         if date.fromisoformat(start)>date.fromisoformat(end):raise ValueError('Selected period')
         if selected_scope!=base['entity']:
+            eligible=[e for e in entries if e['entity_id']==selected_scope and e.get('source_state') not in {'inferred','superseded','retracted','unknown'} and e['effective_from'] and e['effective_from']<=start and (not e['effective_to'] or e['effective_to']>=end)]
+            # Resolve a self-applicable framework before using any execution dimensions.
+            frameworks=[e['value'] for e in eligible if e['key']=='framework' and e['value'] is not None and (not e.get('framework') or e['framework']==e['value'])]
+            if not frameworks:raise ValueError('Applicable local framework required')
+            selected_framework=frameworks[0]
+            if any(canonical(v)!=canonical(selected_framework) for v in frameworks):raise ValueError('Conflicting execution framework')
             exact={}
-            for e in entries:
-                if e['entity_id']==selected_scope and e.get('source_state') not in {'inferred','superseded','retracted','unknown'} and e['effective_from'] and e['effective_from']<=start and (not e['effective_to'] or e['effective_to']>=end):
-                    if e['key'] in exact and canonical(exact[e['key']])!=canonical(e['value']):raise ValueError('Conflicting execution selection')
-                    exact[e['key']]=e['value']
             required={'framework','jurisdiction','functional_currency','presentation_currency','calendar_id'}
+            for e in eligible:
+                if e.get('framework') and e['framework']!=selected_framework:continue
+                if e['key'] not in required:continue
+                if e['key'] in exact and canonical(exact[e['key']])!=canonical(e['value']):raise ValueError('Conflicting execution selection')
+                exact[e['key']]=e['value']
             if not required<=set(exact):raise ValueError('Local entity dimensions required; group context is not a fallback')
             from local_cao.context import parse
             text='## company\n- company_id: '+company+'\n- legal_name: selected\n## execution\n- entity_id: '+selected_scope+'\n- period_start: '+start+'\n- period_end: '+end+'\n'+'\n'.join('- '+k+': '+str(exact[k]) for k in required)

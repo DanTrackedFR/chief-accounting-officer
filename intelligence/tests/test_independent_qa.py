@@ -349,3 +349,34 @@ class IndependentQA(unittest.TestCase):
         self.api=ExecutionInterface(self.path);restored=self.call('resume',case_id=x['case_id']);self.assertTrue(restored['ok'],restored);self.assertEqual(restored['investigation']['context_snapshot_id'],snapshot['snapshot_id'])
     def test_group_cannot_masquerade_as_legal_entity(self):
         with self.assertRaises(ValueError):resolve(config(),self.group_context(legal_entity='LEGAL-OTHER'))
+
+    def uk_selection(self):
+        items=[item(k,v,entity='UK-SUB') for k,v in {'framework':'UK_GAAP','jurisdiction':'GB','functional_currency':'GBP','presentation_currency':'GBP','calendar_id':'QA-UK-CAL'}.items()]
+        return dict(version='v1',company_id=COMPANY,items=items,selection=dict(entity_id='UK-SUB',period_start='2026-01-01',period_end='2026-12-31'))
+    def test_selection_rejects_wrong_framework_only_dimensions(self):
+        ctx=self.uk_selection()
+        for row in ctx['items']:
+            if row['key'] in {'functional_currency','presentation_currency','calendar_id'}:row['framework']='IFRS'
+        with self.assertRaises(ValueError):resolve(config(),ctx)
+    def test_selection_ignores_inapplicable_framework_dimension_conflict(self):
+        ctx=self.uk_selection();irrelevant=item('functional_currency','USD',entity='UK-SUB',framework='IFRS');irrelevant['id']='irrelevant-ifrs-currency';ctx['items'].append(irrelevant)
+        result=resolve(config(),ctx);self.assertEqual(result['scope']['framework'],'UK_GAAP');self.assertEqual(result['scope']['currency'],'GBP');self.assertFalse(result['conflicts'])
+        self.assertNotIn(irrelevant['id'],[x.get('id') for x in result['items']])
+    def test_selection_rejects_self_inapplicable_framework_item(self):
+        ctx=self.uk_selection()
+        for row in ctx['items']:
+            if row['key']=='framework':row['framework']='IFRS'
+        with self.assertRaises(ValueError):resolve(config(),ctx)
+
+    def test_nondefault_policy_conflict_preserved_in_blocked_case(self):
+        ctx=self.uk_selection()
+        for i,word in enumerate(('Recognize on delivery','Recognize immediately')):
+            row=item('policies',word,entity='UK-SUB',framework='UK_GAAP');row['id']='uk-policy-'+str(i);ctx['items'].append(row)
+        snapshot=resolve(config(),ctx);self.assertIn('policies',snapshot['conflicts']);self.assertNotIn('policies',snapshot['values'])
+        x=self.call('investigate',request_id='uk-policy-conflict',objective='Assess the two conflicting UK subsidiary revenue policies',target_family='customer_contract',context=ctx)
+        self.assertTrue(x['ok'],x);self.assertEqual(x['execution_state'],'blocked');self.assertIn('policies',x['investigation']['conflicts'])
+        self.assertTrue(any(q['key']=='context-policies' and q['status']=='OPEN' for q in x['investigation']['requests']))
+        with self.api._store() as store:
+            case,_,_=store.load(COMPANY,x['case_id']);bound=case._investigation['snapshot'];self.assertEqual(bound['scope']['framework'],'UK_GAAP');self.assertEqual(bound['scope']['currency'],'GBP')
+            self.assertEqual({r['value'] for r in bound['items'] if r['key']=='policies'},{'Recognize on delivery','Recognize immediately'})
+        self.api=ExecutionInterface(self.path);restored=self.call('resume',case_id=x['case_id']);self.assertEqual(restored['investigation'],x['investigation'])

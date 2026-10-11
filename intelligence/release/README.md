@@ -1,3 +1,5 @@
+RELEASE REOPENED: framework-qualified subsidiary selection and policy-conflict preservation received additional corrections. Prior full-regression/proof figures below are superseded; corrected-source full regression and exact-head CI are pending. PR46 remains Draft.
+
 # Build3 release evidence
 
 integrated-proof.json is generated only from new unfamiliar synthetic inputs with
