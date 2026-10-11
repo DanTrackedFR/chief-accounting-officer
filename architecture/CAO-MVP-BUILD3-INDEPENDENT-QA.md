@@ -15,6 +15,9 @@ Separate reviewer inspected Build 1/2A handoffs, local adapter, context resolver
 | B3-IQA-05 | Model provider could mutate frozen scope/context through aliased objects | `test_model_provider_cannot_mutate_bound_snapshot` | Provider receives isolated copies; rerun PASS |
 | B3-IQA-06 | Caller metadata mutation changed extracted document lineage after hashing | `test_document_mutable_input_cannot_change_lineage` | Metadata isolated; rerun PASS |
 | B3-IQA-07 | Governed Period registry tuple/list wire mismatch blocked native revenue and hosted jobs | Native revenue and HTTP integration tests | Canonical wire scope preserves exact native qualification; rerun PASS |
+| B3-IQA-08 | Explicit unknown context item applied its placeholder investigation threshold | `test_unknown_context_value_cannot_be_applied` | Unknown state remains unresolved; independent rerun PASS |
+| B3-IQA-09 | Raw hidden-sheet parser warning exposed private source-note wording | `test_parser_warning_cannot_leak_private_source_notes` | Curated warning preserves limitation without arbitrary sheet title; independent rerun PASS |
+| B3-IQA-10 | Post-execution inference conflict still delivered COMPLETE | `test_post_execution_inference_conflict_blocks_delivery` | Current delivery blocks unresolved conflict, native history/currentness remain exact; independent targeted rerun PASS |
 
 Zero unresolved substantive findings in the reviewed paths. This does not substitute for complete repository regression or exact-head Actions.
 
@@ -22,7 +25,7 @@ Zero unresolved substantive findings in the reviewed paths. This does not substi
 
 Command: `python -m unittest intelligence.tests.test_independent_qa -q`.
 
-39 distinct independently authored tests; exit 0; all PASS; elapsed 46.466 seconds. Reruns are not added to this count.
+43 distinct independently authored tests; exit 0; all PASS; elapsed 55.416 seconds. The strengthened post-execution conflict regression additionally passed a targeted independent rerun (1 test, exit 0), without double counting. Reruns are not added to this count.
 
 Coverage includes untrusted APPROVED context, other-entity exclusion, conflicting currencies, effective dates, wrong-company/currency source rejection, CSV population completeness, duplicate headers, formula refusal, hidden row retention, forged XLSX dimensions, scanned/active PDF refusal, inert prompt injection, fabricated inference references, retry bounds, missing evidence refusal, request deduplication, immutable event retry, frozen Case snapshots after onboarding edits, cross-company isolation, document supersession identity, native source bindings, altered contract amounts, altered reviewer-certified economics and wrong Case packs.
 
@@ -42,10 +45,18 @@ Deterministic fault injection interrupts immediately after native prepare and im
 
 ## Remaining release review
 
-Review final synthetic proof under both hash seeds, exact source hashes, full repository regression evidence, validators and final remote Actions before declaring release acceptance. No live-model evaluation has been verified by this reviewer. DOCX body-only extraction warning and PDF reading-order uncertainty must remain visible. Specialist PRs and historical artifacts were not modified by this reviewer. No commit, push or merge performed.
+Full repository regression evidence, validators and final remote Actions remain pending before declaring release acceptance. Final synthetic proof and retained source hashes were independently verified as below. No live-model evaluation has been verified by this reviewer. DOCX body-only extraction warning and PDF reading-order uncertainty must remain visible. Specialist PRs and historical artifacts were not modified by this reviewer. No commit, push or merge performed.
 
-## Release review continuation
+## Final proof and release-gate review
 
-B3-IQA-08 OPEN: context item explicitly marked `source_state=unknown` with a non-null investigation threshold was applied as asserted context, potentially suppressing anomaly requests. Independent regression `test_unknown_context_value_cannot_be_applied` fails before remediation. Unknown qualification must remain unresolved; caller-supplied placeholder values do not resolve it. Parser warnings visible in preview regression passes. Independent suite now contains 41 distinct tests; final rerun pending.
+Final integrated proof SHA256: `32ab5aa9162b012f2a4dd7081176521d9d1038002ab14567b843dcc5afe01db4`. The seed manifest records PYTHONHASHSEED 19 and 941 with exit statuses 0/0 and byte-identical output. Reviewer independently checked that manifest hash equals the actual final proof hash, all six retained original sources decode to the stated bytes/length/hash/format and match the separate committed originals under intelligence/release/sources/, both context snapshot hashes verify, and original immutable native version hashes survive correction. There are two revenue DOCX versions, three reconciliation/movement CSVs and one supporting invoice text source.
 
-Reviewer inspected deterministic proof and bounded release runner. Proof retains original document bytes/hashes, both context/evidence versions, native version immutable-field hashes, fresh-process continuation, actual native revenue/correction, unfamiliar prepayment movement/request, entity isolation and policy conflict. No live model is claimed. Readiness gate explicitly requires the Build 3 intelligence/proof step; a legacy green run lacking that step cannot satisfy it.
+Final proof preserves source lineage, context/history, requests, calculations and exact Case/version identities. Native corrected revenue is COMPLETE; prepayment increase is 8100 and its invoice request is derived from movement QX-7826. Prepayment accounting remains explicitly BLOCKED because no independent native accounting pack was supplied. Live model evaluation is false, with absent credentials accurately stated. Synthetic fixture review is not represented as production authenticated reviewer approval.
+
+Structural contract review of ten proof investigation outputs and nested evidence requests passed. Readiness caching explicitly requires the Build 3 intelligence and deterministic proof step; a legacy green run lacking that step cannot satisfy the final gate. No unresolved substantive findings remain in independently reviewed component/integration/proof paths; exact final release regression and Actions acceptance remain pending.
+
+## Exhaustive orchestration sharding review
+
+Reviewer inspected the seven-worker module runner and CI invocation. The runner discovers the original `test_*.py` population independently, then requires sorted aggregate test IDs to equal that full discovery exactly and forbids duplicate IDs. Every isolated module must return exit 0 and a successful unittest result. Missing recursive tests, failed imports, duplicate populations or failed subprocesses cannot produce PASS. Each module's result, log path, exit status and log hash is retained. No test selection narrower than the original discovery is accepted; this changes execution isolation/concurrency, not accounting acceptance expectations.
+
+The interrupted original sequential orchestration attempt has no successful full-suite result and is not credited. The complete final sharded manifest remains pending review. The runner now also requires shard result modification time to be at or after attempt start; a failed attempt cannot credit stale prior result IDs. Nonzero shard exits independently prevent PASS. Final acceptance requires all fresh successful shard results and exact discovery equality.

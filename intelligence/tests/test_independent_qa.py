@@ -297,3 +297,17 @@ class IndependentQA(unittest.TestCase):
         r=self.start();d=document(b.getvalue(),fmt='xlsx');d['metadata'].update(row_count=2,complete_population=True)
         x=self.call('document',case_id=r['case_id'],event_id='warning-private',document=d)
         self.assertNotIn('ChatGPT training data',str(x))
+
+    def test_post_execution_inference_conflict_blocks_delivery(self):
+        cid,evidence=self.native_stage()
+        with self.api._store() as store:case,_,_=store.load(COMPANY,cid);ref=next(iter(case._investigation['documents'][0]['extraction']['fields']))
+        def interpretation(price):return dict(family='customer_contract',claims=[dict(key='price',value=price,source_fields=[ref],uncertainty='unreviewed')],questions=[])
+        self.assertTrue(self.call('continue_investigation',case_id=cid,event_id='before-inference',interpretation=interpretation('17350'))['ok'])
+        self.assertTrue(self.call('submit',case_id=cid,evidence=evidence)['ok']);original=self.call('execute',case_id=cid);self.assertEqual(original['execution_state'],'complete')
+        with self.api._store() as store:before,_,_=store.load(COMPANY,cid);version_history=copy.deepcopy(before.governance.versions.record())
+        x=self.call('continue_investigation',case_id=cid,event_id='after-inference',interpretation=interpretation('18000'));self.assertTrue(x['ok'],x)
+        self.assertIn('inferred-price',x['investigation']['conflicts']);self.assertNotEqual(x['execution_state'],'complete');self.assertEqual(x['public_result']['status'],'blocked')
+        with self.api._store() as store:
+            case,_,_=store.load(COMPANY,cid);self.assertTrue(case.governance.versions.active);self.assertEqual(case.governance.versions.record(),version_history)
+        self.assertEqual(x['currentness'],original['currentness'])
+        restored=self.call('resume',case_id=cid);self.assertNotEqual(restored['execution_state'],'complete')

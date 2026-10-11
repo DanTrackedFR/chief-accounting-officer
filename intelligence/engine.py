@@ -138,6 +138,8 @@ def examine(state, boundary, supplied=None):
     request(state,'qualification','Provide an independently reviewed native intake pack binding this exact document population and accounting facts.',
         'Extracted text, movement observations and model claims are not reviewed accounting evidence.')
     state['conflicts']=sorted(set(state['conflicts']))
+    for conflict in state['conflicts']:
+        request(state,'context-'+conflict,'Resolve context alternatives for '+conflict+'.','Conflicting scoped context cannot authorize accounting.')
 
 
 def pack_from_record(raw):
@@ -233,9 +235,9 @@ def native_event(store,company,case,rev,state,event_id,fp,intent):
 def preview(api,case,revision):
     state=case._investigation
     out=api._delivery(case,revision,'tool_output')
-    if not state.get('qualified') or state.get('pending_correction'):
-        out.update(execution_state='blocked',currentness='STALE' if state.get('pending_correction') else 'NOT_EXECUTED')
-        out['public_result']=public_record(dict(status='blocked',guidance='Investigation requires qualified evidence.',
+    if not state.get('qualified') or state.get('pending_correction') or state['conflicts']:
+        out.update(execution_state='blocked',currentness='STALE' if state.get('pending_correction') else out['currentness'] if state.get('qualified') else 'NOT_EXECUTED')
+        out['public_result']=public_record(dict(status='blocked',guidance='Investigation requires qualified evidence or conflict resolution.',
             open_items=[r['needed'] for r in state['requests'] if r['status']=='OPEN']), route='tool_output')
     out['investigation']=dict(context_snapshot_id=state['snapshot']['snapshot_id'],
         requests=copy.deepcopy(state['requests']),documents=[dict(id=d['id'],version=d['version'],role=d['role'],qualification=d['qualification'],warnings=list(d['warnings'])) for d in state['documents']],
