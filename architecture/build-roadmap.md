@@ -228,3 +228,15 @@ Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mappi
 existing UI/document rendering and private-source exchange remain separate work.
 See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
 INCOMPLETE. No production deployment or merge is performed by Build2A.
+
+Build 3 — IMPLEMENTED; RELEASE GATES PENDING (PR #46): Case-specific versioned context,
+bounded document observations, iterative evidence requests, controlled interpretation,
+and existing native intake/correction/rework through local and hosted contracts.
+Independent adversarial rerun passes 39 distinct tests after seven findings were fixed.
+Full regression, deterministic integrated proof and exact-head Actions are required
+before ready-for-review. No merge, deployment or authenticated accounting approval.
+See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
+
+Build 4 — INCOMPLETE: authenticated preparer/reviewer accounting governance,
+TrackedFR application integration and production operational acceptance remain.
+Build 2B and the full MVP remain incomplete.

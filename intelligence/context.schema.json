@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "company_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "key": {
+            "enum": [
+              "business_model",
+              "calendar_id",
+              "fiscal_calendar",
+              "framework",
+              "functional_currency",
+              "historical_positions",
+              "investigation_threshold",
+              "jurisdiction",
+              "locations",
+              "materiality",
+              "period_end",
+              "period_start",
+              "policies",
+              "presentation_currency",
+              "responsibilities",
+              "revenue_model"
+            ]
+          },
+          "value": {},
+          "entity_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "effective_from": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "effective_to": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "source_state": {
+            "enum": [
+              "unknown",
+              "inferred",
+              "user_asserted",
+              "document_backed",
+              "proposed",
+              "approved",
+              "superseded",
+              "retracted"
+            ]
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "framework": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supersedes": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "key",
+          "value",
+          "entity_id",
+          "effective_from",
+          "effective_to",
+          "source_state",
+          "source_ref",
+          "source_version"
+        ]
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "entity_id",
+        "period_start",
+        "period_end"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "company_id",
+    "items"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

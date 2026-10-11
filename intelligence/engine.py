@@ -238,7 +238,7 @@ def preview(api,case,revision):
         out['public_result']=public_record(dict(status='blocked',guidance='Investigation requires qualified evidence.',
             open_items=[r['needed'] for r in state['requests'] if r['status']=='OPEN']), route='tool_output')
     out['investigation']=dict(context_snapshot_id=state['snapshot']['snapshot_id'],
-        requests=copy.deepcopy(state['requests']),documents=[dict(id=d['id'],version=d['version'],role=d['role'],qualification=d['qualification']) for d in state['documents']],
+        requests=copy.deepcopy(state['requests']),documents=[dict(id=d['id'],version=d['version'],role=d['role'],qualification=d['qualification'],warnings=list(d['warnings'])) for d in state['documents']],
         conflicts=list(state['conflicts']),round=state['round'],accounting_qualified=state.get('qualified',False),pending_correction=state.get('pending_correction',False))
     # Observational calculations remain separate from public accounting calculations.
     out['investigation']['observations']=copy.deepcopy(state['calculations'])

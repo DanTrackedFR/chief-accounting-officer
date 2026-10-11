@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "enum": [
+        "csv",
+        "xlsx",
+        "pdf",
+        "docx",
+        "text"
+      ]
+    },
+    "role": {
+      "enum": [
+        "contract",
+        "delivery",
+        "invoice",
+        "movements",
+        "policy",
+        "reconciliation_comparative",
+        "reconciliation_current",
+        "supporting_schedule",
+        "trial_balance"
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "company_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "control_total": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "complete_population": {
+          "type": "boolean"
+        },
+        "framework": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "calendar_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationship_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "controlled_export": {
+          "type": "boolean"
+        },
+        "comparator": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "company_id",
+        "entity",
+        "currency",
+        "period"
+      ]
+    },
+    "content_base64": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "maxLength": 1333341
+    },
+    "supersedes": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "format",
+    "role",
+    "metadata",
+    "content_base64"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

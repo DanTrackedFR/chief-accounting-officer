@@ -24,3 +24,30 @@ identity service, frontend, connector, deployment or memory database is authoriz
 Checkpoint 1: clean isolated checkout created from actual main; prior workspaces
 (including specialist recovery) preserved unchanged. Required Build 1/2A reports,
 contracts and finance-context requirements inspected before implementation.
+
+## Implemented checkpoint
+
+intelligence/context.py creates canonical versioned snapshots; documents.py preserves
+bounded bytes and normalized native source lineage; model.py validates copied inference;
+engine.py persists _investigation inside native Case checkpoints; state.py verifies
+snapshot/source/extraction integrity on restoration. No SQLite schema/database added.
+Prepared intake calls existing Intake/FixturePlanner with an already validated supplied
+proposal, ReviewedInputPack and all active source bindings. Execution invokes existing
+FACT_ADAPTERS owner. Correction/rework delegates native prepare/recover, retaining exact
+source manifests, versioned receipts and immutable operation intent. Crash retries find
+the exact native operation instead of repeating economics. Empty downstream rework
+refreshes existing synthesis. Arbitrary unsupported replacement packs fail explicitly.
+
+local_cao/adapter.py accepts additive strict shapes and immutable intake staging.
+hosted_cao/service.py reuses scoped auth/jobs, binds Case/input state, executes an
+unqualified blank Case through native intake, and reconciles begun correction/rework
+operations durably. Public results remain curated; operational references and source
+observations remain separate. Parser warnings are returned to prevent silent reliance
+on DOCX body/PDF reading order. Closed-schema Case state retains originals and versions.
+
+Intelligence requirements install maintained openpyxl/python-docx/pypdf; no scripts,
+macros or embedded instructions execute. Formula/error XLSX and scanned/unreadable PDF
+fail. Synthetic approvals only exist in test fixture helpers. Controlled inference
+accepts a provider callback or client-supplied structured output, never accounting
+approval. No live credentials were available. Details: shared contract and integration
+handoff; independent adversarial report owns findings and rerun evidence.

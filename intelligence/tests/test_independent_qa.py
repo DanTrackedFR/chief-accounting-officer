@@ -250,10 +250,12 @@ class IndependentQA(unittest.TestCase):
         self.assertNotEqual(r['public_result'],original['public_result'])
         with self.api._store() as store:
             case,rev,_=store.load(COMPANY,cid);current=case.governance.versions.record()
-            for old in versions['versions']:
-                self.assertIn(old,current['versions'])
+            by_id={x['version_id']:x for x in current}
+            for old in versions:
+                preserved=by_id[old['version_id']]
+                self.assertEqual({k:v for k,v in old.items() if k not in {'state','superseded_by'}},{k:v for k,v in preserved.items() if k not in {'state','superseded_by'}})
             self.assertEqual(len(case._investigation['documents']),2)
-            self.assertEqual(len(case.governance.corrections),1)
+            self.assertEqual(len(case.governance.rework_history),1)
         retry=self.call('correct_investigation',case_id=cid,event_id='correction',node_id=node,reason='Corrected signed contract',evidence=evidence)
         self.assertTrue(retry['ok'],retry);self.assertEqual(retry['checkpoint_revision'],rev)
         self.assertEqual(retry['public_result'],r['public_result'])
@@ -269,9 +271,21 @@ class IndependentQA(unittest.TestCase):
         r=self.call('correct_investigation',case_id=cid,event_id='correction',node_id=node,reason='Corrected signed contract',evidence=evidence);self.assertTrue(r['ok'],r)
         r=self.call('rework_investigation',case_id=cid,event_id='rework',evidence={});self.assertTrue(r['ok'],r);self.assertEqual(r['execution_state'],'complete',r)
         with self.api._store() as store:
-            case,rev,_=store.load(COMPANY,cid);self.assertEqual(len(case.governance.corrections),1)
+            case,rev,_=store.load(COMPANY,cid);self.assertEqual(len(case.governance.rework_history),1)
             count=store.connection.execute("SELECT count(*) FROM operations WHERE company_id=? AND case_id=?",(COMPANY,cid)).fetchone()[0]
             self.assertEqual(count,2)
         return cid,r
     def test_correction_recover_after_prepare_interruption(self):self.correction_crash('prepare')
     def test_correction_recover_after_commit_interruption(self):self.correction_crash('recover')
+
+    def test_unknown_context_value_cannot_be_applied(self):
+        x=item('investigation_threshold','999999');x['source_state']='unknown'
+        r=resolve(config(),structured(x))
+        self.assertNotIn('investigation_threshold',r['values'])
+        self.assertIn('investigation_threshold',r['unknowns'])
+    def test_document_parser_warnings_visible_in_preview(self):
+        from intelligence.tests.fixtures import doc
+        r=self.start();cid=r['case_id']
+        with self.api._store() as store:case,_,_=store.load(COMPANY,cid)
+        x=self.call('document',case_id=cid,event_id='docx',document=doc(case._investigation['snapshot']['scope']))
+        self.assertTrue(x['ok'],x);self.assertTrue(x['investigation']['documents'][0]['warnings'])

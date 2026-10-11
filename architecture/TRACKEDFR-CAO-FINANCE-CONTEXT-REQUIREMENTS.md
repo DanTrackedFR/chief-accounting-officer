@@ -170,3 +170,21 @@ clients. Owners should review a real schema-to-requirement mapping before deploy
 Build2 can reuse stable mapping, operation envelope, public output and context
 status distinction; hosted transport, real connector/document extraction, iterative
 evidence gathering, authorization and authenticated accounting reviews remain future.
+
+## Build3 implemented server contract
+
+Map future finance_context to intelligence/context.schema.json. Entity-specific
+framework/currency/calendar/Period must be explicit; IFRS Group context cannot override
+UK_GAAP subsidiary context. Source_state APPROVED in editable onboarding remains a
+user assertion; approved positions require existing native CompanyMemory governance.
+Bind the immutable resolved snapshot to each Case; later onboarding edits apply to
+new Cases. Expose conflicts/unknowns without client-side authority upgrades.
+
+Use document.schema.json, inference.schema.json and evidence-request.schema.json;
+interfaces/CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md defines additive local/HTTP routes.
+Document originals/versions/dimensions remain server-bound observations; frontend
+must display warnings and BLOCKED/PARTIAL states. Existing Anthropic integration may
+produce structured interpretation, but CAO validates it and executes accounting only
+through separately qualified native contracts. Execute/correction/rework use existing
+Build2A durable jobs. Build2B/UI/connectors and authenticated accounting approval are
+not included. See Build3 integration handoff for exact synthetic proof and limits.

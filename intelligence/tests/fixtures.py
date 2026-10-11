@@ -8,6 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 import io
 import json
+import zipfile
 from docx import Document
 from local_cao.tests.test_authored import context
 from orchestration.intake import Claim,StructuredProposal,RawSource,Inventory,ReviewedInputPack,DocumentBinding,TextAssertion,FactCandidate,Binding
@@ -30,7 +31,11 @@ def proposal(objective,family,scope,refs):
 def doc(scope,text=None,format='docx',role='contract',id='halcyon-agreement',version='v1',supersedes=None,**meta):
     text=text or 'Halcyon telemetry contract. Fixed price EUR 17350. Product and service are distinct. No refund terms supplied. Service term twelve months.'
     if format=='docx':
-        d=Document();d.add_paragraph(text);b=io.BytesIO();d.save(b);data=b.getvalue()
+        d=Document();d.add_paragraph(text);b=io.BytesIO();d.save(b);raw=b.getvalue();stable=io.BytesIO()
+        with zipfile.ZipFile(io.BytesIO(raw)) as src,zipfile.ZipFile(stable,'w',compression=zipfile.ZIP_DEFLATED) as dst:
+            for name in sorted(src.namelist()):
+                entry=zipfile.ZipInfo(name,(2026,1,1,0,0,0));entry.compress_type=zipfile.ZIP_DEFLATED;dst.writestr(entry,src.read(name))
+        data=stable.getvalue()
     else:data=text.encode()
     p=compatibility_period(scope)
     m=dict(company_id=COMPANY,entity=scope['entity'],currency=scope['currency'],framework=scope['framework'],period=[scope['period_start'],scope['reporting_period']],scope_id=scope['entity'],period_id=p.period_id,calendar_id=p.calendar_id,period_role='CURRENT',relationship_id=None,**meta)

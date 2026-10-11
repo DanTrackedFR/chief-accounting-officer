@@ -1,0 +1,89 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "context_snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence-request.schema.json"
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "qualification": {
+            "const": "OBSERVATION_ONLY"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "role",
+          "qualification",
+          "warnings"
+        ]
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 64
+    },
+    "accounting_qualified": {
+      "type": "boolean"
+    },
+    "pending_correction": {
+      "type": "boolean"
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "context_snapshot_id",
+    "requests",
+    "documents",
+    "conflicts",
+    "round",
+    "accounting_qualified",
+    "pending_correction",
+    "observations"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

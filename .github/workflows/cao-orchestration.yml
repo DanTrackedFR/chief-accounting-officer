@@ -5,6 +5,7 @@ on:
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
+      - "intelligence/**"
       - "hosted_cao/**"
       - 'local_cao/**'
       - 'CLAUDE.md'
@@ -54,7 +55,7 @@ jobs:
                   required = {'Orchestration authored and independent QA', 'Hosted service authored and independent QA',
                       'Local execution authored and independent QA', 'Existing skills and lease vertical slice',
                       'Repository public-output and canonical tests', 'Supplemental knowledge and independent knowledge QA',
-                      'Canonical authority invariants and whitespace'}
+                      'Canonical authority invariants and whitespace', 'Build 3 intelligence and deterministic integrated proof'}
                   for run in runs['workflow_runs']:
                       if run['id'] == current['id'] or run['workflow_id'] != current['workflow_id'] or run['head_sha'] != os.environ['HEAD_SHA']:
                           continue
@@ -72,6 +73,16 @@ jobs:
               output.write('cached='+str(cached).lower()+'\n')
           print('Verified prior full exact-head run: '+str(prior) if cached else 'Full exact-head regression required.')
           PYCODE
+      - name: Install bounded document parsers
+        run: pip install -r intelligence/requirements.txt reportlab
+      - name: Build 3 intelligence and deterministic integrated proof
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s intelligence/tests -p 'test_*.py'
+          PYTHONHASHSEED=19 python -m intelligence.tests.prove_integrated > /tmp/build3-19.json
+          PYTHONHASHSEED=941 python -m intelligence.tests.prove_integrated > /tmp/build3-941.json
+          cmp intelligence/release/integrated-proof.json /tmp/build3-19.json
+          cmp /tmp/build3-19.json /tmp/build3-941.json
       - name: Hosted service authored and independent QA
         if: steps.prior.outputs.cached != 'true'
         run: |

@@ -3,38 +3,183 @@
   "$id": "urn:trackedfr:cao:execution-response:1.0",
   "title": "CAO Execution Response 1.0",
   "type": "object",
-  "required": ["contract_version", "ok"],
+  "required": [
+    "contract_version",
+    "ok"
+  ],
   "properties": {
-    "contract_version": {"const": "1.0"},
-    "ok": {"type": "boolean"},
-    "operation": {"type": ["string", "null"]},
-    "company_id": {"type": "string"},
-    "case_id": {"type": "string"},
-    "lifecycle_state": {"enum": ["OPEN", "SCOPED", "IN_PROGRESS", "CHALLENGE", "CONCLUDED", "DOCUMENTED", "CLOSED"]},
-    "execution_state": {"enum": ["workspace_ready", "evidence_staged", "complete", "partial", "blocked"]},
-    "checkpoint_revision": {"type": ["integer", "null"], "minimum": 1},
-    "durable": {"type": "boolean"},
-    "currentness": {"enum": ["NOT_EXECUTED", "CURRENT", "STALE"]},
+    "contract_version": {
+      "const": "1.0"
+    },
+    "ok": {
+      "type": "boolean"
+    },
+    "operation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "company_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "lifecycle_state": {
+      "enum": [
+        "OPEN",
+        "SCOPED",
+        "IN_PROGRESS",
+        "CHALLENGE",
+        "CONCLUDED",
+        "DOCUMENTED",
+        "CLOSED"
+      ]
+    },
+    "execution_state": {
+      "enum": [
+        "workspace_ready",
+        "evidence_staged",
+        "complete",
+        "partial",
+        "blocked"
+      ]
+    },
+    "checkpoint_revision": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "durable": {
+      "type": "boolean"
+    },
+    "currentness": {
+      "enum": [
+        "NOT_EXECUTED",
+        "CURRENT",
+        "STALE"
+      ]
+    },
     "public_result": {
       "type": "object",
       "description": "Must be emitted by existing public_record/CAO.public; schema is not an alternative output authorization boundary."
     },
-    "workplan": {"type": "array", "items": {"type": "object", "required": ["owner", "state"], "additionalProperties": false, "properties": {"owner": {"type": "string"}, "state": {"type": "string"}}}},
-    "error": {"type": "object", "required": ["code", "message"], "additionalProperties": false, "properties": {"code": {"enum": ["runtime_installation", "invalid_request", "invalid_context", "workspace_boundary", "identity_conflict", "immutable_submission", "not_found", "storage_failure", "public_boundary"]}, "message": {"type": "string"}}},
-    "configuration": {"type": "object"},
-    "context_authority": {"const": "user_assertion"},
-    "approved_company_memory": {"const": false},
-    "evidence_authority": {"const": "supplied_native_workpaper_not_adapter_approved"},
-    "capabilities": {"type": "array"},
-    "cases": {"type": "array"},
-    "python_minimum": {"const": "3.12"},
-    "dependencies": {"const": "Python standard library"},
-    "context_valid": {"type": "boolean"},
-    "storage_ready": {"type": "boolean"}
+    "workplan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "owner",
+          "state"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "runtime_installation",
+            "invalid_request",
+            "invalid_context",
+            "workspace_boundary",
+            "identity_conflict",
+            "immutable_submission",
+            "not_found",
+            "storage_failure",
+            "public_boundary"
+          ]
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "configuration": {
+      "type": "object"
+    },
+    "context_authority": {
+      "const": "user_assertion"
+    },
+    "approved_company_memory": {
+      "const": false
+    },
+    "evidence_authority": {
+      "const": "supplied_native_workpaper_not_adapter_approved"
+    },
+    "capabilities": {
+      "type": "array"
+    },
+    "cases": {
+      "type": "array"
+    },
+    "python_minimum": {
+      "const": "3.12"
+    },
+    "dependencies": {
+      "const": "Python standard library"
+    },
+    "context_valid": {
+      "type": "boolean"
+    },
+    "storage_ready": {
+      "type": "boolean"
+    },
+    "investigation": {
+      "$ref": "../intelligence/investigation.schema.json"
+    }
   },
   "additionalProperties": false,
   "allOf": [
-    {"if": {"properties": {"ok": {"const": false}}}, "then": {"required": ["error", "public_result"]}},
-    {"if": {"required": ["durable"]}, "then": {"required": ["case_id", "lifecycle_state", "execution_state", "checkpoint_revision", "currentness", "public_result", "workplan"]}}
+    {
+      "if": {
+        "properties": {
+          "ok": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "error",
+          "public_result"
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "durable"
+        ]
+      },
+      "then": {
+        "required": [
+          "case_id",
+          "lifecycle_state",
+          "execution_state",
+          "checkpoint_revision",
+          "currentness",
+          "public_result",
+          "workplan"
+        ]
+      }
+    }
   ]
 }

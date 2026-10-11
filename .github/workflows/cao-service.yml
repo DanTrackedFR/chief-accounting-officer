@@ -2,7 +2,7 @@ name: CAO hosted service acceptance
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths: ['hosted_cao/**', 'local_cao/**', 'interfaces/**', '.github/workflows/cao-service.yml']
+    paths: ['intelligence/**', 'hosted_cao/**', 'local_cao/**', 'interfaces/**', '.github/workflows/cao-service.yml']
   workflow_dispatch:
 jobs:
   service-acceptance:
