@@ -10,3 +10,9 @@ Previous-agent claims remain unverified. This checkpoint preserves all original 
 Narrow baseline validation: both original behavior tests run unchanged; 2 tests fail. Unknown materiality aborts before graph construction with `Owner outside registered Scopes`; unavailable borrowing evidence similarly has no blocked owner node. No full regression was run.
 
 Remaining: reconstruct owner-scoped fingerprint repair; repair missing reviewed-source intake; investigate Stage 2 receipt/version provenance; compare Stage 4 history; independently review any migrations; integrate latest main; complete accounting, knowledge and full exact-head release gates. PR must remain Draft.
+
+## Reconstructed intake repair
+
+Missing company/Scope identity now retains the planned owner with missing reviewed-source evidence, rather than aborting graph construction. Explicit wrong or incomplete Scope identity still fails closed. Both original test bodies remain unchanged and pass. Three additional adversarial tests pass. Borrowing authored plus existing independently authored QA: 97 tests pass. Supplemental knowledge: 16 tests pass. Foundation and Treasury modules: 54 tests, one historical Treasury artifact reproduction failure; 53 behavior checks pass. No historical references were updated to silence this failure. Logs retain the actual failure.
+
+This is not release acceptance or independent fresh-agent approval. Owner-scoped fingerprints, Stage 2/4 provenance, main integration and full regression remain open.
