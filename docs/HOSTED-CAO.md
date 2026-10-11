@@ -43,3 +43,15 @@ SQLite-consistent backups and retention, configure TLS/reverse-proxy rate/body/
 header limits before deployment. There is no encryption-at-rest or remote queue.
 Standard-library HTTP alone is not a production edge server. Unbounded execution
 is limited to supported pure native owners; stop waits for an active execution.
+
+## Build3 investigation
+
+Install intelligence/requirements.txt in the service/worker environment. Additive
+investigate/document/continue_investigation/investigation use POST /v1/operations;
+execute/correct_investigation/rework_investigation use POST /v1/jobs with existing
+Idempotency-Key. Use the same authorized Company and durable Case throughout.
+Poll job/accounting separately: SUCCEEDED can legitimately report BLOCKED/PARTIAL.
+Client-provided structured interpretation remains untrusted. Original document bytes
+and reviewed intake packs stay private; surface returned parser warnings. Existing
+membership/credential mapping does not authenticate human accounting approval.
+See interfaces/CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md and Build3 integration handoff.

@@ -18,7 +18,8 @@ from orchestration.intake.sources import bounded, MAX_BYTES
 
 LOG = logging.getLogger('hosted_cao')
 API_VERSION = '1.0'
-OPERATIONS = {'initialize','capabilities','start','status','questions','submit','result','resume','list','context','diagnose'}
+JOB_OPERATIONS={'execute','correct_investigation','rework_investigation'}
+OPERATIONS = {'initialize','capabilities','start','status','questions','submit','result','resume','list','context','diagnose','investigate','document','continue_investigation','investigation','correct_investigation','rework_investigation'}
 SAFE = {'invalid_request': 'Check the versioned request contract.', 'unauthorized': 'Service authentication required.',
         'forbidden': 'Company access is not permitted.', 'not_found': 'Resource unavailable.',
         'conflict': 'Idempotency key is bound to another request.', 'unavailable': 'Service temporarily unavailable.',
@@ -76,11 +77,17 @@ class Service:
             if op not in OPERATIONS|{'execute'} or operation and op!=operation: raise ValueError()
             fields={'contract_version','company_id','operation','route'}
             required=set()
-            if op=='start': fields|={'request_id','objective','target_family'}; required={'request_id','objective','target_family'}
-            if op in {'status','questions','submit','execute','result','resume'}: fields.add('case_id');required.add('case_id')
+            if op in {'start','investigate'}: fields|={'request_id','objective','target_family'}; required={'request_id','objective'} | ({'target_family'} if op=='start' else set())
+            if op in {'status','questions','submit','execute','result','resume','document','continue_investigation','investigation','correct_investigation','rework_investigation'}: fields.add('case_id');required.add('case_id')
             if op=='submit':
                 fields|={'evidence','staged_file_id'}
                 if ('evidence' in request)==('staged_file_id' in request): raise ValueError()
+            if op=='investigate': fields|={'context','interpretation'}
+            if op in {'document','continue_investigation','correct_investigation','rework_investigation'}:fields|={'event_id','interpretation'};required.add('event_id')
+            if op=='document':fields.add('document');required.add('document')
+            if op in {'correct_investigation','rework_investigation'}:fields|={'evidence','node_id','reason'};required.add('evidence')
+            from intelligence.contracts import validate as validate_intelligence_request
+            validate_intelligence_request(request)
             if set(request)-fields or required-request.keys(): raise ValueError()
             for k in ('case_id','request_id'):
                 if k in request: identity(request[k])
@@ -95,7 +102,7 @@ class Service:
 
     def call(self, company, request):
         r=self.validate(request,company)
-        if r['operation']=='execute': raise Error('invalid_request')
+        if r['operation'] in JOB_OPERATIONS: raise Error('invalid_request')
         if 'staged_file_id' in r:
             # A host-provisioned regular JSON file. No caller-supplied path is accepted.
             r['evidence_file']='staged/'+r.pop('staged_file_id')+'.json'
@@ -105,8 +112,13 @@ class Service:
     def input_hash(self, company, request):
         api=ExecutionInterface(self.companies[company])
         config=api._configuration(company)
-        _,folder=api._request(request["case_id"],config)
-        path=folder/"evidence.json"
+        d,folder=api._request(request["case_id"],config)
+        if 'context_snapshot' in d:
+            with api._store() as store:
+                case,_,_=store.load(company,d['case_id'])
+                config=case._investigation
+            path=folder/'intake.json'
+        else:path=folder/'evidence.json'
         evidence=api.read_json(str(path.relative_to(self.companies[company]))) if path.exists() else None
         return hashlib.sha256(canonical([config,evidence]).encode()).hexdigest()
 
@@ -115,7 +127,8 @@ class Service:
             return self._submit_job(company,request,key)
 
     def _submit_job(self, company, request, key):
-        r=self.validate(request,company,'execute')
+        r=self.validate(request,company)
+        if r['operation'] not in JOB_OPERATIONS:raise Error('invalid_request')
         if not isinstance(key,str) or not re.fullmatch('[A-Za-z0-9_.:-]{1,120}',key): raise Error('invalid_request')
         # Validate ownership and request existence before acceptance; status is not execution.
         check=ExecutionInterface(self.companies[company]).call({**r,'operation':'status'})
@@ -180,9 +193,16 @@ class Service:
         return True
 
     def _execute_job(self,api,company,request,row):
+            if request['operation'] in {'correct_investigation','rework_investigation'}:
+                with api._store() as store:
+                    case,_,_=store.load(company,request['case_id'])
+                    begun=any(x['id']==request['event_id'] for x in case._investigation.get('native_events',[])) or any(x['id']==request['event_id'] for x in case._investigation['events'])
+                if not begun and self.input_hash(company,request)!=row['input_hash']:raise Error('conflict',409)
+                return api.call(request)
             response=api.call({**request,'operation':'resume'})
-            if not response['ok']:
-                if response['error']['code']!='not_found': raise Error('unavailable',503)
+            pending=response.get('investigation') and not response['investigation'].get('accounting_qualified')
+            if not response['ok'] or pending:
+                if not pending and response['error']['code']!='not_found': raise Error('unavailable',503)
                 if self.input_hash(company,request)!=row['input_hash']: raise Error('conflict',409)
                 response=api.call(request)
             return response
