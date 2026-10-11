@@ -1,0 +1,34 @@
+name: CAO Build 4 integrated acceptance
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['build4/**', 'intelligence/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', '.github/workflows/cao-build4.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrated-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded parsers
+        run: pip install -r intelligence/requirements.txt reportlab
+      - name: Integrated and independent accounting engineering acceptance
+        run: python -m unittest discover -s build4/tests -p 'test_*.py'
+      - name: Independently seeded fresh-process proofs
+        run: |
+          PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/proof283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/proof1709.json
+          cmp build4/release/integrated-proof.json /tmp/proof283.json
+          cmp /tmp/proof283.json /tmp/proof1709.json
+          PYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory1709.json
+          cmp build4/release/memory-proof.json /tmp/memory283.json
+          cmp /tmp/memory283.json /tmp/memory1709.json
+      - name: Release manifest and historical preservation
+        run: python -m build4.verify_release

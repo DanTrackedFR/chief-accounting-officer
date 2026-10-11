@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
+      - "build4/**"
+      - "intelligence/**"
+      - "hosted_cao/**"
       - "knowledge/topics/**/standards-claims.json"
       - "knowledge/borrowing-costs/**"
       - "knowledge/standards-evidence/**"

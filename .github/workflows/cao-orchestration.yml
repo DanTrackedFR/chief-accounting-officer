@@ -5,6 +5,13 @@ on:
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
+      - "build4/**"
+      - "intelligence/**"
+      - "hosted_cao/**"
+      - 'local_cao/**'
+      - 'CLAUDE.md'
+      - 'company-context.example.md'
+      - 'docs/LOCAL-CAO.md'
       - 'orchestration/**'
       - 'interfaces/**'
       - 'skills/management-accounting-analytics/**'
@@ -12,6 +19,9 @@ on:
       - 'skills/tests/**'
       - '.github/workflows/cao-orchestration.yml'
   workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
 jobs:
   integration-regression:
     runs-on: ubuntu-latest
@@ -23,15 +33,98 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Verify prior full exact-head run for unchanged readiness
+        id: prior
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_ACTION: ${{ github.event.action }}
+        run: |
+          python - <<'PYCODE'
+          import json, os, urllib.request, urllib.parse
+          cached = False
+          prior = None
+          if os.environ.get('EVENT_ACTION') == 'ready_for_review':
+              def get(path):
+                  req = urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+path,
+                      headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'], 'Accept':'application/vnd.github+json'})
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      return json.load(response)
+              try:
+                  current = get('/actions/runs/'+os.environ['GITHUB_RUN_ID'])
+                  runs = get('/actions/runs?'+urllib.parse.urlencode({'head_sha':os.environ['HEAD_SHA'],'status':'success','per_page':100}))
+                  required = {'Orchestration authored and independent QA', 'Hosted service authored and independent QA',
+                      'Local execution authored and independent QA', 'Existing skills and lease vertical slice',
+                      'Repository public-output and canonical tests', 'Supplemental knowledge and independent knowledge QA',
+                      'Canonical authority invariants and whitespace', 'Build 3 intelligence and deterministic integrated proof',
+                      'Build 4 integrated accounting intelligence acceptance'}
+                  for run in runs['workflow_runs']:
+                      if run['id'] == current['id'] or run['workflow_id'] != current['workflow_id'] or run['head_sha'] != os.environ['HEAD_SHA']:
+                          continue
+                      if run['status'] != 'completed' or run['conclusion'] != 'success':
+                          continue
+                      jobs = get('/actions/runs/'+str(run['id'])+'/jobs')
+                      completed = {step['name'] for job in jobs['jobs'] for step in job['steps'] if step['conclusion'] == 'success'}
+                      if required <= completed:
+                          cached = True
+                          prior = run['id']
+                          break
+              except Exception:
+                  cached = False  # API uncertainty always runs the full suite.
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('cached='+str(cached).lower()+'\n')
+          print('Verified prior full exact-head run: '+str(prior) if cached else 'Full exact-head regression required.')
+          PYCODE
+      - name: Install bounded document parsers
+        run: pip install -r intelligence/requirements.txt reportlab
+      - name: Build 4 integrated accounting intelligence acceptance
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s build4/tests -p 'test_*.py'
+          PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/build4-283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/build4-1709.json
+          cmp build4/release/integrated-proof.json /tmp/build4-283.json
+          cmp /tmp/build4-283.json /tmp/build4-1709.json
+          PYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory-283.json
+          PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory-1709.json
+          cmp build4/release/memory-proof.json /tmp/memory-283.json
+          cmp /tmp/memory-283.json /tmp/memory-1709.json
+          python -m build4.verify_release
+      - name: Build 3 intelligence and deterministic integrated proof
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s intelligence/tests -p 'test_*.py'
+          PYTHONHASHSEED=19 python -m intelligence.tests.prove_integrated > /tmp/build3-19.json
+          PYTHONHASHSEED=941 python -m intelligence.tests.prove_integrated > /tmp/build3-941.json
+          cmp intelligence/release/integrated-proof.json /tmp/build3-19.json
+          cmp /tmp/build3-19.json /tmp/build3-941.json
+      - name: Hosted service authored and independent QA
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s hosted_cao/tests -p "test_*.py"
+          PYTHONHASHSEED=19 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-19.json
+          PYTHONHASHSEED=941 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-941.json
+          cmp hosted_cao/release/http-proof.json /tmp/hosted-proof-19.json
+          cmp /tmp/hosted-proof-19.json /tmp/hosted-proof-941.json
+      - name: Local execution authored and independent QA
+        if: steps.prior.outputs.cached != 'true'
+        run: |
+          python -m unittest discover -s local_cao/tests -p 'test_*.py'
+          python -m local_cao.tests.prove_cli > /tmp/local-cao-proof.json
+          cmp local_cao/examples/cli-proof.json /tmp/local-cao-proof.json
       - name: Orchestration authored and independent QA
-        run: python -m unittest discover -s orchestration/tests -p 'test_*.py'
+        if: steps.prior.outputs.cached != 'true'
+        run: python -m intelligence.tests.run_release suite orchestration/tests 'test_*.py' ci-orchestration
       - name: Existing skills and lease vertical slice
+        if: steps.prior.outputs.cached != 'true'
         run: |
           python -m unittest discover -s skills/tests -p 'test_*.py'
           python -m unittest discover -s skills/lease-accounting/tests -p 'test_*.py'
       - name: Repository public-output and canonical tests
+        if: steps.prior.outputs.cached != 'true'
         run: python -m unittest discover -s tests -p 'test_*.py'
       - name: Supplemental knowledge and independent knowledge QA
+        if: steps.prior.outputs.cached != 'true'
         run: |
           python knowledge/borrowing-costs/validate_supplement.py
           python -m unittest discover -s knowledge/borrowing-costs -p "test*.py"
@@ -48,6 +141,7 @@ jobs:
           python knowledge/inventory-cost/validate_supplement.py
           python -m unittest discover -s knowledge/inventory-cost -p 'test*.py'
       - name: Canonical authority invariants and whitespace
+        if: steps.prior.outputs.cached != 'true'
         run: |
           python knowledge/standards-evidence/validate_claims.py
           python knowledge/standards-evidence/validate_approvals.py

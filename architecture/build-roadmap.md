@@ -207,3 +207,49 @@ These should use the same standalone knowledge-extension / independent-QA / prom
 Complete: 157/157 individually processed and approved; no remaining canonical accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found.
 
 Runtime public-output integration and verification are now implemented in the CAO orchestration foundation. Future application adapters must continue to enforce the same public boundary. Exact-commit GitHub Actions remain the integration standard.
+
+## CAO MVP product builds
+
+Build 1 — COMPLETE (MERGED PR #44): local Claude Code operation and shared execution
+contract1.0 reuse native accounting, durable Cases and Company Accounting Memory.
+Live main merge b3b6d3c7a57682985f66dc76985f99fe42b4dbd2;3,050 distinct tests passed.
+
+Build 2A — COMPLETE (MERGED PR #45): separately runnable
+Python /v1 HTTP wrapper, scoped server authentication, company workspace isolation,
+durable operational jobs and native checkpoint reconciliation.24 authored/12
+independent service tests plus8 independent release-gate tests pass. Full local
+regression passes3,094 distinct tests and seven validators; two real synthetic
+owners retain exact local public parity.
+No native accounting authority or protected milestone changes. Completion requires
+exact-head Actions and unchanged-head readiness; deterministic seeds19/941 pass. See
+architecture/CAO-MVP-BUILD2A-ARCHITECTURE.md and hosted_cao/release/.
+
+Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mapping,
+existing UI/document rendering and private-source exchange remain separate work.
+See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
+INCOMPLETE. No production deployment or merge is performed by Build2A.
+
+Build 3 — COMPLETE (MERGED PR #46): Case-specific immutable context, bounded
+financial document observations, iterative evidence discovery, controlled
+interpretation and native owner intake/correction/rework through both clients.
+Merged as495d4e7fccd5863c971423a5fb130f82e37b9604 on2026-10-11. Final exact-head
+and unchanged-head readiness receipts passed on PR46. Fourteen independently
+reproduced findings resolved;3,166 distinct repository methods passed. Source
+assurance/synthetic identities/live inference limitations remain explicit.
+See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
+
+Build 4 — INTEGRATED ACCEPTANCE IMPLEMENTED; RELEASE GATES REQUIRED:
+new customer-contract correction, prepayments evidence discovery with unresolved
+residual/allocation, repeated framework-qualified legal-entity/period owners,
+Group scope conflict/isolation, genuine interrupted native CORRECT/REWORK and
+safe exact-version CompanyMemory reuse. Bounded remediation binds native memory
+consumption and rechecks currentness; no parallel engine or authenticated approval.
+See architecture/CAO-MVP-BUILD4-ARCHITECTURE.md and completion report; final local
+regression, deterministic proofs, independent QA, exact-head/readiness CI and
+owner integration remain the release standard recorded on the sole Build4 PR.
+
+Engine engineering acceptance must be distinguished from unverified live model/
+Claude Code user operation, outstanding TrackedFR Build2B application acceptance,
+authenticated preparer/reviewer governance and production deployment/security/
+operational acceptance. Government Grants#34, Borrowing Costs#35 and Investment
+Property#37 remain separately managed. Build2B and the commercial MVP are INCOMPLETE.

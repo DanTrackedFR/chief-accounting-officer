@@ -1,0 +1,12 @@
+{
+  "status": "FAILED_NOT_ACCEPTED",
+  "executed_distinct_tests": 3094,
+  "failed_suite": "hosted_cao/tests",
+  "failed_test": "test_readiness_gate.IndependentReadinessGateQA.test_full_prior_exact_head_can_reuse",
+  "errors": 0,
+  "failures": 1,
+  "cause": "Existing successful-prior-run test fixture omitted the newly required Build 4 step; workflow correctly returned cached=false.",
+  "remediation": "Add exact Build 4 step to independent mock population; existing omitted/failed/skipped loop covers it. Runtime and workflow controls unchanged.",
+  "required_next_gate": "Fresh complete final-tree attempt-003, after bounded preflights.",
+  "credited_as_complete_regression": false
+}

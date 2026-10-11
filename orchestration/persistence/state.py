@@ -11,7 +11,7 @@ from .codec import dumps, loads, IntegrityError
 from .evidence import validate as validate_evidence
 
 CONTRACT_VERSION = 1
-CASE_PRIVATE = {'_synthesis_currentness', '_journal_mapping', '_scoped_postings', '_public_calculation_order', '_source_qualification_refs'}
+CASE_PRIVATE = {'_investigation', '_synthesis_currentness', '_journal_mapping', '_scoped_postings', '_public_calculation_order', '_source_qualification_refs'}
 SESSION_DATA = {'context', 'request', 'sources', 'evidence_bundles'}
 ROOT_FIELDS = {'contract_version', 'company_id', 'root_case', 'company_context', 'scopes', 'periods', 'cases', 'case_private', 'nodes', 'graph_history', 'dependencies', 'versions', 'source_snapshots', 'active', 'states', 'supersession', 'version_history', 'receipts', 'rework_history', 'session'}
 
@@ -279,7 +279,11 @@ def _restore(doc, company_id, case_id):
         c.child_case_ids = copy.deepcopy(originals[key]['child_case_ids'])
         private = doc['case_private'][key]
         if set(private) - CASE_PRIVATE: raise IntegrityError('Unknown Case private metadata')
-        for name, value in private.items(): setattr(c, name, copy.deepcopy(value))
+        for name, value in private.items():
+            if name=='_investigation':
+                from intelligence.state import validate as validate_investigation
+                validate_investigation(value,key)
+            setattr(c, name, copy.deepcopy(value))
         order = private.get('_public_calculation_order')
         if not isinstance(order, list) or len(order) != len(c.conclusions): raise IntegrityError('Missing public calculation provenance')
         for conclusion, keys in zip(c.conclusions, order):
