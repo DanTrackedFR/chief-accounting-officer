@@ -54,3 +54,7 @@ Main's historical inventory includes 145 saved authorities whose identity bytes 
 The initial serial release attempt was interrupted with exit 130 after skills 1,289, leases 17 and repository 53 passed. It is retained as incomplete evidence. Final regression uses the latest main canonical sharded release runner, extended to include Borrowing Costs knowledge and validator gates, binding reviewed recovery inputs to the exact tested source tree.
 
 CI reconciliation found a Build4 engineering test that hard-coded old proof-reference paths. Only those two path assertions are updated; actual execution, exact-head cache, workflow identity and release-verification assertions remain intact. The targeted readiness-cache test passes. Canonical attempt pr42-final-001 is retained as interrupted; final source-tree regression uses pr42-final-002.
+
+Final local acceptance: canonical pr42-final-002 PASS, 3,371 distinct tests, 15 suites, 24 successful gates, zero skips/errors/failures, source/input inventories unchanged. Detailed final source-bound evidence and preserved baselines are linked by build4/release/accepted-release.json. Exact-final-head GitHub Actions and unchanged-head readiness checks remain the review-state gates. No merge authorized.
+
+Final release witness PASS. One truncated module log was recovered by unchanged-source reexecution of the same five methods; original log/records retained and explicit hashes/source checks documented in the accepted manifest. Exact-final-head CI remains required before readiness.
