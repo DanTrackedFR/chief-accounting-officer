@@ -1,0 +1,246 @@
+[
+  {
+    "consumer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "consumer_layer": "GROUP_ELIMINATION",
+    "consumer_node": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:6041e1f2822e28b12968a424b30c13392203d572aba827c80a794f8461db19f9",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "IFRS",
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "producer_layer": "FRAMEWORK_ADJUSTMENT",
+    "producer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required_currency": "EUR",
+    "required_framework": "IFRS",
+    "result_fingerprint": "6b032a4ed224e2b1ba2276b79422355e1bc6fab3988a1b93caf93c949b0ce0d4",
+    "result_version": "version:37982128cfee9107f9f90a60ed6d8aca1be673aafeedd72ab9a14014dbcbb1ec",
+    "semantic_metric": "ordinary_reciprocal_balance",
+    "source_fingerprint": "229adb912517f708c59df4285b612f4ad1fb4867fc326c07d167bafbec4625c5",
+    "transformation_version": null,
+    "value": "90.00"
+  },
+  {
+    "consumer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "consumer_layer": "TRANSLATION",
+    "consumer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "consumer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "consumer_scope": "ENTITY-US",
+    "currency": "USD",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:60897b54b40de6beccd0915cf7b3f73ede78893a5e89fc72182abddde09b94cb",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "US_GAAP",
+    "metric_path": [
+      "calculations",
+      "pairs",
+      0,
+      "a_functional"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_layer": "LEGAL_ENTITY",
+    "producer_node": "exec:intercompany-accounting:ENTITY-US:527706d61687b82dc4e010200bcaa10f21bf5df569bd41890ff4632112b16545",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required_currency": "USD",
+    "required_framework": "US_GAAP",
+    "result_fingerprint": "1e8dcaeec5ff52d316121efe7f1cf866ee1596795bc98d3bac777a9c1320c461",
+    "result_version": "version:12582522a97fa573b923c193078132bcec5cf0b3a9f9b8d0bc16325a91523c33",
+    "semantic_metric": "ordinary_reciprocal_balance",
+    "source_fingerprint": "ca780753ee9d3836c6bf7b500035425a9084d9f55da5f00f874541021d10ac02",
+    "transformation_version": null,
+    "value": "100.00"
+  },
+  {
+    "consumer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "consumer_layer": "GROUP_REPORTING",
+    "consumer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:7b8fb995e377cd406b4ea822eb7546e59f1498ca3a0a78c77d9617b98289ba7e",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "IFRS",
+    "metric_path": [
+      "calculations",
+      "consolidated_balances"
+    ],
+    "producer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "producer_layer": "GROUP_ELIMINATION",
+    "producer_node": "exec:consolidation:GROUP-EUR:58729a2ca2b0db13f7f5bb4a8baa6dc3d04af3194471ff7f5c91890e66397493",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required_currency": "EUR",
+    "required_framework": "IFRS",
+    "result_fingerprint": "7ae66ac0dabea176e7a839c1e13c55f9c5dd3470e6f31645a4a5920df3aef65e",
+    "result_version": "version:1b5779d6b91e4bc764cab6fd032f66d072ef669b947d64d4f83c7dd932522a8a",
+    "semantic_metric": "consolidated_population",
+    "source_fingerprint": "16a97f6588630cf8b0e36a631e48ea2ee4db9d42010f5a3d8623935989774810",
+    "transformation_version": null,
+    "value": {
+      "CTA": "0.00",
+      "FX income": "0.00",
+      "cash": "390.00",
+      "equity": "-390.00",
+      "goodwill": "0",
+      "ic loan": "0.00",
+      "ic payable": "0.00",
+      "investment": "0.00",
+      "noncontrolling interest": "0",
+      "sub equity": "0.00"
+    }
+  },
+  {
+    "consumer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "consumer_layer": "FRAMEWORK_ADJUSTMENT",
+    "consumer_node": "exec:intercompany-accounting:GROUP-EUR:4866a4386baa138f0d88ff712b763e16cfcdde83813af0c88b454deea417b22a",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:b17b6940984d03f4e1e75b00047bcf5bf5d393cc1ba89e51e34f7b78ef0ef647",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "US_GAAP",
+    "metric_path": [
+      "calculations",
+      "translation",
+      "translated_tb",
+      "ic loan"
+    ],
+    "producer_case": "case:0f5dbe44811016013cb8c13dc33523c88f1694d799a64d152f925cca85559768",
+    "producer_layer": "TRANSLATION",
+    "producer_node": "exec:foreign-currency:ENTITY-US:4953e02028c79e41d97d3614afb29897fddab55104f4f9c162176560e33ffe82",
+    "producer_period": "period:29127f2045a5e551f37b5dfb70c4cd8e79b0ef12125678fd4a11a5acf6520dc5",
+    "producer_scope": "ENTITY-US",
+    "required_currency": "EUR",
+    "required_framework": "US_GAAP",
+    "result_fingerprint": "779427e6011ffec0d16b67b542c8cabf0fe1af8a9c9bf041ca2b70e4807716a4",
+    "result_version": "version:23a941d8221995078d657924ba61e5b895ef2f38c7c013d1cae8385861ba8c3a",
+    "semantic_metric": "translated_intercompany_balance",
+    "source_fingerprint": "fe165d5b1885162998005bbe8df6bfb466101ee79c291e7423a2e0c2d24e0091",
+    "transformation_version": null,
+    "value": "90.00"
+  },
+  {
+    "consumer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "consumer_layer": "GROUP_REPORTING",
+    "consumer_node": "exec:orchestration-stage3-group:GROUP-EUR:db2cfdd287f053d7f239ddfd454b87890453ddf5088b95aa639ceea2982c7620",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_scope": "GROUP-EUR",
+    "currency": "EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:ebfe91b2fcf4281cb8003bbbd6c660bff3ae39cf72b516376f6bffc5717972d9",
+    "economic_id": "clean",
+    "evidence": [
+      "Independent synthetic source, rate and accounting review; not authenticated approval"
+    ],
+    "framework": "IFRS",
+    "metric_path": [
+      "calculations"
+    ],
+    "producer_case": "case:6ba87596950eba492f5f21310270df0799410759aa3dbd942d3a7b9ffead456b",
+    "producer_layer": "GROUP_REPORTING",
+    "producer_node": "exec:financial-statements:GROUP-EUR:dd883e8d145d52dbcb1f2fc0eb1a1267d9da8b5cdb5a762ce69de277df38fdd5",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_scope": "GROUP-EUR",
+    "required_currency": "EUR",
+    "required_framework": "IFRS",
+    "result_fingerprint": "97fc041901c00420fe6b4dd00b2337230ab9934f04a16dfaf588189c638af3de",
+    "result_version": "version:d8f519cb6bd758902b148545211c6f0a3d31ed6bf3a95163845fac243dff15e3",
+    "semantic_metric": "group_statements",
+    "source_fingerprint": "46523a1ec8def3395412c7be621b8e4b7725d7d97b238ddc991449c461df0565",
+    "transformation_version": null,
+    "value": {
+      "cash_flow": {
+        "bs_cash_bridge": "0.00",
+        "closing": "390.00",
+        "financing": "0.00",
+        "fx": "0.00",
+        "investing": "0.00",
+        "opening": "390.00",
+        "operating": "0.00"
+      },
+      "comparative": {
+        "assets": "390.00",
+        "cash": "390.00",
+        "closing_equity": "390.00",
+        "comprehensive_income": "0",
+        "expenses": "0",
+        "liabilities": "0",
+        "lines": {
+          "cash": "390.00",
+          "opening equity": "-390.00"
+        },
+        "oci": "0",
+        "profit": "0",
+        "revenue": "0"
+      },
+      "current": {
+        "assets": "390.00",
+        "cash": "390.00",
+        "closing_equity": "390.00",
+        "comprehensive_income": "0.00",
+        "expenses": "0",
+        "liabilities": "0.00",
+        "lines": {
+          "CTA": "0.00",
+          "FX income": "0.00",
+          "cash": "390.00",
+          "equity": "-390.00",
+          "goodwill": "0.00",
+          "ic loan": "0.00",
+          "ic payable": "0.00",
+          "investment": "0.00",
+          "noncontrolling interest": "0.00",
+          "sub equity": "0.00"
+        },
+        "oci": "0.00",
+        "profit": "0.00",
+        "revenue": "0.00"
+      },
+      "equity_components": [
+        {
+          "closing": "390",
+          "id": "owners",
+          "oci": "0",
+          "opening": "390",
+          "other": "0",
+          "owner_transactions": "0",
+          "profit": "0",
+          "retrospective_adjustments": "0"
+        }
+      ],
+      "management_performance_measures": [],
+      "note_tieouts": [
+        {
+          "amount": "390",
+          "id": "cash-note",
+          "target": "cash"
+        }
+      ]
+    }
+  }
+]

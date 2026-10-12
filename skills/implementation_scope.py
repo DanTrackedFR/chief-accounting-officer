@@ -49,6 +49,7 @@ def fingerprint_files(case, root, packages):
                 if name != 'production' and candidate.is_file():
                     queue.append(candidate)
     supplements = {
+        'government-grants': ('government-grants', 'grant_knowledge'),
         'borrowing-costs': ('borrowing-costs', 'borrowing_knowledge'),
         'insurance-contracts-accounting': ('insurance-contracts', 'insurance_knowledge'),
         'derivatives-hedge-accounting': ('derivatives-hedge', 'hedge_knowledge'),

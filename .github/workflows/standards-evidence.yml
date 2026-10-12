@@ -8,6 +8,7 @@ on:
       - "intelligence/**"
       - "hosted_cao/**"
       - "knowledge/topics/**/standards-claims.json"
+      - "knowledge/government-grants/**"
       - "knowledge/borrowing-costs/**"
       - "knowledge/standards-evidence/**"
       - "interfaces/**"
@@ -17,9 +18,10 @@ on:
       - "knowledge/phase-2d-topic-manifest.json"
       - ".github/workflows/standards-evidence.yml"
   push:
-    branches: [phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship]
+    branches: [phase-3/government-grants-assistance, phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, main, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship]
     paths:
       - "knowledge/topics/**/standards-claims.json"
+      - "knowledge/government-grants/**"
       - "knowledge/borrowing-costs/**"
       - "knowledge/standards-evidence/**"
       - "interfaces/**"
@@ -40,6 +42,10 @@ jobs:
           python-version: "3.12"
       - name: Validate claim registers
         run: python knowledge/standards-evidence/validate_claims.py
+      - name: Government grants supplemental knowledge
+        run: |
+          python knowledge/government-grants/validate_supplement.py
+          python -m unittest discover -s knowledge/government-grants -p "test_*.py"
       - name: Borrowing costs supplemental knowledge
         run: |
           python knowledge/borrowing-costs/validate_supplement.py

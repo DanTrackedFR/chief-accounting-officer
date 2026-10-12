@@ -1,0 +1,116 @@
+[
+  {
+    "economic_id": "recognised-platform-service",
+    "evidence": "Contract satisfaction and revenue schedule",
+    "primary": [
+      {
+        "index": 0,
+        "owner": "revenue-recognition"
+      }
+    ],
+    "witnesses": []
+  },
+  {
+    "economic_id": "current-enforceable-billing",
+    "evidence": "Current invoice right and contract-specific billing bridge",
+    "primary": [
+      {
+        "index": 0,
+        "owner": "accounts-receivable"
+      }
+    ],
+    "witnesses": [
+      [
+        {
+          "index": 1,
+          "owner": "revenue-recognition"
+        }
+      ]
+    ]
+  },
+  {
+    "economic_id": "receivable-remeasurement",
+    "evidence": "Original foreign position and FX owner adjustment",
+    "primary": [
+      {
+        "index": 0,
+        "owner": "foreign-currency"
+      }
+    ],
+    "witnesses": [
+      [
+        {
+          "index": 1,
+          "owner": "accounts-receivable"
+        }
+      ]
+    ]
+  },
+  {
+    "economic_id": "cash-applied-old-invoice",
+    "evidence": "BANK-DEC remittance applied to original Alpha right",
+    "primary": [
+      {
+        "amount": "200",
+        "index": 2,
+        "line": 0,
+        "owner": "accounts-receivable"
+      },
+      {
+        "amount": "200",
+        "index": 2,
+        "line": 1,
+        "owner": "accounts-receivable"
+      }
+    ],
+    "witnesses": [
+      [
+        {
+          "index": 2,
+          "owner": "revenue-recognition"
+        }
+      ]
+    ]
+  },
+  {
+    "economic_id": "unapplied-customer-cash",
+    "evidence": "BANK-DEC residual remains identified customer liability",
+    "primary": [
+      {
+        "amount": "50",
+        "index": 2,
+        "line": 0,
+        "owner": "accounts-receivable"
+      },
+      {
+        "amount": "50",
+        "index": 2,
+        "line": 2,
+        "owner": "accounts-receivable"
+      }
+    ],
+    "witnesses": []
+  },
+  {
+    "economic_id": "lifetime-allowance-movement",
+    "evidence": "Reviewed credit-loss assumption and owner allowance bridge",
+    "primary": [
+      {
+        "index": 0,
+        "owner": "financial-instruments-ecl"
+      }
+    ],
+    "witnesses": []
+  },
+  {
+    "economic_id": "late-december-service-accrual",
+    "evidence": "MANUAL-DEC approved journal linked to A1 service receipt",
+    "primary": [
+      {
+        "index": 0,
+        "owner": "month-end-close"
+      }
+    ],
+    "witnesses": []
+  }
+]

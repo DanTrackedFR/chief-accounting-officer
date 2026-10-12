@@ -1,0 +1,202 @@
+[
+  {
+    "amount": "880.00",
+    "components": [
+      {
+        "metric_path": [
+          "monetary_fx_profit"
+        ],
+        "producer": "exec:foreign-currency:Synthetic Group:f97119988e7f2c5dee505cf92a35a6e6775a6c4633721237080d2384e463f52b",
+        "sign": -1
+      }
+    ],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "debt_base-financial-statements",
+    "fingerprint": "fdfb941029640f4c994de7227dba9b58b24eb17ad5d08d62587e4f5cc1e04681",
+    "metric_path": [
+      "debt",
+      0,
+      "closing"
+    ],
+    "producer": "exec:debt-financing:Synthetic Group:d9bb54a981cfa8045e5752b8707dc5a51877826ca02aad42ff68a87116456410",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "debt_base"
+  },
+  {
+    "amount": "880.00",
+    "components": [
+      {
+        "metric_path": [
+          "monetary_fx_profit"
+        ],
+        "producer": "exec:foreign-currency:Synthetic Group:f97119988e7f2c5dee505cf92a35a6e6775a6c4633721237080d2384e463f52b",
+        "sign": -1
+      }
+    ],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "debt_current-financial-statements",
+    "fingerprint": "fdfb941029640f4c994de7227dba9b58b24eb17ad5d08d62587e4f5cc1e04681",
+    "metric_path": [
+      "debt",
+      0,
+      "current"
+    ],
+    "producer": "exec:debt-financing:Synthetic Group:d9bb54a981cfa8045e5752b8707dc5a51877826ca02aad42ff68a87116456410",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "debt_current"
+  },
+  {
+    "amount": "0",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "debt_noncurrent-financial-statements",
+    "fingerprint": "fdfb941029640f4c994de7227dba9b58b24eb17ad5d08d62587e4f5cc1e04681",
+    "metric_path": [
+      "debt",
+      0,
+      "noncurrent"
+    ],
+    "producer": "exec:debt-financing:Synthetic Group:d9bb54a981cfa8045e5752b8707dc5a51877826ca02aad42ff68a87116456410",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "debt_noncurrent"
+  },
+  {
+    "amount": "80.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "interest_expense-financial-statements",
+    "fingerprint": "fdfb941029640f4c994de7227dba9b58b24eb17ad5d08d62587e4f5cc1e04681",
+    "metric_path": [
+      "debt",
+      0,
+      "effective_interest"
+    ],
+    "producer": "exec:debt-financing:Synthetic Group:d9bb54a981cfa8045e5752b8707dc5a51877826ca02aad42ff68a87116456410",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "interest_expense"
+  },
+  {
+    "amount": "-80.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "monetary_fx-financial-statements",
+    "fingerprint": "1e74d7f3f2206d8122c31a9e2acf5a92cd52ecfeb66d92a01ea0757feefc371a",
+    "metric_path": [
+      "monetary_fx_profit"
+    ],
+    "producer": "exec:foreign-currency:Synthetic Group:f97119988e7f2c5dee505cf92a35a6e6775a6c4633721237080d2384e463f52b",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "monetary_fx"
+  },
+  {
+    "amount": "40",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "derivative_balance-financial-statements",
+    "fingerprint": "1d828f9a2949dcd4fe2984f4cec5d3be960541b0e795c4cf5540f5faf2472169",
+    "metric_path": [
+      "derivatives",
+      "forward1",
+      "closing"
+    ],
+    "producer": "exec:derivatives-hedge-accounting:Synthetic Group:cea136a0e32b8cf60069fcd80d2099f967e433961b043038fd9091a7484b3cf1",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "derivative_balance"
+  },
+  {
+    "amount": "36",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "hedge_reserve-financial-statements",
+    "fingerprint": "1d828f9a2949dcd4fe2984f4cec5d3be960541b0e795c4cf5540f5faf2472169",
+    "metric_path": [
+      "hedge_reserves",
+      "relationship1",
+      "closing"
+    ],
+    "producer": "exec:derivatives-hedge-accounting:Synthetic Group:cea136a0e32b8cf60069fcd80d2099f967e433961b043038fd9091a7484b3cf1",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "hedge_reserve"
+  },
+  {
+    "amount": "4",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "hedge_pnl-financial-statements",
+    "fingerprint": "1d828f9a2949dcd4fe2984f4cec5d3be960541b0e795c4cf5540f5faf2472169",
+    "metric_path": [
+      "derivatives",
+      "forward1",
+      "ineffectiveness"
+    ],
+    "producer": "exec:derivatives-hedge-accounting:Synthetic Group:cea136a0e32b8cf60069fcd80d2099f967e433961b043038fd9091a7484b3cf1",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "hedge_pnl"
+  },
+  {
+    "amount": "36",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "hedge_oci-financial-statements",
+    "fingerprint": "1d828f9a2949dcd4fe2984f4cec5d3be960541b0e795c4cf5540f5faf2472169",
+    "metric_path": [
+      "hedge_reserves",
+      "relationship1",
+      "recognized_oci"
+    ],
+    "producer": "exec:derivatives-hedge-accounting:Synthetic Group:cea136a0e32b8cf60069fcd80d2099f967e433961b043038fd9091a7484b3cf1",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "hedge_oci"
+  },
+  {
+    "amount": "1720",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "cash_balance-financial-statements",
+    "fingerprint": "827af09fb6e1e8da26f07d6ab0773a45f0a8d7d0cac06ebdad28f9af92c753c6",
+    "metric_path": [
+      "closing"
+    ],
+    "producer": "exec:cash-flow-reporting:Synthetic Group:3d5349f9bb3138bb6b640fde3e8f82b5af9edfd1e4a506f6e03266585224a2af",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "cash_balance"
+  },
+  {
+    "amount": "-200",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "financing_cash-financial-statements",
+    "fingerprint": "827af09fb6e1e8da26f07d6ab0773a45f0a8d7d0cac06ebdad28f9af92c753c6",
+    "metric_path": [
+      "financing"
+    ],
+    "producer": "exec:cash-flow-reporting:Synthetic Group:3d5349f9bb3138bb6b640fde3e8f82b5af9edfd1e4a506f6e03266585224a2af",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "financing_cash"
+  },
+  {
+    "amount": "-80",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:c35c11267c5262d4a25ab3857554d4100efd71cb98039112491072af34d716d7",
+    "economic_id": "operating_cash-financial-statements",
+    "fingerprint": "827af09fb6e1e8da26f07d6ab0773a45f0a8d7d0cac06ebdad28f9af92c753c6",
+    "metric_path": [
+      "direct_operating"
+    ],
+    "producer": "exec:cash-flow-reporting:Synthetic Group:3d5349f9bb3138bb6b640fde3e8f82b5af9edfd1e4a506f6e03266585224a2af",
+    "purpose": "report",
+    "qualification_evidence": "Separate synthetic exact-case source/owner review",
+    "semantic": "operating_cash"
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "closing": "1520.00",
+  "drivers": [
+    {
+      "amount": "800",
+      "label": "Billed enforceable receivables",
+      "owner_ref": {
+        "amount": "800",
+        "owner_import": "accounts-receivable",
+        "result_path": [
+          "billed"
+        ]
+      }
+    },
+    {
+      "amount": "-200",
+      "label": "Cash and deposits applied",
+      "owner_ref": {
+        "amount": "200",
+        "owner_import": "accounts-receivable",
+        "result_path": [
+          "applied_cash_and_deposits"
+        ]
+      }
+    },
+    {
+      "amount": "0",
+      "label": "Approved credits",
+      "owner_ref": {
+        "amount": "0",
+        "owner_import": "accounts-receivable",
+        "result_path": [
+          "credits"
+        ]
+      }
+    },
+    {
+      "amount": "10.00",
+      "label": "Receivable FX",
+      "owner_ref": {
+        "amount": "10",
+        "owner_import": "accounts-receivable",
+        "result_path": [
+          "fx_movement"
+        ]
+      }
+    }
+  ],
+  "opening": "910",
+  "residual": "0.00",
+  "source_doc": "balance-source",
+  "unit": "USD"
+}

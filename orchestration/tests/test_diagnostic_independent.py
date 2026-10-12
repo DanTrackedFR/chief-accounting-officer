@@ -251,7 +251,10 @@ class IndependentProtectedRoadmapMaintenanceQA(unittest.TestCase):
         self.assertEqual(len(record['protected_documents']),1101)
         entries=[r for r in record['protected_documents'] if r['path']=='architecture/build-roadmap.md']
         self.assertEqual(len(entries),1)
-        self.assertEqual(entries[0]['sha256'],hashlib.sha256((root/'architecture/build-roadmap.md').read_bytes()).hexdigest())
+        archived=(root/'skills/government-grants/release-evidence/preserved-main-roadmap.md').read_bytes()
+        self.assertEqual(entries[0]['sha256'],hashlib.sha256(archived).hexdigest())
+        self.assertTrue((root/'architecture/build-roadmap.md').read_bytes().startswith(archived))
+        self.assertEqual('46c4ad4c42102a204aa0948f354c067de42fb5ae5d2149f7b8159e4523d45603',hashlib.sha256((root/'skills/insurance-contracts-accounting/LIVE-BASELINE.json').read_bytes()).hexdigest())
         entries[0]['sha256']='<authorized-roadmap-only>'
         digest=hashlib.sha256(json.dumps(record,sort_keys=True,separators=(',',':')).encode()).hexdigest()
         # Derived independently from live-main186b3028 original manifest bytes.

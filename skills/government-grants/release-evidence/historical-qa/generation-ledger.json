@@ -1,0 +1,125 @@
+{
+  "proofs": [
+    {
+      "command": "python -m build4.prove_integrated",
+      "hash_seeds": [
+        "283",
+        "1709"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "cross_seed_exact_bytes": true,
+      "sha256": "4d2f1acf2dd153b079fee4c1eb976a10e6cb9fe865e1aa90deff97a246ce348b"
+    },
+    {
+      "command": "python -m build4.prove_memory",
+      "hash_seeds": [
+        "283",
+        "1709"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "cross_seed_exact_bytes": true,
+      "sha256": "8bd4ebe0dfe05cce4570f87b0935adf5327746b413fd4e20cae0fb0745f24561"
+    },
+    {
+      "command": "python -m intelligence.tests.prove_integrated",
+      "hash_seeds": [
+        "19",
+        "941"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "cross_seed_exact_bytes": true,
+      "sha256": "1608f16ae73fcb3cbca3244ed0b79f18bd853a9d9261021c1bdefdc43dbaf179"
+    },
+    {
+      "command": "python -m hosted_cao.tests.prove_http",
+      "hash_seeds": [
+        "19",
+        "941"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "cross_seed_exact_bytes": true,
+      "sha256": "436c84c00414195862d4d5b6582dca05128201d49625141625a89c9f884c4ea0"
+    },
+    {
+      "command": "python -m local_cao.tests.prove_cli",
+      "hash_seeds": [
+        "19",
+        "941"
+      ],
+      "exit_codes": [
+        0,
+        0
+      ],
+      "cross_seed_exact_bytes": true,
+      "sha256": "36fdfda5ff01adab42e29d9c3464bb6299c763bade604da78632bf3e4715d64c"
+    }
+  ],
+  "independent_tests": [
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_grants_historical_qa",
+      "exit_code": 0,
+      "tests": 9,
+      "log": "independent-history-tests.log"
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_implementation_scope",
+      "exit_code": 0,
+      "tests": 10,
+      "log": "implementation-scope-retest.log"
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_insurance_integration",
+      "exit_code": 0,
+      "tests": 9,
+      "log": "insurance-integration-retest.log"
+    }
+  ],
+  "stage2": {
+    "command": "existing generate_persistence_stage2_examples.artifacts()",
+    "fresh_processes": 11,
+    "expected_controlled_process_exit": 73,
+    "completed_files": 9,
+    "status": "PASS",
+    "source_authority_review": "stage2-full-authority-review.json"
+  },
+  "stage4": {
+    "command": "existing generate_persistence_stage4_examples.artifacts()",
+    "fresh_processes": 14,
+    "expected_controlled_process_exits": [
+      73,
+      74
+    ],
+    "completed_files": 15,
+    "status": "PASS"
+  },
+  "final_migration": {
+    "specialist_compared_files": 548,
+    "specialist_migrated_files": 37,
+    "orchestration_compared_files": 347,
+    "orchestration_migrated_files": 145,
+    "orchestration_bijective_identities": 1760,
+    "integrated_proof_files": 5,
+    "integrated_bijective_identities": 76,
+    "unapproved_semantic_changes": 0,
+    "approved_exact_label_changes": 2
+  },
+  "shared_source_hashes": {
+    "skills/production.py": "10a34f9fcbe28bb291373fe9c640470ee8bd1202b46590ec66a2a2105d28dfb4",
+    "skills/implementation_scope.py": "aeec93d91ef8f0229ed27f679e7d93a8b7e926bc3be1f8520fe5ca4acd1a41a1",
+    "skills/core_accounting.py": "c668a8c5b334c0f8cb98da27e14fe764972c28d7f8b0a875600e1e51fd6589ae",
+    "interfaces/public_output.py": "240aead226b7913712c13dc2af8b0f22dc8d5a6c17e8f7fb26f5f343539ad35b",
+    "orchestration/planning.py": "07a195645f0611eb07eebc2c06d43b37b24cf657d892a9123db5f1e129edfbf8"
+  }
+}

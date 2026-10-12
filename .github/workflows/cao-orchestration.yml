@@ -1,7 +1,7 @@
 name: CAO orchestration integration
 on:
   push:
-    branches: [phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
+    branches: [phase-3/government-grants-assistance, phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
@@ -15,6 +15,8 @@ on:
       - 'orchestration/**'
       - 'interfaces/**'
       - 'skills/management-accounting-analytics/**'
+      - 'knowledge/government-grants/**'
+      - 'skills/government-grants/**'
       - 'skills/production.py'
       - 'skills/tests/**'
       - '.github/workflows/cao-orchestration.yml'
@@ -83,11 +85,11 @@ jobs:
           python -m unittest discover -s build4/tests -p 'test_*.py'
           PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/build4-283.json
           PYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/build4-1709.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/integrated-proof.json /tmp/build4-283.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('build4/release/integrated-proof.json'))")" /tmp/build4-283.json
           cmp /tmp/build4-283.json /tmp/build4-1709.json
           PYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory-283.json
           PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory-1709.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/memory-proof.json /tmp/memory-283.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('build4/release/memory-proof.json'))")" /tmp/memory-283.json
           cmp /tmp/memory-283.json /tmp/memory-1709.json
           python -m build4.verify_release
       - name: Build 3 intelligence and deterministic integrated proof
@@ -96,7 +98,7 @@ jobs:
           python -m unittest discover -s intelligence/tests -p 'test_*.py'
           PYTHONHASHSEED=19 python -m intelligence.tests.prove_integrated > /tmp/build3-19.json
           PYTHONHASHSEED=941 python -m intelligence.tests.prove_integrated > /tmp/build3-941.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/intelligence/release/integrated-proof.json /tmp/build3-19.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('intelligence/release/integrated-proof.json'))")" /tmp/build3-19.json
           cmp /tmp/build3-19.json /tmp/build3-941.json
       - name: Hosted service authored and independent QA
         if: steps.prior.outputs.cached != 'true'
@@ -104,14 +106,14 @@ jobs:
           python -m unittest discover -s hosted_cao/tests -p "test_*.py"
           PYTHONHASHSEED=19 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-19.json
           PYTHONHASHSEED=941 python -m hosted_cao.tests.prove_http > /tmp/hosted-proof-941.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/hosted_cao/release/http-proof.json /tmp/hosted-proof-19.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('hosted_cao/release/http-proof.json'))")" /tmp/hosted-proof-19.json
           cmp /tmp/hosted-proof-19.json /tmp/hosted-proof-941.json
       - name: Local execution authored and independent QA
         if: steps.prior.outputs.cached != 'true'
         run: |
           python -m unittest discover -s local_cao/tests -p 'test_*.py'
           python -m local_cao.tests.prove_cli > /tmp/local-cao-proof.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/local_cao/examples/cli-proof.json /tmp/local-cao-proof.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('local_cao/examples/cli-proof.json'))")" /tmp/local-cao-proof.json
       - name: Orchestration authored and independent QA
         if: steps.prior.outputs.cached != 'true'
         run: python -m intelligence.tests.run_release suite orchestration/tests 'test_*.py' ci-orchestration
@@ -126,6 +128,8 @@ jobs:
       - name: Supplemental knowledge and independent knowledge QA
         if: steps.prior.outputs.cached != 'true'
         run: |
+          python knowledge/government-grants/validate_supplement.py
+          python -m unittest discover -s knowledge/government-grants -p "test_*.py"
           python knowledge/borrowing-costs/validate_supplement.py
           python -m unittest discover -s knowledge/borrowing-costs -p "test*.py"
           python knowledge/income-taxes/test_supplement.py

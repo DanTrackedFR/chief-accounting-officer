@@ -253,3 +253,10 @@ Claude Code user operation, outstanding TrackedFR Build2B application acceptance
 authenticated preparer/reviewer governance and production deployment/security/
 operational acceptance. Government Grants#34, Borrowing Costs#35 and Investment
 Property#37 remain separately managed. Build2B and the commercial MVP are INCOMPLETE.
+
+
+### Government Grants #34 — PR27 continuation production candidate
+
+SKILL-GRANT-001 now supplies bounded2026 IFRS IAS20, AASB120 Tier1 for-profit, elected FRS102 Section24 and evidenced early-adopted Topic832 accounting through the existing production boundary. The original172-claim supplemental namespace and47/29/96 assurance classifications are preserved; canonical157/347/1598 and the48 existing production skills remain intact. Metadata now records49 production positions. Investment Property #37 remains its own unmerged workstream, with no changes imported.
+
+Income matching, asset deferral/basis alternatives, nonmonetary owner-clearing transfers, unrecognized advances, past-cost compensation and simple deferral/current-expense clawbacks reconcile source, opening cumulative entitlement, eligible owner costs, exact journals, GL/statement and disclosures. Unsupported loans/forgiveness, complex repayments, prior advance/repayment histories, unevidenced US nonadopters, unsupported entities/periods and other-owner methods remain blocked. See the explicit framework support matrix and architecture reconciliation. Independent knowledge39 and implementation57 test methods pass; authored/native, deterministic examples, historical preservation and full release/CI gates remain required. PR27 stays Draft until all exact-head gates pass; no merge is authorized.

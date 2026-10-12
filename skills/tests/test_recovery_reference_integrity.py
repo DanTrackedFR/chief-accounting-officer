@@ -6,6 +6,7 @@ import unittest
 from cases import revenue  # initialize the existing skill import path
 from production import execute, serializable
 from recovery_references import ROOT, MANIFEST, reference_path
+from orchestration.history_references import prior_reference_path
 
 
 class ReferenceIntegrity(unittest.TestCase):
@@ -34,7 +35,7 @@ class ReferenceIntegrity(unittest.TestCase):
         for name, row in manifest['files'].items():
             self.assertEqual(baseline[name], row['original_sha256'])
             self.assertFalse(name.endswith('.public.json'))
-            compare(json.loads((ROOT/name).read_text()), json.loads(reference_path(name).read_text()), name)
+            compare(json.loads((ROOT/name).read_text()), json.loads(prior_reference_path(name).read_text()), name)
         self.assertEqual(forward, manifest['identity_map'])
 
     def test_current_imports_are_exact_native_results(self):

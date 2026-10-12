@@ -22,7 +22,7 @@ FACT_ADAPTERS = {
     'currency_exposure': ('foreign-currency', ('items',)),
     'customer_contract': ('revenue-recognition', ('obligations',)),
     'obligation': ('provisions-contingencies', ('obligation',)),
-    'grant': ('government-grants', ('agreement',)),
+    'grant': ('government-grants', ('agreement', 'grants')),
     'qualifying_interest': ('borrowing-costs', ('project',)),
     'rental_investment': ('investment-property', ('property',)),
     'biological_population': ('agriculture-biological-assets', ('assets',)),

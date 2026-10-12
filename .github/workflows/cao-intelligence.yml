@@ -2,7 +2,7 @@ name: CAO Build 3 intelligence acceptance
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths: ['build4/**', 'intelligence/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', '.github/workflows/cao-intelligence.yml']
+    paths: ['skills/**', 'knowledge/government-grants/**', 'build4/**', 'intelligence/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', '.github/workflows/cao-intelligence.yml']
   workflow_dispatch:
 jobs:
   intelligence-acceptance:
@@ -22,5 +22,5 @@ jobs:
         run: |
           PYTHONHASHSEED=19 python -m intelligence.tests.prove_integrated > /tmp/proof19.json
           PYTHONHASHSEED=941 python -m intelligence.tests.prove_integrated > /tmp/proof941.json
-          cmp recovery/borrowing-costs-pr42/integration-fresh/intelligence/release/integrated-proof.json /tmp/proof19.json
+          cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('intelligence/release/integrated-proof.json'))")" /tmp/proof19.json
           cmp /tmp/proof19.json /tmp/proof941.json

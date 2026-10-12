@@ -1,0 +1,65 @@
+{
+  "independent_review": "Independent preservation reviewer executed corrected legacy expectations; no substantive method or original artifact edits.",
+  "skips": 0,
+  "status": "PASS",
+  "suites": [
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_insurance_release",
+      "elapsed_seconds": 0.178,
+      "exit_code": 0,
+      "log": "insurance-release.log",
+      "name": "insurance-release",
+      "skips": 0,
+      "tests": 4
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest orchestration.tests.test_diagnostic_independent",
+      "elapsed_seconds": 43.047,
+      "exit_code": 0,
+      "log": "diagnostic-independent.log",
+      "name": "diagnostic-independent",
+      "skips": 0,
+      "tests": 32
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest local_cao.tests.test_authored",
+      "elapsed_seconds": 1.917,
+      "exit_code": 0,
+      "log": "local-authored.log",
+      "name": "local-authored",
+      "skips": 0,
+      "tests": 25
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_presentation_workflows.PresentationTests.test_saved_examples_and_public_cli",
+      "elapsed_seconds": 5.527,
+      "exit_code": 0,
+      "log": "presentation-saved-public.log",
+      "name": "presentation-saved-public",
+      "skips": 0,
+      "tests": 1
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_grants_historical_qa",
+      "elapsed_seconds": 3.797,
+      "exit_code": 0,
+      "log": "historical-independent.log",
+      "name": "historical-independent",
+      "skips": 0,
+      "tests": 9
+    }
+  ],
+  "target_sha256": {
+    "architecture/build-roadmap.md": "bba719689a30ff80d9415c6dcd1db56fa383d24a6e835454086c1bf3ede8e1ac",
+    "local_cao/tests/test_authored.py": "3b950a33b9b439d9c408c31c31df19559de9af9744ab074f3775bc7f24b6f93c",
+    "orchestration/tests/test_diagnostic_independent.py": "d829a054cc9d42545261ac83c7e8c6ce979c7c193bb46a398f8be0dd69e75015",
+    "skills/government-grants/release-evidence/legacy-public-transition-review.json": "f84bc61fb08950c829147d7deb890e7f343d840004edc62ed55d1ee5277a6b68",
+    "skills/government-grants/release-evidence/metadata-reconciliation.json": "b8553d19bea048d9a6e328b258c7dfb2ce36dfce5d2eb5ed7eedca28d43f249c",
+    "skills/government-grants/release-evidence/preserved-main-roadmap.md": "0ae4a16411ea07a4db938d06c153facfd9b8ed195aed838737ae601d3bcbdee8",
+    "skills/insurance-contracts-accounting/LIVE-BASELINE.json": "46c4ad4c42102a204aa0948f354c067de42fb5ae5d2149f7b8159e4523d45603",
+    "skills/tests/test_grants_historical_qa.py": "03d237d7d8690890a573e2d0b6d0ca5ab2e9bb40a388932535ac23e5ec003c52",
+    "skills/tests/test_insurance_release.py": "7c2a08542778312bc067187f16d2a170f8ebb4db14186aacde629dfbde8498ee",
+    "skills/tests/test_presentation_workflows.py": "9d56ba04c19ae89e91e6a4e773a801902b530057bf8128f017d011153d56fc13"
+  },
+  "total_tests": 71
+}

@@ -1,0 +1,9 @@
+# Supplemental Government Grants & Assistance
+
+Namespace: `SUPPLEMENTAL_GOVERNMENT_GRANTS`. This separately governed extension supports the existing `SKILL-GRANT-001`; it is not a canonical topic. Canonical157 topics /347 mappings /1598 claims and the five prior supplemental populations remain separate.
+
+The package contains172 independently approved atomic claims: IFRS47, AASB48, UK32, US45. The independent reviewer recorded a substantive challenge and exact content hash for each claim. Evidence remains47 SOURCE_VERIFIED,29 PRIMARY_CORROBORATED and96 MODEL_DERIVED_AUDIT_REQUIRED;76 named direct-source accuracy approvals and96 training-data accuracy approvals preserve that separation. Applicable2026 scope and meaningful framework differences are part of every retrieval, not optional annotations. See `RESEARCH.md` for source inspection, `FRAMEWORK-METHOD.md` for practical accounting, `standards-claims.json` for internal governance and `independent-review.json` for independent disposition after review.
+
+Run `python knowledge/government-grants/validate_supplement.py` and `python -m unittest discover -s knowledge/government-grants -p 'test_*.py'`. Runtime retrieval requires APPROVED status with exact independent hashes; pending or materially changed knowledge is rejected. The validator includes independent-ledger correspondence and public-provenance contamination checks. Approvals do not remove lower-evidence future authority-audit obligations.
+
+Only supported models/entities/reporting windows can retrieve. Unsupported US nonadopter analogy, US below-market-loan benefit, UK concessional-loan implementation, AASB NFP/public-sector/Tier2 and unreviewed future/early presentation routes fail closed. Agriculture special grants go to the Agriculture owner; cost-model biological grants are distinguished explicitly. This knowledge package does not construct a CAO orchestrator or edit another roadmap skill.

@@ -1,0 +1,998 @@
+{
+  "applicability_review": {
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": [],
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ]
+  },
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "case_id": "synthetic-insurance-contracts-accounting",
+  "cash_events": [
+    {
+      "amount": "1000",
+      "date": "2026-01-01",
+      "document_id": "doc-premium1",
+      "economic_id": "premium-economic1",
+      "group_id": "group1",
+      "id": "premium1",
+      "kind": "premium",
+      "policy_id": "policy1"
+    },
+    {
+      "amount": "200",
+      "date": "2026-12-01",
+      "document_id": "doc-payment1",
+      "economic_id": "payment-economic1",
+      "group_id": "group1",
+      "id": "payment1",
+      "kind": "claim_payment",
+      "policy_id": "policy1"
+    }
+  ],
+  "claims": [
+    {
+      "document_id": "doc-claim1",
+      "economic_id": "claim-economic1",
+      "expected_settlement_date": "2027-03-01",
+      "group_id": "group1",
+      "id": "claim1",
+      "incurred": "420",
+      "occurrence_date": "2026-09-01",
+      "paid": "200",
+      "payment_memo": "Original settlement source",
+      "policy_id": "policy1",
+      "valuation_date": "2026-12-31"
+    }
+  ],
+  "contracts": [
+    {
+      "acquired": false,
+      "adverse_effect": true,
+      "boundary_memo": "Actual enforceable single coverage boundary",
+      "cohort": "2026",
+      "commercial_substance": true,
+      "coverage_end": "2027-12-31",
+      "coverage_start": "2026-01-01",
+      "currency": "EUR",
+      "document_id": "doc-policy1",
+      "economic_id": "policy-economic1",
+      "financial_guarantee": false,
+      "fixed_fee_service": false,
+      "group_id": "group1",
+      "id": "policy1",
+      "insured_event_benefit": "5000",
+      "investment_component": false,
+      "issue_date": "2026-01-01",
+      "modification": false,
+      "no_event_benefit": "0",
+      "nonfinancial_risk": true,
+      "onerous_date": "2026-01-01",
+      "participating": false,
+      "perspective": "issued",
+      "portfolio": "property",
+      "premium_due_date": "2026-01-01",
+      "product": "property_fire",
+      "profitability": "no_significant_possibility",
+      "recognition_date": "2026-01-01",
+      "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+      "scope_assessed": true,
+      "seller_warranty": false,
+      "separated_component": false,
+      "significant_insurance_risk": true,
+      "terms_memo": "Executed synthetic policy compensation for insured property fire",
+      "transition": false,
+      "uncertain_event": true,
+      "us_contract_type": "short_duration"
+    }
+  ],
+  "currency": "EUR",
+  "disclosure_review": {
+    "complete": true,
+    "document_id": "doc-disclosures",
+    "framework": "IFRS",
+    "framework_checklist": "IFRS actual operative insurance requirement source",
+    "group_ids": [
+      "group1"
+    ],
+    "id": "disclosures",
+    "methods_inputs_memo": "Qualified methods inputs",
+    "report_ids": [
+      "report1"
+    ],
+    "requirement_ids": [
+      "amounts",
+      "rollforwards",
+      "judgments",
+      "insurance_risk",
+      "financial_risk"
+    ],
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "risk_memo": "Controlled insurance and finance risk register"
+  },
+  "documents": [
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "acquired": false,
+        "adverse_effect": true,
+        "boundary_memo": "Actual enforceable single coverage boundary",
+        "cohort": "2026",
+        "commercial_substance": true,
+        "coverage_end": "2027-12-31",
+        "coverage_start": "2026-01-01",
+        "currency": "EUR",
+        "economic_id": "policy-economic1",
+        "financial_guarantee": false,
+        "fixed_fee_service": false,
+        "group_id": "group1",
+        "id": "policy1",
+        "insured_event_benefit": "5000",
+        "investment_component": false,
+        "issue_date": "2026-01-01",
+        "modification": false,
+        "no_event_benefit": "0",
+        "nonfinancial_risk": true,
+        "onerous_date": "2026-01-01",
+        "participating": false,
+        "perspective": "issued",
+        "portfolio": "property",
+        "premium_due_date": "2026-01-01",
+        "product": "property_fire",
+        "profitability": "no_significant_possibility",
+        "recognition_date": "2026-01-01",
+        "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+        "scope_assessed": true,
+        "seller_warranty": false,
+        "separated_component": false,
+        "significant_insurance_risk": true,
+        "terms_memo": "Executed synthetic policy compensation for insured property fire",
+        "transition": false,
+        "uncertain_event": true,
+        "us_contract_type": "short_duration"
+      },
+      "content_hash": "7abd29ab0e78ea12784dc1a3c9d9fdd9a4d2b7639c721e8ab06cd9cc7e31c45d",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-policy1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "aggregation_basis": "US similar acquisition and servicing business",
+        "assumption_version": "assumptions1",
+        "cohort": "2026",
+        "contract_ids": [
+          "policy1"
+        ],
+        "economic_id": "group-economic1",
+        "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+        "id": "group1",
+        "membership_locked": true,
+        "model": "IFRS17_GMM",
+        "model_version": "model1",
+        "original_contract_ids": [
+          "policy1"
+        ],
+        "portfolio": "property",
+        "product": "property_fire",
+        "profitability": "no_significant_possibility",
+        "recognition_date": "2026-01-01"
+      },
+      "content_hash": "6ae75ea9db46c15e83be228b496273f05c62cdcca89f22c5a4d8f4d1d9a46449",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "amount": "1000",
+        "date": "2026-01-01",
+        "economic_id": "premium-economic1",
+        "group_id": "group1",
+        "id": "premium1",
+        "kind": "premium",
+        "policy_id": "policy1"
+      },
+      "content_hash": "a8fc8e841c0bf9248495b363568f6dfd9811d9599c6b6369729122b84874e66f",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-premium1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "amount": "200",
+        "date": "2026-12-01",
+        "economic_id": "payment-economic1",
+        "group_id": "group1",
+        "id": "payment1",
+        "kind": "claim_payment",
+        "policy_id": "policy1"
+      },
+      "content_hash": "d3b7e8ac0572d75d2cdba072e8d1ef3813af9587080d12432cc8e45f77e35fd3",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-payment1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "claim-economic1",
+        "expected_settlement_date": "2027-03-01",
+        "group_id": "group1",
+        "id": "claim1",
+        "incurred": "420",
+        "occurrence_date": "2026-09-01",
+        "paid": "200",
+        "payment_memo": "Original settlement source",
+        "policy_id": "policy1",
+        "valuation_date": "2026-12-31"
+      },
+      "content_hash": "0165a55509b60478adc4e274112900937829910e190e3beec4fae1a892f00d64",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-claim1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "acquisition_amortization": "0",
+        "acquisition_attributable": true,
+        "acquisition_expense_election": false,
+        "actuary": "Synthetic qualified actuary",
+        "assumption_version": "assumptions1",
+        "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+        "boundary_reviewed": true,
+        "cash_population_hash": "68824a7ce509f0debdb7b7c275e749416c34af29fb8651933f0bdb71a90a2c86",
+        "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+        "change_kind": "assumption",
+        "change_risk": "nonfinancial",
+        "change_service": "future",
+        "claim_discount_exemption": true,
+        "claim_paid": "200",
+        "claim_population_hash": "65beec4f985118a3224c01fb4a6ce66560e8fbb92fd8df13dbf697f84cc07135",
+        "claims_undiscounted": true,
+        "closing_csm": "94.50",
+        "closing_dac": "0",
+        "closing_lic": "220",
+        "closing_loss": "0",
+        "closing_lrc": "562.50",
+        "closing_pv": "438",
+        "closing_ra": "30",
+        "contract_ids": [
+          "policy1"
+        ],
+        "contract_population_hash": "132fb02499ca76dcae5193badc841ca5135921ecc48c2c23962c26f0aa85990f",
+        "coverage_method": "Qualified quantity of benefits and duration units register",
+        "csm_interest": "6.00",
+        "csm_release": "31.50",
+        "currency": "EUR",
+        "current_units": "25",
+        "dac_writeoff": "0",
+        "deficiency_liability": "0",
+        "discount_curve_unchanged": true,
+        "discount_source": "Qualified supplied curve register version1",
+        "entity": "Synthetic Group",
+        "expected_premiums": "1000",
+        "expected_service": "400",
+        "fcf_finance": "8",
+        "framework": "IFRS",
+        "future_change_current": "30",
+        "future_change_locked": "30",
+        "group_id": "group1",
+        "id": "report1",
+        "incurred": "420",
+        "incurred_pv": "400",
+        "incurred_ra": "20",
+        "initial_csm": "150",
+        "initial_date": "2026-01-01",
+        "initial_fcf": "-150",
+        "initial_loss": "0",
+        "initial_outflows": "800",
+        "initial_ra": "50",
+        "initial_ra_dummy": "0",
+        "interest_day_basis": "actual365_simple",
+        "interest_fraction": "1",
+        "investment_income": "0",
+        "investment_income_policy": "exclude",
+        "lic_finance": "0",
+        "locked_rate": "0.04",
+        "loss_allocation": "0",
+        "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+        "loss_recovery": "0",
+        "maintenance_cost": "0",
+        "max_claim_to_payment_days": "181",
+        "max_service_to_due_days": "364",
+        "measurement_date": "2026-12-31",
+        "model": "IFRS17_GMM",
+        "model_version": "model1",
+        "nonperformance_reviewed": true,
+        "objectivity_memo": "Synthetic independent objectivity review",
+        "onerous_assessed": true,
+        "onerous_indicator": false,
+        "opening_csm": "0",
+        "opening_lic": "0",
+        "opening_loss": "0",
+        "opening_lrc": "0",
+        "opening_ra": "0",
+        "paa_inception_reviewed": true,
+        "paa_loss": "0",
+        "paa_material_equivalence": false,
+        "paa_significant_variability": false,
+        "past_service_change": "0",
+        "pattern_reviewed": true,
+        "portfolio": "property",
+        "premium_financing_exemption": true,
+        "product": "property_fire",
+        "qualification_memo": "Synthetic independently reviewed qualification evidence",
+        "ra_release": "20",
+        "remaining_claims": "0",
+        "remaining_fcf": "0",
+        "remaining_units": "75",
+        "revenue_pattern": "time",
+        "reviewer": "Synthetic separate actuarial reviewer",
+        "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+        "service_fraction": "0.5",
+        "service_release": "451.50",
+        "signed_on": "2027-01-20",
+        "successful_acquisition": true,
+        "unsupported_features": [],
+        "us_aggregation_basis": "US similar acquisition and servicing business",
+        "us_contract_scope_reviewed": true,
+        "us_insurance_entity": true
+      },
+      "content_hash": "7785236dfbbb0e7044f87f0d5ac22a945609eb4216c9cd7aced21f82af428b58",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-report1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "800",
+        "id": "Cash",
+        "opening": "0",
+        "statement": "800"
+      },
+      "content_hash": "6cf952e37550f55b02ec0f0082dba45a6a4d4a5bbf02bf97f32f0c79fa0f4779",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Cash",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-562.50",
+        "id": "Insurance remaining coverage group1",
+        "opening": "0",
+        "statement": "-562.50"
+      },
+      "content_hash": "518c165dca20ac4ce9088bfcd0ff1a8ce9091a91bafe4b22f8a2799b18c370d3",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Insurance remaining coverage group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-220",
+        "id": "Insurance incurred claims group1",
+        "opening": "0",
+        "statement": "-220"
+      },
+      "content_hash": "fcdd8f7aee5698a2b19a13513953688c90794828d95ddb4b9be646da839815e0",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Insurance incurred claims group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-451.50",
+        "id": "Insurance service revenue group1",
+        "opening": "0",
+        "statement": "-451.50"
+      },
+      "content_hash": "72864a058bfe8be4b711a28a5536079e091fb1ad8651b8bc5402159b9a28f115",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Insurance service revenue group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "420",
+        "id": "Insurance service expense group1",
+        "opening": "0",
+        "statement": "420"
+      },
+      "content_hash": "1078375f087e08a4b4bd72a2ce35d74bfb26df20bb72b4c793b51e694dc2e3ac",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Insurance service expense group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "14.00",
+        "id": "Insurance finance group1",
+        "opening": "0",
+        "statement": "14.00"
+      },
+      "content_hash": "ef05369e757a48c339b2ddfd3b866c7bc66e49233d80d2df21ccbfc06bb283ab",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-Insurance finance group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "cash_events_ids": [
+          "premium1",
+          "payment1"
+        ],
+        "claims_ids": [
+          "claim1"
+        ],
+        "complete": true,
+        "completeness_memo": "Independent source totals and unique economic identity review",
+        "contracts_ids": [
+          "policy1"
+        ],
+        "groups_ids": [
+          "group1"
+        ],
+        "id": "population",
+        "reports_ids": [
+          "report1"
+        ],
+        "reviewer": "Synthetic independent completeness reviewer",
+        "source_system": "Independent original policy claims cash systems"
+      },
+      "content_hash": "abba2aa1e99b6217fb126da323d1725cbc89b6d73466230360fffaf51f7dabaa",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "gl_hash": "28fd17fe51fcd5c1eda92024c98c79b1c2f6559ddfc93f690d25a7f27e33add9",
+        "gross_presentation": true,
+        "group_ids": [
+          "group1"
+        ],
+        "id": "statements"
+      },
+      "content_hash": "f0cbf2cdd992ac7afaee3609e6745a3035a17534156697676fc3d18ed34127fd",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-statements",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "complete": true,
+        "framework": "IFRS",
+        "framework_checklist": "IFRS actual operative insurance requirement source",
+        "group_ids": [
+          "group1"
+        ],
+        "id": "disclosures",
+        "methods_inputs_memo": "Qualified methods inputs",
+        "report_ids": [
+          "report1"
+        ],
+        "requirement_ids": [
+          "amounts",
+          "rollforwards",
+          "judgments",
+          "insurance_risk",
+          "financial_risk"
+        ],
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "risk_memo": "Controlled insurance and finance risk register"
+      },
+      "content_hash": "7fdd7eee597dba1bac19c3d77b3897f39b5e0eee3feeed5e3cef96dd06939f28",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "IFRS",
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    }
+  ],
+  "entity": "Synthetic Group",
+  "entity_type": "for_profit",
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "execution_date": "2027-02-01",
+  "framework": "IFRS",
+  "gl": [
+    {
+      "closing": "800",
+      "document_id": "doc-Cash",
+      "id": "Cash",
+      "opening": "0",
+      "statement": "800"
+    },
+    {
+      "closing": "-562.50",
+      "document_id": "doc-Insurance remaining coverage group1",
+      "id": "Insurance remaining coverage group1",
+      "opening": "0",
+      "statement": "-562.50"
+    },
+    {
+      "closing": "-220",
+      "document_id": "doc-Insurance incurred claims group1",
+      "id": "Insurance incurred claims group1",
+      "opening": "0",
+      "statement": "-220"
+    },
+    {
+      "closing": "-451.50",
+      "document_id": "doc-Insurance service revenue group1",
+      "id": "Insurance service revenue group1",
+      "opening": "0",
+      "statement": "-451.50"
+    },
+    {
+      "closing": "420",
+      "document_id": "doc-Insurance service expense group1",
+      "id": "Insurance service expense group1",
+      "opening": "0",
+      "statement": "420"
+    },
+    {
+      "closing": "14.00",
+      "document_id": "doc-Insurance finance group1",
+      "id": "Insurance finance group1",
+      "opening": "0",
+      "statement": "14.00"
+    }
+  ],
+  "groups": [
+    {
+      "aggregation_basis": "US similar acquisition and servicing business",
+      "assumption_version": "assumptions1",
+      "cohort": "2026",
+      "contract_ids": [
+        "policy1"
+      ],
+      "document_id": "doc-group1",
+      "economic_id": "group-economic1",
+      "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+      "id": "group1",
+      "membership_locked": true,
+      "model": "IFRS17_GMM",
+      "model_version": "model1",
+      "original_contract_ids": [
+        "policy1"
+      ],
+      "portfolio": "property",
+      "product": "property_fire",
+      "profitability": "no_significant_possibility",
+      "recognition_date": "2026-01-01"
+    }
+  ],
+  "insurance_model": "IFRS17_GMM",
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "jurisdiction": "NL",
+  "knowledge_review": {
+    "applied_claim_ids": [
+      "INS-IFRS-001",
+      "INS-IFRS-002",
+      "INS-IFRS-003",
+      "INS-IFRS-004",
+      "INS-IFRS-005",
+      "INS-IFRS-006",
+      "INS-IFRS-007",
+      "INS-IFRS-008",
+      "INS-IFRS-009",
+      "INS-IFRS-010",
+      "INS-IFRS-011",
+      "INS-IFRS-012",
+      "INS-IFRS-013",
+      "INS-IFRS-014",
+      "INS-IFRS-015",
+      "INS-IFRS-016",
+      "INS-IFRS-017",
+      "INS-IFRS-018",
+      "INS-IFRS-019",
+      "INS-IFRS-020",
+      "INS-IFRS-021",
+      "INS-IFRS-022",
+      "INS-IFRS-023",
+      "INS-IFRS-024",
+      "INS-IFRS-025",
+      "INS-IFRS-026",
+      "INS-IFRS-027",
+      "INS-IFRS-028",
+      "INS-IFRS-029",
+      "INS-IFRS-030",
+      "INS-IFRS-031",
+      "INS-IFRS-032",
+      "INS-IFRS-033",
+      "INS-IFRS-034",
+      "INS-IFRS-035",
+      "INS-IFRS-036",
+      "INS-IFRS-037",
+      "INS-IFRS-038",
+      "INS-IFRS-039",
+      "INS-IFRS-040",
+      "INS-IFRS-041",
+      "INS-IFRS-042",
+      "INS-IFRS-043",
+      "INS-IFRS-044",
+      "INS-IFRS-045",
+      "INS-IFRS-046",
+      "INS-IFRS-047",
+      "INS-IFRS-048",
+      "INS-IFRS-049",
+      "INS-IFRS-050",
+      "INS-IFRS-051",
+      "INS-IFRS-052",
+      "INS-IFRS-053",
+      "INS-IFRS-054",
+      "INS-IFRS-055",
+      "INS-IFRS-056",
+      "INS-IFRS-057",
+      "INS-IFRS-058",
+      "INS-IFRS-059",
+      "INS-IFRS-060",
+      "INS-IFRS-061",
+      "INS-IFRS-062",
+      "INS-IFRS-063",
+      "INS-IFRS-064",
+      "INS-IFRS-065"
+    ],
+    "claim_ids": [
+      "INS-IFRS-001",
+      "INS-IFRS-002",
+      "INS-IFRS-003",
+      "INS-IFRS-004",
+      "INS-IFRS-005",
+      "INS-IFRS-006",
+      "INS-IFRS-007",
+      "INS-IFRS-008",
+      "INS-IFRS-009",
+      "INS-IFRS-010",
+      "INS-IFRS-011",
+      "INS-IFRS-012",
+      "INS-IFRS-013",
+      "INS-IFRS-014",
+      "INS-IFRS-015",
+      "INS-IFRS-016",
+      "INS-IFRS-017",
+      "INS-IFRS-018",
+      "INS-IFRS-019",
+      "INS-IFRS-020",
+      "INS-IFRS-021",
+      "INS-IFRS-022",
+      "INS-IFRS-023",
+      "INS-IFRS-024",
+      "INS-IFRS-025",
+      "INS-IFRS-026",
+      "INS-IFRS-027",
+      "INS-IFRS-028",
+      "INS-IFRS-029",
+      "INS-IFRS-030",
+      "INS-IFRS-031",
+      "INS-IFRS-032",
+      "INS-IFRS-033",
+      "INS-IFRS-034",
+      "INS-IFRS-035",
+      "INS-IFRS-036",
+      "INS-IFRS-037",
+      "INS-IFRS-038",
+      "INS-IFRS-039",
+      "INS-IFRS-040",
+      "INS-IFRS-041",
+      "INS-IFRS-042",
+      "INS-IFRS-043",
+      "INS-IFRS-044",
+      "INS-IFRS-045",
+      "INS-IFRS-046",
+      "INS-IFRS-047",
+      "INS-IFRS-048",
+      "INS-IFRS-049",
+      "INS-IFRS-050",
+      "INS-IFRS-051",
+      "INS-IFRS-052",
+      "INS-IFRS-053",
+      "INS-IFRS-054",
+      "INS-IFRS-055",
+      "INS-IFRS-056",
+      "INS-IFRS-057",
+      "INS-IFRS-058",
+      "INS-IFRS-059",
+      "INS-IFRS-060",
+      "INS-IFRS-061",
+      "INS-IFRS-062",
+      "INS-IFRS-063",
+      "INS-IFRS-064",
+      "INS-IFRS-065"
+    ],
+    "documents": [
+      {
+        "path": "knowledge/insurance-contracts/FRAMEWORK-METHOD.md",
+        "sha256": "10b2f8bbee020634f0cff71b53592c90c293f23772c026fc00eebbaf216437e7",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/INDEPENDENT-QA.md",
+        "sha256": "79f0c7951a550856305b7b6648a96a85850725a3e7ff1d8e288f54949a7e6b79",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/README.md",
+        "sha256": "87461e8d5c569dc526c86430d69f2f7846962eec2f7bf9f7e42f8f7badbf7e3f",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/RESEARCH.md",
+        "sha256": "f0f7a5a07f3a8a2a9c9f685fa9392a1f8829a44252ba6e9bb20ddbe4ed069d5c",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/expected-decisions.json",
+        "sha256": "f02ca7aa01fc8a656ee8726990356738d20cb1ce31fad9db2ce625c9f5734d2b",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/independent-review.json",
+        "sha256": "647dedd45fe4f8ba63788aef2f676048bbb69979b440f12268804c88871c9782",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/retrieval.py",
+        "sha256": "3d6338deb21cc21282fdf9b52d0c57a1cec6b961859c2a45907946d6d217f4a2",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/standards-claims.json",
+        "sha256": "749ac623705a176710a667fd5ea0248e5f2bfeff756bb7a1a9194a2a6cfc9a26",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/test_independent_claim_qa.py",
+        "sha256": "8001b20232a545cac457421d4e623692985263534de9d4b9e97810586ff6d647",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/test_supplement.py",
+        "sha256": "f484072830ff8246ade8645b438040d30cc18d3da155fc5cf33976a2cdeabbc8",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/validate_supplement.py",
+        "sha256": "36660adc005278ceaf73ab009b067b4c884b16dc8597bd2360e9d753d915277e",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      }
+    ],
+    "public_caveats": [
+      "Current qualified inputs and the operative insurance framework are required; complex models require separate governed methods."
+    ],
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "selection_memo": "Synthetic reviewed Insurance route and explicit excluded specialist boundaries"
+  },
+  "package": "insurance-contracts-accounting",
+  "period_start": "2026-01-01",
+  "policy_elections": {
+    "ifrs18_19_early_adoption": false
+  },
+  "population_review": {
+    "cash_events_ids": [
+      "premium1",
+      "payment1"
+    ],
+    "claims_ids": [
+      "claim1"
+    ],
+    "complete": true,
+    "completeness_memo": "Independent source totals and unique economic identity review",
+    "contracts_ids": [
+      "policy1"
+    ],
+    "document_id": "doc-population",
+    "groups_ids": [
+      "group1"
+    ],
+    "id": "population",
+    "reports_ids": [
+      "report1"
+    ],
+    "reviewer": "Synthetic independent completeness reviewer",
+    "source_system": "Independent original policy claims cash systems"
+  },
+  "preparer": "synthetic preparer",
+  "reporting_period": "2026-12-31",
+  "reports": [
+    {
+      "acquisition_amortization": "0",
+      "acquisition_attributable": true,
+      "acquisition_expense_election": false,
+      "actuary": "Synthetic qualified actuary",
+      "assumption_version": "assumptions1",
+      "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+      "boundary_reviewed": true,
+      "cash_population_hash": "68824a7ce509f0debdb7b7c275e749416c34af29fb8651933f0bdb71a90a2c86",
+      "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+      "change_kind": "assumption",
+      "change_risk": "nonfinancial",
+      "change_service": "future",
+      "claim_discount_exemption": true,
+      "claim_paid": "200",
+      "claim_population_hash": "65beec4f985118a3224c01fb4a6ce66560e8fbb92fd8df13dbf697f84cc07135",
+      "claims_undiscounted": true,
+      "closing_csm": "94.50",
+      "closing_dac": "0",
+      "closing_lic": "220",
+      "closing_loss": "0",
+      "closing_lrc": "562.50",
+      "closing_pv": "438",
+      "closing_ra": "30",
+      "contract_ids": [
+        "policy1"
+      ],
+      "contract_population_hash": "132fb02499ca76dcae5193badc841ca5135921ecc48c2c23962c26f0aa85990f",
+      "coverage_method": "Qualified quantity of benefits and duration units register",
+      "csm_interest": "6.00",
+      "csm_release": "31.50",
+      "currency": "EUR",
+      "current_units": "25",
+      "dac_writeoff": "0",
+      "deficiency_liability": "0",
+      "discount_curve_unchanged": true,
+      "discount_source": "Qualified supplied curve register version1",
+      "document_id": "doc-report1",
+      "entity": "Synthetic Group",
+      "expected_premiums": "1000",
+      "expected_service": "400",
+      "fcf_finance": "8",
+      "framework": "IFRS",
+      "future_change_current": "30",
+      "future_change_locked": "30",
+      "group_id": "group1",
+      "id": "report1",
+      "incurred": "420",
+      "incurred_pv": "400",
+      "incurred_ra": "20",
+      "initial_csm": "150",
+      "initial_date": "2026-01-01",
+      "initial_fcf": "-150",
+      "initial_loss": "0",
+      "initial_outflows": "800",
+      "initial_ra": "50",
+      "initial_ra_dummy": "0",
+      "interest_day_basis": "actual365_simple",
+      "interest_fraction": "1",
+      "investment_income": "0",
+      "investment_income_policy": "exclude",
+      "lic_finance": "0",
+      "locked_rate": "0.04",
+      "loss_allocation": "0",
+      "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+      "loss_recovery": "0",
+      "maintenance_cost": "0",
+      "max_claim_to_payment_days": "181",
+      "max_service_to_due_days": "364",
+      "measurement_date": "2026-12-31",
+      "model": "IFRS17_GMM",
+      "model_version": "model1",
+      "nonperformance_reviewed": true,
+      "objectivity_memo": "Synthetic independent objectivity review",
+      "onerous_assessed": true,
+      "onerous_indicator": false,
+      "opening_csm": "0",
+      "opening_lic": "0",
+      "opening_loss": "0",
+      "opening_lrc": "0",
+      "opening_ra": "0",
+      "paa_inception_reviewed": true,
+      "paa_loss": "0",
+      "paa_material_equivalence": false,
+      "paa_significant_variability": false,
+      "past_service_change": "0",
+      "pattern_reviewed": true,
+      "portfolio": "property",
+      "premium_financing_exemption": true,
+      "product": "property_fire",
+      "qualification_memo": "Synthetic independently reviewed qualification evidence",
+      "ra_release": "20",
+      "remaining_claims": "0",
+      "remaining_fcf": "0",
+      "remaining_units": "75",
+      "revenue_pattern": "time",
+      "reviewer": "Synthetic separate actuarial reviewer",
+      "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+      "service_fraction": "0.5",
+      "service_release": "451.50",
+      "signed_on": "2027-01-20",
+      "successful_acquisition": true,
+      "unsupported_features": [],
+      "us_aggregation_basis": "US similar acquisition and servicing business",
+      "us_contract_scope_reviewed": true,
+      "us_insurance_entity": true
+    }
+  ],
+  "requested_action": "accounting_workpaper",
+  "specialist_items": [],
+  "statement_review": {
+    "document_id": "doc-statements",
+    "gl_hash": "28fd17fe51fcd5c1eda92024c98c79b1c2f6559ddfc93f690d25a7f27e33add9",
+    "gross_presentation": true,
+    "group_ids": [
+      "group1"
+    ],
+    "id": "statements"
+  }
+}

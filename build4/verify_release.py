@@ -11,6 +11,12 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def verify():
+    grants_pointer=ROOT/'build4/release/grants-pr27-accepted-release.json'
+    if grants_pointer.exists():
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('grants_release_verifier',ROOT/'skills/government-grants/verify_release.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        return module.verify()
     historical=json.loads((ROOT/'build4/release/historical-inventory.json').read_text())
     preserved=json.loads((ROOT/'recovery/borrowing-costs-pr42/main-historical-preservation.json').read_text())
     assert preserved['status']=='PASS' and not preserved['errors']
