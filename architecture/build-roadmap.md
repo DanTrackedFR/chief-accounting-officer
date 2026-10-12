@@ -32,12 +32,12 @@ Phase 2D and the full Phase 2E two-track approval audit are closed. Preserve the
 Status: substantially complete for current product development.
 
 All 50 roadmap positions are accounted for. Current live-main position after the specialist build:
-- **47 production skills**.
+- **48 production skills**.
 - **#34 Government Grants & Assistance** — incomplete/WIP; the existing main package remains NONPRODUCTION. Separate remediation work may exist on an unmerged branch and must not be treated as live production.
-- **#35 Borrowing Costs** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
+- **#35 Borrowing Costs** — **COMPLETE SUBJECT TO OWNER INTEGRATION** through PR42. SKILL-BORROW-001 v1.0.0 executes bounded 2026 ordinary domestic own-use tangible construction: IFRS/AASB Tier1 specific/general allocation, US avoidable interest and UK full commercial FRS102 capitalization/expense policies. The separately governed SUPPLEMENTAL_BORROWING_COSTS has92 independently reviewed claims (30 directly inspected,62 retaining source audits). Historical0.1.0 cases remain blocked. Other periods, Tier2/NFP, FRS101/105, non-PPE assets, sale/inventory, FX/fees/EIR differences, shared components, abandonment and unsupported owner imports remain explicitly blocked. See skills/BORROWING-COSTS-INTEGRATION-HANDOFF.md; final unchanged-head Actions and owner integration are separate release gates.
 - **#37 Investment Property** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
 
-The three residual packages do not block CAO runtime/orchestration development. Orchestration must detect unavailable owners and return precise partial/blocked dependencies rather than fabricate accounting.
+The two residual packages do not block CAO runtime/orchestration development. Orchestration must detect unavailable owners and return precise partial/blocked dependencies rather than fabricate accounting.
 
 ### CAO Orchestration Foundation
 Status: **complete and integrated**.

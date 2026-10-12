@@ -17,8 +17,9 @@ class Foundation(unittest.TestCase):
         if change:change(r)
         return self.cao.run(r)
     def test_registry_single_truth(self):
-        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(47,sum(s['production_available'] for s in registry.skills.values()))
-        for pkg in ('government-grants','borrowing-costs','investment-property'):self.assertFalse(registry.get(pkg)['production_available'])
+        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(48,sum(s['production_available'] for s in registry.skills.values()))
+        for pkg in ('government-grants','investment-property'):self.assertFalse(registry.get(pkg)['production_available'])
+        self.assertTrue(registry.get('borrowing-costs')['production_available'])
         self.assertFalse(registry.get('unknown')['production_available'])
         self.assertIn('payroll processing',registry.get('inventory-cost')['non_triggers'])
     def test_flagship_actual_multi_owner(self):

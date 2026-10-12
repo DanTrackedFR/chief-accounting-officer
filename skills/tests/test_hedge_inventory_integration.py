@@ -71,7 +71,8 @@ class HedgeInventoryIntegration(unittest.TestCase):
         from pathlib import Path
         from production import serializable
         from generate_hedge_inventory_examples import artifacts
+        from recovery_references import reference_path
         root=Path(__file__).resolve().parents[2]
-        for p,o in artifacts().items():self.assertEqual((root/p).read_text(),json.dumps(o,default=serializable,indent=2,sort_keys=True)+'\n',p)
+        for p,o in artifacts().items():self.assertEqual(reference_path(root/p).read_text(),json.dumps(o,default=serializable,indent=2,sort_keys=True)+'\n',p)
 
 if __name__=='__main__':unittest.main()

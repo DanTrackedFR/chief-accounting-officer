@@ -1,0 +1,431 @@
+[
+  {
+    "amount": "225.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "180.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "goodwill"
+    ],
+    "handoff": {
+      "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "currency": "USD",
+      "currentness": "CURRENT",
+      "economic_identity": [
+        "Subsidiary-US",
+        "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+        "acquisition_basis",
+        "2e81720dce6f0a0018f77c9a327054cf654528248acc80d6abc2b3ef4e318173"
+      ],
+      "fingerprint": "2e81720dce6f0a0018f77c9a327054cf654528248acc80d6abc2b3ef4e318173",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "presentation_currency": null,
+      "producer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "purpose": "evidence_only",
+      "result_fingerprint": "796c78dce64da0095620a58f3edf863532c8ab7ef35d4a9d51222b595843b57e",
+      "semantic": "acquisition_basis",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ],
+      "source_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "source_owner": "business-combinations",
+      "source_scope": "Subsidiary-US",
+      "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "target_scope": "Group"
+    },
+    "public_amount": "180.00",
+    "public_metric": "group_goodwill",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "purchase:2"
+      ],
+      "fact_id": "bc-price",
+      "owner": "business-combinations",
+      "owner_input_path": [
+        "consideration",
+        "cash"
+      ],
+      "producing_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "scope_id": "Subsidiary-US",
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf",
+          "id": "purchase:2",
+          "location": {
+            "column": "cash_price",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "ca9658af4490481ccb797c42292cf05f87f5bd32fc2dd71548ff0f3a3008ba5f",
+          "source_id": "purchase",
+          "value": "800"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "initial_goodwill"
+    ]
+  },
+  {
+    "amount": "25.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "-20.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "Deferred tax liability"
+    ],
+    "handoff": {
+      "consumer": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "consumer_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ],
+      "currency": "USD",
+      "currentness": "CURRENT",
+      "economic_identity": [
+        "Subsidiary-US",
+        "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+        "acquisition_dtl",
+        "8c31afd3d5041f32ef6694cede4700a776c0a8e916ea0b8ba3c7359e39c7b9e2"
+      ],
+      "fingerprint": "8c31afd3d5041f32ef6694cede4700a776c0a8e916ea0b8ba3c7359e39c7b9e2",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "presentation_currency": null,
+      "producer": "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+      "purpose": "evidence_only",
+      "result_fingerprint": "9f5e7bfa6c34636a6d2465d6bb0295d03949073e8f785db338e6d91ce41dabff",
+      "semantic": "acquisition_dtl",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ],
+      "source_node": "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+      "source_owner": "income-taxes",
+      "source_scope": "Subsidiary-US",
+      "target_node": "exec:business-combinations:Subsidiary-US:970943b7456c8d5538dc785092014b7d42078286afc62e0e6ff46f8481117e12",
+      "target_scope": "Subsidiary-US"
+    },
+    "public_amount": "20.00",
+    "public_metric": "group_deferred_tax_liability",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "tax:3"
+      ],
+      "fact_id": "tax-carrying",
+      "owner": "income-taxes",
+      "owner_input_path": [
+        "jurisdictions",
+        0,
+        "differences",
+        0,
+        "carrying"
+      ],
+      "producing_node": "exec:income-taxes:Subsidiary-US:f80402309930c4ac2f7cb42b4057bd96c9858d0ca2c8e2c25204a15636289b23",
+      "scope_id": "Subsidiary-US",
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "d77ccb69e3f915ed75b4a2db3ff5893fdd0f433e02fdff100441fb843aae585b",
+          "id": "tax:3",
+          "location": {
+            "column": "carrying",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "fb7a9a002284a62de36a942ee9729ccf2332cf5115b2460e147d027f535afdac",
+          "source_id": "tax",
+          "value": "100"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "jurisdictions",
+      0,
+      "dtl"
+    ]
+  },
+  {
+    "amount": "-105.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "-105.00",
+    "financial_statement_path": [
+      "current",
+      "oci"
+    ],
+    "handoff": {
+      "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "currency": "USD",
+      "currentness": "CURRENT",
+      "economic_identity": [
+        "Subsidiary-US",
+        "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+        "nci_oci",
+        "f93e56d689846666d969e873a0f6003f959c8c6f54281a51297489c08c14c3d6"
+      ],
+      "fingerprint": "f93e56d689846666d969e873a0f6003f959c8c6f54281a51297489c08c14c3d6",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "presentation_currency": null,
+      "producer": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "purpose": "evidence_only",
+      "result_fingerprint": "eb941e1234a94704e615220201252ea645cc9125c38912b8a4372f60f807dfa8",
+      "semantic": "nci_oci",
+      "source_dimensions": [
+        "Subsidiary-US",
+        "IFRS",
+        "US",
+        "2026-01-01",
+        "2026-12-31",
+        "USD"
+      ],
+      "source_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "source_owner": "foreign-currency",
+      "source_scope": "Subsidiary-US",
+      "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "target_scope": "Group"
+    },
+    "public_amount": "-105.00",
+    "public_metric": "translation_oci",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "rates:1"
+      ],
+      "fact_id": "fx-close",
+      "owner": "foreign-currency",
+      "owner_input_path": [
+        "translation",
+        "closing_rate"
+      ],
+      "producing_node": "exec:foreign-currency:Subsidiary-US:23b1c0624c665d9099c6c1a3de2297530bb5d1f62ef2e13d4476c9df33f5bbab",
+      "scope_id": "Subsidiary-US",
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "07d60e4fca0c599e4bec875eddb9d7a000f97e53180818f6524ac51ed0fe70e7",
+          "id": "rates:1",
+          "location": {
+            "column": "closing",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "61cd041ae02511c1e8786d405cb2c84c91a06a1c6b0e6d37597a4aae091b7fa6",
+          "source_id": "rates",
+          "value": "0.8"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "translation",
+      "cta_movement"
+    ]
+  },
+  {
+    "amount": "100.00",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "0.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "IC receivable"
+    ],
+    "handoff": {
+      "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "currency": "EUR",
+      "currentness": "CURRENT",
+      "economic_identity": [
+        "Parent",
+        "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+        "matched_intercompany",
+        "4dc4478afcb2d744a3994c8be602c8aca45b48c3c402dd9cb47f5693dbf49666"
+      ],
+      "fingerprint": "4dc4478afcb2d744a3994c8be602c8aca45b48c3c402dd9cb47f5693dbf49666",
+      "framework": "IFRS",
+      "functional_currency": "EUR",
+      "presentation_currency": null,
+      "producer": "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+      "purpose": "evidence_only",
+      "result_fingerprint": "cbbf384674a28f3aa77194709efbc9037b519d6a3dd6c1a0e062a0da09f21e18",
+      "semantic": "matched_intercompany",
+      "source_dimensions": [
+        "Parent",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "source_node": "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+      "source_owner": "intercompany-accounting",
+      "source_scope": "Parent",
+      "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "target_scope": "Group"
+    },
+    "public_amount": "100.00",
+    "public_metric": "qualified_intercompany_elimination",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "ic:1"
+      ],
+      "fact_id": "ic-a",
+      "owner": "intercompany-accounting",
+      "owner_input_path": [
+        "pairs",
+        0,
+        "confirmed_a"
+      ],
+      "producing_node": "exec:intercompany-accounting:Parent:3828a90431d71c4aec695914b5a24d631f7fb4ee91cb74916c4ec2229ea3c3a8",
+      "scope_id": "Parent",
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "9b61792a6e7d4ea624fd08870dbdde568a9be66484c84f169edd50576070e825",
+          "id": "ic:1",
+          "location": {
+            "column": "principal",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "dbd53a18f72c47018296f7e9430a703f4156565c0091ff96d5d0535cf1b3809d",
+          "source_id": "ic",
+          "value": "125"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "pairs",
+      0,
+      "a_functional"
+    ]
+  },
+  {
+    "amount": "0",
+    "downstream": "Qualified consolidated population -> financial statements -> public_record",
+    "financial_statement_amount": "180.00",
+    "financial_statement_path": [
+      "current",
+      "lines",
+      "goodwill"
+    ],
+    "handoff": {
+      "consumer": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "consumer_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "currency": "EUR",
+      "currentness": "CURRENT",
+      "economic_identity": [
+        "Group",
+        "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+        "impairment",
+        "d24c866573239944584e077455e448bb58a3f1e37ff57512bd9cc324e65a8380"
+      ],
+      "fingerprint": "d24c866573239944584e077455e448bb58a3f1e37ff57512bd9cc324e65a8380",
+      "framework": "IFRS",
+      "functional_currency": null,
+      "presentation_currency": "EUR",
+      "producer": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+      "purpose": "evidence_only",
+      "result_fingerprint": "899fef8bc73c8c331ffe5d4519c2fcfd6024b11906e671be16119e2601d54fdc",
+      "semantic": "impairment",
+      "source_dimensions": [
+        "Group",
+        "IFRS",
+        "NL",
+        "2026-01-01",
+        "2026-12-31",
+        "EUR"
+      ],
+      "source_node": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+      "source_owner": "asset-impairment",
+      "source_scope": "Group",
+      "target_node": "exec:consolidation:Group:8b2322befef95225c6497c3c261e507629187860a1de33d78ec6fe037b552723",
+      "target_scope": "Group"
+    },
+    "public_amount": "0",
+    "public_metric": "goodwill_test_loss",
+    "source": {
+      "binding_kind": "current",
+      "extracted_fields": [
+        "valuation:2"
+      ],
+      "fact_id": "imp-gw",
+      "owner": "asset-impairment",
+      "owner_input_path": [
+        "assets",
+        "gw",
+        "carrying"
+      ],
+      "producing_node": "exec:asset-impairment:Group:0887f6975e5756742546238e5cc5c3124b343f439d7057de9af4cd464049edc5",
+      "scope_id": "Group",
+      "source_lineage": [
+        {
+          "extracted_fingerprint": "0907b1f50b44ffdc490e3917fad5bb4b4752d30a29df3178853a36a7d7d6cc0e",
+          "id": "valuation:2",
+          "location": {
+            "column": "goodwill",
+            "record_id": null,
+            "row": 2,
+            "table": "table"
+          },
+          "source_fingerprint": "de0dd708e653727a8340094a28027803f5fc404696a1aaaea75a483090d7363e",
+          "source_id": "valuation",
+          "value": "180"
+        }
+      ]
+    },
+    "specialist_result_path": [
+      "loss"
+    ]
+  }
+]

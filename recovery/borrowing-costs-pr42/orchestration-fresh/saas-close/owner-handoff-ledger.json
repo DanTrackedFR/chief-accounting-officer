@@ -1,0 +1,160 @@
+[
+  {
+    "amount": "1520.00",
+    "components": [],
+    "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "economic_id": "credit_exposure-financial-instruments-ecl",
+    "fingerprint": "e8909e3567bd813860ffa761f00d2b864141b349018c5999b5487321d8a5263e",
+    "metric_path": [
+      "closing_ar"
+    ],
+    "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "purpose": "review",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "credit_exposure"
+  },
+  {
+    "amount": "800",
+    "components": [],
+    "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "economic_id": "ar_ageing_current-financial-instruments-ecl",
+    "fingerprint": "e8909e3567bd813860ffa761f00d2b864141b349018c5999b5487321d8a5263e",
+    "metric_path": [
+      "ageing",
+      "current"
+    ],
+    "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "purpose": "review",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "ar_ageing_current"
+  },
+  {
+    "amount": "720.00",
+    "components": [],
+    "consumer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "economic_id": "ar_ageing_31_60-financial-instruments-ecl",
+    "fingerprint": "e8909e3567bd813860ffa761f00d2b864141b349018c5999b5487321d8a5263e",
+    "metric_path": [
+      "ageing",
+      "31_60"
+    ],
+    "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "purpose": "review",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "ar_ageing_31_60"
+  },
+  {
+    "amount": "1520.00",
+    "components": [],
+    "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+    "economic_id": "ar_balance-balance-sheet-reconciliations",
+    "fingerprint": "e8909e3567bd813860ffa761f00d2b864141b349018c5999b5487321d8a5263e",
+    "metric_path": [
+      "closing_ar"
+    ],
+    "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "ar_balance"
+  },
+  {
+    "amount": "80.00",
+    "components": [],
+    "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+    "economic_id": "allowance-balance-sheet-reconciliations",
+    "fingerprint": "08a03af8908263f20f79a55e26e4ba8a54aea04cbde5711d27514fa0c8c920c5",
+    "metric_path": [
+      "allowance"
+    ],
+    "producer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "allowance"
+  },
+  {
+    "amount": "-1300.00",
+    "components": [],
+    "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+    "economic_id": "contract_balance-balance-sheet-reconciliations",
+    "fingerprint": "ccffa58ec65c858632d208fba80b6d740df3e8e8c1b7f2076d892bb68e6218a9",
+    "metric_path": [
+      "contract_bridge",
+      "closing"
+    ],
+    "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "contract_balance"
+  },
+  {
+    "amount": "500.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "economic_id": "revenue-financial-statements",
+    "fingerprint": "ccffa58ec65c858632d208fba80b6d740df3e8e8c1b7f2076d892bb68e6218a9",
+    "metric_path": [
+      "period_revenue"
+    ],
+    "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "revenue"
+  },
+  {
+    "amount": "1520.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "economic_id": "ar_balance-financial-statements",
+    "fingerprint": "e8909e3567bd813860ffa761f00d2b864141b349018c5999b5487321d8a5263e",
+    "metric_path": [
+      "closing_ar"
+    ],
+    "producer": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "ar_balance"
+  },
+  {
+    "amount": "80.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "economic_id": "allowance-financial-statements",
+    "fingerprint": "08a03af8908263f20f79a55e26e4ba8a54aea04cbde5711d27514fa0c8c920c5",
+    "metric_path": [
+      "allowance"
+    ],
+    "producer": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "allowance"
+  },
+  {
+    "amount": "-1300.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "economic_id": "contract_balance-financial-statements",
+    "fingerprint": "ccffa58ec65c858632d208fba80b6d740df3e8e8c1b7f2076d892bb68e6218a9",
+    "metric_path": [
+      "contract_bridge",
+      "closing"
+    ],
+    "producer": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "contract_balance"
+  },
+  {
+    "amount": "10.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "economic_id": "monetary_fx-financial-statements",
+    "fingerprint": "dd7071180eb9ae2969731987d220f1e3e5a9dd0372cd87b50c1bc9bf864901af",
+    "metric_path": [
+      "monetary_fx_profit"
+    ],
+    "producer": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+    "purpose": "report",
+    "qualification_evidence": "Controlled synthetic exact owner-result to current source field review",
+    "semantic": "monetary_fx"
+  }
+]

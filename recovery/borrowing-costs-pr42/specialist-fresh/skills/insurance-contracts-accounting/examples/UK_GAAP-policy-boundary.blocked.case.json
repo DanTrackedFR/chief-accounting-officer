@@ -1,0 +1,919 @@
+{
+  "applicability_review": {
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": [],
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ]
+  },
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "case_id": "synthetic-insurance-contracts-accounting",
+  "cash_events": [
+    {
+      "amount": "1200",
+      "date": "2026-07-01",
+      "document_id": "doc-premium1",
+      "economic_id": "premium-economic1",
+      "group_id": "group1",
+      "id": "premium1",
+      "kind": "premium",
+      "policy_id": "policy1"
+    },
+    {
+      "amount": "100",
+      "date": "2026-12-01",
+      "document_id": "doc-payment1",
+      "economic_id": "payment-economic1",
+      "group_id": "group1",
+      "id": "payment1",
+      "kind": "claim_payment",
+      "policy_id": "policy1"
+    },
+    {
+      "amount": "120",
+      "date": "2026-07-01",
+      "document_id": "doc-acquisition1",
+      "economic_id": "acquisition-economic1",
+      "group_id": "group1",
+      "id": "acquisition1",
+      "kind": "acquisition",
+      "policy_id": "policy1"
+    }
+  ],
+  "claims": [
+    {
+      "document_id": "doc-claim1",
+      "economic_id": "claim-economic1",
+      "expected_settlement_date": "2027-03-01",
+      "group_id": "group1",
+      "id": "claim1",
+      "incurred": "300",
+      "occurrence_date": "2026-09-01",
+      "paid": "100",
+      "payment_memo": "Original settlement source",
+      "policy_id": "policy1",
+      "valuation_date": "2026-12-31"
+    }
+  ],
+  "contracts": [
+    {
+      "acquired": false,
+      "adverse_effect": true,
+      "boundary_memo": "Actual enforceable single coverage boundary",
+      "cohort": "2026",
+      "commercial_substance": true,
+      "coverage_end": "2027-06-30",
+      "coverage_start": "2026-07-01",
+      "currency": "EUR",
+      "document_id": "doc-policy1",
+      "economic_id": "policy-economic1",
+      "financial_guarantee": false,
+      "fixed_fee_service": false,
+      "group_id": "group1",
+      "id": "policy1",
+      "insured_event_benefit": "5000",
+      "investment_component": false,
+      "issue_date": "2026-07-01",
+      "modification": false,
+      "no_event_benefit": "0",
+      "nonfinancial_risk": true,
+      "onerous_date": "2026-01-01",
+      "participating": false,
+      "perspective": "issued",
+      "portfolio": "property",
+      "premium_due_date": "2026-07-01",
+      "product": "property_fire",
+      "profitability": "no_significant_possibility",
+      "recognition_date": "2026-07-01",
+      "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+      "scope_assessed": true,
+      "seller_warranty": false,
+      "separated_component": false,
+      "significant_insurance_risk": true,
+      "terms_memo": "Executed synthetic policy compensation for insured property fire",
+      "transition": false,
+      "uncertain_event": true,
+      "us_contract_type": "short_duration"
+    }
+  ],
+  "currency": "EUR",
+  "disclosure_review": {
+    "complete": true,
+    "document_id": "doc-disclosures",
+    "framework": "UK_GAAP",
+    "framework_checklist": "UK_GAAP actual operative insurance requirement source",
+    "group_ids": [
+      "group1"
+    ],
+    "id": "disclosures",
+    "methods_inputs_memo": "Qualified methods inputs",
+    "report_ids": [
+      "report1"
+    ],
+    "requirement_ids": [
+      "amounts",
+      "rollforwards",
+      "judgments",
+      "insurance_risk",
+      "financial_risk"
+    ],
+    "reviewer": "Synthetic independent disclosure reviewer",
+    "risk_memo": "Controlled insurance and finance risk register"
+  },
+  "documents": [
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "acquired": false,
+        "adverse_effect": true,
+        "boundary_memo": "Actual enforceable single coverage boundary",
+        "cohort": "2026",
+        "commercial_substance": true,
+        "coverage_end": "2027-06-30",
+        "coverage_start": "2026-07-01",
+        "currency": "EUR",
+        "economic_id": "policy-economic1",
+        "financial_guarantee": false,
+        "fixed_fee_service": false,
+        "group_id": "group1",
+        "id": "policy1",
+        "insured_event_benefit": "5000",
+        "investment_component": false,
+        "issue_date": "2026-07-01",
+        "modification": false,
+        "no_event_benefit": "0",
+        "nonfinancial_risk": true,
+        "onerous_date": "2026-01-01",
+        "participating": false,
+        "perspective": "issued",
+        "portfolio": "property",
+        "premium_due_date": "2026-07-01",
+        "product": "property_fire",
+        "profitability": "no_significant_possibility",
+        "recognition_date": "2026-07-01",
+        "risk_scenario_memo": "Independent significant additional benefit commercial present-value scenarios",
+        "scope_assessed": true,
+        "seller_warranty": false,
+        "separated_component": false,
+        "significant_insurance_risk": true,
+        "terms_memo": "Executed synthetic policy compensation for insured property fire",
+        "transition": false,
+        "uncertain_event": true,
+        "us_contract_type": "short_duration"
+      },
+      "content_hash": "62e2eeff38eb0bdc0147132b7d2cddf4d29a17cd41f10af25f50d3cd8733af95",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-policy1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "aggregation_basis": "US similar acquisition and servicing business",
+        "assumption_version": "assumptions1",
+        "cohort": "2026",
+        "contract_ids": [
+          "policy1"
+        ],
+        "economic_id": "group-economic1",
+        "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+        "id": "group1",
+        "membership_locked": true,
+        "model": "IFRS17_PAA",
+        "model_version": "model1",
+        "original_contract_ids": [
+          "policy1"
+        ],
+        "portfolio": "property",
+        "product": "property_fire",
+        "profitability": "no_significant_possibility",
+        "recognition_date": "2026-07-01"
+      },
+      "content_hash": "e5ea89d9826c04fc665e5b2596501a52548c4fe07c671c5b1a352de579b35c55",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "amount": "1200",
+        "date": "2026-07-01",
+        "economic_id": "premium-economic1",
+        "group_id": "group1",
+        "id": "premium1",
+        "kind": "premium",
+        "policy_id": "policy1"
+      },
+      "content_hash": "519677131924ceeb1df6e2d1d6085451e0701b76dcdf4fb1e5718397b6a2647c",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-premium1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "amount": "100",
+        "date": "2026-12-01",
+        "economic_id": "payment-economic1",
+        "group_id": "group1",
+        "id": "payment1",
+        "kind": "claim_payment",
+        "policy_id": "policy1"
+      },
+      "content_hash": "b7dadea9b5d7a84638c4f8624358928db95bd5269c9a74fa2159ecca5d1adc69",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-payment1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "amount": "120",
+        "date": "2026-07-01",
+        "economic_id": "acquisition-economic1",
+        "group_id": "group1",
+        "id": "acquisition1",
+        "kind": "acquisition",
+        "policy_id": "policy1"
+      },
+      "content_hash": "b7ff8aa8285e4c61802f67a8a24b22404b91e2325902002c22c40c014ec98e63",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-acquisition1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "economic_id": "claim-economic1",
+        "expected_settlement_date": "2027-03-01",
+        "group_id": "group1",
+        "id": "claim1",
+        "incurred": "300",
+        "occurrence_date": "2026-09-01",
+        "paid": "100",
+        "payment_memo": "Original settlement source",
+        "policy_id": "policy1",
+        "valuation_date": "2026-12-31"
+      },
+      "content_hash": "b9fb1cc66415670b99ba1d4dd80cbba25ed4a0d04b0574164d4704e08309b93b",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-claim1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "acquisition_amortization": "60",
+        "acquisition_attributable": true,
+        "acquisition_expense_election": false,
+        "actuary": "Synthetic qualified actuary",
+        "assumption_version": "assumptions1",
+        "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+        "boundary_reviewed": true,
+        "cash_population_hash": "0b7eedba059a647819ef152987bce597a3b20c0a87e03ff37fda94e37972e11b",
+        "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+        "change_kind": "none",
+        "change_risk": "nonfinancial",
+        "change_service": "future",
+        "claim_discount_exemption": true,
+        "claim_paid": "100",
+        "claim_population_hash": "f027b74a516e4ba1411089d0fed45b83da35ba18b84e81f0ce231db9afa3690d",
+        "claims_undiscounted": true,
+        "closing_csm": "0",
+        "closing_dac": "0",
+        "closing_lic": "200",
+        "closing_loss": "0",
+        "closing_lrc": "540",
+        "closing_pv": "408",
+        "closing_ra": "0",
+        "contract_ids": [
+          "policy1"
+        ],
+        "contract_population_hash": "f5644662d6cefab8f427f12a942427425cc7015a95afc8451d214fc20f146bc5",
+        "coverage_method": "Qualified quantity of benefits and duration units register",
+        "csm_interest": "0",
+        "csm_release": "0",
+        "currency": "EUR",
+        "current_units": "25",
+        "dac_writeoff": "0",
+        "deficiency_liability": "0",
+        "discount_curve_unchanged": true,
+        "discount_source": "Qualified supplied curve register version1",
+        "entity": "Synthetic Group",
+        "expected_premiums": "1200",
+        "expected_service": "400",
+        "fcf_finance": "8",
+        "framework": "UK_GAAP",
+        "future_change_current": "0",
+        "future_change_locked": "0",
+        "group_id": "group1",
+        "id": "report1",
+        "incurred": "300",
+        "incurred_pv": "280",
+        "incurred_ra": "20",
+        "initial_csm": "0",
+        "initial_date": "2026-07-01",
+        "initial_fcf": "-150",
+        "initial_loss": "0",
+        "initial_outflows": "800",
+        "initial_ra": "0",
+        "initial_ra_dummy": "0",
+        "interest_day_basis": "actual365_simple",
+        "interest_fraction": "1",
+        "investment_income": "0",
+        "investment_income_policy": "exclude",
+        "lic_finance": "0",
+        "locked_rate": "0.04",
+        "loss_allocation": "0",
+        "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+        "loss_recovery": "0",
+        "maintenance_cost": "0",
+        "max_claim_to_payment_days": "181",
+        "max_service_to_due_days": "364",
+        "measurement_date": "2026-12-31",
+        "model": "IFRS17_PAA",
+        "model_version": "model1",
+        "nonperformance_reviewed": true,
+        "objectivity_memo": "Synthetic independent objectivity review",
+        "onerous_assessed": true,
+        "onerous_indicator": false,
+        "opening_csm": "0",
+        "opening_lic": "0",
+        "opening_loss": "0",
+        "opening_lrc": "0",
+        "opening_ra": "0",
+        "paa_inception_reviewed": true,
+        "paa_loss": "0",
+        "paa_material_equivalence": false,
+        "paa_significant_variability": false,
+        "past_service_change": "0",
+        "pattern_reviewed": true,
+        "portfolio": "property",
+        "premium_financing_exemption": true,
+        "product": "property_fire",
+        "protection_release_fraction": "0.5",
+        "qualification_memo": "Synthetic independently reviewed qualification evidence",
+        "ra_release": "20",
+        "remaining_claims": "0",
+        "remaining_fcf": "0",
+        "remaining_units": "75",
+        "revenue_pattern": "risk",
+        "reviewer": "Synthetic separate actuarial reviewer",
+        "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+        "risk_release_fraction": "0.5",
+        "service_fraction": "0.5",
+        "service_release": "600",
+        "signed_on": "2027-01-20",
+        "significant_risk_pattern": true,
+        "successful_acquisition": true,
+        "unsupported_features": [],
+        "us_aggregation_basis": "US similar acquisition and servicing business",
+        "us_contract_scope_reviewed": true,
+        "us_insurance_entity": true
+      },
+      "content_hash": "fd5bcfbefe179928cb193d4018b53abf138d3f2391896ca5e86731c65046a919",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-report1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "980",
+        "id": "Cash",
+        "opening": "0",
+        "statement": "980"
+      },
+      "content_hash": "99868b1f0630f01fec2ff5bac31cfe0666c51fb5c28386de7b8fc43152beb6eb",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-Cash",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-540",
+        "id": "Insurance remaining coverage group1",
+        "opening": "0",
+        "statement": "-540"
+      },
+      "content_hash": "bd67536a48b176507a4a16fb651831eeb9e04a599232e7b98f767feacc00abf0",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-Insurance remaining coverage group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-200",
+        "id": "Insurance incurred claims group1",
+        "opening": "0",
+        "statement": "-200"
+      },
+      "content_hash": "7e96d776d0915ac68d5cb310661e34b97f8ded55ee9b84caefddc74d2a062545",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-Insurance incurred claims group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "-600",
+        "id": "Insurance service revenue group1",
+        "opening": "0",
+        "statement": "-600"
+      },
+      "content_hash": "23bae4b4b0f7004280372eed8add9890bb5c91d15bfa481fd2fcd5fa2e848a90",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-Insurance service revenue group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "closing": "360",
+        "id": "Insurance service expense group1",
+        "opening": "0",
+        "statement": "360"
+      },
+      "content_hash": "80f5e88d4e5b28cc0dd85ca4c13c6c2e86aa01a0356daedd61469682a1b20f71",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-Insurance service expense group1",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "cash_events_ids": [
+          "premium1",
+          "payment1",
+          "acquisition1"
+        ],
+        "claims_ids": [
+          "claim1"
+        ],
+        "complete": true,
+        "completeness_memo": "Independent source totals and unique economic identity review",
+        "contracts_ids": [
+          "policy1"
+        ],
+        "groups_ids": [
+          "group1"
+        ],
+        "id": "population",
+        "reports_ids": [
+          "report1"
+        ],
+        "reviewer": "Synthetic independent completeness reviewer",
+        "source_system": "Independent original policy claims cash systems"
+      },
+      "content_hash": "da2664365519762b20fc826f7cc717ad2f50f1a439823c7448a3b03d6a11dbad",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-population",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "gl_hash": "35731e28192863b75b455f6be367b0ad86cb9e38d57e3de0d2a45ec974684601",
+        "gross_presentation": true,
+        "group_ids": [
+          "group1"
+        ],
+        "id": "statements"
+      },
+      "content_hash": "7096d3c6036713e74daf53b8cfc4d2d5263b4fa2dcc6a5d8a325bca9af78bcab",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-statements",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    },
+    {
+      "as_of": "2026-12-31",
+      "content": {
+        "complete": true,
+        "framework": "UK_GAAP",
+        "framework_checklist": "UK_GAAP actual operative insurance requirement source",
+        "group_ids": [
+          "group1"
+        ],
+        "id": "disclosures",
+        "methods_inputs_memo": "Qualified methods inputs",
+        "report_ids": [
+          "report1"
+        ],
+        "requirement_ids": [
+          "amounts",
+          "rollforwards",
+          "judgments",
+          "insurance_risk",
+          "financial_risk"
+        ],
+        "reviewer": "Synthetic independent disclosure reviewer",
+        "risk_memo": "Controlled insurance and finance risk register"
+      },
+      "content_hash": "0778fcc30e668cdf467d60fb412c89ec84a9d1c7205231f9a5174b24a2cedb18",
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "framework": "UK_GAAP",
+      "id": "doc-disclosures",
+      "reviewer": "Synthetic independent source reviewer",
+      "source_system": "Synthetic controlled original source",
+      "version": "1"
+    }
+  ],
+  "entity": "Synthetic Group",
+  "entity_type": "for_profit",
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "execution_date": "2027-02-01",
+  "framework": "UK_GAAP",
+  "gl": [
+    {
+      "closing": "980",
+      "document_id": "doc-Cash",
+      "id": "Cash",
+      "opening": "0",
+      "statement": "980"
+    },
+    {
+      "closing": "-540",
+      "document_id": "doc-Insurance remaining coverage group1",
+      "id": "Insurance remaining coverage group1",
+      "opening": "0",
+      "statement": "-540"
+    },
+    {
+      "closing": "-200",
+      "document_id": "doc-Insurance incurred claims group1",
+      "id": "Insurance incurred claims group1",
+      "opening": "0",
+      "statement": "-200"
+    },
+    {
+      "closing": "-600",
+      "document_id": "doc-Insurance service revenue group1",
+      "id": "Insurance service revenue group1",
+      "opening": "0",
+      "statement": "-600"
+    },
+    {
+      "closing": "360",
+      "document_id": "doc-Insurance service expense group1",
+      "id": "Insurance service expense group1",
+      "opening": "0",
+      "statement": "360"
+    }
+  ],
+  "groups": [
+    {
+      "aggregation_basis": "US similar acquisition and servicing business",
+      "assumption_version": "assumptions1",
+      "cohort": "2026",
+      "contract_ids": [
+        "policy1"
+      ],
+      "document_id": "doc-group1",
+      "economic_id": "group-economic1",
+      "grouping_memo": "Actual similar risks managed together profitability and fixed cohort assessed",
+      "id": "group1",
+      "membership_locked": true,
+      "model": "IFRS17_PAA",
+      "model_version": "model1",
+      "original_contract_ids": [
+        "policy1"
+      ],
+      "portfolio": "property",
+      "product": "property_fire",
+      "profitability": "no_significant_possibility",
+      "recognition_date": "2026-07-01"
+    }
+  ],
+  "insurance_model": "FRS103_POLICY_REVIEW",
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "jurisdiction": "NL",
+  "knowledge_review": {
+    "applied_claim_ids": [
+      "INS-UK_GAAP-001",
+      "INS-UK_GAAP-002",
+      "INS-UK_GAAP-003",
+      "INS-UK_GAAP-004",
+      "INS-UK_GAAP-005",
+      "INS-UK_GAAP-006",
+      "INS-UK_GAAP-007",
+      "INS-UK_GAAP-008",
+      "INS-UK_GAAP-009",
+      "INS-UK_GAAP-010",
+      "INS-UK_GAAP-011",
+      "INS-UK_GAAP-012",
+      "INS-UK_GAAP-013",
+      "INS-UK_GAAP-014"
+    ],
+    "claim_ids": [
+      "INS-UK_GAAP-001",
+      "INS-UK_GAAP-002",
+      "INS-UK_GAAP-003",
+      "INS-UK_GAAP-004",
+      "INS-UK_GAAP-005",
+      "INS-UK_GAAP-006",
+      "INS-UK_GAAP-007",
+      "INS-UK_GAAP-008",
+      "INS-UK_GAAP-009",
+      "INS-UK_GAAP-010",
+      "INS-UK_GAAP-011",
+      "INS-UK_GAAP-012",
+      "INS-UK_GAAP-013",
+      "INS-UK_GAAP-014"
+    ],
+    "documents": [
+      {
+        "path": "knowledge/insurance-contracts/FRAMEWORK-METHOD.md",
+        "sha256": "10b2f8bbee020634f0cff71b53592c90c293f23772c026fc00eebbaf216437e7",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/INDEPENDENT-QA.md",
+        "sha256": "79f0c7951a550856305b7b6648a96a85850725a3e7ff1d8e288f54949a7e6b79",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/README.md",
+        "sha256": "87461e8d5c569dc526c86430d69f2f7846962eec2f7bf9f7e42f8f7badbf7e3f",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/RESEARCH.md",
+        "sha256": "f0f7a5a07f3a8a2a9c9f685fa9392a1f8829a44252ba6e9bb20ddbe4ed069d5c",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/expected-decisions.json",
+        "sha256": "f02ca7aa01fc8a656ee8726990356738d20cb1ce31fad9db2ce625c9f5734d2b",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/independent-review.json",
+        "sha256": "647dedd45fe4f8ba63788aef2f676048bbb69979b440f12268804c88871c9782",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/retrieval.py",
+        "sha256": "3d6338deb21cc21282fdf9b52d0c57a1cec6b961859c2a45907946d6d217f4a2",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/standards-claims.json",
+        "sha256": "749ac623705a176710a667fd5ea0248e5f2bfeff756bb7a1a9194a2a6cfc9a26",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/test_independent_claim_qa.py",
+        "sha256": "8001b20232a545cac457421d4e623692985263534de9d4b9e97810586ff6d647",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/test_supplement.py",
+        "sha256": "f484072830ff8246ade8645b438040d30cc18d3da155fc5cf33976a2cdeabbc8",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      },
+      {
+        "path": "knowledge/insurance-contracts/validate_supplement.py",
+        "sha256": "36660adc005278ceaf73ab009b067b4c884b16dc8597bd2360e9d753d915277e",
+        "topic_id": "SUPPLEMENTAL_INSURANCE_CONTRACTS"
+      }
+    ],
+    "public_caveats": [
+      "Current qualified inputs and the operative insurance framework are required; complex models require separate governed methods."
+    ],
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "selection_memo": "Synthetic reviewed Insurance route and explicit excluded specialist boundaries"
+  },
+  "package": "insurance-contracts-accounting",
+  "period_start": "2026-01-01",
+  "policy_elections": {
+    "financial_instruments": "sections11_12",
+    "ifrs18_19_early_adoption": false,
+    "section23_model": "revised_2026"
+  },
+  "population_review": {
+    "cash_events_ids": [
+      "premium1",
+      "payment1",
+      "acquisition1"
+    ],
+    "claims_ids": [
+      "claim1"
+    ],
+    "complete": true,
+    "completeness_memo": "Independent source totals and unique economic identity review",
+    "contracts_ids": [
+      "policy1"
+    ],
+    "document_id": "doc-population",
+    "groups_ids": [
+      "group1"
+    ],
+    "id": "population",
+    "reports_ids": [
+      "report1"
+    ],
+    "reviewer": "Synthetic independent completeness reviewer",
+    "source_system": "Independent original policy claims cash systems"
+  },
+  "preparer": "synthetic preparer",
+  "reporting_period": "2026-12-31",
+  "reports": [
+    {
+      "acquisition_amortization": "60",
+      "acquisition_attributable": true,
+      "acquisition_expense_election": false,
+      "actuary": "Synthetic qualified actuary",
+      "assumption_version": "assumptions1",
+      "assumptions_memo": "Controlled assumptions register excludes autonomous projections",
+      "boundary_reviewed": true,
+      "cash_population_hash": "0b7eedba059a647819ef152987bce597a3b20c0a87e03ff37fda94e37972e11b",
+      "change_classification_memo": "Nonfinancial future service assumption change distinguished from errors and finance",
+      "change_kind": "none",
+      "change_risk": "nonfinancial",
+      "change_service": "future",
+      "claim_discount_exemption": true,
+      "claim_paid": "100",
+      "claim_population_hash": "f027b74a516e4ba1411089d0fed45b83da35ba18b84e81f0ce231db9afa3690d",
+      "claims_undiscounted": true,
+      "closing_csm": "0",
+      "closing_dac": "0",
+      "closing_lic": "200",
+      "closing_loss": "0",
+      "closing_lrc": "540",
+      "closing_pv": "408",
+      "closing_ra": "0",
+      "contract_ids": [
+        "policy1"
+      ],
+      "contract_population_hash": "f5644662d6cefab8f427f12a942427425cc7015a95afc8451d214fc20f146bc5",
+      "coverage_method": "Qualified quantity of benefits and duration units register",
+      "csm_interest": "0",
+      "csm_release": "0",
+      "currency": "EUR",
+      "current_units": "25",
+      "dac_writeoff": "0",
+      "deficiency_liability": "0",
+      "discount_curve_unchanged": true,
+      "discount_source": "Qualified supplied curve register version1",
+      "document_id": "doc-report1",
+      "entity": "Synthetic Group",
+      "expected_premiums": "1200",
+      "expected_service": "400",
+      "fcf_finance": "8",
+      "framework": "UK_GAAP",
+      "future_change_current": "0",
+      "future_change_locked": "0",
+      "group_id": "group1",
+      "id": "report1",
+      "incurred": "300",
+      "incurred_pv": "280",
+      "incurred_ra": "20",
+      "initial_csm": "0",
+      "initial_date": "2026-07-01",
+      "initial_fcf": "-150",
+      "initial_loss": "0",
+      "initial_outflows": "800",
+      "initial_ra": "0",
+      "initial_ra_dummy": "0",
+      "interest_day_basis": "actual365_simple",
+      "interest_fraction": "1",
+      "investment_income": "0",
+      "investment_income_policy": "exclude",
+      "lic_finance": "0",
+      "locked_rate": "0.04",
+      "loss_allocation": "0",
+      "loss_allocation_method": "Qualified actuarial systematic service allocation version1",
+      "loss_recovery": "0",
+      "maintenance_cost": "0",
+      "max_claim_to_payment_days": "181",
+      "max_service_to_due_days": "364",
+      "measurement_date": "2026-12-31",
+      "model": "IFRS17_PAA",
+      "model_version": "model1",
+      "nonperformance_reviewed": true,
+      "objectivity_memo": "Synthetic independent objectivity review",
+      "onerous_assessed": true,
+      "onerous_indicator": false,
+      "opening_csm": "0",
+      "opening_lic": "0",
+      "opening_loss": "0",
+      "opening_lrc": "0",
+      "opening_ra": "0",
+      "paa_inception_reviewed": true,
+      "paa_loss": "0",
+      "paa_material_equivalence": false,
+      "paa_significant_variability": false,
+      "past_service_change": "0",
+      "pattern_reviewed": true,
+      "portfolio": "property",
+      "premium_financing_exemption": true,
+      "product": "property_fire",
+      "protection_release_fraction": "0.5",
+      "qualification_memo": "Synthetic independently reviewed qualification evidence",
+      "ra_release": "20",
+      "remaining_claims": "0",
+      "remaining_fcf": "0",
+      "remaining_units": "75",
+      "revenue_pattern": "risk",
+      "reviewer": "Synthetic separate actuarial reviewer",
+      "risk_adjustment_source": "Qualified supplied RA workpaper version1",
+      "risk_release_fraction": "0.5",
+      "service_fraction": "0.5",
+      "service_release": "600",
+      "signed_on": "2027-01-20",
+      "significant_risk_pattern": true,
+      "successful_acquisition": true,
+      "unsupported_features": [],
+      "us_aggregation_basis": "US similar acquisition and servicing business",
+      "us_contract_scope_reviewed": true,
+      "us_insurance_entity": true
+    }
+  ],
+  "requested_action": "accounting_workpaper",
+  "reviewer_signoff": {
+    "approved": true,
+    "case_fingerprint": "b87b26b84570c5499ac26fc914150a24ecb78f411c4e0ae41042df417f1c310b",
+    "reviewer": "Synthetic independent implementation reviewer"
+  },
+  "specialist_items": [],
+  "statement_review": {
+    "document_id": "doc-statements",
+    "gl_hash": "35731e28192863b75b455f6be367b0ad86cb9e38d57e3de0d2a45ec974684601",
+    "gross_presentation": true,
+    "group_ids": [
+      "group1"
+    ],
+    "id": "statements"
+  },
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024"
+}

@@ -24,11 +24,11 @@ jobs:
         run: |
           PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/proof283.json
           PYTHONHASHSEED=1709 python -m build4.prove_integrated > /tmp/proof1709.json
-          cmp build4/release/integrated-proof.json /tmp/proof283.json
+          cmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/integrated-proof.json /tmp/proof283.json
           cmp /tmp/proof283.json /tmp/proof1709.json
           PYTHONHASHSEED=283 python -m build4.prove_memory > /tmp/memory283.json
           PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory1709.json
-          cmp build4/release/memory-proof.json /tmp/memory283.json
+          cmp recovery/borrowing-costs-pr42/integration-fresh/build4/release/memory-proof.json /tmp/memory283.json
           cmp /tmp/memory283.json /tmp/memory1709.json
       - name: Release manifest and historical preservation
         run: python -m build4.verify_release

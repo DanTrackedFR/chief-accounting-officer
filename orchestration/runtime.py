@@ -231,7 +231,13 @@ class CAO:
         from .execution import OwnerInputs, populations
         inputs=OwnerInputs(context)
         for family,source in populations(facts):
-            if family in FACT_ADAPTERS and self.registry.get(FACT_ADAPTERS[family][0]).get('production_available'): inputs.add(FACT_ADAPTERS[family][0],copy.deepcopy(source))
+            if family in FACT_ADAPTERS and self.registry.get(FACT_ADAPTERS[family][0]).get('production_available'):
+                # An issue indicator is not a scoped, reviewed owner workpaper.
+                # Retain its planned owner so missing evidence blocks that node;
+                # never infer a company or certify the indicator as execution input.
+                if 'entity' not in source and 'scope_id' not in source:
+                    continue
+                inputs.add(FACT_ADAPTERS[family][0],copy.deepcopy(source))
         queue=list(inputs.values())
         inspected=set()
         for source in queue:

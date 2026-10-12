@@ -64,8 +64,9 @@ class Inventory(unittest.TestCase):
         for c in (None,{},[],dict(framework='OTHER'),dict(items=[])):self.assertEqual('blocked',assess_case(PACKAGE,c)['status'])
     def test_examples_reproduce(self):
         from generate_inventory_examples import artifacts
+        from recovery_references import reference_path
         root=Path(__file__).resolve().parents[2]
-        for path,obj in artifacts().items():self.assertEqual(json.loads((root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
+        for path,obj in artifacts().items():self.assertEqual(json.loads(reference_path(root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
 
     def test_company_grouped_variance_architecture(self):
         r=self.run_case(grouped_standard_case());self.assertEqual('complete',r['status'],r['conclusion']);self.assertEqual(Decimal('1000'),r['calculations']['order-1']['actual_eligible_total'])

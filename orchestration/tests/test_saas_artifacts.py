@@ -1,4 +1,5 @@
 """Saved reference artifacts reproduce from raw sources and reviewed scaffolding."""
+from orchestration.history_references import reference_path
 import json
 from pathlib import Path
 import unittest
@@ -12,7 +13,7 @@ class SaaSArtifacts(unittest.TestCase):
         self.assertEqual(set(generated), {p.name for p in root.glob('*.json')})
         for name, value in generated.items():
             with self.subTest(name=name):
-                self.assertEqual(json.loads((root / name).read_text()), json.loads(json.dumps(value, default=str)))
+                self.assertEqual(json.loads((reference_path(root / name)).read_text()), json.loads(json.dumps(value, default=str)))
 
 
 if __name__ == '__main__':

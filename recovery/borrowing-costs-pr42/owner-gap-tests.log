@@ -1,0 +1,20 @@
+...........................F..........................
+======================================================================
+FAIL: test_artifacts_match_saved (orchestration.tests.test_treasury.TreasuryAuthored.test_artifacts_match_saved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/orchestration/tests/test_treasury.py", line 52, in test_artifacts_match_saved
+    for name,value in artifacts().items():self.assertEqual(json.loads((Path(__file__).resolve().parents[1]/'examples/treasury-financing'/name).read_text()),json.loads(json.dumps(value,default=str)))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'case_id': 'case:f4762175a2cac94f35e974980[1053867 chars]te'}] != [{'id': 'exec:debt-financing:Synthetic Group[1053867 chars]one}]
+
+First differing element 0:
+{'case_id': 'case:f4762175a2cac94f35e974980[48231 chars]ete'}
+{'id': 'exec:debt-financing:Synthetic Group[48231 chars]None}
+
+Diff is 5660699 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 54 tests in 63.738s
+
+FAILED (failures=1)

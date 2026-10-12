@@ -37,7 +37,7 @@ PACKAGES = {
     'segment-reporting': ('SKILL-SEG-001',['TOPIC-08-006']),
     'subsequent-events': ('SKILL-EVENT-001',['TOPIC-08-005']),
     'government-grants': ('SKILL-GRANT-001',[]),
-    'borrowing-costs': ('SKILL-BORROW-001',['TOPIC-04-003']),
+    'borrowing-costs': ('SKILL-BORROW-001',['SUPPLEMENTAL_BORROWING_COSTS']),
     'cash-flow-reporting': ('SKILL-CASH-001',['TOPIC-08-002','TOPIC-06-001','TOPIC-06-002']),
     'equity-capital': ('SKILL-EQUITY-001',['TOPIC-08-003','TOPIC-13-006']),
     'accounting-changes': ('SKILL-CHANGE-001',['TOPIC-02-009','TOPIC-15-001','TOPIC-15-003','TOPIC-15-006']),
@@ -111,6 +111,9 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if topic_ids == ['SUPPLEMENTAL_BORROWING_COSTS']:
+        from borrowing_knowledge import mapped_knowledge
+        return mapped_knowledge(framework)
     if topic_ids == ['SUPPLEMENTAL_INSURANCE_CONTRACTS']:
         from insurance_knowledge import mapped_knowledge
         return mapped_knowledge(framework)
@@ -208,11 +211,12 @@ def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
     if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
     if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
-    if package=='borrowing-costs':raise ReviewRequired('Approved CIP routing does not provide a substantive borrowing-cost capitalization method; governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
+    if 'package' in case and case['package'] != package:
+        raise ReviewRequired('Case implementation owner differs from selected accounting skill')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
-    if package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
+    if (package=='borrowing-costs' or package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH) and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
     claims,knowledge=canonical_knowledge(PACKAGES[package][1],case['framework'],package=package)
     required(case,'knowledge_review')
     reviewed=case['knowledge_review']
@@ -252,34 +256,16 @@ def execute(package, case):
            signoff.get('reviewer')!=case.get('preparer') and signoff.get('approved') is True)
     result['status']='complete' if valid and not result.get('open_items') else 'partial'
     if not valid: result.setdefault('open_items',[]).append('Independent reviewer must approve this exact case fingerprint before use')
+    if package=='borrowing-costs' and result['status']!='complete':
+        result['proposed_journal_workpaper']=result.get('journal_entry_implications',[])
+        result['journal_entry_implications']=[]
     try:to_public(result)
     except ValueError as exc:raise ReviewRequired('Public output could not be safely curated; reviewer must resolve accounting caveats or account labels') from exc
     return result
 
 def case_fingerprint(case):
-    files=[ROOT/'skills/core_accounting.py',ROOT/'skills/production.py',ROOT/'interfaces/public_output.py']
-    files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
-    files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
-    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
-    files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
-    files += [ROOT/'skills/presentation_accounting.py']
-    files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
-    files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
-    if case.get('package')=='derivatives-hedge-accounting':
-        files += [ROOT/'skills/derivatives-hedge-accounting/handoffs.py']
-        files += [ROOT/'skills/hedge_knowledge.py',ROOT/'skills/derivatives-hedge-accounting/CANONICAL-KNOWLEDGE-MAP.json',ROOT/'skills/derivatives-hedge-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/derivatives-hedge').glob('*.py')]
-    if case.get('package')=='inventory-cost':
-        files += [ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/inventory-cost').glob('*.py')]
-    if case.get('package')=='insurance-contracts-accounting':
-        files += [ROOT/'skills/insurance_knowledge.py', ROOT/'skills/insurance-contracts-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/insurance-contracts').glob('*.py')]
-        files += [p for p in (ROOT/'skills/insurance-contracts-accounting').glob('handoffs.py')]
-    if case.get('package')=='agriculture-biological-assets':
-        files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
-    files += [ROOT/'skills/management-accounting-analytics/diagnostics.py']
+    from implementation_scope import fingerprint_files
+    files=fingerprint_files(case, ROOT, PACKAGES)
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
@@ -296,7 +282,7 @@ def _public_requirement_text(text):
     if text.startswith(prefix+marker):lead=prefix+marker
     elif text.startswith(marker):lead=marker
     else:return text
-    names={'case_id':'accounting case identity','node_id':'accounting execution identity',
+    names={'original_source_snapshot':'independent original accounting source population','case_id':'accounting case identity','node_id':'accounting execution identity',
            'period_id':'governed accounting period','result_version':'current accounting result',
            'dependency_id':'qualified accounting dependency','source_fingerprint':'qualified source identity',
            'reviewer_signoff':'independent accounting review'}
@@ -348,6 +334,7 @@ def to_public(result, route='answer'):
     if result['skill_id']=='SKILL-HEDGE-001':title={'IFRS':'IFRS 9 / IFRS 7 derivative and hedge accounting','US_GAAP':'ASC 815 derivative and hedge accounting','UK_GAAP':'FRS 102 Section 12 derivative and hedge accounting','AASB':'AASB 9 / AASB 7 derivative and hedge accounting'}.get(result['framework'],'Derivative framework unresolved')
     if result['skill_id']=='SKILL-INV-001':title={'IFRS':'IAS 2 bounded manufacturing accounting','US_GAAP':'ASC 330 bounded manufacturing accounting','UK_GAAP':'FRS 102 Section 13 bounded manufacturing accounting','AASB':'AASB 102 Tier 1 bounded manufacturing accounting'}.get(result['framework'],'Inventory framework unresolved')
     if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
+    if result['skill_id']=='SKILL-BORROW-001':title={'IFRS':'IAS 23 bounded borrowing costs','AASB':'AASB 123 Tier 1 for-profit borrowing costs','US_GAAP':'ASC 835-20 bounded avoidable interest','UK_GAAP':'FRS 102 Section 25 elected borrowing costs policy'}.get(result['framework'],'Borrowing costs framework unresolved')
     if result['skill_id']=='SKILL-INS-001':title={'IFRS':'IFRS 17 insurance accounting','AASB':'AASB 17 Tier 1 for-profit insurance accounting','US_GAAP':'ASC 944 short-duration insurance accounting','UK_GAAP':'FRS 103 insurance policy boundary'}.get(result['framework'],'Insurance framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:

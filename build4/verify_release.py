@@ -12,8 +12,17 @@ def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def verify():
     historical=json.loads((ROOT/'build4/release/historical-inventory.json').read_text())
+    preserved=json.loads((ROOT/'recovery/borrowing-costs-pr42/main-historical-preservation.json').read_text())
+    assert preserved['status']=='PASS' and not preserved['errors']
+    pr42=json.loads((ROOT/'recovery/borrowing-costs-pr42/published-head-manifest.json').read_text())['files']
     for name,expected in historical['files'].items():
-        assert digest(ROOT/name)==expected,('Historical artifact changed',name)
+        path=ROOT/name
+        if name in preserved['files']:
+            record=preserved['files'][name]
+            assert record['pr42_original_sha256']==pr42[name] and (ROOT/record['main_original_path']).resolve().is_relative_to(ROOT/'recovery/borrowing-costs-pr42/main-original')
+            assert record['main_sha256']==expected and digest(path)==record['pr42_original_sha256'],('PR42 original changed',name)
+            path=ROOT/record['main_original_path']
+        assert digest(path)==expected,('Historical artifact changed',name)
     pointer=json.loads((ROOT/'build4/release/accepted-release.json').read_text())
     manifest_path=ROOT/pointer['manifest']
     assert digest(manifest_path)==pointer['sha256'],'Release manifest hash differs'

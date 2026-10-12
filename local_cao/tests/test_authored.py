@@ -132,9 +132,11 @@ class Authored(unittest.TestCase):
 
     def test_discovery_dynamic(self):
         r=self.call('capabilities');self.assertTrue(r['ok'],r)
-        for pkg in ('borrowing-costs','government-grants','investment-property'):
+        for pkg in ('government-grants','investment-property'):
             row=next(x for x in r['capabilities'] if x['package']==pkg)
             self.assertFalse(row['local_fact_adapter'])
+        borrowing=next(x for x in r['capabilities'] if x['package']=='borrowing-costs')
+        self.assertTrue(borrowing['local_fact_adapter'])
 
     def test_traversal(self):
         r=self.start();self.assertEqual(self.call('submit',case_id=r['case_id'],evidence_file='../anything')['error']['code'],'workspace_boundary')

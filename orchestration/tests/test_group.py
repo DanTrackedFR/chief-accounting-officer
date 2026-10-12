@@ -1,4 +1,5 @@
 """Authored end-to-end Group Accounting acceptance and specialist boundaries."""
+from orchestration.history_references import reference_path
 import copy,json,os,subprocess,sys,unittest
 from pathlib import Path
 from decimal import Decimal
@@ -70,7 +71,7 @@ class GroupAuthored(unittest.TestCase):
             with self.subTest(owner=owner):
                 r=narrow(owner,objective);self.assertEqual(r.case.skills_invoked,[owner]);self.assertEqual(r.case.outcome,'complete')
     def test_artifacts_match_current_generator(self):
-        for name,value in artifacts().items():self.assertEqual(json.loads((Path(__file__).resolve().parents[1]/'examples/group-accounting'/name).read_text()),json.loads(json.dumps(value,default=str)))
+        for name,value in artifacts().items():self.assertEqual(json.loads((reference_path(Path(__file__).resolve().parents[1]/'examples/group-accounting'/name)).read_text()),json.loads(json.dumps(value,default=str)))
     def test_five_executable_material_lineages(self):self.assertEqual(len(artifacts()['end-to-end-lineage.json']),5)
     def test_bridges_no_unexplained_plug(self):
         out=artifacts()

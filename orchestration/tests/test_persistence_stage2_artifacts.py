@@ -3,13 +3,14 @@ import base64
 import gzip
 import hashlib
 import unittest
+from orchestration.history_references import reference_path
 from orchestration.tests.generate_persistence_stage2_examples import artifacts, TARGET
 
 class DurableRecoveryArtifactReproduction(unittest.TestCase):
     def test_interrupted_accounting_artifacts_reproduce(self):
         actual=artifacts()
         self.assertEqual(set(actual),{p.name for p in TARGET.glob('*.json')})
-        for name,value in actual.items():self.assertEqual(value,json.loads((TARGET/name).read_text()),name)
+        for name,value in actual.items():self.assertEqual(value,json.loads(reference_path(TARGET/name).read_text()),name)
         from orchestration.persistence.codec import loads
         from orchestration.persistence import restore
         for value in actual.values():
