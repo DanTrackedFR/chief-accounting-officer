@@ -1,0 +1,2420 @@
+[
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "13e31b116bcc13fa567e3d8374e697dba2d3a67941f229b667441ead0db19dfc",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "174d3b4a6ed7298145c5f69635a3d924dcf9b2d0d46a1d0da12db7fd12492fad",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "fixed-assets",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:fixed-assets:Synthetic Group:3bee5c9e864934a4f4c80ec727753d750b54d5171dddb1739e01b537eacde42c",
+      "result_fingerprint": "77a47acae80e6348fab029ccafb9be4bbd9ca86d6b4e4ad70231893bf2a6689b",
+      "result_version": "version:07d20d5cf33f3bbed0d1fa088b70729cbd5a3602d321acbed0c5f045ee845849",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:fixed-assets:Synthetic Group:3bee5c9e864934a4f4c80ec727753d750b54d5171dddb1739e01b537eacde42c",
+    "invalidated_results": [],
+    "issue": "machinery",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "fixed-assets",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "assets": [
+          {
+            "carrying": "330000.00",
+            "closing_accumulated": "270000.00",
+            "closing_cost": "600000",
+            "cost": "600000",
+            "depreciation": "90000.00",
+            "disposal_gain": "0",
+            "id": "machine"
+          }
+        ],
+        "cip": [],
+        "closing_accumulated": "270000.00",
+        "closing_cip": "0",
+        "closing_cost": "600000",
+        "depreciation": "90000.00",
+        "excluded_expense": "0"
+      },
+      "case_fingerprint": "174d3b4a6ed7298145c5f69635a3d924dcf9b2d0d46a1d0da12db7fd12492fad",
+      "conclusion": "Qualifying costs, components, depreciation, disposals and CIP reconcile to gross ledgers.",
+      "open_items": [],
+      "skill_id": "SKILL-FA-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "fixed-assets",
+    "source_inputs": [
+      "machinery"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "e771ba05980d8e903b799286dce39ba1b04cc0408e13c7fda5b4117bc2c69f72",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "cf1c607962186be6c3e66ed5c62208a75993a8fa400190df40e562dfad1a73cb",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounts-payable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+      "result_fingerprint": "6066deccc074922ce9cb4f3847e052fd6806672172fa8e67fd81e7c4ffb7367b",
+      "result_version": "version:1495ab197d59944af075cec801c09ab9d77795c8c730afb71f306af65ef2df38",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+    "invalidated_results": [],
+    "issue": "supplier_cost",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "accounts-payable",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "accrual_backtests": [],
+        "closing_accruals": "0",
+        "closing_ap": "20",
+        "invoices": "120",
+        "opening_ap": "0",
+        "payments": "100",
+        "planned_reversals": []
+      },
+      "case_fingerprint": "cf1c607962186be6c3e66ed5c62208a75993a8fa400190df40e562dfad1a73cb",
+      "conclusion": "Supplier invoices, payments and independently received unbilled liabilities reconciled.",
+      "open_items": [],
+      "skill_id": "SKILL-AP-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "accounts-payable",
+    "source_inputs": [
+      "supplier_cost"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "ab4f7fa3422e3e20022822cf4468f4941134a7e340cb1184c85a19ea08949794",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "7cd18519bae934356cd98eb24eb9054747afd0bfe030c9f17a438296f8f79d9f",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "employee-benefits-payroll",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:employee-benefits-payroll:Synthetic Group:7334e905329e83c6fa8ad34b3d49030e131396a0a2897d3c0c3f6caba9461e33",
+      "result_fingerprint": "f687195f5eaf2fe994652ed5c2d0bd73a8c2f3595b8dca8b67548cb66c612f91",
+      "result_version": "version:a6191f158a1067503981605858e4459e155ab2b65c0c260c059c193f5135ab67",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:employee-benefits-payroll:Synthetic Group:7334e905329e83c6fa8ad34b3d49030e131396a0a2897d3c0c3f6caba9461e33",
+    "invalidated_results": [],
+    "issue": "employee_cost",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "employee-benefits-payroll",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "benefits": [
+          {
+            "charge": "10800.00",
+            "closing": "5800.00",
+            "kind": "salary",
+            "net_payment": "4000"
+          }
+        ],
+        "closing_liability": "5800.00",
+        "expense": "10800.00",
+        "net_cash": "4000",
+        "withholding": "1000",
+        "withholding_deductions": "1000",
+        "withholding_remitted": "0"
+      },
+      "case_fingerprint": "7cd18519bae934356cd98eb24eb9054747afd0bfe030c9f17a438296f8f79d9f",
+      "conclusion": "Earned employee benefits and payroll clearing reconciled",
+      "open_items": [],
+      "skill_id": "SKILL-BEN-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "employee-benefits-payroll",
+    "source_inputs": [
+      "employee_cost"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "01205fedc5f37e535818c1ea3a6cd06c434dc847466f4b30c58c56df211bb5ac",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "06be9e9630e8ddbff8e4420316d72d63e0ae2eedfa315607c47c30329915fb60",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "foreign-currency",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+      "result_fingerprint": "c3ff04d0e91d801389f907d5e120be746d4240255c4d7ee8926c03ee329dd3a4",
+      "result_version": "version:a91955ea2357a1c7bb02763c1bbc44c9520334c0d1c7cece9c4c83b3a6a9df0e",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+    "invalidated_results": [],
+    "issue": "currency_exposure",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "foreign-currency",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "monetary_fx_profit": "0",
+        "transactions": [
+          {
+            "closing": "110.00",
+            "gain": "0.00",
+            "id": "inventory-purchase",
+            "initial": "110.00",
+            "origin": "FX income",
+            "settlement": "0.00"
+          }
+        ]
+      },
+      "case_fingerprint": "06be9e9630e8ddbff8e4420316d72d63e0ae2eedfa315607c47c30329915fb60",
+      "conclusion": "Functional-currency transaction schedule and separate presentation-currency bridge reconcile.",
+      "open_items": [],
+      "skill_id": "SKILL-FX-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "foreign-currency",
+    "source_inputs": [
+      "currency_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:employee-benefits-payroll:Synthetic Group:7334e905329e83c6fa8ad34b3d49030e131396a0a2897d3c0c3f6caba9461e33",
+      "exec:accounts-payable:Synthetic Group:f9e9900896f8887b0c41ac1b36abd78e0969623a45a8630a1f03d6f2d82634f3",
+      "exec:fixed-assets:Synthetic Group:3bee5c9e864934a4f4c80ec727753d750b54d5171dddb1739e01b537eacde42c",
+      "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
+    ],
+    "downstream_consumers": [
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e:recheck:50b4a481e2e997b18ec51ec6b1b9268c77f17b2fe3271ffa0c7f0ce27b7b184f"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "13fabf96227a7c752fcc9eac0f84c64d6df55226fc0a03e8e96a4a9c1b252fc7",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "36eb69b541859282cbcb544def6ef16ba6caa9c40833baf107724e8308645fa6",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "inventory-cost",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e",
+      "result_fingerprint": "0f8dce31145ea514fafa3ec15c6d2005f134519e45f61b69542f563477185e07",
+      "result_version": "version:e66dd2ca83b166d0f33a25dd5fe1a039858d46b623a473cde37fc04e9b79a9aa",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e",
+    "invalidated_results": [],
+    "issue": "inventory",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "inventory-cost",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "employee-benefits-payroll",
+      "accounts-payable",
+      "fixed-assets",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "class_bridges": {
+          "Finished goods": {
+            "closing": "33912.00",
+            "opening": "0",
+            "own_movement": "33912.00",
+            "retained_owner_intake": "0"
+          },
+          "Raw materials": {
+            "closing": "510.00",
+            "opening": "1000",
+            "own_movement": "-490.00",
+            "retained_owner_intake": "0"
+          },
+          "Work in progress": {
+            "closing": "11304.00",
+            "opening": "0",
+            "own_movement": "11304.00",
+            "retained_owner_intake": "0"
+          }
+        },
+        "closing_inventory": "45726.00",
+        "cogs": "11304.00",
+        "inventory_by_class": {
+          "Finished goods": "33912.00",
+          "Merchandise": "0",
+          "Raw materials": "510.00",
+          "Work in progress": "11304.00"
+        },
+        "inventory_own_movement": "44726.00",
+        "manufacturing_expense": "45000.00",
+        "opening_inventory": "1000",
+        "order-1": {
+          "abnormal_material_expense": "0",
+          "absorbed_fixed": "45000.00",
+          "actual_eligible_total": "56520.00",
+          "closing_equivalent_units": "20",
+          "closing_wip": "11304.00",
+          "completed_cost": "45216.00",
+          "completed_quantity": "80",
+          "direct_labour": "10800",
+          "finished_unit_cost": "565.20",
+          "fixed_overhead": "90000",
+          "material": "600.00",
+          "standard_recovery": "45000.00",
+          "standard_total": "56520.00",
+          "under_recovery": "45000.00",
+          "variable_overhead": "120",
+          "variances": {}
+        },
+        "owner_handoffs": {
+          "controls_movement_count": 4,
+          "disclosure_inventory": "45726.00",
+          "financial_statements": "45726.00",
+          "revenue_cogs": "11304.00",
+          "systems_item_count": 3
+        },
+        "quantity_population": {
+          "component": {
+            "closing_quantity": "50",
+            "inflows": "10",
+            "opening_quantity": "100",
+            "quantity_basis": "controlled_physical_units",
+            "reliefs": "60",
+            "unit": "units"
+          },
+          "order-wip": {
+            "closing_quantity": "20",
+            "inflows": "0",
+            "opening_quantity": "0",
+            "quantity_basis": "controlled_equivalent_units",
+            "reliefs": "0",
+            "unit": "units"
+          },
+          "product": {
+            "closing_quantity": "60",
+            "inflows": "80",
+            "opening_quantity": "0",
+            "quantity_basis": "controlled_physical_units",
+            "reliefs": "20",
+            "unit": "units"
+          }
+        },
+        "retained_owner_intake": "0",
+        "reversal": "0",
+        "write_down": "0"
+      },
+      "case_fingerprint": "36eb69b541859282cbcb544def6ef16ba6caa9c40833baf107724e8308645fa6",
+      "conclusion": "Controlled inventory and manufacturing costs reconcile from supplied source populations through RM, WIP, finished goods and all journal offsets.",
+      "open_items": [],
+      "skill_id": "SKILL-INV-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "inventory-cost",
+    "source_inputs": [
+      "inventory"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "7dc8546aa853a1526ffe61e2c61ca06bb5a5bf0f954f55222104add457032145",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "7b8ecce4bc5e2b56a4afe26ed4521d3cfd282832bd739cd750b54e842052fa23",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "revenue-recognition",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "result_fingerprint": "e9c3d345bdfe1c1b9281c110f365543eb9dd2e6da4a04c8893d50e3a32742022",
+      "result_version": "version:916b56f8ccdb3a4da80fb8027f7da8f6855bd1ab54f0ebfe63747c2b90bbb02f",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+    "invalidated_results": [],
+    "issue": "customer_contract",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "revenue-recognition",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "customer_contract",
+      "enforceable_rights",
+      "performance_obligations",
+      "transaction_price",
+      "variable_consideration",
+      "recognition_pattern",
+      "reporting_period"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "contract_bridge": {
+          "billings": "40000",
+          "closing": "0.00",
+          "opening": "0",
+          "revenue": "40000.00"
+        },
+        "contract_cost_asset": "0.00",
+        "cumulative_revenue": "40000.00",
+        "obligations": [
+          {
+            "allocation": "40000.00",
+            "cumulative_revenue": "40000.00",
+            "id": "delivery",
+            "role": "principal"
+          }
+        ],
+        "period_revenue": "40000.00",
+        "receivable": "40000.00",
+        "transaction_price": "40000.00"
+      },
+      "case_fingerprint": "7b8ecce4bc5e2b56a4afe26ed4521d3cfd282832bd739cd750b54e842052fa23",
+      "conclusion": "Revenue assessment: period revenue 40000.00; closing contract asset 0.00 and liability 0.00; receivable 40000.00.",
+      "open_items": [],
+      "skill_id": "SKILL-REV-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "revenue-recognition",
+    "source_inputs": [
+      "customer_contract"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e",
+      "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0"
+    ],
+    "downstream_consumers": [
+      "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "1e44bec4381f5ad28a37d94bd645cc3fa2e6c363fb55b251000d70ab3ed971a0",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "35a65468f1f77557fcbb0c5b5e6082c20a3a95f40dbf8520359487403c42a364",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-statements",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "result_fingerprint": "26a68d7096ea274a7fc4c84af9a3cf4e059d2f25c1bd8845b2aa710d83a00e2a",
+      "result_version": "version:49dcb3a11a9db470390eea174273c29b1d9b738993f2fb4ee893479a28ea1539",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "invalidated_results": [],
+    "issue": "statement",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "financial-statements",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "cash_flow": {
+          "bs_cash_bridge": "0.00",
+          "closing": "-4100.00",
+          "financing": "0.00",
+          "fx": "0.00",
+          "investing": "0.00",
+          "opening": "0.00",
+          "operating": "-4100.00"
+        },
+        "comparative": {
+          "assets": "421000.00",
+          "cash": "0",
+          "closing_equity": "421000.00",
+          "comprehensive_income": "0",
+          "expenses": "0",
+          "liabilities": "0",
+          "lines": {
+            "Opening equity": "-421000.00",
+            "PPE gross": "600000.00",
+            "Raw materials": "1000.00",
+            "accumulated depreciation": "-180000.00"
+          },
+          "oci": "0",
+          "profit": "0",
+          "revenue": "0"
+        },
+        "current": {
+          "assets": "411626.00",
+          "cash": "-4100.00",
+          "closing_equity": "404696.00",
+          "comprehensive_income": "-16304.00",
+          "expenses": "56304.00",
+          "liabilities": "6930.00",
+          "lines": {
+            "Acquisition clearing": "-110.00",
+            "Cash": "-4100.00",
+            "Cost of goods sold": "11304.00",
+            "Employee benefit payable": "-5800.00",
+            "Employee withholding payable": "-1000.00",
+            "Finished goods": "33912.00",
+            "Opening equity": "-421000.00",
+            "PPE gross": "600000.00",
+            "Raw materials": "510.00",
+            "Receivable": "40000.00",
+            "Revenue": "-40000.00",
+            "Unallocated overhead expense": "45000.00",
+            "Work in progress": "11304.00",
+            "accounts payable": "-20.00",
+            "accumulated depreciation": "-270000.00"
+          },
+          "oci": "0",
+          "profit": "-16304.00",
+          "revenue": "40000.00"
+        },
+        "equity_components": [
+          {
+            "closing": "404696.00",
+            "id": "owners",
+            "oci": "0",
+            "opening": "421000",
+            "other": "0",
+            "owner_transactions": "0",
+            "profit": "-16304.00",
+            "retrospective_adjustments": "0"
+          }
+        ],
+        "management_performance_measures": [],
+        "note_tieouts": [
+          {
+            "amount": "-16304.00",
+            "id": "profit-note",
+            "target": "profit"
+          }
+        ]
+      },
+      "case_fingerprint": "35a65468f1f77557fcbb0c5b5e6082c20a3a95f40dbf8520359487403c42a364",
+      "conclusion": "Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.",
+      "open_items": [],
+      "skill_id": "SKILL-FS-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "statement"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "012b7fc9548fb7510d253f456f3c5f2c2fca3ecee42ad9f54197de7c0b04994d",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "e926783d7dd874d9fef86b37d479929fc36028bf18d0e139f9c747b164235b36",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "balance-sheet-reconciliations",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "result_fingerprint": "21029a87d61b7085bd745f0385a690e74b1174c0eb27bcb0824509d76fce0933",
+      "result_version": "version:935f092e3c0f6368a9f110978d07b321190746511210713939d3adf0aca680d4",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+    "invalidated_results": [],
+    "issue": "reconciliation",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "balance-sheet-reconciliations",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "accounts": [
+          {
+            "account": "Finished goods",
+            "adjusted_gl": "33912.00",
+            "gross_items": "0.00",
+            "movement": "0.00",
+            "source": "33912.00"
+          },
+          {
+            "account": "Merchandise",
+            "adjusted_gl": "0.00",
+            "gross_items": "0.00",
+            "movement": "0.00",
+            "source": "0.00"
+          },
+          {
+            "account": "Raw materials",
+            "adjusted_gl": "510.00",
+            "gross_items": "0.00",
+            "movement": "0.00",
+            "source": "510.00"
+          },
+          {
+            "account": "Work in progress",
+            "adjusted_gl": "11304.00",
+            "gross_items": "0.00",
+            "movement": "0.00",
+            "source": "11304.00"
+          },
+          {
+            "account": "stock-offset",
+            "adjusted_gl": "-45726.00",
+            "gross_items": "0.00",
+            "movement": "0.00",
+            "source": "-45726.00"
+          }
+        ],
+        "gross_reconciling_items": "0.00"
+      },
+      "case_fingerprint": "e926783d7dd874d9fef86b37d479929fc36028bf18d0e139f9c747b164235b36",
+      "conclusion": "Trial balance and independently substantiated balance-sheet inventory reconciled.",
+      "open_items": [],
+      "skill_id": "SKILL-REC-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "balance-sheet-reconciliations",
+    "source_inputs": [
+      "reconciliation"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [
+      {
+        "native_evidence_fingerprint": "b2e31b3d0457a58e4d6618a73f0187db3a0c081da93787b35de51a4c590891db",
+        "reproduce": "orchestration.tests.intake_fixtures.factory_review_pack"
+      }
+    ],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "ed929b0f4e18a22abe358ba5083f3c1714ecea60d8ac65e86352b9c4d1403edc",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "month-end-close",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+      "result_fingerprint": "7d4909b541febb9b856fd6993bc6032daa4186d6b85928d97967ea68684a63cf",
+      "result_version": "version:8d8be0f021754cf3a1210a4eee2d5966f294051f2852f667ab686ad408e7960e",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+    "invalidated_results": [],
+    "issue": "close_calendar",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "month-end-close",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "close_day": "6",
+        "incremental_accrual": "0",
+        "posted_journal_count": 0,
+        "task_finish_days": {
+          "ap": "2",
+          "aprec": "4",
+          "billing": "4",
+          "group": "5",
+          "statements": "6"
+        }
+      },
+      "case_fingerprint": "ed929b0f4e18a22abe358ba5083f3c1714ecea60d8ac65e86352b9c4d1403edc",
+      "conclusion": "Close calendar, journal population and lock certification reconciled.",
+      "open_items": [],
+      "skill_id": "SKILL-CLOSE-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "month-end-close",
+    "source_inputs": [
+      "close_calendar"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "180e024b8230da6ed784dece2269ab5d69a52fdf33a54f2cecac6c09cbe1d6ea",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounting-systems-data-integrity",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:accounting-systems-data-integrity:Synthetic Group:5abc66c40e92d9728b518628f8dfd381519585a4c6f3bc49bb8436a6c6542cbb",
+      "result_fingerprint": "f52677b4625c7fd473b28fd64afa3fadc3b7317348a6009f80cf699a10c50d68",
+      "result_version": "version:c3153fc895d69bd6824f9dcf04dd5b8a1c5474a7a5d5c056ca3c00c791ced987",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:accounting-systems-data-integrity:Synthetic Group:5abc66c40e92d9728b518628f8dfd381519585a4c6f3bc49bb8436a6c6542cbb",
+    "invalidated_results": [],
+    "issue": "interface",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "accounting-systems-data-integrity",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "controls",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "gross_amount": "45726.00",
+        "interfaces": 1,
+        "records": 4,
+        "signed_amount": "45726.00",
+        "unresolved_records": 0
+      },
+      "case_fingerprint": "180e024b8230da6ed784dece2269ab5d69a52fdf33a54f2cecac6c09cbe1d6ea",
+      "conclusion": "Accounting source-to-target integrity and control acceptance workpaper",
+      "open_items": [],
+      "skill_id": "SKILL-SYS-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "accounting-systems-data-integrity",
+    "source_inputs": [
+      "interface"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "37a87d15750de296ed823f1b72088057fb597d4c8d2803ce1b0f52e2c259c9d8",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounting-controls-icfr",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:accounting-controls-icfr:Synthetic Group:47fd479446d0a46c689d0047437583367b1d6221a54acdcc959a97722ed76551",
+      "result_fingerprint": "e4fffe1eb601b99c45e96db7d3ed0b183a1a3d67233e16bdc5f5d63486c88adb",
+      "result_version": "version:ff2f39cc95d72b7e7cb62e40b3bb3a61c5a986dc4d0140f03256da4e312b7c87",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:accounting-controls-icfr:Synthetic Group:47fd479446d0a46c689d0047437583367b1d6221a54acdcc959a97722ed76551",
+    "invalidated_results": [],
+    "issue": "control",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "accounting-controls-icfr",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "controls",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "applicability_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "controls": 1,
+        "deficiencies": 0,
+        "occurrences": 1,
+        "risks": 1,
+        "unresolved_occurrences": 0
+      },
+      "case_fingerprint": "37a87d15750de296ed823f1b72088057fb597d4c8d2803ce1b0f52e2c259c9d8",
+      "conclusion": "Accounting control design and evidence-readiness workpaper; no effectiveness conclusion",
+      "open_items": [],
+      "skill_id": "SKILL-CTRL-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "accounting-controls-icfr",
+    "source_inputs": [
+      "control"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "4bfc0b0e7f0753af7f05e93a8dfe62da560e84ffa874992f08e2a028c08eb1ef",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "disclosure-management",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+      "result_fingerprint": "c6b67f31e19d3329b09531a77eb608e756c38de5fc74aa52c95fed1844135566",
+      "result_version": "version:15978da1220b5e8474036dde1194451b8782f2c4b7bd874667a8c93aa6c4023f",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+    "invalidated_results": [],
+    "issue": "disclosure",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "disclosure-management",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "applicable_count": 1,
+        "disclosure_compliance_certified": false,
+        "note_count": 1,
+        "requirement_count": 1
+      },
+      "case_fingerprint": "4bfc0b0e7f0753af7f05e93a8dfe62da560e84ffa874992f08e2a028c08eb1ef",
+      "conclusion": "Current disclosure-management and comparative tie-out workpaper reconciled",
+      "open_items": [],
+      "skill_id": "SKILL-DISC-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "disclosure-management",
+    "source_inputs": [
+      "disclosure"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e",
+      "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0"
+    ],
+    "downstream_consumers": [
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e:recheck:50b4a481e2e997b18ec51ec6b1b9268c77f17b2fe3271ffa0c7f0ce27b7b184f"
+    ],
+    "entity": "Synthetic Group",
+    "evidence": [],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "10353f062eb84f2a738a3e3a5800eb63dda7d0952ae378ec2757c521a664cd7d",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "management-accounting-analytics",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "result_fingerprint": "60c89d823d1831f55c81ddeb8c179ea04693dd930045a10bb9c0454886872106",
+      "result_version": "version:354825f041bcfe8063ed300a73a4b7f8bb8251505a689cfc43eedb0c3f48fbfc",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+    "invalidated_results": [],
+    "issue": "analytics",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "management-accounting-analytics",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "inventory-cost",
+      "revenue-recognition"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "result": {
+      "calculations": {
+        "account_movements": [
+          {
+            "movement": "11304",
+            "percentage": null
+          }
+        ],
+        "balance_diagnostics": null,
+        "current_management": "0",
+        "current_statutory": "11304",
+        "diagnostic": {
+          "accounting_questions": [
+            {
+              "amount": "45000.00",
+              "id": "capacity-accounting",
+              "issue": "Fixed overhead under-recovery accounting",
+              "materiality": "1000",
+              "reason": "Significant normal-capacity expense warrants governed accounting treatment recheck",
+              "result_path": [
+                "manufacturing_expense"
+              ],
+              "source_evidence": [
+                "capacity"
+              ],
+              "status": "REQUIRES_OWNER",
+              "target_owner": "inventory-cost"
+            }
+          ],
+          "attribution_ledger": [
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "labour-direct"
+            ],
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "material-local-ex-FX"
+            ],
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "other-conversion-allocated"
+            ],
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "sales-A"
+            ],
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "sales-B"
+            ],
+            [
+              "Synthetic Group",
+              "USD",
+              [
+                "2026-12-01",
+                "2026-12-31"
+              ],
+              "unallocated-fixed-OH"
+            ]
+          ],
+          "bridge": {
+            "change": "-31304",
+            "comparator_kind": "actual",
+            "comparator_version": "actual-v1",
+            "drivers": [
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-16666.66666666666666666666667",
+                "evidence_class": "bridge_attribution",
+                "id": "sales-volume",
+                "label": "Sales volume",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-A"
+                    ],
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-B"
+                    ]
+                  ],
+                  "effect": "volume",
+                  "entity": "Synthetic Group",
+                  "method": "price_volume_mix",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "sales",
+                  "source_metric": "period_revenue",
+                  "source_owner": "revenue-recognition",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-833.333333333333333333333329",
+                "evidence_class": "bridge_attribution",
+                "id": "sales-mix",
+                "label": "Product mix",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-A"
+                    ],
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-B"
+                    ]
+                  ],
+                  "effect": "mix",
+                  "entity": "Synthetic Group",
+                  "method": "price_volume_mix",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "sales",
+                  "source_metric": "period_revenue",
+                  "source_owner": "revenue-recognition",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "7500",
+                "evidence_class": "bridge_attribution",
+                "id": "sales-price",
+                "label": "Selling price",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-A"
+                    ],
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "sales-B"
+                    ]
+                  ],
+                  "effect": "price",
+                  "entity": "Synthetic Group",
+                  "method": "price_volume_mix",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "sales",
+                  "source_metric": "period_revenue",
+                  "source_owner": "revenue-recognition",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-20",
+                "evidence_class": "bridge_attribution",
+                "id": "material-quantity",
+                "label": "Material usage",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "material-local-ex-FX"
+                    ]
+                  ],
+                  "effect": "quantity",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": {
+                    "components": [
+                      {
+                        "amount": "600",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "material"
+                        ]
+                      }
+                    ],
+                    "denominator": {
+                      "amount": "56520",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "order-1",
+                        "actual_eligible_total"
+                      ]
+                    },
+                    "numerator": {
+                      "amount": "11304",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "cogs"
+                      ]
+                    }
+                  },
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "material",
+                  "source_metric": "cogs material excluding FX",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-0",
+                "evidence_class": "bridge_attribution",
+                "id": "material-rate",
+                "label": "Material input price",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "material-local-ex-FX"
+                    ]
+                  ],
+                  "effect": "rate",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": {
+                    "components": [
+                      {
+                        "amount": "600",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "material"
+                        ]
+                      }
+                    ],
+                    "denominator": {
+                      "amount": "56520",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "order-1",
+                        "actual_eligible_total"
+                      ]
+                    },
+                    "numerator": {
+                      "amount": "11304",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "cogs"
+                      ]
+                    }
+                  },
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "material",
+                  "source_metric": "cogs material excluding FX",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-0",
+                "evidence_class": "bridge_attribution",
+                "id": "labour-quantity",
+                "label": "Labour hours/efficiency attribution",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "labour-direct"
+                    ]
+                  ],
+                  "effect": "quantity",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": {
+                    "components": [
+                      {
+                        "amount": "10800",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "direct_labour"
+                        ]
+                      }
+                    ],
+                    "denominator": {
+                      "amount": "56520",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "order-1",
+                        "actual_eligible_total"
+                      ]
+                    },
+                    "numerator": {
+                      "amount": "11304",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "cogs"
+                      ]
+                    }
+                  },
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "labour",
+                  "source_metric": "cogs labour",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "-160",
+                "evidence_class": "bridge_attribution",
+                "id": "labour-rate",
+                "label": "Labour rate",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "labour-direct"
+                    ]
+                  ],
+                  "effect": "rate",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": {
+                    "components": [
+                      {
+                        "amount": "10800",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "direct_labour"
+                        ]
+                      }
+                    ],
+                    "denominator": {
+                      "amount": "56520",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "order-1",
+                        "actual_eligible_total"
+                      ]
+                    },
+                    "numerator": {
+                      "amount": "11304",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "cogs"
+                      ]
+                    }
+                  },
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "labour",
+                  "source_metric": "cogs labour",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "economic",
+                "confidence": "high",
+                "contribution": "3876",
+                "evidence_class": "bridge_attribution",
+                "id": "other-cost-movement",
+                "label": "Other identified conversion-cost reduction",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "other-conversion-allocated"
+                    ]
+                  ],
+                  "effect": "movement",
+                  "entity": "Synthetic Group",
+                  "method": "source_flux",
+                  "native_component_allocation": {
+                    "components": [
+                      {
+                        "amount": "45000",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "absorbed_fixed"
+                        ]
+                      },
+                      {
+                        "amount": "120",
+                        "owner_import": "inventory-owner",
+                        "result_path": [
+                          "order-1",
+                          "variable_overhead"
+                        ]
+                      }
+                    ],
+                    "denominator": {
+                      "amount": "56520",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "order-1",
+                        "actual_eligible_total"
+                      ]
+                    },
+                    "numerator": {
+                      "amount": "11304",
+                      "owner_import": "inventory-owner",
+                      "result_path": [
+                        "cogs"
+                      ]
+                    }
+                  },
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "other-cost",
+                  "source_metric": "remaining COGS: 9000 fixed absorption plus 24 variable overhead",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "mixed",
+                "confidence": "high",
+                "contribution": "-20000.00",
+                "evidence_class": "bridge_attribution",
+                "id": "capacity-quantity",
+                "label": "Fixed overhead capacity contribution",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "unallocated-fixed-OH"
+                    ]
+                  ],
+                  "effect": "quantity",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "capacity",
+                  "source_metric": "manufacturing_expense",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              },
+              {
+                "category": "mixed",
+                "confidence": "high",
+                "contribution": "-5000.0",
+                "evidence_class": "bridge_attribution",
+                "id": "capacity-rate",
+                "label": "Fixed overhead spending contribution",
+                "lineage": {
+                  "comparator": {
+                    "doc": "diagnostic-prior",
+                    "frozen_on": "2026-11-30",
+                    "kind": "actual",
+                    "period": [
+                      "2026-11-01",
+                      "2026-11-30"
+                    ],
+                    "version": "actual-v1"
+                  },
+                  "currency": "USD",
+                  "economic_components": [
+                    [
+                      "Synthetic Group",
+                      "USD",
+                      [
+                        "2026-12-01",
+                        "2026-12-31"
+                      ],
+                      "unallocated-fixed-OH"
+                    ]
+                  ],
+                  "effect": "rate",
+                  "entity": "Synthetic Group",
+                  "method": "rate_quantity",
+                  "native_component_allocation": null,
+                  "period": [
+                    "2026-12-01",
+                    "2026-12-31"
+                  ],
+                  "source_doc": "capacity",
+                  "source_metric": "manufacturing_expense",
+                  "source_owner": "inventory-cost",
+                  "unit": "USD"
+                },
+                "status": "SUPPORTED"
+              }
+            ],
+            "ending": "-16304",
+            "explained_amount": "-31304.00000000000000000000000",
+            "explained_percent": "100.00000000000000000000000",
+            "margin_points": {
+              "convention": "driver GP contributions/current revenue; separate baseline-GP denominator effect",
+              "denominator_effect": "7.500000",
+              "drivers": [
+                {
+                  "contribution": "-41.66666666666666666666666668",
+                  "id": "sales-volume",
+                  "label": "Sales volume"
+                },
+                {
+                  "contribution": "-2.083333333333333333333333322",
+                  "id": "sales-mix",
+                  "label": "Product mix"
+                },
+                {
+                  "contribution": "18.7500",
+                  "id": "sales-price",
+                  "label": "Selling price"
+                },
+                {
+                  "contribution": "-0.0500",
+                  "id": "material-quantity",
+                  "label": "Material usage"
+                },
+                {
+                  "contribution": "-0E+2",
+                  "id": "material-rate",
+                  "label": "Material input price"
+                },
+                {
+                  "contribution": "-0E+2",
+                  "id": "labour-quantity",
+                  "label": "Labour hours/efficiency attribution"
+                },
+                {
+                  "contribution": "-0.400",
+                  "id": "labour-rate",
+                  "label": "Labour rate"
+                },
+                {
+                  "contribution": "9.6900",
+                  "id": "other-cost-movement",
+                  "label": "Other identified conversion-cost reduction"
+                },
+                {
+                  "contribution": "-50.0",
+                  "id": "capacity-quantity",
+                  "label": "Fixed overhead capacity contribution"
+                },
+                {
+                  "contribution": "-12.500",
+                  "id": "capacity-rate",
+                  "label": "Fixed overhead spending contribution"
+                }
+              ],
+              "ending": "-40.7600",
+              "residual": "0E-21",
+              "starting": "30.0"
+            },
+            "materiality": "1000",
+            "metric": "gross_profit",
+            "presentation_basis": "inventory_relief_and_manufacturing_expense",
+            "residual": "0E-23",
+            "starting": "15000",
+            "status": "RECONCILED",
+            "tolerance": "0.01",
+            "unit": "USD"
+          },
+          "hypotheses": [
+            {
+              "confidence": "medium",
+              "disposition": "SUPPORTED",
+              "evidence": [
+                "capacity"
+              ],
+              "evidence_class": "bridge_attribution",
+              "hypothesis": "Higher unallocated fixed overhead explains part of the deterioration",
+              "id": "capacity",
+              "observation": "Gross profit deteriorated"
+            }
+          ],
+          "methods": [
+            {
+              "baseline": "supplied comparator",
+              "group": "sales",
+              "interaction": "current quantity price effect",
+              "method": "price_volume_mix",
+              "sign": 1
+            },
+            {
+              "baseline": "supplied comparator",
+              "group": "material",
+              "interaction": "current quantity rate effect",
+              "method": "rate_quantity",
+              "sign": -1
+            },
+            {
+              "baseline": "supplied comparator",
+              "group": "labour",
+              "interaction": "current quantity rate effect",
+              "method": "rate_quantity",
+              "sign": -1
+            },
+            {
+              "baseline": "supplied comparator",
+              "group": "other-cost",
+              "interaction": "none",
+              "method": "source_flux",
+              "sign": -1
+            },
+            {
+              "baseline": "supplied comparator",
+              "group": "capacity",
+              "interaction": "current quantity rate effect",
+              "method": "rate_quantity",
+              "sign": -1
+            }
+          ],
+          "observations": [
+            {
+              "confidence": "medium",
+              "observation": "Observed change 25000",
+              "question": "Inspect production capacity and the completed normal-capacity accounting workpaper",
+              "required_evidence": [
+                "capacity"
+              ],
+              "status": "OBSERVATION_ONLY"
+            }
+          ],
+          "open_items": []
+        },
+        "gross_movement": "11304",
+        "gross_statutory": "11304",
+        "material_open_reconciliations": 0,
+        "on_time_reconciliation_count": 1,
+        "on_time_reconciliation_rate": "100",
+        "prior_statutory": "0",
+        "reconciliation_population": 1
+      },
+      "case_fingerprint": "10353f062eb84f2a738a3e3a5800eb63dda7d0952ae378ec2757c521a664cd7d",
+      "conclusion": "Controllership accounting-source, bridge and flux workpaper reconciled",
+      "open_items": [],
+      "skill_id": "SKILL-ANALYTICS-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "management-accounting-analytics",
+    "source_inputs": [
+      "analytics"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "evidence": [],
+    "execution_receipt": {
+      "case_id": "case:af21022abe7be648aec45cac921d29fb1ba26dcec4ac4c690842ff0cd20eed10",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "36eb69b541859282cbcb544def6ef16ba6caa9c40833baf107724e8308645fa6",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "inventory-cost",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e:recheck:50b4a481e2e997b18ec51ec6b1b9268c77f17b2fe3271ffa0c7f0ce27b7b184f",
+      "result_fingerprint": "0f8dce31145ea514fafa3ec15c6d2005f134519e45f61b69542f563477185e07",
+      "result_version": "version:428ef6c32f75aba1451d518e2959e501ab0ee097a1ecba302b4eb6484042d92c",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:inventory-cost:Synthetic Group:f48f681866f1f0bc272c4b55a2acb93b7b0854f0e784928a0ac765d2c073bd4e:recheck:50b4a481e2e997b18ec51ec6b1b9268c77f17b2fe3271ffa0c7f0ce27b7b184f",
+    "invalidated_results": [],
+    "issue": "diagnostic accounting follow-up",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "diagnostic-capacity-accounting",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [],
+    "presentation_currency": null,
+    "reason_selected": "Significant normal-capacity expense warrants governed accounting treatment recheck",
+    "required": true,
+    "result": {
+      "calculations": {
+        "class_bridges": {
+          "Finished goods": {
+            "closing": "33912.00",
+            "opening": "0",
+            "own_movement": "33912.00",
+            "retained_owner_intake": "0"
+          },
+          "Raw materials": {
+            "closing": "510.00",
+            "opening": "1000",
+            "own_movement": "-490.00",
+            "retained_owner_intake": "0"
+          },
+          "Work in progress": {
+            "closing": "11304.00",
+            "opening": "0",
+            "own_movement": "11304.00",
+            "retained_owner_intake": "0"
+          }
+        },
+        "closing_inventory": "45726.00",
+        "cogs": "11304.00",
+        "inventory_by_class": {
+          "Finished goods": "33912.00",
+          "Merchandise": "0",
+          "Raw materials": "510.00",
+          "Work in progress": "11304.00"
+        },
+        "inventory_own_movement": "44726.00",
+        "manufacturing_expense": "45000.00",
+        "opening_inventory": "1000",
+        "order-1": {
+          "abnormal_material_expense": "0",
+          "absorbed_fixed": "45000.00",
+          "actual_eligible_total": "56520.00",
+          "closing_equivalent_units": "20",
+          "closing_wip": "11304.00",
+          "completed_cost": "45216.00",
+          "completed_quantity": "80",
+          "direct_labour": "10800",
+          "finished_unit_cost": "565.20",
+          "fixed_overhead": "90000",
+          "material": "600.00",
+          "standard_recovery": "45000.00",
+          "standard_total": "56520.00",
+          "under_recovery": "45000.00",
+          "variable_overhead": "120",
+          "variances": {}
+        },
+        "owner_handoffs": {
+          "controls_movement_count": 4,
+          "disclosure_inventory": "45726.00",
+          "financial_statements": "45726.00",
+          "revenue_cogs": "11304.00",
+          "systems_item_count": 3
+        },
+        "quantity_population": {
+          "component": {
+            "closing_quantity": "50",
+            "inflows": "10",
+            "opening_quantity": "100",
+            "quantity_basis": "controlled_physical_units",
+            "reliefs": "60",
+            "unit": "units"
+          },
+          "order-wip": {
+            "closing_quantity": "20",
+            "inflows": "0",
+            "opening_quantity": "0",
+            "quantity_basis": "controlled_equivalent_units",
+            "reliefs": "0",
+            "unit": "units"
+          },
+          "product": {
+            "closing_quantity": "60",
+            "inflows": "80",
+            "opening_quantity": "0",
+            "quantity_basis": "controlled_physical_units",
+            "reliefs": "20",
+            "unit": "units"
+          }
+        },
+        "retained_owner_intake": "0",
+        "reversal": "0",
+        "write_down": "0"
+      },
+      "case_fingerprint": "36eb69b541859282cbcb544def6ef16ba6caa9c40833baf107724e8308645fa6",
+      "conclusion": "Controlled inventory and manufacturing costs reconcile from supplied source populations through RM, WIP, finished goods and all journal offsets.",
+      "open_items": [],
+      "skill_id": "SKILL-INV-001",
+      "status": "complete"
+    },
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "inventory-cost",
+    "source_inputs": [
+      "capacity"
+    ],
+    "status": "complete"
+  }
+]

@@ -1,8 +1,8 @@
 ---
 id: SKILL-GRANT-001
 name: "Government Grants & Assistance"
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "08"
 related_domains: ["02", "04", "05", "06", "07", "08", "13", "15"]
 description: Governed government grants & assistance workflow with independently evidenced accounting and fail-closed boundaries.
@@ -23,7 +23,7 @@ related_skills: [equity-capital, financial-statements, accounting-changes, going
 knowledge_sources:
   principles: []
   standards: []
-  practice: [PRESENTATION-KNOWLEDGE-MAP.json, methods.md]
+  practice: [SUPPLEMENTAL-KNOWLEDGE-MAP.json, methods.md]
 risk_level: HIGH
 review_required: true
 completion_criteria: [approved_scope, operative_framework_period, current_evidence, independent_population, deterministic_reconciliation, balanced_entries_where_applicable, disclosures, independent_exact_fingerprint_review, public_privacy, independent_QA, full_regression]
@@ -31,11 +31,11 @@ completion_criteria: [approved_scope, operative_framework_period, current_eviden
 
 # Governed execution contract
 
-NONPRODUCTION: no substantive approved grant recognition/measurement knowledge exists.
+Bounded production implementation through the existing accounting boundary. Release acceptance and owner integration remain independently gated in PR #27.
 
-IAS20/AASB120, US practice and FRS102 grant methods require separately governed approved knowledge; no supplemental namespace is created.
+Consumes SUPPLEMENTAL_GOVERNMENT_GRANTS (172 preserved claims). IFRS IAS20, AASB120 Tier1 for-profit, elected FRS102 Section24 model, and evidenced early-adopted Topic832 are restricted to reviewed 2026 reporting windows. APPROVED never upgrades assurance.
 
-1. Read methods.md, actual mapped knowledge documents/claims and ../REVIEWER-CONTROLS.md. Use the immutable batch map; APPROVED never implies SOURCE_VERIFIED. Preserve all reference-confidence qualifications.
+1. Read methods.md, actual mapped knowledge documents/claims and ../REVIEWER-CONTROLS.md. Use SUPPLEMENTAL-KNOWLEDGE-MAP.json; APPROVED never implies SOURCE_VERIFIED. Preserve all reference-confidence qualifications.
 2. Resolve framework/entity/jurisdiction, reporting start/end, actual operative edition/adoption and scope. Obtain qualified current methods where canonical knowledge does not prescribe detailed mechanics. Do not import IAS33/IFRS8 obligations into all FRS102 entities.
 3. Freeze complete source IDs, amounts/counts, dated populations and independent source/statement bridges. Distinguish management assumptions from facts; obtain legal/management evidence.
 4. Call production.assess_case("government-grants",case) through the established CLI. Guarded Decimal calculations and controlled schedules never manufacture facts, rights, probabilities, approvals or source evidence.
@@ -45,4 +45,4 @@ IAS20/AASB120, US practice and FRS102 grant methods require separately governed 
 8. Render through the existing seven-route allowlist; exclude raw evidence, source notes, reviewer information and hashes. Retain material limitations in ordinary language.
 9. Retain case/version, source lineage, reconciliations, unresolved dependencies and rerun history. Never post, file, submit returns or contact counterparties.
 
-All four framework routes are blocked/nonproduction. Passing a handoff test does not establish accounting production.
+See methods.md and FRAMEWORK-SUPPORT.md for actual supported and blocked routes. No automatic ERP posting or authenticated human certification. Supported calculations release journals only after supplied independent exact-case certification.

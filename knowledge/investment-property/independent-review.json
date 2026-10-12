@@ -1,0 +1,1223 @@
+{
+  "namespace": "SUPPLEMENTAL_INVESTMENT_PROPERTY",
+  "reviewer": "investment_property_independent_knowledge_ai",
+  "reviewer_kind": "INDEPENDENT_MODEL",
+  "human_signoff": false,
+  "date": "2026-10-12",
+  "result": "PASS",
+  "scope": "96 claims; bounded calendar2026 owned-property scope. All claims retain model-derived assurance with direct-source audit open.",
+  "independent_sources": [
+    {
+      "url": "https://standards.aasb.gov.au/aasb-140-dec-2022",
+      "result": "Operative 2023\u20132026 AASB140 inspected; Australian Tier1/Tier2 distinction, classification and model/transfer/disclosure challenge."
+    },
+    {
+      "url": "https://media.frc.org.uk/documents/FRS_102_September_2024_Redacted_edition_UkckFQ0.pdf",
+      "result": "Exposed sections16 and17.31A and effective-date1.37 independently inspected; not redacted definitions."
+    },
+    {
+      "url": "https://www.ifrs.org/content/dam/ifrs/publications/pdf-standards/english/2021/issued/part-a/ias-40-investment-property.pdf",
+      "result": "Subscription-wall redirect; no operative IASB PDF verified."
+    },
+    {
+      "url": "https://asc.fasb.org/",
+      "result": "Zero operative lines returned; no US paragraph verification."
+    }
+  ],
+  "findings": [
+    {
+      "id": "IP-KQA-001",
+      "finding": "UK change-use claim cited16.9A rather than16.9.",
+      "correction": "Author corrected to16.9.",
+      "test": "test_uk_transfer_paragraphs_are_not_swapped",
+      "result": "RESOLVED"
+    },
+    {
+      "id": "IP-KQA-002",
+      "finding": "UK FV-out transfer incorrectly cited16.9C rather than16.9A.",
+      "correction": "Author corrected to16.9A.",
+      "test": "test_uk_transfer_paragraphs_are_not_swapped",
+      "result": "RESOLVED"
+    },
+    {
+      "id": "IP-KQA-003",
+      "finding": "UK mixed-use claim imported unsupported IAS40 insignificant-owner-use exemption.",
+      "correction": "Author limited to segregated portions and documented reliable valuation.",
+      "test": "test_uk_mixed_use_does_not_import_ifrs_exception",
+      "result": "RESOLVED"
+    },
+    {
+      "id": "IP-KQA-004",
+      "finding": "Four lineage claims used unsupported CONTROL claim kind, causing approved knowledge retrieval to fail.",
+      "correction": "Author corrected four lineage metadata values to GOVERNANCE; independently rebound reviewed hashes.",
+      "test": "test_approved_register_and_source_assurance and test_retrieval_framework_entity_and_dates",
+      "result": "RESOLVED"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "IP-IFRS-001",
+      "result": "PASS",
+      "reviewed_hash": "56ef608ac39f1cd3857f89bdf10d9191a75905bcf61f765a4d2692ad3c8c4c7a",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "GL labels and asset intention do not establish actual rental/appreciation use; ordinary-sale inventory is excluded. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-002",
+      "result": "PASS",
+      "reviewed_hash": "ed57b7f6216f8e2bb40574bdae7d2c66cfe703e1448f8d4da4925ba9899ac27f",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Significant production or administrative use and material services cannot be ignored to obtain fair-value gains. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-003",
+      "result": "PASS",
+      "reviewed_hash": "fbddc3bca9ebf6093eefbdfa33b6b325f2d8b872dc95ff321888b5891e399fd5",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Require supported separability and identified component sources; reject blanket property gain on owner-used portions. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-004",
+      "result": "PASS",
+      "reviewed_hash": "8e55438a0aaf57fa98983020214905fad6b69c4ac10adab8e11d30bdd21fe65b",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A serviced hotel is distinguished from incidental security; no numerical threshold is invented. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-005",
+      "result": "PASS",
+      "reviewed_hash": "9cdc5adbbbceb32b93a96a74d0d8cbb7812eda05849721748dd70da7248bb8c9",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Construction qualification is distinct from cost eligibility and valuation reliability; implementation may block narrower scope. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-006",
+      "result": "PASS",
+      "reviewed_hash": "96915fe8d5ffecc792b4a5a7f51db856469e99520e89a3b3fac7b00f8c716d04",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Actual ownership and reliable purchase evidence are required; a reviewer cannot create an asset. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-007",
+      "result": "PASS",
+      "reviewed_hash": "12a3067c8406ba26a9fd727ba194d0224c4f6e86ad39fba053a8de44c6bda8eb",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Only directly attributable acquisition cost qualifies; abnormal operating losses and financing cannot be silently capitalized. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-008",
+      "result": "PASS",
+      "reviewed_hash": "f30e3ab43288ce5e181301f1f4bd2316ffd168c6223c586da1848320bac69052",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Model choice must follow the framework and stable policy, not desired period profit. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-009",
+      "result": "PASS",
+      "reviewed_hash": "c4bae687fe296f4ae9d3f9e6c402fccecbe5bc06d40b96f6cb1ddbe0e55fd427",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Independent appraisal methodology supplies measurement evidence, not authority for an otherwise forbidden recognition route. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-010",
+      "result": "PASS",
+      "reviewed_hash": "06325d35619313a2fefb13c0191f988e5b915d4155ac28e83c4afffe3c46acb4",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "No depreciation under FV; distinguish valuation movement from proceeds and never deduct selling costs from FV itself. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-011",
+      "result": "PASS",
+      "reviewed_hash": "e5c600ae40dd23d11fe110e50c5f9afea82fdc44475cd0432d255479d60db0ed",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Land differs from depreciable building; depreciation and impairment must consume governed owner outputs only once. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-012",
+      "result": "PASS",
+      "reviewed_hash": "73039c0ad0c8eb71370aaf128045e0780dcd861acb8a7f378d1343387d7bb4fd",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Unreliable valuation is not a freely selectable fallback; narrowly stated exceptions never authorize unsupported production. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-013",
+      "result": "PASS",
+      "reviewed_hash": "1f8227b8bc58ad1873a6a04acbe6b66f61e83fc91e526a398ca838cb4f5f9986",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A signed intent statement alone cannot prove changed actual use; source event date must match the transfer. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-014",
+      "result": "PASS",
+      "reviewed_hash": "2e7c95cd595431249f9ca60af08f04cc04c701f27b5d80de358e3b3c642e0915",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Preserve gross cost and accumulated contra balances; reclassification cannot manufacture a gain. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-015",
+      "result": "PASS",
+      "reviewed_hash": "4655088c2ff97dc4dffd3c60a03a01b3d357afe59ccc366d82dda0be5055037d",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Use actual transfer-date basis and recognize the preceding FV movement only once; US analogue is forbidden. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-016",
+      "result": "PASS",
+      "reviewed_hash": "b17b0207c043d69839e129a1bc276543a967a6498e4754d8962c5d5405aff6de",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Owner-use transfer follows prior-owner revaluation, including OCI/impairment distinction; universal P&L is incorrect. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-017",
+      "result": "PASS",
+      "reviewed_hash": "25cebfd3a723059ba5d0cfc44f153115291a7a33ab09f1a823bedc387836f630",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Net proceeds minus carrying value is gain/loss; retain gross-cost and contra reconciliation and block unsupported sale criteria. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-018",
+      "result": "PASS",
+      "reviewed_hash": "b3c6ffba3b714793e318e1a8c023ecf939bf5f1d03a1633a6a211d8ecab24c25",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Valuing the underlying property cannot remove the lease liability or turn a finance-lessor asset into owned IP. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-019",
+      "result": "PASS",
+      "reviewed_hash": "d32925edcf1a8ea6675e58e67d4e2c05d33aa0b7c52cf204526bdd55d68d0ecf",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Disclosure data must be actual, independently scoped and handed to financial-statements owner; no implied final compliance. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-020",
+      "result": "PASS",
+      "reviewed_hash": "47267ea832dab0d56ddb7b955221c5e813fd582e142d2389459c2fec137a1713",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Reconciliation differences and required valuation notes must remain visible; comparative relief is not universal relief. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-021",
+      "result": "PASS",
+      "reviewed_hash": "0d0f2304a010e9576e486e595ceb7c5689485e43bb7ba4ebcdd9a924249c484d",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Gross/contra movements and applicable model notes are different from an assumed IAS40 universal template. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-022",
+      "result": "PASS",
+      "reviewed_hash": "c87db3533aeee209826ba217f7682f4ae50948478e9764a672f94c6821f44e03",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Balanced duplicate journals remain wrong; ownership must prevent recopying PPE, leases, impairment and financing entries. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-023",
+      "result": "PASS",
+      "reviewed_hash": "cc346b038236fe228b97db378af146fb1aa5eefaf8c5d39511510b8bec37282a",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Calendar2026 full commercial/ordinary for-profit scopes exclude unsupported editions, entities and early presentation adoption. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-IFRS-024",
+      "result": "PASS",
+      "reviewed_hash": "5432fad12918b04f8e9395bf9703bc74721ae2911e1311b2a1f108cb3ef0d253",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A balanced journal without exact property/entity/currency/period/source lineage is insufficient. Framework-specific proposition and scope checked for IFRS.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-001",
+      "result": "PASS",
+      "reviewed_hash": "9ddeded176024a3594de181a05acac6b3fd14a751c4a9ec8f492f76524cc07a1",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "GL labels and asset intention do not establish actual rental/appreciation use; ordinary-sale inventory is excluded. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-002",
+      "result": "PASS",
+      "reviewed_hash": "4aa7fb66d56e94edf910d5f6507f2f93e11f3c3e9b945da07974a6a44786b580",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Significant production or administrative use and material services cannot be ignored to obtain fair-value gains. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-003",
+      "result": "PASS",
+      "reviewed_hash": "b1cae97b580ca88b1335abf96088132d03806e2726d08d6608186746f19f006f",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Require supported separability and identified component sources; reject blanket property gain on owner-used portions. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-004",
+      "result": "PASS",
+      "reviewed_hash": "3b9279a69f2404b38b6c50a606164841126e1f010f16a02b73b8aecebc80e77b",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A serviced hotel is distinguished from incidental security; no numerical threshold is invented. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-005",
+      "result": "PASS",
+      "reviewed_hash": "a2289aa9cb8cbb6dc551a0767a965a2c3497421a3959e431638b779e0d62dfc2",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Construction qualification is distinct from cost eligibility and valuation reliability; implementation may block narrower scope. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-006",
+      "result": "PASS",
+      "reviewed_hash": "9a620cb7065de3c04d20c253e46c1f9a3e0ff9d7034a0e6f7993dc6107a38f3b",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Actual ownership and reliable purchase evidence are required; a reviewer cannot create an asset. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-007",
+      "result": "PASS",
+      "reviewed_hash": "f6211b67ecdffda00baf5b558bea665ffc03de2c8d24966fe0980538acabd6a2",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Only directly attributable acquisition cost qualifies; abnormal operating losses and financing cannot be silently capitalized. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-008",
+      "result": "PASS",
+      "reviewed_hash": "1a06fccf674e10a35ee8a7c79b6eabbc1af1e20d82d17308009a5c198e3572ce",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Model choice must follow the framework and stable policy, not desired period profit. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-009",
+      "result": "PASS",
+      "reviewed_hash": "c7671ca03aeecae5cf8fb430b18865bcae23e5ce7994d2f98a676d9171e4cfae",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Independent appraisal methodology supplies measurement evidence, not authority for an otherwise forbidden recognition route. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-010",
+      "result": "PASS",
+      "reviewed_hash": "bebadca546269c1af66b78f57e1ab0e2ffb5321949a8d991b0d34d87d57318a4",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "No depreciation under FV; distinguish valuation movement from proceeds and never deduct selling costs from FV itself. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-011",
+      "result": "PASS",
+      "reviewed_hash": "f76c675bb3e803c2e9a45fe7ade26b3afeec4061c791d3dff7424e69ba2595bf",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Land differs from depreciable building; depreciation and impairment must consume governed owner outputs only once. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-012",
+      "result": "PASS",
+      "reviewed_hash": "f7c7876b0733c4817aaa777d47ce66b7d95a7836202860f9d47b15f6bef3ff64",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Unreliable valuation is not a freely selectable fallback; narrowly stated exceptions never authorize unsupported production. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-013",
+      "result": "PASS",
+      "reviewed_hash": "c516204e09352f721c98714220cc5b43a226b9284d042474fd82c80d907cc1b2",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A signed intent statement alone cannot prove changed actual use; source event date must match the transfer. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-014",
+      "result": "PASS",
+      "reviewed_hash": "e765e81e1a2b02bdaac60fb767648e9ef5b603f031a872a18f485eae815ac175",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Preserve gross cost and accumulated contra balances; reclassification cannot manufacture a gain. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-015",
+      "result": "PASS",
+      "reviewed_hash": "8823fce01161dfc762f8daa3c7247db7a7667952b7da0b0ef725c5340b4b2ab8",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Use actual transfer-date basis and recognize the preceding FV movement only once; US analogue is forbidden. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-016",
+      "result": "PASS",
+      "reviewed_hash": "544bbb16df00da90e57327be596a262e11b6bad0970b850bc18eb52324e90480",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Owner-use transfer follows prior-owner revaluation, including OCI/impairment distinction; universal P&L is incorrect. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-017",
+      "result": "PASS",
+      "reviewed_hash": "4658475b80febaaa4432be0854b1530cf8b8e30128e8e268a21fea59f83a6206",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Net proceeds minus carrying value is gain/loss; retain gross-cost and contra reconciliation and block unsupported sale criteria. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-018",
+      "result": "PASS",
+      "reviewed_hash": "a5e57e52da272b6b8dce5da5fa7c60581306086097aec801b57be3cc0380edce",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Valuing the underlying property cannot remove the lease liability or turn a finance-lessor asset into owned IP. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-019",
+      "result": "PASS",
+      "reviewed_hash": "5edde88aca1b7aabdac19e03ca06fd5e9d02305e5d2053fc4fbd432566c0fdde",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Disclosure data must be actual, independently scoped and handed to financial-statements owner; no implied final compliance. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-020",
+      "result": "PASS",
+      "reviewed_hash": "bb56e7928f06cb8442a8001078dea2e5d824129681ad4add2406f5b83330beac",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Reconciliation differences and required valuation notes must remain visible; comparative relief is not universal relief. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-021",
+      "result": "PASS",
+      "reviewed_hash": "7a074bf0677c3e0cee8cfdbe7d3a591e40009a5c08118cbf58b1ad8fb928c03f",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Gross/contra movements and applicable model notes are different from an assumed IAS40 universal template. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-022",
+      "result": "PASS",
+      "reviewed_hash": "be7dd8d9d3b5abd273a86f4847cb3a9c79d443c49df5e2e4c15ebfeceec93566",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Balanced duplicate journals remain wrong; ownership must prevent recopying PPE, leases, impairment and financing entries. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-023",
+      "result": "PASS",
+      "reviewed_hash": "9533515869aff6f0a92063df297b6dfa45c778f974d40eaf408144ad5d37df87",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Calendar2026 full commercial/ordinary for-profit scopes exclude unsupported editions, entities and early presentation adoption. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-AASB-024",
+      "result": "PASS",
+      "reviewed_hash": "86211a0f13bedcc5da711ba5d98bb24aa95f16b8c34d9921e86351ed82cd2935",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A balanced journal without exact property/entity/currency/period/source lineage is insufficient. Framework-specific proposition and scope checked for AASB.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-001",
+      "result": "PASS",
+      "reviewed_hash": "367d2d15a3e8abd650db21febf95f13b1eb314ed0c97565c5a0d700f652ff20b",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "GL labels and asset intention do not establish actual rental/appreciation use; ordinary-sale inventory is excluded. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-002",
+      "result": "PASS",
+      "reviewed_hash": "ff3f343106209a6260e7074e5d1ce8a4079802cb178a383c3a8f8bf367562f27",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Significant production or administrative use and material services cannot be ignored to obtain fair-value gains. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-003",
+      "result": "PASS",
+      "reviewed_hash": "d3796a353ab12c4daedbe8e0c75c6b4a16313740a02649b15443e6783d205664",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Require supported separability and identified component sources; reject blanket property gain on owner-used portions. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-004",
+      "result": "PASS",
+      "reviewed_hash": "4b04a9d53e18d5049e9d1f0c739e12bc199f67dbfbb1d4b1ab609e212c541407",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A serviced hotel is distinguished from incidental security; no numerical threshold is invented. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-005",
+      "result": "PASS",
+      "reviewed_hash": "c025e714728cbc76d1e1f27912d994ed38c42c4d984bc49d83961772529865d8",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Construction qualification is distinct from cost eligibility and valuation reliability; implementation may block narrower scope. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-006",
+      "result": "PASS",
+      "reviewed_hash": "921478395b59e2cae527702d9dde394e2623cbf67ecb6482678f9aae0c76bf05",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Actual ownership and reliable purchase evidence are required; a reviewer cannot create an asset. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-007",
+      "result": "PASS",
+      "reviewed_hash": "79c411d59be853e4f2ca8b8bf6e78a28c82ed2c0add89ac7bcbb6d0c41996411",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Only directly attributable acquisition cost qualifies; abnormal operating losses and financing cannot be silently capitalized. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-008",
+      "result": "PASS",
+      "reviewed_hash": "c85097c809698747e76ef212a35c3336c4939e7814af5e3a6fd20f59c069f09e",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Model choice must follow the framework and stable policy, not desired period profit. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-009",
+      "result": "PASS",
+      "reviewed_hash": "efb39f82857c4dbb0dba95671e3395b0074a63d3047ac16c4f17d9762d40598a",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Independent appraisal methodology supplies measurement evidence, not authority for an otherwise forbidden recognition route. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-010",
+      "result": "PASS",
+      "reviewed_hash": "b88f256455459acafdb2513a838ea31dc2a2bdd1634f55e6524fb59990f778cd",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "No depreciation under FV; distinguish valuation movement from proceeds and never deduct selling costs from FV itself. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-011",
+      "result": "PASS",
+      "reviewed_hash": "3ff3fd5649d2c6feccf220d7f9568d544facee19186323032ea8c47aa6f32d92",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Land differs from depreciable building; depreciation and impairment must consume governed owner outputs only once. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-012",
+      "result": "PASS",
+      "reviewed_hash": "b81e0770186c49572839fdcf65521a56fd2c25e4ed6c9f77aac206fb0558bc49",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Unreliable valuation is not a freely selectable fallback; narrowly stated exceptions never authorize unsupported production. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-013",
+      "result": "PASS",
+      "reviewed_hash": "4e2ab1a051d7924b5d8e9b67c58e1b07557c2450b61e5ef65cc5d9e00b72ac36",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A signed intent statement alone cannot prove changed actual use; source event date must match the transfer. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-014",
+      "result": "PASS",
+      "reviewed_hash": "d5eae87600edf5a57b96e88b5b0e1ed811d42add6ac2675625d6a8dd6de02677",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Preserve gross cost and accumulated contra balances; reclassification cannot manufacture a gain. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-015",
+      "result": "PASS",
+      "reviewed_hash": "c707719c44facfa65561624f9e392bde4e0e240e7383dbe018cd6cd8f8bd9d8e",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Use actual transfer-date basis and recognize the preceding FV movement only once; US analogue is forbidden. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-016",
+      "result": "PASS",
+      "reviewed_hash": "7c69162a84af9b730f3ee21c855bde7a6a99fe4dc4ab9a34c5cc6c034ec16b38",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Owner-use transfer follows prior-owner revaluation, including OCI/impairment distinction; universal P&L is incorrect. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-017",
+      "result": "PASS",
+      "reviewed_hash": "0d27d4b9732c185f4e59c914c18432ad9afdd98a228e424f3f12886cf0585e34",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Net proceeds minus carrying value is gain/loss; retain gross-cost and contra reconciliation and block unsupported sale criteria. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-018",
+      "result": "PASS",
+      "reviewed_hash": "ea5f4bb0386aa02aa77b1bc85167a56cfda69fafb52ad979784e524e6a31a8ef",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Valuing the underlying property cannot remove the lease liability or turn a finance-lessor asset into owned IP. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-019",
+      "result": "PASS",
+      "reviewed_hash": "30036223726edab36746826388f8dfa3bae035e9f9bf17abb924af12105cbb42",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Disclosure data must be actual, independently scoped and handed to financial-statements owner; no implied final compliance. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-020",
+      "result": "PASS",
+      "reviewed_hash": "277f6f69abd75d56ebccee3ef3feb6d5ca19262c83821ac856db941a5f6e9b2f",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Reconciliation differences and required valuation notes must remain visible; comparative relief is not universal relief. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-021",
+      "result": "PASS",
+      "reviewed_hash": "8642c873c64ef8ac05dcc460c4d51cc10a4438f74c39f37b6c37b73fed08e6a1",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Gross/contra movements and applicable model notes are different from an assumed IAS40 universal template. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-022",
+      "result": "PASS",
+      "reviewed_hash": "555046b90e61345acf206997973dc971abc7183b137063bdfe727f6efe3151c6",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Balanced duplicate journals remain wrong; ownership must prevent recopying PPE, leases, impairment and financing entries. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-023",
+      "result": "PASS",
+      "reviewed_hash": "e5ea2ca8f4e3043dc2698706a985f28ff41156ff33518ddb1f352ec44b10a7a2",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Calendar2026 full commercial/ordinary for-profit scopes exclude unsupported editions, entities and early presentation adoption. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-UK_GAAP-024",
+      "result": "PASS",
+      "reviewed_hash": "a41feca5844d59e82e1f7dd999bd893e2b647b1c7f307e7b13749567d31882c0",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A balanced journal without exact property/entity/currency/period/source lineage is insufficient. Framework-specific proposition and scope checked for UK_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-001",
+      "result": "PASS",
+      "reviewed_hash": "009270ab853f7dbd656f72be71ba14f9f3d815a70de73b5a68a055fb4741be66",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "GL labels and asset intention do not establish actual rental/appreciation use; ordinary-sale inventory is excluded. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-002",
+      "result": "PASS",
+      "reviewed_hash": "890c2c6ef7ea953222bf659a2567b2bd5bf9d181adc5111b0ee26e5642a6147b",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Significant production or administrative use and material services cannot be ignored to obtain fair-value gains. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-003",
+      "result": "PASS",
+      "reviewed_hash": "ee165af90afc3132e79467285922b534695136fb761afb249ed25e7bfb4fe837",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Require supported separability and identified component sources; reject blanket property gain on owner-used portions. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-004",
+      "result": "PASS",
+      "reviewed_hash": "24c9f5087dfa0f60645155fef2b89e8c71f0641974ace6113f4568b91ffb8c78",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A serviced hotel is distinguished from incidental security; no numerical threshold is invented. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-005",
+      "result": "PASS",
+      "reviewed_hash": "b005ae573a0fe443bbe5f3b9bc631a604faf4d458531f18bcfb929ca74a3ca40",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Construction qualification is distinct from cost eligibility and valuation reliability; implementation may block narrower scope. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-006",
+      "result": "PASS",
+      "reviewed_hash": "d9bf5317835fa3e6fc681cb4a9a94518b7223b5862de6333b8c8ff329c48b15d",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Actual ownership and reliable purchase evidence are required; a reviewer cannot create an asset. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-007",
+      "result": "PASS",
+      "reviewed_hash": "e12e0a69d9f190ba0d2835d09964dd850b2b63e85b637efbd4f86768b2907c60",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Only directly attributable acquisition cost qualifies; abnormal operating losses and financing cannot be silently capitalized. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-008",
+      "result": "PASS",
+      "reviewed_hash": "ca4f92a3894aa3370b121e449fd3a92c6a99efc8c85ee4d7986616dfde9b4739",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Model choice must follow the framework and stable policy, not desired period profit. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-009",
+      "result": "PASS",
+      "reviewed_hash": "a3a37108db63e2a16f599e653275e58d3f5dee38532e731ed7162cf6be4d6a99",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Independent appraisal methodology supplies measurement evidence, not authority for an otherwise forbidden recognition route. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-010",
+      "result": "PASS",
+      "reviewed_hash": "5d8ab66e1390d93a01cb8450733b8bd68c86a65fae5ad7cb5494435ae64833d4",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "No depreciation under FV; distinguish valuation movement from proceeds and never deduct selling costs from FV itself. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-011",
+      "result": "PASS",
+      "reviewed_hash": "b69e8bf5263cd96d923f60499bc8c065156e7dae0e4a69a480c9aab0aeaa44fb",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Land differs from depreciable building; depreciation and impairment must consume governed owner outputs only once. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-012",
+      "result": "PASS",
+      "reviewed_hash": "eae847721831272bf33943237b176aa44ff037e5ea051ce0a0d076a5f83df8b7",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Unreliable valuation is not a freely selectable fallback; narrowly stated exceptions never authorize unsupported production. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-013",
+      "result": "PASS",
+      "reviewed_hash": "68138ba12ca57bf843e68e9c60ed2a4272af41212e7439ee83e0aa220984b688",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A signed intent statement alone cannot prove changed actual use; source event date must match the transfer. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-014",
+      "result": "PASS",
+      "reviewed_hash": "195ff227f0d513d5d7200c94a47c3e99a6c51b18ba69444b5336d5f77f82a671",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Preserve gross cost and accumulated contra balances; reclassification cannot manufacture a gain. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-015",
+      "result": "PASS",
+      "reviewed_hash": "1e0585da16f85ce32df53585bcf1f726975bdbf7366f6577efe34e670b687fad",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Use actual transfer-date basis and recognize the preceding FV movement only once; US analogue is forbidden. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-016",
+      "result": "PASS",
+      "reviewed_hash": "8ce20dbb08883aa7e8c9493fe9afb9d28bf16a9f1fa24da2d259273e73517979",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Owner-use transfer follows prior-owner revaluation, including OCI/impairment distinction; universal P&L is incorrect. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-017",
+      "result": "PASS",
+      "reviewed_hash": "049ed2a6e96127cded2a06f90d2fb7ef088f02fe3e1adfb0f431d2d930cd7de3",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Net proceeds minus carrying value is gain/loss; retain gross-cost and contra reconciliation and block unsupported sale criteria. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-018",
+      "result": "PASS",
+      "reviewed_hash": "fd00bca8770fbfc4cd2e443ece36bedb32ab7a851337550d508bafcee5784b70",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Valuing the underlying property cannot remove the lease liability or turn a finance-lessor asset into owned IP. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-019",
+      "result": "PASS",
+      "reviewed_hash": "8f5a08153f0621365563eabffb2deb95b6609e7d60ad5ea316d4661fd58fd457",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Disclosure data must be actual, independently scoped and handed to financial-statements owner; no implied final compliance. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-020",
+      "result": "PASS",
+      "reviewed_hash": "5b5c4ffca13f28a91fd7b687277ee4108d17c8089763fc3bf632bcedbd20da98",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Reconciliation differences and required valuation notes must remain visible; comparative relief is not universal relief. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-021",
+      "result": "PASS",
+      "reviewed_hash": "acf6dba9a7334b27dd2468ba797e5e2762cdead12c8ed0712281a7b866f526f4",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Gross/contra movements and applicable model notes are different from an assumed IAS40 universal template. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-022",
+      "result": "PASS",
+      "reviewed_hash": "358bd448ee4fad0469ddae5573975d3a24120cc423259d1ca7070ae99d39bd62",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Balanced duplicate journals remain wrong; ownership must prevent recopying PPE, leases, impairment and financing entries. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-023",
+      "result": "PASS",
+      "reviewed_hash": "5b213f5f28629d3c1418afc66771261c7bff37f14ad4e062e5cc819df9b0418d",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "Calendar2026 full commercial/ordinary for-profit scopes exclude unsupported editions, entities and early presentation adoption. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    },
+    {
+      "claim_id": "IP-US_GAAP-024",
+      "result": "PASS",
+      "reviewed_hash": "4359a5c75dcf3b0473ad3000a8709f952f4f95fb7fe117d978be7dcc13813f11",
+      "approval_track": "TRAINING_DATA_CHECKED",
+      "independent_challenge": "A balanced journal without exact property/entity/currency/period/source lineage is insufficient. Framework-specific proposition and scope checked for US_GAAP.",
+      "authority_inspected": false,
+      "source_locator": null,
+      "limitations": [
+        "Approval retains model-derived assurance and open direct-source audit; independent primary-source challenge is corroboration, not a claim-level assurance upgrade."
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": "python -m unittest discover -s knowledge/investment-property -p test_independent_claim_qa.py -v",
+      "tests": 12,
+      "exit_code": 0
+    },
+    {
+      "command": "python knowledge/investment-property/validate_supplement.py",
+      "claims": 96,
+      "exit_code": 0
+    }
+  ]
+}

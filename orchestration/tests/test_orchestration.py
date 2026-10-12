@@ -17,8 +17,10 @@ class Foundation(unittest.TestCase):
         if change:change(r)
         return self.cao.run(r)
     def test_registry_single_truth(self):
-        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(47,sum(s['production_available'] for s in registry.skills.values()))
-        for pkg in ('government-grants','borrowing-costs','investment-property'):self.assertFalse(registry.get(pkg)['production_available'])
+        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(50,sum(s['production_available'] for s in registry.skills.values()))
+        self.assertTrue(registry.get('investment-property')['production_available'])
+        self.assertTrue(registry.get('government-grants')['production_available'])
+        self.assertTrue(registry.get('borrowing-costs')['production_available'])
         self.assertFalse(registry.get('unknown')['production_available'])
         self.assertIn('payroll processing',registry.get('inventory-cost')['non_triggers'])
     def test_flagship_actual_multi_owner(self):
@@ -51,7 +53,7 @@ class Foundation(unittest.TestCase):
         c=self.run_request(lambda r:r['facts'].update(grant={'agreement':{'subsidy':'50000'},'material':True}))
         self.assertEqual('partial',c.outcome);self.assertEqual('DOCUMENTED',c.status);self.assertEqual('blocked',c.graph.nodes['government-grants'].status)
         self.assertEqual('complete',c.graph.nodes['inventory-cost'].status);self.assertIn('Government', 'Government')
-        self.assertIn('unavailable',json.dumps(self.cao.public(c)))
+        self.assertTrue(self.cao.public(c)['open_items'])
     def test_explicit_independent_immaterial_gap(self):
         c=self.run_request(lambda r:r['facts'].update(grant={'agreement':{'amount':'1'},'required_for_objective':False,'material':False}))
         self.assertEqual('complete',c.outcome);self.assertTrue(c.conclusions[0]['open_items'])

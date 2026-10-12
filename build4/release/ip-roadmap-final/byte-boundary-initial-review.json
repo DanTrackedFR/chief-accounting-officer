@@ -1,0 +1,32 @@
+{
+  "reviewer": "independent AI integration_qa",
+  "initial_command": "python -m unittest [four permanent byte-boundary tests in skills.tests.test_independent_ip_main_reconciliation] -v",
+  "tests": 4,
+  "seconds": 0.207,
+  "exit_code": 1,
+  "failures": 4,
+  "errors": 0,
+  "skipped": 0,
+  "findings": [
+    {
+      "test": "test_byte_only_dispatch_mutation_cannot_be_hidden_by_original_text",
+      "observed": "Mutation of read_bytes(production.py) did not change IFRS Borrowing fingerprint d50409cffccbecd1006bdd2d88cc0c336ed16b26519d886205ad9b64c8489537 because read_text still matched the expected dispatcher"
+    },
+    {
+      "test": "test_byte_only_witness_mutation_cannot_be_hidden_by_original_text",
+      "observed": "Mutation of witness bytes was hidden by separately unchanged read_text; old Borrowing fingerprint still accepted"
+    },
+    {
+      "test": "test_captured_dispatch_digest_mismatch_never_normalizes",
+      "observed": "Direct bridge invocation rewrote an all-zero captured production digest to the old normalized baseline instead of failing closed on captured-byte mismatch"
+    },
+    {
+      "test": "test_normalizer_reads_authoritative_bytes_not_unrelated_text_view",
+      "observed": "Bridge normalization used a separate text view instead of captured authoritative bytes; incongruent text view changed normalization outcome"
+    }
+  ],
+  "scope": "Substantive implementation/certification boundary finding, not merely a historical expected identity transition",
+  "disposition": "FAIL; primary implementer must correct exact-byte/captured-digest agreement and independent reviewer must rerun unchanged permanent probes plus original shared-boundary regression",
+  "no_masking": "Original test_implementation_scope.test_shared_boundary_invalidates retained unchanged. No historical artifacts or approval digests regenerated to hide this finding",
+  "full_attempt002": "Failed full attempt retained, not release acceptance. Frozen full attempt003 required after correction and independent rerun"
+}

@@ -1,0 +1,62 @@
+{
+  "accounting_authority": false,
+  "consolidated_total": null,
+  "context_lineage": {
+    "currency": "EUR",
+    "evidence": [
+      "reviewed-group-profile"
+    ],
+    "framework": "IFRS",
+    "qualified_context_fingerprint": "41859e63edd48c6f0930b46e104552ea112a91c1ac76178a0e7e158a0c78a625",
+    "scope_id": "GROUP-EUR",
+    "source_id": "source-GROUP-EUR"
+  },
+  "limitations": [
+    "ENTITY-US: framework conversion unresolved, currency translation unresolved.",
+    "ENTITY-UK: framework conversion unresolved, currency translation unresolved."
+  ],
+  "node": "exec:orchestration-group-observation:GROUP-EUR:550302683512722218250063f041e2663415c550193f25b8cbe05a47dfe8007d",
+  "observations": [
+    {
+      "amount": "800.00",
+      "conversion_boundary": [],
+      "currency": "EUR",
+      "exact_case_fingerprint": "741db2bbf32f2bfbcfe433bb203552394c49affd31aca32a6de4c5621d8b9951",
+      "framework": "IFRS",
+      "owner": "revenue-recognition",
+      "producing_node": "exec:revenue-recognition:ENTITY-NL:c34e7e28f2abbd65ad73cbd1957fad9e7715914f9d3a53878877550104fd236a",
+      "result_fingerprint": "ccb4cc5305c8ff9b669a3f3d06b5015336f967bd6293081ce819321a07f8e9b1",
+      "scope_id": "ENTITY-NL"
+    },
+    {
+      "amount": "800.00",
+      "conversion_boundary": [
+        "framework conversion unresolved",
+        "currency translation unresolved"
+      ],
+      "currency": "GBP",
+      "exact_case_fingerprint": "ec90177c4421f3daab6fcbca584da6e0a91f0035fa505d630624c84750c68b2c",
+      "framework": "UK_GAAP",
+      "owner": "revenue-recognition",
+      "producing_node": "exec:revenue-recognition:ENTITY-UK:f6f097b48fede90ae21b8478edc36bc0253d6508f7a1d19499e2ca2b0f35a176",
+      "result_fingerprint": "e779ec60fac313672444fbaab1fbce9e5fc022e542892930348e5f4f7e306c2c",
+      "scope_id": "ENTITY-UK"
+    },
+    {
+      "amount": "800.00",
+      "conversion_boundary": [
+        "framework conversion unresolved",
+        "currency translation unresolved"
+      ],
+      "currency": "USD",
+      "exact_case_fingerprint": "55ee99e74b7ab88626261be08e8ea013c49300dacd9175a763b42fdf04147689",
+      "framework": "US_GAAP",
+      "owner": "revenue-recognition",
+      "producing_node": "exec:revenue-recognition:ENTITY-US:2e3facb94a11ec29a93b6b9edd86dea58b440bb1238c42d5e65fbcb15c5598a2",
+      "result_fingerprint": "7a2addd879bd4b35b12ff63e86de4dcb4e4c3920ce3f69dc2e9670728356983a",
+      "scope_id": "ENTITY-US"
+    }
+  ],
+  "scope_id": "GROUP-EUR",
+  "summary": "Revenue reviewed separately: ENTITY-NL 800.00 EUR (IFRS); ENTITY-UK 800.00 GBP (UK_GAAP); ENTITY-US 800.00 USD (US_GAAP). No consolidated IFRS/EUR total is established; local results retain their original accounting basis."
+}

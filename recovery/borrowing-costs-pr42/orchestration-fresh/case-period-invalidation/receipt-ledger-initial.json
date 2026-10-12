@@ -1,0 +1,119 @@
+[
+  {
+    "consumer_framework": "UK_GAAP",
+    "consumer_functional_currency": "GBP",
+    "consumer_node": "exec:orchestration-comparative-observation:ENTITY-UK:5e74f39fd0138d3a25bebc1b08859557dd84b55cfb87b986f63b339544884a40",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_presentation_currency": null,
+    "consumer_scope": "ENTITY-UK",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:91d96e2fe81570efed9661ec424275a8b814a0ad3e5e7bbaaebdb9acb5bb358e",
+    "metric_path": [
+      "calculations",
+      "period_revenue"
+    ],
+    "producer_framework": "UK_GAAP",
+    "producer_functional_currency": "GBP",
+    "producer_node": "exec:revenue-recognition:ENTITY-UK:6810d9d2d28d7175191181e3a6db4175fb7918a3548fa3a55a48d498fe006192",
+    "producer_period": "period:71b8e43de397e9ba263567020a43a334ed8e05ffcef5213bec268c6b19b85b8f",
+    "producer_presentation_currency": null,
+    "producer_scope": "ENTITY-UK",
+    "result_fingerprint": "b40b1064b5062053e5c57c2039e8b660dea313c540b65958680b6fc31c1046b7",
+    "result_version": "version:8a0731e965f975d56afc018a3e56f361ef23eb8f6d0c40b5c57dbf49aeccc07b",
+    "value": "800.00",
+    "value_currency": "GBP"
+  },
+  {
+    "consumer_framework": "US_GAAP",
+    "consumer_functional_currency": "USD",
+    "consumer_node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+    "consumer_period": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+    "consumer_presentation_currency": null,
+    "consumer_scope": "ENTITY-US",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:7e635bd7203d75d4d9b40ca3fdb0ebf0648a9e40bbb16cdeed3a54b4b65cc57c",
+    "metric_path": [
+      "calculations",
+      "period_revenue"
+    ],
+    "producer_framework": "US_GAAP",
+    "producer_functional_currency": "USD",
+    "producer_node": "exec:revenue-recognition:ENTITY-US:9962e4bc0d7bf79488a41b8214db87f6ef4776ee7fe2e05853dd093c72b3ec30",
+    "producer_period": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+    "producer_presentation_currency": null,
+    "producer_scope": "ENTITY-US",
+    "result_fingerprint": "511c115fe216a93e17f84aa2fafeb183d19da26d656dadb0e94c841daed5c9df",
+    "result_version": "version:370bd3591c20d85c19bd3cee3057bc47d239852f551b8ebd71e396448a47c6e0",
+    "value": "800.00",
+    "value_currency": "USD"
+  },
+  {
+    "consumer_framework": "US_GAAP",
+    "consumer_functional_currency": "USD",
+    "consumer_node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+    "consumer_period": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+    "consumer_presentation_currency": null,
+    "consumer_scope": "ENTITY-US",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:35f6da18566fcba97a928a573bee5eca79b7308dad6424650d4417c6a4ae264b",
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_framework": "US_GAAP",
+    "producer_functional_currency": "USD",
+    "producer_node": "exec:orchestration-entity-observation:ENTITY-US:bf8ec63107d13d4a8e9c95560779a1176888d6b91a99c77f55885a0964ba6565",
+    "producer_period": "period:308701b706db90b4e604cf210a4f30e1b650a5cf1c1b22e002508120ee057930",
+    "producer_presentation_currency": null,
+    "producer_scope": "ENTITY-US",
+    "result_fingerprint": "a5b3352fa7b54648d567dca21a0fab53d9f5a1d1344d53f2668f6952ecee8058",
+    "result_version": "version:9505c88af8df1ac23ce56d1bc19ba1a0a8c881fbe23a5dc8d5abd29af4a91e52",
+    "value": "800.00",
+    "value_currency": "USD"
+  },
+  {
+    "consumer_framework": "IFRS",
+    "consumer_functional_currency": null,
+    "consumer_node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_presentation_currency": "EUR",
+    "consumer_scope": "GROUP-EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:b185113fef5c8c8f2bdbbc4db38cc830cd6e23ad3d5b56716170c42b3e599f8f",
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_framework": "US_GAAP",
+    "producer_functional_currency": "USD",
+    "producer_node": "exec:orchestration-opening-observation:ENTITY-US:4f963120e63070bca8ed2c729c0939f67da39ad30acd870502da2d68e271e8d7",
+    "producer_period": "period:247e0f933b2d61bd2b4bc6014c20161b607fded1fa664499e8cafdcd6d777599",
+    "producer_presentation_currency": null,
+    "producer_scope": "ENTITY-US",
+    "result_fingerprint": "0d091132674e29900327b067aa96b7aa68b0fc1e3038d54c15034e32caada277",
+    "result_version": "version:c0c27161ead127eca558db3c8f8b1d60ac35c7bc1b42b050532d6f0f5e4f4009",
+    "value": "800.00",
+    "value_currency": "USD"
+  },
+  {
+    "consumer_framework": "IFRS",
+    "consumer_functional_currency": null,
+    "consumer_node": "exec:orchestration-local-analytics:GROUP-EUR:6d73ae5427dabe5fe54e52afa2d55841756ba67ea5a7674964b17b3d1647a5d6",
+    "consumer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "consumer_presentation_currency": "EUR",
+    "consumer_scope": "GROUP-EUR",
+    "currentness": "CURRENT",
+    "dependency_id": "dependency:91686a39b40f4bffb231e788484730f618e9a2deba52e8e70e68aa6ea9e5ae5c",
+    "metric_path": [
+      "observed_amount"
+    ],
+    "producer_framework": "US_GAAP",
+    "producer_functional_currency": null,
+    "producer_node": "exec:orchestration-group-observation:GROUP-EUR:b90d71e1955d2ef89b37cf50e7f7d765e857896817417db75394088725e1c90d",
+    "producer_period": "period:c59168db0ce171a7fddfefe83daaec6a457b1b3c55a5600bba6e49a523a01a70",
+    "producer_presentation_currency": "EUR",
+    "producer_scope": "GROUP-EUR",
+    "result_fingerprint": "7609c1990781e42d62f53c7697a70b6a7cdcaa455e91b4e3c340a1f3c1b4ef8e",
+    "result_version": "version:447f80500e624b1315cd3685aecf543ac79be91f632c831d0a05c97f902aba10",
+    "value": "800.00",
+    "value_currency": "USD"
+  }
+]

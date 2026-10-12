@@ -1,0 +1,650 @@
+[
+  {
+    "id": "transform-debt-open",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:2"
+    ]
+  },
+  {
+    "id": "transform-debt-principal",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:3"
+    ]
+  },
+  {
+    "id": "transform-debt-yield",
+    "input_fingerprints": [
+      "8b9f7be2965766b9ffa8f1fba93e02c1ffb21314654360f79e21da99f2cdbbb7"
+    ],
+    "method": "decimal",
+    "output": "0.08",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:6"
+    ]
+  },
+  {
+    "id": "transform-debt-rights",
+    "input_fingerprints": [
+      "18d10c7d2b4b04aaf04254d1ae5d655a5dc0407cbcdd5a8c3986e985370f36ee"
+    ],
+    "method": "boolean",
+    "output": true,
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:13"
+    ]
+  },
+  {
+    "id": "transform-debt-repayment",
+    "input_fingerprints": [
+      "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0"
+    ],
+    "method": "decimal",
+    "output": "200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:9"
+    ]
+  },
+  {
+    "id": "transform-debt-interest",
+    "input_fingerprints": [
+      "9728ac83eb879c0a4dcb9544bf5aa3ec2050cf287d17966cca0572dd4cfc8ed1"
+    ],
+    "method": "decimal",
+    "output": "80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:7"
+    ]
+  },
+  {
+    "id": "transform-debt-paid",
+    "input_fingerprints": [
+      "9728ac83eb879c0a4dcb9544bf5aa3ec2050cf287d17966cca0572dd4cfc8ed1"
+    ],
+    "method": "decimal",
+    "output": "80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:8"
+    ]
+  },
+  {
+    "id": "transform-debt-close",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:10"
+    ]
+  },
+  {
+    "id": "transform-fx-original",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:3"
+    ]
+  },
+  {
+    "id": "transform-fx-opening",
+    "input_fingerprints": [
+      "ea33dc847d962e75874bfed11cf65b69acebbfa3cabec313effeb7c8b4fc90e1"
+    ],
+    "method": "decimal",
+    "output": "1000",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:4"
+    ]
+  },
+  {
+    "id": "transform-fx-rate",
+    "input_fingerprints": [
+      "2bba8bd227c5f31309369957d115a72950933ae5bc468ba714b2d807fcfd26fc"
+    ],
+    "method": "decimal",
+    "output": "1.10",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:6"
+    ]
+  },
+  {
+    "id": "transform-fx-settled",
+    "input_fingerprints": [
+      "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0"
+    ],
+    "method": "decimal",
+    "output": "200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:7"
+    ]
+  },
+  {
+    "id": "transform-fx-profit",
+    "input_fingerprints": [
+      "d0bb3cec1239d5ba4ba7b2b6123c5861f0ea33993f646d3f9a480c0f360c7eab"
+    ],
+    "method": "decimal",
+    "output": "-80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:10"
+    ]
+  },
+  {
+    "id": "transform-hedge-value",
+    "input_fingerprints": [
+      "d06074cc1e1fef695019c1bfe724f98a79bc8d7965845f3a5573d4b53ff3c8a7"
+    ],
+    "method": "decimal",
+    "output": "40",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:7"
+    ]
+  },
+  {
+    "id": "transform-hedge-date",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:3"
+    ]
+  },
+  {
+    "id": "transform-hedge-notional",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:2"
+    ]
+  },
+  {
+    "id": "transform-hedge-designation",
+    "input_fingerprints": [
+      "1c3409bffafb43e9e7176902b1e53dc4fb7264918709a0fd1b900372a20e2e28"
+    ],
+    "method": "iso_date",
+    "output": "2026-01-01",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "designation:4"
+    ]
+  },
+  {
+    "id": "transform-hedge-risk",
+    "input_fingerprints": [
+      "f79b5b4056bae8a694cb1d28063d3eba37a315efbeb1900cbd8e4264bd9083f9"
+    ],
+    "method": "decimal",
+    "output": "-36",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:3"
+    ]
+  },
+  {
+    "id": "transform-cash-interest",
+    "input_fingerprints": [
+      "d0bb3cec1239d5ba4ba7b2b6123c5861f0ea33993f646d3f9a480c0f360c7eab"
+    ],
+    "method": "decimal",
+    "output": "-80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "bank:3"
+    ]
+  },
+  {
+    "id": "transform-cash-principal",
+    "input_fingerprints": [
+      "693267f6415237dedded179ffbd8b3631800fa861746a92d013f247b81fbf329"
+    ],
+    "method": "decimal",
+    "output": "-200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "bank:8"
+    ]
+  },
+  {
+    "id": "transform-cash-close",
+    "input_fingerprints": [
+      "75e20fa1b70f55277811ff58a16164b717b5bb69fc19c90efb7548adb4766126"
+    ],
+    "method": "decimal",
+    "output": "1720",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "cash:2"
+    ]
+  },
+  {
+    "id": "transform-rec-debt",
+    "input_fingerprints": [
+      "e8459c6ebc66d9278e2b286f0377fabdad803da17e67c6f4218aa4c200e1c1fd"
+    ],
+    "method": "decimal",
+    "output": "-880",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "rec:2"
+    ]
+  },
+  {
+    "id": "transform-fs-debt",
+    "input_fingerprints": [
+      "e8459c6ebc66d9278e2b286f0377fabdad803da17e67c6f4218aa4c200e1c1fd"
+    ],
+    "method": "decimal",
+    "output": "-880",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "tb:5"
+    ]
+  },
+  {
+    "id": "transform-prior-interest",
+    "input_fingerprints": [
+      "68fec0473e988a1ef1c13c4f9b9a15cc67de203de8be796ce82ae4fd7b158e64"
+    ],
+    "method": "decimal",
+    "output": "60",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "prior:3"
+    ]
+  },
+  {
+    "id": "transform-analytics-interest",
+    "input_fingerprints": [
+      "9728ac83eb879c0a4dcb9544bf5aa3ec2050cf287d17966cca0572dd4cfc8ed1"
+    ],
+    "method": "decimal",
+    "output": "80",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "pnl:1"
+    ]
+  },
+  {
+    "id": "transform-draws",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:4"
+    ]
+  },
+  {
+    "id": "transform-fees",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:5"
+    ]
+  },
+  {
+    "id": "transform-class-current",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:11"
+    ]
+  },
+  {
+    "id": "transform-class-noncurrent",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "debt:12"
+    ]
+  },
+  {
+    "id": "transform-lender-principal",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "lender:2"
+    ]
+  },
+  {
+    "id": "transform-payment-current-date",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:2"
+    ]
+  },
+  {
+    "id": "transform-payment-current-amount",
+    "input_fingerprints": [
+      "58e139bbd012d7a0f6b0ae35a2fb2135ffbfefce291177325d851dbdb5483ac7"
+    ],
+    "method": "decimal",
+    "output": "280",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:3"
+    ]
+  },
+  {
+    "id": "transform-payment-current-principal",
+    "input_fingerprints": [
+      "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0"
+    ],
+    "method": "decimal",
+    "output": "200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:4"
+    ]
+  },
+  {
+    "id": "transform-payment-redemption-date",
+    "input_fingerprints": [
+      "0deb538b7e5c278141f663e7ff5df1b45302714aca232d22faea98920a357513"
+    ],
+    "method": "iso_date",
+    "output": "2027-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:6"
+    ]
+  },
+  {
+    "id": "transform-payment-redemption-amount",
+    "input_fingerprints": [
+      "33299a02de5508e7205fc66c05d76301d3bd8edc4583f3442b14f874615bd113"
+    ],
+    "method": "decimal",
+    "output": "864",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:7"
+    ]
+  },
+  {
+    "id": "transform-payment-redemption-principal",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "payments:8"
+    ]
+  },
+  {
+    "id": "transform-fx-opening_rate",
+    "input_fingerprints": [
+      "391552c099c101b131feaf24c5795a6a15bc8ec82015424e0d2b4274a369a0bf"
+    ],
+    "method": "decimal",
+    "output": "1",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:5"
+    ]
+  },
+  {
+    "id": "transform-fx-settlement_rate",
+    "input_fingerprints": [
+      "391552c099c101b131feaf24c5795a6a15bc8ec82015424e0d2b4274a369a0bf"
+    ],
+    "method": "decimal",
+    "output": "1",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "fx:8"
+    ]
+  },
+  {
+    "id": "transform-contract-notional",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "derivative:2"
+    ]
+  },
+  {
+    "id": "transform-contract-maturity",
+    "input_fingerprints": [
+      "0deb538b7e5c278141f663e7ff5df1b45302714aca232d22faea98920a357513"
+    ],
+    "method": "iso_date",
+    "output": "2027-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "derivative:3"
+    ]
+  },
+  {
+    "id": "transform-valuation-opening",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:4"
+    ]
+  },
+  {
+    "id": "transform-valuation-change",
+    "input_fingerprints": [
+      "d06074cc1e1fef695019c1bfe724f98a79bc8d7965845f3a5573d4b53ff3c8a7"
+    ],
+    "method": "decimal",
+    "output": "40",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:5"
+    ]
+  },
+  {
+    "id": "transform-valuation-settlement",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "valuation:6"
+    ]
+  },
+  {
+    "id": "transform-designation-quantity",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "designation:5"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-instrument_cumulative",
+    "input_fingerprints": [
+      "d06074cc1e1fef695019c1bfe724f98a79bc8d7965845f3a5573d4b53ff3c8a7"
+    ],
+    "method": "decimal",
+    "output": "40",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:2"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-quantity",
+    "input_fingerprints": [
+      "7aab2b02a05b2763b3e055ca7b18c4248899377d2462a624e1c75fe10bf0dbcf"
+    ],
+    "method": "decimal",
+    "output": "800",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:4"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-opening_reserve",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:5"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-effective",
+    "input_fingerprints": [
+      "06024be3089840dc57375f951f67e195b31c37b7e819c63a15dcba31e894aa50"
+    ],
+    "method": "decimal",
+    "output": "36",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:6"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-ineffective",
+    "input_fingerprints": [
+      "2bf175f9655e7bb7357b9f0a7c6051465a5ae701104ffe741b98e852c0e4d460"
+    ],
+    "method": "decimal",
+    "output": "4",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:7"
+    ]
+  },
+  {
+    "id": "transform-effectiveness-closing_reserve",
+    "input_fingerprints": [
+      "06024be3089840dc57375f951f67e195b31c37b7e819c63a15dcba31e894aa50"
+    ],
+    "method": "decimal",
+    "output": "36",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "effectiveness:8"
+    ]
+  },
+  {
+    "id": "transform-bank-BANK-INTEREST-date",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "bank:2"
+    ]
+  },
+  {
+    "id": "transform-bank-BANK-PRINCIPAL-date",
+    "input_fingerprints": [
+      "7bf6d2e4c96f1e2ce80259d834c6a94f855f14ac85a7a9ed4005c2abe71194c7"
+    ],
+    "method": "iso_date",
+    "output": "2026-12-31",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "bank:7"
+    ]
+  },
+  {
+    "id": "transform-reported-financing",
+    "input_fingerprints": [
+      "98089e6d36f78e9766c9ea34d5acb3611f3a92cd81c5eb102095d924ffc7d08b"
+    ],
+    "method": "decimal",
+    "output": "0",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "cash:5"
+    ]
+  },
+  {
+    "id": "transform-bank-financing",
+    "input_fingerprints": [
+      "693267f6415237dedded179ffbd8b3631800fa861746a92d013f247b81fbf329"
+    ],
+    "method": "decimal",
+    "output": "-200",
+    "reason": "Explicit validated field normalization",
+    "source_fields": [
+      "bank_summary:1"
+    ]
+  }
+]

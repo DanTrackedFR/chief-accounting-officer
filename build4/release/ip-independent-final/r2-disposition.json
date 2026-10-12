@@ -1,0 +1,29 @@
+{
+  "reviewer": "independent AI /root/implementation_qa_final; not human certification",
+  "date": "2026-10-12",
+  "finding": "R2 ordinary US zero-valued transfer_out_cost formerly completed with same-PPE transfer journal",
+  "permanent_reproduction": "skills.tests.test_independent_ip_duplicate_scope.AdditionalIndependentScopeQA.test_us_zero_transfer_out_is_not_an_investment_property_method",
+  "initial_result": "FAIL: expected blocked, got complete; exit1",
+  "author_correction": "Explicit US_GAAP block for all transfer routes before transfer evidence/model checks; US recurring FV model already blocked",
+  "independent_disposition": "RESOLVED",
+  "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_ip_duplicate_scope -v",
+  "permanent_tests": {
+    "count": 3,
+    "exit_code": 0
+  },
+  "additional_us_transfer_variants": {
+    "count": 8,
+    "exit_code": 0,
+    "coverage": "cost transfer_in_cost/transfer_out_cost/transfer_out_fv; fair_value transfer_out_fv; all zero and nonzero; all blocked with empty journals"
+  },
+  "duplicate_scope_review": {
+    "identical_native_issues": "blocked Duplicate workplan node; no owner executes",
+    "distinct_case_labels_same_entity_period": "blocked Ambiguous exact issue source; no owner executes",
+    "separate_root_cases": "No global ERP posting authority or external exactly-once claim. Existing architecture expressly scopes durable selection to its native Case/versions; no new cross-Case posting ledger implemented."
+  },
+  "reviewed_sha256": {
+    "skills/investment-property/workflow.py": "d2cd84e7391ad5e358a413a4d80dba0f724a669726fdfbefadce63bd0e79894c",
+    "skills/tests/test_independent_ip_duplicate_scope.py": "32d3eec2938dba23e114e8f4ea362636be607a176484052ad97652161e1c4ceb"
+  },
+  "release_gate": "Prior35/full-suite/exact-head CI evidence predates R2 fix and is not a final gate PASS. Reproduction and full release checks must rerun after source freeze."
+}

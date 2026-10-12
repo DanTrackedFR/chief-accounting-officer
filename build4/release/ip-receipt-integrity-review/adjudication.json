@@ -1,0 +1,61 @@
+{
+  "reviewer": "separate AI integration_qa; not an authenticated human or original release executor",
+  "scope": "Read-only diagnosis of retained module-52 stdout mismatch; independent fresh native-opening rerun",
+  "original_log": "build4/release/investment-property-pr43-attempt-005/0-module-52.log",
+  "previously_recorded_sha256": "4ee547e3477f469c9dd525b03133010f8036180cb49ccb98c75d149cc73466ca",
+  "observed_damaged_sha256": "db77fa207ee982f645c7a624873523e1a1b1ba3a75c142996b1ea3b13b90cd53",
+  "observed_damaged_bytes": 945,
+  "original_module_receipt": {
+    "path": "build4/release/investment-property-pr43-attempt-005/suite-0-module-52.json",
+    "tests": 5,
+    "seconds": 2.351,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "forensics": {
+    "log_birth_utc": "2026-10-12T22:07:41.308402982Z",
+    "log_change_utc": "2026-10-12T22:07:41.520401728Z",
+    "log_modify_utc": "2026-10-12T22:07:38.488419591Z",
+    "receipt_modify_utc": "2026-10-12T22:07:38.932182713Z",
+    "logger_order": "Parent opens unique module log before launching child, child writes receipt, parent closes log then hashes its bytes",
+    "label_collisions": "No duplicate indices: enumerated sorted unique module list supplies module index. Test module does not write its stdout path",
+    "metadata_inference": "Log inode birth and change occurred after the completed receipt while mtime was older: consistent with replacement/copy-back, not ordinary parent log-open/test-run/close sequence",
+    "causal_actor": "Not established; no claim that an identified process or file-sync system caused the replacement",
+    "historical_pattern": "The identical deterministic 945-byte prefix hash occurs in retained PR42 final002 module52 with a separate prior log-truncation recovery report. This corroborates recurrence but does not identify the actor",
+    "read_only_object_search": "Scanned 18778 Git objects; 1270 candidate blobs of size945-1800; no blob matching original recorded SHA found",
+    "source_writer_scan": "No test copy/write/extract target for this new release path found; no namespace/process-permission circumvention attempted"
+  },
+  "exact_original_byte_recovery": {
+    "original_prefix_used_verbatim": true,
+    "suffix_bytes": 101,
+    "suffix": "ok\n\n----------------------------------------------------------------------\nRan 5 tests in 2.351s\n\nOK\n",
+    "recovered_bytes": 1046,
+    "independent_sha256_comparison": "4ee547e3477f469c9dd525b03133010f8036180cb49ccb98c75d149cc73466ca",
+    "matches_preexisting_manifest_exactly": true,
+    "expected_hash_changed": false,
+    "method": "Combine retained exact prefix with canonical unittest result suffix and independently test against the preexisting cryptographic digest. Only the exact original1046byte payload matches; no fresh rerun timing or transcript substituted",
+    "original_log_mutated_by_this_reviewer": false
+  },
+  "fresh_independent_retest": {
+    "command": "python -m unittest orchestration.tests.test_stage4_native_opening -v",
+    "log": "build4/release/ip-receipt-integrity-review/native-opening-rerun.log",
+    "log_sha256": "e55e9fa5477c71d7f3d977a4bde8088ba2f42dc0c283c6f6c0c3a74d321c1478",
+    "tests": 5,
+    "seconds": 2.737,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true,
+    "interpretation": "Current test correctness corroboration only; not substituted for the original completed release transcript"
+  },
+  "frozen_inputs_after_retest": {
+    "source_entries": 415,
+    "input_entries": 2673,
+    "changed": []
+  },
+  "recommended_safe_correction": "Preserve observed damaged945byte prefix separately, restore only the cryptographically recovered original1046byte stdout to the exact already recorded SHA under explicit primary-agent correction authority, retain original receipt and manifest unchanged, record repair provenance, then rerun the unchanged release verifier",
+  "current_disposition": "Exact-original-byte recovery independently established and fresh native tests PASS. Original log not altered by this reviewer. Publication remains blocked until primary performs documented preservation/restoration and unchanged acceptance verification succeeds. Full3632test PASS receipt is not sufficient while any recorded log digest mismatches."
+}

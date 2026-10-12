@@ -1,0 +1,1 @@
+Incomplete attempt; interrupted with exit 130 to correct the CI proof-path integrity assertion. Completed orchestration module evidence is preserved. This attempt is not accepted as full release regression.

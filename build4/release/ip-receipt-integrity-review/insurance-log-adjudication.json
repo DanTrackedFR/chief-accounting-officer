@@ -1,0 +1,41 @@
+{
+  "reviewer": "separate AI integration_qa",
+  "original_log": "build4/release/investment-property-pr43-attempt-005/suite-6.log",
+  "preexisting_manifest_sha256": "61fa3e76e195f69876cf78466454e89c23623616803182551cda21f1cbdf07d8",
+  "original_recorded_stdout_sha256": "635a4e313c4e659ae2874ee21529d53e4cdb491c1f6207a9ea91ef7a93e0ff12",
+  "observed_damaged_sha256": "955cc9e142ec91626ff56af8faab674f31482ab89a414b590b76279145bc2d94",
+  "observed_damaged_bytes": 2626,
+  "observed_truncation": "After start of nineteenth test, test_false_direct; original35-test PASS receipt with6.932s already exists",
+  "forensic_metadata": {
+    "birth_utc": "2026-10-12T21:52:30.693728808Z",
+    "change_utc": "2026-10-12T21:52:30.813729216Z",
+    "modify_utc": "2026-10-12T21:52:28.005745211Z",
+    "qualification": "Metadata consistent with replacement/copy-back; causal actor remains unestablished. No test or logger label collision identified"
+  },
+  "cryptographic_original_recovery": {
+    "exact_observed_prefix_used": true,
+    "original_receipt_distinct_ids_used": 35,
+    "suffix": "Complete nineteenth test withok, append canonical verbose unittest lines for next16 existing sorted testIDs, then canonical35test6.932s OK summary",
+    "restored_payload_bytes": 4162,
+    "restored_payload_sha256": "635a4e313c4e659ae2874ee21529d53e4cdb491c1f6207a9ea91ef7a93e0ff12",
+    "matches_original_preexisting_digest": true,
+    "timing_or_expected_hash_changed": false,
+    "fresh_rerun_transcript_substituted_for_original": false,
+    "original_stdout_mutated_by_this_reviewer": false
+  },
+  "fresh_independent_rerun": {
+    "command": "python -m unittest discover -s knowledge/insurance-contracts -p 'test*.py' -v",
+    "log": "build4/release/ip-receipt-integrity-review/insurance-knowledge-rerun.log",
+    "log_sha256": "7aa32201de433828c8db205129e6e0a396343b148f761be00ad6a41d7413498e",
+    "tests": 35,
+    "seconds": 2.970,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "verification_checkpoint": "Original module52 restored and verified exact old hash, but next unchanged acceptance verification correctly refused suite6. That failed verifier transcript is retained separately; it is not PASS",
+  "safe_recommendation": "Primary preserves damaged2626byte prefix, restores only the independently cryptographically recovered4162byte original stdout, retains manifest and receipt unchanged, then reruns unchanged full acceptance verifier",
+  "publication_gate": "Still blocked until unchanged verifier succeeds and every remaining log/source/input/preservation digest is verified. Fresh35test PASS cannot itself replace the missing original transcript"
+}

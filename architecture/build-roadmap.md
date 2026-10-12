@@ -32,12 +32,12 @@ Phase 2D and the full Phase 2E two-track approval audit are closed. Preserve the
 Status: substantially complete for current product development.
 
 All 50 roadmap positions are accounted for. Current live-main position after the specialist build:
-- **47 production skills**.
+- **48 production skills**.
 - **#34 Government Grants & Assistance** — incomplete/WIP; the existing main package remains NONPRODUCTION. Separate remediation work may exist on an unmerged branch and must not be treated as live production.
-- **#35 Borrowing Costs** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
+- **#35 Borrowing Costs** — **COMPLETE SUBJECT TO OWNER INTEGRATION** through PR42. SKILL-BORROW-001 v1.0.0 executes bounded 2026 ordinary domestic own-use tangible construction: IFRS/AASB Tier1 specific/general allocation, US avoidable interest and UK full commercial FRS102 capitalization/expense policies. The separately governed SUPPLEMENTAL_BORROWING_COSTS has92 independently reviewed claims (30 directly inspected,62 retaining source audits). Historical0.1.0 cases remain blocked. Other periods, Tier2/NFP, FRS101/105, non-PPE assets, sale/inventory, FX/fees/EIR differences, shared components, abandonment and unsupported owner imports remain explicitly blocked. See skills/BORROWING-COSTS-INTEGRATION-HANDOFF.md; final unchanged-head Actions and owner integration are separate release gates.
 - **#37 Investment Property** — deferred; existing package remains explicit NONPRODUCTION/fail-closed pending separately governed substantive knowledge.
 
-The three residual packages do not block CAO runtime/orchestration development. Orchestration must detect unavailable owners and return precise partial/blocked dependencies rather than fabricate accounting.
+The two residual packages do not block CAO runtime/orchestration development. Orchestration must detect unavailable owners and return precise partial/blocked dependencies rather than fabricate accounting.
 
 ### CAO Orchestration Foundation
 Status: **complete and integrated**.
@@ -207,3 +207,81 @@ These should use the same standalone knowledge-extension / independent-QA / prom
 Complete: 157/157 individually processed and approved; no remaining canonical accounting blockers. See `knowledge/phase-2e/reviews/`. Per-claim source assurance remains separate. No Master Build Map found.
 
 Runtime public-output integration and verification are now implemented in the CAO orchestration foundation. Future application adapters must continue to enforce the same public boundary. Exact-commit GitHub Actions remain the integration standard.
+
+## CAO MVP product builds
+
+Build 1 — COMPLETE (MERGED PR #44): local Claude Code operation and shared execution
+contract1.0 reuse native accounting, durable Cases and Company Accounting Memory.
+Live main merge b3b6d3c7a57682985f66dc76985f99fe42b4dbd2;3,050 distinct tests passed.
+
+Build 2A — COMPLETE (MERGED PR #45): separately runnable
+Python /v1 HTTP wrapper, scoped server authentication, company workspace isolation,
+durable operational jobs and native checkpoint reconciliation.24 authored/12
+independent service tests plus8 independent release-gate tests pass. Full local
+regression passes3,094 distinct tests and seven validators; two real synthetic
+owners retain exact local public parity.
+No native accounting authority or protected milestone changes. Completion requires
+exact-head Actions and unchanged-head readiness; deterministic seeds19/941 pass. See
+architecture/CAO-MVP-BUILD2A-ARCHITECTURE.md and hosted_cao/release/.
+
+Build 2B — INCOMPLETE: TrackedFR Express integration, company membership mapping,
+existing UI/document rendering and private-source exchange remain separate work.
+See architecture/TRACKEDFR-CAO-BUILD2B-INTEGRATION-REQUIREMENTS.md. The full MVP is
+INCOMPLETE. No production deployment or merge is performed by Build2A.
+
+Build 3 — COMPLETE (MERGED PR #46): Case-specific immutable context, bounded
+financial document observations, iterative evidence discovery, controlled
+interpretation and native owner intake/correction/rework through both clients.
+Merged as495d4e7fccd5863c971423a5fb130f82e37b9604 on2026-10-11. Final exact-head
+and unchanged-head readiness receipts passed on PR46. Fourteen independently
+reproduced findings resolved;3,166 distinct repository methods passed. Source
+assurance/synthetic identities/live inference limitations remain explicit.
+See architecture/CAO-MVP-BUILD3-INTEGRATION-HANDOFF.md.
+
+Build 4 — INTEGRATED ACCEPTANCE IMPLEMENTED; RELEASE GATES REQUIRED:
+new customer-contract correction, prepayments evidence discovery with unresolved
+residual/allocation, repeated framework-qualified legal-entity/period owners,
+Group scope conflict/isolation, genuine interrupted native CORRECT/REWORK and
+safe exact-version CompanyMemory reuse. Bounded remediation binds native memory
+consumption and rechecks currentness; no parallel engine or authenticated approval.
+See architecture/CAO-MVP-BUILD4-ARCHITECTURE.md and completion report; final local
+regression, deterministic proofs, independent QA, exact-head/readiness CI and
+owner integration remain the release standard recorded on the sole Build4 PR.
+
+Engine engineering acceptance must be distinguished from unverified live model/
+Claude Code user operation, outstanding TrackedFR Build2B application acceptance,
+authenticated preparer/reviewer governance and production deployment/security/
+operational acceptance. Government Grants#34, Borrowing Costs#35 and Investment
+Property#37 remain separately managed. Build2B and the commercial MVP are INCOMPLETE.
+
+
+### Government Grants #34 — PR27 continuation production candidate
+
+SKILL-GRANT-001 now supplies bounded2026 IFRS IAS20, AASB120 Tier1 for-profit, elected FRS102 Section24 and evidenced early-adopted Topic832 accounting through the existing production boundary. The original172-claim supplemental namespace and47/29/96 assurance classifications are preserved; canonical157/347/1598 and the48 existing production skills remain intact. Metadata now records49 production positions. Investment Property #37 remains its own unmerged workstream, with no changes imported.
+
+Income matching, asset deferral/basis alternatives, nonmonetary owner-clearing transfers, unrecognized advances, past-cost compensation and simple deferral/current-expense clawbacks reconcile source, opening cumulative entitlement, eligible owner costs, exact journals, GL/statement and disclosures. Unsupported loans/forgiveness, complex repayments, prior advance/repayment histories, unevidenced US nonadopters, unsupported entities/periods and other-owner methods remain blocked. See the explicit framework support matrix and architecture reconciliation. Independent knowledge39 and implementation57 test methods pass; authored/native, deterministic examples, historical preservation and full release/CI gates remain required. PR27 stays Draft until all exact-head gates pass; no merge is authorized.
+
+### Current specialist position — Investment Property PR43 (12 October2026)
+
+This dated update supersedes the historical specialist-status paragraphs above,
+which are retained verbatim under existing roadmap evidence controls. Actual
+owner-authorized main e75375b8 includes Borrowing Costs PR42 and Government
+Grants PR27:49 production packages. Investment Property is the50th bounded
+candidate on this unmerged branch, not a merged50/50 release.
+
+SKILL-IP-001 v1.0.0 consumes96 separately approved hash-bound claims. All96 retain
+independently checked model-derived assurance and an open direct-authority audit.
+Supported routes are calendar2026 full-framework for-profit owned property at
+annual cutoff: cash purchase/holding/disposal, documented mixed-use separation,
+IFRS/AASB cost or FV and qualified cost/FV-out transfers; full FRS102 ordinary FV
+or the specific separate group-lessor PPE cost election; ordinary US historical
+cost/PPE only. Existing owner depreciation/impairment effects are retained once.
+
+Intra-year activity, ROU/construction/combinations, into-FV PPE revaluation,
+prior cost impairment/estimate changes, advanced native owner imports, other
+periods/entity overlays and generic US FV remain fail-closed. Legacy0.1.0 cases
+remain blocked. No duplicate journals or automatic ERP posting is authorized.
+Authored, genuinely independent knowledge/runtime/main QA and42 deterministic
+examples precede full regression, exact-head Actions and Ready-for-Review gates.
+Release completion is recorded under build4/release and the existing PR43
+conversation; owner integration remains separately authorized. Do not merge.

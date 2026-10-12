@@ -1,13 +1,13 @@
 ---
 id: SKILL-BORROW-001
 name: "Borrowing Costs"
-version: 0.1.0
-status: review
+version: 1.0.0
+status: production
 primary_domain: "04"
 related_domains: ["02", "04", "05", "06", "07", "08", "13", "15"]
 description: Governed borrowing costs workflow with independently evidenced accounting and fail-closed boundaries.
-triggers: ["Borrowing Costs", reporting assessment, disclosure reconciliation]
-non_triggers: [ERP posting, legal advice, autonomous valuation, reserved specialist implementation]
+triggers: ["Borrowing Costs", construction interest capitalization, qualifying asset financing cost]
+non_triggers: [ERP posting, legal advice, autonomous valuation, debt recognition, investment property, government grants]
 framework_sensitivity: HIGH
 applicable_frameworks: [IFRS, US_GAAP, UK_GAAP, AASB]
 jurisdiction_sensitivity: HIGH
@@ -21,9 +21,9 @@ artifacts: [case, source_reconciliation, worked_examples, partial_public_output,
 dependencies: [approved_knowledge, company_context, accounting_owners, independent_review]
 related_skills: [equity-capital, financial-statements, accounting-changes, going-concern, debt-financing, income-taxes]
 knowledge_sources:
-  principles: [TOPIC-04-003]
-  standards: [TOPIC-04-003]
-  practice: [PRESENTATION-KNOWLEDGE-MAP.json, methods.md]
+  principles: [SUPPLEMENTAL_BORROWING_COSTS]
+  standards: [SUPPLEMENTAL_BORROWING_COSTS]
+  practice: [SUPPLEMENTAL-KNOWLEDGE-MAP.json, methods.md]
 risk_level: HIGH
 review_required: true
 completion_criteria: [approved_scope, operative_framework_period, current_evidence, independent_population, deterministic_reconciliation, balanced_entries_where_applicable, disclosures, independent_exact_fingerprint_review, public_privacy, independent_QA, full_regression]
@@ -31,18 +31,15 @@ completion_criteria: [approved_scope, operative_framework_period, current_eviden
 
 # Governed execution contract
 
-NONPRODUCTION: incidental CIP/interest routing is not a substantive capitalization method.
+Read methods.md and the approved supplemental package. Version 1.0.0 supports the independently accepted bounded methods in methods.md; it does not assert universal domain support. The original 0.1.0 NONPRODUCTION CIP-only method and archived blocked examples remain historical baseline evidence.
 
-Specific/general borrowing rates, qualifying assets, expenditure timing, start/suspension/cessation, investment income, FX and UK policy require separately approved methods.
+1. Qualify the exact framework, entity and 2026 annual edition; unsupported overlays fail closed.
+2. Independently review one tangible construction object, actual paid expenditure, full temporal population and original financing sources.
+3. Reconcile specific/general sources, dated contractual accruals, draws, repayments, temporary investment income and weighted general rates with exact Decimal arithmetic.
+4. Execute only through production.assess_case("borrowing-costs", case); retain original source capture and independent knowledge review.
+5. Keep debt and asset recognition with their existing owners. Only expense-to-asset allocation belongs here.
+6. Reconcile construction cost and finance expense to source, GL snapshot and financial statement support.
+7. Require independent exact-fingerprint case certification before releasing journal implications. Missing certification is PARTIAL; unsupported accounting is BLOCKED.
+8. Render through the established allowlist. Never export private source records, approval identities or hashes; never post to ERP.
 
-1. Read methods.md, actual mapped knowledge documents/claims and ../REVIEWER-CONTROLS.md. Use the immutable batch map; APPROVED never implies SOURCE_VERIFIED. Preserve all reference-confidence qualifications.
-2. Resolve framework/entity/jurisdiction, reporting start/end, actual operative edition/adoption and scope. Obtain qualified current methods where canonical knowledge does not prescribe detailed mechanics. Do not import IAS33/IFRS8 obligations into all FRS102 entities.
-3. Freeze complete source IDs, amounts/counts, dated populations and independent source/statement bridges. Distinguish management assumptions from facts; obtain legal/management evidence.
-4. Call production.assess_case("borrowing-costs",case) through the established CLI. Guarded Decimal calculations and controlled schedules never manufacture facts, rights, probabilities, approvals or source evidence.
-5. Keep underlying journal ownership with its existing skill. Require fresh completed, unaltered entity/framework/period results and exact-once reconciliation rather than silently reperforming specialist measurement.
-6. Resolve disclosures, comparatives, significant judgments, alternatives and unsupported routes. Missing or inconsistent facts fail closed without journals; missing/stale independent certification remains partial.
-7. Require independent reviewer/preparer separation and exact case, knowledge-document and implementation fingerprints. These validate supplied approval records, not human identity.
-8. Render through the existing seven-route allowlist; exclude raw evidence, source notes, reviewer information and hashes. Retain material limitations in ordinary language.
-9. Retain case/version, source lineage, reconciliations, unresolved dependencies and rerun history. Never post, file, submit returns or contact counterparties.
-
-All four framework routes are blocked/nonproduction. Passing a handoff test does not establish accounting production.
+Bounded supported scope, methods and exclusions are explicit in methods.md; broad Borrowing Costs coverage is not asserted.

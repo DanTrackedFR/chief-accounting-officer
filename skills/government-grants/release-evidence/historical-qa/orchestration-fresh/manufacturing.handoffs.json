@@ -1,0 +1,102 @@
+[
+  {
+    "amount": "10800.00",
+    "components": [],
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "economic_id": "cost-labour",
+    "fingerprint": "bdb00b13ac626ff60ab77009ff6cf6904c6bcca24b45f6b79cd796c844dc9edd",
+    "metric_path": [
+      "expense"
+    ],
+    "producer": "exec:employee-benefits-payroll:Synthetic Group:50addf66132e812c6c8938d4d0fb80d6a824e26de7ce281e8174d7856fc95b1c",
+    "purpose": "absorb",
+    "qualification_evidence": "labour-source",
+    "semantic": "factory_labour"
+  },
+  {
+    "amount": "120",
+    "components": [],
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "economic_id": "cost-variable",
+    "fingerprint": "f72addeed68ed1886d5cb7fdf63071c568858ce3b7682f0a6a336d588961a3a0",
+    "metric_path": [
+      "invoices"
+    ],
+    "producer": "exec:accounts-payable:Synthetic Group:53d0fb0629ee5a51e3db3b72a18d33d88851eedff4b7efff97289430b9990706",
+    "purpose": "absorb",
+    "qualification_evidence": "variable-source",
+    "semantic": "factory_supplier"
+  },
+  {
+    "amount": "90000.00",
+    "components": [],
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "economic_id": "cost-fixed",
+    "fingerprint": "8d11541c9eb046eba3a891655ab96fe6540b6443564be23bd64eb4eddbf7d48b",
+    "metric_path": [
+      "depreciation"
+    ],
+    "producer": "exec:fixed-assets:Synthetic Group:b24f746312da09c98453cc0a0bb013136c17e7f69524916c58463c3d215d2470",
+    "purpose": "absorb",
+    "qualification_evidence": "fixed-source",
+    "semantic": "factory_depreciation"
+  },
+  {
+    "amount": "110.00",
+    "components": [],
+    "consumer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "economic_id": "economic-foreign-purchase",
+    "fingerprint": "05da9ed50120cb06559d04fdd29a3d002c95fc32d86c33a5853cecb8b13aeb7f",
+    "metric_path": [
+      "transactions",
+      "inventory-purchase",
+      "initial"
+    ],
+    "producer": "exec:foreign-currency:Synthetic Group:502140112a17a9e221ed3ab354162d501a49ac399033fbae19a0553d5dd5fb2b",
+    "purpose": "absorb",
+    "qualification_evidence": "foreign-purchase-source",
+    "semantic": "historical_purchase"
+  },
+  {
+    "amount": "11304.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:3206dfcad01d1c75e29be686b49ae8ade2271eaaba5393bb144bc401b8e7b39a",
+    "economic_id": "inventory-cogs",
+    "fingerprint": "99addff56d68d7fbae9cc64811ed2efb96314584e5833a4a76498f315bf4ef18",
+    "metric_path": [
+      "cogs"
+    ],
+    "producer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic owned COGS to GL/statement mapping",
+    "semantic": "cogs"
+  },
+  {
+    "amount": "40000.00",
+    "components": [],
+    "consumer": "exec:financial-statements:Synthetic Group:3206dfcad01d1c75e29be686b49ae8ade2271eaaba5393bb144bc401b8e7b39a",
+    "economic_id": "sales-revenue",
+    "fingerprint": "5e681629bed0a0dd8d01380bf8562949d3ab7f7f98bef085b7253637c3349537",
+    "metric_path": [
+      "period_revenue"
+    ],
+    "producer": "exec:revenue-recognition:Synthetic Group:2afdada895891737e2dc91679023b5b85ff9f5863d5c0360b47cd9a2ee01940d",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic goods delivery to revenue GL mapping",
+    "semantic": "revenue"
+  },
+  {
+    "amount": "45726.00",
+    "components": [],
+    "consumer": "exec:balance-sheet-reconciliations:Synthetic Group:a1abd973700a638ae62099407703e7f5b6a6eb37a46f5be0816fd03e5a341775",
+    "economic_id": "closing-stock",
+    "fingerprint": "99addff56d68d7fbae9cc64811ed2efb96314584e5833a4a76498f315bf4ef18",
+    "metric_path": [
+      "closing_inventory"
+    ],
+    "producer": "exec:inventory-cost:Synthetic Group:903a0dd0214364ee357ee8fb2f2318f5eb4b8b837ce3e862fe00e3c46a67a3a6",
+    "purpose": "report",
+    "qualification_evidence": "Synthetic gross reconciliation total equals twice signed stock asset",
+    "semantic": "inventory_balance"
+  }
+]

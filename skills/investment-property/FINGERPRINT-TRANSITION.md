@@ -1,0 +1,5 @@
+# Owner-scoped additive dispatch transition
+
+Original main a2c1aa351a63f245bc6279602f1610266a4859da and dispatcher SHA256 b452b2b46d56ad1f72cf7e87fdcadc9e8b7923a6d42c8945aac4589f291b7f52 remain preserved as a byte witness, not executable code. Owner-authorized Grants main e75375b8 supersedes the active baseline: dispatcher SHA25610a34f9fcbe28bb291373fe9c640470ee8bd1202b46590ec66a2a2105d28dfb4 is the strict normalization witness. For other owners only the exact six additive Investment Property transformations are neutral. Every other production byte edit invalidates certification. implementation_scope.py matches merged e753 main, including its Grants closure.
+
+The dispatch calls this bridge only if its actual bytes match the reviewed helper hash. Witness substitution, helper modification or a common accounting edit disables normalization. New Investment Property cases bind the actual dispatcher, helper, witness, workflow and scoped knowledge validators. Old cases are never re-signed and historical artifacts are never regenerated. Independent baseline and mutation tests must verify this explicit extension.

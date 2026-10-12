@@ -1,3 +1,4 @@
+from orchestration.history_references import reference_path
 import base64
 import gzip
 import hashlib
@@ -14,7 +15,7 @@ class MemoryArtifactProof(unittest.TestCase):
             if isinstance(value,dict) and value.get('encoding')=='gzip-base64 canonical audit JSON':
                 wire=gzip.decompress(base64.b64decode(value['payload']));self.assertEqual(hashlib.sha256(wire).hexdigest(),value['sha256']);return loads(wire.decode())
             return value
-        for name,value in actual.items():self.assertEqual(value,json.loads((TARGET/name).read_text()),name)
+        for name,value in actual.items():self.assertEqual(value,json.loads((reference_path(TARGET/name)).read_text()),name)
         self.assertEqual(actual['proof-summary.json']['result'],'PASS')
         for name,value in actual.items():
             value=decode(value)

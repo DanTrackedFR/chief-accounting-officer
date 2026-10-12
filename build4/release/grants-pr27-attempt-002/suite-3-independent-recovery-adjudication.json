@@ -1,0 +1,23 @@
+{
+  "adjudication": "Accept byte-exact restoration only, retain damaged original and immutable manifest/suite outcome bytes. Reconstructed entire original log matches its pre-existing SHA-256; no expected hash or outcome changes. Independent fresh real56-test rerun also passes.",
+  "damaged_exact_prior_prefix": true,
+  "damaged_log_bytes": 2008,
+  "damaged_log_sha256": "bb32d9fa6061ef6a8d90a32b067624ee234dfce15172d2db126a147d5d0d9ac9",
+  "independent_rerun": {
+    "command": "python -m unittest discover -s tests -p test_*.py -v",
+    "exit_code": 0,
+    "log": "suite-3-independent-rerun.log",
+    "log_sha256": "f24bd19a68c1d8c3353a8ff05a0660ea93211f938553913fdd9545ac3be2bbd8",
+    "seconds": 1.988,
+    "skipped": 0,
+    "tests": 56
+  },
+  "matching_test_source_paths": 15,
+  "original_expected_log_sha256": "eefb94da234b05eb73efecb2656652ae78f1fc9931409fc9d9bb02dbee87d2a4",
+  "original_release_manifest_sha256": "5e28e7746506fd46c6ef7a765f2d6240b4ad56b26d5a722c29bb2b9a6bd16c3b",
+  "original_suite_json_sha256": "a1909c6c6f9004af56d4a4a628575f9b6213389cfe190dc4bcc8e13a9d847b3e",
+  "recovered_log_bytes": 7796,
+  "same_test_ids": true,
+  "sole_delta_duration": "1.985s -> 4.131s (immutable attempt002 recorded duration)",
+  "status": "PASS"
+}

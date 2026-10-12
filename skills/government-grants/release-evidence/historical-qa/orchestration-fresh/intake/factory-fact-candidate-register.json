@@ -1,0 +1,836 @@
+[
+  {
+    "attribute": "opening_cost",
+    "candidate_owner": "fixed-assets",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "assets:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "600000"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "machinery",
+    "id": "asset-cost",
+    "lineage": [
+      {
+        "extracted_fingerprint": "6ed712c9861a45d9337c4be2723cf7b8d35431e3fea3fe552ed23799d5efeee7",
+        "id": "assets:2",
+        "location": {
+          "column": "opening_cost",
+          "record_id": "machine",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "ff6ab7b904bdccb0cdaeb6e097bea6a1ae40df3b273269a37c9b0117cfefbd3b",
+        "source_id": "assets",
+        "value": "600000"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "amount",
+    "candidate_owner": "accounts-payable",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "ap:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "120"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "supplier_cost",
+    "id": "ap-amount",
+    "lineage": [
+      {
+        "extracted_fingerprint": "a76c84eb73a7eedc5a5b8889f914f1facd2ab014a8b7ebd72dc8c121cc654b60",
+        "id": "ap:2",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "cc1490b344810bdd86e57dd3400ebcb47cc2b184a004db05f6d217ad91f9986b",
+        "source_id": "ap",
+        "value": "120"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "rate",
+    "candidate_owner": "employee-benefits-payroll",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "payroll:3"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "200"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "employee_cost",
+    "id": "pay-rate",
+    "lineage": [
+      {
+        "extracted_fingerprint": "cad9e1bcc89d0640e1379437b9c9a8b021e7411c515b53a15d89f8439dafedf0",
+        "id": "payroll:3",
+        "location": {
+          "column": "rate",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "200"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "units",
+    "candidate_owner": "employee-benefits-payroll",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "payroll:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "50"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "employee_cost",
+    "id": "pay-units",
+    "lineage": [
+      {
+        "extracted_fingerprint": "4ec621b227e30e8a72d97865785a0bf20b5032024c589a56e1a6b18a099bdb7c",
+        "id": "payroll:4",
+        "location": {
+          "column": "units",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "50"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "expected_charge",
+    "candidate_owner": "employee-benefits-payroll",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "payroll:5"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "10800"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "employee_cost",
+    "id": "pay-charge",
+    "lineage": [
+      {
+        "extracted_fingerprint": "4f9f1702505bf36377677fdfa884301799d565a8317d5d889790fe05e6352227",
+        "id": "payroll:5",
+        "location": {
+          "column": "expected_charge",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "10800"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "opening_book",
+    "candidate_owner": "foreign-currency",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "fx:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "110"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "currency_exposure",
+    "id": "fx-opening",
+    "lineage": [
+      {
+        "extracted_fingerprint": "d6d3c6318a4582617a85821b502962b17d7f38a93c7e408a0ecf22516f560f71",
+        "id": "fx:4",
+        "location": {
+          "column": "opening_book",
+          "record_id": "inventory-purchase",
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "83607df038dc4182acbdb51246eeee727c07884fba67cea24ed6007a5491ad6b",
+        "source_id": "fx",
+        "value": "110"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "closing_cost",
+    "candidate_owner": "inventory-cost",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "production:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "510"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "inventory",
+    "id": "stock-rm",
+    "lineage": [
+      {
+        "extracted_fingerprint": "240da2dbdc17826d49e8d26e1d61a5fa54898be18a80e4a3e6538320a75ee394",
+        "id": "production:2",
+        "location": {
+          "column": "closing_cost",
+          "record_id": "RM",
+          "row": 1,
+          "table": "Stock"
+        },
+        "source_fingerprint": "17995cf267a0e8c8cba72ee42ae8c0dacb5aea7ffebc9ded656dff47f1b0e395",
+        "source_id": "production",
+        "value": "510"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "ssp",
+    "candidate_owner": "revenue-recognition",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "billing:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "40000"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "customer_contract",
+    "id": "revenue-ssp",
+    "lineage": [
+      {
+        "extracted_fingerprint": "2dd9905fce44c3771a5ea25bc09148ee309554180345309629fe9a8a19ccb701",
+        "id": "billing:2",
+        "location": {
+          "column": "ssp",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "9fa6b6a58a0c8b1c300f1b03f15bac3d0769c269538989f9076378cd428530de",
+        "source_id": "billing",
+        "value": "40000"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "opening_cost",
+    "candidate_owner": "financial-statements",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:7"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "600000"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "statement",
+    "id": "statement-cost",
+    "lineage": [
+      {
+        "extracted_fingerprint": "6ed712c9861a45d9337c4be2723cf7b8d35431e3fea3fe552ed23799d5efeee7",
+        "id": "close:7",
+        "location": {
+          "column": "ppe",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "600000"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "closing_cost",
+    "candidate_owner": "balance-sheet-reconciliations",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:3"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "33912.00"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "reconciliation",
+    "id": "stock-rec",
+    "lineage": [
+      {
+        "extracted_fingerprint": "044f9b5d37a2815ffa661c91b9f4318d0e154a32cb56552640a33253c308934f",
+        "id": "close:3",
+        "location": {
+          "column": "finished_goods",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "33912.00"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "duration",
+    "candidate_owner": "month-end-close",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "2"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "close_calendar",
+    "id": "close-duration",
+    "lineage": [
+      {
+        "extracted_fingerprint": "cc11310c456c3690d5a74c23aa31cc25b4e74cdae146c71e54ad9dbc1d109fde",
+        "id": "close:2",
+        "location": {
+          "column": "duration",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "2"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "amount",
+    "candidate_owner": "accounting-systems-data-integrity",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "45726.00"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "interface",
+    "id": "interface-balance",
+    "lineage": [
+      {
+        "extracted_fingerprint": "5de47078345336aeba6a502469e490d2e15060e76c52c77f0e9af56822542c5e",
+        "id": "close:4",
+        "location": {
+          "column": "interface_balance",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "45726.00"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "threshold",
+    "candidate_owner": "accounting-controls-icfr",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:5"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "10"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "control",
+    "id": "control-threshold",
+    "lineage": [
+      {
+        "extracted_fingerprint": "536549599ec6c3b859cd3970025779a13d061783c73e663fea7f963e98379aa8",
+        "id": "close:5",
+        "location": {
+          "column": "control_threshold",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "10"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "profit",
+    "candidate_owner": "disclosure-management",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "close:6"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "-16304.00"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "disclosure",
+    "id": "profit-disclosure",
+    "lineage": [
+      {
+        "extracted_fingerprint": "cfb75cbffb6c6620d789fe86011d2c0d1e49650a10f4a61584f89432ec6dd198",
+        "id": "close:6",
+        "location": {
+          "column": "profit",
+          "record_id": "ap",
+          "row": 1,
+          "table": "table"
+        },
+        "source_fingerprint": "309fab522bda095a7fb35ed546bf112a1efeac946e2cd57c086686d211672969",
+        "source_id": "close",
+        "value": "-16304.00"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "cogs",
+    "candidate_owner": "management-accounting-analytics",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "pnl:4"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "11304"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "analytics",
+    "id": "analytic-cogs",
+    "lineage": [
+      {
+        "extracted_fingerprint": "06477c3a872c79a33886cf44ed9bc22864afbb0e258de0f66f45674b25c91ad4",
+        "id": "pnl:4",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 3,
+          "table": "table"
+        },
+        "source_fingerprint": "f6bd5e6f8c35be8f2e74ab2e7eeaefe631b4a6a693a62982a5bd53dca4f34c26",
+        "source_id": "pnl",
+        "value": "11304"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "prior_profit",
+    "candidate_owner": "management-accounting-analytics",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "prior:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "15000"
+    },
+    "confirmation_required": false,
+    "conflicts": [],
+    "dimensions": {
+      "comparator": "prior_actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-11-01",
+        "2026-11-30"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "analytics",
+    "id": "prior-profit",
+    "lineage": [
+      {
+        "extracted_fingerprint": "3bc0f6e22232d9c6cec853a42d8e1b67e1926b1410d8df7e28ab40e3327333e5",
+        "id": "prior:2",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "076e29bf8242df1358fc50765caa78f1a306ea1ef0dd203734b271c41d76c4b3",
+        "source_id": "prior",
+        "value": "15000"
+      }
+    ],
+    "promotion": "established",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "factory_labour",
+    "candidate_owner": "employee-benefits-payroll",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "payroll:6"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "10800"
+    },
+    "confirmation_required": false,
+    "conflicts": [
+      "labour-export",
+      "labour-gl"
+    ],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "employee_cost",
+    "id": "labour-export",
+    "lineage": [
+      {
+        "extracted_fingerprint": "4f9f1702505bf36377677fdfa884301799d565a8317d5d889790fe05e6352227",
+        "id": "payroll:6",
+        "location": {
+          "column": "factory_labour",
+          "record_id": null,
+          "row": 2,
+          "table": "table"
+        },
+        "source_fingerprint": "576b7e0d3091f8ae7b462c267183d363c24a08dbcae2bd71541b93c8ed81a333",
+        "source_id": "payroll",
+        "value": "10800"
+      }
+    ],
+    "promotion": "disputed",
+    "transformation": "decimal"
+  },
+  {
+    "attribute": "factory_labour",
+    "candidate_owner": "employee-benefits-payroll",
+    "claim": {
+      "confidence": 0.99,
+      "evidence": [
+        "pnl:10"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "EXTRACTED",
+      "value": "11000"
+    },
+    "confirmation_required": false,
+    "conflicts": [
+      "labour-export",
+      "labour-gl"
+    ],
+    "dimensions": {
+      "comparator": "actual",
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "unit": "currency"
+    },
+    "economic_id": "",
+    "extraction_method": "semantic proposal",
+    "family": "employee_cost",
+    "id": "labour-gl",
+    "lineage": [
+      {
+        "extracted_fingerprint": "2ac1959e3e6e648b21f3947a8636474eb5319653f1a8e3815de957a8b61a533d",
+        "id": "pnl:10",
+        "location": {
+          "column": "amount",
+          "record_id": null,
+          "row": 6,
+          "table": "table"
+        },
+        "source_fingerprint": "f6bd5e6f8c35be8f2e74ab2e7eeaefe631b4a6a693a62982a5bd53dca4f34c26",
+        "source_id": "pnl",
+        "value": "11000"
+      }
+    ],
+    "promotion": "disputed",
+    "transformation": "decimal"
+  }
+]

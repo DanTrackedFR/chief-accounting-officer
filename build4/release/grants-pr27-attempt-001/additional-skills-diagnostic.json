@@ -1,0 +1,14 @@
+{
+  "tests": 1400,
+  "failures": [
+    [
+      "test_insurance_release.InsuranceReleaseTests.test_all_protected_baseline_files_are_identical (path='architecture/build-roadmap.md')",
+      "Traceback (most recent call last):\n  File \"/workspace/scratch/62f09d8fecd9/cao/skills/tests/test_insurance_release.py\", line 31, in test_all_protected_baseline_files_are_identical\n    self.assertEqual(d['sha256'],hashlib.sha256((ROOT/d['path']).read_bytes()).hexdigest())\nAssertionError: '0ae4a16411ea07a4db938d06c153facfd9b8ed195aed838737ae601d3bcbdee8' != 'bba719689a30ff80d9415c6dcd1db56fa383d24a6e835454086c1bf3ede8e1ac'\n- 0ae4a16411ea07a4db938d06c153facfd9b8ed195aed838737ae601d3bcbdee8\n+ bba719689a30ff80d9415c6dcd1db56fa383d24a6e835454086c1bf3ede8e1ac\n\n"
+    ],
+    [
+      "test_presentation_workflows.PresentationTests.test_saved_examples_and_public_cli",
+      "Traceback (most recent call last):\n  File \"/workspace/scratch/62f09d8fecd9/cao/skills/tests/test_presentation_workflows.py\", line 260, in test_saved_examples_and_public_cli\n    else:self.assertEqual(json.loads(json.dumps(to_public(r),default=serializable)),historical)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'topic_id': 'SUPPLEMENTAL_GOVERNMENT_GRANTS', 'guidanc[797 chars]: []} != {'topic_id': 'unmapped', 'guidance': 'Accounting case c[991 chars]: []}\nDiff is 2654 characters long. Set self.maxDiff to None to see it.\n"
+    ]
+  ],
+  "errors": []
+}

@@ -1,0 +1,300 @@
+﻿2026-10-11T21:44:51.0627127Z Current runner version: '2.337.0'
+2026-10-11T21:44:51.0648948Z ##[group]Runner Image Provisioner
+2026-10-11T21:44:51.0649839Z Hosted Compute Agent
+2026-10-11T21:44:51.0650394Z Version: 20261002.596
+2026-10-11T21:44:51.0650967Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-11T21:44:51.0651740Z Build Date: 2026-10-02T22:28:27Z
+2026-10-11T21:44:51.0652399Z Worker ID: {ef1d8056-620a-4b40-9b87-3436cebb5bce}
+2026-10-11T21:44:51.0653075Z Region: centralus
+2026-10-11T21:44:51.0653599Z Cloud: Azure
+2026-10-11T21:44:51.0654362Z ##[endgroup]
+2026-10-11T21:44:51.0655767Z ##[group]Operating System
+2026-10-11T21:44:51.0656311Z Ubuntu
+2026-10-11T21:44:51.0656779Z 24.04.5
+2026-10-11T21:44:51.0657224Z LTS
+2026-10-11T21:44:51.0657662Z ##[endgroup]
+2026-10-11T21:44:51.0658264Z ##[group]Runner Image
+2026-10-11T21:44:51.0658802Z Image: ubuntu-24.04
+2026-10-11T21:44:51.0659283Z Version: 20261004.327.1
+2026-10-11T21:44:51.0660359Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-11T21:44:51.0661633Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-11T21:44:51.0662444Z ##[endgroup]
+2026-10-11T21:44:51.0663435Z ##[group]GITHUB_TOKEN Permissions
+2026-10-11T21:44:51.0665427Z Contents: read
+2026-10-11T21:44:51.0665947Z Metadata: read
+2026-10-11T21:44:51.0666426Z Packages: read
+2026-10-11T21:44:51.0666911Z ##[endgroup]
+2026-10-11T21:44:51.0668618Z Secret source: Actions
+2026-10-11T21:44:51.0669393Z Cache mode: write
+2026-10-11T21:44:51.0669997Z Prepare workflow directory
+2026-10-11T21:44:51.0985271Z Prepare all required actions
+2026-10-11T21:44:51.1026423Z Getting action download info
+2026-10-11T21:44:51.3198940Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-11T21:44:51.4022426Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-11T21:44:51.5810929Z Complete job name: validate
+2026-10-11T21:44:51.6429287Z ##[group]Run actions/checkout@v4
+2026-10-11T21:44:51.6430125Z with:
+2026-10-11T21:44:51.6430699Z   ref: 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:44:51.6431456Z   repository: DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.6435253Z   token: ***
+2026-10-11T21:44:51.6435673Z   ssh-strict: true
+2026-10-11T21:44:51.6436128Z   ssh-user: git
+2026-10-11T21:44:51.6436573Z   persist-credentials: true
+2026-10-11T21:44:51.6437037Z   clean: true
+2026-10-11T21:44:51.6437476Z   sparse-checkout-cone-mode: true
+2026-10-11T21:44:51.6437964Z   fetch-depth: 1
+2026-10-11T21:44:51.6438388Z   fetch-tags: false
+2026-10-11T21:44:51.6438836Z   show-progress: true
+2026-10-11T21:44:51.6439248Z   lfs: false
+2026-10-11T21:44:51.6439704Z   submodules: false
+2026-10-11T21:44:51.6440134Z   set-safe-directory: true
+2026-10-11T21:44:51.6440622Z   allow-unsafe-pr-checkout: false
+2026-10-11T21:44:51.6441259Z ##[endgroup]
+2026-10-11T21:44:51.7329503Z Syncing repository: DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.7332069Z ##[group]Getting Git version info
+2026-10-11T21:44:51.7333452Z Working directory is '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-11T21:44:51.7335452Z [command]/usr/bin/git version
+2026-10-11T21:44:51.7360281Z git version 2.55.0
+2026-10-11T21:44:51.7377098Z ##[endgroup]
+2026-10-11T21:44:51.7387271Z Temporarily overriding HOME='/home/runner/work/_temp/0695a2c2-5042-444f-b7f7-14c827a62a0d' before making global git config changes
+2026-10-11T21:44:51.7389174Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:44:51.7390952Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:44:51.7430674Z Deleting the contents of '/home/runner/work/chief-accounting-officer/chief-accounting-officer'
+2026-10-11T21:44:51.7434941Z ##[group]Initializing the repository
+2026-10-11T21:44:51.7438546Z [command]/usr/bin/git init /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:44:51.7510752Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-11T21:44:51.7512216Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-11T21:44:51.7513940Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-11T21:44:51.7515330Z hint: call:
+2026-10-11T21:44:51.7516104Z hint:
+2026-10-11T21:44:51.7517069Z hint: 	git config --global init.defaultBranch <name>
+2026-10-11T21:44:51.7518088Z hint:
+2026-10-11T21:44:51.7519066Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-11T21:44:51.7520513Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-11T21:44:51.7521793Z hint:
+2026-10-11T21:44:51.7522520Z hint: 	git branch -m <name>
+2026-10-11T21:44:51.7523256Z hint:
+2026-10-11T21:44:51.7524337Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-11T21:44:51.7526018Z Initialized empty Git repository in /home/runner/work/chief-accounting-officer/chief-accounting-officer/.git/
+2026-10-11T21:44:51.7528888Z [command]/usr/bin/git remote add origin https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-11T21:44:51.7593460Z ##[endgroup]
+2026-10-11T21:44:51.7594899Z ##[group]Disabling automatic garbage collection
+2026-10-11T21:44:51.7596178Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-11T21:44:51.7621053Z ##[endgroup]
+2026-10-11T21:44:51.7622411Z ##[group]Setting up auth
+2026-10-11T21:44:51.7628047Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:44:51.7666542Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:44:51.7975794Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:44:51.8001911Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:44:51.8183218Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:44:51.8210695Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:44:51.8369434Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-11T21:44:51.8400442Z ##[endgroup]
+2026-10-11T21:44:51.8401556Z ##[group]Fetching the repository
+2026-10-11T21:44:51.8407960Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:01.6160948Z From https://github.com/DanTrackedFR/chief-accounting-officer
+2026-10-11T21:45:01.6163070Z  * branch            97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5 -> FETCH_HEAD
+2026-10-11T21:45:01.6168009Z ##[endgroup]
+2026-10-11T21:45:01.6169979Z ##[group]Determining the checkout info
+2026-10-11T21:45:01.6172292Z ##[endgroup]
+2026-10-11T21:45:01.6181195Z [command]/usr/bin/git sparse-checkout disable
+2026-10-11T21:45:01.6222599Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-11T21:45:01.6249151Z ##[group]Checking out the ref
+2026-10-11T21:45:01.6251484Z [command]/usr/bin/git checkout --progress --force 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:02.4204641Z Note: switching to '97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5'.
+2026-10-11T21:45:02.4205977Z 
+2026-10-11T21:45:02.4206324Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-11T21:45:02.4207138Z changes and commit them, and you can discard any commits you make in this
+2026-10-11T21:45:02.4208053Z state without impacting any branches by switching back to a branch.
+2026-10-11T21:45:02.4208835Z 
+2026-10-11T21:45:02.4209220Z If you want to create a new branch to retain commits you create, you may
+2026-10-11T21:45:02.4209995Z do so (now or later) by using -c with the switch command. Example:
+2026-10-11T21:45:02.4210377Z 
+2026-10-11T21:45:02.4210625Z   git switch -c <new-branch-name>
+2026-10-11T21:45:02.4210903Z 
+2026-10-11T21:45:02.4211156Z Or undo this operation with:
+2026-10-11T21:45:02.4211487Z 
+2026-10-11T21:45:02.4211680Z   git switch -
+2026-10-11T21:45:02.4211977Z 
+2026-10-11T21:45:02.4212366Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-11T21:45:02.4212844Z 
+2026-10-11T21:45:02.4213345Z HEAD is now at 97e21c5 Publish complete 3371-test release acceptance and preserved recovery evidence
+2026-10-11T21:45:02.4239212Z ##[endgroup]
+2026-10-11T21:45:02.4282753Z [command]/usr/bin/git log -1 --format=%H
+2026-10-11T21:45:02.4303913Z 97e21c55f638b5bb6b8c7bfef08d7bf5631ed2e5
+2026-10-11T21:45:02.4536122Z ##[group]Run actions/setup-python@v5
+2026-10-11T21:45:02.4536536Z with:
+2026-10-11T21:45:02.4536872Z   python-version: 3.12
+2026-10-11T21:45:02.4537201Z   check-latest: false
+2026-10-11T21:45:02.4539224Z   token: ***
+2026-10-11T21:45:02.4539557Z   update-environment: true
+2026-10-11T21:45:02.4539885Z   allow-prereleases: false
+2026-10-11T21:45:02.4540243Z   freethreaded: false
+2026-10-11T21:45:02.4540550Z ##[endgroup]
+2026-10-11T21:45:02.5666047Z ##[group]Installed versions
+2026-10-11T21:45:02.5756825Z (node:2075) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-11T21:45:02.5757973Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-11T21:45:02.5758695Z Successfully set up CPython (3.12.15)
+2026-10-11T21:45:02.5759607Z ##[endgroup]
+2026-10-11T21:45:02.5875847Z ##[group]Run python knowledge/standards-evidence/validate_claims.py
+2026-10-11T21:45:02.5876573Z [36;1mpython knowledge/standards-evidence/validate_claims.py[0m
+2026-10-11T21:45:02.6082711Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:02.6083095Z env:
+2026-10-11T21:45:02.6083475Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.6084019Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:02.6084696Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.6085183Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.6085666Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.6086108Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:02.6086520Z ##[endgroup]
+2026-10-11T21:45:02.8461302Z {
+2026-10-11T21:45:02.8461936Z   "topic_directories": 195,
+2026-10-11T21:45:02.8462704Z   "registers": 157,
+2026-10-11T21:45:02.8463346Z   "topics_missing_register": 38,
+2026-10-11T21:45:02.8463873Z   "claims": 1598,
+2026-10-11T21:45:02.8464441Z   "errors": 0,
+2026-10-11T21:45:02.8464964Z   "warnings": 0,
+2026-10-11T21:45:02.8465395Z   "missing_registers": [
+2026-10-11T21:45:02.8466064Z     "TOPIC-01-001-accounting-function-strategy-operating-model",
+2026-10-11T21:45:02.8466804Z     "TOPIC-01-005-kpi-sla-governance-calendar",
+2026-10-11T21:45:02.8467362Z     "TOPIC-02-001-close",
+2026-10-11T21:45:02.8467814Z     "TOPIC-02-001-close-design",
+2026-10-11T21:45:02.8468276Z     "TOPIC-02-001-month-end-close",
+2026-10-11T21:45:02.8468949Z     "TOPIC-02-003-recurring-journals-gl-integrity",
+2026-10-11T21:45:02.8469539Z     "TOPIC-02-004-trial-balance-reconciliations",
+2026-10-11T21:45:02.8470141Z     "TOPIC-02-006-suspense-cutoff",
+2026-10-11T21:45:02.8470666Z     "TOPIC-02-007-accruals-prepayments",
+2026-10-11T21:45:02.8471306Z     "TOPIC-02-008-close-variance-post-close",
+2026-10-11T21:45:02.8472131Z     "TOPIC-02-009-prior-period-errors-opening-balances",
+2026-10-11T21:45:02.8472832Z     "TOPIC-03-001-revenue-contract-model",
+2026-10-11T21:45:02.8473523Z     "TOPIC-03-001-revenue-contract-performance-obligations",
+2026-10-11T21:45:02.8474500Z     "TOPIC-03-001-revenue-contract-performance-obligations-transaction-price",
+2026-10-11T21:45:02.8475718Z     "TOPIC-03-009-bad-debt-cash-application",
+2026-10-11T21:45:02.8476515Z     "TOPIC-03-010-unapplied-cash-disputes",
+2026-10-11T21:45:02.8477105Z     "TOPIC-03-011-ar-revenue-reconciliations",
+2026-10-11T21:45:02.8477695Z     "TOPIC-04-001-ppe-recognition",
+2026-10-11T21:45:02.8478279Z     "TOPIC-04-002-depreciation-useful-life-disposals",
+2026-10-11T21:45:02.8478911Z     "TOPIC-04-005-intangibles-amortization",
+2026-10-11T21:45:02.8479517Z     "TOPIC-05-008-mixed-awards-modifications",
+2026-10-11T21:45:02.8480086Z     "TOPIC-05-009-termination-leave",
+2026-10-11T21:45:02.8480775Z     "TOPIC-05-010-compensation-reconciliations",
+2026-10-11T21:45:02.8481627Z     "TOPIC-06-001-bank-reconciliation-cash-restrictions",
+2026-10-11T21:45:02.8482452Z     "TOPIC-06-002-cash-classification-fx-transactions",
+2026-10-11T21:45:02.8483846Z     "TOPIC-06-003-fx-remeasurement-translation",
+2026-10-11T21:45:02.8484747Z     "TOPIC-06-007-financial-instrument-classification",
+2026-10-11T21:45:02.8485485Z     "TOPIC-06-009-hedge-investment-accounting",
+2026-10-11T21:45:02.8486151Z     "TOPIC-07-002-control-nci",
+2026-10-11T21:45:02.8486842Z     "TOPIC-13-010-carve-out-fresh-start-reorganization",
+2026-10-11T21:45:02.8487509Z     "TOPIC-13-011",
+2026-10-11T21:45:02.8488000Z     "TOPIC-13-011-hyperinflation",
+2026-10-11T21:45:02.8488593Z     "TOPIC-13-011-hyperinflationary-accounting",
+2026-10-11T21:45:02.8489322Z     "TOPIC-14-005-process-sop-control-writing",
+2026-10-11T21:45:02.8489992Z     "TOPIC-15-002-accounting-estimates-changes",
+2026-10-11T21:45:02.8490773Z     "TOPIC-16-001-regulatory-reporting-applicability-calendar-readiness",
+2026-10-11T21:45:02.8491597Z     "TOPIC-16-002-annual-interim-filing-support",
+2026-10-11T21:45:02.8492738Z     "TOPIC-16-003-regulatory-financial-statements-xbrl-structured-reporting"
+2026-10-11T21:45:02.8493605Z   ],
+2026-10-11T21:45:02.8494034Z   "error_details": [],
+2026-10-11T21:45:02.8494809Z   "warning_details": []
+2026-10-11T21:45:02.8495258Z }
+2026-10-11T21:45:02.8558320Z ##[group]Run python knowledge/borrowing-costs/validate_supplement.py
+2026-10-11T21:45:02.8558923Z [36;1mpython knowledge/borrowing-costs/validate_supplement.py[0m
+2026-10-11T21:45:02.8559421Z [36;1mpython -m unittest discover -s knowledge/borrowing-costs -p "test*.py"[0m
+2026-10-11T21:45:02.8598648Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:02.8599082Z env:
+2026-10-11T21:45:02.8599438Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.8599921Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:02.8600399Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.8600816Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.8601276Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:02.8601698Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:02.8602095Z ##[endgroup]
+2026-10-11T21:45:02.8996018Z {
+2026-10-11T21:45:02.8996871Z   "claims": 92,
+2026-10-11T21:45:02.8997353Z   "frameworks": {
+2026-10-11T21:45:02.8997851Z     "AASB": 23,
+2026-10-11T21:45:02.8998258Z     "IFRS": 23,
+2026-10-11T21:45:02.8998657Z     "UK_GAAP": 23,
+2026-10-11T21:45:02.8999072Z     "US_GAAP": 23
+2026-10-11T21:45:02.8999448Z   },
+2026-10-11T21:45:02.8999848Z   "status": "APPROVED",
+2026-10-11T21:45:02.9000246Z   "errors": []
+2026-10-11T21:45:02.9000623Z }
+2026-10-11T21:45:03.1061709Z ................
+2026-10-11T21:45:03.1062462Z ----------------------------------------------------------------------
+2026-10-11T21:45:03.1063198Z Ran 16 tests in 0.024s
+2026-10-11T21:45:03.1063406Z 
+2026-10-11T21:45:03.1063584Z OK
+2026-10-11T21:45:03.1171598Z ##[group]Run python knowledge/standards-evidence/validate_approvals.py
+2026-10-11T21:45:03.1172125Z [36;1mpython knowledge/standards-evidence/validate_approvals.py[0m
+2026-10-11T21:45:03.1211337Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:03.1211886Z env:
+2026-10-11T21:45:03.1212301Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.1212788Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:03.1213256Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.1213742Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.1214392Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.1214978Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:03.1215460Z ##[endgroup]
+2026-10-11T21:45:03.1904767Z {
+2026-10-11T21:45:03.1905269Z   "topics": 157,
+2026-10-11T21:45:03.1905794Z   "approved": 157,
+2026-10-11T21:45:03.1906435Z   "capabilities": 347,
+2026-10-11T21:45:03.1906876Z   "canonical_registers": 157,
+2026-10-11T21:45:03.1907471Z   "empty_registers_scope_reviewed": 37,
+2026-10-11T21:45:03.1907926Z   "claims": 1598,
+2026-10-11T21:45:03.1908469Z   "approval_tracks": {
+2026-10-11T21:45:03.1908801Z     "DIRECT_SOURCE_CHECKED": 90,
+2026-10-11T21:45:03.1909146Z     "TRAINING_DATA_CHECKED": 1508
+2026-10-11T21:45:03.1909486Z   },
+2026-10-11T21:45:03.1909770Z   "evidence_statuses": {
+2026-10-11T21:45:03.1910115Z     "SOURCE_VERIFIED": 90,
+2026-10-11T21:45:03.1910467Z     "MODEL_DERIVED_AUDIT_REQUIRED": 1454,
+2026-10-11T21:45:03.1910859Z     "SECONDARY_CORROBORATED": 3,
+2026-10-11T21:45:03.1911200Z     "PRIMARY_CORROBORATED": 51
+2026-10-11T21:45:03.1911518Z   },
+2026-10-11T21:45:03.1911822Z   "errors": 0,
+2026-10-11T21:45:03.1912113Z   "error_details": []
+2026-10-11T21:45:03.1912391Z }
+2026-10-11T21:45:03.1978533Z ##[group]Run python -m unittest discover -s tests -p "test_*.py"
+2026-10-11T21:45:03.1979041Z [36;1mpython -m unittest discover -s tests -p "test_*.py"[0m
+2026-10-11T21:45:03.2015866Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:45:03.2016230Z env:
+2026-10-11T21:45:03.2016560Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.2017037Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-11T21:45:03.2017531Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.2017929Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.2018322Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-11T21:45:03.2018723Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-11T21:45:03.2019097Z ##[endgroup]
+2026-10-11T21:45:04.6844728Z .........F..............................................
+2026-10-11T21:45:04.6845852Z ======================================================================
+2026-10-11T21:45:04.6846976Z FAIL: test_current_integrated_proofs_change_only_consistent_identities (test_integrated_recovery_release.IntegratedRecoveryRelease.test_current_integrated_proofs_change_only_consistent_identities)
+2026-10-11T21:45:04.6848206Z ----------------------------------------------------------------------
+2026-10-11T21:45:04.6848857Z Traceback (most recent call last):
+2026-10-11T21:45:04.6856311Z   File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_integrated_recovery_release.py", line 47, in test_current_integrated_proofs_change_only_consistent_identities
+2026-10-11T21:45:04.6857801Z     self.assertFalse(review.errors, str(review.errors[:3]))
+2026-10-11T21:45:04.6860670Z AssertionError: [{'path': 'build4/release/integrated-proof.json/revenue/final_native_receipts/source_snapshots', 'reason': 'unmatched authority keys', 'old_keys': ['version:6b9763eec2ea18f89cddf701e7aa75bc1b713789c8032b20aeaf16ae024b4d78', 'version:ffec4811e1fe2b585d770018bb5b57fbb1bfddcf6aaa9d27a01839b1ac791cdf'], 'new_keys': ['version:2d4a60b80745a64e1ec18595da88ba404feb95a11286241c410fc47ff7e2afab', 'version:95ec8310ac7e60ee30bc694dbe9e79d9d7bd2b56e5f08b34d7c7f5af1bb18a29']}] is not false : [{'path': 'build4/release/integrated-proof.json/revenue/final_native_receipts/source_snapshots', 'reason': 'unmatched authority keys', 'old_keys': ['version:6b9763eec2ea18f89cddf701e7aa75bc1b713789c8032b20aeaf16ae024b4d78', 'version:ffec4811e1fe2b585d770018bb5b57fbb1bfddcf6aaa9d27a01839b1ac791cdf'], 'new_keys': ['version:2d4a60b80745a64e1ec18595da88ba404feb95a11286241c410fc47ff7e2afab', 'version:95ec8310ac7e60ee30bc694dbe9e79d9d7bd2b56e5f08b34d7c7f5af1bb18a29']}]
+2026-10-11T21:45:04.6863301Z 
+2026-10-11T21:45:04.6863478Z ----------------------------------------------------------------------
+2026-10-11T21:45:04.6863921Z Ran 56 tests in 1.417s
+2026-10-11T21:45:04.6864519Z 
+2026-10-11T21:45:04.6864743Z FAILED (failures=1)
+2026-10-11T21:45:04.6935810Z ##[error]Process completed with exit code 1.
+2026-10-11T21:45:04.7082540Z Post job cleanup.
+2026-10-11T21:45:04.7790532Z [command]/usr/bin/git version
+2026-10-11T21:45:04.7822263Z git version 2.55.0
+2026-10-11T21:45:04.7851218Z Temporarily overriding HOME='/home/runner/work/_temp/8612dc9e-c1f0-4130-afc2-485143a176e1' before making global git config changes
+2026-10-11T21:45:04.7852609Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:45:04.7855452Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/chief-accounting-officer/chief-accounting-officer
+2026-10-11T21:45:04.7890884Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:45:04.7926290Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:45:04.8123991Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:45:04.8144877Z http.https://github.com/.extraheader
+2026-10-11T21:45:04.8154257Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-11T21:45:04.8183093Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:45:04.8395045Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:45:04.8397201Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:45:04.8696043Z Cleaning up orphan processes
+2026-10-11T21:45:04.8913942Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

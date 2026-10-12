@@ -1,0 +1,53 @@
+{
+  "reviewer": "separate AI integration_qa; no authenticated human approval",
+  "main": "e75375b84813b9d584db12aa692b2f4d16baf052",
+  "mutation_boundary": "Read-only checks; only this external correction receipt and its rerun log written. No Python, runtime, knowledge, input documents, expected historical artifacts or test assertions changed.",
+  "all_protected_bytes": {
+    "documents": 1101,
+    "changed": [],
+    "manifest_sha256": "46c4ad4c42102a204aa0948f354c067de42fb5ae5d2149f7b8159e4523d45603",
+    "roadmap_exception": "Original archived protected roadmap remains exact and current roadmap starts with that archive and the entire later e753 main prefix",
+    "status": "PASS"
+  },
+  "unchanged_original_assertions": {
+    "insurance_all_protected_test_function_exact_main": true,
+    "diagnostic_full_module_exact_main": true,
+    "diagnostic_module_sha256": "d829a054cc9d42545261ac83c7e8c6ce979c7c193bb46a398f8be0dd69e75015",
+    "insurance_current_module_sha256": "3bd6cdc828eb72aca9dc29c60455ee94d2cb5ba188a812e3a6959c02ccf884ed",
+    "insurance_metadata_count_changes": "Previously reviewed 50th production position and exact archived old Investment contract only; all protected baseline assertion logic unchanged"
+  },
+  "first_skills_attempt_evidence_limit": {
+    "receipt_path": "build4/release/investment-property-pr43-attempt-001/suite-1.json",
+    "receipt_sha256": "4becb63fca7b366fa9ef96437505213dfe008105ca3abb7855d52cabc9838f2a",
+    "recorded_tests": 1479,
+    "recorded_failures": 1,
+    "recorded_passed": false,
+    "stdout_path": "build4/release/investment-property-pr43-attempt-001/suite-1.log",
+    "stdout_sha256": "9a03b94c59b5b34b8f18cd0585ecfc373bb9d9276c9ddd9ae47dae4a82c5e597",
+    "stdout_bytes": 6004,
+    "stdout_complete": false,
+    "stdout_last_observed_test": "test_qa_award_current_period_opening_and_invalid_quantities",
+    "failure_identity": "Unknown from the available truncated stdout and summary receipt; insurance attribution is not independently established",
+    "actions": "Preserved failed/truncated evidence. No namespace or process-permission bypass attempted. No invented failure transcript or reconstructed log",
+    "disposition": "Not accepted; final frozen full attempt002 remains mandatory. Focused current passes do not retroactively turn attempt001 into PASS"
+  },
+  "final_rerun": {
+    "command": "python -m unittest skills.tests.test_independent_ip_main_reconciliation skills.tests.test_insurance_release orchestration.tests.test_diagnostic_independent -v",
+    "log": "build4/release/ip-roadmap-final/insurance-diagnostic-tests.log",
+    "log_sha256": "27919c8d7fbc3b879e286e78cb1a23f7e10896adc6113e9d4de71daf48630108",
+    "tests": 47,
+    "reconciliation_tests": 11,
+    "insurance_tests": 4,
+    "diagnostic_tests": 32,
+    "seconds": 140.425,
+    "exit_code": 0,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "status": "PASS",
+    "after_check_frozen_attempt002_source_entries": 415,
+    "after_check_frozen_attempt002_input_entries": 2673,
+    "observed_changed_frozen_entries": [],
+    "full_release_disposition": "Focused correction checks pass; full frozen attempt002 and exact-head CI remain separate acceptance gates"
+  }
+}

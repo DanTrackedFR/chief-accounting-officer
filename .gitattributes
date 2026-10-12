@@ -1,0 +1,26 @@
+# Preserve incomplete diagnostic evidence verbatim; never normalize its bytes.
+build4/release/attempt-002/0-module-43.log binary
+
+# Preserve unmodified incident capture bytes; source whitespace checks remain active.
+build4/release/attempt-002/suite-6.log binary
+build4/release/attempt-003/0-module-9.log binary
+build4/release/attempt-003/0-module-20.log binary
+build4/release/attempt-003/0-module-50.log binary
+
+# Preserve verbatim interrupted/recovered release logs, including partial lines.
+build4/release/pr42-final-00*/**/*.log -whitespace
+recovery/borrowing-costs-pr42/ci-97e-*.log -whitespace
+
+# Preserve exact Grants release stdout, including unfinished progress lines.
+build4/release/grants-pr27-attempt-001/*.log whitespace=-blank-at-eol
+build4/release/grants-pr27-attempt-002/*.log whitespace=-blank-at-eol
+
+# Preserve exact Investment Property release logs, including progress fragments.
+build4/release/investment-property-pr43-attempt-*/*.log whitespace=-blank-at-eol
+
+# Preserve independent review stdout verbatim, including reporter final blank lines.
+build4/release/ip-independent-final/*.log -whitespace
+
+# Retain exact damaged new-release stdout prefixes for independent forensics.
+build4/release/investment-property-attempt-005-damaged-module-52.log -whitespace
+build4/release/investment-property-attempt-005-damaged-suite-6.log -whitespace

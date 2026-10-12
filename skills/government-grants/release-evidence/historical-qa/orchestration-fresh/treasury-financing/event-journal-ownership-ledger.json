@@ -1,0 +1,167 @@
+{
+  "ownership": [
+    {
+      "economic_id": "interest-accrued",
+      "evidence": "Qualified current EIR",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "debt-financing"
+        }
+      ],
+      "witnesses": []
+    },
+    {
+      "economic_id": "principal-paid",
+      "evidence": "BANK-PRINCIPAL",
+      "primary": [
+        {
+          "amount": "200",
+          "index": 1,
+          "line": 0,
+          "owner": "debt-financing"
+        },
+        {
+          "amount": "200",
+          "index": 1,
+          "line": 1,
+          "owner": "debt-financing"
+        }
+      ],
+      "witnesses": [
+        [
+          {
+            "index": 1,
+            "owner": "foreign-currency"
+          }
+        ]
+      ]
+    },
+    {
+      "economic_id": "interest-paid",
+      "evidence": "BANK-INTEREST",
+      "primary": [
+        {
+          "amount": "80",
+          "index": 1,
+          "line": 0,
+          "owner": "debt-financing"
+        },
+        {
+          "amount": "80",
+          "index": 1,
+          "line": 1,
+          "owner": "debt-financing"
+        }
+      ],
+      "witnesses": []
+    },
+    {
+      "economic_id": "loan-fx",
+      "evidence": "Monetary liability rate source",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "foreign-currency"
+        }
+      ],
+      "witnesses": []
+    },
+    {
+      "economic_id": "hedge-0",
+      "evidence": "Qualified designated relationship allocation",
+      "primary": [
+        {
+          "index": 0,
+          "owner": "derivatives-hedge-accounting"
+        }
+      ],
+      "witnesses": []
+    },
+    {
+      "economic_id": "hedge-1",
+      "evidence": "Qualified designated relationship allocation",
+      "primary": [
+        {
+          "index": 1,
+          "owner": "derivatives-hedge-accounting"
+        }
+      ],
+      "witnesses": []
+    }
+  ],
+  "source_events": [
+    {
+      "currency": "EUR",
+      "economic_id": "interest-accrued",
+      "entity": "Synthetic Group",
+      "nature": "interest-accrued",
+      "origin": "loan",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "loan"
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "principal-paid",
+      "entity": "Synthetic Group",
+      "nature": "principal-paid",
+      "origin": "bank",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "BANK-PRINCIPAL"
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "interest-paid",
+      "entity": "Synthetic Group",
+      "nature": "interest-paid",
+      "origin": "bank",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "BANK-INTEREST"
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "loan-fx",
+      "entity": "Synthetic Group",
+      "nature": "loan-fx",
+      "origin": "loan",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "loan"
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "hedge-0",
+      "entity": "Synthetic Group",
+      "nature": "hedge-0",
+      "origin": "valuation",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "forward1"
+    },
+    {
+      "currency": "EUR",
+      "economic_id": "hedge-1",
+      "entity": "Synthetic Group",
+      "nature": "hedge-1",
+      "origin": "valuation",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "record": "forward1"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "reviewer": "Independent AI /root/implementation_qa_final; not substantive author",
+  "date": "2026-10-12",
+  "finding": "R6 fees-only/gift/nonexchange initial property bypass of cashpurchase bounded method",
+  "initial_readonly_reproduction": "gift-boundary-readonly.json/log preserved: explicitactualgift packet, zero consideration plus10000legalfees completed10000cost withgiftflags/memos capturedandrecertified",
+  "author_correction": "Initial acquisition requires acquisition_naturecash_purchase, propertygiftedFalse, and strictlypositive summed purchase_price consideration independentlydistinguishedfromdirectfees",
+  "independent_permanent_tests": [
+    "test_documented_gift_cannot_be_recognized_as_paid_fees_only_purchase",
+    "test_zero_consideration_cannot_be_laundered_by_positive_legal_fees",
+    "test_initial_missing_or_wrong_acquisition_qualification_blocks"
+  ],
+  "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_ip_duplicate_scope -v",
+  "rerun": {"methods": 13, "seconds": 2.527, "exit_code": 0},
+  "reviewed_sha256": {
+    "skills/investment-property/workflow.py": "1caa7cf8b14ba18da71a274ea68e4964ef438af01488af918fe31e5f8c8ccf60",
+    "skills/tests/investment_property_cases.py": "3784a13596006206186a36bab6b07e2adfca0397ed64e3211db22e190d032a5c",
+    "skills/tests/test_independent_ip_duplicate_scope.py": "7f83f6beb122b51f2093057213b4444f4e525434818e8fdec9da2dd4dd7e8745"
+  },
+  "status": "RESOLVED in corrected bounded method, independentlyrerun",
+  "scope": "No new donation/propertyexchange accountingmethod enabled or valuationinvented; unsupportedroutes denied. Full49combinedindependentgate andexact42examples reproduction pendingfinalsourcefreeze/regeneration. Earlierpost-fixture-final46PASS predatesR6 andisnotcurrentreleaseacceptance.",
+  "changes": "Onlyown independenttestmodule edited as authorized; no runtime/rootIPdoc/historicalartifactedits. ReviewerPYtestsnowfrozen."
+}

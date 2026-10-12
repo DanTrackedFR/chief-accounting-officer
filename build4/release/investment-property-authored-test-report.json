@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "review_type": "AUTHORED_TESTS_NOT_INDEPENDENT_QA",
+  "command": "PYTHONPATH=skills:skills/tests PYTHONHASHSEED=19 python -m unittest skills.tests.test_investment_property -v",
+  "exit_code": 0,
+  "tests": 32,
+  "seconds": 24.211,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "log": "build4/release/investment-property-authored-current.log",
+  "log_sha256": "748cd36c6c06cb760f22b880797823de36872b63df2bbcf3983d3f279f93a6ea",
+  "source_sha256": {
+    "skills/tests/test_investment_property.py": "220ed105e4198acd518a9fa73e64e1d5f4845b129736cd545a6d607574b5f7f9",
+    "skills/tests/investment_property_cases.py": "345c0fb366b57041c675e4137926bcd8bb0f85a153d88dbcf141ebd290d4cac1",
+    "skills/investment-property/workflow.py": "d2cd84e7391ad5e358a413a4d80dba0f724a669726fdfbefadce63bd0e79894c",
+    "skills/production.py": "719c6b533d2e81a216ca158a9fa3bb880c2f72fe77ad38ee682f244a390fa50c",
+    "skills/investment_fingerprint.py": "a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b"
+  },
+  "coverage": "Framework-specific supported routes, actual source and policy gates, deterministic Decimal journals/rollforwards, disclosure/GL reconciliation, classification, unsupported routes, source/certification mismatch and exact new synthetic example reproduction",
+  "counting": "These 32 tests are a subset of full specialist discovery, not additional distinct repository tests. Independent runtime, integration and knowledge reviews are separately recorded; no authored pass is represented as independent review.",
+  "release_gate": "Full frozen repository regression and exact-head plus readiness-triggered Actions remain required."
+}

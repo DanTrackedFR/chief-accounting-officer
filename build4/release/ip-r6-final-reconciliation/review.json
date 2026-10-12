@@ -1,0 +1,52 @@
+{
+  "reviewer": "Independent AI integration_qa, separate from substantive IP implementation author; no human authentication claimed",
+  "review": "Final R6 source reconciliation rerun",
+  "local_reviewed_head": "bc5b261ea0a62125769485340df7554ef51a9299",
+  "live_main_verification": {
+    "command": "git ls-remote origin refs/heads/main",
+    "exit_code": 0,
+    "observed_main": "e75375b84813b9d584db12aa692b2f4d16baf052",
+    "origin_main_matches_live_main": true,
+    "owner_intervention_needed_for_main_reconciliation": false
+  },
+  "reviewed_files_sha256": {
+    "skills/production.py": "719c6b533d2e81a216ca158a9fa3bb880c2f72fe77ad38ee682f244a390fa50c",
+    "skills/investment_fingerprint.py": "a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b",
+    "skills/investment-property/workflow.py": "1caa7cf8b14ba18da71a274ea68e4964ef438af01488af918fe31e5f8c8ccf60",
+    "skills/tests/investment_property_cases.py": "3784a13596006206186a36bab6b07e2adfca0397ed64e3211db22e190d032a5c",
+    "skills/tests/test_independent_ip_main_reconciliation.py": "043a2f5c0a175f17cc2d189677f1b5459cd1375c8f86c513b5ad0184575fd3f5"
+  },
+  "executed": {
+    "command": "python -m unittest skills.tests.test_independent_ip_main_reconciliation skills.tests.test_implementation_scope -v",
+    "log": "build4/release/ip-r6-final-reconciliation/tests.log",
+    "log_sha256": "c2515652d9fb6dd0b374151ea36a77c1b2d72e5febd60e2035cae366cb574b0c",
+    "tests": 25,
+    "independent_reconciliation_tests": 15,
+    "original_implementation_scope_tests": 10,
+    "seconds": 32.119,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "results": {
+    "all_eight_borrowing_and_grants_case_fingerprints": "Exact detached e753 baseline PASS",
+    "all_eight_borrowing_and_grants_full_structured_result_hashes": "Exact detached e753 baseline PASS; no digest-field stripping",
+    "all_49_other_production_skill_contracts": "Exact e753 original bytes PASS",
+    "historical_and_knowledge_main_files": "2785 exact e753 files PASS",
+    "original_ip_legacy_skill_archive": "Exact e753 original contract bytes PASS",
+    "strict_additive_dispatcher_and_witness": "Exact main Git object and bounded additive bridge PASS",
+    "byte_text_incongruence_and_captured_digest_probes": "All four permanent independent probes PASS",
+    "original_shared_boundary_assertion": "PASS unchanged",
+    "owner_scope_and_unrelated_ip_knowledge_isolation": "PASS"
+  },
+  "frozen_attempt005_maps": {
+    "source_entries": 415,
+    "input_entries": 2673,
+    "observed_changed_entries": [],
+    "inspection": "All mapped files independently SHA256 compared to start maps during this read-only rerun"
+  },
+  "writes": "Only this external JSON report and actual focused test log; no .py, documents, knowledge, expected results, original artifacts or frozen runtime inputs modified",
+  "final_disposition": "PASS for final R6 reconciliation; no owner intervention required for main integration. Full frozen regression attempt005 and exact-head GitHub Actions remain separate release gates and are not claimed complete by this focused review."
+}

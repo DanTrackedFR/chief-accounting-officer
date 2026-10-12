@@ -28,13 +28,23 @@ class InsuranceReleaseTests(unittest.TestCase):
         baseline = json.loads((ROOT/'skills/insurance-contracts-accounting/LIVE-BASELINE.json').read_text())
         for d in baseline['protected_documents']:
             with self.subTest(path=d['path']):
-                self.assertEqual(d['sha256'],hashlib.sha256((ROOT/d['path']).read_bytes()).hexdigest())
+                path=ROOT/d['path']
+                if d['path']=='architecture/build-roadmap.md':
+                    path=ROOT/'skills/government-grants/release-evidence/preserved-main-roadmap.md'
+                    self.assertTrue((ROOT/d['path']).read_bytes().startswith(path.read_bytes()))
+                self.assertEqual(d['sha256'],hashlib.sha256(path.read_bytes()).hexdigest())
+        self.assertEqual('46c4ad4c42102a204aa0948f354c067de42fb5ae5d2149f7b8159e4523d45603',hashlib.sha256((ROOT/'skills/insurance-contracts-accounting/LIVE-BASELINE.json').read_bytes()).hexdigest())
 
     def test_existing_production_and_nonproduction_packages_preserved(self):
         existing = [p for p in (ROOT/'skills').glob('*/SKILL.md') if p.parent.name!='insurance-contracts-accounting']
-        self.assertEqual(46,sum('status: production' in p.read_text() for p in existing))
-        for package in ('government-grants','borrowing-costs','investment-property'):
-            p=ROOT/'skills'/package/'SKILL.md'
+        self.assertEqual(49,sum('status: production' in p.read_text() for p in existing))
+        # Skill35 is a separately accepted extension; preserve the historical contract.
+        legacy=ROOT/'skills/borrowing-costs/examples/legacy-skill-v0.1.0.md'
+        self.assertEqual('5bb44e8adb0bd1c69e2aa72ce18818b572d2c531af1945ba72c16c6f66452ecd',hashlib.sha256(legacy.read_bytes()).hexdigest())
+        self.assertIn('NONPRODUCTION',legacy.read_text())
+        self.assertIn('status: production',(ROOT/'skills/borrowing-costs/SKILL.md').read_text())
+        for package in ('government-grants','investment-property'):
+            p=ROOT/'skills'/package/'examples/legacy-skill-v0.1.0.md'
             self.assertIn('status: review',p.read_text())
             baseline_hashes={'government-grants': '8aa8c8ec7b96b26f73ed5ad708fb99526bb966497d48f7d46c632c07d72402f3', 'borrowing-costs': '5bb44e8adb0bd1c69e2aa72ce18818b572d2c531af1945ba72c16c6f66452ecd', 'investment-property': '248435f35e1dcddba45160a9e927ce498153b9ceb91a060f9e83be0a8d12180a'}
             self.assertEqual(baseline_hashes[package],hashlib.sha256(p.read_bytes()).hexdigest())

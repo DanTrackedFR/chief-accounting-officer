@@ -4,6 +4,7 @@ import gzip
 import hashlib
 import json
 import unittest
+from orchestration.history_references import reference_path
 from orchestration.persistence import restore,snapshot
 from orchestration.persistence.codec import loads,dumps
 from orchestration.tests.generate_persistence_stage4_examples import artifacts,TARGET
@@ -20,7 +21,7 @@ def decode(value):
 class FullDurableArtifactProof(unittest.TestCase):
     def test_fresh_process_full_company_proof_reproduces_and_restores(self):
         actual=artifacts();self.assertEqual(set(actual),{p.name for p in TARGET.glob('*.json')})
-        for name,value in actual.items():self.assertEqual(value,json.loads((TARGET/name).read_text()),name)
+        for name,value in actual.items():self.assertEqual(value,json.loads(reference_path(TARGET/name).read_text()),name)
         docs={name:decode(value) for name,value in actual.items()}
         self.assertEqual(docs['interrupt.json']['actual_exit'],73);self.assertEqual(docs['lost-ack.json']['actual_exit'],74)
         company=docs['company.json'];old=decode(company['checkpoint']);before=decode(docs['correction.json']['before']);resumed=decode(docs['resume.json']['checkpoint'])

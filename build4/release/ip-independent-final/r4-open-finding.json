@@ -1,0 +1,15 @@
+{
+  "reviewer": "Independent AI /root/implementation_qa_final; not substantive author",
+  "date": "2026-10-12",
+  "finding": "R4 reporting-cutoff transfer-in omits pre-transfer current PPE owner measurement",
+  "status": "OPEN; release blocker pending author correction and independent rerun",
+  "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_ip_duplicate_scope.AdditionalIndependentScopeQA.test_transfer_in_cannot_ignore_actual_pretransfer_ppe_depreciation_source -v",
+  "count": 1,
+  "exit_code": 1,
+  "workflow_sha256": "d2cd84e7391ad5e358a413a4d80dba0f724a669726fdfbefadce63bd0e79894c",
+  "test_sha256": "12648e8188b929560df905f5c121fa7eb40c180f44d587cf4340b263c25b3441",
+  "actual": "Expected blocked, got complete; transfer carrying 600000 ignores source-reported current PPE carrying 580000",
+  "reproduction": "Retain approved synthetic existing Fixed Assets owner record in original captured property population: prior600000, land100000, building500000, life25, already recognized annual depreciation20000, current580000. Transfer case recaptured and independently recertified still completes600000. No nondepreciable-only qualification or required prior-to-current PPE source bridge exists.",
+  "accounting_math": "600000 - (500000 / 25) = 580000 current PPE carrying before cutoff transfer; IP transfer journal must consume current carrying, not prior2025 stock",
+  "scope": "No substantive method modified by reviewer. Permanent failing test added as authorized. Earlier post-r3 PASS predates this new adversarial challenge and is not final release acceptance."
+}

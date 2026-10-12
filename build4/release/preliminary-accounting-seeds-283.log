@@ -1,0 +1,6 @@
+{
+  "seed": 283,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/scratch/77324e53376f/chief-accounting-officer/build4/prove_integrated.py\", line 100, in <module>\n    if __name__=='__main__':print(json.dumps(proof(),sort_keys=True,indent=2))\n                                             ^^^^^^^\n  File \"/workspace/scratch/77324e53376f/chief-accounting-officer/build4/prove_integrated.py\", line 31, in proof\n    call('submit',case_id=cid,evidence=revenue_evidence(api,cid));original=call('execute',case_id=cid);assert original['execution_state']=='complete';assert '31920' in json.dumps(original['public_result'])\n                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/77324e53376f/chief-accounting-officer/build4/prove_integrated.py\", line 23, in call\n    assert v['ok'],v\n           ~^^^^^^\nAssertionError: {'contract_version': '1.0', 'operation': 'execute', 'ok': False, 'error': {'code': 'invalid_request', 'message': 'Check contract version, operation and required input fields.'}, 'public_result': {'guidance': 'Check contract version, operation and required input fields.', 'status': 'blocked'}}\n"
+}

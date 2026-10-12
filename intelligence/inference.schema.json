@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "family": {
+      "enum": [
+        "acquisition",
+        "analytics",
+        "biological_population",
+        "cash_activity",
+        "close_calendar",
+        "control",
+        "credit_exposure",
+        "currency_exposure",
+        "customer_contract",
+        "debt_population",
+        "derivative_contract",
+        "disclosure",
+        "employee_cost",
+        "foreign_operation",
+        "grant",
+        "group_structure",
+        "impairment_valuation",
+        "insurance_contract",
+        "intercompany",
+        "interface",
+        "inventory",
+        "lease_contract",
+        "machinery",
+        "obligation",
+        "qualifying_interest",
+        "receivable_population",
+        "reconciliation",
+        "rental_investment",
+        "statement",
+        "supplier_cost",
+        "tax_temporary_difference"
+      ]
+    },
+    "claims": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {},
+          "source_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "uncertainty": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "value",
+          "source_fields",
+          "uncertainty"
+        ]
+      }
+    },
+    "questions": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "needed": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "why": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "source_fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "key",
+          "needed",
+          "why",
+          "source_fields"
+        ]
+      }
+    }
+  },
+  "required": [
+    "family",
+    "claims",
+    "questions"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:trackedfr:cao:http:job:1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "api_version",
+    "company_id",
+    "case_id",
+    "id",
+    "state",
+    "attempts",
+    "created",
+    "updated"
+  ],
+  "properties": {
+    "api_version": {
+      "const": "1.0"
+    },
+    "company_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,119}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^job-[a-f0-9]{64}$"
+    },
+    "state": {
+      "enum": [
+        "ACCEPTED",
+        "EXECUTING",
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "created": {
+      "type": "number"
+    },
+    "updated": {
+      "type": "number"
+    },
+    "accounting": {
+      "$ref": "../local_cao/response.schema.json"
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

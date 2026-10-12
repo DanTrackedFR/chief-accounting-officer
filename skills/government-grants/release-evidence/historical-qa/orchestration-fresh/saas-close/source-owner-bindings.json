@@ -1,0 +1,1030 @@
+[
+  {
+    "calendar_id": null,
+    "fact_id": "rev-period-result",
+    "kind": "owner_result",
+    "owner": "revenue-recognition",
+    "path": [
+      "period_revenue"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rev-price",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "price_components",
+      "fixed"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rev-progress",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "obligations",
+      "platform",
+      "progress"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rev-opening",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "opening_revenue"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rev-contract-opening",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "opening_contract_net"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rev-billings",
+    "kind": "current",
+    "owner": "revenue-recognition",
+    "path": [
+      "balance_bridge",
+      "billings"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-opening-domestic",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-opening-foreign",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-billings",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-receipt",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "receipts",
+      "cash",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-applied",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "receipts",
+      "cash",
+      "allocations",
+      "allocation",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-gl",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "gl_ar"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-current-exposure",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "current",
+      "exposure"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-aged-exposure",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "31_60",
+      "exposure"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-current-rate",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "current",
+      "loss_rate"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-aged-rate",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "scenarios",
+      "base",
+      "terms",
+      "31_60",
+      "loss_rate"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-opening",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "allowance_bridge",
+      "opening"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fx-opening",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "opening_book"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fx-initial-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "initial_rate"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fx-closing-rate",
+    "kind": "current",
+    "owner": "foreign-currency",
+    "path": [
+      "items",
+      "old-foreign",
+      "closing_rate"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rec-ar",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "AR",
+      "source_closing"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rec-contract",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "Contract liability",
+      "source_closing"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "rec-allowance",
+    "kind": "current",
+    "owner": "balance-sheet-reconciliations",
+    "path": [
+      "reconciliations",
+      "Allowance",
+      "source_closing"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-task-complete",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "tasks",
+      "billing",
+      "complete"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-duration",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "tasks",
+      "billing",
+      "duration"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-journal",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "accruals",
+      "A1",
+      "received"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fs-revenue",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Revenue",
+      "balance"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fs-ar",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "AR",
+      "balance"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fs-liability",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Contract liability",
+      "balance"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "fs-allowance",
+    "kind": "current",
+    "owner": "financial-statements",
+    "path": [
+      "current_tb",
+      "Allowance",
+      "balance"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "disc-allowance",
+    "kind": "current",
+    "owner": "disclosure-management",
+    "path": [
+      "requirements",
+      "requirement-1",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "analytics-cash",
+    "kind": "current",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "accounts",
+      "cash-metric",
+      "amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-journal-journal_id",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "id"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-journal-effective_date",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "posting_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-journal-approved_at",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "approval_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "close-journal-posted_at",
+    "kind": "current",
+    "owner": "month-end-close",
+    "path": [
+      "journals",
+      "MANUAL-DEC",
+      "posted_at"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-revenue",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "revenue"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-billings",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "billings"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-cash_collections",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "cash_collections"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-gross_ar",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "gross_ar"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-allowance",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "allowance"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-contract_liability",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "contract_liability"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-contract_asset",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "contract_asset"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "id"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "customer"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "invoice_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "due_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "currency"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-domestic-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-domestic",
+      "opening"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "id"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "customer"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "invoice_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "due_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "currency"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-old-foreign-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "opening"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-invoice_id",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "id"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-customer",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "customer"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-invoice_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "invoice_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-due_date",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "due_date"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-original_currency",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "currency"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-current-opening",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "current",
+      "opening"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ar-foreign-original",
+    "kind": "current",
+    "owner": "accounts-receivable",
+    "path": [
+      "invoices",
+      "old-foreign",
+      "foreign_amount"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-review-effective_from",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "effective_from"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-review-reviewed_on",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "reviewed_on"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-review-as_of",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "as_of"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "ecl-review-source_version",
+    "kind": "current",
+    "owner": "financial-instruments-ecl",
+    "path": [
+      "credit",
+      "loss_rate_review",
+      "source_version"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-age-current",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "current"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-age-1_30",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "1_30"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-age-31_60",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "31_60"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-age-61_90",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "61_90"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  },
+  {
+    "calendar_id": null,
+    "fact_id": "prior-age-over90",
+    "kind": "comparator",
+    "owner": "management-accounting-analytics",
+    "path": [
+      "documents",
+      "balance-source",
+      "content",
+      "prior",
+      "ageing",
+      "over90"
+    ],
+    "period_id": null,
+    "relationship_id": null,
+    "scope_id": null
+  }
+]

@@ -99,12 +99,13 @@ class GovernanceTests(unittest.TestCase):
                         self.assertNotIn(secret,public)
     def test_saved_examples_current_and_generator_exact(self):
         from generate_governance_examples import artifacts
+        from recovery_references import reference_path
         for p in BATCH:
             for fw in FRAMEWORKS:
-                for path,value in artifacts(p,fw).items():self.assertEqual(json.loads(Path(path).read_text()),json.loads(json.dumps(value,default=serializable)))
-                c=json.loads((ROOT/'skills'/p/'examples'/f'{fw}.case.json').read_text());self.assertEqual(assess_case(p,c)['status'],'partial')
+                for path,value in artifacts(p,fw).items():self.assertEqual(json.loads(reference_path(path).read_text()),json.loads(json.dumps(value,default=serializable)))
+                c=json.loads(reference_path(ROOT/'skills'/p/'examples'/f'{fw}.case.json').read_text());self.assertEqual(assess_case(p,c)['status'],'partial')
                 r=assess_case(p,ready(p,fw,c));self.assertEqual(r['status'],'complete')
-                bad=json.loads((ROOT/'skills'/p/'examples'/f'{fw}.blocked.case.json').read_text());r=assess_case(p,bad);self.assertEqual(r['status'],'blocked');self.assertEqual(r['calculations'],{});self.assertEqual(r['journal_entry_implications'],[])
+                bad=json.loads(reference_path(ROOT/'skills'/p/'examples'/f'{fw}.blocked.case.json').read_text());r=assess_case(p,bad);self.assertEqual(r['status'],'blocked');self.assertEqual(r['calculations'],{});self.assertEqual(r['journal_entry_implications'],[])
 
 
 class GovernanceLifecycleTests(unittest.TestCase):

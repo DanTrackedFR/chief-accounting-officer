@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 165, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 161, in main
+    if len(sys.argv)==3:print(dumps(worker(sys.argv[1],sys.argv[2])));return
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 77, in worker
+    key=store.prepare(case,COMPANY,context,r['head_revision'],reopening(case,period));case,r=store.recover(COMPANY,case_id,key)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/persistence/store.py", line 235, in prepare
+    return prepare(self, case, company_id, company_context, expected_revision, intent)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/persistence/recovery.py", line 216, in prepare
+    key = _transaction(store, write)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/persistence/recovery.py", line 173, in _transaction
+    store.connection.execute('BEGIN IMMEDIATE'); store._schema()
+                                                 ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/62f09d8fecd9/cao/orchestration/persistence/store.py", line 179, in _schema
+    if self.connection.execute('PRAGMA quick_check').fetchone()[0] != 'ok': raise IntegrityError('Corrupt database')
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+orchestration.persistence.codec.IntegrityError: Corrupt database

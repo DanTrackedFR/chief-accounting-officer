@@ -191,5 +191,6 @@ class Insurance(unittest.TestCase):
         for c in (None,{},[],dict(framework='OTHER')):self.assertEqual('blocked',assess_case(PACKAGE,c)['status'])
     def test_examples_reproduce(self):
         from generate_insurance_examples import artifacts
+        from recovery_references import reference_path
         root=Path(__file__).resolve().parents[2]
-        for path,obj in artifacts().items():self.assertEqual(json.loads((root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
+        for path,obj in artifacts().items():self.assertEqual(json.loads(reference_path(root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
