@@ -1,0 +1,121 @@
+{
+  "authority_invariants": {
+    "canonical_topics": 157,
+    "primary_capabilities": 347,
+    "standards_claims": 1598
+  },
+  "branch": "persistence/durable-case-foundation",
+  "checkpoint_contract": 1,
+  "deterministic_artifacts": {
+    "hash_seeds": [
+      19,
+      941
+    ],
+    "result": "PASS",
+    "sha256": {
+      "governed-checkpoint.json": "9c0ff132472afa0f07c0c6546c2a9eccf628eabd9e0f3e12322ab99113e1d3c3",
+      "public-answer.json": "87422160f526b2a262b11eec04583c00f38eb420adc40f70339b7064724de1f0",
+      "restart-proof.json": "3266b8de4ed14e903e8a4a8047cfc1c8ffb7571f31d9bbb6a7538931311335a7"
+    }
+  },
+  "distinct_tests": 2772,
+  "exact_head_ci": "Final immutable-head runs and release SHA are recorded in PR38 metadata after repository freeze. This manifest makes no self-referential final CI claim.",
+  "final_targeted_persistence_rerun": {
+    "methods": 59,
+    "not_added_to_distinct_total": true,
+    "reason": "Strengthened native legal-to-Group receipt layer substitution; separate reviewer confirmed targeted rejection. No production change.",
+    "result": "PASS",
+    "seconds": 14.187
+  },
+  "future_stages_implemented": false,
+  "implementation_commit": "1e5e7541fa25629fc8c28b1d2b3d558a614df739",
+  "implementation_tree": "41c8c4bc36101fc74a4a632c0a996952640a0757",
+  "independent_findings": {
+    "report": "PERSISTENCE-STAGE1-INDEPENDENT-QA.md",
+    "reproduced_remediated_and_regressed": 6,
+    "substantive": 6,
+    "unresolved": 0
+  },
+  "limitations": [
+    "Local trusted-runtime storage; no encryption at rest or authenticated approval",
+    "Full checkpoint validation can be expensive for large nested legacy source populations",
+    "No restart-safe execution/journal-release recovery or approved company-memory reuse in Stage1"
+  ],
+  "migration_coverage": [
+    "Stage1 scope foundation",
+    "Stage2 hierarchical/temporal foundation",
+    "Stage3 intercompany/conversion",
+    "Stage4 accepted partial and corrected controls",
+    "Group Accounting",
+    "Treasury",
+    "SaaS",
+    "Semantic/Data Intake",
+    "Diagnostic Analytics",
+    "Manufacturing",
+    "ordinary single entity"
+  ],
+  "persistence_methods_already_in_orchestration_total": {
+    "authored": 59,
+    "deterministic_artifact_reproduction": 1,
+    "independent": 25,
+    "stage4_compatibility": 13,
+    "total": 98
+  },
+  "pull_request": 38,
+  "reruns_and_subtests_not_added": true,
+  "restart_proof": {
+    "accounting_owner_executions_on_restore": 0,
+    "exact_canonical_equality": true,
+    "fresh_connection": true,
+    "historical_receipts_disqualified": true,
+    "journal_releases_on_restore": 0,
+    "separate_producer_and_restore_processes": true
+  },
+  "roadmap_witness_reruns_not_added": {
+    "diagnostic_independent": 32,
+    "insurance_knowledge": 35,
+    "result": "PASS"
+  },
+  "stage": 1,
+  "starting_live_main": "a96dd66b55b2920443576d9910208423f3240582",
+  "storage_schema": 1,
+  "suites": {
+    "leases": {
+      "distinct_methods": 17,
+      "result": "PASS"
+    },
+    "orchestration": {
+      "distinct_methods": 1121,
+      "result": "PASS",
+      "seconds": 1078.949
+    },
+    "production_skills": {
+      "distinct_methods": 1180,
+      "result": "PASS",
+      "seconds": 202.85
+    },
+    "repository_canonical": {
+      "distinct_methods": 53,
+      "result": "PASS"
+    },
+    "supplemental_independent_knowledge": {
+      "distinct_methods": 401,
+      "result": "PASS"
+    }
+  },
+  "validators": {
+    "canonical_approvals": {
+      "errors": 0,
+      "result": "PASS"
+    },
+    "standards_evidence": {
+      "errors": 0,
+      "result": "PASS"
+    },
+    "supplemental": {
+      "count": 5,
+      "result": "PASS"
+    }
+  },
+  "workstream": "Durable Case + Company Accounting Memory"
+}

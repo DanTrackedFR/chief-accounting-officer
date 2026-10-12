@@ -1,0 +1,285 @@
+{
+  "stage": 4,
+  "status": "COMPLETE SUBJECT TO OWNER INTEGRATION",
+  "repository": "DanTrackedFR/chief-accounting-officer",
+  "baseline_main": "092f9deaac2a85e39f02092c77ebbecd1ddec0e3",
+  "branch": "persistence/durable-cao-integration-flagship",
+  "pull_request": 41,
+  "authored": {
+    "result": "PASS",
+    "methods": 23,
+    "seconds": 234.279,
+    "log": "tests/evidence/durable-stage4-authored/successor-authored23.log"
+  },
+  "independent_qa": {
+    "targeted_suite": "PASS",
+    "methods": 25,
+    "seconds": 324.275,
+    "log": "tests/evidence/durable-stage4-independent/c96c5f4-final25-pass.log.json",
+    "retained_stage3_independent_methods": 42,
+    "corrected_full14": "PASS",
+    "decoded_envelopes": 29,
+    "unique_native_checkpoint_roundtrips": 10,
+    "committed_artifact_byte_comparison": "PASS all15",
+    "substantive_findings": 4,
+    "unresolved_substantive_findings": 0,
+    "report": "PERSISTENCE-STAGE4-INDEPENDENT-QA.md"
+  },
+  "determinism": {
+    "result": "PASS",
+    "seeds": [
+      19,
+      941
+    ],
+    "files": 15,
+    "fresh_processes_per_seed": 14,
+    "total_bytes": 30579028,
+    "manifest": "tests/evidence/durable-stage4-authored/final-seed19-941-determinism.json",
+    "immutable_independent_comparison": "PASS immutablec96 seed19 identical to all15 committed reference files; production/fixture/generator code equivalence to current candidate verified independently",
+    "exact_tree_artifact_reexecution": "PASS detachedf9ee5d2 seed941, unchanged implementation/fixture/generator/permanent method from current candidate",
+    "immutable_seed941_permanent_artifact_test": {
+      "result": "PASS",
+      "methods": 1,
+      "seed": 941,
+      "source_sha": "f9ee5d2f0a4dc99dc7de81e9a4d6615d94c186dc",
+      "fresh_processes": 14,
+      "reference_comparison": "all15 match; full native checkpoint/history/currentness/recovery assertions passed",
+      "log": "tests/evidence/durable-stage4-authored/immutable-seed941-artifact.log",
+      "exit": 0,
+      "seconds": 2170.571
+    }
+  },
+  "full_regression": {
+    "result": "PASS",
+    "distinct_methods": 2995,
+    "counts": {
+      "orchestration": 1344,
+      "production_skills": 1180,
+      "lease": 17,
+      "repository": 53,
+      "supplemental_and_independent_knowledge": 401
+    },
+    "existing_method_ci": {
+      "sha": "f59e0440094cfee891bc82ffe60863c710d6dfdb",
+      "runs": [
+        37888647804,
+        37888642292
+      ],
+      "orchestration_methods": 1343,
+      "distinct_methods": 2994,
+      "orchestration_seconds": 4894.176,
+      "result": "PASS entire actual workflow, all validators and diff check",
+      "log": "tests/evidence/durable-stage4-authored/ci-f59-complete-release-pass.log.json"
+    },
+    "added_method": {
+      "source_sha": "f9ee5d2f0a4dc99dc7de81e9a4d6615d94c186dc",
+      "methods": 1,
+      "result": "PASS2170.571s seed941 actual full14 native proof",
+      "log": "tests/evidence/durable-stage4-authored/immutable-seed941-artifact.log"
+    },
+    "source_equivalence": "Actual fetched f59 versus immutablef9 differs in Python only by the added artifact method; skills/knowledge/interfaces/roadmap/prior memory references unchanged. All2995 distinct current methods executed. Final immutable-head full workflow remains a mandatory publication/readiness gate; its results are recorded in PR41."
+  },
+  "exact_head_ci": {
+    "gate": "Three required workflows must PASS on the final unchanged remoteSHA, then readiness-triggered workflows must PASS on that sameSHA. Results recorded in PR41 after repository freeze; no post-CI repository edits.",
+    "workflows": [
+      "CAO orchestration integration",
+      "Phase 3 skill regression",
+      "Standards evidence structural audit"
+    ],
+    "merged": false
+  },
+  "validators": {
+    "canonical": "PASS",
+    "standards": "PASS",
+    "supplemental": "PASS all actual workflow commands",
+    "diff_check": "PASS full source CI and final local check; final immutable-head workflow revalidates",
+    "final_logs": [
+      "tests/evidence/durable-stage4-authored/final-canonical.log",
+      "tests/evidence/durable-stage4-authored/final-standards.log",
+      "tests/evidence/durable-stage4-authored/final-diff-check.log"
+    ]
+  },
+  "failed_attempts": [
+    {
+      "attempt": "Initial fixture probe",
+      "result": "FAIL",
+      "reason": "Separate objective replacement helper used original objective; fixed fixture finish scope",
+      "log": "tests/evidence/durable-stage4-authored/initial-memory-probe.log"
+    },
+    {
+      "attempt": "First seed19 generator",
+      "result": "FAIL",
+      "reason": "Canonical codec received newline; corrected .strip at subprocess framing only",
+      "log": "tests/evidence/durable-stage4-authored/initial-seed19-format-failed.log"
+    },
+    {
+      "attempt": "Second seed19 generator",
+      "result": "FAIL",
+      "reason": "Separate objective root absent from original Stage2 attach template; corrected exact objective reconstruction",
+      "log": "tests/evidence/durable-stage4-authored/second-seed19-objective-failed.log.json"
+    },
+    {
+      "attempt": "Intermediate API publication",
+      "result": "INCOMPLETE TREE \u2014 CORRECTED",
+      "reason": "Large authorized baseline file transport truncated; repaired exact original local blob with bounded chunk reads. Corrected remote ba6253cf4add719f5f0e2767ddb1a7a0f5c54b28 tree4ffb022ad32af0c3155d034a73d9d2261cee719e equals local b94afee tree. No protected baseline reset."
+    },
+    {
+      "attempt": "Roadmap witness helper after roadmap commit",
+      "result": "REFUSED",
+      "reason": "Handler expected HEAD old roadmap; exact inherited baseline and all unrelated protected hashes verified before updating only authorized roadmap row"
+    },
+    {
+      "attempt": "Initial arithmetic invariant probe",
+      "result": "FAIL",
+      "reason": "Fixture compared decimal display string490.0 to490; changed assertion to exact Decimal numerical equality, no accounting change"
+    },
+    {
+      "attempt": "Reviewer probe against changing WIP tree",
+      "result": "ERROR",
+      "reason": "Broad fixture text edit briefly affected replacement_intake undefined company_system; corrected before coherent implementation checkpoint, immutable reviewer baseline subsequently30PASS"
+    },
+    {
+      "attempt": "Corrected pre-cache full Company generator",
+      "result": "FAIL",
+      "reason": "Actual successor phase exceeded600-second bound after genuine exit73/recovery and exit74/committed retry. Exact transaction-local native restoration cache added and per-phase ceiling bounded at1800; corrected fresh complete independent proof pending.",
+      "log": "tests/evidence/durable-stage4-authored/bounded-successor600-failed.log.json"
+    },
+    {
+      "attempt": "Independent full Company successor reuse",
+      "result": "FAIL",
+      "reason": "Qualified current Xero rejected alongside retired historical NetSuite; corrected retired-anchor current conflict detection and narrow Intake refusal filter. Active proposed/stale alternatives still refuse.",
+      "finding": "DIQA04"
+    },
+    {
+      "attempt": "Intermediate GitHub Actions60965d13 orchestration",
+      "result": "FAIL",
+      "run": 37883303178,
+      "reason": "JSONDecodeError in truncated authorized witness from first transport; exact local blob repaired and verified before ba625 remote checkpoint. 1313methods attempted; not release PASS.",
+      "log": "tests/evidence/durable-stage4-authored/ci-113667639293-failed.log.json",
+      "paired_run": 37883308719,
+      "paired_log": "tests/evidence/durable-stage4-authored/ci-113667655848-failed.log.json"
+    },
+    {
+      "attempt": "Intermediate GitHub Actions38cc2f09 full release",
+      "result": "FAIL at final whitespace gate",
+      "run": 37884318714,
+      "reason": "Two retained original failure logs contained blank EOF; preserved exact content in lossless JSON envelopes at52e65f2 without trimming original evidence. All prior steps succeeded; not release PASS.",
+      "log": "tests/evidence/durable-stage4-authored/ci-113670782784-failed.log.json",
+      "paired_run": 37884313688,
+      "paired_log": "tests/evidence/durable-stage4-authored/ci-113670768277-failed.log.json"
+    },
+    {
+      "attempt": "cache-seed19 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/cache-seed19-failed.log.json"
+    },
+    {
+      "attempt": "cache-seed941 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/cache-seed941-failed.log.json"
+    },
+    {
+      "attempt": "seed941 controlled probe",
+      "result": "FAIL",
+      "exit": 1,
+      "reason": "Before DIQA04 correction: current successor rejected beside retired history. Original full failure log retained; completed earlier phase envelopes preserved in scratch. Not counted as final seed proof.",
+      "log": "tests/evidence/durable-stage4-authored/seed941-failed.log.json"
+    },
+    {
+      "attempt": "Final roadmap witness second refresh before commit",
+      "result": "REFUSED safely",
+      "reason": "Additional roadmap clarification changed bytes after first uncommitted witness refresh. Restored only exact HEAD authorized roadmap row after verifying all unrelated protected entries; regenerated final exact bytes. No baseline/helper weakening."
+    }
+  ],
+  "merged": false,
+  "discovered_current_methods_not_release_pass": {
+    "orchestration": 1344,
+    "skills": 1180,
+    "lease": 17,
+    "repository": 53,
+    "supplemental": 401,
+    "total": 2995,
+    "stage4_authored": 23,
+    "stage4_independent": 25,
+    "stage4_artifact": 1,
+    "rule": "Distinct methods; reruns, seeds and subtests not counted. Full release pending."
+  },
+  "stage3_reference_query_migration": {
+    "result": "PASS",
+    "seed19_941_byte_identical": true,
+    "reason": "Retired memory records no longer anchor active conflicts; only current-query conflicts/refusal-reason arrays differ. Decoded native checkpoints, immutable memory records/events/uses and accounting are unchanged.",
+    "changed_files": {
+      "correction.json": {
+        "before_sha256": "c201d8f2dd067eba4543aa888dff01b1ec6a5c17832b5dd4a01c431fadc9f8c1",
+        "after_sha256": "8cea7407787ba6e43f786df035eb9abe3dd09a8d7af9334b362a64ccf1359ee2"
+      },
+      "restore.json": {
+        "before_sha256": "85d8aa119c5db68d580b33e0f9543c0a637df69d376b8741e82b5e8794e3b51c",
+        "after_sha256": "90839a93f2739d0616ddb022c5396ec032c89d7716e43abc572d442600dc9c46"
+      }
+    },
+    "original_release_manifest_retained": true
+  },
+  "retained_artifact_native_validation": {
+    "result": "PASS",
+    "seconds": 36.524,
+    "scope": "Hash decoding, all retained native checkpoint roundtrips, immutable/current/negative assertions. Uses completed generator outputs; does not claim fresh full generator rerun.",
+    "log": "tests/evidence/durable-stage4-authored/retained-artifact-native-validation.log"
+  },
+  "workflow_coverage": "Narrow Stage4 branch push filters plus standards ready_for_review event; existing test commands and event coverage retained. All three required workflows must run after readiness at unchanged final SHA.",
+  "integrated_observed_invariants": {
+    "native_nodes": 36,
+    "case_records_per_objective": 9,
+    "root_cases_final": 5,
+    "period_records": 7,
+    "selective_consumers": 4,
+    "unaffected_node_bindings": 31,
+    "period_close_reopen_reclose_events": 3,
+    "current_journals": {
+      "NL_legal": 1,
+      "UK_legal": 1,
+      "Group": 6
+    },
+    "positive_public": "complete",
+    "negative_public": "partial",
+    "current_memory_records_qualified_for_finance": 1,
+    "historical_context_uses": 2
+  },
+  "historical_full_regression": {
+    "result": "PASS",
+    "scope": "Earlier candidate ba625, not finalStage4 release; protects prior flagships and baseline native owners.",
+    "sha": "ba6253cf4add719f5f0e2767ddb1a7a0f5c54b28",
+    "run": 37883625996,
+    "orchestration_methods": 1313,
+    "distinct_total": 2964,
+    "log": "tests/evidence/durable-stage4-authored/ci-113668634870-pass.log.json"
+  },
+  "source_equivalence_manifest": "tests/evidence/durable-stage4-authored/actual-source-equivalence.json",
+  "previous_flagships": {
+    "result": "PASS included in complete current-method population",
+    "coverage": [
+      "Manufacturing",
+      "Diagnostic Analytics",
+      "Semantic Planner and Intake",
+      "SaaS Close",
+      "Treasury/Financing",
+      "Group Accounting",
+      "Multi-Entity Stages1\u20134 temporal flagship",
+      "Durable Case Stages1\u20133",
+      "Ordinary single-entity accounting"
+    ]
+  },
+  "roadmap": {
+    "status": "COMPLETE SUBJECT TO OWNER INTEGRATION",
+    "sha256": "1d6805cb998afc0d8cd444868366adc19a1332fdfb862d6ca8c05b3fcdbd1125",
+    "stage1_2_3": "COMPLETE (MERGED)",
+    "stage3_merge": "092f9deaac2a85e39f02092c77ebbecd1ddec0e3",
+    "witness": "tests/evidence/durable-stage4-authored/final-roadmap-witness.json",
+    "only_authorized_roadmap_row_changed": true
+  },
+  "final_code_equivalence": "No Python file changes from the tested immutablef9 source to final handoffs/roadmap tree. Final exact-head CI revalidates updated documentation witness and all2995 methods."
+}

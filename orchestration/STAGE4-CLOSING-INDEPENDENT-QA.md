@@ -1,0 +1,45 @@
+# Independent closing-date accounting-path QA
+
+A separate reviewer context independently inspected Intercompany Accounting workflow/methods, Foreign Currency workflow/methods, Stage3 reassessment/receipt validation, the preserved opening-correction fixture, and the new closing-date contract and fixture. This report is additive and does not replace historical QA. Scope initially covers the bounded closing-date correction; full Group integration and release require separately documented acceptance.
+
+## Authority and evidence
+
+The unchanged Intercompany owner supports an independently reviewed closing quote and supplied GL for the same monetary USD principal. It calculates remaining principal times closing functional quote and FX versus evidenced pre-remeasurement book. Existing Foreign Currency translates a balanced operation TB with exact legal carrying/profit bindings, rather than inventing or duplicating the legal FX journal. Existing bounded reassessment consumes exact translated legal sides and reviewed reporting-basis books/quotes; it has no asymmetric residual-disposition authority.
+
+The new controlled synthetic treasury sheet changes the stale UK closing quote0.80 to contemporaneous0.90 GBP/USD, preserving USD20, original GBP16 opening book, cash100 and capital116. Its independent closing GL18 is checked by the native owner; the native result is GBP18 with GBP2 FXgain. The retained EUR/GBP1 and EUR/USD0.90 translations yield EUR18/EUR18. Reviewed pre-reassessment reporting books18/18 prevent duplicate FX recognition. These are synthetic supplied evidence assertions, not authenticated bank/treasury review. Rates are not solved from desired residuals; coherence is validated against supplied quotes. Original source/results remain immutable, and original EUR16/EUR18 conflict remains historical.
+
+A settlement-only alternative was rejected as inadequate to this assignment: changing principal does not repair the inconsistent closing source quotes. An alternative native local quote0.85 with separately supplied GL17 proves the existing owner computes17/gain1. That local-only evidence does not claim a coherent Group closing feed and cannot earn clean Group qualification.
+
+## CLQA01 — reviewed presentation quote ignored
+
+Substantive finding, reproduced before remediation. Change only fresh reviewed `CLOSE.eur_per_gbp` to1.20. The initial closing fixture accepted the correction, retained actual Foreign Currency closing_rate1, and reported residual0. Thus a conflicting reviewed quote was silently ignored. Independent permanent regression: `test_clqa01_contradictory_reviewed_presentation_quote_rejected`.
+
+Initial independent executable run:15 distinct methods,14 PASS, CLQA01 FAIL. Implementation owner independently reproduced the finding and introduced generic `orchestration/closing_evidence.py` validation: finite positive supplied quotes, internally coherent supplied triangle, and equality to actually retained presentation quotes. Contradictory evidence now refuses before correction intake; changing presentation quotes requires separately reviewed replacement rather than silent reuse. No rate is inferred and no accounting is computed by this validation.
+
+## Independent permanent attacks
+
+The suite covers fresh separately reviewed source; unchanged original history and normal supersession; owner-derived carrying/FX and journal-free translation/reassessment; absence of correction retains original block; unreviewed evidence; wrong closing date; missing provenance; supplied GL inconsistent with quote; independent local-only alternate native17/gain1 and translation17; contradictory reporting/quote evidence; CLQA01; unrelated exact current versions; stale legal receipt rejection; bounded zero residual insufficient for full closure; and public source privacy.
+
+These tests deliberately distinguish bounded residual resolution from COMPLETE/CLOSED. They do not certify full population, eight lineages, temporal integration or release on their own. The preserved broader population and lineage suites remain mandatory. No substantive original evidence or owner workflow was changed by this reviewer.
+
+## Post-remediation independent result
+
+CLQA01 REMEDIATED and independently rerun. Final17 distinct independent methods PASS under repository-standard PYTHONHASHSEED19 and941. Seed reruns are not counted as additional methods. Two added attacks reject nonfinite/nonpositive supplied quotes and an internally coherent changed triangle that would require new retained presentation accounting. Unresolved substantive bounded closing accounting-path findings:0. The independent native local-only alternative yields17/gain1, proving the owner does not target18; full coherent feed correction remains subject to reviewed triangle/receipt consistency. Bounded Group residual is0, with no additional native reassessment journal, while bounded fixture Case remains partial because full Group integration is still outstanding.
+
+## Symmetric payable-only translation extension
+
+Independent inspection finds the native reassessment validator already checks both legal roles symmetrically. Permitting the sole translated side to be payable is supported when the receivable carries its exact current directly qualified Group currency receipt. Four independent permanent methods PASS under seeds19/941: timing positive30/30 with no journal; omitted payable transformation; omitted direct receivable; falsely claimed direct-receivable currency. Both sides and actual currencies remain obligatory. This bounded extension adds no accounting arithmetic or residual authority. Combined independent closing suite:21 distinct methods across the two reviewed scopes;17 plus4 independently pass each seed. Whole Group population/closure approval remains outstanding.
+
+## Complete Group accounting and honest reporting refusal
+
+Independently executed `stage4_closing_population.run()`. The preserved original conflict remains historical. Closing correction plus selective rework now legitimately produces native complete Consolidation with all four relationships, all eight current legal sides, exactly one whole-operation translation per US/UK entity, four reciprocal-loan eliminations and two investment eliminations. Native Group cash490, opening equity487, profit3 and closing equity490 reconcile. Cash opening/closing490 and financing0 reflect the noncash corrections; an inherited financing1/cash489 assumption was identified during review and corrected using supplied reviewed operation cash evidence.
+
+Reporting refuses through the existing native owner: `Restated comparative equity differs from opening current equity`. Inherited comparative TB cash489/equity489 does not support the newly qualified whole-operation opening equity487. This report does not authorize invented historical comparative offsets or an issued balance sheet. A separately reviewed comparative TB, opening Group net-assets history and cash history are required. Reporting, analytics and Group observation remain STALE; public result remains partial and COMPLETE/CLOSED is unavailable.
+
+CLQA02 was a proactive review risk, not a reproduced defect: parent correction income originally lacked an exact native profit binding. The implementation now adds the actual mismatch owner `b_fx_loss` dependency and validates the separately reviewed parent opening ledger. Permanent independent omission, balanced profit substitution and contradictory parent ledger attacks reject. No finding count is inflated by treating an unexecuted risk as a reproduced defect.
+
+Eleven added independent full-population methods cover the complete Group relationship/translation population; native Group versus honest Reporting refusal; omission of each of eight legal sides; shortened legal perimeter; each whole-operation translation omission; exact parent profit dependency omission; balanced wrong native profit; conflicting reviewed parent ledger; four distinct exact-once elimination journals; stale downstream receipt/public refusal; and global current-journal selection refusal while Reporting remains stale. Native journals are eight in total (NL correction1, UK FX1, Group6), while translation/reassessment journals are zero. Global current-journal release selection correctly refuses stale downstream population; full exact-once release acceptance is not claimed.
+
+Final independent scope now comprises32 distinct permanent methods (17 closing-path,4 payable-only,11 whole-population). Each scope independently PASS under seeds19/941; combined rerun follows. Unresolved substantive findings in implemented accounting-path scope:0. Unresolved evidence/release requirement remains the separately reviewed comparative/opening Group history; Stage4 COMPLETE/CLOSED and final release QA are expressly unapproved.
+
+Final combined executable rerun:32/32 PASS under both PYTHONHASHSEED19 and941 (38.604s and40.905s respectively). No additional substantive finding arose from combining the scopes. Distinct counts exclude hash-seed reruns.

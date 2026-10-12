@@ -37,7 +37,7 @@ PACKAGES = {
     'segment-reporting': ('SKILL-SEG-001',['TOPIC-08-006']),
     'subsequent-events': ('SKILL-EVENT-001',['TOPIC-08-005']),
     'government-grants': ('SKILL-GRANT-001',[]),
-    'borrowing-costs': ('SKILL-BORROW-001',['TOPIC-04-003']),
+    'borrowing-costs': ('SKILL-BORROW-001',['SUPPLEMENTAL_BORROWING_COSTS']),
     'cash-flow-reporting': ('SKILL-CASH-001',['TOPIC-08-002','TOPIC-06-001','TOPIC-06-002']),
     'equity-capital': ('SKILL-EQUITY-001',['TOPIC-08-003','TOPIC-13-006']),
     'accounting-changes': ('SKILL-CHANGE-001',['TOPIC-02-009','TOPIC-15-001','TOPIC-15-003','TOPIC-15-006']),
@@ -111,6 +111,9 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if topic_ids == ['SUPPLEMENTAL_BORROWING_COSTS']:
+        from borrowing_knowledge import mapped_knowledge
+        return mapped_knowledge(framework)
     if topic_ids == ['SUPPLEMENTAL_INSURANCE_CONTRACTS']:
         from insurance_knowledge import mapped_knowledge
         return mapped_knowledge(framework)
@@ -208,11 +211,12 @@ def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
     if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
     if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
-    if package=='borrowing-costs':raise ReviewRequired('Approved CIP routing does not provide a substantive borrowing-cost capitalization method; governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
+    if 'package' in case and case['package'] != package:
+        raise ReviewRequired('Case implementation owner differs from selected accounting skill')
     try:context(case); dates(case)
     except (KeyError,TypeError,AttributeError) as exc:raise ReviewRequired('Missing or malformed case context: '+str(exc)) from exc
-    if package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
+    if (package=='borrowing-costs' or package in __import__('governance_accounting').BATCH+__import__('final_batch_accounting').BATCH) and case.get('package')!=package:raise ReviewRequired('Governance case targets a different bounded package')
     claims,knowledge=canonical_knowledge(PACKAGES[package][1],case['framework'],package=package)
     required(case,'knowledge_review')
     reviewed=case['knowledge_review']
@@ -252,36 +256,39 @@ def execute(package, case):
            signoff.get('reviewer')!=case.get('preparer') and signoff.get('approved') is True)
     result['status']='complete' if valid and not result.get('open_items') else 'partial'
     if not valid: result.setdefault('open_items',[]).append('Independent reviewer must approve this exact case fingerprint before use')
+    if package=='borrowing-costs' and result['status']!='complete':
+        result['proposed_journal_workpaper']=result.get('journal_entry_implications',[])
+        result['journal_entry_implications']=[]
     try:to_public(result)
     except ValueError as exc:raise ReviewRequired('Public output could not be safely curated; reviewer must resolve accounting caveats or account labels') from exc
     return result
 
 def case_fingerprint(case):
-    files=[ROOT/'skills/core_accounting.py',ROOT/'skills/production.py',ROOT/'interfaces/public_output.py']
-    files += list((ROOT/'skills').glob('*/workflow.py'))+list((ROOT/'skills').glob('*/engine.py'))
-    files += list((ROOT/'skills').glob('*/SKILL.md'))+list((ROOT/'skills').glob('*/methods.md'))
-    files += [ROOT/'skills/REVIEWER-CONTROLS.md',ROOT/'skills/run_skill.py',ROOT/'skills/advanced_accounting.py',ROOT/'skills/operations_accounting.py']
-    files += [ROOT/'skills/reporting_accounting.py',ROOT/'skills/financing_accounting.py']
-    files += [ROOT/'skills/presentation_accounting.py']
-    files += [ROOT/'skills/special_reporting.py',ROOT/'skills/governance_accounting.py',ROOT/'skills/GOVERNANCE-KNOWLEDGE-MAP.json']
-    files += [ROOT/'skills/final_batch_accounting.py',ROOT/'skills/FINAL-BATCH-KNOWLEDGE-MAP.json']
-    if case.get('package')=='derivatives-hedge-accounting':
-        files += [ROOT/'skills/derivatives-hedge-accounting/handoffs.py']
-        files += [ROOT/'skills/hedge_knowledge.py',ROOT/'skills/derivatives-hedge-accounting/CANONICAL-KNOWLEDGE-MAP.json',ROOT/'skills/derivatives-hedge-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/derivatives-hedge').glob('*.py')]
-    if case.get('package')=='inventory-cost':
-        files += [ROOT/'skills/inventory-cost/INVENTORY-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/inventory-cost').glob('*.py')]
-    if case.get('package')=='insurance-contracts-accounting':
-        files += [ROOT/'skills/insurance_knowledge.py', ROOT/'skills/insurance-contracts-accounting/SUPPLEMENTAL-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/insurance-contracts').glob('*.py')]
-        files += [p for p in (ROOT/'skills/insurance-contracts-accounting').glob('handoffs.py')]
-    if case.get('package')=='agriculture-biological-assets':
-        files += [ROOT/'skills/agriculture-biological-assets/AGRICULTURE-KNOWLEDGE-MAP.json']
-        files += [p for p in (ROOT/'knowledge/agriculture').glob('*.py')]
+    from implementation_scope import fingerprint_files
+    files=fingerprint_files(case, ROOT, PACKAGES)
     implementation={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
+
+def _public_requirement_text(text):
+    """Name missing workflow inputs without publishing internal field keys.
+
+    Only the deterministic missing-fact refusal is curated here. Arbitrary
+    contaminated conclusions, calculations and identifiers still fail closed
+    at the shared public boundary; no substantive requirement is removed.
+    """
+    marker='Missing required facts: '
+    prefix='Accounting case cannot be completed: '
+    if text.startswith(prefix+marker):lead=prefix+marker
+    elif text.startswith(marker):lead=marker
+    else:return text
+    names={'original_source_snapshot':'independent original accounting source population','case_id':'accounting case identity','node_id':'accounting execution identity',
+           'period_id':'governed accounting period','result_version':'current accounting result',
+           'dependency_id':'qualified accounting dependency','source_fingerprint':'qualified source identity',
+           'reviewer_signoff':'independent accounting review'}
+    fields=text[len(lead):].split(', ')
+    return lead+', '.join(names.get(field,field) for field in fields)
+
 
 def to_public(result, route='answer'):
     standard_titles={
@@ -327,6 +334,7 @@ def to_public(result, route='answer'):
     if result['skill_id']=='SKILL-HEDGE-001':title={'IFRS':'IFRS 9 / IFRS 7 derivative and hedge accounting','US_GAAP':'ASC 815 derivative and hedge accounting','UK_GAAP':'FRS 102 Section 12 derivative and hedge accounting','AASB':'AASB 9 / AASB 7 derivative and hedge accounting'}.get(result['framework'],'Derivative framework unresolved')
     if result['skill_id']=='SKILL-INV-001':title={'IFRS':'IAS 2 bounded manufacturing accounting','US_GAAP':'ASC 330 bounded manufacturing accounting','UK_GAAP':'FRS 102 Section 13 bounded manufacturing accounting','AASB':'AASB 102 Tier 1 bounded manufacturing accounting'}.get(result['framework'],'Inventory framework unresolved')
     if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
+    if result['skill_id']=='SKILL-BORROW-001':title={'IFRS':'IAS 23 bounded borrowing costs','AASB':'AASB 123 Tier 1 for-profit borrowing costs','US_GAAP':'ASC 835-20 bounded avoidable interest','UK_GAAP':'FRS 102 Section 25 elected borrowing costs policy'}.get(result['framework'],'Borrowing costs framework unresolved')
     if result['skill_id']=='SKILL-INS-001':title={'IFRS':'IFRS 17 insurance accounting','AASB':'AASB 17 Tier 1 for-profit insurance accounting','US_GAAP':'ASC 944 short-duration insurance accounting','UK_GAAP':'FRS 103 insurance policy boundary'}.get(result['framework'],'Insurance framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
@@ -338,7 +346,12 @@ def to_public(result, route='answer'):
                 locator=ref if confirmed else 'Unverified paragraph reference: '+ref
                 citations.append({'title':claim_title,'locator':locator})
     # Never copy internal evidence limitations or arbitrary case text to public output.
-    guidance=result['conclusion']+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(result['calculations'],default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
+    public_calculations=dict(result['calculations'])
+    diagnostic=public_calculations.pop('diagnostic',None)
+    if diagnostic:
+        bridge=diagnostic['bridge']
+        public_calculations['diagnostic_bridge']={k:bridge[k] for k in ('starting','ending','change','explained_amount','explained_percent','residual','status')}
+    guidance=_public_requirement_text(result['conclusion'])+'\nReview status: '+result['status']+'\nCalculations: '+json.dumps(public_calculations,default=serializable,sort_keys=True)+'\nJournals: '+json.dumps(result['journal_entry_implications'],default=serializable)+'\nDisclosure review: '+'; '.join(result['disclosures_impacted'])
     if result.get('specialist_routing'):
         route_info=result['specialist_routing']
         guidance+='\nSpecialist handoff: '+route_info['target']+'; required evidence: '+route_info['required_evidence']+'; '+route_info['completion_gate']
@@ -346,7 +359,8 @@ def to_public(result, route='answer'):
     rec={'topic_id':public_topic,'guidance':guidance,
          'framework':result['framework'],'jurisdiction':result['jurisdiction'],
          'entity_scope':result['entities'][0],'effective_period':' to '.join(result['periods']),
-         'limitations':result.get('uncertainties',[]),'uncertainties':result.get('open_items',[]),'citations':citations}
+         'limitations':[_public_requirement_text(text) for text in result.get('uncertainties',[])],
+         'uncertainties':[_public_requirement_text(text) for text in result.get('open_items',[])],'citations':citations}
     return public_record(rec,route=route)
 
 def serializable(obj):
@@ -373,7 +387,7 @@ def assess_case(package,case):
           'audit-support-pbc': ('TOPIC-10-001','Accounting governance and underlying topic owners','Management PBC population, source reconciliation, query and auditor-selected sample support only; no opinion, sufficiency/independence determination, confirmations, adjustments or accounting alteration.'),
           'accounting-policy-memo-governance': ('TOPIC-15-001','Accounting governance and underlying topic owners','Versioned policy/memo governance consuming actual completed accounting conclusions; no autonomous policy selection/transition/recognition, paragraph invention or overwriting policy history.'),
           'disclosure-management': ('TOPIC-08-004','Accounting governance and underlying topic owners','Qualified current requirements/applicability population and source/note/issued-comparative tie-outs; no generated universal checklist, new requirements, unowned disclosures or compliance certification.'),
-          'management-accounting-analytics': ('TOPIC-08-008','Accounting governance and underlying topic owners','Accounting-source lineage, management/statutory bridge, reconciled calendar comparable flux and on-time reconciliation KPI only. Facts separate from reviewed explanations; no FP&A/forecast/budget, generic BI, invented adjustments or undisclosed netting.'),
+          'management-accounting-analytics': ('TOPIC-08-008','Accounting governance and underlying topic owners','Accounting-source lineage, factual flux, diagnostic bridges and supplied comparators; no autonomous FP&A, invented adjustments or accounting-owner override.'),
           'held-for-sale-discontinued-operations':('TOPIC-13-004','Disposal, impairment, fixed assets and group specialists','Dated disposal perimeter and classification evidence; group allocation, reversal, disposal and US/UK measurement need separate governed methods'),
           'investment-property':('TOPIC-04-001','Investment-property accounting and knowledge governance','Substantive approved investment-property scope, models, transfers and framework-specific measurement; PPE pointers are insufficient'),
           'hyperinflation-accounting':('TOPIC-13-011','Hyperinflation, FX, tax and consolidation specialists','Actual economic evidence and index provenance; full monetary-result, equity, tax, translation and consolidation method required beyond isolated schedule'),

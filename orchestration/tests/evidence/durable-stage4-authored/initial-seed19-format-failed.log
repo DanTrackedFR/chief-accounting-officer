@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/persistence/codec.py", line 65, in loads
+    if dumps(result) != text: raise IntegrityError('Noncanonical checkpoint encoding')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+orchestration.persistence.codec.IntegrityError: Noncanonical checkpoint encoding
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 147, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 146, in main
+    for name,value in artifacts(os.environ.get('DURABLE_STAGE4_LOG_DIRECTORY')).items():(target/name).write_text(json.dumps(value,sort_keys=True,indent=2)+'\n')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/tests/generate_persistence_stage4_examples.py", line 138, in artifacts
+    else:out[action+'.json']=envelope(loads(child.stdout))
+                                      ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6d9ddd7eafea/chief-accounting-officer/orchestration/persistence/codec.py", line 68, in loads
+    raise IntegrityError('Invalid checkpoint encoding') from exc
+orchestration.persistence.codec.IntegrityError: Invalid checkpoint encoding

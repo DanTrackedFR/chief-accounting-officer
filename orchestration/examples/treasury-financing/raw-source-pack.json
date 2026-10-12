@@ -1,0 +1,398 @@
+[
+  {
+    "format": "csv",
+    "id": "debt",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Debt register.csv",
+    "payload": "loan,opening,principal,draws,fees,yield,interest,paid,repayment,base_closing,current,noncurrent,rights,rate_type\nloan,1000,1000,0,0,0.08,80,80,200,800,800,0,true,variable\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "lender",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Lender statement.csv",
+    "payload": "loan,legal_principal,original_currency,closing_carrying_foreign\nloan,800,USD,800\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "terms",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Facility extract.md",
+    "payload": "USD term facility loan. Annual benchmark resets are independently reviewed; supplied 2026 contractual/EIR charge is USD80 on opening USD1000. USD200 principal and USD80 interest paid December31 at EUR1/USD. Remaining reviewed reset cashflow USD864 on December31 2027 contains USD800 principal. Contract rights and covenant compliance at December31 support all remaining debt being current. No waiver, modification, capitalization or refinancing is assumed. Future reset re-estimation requires a fresh qualified debt schedule.",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "payments",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Remaining contractual payments.csv",
+    "payload": "payment_id,date,amount,principal\ncurrent,2026-12-31,280,200\nredemption,2027-12-31,864,800\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "fx",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Monetary FX report.csv",
+    "payload": "loan,original_currency,foreign_amount,opening_book,opening_rate,closing_rate,settled,settlement_rate,closing,gain\nloan,USD,1000,1000,1,1.10,200,1,880,-80\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "derivative",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Swap confirmation.csv",
+    "payload": "instrument,notional,maturity,underlying\nforward1,800,2027-12-31,USD benchmark\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "valuation",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Independent valuation.csv",
+    "payload": "instrument,notional,measurement_date,opening,change,settlement,closing\nforward1,800,2026-12-31,0,40,0,40\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "designation",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Hedge designation.csv",
+    "payload": "relationship,instrument,loan,date,quantity,risk\nrelationship1,forward1,loan,2026-01-01,800,benchmark_interest\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "effectiveness",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Independent hedged-risk schedule.csv",
+    "payload": "relationship,instrument_cumulative,risk_cumulative,quantity,opening_reserve,effective,ineffective,closing_reserve\nrelationship1,40,-36,800,0,36,4,36\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "bank",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Bank activity.csv",
+    "payload": "bank_id,date,amount,kind,category\nBANK-INTEREST,2026-12-31,-80,interest_paid,operating\nBANK-PRINCIPAL,2026-12-31,-200,debt_repayment,financing\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "bank_summary",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Bank movement summary.csv",
+    "payload": "financing\n-200\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "tb",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Year-to-date trial balance.csv",
+    "payload": "account,balance,category\nCash,1720,asset\nDebt,-880,liability\nDerivative,40,asset\nOpening equity,-1000,equity\nInterest expense,80,expense\nFX loss,80,expense\nHedge income,-4,revenue\nHedge OCI,-36,oci\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "cash",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Cash flow support.csv",
+    "payload": "opening,closing,operating,investing,financing,fx\n2000,1720,-80,0,0,0\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "rec",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Reconciliation pack.csv",
+    "payload": "account,source,gl\nDebt,-880,-880\nDerivative,40,40\nCash,1720,1720\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "policy",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Treasury policy extract.md",
+    "payload": "EUR functional currency. IAS7 pre-2027 ordinary entity: interest paid classified operating consistently with prior period; principal payments financing gross. First-year continuing cash-flow hedge of future benchmark interest on remaining USD800; no current derivative settlement or reserve recycling. Qualified independent whole-instrument valuation and separately measured risk are required. No cash equivalents, covenant waiver or legal conclusions are inferred.",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "pnl",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Year-to-date P&L.csv",
+    "payload": "interest\n80\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "prior",
+    "metadata": {
+      "as_of": "2025-12-31",
+      "comparator": "prior_actual",
+      "controlled_export": true,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2025-01-01",
+        "2025-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Prior annual actual interest.csv",
+    "payload": "principal,rate,interest\n1000,0.06,60\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "commentary",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "EUR",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-02-01",
+      "period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic treasury export",
+      "version": "frozen-1"
+    },
+    "mime": "",
+    "name": "Management commentary.md",
+    "payload": "Interest expense is up mainly because rates increased. The hedge offset almost all of the FX loss.",
+    "raw_ref": ""
+  }
+]

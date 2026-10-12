@@ -1,0 +1,56 @@
+.................................................................................................................................................................................................................................................................................................................................................................................................F.......F.....................................................................................................................................................................................................................................................................................................................................................................................................................................................F............................................................................................................................................F.......................................................................................................................................F..................................................................................................................................................................................
+======================================================================
+FAIL: test_saved_examples_current_and_generator_exact (test_governance_workflows.GovernanceTests.test_saved_examples_current_and_generator_exact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/skills/tests/test_governance_workflows.py", line 104, in test_saved_examples_current_and_generator_exact
+    for path,value in artifacts(p,fw).items():self.assertEqual(json.loads(Path(path).read_text()),json.loads(json.dumps(value,default=serializable)))
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'cas[21443 chars]t': 'eb8739d8613d430e0c009c490dc524582d178b1a9[84546 chars].']}} != {'cas[21443 chars]t': 'ca6654926c501d248b1dd453af7982d6eebf3322d[84546 chars].']}}
+Diff is 381589 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_generated_handoffs_reproduce (test_hedge_inventory_integration.HedgeInventoryIntegration.test_generated_handoffs_reproduce)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/skills/tests/test_hedge_inventory_integration.py", line 75, in test_generated_handoffs_reproduce
+    for p,o in artifacts().items():self.assertEqual((root/p).read_text(),json.dumps(o,default=serializable,indent=2,sort_keys=True)+'\n',p)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '{\n [55925 chars]t": "63a1b8070f1724bc25b0918eb223ec8c23522150b[120616 chars]n}\n' != '{\n [55925 chars]t": "00365684f7e3ce7ef1d344994c4d87230517fc232[120616 chars]n}\n' : skills/inventory-cost/examples/IFRS-hedge-basis.case.json
+
+======================================================================
+FAIL: test_examples_reproduce (test_insurance_contracts.Insurance.test_examples_reproduce)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/skills/tests/test_insurance_contracts.py", line 195, in test_examples_reproduce
+    for path,obj in artifacts().items():self.assertEqual(json.loads((root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'cas[25171 chars]t': 'ef23ddc6c76f53ce4f4f21592c78fb6e4eaced305[21 chars]62'}} != {'cas[25171 chars]t': 'b87b26b84570c5499ac26fc914150a24ecb78f411[21 chars]0b'}}
+Diff is 44617 characters long. Set self.maxDiff to None to see it. : skills/insurance-contracts-accounting/examples/UK_GAAP-policy-boundary.blocked.case.json
+
+======================================================================
+FAIL: test_examples_reproduce (test_inventory_cost.Inventory.test_examples_reproduce)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/skills/tests/test_inventory_cost.py", line 68, in test_examples_reproduce
+    for path,obj in artifacts().items():self.assertEqual(json.loads((root/path).read_text()),json.loads(json.dumps(obj,default=serializable)),path)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'cas[9058 chars]t': '7526bd1b4b13d0e78e4630b587508352a684fc58d[84450 chars].']}} != {'cas[9058 chars]t': '1ab71cf58dd3ee38962230cce48def1003279c418[84450 chars].']}}
+Diff is 224339 characters long. Set self.maxDiff to None to see it. : skills/inventory-cost/examples/IFRS-owner-fixed-assets.case.json
+
+======================================================================
+FAIL: test_saved_examples_and_public_cli (test_presentation_workflows.PresentationTests.test_saved_examples_and_public_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82f969703d3/cao/skills/tests/test_presentation_workflows.py", line 254, in test_saved_examples_and_public_cli
+    r=assess_case(p,c);self.assertEqual(r['status'],expected,r['conclusion'])
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'blocked' != 'partial'
+- blocked
++ partial
+ : Accounting case cannot be completed: Accounting owner must be completed, current and unaltered
+
+----------------------------------------------------------------------
+Ran 1287 tests in 275.805s
+
+FAILED (failures=5)

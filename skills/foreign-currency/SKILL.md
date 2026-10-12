@@ -1,7 +1,7 @@
 ---
 id: SKILL-FX-001
 name: Foreign currency and translation
-version: 1.0.0
+version: 1.0.1
 status: production
 primary_domain: "06"
 related_domains: ["07", "08", "09", "14", "15"]

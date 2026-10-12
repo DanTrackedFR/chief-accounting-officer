@@ -1,0 +1,21 @@
+setUpClass (build4.tests.test_journeys.IntegratedJourneys) ... ERROR
+
+======================================================================
+ERROR: setUpClass (build4.tests.test_journeys.IntegratedJourneys)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/tests/test_journeys.py", line 9, in setUpClass
+    cls.result=proof()
+               ^^^^^^^
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/prove_integrated.py", line 31, in proof
+    call('submit',case_id=cid,evidence=revenue_evidence(api,cid));original=call('execute',case_id=cid);assert original['execution_state']=='complete';assert '31920' in json.dumps(original['public_result'])
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/77324e53376f/chief-accounting-officer/build4/prove_integrated.py", line 23, in call
+    assert v['ok'],v
+           ~^^^^^^
+AssertionError: {'contract_version': '1.0', 'operation': 'execute', 'ok': False, 'error': {'code': 'invalid_request', 'message': 'Check contract version, operation and required input fields.'}, 'public_result': {'guidance': 'Check contract version, operation and required input fields.', 'status': 'blocked'}}
+
+----------------------------------------------------------------------
+Ran 0 tests in 1.518s
+
+FAILED (errors=1)

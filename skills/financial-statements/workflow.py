@@ -1,4 +1,5 @@
 """Authorized TB to six-statement/disclosure review pack; not legal filing advice."""
+from datetime import timedelta
 from core_accounting import cash, dec, required, ReviewRequired
 from production import flag, nonnegative
 from advanced_accounting import gate, unique, event_date, iso, result, ZERO
@@ -62,6 +63,11 @@ def assess(c,claims):
                 if not flag(p,'adapted_formats_2027_review_complete'):raise ReviewRequired('UK 2027 adapted-format changes not assessed')
     modern=p['model'] in ('IFRS18','AASB18')
     current=statements(c['current_tb'],modern);prior=statements(c['comparative_tb'],modern)
+    opening_statement=prior
+    if 'opening_tb' in c:
+        o=c.get('opening',{});required(o,'period_end','review_memo')
+        if iso(o['period_end'])+timedelta(days=1)!=start:raise ReviewRequired('Opening evidence must be adjacent prior closing')
+        opening_statement=statements(c['opening_tb'],modern)
     mdps=[]
     if modern:
         required(p,'mdps','mdp_population_memo')
@@ -90,7 +96,7 @@ def assess(c,claims):
         closing_eq+=dec(e['closing']);eq_profit+=profit;eq_oci+=oci;opening_eq+=opening+adjustment
     if cash(closing_eq)!=current['closing_equity'] or cash(eq_profit)!=current['profit'] or cash(eq_oci)!=current['oci']:
         raise ReviewRequired('Equity bridge fails primary-statement income/OCI/closing tie')
-    if cash(opening_eq)!=prior['closing_equity']:raise ReviewRequired('Restated comparative equity differs from opening current equity')
+    if cash(opening_eq)!=opening_statement['closing_equity']:raise ReviewRequired('Restated comparative equity differs from opening current equity')
     cf=c['cash_flow'];required(cf,'start_subtotal','start_amount','adjustments','investing','financing','fx','opening','closing','balance_sheet_bridge','population_memo','classifications')
     if modern and cf['start_subtotal']!='operating_profit':raise ReviewRequired('IFRS18 indirect method starts with operating profit')
     if modern and cash(dec(cf['start_amount']))!=current['operating_profit']:raise ReviewRequired('IFRS18 cash flow starting subtotal differs from computed operating profit')
@@ -106,7 +112,11 @@ def assess(c,claims):
         required(x,'id','amount','source','noncash_acquisition_fx_excluded','memo')
         if not flag(x,'noncash_acquisition_fx_excluded'):raise ReviewRequired('Working capital/noncash population double-counts acquisition or FX')
         operating+=dec(x['amount'])
-    unique(cf['classifications'])
+    if cf['classifications']==[]:
+        review=cf.get('zero_movement_review',{});required(review,'complete','movement_count','evidence')
+        if not flag(review,'complete') or not review['evidence'] or type(review['movement_count']) is not int or review['movement_count']!=0 or any(dec(cf[k])!=0 for k in ('investing','financing','fx')) or operating!=0:
+            raise ReviewRequired('Empty cash population requires reviewed zero actual movements')
+    else:unique(cf['classifications'])
     classified={k:ZERO for k in ('operating','investing','financing')}
     for x in cf['classifications']:
         required(x,'kind','class','amount','memo','date');event_date(c,x['date'])
@@ -125,7 +135,7 @@ def assess(c,claims):
     if cash(opening+operating+dec(cf['investing'])+dec(cf['financing'])+dec(cf['fx']))!=cash(closing):raise ReviewRequired('Cash flow rollforward fails')
     if cash(closing+bridge)!=current['cash']:raise ReviewRequired('Closing cash-flow/balance-sheet cash bridge fails')
     required(cf,'opening_balance_sheet_bridge')
-    if cash(opening+dec(cf['opening_balance_sheet_bridge']))!=prior['cash']:raise ReviewRequired('Opening cash does not tie to comparative cash')
+    if cash(opening+dec(cf['opening_balance_sheet_bridge']))!=opening_statement['cash']:raise ReviewRequired('Opening cash does not tie to comparative cash')
     coverage=c['coverage'];required(coverage,'requirement_population_reviewed','checklist_version','narrative_reviewed','special_topics','complete_sets')
     if not flag(coverage,'requirement_population_reviewed') or not flag(coverage,'narrative_reviewed'):
         raise ReviewRequired('Disclosure/narrative population has not been independently assessed')
@@ -148,7 +158,7 @@ def assess(c,claims):
         if n['target'] not in totals or cash(dec(n['amount']))!=totals[n['target']]:raise ReviewRequired('Note amount does not tie to primary statement')
     return result('Primary statements, comparatives, equity, cash and disclosure populations reconcile for the reviewed presentation regime.',
       {'framework':fw,'presentation':p['model'],'entity_overlay':p['entity_overlay'],'checklist_version':coverage['checklist_version']},
-      {'current':current,'comparative':prior,'management_performance_measures':mdps,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
+      {'current':current,'comparative':prior,**({'opening':opening_statement} if 'opening_tb' in c else {}),'management_performance_measures':mdps,'equity_components':[{k:e[k] for k in ('id','opening','profit','oci','owner_transactions','retrospective_adjustments','other','closing')} for e in eq],'cash_flow':{'operating':cash(operating),'investing':cash(dec(cf['investing'])),
        'financing':cash(dec(cf['financing'])),'fx':cash(dec(cf['fx'])),'opening':cash(opening),'closing':cash(closing),'bs_cash_bridge':cash(bridge)},'note_tieouts':[{k:n[k] for k in ('id','target','amount')} for n in c['notes']]},[],
       [p['adoption_memo'],q['adjustments_memo'],cf['population_memo']],
       ['Complete period/entity-specific requirement register','Accounting policies and significant judgments/estimation uncertainty',

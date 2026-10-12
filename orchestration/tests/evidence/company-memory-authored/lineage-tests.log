@@ -1,0 +1,32 @@
+.................................E.............................................................
+======================================================================
+ERROR: test_opening_comparative_substitution (orchestration.tests.test_persistence_stage3.CompanyMemoryTests.test_opening_comparative_substitution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3.py", line 99, in test_opening_comparative_substitution
+    d=copy.deepcopy(self.r['applicability']);d['relationship_id']='COMPARATIVE';self.bad_capture(dimensions=d)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3.py", line 31, in bad_capture
+    with self.assertRaises(ValueError):capture(self.s,self.c,**changes)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/persistence_stage3_fixtures.py", line 43, in capture
+    return m.capture(company,case.id,case.id,index,**options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 285, in capture
+    return self._transaction(True,write)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 257, in _transaction
+    result=fn()
+           ^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 278, in write
+    r['version_id']=ident('memory-version',r);self._record(r);self._qualification(r)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/persistence/memory.py", line 169, in _qualification
+    relation=next(row for row in original.governance.periods.record()['relationships'] if row['id']==r['applicability']['relationship_id'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+
+----------------------------------------------------------------------
+Ran 95 tests in 149.305s
+
+FAILED (errors=1)

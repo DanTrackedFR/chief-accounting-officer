@@ -1,0 +1,14 @@
+.F
+======================================================================
+FAIL: test_case_checkpoint_without_memory_publication_grants_no_authority (orchestration.tests.test_persistence_stage3.CompanyMemoryTests.test_case_checkpoint_without_memory_publication_grants_no_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/chief-accounting-officer/orchestration/tests/test_persistence_stage3.py", line 169, in test_case_checkpoint_without_memory_publication_grants_no_authority
+    with patch.object(self.m,'_append',side_effect=fail),self.assertRaises(RuntimeError):capture(self.s,other,subject='orphan-policy')
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 9.619s
+
+FAILED (failures=1)

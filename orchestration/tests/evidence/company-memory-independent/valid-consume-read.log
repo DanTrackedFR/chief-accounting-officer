@@ -1,0 +1,26 @@
+E
+======================================================================
+ERROR: test_valid_context_consumption_remains_readable (orchestration.tests.test_persistence_stage3_independent.IndependentMemoryAttacks.test_valid_context_consumption_remains_readable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/tests/test_persistence_stage3_independent.py", line 34, in test_valid_context_consumption_remains_readable
+    audit=self.memory.audit(COMPANY)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/persistence/memory.py", line 352, in audit
+    return self._transaction(False,read)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/persistence/memory.py", line 208, in _transaction
+    result=fn();self.db.execute('COMMIT');return result
+           ^^^^
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/persistence/memory.py", line 350, in read
+    records,events,uses,revision,_=self._ledger(company)
+                                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/1edb59c80ed3/stage3-review/orchestration/persistence/memory.py", line 109, in _ledger
+    if (head or (0,None))!=(len(rows),previous): raise IntegrityError('Memory head contradicts retained events')
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+orchestration.persistence.codec.IntegrityError: Memory head contradicts retained events
+
+----------------------------------------------------------------------
+Ran 1 test in 2.909s
+
+FAILED (errors=1)

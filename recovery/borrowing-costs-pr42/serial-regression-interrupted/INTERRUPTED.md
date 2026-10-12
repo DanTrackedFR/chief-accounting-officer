@@ -1,0 +1,1 @@
+Serial regression intentionally stopped after three passing gates to use the latest main sharded canonical release runner. No final regression acceptance is claimed from this attempt. Orchestration did not complete.

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cao-semantic-proposal-v1",
+  "title": "Untrusted CAO structured proposal",
+  "description": "Structural wire schema. Deterministic ProposalValidator additionally enforces registry, dimensions, evidence, authority, source identities and conflicts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "objective",
+    "requested_output",
+    "primary_mode"
+  ],
+  "properties": {
+    "objective": {
+      "$ref": "#/$defs/claim"
+    },
+    "requested_output": {
+      "$ref": "#/$defs/claim"
+    },
+    "primary_mode": {
+      "$ref": "#/$defs/claim"
+    },
+    "secondary_modes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "supporting_modes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "periods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "jurisdictions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "classifications": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "column_mappings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fact"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "disputed_facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "missing_facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "context_candidates": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "bounded_owner": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/claim"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "interpreted_objective": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/claim"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "status",
+        "confidence",
+        "rationale"
+      ],
+      "properties": {
+        "value": {},
+        "status": {
+          "enum": [
+            "ASSUMED",
+            "CALCULATED",
+            "CONTEXT_DERIVED",
+            "DISPUTED",
+            "EXTRACTED",
+            "INFERRED",
+            "OBSERVED",
+            "UNRESOLVED",
+            "USER_STATED"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "family",
+        "attribute",
+        "claim"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{0,80}$"
+        },
+        "claim": {
+          "$ref": "#/$defs/claim"
+        },
+        "dimensions": {
+          "type": "object"
+        },
+        "candidate_owner": {
+          "type": "string"
+        },
+        "economic_id": {
+          "type": "string"
+        },
+        "extraction_method": {
+          "type": "string"
+        },
+        "confirmation_required": {
+          "type": "boolean"
+        },
+        "transformation": {
+          "enum": [
+            "identity",
+            "decimal",
+            "iso_date"
+          ]
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

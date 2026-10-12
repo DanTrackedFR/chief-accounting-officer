@@ -1,6 +1,6 @@
 # Public accounting output boundary
 
-No runnable CAO application, retrieval service or production renderer is present in this repository at the Phase 2E audit snapshot. `public_output.py` is an executable interface contract for future adapters. Its contract tests are runnable; production integration and runtime verification remain pending.
+At the Phase 2E audit snapshot this boundary was an executable future-adapter contract. The CAO Orchestration Foundation now integrates `public_record` in its runtime and public CLI; authored and independent tests exercise all seven routes. A full product UI and deployed retrieval service remain outside this foundation. See `orchestration/README.md` for supported scope and runtime verification.
 
 Every future route must call `public_record` before model context, retrieval, answers, citations, tool responses, user-visible logs or exports. Use curated guidance, public accounting caveats and period/scope fields. Never hand raw topic files, claim registers or provenance to a model that writes user answers. Unknown fields are excluded recursively; contaminated allowlisted text fails closed and must be curated without deleting accounting uncertainty.
 

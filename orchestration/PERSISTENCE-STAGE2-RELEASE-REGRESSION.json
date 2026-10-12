@@ -1,0 +1,262 @@
+{
+  "authority_invariants": {
+    "canonical_topics": 157,
+    "primary_capabilities": 347,
+    "standards_claims": 1598
+  },
+  "bounded_published_envelope_verification": {
+    "result": "PASS",
+    "sha256": "4b760860c99a907a7ff6ba25d1b439edae0b3d3067e6c9576166d94443c281af",
+    "stdout": "original canonical hash, native restore, exact roundtrip, CLOSED/public complete PASS\nresumed canonical hash, native restore, exact roundtrip, CLOSED/public complete PASS\nblocked-control.json lossless audit decode/hash PASS\nclosed-reopened-period.json lossless audit decode/hash PASS\ncorrected-interrupted-checkpoint.json lossless audit decode/hash PASS\ncurrent-journals-and-repeat.json lossless audit decode/hash PASS\noriginal-checkpoint.json lossless audit decode/hash PASS\nresumed-checkpoint.json lossless audit decode/hash PASS\nRecovered eleven-process summary validates; no new process-execution claim\nPASS\n",
+    "timeout_seconds": 120
+  },
+  "branch": "persistence/durable-rework-recovery",
+  "checkpoint_contract": 1,
+  "ci_log_sha256": "dc2ed6986a3203e5e506f0160a1ed5bec1d91420e3efcdd2af86aeda9c642b01",
+  "continuation_evidence": "Recovered local history and seed outputs preserved and published through an exact-tree transfer. Complete 2841-method exact-tree CI passes. The two lost local fresh seed attempts remain UNVERIFIED; no result is inferred for them.",
+  "deterministic_artifacts": {
+    "artifact_path": "orchestration/examples/durable-rework-recovery/",
+    "audit_envelope_digest_and_decode": "PASS (fresh decode/hash check)",
+    "byte_identical": true,
+    "execution_evidence": "Preserved seed19 reference artifacts and seed941 outputs match byte-for-byte and recorded SHA256 hashes. Lost fresh sessions have no verified result.",
+    "full_native_checkpoint_digest_and_restore": "PASS \u2014 published envelopes restored and canonical roundtrip verified; executable artifact test also passed in exact-tree CI",
+    "hash_seeds": [
+      19,
+      941
+    ],
+    "result": "PASS \u2014 preserved seed19/941 byte comparison and exact-tree CI reproduction",
+    "sha256": {
+      "blocked-control.json": "ada40af238c933956f87c51ee5d0264b4b1a9f49043beb9b1f526d6c80ad630d",
+      "closed-reopened-period.json": "57d89973313b73745e4daabb8f16427151a1aab6c02fe773330dd7611bc51e0b",
+      "corrected-interrupted-checkpoint.json": "84a63d2f85b1a6faf10f78b3f7d91b3f82d6f0571352a371a246e2cc78a05f7e",
+      "current-journals-and-repeat.json": "33b50c5912bfec08611ba6ac28bc5a1844f2b2e41046e7c6be60d298a4ed4927",
+      "full-native-checkpoints.json": "90c0b95c0006b812530551de1f2da22ffe2ab3f4f84a12386bb5e4de80714d76",
+      "original-checkpoint.json": "ed01d0d566f81d895b26b2537652b046d6c4d94eddb55c0276f5ae72e1c6c852",
+      "public-answer.json": "27d351e67005b5cbd6a54d8a9589073a9fe73b3139ab4b22385af9ef2f92e657",
+      "restart-recovery-proof.json": "28a889517afc970d4371a1461ae6e7ec2568186baa58183bd42d4b5bd7ed8631",
+      "resumed-checkpoint.json": "67cad16475ce351c748b27cf105379d60d809abe451bfda3165f9cc490225ab3"
+    }
+  },
+  "development_failed_runs": [
+    {
+      "failures": 3,
+      "remediation": "Actual missing-rework-history defect generically rejected; legal-layer fixture now selects an actual legal journal; stale release test executes prepare rather than asserting helper raises.",
+      "run": "initial 43 authored methods, 723.004s"
+    },
+    {
+      "failures": 3,
+      "remediation": "Run imported superseded edits; final corrected 100-method run PASS91.349s.",
+      "run": "superseded history targeted 100 methods, 99.788s"
+    },
+    {
+      "remediation": "Worker module explicit rather than __main__ entrypoint.",
+      "run": "artifact first launch"
+    },
+    {
+      "remediation": "Mixed parent/worker format refused; frozen final generator rerun in distinct processes.",
+      "run": "artifact generation during operation-format edits"
+    },
+    {
+      "remediation": "Predates final authored/state corrections; final discovery separately launched on intended production tree.",
+      "result": "Outcome not retained after prior stop",
+      "run": "superseded full discovery"
+    },
+    {
+      "remediation": "Lossless deterministic audit envelopes generated through unchanged native proof; both seeds and native checkpoint restoration pass.",
+      "result": "No branch advance; local commit 116fc872019fabf5e5fe63bd09755fdfd4b00835 preserved",
+      "run": "Oversized artifact blob publication"
+    }
+  ],
+  "distinct_tests": 2841,
+  "exact_head_ci": "Final immutable-head run links and SHA belong to PR39 metadata after freeze; no self-referential CI assertion.",
+  "fresh_execution_attempts": [
+    {
+      "command": "PYTHONHASHSEED=19 python -m unittest orchestration.tests.test_persistence_stage2_artifacts",
+      "result": "UNVERIFIED \u2014 session unavailable, empty log, no retained exit status",
+      "seed": 19
+    },
+    {
+      "command": "PYTHONHASHSEED=941 python -m unittest orchestration.tests.test_persistence_stage2_artifacts",
+      "result": "UNVERIFIED \u2014 session unavailable, empty log, no retained exit status",
+      "seed": 941
+    }
+  ],
+  "future_stages_implemented": false,
+  "historical_release_regression_evidence": {
+    "distinct_methods": 2840,
+    "head_sha": "76496ca9be19a3b7f2356c313c7bb91b9bfcc8c3",
+    "job_id": 113223938793,
+    "result": "PASS",
+    "run_id": 37751009909
+  },
+  "independent_qa": {
+    "author_discovered_history_defect": 1,
+    "report": "PERSISTENCE-STAGE2-INDEPENDENT-QA.md",
+    "result": "PASS",
+    "reviewer_methods": 21,
+    "separate_context_and_worktree": true,
+    "substantive_independent_findings": 3,
+    "unresolved": 0
+  },
+  "limitations": [
+    "Trusted local runtime; synthetic review, no authenticated human approval or encryption",
+    "Pure native deterministic units only; no side-effectful-owner replay authorization",
+    "Exactly-once internal qualified selection, no external ERP posting connector or posting guarantee",
+    "Uncertain external outcomes remain blocked for explicit reconciliation",
+    "Full native validation can be expensive"
+  ],
+  "migration_and_recovery": {
+    "closed_reopened_corrected_reclosed": true,
+    "controlled_exit": 73,
+    "fresh_processes": 11,
+    "native_journals": 8,
+    "ordinary_complete_closed": true,
+    "repeated_recovery_no_duplicate_economics": true,
+    "result": "PASS",
+    "schema1_to_schema2": "Exact byte-preserving transactional migration and rollback tests in complete discovery",
+    "unresolved_control": "PARTIAL"
+  },
+  "previous_flagships": {
+    "coverage": "Full orchestration discovery: Manufacturing, Diagnostic, Semantic/Data Intake, SaaS, Treasury, Group and all four multi-entity stages including accepted temporal roles.",
+    "result": "PASS"
+  },
+  "pull_request": 39,
+  "recovery_publication": {
+    "artifacts": "Nine complete lossless recovered references; no manual accounting output edits",
+    "excluded_unrelated_changes": "Stage1 generator and restart proof kept at remote bytes; prior local variations retained in preserved history",
+    "preservation_archive_sha256": "6eb0e6bd508f6c54ea14e4177ba938e2f57d1833db0bb270be7664792ed5e49e",
+    "preserved_local_head": "a95c0630e31d474bf598a52ee5f0e8a9892dd171",
+    "production_and_independent_qa_bytes": "Identical to accepted remote implementation",
+    "starting_remote_head": "76496ca9be19a3b7f2356c313c7bb91b9bfcc8c3",
+    "workspace_preservation": "Complete pre-reconciliation workspace including Git history, index and merge metadata archived before resolving index"
+  },
+  "release_regression_evidence": {
+    "distinct_methods": 2841,
+    "head_sha": "804147c476d81956d626b55222845a3e3eafe393",
+    "job_id": 113385840082,
+    "note": "All suites, supplemental validators, canonical approval validator, standards claims validator and whitespace completed successfully. Orchestration discovery includes the actual eleven-process generator/reference-envelope restoration method.",
+    "orchestration_seconds": 4017.021,
+    "result": "PASS",
+    "run_id": 37798987541,
+    "suite_method_counts": [
+      1190,
+      1180,
+      17,
+      53,
+      10,
+      12,
+      71,
+      35,
+      4,
+      7,
+      262
+    ],
+    "tree_sha": "89ba1b3005d35bdb2999a702d1842cd402c87139",
+    "url": "https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/37798987541"
+  },
+  "repository": "DanTrackedFR/chief-accounting-officer",
+  "reruns_and_subtests_not_added": true,
+  "schema_version": 2,
+  "stage": 2,
+  "stage1_methods_already_in_orchestration": 98,
+  "stage2_methods_already_in_orchestration": {
+    "authored": 47,
+    "deterministic_artifact": 1,
+    "independent": 21,
+    "total": 69
+  },
+  "starting_live_main": "d202e910e17de559d908df478939ce10042e41db",
+  "status": "SUBSTANTIVE IMPLEMENTATION AND RELEASE VALIDATION COMPLETE \u2014 SUBJECT TO OWNER INTEGRATION",
+  "suites": [
+    {
+      "category": "orchestration",
+      "command": "python -m unittest discover -s orchestration/tests -p 'test_*.py'",
+      "methods": 1190,
+      "result": "PASS",
+      "verified_methods": 1190
+    },
+    {
+      "category": "production skills",
+      "command": "python -m unittest discover -s skills/tests -p 'test_*.py'",
+      "methods": 1180,
+      "result": "PASS"
+    },
+    {
+      "category": "lease vertical",
+      "command": "python -m unittest discover -s skills/lease-accounting/tests -p 'test_*.py'",
+      "methods": 17,
+      "result": "PASS"
+    },
+    {
+      "category": "repository canonical/public",
+      "command": "python -m unittest discover -s tests -p 'test_*.py'",
+      "methods": 53,
+      "result": "PASS"
+    },
+    {
+      "category": "income tax",
+      "command": "python knowledge/income-taxes/test_supplement.py",
+      "methods": 10,
+      "result": "PASS"
+    },
+    {
+      "category": "agriculture",
+      "command": "python knowledge/agriculture/test_supplement.py",
+      "methods": 12,
+      "result": "PASS"
+    },
+    {
+      "category": "agriculture independent",
+      "command": "python knowledge/agriculture/test_independent_claim_qa.py",
+      "methods": 71,
+      "result": "PASS"
+    },
+    {
+      "category": "insurance",
+      "command": "python -m unittest discover -s knowledge/insurance-contracts -p 'test*.py'",
+      "methods": 35,
+      "result": "PASS"
+    },
+    {
+      "category": "derivatives",
+      "command": "python -m unittest discover -s knowledge/derivatives-hedge -p 'test*.py'",
+      "methods": 4,
+      "result": "PASS"
+    },
+    {
+      "category": "derivatives independent",
+      "command": "python knowledge/derivatives-hedge/independent_review_tests.py",
+      "methods": 7,
+      "result": "PASS"
+    },
+    {
+      "category": "inventory",
+      "command": "python -m unittest discover -s knowledge/inventory-cost -p 'test*.py'",
+      "methods": 262,
+      "result": "PASS"
+    }
+  ],
+  "targeted_reruns_not_added": {
+    "binding_2": "PASS",
+    "history_and_stage1_100": "PASS",
+    "migration_and_prepare_4": "PASS",
+    "outcome_2": "PASS",
+    "roadmap_diagnostic_32": "PASS",
+    "roadmap_insurance_35": "PASS",
+    "stage1_59": "PASS"
+  },
+  "tested_code_reference": {
+    "commit": "804147c476d81956d626b55222845a3e3eafe393",
+    "note": "Frozen production, permanent tests and all nine artifacts fully pass. Final documentation/witness-only publication is separately validated; final immutable-head Actions and SHA belong to PR metadata.",
+    "tree": "89ba1b3005d35bdb2999a702d1842cd402c87139"
+  },
+  "validators": {
+    "canonical_approvals": "PASS \u2014 157 approved canonical topics, 347 capabilities, 1598 claims; zero errors",
+    "git_diff_check": "PASS",
+    "roadmap_documentation_witness": "PASS \u2014 authorized roadmap witness refreshed; 90 existing insurance regression methods pass (rerun, not additional distinct methods)",
+    "standards_claims": "PASS \u2014 1598 claims, zero errors/warnings",
+    "supplemental_income_tax_agriculture_insurance_derivatives_inventory": "PASS"
+  },
+  "verified_distinct_tests": 2841,
+  "workstream": "Durable Case + Company Accounting Memory"
+}

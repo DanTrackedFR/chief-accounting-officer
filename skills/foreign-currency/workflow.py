@@ -12,7 +12,11 @@ def assess(c,claims):
     if flag(cur,'hyperinflation') or not flag(cur,'exchangeability') or flag(cur,'functional_change') or flag(cur,'net_investment_items'):
         raise ReviewRequired('Hyperinflation, exchangeability, currency changes or net investment need separate framework specialist method')
     if cur['ledger']!=cur['functional']:raise ReviewRequired('Full ledger-to-functional remeasurement must precede transaction/translation workflow')
-    unique(c['items']);entries=[];remeasure=ZERO;schedules=[]
+    if c['items']:
+        unique(c['items'])
+    elif not isinstance(c['items'],list) or c.get('translation',{}).get('enabled') is not True:
+        raise ReviewRequired('Empty transaction population requires an explicit foreign-operation translation')
+    entries=[];remeasure=ZERO;schedules=[]
     for x in c['items']:
         required(x,'type','side','account','foreign_amount','initial_rate','closing_rate','settled_foreign','settlement_rate',
           'initial_date','memo','opening_book','opening_route','opening_rate')
