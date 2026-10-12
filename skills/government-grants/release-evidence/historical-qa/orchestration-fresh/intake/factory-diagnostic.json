@@ -1,0 +1,831 @@
+[
+  {
+    "accounting_questions": [
+      {
+        "amount": "45000.00",
+        "id": "capacity-accounting",
+        "issue": "Fixed overhead under-recovery accounting",
+        "materiality": "1000",
+        "reason": "Significant normal-capacity expense warrants governed accounting treatment recheck",
+        "result_path": [
+          "manufacturing_expense"
+        ],
+        "source_evidence": [
+          "capacity"
+        ],
+        "status": "REQUIRES_OWNER",
+        "target_owner": "inventory-cost"
+      }
+    ],
+    "attribution_ledger": [
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "labour-direct"
+      ],
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "material-local-ex-FX"
+      ],
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "other-conversion-allocated"
+      ],
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "sales-A"
+      ],
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "sales-B"
+      ],
+      [
+        "Synthetic Group",
+        "USD",
+        [
+          "2026-12-01",
+          "2026-12-31"
+        ],
+        "unallocated-fixed-OH"
+      ]
+    ],
+    "bridge": {
+      "change": "-31304",
+      "comparator_kind": "actual",
+      "comparator_version": "actual-v1",
+      "drivers": [
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-16666.66666666666666666666667",
+          "evidence_class": "bridge_attribution",
+          "id": "sales-volume",
+          "label": "Sales volume",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-A"
+              ],
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-B"
+              ]
+            ],
+            "effect": "volume",
+            "entity": "Synthetic Group",
+            "method": "price_volume_mix",
+            "native_component_allocation": null,
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "sales",
+            "source_metric": "period_revenue",
+            "source_owner": "revenue-recognition",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-833.333333333333333333333329",
+          "evidence_class": "bridge_attribution",
+          "id": "sales-mix",
+          "label": "Product mix",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-A"
+              ],
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-B"
+              ]
+            ],
+            "effect": "mix",
+            "entity": "Synthetic Group",
+            "method": "price_volume_mix",
+            "native_component_allocation": null,
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "sales",
+            "source_metric": "period_revenue",
+            "source_owner": "revenue-recognition",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "7500",
+          "evidence_class": "bridge_attribution",
+          "id": "sales-price",
+          "label": "Selling price",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-A"
+              ],
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "sales-B"
+              ]
+            ],
+            "effect": "price",
+            "entity": "Synthetic Group",
+            "method": "price_volume_mix",
+            "native_component_allocation": null,
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "sales",
+            "source_metric": "period_revenue",
+            "source_owner": "revenue-recognition",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-20",
+          "evidence_class": "bridge_attribution",
+          "id": "material-quantity",
+          "label": "Material usage",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "material-local-ex-FX"
+              ]
+            ],
+            "effect": "quantity",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": {
+              "components": [
+                {
+                  "amount": "600",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "material"
+                  ]
+                }
+              ],
+              "denominator": {
+                "amount": "56520",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "order-1",
+                  "actual_eligible_total"
+                ]
+              },
+              "numerator": {
+                "amount": "11304",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "cogs"
+                ]
+              }
+            },
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "material",
+            "source_metric": "cogs material excluding FX",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-0",
+          "evidence_class": "bridge_attribution",
+          "id": "material-rate",
+          "label": "Material input price",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "material-local-ex-FX"
+              ]
+            ],
+            "effect": "rate",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": {
+              "components": [
+                {
+                  "amount": "600",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "material"
+                  ]
+                }
+              ],
+              "denominator": {
+                "amount": "56520",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "order-1",
+                  "actual_eligible_total"
+                ]
+              },
+              "numerator": {
+                "amount": "11304",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "cogs"
+                ]
+              }
+            },
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "material",
+            "source_metric": "cogs material excluding FX",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-0",
+          "evidence_class": "bridge_attribution",
+          "id": "labour-quantity",
+          "label": "Labour hours/efficiency attribution",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "labour-direct"
+              ]
+            ],
+            "effect": "quantity",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": {
+              "components": [
+                {
+                  "amount": "10800",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "direct_labour"
+                  ]
+                }
+              ],
+              "denominator": {
+                "amount": "56520",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "order-1",
+                  "actual_eligible_total"
+                ]
+              },
+              "numerator": {
+                "amount": "11304",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "cogs"
+                ]
+              }
+            },
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "labour",
+            "source_metric": "cogs labour",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "-160",
+          "evidence_class": "bridge_attribution",
+          "id": "labour-rate",
+          "label": "Labour rate",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "labour-direct"
+              ]
+            ],
+            "effect": "rate",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": {
+              "components": [
+                {
+                  "amount": "10800",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "direct_labour"
+                  ]
+                }
+              ],
+              "denominator": {
+                "amount": "56520",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "order-1",
+                  "actual_eligible_total"
+                ]
+              },
+              "numerator": {
+                "amount": "11304",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "cogs"
+                ]
+              }
+            },
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "labour",
+            "source_metric": "cogs labour",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "economic",
+          "confidence": "high",
+          "contribution": "3876",
+          "evidence_class": "bridge_attribution",
+          "id": "other-cost-movement",
+          "label": "Other identified conversion-cost reduction",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "other-conversion-allocated"
+              ]
+            ],
+            "effect": "movement",
+            "entity": "Synthetic Group",
+            "method": "source_flux",
+            "native_component_allocation": {
+              "components": [
+                {
+                  "amount": "45000",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "absorbed_fixed"
+                  ]
+                },
+                {
+                  "amount": "120",
+                  "owner_import": "inventory-owner",
+                  "result_path": [
+                    "order-1",
+                    "variable_overhead"
+                  ]
+                }
+              ],
+              "denominator": {
+                "amount": "56520",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "order-1",
+                  "actual_eligible_total"
+                ]
+              },
+              "numerator": {
+                "amount": "11304",
+                "owner_import": "inventory-owner",
+                "result_path": [
+                  "cogs"
+                ]
+              }
+            },
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "other-cost",
+            "source_metric": "remaining COGS: 9000 fixed absorption plus 24 variable overhead",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "mixed",
+          "confidence": "high",
+          "contribution": "-20000.00",
+          "evidence_class": "bridge_attribution",
+          "id": "capacity-quantity",
+          "label": "Fixed overhead capacity contribution",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "unallocated-fixed-OH"
+              ]
+            ],
+            "effect": "quantity",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": null,
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "capacity",
+            "source_metric": "manufacturing_expense",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        },
+        {
+          "category": "mixed",
+          "confidence": "high",
+          "contribution": "-5000.0",
+          "evidence_class": "bridge_attribution",
+          "id": "capacity-rate",
+          "label": "Fixed overhead spending contribution",
+          "lineage": {
+            "comparator": {
+              "doc": "diagnostic-prior",
+              "frozen_on": "2026-11-30",
+              "kind": "actual",
+              "period": [
+                "2026-11-01",
+                "2026-11-30"
+              ],
+              "version": "actual-v1"
+            },
+            "currency": "USD",
+            "economic_components": [
+              [
+                "Synthetic Group",
+                "USD",
+                [
+                  "2026-12-01",
+                  "2026-12-31"
+                ],
+                "unallocated-fixed-OH"
+              ]
+            ],
+            "effect": "rate",
+            "entity": "Synthetic Group",
+            "method": "rate_quantity",
+            "native_component_allocation": null,
+            "period": [
+              "2026-12-01",
+              "2026-12-31"
+            ],
+            "source_doc": "capacity",
+            "source_metric": "manufacturing_expense",
+            "source_owner": "inventory-cost",
+            "unit": "USD"
+          },
+          "status": "SUPPORTED"
+        }
+      ],
+      "ending": "-16304",
+      "explained_amount": "-31304.00000000000000000000000",
+      "explained_percent": "100.00000000000000000000000",
+      "margin_points": {
+        "convention": "driver GP contributions/current revenue; separate baseline-GP denominator effect",
+        "denominator_effect": "7.500000",
+        "drivers": [
+          {
+            "contribution": "-41.66666666666666666666666668",
+            "id": "sales-volume",
+            "label": "Sales volume"
+          },
+          {
+            "contribution": "-2.083333333333333333333333322",
+            "id": "sales-mix",
+            "label": "Product mix"
+          },
+          {
+            "contribution": "18.7500",
+            "id": "sales-price",
+            "label": "Selling price"
+          },
+          {
+            "contribution": "-0.0500",
+            "id": "material-quantity",
+            "label": "Material usage"
+          },
+          {
+            "contribution": "-0E+2",
+            "id": "material-rate",
+            "label": "Material input price"
+          },
+          {
+            "contribution": "-0E+2",
+            "id": "labour-quantity",
+            "label": "Labour hours/efficiency attribution"
+          },
+          {
+            "contribution": "-0.400",
+            "id": "labour-rate",
+            "label": "Labour rate"
+          },
+          {
+            "contribution": "9.6900",
+            "id": "other-cost-movement",
+            "label": "Other identified conversion-cost reduction"
+          },
+          {
+            "contribution": "-50.0",
+            "id": "capacity-quantity",
+            "label": "Fixed overhead capacity contribution"
+          },
+          {
+            "contribution": "-12.500",
+            "id": "capacity-rate",
+            "label": "Fixed overhead spending contribution"
+          }
+        ],
+        "ending": "-40.7600",
+        "residual": "0E-21",
+        "starting": "30.0"
+      },
+      "materiality": "1000",
+      "metric": "gross_profit",
+      "presentation_basis": "inventory_relief_and_manufacturing_expense",
+      "residual": "0E-23",
+      "starting": "15000",
+      "status": "RECONCILED",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "hypotheses": [
+      {
+        "confidence": "medium",
+        "disposition": "SUPPORTED",
+        "evidence": [
+          "capacity"
+        ],
+        "evidence_class": "bridge_attribution",
+        "hypothesis": "Higher unallocated fixed overhead explains part of the deterioration",
+        "id": "capacity",
+        "observation": "Gross profit deteriorated"
+      }
+    ],
+    "methods": [
+      {
+        "baseline": "supplied comparator",
+        "group": "sales",
+        "interaction": "current quantity price effect",
+        "method": "price_volume_mix",
+        "sign": 1
+      },
+      {
+        "baseline": "supplied comparator",
+        "group": "material",
+        "interaction": "current quantity rate effect",
+        "method": "rate_quantity",
+        "sign": -1
+      },
+      {
+        "baseline": "supplied comparator",
+        "group": "labour",
+        "interaction": "current quantity rate effect",
+        "method": "rate_quantity",
+        "sign": -1
+      },
+      {
+        "baseline": "supplied comparator",
+        "group": "other-cost",
+        "interaction": "none",
+        "method": "source_flux",
+        "sign": -1
+      },
+      {
+        "baseline": "supplied comparator",
+        "group": "capacity",
+        "interaction": "current quantity rate effect",
+        "method": "rate_quantity",
+        "sign": -1
+      }
+    ],
+    "observations": [
+      {
+        "confidence": "medium",
+        "observation": "Observed change 25000",
+        "question": "Inspect production capacity and the completed normal-capacity accounting workpaper",
+        "required_evidence": [
+          "capacity"
+        ],
+        "status": "OBSERVATION_ONLY"
+      }
+    ],
+    "open_items": []
+  }
+]

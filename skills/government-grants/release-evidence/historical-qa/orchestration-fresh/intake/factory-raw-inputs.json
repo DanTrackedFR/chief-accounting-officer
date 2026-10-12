@@ -1,0 +1,270 @@
+[
+  {
+    "format": "csv",
+    "id": "pnl",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "December management.csv",
+    "payload": "metric,amount\nrevenue,40000\ncogs,11304\nunallocated_overhead,45000\ngross_profit,-16304\nfactory_labour,11000\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "normalized_workbook",
+    "id": "production",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "final_final_v7.xlsx",
+    "payload": {
+      "sheets": [
+        {
+          "name": "Stock",
+          "rows": [
+            {
+              "closing_cost": "510",
+              "record_id": "RM"
+            },
+            {
+              "closing_cost": "11304",
+              "record_id": "WIP"
+            },
+            {
+              "closing_cost": "33912",
+              "record_id": "FG"
+            }
+          ]
+        },
+        {
+          "name": "Production",
+          "rows": [
+            {
+              "actual_output": "100",
+              "fixed_overhead": "90000",
+              "normal_capacity": "200",
+              "record_id": "order-1"
+            }
+          ]
+        }
+      ]
+    },
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "payroll",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Pay export.csv",
+    "payload": "employee_id,gross_pay,rate,units,expected_charge,factory_labour\nE01,10000,200,50,10800,10800\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "tsv",
+    "id": "ap",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Accrual export.tsv",
+    "payload": "supplier\tamount\tunits\tunit_price\nS1\t120\t12\t10\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "assets",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Asset register.json",
+    "payload": [
+      {
+        "expected_depreciation": "90000",
+        "opening_cost": "600000",
+        "period_units": "100",
+        "record_id": "machine"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "fx",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "FX export.csv",
+    "payload": "record_id,foreign_amount,initial_rate,opening_book\ninventory-purchase,100,1.10,110\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "json",
+    "id": "close",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Close evidence.json",
+    "payload": [
+      {
+        "control_threshold": "10",
+        "duration": "2",
+        "finished_goods": "33912.00",
+        "interface_balance": "45726.00",
+        "ppe": "600000",
+        "profit": "-16304.00",
+        "record_id": "ap"
+      }
+    ],
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "billing",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "Billing.csv",
+    "payload": "product_id,ssp,delivered_units\ndelivery,40000,20\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "csv",
+    "id": "prior",
+    "metadata": {
+      "as_of": "2026-11-30",
+      "comparator": "prior_actual",
+      "controlled_export": true,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-11-01",
+        "2026-11-30"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "November actual.csv",
+    "payload": "metric,amount\ngross_profit,15000\n",
+    "raw_ref": ""
+  },
+  {
+    "format": "markdown",
+    "id": "commentary",
+    "metadata": {
+      "as_of": "2026-12-31",
+      "comparator": "actual",
+      "controlled_export": false,
+      "currency": "USD",
+      "entity": "Synthetic Group",
+      "extracted_at": "2027-01-02",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled export",
+      "version": "v1"
+    },
+    "mime": "",
+    "name": "CEO notes.md",
+    "payload": "FX is the main reason margin is down.\n\nThis inventory should all be capitalized.",
+    "raw_ref": ""
+  }
+]

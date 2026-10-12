@@ -1,0 +1,618 @@
+{
+  "account_source": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "evidence": "synthetic source",
+    "extract_version": "v1",
+    "id": "original-account-register",
+    "inventory": [
+      "cash-metric"
+    ],
+    "owner": "synthetic owner",
+    "population_memo": "Independent original source control population, not inferred from tracker",
+    "records": [
+      {
+        "account": "cash",
+        "amount": "120",
+        "approval_date": "2026-12-31",
+        "approved": true,
+        "approved_version": "v1",
+        "currency": "USD",
+        "current_source_doc": "current-books",
+        "evidence": "synthetic source",
+        "id": "cash-metric",
+        "lineage_memo": "Exact controlled books/report lineage",
+        "management_amount": "120",
+        "metric": "account_balance",
+        "owner": "synthetic owner",
+        "prior_source_doc": "prior-books",
+        "reviewer": "synthetic independent reviewer",
+        "source_entity": "Synthetic Group",
+        "source_framework": "UK_GAAP",
+        "source_period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "version": "v1"
+      }
+    ],
+    "reviewer": "synthetic independent reviewer",
+    "source_entity": "Synthetic Group",
+    "source_framework": "UK_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "accounting_policy": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "effective_standard": "Actual effective edition reviewed",
+    "entity_scope": "for_profit",
+    "evidence": "synthetic source",
+    "framework": "UK_GAAP",
+    "id": "governance-policy",
+    "method_memo": "Synthetic reviewed operative method",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "version": "v1"
+  },
+  "accounts": [
+    {
+      "account": "cash",
+      "amount": "120",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "currency": "USD",
+      "current_source_doc": "current-books",
+      "evidence": "synthetic source",
+      "id": "cash-metric",
+      "lineage_memo": "Exact controlled books/report lineage",
+      "management_amount": "120",
+      "metric": "account_balance",
+      "owner": "synthetic owner",
+      "prior_source_doc": "prior-books",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    }
+  ],
+  "applicability_review": {
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": [],
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "selected effective edition"
+    ]
+  },
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "bridge_inventory": [],
+  "bridge_items": [],
+  "case_id": "synthetic-management-accounting-analytics",
+  "controls": {
+    "as_of": "2026-12-31",
+    "complete": true,
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence",
+    "owner": "synthetic source owner",
+    "policy_version": "v1",
+    "population_amount": "120",
+    "population_count": 1,
+    "reviewer": "synthetic independent completeness reviewer",
+    "source_version": "v1"
+  },
+  "diagnostic": null,
+  "disclosure_review": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "complete": true,
+    "evidence": "synthetic source",
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "period_entity_memo": "Actual bounded management scope review",
+    "reviewer": "synthetic independent reviewer",
+    "version": "v1"
+  },
+  "document_inventory": [
+    "current-books",
+    "prior-books",
+    "actual-drivers",
+    "reconciliation-source"
+  ],
+  "documents": [
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "account": "cash",
+        "currency": "USD",
+        "gross_amount": "120",
+        "inventory": [
+          "cash-line"
+        ],
+        "management_amount": "120",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "posted_only": true,
+        "records": [
+          {
+            "account": "cash",
+            "amount": "120",
+            "id": "cash-line"
+          }
+        ],
+        "signed_convention": "Signed ledger debit positive",
+        "statutory_amount": "120"
+      },
+      "content_hash": "08d0a0a6383dd8bae6942a4d99868717c9f292c231f85e73e3a0eab4ec74ac85",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "current-books",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "account": "cash",
+        "currency": "USD",
+        "gross_amount": "100",
+        "inventory": [
+          "cash-line"
+        ],
+        "management_amount": "100",
+        "period": [
+          "2025-01-01",
+          "2025-12-31"
+        ],
+        "posted_only": true,
+        "records": [
+          {
+            "account": "cash",
+            "amount": "100",
+            "id": "cash-line"
+          }
+        ],
+        "signed_convention": "Signed ledger debit positive",
+        "statutory_amount": "100"
+      },
+      "content_hash": "d0861c9f9826b67a31a32e0ec0ecabc8495c7a7f8032d827ca10613326ac0235",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "prior-books",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "account": "cash",
+        "driver_inventory": [
+          "actual-receipt"
+        ],
+        "drivers": [
+          {
+            "amount": "20",
+            "id": "actual-receipt"
+          }
+        ],
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "content_hash": "d85a05b29e80a3abe23ccb743cae9ce823530ec311c128223de9dd2877dcd77d",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "actual-drivers",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "inventory": [
+          "cash-rec"
+        ],
+        "records": [
+          {
+            "amount": "120",
+            "completed_on": "2027-01-04",
+            "due_date": "2027-01-05",
+            "id": "cash-rec",
+            "material": true
+          }
+        ]
+      },
+      "content_hash": "47f80b38d118c8c7f0df2b5cc77e7a626e2938b67e1d9fad54eb6a0f0009636f",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "reconciliation-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    }
+  ],
+  "entity": "Synthetic Group",
+  "entity_type": "for_profit",
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "execution_date": "2027-03-31",
+  "explanation_inventory": [
+    "cash-driver"
+  ],
+  "explanations": [
+    {
+      "account": "cash",
+      "amount": "20",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "driver_doc": "actual-drivers",
+      "evidence": "synthetic source",
+      "id": "cash-driver",
+      "interpretation_memo": "Management interpretation is qualified; actual receipt is supplied fact",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    }
+  ],
+  "framework": "UK_GAAP",
+  "gl": [],
+  "gl_inventory": [],
+  "governance_method": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "audit_adjustments_requested": false,
+    "audit_opinion": false,
+    "auditor_independence_determined": false,
+    "auditor_signoff_requested": false,
+    "authority_override": false,
+    "automatic_gl_correction": false,
+    "autonomous_policy_selection": false,
+    "benchmark_requested": false,
+    "boundary_memo": "All forbidden claims excluded",
+    "budgeting": false,
+    "checked_on": "2027-03-31",
+    "commercial_planning": false,
+    "comparative_change_requested": false,
+    "comparison_basis": "prior_year_calendar_balance",
+    "compliance_certification": false,
+    "confirmation_control_requested": false,
+    "currency": "USD",
+    "current_requirements_memo": "Actual separately qualified current case scope",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "effective_standard": "Actual effective edition reviewed",
+    "entity": "Synthetic Group",
+    "entity_scope": "for_profit",
+    "evidence": "synthetic source",
+    "evidence_sufficiency_asserted": false,
+    "filing_mechanics": false,
+    "filing_requested": false,
+    "forecast_requested": false,
+    "forecasting": false,
+    "framework": "UK_GAAP",
+    "generic_bi": false,
+    "id": "method",
+    "invented_citations": false,
+    "investment_analysis": false,
+    "ipo_timing_prediction": false,
+    "jurisdiction": "NL",
+    "kpi": "on_time_reconciliation_rate",
+    "legal_certification": false,
+    "manufactured_explanations": false,
+    "method_memo": "Synthetic reviewed operative method",
+    "metric_dictionary": "Only account balance and on-time reconciliation rate",
+    "overwrite_history": false,
+    "owner": "synthetic owner",
+    "posting_requested": false,
+    "prior_year_rollforward_only": false,
+    "qualification_memo": "Actual experienced independent reviewer",
+    "reconciliation_source_doc": "reconciliation-source",
+    "regulatory_compliance": false,
+    "resolved": true,
+    "reviewer": "synthetic independent reviewer",
+    "scope_memo": "Actual independently bounded management workpaper",
+    "score_requested": false,
+    "sec_status_determination": false,
+    "signed_convention": "Signed ledger debit positive",
+    "target": "Bounded management governance",
+    "threshold_memo": "All nonzero movements require evidence; no arbitrary industry threshold",
+    "transition_calculation_requested": false,
+    "universal_checklist": false,
+    "version": "v1"
+  },
+  "imports": [],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "jurisdiction": "NL",
+  "knowledge_review": {
+    "applied_claim_ids": [],
+    "claim_ids": [
+      "TOPIC-08-008-UK-001",
+      "TOPIC-08-008-UK_GAAP-R003",
+      "TOPIC-02-008-UK_GAAP-E01"
+    ],
+    "documents": [
+      {
+        "path": "knowledge/phase-2e/reviews/TOPIC-08-008.json",
+        "sha256": "cb28f145a82a299d1d80110b955b30cb561d619b0610b1cf0887fb6f32f922d1",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/README.md",
+        "sha256": "ed3c43bf94f33b72811f1bbc9e1d5e88708877e773b2625d411afe59b9e98f12",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/entity-filing-and-adjustment-register.md",
+        "sha256": "38e032cae9a395611452b206036e26e5e7b1a3a20e2c33edcce7112586a85727",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/evidence-and-regression.md",
+        "sha256": "7cfc2196d67bb4482c76099183a6451392fc811b4a1fa87f5620ca6d0b10b766",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/statutory-bridge-case.md",
+        "sha256": "056927d06ffcb6830743ad12605dcdacec4aff56a175fff08ed17770203df3d4",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-08-008-statutory-reporting-bridge/standards-claims.json",
+        "sha256": "409b8d4efd830a94f2699896cd014a99eaa46446f0196271c5e461a9c1cd8e7f",
+        "topic_id": "TOPIC-08-008"
+      },
+      {
+        "path": "knowledge/phase-2e/reviews/TOPIC-02-008.json",
+        "sha256": "23faa1e5865556525f7d41e6664b61656f0fd2dcf8e2b7f44ac71e674ef7b10d",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-close-variance-post-close/README.md",
+        "sha256": "8c7f944e68eca4ecc92eea383059c19e79b2b2f4b9cc2c2df7b57898f9653f81",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/README.md",
+        "sha256": "0731f6205bd32448d1fe813645a7d71f9964f3a169e2122cb205c3f0578c2d5d",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/canonical-sources.md",
+        "sha256": "2c2ac856e2491ad2a523d094fc06622a9907c4dea632572b422d31ebce0620bd",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/factory.md",
+        "sha256": "cc981fe43f49d76b6da4d6ad88e5dde07a8e7b36a339a3aa83eba895deb5945f",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/methods/flux-and-reopen-decision.md",
+        "sha256": "d86522e26135628d1af54ae24da7381f826491b6469aa3a167dc0921a699257e",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/tests/phase-2d-worker-scenarios.md",
+        "sha256": "0ada564bd30f4babb8f67c30bc711a24a69d89032b7804cb2c314936a7742a45",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-02-008-flux-post-close/standards-claims.json",
+        "sha256": "42e49d9f9b1654c35bfa95be916e6d6166c8b9e0222e8137c6dec484d888b8e4",
+        "topic_id": "TOPIC-02-008"
+      },
+      {
+        "path": "knowledge/phase-2e/reviews/TOPIC-01-005.json",
+        "sha256": "fa016cb51aefadc891dff0ee327966f869f584558cff1e30e5c9e210576645e7",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/README.md",
+        "sha256": "f1e83331e102ebfefb498fff0978d67ea456632e21bdd89c0c87d413eda0845e",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/methods/metric-specification.md",
+        "sha256": "400b4cc28d061f4e027b73880e6d0d3cd79dfe6c4fde1a52327814c3d887c3cb",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/phase-2d-completion.md",
+        "sha256": "d3b6f2bc19fdda9e36b2e4c13b79c454629171d4f7526dc41073fe03bd803d53",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/tests/phase-2d-worker-scenarios.md",
+        "sha256": "640fcf9927a6f1a95cb96075e2a316a5cf4d2882108b48a4a2d36da50247d45d",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-01-005-accounting-kpi-governance-calendar/standards-claims.json",
+        "sha256": "caa6ba398ed30b270a03100ec60a70c5c5fd9c53a54851685f7fc98d7e4aad3d",
+        "topic_id": "TOPIC-01-005"
+      },
+      {
+        "path": "knowledge/phase-2e/reviews/TOPIC-11-008.json",
+        "sha256": "f2f285ee51f9e1ad4282d15e71d6e218ec3e364b6022f677da40eb2a558c653a",
+        "topic_id": "TOPIC-11-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/README.md",
+        "sha256": "e1aa99bda18112766fb85bffba3942955a57293d0742a8f0608b9a4feaa62b32",
+        "topic_id": "TOPIC-11-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/methods/reporting-contract.md",
+        "sha256": "eedcb4f24800eea9c1724d1f2291f11f79892c811966275fe1f7fab1f4edacef",
+        "topic_id": "TOPIC-11-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/practice/warehouse-reporting.md",
+        "sha256": "e8e551bc76eef9b15ea1c0fd5a27408debec2a29390b89a48f61bf01e0e0e1e5",
+        "topic_id": "TOPIC-11-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/tests/phase-2d-worker-scenarios.md",
+        "sha256": "11133f3fe1a421293841dc43e78a7da32ee511586565b128f5ecec77a204343a",
+        "topic_id": "TOPIC-11-008"
+      },
+      {
+        "path": "knowledge/topics/TOPIC-11-008-data-warehouse-reporting-layer/standards-claims.json",
+        "sha256": "4d616cd4e9aedc7d6c4605971466e02121ece7b32a3faaa585c20c005e458124",
+        "topic_id": "TOPIC-11-008"
+      }
+    ],
+    "public_caveats": [
+      "Management governance workpaper only; underlying accounting and current actual jurisdictional requirements remain separately qualified."
+    ],
+    "reviewer": "Synthetic independent knowledge reviewer",
+    "selection_memo": "Approved practice workflow; normative/auditor claims reviewed as context, no universal recognition or auditor obligation asserted"
+  },
+  "package": "management-accounting-analytics",
+  "period_start": "2026-01-01",
+  "policy_elections": {
+    "financial_instruments": "sections11_12",
+    "section23_model": "revised_2026"
+  },
+  "preparer": "synthetic preparer",
+  "reconciliation_inventory": [
+    "cash-rec"
+  ],
+  "reconciliations": [
+    {
+      "amount": "120",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "completed_on": "2027-01-04",
+      "due_date": "2027-01-05",
+      "evidence": "synthetic source",
+      "id": "cash-rec",
+      "material": true,
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "UK_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    }
+  ],
+  "release_review": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "evidence": "synthetic source",
+    "id": "release",
+    "owner": "synthetic owner",
+    "payload_fingerprint": "2132fe239072fef9600f2405d9e8be35e9cde323cff19093d68cb48db7b3e303",
+    "review_memo": "Independent exact source/artifact release review",
+    "reviewer": "synthetic independent reviewer",
+    "source_entity": "Synthetic Group",
+    "source_framework": "UK_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "reporting_period": "2026-12-31",
+  "requested_action": "workpaper",
+  "source_inventory": [
+    "cash-metric"
+  ],
+  "specialist_items": [],
+  "uk_standard": "FRS_102",
+  "uk_standard_edition": "September2024"
+}

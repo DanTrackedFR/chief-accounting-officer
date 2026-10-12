@@ -10,3 +10,7 @@ build4/release/attempt-003/0-module-50.log binary
 # Preserve verbatim interrupted/recovered release logs, including partial lines.
 build4/release/pr42-final-00*/**/*.log -whitespace
 recovery/borrowing-costs-pr42/ci-97e-*.log -whitespace
+
+# Preserve exact Grants release stdout, including unfinished progress lines.
+build4/release/grants-pr27-attempt-001/*.log whitespace=-blank-at-eol
+build4/release/grants-pr27-attempt-002/*.log whitespace=-blank-at-eol

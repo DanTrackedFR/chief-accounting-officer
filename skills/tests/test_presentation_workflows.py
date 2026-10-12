@@ -257,6 +257,21 @@ class PresentationTests(unittest.TestCase):
                 if p=='borrowing-costs':
                     # Preserve original 0.1.0 snapshots; their CIP-only cases still block.
                     self.assertIn('blocked',historical['guidance']);self.assertEqual([],r['journal_entry_implications']);self.assertEqual({},r['calculations'])
+                elif p=='government-grants':
+                    # Immutable0.1.0 cases lack the newly required qualified review.
+                    # Permit only this exact governed topic/reason/handoff transition.
+                    old_reason='No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required'
+                    new_reason='Missing required facts: knowledge_review'
+                    old_handoff='Approved substantive framework-specific grant knowledge and actual agreements/compliance evidence'
+                    new_handoff='Approved framework-specific grant knowledge and actual agreements, cost-owner, compliance and policy evidence'
+                    self.assertNotIn('knowledge_review',c)
+                    self.assertEqual([],r['journal_entry_implications']);self.assertEqual({},r['calculations'])
+                    self.assertEqual('unmapped',historical['topic_id'])
+                    self.assertEqual([old_reason],historical['limitations']);self.assertEqual([old_reason],historical['uncertainties'])
+                    self.assertEqual(1,historical['guidance'].count(old_reason));self.assertEqual(1,historical['guidance'].count(old_handoff))
+                    current_expected=dict(historical,topic_id='SUPPLEMENTAL_GOVERNMENT_GRANTS',limitations=[new_reason],uncertainties=[new_reason])
+                    current_expected['guidance']=historical['guidance'].replace(old_reason,new_reason,1).replace(old_handoff,new_handoff,1)
+                    self.assertEqual(current_expected,json.loads(json.dumps(to_public(r),default=serializable)))
                 else:self.assertEqual(json.loads(json.dumps(to_public(r),default=serializable)),historical)
                 cli=subprocess.run([sys.executable,str(root/'skills/run_skill.py'),p,str(reference_path(path))],capture_output=True,text=True,check=True);self.assertEqual(json.loads(cli.stdout),json.loads(json.dumps(to_public(r),default=serializable)))
                 if p in PACKAGES:

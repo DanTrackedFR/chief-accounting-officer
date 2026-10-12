@@ -1,0 +1,741 @@
+[
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "e51ed248bef573901dafff6b54f6ad0eb609b2e293c0bc90234a342eb74247bb",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "revenue-recognition",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "result_fingerprint": "66014ab52ddb9d45bef5bcd46a016d1a7d6e21175f0ee70b6b8b59e47074263b",
+      "result_version": "version:cbd188b9de3553aed7262350a80348bb0a5ba5ca56217c06a9f82c92b8e0c8db",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+    "issue": "customer_contract",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "revenue-recognition",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "customer_contract",
+      "enforceable_rights",
+      "performance_obligations",
+      "transaction_price",
+      "variable_consideration",
+      "recognition_pattern",
+      "reporting_period"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "revenue-recognition",
+    "source_inputs": [
+      "customer_contract"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
+    ],
+    "downstream_consumers": [
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "2286bf8add25f34d59621cb2c5d88c980af1c9f773b36d2198ff827a41fbb0e9",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "accounts-receivable",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "result_fingerprint": "6dc08d6819eb0d64dde11e882bf9f4666e97d4e8c9affd9861fc1c528e17a99e",
+      "result_version": "version:3ed9d935d5aafb40515a0b5978d78463f0aea6e0b4dfb820411aaede72df15dd",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+    "issue": "receivable_population",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "accounts-receivable",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "accounts-receivable",
+    "source_inputs": [
+      "receivable_population"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b"
+    ],
+    "downstream_consumers": [
+      "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "68e9ecc7f0b9559e59df4279cef226c4b2389106ab3e31a12d7426e8da606858",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-instruments-ecl",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "result_fingerprint": "c1f425e1a416a1f1d47229f77ad839a7c6f4cc44aae305888a5ad02e7081bb12",
+      "result_version": "version:bdb5737aa67adae4e9612d24695ac686f215ae33941b2d8156029fe709590bfa",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+    "issue": "credit_exposure",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "financial-instruments-ecl",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "accounts-receivable"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "instrument_type",
+      "business_model",
+      "contractual_cash_flows",
+      "carrying_amount",
+      "framework",
+      "reporting_period",
+      "exposure_data",
+      "credit_risk_evidence"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "financial-instruments-ecl",
+    "source_inputs": [
+      "credit_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [
+      "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "99fa27e9f50b75feb8f1ac9fbdd1cc6614af48c1ca6cfcfd3c44402a1dadbeac",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "foreign-currency",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+      "result_fingerprint": "6ba2ea3e0dcca43af17bbdb9bdfcc153ec2411304a4cdd8643a7c0e2fbfdbb31",
+      "result_version": "version:792d9a1dae452425f062ddb9173be4af14f566b98bf9f5473076d08e2c4e393d",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f",
+    "issue": "currency_exposure",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "foreign-currency",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "foreign-currency",
+    "source_inputs": [
+      "currency_exposure"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "ce4bf331d78b14f41818536a3a1536caacb05ae4d2523b5892d8694d469fe0ba",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "balance-sheet-reconciliations",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+      "result_fingerprint": "08badb3424c8137dc5886a681acd4b46823f1e5031734e946c43d2c4fb3fa183",
+      "result_version": "version:73fcd6b4e525d5e31e88d2d3e219de43054970c376953865c9f008d6595df78c",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:balance-sheet-reconciliations:Synthetic Group:dc691875a167b02f89f0fcf3a58826022341a11d6eb9049aafe4c2ee2261084b",
+    "issue": "reconciliation",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "balance-sheet-reconciliations",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "balance-sheet-reconciliations",
+    "source_inputs": [
+      "reconciliation"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "13421dce59c1bf6dfab9642cce3d19962ece41f629e3d2e60de49380df6c6489",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "month-end-close",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+      "result_fingerprint": "1189a38bd282bce28b0b716d80ee89c2d240a6da86df86d90df4e0b18ace39b9",
+      "result_version": "version:62c3a761a1fd8906e0a2941664fc7f9290a4d6fa4979af5997fb96edcfa454a8",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:month-end-close:Synthetic Group:addfb3759d9189226596fae84aaf94af6ff92b3d3f987d80a026f4348393ceec",
+    "issue": "close_calendar",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "month-end-close",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "entity_type",
+      "jurisdiction",
+      "framework",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "policy_elections",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "controls",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "month-end-close",
+    "source_inputs": [
+      "close_calendar"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
+    ],
+    "downstream_consumers": [
+      "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "b959c38d3846dc0d0caa17175f35b4351246c93cb91a8967abb4ef3e65b480da",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-statements",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "result_fingerprint": "71a373bdd574a807589140e16870a530f25f9883333e4093762248680d3e354c",
+      "result_version": "version:c3ff68c2222e8788b12d57a65e693b7eabb082e4db39a1521f042a6368122e96",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+    "issue": "statement",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "financial-statements",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "entity",
+      "jurisdiction",
+      "framework",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "effective_standards",
+      "policy_elections",
+      "evidence",
+      "judgment_memo",
+      "assumptions"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "financial-statements",
+    "source_inputs": [
+      "statement"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:financial-statements:Synthetic Group:0a7d104fc4d7a997d23a4c0f56591352a05fcac9e4b1eb4e027e8fda65dd58af",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "f0b0c1648c5a2e850236c8eb5d458bacff049108ce6a95b0d43f92fa6fce73bc",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "disclosure-management",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+      "result_fingerprint": "f3978c7e0e718b184f2ecc3f32b943fd001e405893393398dd035fa7ae307181",
+      "result_version": "version:103b1c1cd0f02cdb13953cb2053f673da4427af7a97c8fc5f542115eaccefa89",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:disclosure-management:Synthetic Group:a547474c44d2915b13f0fdb2ebf06d95a04582445a66851dbe593229de7a8fb2",
+    "issue": "disclosure",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "disclosure-management",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "financial-statements",
+      "financial-instruments-ecl"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "disclosure-management",
+    "source_inputs": [
+      "disclosure"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:revenue-recognition:Synthetic Group:9f7bcc29b3c7b0859e932246ab80297a0a77371b71f0cbf578c849e91bb1eec0",
+      "exec:accounts-receivable:Synthetic Group:ebd19f99b9461cc1e8d096d072ff59d7f1ef4f7628a82fc14749aaecd0c5698b",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336",
+      "exec:foreign-currency:Synthetic Group:5b943acb34c28ae71af9c72bea962d15e670b3ba21c2d72c9bf43b266a4e409f"
+    ],
+    "downstream_consumers": [
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699"
+    ],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "71189382e109b8145914a287580a90bcc826a4b9c4a7e146d5cb30c0287e44f0",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "management-accounting-analytics",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "result_fingerprint": "3d54609202ab68e7a2268bfbb7241ce1c8792780c21cc114023a724fa15c1980",
+      "result_version": "version:7db41ab70258d82fb8644933d4543596c167261ce616b616f40214d61ebb7ee0",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+    "issue": "analytics",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "management-accounting-analytics",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [
+      "revenue-recognition",
+      "accounts-receivable",
+      "financial-instruments-ecl",
+      "foreign-currency"
+    ],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [
+      "case_id",
+      "entity",
+      "framework",
+      "jurisdiction",
+      "entity_type",
+      "period_start",
+      "reporting_period",
+      "execution_date",
+      "applicability_review",
+      "evidence",
+      "judgment_memo",
+      "assumptions",
+      "controls",
+      "disclosure_review",
+      "knowledge_review"
+    ],
+    "presentation_currency": null,
+    "reason_selected": "Validated source-supported work issue",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "management-accounting-analytics",
+    "source_inputs": [
+      "analytics"
+    ],
+    "status": "complete"
+  },
+  {
+    "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+    "challenge_triggered": false,
+    "condition": null,
+    "dependencies": [
+      "exec:management-accounting-analytics:Synthetic Group:e862f4f06b07e8ecd0f44b7ed8cdc23b749cf8a92fda556f615c7b14061e6fc5",
+      "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336"
+    ],
+    "downstream_consumers": [],
+    "entity": "Synthetic Group",
+    "execution_receipt": {
+      "case_id": "case:24541385bdecbb1be081486ae44dbbc3b3b6ca4d52f5a862d24f4fdb0df9f9d5",
+      "currentness": "CURRENT",
+      "exact_case_fingerprint": "68e9ecc7f0b9559e59df4279cef226c4b2389106ab3e31a12d7426e8da606858",
+      "framework": "IFRS",
+      "functional_currency": "USD",
+      "jurisdiction": "NL",
+      "owner": "financial-instruments-ecl",
+      "period": [
+        "2026-12-01",
+        "2026-12-31"
+      ],
+      "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+      "presentation_currency": null,
+      "producing_node": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
+      "result_fingerprint": "c1f425e1a416a1f1d47229f77ad839a7c6f4cc44aae305888a5ad02e7081bb12",
+      "result_version": "version:16bcaa13e3b820274cde8d6c29b57ca3b7f8f54a4ed78a5c6710674a98f4d630",
+      "scope_id": "Synthetic Group",
+      "scope_type": "LEGAL_ENTITY"
+    },
+    "framework": "IFRS",
+    "functional_currency": "USD",
+    "id": "exec:financial-instruments-ecl:Synthetic Group:1796a74fb6c982e86791fa057af9b3dad453ed6f85459ff650d31403ea7ef336:recheck:ca8d81e970f8b60ec4efbd626844799a6a68ecc71090d8719dac74dc1210f699",
+    "issue": "diagnostic accounting follow-up",
+    "iterations": 1,
+    "jurisdiction": "NL",
+    "logical_id": "diagnostic-balance-0",
+    "material": null,
+    "open_items": [],
+    "owner_result_dependencies": [],
+    "period": [
+      "2026-12-01",
+      "2026-12-31"
+    ],
+    "period_id": "period:81924ac0928787136202fafbdc428ba58fbd511387a432465ce61d93e7a33a66",
+    "prerequisites": [],
+    "presentation_currency": null,
+    "reason_selected": "Material receivable ageing requires governed accounting review",
+    "required": true,
+    "rework_triggered": false,
+    "scope_id": "Synthetic Group",
+    "scope_type": "LEGAL_ENTITY",
+    "selected_skill": "financial-instruments-ecl",
+    "source_inputs": [
+      "balance-source"
+    ],
+    "status": "complete"
+  }
+]

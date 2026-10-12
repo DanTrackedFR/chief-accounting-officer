@@ -1,0 +1,1510 @@
+{
+  "accounting_policy": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "effective_standard": "Actual effective edition reviewed",
+    "entity_scope": "for_profit",
+    "evidence": "synthetic source",
+    "formula_by_group": {
+      "materials": "FIFO",
+      "production": "FIFO",
+      "resale": "FIFO"
+    },
+    "framework": "US_GAAP",
+    "id": "governance-policy",
+    "method_memo": "Synthetic reviewed operative method",
+    "owner": "synthetic owner",
+    "reviewer": "synthetic independent reviewer",
+    "version": "v1"
+  },
+  "applicability_review": {
+    "effective_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "entity_scope": "for_profit",
+    "exceptions": [],
+    "reviewer": "synthetic accounting reviewer",
+    "standard_versions": [
+      "ASC330_2026"
+    ]
+  },
+  "assumptions": [
+    "Synthetic amounts and assumptions for regression only"
+  ],
+  "case_id": "Synthetic Inventory US_GAAP resale actual FIFO",
+  "controls": {
+    "as_of": "2026-12-31",
+    "complete": true,
+    "cutoff_memo": "Synthetic actual cutoff/completeness evidence",
+    "owner": "synthetic source owner",
+    "policy_version": "v1",
+    "population_amount": "180",
+    "population_count": 1,
+    "reviewer": "synthetic independent completeness reviewer",
+    "source_version": "v1"
+  },
+  "costs": [],
+  "costs_inventory": [],
+  "count": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "evidence": "synthetic source",
+    "id": "count",
+    "owner": "synthetic owner",
+    "records": [
+      {
+        "id": "goods",
+        "item": "goods",
+        "location": "Factory",
+        "quantity": "15"
+      }
+    ],
+    "reviewer": "synthetic independent reviewer",
+    "source_doc": "count-source",
+    "source_entity": "Synthetic Group",
+    "source_framework": "US_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "currency": "USD",
+  "cutoff": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "evidence": "synthetic source",
+    "id": "cutoff",
+    "owner": "synthetic owner",
+    "records": [
+      {
+        "date_reviewed": true,
+        "economic_id": "economic-receipt",
+        "id": "receipt",
+        "ownership_supported": true
+      },
+      {
+        "date_reviewed": true,
+        "economic_id": "economic-sale",
+        "id": "sale",
+        "ownership_supported": true
+      }
+    ],
+    "reviewer": "synthetic independent reviewer",
+    "source_doc": "cutoff-source",
+    "source_entity": "Synthetic Group",
+    "source_framework": "US_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "disclosure_review": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "checklist_version": "synthetic-v1",
+    "complete": true,
+    "evidence": "synthetic source",
+    "id": "disclosure",
+    "owner": "synthetic owner",
+    "period_entity_memo": "Actual bounded management scope review",
+    "reviewer": "synthetic independent reviewer",
+    "version": "v1"
+  },
+  "disclosures": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "checked_on": "2027-03-31",
+    "closing_inventory": "180",
+    "cogs": "50",
+    "evidence": "synthetic source",
+    "id": "disclosures",
+    "owner": "synthetic owner",
+    "requirements": {
+      "carrying": {
+        "Merchandise": "180"
+      },
+      "classes": [
+        "MERCH"
+      ],
+      "estimates": {
+        "evidence_memo": "Synthetic actual current lower-cost estimation evidence",
+        "model": "LCNRV",
+        "reviewed": true
+      },
+      "formula": {
+        "materials": "FIFO",
+        "production": "FIFO",
+        "resale": "FIFO"
+      },
+      "policy": {
+        "edition": "ASC330_2026",
+        "framework": "US_GAAP",
+        "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+      },
+      "valuation_losses": "70"
+    },
+    "reversal": "0",
+    "reviewer": "synthetic independent reviewer",
+    "source_doc": "disclosures-source",
+    "source_entity": "Synthetic Group",
+    "source_framework": "US_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1",
+    "write_down": "70"
+  },
+  "document_inventory": [
+    "scope-source",
+    "goods-measurement",
+    "goods-rights",
+    "receipt-source",
+    "sale-source",
+    "disclosures-source",
+    "count-source",
+    "cutoff-source",
+    "items-original",
+    "movements-original",
+    "orders-original",
+    "costs-original",
+    "standards-original",
+    "valuation-original",
+    "valuation-source"
+  ],
+  "documents": [
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "borrowing_capitalization": false,
+        "checked_on": "2027-03-31",
+        "early_adoption": false,
+        "edition": "ASC330_2026",
+        "entity_scope": "ordinary_us_gaap",
+        "external_posting": false,
+        "forecast_generation": false,
+        "industry_exception": false,
+        "joint_products": false,
+        "retail_method": false,
+        "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries"
+      },
+      "content_hash": "6ac2326fb5d002362346ea7e867db4e5960efecc7280c61222f08b6efc2fe90d",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "scope-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "ageing_evidence_memo": "Synthetic current ageing expiry discontinuation source",
+        "checked_on": "2027-03-31",
+        "demand_evidence_memo": "Synthetic actual recent sales support, no autonomous forecast",
+        "discontinued": false,
+        "estimate_memo": "Synthetic current item value/ageing review",
+        "expired": false,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_reviewed": true,
+        "forecast_used": false,
+        "impairment_indicator": true,
+        "item": "goods",
+        "population_reviewed": true
+      },
+      "content_hash": "3f24ade1d0618d47e9b7c7bb60df3f181c60b8608da7fca463bb8a8b04d56cdb",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "goods-measurement",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "checked_on": "2027-03-31",
+        "consigned_out_without_ownership": false,
+        "entity": "Synthetic Group",
+        "framework": "US_GAAP",
+        "item_id": "goods",
+        "jurisdiction": "NL",
+        "owned": true,
+        "ownership_event_id": "title-goods",
+        "rights_memo": "Synthetic current purchased-title/owned third-party/consignment assessment",
+        "third_party_owned": false
+      },
+      "content_hash": "a7e4e1db49d214b1326617132529fc6ca0748d68ad977b18a20abaaaea71b76f",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "goods-rights",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "cost_components": [
+          {
+            "amount": "200",
+            "economic_id": "price-receipt",
+            "id": "price",
+            "kind": "price"
+          }
+        ],
+        "date": "2026-06-30",
+        "economic_id": "economic-receipt",
+        "in_period": true,
+        "item": "goods",
+        "ownership_supported": true,
+        "quantity": "10"
+      },
+      "content_hash": "51bf6c470122ef319fe74a087eadf959d87c23be4b7973f61419fea22c0c3b20",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "receipt-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "date": "2026-10-31",
+        "economic_id": "economic-sale",
+        "in_period": true,
+        "item": "goods",
+        "ownership_supported": true,
+        "quantity": "5"
+      },
+      "content_hash": "8d1dff9da197702bddce3048323962800176625491e6d06cccffc3ad12a601a0",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "sale-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "carrying": {
+          "Merchandise": "180"
+        },
+        "classes": [
+          "MERCH"
+        ],
+        "estimates": {
+          "evidence_memo": "Synthetic actual current lower-cost estimation evidence",
+          "model": "LCNRV",
+          "reviewed": true
+        },
+        "formula": {
+          "materials": "FIFO",
+          "production": "FIFO",
+          "resale": "FIFO"
+        },
+        "policy": {
+          "edition": "ASC330_2026",
+          "framework": "US_GAAP",
+          "measurement_memo": "Synthetic actual company cost/measurement policy reviewed"
+        },
+        "valuation_losses": "70"
+      },
+      "content_hash": "7e3085b4e90aa02c1546943b26c40ae8e5f9dc59b20fc716fe83da7bc1acb339",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "disclosures-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "id": "goods",
+          "item": "goods",
+          "location": "Factory",
+          "quantity": "15"
+        }
+      ],
+      "content_hash": "e4e961b0a444be6ac95a1a80498e574c4a4ab0793968487e62fddd294e520c4d",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "count-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "date_reviewed": true,
+          "economic_id": "economic-receipt",
+          "id": "receipt",
+          "ownership_supported": true
+        },
+        {
+          "date_reviewed": true,
+          "economic_id": "economic-sale",
+          "id": "sale",
+          "ownership_supported": true
+        }
+      ],
+      "content_hash": "dde53c91d088b471bf14d4d6bcf8a145a3a74102960e35501cc38a221440eb05",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "cutoff-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "class": "MERCH",
+          "closing_cost": "180",
+          "closing_quantity": "15",
+          "currency": "USD",
+          "evidence": "synthetic source",
+          "formula": "FIFO",
+          "id": "goods",
+          "interchangeable": true,
+          "location": "Factory",
+          "measurement_doc": "goods-measurement",
+          "opening_cost": "100",
+          "opening_layers": [
+            {
+              "cost": "100",
+              "date": "2025-12-31",
+              "economic_id": "goods-opening-source",
+              "id": "goods-opening",
+              "quantity": "10"
+            }
+          ],
+          "opening_quantity": "10",
+          "owner": "synthetic owner",
+          "ownership_doc": "goods-rights",
+          "physical_id": "physical-goods",
+          "policy_group": "resale",
+          "reviewer": "synthetic independent reviewer",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        }
+      ],
+      "content_hash": "6b179c28d4ba0fd4adcd752f23986ed23471fc0a47d85e1b6ee688c33e5e267a",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "items-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "amount": "200",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "currency": "USD",
+          "date": "2026-06-30",
+          "economic_id": "economic-receipt",
+          "evidence": "synthetic source",
+          "id": "receipt",
+          "item": "goods",
+          "kind": "purchase",
+          "owner": "synthetic owner",
+          "quantity": "10",
+          "reviewer": "synthetic independent reviewer",
+          "sequence": 1,
+          "source_doc": "receipt-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        },
+        {
+          "amount": "50",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "currency": "USD",
+          "date": "2026-10-31",
+          "economic_id": "economic-sale",
+          "evidence": "synthetic source",
+          "id": "sale",
+          "item": "goods",
+          "kind": "sale",
+          "layer_ids": [
+            "goods-opening"
+          ],
+          "owner": "synthetic owner",
+          "quantity": "5",
+          "reviewer": "synthetic independent reviewer",
+          "sequence": 2,
+          "source_doc": "sale-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        }
+      ],
+      "content_hash": "f4abc524fbbb0ab3907953e927ee2ede0d101ba01280a68280c0b6a5868e6fa6",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "movements-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "orders-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "costs-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [],
+      "content_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "standards-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": [
+        {
+          "adjustment": "-70",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "evidence": "synthetic source",
+          "id": "lower-cost",
+          "item": "goods",
+          "owner": "synthetic owner",
+          "prior_write_down": "0",
+          "reviewer": "synthetic independent reviewer",
+          "source_doc": "valuation-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "version": "v1"
+        }
+      ],
+      "content_hash": "245b13fb07cbf6a0b4696ea606e0b07b6c46272ed92741caed15600c23314dfb",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "valuation-original",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "as_of": "2026-12-31",
+      "content": {
+        "carrying_cost_before_measurement": "250",
+        "checked_on": "2027-03-31",
+        "completion_cost": "0",
+        "completion_cost_complete": true,
+        "current_market": true,
+        "expired": false,
+        "expiry_reviewed": true,
+        "forecast_checked_on": "2027-03-31",
+        "forecast_invented": false,
+        "forecast_reviewed": true,
+        "forecast_used": false,
+        "grouping": "item",
+        "item": "goods",
+        "normal_profit": "3",
+        "obsolescence_reviewed": true,
+        "original_cost": "250",
+        "prior_write_down": "0",
+        "recovery_evidence_memo": "Synthetic independently reviewed actual recovery within original reduction",
+        "recovery_reviewed": true,
+        "replacement_cost": "10",
+        "salvage_supported": false,
+        "selling_cost": "0",
+        "selling_cost_complete": true,
+        "selling_price": "12",
+        "valuation_memo": "Synthetic current controlled actual lower-cost estimate"
+      },
+      "content_hash": "a4a474eee33626903e460091f78fdc43312bc3d85a3f778a1c2a2109c79621a0",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "valuation-source",
+      "owner": "synthetic owner",
+      "parameters": "Actual fixed case filter",
+      "query_version": "synthetic-query-v1",
+      "reviewer": "synthetic independent reviewer",
+      "snapshot_version": "v1",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "source_system": "Synthetic controlled source",
+      "version": "v1"
+    }
+  ],
+  "entity": "Synthetic Group",
+  "entity_type": "for_profit",
+  "evidence": [
+    "synthetic evidence set"
+  ],
+  "execution_date": "2027-03-31",
+  "framework": "US_GAAP",
+  "gl": [
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "closing": "180",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "Merchandise",
+      "opening": "100",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "statement": "180",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "closing": "-200",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "Acquisition clearing",
+      "opening": "0",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "statement": "-200",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "closing": "50",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "Cost of goods sold",
+      "opening": "0",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "statement": "50",
+      "version": "v1"
+    },
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "closing": "70",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "id": "Inventory measurement expense",
+      "opening": "0",
+      "owner": "synthetic owner",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "statement": "70",
+      "version": "v1"
+    }
+  ],
+  "gl_inventory": [
+    "Merchandise",
+    "Acquisition clearing",
+    "Cost of goods sold",
+    "Inventory measurement expense"
+  ],
+  "imports": [],
+  "items": [
+    {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "class": "MERCH",
+      "closing_cost": "180",
+      "closing_quantity": "15",
+      "currency": "USD",
+      "evidence": "synthetic source",
+      "formula": "FIFO",
+      "id": "goods",
+      "interchangeable": true,
+      "location": "Factory",
+      "measurement_doc": "goods-measurement",
+      "opening_cost": "100",
+      "opening_layers": [
+        {
+          "cost": "100",
+          "date": "2025-12-31",
+          "economic_id": "goods-opening-source",
+          "id": "goods-opening",
+          "quantity": "10"
+        }
+      ],
+      "opening_quantity": "10",
+      "owner": "synthetic owner",
+      "ownership_doc": "goods-rights",
+      "physical_id": "physical-goods",
+      "policy_group": "resale",
+      "reviewer": "synthetic independent reviewer",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "unit": "units",
+      "version": "v1"
+    }
+  ],
+  "items_inventory": [
+    "goods"
+  ],
+  "judgment_memo": "Reviewed synthetic alternative routes and assumptions",
+  "jurisdiction": "NL",
+  "knowledge_review": {
+    "applied_claim_ids": [
+      "INV-US_GAAP-001",
+      "INV-US_GAAP-002",
+      "INV-US_GAAP-003",
+      "INV-US_GAAP-004",
+      "INV-US_GAAP-005",
+      "INV-US_GAAP-006",
+      "INV-US_GAAP-007",
+      "INV-US_GAAP-008",
+      "INV-US_GAAP-009",
+      "INV-US_GAAP-010",
+      "INV-US_GAAP-011",
+      "INV-US_GAAP-012",
+      "INV-US_GAAP-013",
+      "INV-US_GAAP-014",
+      "INV-US_GAAP-015",
+      "INV-US_GAAP-016",
+      "INV-US_GAAP-017",
+      "INV-US_GAAP-018",
+      "INV-US_GAAP-019",
+      "INV-US_GAAP-020",
+      "INV-US_GAAP-021",
+      "INV-US_GAAP-022",
+      "INV-US_GAAP-023",
+      "INV-US_GAAP-024",
+      "INV-US_GAAP-025",
+      "INV-US_GAAP-026",
+      "INV-US_GAAP-027",
+      "INV-US_GAAP-028",
+      "INV-US_GAAP-029",
+      "INV-US_GAAP-030",
+      "INV-US_GAAP-031",
+      "INV-US_GAAP-032",
+      "INV-US_GAAP-033",
+      "INV-US_GAAP-034",
+      "INV-US_GAAP-035",
+      "INV-US_GAAP-036",
+      "INV-US_GAAP-037",
+      "INV-US_GAAP-038",
+      "INV-US_GAAP-039",
+      "INV-US_GAAP-040",
+      "INV-US_GAAP-041",
+      "INV-US_GAAP-042",
+      "INV-US_GAAP-043",
+      "INV-US_GAAP-044",
+      "INV-US_GAAP-045",
+      "INV-US_GAAP-046",
+      "INV-US_GAAP-047",
+      "INV-US_GAAP-048",
+      "INV-US_GAAP-049",
+      "INV-US_GAAP-050",
+      "INV-US_GAAP-051",
+      "INV-US_GAAP-052",
+      "INV-US_GAAP-053",
+      "INV-US_GAAP-054",
+      "INV-US_GAAP-055",
+      "INV-US_GAAP-056",
+      "INV-US_GAAP-057"
+    ],
+    "claim_ids": [
+      "INV-US_GAAP-001",
+      "INV-US_GAAP-002",
+      "INV-US_GAAP-003",
+      "INV-US_GAAP-004",
+      "INV-US_GAAP-005",
+      "INV-US_GAAP-006",
+      "INV-US_GAAP-007",
+      "INV-US_GAAP-008",
+      "INV-US_GAAP-009",
+      "INV-US_GAAP-010",
+      "INV-US_GAAP-011",
+      "INV-US_GAAP-012",
+      "INV-US_GAAP-013",
+      "INV-US_GAAP-014",
+      "INV-US_GAAP-015",
+      "INV-US_GAAP-016",
+      "INV-US_GAAP-017",
+      "INV-US_GAAP-018",
+      "INV-US_GAAP-019",
+      "INV-US_GAAP-020",
+      "INV-US_GAAP-021",
+      "INV-US_GAAP-022",
+      "INV-US_GAAP-023",
+      "INV-US_GAAP-024",
+      "INV-US_GAAP-025",
+      "INV-US_GAAP-026",
+      "INV-US_GAAP-027",
+      "INV-US_GAAP-028",
+      "INV-US_GAAP-029",
+      "INV-US_GAAP-030",
+      "INV-US_GAAP-031",
+      "INV-US_GAAP-032",
+      "INV-US_GAAP-033",
+      "INV-US_GAAP-034",
+      "INV-US_GAAP-035",
+      "INV-US_GAAP-036",
+      "INV-US_GAAP-037",
+      "INV-US_GAAP-038",
+      "INV-US_GAAP-039",
+      "INV-US_GAAP-040",
+      "INV-US_GAAP-041",
+      "INV-US_GAAP-042",
+      "INV-US_GAAP-043",
+      "INV-US_GAAP-044",
+      "INV-US_GAAP-045",
+      "INV-US_GAAP-046",
+      "INV-US_GAAP-047",
+      "INV-US_GAAP-048",
+      "INV-US_GAAP-049",
+      "INV-US_GAAP-050",
+      "INV-US_GAAP-051",
+      "INV-US_GAAP-052",
+      "INV-US_GAAP-053",
+      "INV-US_GAAP-054",
+      "INV-US_GAAP-055",
+      "INV-US_GAAP-056",
+      "INV-US_GAAP-057"
+    ],
+    "documents": [
+      {
+        "path": "knowledge/inventory-cost/EVIDENCE-AND-QA.md",
+        "sha256": "561d495cc03c268b23e1794743666e47b2195058cbac1a737493288585b86506",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/FRAMEWORK-METHOD.md",
+        "sha256": "cbbbd09fe436fb002a959d919373b15a7559848eec58665f3c577112c397586b",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/INDEPENDENT-QA.md",
+        "sha256": "c5773771c4f84f6de0660262d0a076117cdc13558ec37affe9b22f10ec421907",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/README.md",
+        "sha256": "24d65703b4fdc54ec39a54225f1333b882a14de9a4d5d993891c208f25327453",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/retrieval.py",
+        "sha256": "e40d77ce5884d9a86bb89cc86f67e40944af217064b54da9e01d11d6a5595f01",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/standards-claims.json",
+        "sha256": "7fd80072d75c276013b2ea8e0074684d1f4ef952006df48528383fdfb1ed9e23",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/test_independent_claim_qa.py",
+        "sha256": "4af4afe39c3719cc96004a5db445de5b72eb8d23d1311b677657236db481de2e",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/test_supplement.py",
+        "sha256": "a7f4d9f00aec6cd9e55d7756e273bdcc7952d03c1bad00105abe6a6aaa454887",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      },
+      {
+        "path": "knowledge/inventory-cost/validate_supplement.py",
+        "sha256": "23852613ef43a6839e9b17395c2a5dcafcaad95ca20260a0b8b326e0cbefc239",
+        "topic_id": "SUPPLEMENTAL_INVENTORY_COST"
+      }
+    ],
+    "public_caveats": [
+      "Controlled actual source facts and current framework-specific standards determine cost, capacity, ownership and valuation."
+    ],
+    "reviewer": "Synthetic independent inventory knowledge reviewer",
+    "selection_memo": "Synthetic ordinary inventory manufacturing scope and framework decisions reviewed individually"
+  },
+  "movements": [
+    {
+      "amount": "200",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "currency": "USD",
+      "date": "2026-06-30",
+      "economic_id": "economic-receipt",
+      "evidence": "synthetic source",
+      "id": "receipt",
+      "item": "goods",
+      "kind": "purchase",
+      "owner": "synthetic owner",
+      "quantity": "10",
+      "reviewer": "synthetic independent reviewer",
+      "sequence": 1,
+      "source_doc": "receipt-source",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "unit": "units",
+      "version": "v1"
+    },
+    {
+      "amount": "50",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "currency": "USD",
+      "date": "2026-10-31",
+      "economic_id": "economic-sale",
+      "evidence": "synthetic source",
+      "id": "sale",
+      "item": "goods",
+      "kind": "sale",
+      "layer_ids": [
+        "goods-opening"
+      ],
+      "owner": "synthetic owner",
+      "quantity": "5",
+      "reviewer": "synthetic independent reviewer",
+      "sequence": 2,
+      "source_doc": "sale-source",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "unit": "units",
+      "version": "v1"
+    }
+  ],
+  "movements_inventory": [
+    "receipt",
+    "sale"
+  ],
+  "orders": [],
+  "orders_inventory": [],
+  "originals": {
+    "costs": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "costs-source",
+      "inventory": [],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "costs-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    },
+    "items": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "items-source",
+      "inventory": [
+        "goods"
+      ],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [
+        {
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "class": "MERCH",
+          "closing_cost": "180",
+          "closing_quantity": "15",
+          "currency": "USD",
+          "evidence": "synthetic source",
+          "formula": "FIFO",
+          "id": "goods",
+          "interchangeable": true,
+          "location": "Factory",
+          "measurement_doc": "goods-measurement",
+          "opening_cost": "100",
+          "opening_layers": [
+            {
+              "cost": "100",
+              "date": "2025-12-31",
+              "economic_id": "goods-opening-source",
+              "id": "goods-opening",
+              "quantity": "10"
+            }
+          ],
+          "opening_quantity": "10",
+          "owner": "synthetic owner",
+          "ownership_doc": "goods-rights",
+          "physical_id": "physical-goods",
+          "policy_group": "resale",
+          "reviewer": "synthetic independent reviewer",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        }
+      ],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "items-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    },
+    "movements": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "movements-source",
+      "inventory": [
+        "receipt",
+        "sale"
+      ],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [
+        {
+          "amount": "200",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "currency": "USD",
+          "date": "2026-06-30",
+          "economic_id": "economic-receipt",
+          "evidence": "synthetic source",
+          "id": "receipt",
+          "item": "goods",
+          "kind": "purchase",
+          "owner": "synthetic owner",
+          "quantity": "10",
+          "reviewer": "synthetic independent reviewer",
+          "sequence": 1,
+          "source_doc": "receipt-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        },
+        {
+          "amount": "50",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "currency": "USD",
+          "date": "2026-10-31",
+          "economic_id": "economic-sale",
+          "evidence": "synthetic source",
+          "id": "sale",
+          "item": "goods",
+          "kind": "sale",
+          "layer_ids": [
+            "goods-opening"
+          ],
+          "owner": "synthetic owner",
+          "quantity": "5",
+          "reviewer": "synthetic independent reviewer",
+          "sequence": 2,
+          "source_doc": "sale-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "unit": "units",
+          "version": "v1"
+        }
+      ],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "movements-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    },
+    "orders": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "orders-source",
+      "inventory": [],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "orders-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    },
+    "standards": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "standards-source",
+      "inventory": [],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "standards-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    },
+    "valuation": {
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "extract_version": "v1",
+      "id": "valuation-source",
+      "inventory": [
+        "lower-cost"
+      ],
+      "owner": "synthetic owner",
+      "population_memo": "Independent original source control population, not inferred from tracker",
+      "records": [
+        {
+          "adjustment": "-70",
+          "approval_date": "2026-12-31",
+          "approved": true,
+          "approved_version": "v1",
+          "evidence": "synthetic source",
+          "id": "lower-cost",
+          "item": "goods",
+          "owner": "synthetic owner",
+          "prior_write_down": "0",
+          "reviewer": "synthetic independent reviewer",
+          "source_doc": "valuation-source",
+          "source_entity": "Synthetic Group",
+          "source_framework": "US_GAAP",
+          "source_period": [
+            "2026-01-01",
+            "2026-12-31"
+          ],
+          "version": "v1"
+        }
+      ],
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "valuation-original",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    }
+  },
+  "owner_gl_effects": [],
+  "owner_gl_effects_inventory": [],
+  "owner_links": [],
+  "owner_links_inventory": [],
+  "package": "inventory-cost",
+  "period_start": "2026-01-01",
+  "policy_elections": {},
+  "preparer": "synthetic preparer",
+  "release_review": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "evidence": "synthetic source",
+    "id": "release",
+    "owner": "synthetic owner",
+    "payload_fingerprint": "952a03fb8e943ec6b59b2b711597ee81adc6d4b246bc511fd655bfd9ccf1c848",
+    "review_memo": "Synthetic independent exact original source release",
+    "reviewer": "synthetic independent reviewer",
+    "source_entity": "Synthetic Group",
+    "source_framework": "US_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "reporting_period": "2026-12-31",
+  "requested_action": "accounting",
+  "scope": {
+    "approval_date": "2026-12-31",
+    "approved": true,
+    "approved_version": "v1",
+    "borrowing_capitalization": false,
+    "checked_on": "2027-03-31",
+    "early_adoption": false,
+    "edition": "ASC330_2026",
+    "entity_scope": "ordinary_us_gaap",
+    "evidence": "synthetic source",
+    "external_posting": false,
+    "forecast_generation": false,
+    "id": "scope",
+    "industry_exception": false,
+    "joint_products": false,
+    "owner": "synthetic owner",
+    "retail_method": false,
+    "reviewer": "synthetic independent reviewer",
+    "scope_memo": "Synthetic ordinary commercial factory entity, reviewed edition and boundaries",
+    "source_doc": "scope-source",
+    "source_entity": "Synthetic Group",
+    "source_framework": "US_GAAP",
+    "source_period": [
+      "2026-01-01",
+      "2026-12-31"
+    ],
+    "version": "v1"
+  },
+  "source_inventory": [
+    "goods"
+  ],
+  "specialist_items": [],
+  "standards": [],
+  "standards_inventory": [],
+  "us_entity_type": "public",
+  "valuation": [
+    {
+      "adjustment": "-70",
+      "approval_date": "2026-12-31",
+      "approved": true,
+      "approved_version": "v1",
+      "evidence": "synthetic source",
+      "id": "lower-cost",
+      "item": "goods",
+      "owner": "synthetic owner",
+      "prior_write_down": "0",
+      "reviewer": "synthetic independent reviewer",
+      "source_doc": "valuation-source",
+      "source_entity": "Synthetic Group",
+      "source_framework": "US_GAAP",
+      "source_period": [
+        "2026-01-01",
+        "2026-12-31"
+      ],
+      "version": "v1"
+    }
+  ],
+  "valuation_inventory": [
+    "lower-cost"
+  ]
+}

@@ -3,7 +3,7 @@ import importlib.util
 import json
 import unittest
 from pathlib import Path
-from orchestration.history_references import ROOT, reference_path
+from orchestration.history_references import ROOT, reference_path, prior_reference_path
 
 LOCATION = ROOT/'recovery/borrowing-costs-pr42/check_identity_transition.py'
 SPEC = importlib.util.spec_from_file_location('_history_transition_review', LOCATION)
@@ -59,7 +59,7 @@ class HistoryQualification(unittest.TestCase):
     def test_recorded_orchestration_transition_reperforms(self):
         manifest = json.loads((ROOT/'recovery/borrowing-costs-pr42/orchestration-migration.json').read_text())
         pairs = [(name, REVIEW.expand(json.loads((ROOT/name).read_text())),
-                  REVIEW.expand(json.loads(reference_path(name).read_text())))
+                  REVIEW.expand(json.loads(prior_reference_path(name).read_text())))
                  for name in manifest['files']]
         review = REVIEW.Transition()
         review.stable = set(REVIEW.HEX.findall(json.dumps([a for _, a, _ in pairs]))) & set(REVIEW.HEX.findall(json.dumps([b for _, _, b in pairs])))

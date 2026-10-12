@@ -1,0 +1,32 @@
+[
+  {
+    "accounting_authority": false,
+    "description": "Collections only look worse because revenue grew",
+    "disposition": "REJECTED",
+    "evidence": [
+      {
+        "left": "250",
+        "right": "450",
+        "test": {
+          "factor": 1,
+          "left_owner": "accounts-receivable",
+          "left_path": [
+            "bank_receipts"
+          ],
+          "operator": "magnitude_above",
+          "right_owner": "management-accounting-analytics",
+          "right_path": [
+            "balance_diagnostics",
+            "cash_collections",
+            "prior"
+          ]
+        }
+      }
+    ],
+    "id": "collection-growth-explanation",
+    "semantic_status": "INFERRED",
+    "source_refs": [
+      "commentary:1"
+    ]
+  }
+]

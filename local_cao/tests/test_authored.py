@@ -132,9 +132,10 @@ class Authored(unittest.TestCase):
 
     def test_discovery_dynamic(self):
         r=self.call('capabilities');self.assertTrue(r['ok'],r)
-        for pkg in ('government-grants','investment-property'):
-            row=next(x for x in r['capabilities'] if x['package']==pkg)
-            self.assertFalse(row['local_fact_adapter'])
+        grants=next(x for x in r['capabilities'] if x['package']=='government-grants')
+        self.assertTrue(grants['local_fact_adapter'])
+        investment=next(x for x in r['capabilities'] if x['package']=='investment-property')
+        self.assertFalse(investment['local_fact_adapter'])
         borrowing=next(x for x in r['capabilities'] if x['package']=='borrowing-costs')
         self.assertTrue(borrowing['local_fact_adapter'])
 

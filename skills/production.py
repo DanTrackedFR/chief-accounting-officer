@@ -36,7 +36,7 @@ PACKAGES = {
     'earnings-per-share': ('SKILL-EPS-001',['TOPIC-08-007']),
     'segment-reporting': ('SKILL-SEG-001',['TOPIC-08-006']),
     'subsequent-events': ('SKILL-EVENT-001',['TOPIC-08-005']),
-    'government-grants': ('SKILL-GRANT-001',[]),
+    'government-grants': ('SKILL-GRANT-001',['SUPPLEMENTAL_GOVERNMENT_GRANTS']),
     'borrowing-costs': ('SKILL-BORROW-001',['SUPPLEMENTAL_BORROWING_COSTS']),
     'cash-flow-reporting': ('SKILL-CASH-001',['TOPIC-08-002','TOPIC-06-001','TOPIC-06-002']),
     'equity-capital': ('SKILL-EQUITY-001',['TOPIC-08-003','TOPIC-13-006']),
@@ -111,6 +111,9 @@ def load_workflow(package):
     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
 
 def canonical_knowledge(topic_ids, framework, package=None):
+    if topic_ids == ['SUPPLEMENTAL_GOVERNMENT_GRANTS']:
+        from grant_knowledge import mapped_knowledge
+        return mapped_knowledge(framework)
     if topic_ids == ['SUPPLEMENTAL_BORROWING_COSTS']:
         from borrowing_knowledge import mapped_knowledge
         return mapped_knowledge(framework)
@@ -210,7 +213,6 @@ def canonical_knowledge(topic_ids, framework, package=None):
 def execute(package, case):
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
     if package=='investment-property':raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
-    if package=='government-grants':raise ReviewRequired('No approved substantive government-grant recognition or measurement knowledge; governed knowledge extension required')
     if not isinstance(case,dict):raise ReviewRequired('Accounting case must be an object')
     if 'package' in case and case['package'] != package:
         raise ReviewRequired('Case implementation owner differs from selected accounting skill')
@@ -256,7 +258,7 @@ def execute(package, case):
            signoff.get('reviewer')!=case.get('preparer') and signoff.get('approved') is True)
     result['status']='complete' if valid and not result.get('open_items') else 'partial'
     if not valid: result.setdefault('open_items',[]).append('Independent reviewer must approve this exact case fingerprint before use')
-    if package=='borrowing-costs' and result['status']!='complete':
+    if package in ('borrowing-costs','government-grants') and result['status']!='complete':
         result['proposed_journal_workpaper']=result.get('journal_entry_implications',[])
         result['journal_entry_implications']=[]
     try:to_public(result)
@@ -335,6 +337,7 @@ def to_public(result, route='answer'):
     if result['skill_id']=='SKILL-INV-001':title={'IFRS':'IAS 2 bounded manufacturing accounting','US_GAAP':'ASC 330 bounded manufacturing accounting','UK_GAAP':'FRS 102 Section 13 bounded manufacturing accounting','AASB':'AASB 102 Tier 1 bounded manufacturing accounting'}.get(result['framework'],'Inventory framework unresolved')
     if result['skill_id']=='SKILL-AGR-001':title={'IFRS':'IAS 41 bounded agricultural accounting','US_GAAP':'ASC 905 specialist classification boundary','UK_GAAP':'FRS 102 Section 34 elected fair-value route','AASB':'AASB 141 Tier 1 agricultural accounting'}.get(result['framework'],'Agriculture framework unresolved')
     if result['skill_id']=='SKILL-BORROW-001':title={'IFRS':'IAS 23 bounded borrowing costs','AASB':'AASB 123 Tier 1 for-profit borrowing costs','US_GAAP':'ASC 835-20 bounded avoidable interest','UK_GAAP':'FRS 102 Section 25 elected borrowing costs policy'}.get(result['framework'],'Borrowing costs framework unresolved')
+    if result['skill_id']=='SKILL-GRANT-001':title={'IFRS':'IAS 20 bounded grants','AASB':'AASB 120 Tier 1 for-profit grants','US_GAAP':'Topic 832 evidenced early adoption','UK_GAAP':'FRS 102 Section 24 elected grant model'}.get(result['framework'],'Grant framework unresolved')
     if result['skill_id']=='SKILL-INS-001':title={'IFRS':'IFRS 17 insurance accounting','AASB':'AASB 17 Tier 1 for-profit insurance accounting','US_GAAP':'ASC 944 short-duration insurance accounting','UK_GAAP':'FRS 103 insurance policy boundary'}.get(result['framework'],'Insurance framework unresolved')
     citations=[{'title':title}] if result['evidence'] else []
     for claim in result['evidence']:
@@ -396,7 +399,7 @@ def assess_case(package,case):
           'earnings-per-share':('TOPIC-08-007','EPS, equity, award, tax and instrument specialists','Legal share rights, complete dated shares/instruments, attributable earnings and qualified instrument methods'),
           'segment-reporting':('TOPIC-08-006','Segment accounting, management and financial reporting specialists','Actual CODM packs, components, aggregation/reportability judgments and reconciled entity-wide disclosures'),
           'subsequent-events':('TOPIC-08-005','Subsequent events, underlying accounting, legal and filing specialists','Authorized window, independent feed/event population, period-end conditions and completed underlying recognition'),
-          'government-grants':('unmapped','Grant accounting and standards governance owner','Approved substantive framework-specific grant knowledge and actual agreements/compliance evidence'),
+          'government-grants':('SUPPLEMENTAL_GOVERNMENT_GRANTS','Grant accounting and standards governance owner','Approved framework-specific grant knowledge and actual agreements, cost-owner, compliance and policy evidence'),
           'borrowing-costs':('TOPIC-04-003','Borrowing-cost accounting and standards governance owner','Substantive approved capitalization method, project and financing facts; CIP pointers are insufficient'),
           'cash-flow-reporting':('TOPIC-08-002','Cash reporting, Financial Statements, FX, Consolidation and Lease specialists','Bank/GL cash definitions, cash source population, indirect/direct bridge, classification and adopted-period memos'),
           'equity-capital':('TOPIC-08-003','Equity, legal capital, SBC and group specialists','Instrument/legal terms, cap table, owner approvals, component and NCI bridges'),
@@ -427,6 +430,9 @@ def assess_case(package,case):
           'financial-statements':('TOPIC-08-009','Financial reporting and disclosure specialist','Authorized TB, period/entity checklist, comparatives, source-to-line and narrative tie-outs'),
         }
         topic,target,evidence=routes[package]
+        if package=='government-grants' and reason.startswith('Grant scope requires separate '):
+            excluded=reason.split('Grant scope requires separate ',1)[1].split(' accounting owner',1)[0]
+            target={'procurement':'Revenue Recognition owner','shareholder':'Equity & Capital owner','income_tax':'Income Taxes owner','loan':'Debt & Financing owner','agriculture_fvlcts':'Agriculture owner','assistance':'Government assistance disclosure owner'}.get(excluded,target)
         if package=='agriculture-biological-assets':
             if reason.startswith('Classified fixed-assets') or reason.startswith('Bearer plant belongs'):
                 target='Fixed Assets & Depreciation owner'

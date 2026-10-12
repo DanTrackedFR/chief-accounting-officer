@@ -1,0 +1,2353 @@
+{
+  "assumptions": [],
+  "bounded_owner": null,
+  "classifications": {},
+  "column_mappings": [],
+  "context_candidates": {
+    "currency": {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "CONTEXT_DERIVED",
+      "value": "EUR"
+    }
+  },
+  "disputed_facts": [],
+  "entities": [],
+  "facts": [
+    {
+      "attribute": "opening",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-open",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "principal",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-principal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "yield",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0.08"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-yield",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "rights",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:13"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": true
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-rights",
+      "transformation": "boolean"
+    },
+    {
+      "attribute": "repayment",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-repayment",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "interest",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-interest",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "paid_interest",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-paid",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_base",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "debt-close",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "original_amount",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-original",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "original_currency",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "USD"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-currency",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "opening_book",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1000"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_rate",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1.10"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "settled",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-settled",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "monetary_fx_profit",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-profit",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "derivative_closing",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "40"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "hedge-value",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "valuation_date",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "hedge-date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "notional",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "hedge-notional",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "designation_date",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "designation:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-01-01"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "hedge-designation",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "risk_cumulative",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-36"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "hedge-risk",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "interest_paid",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "cash-interest",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "principal_paid",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "cash-principal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_cash",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "cash:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1720"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "cash-close",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "debt_balance",
+      "candidate_owner": "balance-sheet-reconciliations",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "rec:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-880"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "reconciliation",
+      "id": "rec-debt",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "debt_balance",
+      "candidate_owner": "financial-statements",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "tb:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-880"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "statement",
+      "id": "fs-debt",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "prior_interest",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "prior:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "60"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "prior_actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2025-01-01",
+          "2025-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "prior-interest",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "current_interest",
+      "candidate_owner": "management-accounting-analytics",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "pnl:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "80"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "analytics",
+      "id": "analytics-interest",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "draws",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "draws",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "fees",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "fees",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "current",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:11"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "class-current",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "noncurrent",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:12"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "class-noncurrent",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "rate_type",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "debt:14"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "variable"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "rate-type",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "lender_principal",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "lender:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "lender-principal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "payment_current_date",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-current-date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "payment_current_amount",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "280"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-current-amount",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "payment_current_principal",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-current-principal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "payment_redemption_date",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2027-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-redemption-date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "payment_redemption_amount",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "864"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-redemption-amount",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "payment_redemption_principal",
+      "candidate_owner": "debt-financing",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "payments:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "debt_population",
+      "id": "payment-redemption-principal",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "opening_rate",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-opening_rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "settlement_rate",
+      "candidate_owner": "foreign-currency",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "fx:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "1"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "currency_exposure",
+      "id": "fx-settlement_rate",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_instrument",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "derivative:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "forward1"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "contract-instrument",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "contract_notional",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "derivative:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "contract-notional",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "contract_maturity",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "derivative:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2027-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "contract-maturity",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "contract_underlying",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "derivative:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "USD benchmark"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "contract-underlying",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "valuation_opening",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "valuation-opening",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "valuation_change",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "40"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "valuation-change",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "valuation_settlement",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "valuation:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "valuation-settlement",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "designation_loan",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "designation:3"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "loan"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "designation-loan",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "designation_quantity",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "designation:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "designation-quantity",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "designation_risk",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "designation:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "benchmark_interest"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "designation-risk",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "effectiveness_instrument_cumulative",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "40"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-instrument_cumulative",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "effectiveness_quantity",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "800"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-quantity",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "effectiveness_opening_reserve",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-opening_reserve",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "effective",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "36"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-effective",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "ineffective",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "4"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-ineffective",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "closing_reserve",
+      "candidate_owner": "derivatives-hedge-accounting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "effectiveness:8"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "36"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "derivative_contract",
+      "id": "effectiveness-closing_reserve",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "bank_bank_interest_date",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:2"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-INTEREST-date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "bank_bank_interest_kind",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:4"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "interest_paid"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-INTEREST-kind",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "bank_bank_interest_category",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "operating"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-INTEREST-category",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "bank_bank_interest_bank_id",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "BANK-INTEREST"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-INTEREST-bank_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "bank_bank_principal_date",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:7"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "2026-12-31"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-PRINCIPAL-date",
+      "transformation": "iso_date"
+    },
+    {
+      "attribute": "bank_bank_principal_kind",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:9"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "debt_repayment"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-PRINCIPAL-kind",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "bank_bank_principal_category",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:10"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "financing"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-PRINCIPAL-category",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "bank_bank_principal_bank_id",
+      "candidate_owner": "cash-flow-reporting",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank:6"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "BANK-PRINCIPAL"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-BANK-PRINCIPAL-bank_id",
+      "transformation": "identity"
+    },
+    {
+      "attribute": "financing_support",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "cash:5"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "0"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "reported-financing",
+      "transformation": "decimal"
+    },
+    {
+      "attribute": "financing_support",
+      "candidate_owner": "",
+      "claim": {
+        "confidence": 0.99,
+        "evidence": [
+          "bank_summary:1"
+        ],
+        "rationale": "Deterministic simulated semantic interpretation",
+        "status": "EXTRACTED",
+        "value": "-200"
+      },
+      "confirmation_required": false,
+      "conflicts": [],
+      "dimensions": {
+        "comparator": "actual",
+        "currency": "EUR",
+        "entity": "Synthetic Group",
+        "period": [
+          "2026-01-01",
+          "2026-12-31"
+        ],
+        "unit": "currency"
+      },
+      "economic_id": "",
+      "extraction_method": "semantic proposal",
+      "family": "cash_activity",
+      "id": "bank-financing",
+      "transformation": "decimal"
+    }
+  ],
+  "frameworks": [],
+  "hypotheses": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "commentary:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "description": "The hedge offset almost all FX loss",
+        "id": "hedge-offset-fx",
+        "tests": [
+          {
+            "factor": 0.9,
+            "left_owner": "derivatives-hedge-accounting",
+            "left_path": [
+              "derivatives",
+              "forward1",
+              "ineffectiveness"
+            ],
+            "operator": "magnitude_above",
+            "right_owner": "foreign-currency",
+            "right_path": [
+              "monetary_fx_profit"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "interpreted_objective": null,
+  "issues": [
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "debt:2",
+        "debt:3",
+        "debt:6",
+        "debt:13",
+        "debt:9",
+        "debt:7",
+        "debt:8",
+        "debt:10",
+        "debt:4",
+        "debt:5",
+        "debt:11",
+        "debt:12",
+        "debt:14",
+        "lender:2",
+        "payments:2",
+        "payments:3",
+        "payments:4",
+        "payments:6",
+        "payments:7",
+        "payments:8"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "debt-open",
+          "debt-principal",
+          "debt-yield",
+          "debt-rights",
+          "debt-repayment",
+          "debt-interest",
+          "debt-paid",
+          "debt-close",
+          "draws",
+          "fees",
+          "class-current",
+          "class-noncurrent",
+          "rate-type",
+          "lender-principal",
+          "payment-current-date",
+          "payment-current-amount",
+          "payment-current-principal",
+          "payment-redemption-date",
+          "payment-redemption-amount",
+          "payment-redemption-principal"
+        ],
+        "family": "debt_population",
+        "id": "debt-financing",
+        "owner": "debt-financing",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "fx:3",
+        "fx:2",
+        "fx:4",
+        "fx:6",
+        "fx:7",
+        "fx:10",
+        "fx:5",
+        "fx:8"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [],
+        "fact_ids": [
+          "fx-original",
+          "fx-currency",
+          "fx-opening",
+          "fx-rate",
+          "fx-settled",
+          "fx-profit",
+          "fx-opening_rate",
+          "fx-settlement_rate"
+        ],
+        "family": "currency_exposure",
+        "id": "foreign-currency",
+        "owner": "foreign-currency",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "valuation:7",
+        "valuation:3",
+        "valuation:2",
+        "designation:4",
+        "effectiveness:3",
+        "derivative:1",
+        "derivative:2",
+        "derivative:3",
+        "derivative:4",
+        "valuation:4",
+        "valuation:5",
+        "valuation:6",
+        "designation:3",
+        "designation:5",
+        "designation:6",
+        "effectiveness:2",
+        "effectiveness:4",
+        "effectiveness:5",
+        "effectiveness:6",
+        "effectiveness:7",
+        "effectiveness:8"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "debt-financing"
+        ],
+        "fact_ids": [
+          "hedge-value",
+          "hedge-date",
+          "hedge-notional",
+          "hedge-designation",
+          "hedge-risk",
+          "contract-instrument",
+          "contract-notional",
+          "contract-maturity",
+          "contract-underlying",
+          "valuation-opening",
+          "valuation-change",
+          "valuation-settlement",
+          "designation-loan",
+          "designation-quantity",
+          "designation-risk",
+          "effectiveness-instrument_cumulative",
+          "effectiveness-quantity",
+          "effectiveness-opening_reserve",
+          "effectiveness-effective",
+          "effectiveness-ineffective",
+          "effectiveness-closing_reserve"
+        ],
+        "family": "derivative_contract",
+        "id": "derivatives-hedge-accounting",
+        "owner": "derivatives-hedge-accounting",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "bank:3",
+        "bank:8",
+        "cash:2",
+        "bank:2",
+        "bank:4",
+        "bank:5",
+        "bank:1",
+        "bank:7",
+        "bank:9",
+        "bank:10",
+        "bank:6",
+        "cash:5",
+        "bank_summary:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "debt-financing",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "cash-interest",
+          "cash-principal",
+          "cash-close",
+          "bank-BANK-INTEREST-date",
+          "bank-BANK-INTEREST-kind",
+          "bank-BANK-INTEREST-category",
+          "bank-BANK-INTEREST-bank_id",
+          "bank-BANK-PRINCIPAL-date",
+          "bank-BANK-PRINCIPAL-kind",
+          "bank-BANK-PRINCIPAL-category",
+          "bank-BANK-PRINCIPAL-bank_id",
+          "reported-financing",
+          "bank-financing"
+        ],
+        "family": "cash_activity",
+        "id": "cash-flow-reporting",
+        "owner": "cash-flow-reporting",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "rec:2"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "cash-flow-reporting",
+          "debt-financing",
+          "derivatives-hedge-accounting",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "rec-debt"
+        ],
+        "family": "reconciliation",
+        "id": "balance-sheet-reconciliations",
+        "owner": "balance-sheet-reconciliations",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "tb:5"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "cash-flow-reporting",
+          "debt-financing",
+          "derivatives-hedge-accounting",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "fs-debt"
+        ],
+        "family": "statement",
+        "id": "financial-statements",
+        "owner": "financial-statements",
+        "required_fields": []
+      }
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [
+        "prior:3",
+        "pnl:1"
+      ],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": {
+        "dependencies": [
+          "cash-flow-reporting",
+          "debt-financing",
+          "derivatives-hedge-accounting",
+          "foreign-currency"
+        ],
+        "fact_ids": [
+          "prior-interest",
+          "analytics-interest"
+        ],
+        "family": "analytics",
+        "id": "management-accounting-analytics",
+        "owner": "management-accounting-analytics",
+        "required_fields": []
+      }
+    }
+  ],
+  "jurisdictions": [],
+  "missing_facts": [],
+  "objective": {
+    "confidence": 1,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "USER_STATED",
+    "value": "Can you review our treasury and financing position at December month-end, including the year-to-date movements? Interest expense is up, we have a USD loan and a derivative hedge, FX moved a lot, and the cash flow statement does not look right. I have attached the debt schedule, lender statements, FX report, derivative valuation, hedge documentation, bank activity, trial balance and cash flow support."
+  },
+  "periods": [],
+  "primary_mode": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "RECONCILIATION_INVESTIGATION"
+  },
+  "requested_output": {
+    "confidence": 0.9,
+    "evidence": [],
+    "rationale": "Deterministic simulated semantic interpretation",
+    "status": "INFERRED",
+    "value": "Treasury month-end review"
+  },
+  "secondary_modes": [
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "DIAGNOSTIC_ANALYTICS"
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "CLOSE_REVIEW"
+    }
+  ],
+  "supporting_modes": [
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "ACCOUNTING_DETERMINATION"
+    },
+    {
+      "confidence": 0.9,
+      "evidence": [],
+      "rationale": "Deterministic simulated semantic interpretation",
+      "status": "INFERRED",
+      "value": "REPORTING"
+    }
+  ]
+}
