@@ -1,14 +1,9 @@
 """Adversarial checks of identity-only synthetic history qualification."""
-import importlib.util
 import json
 import unittest
 from pathlib import Path
 from orchestration.history_references import ROOT, reference_path, prior_reference_path
-
-LOCATION = ROOT/'recovery/borrowing-costs-pr42/check_identity_transition.py'
-SPEC = importlib.util.spec_from_file_location('_history_transition_review', LOCATION)
-REVIEW = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(REVIEW)
+from orchestration import history_transition as REVIEW
 
 
 class HistoryQualification(unittest.TestCase):
@@ -54,6 +49,7 @@ class HistoryQualification(unittest.TestCase):
         review.bind('b'*64, 'a'*64, 'second native result')
         review.compare({'result_versions': ['version:'+'a'*64, 'version:'+'b'*64]},
                        {'result_versions': ['version:'+'a'*64, 'version:'+'c'*64]})
+        review.finish()
         self.assertFalse(review.errors)
 
     def test_recorded_orchestration_transition_reperforms(self):
@@ -70,4 +66,5 @@ class HistoryQualification(unittest.TestCase):
             review.seed(old, current, name)
         for name, old, current in pairs:
             review.compare(old, current, name)
+        review.finish()
         self.assertFalse(review.errors, str(review.errors[:5]))

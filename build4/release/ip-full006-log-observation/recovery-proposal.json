@@ -1,0 +1,87 @@
+{
+  "reviewer": "Independent AI integration_qa; separate from full006 executor; no authenticated human approval",
+  "original_manifest": {
+    "path": "build4/release/investment-property-pr43-attempt-006/release-regression.json",
+    "pre_repair_commit_reported_by_primary": "00c94822",
+    "independently_observed_sha256": "a80d95090588276365cb8eeeda2e32a093688c31b56acc927922fe8ccf3e6c32",
+    "distinct_executed_tests": 3648,
+    "modified_by_reviewer": false
+  },
+  "authenticated_original_candidates": [
+    {
+      "index": 50,
+      "module": "test_stage4_current_timing_independent.py",
+      "original_path": "build4/release/investment-property-pr43-attempt-006/0-module-50.log",
+      "damaged_prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-50.log",
+      "prefix_bytes": 936,
+      "prefix_sha256": "16e5033f9b6ecf61c96c28154501c023c4b9653c336453a9ca86ec4614a17c4a",
+      "candidate_path": "build4/release/ip-full006-log-observation/candidate-0-module-50.log",
+      "candidate_bytes": 1474,
+      "candidate_sha256": "82943aab211528c0f466c3a70b3b2d73343e1f1b2da7b063a152dddc397a92ec",
+      "exact_preexisting_expected_hash": true,
+      "original_tests": 8,
+      "original_seconds": 2.255,
+      "suffix": "Complete fifth test withok, append original next3 testIDs in canonical verbose unittest format and original8test2.255s OK footer"
+    },
+    {
+      "index": 53,
+      "module": "test_stage4_native_opening.py",
+      "original_path": "build4/release/investment-property-pr43-attempt-006/0-module-53.log",
+      "damaged_prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-53.log",
+      "prefix_bytes": 945,
+      "prefix_sha256": "db77fa207ee982f645c7a624873523e1a1b1ba3a75c142996b1ea3b13b90cd53",
+      "candidate_path": "build4/release/ip-full006-log-observation/candidate-0-module-53.log",
+      "candidate_bytes": 1046,
+      "candidate_sha256": "65bfb1558256f5e9335911e176b75402a9a112fbee113005019e1a8b63cc9b9f",
+      "exact_preexisting_expected_hash": true,
+      "original_tests": 5,
+      "original_seconds": 2.294,
+      "suffix": "ok\n\n----------------------------------------------------------------------\nRan 5 tests in 2.294s\n\nOK\n"
+    },
+    {
+      "index": 62,
+      "module": "test_stage4_two_translated_sides.py",
+      "original_path": "build4/release/investment-property-pr43-attempt-006/0-module-62.log",
+      "damaged_prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-62.log",
+      "prefix_bytes": 669,
+      "prefix_sha256": "103d4a247e4471b5fdae0914b2c72ffb0f7a97fea92c9ac213da823e27a2c7f3",
+      "candidate_path": "build4/release/ip-full006-log-observation/candidate-0-module-62.log",
+      "candidate_bytes": 1689,
+      "candidate_sha256": "47f78b3a212194031af44100c9772381f33661721ccf270a9c5d7a07ba9a437f",
+      "exact_preexisting_expected_hash": true,
+      "original_tests": 10,
+      "original_seconds": 1.093,
+      "suffix": "Complete fourth test withok, append original next6 testIDs in canonical verbose unittest format and original10test1.093s OK footer"
+    }
+  ],
+  "diagnostics_capture_limitation": {
+    "index": 5,
+    "module": "test_diagnostics.py",
+    "original_path": "build4/release/investment-property-pr43-attempt-006/0-module-5.log",
+    "captured_bytes": 123,
+    "current_equals_original_captured_sha256": "ad71a941e11c105e11e8bcb5725b1e93bbd84512874f64db40d2a14572f6c232",
+    "original_receipt_tests": 17,
+    "original_receipt_seconds": 37.938,
+    "original_receipt_errors_failures_skips": 0,
+    "original_parent_module_exit_code": 0,
+    "original_receipt_and_distinct_ids": "Present and all17 actual test methods are counted as executed in the original completed receipt",
+    "full_original_stdout_recovery_authenticated": false,
+    "hypothetical_complete_template_sha256": "069cac1bca0317013612a3eb101fae6286c85e979fc41aa0a69b5ca5ffdb808a",
+    "hypothetical_template_matches_captured_hash": false,
+    "prohibited_action": "Do not replace this original123byte captured log with a synthetic complete template or fresh rerun transcript, and do not rewrite expected hash",
+    "corroboration": "All17 unchanged diagnostic methods independently executed PASS within the actual40test23.330s supplemental rerun, whose complete actual stdout is separately retained",
+    "corroboration_log": "build4/release/ip-full006-log-observation/supplemental-rerun.log",
+    "corroboration_log_sha256": "b936b0c6c5634a1afc593d974e18cf6a148c16cc9233573a59947f61c107871a"
+  },
+  "source_and_history_checks": {
+    "frozen_source_entries": 417,
+    "frozen_input_entries": 2675,
+    "changed_frozen_files": [],
+    "original_historical_files": 5926,
+    "changed_historical_files": []
+  },
+  "actions_taken": "Only release-only proposal and three separately named exact hash-matching candidates added. All original logs, expected hashes, pointer, manifest, Python and nonrelease inputs remain untouched",
+  "cause": "Unestablished; no actor or specific logging/synchronization mechanism invented",
+  "independent_acceptance_assessment": "Conditional qualified acceptance of original test EXECUTION metadata is defensible: all3648 test methods have completed zero-skip results and process exit receipts, including original17 diagnostic results, independently corroborated on unchanged source. This is NOT complete original stdout coverage. The diagnostic123byte captured stdout limitation must be explicitly disclosed and retained; full original diagnostic transcript cannot be authenticated. First restore only the three exact preexisting-hash candidates under primary authorization, then verify every original digest, frozen source/input, historical preservation and final discovery population. A machine hash PASS alone must not be described as proving complete stdout. If complete original per-test stdout is treated as a mandatory owner acceptance condition, diagnostics capture remains a blocker and requires a separately governed full-execution rerun rather than invented transcript",
+  "current_disposition": "Proposal only; no original restorations yet. Publication and Ready-for-Review remain blocked pending primary's explicit qualified acceptance handling, unchanged full verifier and new exact-head CI/readiness. No merge authorization"
+}

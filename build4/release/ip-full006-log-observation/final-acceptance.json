@@ -1,0 +1,90 @@
+{
+  "reviewer": "Independent AI integration_qa; separate from substantive implementation and original full006 execution author; no human authentication claimed",
+  "scope": "Final independent local release receipt closure after primary restored three exact authenticated original stdout payloads",
+  "original_full006_manifest": {
+    "path": "build4/release/investment-property-pr43-attempt-006/release-regression.json",
+    "sha256": "a80d95090588276365cb8eeeda2e32a093688c31b56acc927922fe8ccf3e6c32",
+    "pre_repair_commit_reported_by_primary": "00c94822",
+    "changed": false
+  },
+  "restored_original_stdout": [
+    {
+      "module_index": 50,
+      "bytes": 1474,
+      "original_expected_and_current_sha256": "82943aab211528c0f466c3a70b3b2d73343e1f1b2da7b063a152dddc397a92ec"
+    },
+    {
+      "module_index": 53,
+      "bytes": 1046,
+      "original_expected_and_current_sha256": "65bfb1558256f5e9335911e176b75402a9a112fbee113005019e1a8b63cc9b9f"
+    },
+    {
+      "module_index": 62,
+      "bytes": 1689,
+      "original_expected_and_current_sha256": "47f78b3a212194031af44100c9772381f33661721ccf270a9c5d7a07ba9a437f"
+    }
+  ],
+  "restoration_provenance": {
+    "independent_exact_payload_proposal": "integration_qa reviewer; candidates verified against preexisting immutable expected hashes",
+    "original_path_restoration_actor": "Primary AI implementation agent via apply_patch",
+    "observed_damaged_prefixes": "Retained in ip-full006-log-observation/observed-0-module-{50,53,62}.log",
+    "fresh_rerun_transcripts_substituted": false,
+    "original_recorded_durations_receipts_testIDs_or_expected_hashes_changed": false,
+    "truncation_cause": "Unestablished; no actor or system cause invented"
+  },
+  "actual_final_verifier": {
+    "command": "python -m build4.verify_release",
+    "log": "build4/release/ip-full006-log-observation/final-acceptance.log",
+    "log_sha256": "dc6b0bbc58c59a59352e28f3b88c0932eba54964b1431d1db53f7a5c0b1ad4f2",
+    "exit_code": 0,
+    "output": {
+      "distinct_tests": 3648,
+      "historical_files": 5926,
+      "status": "PASS"
+    }
+  },
+  "independent_direct_checks": {
+    "suites": 17,
+    "actual_test_receipt_ids": 3648,
+    "unique_test_receipt_ids": 3648,
+    "all_suite_exit_codes": 0,
+    "all_suite_errors": 0,
+    "all_suite_failures": 0,
+    "all_suite_skips": 0,
+    "captured_stdout_hashes_checked": 93,
+    "captured_stdout_hash_mismatches": [],
+    "frozen_python_entries": 417,
+    "frozen_execution_input_entries": 2675,
+    "changed_frozen_entries": [],
+    "original_historical_files_checked": 5926,
+    "changed_historical_files": []
+  },
+  "mandatory_original_stdout_qualification": {
+    "module": "test_diagnostics.py",
+    "index": 5,
+    "original_captured_stdout_bytes": 123,
+    "original_expected_and_current_sha256": "ad71a941e11c105e11e8bcb5725b1e93bbd84512874f64db40d2a14572f6c232",
+    "original_capture_incomplete_before_parent_hash_recording": true,
+    "original_actual_tests": 17,
+    "original_actual_seconds": 37.938,
+    "original_errors_failures_skips": 0,
+    "original_actual_process_exit_code": 0,
+    "all_original_testIDs_present": true,
+    "complete_original_per_test_stdout_authenticated": false,
+    "original_log_left_untouched": true,
+    "no_synthetic_template_or_fresh_transcript_substitution": true,
+    "supplemental_evidence": "All17 unchanged diagnostic methods independently PASS within actual40test23.330s rerun; complete actual supplemental stdout retained separately",
+    "supplemental_log": "build4/release/ip-full006-log-observation/supplemental-rerun.log",
+    "supplemental_log_sha256": "b936b0c6c5634a1afc593d974e18cf6a148c16cc9233573a59947f61c107871a",
+    "acceptance_boundary": "Existing gates require actual full test execution, exact discovery population, passing receipts/exit codes and source/input/evidence hashes, not additional complete original per-test stdout. Those required gates pass with this explicitly disclosed original stdout coverage limitation. This does not imply all original logs are complete or claim authentic recovery of diagnostics stdout"
+  },
+  "pointer_observed_before_primary_seal": {
+    "path": "build4/release/investment-property-pr43-accepted-release.json",
+    "status": "LOCAL_REGRESSION_PENDING_RECEIPT_SEAL",
+    "sha256": "9945dd309ab8ebc55fafc6f24545cdb226abccc90a54400efde2162c34271be9",
+    "bound_manifest_sha256": "a80d95090588276365cb8eeeda2e32a093688c31b56acc927922fe8ccf3e6c32",
+    "modified_by_this_reviewer": false
+  },
+  "write_scope": "Only this new release-only report and actual verifier stdout. No Python, test, nonrelease input, original manifest, pointer, original log or prior historical artifact modified by this final reviewer turn",
+  "final_independent_disposition": "PASS for local full006 execution and receipt integrity, qualified by explicitly incomplete original diagnostic stdout. Exact-head GitHub Actions and unchanged-head readiness remain separate required publication gates. No merge authorization"
+}

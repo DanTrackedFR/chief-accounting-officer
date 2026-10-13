@@ -285,3 +285,14 @@ Authored, genuinely independent knowledge/runtime/main QA and42 deterministic
 examples precede full regression, exact-head Actions and Ready-for-Review gates.
 Release completion is recorded under build4/release and the existing PR43
 conversation; owner integration remains separately authorized. Do not merge.
+
+13 October2026 release checkpoint: the corrected source passed3,648 distinct
+tests in17 suites and all10 validators. Independent review corrected a
+pre-existing order-dependent historical identity comparator without modifying
+the frozen Borrowing Costs reviewer, either merged specialist's accounting,
+or historical accounting evidence. All5,926 protected files remain unchanged.
+The release handoff explicitly qualifies one incomplete original diagnostics
+stdout capture with exact execution receipts and a separate independent rerun;
+it does not claim a complete original transcript. Exact final-head and
+unchanged-head readiness Actions remain publication gates on existing PR43.
+This is still an unmerged50th bounded candidate, not owner-authorized integration.

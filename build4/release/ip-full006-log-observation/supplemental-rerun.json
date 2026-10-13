@@ -1,0 +1,28 @@
+{
+  "reviewer": "Independent AI integration_qa",
+  "reason": "Supplemental confidence check for four completed modules with incomplete retained original stdout; original aggregate captured digests not yet published at initial observation",
+  "command": "python -m unittest orchestration.tests.test_diagnostics orchestration.tests.test_stage4_current_timing_independent orchestration.tests.test_stage4_native_opening orchestration.tests.test_stage4_two_translated_sides -v",
+  "log": "build4/release/ip-full006-log-observation/supplemental-rerun.log",
+  "log_sha256": "b936b0c6c5634a1afc593d974e18cf6a148c16cc9233573a59947f61c107871a",
+  "actual_tests": 40,
+  "module_tests": {
+    "test_diagnostics.py": 17,
+    "test_stage4_current_timing_independent.py": 8,
+    "test_stage4_native_opening.py": 5,
+    "test_stage4_two_translated_sides.py": 10
+  },
+  "seconds": 23.330,
+  "exit_code": 0,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "status": "PASS",
+  "actual_stdout_assurance": "Complete actual stdout/stderr text retained from tool-returned execution chunks, not a fabricated original attempt transcript",
+  "frozen_attempt006": {
+    "source_entries": 417,
+    "input_entries": 2675,
+    "changed_after_rerun": []
+  },
+  "original_evidence_actions": "Original incomplete logs remain untouched; exact observed prefixes preserved separately. No original duration, original log bytes, original expected digest or original receipt substituted with this rerun. No Python or nonrelease input modified",
+  "disposition": "Supplemental PASS only. Does not itself establish original full006 receipt integrity or acceptance. Wait for original parent-captured expected hashes before diagnosing exact mismatch or proposing authenticated restoration"
+}
