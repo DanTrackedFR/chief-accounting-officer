@@ -17,8 +17,8 @@ class Foundation(unittest.TestCase):
         if change:change(r)
         return self.cao.run(r)
     def test_registry_single_truth(self):
-        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(49,sum(s['production_available'] for s in registry.skills.values()))
-        self.assertFalse(registry.get('investment-property')['production_available'])
+        registry=Registry();self.assertEqual(50,len(registry.skills));self.assertEqual(50,sum(s['production_available'] for s in registry.skills.values()))
+        self.assertTrue(registry.get('investment-property')['production_available'])
         self.assertTrue(registry.get('government-grants')['production_available'])
         self.assertTrue(registry.get('borrowing-costs')['production_available'])
         self.assertFalse(registry.get('unknown')['production_available'])

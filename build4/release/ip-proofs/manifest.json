@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "baseline_main": "e75375b84813b9d584db12aa692b2f4d16baf052",
+  "reference_resolution": "orchestration.history_references.reference_path; retained main-approved Grants/PR42 layers",
+  "original_references_regenerated": false,
+  "proofs": [
+    {"module": "local_cao.tests.prove_cli", "seeds": [19], "exit_codes": [0], "main_cmp_exit_code": 0, "sha256": "36fdfda5ff01adab42e29d9c3464bb6299c763bade604da78632bf3e4715d64c", "files": ["local-19.json"]},
+    {"module": "hosted_cao.tests.prove_http", "seeds": [19, 941], "exit_codes": [0, 0], "seed_cmp_exit_code": 0, "main_cmp_exit_code": 0, "sha256": "436c84c00414195862d4d5b6582dca05128201d49625141625a89c9f884c4ea0", "files": ["hosted-19.json", "hosted-941.json"]},
+    {"module": "intelligence.tests.prove_integrated", "seeds": [19, 941], "exit_codes": [0, 0], "seed_cmp_exit_code": 0, "main_cmp_exit_code": 0, "sha256": "1608f16ae73fcb3cbca3244ed0b79f18bd853a9d9261021c1bdefdc43dbaf179", "files": ["intelligence-19.json", "intelligence-941.json"]},
+    {"module": "build4.prove_integrated", "seeds": [283, 1709], "exit_codes": [0, 0], "seed_cmp_exit_code": 0, "main_cmp_exit_code": 0, "sha256": "4d2f1acf2dd153b079fee4c1eb976a10e6cb9fe865e1aa90deff97a246ce348b", "files": ["build4-283.json", "build4-1709.json"]},
+    {"module": "build4.prove_memory", "seeds": [283, 1709], "exit_codes": [0, 0], "seed_cmp_exit_code": 0, "main_cmp_exit_code": 0, "sha256": "8bd4ebe0dfe05cce4570f87b0935adf5327746b413fd4e20cae0fb0745f24561", "files": ["memory-283.json", "memory-1709.json"]}
+  ]
+}

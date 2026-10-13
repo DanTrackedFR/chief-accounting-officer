@@ -1,0 +1,57 @@
+{
+  "reviewer": "Separate AI integration_qa; not substantive implementation author or authenticated human",
+  "scope": "Independent cross-skill and historical preservation rerun after R7 provenance-comparator correction",
+  "local_checkpoint": "aaeb2901d9633d99e28874c9f3d911193dfe07b7",
+  "live_main": {
+    "command": "git ls-remote origin refs/heads/main",
+    "exit_code": 0,
+    "observed_sha": "e75375b84813b9d584db12aa692b2f4d16baf052",
+    "advanced": false,
+    "owner_intervention_required": false
+  },
+  "reviewed_source_sha256": {
+    "orchestration/history_transition.py": "99e4632335ddf4403a5b533b4110a0fb88be22b95643e0fd7442aa62a125f184",
+    "orchestration/tests/test_history_transition_order.py": "e2be834341ee1cb72f5676dd43970c530a25c04d7869f1f2befd447357831309",
+    "skills/production.py": "719c6b533d2e81a216ca158a9fa3bb880c2f72fe77ad38ee682f244a390fa50c",
+    "skills/investment_fingerprint.py": "a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b"
+  },
+  "actual_rerun": {
+    "command": "python -m unittest skills.tests.test_independent_ip_main_reconciliation skills.tests.test_implementation_scope -v",
+    "log": "build4/release/ip-r7-final-reconciliation/tests.log",
+    "log_sha256": "fe0d66693a79d8016d0f4707d96416968d7fe74edf3ebfe0d757b083d6d12420",
+    "tests": 25,
+    "independent_reconciliation_tests": 15,
+    "original_implementation_scope_tests": 10,
+    "seconds": 36.533,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "PASS",
+    "stdout_assurance": "Complete stdout/stderr text retained from actual tool-returned chunks. No fabricated transcript or duration"
+  },
+  "accounting_owner_preservation": {
+    "eight_borrowing_and_grants_framework_case_fingerprints": "Exact detached e753 baseline PASS",
+    "eight_borrowing_and_grants_framework_full_result_hashes": "Exact detached e753 baseline PASS; accounting amounts, journals, source lineage and internal identities compared without stripping",
+    "forty_nine_other_production_contracts": "Byte-identical to e753 main PASS",
+    "investment_legacy_contract_archive": "Exact original main bytes PASS",
+    "owner_scope_and_cross_owner_mutation_controls": "PASS",
+    "shared_boundary_original_assertion": "PASS unchanged",
+    "four_byte_boundary_adversarial_probes": "PASS"
+  },
+  "historical_preservation": {
+    "manifest": "build4/release/investment-property-historical-preservation.json",
+    "manifest_sha256": "440d596820e492857e6e70bbc27f97434cb12ffd325323f1e29f2f84dd33ba7b",
+    "files_checked": 5926,
+    "changed": [],
+    "additional_git_main_subset_checked_by_tests": 2785,
+    "original_R6_receipt": "Retained unchanged; this separate report does not overwrite earlier evidence"
+  },
+  "frozen_attempt006_maps": {
+    "source_entries": 417,
+    "input_entries": 2675,
+    "changed": []
+  },
+  "writes": "Only this new release JSON and actual rerun log; no .py, tests, nonrelease input documents, original historical artifacts or prior R6 evidence modified",
+  "R7_cross_skill_independent_disposition": "PASS. Main remains unchanged and no owner intervention needed for reconciliation. Full frozen attempt006 and new exact-head CI/readiness remain separate acceptance gates; no full-release completion or merge authorization claimed here"
+}

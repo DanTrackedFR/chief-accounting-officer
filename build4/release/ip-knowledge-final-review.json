@@ -1,0 +1,78 @@
+{
+  "reviewer": "investment_property_independent_knowledge_ai (/root/knowledge_qa)",
+  "reviewer_kind": "INDEPENDENT_MODEL",
+  "human_signoff": false,
+  "date": "2026-10-12",
+  "result": "PASS_BOUNDED_CORRECTIONS_R4_R5",
+  "scope": "Read-only final accounting challenge of current transfer-in carrying basis and IFRS/AASB cost-model fair-value notes. No substantive implementation, knowledge claims or approval metadata changed.",
+  "R4": {
+    "disposition": "PASS",
+    "independent_math": "Original PPE600000 less separately owned annual depreciation20000 equals current580000. With separately owned current impairment10000, current carrying570000. Investment-property class opening0 plus current transfer580000/570000 equals closing580000/570000; class depreciation/impairment0 because those charges occurred before class entry.",
+    "journal": "Only Dr Investment property / Cr PPE at current carrying580000 or570000. Existing20k depreciation and10k impairment are not reposted.",
+    "knowledge_boundary": "Existing cost-transfer, cost-model and owner-boundary claims govern preservation of current carrying value. Prior-year600000 cannot substitute for reporting-date basis. Into-fair-value PPE transfers remain blocked; no gain or OCI recognition is invented."
+  },
+  "R5": {
+    "disposition": "PASS",
+    "independent_challenge": "A cost-model choice changes recognition basis, not the requirement for a current fair-value note. Initial cutoff acquisitions and transfers into the closing property class are not disclosure exemptions. Runtime obtains qualified current valuation and numerically ties fair_value_disclosure650000 to disclosure evidence while retaining fair_value_movement0. Missing/stale/wrong-framework/unreliable evidence safely blocks.",
+    "operative_source": "https://standards.aasb.gov.au/aasb-140-dec-2022",
+    "source_inspection": "Independently inspected current official HTML operative beginning2023-01-01 before2027-01-01, paragraphs32 and79(e), and Australian Tier2 exclusionAusA1. No standard text reproduced.",
+    "assurance": "This targeted AASB authority inspection corroborates the review; existing96claim evidence ratings and approval hashes remain unchanged. No broad direct-source claim or direct IASB inspection is implied.",
+    "limits": "2026 Tier1 for-profit AASB and full for-profit IFRS bounded ordinary owned-property cost routes only. Exceptional inability provisions, Tier2, NFP and other periods remain outside production scope. Requiring qualified independent valuation is an implementation boundary stronger than the standard encouragement of independent valuer involvement; it is not asserted to be a universal statutory requirement."
+  },
+  "actual_runtime_reperformance": {
+    "frameworks": [
+      "IFRS",
+      "AASB"
+    ],
+    "initial": {
+      "opening": "0",
+      "closing": "600000",
+      "fv_note": "650000",
+      "fv_recognized": "0",
+      "journals": 1
+    },
+    "hold": {
+      "opening": "600000",
+      "closing": "580000",
+      "fv_note": "650000",
+      "fv_recognized": "0",
+      "journals": 0
+    },
+    "transfer_in_cost": {
+      "IP_class_opening": "0",
+      "transfer": "580000",
+      "IP_class_closing": "580000",
+      "fv_note": "650000",
+      "fv_recognized": "0",
+      "journals": 1
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_ip_duplicate_scope -v",
+      "tests": 10,
+      "seconds": 2.047,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest discover -s knowledge/investment-property -p test_independent_claim_qa.py -v",
+      "tests": 12,
+      "seconds": 0.089,
+      "exit_code": 0
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python inline read-only production.assess_case reperformance IFRS/AASB cost initial,hold,transfer_in_cost",
+      "cases": 6,
+      "exit_code": 0
+    }
+  ],
+  "sha256": {
+    "skills/investment-property/workflow.py": "9f365e2caa3738ef47ca2f656760d0213af9b3dcbe82768049c49af7a9f45343",
+    "skills/investment-property/methods.md": "b5175697963728542d15628706184fffc3fb88d6d5ab14aab137bd6d554c2d77",
+    "knowledge/investment-property/standards-claims.json": "36973a0bb639cd88905a15b8f169e79869f1a491ce3ccb8621817bfaff2f25bb",
+    "knowledge/investment-property/independent-review.json": "538c45bf9959c1b9a7ac00ce5afb3a4c26db3e019e50d106dd21e2cd3b903ea8",
+    "skills/tests/test_independent_ip_duplicate_scope.py": "0bd65d107fb743b91071b32ff2b0b1568b77639698bea09dd9274309bf470b88"
+  },
+  "new_findings": [],
+  "release_limit": "This correction-specific knowledge approval does not assert full repository regression, deterministic artifact reproduction or exact-final-head CI has passed. Those separate gates remain required."
+}

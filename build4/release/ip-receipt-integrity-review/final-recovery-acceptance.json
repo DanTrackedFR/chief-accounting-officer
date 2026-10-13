@@ -1,0 +1,58 @@
+{
+  "reviewer": "Independent AI integration_qa; no authenticated human identity claimed",
+  "cause": "Retained completed stdout prefixes were truncated/replaced after tests completed. Inode timestamps indicate replacement/copy-back, but causal actor is not established. No logger label collision or test writer identified. No permission or process-namespace bypass attempted",
+  "restorations": [
+    {
+      "path": "build4/release/investment-property-pr43-attempt-005/0-module-52.log",
+      "damaged_prefix_copy": "build4/release/investment-property-attempt-005-damaged-module-52.log",
+      "damaged_bytes": 945,
+      "damaged_sha256": "db77fa207ee982f645c7a624873523e1a1b1ba3a75c142996b1ea3b13b90cd53",
+      "restored_bytes": 1046,
+      "restored_sha256": "4ee547e3477f469c9dd525b03133010f8036180cb49ccb98c75d149cc73466ca",
+      "matches_original_recorded_hash": true,
+      "independent_byte_recovery_review": "integration_qa",
+      "damage_preservation_and_apply_patch_restoration_actor": "Primary AI implementation agent",
+      "independent_fresh_rerun": "5 tests PASS, 2.737 seconds; separate transcript, not substituted for original"
+    },
+    {
+      "path": "build4/release/investment-property-pr43-attempt-005/suite-6.log",
+      "damaged_prefix_copy": "build4/release/investment-property-attempt-005-damaged-suite-6.log",
+      "damaged_bytes": 2626,
+      "damaged_sha256": "955cc9e142ec91626ff56af8faab674f31482ab89a414b590b76279145bc2d94",
+      "restored_bytes": 4162,
+      "restored_sha256": "635a4e313c4e659ae2874ee21529d53e4cdb491c1f6207a9ea91ef7a93e0ff12",
+      "matches_original_recorded_hash": true,
+      "damage_preservation_actor": "Primary AI implementation agent",
+      "independent_exact_byte_recovery_and_apply_patch_restoration_actor": "integration_qa AI reviewer, explicitly authorized by primary",
+      "independent_fresh_rerun": "35 tests PASS, 2.970 seconds; separate transcript, not substituted for original"
+    }
+  ],
+  "unchanged_manifest": {
+    "path": "build4/release/investment-property-pr43-attempt-005/release-regression.json",
+    "original_sha256": "61fa3e76e195f69876cf78466454e89c23623616803182551cda21f1cbdf07d8",
+    "changed": false,
+    "expected_hashes_receipts_test_counts_or_test_outcomes_changed": false
+  },
+  "final_independent_acceptance_verifier": {
+    "command": "python skills/investment-property/verify_release.py",
+    "log": "build4/release/ip-receipt-integrity-review/final-acceptance-verifier.log",
+    "log_sha256": "f841da36bd7b9940ca25ac71f66740fda0d169aa3bd0693acafd77fe75f73444",
+    "exit_code": 0,
+    "status": "PASS",
+    "distinct_tests": 3632,
+    "historical_files": 5926
+  },
+  "additional_direct_checks": {
+    "recorded_module_and_suite_validator_stdout_hashes": 92,
+    "stdout_hash_mismatches": [],
+    "frozen_source_entries": 415,
+    "frozen_input_entries": 2673,
+    "changed_frozen_files": [],
+    "historical_preservation_manifest_files": 5926,
+    "changed_historical_files": [],
+    "accepted_pointer_manifest_hash": "61fa3e76e195f69876cf78466454e89c23623616803182551cda21f1cbdf07d8"
+  },
+  "failed_verifiers_preserved": "Original pre-recovery and post-module-only failures are retained. Neither is retroactively labelled PASS",
+  "boundaries": "Only exact cryptographically authenticated new-release stdout bytes restored. No Python, methods, helpers, frozen inputs, prior main historical accounting artifacts, Case evidence, approvals, original completion receipts or expected digests changed",
+  "final_disposition": "PASS for repaired local full-regression receipt integrity. Exact-head GitHub Actions and unchanged-head readiness remain separate required publication gates. No merge authorization."
+}

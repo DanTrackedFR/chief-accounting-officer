@@ -14,3 +14,20 @@ recovery/borrowing-costs-pr42/ci-97e-*.log -whitespace
 # Preserve exact Grants release stdout, including unfinished progress lines.
 build4/release/grants-pr27-attempt-001/*.log whitespace=-blank-at-eol
 build4/release/grants-pr27-attempt-002/*.log whitespace=-blank-at-eol
+
+# Preserve exact Investment Property release logs, including progress fragments.
+build4/release/investment-property-pr43-attempt-*/*.log whitespace=-blank-at-eol
+
+# Preserve independent review stdout verbatim, including reporter final blank lines.
+build4/release/ip-independent-final/*.log -whitespace
+build4/release/ip-history-correction-runtime-review.log -whitespace
+
+# Retain exact damaged new-release stdout prefixes for independent forensics.
+build4/release/investment-property-attempt-005-damaged-module-52.log -whitespace
+build4/release/investment-property-attempt-005-damaged-suite-6.log -whitespace
+
+# Preserve four independently captured attempt-006 prefixes, not source exceptions.
+build4/release/ip-full006-log-observation/observed-0-module-5.log -whitespace
+build4/release/ip-full006-log-observation/observed-0-module-50.log -whitespace
+build4/release/ip-full006-log-observation/observed-0-module-53.log -whitespace
+build4/release/ip-full006-log-observation/observed-0-module-62.log -whitespace

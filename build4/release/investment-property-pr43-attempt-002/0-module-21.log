@@ -1,0 +1,56 @@
+test_interrupted_accounting_artifacts_reproduce (test_persistence_stage2_artifacts.DurableRecoveryArtifactReproduction.test_interrupted_accounting_artifacts_reproduce) ... ERROR
+
+======================================================================
+ERROR: test_interrupted_accounting_artifacts_reproduce (test_persistence_stage2_artifacts.DurableRecoveryArtifactReproduction.test_interrupted_accounting_artifacts_reproduce)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/test_persistence_stage2_artifacts.py", line 11, in test_interrupted_accounting_artifacts_reproduce
+    actual=artifacts()
+           ^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 90, in artifacts
+    periods=run(path,'periods');after_reopen=run(path,'correction');reclosed_work=run(path,'rework');reclosed=run(path,'reclose');reclosure_repeat=run(path,'repeat')
+                                             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 85, in run
+    if r.returncode!=code:raise RuntimeError(action+': '+r.stderr)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: correction: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 165, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 161, in main
+    if len(sys.argv)==3:print(dumps(worker(sys.argv[1],sys.argv[2])));return
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/generate_persistence_stage2_examples.py", line 28, in worker
+    case,record=store.recover(COMPANY,case_id,key)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/persistence/store.py", line 239, in recover
+    return recover(self, company_id, case_id, operation_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/persistence/recovery.py", line 278, in recover
+    try: record = _transaction(store, finish)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/persistence/recovery.py", line 174, in _transaction
+    value = action()
+            ^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/persistence/recovery.py", line 270, in finish
+    result = execute_native(case, actual['intent'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/persistence/recovery.py", line 223, in execute_native
+    if kind == 'CORRECT': return cao.correct(case, intent['node_id'], intent['source'], intent['reason'])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/runtime.py", line 524, in correct
+    session.execute(node_id,observation,copy.deepcopy(reviewed_source),reason)
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/versions.py", line 242, in execute
+    result=self.cao.execute_versioned_owner(node,copy.deepcopy(source),copy.deepcopy(receipts))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/runtime.py", line 508, in execute_versioned_owner
+    raise ValueError('Versioned native accounting result not qualified')
+ValueError: Versioned native accounting result not qualified
+
+
+----------------------------------------------------------------------
+Ran 1 test in 866.960s
+
+FAILED (errors=1)

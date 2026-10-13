@@ -135,7 +135,7 @@ class Authored(unittest.TestCase):
         grants=next(x for x in r['capabilities'] if x['package']=='government-grants')
         self.assertTrue(grants['local_fact_adapter'])
         investment=next(x for x in r['capabilities'] if x['package']=='investment-property')
-        self.assertFalse(investment['local_fact_adapter'])
+        self.assertTrue(investment['local_fact_adapter'])
         borrowing=next(x for x in r['capabilities'] if x['package']=='borrowing-costs')
         self.assertTrue(borrowing['local_fact_adapter'])
 

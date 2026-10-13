@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/c44a393ab4fe/cao/skills/investment-property/verify_release.py", line 52, in <module>
+    if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+                                             ^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/skills/investment-property/verify_release.py", line 40, in verify
+    for row in manifest['logs']:assert row['exit_code']==0 and digest(ROOT/row['path'])==row['sha256'],('Investment Property log changed',row['path'])
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Investment Property log changed', 'build4/release/investment-property-pr43-attempt-005/suite-6.log')

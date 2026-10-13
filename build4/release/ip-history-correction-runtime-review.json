@@ -1,0 +1,51 @@
+{
+  "reviewer": "Independent AI /root/implementation_qa_final; did not author the successor or modify production methods",
+  "date": "2026-10-13",
+  "status": "PASS for independently reviewed history successor and unchanged Investment Property runtime",
+  "head_before": "e43253da3fdff4cbc1d04d27f53ee152435ced52",
+  "head_after": "aaeb2901d9633d99e28874c9f3d911193dfe07b7",
+  "sources_sha256": {
+    "orchestration/history_transition.py": "99e4632335ddf4403a5b533b4110a0fb88be22b95643e0fd7442aa62a125f184",
+    "recovery/borrowing-costs-pr42/check_identity_transition.py": "13b4bda8adeb4d4da27a116df0eefd7161670a028c65825c40a695a968cc0f7e",
+    "skills/investment-property/workflow.py": "1caa7cf8b14ba18da71a274ea68e4964ef438af01488af918fe31e5f8c8ccf60",
+    "skills/production.py": "719c6b533d2e81a216ca158a9fa3bb880c2f72fe77ad38ee682f244a390fa50c",
+    "skills/tests/investment_property_cases.py": "3784a13596006206186a36bab6b07e2adfca0397ed64e3211db22e190d032a5c",
+    "skills/investment-property/examples/production/source-evidence-manifest.json": "c48a92f74ae37797ad11263d89afb7c59ec45302b925653931986c5a662c288c"
+  },
+  "source_freeze": "All six recorded source/artifact hashes were unchanged before and after the checks.",
+  "review": {
+    "deterministic_inventory_rule": "The successor defers multi-member opaque inventory lists. It learns mappings only through the original structured-producer comparator, plus explicitly preserved singleton-role inference in seed(). finish() validates exact sorted inventory populations without learning mappings.",
+    "cross_skill_scope": "No Investment Property workflow, common production dispatcher, case fixture or new 42-case example manifest changes. Property and Borrowing identities remain individually anchored, not inferred by inventory sorting.",
+    "probes": {
+      "count": 7,
+      "exit_code": 0,
+      "coverage": [
+        "Swapped Property/Borrowing digest order, inventory-first and producers-first",
+        "Duplicate and extra inventory members reject",
+        "Changed accounting amount, framework and accounting owner reject"
+      ]
+    },
+    "singleton_limit": "Unique-role singleton correspondence retains the original reviewer's bounded inference. It is not authenticated producer certification or new accounting approval."
+  },
+  "runtime": {
+    "command": "PYTHONHASHSEED=23 PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_investment_property_runtime skills.tests.test_independent_investment_property_integration skills.tests.test_independent_ip_duplicate_scope skills.tests.test_independent_investment_property -q",
+    "hash_seed": 23,
+    "methods": 49,
+    "seconds": 35.033,
+    "exit_code": 0
+  },
+  "examples": {
+    "command": "PYTHONHASHSEED=23 PYTHONPATH=skills:skills/tests:. python skills/tests/generate_investment_property_examples.py --verify",
+    "scenarios": 42,
+    "files": 211,
+    "mode": "read-only verify",
+    "exit_code": 0
+  },
+  "provenance_correction": "Additive correction to the preserved, published post-r6-final-review.json: its phrase 'parentpublishedcommitduringrun' describes a local checkpoint commit advancing HEAD from f689b718 to bc5b261, not remote publication. Exact reviewed source bytes remained unchanged. The original receipt bytes are preserved; this new receipt clarifies provenance without rewriting historical evidence.",
+  "changes": "Only external JSON/log receipts were written. No Python, tests, root IP documents or historical artifacts were edited.",
+  "limitations": [
+    "The separate integration reviewer owns the complete successor/history test suite and full historical population reproduction.",
+    "Full repository regression and exact-head GitHub Actions remain separate release gates.",
+    "No human certification or universal authoritative-source verification is claimed."
+  ]
+}

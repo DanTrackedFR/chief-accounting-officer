@@ -1,0 +1,34 @@
+{
+  "reviewer": "separate AI integration_qa, not substantive implementation author or authenticated human",
+  "initial_findings": "build4/release/ip-roadmap-final/byte-boundary-initial-review.json",
+  "correction": "Use exact witness bytes and dispatcher bytes, verify exact expected additive transformation and agreement with already captured production implementation digest; malformed or mismatching bytes fail closed. Updated outer pinned helper digest.",
+  "reviewed_helper_sha256": "a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b",
+  "reviewed_production_sha256": "719c6b533d2e81a216ca158a9fa3bb880c2f72fe77ad38ee682f244a390fa50c",
+  "original_implementation_scope_test_file_sha256": "3b8b3b3cd44cb84e6afbac4c95ebf76041a2fb716ea0f680cc7ba062aa5a4788",
+  "original_implementation_scope_module_exact_main_bytes": true,
+  "main_baseline_witness_and_all_previous_artifacts_unchanged": true,
+  "independent_rerun": {
+    "command": "python -m unittest skills.tests.test_independent_ip_main_reconciliation skills.tests.test_implementation_scope -v",
+    "log": "build4/release/ip-roadmap-final/byte-boundary-final-tests.log",
+    "log_sha256": "6f20c6d58a10d5f24fc8ab5cf22eb4310c213053692a6f8e877422f478f0e0e9",
+    "tests": 25,
+    "independent_reconciliation_tests": 15,
+    "unchanged_original_implementation_scope_tests": 10,
+    "seconds": 35.075,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "PASS"
+  },
+  "finding_dispositions": {
+    "byte_only_dispatch_mutation": "Corrected and permanent independent reproduction passes; original shared-boundary invalidation test passes unchanged",
+    "byte_only_witness_mutation": "Corrected and permanent independent reproduction passes",
+    "captured_dispatch_digest_mismatch": "Corrected and permanent independent direct-call reproduction passes; bridge leaves mismatching digest untouched",
+    "incongruent_text_view": "Corrected and permanent independent probe passes; byte identity governs normalization rather than a separate text representation"
+  },
+  "all_eight_existing_owner_case_and_full_result_hashes": "Exact detached e753 main equality PASS after helper change",
+  "protected_historical_2785_files_and_49_other_skill_contracts": "Exact main bytes PASS",
+  "earlier_receipt_caveat": "Previous focused reviews passed a less adversarial paired byte-and-text mutation. The new byte-only and captured-digest probes exposed a real certification-boundary bug; their initial FAIL evidence is retained and prior full attempt002 is not accepted.",
+  "release_disposition": "Correction independently PASS. Full frozen attempt003 and exact-head Actions remain mandatory separate gates; no full acceptance claimed here."
+}

@@ -1,0 +1,24 @@
+setUpClass (test_stage4_final_independent.FinalIndependentArchitecture) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_stage4_final_independent.FinalIndependentArchitecture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/test_stage4_final_independent.py", line 18, in setUpClass
+    cls.accepted,cls.record=t.finish(copy.deepcopy(cls.blocked))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/stage4_temporal_fixtures.py", line 135, in finish
+    p=first_plan or s4.correct(f)
+                    ^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/tests/stage4_fixtures.py", line 290, in correct
+    return CAO().correct(f['case'],n.id,c,'Qualified reciprocal confirmation and legal source correction')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/orchestration/runtime.py", line 522, in correct
+    if session.versions.current(node_id) is None:raise ValueError('Correction requires current original result')
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Correction requires current original result
+
+----------------------------------------------------------------------
+Ran 0 tests in 3.623s
+
+FAILED (errors=1)

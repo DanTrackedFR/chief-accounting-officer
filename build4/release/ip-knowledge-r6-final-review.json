@@ -1,0 +1,52 @@
+{
+  "reviewer": "investment_property_independent_knowledge_ai (/root/knowledge_qa)",
+  "reviewer_kind": "INDEPENDENT_MODEL",
+  "human_signoff": false,
+  "date": "2026-10-12",
+  "result": "PASS_BOUNDED_R6_QUALIFICATION",
+  "scope": "Read-only knowledge qualification review of corrected initial cash-purchase boundary. No substantive implementation, knowledge proposition, approval metadata or source document changes by this reviewer.",
+  "disposition": "R6 resolved within existing governed purchase method; unsupported gift/nonexchange measurements are not enabled.",
+  "accounting_challenge": "Paying conveyancing fees is not evidence of purchase consideration to acquire a property. A gift with zero donor consideration cannot use purchased-property cost authority to recognize only fees as property cost. Missing acquisition nature, explicit nonexchange/asset exchange, true/missing gifted qualification, and zero/fee-only purchase price now block before recognition.",
+  "reviewed_correction": "Initial event requires acquisition_nature cash_purchase, property gifted false, and strictly positive independently sourced summed purchase_price separate from direct_transaction fees; eligible total cost remains tied to gross property cost, cash payment and source snapshot. Positive source-backed ordinary purchase remains supported.",
+  "knowledge_basis": {
+    "claims": [
+      "IP-IFRS-006",
+      "IP-IFRS-007",
+      "IP-AASB-006",
+      "IP-AASB-007",
+      "IP-UK_GAAP-006",
+      "IP-UK_GAAP-007",
+      "IP-US_GAAP-006",
+      "IP-US_GAAP-007"
+    ],
+    "qualification": "Purchased-property recognition/cost and original-owner acquisition-scope qualifications support this restriction. They do not establish donated-property, nonexchange or industry-specific gift measurement.",
+    "source_assurance": "All96claims retain existing independently reviewed model-derived status and open direct-source audit. No new source verification or paragraph citation asserted for gift accounting."
+  },
+  "tests": [
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python -m unittest skills.tests.test_independent_ip_duplicate_scope -v",
+      "tests": 13,
+      "seconds": 2.33,
+      "exit_code": 0
+    },
+    {
+      "command": "PYTHONPATH=skills:skills/tests:. python inline production.assess_case positive initial cases IFRScost,AASBcost,UKfair_value,UScost",
+      "cases": 4,
+      "exit_code": 0,
+      "result": "All complete with600000 source-supported initial additions. IFRS/AASB/US cost each emit one balanced acquisition journal; UKfair_value emits that acquisition journal plus the separately governed reporting-cutoff fair-value adjustment."
+    }
+  ],
+  "reviewed_sha256": {
+    "skills/investment-property/workflow.py": "1caa7cf8b14ba18da71a274ea68e4964ef438af01488af918fe31e5f8c8ccf60",
+    "skills/investment-property/methods.md": "15cb3a8c74bcf01d783ce175eb352e64cdab90ec5f076d83f6fdfdc7bddb813d",
+    "skills/tests/test_independent_ip_duplicate_scope.py": "7f83f6beb122b51f2093057213b4444f4e525434818e8fdec9da2dd4dd7e8745",
+    "skills/tests/investment_property_cases.py": "3784a13596006206186a36bab6b07e2adfca0397ed64e3211db22e190d032a5c",
+    "knowledge/investment-property/standards-claims.json": "36973a0bb639cd88905a15b8f169e79869f1a491ce3ccb8621817bfaff2f25bb"
+  },
+  "new_findings": [],
+  "limits": [
+    "No gift/nonexchange valuation method is approved by this review.",
+    "Positive amount alone never establishes that source evidence actually describes an ordinary cash purchase; documentary qualification and independent source controls remain required.",
+    "This targeted correction qualification does not report full regression, example reproduction or exact-head CI as passed."
+  ]
+}

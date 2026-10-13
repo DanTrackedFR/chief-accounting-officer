@@ -1,0 +1,51 @@
+{
+  "reviewer": "separate AI agent /root/implementation_qa_final; no human approval claimed",
+  "date": "2026-10-12",
+  "status": "PASS",
+  "tests": {
+    "seed19": {
+      "methods": 35,
+      "exit_code": 0,
+      "seconds": 14.859
+    },
+    "seed941": {
+      "methods": 35,
+      "exit_code": 0,
+      "seconds": 19.4
+    }
+  },
+  "examples": {
+    "seed19": {
+      "scenarios": 42,
+      "files": 211,
+      "exit_code": 0
+    },
+    "seed941": {
+      "scenarios": 42,
+      "files": 211,
+      "exit_code": 0
+    }
+  },
+  "independent_additional_attacks": {
+    "method_authority_omission": 75,
+    "wrong_jurisdiction_compilation": 5,
+    "exit_code": 0
+  },
+  "sources_sha256": {
+    "skills/investment-property/workflow.py": "9084a6337237b7d46f329241e9c2ea0cd52cb3140bcc6b4c8d59e0c5f0a46fe3",
+    "skills/tests/investment_property_cases.py": "345c0fb366b57041c675e4137926bcd8bb0f85a153d88dbcf141ebd290d4cac1",
+    "skills/tests/test_independent_investment_property_runtime.py": "3bde489679a45b29fbd475df5bebd1e6fcfca26e3881617dcdc13066d7659852",
+    "skills/tests/test_independent_investment_property_integration.py": "fc7152ef82d7405fe5f7b80e0f810d236416a9574c751e0ad259abd8a9c54be5",
+    "skills/production.py": "e104002d88476159875af0be4faf55b392b998286f007edc8e75a4eaee47f652",
+    "orchestration/planning.py": "ede05439fc8cda4814d2dd46e70f2a0b1a226480412c11c71854ef3db0228c72",
+    "skills/investment-property/examples/production/source-evidence-manifest.json": "4098b2fe251cd805a6ef97c430341be69e5f3df9636ac66dbb085c8e42e5bfde"
+  },
+  "source_freeze_before_after": "hashes identical; no .py changes after freeze",
+  "prior_report": "skills/investment-property/INDEPENDENT-RUNTIME-QA.md intentionally frozen; this external evidence completes its pending stronger artifact gate and supersedes its older workflow/fixture review hashes",
+  "historical_artifacts": "reviewer made no historical artifact edits; only new independent QA tests/report/evidence",
+  "limits": [
+    "No authenticated human approval or source verification",
+    "Selective rework and Company Memory require existing repository regression; not independently executed by this IP-only suite",
+    "Full repository regression and exact-head CI remain primary release gates"
+  ]
+}

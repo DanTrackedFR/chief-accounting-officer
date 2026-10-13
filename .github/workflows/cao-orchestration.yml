@@ -1,7 +1,7 @@
 name: CAO orchestration integration
 on:
   push:
-    branches: [phase-3/government-grants-assistance, phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
+    branches: [phase-3/investment-property-accounting, phase-3/government-grants-assistance, phase-3/borrowing-costs-accounting, persistence/durable-cao-integration-flagship, persistence/company-accounting-memory-promotion, persistence/durable-rework-recovery, persistence/durable-case-foundation, orchestration/multi-entity-multi-period-flagship, orchestration/intercompany-framework-currency, orchestration/case-period-invalidation, orchestration/cao-foundation, orchestration/intent-diagnostic-analytics, orchestration/semantic-planner-intake, orchestration/saas-close-flagship, orchestration/treasury-financing-flagship, orchestration/group-accounting-flagship, orchestration/scope-repeated-owner-foundation]
   pull_request:
     types: [opened, ready_for_review, reopened, synchronize]
     paths:
@@ -15,6 +15,8 @@ on:
       - 'orchestration/**'
       - 'interfaces/**'
       - 'skills/management-accounting-analytics/**'
+      - 'knowledge/investment-property/**'
+      - 'skills/investment-property/**'
       - 'knowledge/government-grants/**'
       - 'skills/government-grants/**'
       - 'skills/production.py'
@@ -31,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -128,6 +130,8 @@ jobs:
       - name: Supplemental knowledge and independent knowledge QA
         if: steps.prior.outputs.cached != 'true'
         run: |
+          python knowledge/investment-property/validate_supplement.py
+          python -m unittest discover -s knowledge/investment-property -p "test_*.py"
           python knowledge/government-grants/validate_supplement.py
           python -m unittest discover -s knowledge/government-grants -p "test_*.py"
           python knowledge/borrowing-costs/validate_supplement.py

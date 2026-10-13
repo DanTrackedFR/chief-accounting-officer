@@ -11,6 +11,12 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def verify():
+    investment_pointer=ROOT/'build4/release/investment-property-pr43-accepted-release.json'
+    if investment_pointer.exists():
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('investment_release_verifier',ROOT/'skills/investment-property/verify_release.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        return module.verify()
     grants_pointer=ROOT/'build4/release/grants-pr27-accepted-release.json'
     if grants_pointer.exists():
         import importlib.util

@@ -24,7 +24,7 @@ FACT_ADAPTERS = {
     'obligation': ('provisions-contingencies', ('obligation',)),
     'grant': ('government-grants', ('agreement', 'grants')),
     'qualifying_interest': ('borrowing-costs', ('project',)),
-    'rental_investment': ('investment-property', ('property',)),
+    'rental_investment': ('investment-property', ('property', 'properties')),
     'biological_population': ('agriculture-biological-assets', ('assets',)),
     'derivative_contract': ('derivatives-hedge-accounting', ('contracts',)),
     'insurance_contract': ('insurance-contracts-accounting', ('contracts',)),

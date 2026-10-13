@@ -1,0 +1,25 @@
+Transcribed excerpts from actual tool output; not original full stdout files.
+No log timing or test outcome has been invented.
+
+Original deterministic reproduction:
+PYTHONHASHSEED=23 python -m unittest orchestration.tests.test_history_qualification -v
+Ran 8 tests in 4.474s
+FAILED (failures=1)
+Exit code: 1
+Failing test: test_recorded_orchestration_transition_reperforms
+Error details are preserved verbatim as structured entries in ip-history-order-independent-review.json.
+
+Initial independent corrected execution:
+python -m unittest orchestration.tests.test_history_transition_order -v
+Ran 16 tests in 12.139s
+OK
+Exit code: 0
+
+Final independent corrected execution:
+PYTHONHASHSEED=23 python -m unittest orchestration.tests.test_history_transition_order orchestration.tests.test_history_qualification -v
+Ran 24 tests in 16.532s
+OK
+Exit code: 0
+
+The final 24 methods include actual subprocess historical replay under seeds23 and19.
+No skipped checks were counted as passed.

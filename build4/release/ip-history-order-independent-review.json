@@ -1,0 +1,125 @@
+{
+  "reviewer": "Separate AI integration_qa; independent of successor implementation author; no authenticated human approval claimed",
+  "workstream": "Investment Property PR43 R7 deterministic historical identity qualification",
+  "CI_trigger": {
+    "reported_by_primary": true,
+    "run_id": 38320142665,
+    "published_head": "646493d9ff4da4cc2f8005ee1d424cc1513ecf93",
+    "reported_failure": "Only test_history_qualification.py module within orchestration; child failure transcript unavailable in Actions stdout",
+    "qualification": "The CI child trace was not directly retrieved by this reviewer. The same module failure was independently reproduced locally, with actual trace and deterministic seed23. No invented CI traceback"
+  },
+  "original_independent_reproduction": {
+    "command": "PYTHONHASHSEED=23 python -m unittest orchestration.tests.test_history_qualification -v",
+    "tests": 8,
+    "seconds": 4.474,
+    "exit_code": 1,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failing_test": "test_recorded_orchestration_transition_reperforms",
+    "actual_exception": "AssertionError: review.errors contains nonbijective provenance identity",
+    "original_trace_line": "orchestration/tests/test_history_qualification.py, line73: self.assertFalse(review.errors, str(review.errors[:5]))",
+    "actual_error_entries": [
+      {
+        "path": "orchestration/examples/multi-entity-multi-period-temporal/temporal-evidence-audit.json/current_group_result/payload_json/facts_used/group_population_coverage/required_legal_result_versions/4",
+        "reason": "nonbijective provenance identity",
+        "old": "44dd76c852eb5ea4df346c2b2057c0639920d2a93bef42bce6aaebbeb7ddbb5c",
+        "new": "6d0f0b2bebfb986044d0f2b5c3955e4089fb897424145f015d7de9f3f41f7b33"
+      },
+      {
+        "path": "orchestration/examples/multi-entity-multi-period-temporal/temporal-evidence-audit.json/current_group_result/payload_json/facts_used/group_population_coverage/required_legal_result_versions/5",
+        "reason": "nonbijective provenance identity",
+        "old": "4008e3d3900b062e15e7eca583e6a95f0ea6f0eca1958bf783671c342848038d",
+        "new": "e796b318e2197191b85c08adf59e8a1dd421c12e267e420b920c7a928267dc38"
+      }
+    ],
+    "targeted_seed23_confirmation": {
+      "command": "PYTHONHASHSEED=23 python -m unittest orchestration.tests.test_history_qualification.HistoryQualification.test_recorded_orchestration_transition_reperforms -v",
+      "tests": 1,
+      "seconds": 4.307,
+      "exit_code": 1,
+      "failures": 1
+    },
+    "random_trials": {
+      "trials": 20,
+      "PASS": 19,
+      "FAIL": 1,
+      "failed_trial": 1,
+      "failed_trial_tests": 8,
+      "failed_trial_seconds": 6.317,
+      "same_error_entries": true
+    },
+    "original_good_seeds": ["19", "941", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "20", "21", "22", "24"],
+    "failure_not_discarded": true
+  },
+  "causal_evidence": {
+    "all_original_relevant_sources_equal_main_before_correction": true,
+    "preexisting_frozen_reviewer_bug": true,
+    "after_both_original_seed_phases": "The two old44dd and4008 identities had no learned mappings",
+    "passing_seed19_instrumentation": "Before required_legal_result_versions comparison, structured traversal had learned correct44dd->e796 and4008->6d0f mappings",
+    "failing_order": "Unordered dictionary set iteration visits opaque multi-member inventory before those structured mappings. Old inventory is sorted while partially unmapped, zipped against new lexical order and incorrectly creates swapped identity bindings. Later actual producer identity correspondence conflicts with those invented inventory bindings",
+    "minimal_read_only_causal_experiment": "With identical producer role facts a->d and b->c, compare inventory first yields two nonbijective errors; compare producer roles first then same inventory yields zero errors",
+    "not_accounting_amount_or_history_mutation": "Original historical bytes remained immutable; comparator traversal order caused false provenance rejection",
+    "not_fixed_by_passing_seed": "Rerun-to-green or pinning a good seed is not the accepted correction"
+  },
+  "corrected_successor": {
+    "implementation_author": "Primary AI implementation agent",
+    "path": "orchestration/history_transition.py",
+    "sha256": "99e4632335ddf4403a5b533b4110a0fb88be22b95643e0fd7442aa62a125f184",
+    "method": "Subclass and import frozen reviewer. Collect all inventory comparisons without learning identities; process structured producer correspondence across all files, then finish validates exact normalized member populations against the already established bijection",
+    "explicit_final_gate": "finish() must execute before claiming qualification PASS",
+    "singleton_boundary": "Explicit seed() preserves original unique singleton role correspondence inference. This is not separate native producer certification or stronger assurance than the frozen reviewer. Multi-member inventories never learn correspondence in seed, compare or finish. Unseeded changed singleton and unanchored changed multi inventory fail. Unchanged exact bytes need no new migration",
+    "preserved_frozen_original": {
+      "path": "recovery/borrowing-costs-pr42/check_identity_transition.py",
+      "exact_main_bytes": true,
+      "sha256": "13b4bda8adeb4d4da27a116df0eefd7161670a028c65825c40a695a968cc0f7e"
+    },
+    "updated_active_history_test_sha256": "c2c643aceb508df4bf5c6c603aae5872b5873840b6b2dae7ecfd68972369ad08"
+  },
+  "independent_adversarial_tests": {
+    "author": "integration_qa AI reviewer only; no implementation edits",
+    "path": "orchestration/tests/test_history_transition_order.py",
+    "final_sha256": "e2be834341ee1cb72f5676dd43970c530a25c04d7869f1f2befd447357831309",
+    "covered": [
+      "inventory-first never learns mapping, even through seed()",
+      "file order with deliberately swapped digest lexical order",
+      "unknown changed multi inventory and unseeded changed singleton blocked",
+      "explicit legacy unique singleton role allowed but cannot split or collapse identities",
+      "unchanged exact bytes and independently established stable identities preserved",
+      "wrong producer, missing, extra or duplicate membership rejected",
+      "numeric accounting changes, split and collapse rejected",
+      "actual historical population subprocess replay under original badseed23 and goodseed19"
+    ],
+    "initial_corrected_execution": {
+      "command": "python -m unittest orchestration.tests.test_history_transition_order -v",
+      "tests": 16,
+      "seconds": 12.139,
+      "exit_code": 0,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "qualification": "Executed before strengthening the same inventory-first test to also assert seed() cannot learn multi-member mappings; final command below covers that strengthened test"
+    },
+    "final_corrected_execution": {
+      "command": "PYTHONHASHSEED=23 python -m unittest orchestration.tests.test_history_transition_order orchestration.tests.test_history_qualification -v",
+      "tests": 24,
+      "independent_tests": 16,
+      "retained_history_tests": 8,
+      "seconds": 16.532,
+      "exit_code": 0,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "actual_historical_child_seeds": ["23", "19"],
+      "status": "PASS"
+    },
+    "transcript_assurance": "Counts, durations, exits and error entries above are transcribed from actual tool output. Raw original stdout files were not retained for these commands; no raw log or digest is invented. Concise actual output excerpts are separately labelled as transcribed excerpts, not original full logs"
+  },
+  "frozen_full006_during_report": {
+    "source_entries": 417,
+    "input_entries": 2675,
+    "observed_changed_entries": [],
+    "report_writes": "Only new release JSON and transcribed output excerpts under build4/release; no Python or nonrelease input edited after freeze"
+  },
+  "R7_independent_final_disposition": "PASS for deterministic successor and adversarial controls. Full frozen attempt006 and all new exact-head CI/readiness gates remain required; old full005/published646 results do not certify this new source. No merge authorization"
+}

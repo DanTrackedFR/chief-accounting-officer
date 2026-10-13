@@ -1,0 +1,61 @@
+{
+  "reviewer": "independent AI integration_qa; not an authenticated human",
+  "main": "e75375b84813b9d584db12aa692b2f4d16baf052",
+  "scope": "Roadmap governance correction and unchanged existing accounting owners",
+  "main_roadmap_prefix": {
+    "exact_git_object_bytes_preserved": true,
+    "bytes": 29288,
+    "sha256": "bba719689a30ff80d9415c6dcd1db56fa383d24a6e835454086c1bf3ede8e1ac"
+  },
+  "current_roadmap_sha256": "6243e5a4423f4e8e28b98319ca7dd890ea3b58851d119bfc0df4c8b733d22f73",
+  "additive_section": {
+    "bytes": 1640,
+    "sha256": "e487ae44a84f995db90269449982f520cf9169dc6b9e7c347228b1cb5b05dccc",
+    "dated_supersession": "12 October 2026 Investment Property PR43",
+    "main_vs_branch_status_explicit": true,
+    "model_derived_assurance_and_open_direct_authority_audit_explicit": true,
+    "bounded_accounting_and_fail_closed_exclusions_explicit": true,
+    "integration_and_exact_head_release_gates_not_claimed_complete": true
+  },
+  "original_diagnostic_guard": {
+    "path": "orchestration/tests/test_diagnostic_independent.py",
+    "exact_main_bytes_unchanged": true,
+    "sha256": "d829a054cc9d42545261ac83c7e8c6ce979c7c193bb46a398f8be0dd69e75015"
+  },
+  "failed_attempt_checkpoint": {
+    "receipt": "build4/release/investment-property-pr43-attempt-001/suite-0-module-4.json",
+    "receipt_sha256": "ded605d84a9b757fe2b7c009412b05f058c3831aa6ff332f7259b378139aaf1f",
+    "log": "build4/release/investment-property-pr43-attempt-001/0-module-4.log",
+    "log_sha256": "b8e7cc06bef0a25bbdd452a2685b31afde39ca42abb9ec006d97773fb8f0f99f",
+    "tests": 32,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "passed": false,
+    "failure": "test_only_authorized_roadmap_protection_label_may_change: current roadmap did not start with archived protected roadmap",
+    "correction": "Restore entire owner-integrated main roadmap byte prefix and append dated truthful current-status section; do not relax original guard",
+    "disposition": "Failed attempt retained and not eligible for acceptance; full immutable-source regression rerun required",
+    "observed_after_correction_start_source_hash_entries": 414,
+    "observed_after_correction_start_input_hash_entries": 2672,
+    "observed_changed_entries_in_those_two_maps": [],
+    "freeze_caveat": "Those source/input maps do not include architecture/build-roadmap.md. They cannot independently prove that roadmap remained unchanged during the failed attempt. The known mid-attempt roadmap correction still prevents treating that attempt as an immutable accepted full release."
+  },
+  "final_focused_retest": {
+    "command": "python -m unittest skills/tests/test_independent_ip_main_reconciliation.py orchestration.tests.test_diagnostic_independent.IndependentProtectedRoadmapMaintenanceQA.test_only_authorized_roadmap_protection_label_may_change -v",
+    "log": "build4/release/ip-roadmap-final/tests.log",
+    "log_sha256": "a1ed1e594733365509ad1596c89cb39cd9a3706202dae566b3c567ee3e3252eb",
+    "tests": 12,
+    "seconds": 74.998,
+    "exit_code": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "status": "PASS",
+    "exact_all_eight_borrowing_grants_framework_case_fingerprints": "PASS",
+    "exact_all_eight_borrowing_grants_framework_full_result_hashes": "PASS",
+    "mandatory_original_diagnostic_guard_unchanged": "PASS",
+    "existing_2785_historical_source_files_main_equal": "PASS",
+    "metadata_adapter_and_mutation_controls": "PASS"
+  },
+  "full_regression_and_ci": "Separate primary-agent gates, not claimed passed by this focused review"
+}

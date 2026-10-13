@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/c44a393ab4fe/cao/build4/verify_release.py", line 78, in <module>
+    if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+                                             ^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/build4/verify_release.py", line 19, in verify
+    return module.verify()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c44a393ab4fe/cao/skills/investment-property/verify_release.py", line 40, in verify
+    for row in manifest['logs']:assert row['exit_code']==0 and digest(ROOT/row['path'])==row['sha256'],('Investment Property log changed',row['path'])
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Investment Property log changed', 'build4/release/investment-property-pr43-attempt-005/suite-6.log')

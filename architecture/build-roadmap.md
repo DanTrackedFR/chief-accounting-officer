@@ -260,3 +260,39 @@ Property#37 remain separately managed. Build2B and the commercial MVP are INCOMP
 SKILL-GRANT-001 now supplies bounded2026 IFRS IAS20, AASB120 Tier1 for-profit, elected FRS102 Section24 and evidenced early-adopted Topic832 accounting through the existing production boundary. The original172-claim supplemental namespace and47/29/96 assurance classifications are preserved; canonical157/347/1598 and the48 existing production skills remain intact. Metadata now records49 production positions. Investment Property #37 remains its own unmerged workstream, with no changes imported.
 
 Income matching, asset deferral/basis alternatives, nonmonetary owner-clearing transfers, unrecognized advances, past-cost compensation and simple deferral/current-expense clawbacks reconcile source, opening cumulative entitlement, eligible owner costs, exact journals, GL/statement and disclosures. Unsupported loans/forgiveness, complex repayments, prior advance/repayment histories, unevidenced US nonadopters, unsupported entities/periods and other-owner methods remain blocked. See the explicit framework support matrix and architecture reconciliation. Independent knowledge39 and implementation57 test methods pass; authored/native, deterministic examples, historical preservation and full release/CI gates remain required. PR27 stays Draft until all exact-head gates pass; no merge is authorized.
+
+### Current specialist position — Investment Property PR43 (12 October2026)
+
+This dated update supersedes the historical specialist-status paragraphs above,
+which are retained verbatim under existing roadmap evidence controls. Actual
+owner-authorized main e75375b8 includes Borrowing Costs PR42 and Government
+Grants PR27:49 production packages. Investment Property is the50th bounded
+candidate on this unmerged branch, not a merged50/50 release.
+
+SKILL-IP-001 v1.0.0 consumes96 separately approved hash-bound claims. All96 retain
+independently checked model-derived assurance and an open direct-authority audit.
+Supported routes are calendar2026 full-framework for-profit owned property at
+annual cutoff: cash purchase/holding/disposal, documented mixed-use separation,
+IFRS/AASB cost or FV and qualified cost/FV-out transfers; full FRS102 ordinary FV
+or the specific separate group-lessor PPE cost election; ordinary US historical
+cost/PPE only. Existing owner depreciation/impairment effects are retained once.
+
+Intra-year activity, ROU/construction/combinations, into-FV PPE revaluation,
+prior cost impairment/estimate changes, advanced native owner imports, other
+periods/entity overlays and generic US FV remain fail-closed. Legacy0.1.0 cases
+remain blocked. No duplicate journals or automatic ERP posting is authorized.
+Authored, genuinely independent knowledge/runtime/main QA and42 deterministic
+examples precede full regression, exact-head Actions and Ready-for-Review gates.
+Release completion is recorded under build4/release and the existing PR43
+conversation; owner integration remains separately authorized. Do not merge.
+
+13 October2026 release checkpoint: the corrected source passed3,648 distinct
+tests in17 suites and all10 validators. Independent review corrected a
+pre-existing order-dependent historical identity comparator without modifying
+the frozen Borrowing Costs reviewer, either merged specialist's accounting,
+or historical accounting evidence. All5,926 protected files remain unchanged.
+The release handoff explicitly qualifies one incomplete original diagnostics
+stdout capture with exact execution receipts and a separate independent rerun;
+it does not claim a complete original transcript. Exact final-head and
+unchanged-head readiness Actions remain publication gates on existing PR43.
+This is still an unmerged50th bounded candidate, not owner-authorized integration.

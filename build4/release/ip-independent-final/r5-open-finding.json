@@ -1,0 +1,23 @@
+{
+  "reviewer": "Independent AI /root/implementation_qa_final; not substantive author",
+  "date": "2026-10-12",
+  "status": "OPEN pending author correction and independent rerun",
+  "finding": "R5 IFRS/AASB cost model initial/transfer-in ignores closing-stock fair-value disclosure evidence; all cost routes omit note amount from result",
+  "permanent_tests": [
+    "test_cost_initial_missing_reporting_date_fair_value_note_blocks",
+    "test_cost_initial_stale_or_wrong_framework_fair_value_note_blocks",
+    "test_cost_initial_fair_value_note_amount_is_output_not_recognized"
+  ],
+  "actual_reproduction": "Current cost initial closes600000 even with valuationNone, 2025valuation, ASC820basis or reliableFalse after actualsnapshot recapture and newcasecertification. Current calculations never retain source650000 fairvalue note. Initial positive emits only acquisition journal; costmodel must not recognize FVgain.",
+  "governed_claims": ["IP-IFRS-021", "IP-AASB-021"],
+  "existing_claim_assurance": "MODEL_DERIVED_AUDIT_REQUIRED; reviewer did not alter registers or claim assurance",
+  "primary_evidence_check": {
+    "url": "https://standards.aasb.gov.au/aasb-140-dec-2022",
+    "version": "AASB140 December2022 compilation",
+    "operative_period_inspected": "Annual periods beginning2023-01-01 and before2027-01-01; matches2026Tier1 scope",
+    "paragraphs_inspected": ["32", "79(e)"],
+    "independent_paraphrase": "Cost-model investment property ordinarily requires a fair-value note; inability exceptions require explanation, rather than ignoring valuation evidence. Neither cutoff acquisition nor transfer into closing stock removes that requirement.",
+    "access_attempt_limit": "PDF fetch timed out; official HTML successfully inspected. No standard text reproduced. This limited corroboration does not independently source-verify every IFRS/AASB claim or create knowledge approval."
+  },
+  "release_limit": "Post-r3 earlier PASS predates R4/R5 adversarial findings and is not current final release acceptance."
+}

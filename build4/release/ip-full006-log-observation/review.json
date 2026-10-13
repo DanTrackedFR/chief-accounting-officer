@@ -1,0 +1,60 @@
+{
+  "reviewer": "Independent AI integration_qa",
+  "attempt": "investment-property-pr43-attempt-006",
+  "stage": "Before orchestration aggregate and final release manifest publication",
+  "parent_stdout_finished_modules_at_observation": 62,
+  "discovered_modules": 65,
+  "aggregate_receipt_available": false,
+  "final_manifest_available": false,
+  "observed_closed_logs_without_unittest_footer": [
+    {
+      "module": "test_diagnostics.py",
+      "index": 5,
+      "prefix_bytes": 123,
+      "observed_sha256": "ad71a941e11c105e11e8bcb5725b1e93bbd84512874f64db40d2a14572f6c232",
+      "prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-5.log",
+      "receipt_tests": 17,
+      "receipt_seconds": 37.938,
+      "receipt_passed": true,
+      "cut": "First test start, test_actual_vs_supplied_budget_comparator"
+    },
+    {
+      "module": "test_stage4_current_timing_independent.py",
+      "index": 50,
+      "prefix_bytes": 936,
+      "observed_sha256": "16e5033f9b6ecf61c96c28154501c023c4b9653c336453a9ca86ec4614a17c4a",
+      "prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-50.log",
+      "receipt_tests": 8,
+      "receipt_seconds": 2.255,
+      "receipt_passed": true,
+      "cut": "Fifth test start, test_superseded_current_legal_result_rejects"
+    },
+    {
+      "module": "test_stage4_native_opening.py",
+      "index": 53,
+      "prefix_bytes": 945,
+      "observed_sha256": "db77fa207ee982f645c7a624873523e1a1b1ba3a75c142996b1ea3b13b90cd53",
+      "prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-53.log",
+      "receipt_tests": 5,
+      "receipt_seconds": 2.294,
+      "receipt_passed": true,
+      "cut": "Fifth test start, test_prior_closing_correction_invalidates_native_opening_consumer"
+    },
+    {
+      "module": "test_stage4_two_translated_sides.py",
+      "index": 62,
+      "prefix_bytes": 669,
+      "observed_sha256": "103d4a247e4471b5fdae0914b2c72ffb0f7a97fea92c9ac213da823e27a2c7f3",
+      "prefix_snapshot": "build4/release/ip-full006-log-observation/observed-0-module-62.log",
+      "receipt_tests": 10,
+      "receipt_seconds": 1.093,
+      "receipt_passed": true,
+      "cut": "Fourth test start, test_group_dependency_requalifies_both_translated_sources"
+    }
+  ],
+  "known": "Parent stdout records completed modules and child PASS receipts exist, but retained verbose stdout is incomplete",
+  "not_yet_known": "Parent's captured final expected log digests are not yet published. No authenticated expected-versus-current hash mismatch can be asserted yet",
+  "cause": "Unestablished. No actor or ordinary logger collision claimed",
+  "actions": "Copied exact observed bytes additively with nonoverwriting cp snapshots; original logs, receipts and expected manifests untouched. No restoration or test/source/nonrelease input changes",
+  "current_disposition": "Observation only, not acceptance or confirmed digest failure. Wait for aggregate expected digests, independently compare, then permit only exact authenticated recovery or separately governed rerun evidence"
+}
