@@ -1,0 +1,31 @@
+name: CAO bounded prepared accounting execution
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['skills/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', '.github/workflows/cao-prepared-execution.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prepared-accounting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent accounting QA
+        run: python -m unittest discover -s skills/tests -p 'test_prepared_accounting_qa.py'
+      - name: Independent adversarial engineering QA
+        run: python -m unittest discover -s hosted_cao/tests -p 'test_prepared_engineering_qa.py'
+      - name: Real HTTP deterministic accounting and restart proof
+        run: |
+          PYTHONHASHSEED=41 python -m hosted_cao.tests.prove_prepared_http > /tmp/prepared41.json
+          PYTHONHASHSEED=1481 python -m hosted_cao.tests.prove_prepared_http > /tmp/prepared1481.json
+          cmp skills/prepared-accounting/release/http-proof.json /tmp/prepared41.json
+          cmp /tmp/prepared41.json /tmp/prepared1481.json
+      - name: Whitespace
+        run: git diff --check HEAD^ HEAD

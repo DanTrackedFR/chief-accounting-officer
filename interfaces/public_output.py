@@ -36,6 +36,14 @@ def public_record(record, *, route):
             if not isinstance(record[key], list):
                 raise ValueError('Public caveats must be an array')
             result[key] = [_text(item) for item in record[key]]
+    for key, allowed in {
+        'accounting_determination': ('SUPPORTED', 'UNRESOLVED', 'UNSUPPORTED'),
+        'evidence_sufficiency': ('SUFFICIENT', 'INSUFFICIENT'),
+        'review_provenance': ('SYSTEM_PREPARED', 'FORMALLY_REVIEWED'),
+    }.items():
+        if key in record:
+            if record[key] not in allowed: raise ValueError('Invalid accounting provenance status')
+            result[key] = record[key]
     # Citation fields are curated independently; never pass a claim/source object.
     if 'citations' in record:
         if not isinstance(record['citations'], list):

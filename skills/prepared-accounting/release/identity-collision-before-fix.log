@@ -1,0 +1,24 @@
+test_legal_formal_suffix_cannot_alias_prepared_case_identity (hosted_cao.tests.test_prepared_engineering_qa.IndependentPreparedEngineeringQA.test_legal_formal_suffix_cannot_alias_prepared_case_identity) ... 
+  test_legal_formal_suffix_cannot_alias_prepared_case_identity (hosted_cao.tests.test_prepared_engineering_qa.IndependentPreparedEngineeringQA.test_legal_formal_suffix_cannot_alias_prepared_case_identity) (order='formal-first') ... FAIL
+  test_legal_formal_suffix_cannot_alias_prepared_case_identity (hosted_cao.tests.test_prepared_engineering_qa.IndependentPreparedEngineeringQA.test_legal_formal_suffix_cannot_alias_prepared_case_identity) (order='prepared-first') ... FAIL
+
+======================================================================
+FAIL: test_legal_formal_suffix_cannot_alias_prepared_case_identity (hosted_cao.tests.test_prepared_engineering_qa.IndependentPreparedEngineeringQA.test_legal_formal_suffix_cannot_alias_prepared_case_identity) (order='formal-first')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/hosted_cao/tests/test_prepared_engineering_qa.py", line 166, in test_legal_formal_suffix_cannot_alias_prepared_case_identity
+    self.assertNotEqual(formal, prepared,
+AssertionError: 'case:a9ce3f3e6d582d7b5d40fd7bbf825495dadf44293369c1b1325626ba17b871e3' == 'case:a9ce3f3e6d582d7b5d40fd7bbf825495dadf44293369c1b1325626ba17b871e3' : A legal formal cycle must never alias an encoded prepared cycle
+
+======================================================================
+FAIL: test_legal_formal_suffix_cannot_alias_prepared_case_identity (hosted_cao.tests.test_prepared_engineering_qa.IndependentPreparedEngineeringQA.test_legal_formal_suffix_cannot_alias_prepared_case_identity) (order='prepared-first')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/hosted_cao/tests/test_prepared_engineering_qa.py", line 166, in test_legal_formal_suffix_cannot_alias_prepared_case_identity
+    self.assertNotEqual(formal, prepared,
+AssertionError: 'case:00f8d30de56b2ba6f7e6daf9a0cac260e1e37bf48303c6e14f054e65eb3f7b62' == 'case:00f8d30de56b2ba6f7e6daf9a0cac260e1e37bf48303c6e14f054e65eb3f7b62' : A legal formal cycle must never alias an encoded prepared cycle
+
+----------------------------------------------------------------------
+Ran 1 test in 0.593s
+
+FAILED (failures=2)

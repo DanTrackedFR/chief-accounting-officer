@@ -1,0 +1,102 @@
+test_all_public_routes_separate_from_internal (test_orchestration.Foundation.test_all_public_routes_separate_from_internal) ... ok
+test_challenge_invalidates_and_propagates (test_orchestration.Foundation.test_challenge_invalidates_and_propagates) ... ok
+test_conditional_fx_selection (test_orchestration.Foundation.test_conditional_fx_selection) ... FAIL
+test_conditional_warranty_selection (test_orchestration.Foundation.test_conditional_warranty_selection) ... ok
+test_context_conflict_not_assumption_fact (test_orchestration.Foundation.test_context_conflict_not_assumption_fact) ... ok
+test_context_precedes_questions (test_orchestration.Foundation.test_context_precedes_questions) ... FAIL
+test_cycle_unknown_owner_malformed_plan (test_orchestration.Foundation.test_cycle_unknown_owner_malformed_plan) ... ok
+test_dependency_order_and_parallel_wave (test_orchestration.Foundation.test_dependency_order_and_parallel_wave) ... ok
+test_duplicate_economic_consumption (test_orchestration.Foundation.test_duplicate_economic_consumption) ... ok
+test_explicit_independent_immaterial_gap (test_orchestration.Foundation.test_explicit_independent_immaterial_gap) ... FAIL
+test_flagship_actual_multi_owner (test_orchestration.Foundation.test_flagship_actual_multi_owner) ... ok
+test_graph_validation_and_reopen (test_orchestration.Foundation.test_graph_validation_and_reopen) ... ok
+test_invalid_lifecycle (test_orchestration.Foundation.test_invalid_lifecycle) ... ok
+test_material_unavailable_owner_partial (test_orchestration.Foundation.test_material_unavailable_owner_partial) ... FAIL
+test_no_approved_context_mutation (test_orchestration.Foundation.test_no_approved_context_mutation) ... ok
+test_no_irrelevant_owners (test_orchestration.Foundation.test_no_irrelevant_owners) ... ok
+test_normal_bad_input_structured (test_orchestration.Foundation.test_normal_bad_input_structured) ... ok
+test_optional_context_does_not_block (test_orchestration.Foundation.test_optional_context_does_not_block) ... ok
+test_public_contamination_fails_closed (test_orchestration.Foundation.test_public_contamination_fails_closed) ... ok
+test_registry_single_truth (test_orchestration.Foundation.test_registry_single_truth) ... ok
+test_semantic_metric_mismatch (test_orchestration.Foundation.test_semantic_metric_mismatch) ... ok
+test_simple_ap_is_one_owner (test_orchestration.Foundation.test_simple_ap_is_one_owner) ... ERROR
+test_source_owner_contradiction_not_selected (test_orchestration.Foundation.test_source_owner_contradiction_not_selected) ... ok
+test_stale_case_certification_not_generated (test_orchestration.Foundation.test_stale_case_certification_not_generated) ... ok
+test_unknown_materiality_does_not_ignore_gap (test_orchestration.Foundation.test_unknown_materiality_does_not_ignore_gap) ... FAIL
+test_wrong_dimensions_and_currency (test_orchestration.Foundation.test_wrong_dimensions_and_currency) ... ok
+
+======================================================================
+ERROR: test_simple_ap_is_one_owner (test_orchestration.Foundation.test_simple_ap_is_one_owner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 51, in test_simple_ap_is_one_owner
+    c=self.cao.run(r);self.assertEqual(['accounts-payable'],c.skills_invoked);self.assertEqual('20',c.conclusions[0]['calculations']['closing_ap'])
+                                                                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'closing_ap'
+
+======================================================================
+FAIL: test_conditional_fx_selection (test_orchestration.Foundation.test_conditional_fx_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 43, in test_conditional_fx_selection
+    r=manufacturing(False);c=self.cao.run(r);self.assertEqual('complete',c.outcome,c.open_questions);self.assertNotIn('foreign-currency',c.graph.nodes)
+      ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/fixtures.py", line 196, in manufacturing
+    result=completed(package,source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/fixtures.py", line 25, in completed
+    if r['status']!='complete': raise AssertionError((pkg,r['conclusion'],r['open_items']))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('management-accounting-analytics', 'Accounting case cannot be completed: Imported result must be current, complete and unaltered', ['Imported result must be current, complete and unaltered'])
+
+======================================================================
+FAIL: test_context_precedes_questions (test_orchestration.Foundation.test_context_precedes_questions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 90, in test_context_precedes_questions
+    c=self.cao.run(r);self.assertEqual('complete',c.outcome,c.open_questions)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'complete' != 'blocked'
+- complete
++ blocked
+ : []
+
+======================================================================
+FAIL: test_explicit_independent_immaterial_gap (test_orchestration.Foundation.test_explicit_independent_immaterial_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 59, in test_explicit_independent_immaterial_gap
+    self.assertEqual('complete',c.outcome);self.assertTrue(c.conclusions[0]['open_items'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'complete' != 'blocked'
+- complete
++ blocked
+
+
+======================================================================
+FAIL: test_material_unavailable_owner_partial (test_orchestration.Foundation.test_material_unavailable_owner_partial)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 54, in test_material_unavailable_owner_partial
+    self.assertEqual('partial',c.outcome);self.assertEqual('DOCUMENTED',c.status);self.assertEqual('blocked',c.graph.nodes['government-grants'].status)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'partial' != 'blocked'
+- partial
++ blocked
+
+
+======================================================================
+FAIL: test_unknown_materiality_does_not_ignore_gap (test_orchestration.Foundation.test_unknown_materiality_does_not_ignore_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9c4aa52146d2/cao/orchestration/tests/test_orchestration.py", line 62, in test_unknown_materiality_does_not_ignore_gap
+    self.assertEqual('partial',c.outcome)
+AssertionError: 'partial' != 'blocked'
+- partial
++ blocked
+
+
+----------------------------------------------------------------------
+Ran 26 tests in 55.315s
+
+FAILED (failures=5, errors=1)

@@ -90,3 +90,22 @@ Python HTTP is for trusted local development/private network behind that proxy.
 No CORS/browser API, public internet exposure or production deployment supplied.
 Graceful SIGINT/SIGTERM stops acceptance, drains HTTP then finishes active work.
 Hard process kill leaves EXECUTING jobs recoverable on next startup.
+
+## Additive profile 1.1 — optional review mode
+
+The 1.0 wire version remains supported. Host JSON configuration may explicitly set
+`"allow_prepared_unreviewed": true`; defaults false and requires a real boolean.
+This enables the shared local profile documented in CAO-EXECUTION-CONTRACT.md.
+`start` accepts `review_mode: "prepared_unreviewed"` only for `machinery` and
+`supplier_cost`. Subsequent operations inherit immutable mode, and any supplied
+mode must match. `/v1/jobs` still executes the same native Case path. Mode changes
+cannot reuse a formal Case, immutable request or idempotency binding.
+
+A SUCCEEDED operational job may deliver a durable partial native result with
+SUPPORTED accounting, SUFFICIENT evidence and SYSTEM_PREPARED provenance.
+Consumers must read all three dimensions and retain specific unresolved issues;
+never equate job success, currentness, user Finalised or supported arithmetic
+with formal review or posting authorization. No named independent accounting
+reviewer is required for this bounded profile. Actual source controls and all
+substantive accounting/evidence restrictions still apply. Reviewer records in
+submitted/staged evidence reject. Host-disabled reads/execution reject safely.

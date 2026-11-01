@@ -92,6 +92,13 @@
     "reason": {
       "type": "string",
       "minLength": 1
+    },
+    "review_mode": {
+      "enum": [
+        "formal",
+        "prepared_unreviewed"
+      ],
+      "description": "Opt-in bounded system preparation; host-disabled by default. Fixed at start; later supplied values must match."
     }
   },
   "allOf": [
@@ -325,6 +332,28 @@
             "operation",
             "route"
           ]
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "review_mode"
+        ]
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "start",
+              "submit",
+              "execute",
+              "status",
+              "questions",
+              "result",
+              "resume"
+            ]
+          }
         }
       }
     }

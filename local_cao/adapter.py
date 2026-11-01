@@ -82,7 +82,9 @@ def immutable(path, value):
 
 class ExecutionInterface:
     """Caller supplies a trusted host-selected workspace, never a wire-level path."""
-    def __init__(self, workspace, model_provider=None):
+    def __init__(self, workspace, model_provider=None, *, allow_prepared_unreviewed=False):
+        if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        self.allow_prepared_unreviewed = allow_prepared_unreviewed
         self.workspace = Path(workspace); self.model_provider = model_provider
 
     def _path(self, relative):
@@ -138,8 +140,12 @@ class ExecutionInterface:
                 raise Failure('invalid_request')
             allowed = {'contract_version', 'operation', 'company_id', 'case_id', 'objective',
                        'request_id', 'target_family', 'evidence', 'evidence_file', 'route',
-                       'context', 'interpretation', 'document', 'event_id', 'node_id', 'reason'}
+                       'context', 'interpretation', 'document', 'event_id', 'node_id', 'reason', 'review_mode'}
             if set(request)-allowed: raise Failure('invalid_request')
+            if 'review_mode' in request:
+                if request['review_mode'] not in ('formal', 'prepared_unreviewed'): raise Failure('invalid_request')
+                if operation not in ('start', 'submit', 'execute', 'status', 'questions', 'result', 'resume'): raise Failure('invalid_request')
+                if request['review_mode'] == 'prepared_unreviewed' and not self.allow_prepared_unreviewed: raise Failure('invalid_request')
             from intelligence.contracts import validate as validate_intelligence_request
             validate_intelligence_request(request)
             with self._lock(): result = self._call(request, company, operation)
@@ -201,6 +207,9 @@ class ExecutionInterface:
                     items.append({'case_id': d['case_id']})
             return {'cases': items}
         d, folder = self._request(r.get('case_id'), config)
+        mode = d.get('review_mode', 'formal')
+        if r.get('review_mode', mode) != mode: raise Failure('identity_conflict')
+        if mode == 'prepared_unreviewed' and not self.allow_prepared_unreviewed: raise Failure('invalid_request')
         if 'context_snapshot' in d:
             if operation == 'submit':
                 if 'evidence_file' in r: evidence = self.read_json(r['evidence_file'])
@@ -229,20 +238,27 @@ class ExecutionInterface:
             evidence_path = folder / 'evidence.json'
             evidence = self.read_json(str(evidence_path.relative_to(checked_path(self.workspace)))) if evidence_path.exists() else {}
             native = copy.deepcopy(d['native_request'])
-            if operation == 'execute': native.update(evidence)
+            if operation == 'execute':
+                if mode == 'prepared_unreviewed' and evidence: self._evidence(evidence, d)
+                native.update(evidence)
+                if mode == 'prepared_unreviewed':
+                    for value in native.get('facts', {}).values():
+                        for row in value if isinstance(value, list) else [value]:
+                            row['review_mode'] = mode
+                            row['package'] = FACT_ADAPTERS[d['target_family']][0]
             elif evidence:
                 return dict(case_id=d['case_id'], lifecycle_state='OPEN', execution_state='blocked',
                     checkpoint_revision=None, durable=False, currentness='NOT_EXECUTED', workplan=[],
                     public_result=public_record(dict(status='blocked', guidance='Reviewed workpaper is staged; accounting has not executed.',
                         open_items=['Invoke execute for the staged workpaper before requesting an accounting result.']), route=r.get('route', 'tool_output')))
-            case = CAO().run(native)
+            case = CAO(allow_prepared_unreviewed=self.allow_prepared_unreviewed).run(native)
             if case.outcome == 'complete':
                 owner = FACT_ADAPTERS[d['target_family']][0]
                 targets = [n for n in case.graph.nodes.values() if n.selected_skill == owner]
                 if not targets or any(n.status != 'complete' for n in targets):
                     raise Failure('invalid_request')
             if hasattr(case, 'governance') and case.id != d['case_id']: raise Failure('identity_conflict')
-            if operation == 'execute' and hasattr(case, 'governance') and case.governance.versions.active:
+            if operation == 'execute' and hasattr(case, 'governance') and (case.governance.versions.active or mode == 'prepared_unreviewed'):
                 try: revision = store.save(case, company, [], 0)
                 except ValueError: raise Failure('storage_failure') from None
                 return self._delivery(case, revision, r.get('route', 'tool_output'))
@@ -271,14 +287,21 @@ class ExecutionInterface:
         public_record({'guidance': objective}, route='tool_output')
         family = r.get('target_family')
         if family not in FACT_ADAPTERS: raise Failure('invalid_request')
+        mode = r.get('review_mode', 'formal')
+        if mode == 'prepared_unreviewed':
+            if not self.allow_prepared_unreviewed or family not in ('machinery', 'supplier_cost'): raise Failure('invalid_request')
         s = scope(config); p = compatibility_period(s)
+        # A structured private cycle cannot alias a legal formal request ID.
+        # Keep historical formal cycles byte-for-byte unchanged.
+        if mode == 'prepared_unreviewed': cycle = canonical([cycle, mode])
         cid = case_identity(s['entity'], p.period_id, objective, cycle)
         native = dict(case_id=cycle, objective=objective, scope=s, company_context=[], facts={})
         d = dict(company_id=config['company']['company_id'], case_id=cid,
                  target_family=family, native_request=native)
+        if mode == 'prepared_unreviewed': d['review_mode'] = mode
         requests = self._path('requests'); requests.mkdir(mode=0o700, exist_ok=True)
         # Request identity also prevents a changed objective from becoming a retry.
-        immutable(requests / (cycle+'.json'), d)
+        immutable(requests / (identity(r.get('request_id'))+'.json'), d)
         folder = self._path('submissions/'+hashlib.sha256(cid.encode()).hexdigest())
         folder.mkdir(mode=0o700, parents=True, exist_ok=True)
         case = CAO().run(native)
@@ -313,6 +336,15 @@ class ExecutionInterface:
         fields = FACT_ADAPTERS[d['target_family']][1]
         if not rows or any(not isinstance(row, dict) or not any(row.get(k) for k in fields) or row.get('required_for_objective') is False for row in rows):
             raise Failure('invalid_request')
+        if d.get('review_mode') == 'prepared_unreviewed':
+            if set(e) != {'facts'} or set(e['facts']) != {d['target_family']}: raise Failure('invalid_request')
+            from prepared_execution import reject_records
+            reject_records(e)
+            for row in rows:
+                if row.get('review_mode', 'prepared_unreviewed') != 'prepared_unreviewed' or row.get('package', FACT_ADAPTERS[d['target_family']][0]) != FACT_ADAPTERS[d['target_family']][0]: raise Failure('invalid_request')
+                if 'imports' in row: raise Failure('invalid_request')
+        else:
+            if any(row.get('review_mode', 'formal') != 'formal' for row in rows): raise Failure('invalid_request')
         # Native approvals are supplied inert workpaper records. Adapter never
         # creates/refreshes reviewer seals or imports context-policy approvals.
         s = d['native_request']['scope']
@@ -325,10 +357,27 @@ class ExecutionInterface:
                     if key in row and row[key] != s[key]: raise Failure('identity_conflict')
 
     def _delivery(self, case, revision, route, d=None):
-        try: output = CAO().public(case, route)
+        try:
+            output = CAO().public(case, route)
+            prepared = [n.result for n in case.graph.nodes.values() if n.result and n.result.get('review_mode') == 'prepared_unreviewed']
+            if prepared:
+                from production import to_public
+                if len(prepared) != 1: raise Failure('invalid_request')
+                native_output = output
+                result = prepared[0]
+                output = to_public(result, route)
+                unresolved = [n for n in case.graph.nodes.values() if n.result is not result and n.status in ('blocked', 'partial') and (n.required or n.material is not False)]
+                if unresolved or case.open_questions:
+                    output['accounting_determination'] = 'UNRESOLVED'
+                    output['evidence_sufficiency'] = 'INSUFFICIENT'
+                    output['open_items'] = list(native_output.get('open_items', []))
+                    output['guidance'] += '\nThe calculations above are supported within the accounting owner scope. Resolve the listed evidence or investigation gaps to complete the wider objective.'
+                metrics = ('depreciation', 'closing_cost', 'closing_accumulated', 'closing_cip') if result['skill_id'] == 'SKILL-FA-001' else ('opening_ap', 'invoices', 'payments', 'closing_ap', 'closing_accruals')
+                output['calculations'] = [dict(label=k.replace('_', ' '), amount=str(result['calculations'][k])) for k in metrics if k in result['calculations']]
+                output = public_record(output, route=route)
         except (ValueError, TypeError, KeyError): raise Failure('public_boundary') from None
         if d and not revision:
-            requirements = ['Supply controlled structured evidence and independently reviewed native workpapers before execution.']
+            requirements = ['Supply controlled structured evidence before execution.'] if d.get('review_mode') == 'prepared_unreviewed' else ['Supply controlled structured evidence and independently reviewed native workpapers before execution.']
             if d.get('target_family'):
                 owner, fields = FACT_ADAPTERS[d['target_family']]
                 requirements.append('Provide '+d['target_family'].replace('_', ' ')+' workpaper including '+', '.join(fields)+'.')

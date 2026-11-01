@@ -1,0 +1,125 @@
+{
+  "packages": [
+    {
+      "checkpoint_revision": 1,
+      "fabricated_execution_review": false,
+      "http_sequence": [
+        "initialize:200",
+        "start:200",
+        "submit:200",
+        "POST /v1/jobs:202",
+        "GET /v1/jobs:200"
+      ],
+      "journal_posting_authorized": false,
+      "local_hosted_public_parity": true,
+      "native_case_status": "DOCUMENTED",
+      "native_formal_result_versions": 0,
+      "native_owner_status": "partial",
+      "operational_job_state": "SUCCEEDED",
+      "package": "fixed-assets",
+      "public_result": {
+        "accounting_determination": "SUPPORTED",
+        "calculations": [
+          {
+            "amount": "90000.00",
+            "label": "depreciation"
+          },
+          {
+            "amount": "600000",
+            "label": "closing cost"
+          },
+          {
+            "amount": "270000.00",
+            "label": "closing accumulated"
+          },
+          {
+            "amount": "0",
+            "label": "closing cip"
+          }
+        ],
+        "citations": [
+          {
+            "title": "Fixed assets governed knowledge package \u2014 background guidance"
+          }
+        ],
+        "effective_period": "2026-01-01 to 2026-12-31",
+        "entity_scope": "ENTITY-DEMO",
+        "evidence_sufficiency": "SUFFICIENT",
+        "framework": "IFRS",
+        "guidance": "Qualifying costs, components, depreciation, disposals and CIP reconcile to gross ledgers.\nQualifying ordinary machinery costs are capitalized under the cost model. Depreciation starts when ready for use; the depreciable carrying amount excludes residual value and is allocated over the supported remaining life or production units.\nCalculations: {\"closing_accumulated\": \"270000.00\", \"closing_cip\": \"0\", \"closing_cost\": \"600000\", \"depreciation\": \"90000.00\", \"excluded_expense\": \"0\"}\nMaterial assumptions: Synthetic amounts and assumptions for regression only\nProposed journal implications: [[{\"account\": \"depreciation expense\", \"amount\": \"90000.00\", \"side\": \"Dr\"}, {\"account\": \"accumulated depreciation\", \"amount\": \"90000.00\", \"side\": \"Cr\"}]]",
+        "jurisdiction": "NL",
+        "limitations": [
+          "Journal workpapers are proposals; posting requires separate authorization."
+        ],
+        "open_items": [],
+        "review_provenance": "SYSTEM_PREPARED",
+        "status": "partial"
+      },
+      "restart_without_execution": true,
+      "review_mode": "prepared_unreviewed"
+    },
+    {
+      "checkpoint_revision": 1,
+      "fabricated_execution_review": false,
+      "http_sequence": [
+        "initialize:200",
+        "start:200",
+        "submit:200",
+        "POST /v1/jobs:202",
+        "GET /v1/jobs:200"
+      ],
+      "journal_posting_authorized": false,
+      "local_hosted_public_parity": true,
+      "native_case_status": "DOCUMENTED",
+      "native_formal_result_versions": 0,
+      "native_owner_status": "partial",
+      "operational_job_state": "SUCCEEDED",
+      "package": "accounts-payable",
+      "public_result": {
+        "accounting_determination": "SUPPORTED",
+        "calculations": [
+          {
+            "amount": "0",
+            "label": "opening ap"
+          },
+          {
+            "amount": "120",
+            "label": "invoices"
+          },
+          {
+            "amount": "100",
+            "label": "payments"
+          },
+          {
+            "amount": "20",
+            "label": "closing ap"
+          },
+          {
+            "amount": "9600.00",
+            "label": "closing accruals"
+          }
+        ],
+        "citations": [
+          {
+            "title": "Accounts payable governed knowledge package \u2014 background guidance"
+          }
+        ],
+        "effective_period": "2026-01-01 to 2026-12-31",
+        "entity_scope": "ENTITY-DEMO",
+        "evidence_sufficiency": "SUFFICIENT",
+        "framework": "IFRS",
+        "guidance": "Supplier invoices, payments and independently received unbilled liabilities reconciled.\nRecognize supplier obligations for goods or services received by period end. Measure supported unbilled receipts using evidenced quantities and rates, avoid duplicate invoice accruals, and reconcile payments and supplier balances to the ledger.\nCalculations: {\"closing_accruals\": \"9600.00\", \"closing_ap\": \"20\", \"invoices\": \"120\", \"opening_ap\": \"0\", \"payments\": \"100\"}\nMaterial assumptions: Synthetic amounts and assumptions for regression only\nProposed journal implications: [[{\"account\": \"expense\", \"amount\": \"120.00\", \"side\": \"Dr\"}, {\"account\": \"accounts payable\", \"amount\": \"120.00\", \"side\": \"Cr\"}], [{\"account\": \"professional services expense\", \"amount\": \"9600.00\", \"side\": \"Dr\"}, {\"account\": \"accrued expenses\", \"amount\": \"9600.00\", \"side\": \"Cr\"}], [{\"account\": \"accounts payable\", \"amount\": \"100.00\", \"side\": \"Dr\"}, {\"account\": \"cash\", \"amount\": \"100.00\", \"side\": \"Cr\"}]]",
+        "jurisdiction": "NL",
+        "limitations": [
+          "Journal workpapers are proposals; posting requires separate authorization."
+        ],
+        "open_items": [],
+        "review_provenance": "SYSTEM_PREPARED",
+        "status": "partial"
+      },
+      "restart_without_execution": true,
+      "review_mode": "prepared_unreviewed"
+    }
+  ],
+  "proof": "Synthetic real HTTP governed accounting execution"
+}

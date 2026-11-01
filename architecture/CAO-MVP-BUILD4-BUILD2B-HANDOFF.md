@@ -48,3 +48,21 @@ persistent SQLite disk, backups/restore/retention/rotation/monitoring/incident r
 and production load/operational acceptance remain prerequisites. No Replit deployment,
 connector/MCP/external posting or distributed exactly-once is supplied. The commercial
 MVP remains incomplete pending Build2B, live model/client and production acceptance.
+
+## Optional review execution profile 1.1
+
+TrackedFR may expose an explicit system-preparation selection only where its CAO
+host enables `allow_prepared_unreviewed`. Send `review_mode: prepared_unreviewed`
+at start, retain the returned Case ID, submit qualified evidence without the
+three top-level accounting review records, then use the existing `/v1/jobs`
+flow. Scope is ordinary fixed-assets machinery and supplier-cost AP only; see
+interfaces/CAO-EXECUTION-CONTRACT.md for 2026 framework/entity boundaries.
+
+Render the accounting treatment and supported numbers first. Native partial
+status is retained separately from accounting_determination, evidence_sufficiency
+and review_provenance. Show precise material open items. A user may separately
+attest Finalised in TrackedFR; store that attestation in TrackedFR with its own
+identity/time and never mutate native accounting review authority. Journals are
+proposals, and the native posting implication list remains empty in this mode.
+Canonical packages are labeled background guidance; no source-verification or
+applied-claim assertion is inferred. Private provenance remains in the Case.
