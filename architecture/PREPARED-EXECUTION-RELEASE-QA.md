@@ -83,6 +83,22 @@ additional changes to pending DB/request/Case identity or investigation resume
 contracts. Attempt 005 remains superseded evidence; final attempt 006 must
 freeze and verify the repaired source tree.
 
+## Cross-mode identity correction
+
+Before release, a legal formal request ID with the old prepared suffix collided
+with a prepared base request ID. Independent regression captured both creation
+orders failing before the correction. Prepared cycles now use a canonical JSON
+pair, whose character domain is disjoint from legal formal IDs, while formal
+cycles remain unchanged. The full engineering suite now has 26 passing tests,
+including actual formal/prepared HTTP execution, separate idempotency bindings,
+durable resume and fresh-service HTTP retrieval with owner rerun forbidden.
+Descriptor, submission, job and Case namespaces were also reviewed for aliases.
+
+Candidate `b7232e368ccd80f6fba93eface582e1178f0494d` remains superseded evidence,
+including its prior 3,714-test source-frozen receipt. Neither can attest the
+corrected identity implementation. Attempt 007 and unchanged-head remote
+workflow evidence are required for the eventual replacement candidate.
+
 ## Preservation and release status
 
 A read-only diff against main `fbf8bb9a092955d2cd5fbf728c85e6dc62f4bd1c` across the
@@ -90,7 +106,7 @@ historical release/reference/recovery/knowledge namespaces showed additions for
 this enhancement and its QA only; no existing historical accounting artifact was
 modified. The former release attempt is retained. Because release code and tests
 changed during that attempt, it cannot be used as evidence for the final tree.
-The final replacement `prepared-execution-attempt-006` must run the complete
+The final replacement `prepared-execution-attempt-007` must run the complete
 population with fresh beginning/end source and execution-input snapshots; prior
 attempts remain retained and cannot certify subsequent source changes.
 

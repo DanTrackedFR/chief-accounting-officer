@@ -22,7 +22,7 @@ and verifies that the diagnostic blocker survives alongside €90,000 depreciati
 
 ## Independent executable evidence
 
-`hosted_cao/tests/test_prepared_engineering_qa.py` contains 25 independent tests:
+`hosted_cao/tests/test_prepared_engineering_qa.py` contains 26 independent tests:
 real HTTP execution for both authorized packages; default-off and exact-boolean
 host configuration; immutable mode selection; historical formal Case identity;
 execute-time mode substitution; nested and staged-file review injection;
@@ -136,6 +136,34 @@ the original contracts. Historical investigation hashes still use the existing
 investigation checkpoint and intake evidence, without the prepared descriptor.
 The 25-test suite passes after this repair; previous superseded release attempts
 cannot attest these later source and test changes.
+
+## Cross-mode Case identity collision follow-up
+
+A pre-release audit reproduced a real collision between formal request ID
+`collision:prepared_unreviewed` and prepared request ID `collision` under the
+same objective and reporting scope. The initial prepared-cycle suffix was also
+legal formal-cycle text, producing equal Case IDs and duplicate-descriptor lookup
+failures. This affected identity/isolation rather than upgrading accounting
+authority. Independent before-fix execution captured both creation orders failing
+in `identity-collision-before-fix.log`.
+
+The author replaced only the prepared cycle with canonical JSON of the original
+request ID and mode. That structured representation contains characters forbidden
+in a legal formal request ID; historical formal cycles remain unchanged. The
+26-test engineering suite now includes both creation orders, distinct identities,
+once-staged actual source evidence for each mode, conflicting versus separate
+idempotency keys, both HTTP executions, formal-complete versus prepared-partial
+results and durable local resume. The actual HTTP server is then switched to a
+new Service instance and retrieves both jobs with owner rerun forbidden. The
+old-formal identity is independently recomputed and compared explicitly.
+
+The namespace review also checked structured Case hashing, original-ID immutable
+descriptor paths, hashed submission directories, canonical company/key job IDs
+and subsequent mode matching. No further wire-reachable alias was found. Final
+26-test QA passes after the repair; the previous candidate
+`b7232e368ccd80f6fba93eface582e1178f0494d` and its 3,714-test receipt are evidence for
+the superseded tree and cannot certify this identity correction. New final-tree
+regression and exact-head workflows remain required.
 
 ## Result and limits
 

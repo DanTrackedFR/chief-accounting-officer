@@ -145,6 +145,73 @@ class IndependentPreparedEngineeringQA(unittest.TestCase):
                                   target_family='machinery')
         self.assertFalse(result.get('ok'), (status, result))
 
+    def test_legal_formal_suffix_cannot_alias_prepared_case_identity(self):
+        for order in ('formal-first', 'prepared-first'):
+            with self.subTest(order=order):
+                rid = 'collision-'+order
+                formal_rid = rid+':prepared_unreviewed'
+                def formal_start():
+                    status, value = self.call('start', request_id=formal_rid,
+                                              objective='Calculate supported accounting',
+                                              target_family='machinery')
+                    self.assertEqual(status, 200, value)
+                    self.assertTrue(value['ok'], value)
+                    return value['case_id']
+                if order == 'formal-first':
+                    formal = formal_start()
+                    prepared = self.start(request_id=rid)
+                else:
+                    prepared = self.start(request_id=rid)
+                    formal = formal_start()
+                self.assertNotEqual(formal, prepared,
+                                    'A legal formal cycle must never alias an encoded prepared cycle')
+                configured = scope(parse(context()))
+                period = compatibility_period(configured)
+                self.assertEqual(formal, case_identity(configured['entity'], period.period_id,
+                                                      'Calculate supported accounting', formal_rid))
+                for cid, supplied in ((formal, formal_evidence('fixed-assets')),
+                                      (prepared, prepared_evidence())):
+                    status, staged = self.call('submit', case_id=cid, evidence=supplied)
+                    self.assertEqual(status, 200, staged)
+                    self.assertTrue(staged['ok'], staged)
+                status, formal_job = self.job(formal, key=rid+'-formal')
+                self.assertEqual(status, 202, formal_job)
+                self.assertEqual(self.job(prepared, key=rid+'-formal')[0], 409)
+                status, prepared_job = self.job(prepared, key=rid+'-prepared')
+                self.assertEqual(status, 202, prepared_job)
+                self.assertNotEqual(formal_job['id'], prepared_job['id'])
+                self.assertTrue(self.service.run_one())
+                self.assertTrue(self.service.run_one())
+                recovered = []
+                for job in (formal_job, prepared_job):
+                    status, completed = self.http('/v1/jobs/'+job['id'])
+                    self.assertEqual(status, 200, completed)
+                    self.assertEqual(completed['state'], 'SUCCEEDED', completed)
+                    recovered.append(completed['accounting'])
+                self.assertEqual(recovered[0]['execution_state'], 'complete')
+                self.assertEqual(recovered[1]['execution_state'], 'partial')
+                self.assertEqual(recovered[1]['public_result']['review_provenance'], 'SYSTEM_PREPARED')
+                api = ExecutionInterface(self.workspace, allow_prepared_unreviewed=True)
+                for cid, original in zip((formal, prepared), recovered):
+                    resumed = api.call(self.envelope('resume', case_id=cid))
+                    self.assertTrue(resumed['ok'], resumed)
+                    self.assertEqual(resumed['public_result'], original['public_result'])
+                    self.assertEqual(resumed['checkpoint_revision'], 1)
+                    self.assertIn('90000', json.dumps(resumed['public_result']))
+                restarted = self.new_service(True)
+                prior_service = self.server.service
+                self.server.service = restarted
+                try:
+                    with patch.object(CAO, 'run', side_effect=AssertionError('Restarted mode retrieval reran owner')):
+                        for job, original in zip((formal_job, prepared_job), recovered):
+                            status, refreshed = self.http('/v1/jobs/'+job['id'])
+                            self.assertEqual(status, 200, refreshed)
+                            self.assertEqual(refreshed['state'], 'SUCCEEDED')
+                            self.assertEqual(refreshed['accounting']['public_result'], original['public_result'])
+                finally:
+                    self.server.service = prior_service
+                    restarted.close()
+
     def test_historical_formal_case_identity_unchanged(self):
         status, result = self.call('start', request_id='formal-history', objective='Calculate supported accounting',
                                   target_family='machinery')

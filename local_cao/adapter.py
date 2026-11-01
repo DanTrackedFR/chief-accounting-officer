@@ -291,7 +291,9 @@ class ExecutionInterface:
         if mode == 'prepared_unreviewed':
             if not self.allow_prepared_unreviewed or family not in ('machinery', 'supplier_cost'): raise Failure('invalid_request')
         s = scope(config); p = compatibility_period(s)
-        if mode == 'prepared_unreviewed': cycle += ':prepared_unreviewed'
+        # A structured private cycle cannot alias a legal formal request ID.
+        # Keep historical formal cycles byte-for-byte unchanged.
+        if mode == 'prepared_unreviewed': cycle = canonical([cycle, mode])
         cid = case_identity(s['entity'], p.period_id, objective, cycle)
         native = dict(case_id=cycle, objective=objective, scope=s, company_context=[], facts={})
         d = dict(company_id=config['company']['company_id'], case_id=cid,

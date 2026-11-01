@@ -82,7 +82,7 @@ payable; the neutral compatibility selector preserves the actual accounting
 framework and canonical evidence without inventing standards applicability.
 
 Independent native accounting QA: 29 tests. Independent HTTP/adversarial engineering
-QA: 25 tests. The reports and raw logs are retained under knowledge/worker-reports,
+QA: 26 tests. The reports and raw logs are retained under knowledge/worker-reports,
 architecture/PREPARED-EXECUTION-RELEASE-QA.md and skills/prepared-accounting/release.
 Two independently seeded HTTP proofs match the unchanged reference byte for byte.
 
@@ -103,7 +103,14 @@ all required checks pass. Readiness-triggered workflows must use that same SHA.
 Mergeability and main divergence are checked at handoff. Owner authorization is
 required for integration; this implementation does not merge.
 
-Final frozen local acceptance: **3,714 distinct tests**, all **17 suites** and
+Superseded candidate local acceptance: **3,714 distinct tests**, all **17 suites** and
 **10 validators** passed with no skipped tests, failures or errors. Beginning/end
 Python and execution-input hashes are unchanged. The complete connected durable
-proof passed with historical artifacts unchanged. Acceptance selects attempt 006.
+proof passed with historical artifacts unchanged. That receipt remains retained for candidate b7232e36; current acceptance must select attempt 007.
+
+The prior 3,714-test candidate was superseded after reproducing a cross-mode
+Case-cycle alias. Prepared cycles now use a structured private identity outside
+the legal formal request-ID alphabet, preserving historical formal cycles. A
+permanent independent regression verifies both creation orders, actual evidence,
+separate HTTP jobs and restart isolation. Renewed full frozen acceptance selects
+attempt 007 only after that run passes.
