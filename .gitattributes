@@ -31,3 +31,16 @@ build4/release/ip-full006-log-observation/observed-0-module-5.log -whitespace
 build4/release/ip-full006-log-observation/observed-0-module-50.log -whitespace
 build4/release/ip-full006-log-observation/observed-0-module-53.log -whitespace
 build4/release/ip-full006-log-observation/observed-0-module-62.log -whitespace
+
+# Preserve Prepared execution stdout verbatim, including interrupted progress lines.
+build4/release/prepared-execution-attempt-00*/*.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-7.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-21.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-22.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-23.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-26.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-27.log whitespace=-blank-at-eol
+intelligence/release/ci-orchestration-module-28.log whitespace=-blank-at-eol
+
+# Retain the hash-bound independent accounting QA receipt verbatim.
+knowledge/worker-reports/prepared-accounting-accounting-qa.md whitespace=-blank-at-eof

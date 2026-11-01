@@ -22,7 +22,7 @@ and verifies that the diagnostic blocker survives alongside €90,000 depreciati
 
 ## Independent executable evidence
 
-`hosted_cao/tests/test_prepared_engineering_qa.py` contains 20 independent tests:
+`hosted_cao/tests/test_prepared_engineering_qa.py` contains 25 independent tests:
 real HTTP execution for both authorized packages; default-off and exact-boolean
 host configuration; immutable mode selection; historical formal Case identity;
 execute-time mode substitution; nested and staged-file review injection;
@@ -50,6 +50,92 @@ result versions and proposed journals only. A new service instance and local
 adapter recover equal public responses without owner execution. The curated
 `skills/prepared-accounting/release/http-proof.json` is deterministic across
 independent repeat generation.
+
+## Release proof runner correction
+
+The release workflow exposed a proof-runner integration mismatch: its command
+expected the full deterministic JSON on stdout, while the initial runner wrote
+the frozen reference in place and printed a summary. This could overwrite the
+comparison target and made the stdout comparison invalid. The runner now only
+prints the complete JSON; it never writes or replaces the reference. Independent
+runs with `PYTHONHASHSEED=41` and `1481` were redirected to temporary outputs.
+Both outputs match each other and the unchanged frozen `http-proof.json` byte
+for byte. No accounting implementation or historical artifact was changed.
+
+## Remote-discovered fingerprint split-view finding
+
+The first remote Phase 3 run exposed a compatibility-bridge defect that the
+initial physical-file tamper tests did not exercise. The bridge compared a text
+view of the live dispatcher/public boundary and could normalize over a different
+byte digest already captured by the fingerprint caller. Existing independent
+shared-boundary and byte-only mutation regressions detected the resulting stale
+seal acceptance. This was a substantive fingerprint-integrity defect.
+
+The implementation author repaired the helper to use authoritative bytes for
+all dispatcher and witness content and to require captured dispatcher/public
+hashes to match those exact bytes before normalization. Three additional
+independent engineering regressions now verify both authorized packages under
+byte-only dispatcher/public mutations with untouched text, inconsistent text
+views with correct authoritative bytes, and mismatched captured digests that
+must never normalize. The valid normalization fixture is asserted first so
+refusal tests cannot pass vacuously. All six fingerprint engineering methods,
+and the full 23-test engineering suite, pass after this repair.
+
+Two pre-existing Investment Property integration assertions were adapted by the
+implementation author to compose the new additive profile with the preserved
+historical bridge. Independent diff review confirms that the original historical
+witness hashes and expected accounting/fingerprint assertions remain; no golden
+accounting output or historical baseline was regenerated.
+
+The HTTP proof's no-fabrication statement concerns execution knowledge,
+applicability and reviewer-signoff records. Its source fixtures retain their
+explicitly synthetic, pre-existing source-control reviewers and approvals; it
+does not claim that those business source controls have vanished or that any
+real person reviewed the execution.
+
+## Hosted operational log ordering follow-up
+
+A full hosted regression exposed a race in the existing confidential-error log
+test: the handler logged its safe metadata after writing the response, so a
+client could finish before the log was emitted. The implementation author moved
+the same operational metadata emission before response visibility. Independent
+diff inspection confirms the unchanged allowlisted log fields (event, correlation
+identifier, status and duration) and no request body, credentials, company
+workpaper or reviewer content.
+
+After this repair, all 44 original hosted tests passed, followed by 20 repeated
+executions of the original confidential-error test and all 23 independent
+engineering tests. Retained logs are `hosted-original-qa.log`,
+`http-privacy-repeated-qa.log` and `engineering-qa.log` under
+`skills/prepared-accounting/release/`. The blocked preparation renderer now emits
+specific unresolved input requirements without a package treatment or citation;
+that accounting presentation regression is independently owned by accounting QA.
+
+## Pending historical job compatibility follow-up
+
+A final compatibility audit found that adding immutable descriptor binding to
+all hosted input hashes would invalidate pre-upgrade pending formal jobs, whose
+stored acceptance hash covered `[configuration, evidence]`. The implementation
+author restored that exact formula for formal execution and applies descriptor
+binding only to explicitly prepared execution.
+
+Two independent regression methods raise the engineering suite to 25 tests.
+The historical-format test independently computes the old formula and directly
+inserts synthetic ACCEPTED and EXECUTING operational rows for both packages. A
+restarted service with preparation disabled completes each formal job from its
+once-staged evidence, without recertifying or refreshing reviewer seals. This
+constructs the old operational storage contract rather than rewriting any
+historical fixture. The prepared test independently computes the extended
+formula and verifies that private descriptor substitution after acceptance
+changes the binding and blocks execution before the owner runs.
+
+Read-only review found no additional pending-path compatibility change: job DB
+columns, canonical operational request hashing, omitted formal mode, old Case
+cycles/staging paths, and investigation/correction/rework resume behavior retain
+the original contracts. Historical investigation hashes still use the existing
+investigation checkpoint and intake evidence, without the prepared descriptor.
+The 25-test suite passes after this repair; previous superseded release attempts
+cannot attest these later source and test changes.
 
 ## Result and limits
 

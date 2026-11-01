@@ -220,7 +220,7 @@ def execute(package, case, *, allow_prepared_unreviewed=False):
         from prepared_execution import execute as prepare
         return prepare(package, case)
     if mode != 'formal': raise ReviewRequired('Unknown accounting review mode')
-    if isinstance(case, dict) and 'SYSTEM_DERIVED_NOT_A_REVIEWER' in json.dumps(case, default=str):
+    if isinstance(case, dict) and any(tag in json.dumps(case, default=str) for tag in ('SYSTEM_DERIVED_NOT_A_REVIEWER', 'SYSTEM_DERIVED', 'SYSTEM_PREPARED')):
         raise ReviewRequired('System provenance cannot satisfy formal reviewer requirements')
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
     if package=='investment-property' and (not isinstance(case,dict) or case.get('skill_version')!='1.0.0'):
@@ -287,7 +287,7 @@ def case_fingerprint(case):
         from investment_fingerprint import bind_investment_dispatch
         implementation = bind_investment_dispatch(case, ROOT, PACKAGES, files, implementation)
     from prepared_fingerprint import bind_additive_mode
-    implementation = bind_additive_mode(case, ROOT, PACKAGES, files, implementation, '26fc42e13436ab0ea085af0199500f00936b7dac3b6c585a0aff5b800cd7f1f8')
+    implementation = bind_additive_mode(case, ROOT, PACKAGES, files, implementation, '1c371d847f0f86eb7eba5bb9a1b92a13250f52db4f9a09dca5f675f5d2ef0977')
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
 

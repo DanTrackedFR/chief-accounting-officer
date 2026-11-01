@@ -176,6 +176,26 @@ class IndependentPreparedAccountingQA(unittest.TestCase):
             case['regulatory_overlays'] = ['SEC registrant']
             self.blocked(package, case)
 
+    def test_supplier_profile_is_neutral_background_without_claim_application(self):
+        from production import canonical_knowledge, PACKAGES
+        for framework in ('IFRS', 'US_GAAP', 'UK_GAAP', 'AASB'):
+            with self.subTest(framework=framework):
+                claims, documents = canonical_knowledge(PACKAGES['accounts-payable'][1], framework,
+                                                        package='accounts-payable')
+                snapshot = copy.deepcopy((claims, documents))
+                result = self.run_prepared('accounts-payable', prepared('accounts-payable', framework))
+                self.assertEqual(result['applicability_provenance']['standard_versions'],
+                                 ['Governed ordinary supplier-cost reconciliation profile, 2026'])
+                self.assertEqual(result['applicability_provenance']['framework'], framework)
+                self.assertEqual(result['applicability_provenance']['origin'], 'SYSTEM_DERIVED')
+                self.assertEqual(result['knowledge_population'], snapshot[0])
+                self.assertEqual(result['knowledge_documents'], snapshot[1])
+                self.assertEqual(canonical_knowledge(PACKAGES['accounts-payable'][1], framework,
+                                                    package='accounts-payable'), snapshot)
+                self.assertEqual(result['evidence'], [])
+                self.assertNotIn('applied_claim_ids', result)
+                self.assertNotIn('knowledge_review', result['facts_used'])
+
     def test_uk_framework_and_edition_boundaries(self):
         for package in ('fixed-assets', 'accounts-payable'):
             for field, value in [('uk_standard', 'FRS_101'), ('uk_standard', 'FRS_105'),
@@ -281,6 +301,20 @@ class IndependentPreparedAccountingQA(unittest.TestCase):
             with patch.object(production, 'canonical_knowledge', return_value=(claims, docs)):
                 self.blocked('fixed-assets', prepared())
 
+    def test_relabelled_system_records_cannot_certify_formal_result(self):
+        for package in ('fixed-assets', 'accounts-payable'):
+            for key in ('knowledge_review', 'applicability_review', 'reviewer_signoff'):
+                for field, tag in [('provenance', 'SYSTEM_DERIVED'), ('origin', 'SYSTEM_PREPARED')]:
+                    with self.subTest(package=package, record=key, field=field):
+                        case = certified(package)
+                        case[key]['reviewer'] = 'non-human worker'
+                        case[key][field] = tag
+                        # Fresh fingerprint prevents an unrelated stale-signoff
+                        # refusal from masking the actual provenance gate.
+                        case['reviewer_signoff']['case_fingerprint'] = case_fingerprint(case)
+                        with self.assertRaisesRegex(ReviewRequired, 'System provenance'):
+                            execute(package, case)
+
     def test_public_boundary_rejects_private_provenance_in_assumptions(self):
         for text in ('Source: ChatGPT training data', 'synthetic independent reviewer',
                      '0123456789abcdef' * 4):
@@ -303,6 +337,37 @@ class IndependentPreparedAccountingQA(unittest.TestCase):
             self.assertTrue(public['open_items'])
             self.assertIn('Evidence population', json.dumps(public))
             self.assertNotIn('90000' if package == 'fixed-assets' else '9600', json.dumps(public))
+
+    def test_all_public_refusals_preserve_issue_without_invented_scope(self):
+        from production import assess_case
+        scenarios = []
+        scenarios.append(('month-end-close', prepared(), 'unavailable for this accounting package'))
+        scenarios.append(('investment-property', prepared(), 'unavailable for this accounting package'))
+        for package in ('fixed-assets', 'accounts-payable'):
+            missing = prepared(package)
+            missing['evidence'] = []
+            scenarios.append((package, missing, 'Evidence population'))
+            future = prepared(package)
+            future.update(period_start='2027-01-01', reporting_period='2027-12-31')
+            scenarios.append((package, future, 'wholly within 2026'))
+        for package, case, reason in scenarios:
+            result = assess_case(package, case, allow_prepared_unreviewed=True)
+            self.assertEqual(result['status'], 'blocked')
+            self.assertFalse(result['calculations'])
+            for route in ROUTES:
+                with self.subTest(package=package, reason=reason, route=route):
+                    public = to_public(result, route=route)
+                    encoded = json.dumps(public)
+                    self.assertEqual(public['accounting_determination'], 'UNRESOLVED')
+                    self.assertEqual(public['evidence_sufficiency'], 'INSUFFICIENT')
+                    self.assertEqual(public['review_provenance'], 'SYSTEM_PREPARED')
+                    self.assertIn(reason, public['guidance'])
+                    self.assertTrue(public['open_items'])
+                    self.assertEqual(public.get('citations', []), [])
+                    for invented in ('Qualifying ordinary machinery', 'Recognize supplier obligations',
+                                     'governed knowledge package', 'background guidance',
+                                     'Proposed journal implications', 'Calculations:', '90000', '9600'):
+                        self.assertNotIn(invented, encoded)
 
 
 if __name__ == '__main__':

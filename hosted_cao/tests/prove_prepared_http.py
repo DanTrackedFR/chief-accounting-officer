@@ -61,8 +61,4 @@ def prove():
 
 
 if __name__ == '__main__':
-    result = prove()
-    destination = ROOT/'skills/prepared-accounting/release/http-proof.json'
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(json.dumps(result, indent=2, sort_keys=True)+'\n')
-    print(json.dumps({'packages': len(result['packages']), 'proof': 'passed'}))
+    print(json.dumps(prove(), indent=2, sort_keys=True))

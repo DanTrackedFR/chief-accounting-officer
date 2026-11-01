@@ -46,10 +46,11 @@ def qualify(package, case):
         raise ReviewRequired('System preparation requires qualified AASB 2026 compilation and Tier 1 or 2')
     if fw == 'US_GAAP' and case.get('us_entity_type') != 'private_company':
         raise ReviewRequired('System preparation excludes regulated or public US entities')
-    return {'IFRS': ['IAS 16 / IAS 8 ordinary cost method, 2026', 'IAS 37 / ordinary supplier obligation and cutoff, 2026'],
-            'US_GAAP': ['ASC 360 ordinary historical cost, 2026', 'Ordinary US supplier obligation and cutoff, 2026'],
-            'UK_GAAP': ['FRS 102 Section 17, 2026', 'FRS 102 ordinary supplier obligation and cutoff, 2026'],
-            'AASB': ['AASB 116 / AASB 108 ordinary cost method, 2026', 'AASB 137 / ordinary supplier obligation and cutoff, 2026']}[fw][package == 'accounts-payable']
+    if package == 'accounts-payable': return 'Governed ordinary supplier-cost reconciliation profile, 2026'
+    return {'IFRS': 'IAS 16 / IAS 8 ordinary cost method, 2026',
+            'US_GAAP': 'ASC 360 ordinary historical cost, 2026',
+            'UK_GAAP': 'FRS 102 Section 17, 2026',
+            'AASB': 'AASB 116 / AASB 108 ordinary cost method, 2026'}[fw]
 
 
 def execute(package, case):
@@ -96,6 +97,13 @@ def to_public(result, route):
     from interfaces.public_output import public_record
     from production import serializable
     import json
+    if result['status'] == 'blocked':
+        from production import _public_requirement_text
+        return public_record(dict(guidance=_public_requirement_text(result['conclusion']), status='blocked',
+            accounting_determination='UNRESOLVED', evidence_sufficiency='INSUFFICIENT',
+            review_provenance='SYSTEM_PREPARED', framework=result['framework'], jurisdiction=result['jurisdiction'],
+            entity_scope=result['entities'][0], effective_period=' to '.join(result['periods']),
+            open_items=[_public_requirement_text(item) for item in result.get('open_items', [])], citations=[]), route=route)
     fa = result['skill_id'] == 'SKILL-FA-001'
     keys = ('depreciation', 'closing_cost', 'closing_accumulated', 'closing_cip', 'excluded_expense') if fa else ('opening_ap', 'invoices', 'payments', 'closing_ap', 'closing_accruals')
     calculations = {k: result['calculations'][k] for k in keys if k in result['calculations']}

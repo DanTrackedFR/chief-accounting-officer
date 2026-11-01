@@ -61,7 +61,13 @@ class IndependentMainReconciliation(unittest.TestCase):
   self.assertEqual(baseline,witness.read_bytes())
   self.assertEqual(BASELINE_SHA,hashlib.sha256(baseline).hexdigest())
   helper_hash=hashlib.sha256((ROOT/'skills/investment_fingerprint.py').read_bytes()).hexdigest()
-  self.assertEqual(expected_dispatch(baseline.decode(),helper_hash),(ROOT/'skills/production.py').read_text())
+  # The old bridge still proves the preserved merged dispatcher. The live
+  # additive profile is separately byte-audited against that exact witness.
+  merged=(ROOT/'skills/prepared-accounting/release/main-fbf8-production.py.txt').read_bytes()
+  self.assertEqual(expected_dispatch(baseline.decode(),helper_hash),merged.decode())
+  from prepared_fingerprint import expected_prepared_dispatch
+  prepared_hash=hashlib.sha256((ROOT/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
+  self.assertEqual(expected_prepared_dispatch(merged.decode(),prepared_hash).encode(),(ROOT/'skills/production.py').read_bytes())
   old=ROOT/'skills/investment-property/fingerprint-baseline/production.py.txt'
   self.assertEqual('b452b2b46d56ad1f72cf7e87fdcadc9e8b7923a6d42c8945aac4589f291b7f52',hashlib.sha256(old.read_bytes()).hexdigest())
 
@@ -139,7 +145,9 @@ class IndependentMainReconciliation(unittest.TestCase):
   def inconsistent(p,*a,**k):
    return 'incongruent non-authoritative text view' if p in targets else native(p,*a,**k)
   with patch.object(Path,'read_text',inconsistent):
-   result=bind_investment_dispatch(c,ROOT,PACKAGES,files,actual)
+   from prepared_fingerprint import bind_additive_mode
+   pinned=hashlib.sha256((ROOT/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
+   result=bind_additive_mode(c,ROOT,PACKAGES,files,actual,pinned)
   self.assertEqual(BASELINE_SHA,result['skills/production.py'])
 
  def test_owner_scoped_closure_has_no_investment_source_coupling(self):

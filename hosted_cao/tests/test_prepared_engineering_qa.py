@@ -210,6 +210,78 @@ class IndependentPreparedEngineeringQA(unittest.TestCase):
         status, second = self.job(formal['case_id'])
         self.assertEqual(status, 409, second)
 
+    def test_historical_pending_formal_job_old_input_hash_executes_without_recertification(self):
+        import hashlib
+        from local_cao.adapter import canonical
+        from local_cao.context import parse
+        for package in ('fixed-assets', 'accounts-payable'):
+            for state in ('ACCEPTED', 'EXECUTING'):
+                with self.subTest(package=package, pending_state=state):
+                    rid = 'historical-'+package+'-'+state
+                    family = {'fixed-assets': 'machinery', 'accounts-payable': 'supplier_cost'}[package]
+                    _, started = self.call('start', request_id=rid,
+                                           objective='Calculate supported accounting', target_family=family)
+                    cid = started['case_id']
+                    supplied = formal_evidence(package)
+                    self.assertTrue(self.call('submit', case_id=cid, evidence=supplied)[1]['ok'])
+                    configured = parse((self.workspace/'company-context.md').read_text())
+                    # Pre-upgrade formula, independently reconstructed. No request
+                    # descriptor or default mode field was bound in old formal jobs.
+                    old_hash = hashlib.sha256(canonical([configured, supplied]).encode()).hexdigest()
+                    request = self.envelope('execute', case_id=cid)
+                    self.assertEqual(self.service.input_hash(COMPANY, request), old_hash)
+                    payload = canonical(request)
+                    request_hash = hashlib.sha256(payload.encode()).hexdigest()
+                    jid = 'job-'+hashlib.sha256(canonical([COMPANY, rid]).encode()).hexdigest()
+                    with self.service.db() as connection:
+                        connection.execute('INSERT INTO jobs VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                            (jid, COMPANY, rid, request_hash, payload, state, 0,
+                             None, None, old_hash, None, 1.0, 1.0))
+                    snapshot = copy.deepcopy(supplied)
+                    restarted = self.new_service(False)
+                    try:
+                        # Resume a pre-upgrade operational row using the evidence
+                        # staged once above; never refresh a reviewer seal afterward.
+                        with patch('orchestration.tests.fixtures.certify',
+                                   side_effect=AssertionError('Historical source recertification')):
+                            self.assertTrue(restarted.run_one())
+                        completed = restarted.job(COMPANY, jid)
+                        self.assertEqual(completed['state'], 'SUCCEEDED', completed)
+                        result = completed['accounting']
+                        self.assertEqual(result['execution_state'], 'complete', result)
+                        self.assertEqual(result['checkpoint_revision'], 1)
+                        self.assertIn('90000' if package == 'fixed-assets' else '9600',
+                                      json.dumps(result['public_result']))
+                        self.assertEqual(supplied, snapshot)
+                    finally:
+                        restarted.close()
+
+    def test_prepared_pending_job_binds_immutable_request_descriptor(self):
+        import hashlib
+        from local_cao.adapter import canonical
+        from local_cao.context import parse
+        cid = self.stage()
+        request = self.envelope('execute', case_id=cid)
+        configured = parse((self.workspace/'company-context.md').read_text())
+        descriptor_path = self.workspace/'requests/prepared-case.json'
+        descriptor = json.loads(descriptor_path.read_text())
+        supplied = prepared_evidence()
+        expected = hashlib.sha256(canonical([configured, supplied, descriptor]).encode()).hexdigest()
+        self.assertEqual(self.service.input_hash(COMPANY, request), expected)
+        status, job = self.job(cid)
+        self.assertEqual(status, 202, job)
+        with self.service.db() as connection:
+            stored = connection.execute('SELECT input_hash FROM jobs WHERE id=?', (job['id'],)).fetchone()
+            self.assertEqual(stored['input_hash'], expected)
+        # Model a trusted-storage substitution after acceptance, without altering
+        # evidence/scope or relying on a caller-controlled mode switch.
+        changed = dict(descriptor, private_request_provenance='substituted')
+        descriptor_path.write_text(canonical(changed)+'\n')
+        self.assertNotEqual(self.service.input_hash(COMPANY, request), expected)
+        with patch.object(CAO, 'run', side_effect=AssertionError('Changed request must not execute')):
+            self.assertTrue(self.service.run_one())
+        self.assertEqual(self.service.job(COMPANY, job['id'])['state'], 'FAILED')
+
     def test_input_changed_after_job_acceptance_fails(self):
         cid = self.start()
         status, job = self.job(cid)
@@ -372,6 +444,66 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
                         self.assertNotEqual(production.case_fingerprint(case), original, name)
                     finally:
                         path.write_bytes(previous)
+
+    def test_byte_only_shared_boundary_changes_cannot_hide_behind_original_text(self):
+        import production
+        root = Path(__file__).resolve().parents[2]
+        original_read = Path.read_bytes
+        for package in ('fixed-assets', 'accounts-payable'):
+            family = {'fixed-assets': 'machinery', 'accounts-payable': 'supplier_cost'}[package]
+            case = formal_evidence(package)['facts'][family]
+            baseline = production.case_fingerprint(case)
+            for name in ('skills/production.py', 'interfaces/public_output.py'):
+                target = root/name
+                def changed_bytes(path, *args, **kwargs):
+                    value = original_read(path, *args, **kwargs)
+                    return value+b'\n# byte-only independent shared-boundary mutation\n' if path == target else value
+                with self.subTest(package=package, boundary=name):
+                    with patch.object(Path, 'read_bytes', changed_bytes):
+                        self.assertNotEqual(production.case_fingerprint(case), baseline)
+                        self.assertNotEqual(production.execute(package, case)['status'], 'complete',
+                                            'Changed authoritative bytes must invalidate old approval')
+
+    def test_authoritative_bytes_do_not_depend_on_inconsistent_read_text(self):
+        import production
+        root = Path(__file__).resolve().parents[2]
+        case = formal_evidence('fixed-assets')['facts']['machinery']
+        baseline = production.case_fingerprint(case)
+        original_read = Path.read_text
+        targets = {root/name for name in (
+            'skills/production.py', 'interfaces/public_output.py',
+            'skills/prepared-accounting/release/main-fbf8-production.py.txt',
+            'skills/prepared-accounting/release/main-fbf8-public-output.py.txt',
+            'skills/investment-property/fingerprint-baseline/main-e753-production.py.txt')}
+        def inconsistent_text(path, *args, **kwargs):
+            if path in targets:
+                return 'NONAUTHORITATIVE INCONSISTENT TEXT VIEW'
+            return original_read(path, *args, **kwargs)
+        with patch.object(Path, 'read_text', inconsistent_text):
+            self.assertEqual(production.case_fingerprint(case), baseline,
+                             'Exact bytes are the only dispatcher/witness source of truth')
+
+    def test_mismatched_captured_common_digest_never_normalizes(self):
+        import hashlib
+        import production
+        from implementation_scope import fingerprint_files
+        from prepared_fingerprint import bind_additive_mode
+        root = Path(__file__).resolve().parents[2]
+        case = formal_evidence('fixed-assets')['facts']['machinery']
+        files = fingerprint_files(case, root, production.PACKAGES)
+        captured = {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
+                    for path in files}
+        pinned = hashlib.sha256((root/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
+        normalized = bind_additive_mode(case, root, production.PACKAGES, files, captured, pinned)
+        self.assertNotEqual(normalized['skills/production.py'], captured['skills/production.py'],
+                            'Fixture must exercise a valid live compatibility normalization')
+        for name in ('skills/production.py', 'interfaces/public_output.py'):
+            with self.subTest(boundary=name):
+                changed = dict(captured)
+                changed[name] = '0'*64
+                result = bind_additive_mode(case, root, production.PACKAGES, files, changed, pinned)
+                self.assertEqual(result, changed,
+                                 'Digest captured by caller must match the authoritative bytes before normalization')
 
     def test_prepared_fingerprint_binds_new_implementation(self):
         import production

@@ -124,7 +124,7 @@ class Service:
             path=folder/'intake.json'
         else:path=folder/'evidence.json'
         evidence=api.read_json(str(path.relative_to(self.companies[company]))) if path.exists() else None
-        return hashlib.sha256(canonical([config,evidence,d]).encode()).hexdigest()
+        return hashlib.sha256(canonical([config,evidence,d] if d.get('review_mode')=='prepared_unreviewed' else [config,evidence]).encode()).hexdigest()
 
     def submit_job(self, company, request, key):
         with self.company_locks[company]:
@@ -284,7 +284,8 @@ class Handler(BaseHTTPRequestHandler):
             status=exc.status;value={'api_version':API_VERSION,'ok':False,'error':{'code':exc.code,'message':SAFE[exc.code]}}
         except Exception:
             status=503;value={'api_version':API_VERSION,'ok':False,'error':{'code':'unavailable','message':SAFE['unavailable']}}
+        # Emit safe operational metadata before the response becomes observable.
+        LOG.info(canonical({'event':'http','correlation_id':correlation,'status':status,'duration_ms':round((time.monotonic()-started)*1000)}))
         try:
             payload=canonical(value).encode();self.send_response(status);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(payload)));self.send_header('X-Correlation-ID',correlation);self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(payload)
         except (OSError,ValueError):pass
-        LOG.info(canonical({'event':'http','correlation_id':correlation,'status':status,'duration_ms':round((time.monotonic()-started)*1000)}))
