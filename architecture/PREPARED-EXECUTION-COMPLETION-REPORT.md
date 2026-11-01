@@ -103,14 +103,14 @@ all required checks pass. Readiness-triggered workflows must use that same SHA.
 Mergeability and main divergence are checked at handoff. Owner authorization is
 required for integration; this implementation does not merge.
 
-Superseded candidate local acceptance: **3,714 distinct tests**, all **17 suites** and
+Final frozen local acceptance: **3,715 distinct tests**, all **17 suites** and
 **10 validators** passed with no skipped tests, failures or errors. Beginning/end
 Python and execution-input hashes are unchanged. The complete connected durable
-proof passed with historical artifacts unchanged. That receipt remains retained for candidate b7232e36; current acceptance must select attempt 007.
+proof passed with historical artifacts unchanged. Acceptance selects attempt 007.
 
-The prior 3,714-test candidate was superseded after reproducing a cross-mode
-Case-cycle alias. Prepared cycles now use a structured private identity outside
-the legal formal request-ID alphabet, preserving historical formal cycles. A
-permanent independent regression verifies both creation orders, actual evidence,
-separate HTTP jobs and restart isolation. Renewed full frozen acceptance selects
-attempt 007 only after that run passes.
+The prior b7232e36 candidate and its 3,714-test receipt remain preserved. That
+candidate was superseded after reproducing a cross-mode Case-cycle alias.
+Prepared cycles now use a structured private identity outside the legal formal
+request-ID alphabet, preserving historical formal cycles. A permanent independent
+regression verifies both creation orders, actual evidence, separate HTTP jobs,
+idempotency separation and restart isolation. Its before/after logs are retained.
