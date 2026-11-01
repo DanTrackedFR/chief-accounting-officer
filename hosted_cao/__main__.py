@@ -10,7 +10,7 @@ from .service import Service, Server
 def main():
     logging.basicConfig(level=logging.INFO,format='%(message)s')
     config=json.loads(Path(os.environ['CAO_SERVICE_CONFIG']).read_text())
-    service=Service(config['job_root'],config['companies'],config['credentials'])
+    service=Service(config['job_root'],config['companies'],config['credentials'],allow_prepared_unreviewed=config.get('allow_prepared_unreviewed',False))
     service.start_worker()
     server=Server((os.environ.get('CAO_HOST','127.0.0.1'),int(os.environ.get('CAO_PORT','8080'))),service)
     def stop(*_):threading.Thread(target=server.shutdown,daemon=True).start()

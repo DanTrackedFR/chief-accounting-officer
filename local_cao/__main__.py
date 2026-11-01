@@ -9,11 +9,12 @@ from interfaces.public_output import public_record
 def main():
     p = argparse.ArgumentParser(description='Local governed CAO execution contract')
     p.add_argument('--workspace', default='.cao-local')
+    p.add_argument('--allow-prepared-unreviewed', action='store_true', help='Trusted host opt-in for bounded system preparation')
     args = p.parse_args()
     try:
         text = sys.stdin.read(MAX_BYTES+1)
         if len(text.encode()) > MAX_BYTES: raise ValueError('Request limit')
-        result = ExecutionInterface(args.workspace).call(decode(text))
+        result = ExecutionInterface(args.workspace, allow_prepared_unreviewed=args.allow_prepared_unreviewed).call(decode(text))
     except (ValueError, TypeError, OSError, RecursionError):
         result = dict(contract_version='1.0', ok=False,
             error=dict(code='invalid_request', message=ERRORS['invalid_request']),

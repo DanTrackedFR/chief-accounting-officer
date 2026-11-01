@@ -213,7 +213,15 @@ def canonical_knowledge(topic_ids, framework, package=None):
             documents.append({'topic_id':tid,'path':str(p.relative_to(ROOT)), 'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
     return claims,documents
 
-def execute(package, case):
+def execute(package, case, *, allow_prepared_unreviewed=False):
+    mode = case.get('review_mode', 'formal') if isinstance(case, dict) else 'formal'
+    if mode == 'prepared_unreviewed':
+        if allow_prepared_unreviewed is not True: raise ReviewRequired('System preparation is disabled by host configuration')
+        from prepared_execution import execute as prepare
+        return prepare(package, case)
+    if mode != 'formal': raise ReviewRequired('Unknown accounting review mode')
+    if isinstance(case, dict) and 'SYSTEM_DERIVED_NOT_A_REVIEWER' in json.dumps(case, default=str):
+        raise ReviewRequired('System provenance cannot satisfy formal reviewer requirements')
     if package not in PACKAGES: raise ReviewRequired('Unknown accounting skill')
     if package=='investment-property' and (not isinstance(case,dict) or case.get('skill_version')!='1.0.0'):
         raise ReviewRequired('NONPRODUCTION: approved PPE knowledge supplies a classification boundary only; investment-property definition, model, transfer and framework-specific recognition/measurement methods are absent')
@@ -278,6 +286,8 @@ def case_fingerprint(case):
     if hashlib.sha256(bridge_path.read_bytes()).hexdigest() == 'a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b':
         from investment_fingerprint import bind_investment_dispatch
         implementation = bind_investment_dispatch(case, ROOT, PACKAGES, files, implementation)
+    from prepared_fingerprint import bind_additive_mode
+    implementation = bind_additive_mode(case, ROOT, PACKAGES, files, implementation, '26fc42e13436ab0ea085af0199500f00936b7dac3b6c585a0aff5b800cd7f1f8')
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
 
@@ -302,6 +312,9 @@ def _public_requirement_text(text):
 
 
 def to_public(result, route='answer'):
+    if result.get('review_mode') == 'prepared_unreviewed':
+        from prepared_execution import to_public as prepared_public
+        return prepared_public(result, route)
     standard_titles={
       'SKILL-REV-001':{'IFRS':'IFRS 15','US_GAAP':'ASC 606','UK_GAAP':'FRS 102 Section 23','AASB':'AASB 15'},
       'SKILL-ECL-001':{'IFRS':'IFRS 9 / IFRS 7','US_GAAP':'ASC 326 and instrument-specific measurement guidance','UK_GAAP':'FRS 102 Sections 11/12 and elected measurement model','AASB':'AASB 9 / AASB 7'},
@@ -381,11 +394,11 @@ def serializable(obj):
     raise TypeError(type(obj).__name__)
 
 
-def assess_case(package,case):
+def assess_case(package,case, *, allow_prepared_unreviewed=False):
     """CAO-facing result adapter; unresolved cases return a structured handoff."""
     if package not in PACKAGES:raise ReviewRequired('Unknown accounting skill')
     if not isinstance(case,dict):case={}
-    try:return execute(package,case)
+    try:return execute(package,case,allow_prepared_unreviewed=allow_prepared_unreviewed)
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={
@@ -452,7 +465,7 @@ def assess_case(package,case):
                 target='Government Grants & Assistance — NONPRODUCTION specialist dependency'
             elif 'dependency: fx' in reason:
                 target='Foreign Currency owner'
-        return {'skill_id':PACKAGES[package][0],'status':'blocked','conclusion':'Accounting case cannot be completed: '+reason,
+        blocked = {'skill_id':PACKAGES[package][0],'status':'blocked','conclusion':'Accounting case cannot be completed: '+reason,
           'recommendation_class':'REQUIRED','facts_used':{k:v for k,v in case.items() if k not in ('assumptions','knowledge_review','reviewer_signoff')},
           'assumptions':case.get('assumptions',[]),'framework':case.get('framework','unresolved'),'jurisdiction':case.get('jurisdiction','unresolved'),
           'entities':[case.get('entity','unresolved')],'periods':[case.get('period_start','unresolved'),case.get('reporting_period','unresolved')],
@@ -463,3 +476,8 @@ def assess_case(package,case):
           'systems_impacted':['Maintain exception owner and source lineage'],'documentation_required':[evidence],
           'audit_evidence_required':[evidence],'related_artifacts':[],'memory_candidates':[],
           'specialist_routing':{'topic_id':topic,'target':target,'required_evidence':evidence,'completion_gate':'Reviewed framework-specific memo, reconciled schedules/journals and disclosure impacts; rerun case with new fingerprint'}}
+
+        if case.get('review_mode') == 'prepared_unreviewed':
+            blocked.update(review_mode='prepared_unreviewed', accounting_determination='UNRESOLVED',
+                evidence_sufficiency='INSUFFICIENT', review_provenance='SYSTEM_PREPARED')
+        return blocked

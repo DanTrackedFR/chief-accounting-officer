@@ -96,3 +96,61 @@ same versioned requests and returns the same public boundary. Add HTTPS, request
 limits, access control, service credentials and revision-aware qualified rework
 without moving accounting methods into Express. Version unsupported operations
 explicitly. Do not use context/user edits to rewrite accepted CAO knowledge.
+
+## Additive profile 1.1 — bounded system preparation
+
+The backward-compatible wire envelope remains `contract_version: "1.0"`.
+`start` may explicitly request `review_mode: "prepared_unreviewed"`; omission
+retains formal behavior. Trusted host construction must independently enable
+`ExecutionInterface(..., allow_prepared_unreviewed=True)` (CLI host option
+`--allow-prepared-unreviewed`). The boolean defaults false and cannot be enabled
+by wire evidence or company Markdown. Only `machinery` / fixed-assets and
+`supplier_cost` / accounts-payable are supported. Investigation operations and
+other packages remain outside this profile.
+
+The selected mode enters the immutable request and native Case cycle identity.
+The same request ID with a changed mode conflicts. Later submit/execute/read
+requests inherit the staged mode; an explicit mode must match. Production Case
+fingerprints bind the mode, current preparation implementation and canonical
+knowledge document population. Hosted acceptance also binds immutable request,
+context and staged evidence. No system record refreshes a formal reviewer seal.
+
+Prepared evidence must contain only `facts` and the one selected fact family.
+Client-supplied `knowledge_review`, `applicability_review`, `reviewer_signoff`
+are recursively rejected, as are imported owner Cases and journal-pack authority.
+The engine derives canonical populations/hashes and machine applicability from
+the qualified Case dimensions. Source-population controls, actual source row
+approvals, specialist handoff evidence, policy/life/component determinations,
+reconciliations and evidence sufficiency remain required. These supplied source
+controls are never created or relabeled as an independent accounting sign-off.
+
+Initial applicability is ordinary commercial for-profit work with periods wholly
+within calendar 2026. UK requires `FRS_102` / `uk_standard_edition: "2026"`;
+AASB requires `aasb_compilation: "2026"` and integer Tier 1 or 2; US GAAP
+requires `us_entity_type: "private_company"`. Here "2026" is a bounded governed
+applicability selector for this profile, not a claim that the literal standards
+publication has that title. NFP/public sector, FRS 101/105, public/regulated US
+entities, declared regulatory overlays and additional policy elections require
+separate assessment. Supported existing owner methods are unchanged.
+
+A supported native result remains `status: "partial"`, with separate
+`accounting_determination: "SUPPORTED"`, `evidence_sufficiency: "SUFFICIENT"`,
+`review_provenance: "SYSTEM_PREPARED"`. Material accounting gaps block affected
+calculations and produce UNRESOLVED/INSUFFICIENT. Wider unresolved objective
+requirements remain visible even when an owner calculation is supported.
+The existing SQLite Case checkpoint retains the partial result and original
+source workpaper; there is no complete result version, formal approval, memory
+promotion or authorized posting. Current means current checkpoint, not reviewed.
+
+Public guidance leads with treatment, calculations, assumptions and proposed
+journal implications. Machine provenance does not imply standards uncertainty.
+Canonical claim sets are background guidance unless actual claim applicability
+is established; this profile publishes no fabricated paragraph citations or
+claim-by-claim application. Hashes, reviewer identities and raw source state
+remain private. A machine-only compatibility sentinel is categorically rejected
+in formal mode. TrackedFR user Finalised attestations must remain separate from
+native accounting review authority.
+
+Historical formal request IDs and fingerprints are retained through an exact
+byte-checked additive dispatch/allowlist witness. Any non-enumerated common-code
+change invalidates normalization; historical reference results are unchanged.

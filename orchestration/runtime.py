@@ -168,7 +168,9 @@ def company_context(records, scope):
 
 
 class CAO:
-    def __init__(self, planner=None, registry=None):
+    def __init__(self, planner=None, registry=None, *, allow_prepared_unreviewed=False):
+        if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        self.allow_prepared_unreviewed = allow_prepared_unreviewed
         self.planner = planner or DeterministicPlanner(); self.registry = registry or Registry()
 
     def run(self, request):
@@ -368,7 +370,7 @@ class CAO:
                             raise ValueError('Imported owner result stale, incomplete or contradictory')
                     for b in [b for b in bindings if b['consumer']==n.id]:
                         self._handoff(c, graph, inputs, b, consumed)
-                    r=production.assess_case(n.selected_skill,source)
+                    r=production.assess_case(n.selected_skill,source,allow_prepared_unreviewed=self.allow_prepared_unreviewed)
                     if not isinstance(r,dict) or r.get('skill_id')!=meta['id'] or r.get('status') not in ('complete','partial','blocked','not_applicable'):
                         raise ValueError('Malformed owner result envelope')
                     # Public curation is mandatory even before internal synthesis.
@@ -425,7 +427,8 @@ class CAO:
         critical=[n for n in unresolved if n.required or n.material is not False]
         if c.open_questions: critical += [None]
         complete=any(n.status=='complete' for n in graph.nodes.values())
-        c.outcome='partial' if critical and complete else 'blocked' if critical else 'complete'
+        prepared_supported = any(n.result and n.result.get('accounting_determination') == 'SUPPORTED' and n.result.get('review_provenance') == 'SYSTEM_PREPARED' for n in graph.nodes.values())
+        c.outcome='partial' if critical and (complete or prepared_supported) else 'blocked' if critical else 'complete'
         c.conclusions=[self._synthesis(c,graph,context)]
         mapping=request.get('journal_account_mapping',{}) if c.journal_mapping_valid else {}
         for entry in c.conclusions[0]['journals']:

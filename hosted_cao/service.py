@@ -29,7 +29,9 @@ class Error(Exception):
     def __init__(self, code, status=400): self.code=code; self.status=status
 
 class Service:
-    def __init__(self, root, companies, credentials):
+    def __init__(self, root, companies, credentials, *, allow_prepared_unreviewed=False):
+        if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        self.allow_prepared_unreviewed=allow_prepared_unreviewed
         self.root=checked_path(root); self.root.mkdir(mode=0o700,parents=True,exist_ok=True)
         self.companies={identity(k):checked_path(v) for k,v in companies.items()}
         if not self.companies or len(set(self.companies.values()))!=len(self.companies): raise ValueError('Invalid company namespaces')
@@ -76,6 +78,8 @@ class Service:
             op=request.get('operation')
             if op not in OPERATIONS|{'execute'} or operation and op!=operation: raise ValueError()
             fields={'contract_version','company_id','operation','route'}
+            if op in ('start','submit','execute','status','questions','result','resume'): fields.add('review_mode')
+            if 'review_mode' in request and (request['review_mode'] not in ('formal','prepared_unreviewed') or (request['review_mode']=='prepared_unreviewed' and not self.allow_prepared_unreviewed)): raise ValueError()
             required=set()
             if op in {'start','investigate'}: fields|={'request_id','objective','target_family'}; required={'request_id','objective'} | ({'target_family'} if op=='start' else set())
             if op in {'status','questions','submit','execute','result','resume','document','continue_investigation','investigation','correct_investigation','rework_investigation'}: fields.add('case_id');required.add('case_id')
@@ -107,10 +111,10 @@ class Service:
             # A host-provisioned regular JSON file. No caller-supplied path is accepted.
             r['evidence_file']='staged/'+r.pop('staged_file_id')+'.json'
         with self.company_locks[company]:
-            return ExecutionInterface(self.companies[company]).call(r)
+            return ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call(r)
 
     def input_hash(self, company, request):
-        api=ExecutionInterface(self.companies[company])
+        api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed)
         config=api._configuration(company)
         d,folder=api._request(request["case_id"],config)
         if 'context_snapshot' in d:
@@ -120,7 +124,7 @@ class Service:
             path=folder/'intake.json'
         else:path=folder/'evidence.json'
         evidence=api.read_json(str(path.relative_to(self.companies[company]))) if path.exists() else None
-        return hashlib.sha256(canonical([config,evidence]).encode()).hexdigest()
+        return hashlib.sha256(canonical([config,evidence,d]).encode()).hexdigest()
 
     def submit_job(self, company, request, key):
         with self.company_locks[company]:
@@ -131,7 +135,7 @@ class Service:
         if r['operation'] not in JOB_OPERATIONS:raise Error('invalid_request')
         if not isinstance(key,str) or not re.fullmatch('[A-Za-z0-9_.:-]{1,120}',key): raise Error('invalid_request')
         # Validate ownership and request existence before acceptance; status is not execution.
-        check=ExecutionInterface(self.companies[company]).call({**r,'operation':'status'})
+        check=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call({**r,'operation':'status'})
         if not check['ok']: raise Error('not_found',404)
         payload=canonical(r);fp=hashlib.sha256(payload.encode()).hexdigest()
         jid='job-'+hashlib.sha256(canonical([company,key]).encode()).hexdigest()
@@ -152,7 +156,7 @@ class Service:
         if row['result_case']:
             # Always load latest authoritative checkpoint/currentness, never a cached accounting answer.
             with self.company_locks[company]:
-                out['accounting']=ExecutionInterface(self.companies[company]).call({**decode(row['request']),'operation':'resume'})
+                out['accounting']=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call({**decode(row['request']),'operation':'resume'})
         elif row['outcome']:
             out['accounting']=decode(row['outcome'])
         if row['error']: out['error']={'code':row['error'],'message':SAFE['unavailable']}
@@ -176,7 +180,7 @@ class Service:
             row=c.execute("SELECT * FROM jobs WHERE state IN ('ACCEPTED','EXECUTING') ORDER BY created,id LIMIT 1").fetchone()
             if row is None:return False
             c.execute("UPDATE jobs SET state='EXECUTING',attempts=attempts+1,updated=? WHERE id=?",(time.time(),row['id']))
-        started=time.monotonic();company=row['company'];request=decode(row['request']);api=ExecutionInterface(self.companies[company])
+        started=time.monotonic();company=row['company'];request=decode(row['request']);api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed)
         response=None
         try:
             with self.company_locks[company]:
