@@ -127,7 +127,11 @@ included in full repository discovery, together with unchanged Profile1.1 suites
 The first full attempt is preserved with3,795 distinct tests and unchanged source;
 its4 missing-history errors and1 legacy bridge-test failure are not accepted
 release evidence. The complete historical Git checkout and composed witness tests
-were corrected before final validation. The final receipt records actual distinct totals for all17 suites and10 canonical/
+were corrected before final validation. The subsequent corrected accounting run
+is preserved separately. A missing parser-install step in the new CI receipt
+verification job was then corrected in an isolated checkout, preserving the active
+validation tree. The final accepted receipt validates that exact CI-corrected tree;
+accounting runtime code was unchanged by this CI-only correction. The final receipt records actual distinct totals for all17 suites and10 canonical/
 standards validators, unchanged source/input hashes, logs and preserved historical
 artifacts. Reruns are not additional distinct tests. The main7146 preservation manifest is pinned by exact SHA256 and an8,912-file
 population, with independently challenged hash, count and path checks. No historical accounting
