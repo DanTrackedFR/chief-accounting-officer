@@ -1,0 +1,74 @@
+{
+  "executions": [
+    {
+      "calculations": [
+        {
+          "amount": "64800.00",
+          "label": "depreciation"
+        },
+        {
+          "amount": "648000",
+          "label": "closing cost"
+        },
+        {
+          "amount": "64800.00",
+          "label": "closing accumulated"
+        }
+      ],
+      "checks": {
+        "NOT_PERFORMED": 15,
+        "PASS": 219
+      },
+      "idempotent_retry_equal": true,
+      "native_status": "partial",
+      "package": "fixed-assets",
+      "population_status": "SUPPLIED_FILE_BOUNDED",
+      "public_sha256": "22babdbc649a8ad77d4850fe316b7a27678dad29d87520d012c2d1f0704d93d8",
+      "restart_equal": true,
+      "review_provenance": "SYSTEM_PREPARED",
+      "source_provenance": "USER_PROVIDED_SOURCES",
+      "synthetic_records": 27,
+      "validation_requirements": []
+    },
+    {
+      "calculations": [
+        {
+          "amount": "1550",
+          "label": "invoices"
+        },
+        {
+          "amount": "0",
+          "label": "closing accruals"
+        }
+      ],
+      "checks": {
+        "NOT_PERFORMED": 35,
+        "PASS": 63
+      },
+      "idempotent_retry_equal": true,
+      "native_status": "partial",
+      "package": "accounts-payable",
+      "population_status": "SUPPLIED_FILE_BOUNDED",
+      "public_sha256": "b420e3b488e4bcc1b28e21c534eb25558cb96510b2f478fed7f9c90eb12f0acb",
+      "restart_equal": true,
+      "review_provenance": "SYSTEM_PREPARED",
+      "source_provenance": "USER_PROVIDED_SOURCES",
+      "synthetic_records": 10,
+      "validation_requirements": []
+    }
+  ],
+  "input_origin": "Representative synthetic fixtures; TrackedFR separately retests original contract-probe files.",
+  "malformed_case_binding": {
+    "code": "invalid_request",
+    "message": "Check the versioned request contract.",
+    "requirements": [
+      {
+        "category": "missing_fact",
+        "explanation": "Supply a nonblank case id.",
+        "field_path": "case_id",
+        "identifier": "request.case_id"
+      }
+    ]
+  },
+  "profile": "presumed_user_provided"
+}

@@ -48,11 +48,48 @@ def requirements(package, case):
                 d=iso(case[field])
                 if d.year!=2026:found.append(issue('scope.'+field,field,'This profile supports reporting periods wholly within 2026.','unsupported_scope'))
             except ReviewRequired:found.append(issue('invalid.'+field,field,'Supply a valid ISO reporting date.','invalid_fact'))
+    if not isinstance(case.get('assumptions',[]),list) or any(not isinstance(v,str) for v in case.get('assumptions',[])):
+        found.append(issue('invalid.assumptions','assumptions','Assumptions must be an array.','invalid_fact'))
+    for key in ('source','source_attestation'):
+        value=case.get(key)
+        if value is not None and not isinstance(value,dict):
+            found.append(issue('invalid.'+key,key,'Supply an object for '+key.replace('_',' ')+'.','invalid_fact'))
+    src=case.get('source')
+    if isinstance(src,dict):
+        for key in ('id','version','hash'):
+            if src.get(key) not in (None,'') and (not isinstance(src[key],str) or not src[key].strip()):
+                found.append(issue('invalid.source.'+key,'source.'+key,'Supply nonblank source '+key+'.','invalid_fact'))
+        if isinstance(src.get('hash'),str) and src['hash'] and not re.fullmatch('[0-9a-f]{64}',src['hash']):
+            found.append(issue('invalid.source.hash','source.hash','Supply a SHA-256 source hash.','invalid_fact'))
+    attest=case.get('source_attestation')
+    if isinstance(attest,dict):
+        for key in ('authenticated_user_reference','statement_version'):
+            if attest.get(key) not in (None,'') and (not isinstance(attest[key],str) or not attest[key].strip()):
+                found.append(issue('invalid.attestation.'+key,'source_attestation.'+key,'Supply a nonblank client assertion field.','invalid_fact'))
+        if 'represents_company_records' in attest and attest['represents_company_records'] is not True:
+            found.append(issue('invalid.attestation.assertion','source_attestation.represents_company_records','Explicit company-record assertion must be true.','invalid_fact'))
+        if attest.get('timestamp') not in (None,''):
+            from datetime import datetime
+            try:
+                timestamp=datetime.fromisoformat(attest['timestamp'].replace('Z','+00:00'))
+                if timestamp.tzinfo is None:raise ValueError()
+            except (ValueError,TypeError,AttributeError):
+                found.append(issue('invalid.attestation.timestamp','source_attestation.timestamp','Supply a timezone-qualified ISO attestation timestamp.','invalid_fact'))
+    fw=case.get('framework')
+    for condition,field,explanation in (
+        (fw=='US_GAAP' and case.get('us_entity_type') not in (None,'','private_company'),'us_entity_type','Only ordinary private-company US GAAP is supported.'),
+        (fw=='UK_GAAP' and case.get('uk_standard') not in (None,'','FRS_102'),'uk_standard','FRS 102 is required.'),
+        (fw=='UK_GAAP' and case.get('uk_standard_edition') not in (None,'','2026'),'uk_standard_edition','FRS 102 2026 applicability is required.'),
+        (fw=='AASB' and 'reporting_tier' in case and (type(case['reporting_tier']) is not int or case['reporting_tier'] not in (1,2)),'reporting_tier','AASB integer reporting Tier 1 or 2 is required.'),
+        (fw=='AASB' and case.get('aasb_compilation') not in (None,'','2026'),'aasb_compilation','AASB 2026 applicability is required.'),
+        (case.get('regulatory_overlays') not in (None,[]),'regulatory_overlays','Regulatory overlays require separate applicability assessment.'),
+        (case.get('package',package)!=package,'package','Selected source package must match the accounting owner.')):
+        if condition:found.append(issue('scope.'+field,field,explanation,'unsupported_scope'))
     if case.get('source_assurance') != PROFILE:
         found.append(issue('scope.source_assurance','source_assurance','Explicit source-assurance profile required.','unsupported_scope'))
     if case.get('review_mode') != MODE:
         found.append(issue('scope.review_mode','review_mode','Profile 1.2 requires prepared-unreviewed execution.','unsupported_scope'))
-    if case.get('policy_elections') not in (None, {}):
+    if 'policy_elections' in case and case['policy_elections'] != {}:
         found.append(issue('scope.policy_elections','policy_elections','Supplied elections require a separately supported method.','unsupported_scope'))
     if package not in ('fixed-assets','accounts-payable'):
         found.append(issue('scope.package','package','This source profile is unavailable for the selected package.','unsupported_scope'))
@@ -101,6 +138,7 @@ def specialist(screening,row,ref,package):
                       'Supplied facts indicate a specialist accounting route: '+key.replace('_',' ')+'.' if present else
                       'No '+key.replace('_',' ')+' indicator detected in the supplied structured facts.',
                       blocks=present,resolution='Supply sufficient specialist-route evidence; this profile cannot infer its conclusion.' if present else '')
+        if present:screening.findings[-1]['field_path']=ref.replace(':','[')+'].'+key
         blocked |= present
     return blocked
 
@@ -135,37 +173,76 @@ def fixed_assets(case, screening):
     charge = production.load_workflow('fixed-assets').charge
     assets = screening.rows('assets', required_population=True)
     costs = screening.rows('costs'); cip = screening.rows('cip')
-    work=[]; entries=[]; expenses=ZERO; input_amounts=[]
+    work=[];costwork=[]; entries=[]; expenses=ZERO; input_amounts=[]
     additions={row.get('id'):ZERO for row in assets}
+    expensed_destinations=set()
+    def resolve_cost(raw,ref):
+        value=copy.deepcopy(raw)
+        targets=[a for a in assets if a.get('id')==value.get('destination')] if value.get('destination') is not None else []
+        target=resolved_row(case,targets[0],screening,ref) if len(targets)==1 else {}
+        if 'class' not in value and 'class' in target:value['class']=target['class']
+        value=resolved_row(case,value,screening,ref)
+        if 'capitalization_threshold' in target:
+            if 'capitalization_threshold' in value and number(value['capitalization_threshold'])!=number(target['capitalization_threshold']):
+                raise ReviewRequired('Conflicting capitalization thresholds for one asset unit')
+            value.setdefault('capitalization_threshold',target['capitalization_threshold'])
+        return value
     def cost_row(raw,ref):
-        row=resolved_row(case,raw,screening,ref)
+        row=resolve_cost(raw,ref)
+        screening.numeric_inputs(row,ref)
         if missing_row(screening,row,('amount','kind','date','offset'),ref):return
         if ref in screening.blocked or not screening.currency(row,ref):return
         if not iso(case['period_start'])<=iso(row['date'])<=iso(case['reporting_period']):raise ReviewRequired('Cost date outside reporting period')
         text(row['offset'],'Offset account')
+        if specialist(screening,row,ref,'fixed-assets'):return
         n=number(row['amount'],positive=True)
         excluded=row['kind'] in ('training','general_overhead','abnormal_waste')
         if row['kind'] not in ('purchase','freight','installation','training','general_overhead','abnormal_waste'):raise ReviewRequired('Cost classification is ambiguous or requires a specialist route')
         if 'eligible' in row and type(row['eligible']) is not bool:raise ReviewRequired('Eligibility input must be an explicit boolean')
-        below='capitalization_threshold' in row and n<number(row['capitalization_threshold'])
+        below=False
+        if 'capitalization_threshold' in row and not excluded and row.get('eligible') is not False:
+            if missing_row(screening,row,('destination',),ref):return
+            target=[a for a in assets if a.get('id')==row['destination']]
+            if len(target)!=1:raise ReviewRequired('Threshold requires one supported asset unit of account')
+            qualifying=number(target[0]['opening_cost'])
+            for related in costs:
+                if related.get('destination')==row['destination'] and related.get('kind') in ('purchase','freight','installation') and related.get('eligible') is not False:
+                    qualified=resolve_cost(related,ref)
+                    if 'capitalization_threshold' in qualified and number(qualified['capitalization_threshold'])!=number(row['capitalization_threshold']):raise ReviewRequired('Conflicting asset capitalization thresholds')
+                    qualifying+=number(related['amount'],positive=True)
+            below=qualifying<number(row['capitalization_threshold'])
+
         if excluded or row.get('eligible') is False or below:
             if missing_row(screening,row,('account',),ref):return
             text(row['account'],'Expense account')
             entries.append(journal(('Dr',row['account'],n),('Cr',row['offset'],n)))
+            if row.get('destination') is not None:expensed_destinations.add(row['destination'])
             screening.add('classification','PASS',[ref],
                 'Training, general overhead and abnormal waste are expensed under the governed cost method.' if excluded else 'Cost is expensed using the explicit eligibility or applicable company capitalization threshold.')
-            return ('expense',n)
+            return ('expense',n,dict(row_reference=ref,assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in ('capitalization_threshold',) if k in row}))
         if missing_row(screening,row,('destination',),ref):return
         targets=[r for r in assets if r.get('id')==row['destination']]
         if len(targets)!=1:raise ReviewRequired('Cost destination must identify one supplied asset')
+        target=resolved_row(case,targets[0],screening,ref)
+        target_ref='assets:'+str(assets.index(targets[0])+1)
+        if target_ref in screening.blocked:raise ReviewRequired('Linked asset source scope or date is unresolved')
+        ready=iso(target.get('ready_date'))
+        if ready>iso(case['reporting_period']):raise ReviewRequired('Uncommissioned costs require supported CIP treatment, not a PPE proposal')
+        disposal=target.get('disposal',{})
+        if disposal.get('enabled'):
+            if disposal.get('ordinary_sale') is not True or iso(disposal.get('date'))<ready:raise ReviewRequired('Destination disposal accounting route or chronology is unresolved')
+        if target.get('scope')!='ordinary_ppe' or target.get('asset_type','machinery')!='machinery' or target.get('model','cost')!='cost':raise ReviewRequired('Capital cost destination is outside ordinary machinery cost-method scope')
+        if specialist(screening,target,ref,'fixed-assets'):return
         if iso(row['date'])>iso(targets[0].get('ready_date')):raise ReviewRequired('Post-readiness improvement/component cost requires supported specialist route')
         additions[row['destination']]+=n
         entries.append(journal(('Dr','PPE cost',n),('Cr',row['offset'],n)))
         screening.add('classification','PASS',[ref],'Ordinary purchase, freight or installation cost directly attributable before readiness is capitalized under the governed cost method.')
-        return ('capital',n)
+        return ('capital',n,dict(row_reference=ref,assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in ('capitalization_threshold',) if k in row}))
     for i,row in enumerate(costs):
         value=screening.row('costs',i,row,cost_row)
-        if value is not None and value[0]=='expense':expenses+=value[1]
+        if value is not None:
+            costwork.append(value[2])
+            if value[0]=='expense':expenses+=value[1]
     for i,row in enumerate(cip):
         screening.add('movements','BLOCKED',['cip:'+str(i+1)],'CIP commissioning or transfer requires a supported movement assessment.',blocks=True,resolution='Use the existing governed CIP movement workflow or supply a commissioned machinery register.')
     # Selective blocking respects calculation dependencies: an unresolved cost
@@ -179,12 +256,22 @@ def fixed_assets(case, screening):
                     screening.add('movements','BLOCKED',['assets:'+str(j+1)],'Unresolved related cost/project movement affects this asset basis.',blocks=True,resolution='Resolve the linked source movement before depreciating this asset.')
     def calculate(raw,ref):
         row=resolved_row(case,raw,screening,ref)
-        if missing_row(screening,row,('opening_cost','opening_accumulated','residual','ready_date','method','scope'),ref):return
+        screening.numeric_inputs(row,ref)
+        specialist(screening,row,ref,'fixed-assets')
+        needed=('opening_cost','opening_accumulated','residual','ready_date','method','scope')
+        # Fully expensed zero-opening destinations have no depreciation basis
+        # and do not need an unused remaining-life assumption.
+        zero_expensed=False
+        try:zero_expensed=row.get('id') in expensed_destinations and number(row.get('opening_cost'))==ZERO and number(row.get('opening_accumulated'))==ZERO and additions.get(row.get('id'),ZERO)==ZERO
+        except ReviewRequired:pass
+        if not zero_expensed:
+            if row.get('method')=='straight_line':needed+=('remaining_life',)
+            elif row.get('method')=='units_of_production':needed+=('remaining_units','period_units')
+        if missing_row(screening,row,needed,ref):return
         if ref in screening.blocked:return
         if not screening.currency(row,ref):return
         if row['scope']!='ordinary_ppe' or row.get('asset_type','machinery')!='machinery':raise ReviewRequired('Only ordinary machinery cost-method scope is supported')
         if row.get('model','cost')!='cost':raise ReviewRequired('Only the ordinary cost method is supported')
-        if specialist(screening,row,ref,'fixed-assets'):return
         if row.get('change',{}).get('enabled') or any(row.get(k) not in (None,0,'0') for k in ('additions','transfers','revaluation')):
             raise ReviewRequired('Register movement or estimate change requires separately supported evidence')
         cost=number(row['opening_cost'])+additions.get(row['id'],ZERO);acc=number(row['opening_accumulated']);res=number(row['residual'])
@@ -201,6 +288,11 @@ def fixed_assets(case, screening):
             if disp['ordinary_sale'] is not True:raise ReviewRequired('Disposal requires a specialist sale route')
         if ready>end:
             screening.add('readiness','BLOCKED',[ref],'Asset is not available for use at reporting date.',blocks=True,resolution='Supply supported CIP/uncommissioned classification; no depreciation charged.');return
+        if cost==ZERO and acc==ZERO and row['id'] in expensed_destinations:
+            if 'expected_depreciation' in row:screening.compare('depreciation_comparison',row['expected_depreciation'],ZERO,[ref],label='Supplied depreciation')
+            screening.add('classification','PASS',[ref],'All supported costs for this zero-opening asset were expensed; no PPE or depreciation is recognized.')
+            return dict(id=row['id'],row_reference=ref,cost=ZERO,depreciation=ZERO,closing_cost=ZERO,
+                        closing_accumulated=ZERO,carrying=ZERO,disposal_gain=ZERO,assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in ('capitalization_threshold',) if k in row})
         life=ZERO;units=ZERO
         if row['method']=='units_of_production':
             if missing_row(screening,row,('remaining_units','period_units'),ref):return
@@ -228,7 +320,7 @@ def fixed_assets(case, screening):
         screening.add('dates','PASS',[ref],'Availability and disposal chronology checked.')
         return dict(id=row['id'],row_reference=ref,cost=cost,depreciation=amount,closing_cost=closingcost,
                     closing_accumulated=closingacc,carrying=closingcost-closingacc,disposal_gain=gain,
-                    applied_assumptions={k:row[k] for k in ('method','remaining_life','residual','scope','remaining_units','period_units') if k in row})
+                    assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in (('method','residual','scope','capitalization_threshold','remaining_units','period_units') if row['method']=='units_of_production' else ('method','residual','scope','capitalization_threshold','remaining_life')) if k in row})
     for i,row in enumerate(assets):
         value=screening.row('assets',i,row,calculate)
         if value is not None:work.append(value)
@@ -236,8 +328,12 @@ def fixed_assets(case, screening):
             n=number(row['opening_cost'])
             if input_amounts is not None:input_amounts.append(n)
         except (KeyError,ReviewRequired):input_amounts=None
-    calcs=dict(assets=work,depreciation=sum((r['depreciation'] for r in work),ZERO),
-               closing_cost=sum((r['closing_cost'] for r in work),ZERO),closing_accumulated=sum((r['closing_accumulated'] for r in work),ZERO),excluded_expense=expenses)
+    calcs=dict(assets=work,cost_rows=costwork)
+    if work:
+        calcs.update(depreciation=sum((r['depreciation'] for r in work),ZERO),
+                     closing_cost=sum((r['closing_cost'] for r in work),ZERO),
+                     closing_accumulated=sum((r['closing_accumulated'] for r in work),ZERO))
+    if work or costwork:calcs['excluded_expense']=expenses
     population=totals(screening,assets,input_amounts,calcs)
     return calcs,entries,population
 
@@ -256,11 +352,12 @@ def accounts_payable(case,screening):
     entries=[];work=[];acs=[]
     def invoice(raw,ref):
         row=resolved_row(case,raw,screening,ref)
+        screening.numeric_inputs(row,ref)
+        specialist(screening,row,ref,'accounts-payable')
         if missing_row(screening,row,('supplier','invoice_number','amount','invoice_date','account','recognition_basis'),ref):return
         normalized(row['supplier']);normalized(row['invoice_number']);text(row['account'],'Recognition account')
         if ref in screening.blocked:return
         if not screening.currency(row,ref):return
-        if specialist(screening,row,ref,'accounts-payable'):return
         if row.get('accrual_id'):
             raise ReviewRequired('Linked prior-accrual clearing needs the existing governed AP movement workflow')
         if row['recognition_basis'] not in ('goods_received','services_received','supplier_invoice_obligation'):
@@ -286,13 +383,14 @@ def accounts_payable(case,screening):
         screening.norms(row,ref,{**row,'amount':n})
         screening.add('recognition','PASS',[ref],'Supplier obligation calculated using the supplied recognition basis; no PO/receipt match is inferred.')
         entries.append(journal(('Dr',row['account'],n),('Cr','accounts payable',n)))
-        return dict(id=row['id'],row_reference=ref,amount=n)
+        return dict(id=row['id'],row_reference=ref,amount=n,assumption_class=row.get('class'),applied_assumptions={'recognition_basis':row['recognition_basis']})
     def accrual(raw,ref):
         row=resolved_row(case,raw,screening,ref)
+        screening.numeric_inputs(row,ref)
+        specialist(screening,row,ref,'accounts-payable')
         if missing_row(screening,row,('supplier','units','rate','received_date','received_supported','invoiced_received','account','recognition_basis'),ref):return
         if ref in screening.blocked:return
         if not screening.currency(row,ref):return
-        if specialist(screening,row,ref,'accounts-payable'):return
         text(row['account'],'Accrual account')
         if row['received_supported'] is not True:raise ReviewRequired('Receipt evidence required for unbilled-receipt accrual')
         if row['recognition_basis'] not in ('goods_received','services_received'):raise ReviewRequired('Unbilled receipt recognition unresolved')
@@ -302,7 +400,7 @@ def accounts_payable(case,screening):
         if row.get('invoice_overlap_resolved',True) is not True:raise ReviewRequired('Invoice/accrual overlap unresolved')
         n=cash(number(row['units'])*number(row['rate'])-number(row['invoiced_received']))
         if n<0:raise ReviewRequired('Invoiced receipts exceed supplied service population')
-        value=dict(id=row['id'],row_reference=ref,amount=n)
+        value=dict(id=row['id'],row_reference=ref,amount=n,assumption_class=row.get('class'),applied_assumptions={'recognition_basis':row['recognition_basis']})
         if 'opening_accrual' in row:
             prior=number(row['opening_accrual']);delta=n-prior
             entries.append(journal(('Dr',row['account'],max(delta,ZERO)),('Dr','accrued expenses',max(-delta,ZERO)),('Cr','accrued expenses',max(delta,ZERO)),('Cr',row['account'],max(-delta,ZERO))))
@@ -315,9 +413,11 @@ def accounts_payable(case,screening):
         for i,row in enumerate(rows):
             value=screening.row(key,i,row,fn)
             if value is not None:target.append(value)
-    calcs=dict(invoice_rows=work,accrual_rows=acs,invoices=sum((r['amount'] for r in work),ZERO),closing_accruals=sum((r['amount'] for r in acs),ZERO))
+    calcs=dict(invoice_rows=work,accrual_rows=acs)
+    if work or case.get('invoices')==[]:calcs['invoices']=sum((r['amount'] for r in work),ZERO)
+    if acs or case.get('accruals')==[]:calcs['closing_accruals']=sum((r['amount'] for r in acs),ZERO)
     # A supplied listing does not establish opening AP, payments or closing AP.
-    if 'opening_ap_total' in case and 'payments_total' in case and not screening.blocked:
+    if 'opening_ap_total' in case and 'payments_total' in case and 'invoices' in calcs and not screening.blocked:
         opening=number(case['opening_ap_total']);payments=number(case['payments_total']);closing=opening+calcs['invoices']-payments
         if closing<0:screening.add('roll_forward','BLOCKED',explanation='Payments exceed supported AP balances.',population=True,resolution='Supply supported advance-payment treatment.')
         else:calcs.update(opening_ap=opening,payments=payments,closing_ap=closing);screening.add('roll_forward','PASS',explanation='Supplied opening plus invoices less supplied payments calculated; no bank matching inferred.')
@@ -382,7 +482,7 @@ def execute(package, case):
         policy_elections_disclosure='No policy elections were assumed.' if not case.get('policy_elections') else 'Supplied elections applied.',
         knowledge_population=claims,knowledge_documents=documents,evidence=[],calculations=calcs,population=population,anomaly_report=report,
         validation_requirements=needs,open_items=[n['explanation'] for n in needs],uncertainties=report['limitations'],
-        conclusion='Nally calculated these results using the information you provided.',
+        conclusion='Nally calculated these results using the information you provided.' if any(isinstance(v,Decimal) for v in calcs.values()) else 'No supported financial amounts could be calculated; resolve the listed requirements.',
         proposed_journal_workpaper=entries,journal_entry_implications=[],confidence='medium',memory_candidates=[],related_artifacts=[])
     production.to_public(result)
     return result
@@ -403,11 +503,20 @@ def to_public(result,route):
     from production import serializable
     fa=result['skill_id']=='SKILL-FA-001'
     guidance=result['conclusion']
-    if result['calculations']:
+    if any(isinstance(v,Decimal) for v in result['calculations'].values()):
         guidance+='\n'+('Ordinary machinery uses the governed cost method; depreciation starts when available for use (IAS 16, ASC 360, FRS 102 Section 17 or AASB 116, as applicable).' if fa else 'Recognize supplied ordinary supplier obligations under the applicable governed recognition method; unbilled accruals require supported goods or services receipt.')
         guidance+='\nCalculated valid rows are bounded by the supplied file; excluded rows are not included in a complete population total.'
         guidance+='\n'+result['policy_elections_disclosure']
-        guidance+='\nApplied assumptions: '+json.dumps({name:{k:v for k,v in policy.items() if k in ('remaining_life','residual','method','scope','capitalization_threshold','account','recognition_basis')} for name,policy in result.get('applied_class_assumptions',{}).items()},sort_keys=True,default=serializable)
+        applied=[];used_classes=set()
+        for table in ('assets','cost_rows','invoice_rows','accrual_rows'):
+            for row in result['calculations'].get(table,[]):
+                if row.get('assumption_class') is not None:used_classes.add(row['assumption_class'])
+                values=row.get('applied_assumptions',{})
+                if values:applied.append(dict(row_reference=row['row_reference'],assumptions=values))
+        defaults={name:{k:v for k,v in policy.items() if k in ('remaining_life','residual','method','scope','capitalization_threshold','account','recognition_basis') and isinstance(v,(str,int,Decimal))} for name,policy in result.get('applied_class_assumptions',{}).items() if name in used_classes}
+        guidance+='\nSupplied class defaults: '+json.dumps(defaults,sort_keys=True,default=serializable)
+        guidance+='\nApplied row assumptions: '+json.dumps(applied,sort_keys=True,default=serializable)
+        guidance+='\nExplicit user assumptions: '+json.dumps(result.get('assumptions',[]),default=serializable)
         guidance+='\nProposed journal implications: '+json.dumps(result['proposed_journal_workpaper'],default=serializable)
     public=dict(guidance=guidance,status=result['status'],accounting_determination=result['accounting_determination'],
         evidence_sufficiency=result['evidence_sufficiency'],review_provenance='SYSTEM_PREPARED',source_provenance='USER_PROVIDED_SOURCES',

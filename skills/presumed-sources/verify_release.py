@@ -70,6 +70,22 @@ def validate_population(manifest):
     assert all(row['exit_code'] == 0 for row in manifest['logs']), 'Unsuccessful release command'
 
 
+PRESERVATION_SHA256 = '2c4fcdc1b938a1297acb31080e32c3c6ec388ad756395146028df45c98e70c49'
+PRESERVATION_COUNT = 8912
+
+
+def verify_historical():
+    path=ROOT/'skills/presumed-sources/release/historical-preservation.json'
+    assert digest(path)==PRESERVATION_SHA256,'Historical preservation manifest changed'
+    historical=json.loads(path.read_bytes())
+    assert historical['baseline']=='7146eaeca6a28d17d9183d0f9431fd9b9663f1fe'
+    assert len(historical['files'])==PRESERVATION_COUNT,'Historical preservation population differs'
+    for name,expected in historical['files'].items():
+        assert (ROOT/name).resolve().is_relative_to(ROOT),'Historical path escapes repository'
+        assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
+    return len(historical['files'])
+
+
 def verify():
     from build4.run_release import source_hashes,input_hashes
     pointer=json.loads((ROOT/'build4/release/presumed-sources-accepted-release.json').read_text())
@@ -107,9 +123,6 @@ print(json.dumps(sorted(sys.argv[1]+'::'+t.id() for t in cases(suite))))
     for filename in ('specialist-migration.json','orchestration-migration.json','main-proof-migration.json'):
         report=json.loads((namespace/filename).read_text());assert report['status']=='PASS' and not report['errors']
         for name,row in report['files'].items():assert digest(reference_path(name))==row['current_sha256']
-    historical=json.loads((ROOT/'skills/presumed-sources/release/historical-preservation.json').read_text())
-    assert historical['baseline']=='7146eaeca6a28d17d9183d0f9431fd9b9663f1fe'
-    for name,expected in historical['files'].items():assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
-    return dict(status='PASS',distinct_tests=len(all_ids),historical_files=len(historical['files']))
+    return dict(status='PASS',distinct_tests=len(all_ids),historical_files=verify_historical())
 
 if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))

@@ -104,3 +104,9 @@ idempotent retries. TrackedFR separately retests its original files and owns
 application authentication, uploads/mapping, UI and commercial deployment acceptance.
 See PRESUMED-SOURCES-DESIGN.md and the current execution/HTTP contracts for the
 bounded ordinary machinery/invoice/accrual fields and unavailable specialist routes.
+
+Render supplied class defaults separately from actual per-row applied assumptions,
+including explicit user assumptions. An unusable optional outlier norm leaves the
+check NOT_PERFORMED while supported calculation inputs remain effective. Do not
+replace absent populations or wholly excluded rows with zero balance cards. An
+invoice-only upload cannot establish zero accrued liabilities.

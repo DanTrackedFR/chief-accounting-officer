@@ -1,0 +1,33 @@
+name: CAO presumed user-provided source assurance
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['skills/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', 'build4/**', '.github/workflows/cao-presumed-sources.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-assurance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authored and independent accounting QA
+        run: python -m unittest discover -s skills/tests -p 'test_presumed_*.py'
+      - name: Independent adversarial HTTP QA
+        run: python -m unittest discover -s hosted_cao/tests -p 'test_presumed_engineering_qa.py'
+      - name: Deterministic real HTTP numerical, restart and idempotency proofs
+        run: |
+          PYTHONHASHSEED=109 python -m hosted_cao.tests.prove_presumed_http > /tmp/source109.json
+          PYTHONHASHSEED=971 python -m hosted_cao.tests.prove_presumed_http > /tmp/source971.json
+          cmp skills/presumed-sources/release/http-proof.json /tmp/source109.json
+          cmp /tmp/source109.json /tmp/source971.json
+      - name: Complete corrected release and historical preservation receipt
+        run: python skills/presumed-sources/verify_release.py
+      - name: Whitespace
+        run: git diff --check HEAD^ HEAD

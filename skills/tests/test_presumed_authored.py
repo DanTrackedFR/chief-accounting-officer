@@ -65,4 +65,24 @@ class AuthoredPresumedSources(unittest.TestCase):
         c['policy_elections']={'model':'fair_value'}
         self.assertEqual(run(case=c)['status'],'blocked')
 
+    def test_independent_missing_invalid_and_specialist_inputs_aggregate(self):
+        c=source_case();a=c['assets'][0]
+        a.pop('remaining_life');a.update(opening_cost='-1',ready_date='invalid',lease_like=True)
+        result=run(case=c)
+        paths={n['field_path'] for n in result['validation_requirements']}
+        for field in ('remaining_life','opening_cost','ready_date','lease_like'):
+            self.assertTrue(any(field in path for path in paths),field)
+        self.assertNotIn('depreciation',result['calculations'])
+
+    def test_independent_invalid_attestation_and_scope_requirements_aggregate(self):
+        c=source_case('fixed-assets','AASB')
+        c.update(reporting_tier=3,aasb_compilation='future')
+        c['source']['hash']='invalid'
+        c['source_attestation'].update(timestamp='invalid',represents_company_records=False)
+        result=run(case=c)
+        paths={n['field_path'] for n in result['validation_requirements']}
+        for field in ('reporting_tier','aasb_compilation','source.hash','source_attestation.timestamp','source_attestation.represents_company_records'):
+            self.assertIn(field,paths)
+        self.assertEqual(result['status'],'blocked')
+
 if __name__=='__main__':unittest.main()

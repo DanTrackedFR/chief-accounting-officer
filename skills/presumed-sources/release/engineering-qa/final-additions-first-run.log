@@ -1,0 +1,18 @@
+test_descriptor_assurance_deletion_cannot_bypass_disabled_host_reads (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_descriptor_assurance_deletion_cannot_bypass_disabled_host_reads) ... ok
+test_job_preacceptance_reports_all_missing_envelope_fields (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_job_preacceptance_reports_all_missing_envelope_fields) ... ok
+test_missing_staged_source_case_is_specific_preacceptance_error (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_missing_staged_source_case_is_specific_preacceptance_error) ... ok
+test_failed_job_safe_error_projection_preserves_requirements (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_failed_job_safe_error_projection_preserves_requirements) ... ok
+test_unknown_fact_names_do_not_echo_private_provenance_into_errors (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_unknown_fact_names_do_not_echo_private_provenance_into_errors) ... FAIL
+
+======================================================================
+FAIL: test_unknown_fact_names_do_not_echo_private_provenance_into_errors (hosted_cao.tests.test_presumed_engineering_qa.IndependentPresumedEngineeringQA.test_unknown_fact_names_do_not_echo_private_provenance_into_errors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/abc152d46ba9/chief-accounting-officer/hosted_cao/tests/test_presumed_engineering_qa.py", line 388, in test_unknown_fact_names_do_not_echo_private_provenance_into_errors
+    self.assertNotIn('Source: ChatGPT training data', encoded)
+AssertionError: 'Source: ChatGPT training data' unexpectedly found in '{"api_version": "1.0", "error": {"code": "invalid_request", "message": "Check the versioned request contract.", "requirements": [{"category": "missing_fact", "explanation": "Supply the source accounting Case binding.", "field_path": "evidence.facts.Source: ChatGPT training data private-QA-reference.case_id", "identifier": "request.evidence.facts.Source: ChatGPT training data private-QA-reference.case_id"}]}, "ok": false}'
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.995s
+
+FAILED (failures=1)

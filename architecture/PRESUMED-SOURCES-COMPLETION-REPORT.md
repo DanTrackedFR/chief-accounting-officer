@@ -30,7 +30,12 @@ Screening covers identifiers, invoice duplication, dates/cutoff/readiness/dispos
 arithmetic/signs/units/currency/entity, missing inputs, cost classification,
 qualified assumptions/norms, specialist indicators in flags/descriptions, supplied
 control/GL/supplier totals, roll-forward and depreciation comparison. Missing norms
-never pass. Optional malformed controls preserve valid calculations while preventing
+never pass. Unusable optional norms report NOT_PERFORMED while retaining independently
+supported calculations. Class policy applies once across uniquely linked asset
+costs. Applied row assumptions and explicit user assumptions are disclosed
+separately from supplied class defaults. Absent populations and wholly excluded
+rows do not create unsupported zero financial totals. Optional malformed controls
+preserve valid calculations while preventing
 population reconciliation claims. An unresolved related movement excludes dependent
 assets; unrelated rows continue. No completeness or standards-source certification
 is inferred from screening or customer assertions.
@@ -80,12 +85,17 @@ upload mapping, original-file testing and commercial deployment acceptance.
 Accounting review reproduced incorrect existing-opening-accrual adjustments,
 missed textual lease indicators and loss of valid calculations on malformed
 optional comparisons. Fixes retain closing obligation independently of opening,
-use only the supported net adjustment, screen descriptive indicators and restrict
+use only the supported net adjustment, preserve capital-cost specialist/scope
+qualification, aggregate capitalization thresholds by asset unit of account,
+recognize fully expensed zero-opening assets without invented life inputs, screen descriptive indicators and restrict
 population claims rather than erase valid rows. Residual above carrying amount
 correctly gives zero depreciation with warning; UOP uses method-specific units.
 
 Engineering review reproduced disclosure of private policy approver metadata and
 partial historical normalization after a second-boundary captured-digest mismatch.
+A later independent probe identified unregistered raw fact-family keys echoed in
+request field paths; shared shape validation now interpolates only registered
+profile fact-family names.
 Public policy output now uses explicit accounting allowlists and known private
 values cannot leak into guidance. Fingerprint normalization returns the entire
 original implementation on any failure. Exact historical Profile1.1/formal seals,
@@ -111,10 +121,15 @@ EUR9,000 opening producing only EUR600 expense/liability movement.
 The actual HTTP proof uses /v1/jobs, result retrieval, service restart with owner
 execution forbidden, exact-key retry, public anomalies and actionable malformed
 Case-binding response. Two hash seeds must reproduce the frozen synthetic proof.
-Authored8, independent accounting36 and independent engineering27 methods are
+Authored10, independent accounting48, independent engineering32 and independent
+release-verifier20 methods are
 included in full repository discovery, together with unchanged Profile1.1 suites.
-The final receipt records actual distinct totals for all17 suites and10 canonical/
+The first full attempt is preserved with3,795 distinct tests and unchanged source;
+its4 missing-history errors and1 legacy bridge-test failure are not accepted
+release evidence. The complete historical Git checkout and composed witness tests
+were corrected before final validation. The final receipt records actual distinct totals for all17 suites and10 canonical/
 standards validators, unchanged source/input hashes, logs and preserved historical
-artifacts. Reruns are not additional distinct tests. No historical accounting
+artifacts. Reruns are not additional distinct tests. The main7146 preservation manifest is pinned by exact SHA256 and an8,912-file
+population, with independently challenged hash, count and path checks. No historical accounting
 reference is regenerated to pass regression. Exact-head and readiness CI results
 and the remote branch/PR are verified on the unchanged final SHA before stopping.

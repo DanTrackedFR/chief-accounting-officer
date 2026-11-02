@@ -25,6 +25,7 @@ def requirements(request):
         evidence=request.get('evidence',{})
         if isinstance(evidence,dict) and isinstance(evidence.get('facts'),dict):
             for family,value in evidence['facts'].items():
+                if family not in ('machinery','supplier_cost'):continue
                 for row in value if isinstance(value,list) else [value]:
                     if isinstance(row,dict) and row.get('source_assurance')=='presumed_user_provided' and not row.get('case_id'):
                         needs.append(item('evidence.facts.'+family+'.case_id','Supply the source accounting Case binding.'))

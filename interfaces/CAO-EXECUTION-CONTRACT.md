@@ -203,3 +203,11 @@ Nally needs and structured anomalies are curated through the same public boundar
 Malformed client submissions return invalid_request with safe field requirements,
 including missing wire/source Case bindings, before numerical job acceptance.
 Formal and Profile1.1 retain their original contracts and historical seals.
+
+Unusable optional company/class comparison norms are NOT_PERFORMED and do not
+block rows with independently sufficient inputs. Supplied class defaults and
+actual row overrides are disclosed separately, including explicit user assumptions.
+A unique supported asset destination supplies its applicable class policy to
+linked purchase/freight/install rows once. Acquisition proposals require the
+destination's available-for-use and entity/currency scope. No qualified rows means
+no financial aggregates; an absent accrual listing does not establish zero accruals.

@@ -51,11 +51,15 @@ charges using the existing owner `charge` method. Explicit opening cost,
 accumulated depreciation, residual, readiness and method-specific remaining life/
 units are essential. User/class assumptions may supply them once with exact
 entity/framework/effective-window/policy-version applicability. No useful life,
-residual, threshold or company policy is invented. Residual above carrying amount
+residual, threshold or company policy is invented. A unique destination supplies
+its applicable asset class/threshold to linked costs without repeated policy fields. Residual above carrying amount
 produces zero depreciation plus a warning. Ordinary current-period purchase,
 freight and installation costs directly attributable before readiness can enter
 the explicit asset basis. Training, general overhead and abnormal waste are
-expensed with explained accounting basis. Explicit ordinary disposals are bounded
+expensed with explained accounting basis. Capitalization thresholds apply to the
+asset unit of account including qualifying directly attributable cost lines;
+line splitting cannot change the treatment. All-expensed zero-opening destinations
+produce zero PPE/depreciation without an invented useful life. Explicit ordinary disposals are bounded
 by period/readiness chronology. Unsupported CIP commissioning, post-readiness
 improvements/components, estimate changes, impairment measurement, lease/ROU,
 held-for-sale and specialized asset routes remain unresolved rather than inferred.
@@ -92,7 +96,9 @@ affected record. Absence of an indicator proves only no detection in supplied
 structured facts; it never proves the underlying issue cannot exist.
 
 Qualified norms require company entity, framework, current effective window,
-version and range basis. No norm means NOT_PERFORMED, never PASS. Optional controls
+version and range basis. No norm means NOT_PERFORMED, never PASS. An unusable supplied comparison norm
+also remains NOT_PERFORMED and cannot invalidate independently sufficient
+calculation inputs; actual relied-upon class assumptions still require applicability. Optional controls
 that are missing or malformed do not erase valid row calculations. A GL/control
 mismatch or excluded records prevents a population reconciliation claim. Monetary
 control totals currently compare supplied machinery opening-cost rows, or AP
@@ -109,10 +115,12 @@ status stays partial even when every bounded calculation is supported.
 
 ## Communication and privacy
 
-Public output leads with “Nally calculated these results using the information you
+When financial rows qualify, public output leads with “Nally calculated these results using the information you
 provided.” It includes curated calculations, treatment, applied assumptions,
 proposed journal implications, anomaly report, requirements, scope and limitations.
-Separate review/source provenance is SYSTEM_PREPARED/USER_PROVIDED_SOURCES. No
+Supplied class defaults are distinguished from actual supported-row inputs and
+explicit user assumptions. No supported rows, or an absent accrual population,
+means no invented zero financial aggregate. Separate review/source provenance is SYSTEM_PREPARED/USER_PROVIDED_SOURCES. No
 complete status, automatic posting, source certification or independent review
 is implied. Profile1.2 policy_elections may be omitted and defaults to no elections;
 “No policy elections were assumed.” is disclosed. Unsupported supplied elections
@@ -140,7 +148,9 @@ synthetic: TrackedFR separately retests its original integration-probe files, as
 the owner explicitly clarified. Proof scripts execute actual /v1/jobs, retrieve
 results, reopen service state and retry idempotently. Full regression uses the
 existing17-suite/10-validator runner after targeted fixes stabilize. The new
-acceptance pointer selects only the corrected source receipt. Existing historical
+acceptance pointer selects only the corrected source receipt. The main7146 preservation manifest has a pinned hash and exact file population,
+and the verifier rejects altered or empty enumerations and unsafe paths. A full
+historical Git checkout is a release prerequisite. Existing historical
 receipts, deterministic proofs and protected artifact files remain unchanged.
 Exact-head and readiness CI must both pass on the frozen release SHA before the
 single PR is Ready for Review. No merge is authorized.

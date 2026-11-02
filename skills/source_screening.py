@@ -112,6 +112,17 @@ class Screening:
                 except ReviewRequired:self.add('signs_units','BLOCKED',[ref],'Invalid quantity, unit price or amount.',blocks=True,resolution='Supply consistent numeric inputs and units.')
         return value
 
+    def numeric_inputs(self,row,ref):
+        for field in ('opening_cost','opening_accumulated','residual','remaining_life','remaining_units',
+                      'period_units','amount','quantity','units','unit_price','rate','invoiced_received','opening_accrual'):
+            if row.get(field) in (None,''):continue
+            positive=(field=='remaining_life' and row.get('method')=='straight_line') or (field=='remaining_units' and row.get('method')=='units_of_production')
+            try:number(row[field],positive=positive)
+            except ReviewRequired:
+                self.add('signs_units','BLOCKED',[ref],'Invalid numeric input or sign for '+field.replace('_',' ')+'.',
+                         blocks=True,resolution='Supply a valid supported numeric value for '+field+'.')
+                self.findings[-1]['field_path']=ref.replace(':','[')+'].'+field
+
     def row(self, key, i, row, fn):
         ref = key + ':' + str(i+1)
         try: return fn(row, ref)
@@ -152,8 +163,17 @@ class Screening:
         return True
 
     def norms(self, row, ref, resolved):
+        try:self._qualified_norms(row,ref,resolved)
+        except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError):
+            self.add('qualified_outliers','NOT_PERFORMED',[ref],
+                     'Supplied comparison norm could not be qualified; independently supported calculations are retained.',
+                     resolution='Supply a current company/class norm with applicable scope, basis and valid ranges.')
+
+    def _qualified_norms(self, row, ref, resolved):
         norms = self.case.get('class_norms', {}).get(row.get('class'), {})
-        if not norms: return
+        if not norms:
+            self.add('qualified_outliers','NOT_PERFORMED',[ref], 'No reliable company/class comparison norm was supplied.')
+            return
         required(norms, 'basis', 'version', 'framework', 'effective_from', 'effective_to', 'entity', 'ranges')
         if (norms['entity'] != self.case['entity'] or norms['framework'] != self.case['framework'] or
             not iso(norms['effective_from']) <= iso(self.case['period_start']) <= iso(self.case['reporting_period']) <= iso(norms['effective_to'])):
