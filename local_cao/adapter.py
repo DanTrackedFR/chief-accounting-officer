@@ -80,10 +80,17 @@ def immutable(path, value):
     finally: os.unlink(temporary)
 
 
+class ClientValidation(ValueError):
+    def __init__(self, requirements): self.requirements = requirements
+
+
 class ExecutionInterface:
     """Caller supplies a trusted host-selected workspace, never a wire-level path."""
-    def __init__(self, workspace, model_provider=None, *, allow_prepared_unreviewed=False):
+    def __init__(self, workspace, model_provider=None, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):
         if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        if type(allow_presumed_user_sources) is not bool: raise ValueError('Host enablement must be boolean')
+        if allow_presumed_user_sources and not allow_prepared_unreviewed: raise ValueError('Presumed sources require prepared execution')
+        self.allow_presumed_user_sources = allow_presumed_user_sources
         self.allow_prepared_unreviewed = allow_prepared_unreviewed
         self.workspace = Path(workspace); self.model_provider = model_provider
 
@@ -129,9 +136,12 @@ class ExecutionInterface:
         return context
 
     def call(self, request):
-        company = None; operation = None
+        company = None; operation = None; requirements = []
         try:
             if sys.version_info < (3, 12) or sys.platform == 'win32': raise Failure('runtime_installation')
+            from local_cao.validation import requirements as request_requirements
+            needs = request_requirements(request)
+            if needs: raise ClientValidation(needs)
             bounded(request)
             if len(canonical(request).encode()) > MAX_BYTES: raise Failure('invalid_request')
             if not isinstance(request, dict): raise Failure('invalid_request')
@@ -140,24 +150,29 @@ class ExecutionInterface:
                 raise Failure('invalid_request')
             allowed = {'contract_version', 'operation', 'company_id', 'case_id', 'objective',
                        'request_id', 'target_family', 'evidence', 'evidence_file', 'route',
-                       'context', 'interpretation', 'document', 'event_id', 'node_id', 'reason', 'review_mode'}
+                       'context', 'interpretation', 'document', 'event_id', 'node_id', 'reason', 'review_mode', 'source_assurance'}
             if set(request)-allowed: raise Failure('invalid_request')
             if 'review_mode' in request:
                 if request['review_mode'] not in ('formal', 'prepared_unreviewed'): raise Failure('invalid_request')
                 if operation not in ('start', 'submit', 'execute', 'status', 'questions', 'result', 'resume'): raise Failure('invalid_request')
                 if request['review_mode'] == 'prepared_unreviewed' and not self.allow_prepared_unreviewed: raise Failure('invalid_request')
+            if 'source_assurance' in request:
+                if request['source_assurance'] != 'presumed_user_provided' or not self.allow_presumed_user_sources or operation not in ('start','submit','execute','status','questions','result','resume'): raise Failure('invalid_request')
             from intelligence.contracts import validate as validate_intelligence_request
             validate_intelligence_request(request)
             with self._lock(): result = self._call(request, company, operation)
             return dict(contract_version=VERSION, operation=operation, company_id=company,
                         ok=True, **result)
+        except ClientValidation as exc: code = 'invalid_request'; requirements = exc.requirements
         except Failure as exc: code = exc.code
         except ImportError: code = 'runtime_installation'
         except FileNotFoundError: code = 'not_found'
         except (ValueError, TypeError, KeyError, ArithmeticError, RecursionError): code = 'invalid_request'
         except (OSError, sqlite3.Error): code = 'storage_failure'
+        if code == 'invalid_request' and not requirements:
+            requirements = [dict(identifier='request.shape',field_path='$',explanation='Check the submitted fields and types against the execution contract.',category='invalid_shape')]
         return dict(contract_version=VERSION, operation=operation if operation in OPERATIONS else None,
-                    ok=False, error={'code': code, 'message': ERRORS[code]},
+                    ok=False, error={'code': code, 'message': ERRORS[code], **({'requirements': requirements} if requirements else {})},
                     public_result=public_record(dict(status='blocked', guidance=ERRORS[code]), route='tool_output'))
 
     def _store(self):
@@ -209,6 +224,9 @@ class ExecutionInterface:
         d, folder = self._request(r.get('case_id'), config)
         mode = d.get('review_mode', 'formal')
         if r.get('review_mode', mode) != mode: raise Failure('identity_conflict')
+        assurance = d.get('source_assurance')
+        if r.get('source_assurance', assurance) != assurance: raise Failure('identity_conflict')
+        if assurance is not None and (assurance != 'presumed_user_provided' or not self.allow_presumed_user_sources or mode != 'prepared_unreviewed'): raise Failure('invalid_request')
         if mode == 'prepared_unreviewed' and not self.allow_prepared_unreviewed: raise Failure('invalid_request')
         if 'context_snapshot' in d:
             if operation == 'submit':
@@ -246,12 +264,13 @@ class ExecutionInterface:
                         for row in value if isinstance(value, list) else [value]:
                             row['review_mode'] = mode
                             row['package'] = FACT_ADAPTERS[d['target_family']][0]
+                            if assurance is not None: row['source_assurance'] = assurance
             elif evidence:
                 return dict(case_id=d['case_id'], lifecycle_state='OPEN', execution_state='blocked',
                     checkpoint_revision=None, durable=False, currentness='NOT_EXECUTED', workplan=[],
                     public_result=public_record(dict(status='blocked', guidance='Reviewed workpaper is staged; accounting has not executed.',
                         open_items=['Invoke execute for the staged workpaper before requesting an accounting result.']), route=r.get('route', 'tool_output')))
-            case = CAO(allow_prepared_unreviewed=self.allow_prepared_unreviewed).run(native)
+            case = CAO(allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources).run(native)
             if case.outcome == 'complete':
                 owner = FACT_ADAPTERS[d['target_family']][0]
                 targets = [n for n in case.graph.nodes.values() if n.selected_skill == owner]
@@ -293,12 +312,15 @@ class ExecutionInterface:
         s = scope(config); p = compatibility_period(s)
         # A structured private cycle cannot alias a legal formal request ID.
         # Keep historical formal cycles byte-for-byte unchanged.
-        if mode == 'prepared_unreviewed': cycle = canonical([cycle, mode])
+        assurance = r.get('source_assurance')
+        if assurance is not None and (mode != 'prepared_unreviewed' or not self.allow_presumed_user_sources): raise Failure('invalid_request')
+        if mode == 'prepared_unreviewed': cycle = canonical([cycle, mode] if assurance is None else [cycle, mode, assurance])
         cid = case_identity(s['entity'], p.period_id, objective, cycle)
         native = dict(case_id=cycle, objective=objective, scope=s, company_context=[], facts={})
         d = dict(company_id=config['company']['company_id'], case_id=cid,
                  target_family=family, native_request=native)
         if mode == 'prepared_unreviewed': d['review_mode'] = mode
+        if assurance is not None: d['source_assurance'] = assurance
         requests = self._path('requests'); requests.mkdir(mode=0o700, exist_ok=True)
         # Request identity also prevents a changed objective from becoming a retry.
         immutable(requests / (identity(r.get('request_id'))+'.json'), d)
@@ -321,6 +343,18 @@ class ExecutionInterface:
         n = d['native_request']; s = n['scope']; p = compatibility_period(s)
         if case_identity(s['entity'], p.period_id, n['objective'], n['case_id']) != cid:
             raise Failure('identity_conflict')
+        if 'context_snapshot' not in d:
+            mode=d.get('review_mode','formal');assurance=d.get('source_assurance')
+            if mode=='formal':
+                identity(n['case_id'])
+                if assurance is not None:raise Failure('identity_conflict')
+            elif mode=='prepared_unreviewed':
+                try:cycle=decode(n['case_id'])
+                except ValueError:raise Failure('identity_conflict') from None
+                if not isinstance(cycle,list) or len(cycle)!=(3 if assurance is not None else 2) or cycle[1]!=mode or (assurance is not None and (assurance!='presumed_user_provided' or cycle[2]!=assurance)):
+                    raise Failure('identity_conflict')
+                identity(cycle[0])
+            else:raise Failure('identity_conflict')
         if 'context_snapshot' not in d and s != scope(config): raise Failure('identity_conflict')
         return d, self._path('submissions/'+hashlib.sha256(cid.encode()).hexdigest())
 
@@ -345,6 +379,10 @@ class ExecutionInterface:
                 if 'imports' in row: raise Failure('invalid_request')
         else:
             if any(row.get('review_mode', 'formal') != 'formal' for row in rows): raise Failure('invalid_request')
+        for row in rows:
+            if row.get('source_assurance', d.get('source_assurance')) != d.get('source_assurance'): raise Failure('invalid_request')
+            if d.get('source_assurance') is not None and not row.get('case_id'):
+                raise ClientValidation([dict(identifier='missing.source_case',field_path='evidence.facts.'+d['target_family']+'.case_id',explanation='Supply the source accounting Case binding.',category='missing_fact')])
         # Native approvals are supplied inert workpaper records. Adapter never
         # creates/refreshes reviewer seals or imports context-policy approvals.
         s = d['native_request']['scope']

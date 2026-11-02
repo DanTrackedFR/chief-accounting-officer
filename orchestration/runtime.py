@@ -168,8 +168,11 @@ def company_context(records, scope):
 
 
 class CAO:
-    def __init__(self, planner=None, registry=None, *, allow_prepared_unreviewed=False):
+    def __init__(self, planner=None, registry=None, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):
         if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        if type(allow_presumed_user_sources) is not bool: raise ValueError('Host enablement must be boolean')
+        if allow_presumed_user_sources and not allow_prepared_unreviewed: raise ValueError('Presumed sources require prepared execution')
+        self.allow_presumed_user_sources = allow_presumed_user_sources
         self.allow_prepared_unreviewed = allow_prepared_unreviewed
         self.planner = planner or DeterministicPlanner(); self.registry = registry or Registry()
 
@@ -370,7 +373,7 @@ class CAO:
                             raise ValueError('Imported owner result stale, incomplete or contradictory')
                     for b in [b for b in bindings if b['consumer']==n.id]:
                         self._handoff(c, graph, inputs, b, consumed)
-                    r=production.assess_case(n.selected_skill,source,allow_prepared_unreviewed=self.allow_prepared_unreviewed)
+                    r=production.assess_case(n.selected_skill,source,allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources)
                     if not isinstance(r,dict) or r.get('skill_id')!=meta['id'] or r.get('status') not in ('complete','partial','blocked','not_applicable'):
                         raise ValueError('Malformed owner result envelope')
                     # Public curation is mandatory even before internal synthesis.

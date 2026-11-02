@@ -99,6 +99,9 @@
         "prepared_unreviewed"
       ],
       "description": "Opt-in bounded system preparation; host-disabled by default. Fixed at start; later supplied values must match."
+    },
+    "source_assurance": {
+      "const": "presumed_user_provided"
     }
   },
   "allOf": [
@@ -339,6 +342,28 @@
       "if": {
         "required": [
           "review_mode"
+        ]
+      },
+      "then": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "start",
+              "submit",
+              "execute",
+              "status",
+              "questions",
+              "result",
+              "resume"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "source_assurance"
         ]
       },
       "then": {

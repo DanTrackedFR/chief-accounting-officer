@@ -1,0 +1,38 @@
+{
+  "skills/production.py": [
+    [
+      "def execute(package, case, *, allow_prepared_unreviewed=False):",
+      "def execute(package, case, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):"
+    ],
+    [
+      "    if mode == 'prepared_unreviewed':\n",
+      "    assurance = case.get('source_assurance') if isinstance(case, dict) else None\n    if assurance is not None:\n        if assurance != 'presumed_user_provided' or mode != 'prepared_unreviewed': raise ReviewRequired('Invalid source-assurance profile')\n        if allow_prepared_unreviewed is not True or allow_presumed_user_sources is not True: raise ReviewRequired('Presumed user sources require both host switches')\n        from source_execution import execute as source_execute\n        return source_execute(package, case)\n    if mode == 'prepared_unreviewed':\n"
+    ],
+    [
+      "    from prepared_fingerprint import bind_additive_mode\n    implementation = bind_additive_mode(case, ROOT, PACKAGES, files, implementation, '1c371d847f0f86eb7eba5bb9a1b92a13250f52db4f9a09dca5f675f5d2ef0977')",
+      "    from source_fingerprint import bind_source_mode\n    implementation = bind_source_mode(case, ROOT, PACKAGES, files, implementation, '__SOURCE_PIN__')"
+    ],
+    [
+      "def to_public(result, route='answer'):\n",
+      "def to_public(result, route='answer'):\n    if result.get('source_assurance') == 'presumed_user_provided':\n        from source_execution import to_public as source_public\n        return source_public(result, route)\n"
+    ],
+    [
+      "def assess_case(package,case, *, allow_prepared_unreviewed=False):",
+      "def assess_case(package,case, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):"
+    ],
+    [
+      "try:return execute(package,case,allow_prepared_unreviewed=allow_prepared_unreviewed)",
+      "try:return execute(package,case,allow_prepared_unreviewed=allow_prepared_unreviewed,allow_presumed_user_sources=allow_presumed_user_sources)"
+    ]
+  ],
+  "interfaces/public_output.py": [
+    [
+      "    # Citation fields are curated independently; never pass a claim/source object.",
+      "    if 'source_provenance' in record:\n        if record['source_provenance'] != 'USER_PROVIDED_SOURCES': raise ValueError('Invalid source provenance')\n        result['source_provenance'] = record['source_provenance']\n    if 'validation_requirements' in record:\n        needs = record['validation_requirements']\n        if not isinstance(needs, list): raise ValueError('Requirements must be an array')\n        result['validation_requirements'] = []\n        for item in needs:\n            fields = ('identifier', 'field_path', 'explanation', 'category')\n            if not isinstance(item, dict) or set(item) != set(fields): raise ValueError('Invalid requirement')\n            result['validation_requirements'].append({key: _text(item[key]) for key in fields})\n    if 'anomaly_report' in record:\n        result['anomaly_report'] = curate_anomalies(record['anomaly_report'])\n    # Citation fields are curated independently; never pass a claim/source object."
+    ],
+    [
+      "\ndef serialize_public(record, *, route):",
+      "\ndef curate_anomalies(report):\n    if report == {}: return {}\n    if not isinstance(report, dict): raise ValueError('Invalid anomaly report')\n    output = {key: _text(report[key]) for key in ('profile', 'population_status', 'completeness')}\n    if output['profile'] != 'presumed_user_provided': raise ValueError('Invalid anomaly profile')\n    output['excluded_rows'] = [_text(x) for x in report['excluded_rows']]\n    output['limitations'] = [_text(x) for x in report['limitations']]\n    output['findings'] = []\n    for finding in report['findings']:\n        if not isinstance(finding, dict) or finding.get('severity') not in ('PASS','WARNING','BLOCKED','NOT_PERFORMED'): raise ValueError('Invalid finding')\n        if type(finding.get('blocks_calculation')) is not bool: raise ValueError('Invalid blocking flag')\n        row = {key: _text(finding[key]) for key in ('check_id','severity','source_reference','explanation','resolution')}\n        if not isinstance(finding['row_references'],list): raise ValueError('Invalid row references')\n        row['row_references'] = [_text(x) for x in finding['row_references']]\n        row['blocks_calculation'] = finding['blocks_calculation']\n        for key in ('observed','expected','field_path'):\n            if key in finding: row[key] = _text(finding[key])\n        output['findings'].append(row)\n    return output\n\n\ndef serialize_public(record, *, route):"
+    ]
+  ]
+}

@@ -44,6 +44,19 @@ def public_record(record, *, route):
         if key in record:
             if record[key] not in allowed: raise ValueError('Invalid accounting provenance status')
             result[key] = record[key]
+    if 'source_provenance' in record:
+        if record['source_provenance'] != 'USER_PROVIDED_SOURCES': raise ValueError('Invalid source provenance')
+        result['source_provenance'] = record['source_provenance']
+    if 'validation_requirements' in record:
+        needs = record['validation_requirements']
+        if not isinstance(needs, list): raise ValueError('Requirements must be an array')
+        result['validation_requirements'] = []
+        for item in needs:
+            fields = ('identifier', 'field_path', 'explanation', 'category')
+            if not isinstance(item, dict) or set(item) != set(fields): raise ValueError('Invalid requirement')
+            result['validation_requirements'].append({key: _text(item[key]) for key in fields})
+    if 'anomaly_report' in record:
+        result['anomaly_report'] = curate_anomalies(record['anomaly_report'])
     # Citation fields are curated independently; never pass a claim/source object.
     if 'citations' in record:
         if not isinstance(record['citations'], list):
@@ -71,6 +84,27 @@ def public_record(record, *, route):
                 lines.append({key: _text(line[key]) for key in ('side', 'account', 'amount') if key in line})
             result['journals'].append({'lines': lines})
     return result
+
+def curate_anomalies(report):
+    if report == {}: return {}
+    if not isinstance(report, dict): raise ValueError('Invalid anomaly report')
+    output = {key: _text(report[key]) for key in ('profile', 'population_status', 'completeness')}
+    if output['profile'] != 'presumed_user_provided': raise ValueError('Invalid anomaly profile')
+    output['excluded_rows'] = [_text(x) for x in report['excluded_rows']]
+    output['limitations'] = [_text(x) for x in report['limitations']]
+    output['findings'] = []
+    for finding in report['findings']:
+        if not isinstance(finding, dict) or finding.get('severity') not in ('PASS','WARNING','BLOCKED','NOT_PERFORMED'): raise ValueError('Invalid finding')
+        if type(finding.get('blocks_calculation')) is not bool: raise ValueError('Invalid blocking flag')
+        row = {key: _text(finding[key]) for key in ('check_id','severity','source_reference','explanation','resolution')}
+        if not isinstance(finding['row_references'],list): raise ValueError('Invalid row references')
+        row['row_references'] = [_text(x) for x in finding['row_references']]
+        row['blocks_calculation'] = finding['blocks_calculation']
+        for key in ('observed','expected','field_path'):
+            if key in finding: row[key] = _text(finding[key])
+        output['findings'].append(row)
+    return output
+
 
 def serialize_public(record, *, route):
     return json.dumps(public_record(record, route=route), ensure_ascii=False)

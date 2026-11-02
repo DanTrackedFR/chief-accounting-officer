@@ -296,3 +296,21 @@ stdout capture with exact execution receipts and a separate independent rerun;
 it does not claim a complete original transcript. Exact final-head and
 unchanged-head readiness Actions remain publication gates on existing PR43.
 This is still an unmerged50th bounded candidate, not owner-authorized integration.
+
+### Profile 1.2 — presumed user-provided sources (2 November2026)
+
+Main7146eaec includes Profile1.1/merged PR48. This source-assurance enhancement is
+one bounded implementation workstream for fixed-assets/machinery and AP/supplier_cost.
+Both host switches default off; explicit source assurance replaces artificial
+source approval wrappers with source attestation, structured screening, selective
+blocking, qualified class assumptions and transparent provenance. Formal/Profile1.1
+remain unchanged. The integration addendum adds optional no-election policy input,
+aggregated Nally needs, optional ordinary AP PO/receipt matching and actionable
+invalid-request errors. Journals remain proposals and native status never complete.
+
+See PRESUMED-SOURCES-DESIGN.md and PRESUMED-SOURCES-COMPLETION-REPORT.md. Independent
+accounting/engineering tests and preserved challenge evidence precede final full
+regression. build4/release/presumed-sources-accepted-release.json selects the final
+corrected acceptance receipt when release gates complete. The sole PR must pass
+exact-head and readiness checks; owner review/integration remain separate. Build2B
+original-file/application/deployment acceptance remains with TrackedFR. DO NOT MERGE.

@@ -66,3 +66,41 @@ identity/time and never mutate native accounting review authority. Journals are
 proposals, and the native posting implication list remains empty in this mode.
 Canonical packages are labeled background guidance; no source-verification or
 applied-claim assertion is inferred. Private provenance remains in the Case.
+
+## Profile 1.2 — corrected integration-probe contract
+
+After explicit user selection, TrackedFR may send the Profile1.1 review mode plus
+`source_assurance: presumed_user_provided`, only if the CAO host enables both
+switches. Keep the same Case/job mapping and exact Idempotency-Key. Supply one
+Case-level source_attestation with session-authenticated user reference, timestamp,
+statement version and affirmative company-record assertion. CAO stores the fields
+as client assertions; TrackedFR session authentication is not independent source
+or accounting review. Preserve source id/version/hash and source Case identity.
+
+Do not manufacture row approvers, independent population certificates, eligibility/
+consumption memos or specialist handoffs. Supply real class accounting assumptions
+with qualified entity/framework/effective window/policy version. policy_elections
+may be omitted in Profile1.2; CAO discloses no elections assumed. Ordinary invoice
+PO/receipt-amount matching fields are optional. Their absence is NOT_PERFORMED;
+receipt evidence still matters for unbilled/receipt-dependent accounting routes.
+
+Use validation_requirements (identifier/field_path/explanation/category) for Nally
+needs. Preserve all aggregated requirements and anomaly findings. A malformed
+wire Case binding is HTTP400 invalid_request; a malformed source Case binding
+returns safe native422 invalid_request with error.requirements. Correct these
+before job acceptance instead of treating them as infrastructure outages.
+
+Render supported calculations, treatment, applied assumptions, proposed journal
+implications and concise review/source status. Keep SYSTEM_PREPARED separate from
+USER_PROVIDED_SOURCES. Native partial remains partial. Population restrictions
+must remain visible alongside supported row calculations. No control/GL comparison
+or qualified norm means NOT_PERFORMED; mismatches cannot become reconciliation
+claims. Avoid serializing private source/user/approval metadata into findings.
+
+The owner clarified that the original27-row register/10-invoice probe files belong
+to TrackedFR and are not required engine release inputs. This engine release uses
+explicitly synthetic representative fixtures through actual HTTP/jobs/restart/
+idempotent retries. TrackedFR separately retests its original files and owns
+application authentication, uploads/mapping, UI and commercial deployment acceptance.
+See PRESUMED-SOURCES-DESIGN.md and the current execution/HTTP contracts for the
+bounded ordinary machinery/invoice/accrual fields and unavailable specialist routes.

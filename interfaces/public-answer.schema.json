@@ -143,6 +143,122 @@
         "SYSTEM_PREPARED",
         "FORMALLY_REVIEWED"
       ]
+    },
+    "source_provenance": {
+      "const": "USER_PROVIDED_SOURCES"
+    },
+    "validation_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "identifier",
+          "field_path",
+          "explanation",
+          "category"
+        ],
+        "properties": {
+          "identifier": {
+            "type": "string"
+          },
+          "field_path": {
+            "type": "string"
+          },
+          "explanation": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "anomaly_report": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "const": "presumed_user_provided"
+        },
+        "population_status": {
+          "enum": [
+            "UNRECONCILED",
+            "SUPPLIED_FILE_BOUNDED"
+          ]
+        },
+        "completeness": {
+          "const": "PRESUMED_FROM_SUPPLIED_FILE_NOT_INDEPENDENTLY_VERIFIED"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "severity",
+              "source_reference",
+              "row_references",
+              "explanation",
+              "blocks_calculation",
+              "resolution"
+            ],
+            "properties": {
+              "check_id": {
+                "type": "string"
+              },
+              "source_reference": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "resolution": {
+                "type": "string"
+              },
+              "observed": {
+                "type": "string"
+              },
+              "expected": {
+                "type": "string"
+              },
+              "field_path": {
+                "type": "string"
+              },
+              "severity": {
+                "enum": [
+                  "PASS",
+                  "WARNING",
+                  "BLOCKED",
+                  "NOT_PERFORMED"
+                ]
+              },
+              "row_references": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "blocks_calculation": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "excluded_rows": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

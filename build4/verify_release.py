@@ -11,6 +11,12 @@ ROOT=Path(__file__).resolve().parents[1]
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def verify():
+    source_pointer=ROOT/'build4/release/presumed-sources-accepted-release.json'
+    if source_pointer.exists():
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('presumed_sources_release_verifier',ROOT/'skills/presumed-sources/verify_release.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        return module.verify()
     prepared_pointer=ROOT/'build4/release/prepared-execution-accepted-release.json'
     if prepared_pointer.exists():
         import importlib.util

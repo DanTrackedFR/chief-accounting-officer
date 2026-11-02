@@ -154,3 +154,52 @@ native accounting review authority.
 Historical formal request IDs and fingerprints are retained through an exact
 byte-checked additive dispatch/allowlist witness. Any non-enumerated common-code
 change invalidates normalization; historical reference results are unchanged.
+
+## Additive profile 1.2 — presumed user-provided sources
+
+Requires both trusted host switches `allow_prepared_unreviewed=True` and
+`allow_presumed_user_sources=True` (CLI `--allow-presumed-user-sources`). Both
+default off and require actual booleans. Explicit start fields are
+`review_mode: prepared_unreviewed` and `source_assurance: presumed_user_provided`.
+Later operations inherit assurance; explicit fields must match the immutable
+Case descriptor. No other owner or investigation route is opted in.
+
+Submit only `facts` with the selected `machinery` or `supplier_cost` Case. Each
+Case supplies `case_id`, exact entity/framework/jurisdiction/2026 period/currency,
+`assumptions`, `source: {id, version, hash}` and `source_attestation` with
+`authenticated_user_reference`, timezone ISO `timestamp`, `statement_version`
+and literal true `represents_company_records`. This is a client assertion, not
+engine-authenticated independent certification. No controls certificate, row
+approver or specialist review memo is required or generated. All three accounting
+review-record keys remain recursively forbidden.
+
+Profile1.2 alone makes `policy_elections` optional, defaulting to no elections;
+outputs disclose that none were assumed. Unsupported elections remain blocked.
+Class assumptions are keyed by row `class`; each policy has exact `entity`,
+`framework`, `effective_from`, `effective_to`, `policy_version` plus supported
+accounting values. Explicit row values override applicable class defaults.
+No company assumptions come from generic industry norms or unqualified memory.
+Current Company Memory is not automatically converted into source authority.
+
+See architecture/PRESUMED-SOURCES-DESIGN.md for exact numerical fields and
+unsupported movement routes; interfaces/source-case.schema.json records shared
+source/attestation prerequisites. Ordinary AP po_amount/received_amount matching
+fields are optional. Missing checks explicitly report NOT_PERFORMED. Receipt
+support remains essential for unbilled receipts and receipt-dependent recognition.
+
+Every deterministic requirement has identifier, field_path, explanation, category
+in `validation_requirements`. Anomaly findings include stable check_id, severity,
+source_reference, row_references, explanation, optional observed/expected,
+blocks_calculation and resolution. Table/row references are1-based. Missing or
+blocked prerequisites aggregate without inventing dependent findings. Supported
+individual calculations survive unrelated invalid rows/optional comparisons;
+population status never claims independent completeness/reconciliation. Qualified
+norms absent means outlier screening NOT_PERFORMED.
+
+Results remain partial with SYSTEM_PREPARED and USER_PROVIDED_SOURCES provenance.
+Private attestation, source hashes and optional approval records stay in the
+native Case. Journals remain proposals and journal_entry_implications stays empty.
+Nally needs and structured anomalies are curated through the same public boundary.
+Malformed client submissions return invalid_request with safe field requirements,
+including missing wire/source Case bindings, before numerical job acceptance.
+Formal and Profile1.1 retain their original contracts and historical seals.
