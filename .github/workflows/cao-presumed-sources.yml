@@ -6,9 +6,11 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   source-assurance:
     runs-on: ubuntu-latest
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,6 +31,53 @@ jobs:
           PYTHONHASHSEED=971 python -m hosted_cao.tests.prove_presumed_http > /tmp/source971.json
           cmp skills/presumed-sources/release/http-proof.json /tmp/source109.json
           cmp /tmp/source109.json /tmp/source971.json
+      - name: Probe durable evidence storage before expensive regression
+        id: persistence
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-persistence-probe-${{ github.run_id }}-${{ github.run_attempt }}
+          path: skills/presumed-sources/release/environment-persistence-probe.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Verify durable evidence round trip
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROBE_ARTIFACT_ID: ${{ steps.persistence.outputs.artifact-id }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${PROBE_ARTIFACT_ID}/zip" > /tmp/source-persistence.zip
+          python - <<'PYCODE'
+          from pathlib import Path
+          from zipfile import ZipFile
+          with ZipFile('/tmp/source-persistence.zip') as archive:
+              assert archive.testzip() is None
+              assert archive.read('environment-persistence-probe.json') == Path('skills/presumed-sources/release/environment-persistence-probe.json').read_bytes()
+          PYCODE
+      - name: Establish complete corrected-tree receipt when not yet published
+        if: ${{ hashFiles('build4/release/presumed-sources-accepted-release.json') == '' }}
+        env:
+          CAO_SOURCES_ATTEMPT: presumed-sources-attempt-ci
+        run: |
+          python skills/presumed-sources/run_release.py > skills/presumed-sources/release/full-regression-attempt-ci.log 2>&1
+          python - <<'PYCODE'
+          import hashlib, json
+          from pathlib import Path
+          path = Path('build4/release/presumed-sources-attempt-ci/release-regression.json')
+          receipt = json.loads(path.read_text())
+          assert receipt['complete'] and receipt['source_unchanged']
+          pointer = {'manifest': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+          Path('build4/release/presumed-sources-accepted-release.json').write_text(json.dumps(pointer, sort_keys=True, indent=2)+'\n')
+          PYCODE
+      - name: Preserve actual release evidence across workspace recovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presumed-source-release-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          if-no-files-found: error
+          path: |
+            build4/release/presumed-sources-attempt-ci/
+            build4/release/presumed-sources-accepted-release.json
+            skills/presumed-sources/release/full-regression-attempt-ci.log
       - name: Complete corrected release and historical preservation receipt
         run: python skills/presumed-sources/verify_release.py
       - name: Whitespace

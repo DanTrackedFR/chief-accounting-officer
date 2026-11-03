@@ -140,7 +140,7 @@ class ExecutionInterface:
         try:
             if sys.version_info < (3, 12) or sys.platform == 'win32': raise Failure('runtime_installation')
             from local_cao.validation import requirements as request_requirements
-            needs = request_requirements(request)
+            needs = request_requirements(request) if self.allow_presumed_user_sources else []
             if needs: raise ClientValidation(needs)
             bounded(request)
             if len(canonical(request).encode()) > MAX_BYTES: raise Failure('invalid_request')
@@ -169,7 +169,7 @@ class ExecutionInterface:
         except FileNotFoundError: code = 'not_found'
         except (ValueError, TypeError, KeyError, ArithmeticError, RecursionError): code = 'invalid_request'
         except (OSError, sqlite3.Error): code = 'storage_failure'
-        if code == 'invalid_request' and not requirements:
+        if self.allow_presumed_user_sources and code == 'invalid_request' and not requirements:
             requirements = [dict(identifier='request.shape',field_path='$',explanation='Check the submitted fields and types against the execution contract.',category='invalid_shape')]
         return dict(contract_version=VERSION, operation=operation if operation in OPERATIONS else None,
                     ok=False, error={'code': code, 'message': ERRORS[code], **({'requirements': requirements} if requirements else {})},

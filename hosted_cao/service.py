@@ -75,7 +75,7 @@ class Service:
 
     def validate(self, request, company, operation=None):
         from local_cao.validation import requirements as request_requirements
-        needs=request_requirements(request)
+        needs=request_requirements(request) if self.allow_presumed_user_sources else []
         if needs: raise Error('invalid_request',requirements=needs)
         try:
             bounded(request)
@@ -108,7 +108,7 @@ class Service:
             if op=='start' and (not isinstance(request['objective'],str) or not request['objective'].strip() or len(request['objective'])>4000 or not isinstance(request['target_family'],str)): raise ValueError()
             if 'staged_file_id' in request and not re.fullmatch('[A-Za-z0-9_-]{1,80}',request['staged_file_id']): raise ValueError()
             if 'evidence' in request and not isinstance(request['evidence'],dict): raise ValueError()
-        except (ValueError,TypeError,KeyError,RecursionError): raise Error('invalid_request',requirements=[dict(identifier='request.shape',field_path='$',explanation='Check the submitted fields and types against the HTTP contract.',category='invalid_shape')]) from None
+        except (ValueError,TypeError,KeyError,RecursionError): raise Error('invalid_request',requirements=[dict(identifier='request.shape',field_path='$',explanation='Check the submitted fields and types against the HTTP contract.',category='invalid_shape')] if self.allow_presumed_user_sources else []) from None
         return dict(request)
 
     def call(self, company, request):
@@ -152,7 +152,7 @@ class Service:
                 from local_cao.adapter import ClientValidation, Failure
                 try: api._evidence(api.read_json(str(path.relative_to(self.companies[company]))),descriptor)
                 except ClientValidation as exc: raise Error('invalid_request',requirements=exc.requirements) from None
-                except (Failure,ValueError,TypeError,KeyError): raise Error('invalid_request',requirements=[dict(identifier='request.evidence',field_path='evidence',explanation='Correct the staged evidence bindings.',category='invalid_shape')]) from None
+                except (Failure,ValueError,TypeError,KeyError): raise Error('invalid_request',requirements=[dict(identifier='request.evidence',field_path='evidence',explanation='Correct the staged evidence bindings.',category='invalid_shape')] if self.allow_presumed_user_sources else []) from None
         payload=canonical(r);fp=hashlib.sha256(payload.encode()).hexdigest()
         jid='job-'+hashlib.sha256(canonical([company,key]).encode()).hexdigest()
         with self.db() as c:
