@@ -137,3 +137,35 @@ artifacts. Reruns are not additional distinct tests. The main7146 preservation m
 population, with independently challenged hash, count and path checks. No historical accounting
 reference is regenerated to pass regression. Exact-head and readiness CI results
 and the remote branch/PR are verified on the unchanged final SHA before stopping.
+
+## Final independently verified corrected-tree acceptance
+
+Validated implementation: `30d5fbab3946af7dc162cced3e76110ab16de6f9`.
+Actual full execution: https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/41581419271
+Release artifact13208817958, retained until1February2027, ZIP SHA256
+`01033b9725a3bd46406d463b82fc24ca99d0564a6542be2629c577684deb621f`.
+
+The complete receipt records3,835 distinct tests across17 suites and10 validators,
+with28 successful command logs,65 orchestration shard logs and zero skips,
+failures or errors. All437 Python and2,700 execution-input hashes agree across
+start maps, tested maps and the acceptance checkout. Both unmodified release
+verifiers pass, including8,912 pinned historical files. Independent final review
+is committed in skills/presumed-sources/release/final-receipt-independent-review.md
+and its structured JSON companion. The acceptance pointer selects the actual
+presumed-sources-attempt-ci/release-regression.json, SHA256
+`ecf85a1315cfccd5bd52b4fa795c26c77795f2c22e9474b483065c49120ab00c`.
+
+The subsequent acceptance commit adds release evidence and this report only.
+Source equivalence is established by the unchanged complete Python/input maps;
+no complete regression is repeated merely for acceptance metadata. Final immutable
+PR head, exact-head workflow links and unchanged-head readiness receipts are
+recorded on PR49 after the corresponding gates pass.
+
+The historical refusal mismatch was one extra structured-error member, corrected
+by the existing opt-in host boundary. Both original integrated proof seeds283 and
+1709 match unchanged frozen bytes, SHA256
+`4d2f1acf2dd153b079fee4c1eb976a10e6cb9fe865e1aa90deff97a246ce348b`.
+Ten permanent independent compatibility tests cover this correction; their reruns
+are included in the3,835 distinct total, never added again. Attempt005 remains
+explicitly incomplete and uncertifiable. All previous attempts and reports remain
+historical evidence for their actual trees; none is presented as this acceptance.
