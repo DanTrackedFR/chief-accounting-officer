@@ -196,3 +196,29 @@ every entry. The v2 contract in
 binds the archived workflow, its active successor and the independent QA
 report. QA separately verified the other 8,911 files at their original paths.
 The runner and accounting implementation retain their published bytes.
+
+## Corrected release receipt
+
+GitHub tested commit `d856cb846c2e79fe4cba08d844db88d7f0837e4e` in
+[run 41779799873](https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/41779799873),
+job 126408500978, attempt 1. The durable storage round trip passed before the
+full regression started. All 3,844 distinct tests passed across 17 suites,
+with 10 validators, 28 command logs and 65 orchestration shard logs.
+The nine tests added since 3,835 cover the runner and preservation migration.
+
+The [release artifact 13301623417](https://github.com/DanTrackedFR/chief-accounting-officer/actions/runs/41779799873/artifacts/13301623417)
+contains 180 files. Its ZIP SHA-256 is
+`701d611a896cdfa808a0dff95c413f040f6face7b0b178947250d1dfb9552694`.
+The active pointer selects
+`build4/release/presumed-sources-attempt-ci-41779799873-1/release-regression.json`,
+SHA-256 `b8d810dcc8a66d260c77e81d7d6bfadb7535a0a95bf6e6d67ba6ea3d62958c4b`.
+The [PR checks](https://github.com/DanTrackedFR/chief-accounting-officer/pull/49/checks)
+and PR description record the acceptance commit and the two sets of final
+check runs. Earlier checkpoint failures occurred before this active pointer
+was available.
+
+Independent receipt review passed all 16 hosted job steps and verified 439
+Python hashes and 2,700 execution-input hashes against the frozen source.
+The independent review is
+`skills/presumed-sources/release/workflow-migration/receipt-review.md`,
+SHA-256 `ea8299f57c4f21ae15f29af490d5903ceb43705dbc10eb2f8ac88b963207d5eb`.
