@@ -169,3 +169,30 @@ Ten permanent independent compatibility tests cover this correction; their rerun
 are included in the3,835 distinct total, never added again. Attempt005 remains
 explicitly incomplete and uncertifiable. All previous attempts and reports remain
 historical evidence for their actual trees; none is presented as this acceptance.
+
+## Historical-log release recovery after 56c5f256
+
+At published head `56c5f256390dd35446ed124bf75d4998fb526002`, seven of eight
+workflows passed. In orchestration run 41662696809, job 126009769570 passed
+the orchestration suite, then the public-output suite detected that its fixed
+output index had overwritten a pinned historical log in the CI checkout.
+The recovery scopes the output index, source-assurance attempt directory and
+parent log to the GitHub run ID and run attempt. The historical 56c5f256
+acceptance pointer is archived byte-for-byte at
+`build4/release/presumed-sources-acceptance-56c5f256.json`.
+The 3,825-test attempt 002 and the subsequent 3,835-test execution at
+30d5fbab (run 41581419271, artifact 13208817958) retain their original scope.
+The latter receipt includes ten additional legacy compatibility tests.
+
+The workflow changes require a new source-bound acceptance receipt. The
+release workflow must round-trip an artifact through GitHub and compare the
+downloaded bytes before starting that regression. Final acceptance and review
+readiness are pending at this checkpoint.
+
+The repository owner authorized one path migration on 4 November 2026.
+The unchanged 8,912-entry v1 manifest still supplies the original digest for
+every entry. The v2 contract in
+`skills/presumed-sources/release/workflow-migration/contract-v2.json`
+binds the archived workflow, its active successor and the independent QA
+report. QA separately verified the other 8,911 files at their original paths.
+The runner and accounting implementation retain their published bytes.

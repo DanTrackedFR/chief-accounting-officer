@@ -11,6 +11,8 @@ jobs:
   source-assurance:
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    env:
+      CAO_SOURCES_ATTEMPT: presumed-sources-attempt-ci-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -54,14 +56,12 @@ jobs:
           PYCODE
       - name: Establish complete corrected-tree receipt when not yet published
         if: ${{ hashFiles('build4/release/presumed-sources-accepted-release.json') == '' }}
-        env:
-          CAO_SOURCES_ATTEMPT: presumed-sources-attempt-ci
         run: |
-          python skills/presumed-sources/run_release.py > skills/presumed-sources/release/full-regression-attempt-ci.log 2>&1
+          python skills/presumed-sources/run_release.py > "skills/presumed-sources/release/full-regression-${CAO_SOURCES_ATTEMPT}.log" 2>&1
           python - <<'PYCODE'
-          import hashlib, json
+          import hashlib, json, os
           from pathlib import Path
-          path = Path('build4/release/presumed-sources-attempt-ci/release-regression.json')
+          path = Path('build4/release') / os.environ['CAO_SOURCES_ATTEMPT'] / 'release-regression.json'
           receipt = json.loads(path.read_text())
           assert receipt['complete'] and receipt['source_unchanged']
           pointer = {'manifest': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
@@ -75,9 +75,9 @@ jobs:
           retention-days: 90
           if-no-files-found: error
           path: |
-            build4/release/presumed-sources-attempt-ci/
+            build4/release/${{ env.CAO_SOURCES_ATTEMPT }}/
             build4/release/presumed-sources-accepted-release.json
-            skills/presumed-sources/release/full-regression-attempt-ci.log
+            skills/presumed-sources/release/full-regression-${{ env.CAO_SOURCES_ATTEMPT }}.log
       - name: Complete corrected release and historical preservation receipt
         run: python skills/presumed-sources/verify_release.py
       - name: Whitespace

@@ -74,6 +74,31 @@ PRESERVATION_SHA256 = '2c4fcdc1b938a1297acb31080e32c3c6ec388ad756395146028df45c9
 PRESERVATION_COUNT = 8912
 
 
+ORCHESTRATION_WORKFLOW = '.github/workflows/cao-orchestration.yml'
+MIGRATION_DIRECTORY = Path('skills/presumed-sources/release/workflow-migration')
+MIGRATION_SHA256 = 'a1d5672288968069ab5b4c7068ec65116dcacbc9d1f0783e7aace2d1b6520ceb'
+
+
+def verify_workflow_migration(historical_digest):
+    contract_path = ROOT / MIGRATION_DIRECTORY / 'contract-v2.json'
+    assert contract_path.resolve() == contract_path, 'Migration contract path redirected'
+    assert digest(contract_path) == MIGRATION_SHA256, 'Workflow migration contract changed'
+    contract = json.loads(contract_path.read_bytes())
+    evidence = contract['independent_verification']
+    report = ROOT / evidence['path']
+    assert report.resolve() == report and digest(report) == evidence['sha256'], 'Independent migration evidence changed'
+    assert evidence['other_entries_verified'] == contract['unchanged_entries'] == PRESERVATION_COUNT - 1
+    migration = contract['migration']
+    assert contract['predecessor']['sha256'] == PRESERVATION_SHA256
+    assert migration['original_path'] == migration['successor_path'] == ORCHESTRATION_WORKFLOW
+    assert migration['original_sha256'] == historical_digest
+    archive = ROOT / migration['archived_path']
+    successor = ROOT / migration['successor_path']
+    assert archive.resolve() == archive and successor.resolve() == successor, 'Workflow path redirected'
+    assert digest(archive) == historical_digest, 'Archived original workflow changed'
+    assert digest(successor) == migration['successor_sha256'], 'Active successor workflow changed'
+
+
 def verify_historical():
     path=ROOT/'skills/presumed-sources/release/historical-preservation.json'
     assert digest(path)==PRESERVATION_SHA256,'Historical preservation manifest changed'
@@ -82,7 +107,10 @@ def verify_historical():
     assert len(historical['files'])==PRESERVATION_COUNT,'Historical preservation population differs'
     for name,expected in historical['files'].items():
         assert (ROOT/name).resolve().is_relative_to(ROOT),'Historical path escapes repository'
-        assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
+        if name == ORCHESTRATION_WORKFLOW:
+            verify_workflow_migration(expected)
+        else:
+            assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
     return len(historical['files'])
 
 
