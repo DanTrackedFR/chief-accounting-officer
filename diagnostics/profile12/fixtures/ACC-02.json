@@ -1,0 +1,45 @@
+{
+  "case_id": "synthetic-source-accounting-case",
+  "entity": "ENTITY-DEMO",
+  "framework": "IFRS",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "functional_currency": "EUR",
+  "assumptions": [],
+  "source": {
+    "id": "synthetic-upload-independent-QA",
+    "version": "1",
+    "hash": "e5be2bf58621ead8098f14d9afea9bd0d4443b720b3ab4430beda929419efac2"
+  },
+  "source_attestation": {
+    "authenticated_user_reference": "private-attesting-user-independent-QA",
+    "timestamp": "2026-11-02T09:00:00+01:00",
+    "statement_version": "company-records-v1",
+    "represents_company_records": true
+  },
+  "class_assumptions": {
+    "services": {
+      "framework": "IFRS",
+      "entity": "ENTITY-DEMO",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "policy_version": "synthetic-policy-v1",
+      "account": "administrative expense",
+      "recognition_basis": "services_received"
+    }
+  },
+  "invoices": [
+    {
+      "id": "AP-1",
+      "class": "services",
+      "supplier": "Supplier 1",
+      "invoice_number": "INV-1",
+      "amount": "110",
+      "invoice_date": "2026-06-15",
+      "received_date": "2026-06-14",
+      "description": "Refundable security deposit, repayable in full at end of contract; not a service expense."
+    }
+  ]
+}

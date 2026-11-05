@@ -1,0 +1,50 @@
+{
+  "case_id": "synthetic-source-accounting-case",
+  "entity": "ENTITY-DEMO",
+  "framework": "IFRS",
+  "jurisdiction": "NL",
+  "entity_type": "for_profit",
+  "period_start": "2026-01-01",
+  "reporting_period": "2026-12-31",
+  "functional_currency": "EUR",
+  "assumptions": [],
+  "source": {
+    "id": "synthetic-upload-independent-QA",
+    "version": "1",
+    "hash": "e5be2bf58621ead8098f14d9afea9bd0d4443b720b3ab4430beda929419efac2"
+  },
+  "source_attestation": {
+    "authenticated_user_reference": "private-attesting-user-independent-QA",
+    "timestamp": "2026-11-02T09:00:00+01:00",
+    "statement_version": "company-records-v1",
+    "represents_company_records": true
+  },
+  "class_assumptions": {
+    "machinery": {
+      "framework": "IFRS",
+      "entity": "ENTITY-DEMO",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "policy_version": "synthetic-policy-v1",
+      "remaining_life": "10",
+      "residual": "0",
+      "method": "straight_line",
+      "scope": "ordinary_ppe"
+    }
+  },
+  "assets": [
+    {
+      "id": "FA-1",
+      "class": "machinery",
+      "opening_cost": "11000",
+      "opening_accumulated": "0",
+      "ready_date": "2025-01-01",
+      "disposal": {
+        "enabled": true,
+        "ordinary_sale": true,
+        "date": "2026-06-30",
+        "proceeds": "-1"
+      }
+    }
+  ]
+}
