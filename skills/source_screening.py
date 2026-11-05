@@ -1,4 +1,5 @@
 """Structured, deterministic source checks. No reviewer or certification authority."""
+import hashlib
 from collections import Counter
 from datetime import date, datetime
 from decimal import Decimal
@@ -19,6 +20,21 @@ def text(value, label):
     return value
 
 
+def identifier(value, label, maximum=256):
+    text(value, label)
+    if len(value) > maximum: raise ReviewRequired(label + ' exceeds the supported identifier length')
+    return value
+
+
+def disposal_input(row):
+    value = row.get('disposal', {})
+    if not isinstance(value, dict): raise ReviewRequired('Disposal must be an object')
+    for key in ('enabled', 'ordinary_sale', 'cash_received'):
+        if key in value and type(value[key]) is not bool:
+            raise ReviewRequired('Disposal ' + key + ' must be a literal boolean')
+    return value
+
+
 def attestation(value):
     if not isinstance(value, dict): raise ReviewRequired('Case-level source attestation required')
     required(value, 'authenticated_user_reference', 'timestamp', 'statement_version', 'represents_company_records')
@@ -35,7 +51,8 @@ def attestation(value):
 
 def source(value):
     if not isinstance(value, dict): raise ReviewRequired('Versioned source reference required')
-    for k in ('id', 'version', 'hash'): text(value.get(k), 'Source ' + k)
+    identifier(value.get('id'), 'Source id', 8192)
+    for k in ('version', 'hash'): identifier(value.get(k), 'Source ' + k)
     if not re.fullmatch('[0-9a-f]{64}', value['hash']): raise ReviewRequired('Source hash must be SHA-256 hex')
     return dict(value)
 
@@ -58,6 +75,8 @@ class Screening:
     def __init__(self, case):
         self.case = case
         self.source = source(case.get('source'))
+        self.display_source = (self.source['id'] if len(self.source['id']) <= 256 else
+                               'source-ref-' + hashlib.sha256(self.source['id'].encode()).hexdigest()[:32])
         self.findings = []
         self.executed = set()
         self.blocked = set()
@@ -68,7 +87,7 @@ class Screening:
         if check not in CHECKS or state not in STATES: raise ValueError('Unknown source check')
         self.executed.add(check)
         rowrefs = list(rows)
-        item = dict(check_id=check, severity=state, source_reference=self.source['id'],
+        item = dict(check_id=check, severity=state, source_reference=self.display_source,
                     row_references=rowrefs, explanation=explanation,
                     blocks_calculation=blocks, resolution=resolution)
         if observed is not None: item['observed'] = str(observed)
@@ -85,13 +104,13 @@ class Screening:
         ids = []
         for i, row in enumerate(value):
             ref = key + ':' + str(i + 1)
-            if not isinstance(row.get('id'), str) or not row['id'].strip():
+            if not isinstance(row.get('id'), str) or not row['id'].strip() or len(row['id']) > 256:
                 self.add('essential_inputs', 'BLOCKED', [ref], 'Missing source row identifier.', blocks=True,
                          resolution='Supply a unique row identifier.')
             else: ids.append(row['id'])
         duplicates = {k for k, n in Counter(ids).items() if n > 1}
         for i, row in enumerate(value):
-            if row.get('id') in duplicates:
+            if isinstance(row.get('id'), str) and row['id'] in duplicates:
                 self.add('unique_identifiers', 'BLOCKED', [key+':'+str(i+1)], 'Duplicate row identifier.',
                          blocks=True, resolution='Resolve duplicate source identifiers.')
         if not duplicates: self.add('unique_identifiers', 'PASS', explanation='Supplied identifiers checked within '+key+'.')

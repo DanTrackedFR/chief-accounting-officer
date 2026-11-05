@@ -381,7 +381,7 @@ class ExecutionInterface:
             if any(row.get('review_mode', 'formal') != 'formal' for row in rows): raise Failure('invalid_request')
         for row in rows:
             if row.get('source_assurance', d.get('source_assurance')) != d.get('source_assurance'): raise Failure('invalid_request')
-            if d.get('source_assurance') is not None and not row.get('case_id'):
+            if d.get('source_assurance') is not None and (not isinstance(row.get('case_id'),str) or not row['case_id'].strip() or len(row['case_id'])>256):
                 raise ClientValidation([dict(identifier='missing.source_case',field_path='evidence.facts.'+d['target_family']+'.case_id',explanation='Supply the source accounting Case binding.',category='missing_fact')])
         # Native approvals are supplied inert workpaper records. Adapter never
         # creates/refreshes reviewer seals or imports context-policy approvals.

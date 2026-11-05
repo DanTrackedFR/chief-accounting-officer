@@ -12,7 +12,7 @@ def requirements(request):
     needs=[]
     required=['contract_version','company_id','operation']
     op=request.get('operation')
-    if op in CASE_OPERATIONS:required.append('case_id')
+    if isinstance(op,str) and op in CASE_OPERATIONS:required.append('case_id')
     if op in ('start','investigate'):required.extend(['request_id','objective'])
     if op=='start':required.append('target_family')
     for field in required:
@@ -27,6 +27,6 @@ def requirements(request):
             for family,value in evidence['facts'].items():
                 if family not in ('machinery','supplier_cost'):continue
                 for row in value if isinstance(value,list) else [value]:
-                    if isinstance(row,dict) and row.get('source_assurance')=='presumed_user_provided' and not row.get('case_id'):
+                    if isinstance(row,dict) and row.get('source_assurance')=='presumed_user_provided' and (not isinstance(row.get('case_id'),str) or not row['case_id'].strip() or len(row['case_id'])>256):
                         needs.append(item('evidence.facts.'+family+'.case_id','Supply the source accounting Case binding.'))
     return needs
