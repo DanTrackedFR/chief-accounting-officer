@@ -4,8 +4,15 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+
+# Mandatory assertions below are intentionally unavailable under optimization.
+# Refuse at import, including runpy/direct function callers, before any success.
+if sys.flags.optimize:
+    raise RuntimeError("Optimized Python is not supported for mandatory release integrity verification")
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from receipt_integrity import verify_inventory, artifact, require
 
 
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -117,11 +124,12 @@ def verify_historical():
 def verify():
     from build4.run_release import source_hashes,input_hashes
     pointer=json.loads((ROOT/'build4/release/presumed-sources-accepted-release.json').read_text())
-    manifest_path=ROOT/pointer['manifest']
+    manifest_path=artifact(ROOT,pointer['manifest'])
     assert manifest_path.resolve().is_relative_to(ROOT/'build4/release'),'Acceptance outside release namespace'
     assert digest(manifest_path)==pointer['sha256'],'Presumed-source regression manifest hash differs'
     manifest=json.loads(manifest_path.read_text())
     assert manifest['complete'] and manifest['source_unchanged'],'Incomplete Presumed-source release'
+    verify_inventory(ROOT,pointer,manifest_path,manifest,'release')
     validate_population(manifest)
     assert source_hashes()==manifest['tested_python_sha256'],'Presumed-source Python changed after regression'
     assert input_hashes()==manifest['tested_execution_inputs_sha256'],'Presumed-source execution inputs changed after regression'
@@ -153,4 +161,48 @@ print(json.dumps(sorted(sys.argv[1]+'::'+t.id() for t in cases(suite))))
         for name,row in report['files'].items():assert digest(reference_path(name))==row['current_sha256']
     return dict(status='PASS',distinct_tests=len(all_ids),historical_files=verify_historical())
 
-if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+def verify_focused(pointer_path):
+    """Explicit diagnostic mode; cannot issue or satisfy release acceptance."""
+    from build4.run_release import source_hashes, input_hashes
+    pointer = json.loads(artifact(ROOT, pointer_path).read_bytes())
+    path = artifact(ROOT, pointer['manifest'])
+    require(path.is_relative_to(ROOT/'diagnostics/profile12/remediation'), 'Focused evidence outside diagnostic namespace')
+    require(digest(path) == pointer['sha256'], 'Focused manifest digest differs')
+    manifest = json.loads(path.read_bytes())
+    require(manifest.get('scope') == 'focused-governance-qa-v1', 'Not a focused governance receipt')
+    require(manifest['complete'] is True and manifest['source_unchanged'] is True, 'Incomplete focused execution')
+    rows = manifest['suite_results']
+    require(len(rows) == 1 and (rows[0]['suite'], rows[0]['pattern']) ==
+            ('diagnostics/profile12', 'regressions.py'), 'Focused suite population differs')
+    _counted_pass(rows[0])
+    script = '''import json,unittest
+suite=unittest.TestLoader().discover('diagnostics/profile12',pattern='regressions.py')
+def cases(s):
+ for t in s:
+  if isinstance(t,unittest.TestSuite):yield from cases(t)
+  else:yield t
+print(json.dumps(sorted('diagnostics/profile12::'+t.id() for t in cases(suite))))
+'''
+    discovered = json.loads(subprocess.check_output([sys.executable,'-c',script],cwd=ROOT,text=True))
+    require(rows[0]['distinct_ids'] == discovered, 'Focused discovery population differs')
+    require(rows[0]['tests'] == 19 and manifest['executed_distinct_tests'] == 19, 'Focused test population differs')
+    require(len(manifest['logs']) == 1, 'Focused command population differs')
+    log = manifest['logs'][0]
+    require(_command_shape(log['command']) == ['python', '-m', 'build4.run_release', 'suite',
+            'diagnostics/profile12', 'regressions.py', '0'], 'Focused command differs')
+    require(log['exit_code'] == 0 and digest(artifact(ROOT,log['path'])) == log['sha256'], 'Presumed-source log changed')
+    inventory = verify_inventory(ROOT, pointer, path, manifest, 'focused-governance-qa-v1')
+    require(source_hashes() == manifest['tested_python_sha256'], 'Focused Python changed after execution')
+    require(input_hashes() == manifest['tested_execution_inputs_sha256'], 'Focused execution inputs changed')
+    return dict(status='PASS', scope='focused-governance-qa-v1', release_accepted=False,
+                distinct_tests=19, inventory_files=inventory, historical_files=verify_historical())
+
+
+if __name__=='__main__':
+    if len(sys.argv) == 3 and sys.argv[1] == '--focused':
+        result = verify_focused(sys.argv[2])
+    elif len(sys.argv) == 1:
+        result = verify()
+    else:
+        raise SystemExit('Usage: verify_release.py [--focused diagnostic-pointer]')
+    print(json.dumps(result,sort_keys=True))

@@ -135,12 +135,12 @@ def specialist(screening,row,ref,package):
     description = str(row.get('description','')).casefold()
     textual = {'lease_like': ('leased','lease','rental'), 'impairment_indicator': ('damaged','obsolete','impair','idle'),
                'held_for_sale': ('held for sale',), 'sale_leaseback': ('leaseback',), 'supplier_financing': ('reverse factoring','supplier finance'),
-               'disputed_obligation': ('disputed','dispute')}
+               'disputed_obligation': ('disputed','dispute','disputes','disputing')}
     for key in indicators:
         if key in row and type(row[key]) is not bool: raise ReviewRequired('Specialist indicator must be an explicit boolean')
         indicator_text=description
         if key=='disputed_obligation':
-            indicator_text=re.sub(r'\b(?:not|never)\s+(?:currently\s+)?disputed\b|\bno\s+(?:outstanding\s+)?dispute\b|\bundisputed\b','',description)
+            indicator_text=re.sub(r'\b(?:not|never)\s+(?:currently\s+)?(?:disputed|disputing|dispute|disputes)\b|\bno\s+(?:outstanding\s+)?disputes?\b|\bundisputed\b','',description)
         present = row.get(key) is True or any(re.search(r'\b'+re.escape(token)+r'\b',indicator_text) for token in textual.get(key,()))
         check = 'leases' if key in ('lease_like','sale_leaseback') else 'impairment' if key=='impairment_indicator' else 'classification'
         screening.add(check,'BLOCKED' if present else 'PASS',[ref],
@@ -424,7 +424,7 @@ def accounts_payable(case,screening):
         if missing_row(screening,row,('supplier','units','rate','received_date','received_supported','invoiced_received','account','recognition_basis'),ref):return
         if ref in screening.blocked:return
         if not screening.currency(row,ref):return
-        text(row['account'],'Accrual account')
+        text(row['account'],'Accrual account');normalized(row['supplier'])
         if row['received_supported'] is not True:raise ReviewRequired('Receipt evidence required for unbilled-receipt accrual')
         if row['recognition_basis'] not in ('goods_received','services_received'):raise ReviewRequired('Unbilled receipt recognition unresolved')
         if not iso(case['period_start'])<=iso(row['received_date'])<=iso(case['reporting_period']):raise ReviewRequired('Accrual receipt date outside reporting period')
@@ -455,6 +455,9 @@ def accounts_payable(case,screening):
             payment_rows=screening.rows('payments')
             detail=ZERO
             for payment in payment_rows:
+                for field in ('date','payment_date'):
+                    if field in payment and not iso(case['period_start'])<=iso(payment[field])<=iso(case['reporting_period']):
+                        raise ReviewRequired('Payment date outside the reporting period')
                 detail+=number(payment['amount'])
             if 'payments_total' not in case or cash(detail)!=cash(number(case['payments_total'])):
                 raise ReviewRequired('Payment detail and aggregate do not reconcile; resolve payment evidence before asserting closing AP')
@@ -466,9 +469,13 @@ def accounts_payable(case,screening):
             screening.add('roll_forward','BLOCKED',explanation='Supplied payment detail is invalid or conflicts with the aggregate; invoice recognition is retained but closing AP is unresolved.',population=True,resolution='Reconcile the supplied payment detail and aggregate with supported settlement evidence.')
     # A supplied listing does not establish opening AP, payments or closing AP.
     if 'opening_ap_total' in case and 'payments_total' in case and 'invoices' in calcs and not screening.blocked and payments_supported:
-        opening=number(case['opening_ap_total']);payments=number(case['payments_total']);closing=opening+calcs['invoices']-payments
-        if closing<0:screening.add('roll_forward','BLOCKED',explanation='Payments exceed supported AP balances.',population=True,resolution='Supply supported advance-payment treatment.')
+        try:
+            opening=number(case['opening_ap_total']);payments=number(case['payments_total']);closing=opening+calcs['invoices']-payments
+            if closing<0:raise ReviewRequired('Payments exceed supported AP balances; supply supported advance-payment treatment')
+        except (ReviewRequired,TypeError,ArithmeticError):
+            screening.add('roll_forward','BLOCKED',explanation='Opening AP or payment aggregate is invalid; supported invoice recognition is retained.',population=True,resolution='Supply valid opening AP and period payment evidence, including advance-payment treatment where relevant.')
         else:calcs.update(opening_ap=opening,payments=payments,closing_ap=closing);screening.add('roll_forward','PASS',explanation='Supplied opening plus invoices less supplied payments calculated; no bank matching inferred.')
+
     amounts=[]
     try:
         for row in invoices:amounts.append(number(row['amount'],positive=True))
