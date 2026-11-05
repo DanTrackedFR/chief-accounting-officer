@@ -121,9 +121,11 @@ def verify_historical():
     return len(historical['files'])
 
 
-def verify():
+def verify(pointer_path='build4/release/presumed-sources-accepted-release.json'):
     from build4.run_release import source_hashes,input_hashes
-    pointer=json.loads((ROOT/'build4/release/presumed-sources-accepted-release.json').read_text())
+    pointer_file=artifact(ROOT,pointer_path)
+    require(pointer_file.is_relative_to(ROOT/'build4/release'), 'Acceptance pointer outside release namespace')
+    pointer=json.loads(pointer_file.read_text())
     manifest_path=artifact(ROOT,pointer['manifest'])
     assert manifest_path.resolve().is_relative_to(ROOT/'build4/release'),'Acceptance outside release namespace'
     assert digest(manifest_path)==pointer['sha256'],'Presumed-source regression manifest hash differs'
@@ -201,8 +203,10 @@ print(json.dumps(sorted('diagnostics/profile12::'+t.id() for t in cases(suite)))
 if __name__=='__main__':
     if len(sys.argv) == 3 and sys.argv[1] == '--focused':
         result = verify_focused(sys.argv[2])
+    elif len(sys.argv) == 3 and sys.argv[1] == '--pointer':
+        result = verify(sys.argv[2])
     elif len(sys.argv) == 1:
         result = verify()
     else:
-        raise SystemExit('Usage: verify_release.py [--focused diagnostic-pointer]')
+        raise SystemExit('Usage: verify_release.py [--pointer release-pointer | --focused diagnostic-pointer]')
     print(json.dumps(result,sort_keys=True))

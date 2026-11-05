@@ -25,7 +25,7 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
         orchestration = (WORKFLOWS / 'cao-orchestration.yml').read_text()
         source = (WORKFLOWS / 'cao-presumed-sources.yml').read_text()
         shard_command = workflow_command(orchestration, 'Orchestration authored and independent QA')
-        release_command = workflow_command(source, 'Establish complete corrected-tree receipt when not yet published')
+        release_command = workflow_command(source, 'Execute new regression or explicitly verify accepted evidence')
         attempt_template = re.search(r'^ +CAO_SOURCES_ATTEMPT: (.+)$', source, re.M).group(1)
 
         with tempfile.TemporaryDirectory() as temporary:
@@ -38,7 +38,10 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                 return path
 
             for runner in ('intelligence/tests/run_release.py', 'build4/run_release.py',
-                           'skills/presumed-sources/run_release.py'):
+                           'skills/presumed-sources/run_release.py',
+                           'skills/presumed-sources/execute_release.py',
+                           'skills/presumed-sources/verify_release.py',
+                           'skills/presumed-sources/receipt_integrity.py'):
                 write(runner, (ROOT / runner).read_bytes())
             # The genuine runner checks access to historical commits. Borrow the
             # existing read-only object database, keeping all output in the fixture.
@@ -68,7 +71,10 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                                'build4/release/presumed-sources-attempt-ci/release-regression.json'):
                 protected[write(historical, b'untouched canary\x00\r\n')] = b'untouched canary\x00\r\n'
 
-            pointer = root / 'build4/release/presumed-sources-accepted-release.json'
+            pointer = write('build4/release/presumed-sources-accepted-release.json',
+                            (ROOT/'build4/release/presumed-sources-accepted-release.json').read_bytes())
+            protected[pointer] = pointer.read_bytes()
+            env['CAO_ACCEPTANCE_POINTER'] = ''
             for run_id, retry in [('123', '1'), ('123', '2'), ('124', '1')]:
                 attempt = attempt_template.replace('${{ github.run_id }}', run_id).replace(
                     '${{ github.run_attempt }}', retry)
@@ -79,10 +85,11 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                     for artifact, original in protected.items():
                         self.assertEqual(artifact.read_bytes(), original, str(artifact))
                     self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
-                record = json.loads(pointer.read_bytes())
+                record = json.loads((root/'build4/release'/attempt/'execution.json').read_bytes())
+                self.assertFalse(record['release_accepted'])
+                self.assertEqual(record['status'], 'REGRESSION_COMPLETE_ACCEPTANCE_PENDING')
                 receipt = root / record['manifest']
                 self.assertEqual(receipt.parent.name, attempt)
-                self.assertEqual(hashlib.sha256(receipt.read_bytes()).hexdigest(), record['sha256'])
                 self.assertEqual(json.loads(receipt.read_bytes())['executed_distinct_tests'], len(suites))
                 shard = root / f'intelligence/release/suite-ci-orchestration-{run_id}-{retry}.json'
                 shard_record = json.loads(shard.read_bytes())['module_results'][0]
@@ -95,4 +102,9 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                     for artifact in (root / folder).rglob('*'):
                         if artifact.is_file() and artifact != pointer:
                             protected[artifact] = artifact.read_bytes()
-                pointer.unlink()  # Each unaccepted CI checkout starts without an active pointer.
+                # Repeating an identical run/attempt must fail without truncating any output.
+                retry = subprocess.run(['bash', '-e', '-c', release_command], cwd=root, env=env,
+                                       capture_output=True, text=True, timeout=60)
+                self.assertNotEqual(retry.returncode, 0)
+                for artifact, original in protected.items():
+                    self.assertEqual(artifact.read_bytes(), original, str(artifact))
