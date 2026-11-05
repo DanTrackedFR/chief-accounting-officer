@@ -21,7 +21,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "String false enabled disposal with cash 12000 and gain 2100.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ENG-01.json",
       "actual_output_and_durable_effects": "SUPPORTED; cost derecognized; persisted Dr cash 12000, Dr accumulation 1100, Cr PPE 11000, Cr gain 2100. Same result after retry/restart.",
       "expected_behavior": "Require a literal boolean at disposal input boundaries. A string is invalid, never disposal authorization. Reject or exclude affected row with specific requirement and no disposal journal. Literal false/omission retain asset; legitimate true disposal remains supported.",
@@ -36,7 +36,21 @@
         "ENG-02 shares disposal ordering, but rejected-row atomicity is separate."
       ],
       "recommended_remediation_boundary": "Validate the whole disposal object at adapter and direct production entry; maintain row/dependency isolation.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Literal disposal booleans validated; invalid flags cannot authorize journals.",
+        "assertion": "regressions.py:Regressions.test_ENG_01",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-01.json.gz": "2d314e2c11aaf1cd4d32f448316d38bb3b76d2ef5a92ddb7c04dbe768363a249"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ENG-02",
@@ -49,7 +63,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "Invalid disposal proceeds exclude row but leave depreciation 545.48.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ENG-02.json",
       "actual_output_and_durable_effects": "UNRESOLVED with empty public calculations and assets:1 excluded, yet durable Dr depreciation/Cr accumulation 545.48. Mixed fixture retains public depreciation 1100 but persisted depreciation totals 1645.48. Retry/restart preserve leakage.",
       "expected_behavior": "An excluded row contributes no journals. Mixed valid row must retain exactly 1100 depreciation and its balanced proposal. Validate dependency groups before publishing financial side effects.",
@@ -64,7 +78,22 @@
         "ACC-01 also involves linked cost state, but temporal balance validation is distinct."
       ],
       "recommended_remediation_boundary": "Stage row/dependency results and journal entries privately; commit together only after all validation; preserve retry/checkpoint consistency.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Asset journals staged atomically; rejected dependent capital movements withheld; valid mixed rows retained.",
+        "assertion": "regressions.py:Regressions.test_ENG_02",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-02.json.gz": "362f90449557b225b16c3cdf23e75012680546c4a5ee4e07962e539da13f7ced",
+          "remediation/final-runtime/ENG-02-mixed.json.gz": "010d652df2c722719c3a49af14991f4caafa89df9f87a1704313910df7d52e0a"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ENG-03",
@@ -77,7 +106,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "Object accepted as source Case ID and persisted with supported depreciation.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ENG-03.json",
       "actual_output_and_durable_effects": "Submit HTTP 200; job SUCCEEDED; SUPPORTED depreciation 1100; native source_lineage.case is {\"not\":\"a case identifier\"}. Outer durable Case ID remains a separate valid ID.",
       "expected_behavior": "Nonblank bounded string required before accepting inline or staged source evidence and at owner entry. Return field-specific client requirements; never persist an object as source Case lineage.",
@@ -91,7 +120,21 @@
         "ENG-04 shares missing identifier constraints but concerns source.id size and output multiplication."
       ],
       "recommended_remediation_boundary": "Central validated source-ID contract across inline, staged, preacceptance and direct owner paths; do not require equality to outer durable Case ID.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Bounded nonblank source Case IDs checked inline, staged, preacceptance and direct owner.",
+        "assertion": "regressions.py:Regressions.test_ENG_03",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-03.json.gz": "8584804d510fed87a651680500f9b69887d43904dad5c87227ffc26440aa67fc"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ENG-04",
@@ -104,7 +147,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "10264-byte Case yields 907290-byte public JSON through repeated source identifier.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ENG-04.json",
       "actual_output_and_durable_effects": "Exactly 10264 source bytes and 907290 public JSON bytes; 8192-character source.id appears in all 107 findings. SUPPORTED depreciation 15500. Native result and cached job also retain repeated findings.",
       "expected_behavior": "Bound identifiers and diagnostic work/output. Use bounded display references without repeated raw oversized identifiers; reject invalid bounds with specific requirements, or preserve findings through a bounded representation. Do not silently discard substantive findings.",
@@ -118,7 +161,21 @@
         "ENG-03 related identifier validation; distinct field and failure mode."
       ],
       "recommended_remediation_boundary": "Shared identifier contract plus anomaly representation/public serialization and service output budget.",
-      "evidence_limitations": "Exact size reproduced with json.dumps UTF-8 sizing; no destructive load test. Resource exhaustion at maximum input is inferred, not tested. Regression uses a duplicate-count contract rather than inventing a maximum ID length."
+      "evidence_limitations": "Exact size reproduced with json.dumps UTF-8 sizing; no destructive load test. Resource exhaustion at maximum input is inferred, not tested. Regression uses a duplicate-count contract rather than inventing a maximum ID length.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Bounded identifiers/populations and hashed public display reference retain substantive anomalies.",
+        "assertion": "regressions.py:Regressions.test_ENG_04",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-04.json.gz": "50460810308fe65725f9f42d876b02d5155fc89da19adbfdcfef5687f6247589"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ENG-05",
@@ -131,7 +188,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "110 payment detail conflicts with zero declared payments but closing AP 110 is SUPPORTED.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ENG-05.json",
       "actual_output_and_durable_effects": "SUPPORTED invoices 110, opening AP 0, payments 0, closing AP 110; no requirements. Payment detail is retained in facts_used but ignored. Invoice expense/AP proposal persists.",
       "expected_behavior": "Preserve independently supported invoice 110, identify detail/aggregate contradiction, and withhold supported closing AP pending resolution. Do not silently choose either payment total or treat incomplete detail as bank-confirmed.",
@@ -145,7 +202,21 @@
         "ACC-05 both AP evidence handling, but ignored conflicting detail versus malformed cross-row overlap scan are independent root causes."
       ],
       "recommended_remediation_boundary": "Reconcile supplied detail with summary where supported; otherwise explicitly qualify unsupported payment evidence. Keep invoice recognition separate from complete-balance assertions.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Payment detail, aggregate and supplied period/scope reconciled; invalid balance evidence preserves invoices.",
+        "assertion": "regressions.py:Regressions.test_ENG_05",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-05.json.gz": "2ec5aee9831974b896926db7ca9701952ea53c28a55ad5561e5344196c566289"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "GOV-01",
@@ -157,7 +228,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "Modified sidecars accepted by normal Python verifier.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "governance.py:SIDECARS",
       "actual_output_and_durable_effects": "Each of four individual sidecars replaced with {} plus newline in a disposable frozen clone. All four actual verify_release.py invocations exit 0 with PASS, 3844 tests, 8912 preserved files. Untouched verifier passes; tampered bound command log fails.",
       "expected_behavior": "Bind imported evidence inventory and post-run attestations to authoritative digests; reject every altered evidence class. Preserve original receipt identities and bytes; no historical receipt backfill.",
@@ -174,7 +245,24 @@
         "GOV-02 can suppress checks that do exist; GOV-01 omits checks in ordinary Python."
       ],
       "recommended_remediation_boundary": "Add explicit complete inventory/attestation verification and negative cases; retain independent baseline valid-control prerequisite.",
-      "evidence_limitations": "Four reported evidence classes tested independently, not every sidecar. No allegation that the actual frozen receipt was tampered with. Full verifier performs discovery and receipt checks, not a full accounting regression."
+      "evidence_limitations": "Four reported evidence classes tested independently, not every sidecar. No allegation that the actual frozen receipt was tampered with. Full verifier performs discovery and receipt checks, not a full accounting regression.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Versioned inventory binds required sidecars, maps, logs and review; required-role omissions/redirection fail closed.",
+        "assertion": "governance.py:Governance.test_GOV_01",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-governance/governance.log": "6da2926912a62f3dc846bad71460101329ee85dee139b6ff03877d3bf445eb25",
+          "remediation/final-governance/GOV-01-0.json": "3a1492e5506f200df83ea96e884a0f07a7535ecfdbe2d576d8b67a8d299e2915",
+          "remediation/final-governance/GOV-01-1.json": "b83a6db40e47ac1e64afe8bc280f57b12ec89a241e7ed3491c0c54b7b98b98ab",
+          "remediation/final-governance/GOV-01-2.json": "34a5dbc816246f03b7bc4a5350f46eb6fab095d9324ec82c73c6ed6937688057",
+          "remediation/final-governance/GOV-01-3.json": "87d599e5892cb61ff0207ffcca61d7ff219c7346d54024215461cb66fdba0602"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "GOV-02",
@@ -186,7 +274,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "Unauthorized workflow accepted under python -O.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "governance.py:test_GOV_02",
       "actual_output_and_durable_effects": "Actual workflow bytes modified only in disposable clone. verify_historical() under ordinary Python rejects Active successor workflow changed; identical invocation under -O exits 0 and returns 8912.",
       "expected_behavior": "Mandatory integrity checks must remain enforced under optimization, or verifier must explicitly refuse optimized execution before reporting success.",
@@ -201,7 +289,22 @@
         "GOV-01 omitted coverage remains a separate ordinary-mode gap."
       ],
       "recommended_remediation_boundary": "Replace optimization-sensitive governance checks or explicitly reject optimized interpreter; assess adjacent receipt/population/namespace checks without altering historical contracts.",
-      "evidence_limitations": "Exact historical-verifier bypass reproduced with real filesystem mutation, stronger than original read_bytes injection. Whole verify() under -O not separately executed. Existing reviewed CI uses ordinary Python."
+      "evidence_limitations": "Exact historical-verifier bypass reproduced with real filesystem mutation, stronger than original read_bytes injection. Whole verify() under -O not separately executed. Existing reviewed CI uses ordinary Python.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Verifier refuses optimized interpreter at import before any mandatory assertion can be bypassed.",
+        "assertion": "governance.py:Governance.test_GOV_02",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-governance/governance.log": "6da2926912a62f3dc846bad71460101329ee85dee139b6ff03877d3bf445eb25",
+          "remediation/final-governance/GOV-02-normal.json": "a8951bcaa33843234f28ba006f4c087091e505cc3dba8148ed3b2c4b774f4e06",
+          "remediation/final-governance/GOV-02-optimized.json": "257a1e648d4c75f8bcee988d6faba65c7de9b5a725ec23b2ad55c590c18a240b"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ENG-06",
@@ -213,7 +316,7 @@
       "original_reviewer": "Independent final engineering/governance review (E/G identifiers)",
       "reported_observation": "Array/object operation causes unavailable response instead of structured client error.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "regressions.py:test_ENG_06",
       "actual_output_and_durable_effects": "Both [] and {} at both /v1/operations and /v1/jobs return 503 unavailable with no field requirements; four trace variants retained.",
       "expected_behavior": "Malformed operation is a deterministic 4xx invalid_request with operation requirement; no job acceptance or accounting work.",
@@ -230,7 +333,24 @@
         "ENG-03 is also preacceptance validation, but independent type and exception-boundary failure."
       ],
       "recommended_remediation_boundary": "Type-check before membership; contain validation exceptions inside client boundary; cover both hosted endpoints and local entry.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Operation type validated before set membership; structured client requirements returned.",
+        "assertion": "regressions.py:Regressions.test_ENG_06",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ENG-06-jobs-array.json.gz": "00b0f2f36ef67bba27210b9a048a023c59a923aa2e4f08a383ad9bc6ee849639",
+          "remediation/final-runtime/ENG-06-jobs-object.json.gz": "767b15516290612f3f8570c9d170d191cbf2e13e8e04ce8faaca1f62ce9e0a6a",
+          "remediation/final-runtime/ENG-06-operations-array.json.gz": "1ea239998cbf40f9ff4af2da8dd5939a1029f3b260f3fbe93c8ddb34c679fe55",
+          "remediation/final-runtime/ENG-06-operations-object.json.gz": "10dd8ce68ea8cb86c65a915d24650633922325768db89a3fbbf002f91649f970"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ACC-01",
@@ -243,7 +363,7 @@
       "original_reviewer": "Independent accounting review, observations supplied by repository owner; original standalone report not recovered",
       "reported_observation": "Impossible opening accumulation becomes accepted after current additions.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ACC-01.json",
       "actual_output_and_durable_effects": "Opening cost 100 and accumulation 150 plus current purchase 100 are SUPPORTED with cost 200, depreciation 4.58, closing accumulation 154.58 and carrying 45.42. Without addition the control rejects the impossible opening balance.",
       "expected_behavior": "Validate opening cost and accumulation at opening date before current-period movements. Current additions cannot cure invalid opening balance. Require correction/qualified error analysis, retaining independently supportable movements only with sound dependency treatment.",
@@ -257,7 +377,21 @@
         "ENG-02 linked movement/journal side effects require coordinated tests, but do not merge temporal validation into atomicity."
       ],
       "recommended_remediation_boundary": "Opening-state invariants before movement assembly; examine shared historical owner behavior separately without rewriting proofs.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Opening accumulated depreciation checked against opening gross before additions.",
+        "assertion": "regressions.py:Regressions.test_ACC_01",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ACC-01.json.gz": "99c7be83140a9236d296fd96846a251bd5188b2d7bfa1926cbd278b0bebc00f2"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ACC-02",
@@ -271,7 +405,7 @@
       "original_reviewer": "Independent accounting review, observations supplied by repository owner; original standalone report not recovered",
       "reported_observation": "Class expense default applied despite refundable-deposit text.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ACC-02.json",
       "actual_output_and_durable_effects": "SUPPORTED 110 invoice and durable Dr administrative expense / Cr AP 110 despite refundable security deposit description.",
       "expected_behavior": "Transaction-specific refundable-deposit evidence conflicts with services_received/expense defaults. Do not propose expense automatically. Seek terms/classification resolution; a supported refundable right belongs in its applicable asset model, without inventing a new account or policy.",
@@ -285,7 +419,21 @@
         "ACC-04 also text/structured evidence reconciliation, but missed deposit conflict differs from false affirmative dispute."
       ],
       "recommended_remediation_boundary": "Resolve policy defaults against transaction facts before recognition and journal construction; qualified conflict rather than keyword-only forced asset posting.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Refundable-deposit evidence cannot inherit generic expense recognition without classification resolution.",
+        "assertion": "regressions.py:Regressions.test_ACC_02",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ACC-02.json.gz": "8eb1728ec7b47b22a203788d75524232883c39977a962539ed22fa57670065c7"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ACC-03",
@@ -299,7 +447,7 @@
       "original_reviewer": "Independent accounting review, observations supplied by repository owner; original standalone report not recovered",
       "reported_observation": "Credit sale recognized as cash without receipt evidence.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ACC-03.json",
       "actual_output_and_durable_effects": "SUPPORTED; explicit description says credit/no cash received and disposal cash_received=false; nevertheless persisted Dr cash 12000 and gain 2100. Cash-sale positive control also passes.",
       "expected_behavior": "Derecognition and gain are separate from settlement classification. No cash debit without supported cash receipt. If consideration is an established unpaid receivable, use supported receivable treatment; otherwise qualify the settlement journal, without inventing payment.",
@@ -314,7 +462,21 @@
         "ENG-02 is atomicity after rejection; ACC-03 persists an accepted but misclassified journal."
       ],
       "recommended_remediation_boundary": "Disposal consideration/settlement contract and journal construction; preserve asset derecognition math where sufficiently supported.",
-      "evidence_limitations": "Credit facts are supplied through description plus explicit synthetic payment_terms/cash_received fields; those fields are not claimed as documented Profile 1.2 supported schema. Even unsupported credit evidence must not silently justify cash. Original accountant request not recovered."
+      "evidence_limitations": "Credit facts are supplied through description plus explicit synthetic payment_terms/cash_received fields; those fields are not claimed as documented Profile 1.2 supported schema. Even unsupported credit evidence must not silently justify cash. Original accountant request not recovered.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Cash requires explicit consistent receipt; supported credit consideration uses receivable; uncertain settlement qualified.",
+        "assertion": "regressions.py:Regressions.test_ACC_03",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ACC-03.json.gz": "0e345e38a9da8b4781bb6527be92d766f318f9951fd08f21a391b5d09650f6da"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ACC-04",
@@ -326,7 +488,7 @@
       "original_reviewer": "Independent accounting review, observations supplied by repository owner; original standalone report not recovered",
       "reported_observation": "Negated dispute text blocks invoice.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ACC-04.json",
       "actual_output_and_durable_effects": "Description This invoice is not disputed. with disputed_obligation=false yields UNRESOLVED, invoice excluded, no 110 obligation. Affirmative disputed control correctly blocks.",
       "expected_behavior": "Do not assert dispute solely from a token inside explicit negation. Reconcile textual/structured evidence with confidence; preserve supported invoice when no genuine conflict remains. Ambiguous text may warrant a scoped clarification.",
@@ -340,7 +502,21 @@
         "ACC-02 concerns unrecognized conflict; separate regression and classification impact."
       ],
       "recommended_remediation_boundary": "Negation/context-aware indicator interpretation; keep affirmative dispute controls and avoid globally disabling screening.",
-      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested."
+      "evidence_limitations": "Synthetic IFRS 2026 fixture; no customer upload or deployed TrackedFR endpoint tested.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Scoped negation recognizes dispute verb forms while preserving affirmative/conflicting dispute screening.",
+        "assertion": "regressions.py:Regressions.test_ACC_04",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ACC-04.json.gz": "76347175cfc9c2ed4e6332cd548e17695e9ad41c6de67bf6916fe9c667416e3a"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     },
     {
       "id": "ACC-05",
@@ -353,7 +529,7 @@
       "original_reviewer": "Independent accounting review, observations supplied by repository owner; original standalone report not recovered",
       "reported_observation": "Unrelated malformed invoice blocks supportable work.",
       "reproduction_status": "independently_reproduced",
-      "resolution_status": "OPEN_DIAGNOSTIC_ONLY",
+      "resolution_status": "VERIFIED_FIXED_FOCUSED",
       "fixture": "fixtures/ACC-05.json",
       "actual_output_and_durable_effects": "Malformed invoice supplier is excluded. Independent 200 accrual has explicit invoice_overlap_resolved=true but is also excluded because normalized(None) raises while scanning invoice supplier. Standalone accrual control produces 200.",
       "expected_behavior": "Preserve 200 closing accrual and its supported adjustment when explicit overlap assessment resolves dependency; retain invoice-specific requirement. If overlap is genuinely unresolved, qualify it instead of inventing independence.",
@@ -367,7 +543,29 @@
         "ENG-05 ignored payment contradictions is independent, not the same blocking defect."
       ],
       "recommended_remediation_boundary": "Validate/scope overlap population and honor supported overlap evidence before traversing invalid suppliers; retain genuine duplicate-liability controls.",
-      "evidence_limitations": "Reconstructed minimal fixture, not recovered original accountant request. Early exploratory fixture lacked explicit overlap assessment; retained separately and superseded for definitive reproduction by explicit true assessment."
+      "evidence_limitations": "Reconstructed minimal fixture, not recovered original accountant request. Early exploratory fixture lacked explicit overlap assessment; retained separately and superseded for definitive reproduction by explicit true assessment.",
+      "remediation": {
+        "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+        "summary": "Explicit overlap assessment isolates valid accrual; malformed invoice cannot erase it; accrual supplier independently validated.",
+        "assertion": "regressions.py:Regressions.test_ACC_05",
+        "result": "PASS",
+        "evidence_sha256": {
+          "remediation/final-runtime/runtime.log": "326837499c34253a608a7dda5b2635d69aa63fe0cdce6180f22200d390d933f6",
+          "remediation/final-runtime/ACC-05.json.gz": "f4ef00867479c9e484a02b99c68f1f20d184572a72d65c6f5b24215e89bc6a68"
+        },
+        "independent_reviews": [
+          "remediation/accounting-qa/REVIEW.md",
+          "remediation/engineering-qa/REVIEW.md"
+        ]
+      }
     }
-  ]
+  ],
+  "remediation_summary": {
+    "status": "VERIFIED_FIXED_FOCUSED",
+    "source_commit": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+    "fixed": 13,
+    "open": 0,
+    "original_methods_passed": 23,
+    "full_release_accepted": false
+  }
 }

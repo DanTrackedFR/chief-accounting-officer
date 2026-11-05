@@ -1,24 +1,24 @@
 # Profile 1.2 — authoritative diagnostic defect register
 
-Baseline `36acb611142bc8bedd214622f1ecac539c290056`. All 13 findings independently reproduced. Every finding remains OPEN; this is not remediation or release acceptance.
+Baseline `36acb611142bc8bedd214622f1ecac539c290056`. All 13 findings were independently reproduced. All 13 are now VERIFIED_FIXED_FOCUSED on published source `33704a4cfecf8d54f4333fe8b836033d8c5ee826`; full release acceptance remains pending. The original reproduction descriptions below remain historical evidence, not current behavior.
 
 The original engineering review was retrieved from [the standalone report](https://chatgpt.com/library?file_id=libfile_959431e279908191b9b85d14e4490708&account_id=personal). E1–E6 map to ENG-01–ENG-06; G1/G2 map to GOV-01/GOV-02. Original accounting reviewer name/full requests were unavailable; owner-supplied observations were independently reconstructed. Existing implementation QA reports predate these adversarial findings and are preserved unchanged.
 
 | ID | Severity | Finding | Disposition |
 |---|---|---|---|
-| ENG-01 | High | False-string disposal authorization | Independently reproduced; open |
-| ENG-02 | High | Rejected-row journal leakage | Independently reproduced; open |
-| ENG-03 | High | Malformed source Case identifier | Independently reproduced; open |
-| ENG-04 | High | Diagnostic response amplification | Independently reproduced; open |
-| ENG-05 | High | Contradictory AP payment evidence | Independently reproduced; open |
-| GOV-01 | Medium | Release receipt sidecar tampering | Independently reproduced; open |
-| GOV-02 | Medium | Optimized Python governance bypass | Independently reproduced; open |
-| ENG-06 | Medium | Malformed operation returns HTTP 503 | Independently reproduced; open |
-| ACC-01 | High | Opening accumulation validated after additions | Independently reproduced; open |
-| ACC-02 | High | Refundable deposit inherits expense default | Independently reproduced; open |
-| ACC-03 | High | Credit disposal debited to cash | Independently reproduced; open |
-| ACC-04 | Medium | Negated dispute interpreted as affirmative | Independently reproduced; open |
-| ACC-05 | High | Malformed invoice blocks independently supported accrual | Independently reproduced; open |
+| ENG-01 | High | False-string disposal authorization | Verified fixed; focused QA pass |
+| ENG-02 | High | Rejected-row journal leakage | Verified fixed; focused QA pass |
+| ENG-03 | High | Malformed source Case identifier | Verified fixed; focused QA pass |
+| ENG-04 | High | Diagnostic response amplification | Verified fixed; focused QA pass |
+| ENG-05 | High | Contradictory AP payment evidence | Verified fixed; focused QA pass |
+| GOV-01 | Medium | Release receipt sidecar tampering | Verified fixed; focused QA pass |
+| GOV-02 | Medium | Optimized Python governance bypass | Verified fixed; focused QA pass |
+| ENG-06 | Medium | Malformed operation returns HTTP 503 | Verified fixed; focused QA pass |
+| ACC-01 | High | Opening accumulation validated after additions | Verified fixed; focused QA pass |
+| ACC-02 | High | Refundable deposit inherits expense default | Verified fixed; focused QA pass |
+| ACC-03 | High | Credit disposal debited to cash | Verified fixed; focused QA pass |
+| ACC-04 | Medium | Negated dispute interpreted as affirmative | Verified fixed; focused QA pass |
+| ACC-05 | High | Malformed invoice blocks independently supported accrual | Verified fixed; focused QA pass |
 
 ## Evidence method
 
@@ -444,3 +444,21 @@ Runtime baseline: 19 test methods, 7 passing controls and 12 failing defect meth
 
 **Evidence limits:** Reconstructed minimal fixture, not recovered original accountant request. Early exploratory fixture lacked explicit overlap assessment; retained separately and superseded for definitive reproduction by explicit true assessment.
 
+
+## Remediation verification — 5 November 2026
+
+Published tested source: `33704a4cfecf8d54f4333fe8b836033d8c5ee826`. Original suites: 19 runtime + 4 governance methods pass, no errors/skips. Governance uses `CAO_GOV_REF=33704a4cfecf8d54f4333fe8b836033d8c5ee826 CAO_GOV_FOCUSED=1` and verifies a newly executed, separately versioned positive receipt BEFORE tampering. Independent QA and compatibility are in [completion report](remediation/COMPLETION.md). Machine-readable register binds per-ID evidence digests. Original diagnostic artifact-sha256.json remains the inventory for its original diagnostic commit; it is not relabeled for these updated register files.
+
+- **ENG-01 — verified fixed:** Literal disposal booleans validated; invalid flags cannot authorize journals.
+- **ENG-02 — verified fixed:** Asset journals staged atomically; rejected dependent capital movements withheld; valid mixed rows retained.
+- **ENG-03 — verified fixed:** Bounded nonblank source Case IDs checked inline, staged, preacceptance and direct owner.
+- **ENG-04 — verified fixed:** Bounded identifiers/populations and hashed public display reference retain substantive anomalies.
+- **ENG-05 — verified fixed:** Payment detail, aggregate and supplied period/scope reconciled; invalid balance evidence preserves invoices.
+- **ENG-06 — verified fixed:** Operation type validated before set membership; structured client requirements returned.
+- **ACC-01 — verified fixed:** Opening accumulated depreciation checked against opening gross before additions.
+- **ACC-02 — verified fixed:** Refundable-deposit evidence cannot inherit generic expense recognition without classification resolution.
+- **ACC-03 — verified fixed:** Cash requires explicit consistent receipt; supported credit consideration uses receivable; uncertain settlement qualified.
+- **ACC-04 — verified fixed:** Scoped negation recognizes dispute verb forms while preserving affirmative/conflicting dispute screening.
+- **ACC-05 — verified fixed:** Explicit overlap assessment isolates valid accrual; malformed invoice cannot erase it; accrual supplier independently validated.
+- **GOV-01 — verified fixed:** Versioned inventory binds required sidecars, maps, logs and review; required-role omissions/redirection fail closed.
+- **GOV-02 — verified fixed:** Verifier refuses optimized interpreter at import before any mandatory assertion can be bypassed.

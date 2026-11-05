@@ -1,0 +1,11 @@
+{
+  "source": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-c",
+    "import runpy; v=runpy.run_path('skills/presumed-sources/verify_release.py'); print(v['verify_historical']())"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"skills/presumed-sources/verify_release.py\", line 118, in verify_historical\n    verify_workflow_migration(expected)\n  File \"skills/presumed-sources/verify_release.py\", line 106, in verify_workflow_migration\n    assert digest(successor) == migration['successor_sha256'], 'Active successor workflow changed'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Active successor workflow changed\n"
+}
