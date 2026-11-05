@@ -1,0 +1,61 @@
+test_cash_disposal_positive (__main__.AccountingQA.test_cash_disposal_positive) ... ok
+test_credit_disposal_positive (__main__.AccountingQA.test_credit_disposal_positive) ... ok
+test_disposal_boolean_invalid_variants (__main__.AccountingQA.test_disposal_boolean_invalid_variants) ... ok
+test_disposal_false_and_omission_preserve_asset (__main__.AccountingQA.test_disposal_false_and_omission_preserve_asset) ... ok
+test_equal_opening_cost_accumulation_valid (__main__.AccountingQA.test_equal_opening_cost_accumulation_valid) ... ok
+test_invalid_opening_with_addition_is_atomic (__main__.AccountingQA.test_invalid_opening_with_addition_is_atomic) ... ok
+test_invalid_payment_aggregate_retains_invoice (__main__.AccountingQA.test_invalid_payment_aggregate_retains_invoice) ... FAIL
+test_malformed_accrual_supplier_not_authorized_by_overlap (__main__.AccountingQA.test_malformed_accrual_supplier_not_authorized_by_overlap) ... FAIL
+test_malformed_invoice_preserves_independent_accrual (__main__.AccountingQA.test_malformed_invoice_preserves_independent_accrual) ... ok
+test_mixed_rejected_disposal_retains_only_valid_asset (__main__.AccountingQA.test_mixed_rejected_disposal_retains_only_valid_asset) ... ok
+test_negated_and_affirmative_dispute_context (__main__.AccountingQA.test_negated_and_affirmative_dispute_context) ... FAIL
+test_out_of_period_payment_detail_qualifies_balance (__main__.AccountingQA.test_out_of_period_payment_detail_qualifies_balance) ... FAIL
+test_payment_positive_and_conflict_preserve_invoice (__main__.AccountingQA.test_payment_positive_and_conflict_preserve_invoice) ... ok
+test_refundable_deposit_and_ordinary_service_mixed (__main__.AccountingQA.test_refundable_deposit_and_ordinary_service_mixed) ... ok
+test_structured_affirmative_overrides_text_negation (__main__.AccountingQA.test_structured_affirmative_overrides_text_negation) ... ok
+test_unknown_or_conflicting_settlement_no_cash (__main__.AccountingQA.test_unknown_or_conflicting_settlement_no_cash) ... ok
+test_unresolved_overlap_remains_blocked (__main__.AccountingQA.test_unresolved_overlap_remains_blocked) ... ok
+
+======================================================================
+FAIL: test_invalid_payment_aggregate_retains_invoice (__main__.AccountingQA.test_invalid_payment_aggregate_retains_invoice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/40b97368343f/chief-accounting-officer/diagnostics/profile12/remediation/accounting-qa/test_accounting_qa.py", line 95, in test_invalid_payment_aggregate_retains_invoice
+    p,n=self.run_case(c,'accounts-payable');self.assertEqual(self.amount(p,'invoices'),360);self.assertEqual(self.debit(n,'administrative expense'),360);self.assertIsNone(self.amount(p,'closing ap'));self.assertTrue(p['validation_requirements'])
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 360
+
+======================================================================
+FAIL: test_malformed_accrual_supplier_not_authorized_by_overlap (__main__.AccountingQA.test_malformed_accrual_supplier_not_authorized_by_overlap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/40b97368343f/chief-accounting-officer/diagnostics/profile12/remediation/accounting-qa/test_accounting_qa.py", line 110, in test_malformed_accrual_supplier_not_authorized_by_overlap
+    p,n=self.run_case(c,'accounts-payable');self.assertIsNone(self.amount(p,'closing accruals'));self.assertEqual(n['proposed_journal_workpaper'],[])
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('500.00') is not None
+
+======================================================================
+FAIL: test_negated_and_affirmative_dispute_context (__main__.AccountingQA.test_negated_and_affirmative_dispute_context)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/40b97368343f/chief-accounting-officer/diagnostics/profile12/remediation/accounting-qa/test_accounting_qa.py", line 84, in test_negated_and_affirmative_dispute_context
+    else:self.assertEqual(p['accounting_determination'],'UNRESOLVED');self.assertEqual(n['proposed_journal_workpaper'],[])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SUPPORTED' != 'UNRESOLVED'
+- SUPPORTED
++ UNRESOLVED
+
+
+======================================================================
+FAIL: test_out_of_period_payment_detail_qualifies_balance (__main__.AccountingQA.test_out_of_period_payment_detail_qualifies_balance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/40b97368343f/chief-accounting-officer/diagnostics/profile12/remediation/accounting-qa/test_accounting_qa.py", line 98, in test_out_of_period_payment_detail_qualifies_balance
+    p,n=self.run_case(c,'accounts-payable');self.assertEqual(self.amount(p,'invoices'),360);self.assertIsNone(self.amount(p,'closing ap'));self.assertTrue(p['validation_requirements'])
+                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('240') is not None
+
+----------------------------------------------------------------------
+Ran 17 tests in 15.880s
+
+FAILED (failures=4)

@@ -121,7 +121,17 @@ class IndependentPresumedAccountingQA(unittest.TestCase):
     def test_disposal_gain_independently_reperformed(self):
         case = source_case(); case['assets'][0]['disposal'] = dict(enabled=True,
             date='2026-12-31',proceeds='400000',ordinary_sale=True)
+        # The original sale-only facts establish consideration, not its receipt.
+        # Preserve that omission as a negative case before the cash-sale control.
+        unresolved = run(case=case)
+        self.assertEqual(unresolved['accounting_determination'], 'UNRESOLVED')
+        self.assertEqual(unresolved['proposed_journal_workpaper'], [])
+        self.assertTrue(unresolved['validation_requirements'])
+        case['assets'][0]['disposal'].update(cash_received=True, payment_terms='cash')
         result = run(case=case); asset = result['calculations']['assets'][0]
+        cash_debit = sum(line['amount'] for entry in result['proposed_journal_workpaper']
+                         for line in entry if line['side'] == 'Dr' and line['account'] == 'cash')
+        self.assertEqual(cash_debit, Decimal('400000'))
         self.assertEqual(asset['disposal_gain'], Decimal('70000'))
         self.assertEqual(asset['closing_cost'], Decimal(0))
         self.assertEqual(asset['closing_accumulated'], Decimal(0))

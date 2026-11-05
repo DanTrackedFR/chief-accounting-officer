@@ -59,8 +59,11 @@ class AccountingQA(unittest.TestCase):
         p,n=self.run_case(c)
         self.assertEqual(self.debit(n,'cash'),0);self.assertEqual(self.debit(n,'disposal receivable'),18000);self.assertEqual(self.amount(p,'closing cost'),0)
     def test_unknown_or_conflicting_settlement_no_cash(self):
-        for i,mutation in enumerate([{'cash_received':False,'payment_terms':'cash'},{'cash_received':True,'payment_terms':'credit'},{'cash_received':'true','payment_terms':'cash'}]):
-            c=disposal(fresh());c['assets'][0]['disposal'].update(mutation)
+        for i,mutation in enumerate([{'cash_received':False,'payment_terms':'cash'},{'cash_received':True,'payment_terms':'credit'},{'cash_received':'true','payment_terms':'cash'},None]):
+            c=disposal(fresh())
+            if mutation is None:
+                c['assets'][0]['disposal'].pop('cash_received');c['assets'][0]['disposal'].pop('payment_terms')
+            else:c['assets'][0]['disposal'].update(mutation)
             p,n=self.run_case(c,label=self._testMethodName+str(i));self.assertEqual(self.debit(n,'cash'),0);self.assertEqual(p['accounting_determination'],'UNRESOLVED');self.assertEqual(n['proposed_journal_workpaper'],[])
     def test_mixed_rejected_disposal_retains_only_valid_asset(self):
         c=disposal(fresh());c['assets'][0]['disposal']['proceeds']='invalid'
