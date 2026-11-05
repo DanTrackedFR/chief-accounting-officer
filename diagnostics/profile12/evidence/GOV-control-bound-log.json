@@ -1,0 +1,10 @@
+{
+  "source": "36acb611142bc8bedd214622f1ecac539c290056",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "skills/presumed-sources/verify_release.py"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmpvq01wcbn/repo/skills/presumed-sources/verify_release.py\", line 156, in <module>\n    if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))\n                                             ^^^^^^^^\n  File \"/tmp/tmpvq01wcbn/repo/skills/presumed-sources/verify_release.py\", line 144, in verify\n    for row in manifest['logs']:assert row['exit_code']==0 and digest(ROOT/row['path'])==row['sha256'],('Presumed-source log changed',row['path'])\n                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('Presumed-source log changed', 'build4/release/presumed-sources-attempt-ci-41779799873-1/suite-0.log')\n"
+}

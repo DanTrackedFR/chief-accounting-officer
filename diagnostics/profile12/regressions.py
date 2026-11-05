@@ -11,8 +11,7 @@ OUT.mkdir(parents=True,exist_ok=True)
 def fixture(name):return json.loads((HERE/'fixtures'/f'{name}.json').read_text())
 def dump(name,value):
  data=(json.dumps(value,indent=2,default=str)+'\n').encode()
- if name=='ENG-04':(OUT/(name+'.json.gz')).write_bytes(gzip.compress(data,mtime=0))
- else:(OUT/(name+'.json')).write_bytes(data)
+ (OUT/(name+'.json.gz')).write_bytes(gzip.compress(data,mtime=0))
 class Regressions(unittest.TestCase):
  def setUp(self):
   self.h=support.IndependentPresumedEngineeringQA();self.h.setUp();self.addCleanup(self.h.doCleanups)
@@ -44,6 +43,14 @@ class Regressions(unittest.TestCase):
   p,n=self.run_case('ENG-01');self.assertNotEqual(p['accounting_determination'],'SUPPORTED','Nonboolean disposal authorization must be rejected');self.assertNotIn('cash',json.dumps(n['proposed_journal_workpaper'],default=str))
  def test_ENG_02(self):
   p,n=self.run_case('ENG-02');self.assertFalse(p['calculations']);self.assertIn('assets:1',p['anomaly_report']['excluded_rows']);self.assertEqual(n['proposed_journal_workpaper'],[],'Rejected asset must contribute no persisted journal')
+ def test_ENG_02_mixed(self):
+  p,n=self.run_case('ENG-02-mixed');self.assertEqual(self.amount(p,'depreciation'),1100)
+  debit=sum(Decimal(x['amount']) for entry in n['proposed_journal_workpaper'] for x in entry if x['account']=='depreciation expense' and x['side']=='Dr')
+  self.assertEqual(debit,1100,'Only the valid row may contribute to persisted depreciation')
+ def test_control_disputed(self):
+  p,n=self.run_case('control-disputed','accounts-payable');self.assertIsNone(self.amount(p,'invoices'));self.assertEqual(p['accounting_determination'],'UNRESOLVED');self.assertTrue(p['validation_requirements'])
+ def test_control_invalid_opening(self):
+  p,n=self.run_case('control-invalid-opening');self.assertEqual(p['accounting_determination'],'UNRESOLVED');self.assertFalse(n['calculations'].get('assets'))
  def test_ENG_03(self):
   c=fixture('ENG-03');cid=self.h.start(rid='ENG-03');status,result=self.h.call('submit',case_id=cid,evidence=support.supplied(case=c))
   if status==200:
