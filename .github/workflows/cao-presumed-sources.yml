@@ -1,0 +1,96 @@
+name: CAO presumed user-provided source assurance
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths: ['diagnostics/profile12/**', 'tests/**', 'skills/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', 'build4/**', '.github/workflows/cao-presumed-sources.yml']
+  workflow_dispatch:
+    inputs:
+      acceptance_pointer:
+        description: "Optional reviewed version-2 pointer to verify and reuse; empty runs a new regression"
+        required: false
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-assurance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      CAO_SOURCES_ATTEMPT: presumed-sources-attempt-ci-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install bounded test parsers
+        run: pip install -r intelligence/requirements.txt reportlab
+      - name: Authored and independent accounting QA
+        run: python -m unittest discover -s skills/tests -p 'test_presumed_*.py'
+      - name: Independent adversarial HTTP QA
+        run: python -m unittest discover -s hosted_cao/tests -p 'test_presumed_engineering_qa.py'
+      - name: Deterministic real HTTP numerical, restart and idempotency proofs
+        run: |
+          PYTHONHASHSEED=109 python -m hosted_cao.tests.prove_presumed_http > /tmp/source109.json
+          PYTHONHASHSEED=971 python -m hosted_cao.tests.prove_presumed_http > /tmp/source971.json
+          cmp skills/presumed-sources/release/http-proof.json /tmp/source109.json
+          cmp /tmp/source109.json /tmp/source971.json
+      - name: Probe durable evidence storage before expensive regression
+        id: persistence
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-persistence-probe-${{ github.run_id }}-${{ github.run_attempt }}
+          path: skills/presumed-sources/release/environment-persistence-probe.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Verify durable evidence round trip
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROBE_ARTIFACT_ID: ${{ steps.persistence.outputs.artifact-id }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/${PROBE_ARTIFACT_ID}/zip" > /tmp/source-persistence.zip
+          python - <<'PYCODE'
+          from pathlib import Path
+          from zipfile import ZipFile
+          with ZipFile('/tmp/source-persistence.zip') as archive:
+              assert archive.testzip() is None
+              assert archive.read('environment-persistence-probe.json') == Path('skills/presumed-sources/release/environment-persistence-probe.json').read_bytes()
+          PYCODE
+      - name: Verify complete mandatory release discovery
+        run: python skills/presumed-sources/run_release.py --discover
+      - name: Execute new regression or explicitly verify accepted evidence
+        env:
+          CAO_ACCEPTANCE_POINTER: ${{ inputs.acceptance_pointer }}
+        run: |
+          if [ -n "$CAO_ACCEPTANCE_POINTER" ]; then
+            python skills/presumed-sources/execute_release.py --reuse "$CAO_ACCEPTANCE_POINTER"
+          else
+            python skills/presumed-sources/execute_release.py
+          fi
+      - name: Preserve actual release evidence across workspace recovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: presumed-source-release-${{ github.event.pull_request.head.sha || github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          if-no-files-found: error
+          path: |
+            build4/release/${{ env.CAO_SOURCES_ATTEMPT }}/
+            build4/release/presumed-sources-accepted-release.json
+            skills/presumed-sources/release/full-regression-${{ env.CAO_SOURCES_ATTEMPT }}.log
+      - name: Report execution scope (fresh regression is not release acceptance)
+        run: |
+          cat "build4/release/${CAO_SOURCES_ATTEMPT}/execution.json" >> "$GITHUB_STEP_SUMMARY"
+          echo 'Fresh evidence requires independent receipt review, version-2 inventory issuance and explicit acceptance verification.' >> "$GITHUB_STEP_SUMMARY"
+          python - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          status = json.loads((Path('build4/release') / os.environ['CAO_SOURCES_ATTEMPT'] / 'execution.json').read_text())
+          if status['release_accepted'] is not True:
+              raise SystemExit('Regression evidence uploaded; release acceptance remains pending independent review and explicit verified reuse.')
+          PYCODE
+      - name: Whitespace
+        run: git diff --check HEAD^ HEAD
