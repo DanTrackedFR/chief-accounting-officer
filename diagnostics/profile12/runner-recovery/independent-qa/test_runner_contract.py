@@ -2,7 +2,7 @@
 
 All runner/verifier algorithms are real. Only the fixture's historical population
 and digest constants differ, because the real pinned historical test files cannot
-be replaced with 17 cheap canaries. Real preservation is checked separately.
+be replaced with 80 cheap canaries (17 base plus 63 required remediation identities). Real preservation is checked separately.
 """
 import hashlib
 import importlib.util
@@ -45,20 +45,34 @@ class IndependentRunnerContract(unittest.TestCase):
                                            '--git-path', 'objects'], cwd=ROOT, text=True).strip()
         cls.env = {**os.environ, 'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects}
         subprocess.run(['git', 'init', '-q'], cwd=cls.base, check=True)
-        for name in ('execute_release.py', 'run_release.py', 'verify_release.py', 'receipt_integrity.py'):
+        for name in ('execute_release.py', 'run_release.py', 'verify_release.py', 'receipt_integrity.py', 'release_population.py', 'required-remediation-tests.json'):
             put(cls.base, 'skills/presumed-sources/' + name, (SOURCE / name).read_text())
-        for name in ('build4/run_release.py', 'orchestration/history_references.py'):
+        for name in ('build4/run_release.py', 'build4/verify_release.py', 'orchestration/history_references.py'):
             put(cls.base, name, (ROOT / name).read_text())
         spec = importlib.util.spec_from_file_location('qa_real_verifier', SOURCE / 'verify_release.py')
         verifier = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(verifier)
         cls.suites = verifier.SUPPORTED_SUITES
         cls.validators = verifier.VALIDATOR_COMMANDS
-        for i, (directory, pattern) in enumerate(cls.suites):
+        for i, (directory, pattern) in enumerate(cls.suites[:17]):
             filename = 'independent_review_tests.py' if pattern == 'independent_review_tests.py' else 'test_canary.py'
             put(cls.base, directory + '/' + filename,
                 'import unittest\nclass Canary(unittest.TestCase):\n'
                 '    def test_executed(self): self.assertEqual(2 + 2, 4)\n')
+        # Keep the immutable required identities; substitute only their bodies in
+        # this explicitly synthetic fixture. Production never changes its contract.
+        required = json.loads((SOURCE/'required-remediation-tests.json').read_text())
+        for row in required['suites']:
+            classes = {}
+            for identity in row['distinct_ids']:
+                module, klass, method = identity.split('::')[1].split('.')
+                classes.setdefault(klass, []).append(method)
+            text = 'import unittest\n'
+            for klass, methods in classes.items():
+                text += 'class '+klass+'(unittest.TestCase):\n'
+                for method in methods:
+                    text += '    def '+method+'(self): self.assertTrue(True)\n'
+            put(cls.base, row['suite']+'/'+row['pattern'], text)
         for name in cls.validators:
             put(cls.base, name, 'print("synthetic validator executed")\n')
         json_put(cls.base, 'local_cao/release/release-regression.json', dict(
@@ -78,15 +92,17 @@ class IndependentRunnerContract(unittest.TestCase):
                      dict(status='PASS', errors=[], files={}))
         put(cls.base, 'build4/release/presumed-sources-accepted-release.json',
             '{"historical": "deliberately stale, untouched"}\n')
+        subprocess.run(['git', 'add', '.'], cwd=cls.base, check=True)
+        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Synthetic fixture only'], cwd=cls.base, check=True)
         result = cls.invoke(cls.base, 'qa-seed')
         if result.returncode:
             raise AssertionError(result.stdout + result.stderr +
                 (cls.base / 'skills/presumed-sources/release/full-regression-qa-seed.log').read_text())
         manifest = json.loads((cls.base / 'build4/release/qa-seed/release-regression.json').read_text())
-        if manifest['executed_distinct_tests'] != 17 or len(manifest['logs']) != 28:
+        if manifest['executed_distinct_tests'] != 80 or len(manifest['logs']) != 33:
             raise AssertionError('Synthetic real execution population differs')
         put(cls.base, 'build4/release/qa-seed/receipt-review.md',
-            'SYNTHETIC FIXTURE ONLY: 17 actual trivial tests, not CAO accounting acceptance.\n')
+            'SYNTHETIC FIXTURE ONLY: 80 actual trivial tests, not CAO accounting acceptance.\n')
         seal = '''import json,sys
 from pathlib import Path
 sys.path.insert(0,'skills/presumed-sources')
@@ -144,7 +160,7 @@ p=seal_inventory(root,root/'build4/release/qa-seed/release-regression.json',
         self.assertEqual(r.returncode, 0, r.stderr)
         value = json.loads(r.stdout)
         self.assertEqual(value['status'], 'ACCEPTANCE_REUSED')
-        self.assertEqual(value['verification']['distinct_tests'], 17)
+        self.assertEqual(value['verification']['distinct_tests'], 80)
         self.assertEqual(value['verification']['historical_files'], 1)
         self.assertFalse((self.root / 'build4/release/qa-reuse/release-regression.json').exists())
         self.assertFalse((self.root / 'skills/presumed-sources/release/full-regression-qa-reuse.log').exists())
@@ -156,7 +172,7 @@ p=seal_inventory(root,root/'build4/release/qa-seed/release-regression.json',
         self.assertFalse(json.loads(r.stdout)['release_accepted'])
         manifest = json.loads((self.root / 'build4/release/qa-fresh/release-regression.json').read_text())
         self.assertTrue(manifest['complete'])
-        self.assertEqual(manifest['executed_distinct_tests'], 17)
+        self.assertEqual(manifest['executed_distinct_tests'], 80)
         self.unchanged()
 
     def test_malformed_explicit_pointer_rejected(self):
@@ -234,6 +250,8 @@ p=seal_inventory(root,root/'build4/release/qa-seed/release-regression.json',
         put(self.root, 'skills/tests/test_canary.py',
             'import unittest\nclass Canary(unittest.TestCase):\n'
             '    def test_failed(self): self.fail("intentional synthetic failure")\n')
+        subprocess.run(['git', 'add', 'skills/tests/test_canary.py'], cwd=self.root, check=True)
+        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Intentional failure fixture'], cwd=self.root, check=True)
         r = self.invoke(self.root, 'qa-failed')
         self.assertNotEqual(r.returncode, 0)
         manifest = json.loads((self.root / 'build4/release/qa-failed/release-regression.json').read_text())

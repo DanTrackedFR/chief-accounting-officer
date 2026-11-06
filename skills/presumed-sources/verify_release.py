@@ -19,24 +19,8 @@ def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
 
-SUPPORTED_SUITES = (
-    ('orchestration/tests', 'test_*.py'), ('skills/tests', 'test_*.py'),
-    ('skills/lease-accounting/tests', 'test_*.py'), ('tests', 'test_*.py'),
-    ('knowledge/income-taxes', 'test*.py'), ('knowledge/agriculture', 'test*.py'),
-    ('knowledge/insurance-contracts', 'test*.py'), ('knowledge/derivatives-hedge', 'test*.py'),
-    ('knowledge/derivatives-hedge', 'independent_review_tests.py'), ('knowledge/inventory-cost', 'test*.py'),
-    ('local_cao/tests', 'test_*.py'), ('knowledge/borrowing-costs', 'test*.py'),
-    ('hosted_cao/tests', 'test_*.py'), ('intelligence/tests', 'test_*.py'),
-    ('build4/tests', 'test_*.py'), ('knowledge/government-grants', 'test_*.py'),
-    ('knowledge/investment-property', 'test_*.py'),
-)
-VALIDATOR_COMMANDS = (
-    'knowledge/income-taxes/validate_supplement.py', 'knowledge/agriculture/validate_supplement.py',
-    'knowledge/insurance-contracts/validate_supplement.py', 'knowledge/derivatives-hedge/validate_supplement.py',
-    'knowledge/inventory-cost/validate_supplement.py', 'knowledge/standards-evidence/validate_claims.py',
-    'knowledge/standards-evidence/validate_approvals.py', 'knowledge/borrowing-costs/validate_supplement.py',
-    'knowledge/government-grants/validate_supplement.py', 'knowledge/investment-property/validate_supplement.py',
-)
+from release_population import (SUPPORTED_SUITES, VALIDATOR_COMMANDS, gate_plan,
+                                discover, release_input_hashes)
 
 
 def _counted_pass(row):
@@ -57,6 +41,8 @@ def _command_shape(command):
 
 def validate_population(manifest):
     rows = manifest['suite_results']
+    expected_plan = gate_plan(manifest['attempt'], manifest['source_commit'])
+    assert manifest['gate_plan'] == expected_plan, 'Mandatory release gate plan differs'
     assert [(r['suite'], r['pattern']) for r in rows] == list(SUPPORTED_SUITES), 'Release suite population differs'
     ids = []
     for row in rows:
@@ -74,6 +60,8 @@ def validate_population(manifest):
     expected += [['python', command] for command in VALIDATOR_COMMANDS]
     expected += [['git', 'diff', '--check']]
     assert [_command_shape(row['command']) for row in manifest['logs']] == expected, 'Release validator or command population differs'
+    environments = [slot['environment'] for slot in expected_plan] + [{'PYTHONHASHSEED': '19'} for _ in VALIDATOR_COMMANDS] + [{}]
+    assert [row.get('environment') for row in manifest['logs']] == environments, 'Mandatory release environment differs'
     assert all(row['exit_code'] == 0 for row in manifest['logs']), 'Unsuccessful release command'
 
 
@@ -134,23 +122,16 @@ def verify(pointer_path='build4/release/presumed-sources-accepted-release.json')
     verify_inventory(ROOT,pointer,manifest_path,manifest,'release')
     validate_population(manifest)
     assert source_hashes()==manifest['tested_python_sha256'],'Presumed-source Python changed after regression'
-    assert input_hashes()==manifest['tested_execution_inputs_sha256'],'Presumed-source execution inputs changed after regression'
+    assert release_input_hashes()==manifest['tested_execution_inputs_sha256'],'Presumed-source execution inputs changed after regression'
     all_ids=[]
-    script='''import json,sys,unittest
-suite=unittest.TestLoader().discover(sys.argv[1],pattern=sys.argv[2])
-def cases(s):
- for t in s:
-  if isinstance(t,unittest.TestSuite):yield from cases(t)
-  else:yield t
-print(json.dumps(sorted(sys.argv[1]+'::'+t.id() for t in cases(suite))))
-'''
-    for r in manifest['suite_results']:
-        expected=json.loads(subprocess.check_output([sys.executable,'-c',script,r['suite'],r['pattern']],cwd=ROOT,text=True))
+    inventory=discover(manifest['attempt'],manifest['source_commit'])
+    for r, discovered in zip(manifest['suite_results'],inventory['suite_results']):
+        expected=discovered['distinct_ids']
         assert expected==r['distinct_ids'] and r['passed'] and not r['skipped'] and not r['failures'] and not r['errors'] and r['exit_code']==0,('Presumed-source test receipt differs',r['suite'])
         all_ids.extend(expected)
         for shard in r.get('module_results',[]):assert shard['passed'] and shard['exit_code']==0 and digest(ROOT/shard['log'])==shard['log_sha256']
     assert len(all_ids)==len(set(all_ids))==manifest['executed_distinct_tests'],'Presumed-source test count differs'
-    assert len(manifest['suite_results'])==17 and len(manifest['logs'])==28,'Presumed-source release population incomplete'
+    assert len(manifest['suite_results'])==len(SUPPORTED_SUITES) and len(manifest['logs'])==len(SUPPORTED_SUITES)+len(VALIDATOR_COMMANDS)+1,'Presumed-source release population incomplete'
     for row in manifest['logs']:assert row['exit_code']==0 and digest(ROOT/row['path'])==row['sha256'],('Presumed-source log changed',row['path'])
     # Preserve all merged main files under canonical knowledge and historical
     # accounting namespaces, and every original grants supplement file.

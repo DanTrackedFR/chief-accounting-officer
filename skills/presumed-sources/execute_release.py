@@ -8,9 +8,10 @@ import subprocess
 import sys
 
 from receipt_integrity import require
-from verify_release import verify
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from build4.verify_release import verify
 
 
 def main():

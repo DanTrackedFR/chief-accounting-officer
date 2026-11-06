@@ -2,7 +2,7 @@ name: CAO presumed user-provided source assurance
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    paths: ['skills/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', 'build4/**', '.github/workflows/cao-presumed-sources.yml']
+    paths: ['diagnostics/profile12/**', 'tests/**', 'skills/**', 'local_cao/**', 'hosted_cao/**', 'orchestration/**', 'interfaces/**', 'build4/**', '.github/workflows/cao-presumed-sources.yml']
   workflow_dispatch:
     inputs:
       acceptance_pointer:
@@ -59,6 +59,8 @@ jobs:
               assert archive.testzip() is None
               assert archive.read('environment-persistence-probe.json') == Path('skills/presumed-sources/release/environment-persistence-probe.json').read_bytes()
           PYCODE
+      - name: Verify complete mandatory release discovery
+        run: python skills/presumed-sources/run_release.py --discover
       - name: Execute new regression or explicitly verify accepted evidence
         env:
           CAO_ACCEPTANCE_POINTER: ${{ inputs.acceptance_pointer }}
