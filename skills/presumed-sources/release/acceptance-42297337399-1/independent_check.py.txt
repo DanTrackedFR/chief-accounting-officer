@@ -1,0 +1,25 @@
+import pathlib,json,hashlib,zipfile,collections,copy,importlib.util,sys,subprocess
+R=pathlib.Path('repo').resolve(); E=pathlib.Path('evidence').resolve(); P=E/'build4/release/presumed-sources-attempt-ci-42297337399-1'
+def h(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+spec=importlib.util.spec_from_file_location('v',R/'skills/presumed-sources/verify_release.py');v=importlib.util.module_from_spec(spec);spec.loader.exec_module(v)
+m=json.loads((P/'release-regression.json').read_text()); d=json.loads((P/'discovery.json').read_text());v.validate_population(m)
+issues=[];ids=[]
+for i,row in enumerate(m['suite_results']):
+ ids+=row['distinct_ids']; assert row['distinct_ids']==d['suite_results'][i]['distinct_ids']; assert json.loads((P/f'suite-{i}.json').read_text())=={k:x for k,x in row.items() if k!='exit_code'}
+ for j,s in enumerate(row.get('module_results',[])):
+  assert h(E/s['log'])==s['log_sha256']; assert json.loads((P/f'suite-{i}-module-{j}.json').read_text())=={k:x for k,x in s.items() if k not in ['exit_code','log','log_sha256']}
+for row in m['logs']:assert h(E/row['path'])==row['sha256']
+assert len(ids)==len(set(ids))==3940
+print('POSITIVE population, discovery, all suite/shard sidecars and log hashes PASS')
+for label,mut in [('missing suite',lambda x:x['suite_results'].pop()),('skipped test',lambda x:x['suite_results'][17].update(skipped=1)),('duplicate identity',lambda x:x['suite_results'][18]['distinct_ids'].append(x['suite_results'][18]['distinct_ids'][0])),('failed command',lambda x:x['logs'][0].update(exit_code=1))]:
+ n=copy.deepcopy(m);mut(n)
+ try:v.validate_population(n)
+ except (AssertionError,ValueError):print('NEGATIVE',label,'REJECTED')
+ else:raise RuntimeError(label+' accepted')
+print('HISTORICAL',v.verify_historical())
+for key in ['tested_python_sha256','tested_execution_inputs_sha256']:
+ mp=m[key];bad=[n for n,val in mp.items() if h(R/n)!=val]; print('SOURCE',key,len(mp),'mismatches',bad);assert not bad
+ print('MAP indent2+newline',hashlib.sha256((json.dumps(mp,sort_keys=True,indent=2)+'\n').encode()).hexdigest())
+for file in ['skills/presumed-sources/verify_release.py','build4/verify_release.py']:
+ for args in [['-O'],[]]:
+  result=subprocess.run([sys.executable,*args,str(R/file),'--pointer','build4/release/independent-deliberately-missing.json'],cwd=R,text=True,capture_output=True); assert result.returncode!=0; print('NEGATIVE',file,args,result.stderr.strip().splitlines()[-1])

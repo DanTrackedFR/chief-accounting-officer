@@ -1,0 +1,12 @@
+{
+  "source": "126c2f85ea37dc216bb8a732ed4394e4bfbc7e17",
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "skills/presumed-sources/verify_release.py",
+    "--focused",
+    "diagnostics/profile12/remediation/independent-eng-qa-v1-pointer.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmpewaq65d4/candidate/skills/presumed-sources/verify_release.py\", line 186, in <module>\n    result = verify_focused(sys.argv[2])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpewaq65d4/candidate/skills/presumed-sources/verify_release.py\", line 177, in verify_focused\n    inventory = verify_inventory(ROOT, pointer, path, manifest, 'focused-governance-qa-v1')\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpewaq65d4/candidate/skills/presumed-sources/receipt_integrity.py\", line 68, in verify_inventory\n    require(digest(artifact(root, name)) == expected, 'Evidence inventory artifact changed: ' + name)\n                   ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpewaq65d4/candidate/skills/presumed-sources/receipt_integrity.py\", line 23, in artifact\n    require(not Path(name).is_absolute() and '..' not in Path(name).parts,\n  File \"/tmp/tmpewaq65d4/candidate/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: Evidence path escapes repository\n"
+}
