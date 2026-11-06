@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 110, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 104, in main
+    print(json.dumps(discover(attempt, source_commit()), sort_keys=True, indent=2))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/release_population.py", line 124, in discover
+    require(not missing, 'Missing mandatory remediation tests: '+', '.join(sorted(missing)))
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/receipt_integrity.py", line 13, in require
+    raise IntegrityError(message)
+receipt_integrity.IntegrityError: Missing mandatory remediation tests: diagnostics/profile12::regressions.Regressions.test_ENG_01
