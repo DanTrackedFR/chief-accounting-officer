@@ -1,0 +1,10 @@
+{
+  "source": "98c89f9ae3f76fae441a86edeeb6232dd5d790ef",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "skills/presumed-sources/verify_release.py"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmpg2yswjvc/candidate/skills/presumed-sources/verify_release.py\", line 205, in <module>\n    result = verify()\n             ^^^^^^^^\n  File \"/tmp/tmpg2yswjvc/candidate/skills/presumed-sources/verify_release.py\", line 132, in verify\n    verify_inventory(ROOT,pointer,manifest_path,manifest,'release')\n  File \"/tmp/tmpg2yswjvc/candidate/skills/presumed-sources/receipt_integrity.py\", line 30, in verify_inventory\n    require(pointer.get('schema_version') == 2, 'A version 2 evidence inventory is required; historical acceptance is not backfilled')\n  File \"/tmp/tmpg2yswjvc/candidate/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: A version 2 evidence inventory is required; historical acceptance is not backfilled\n"
+}

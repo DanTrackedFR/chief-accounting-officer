@@ -1,0 +1,72 @@
+[
+  {
+    "label": "positive skills/presumed-sources/verify_release.py",
+    "exit_code": 0,
+    "output": "{\"distinct_tests\": 3940, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  },
+  {
+    "label": "optimized rejected skills/presumed-sources/verify_release.py",
+    "exit_code": 1,
+    "output": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "label": "historical stale rejected skills/presumed-sources/verify_release.py",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: A version 2 evidence inventory is required; historical acceptance is not backfilled"
+  },
+  {
+    "label": "missing pointer rejected skills/presumed-sources/verify_release.py",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/absent-independent.json"
+  },
+  {
+    "label": "positive build4/verify_release.py",
+    "exit_code": 0,
+    "output": "{\"distinct_tests\": 3940, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  },
+  {
+    "label": "optimized rejected build4/verify_release.py",
+    "exit_code": 1,
+    "output": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "label": "historical stale rejected build4/verify_release.py",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: A version 2 evidence inventory is required; historical acceptance is not backfilled"
+  },
+  {
+    "label": "missing pointer rejected build4/verify_release.py",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/absent-independent.json"
+  },
+  {
+    "label": "tampered suite-17.json",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Evidence inventory artifact changed: build4/release/presumed-sources-attempt-ci-42297337399-1/suite-17.json"
+  },
+  {
+    "label": "missing suite-17.json",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/presumed-sources-attempt-ci-42297337399-1/suite-17.json"
+  },
+  {
+    "label": "tampered suite-17.log",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Evidence inventory artifact changed: build4/release/presumed-sources-attempt-ci-42297337399-1/suite-17.log"
+  },
+  {
+    "label": "missing suite-17.log",
+    "exit_code": 1,
+    "output": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/presumed-sources-attempt-ci-42297337399-1/suite-17.log"
+  },
+  {
+    "label": "source drift rejected",
+    "exit_code": 1,
+    "output": "AssertionError: Presumed-source Python changed after regression"
+  },
+  {
+    "label": "restored positive",
+    "exit_code": 0,
+    "output": "{\"distinct_tests\": 3940, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  }
+]

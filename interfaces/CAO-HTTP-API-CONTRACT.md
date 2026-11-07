@@ -109,3 +109,31 @@ with formal review or posting authorization. No named independent accounting
 reviewer is required for this bounded profile. Actual source controls and all
 substantive accounting/evidence restrictions still apply. Reviewer records in
 submitted/staged evidence reject. Host-disabled reads/execution reject safely.
+
+## Profile 1.2 HTTP integration
+
+Trusted host configuration adds `allow_presumed_user_sources: false` by default.
+Enabling it requires `allow_prepared_unreviewed: true`. Start with explicit
+`source_assurance: presumed_user_provided` and `review_mode: prepared_unreviewed`,
+submit the source Case under the selected facts family, then use existing /v1/jobs.
+The Case-level source assertion, optional policy_elections and ordinary AP matching
+rules follow CAO-EXECUTION-CONTRACT.md and source-case.schema.json. Transport,
+authentication, persistent Case and job ownership remain unchanged.
+
+Assurance is immutable and included in the structured Case cycle. Full descriptor,
+source rows, source attestation, source versions/hashes and class assumptions are
+bound at job acceptance. Explicit request/row assurance changes reject. Restart
+and exact-key retries restore the same checkpoint without repeating accounting.
+A missing case_id produces HTTP400 invalid_request with error.requirements naming
+case_id. Malformed source Case bindings return the native HTTP422 invalid_request
+and an actionable field requirement. Such deterministic errors are checked before
+acceptance, not reported as “Service temporarily unavailable” job failures.
+
+Render public_result.validation_requirements as Nally needs and
+public_result.anomaly_report.findings as checks/exceptions; never render raw native
+facts, policy metadata or source assertions. Supported rows may coexist with
+UNRESOLVED population issues and native PARTIAL. NOT_PERFORMED is an unperformed
+check, not a pass. No generic accountant referral, automatic posting, independent
+source verification or review approval is inferred. The independent synthetic
+27-row/10-invoice HTTP proof covers the corrected four addendum requirements;
+TrackedFR owns its separate original-file acceptance.

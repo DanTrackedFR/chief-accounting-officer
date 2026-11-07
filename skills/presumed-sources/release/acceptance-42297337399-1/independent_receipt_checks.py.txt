@@ -1,0 +1,21 @@
+import pathlib,json,subprocess,sys,hashlib
+R=pathlib.Path('independent-repo').resolve(); P='build4/release/presumed-sources-accepted-42297337399-1-v2.json';A=R/'build4/release/presumed-sources-attempt-ci-42297337399-1'; results=[]
+def run(label,script='skills/presumed-sources/verify_release.py',opt=False,pointer=P,good=False):
+ r=subprocess.run([sys.executable,*(['-O'] if opt else []),str(R/script),'--pointer',pointer],cwd=R,capture_output=True,text=True)
+ if (r.returncode==0)!=good: raise RuntimeError((label,r.stdout,r.stderr))
+ results.append(dict(label=label,exit_code=r.returncode,output=(r.stdout+r.stderr).strip().splitlines()[-1]));print(results[-1],flush=True)
+for s in ['skills/presumed-sources/verify_release.py','build4/verify_release.py']:
+ run('positive '+s,s,good=True);run('optimized rejected '+s,s,opt=True);run('historical stale rejected '+s,s,pointer='build4/release/presumed-sources-accepted-release.json');run('missing pointer rejected '+s,s,pointer='build4/release/absent-independent.json')
+for name in ['suite-17.json','suite-17.log']:
+ path=A/name;original=path.read_bytes()
+ try:
+  path.write_bytes(original+b' ');run('tampered '+name)
+  path.unlink();run('missing '+name)
+ finally:path.write_bytes(original)
+source=R/'skills/presumed-sources/production.py'
+if not source.exists():source=R/'skills/presumed-sources/verify_release.py'
+original=source.read_bytes()
+try:source.write_bytes(original+b'\n# independent source tamper challenge\n');run('source drift rejected')
+finally:source.write_bytes(original)
+run('restored positive',good=True)
+pathlib.Path('independent-receipt-results.json').write_text(json.dumps(results,indent=2)+'\n')

@@ -1,0 +1,57 @@
+test_GOV_01 (__main__.Governance.test_GOV_01) ... 
+  test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='build4/release/presumed-sources-attempt-ci-41779799873-1/start-source-hashes.json') ... FAIL
+  test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='build4/release/presumed-sources-attempt-ci-41779799873-1/suite-1.json') ... FAIL
+  test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='skills/presumed-sources/release/full-regression-presumed-sources-attempt-ci-41779799873-1.log') ... FAIL
+  test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='skills/presumed-sources/release/workflow-migration/receipt-review.md') ... FAIL
+test_GOV_02 (__main__.Governance.test_GOV_02) ... FAIL
+test_control_bound_log (__main__.Governance.test_control_bound_log) ... ok
+test_control_intact (__main__.Governance.test_control_intact) ... ok
+
+======================================================================
+FAIL: test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='build4/release/presumed-sources-attempt-ci-41779799873-1/start-source-hashes.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/governance.py", line 32, in test_GOV_01
+    with self.subTest(sidecar=name):self.assertNotEqual(p.returncode,0,'Tampered sidecar accepted: '+name)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : Tampered sidecar accepted: build4/release/presumed-sources-attempt-ci-41779799873-1/start-source-hashes.json
+
+======================================================================
+FAIL: test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='build4/release/presumed-sources-attempt-ci-41779799873-1/suite-1.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/governance.py", line 32, in test_GOV_01
+    with self.subTest(sidecar=name):self.assertNotEqual(p.returncode,0,'Tampered sidecar accepted: '+name)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : Tampered sidecar accepted: build4/release/presumed-sources-attempt-ci-41779799873-1/suite-1.json
+
+======================================================================
+FAIL: test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='skills/presumed-sources/release/full-regression-presumed-sources-attempt-ci-41779799873-1.log')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/governance.py", line 32, in test_GOV_01
+    with self.subTest(sidecar=name):self.assertNotEqual(p.returncode,0,'Tampered sidecar accepted: '+name)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : Tampered sidecar accepted: skills/presumed-sources/release/full-regression-presumed-sources-attempt-ci-41779799873-1.log
+
+======================================================================
+FAIL: test_GOV_01 (__main__.Governance.test_GOV_01) (sidecar='skills/presumed-sources/release/workflow-migration/receipt-review.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/governance.py", line 32, in test_GOV_01
+    with self.subTest(sidecar=name):self.assertNotEqual(p.returncode,0,'Tampered sidecar accepted: '+name)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 == 0 : Tampered sidecar accepted: skills/presumed-sources/release/workflow-migration/receipt-review.md
+
+======================================================================
+FAIL: test_GOV_02 (__main__.Governance.test_GOV_02)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/governance.py", line 41, in test_GOV_02
+    self.assertNotEqual(optimized.returncode,0,'Optimized Python accepted unauthorized workflow')
+AssertionError: 0 == 0 : Optimized Python accepted unauthorized workflow
+
+----------------------------------------------------------------------
+Ran 4 tests in 30.613s
+
+FAILED (failures=5)

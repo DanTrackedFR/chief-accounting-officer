@@ -213,8 +213,14 @@ def canonical_knowledge(topic_ids, framework, package=None):
             documents.append({'topic_id':tid,'path':str(p.relative_to(ROOT)), 'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
     return claims,documents
 
-def execute(package, case, *, allow_prepared_unreviewed=False):
+def execute(package, case, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):
     mode = case.get('review_mode', 'formal') if isinstance(case, dict) else 'formal'
+    assurance = case.get('source_assurance') if isinstance(case, dict) else None
+    if assurance is not None:
+        if assurance != 'presumed_user_provided' or mode != 'prepared_unreviewed': raise ReviewRequired('Invalid source-assurance profile')
+        if allow_prepared_unreviewed is not True or allow_presumed_user_sources is not True: raise ReviewRequired('Presumed user sources require both host switches')
+        from source_execution import execute as source_execute
+        return source_execute(package, case)
     if mode == 'prepared_unreviewed':
         if allow_prepared_unreviewed is not True: raise ReviewRequired('System preparation is disabled by host configuration')
         from prepared_execution import execute as prepare
@@ -286,8 +292,8 @@ def case_fingerprint(case):
     if hashlib.sha256(bridge_path.read_bytes()).hexdigest() == 'a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b':
         from investment_fingerprint import bind_investment_dispatch
         implementation = bind_investment_dispatch(case, ROOT, PACKAGES, files, implementation)
-    from prepared_fingerprint import bind_additive_mode
-    implementation = bind_additive_mode(case, ROOT, PACKAGES, files, implementation, '1c371d847f0f86eb7eba5bb9a1b92a13250f52db4f9a09dca5f675f5d2ef0977')
+    from source_fingerprint import bind_source_mode
+    implementation = bind_source_mode(case, ROOT, PACKAGES, files, implementation, '7011aa04c86f51184354a05e97ab3fceee9036c6a2649761f66135f7ed04ddd2')
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
 
@@ -312,6 +318,9 @@ def _public_requirement_text(text):
 
 
 def to_public(result, route='answer'):
+    if result.get('source_assurance') == 'presumed_user_provided':
+        from source_execution import to_public as source_public
+        return source_public(result, route)
     if result.get('review_mode') == 'prepared_unreviewed':
         from prepared_execution import to_public as prepared_public
         return prepared_public(result, route)
@@ -394,11 +403,11 @@ def serializable(obj):
     raise TypeError(type(obj).__name__)
 
 
-def assess_case(package,case, *, allow_prepared_unreviewed=False):
+def assess_case(package,case, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):
     """CAO-facing result adapter; unresolved cases return a structured handoff."""
     if package not in PACKAGES:raise ReviewRequired('Unknown accounting skill')
     if not isinstance(case,dict):case={}
-    try:return execute(package,case,allow_prepared_unreviewed=allow_prepared_unreviewed)
+    try:return execute(package,case,allow_prepared_unreviewed=allow_prepared_unreviewed,allow_presumed_user_sources=allow_presumed_user_sources)
     except (ReviewRequired,KeyError,TypeError,AttributeError,ArithmeticError) as exc:
         reason=str(exc)
         routes={

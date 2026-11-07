@@ -488,6 +488,9 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         files = set(fingerprint_files(case, root, production.PACKAGES))
         files.update(root/name for name in (
             'skills/prepared_execution.py', 'skills/prepared_fingerprint.py',
+            'skills/source_fingerprint.py', 'skills/presumed-sources/additive-changes.json',
+            'skills/presumed-sources/release/main-7146-production.py.txt',
+            'skills/presumed-sources/release/main-7146-public-output.py.txt',
             'skills/prepared-accounting/release/main-fbf8-production.py.txt',
             'skills/prepared-accounting/release/main-fbf8-public-output.py.txt',
             'skills/investment_fingerprint.py',
@@ -554,21 +557,21 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         import hashlib
         import production
         from implementation_scope import fingerprint_files
-        from prepared_fingerprint import bind_additive_mode
+        from source_fingerprint import bind_source_mode
         root = Path(__file__).resolve().parents[2]
         case = formal_evidence('fixed-assets')['facts']['machinery']
         files = fingerprint_files(case, root, production.PACKAGES)
         captured = {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
                     for path in files}
-        pinned = hashlib.sha256((root/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
-        normalized = bind_additive_mode(case, root, production.PACKAGES, files, captured, pinned)
+        pinned = hashlib.sha256((root/'skills/source_fingerprint.py').read_bytes()).hexdigest()
+        normalized = bind_source_mode(case, root, production.PACKAGES, files, captured, pinned)
         self.assertNotEqual(normalized['skills/production.py'], captured['skills/production.py'],
                             'Fixture must exercise a valid live compatibility normalization')
         for name in ('skills/production.py', 'interfaces/public_output.py'):
             with self.subTest(boundary=name):
                 changed = dict(captured)
                 changed[name] = '0'*64
-                result = bind_additive_mode(case, root, production.PACKAGES, files, changed, pinned)
+                result = bind_source_mode(case, root, production.PACKAGES, files, changed, pinned)
                 self.assertEqual(result, changed,
                                  'Digest captured by caller must match the authoritative bytes before normalization')
 
@@ -581,6 +584,9 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         files = set(fingerprint_files(case, root, production.PACKAGES))
         files.update(root/name for name in ('skills/prepared_execution.py',
                                            'skills/prepared_fingerprint.py',
+                                           'skills/source_fingerprint.py', 'skills/presumed-sources/additive-changes.json',
+                                           'skills/presumed-sources/release/main-7146-production.py.txt',
+                                           'skills/presumed-sources/release/main-7146-public-output.py.txt',
                                            'skills/investment_fingerprint.py',
                                            'knowledge/phase-2d-topic-manifest.json'))
         for package in ('fixed-assets', 'accounts-payable'):

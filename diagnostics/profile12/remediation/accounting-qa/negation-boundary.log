@@ -1,0 +1,15 @@
+test_new_dispute_verb_forms_respect_explicit_negation (__main__.AccountingQA.test_new_dispute_verb_forms_respect_explicit_negation) ... FAIL
+
+======================================================================
+FAIL: test_new_dispute_verb_forms_respect_explicit_negation (__main__.AccountingQA.test_new_dispute_verb_forms_respect_explicit_negation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/40b97368343f/chief-accounting-officer/diagnostics/profile12/remediation/accounting-qa/test_accounting_qa.py", line 88, in test_new_dispute_verb_forms_respect_explicit_negation
+    p,n=self.run_case(c,'accounts-payable',label=self._testMethodName+str(i));self.assertEqual(self.amount(p,'invoices'),360);self.assertEqual(p['accounting_determination'],'SUPPORTED')
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 360
+
+----------------------------------------------------------------------
+Ran 1 test in 0.756s
+
+FAILED (failures=1)

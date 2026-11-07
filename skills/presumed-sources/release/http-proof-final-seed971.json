@@ -1,0 +1,70 @@
+{
+  "executions": [
+    {
+      "calculations": [
+        {
+          "amount": "64800.00",
+          "label": "depreciation"
+        },
+        {
+          "amount": "648000",
+          "label": "closing cost"
+        },
+        {
+          "amount": "64800.00",
+          "label": "closing accumulated"
+        }
+      ],
+      "checks": {
+        "NOT_PERFORMED": 41,
+        "PASS": 219
+      },
+      "idempotent_retry_equal": true,
+      "native_status": "partial",
+      "package": "fixed-assets",
+      "population_status": "SUPPLIED_FILE_BOUNDED",
+      "public_sha256": "33843df0afa5264b7a741fd855e93913645865960ebafffb69621657e69b45d4",
+      "restart_equal": true,
+      "review_provenance": "SYSTEM_PREPARED",
+      "source_provenance": "USER_PROVIDED_SOURCES",
+      "synthetic_records": 27,
+      "validation_requirements": []
+    },
+    {
+      "calculations": [
+        {
+          "amount": "1550",
+          "label": "invoices"
+        }
+      ],
+      "checks": {
+        "NOT_PERFORMED": 44,
+        "PASS": 63
+      },
+      "idempotent_retry_equal": true,
+      "native_status": "partial",
+      "package": "accounts-payable",
+      "population_status": "SUPPLIED_FILE_BOUNDED",
+      "public_sha256": "95e939980110ba28e38eb18b0280b317f8772703808cd95c9d7c67dddb07a399",
+      "restart_equal": true,
+      "review_provenance": "SYSTEM_PREPARED",
+      "source_provenance": "USER_PROVIDED_SOURCES",
+      "synthetic_records": 10,
+      "validation_requirements": []
+    }
+  ],
+  "input_origin": "Representative synthetic fixtures; TrackedFR separately retests original contract-probe files.",
+  "malformed_case_binding": {
+    "code": "invalid_request",
+    "message": "Check the versioned request contract.",
+    "requirements": [
+      {
+        "category": "missing_fact",
+        "explanation": "Supply a nonblank case id.",
+        "field_path": "case_id",
+        "identifier": "request.case_id"
+      }
+    ]
+  },
+  "profile": "presumed_user_provided"
+}

@@ -1,0 +1,54 @@
+{
+  "implementation_baseline": "36acb611142bc8bedd214622f1ecac539c290056",
+  "tree": "fa3a5b37d87aed9a4d4a5c6bea9ebf2b5f9a6628",
+  "main": "7146eaeca6a28d17d9183d0f9431fd9b9663f1fe",
+  "local_runtime_checkout_head": "88a2e878be516283ec01f351f6c07c493ab89908",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "production_changes_from_baseline": [],
+  "receipt_maps": {
+    "tested_python_sha256": {
+      "entries": 439,
+      "mismatches": []
+    },
+    "tested_execution_inputs_sha256": {
+      "entries": 2700,
+      "mismatches": []
+    }
+  },
+  "historical_entries": 8912,
+  "historical_mismatches": [],
+  "protected_sha256": {
+    "skills/presumed-sources/release/historical-preservation.json": "2c4fcdc1b938a1297acb31080e32c3c6ec388ad756395146028df45c98e70c49",
+    "skills/presumed-sources/release/workflow-migration/contract-v2.json": "a1d5672288968069ab5b4c7068ec65116dcacbc9d1f0783e7aace2d1b6520ceb",
+    "skills/presumed-sources/release/workflow-migration/cao-orchestration.v1.yml": "a4dbd9518ad72926bf3a46e0d4bc5a98d0bc286e23838aaaef29645c4aa671d7",
+    ".github/workflows/cao-orchestration.yml": "5699e0d078775e2b6a1132788505195af436bf35302ff023a65afe10414f6c31",
+    "build4/release/presumed-sources-accepted-release.json": "6c0a0f56b176e73e79de7798ded21b4ae238d2d0396e04d32d657e1fbf5cdd82",
+    "build4/release/presumed-sources-attempt-ci-41779799873-1/release-regression.json": "b8d810dcc8a66d260c77e81d7d6bfadb7535a0a95bf6e6d67ba6ea3d62958c4b"
+  },
+  "commands": [
+    "CAO_DIAGNOSTIC_OUT=diagnostics/profile12/evidence python diagnostics/profile12/regressions.py > diagnostics/profile12/evidence/runtime-baseline.log 2>&1",
+    "CAO_DIAGNOSTIC_OUT=diagnostics/profile12/evidence python diagnostics/profile12/governance.py > diagnostics/profile12/evidence/governance-baseline.log 2>&1"
+  ],
+  "results": {
+    "runtime": {
+      "methods": 19,
+      "passed_methods": 7,
+      "failed_methods": 12,
+      "failure_records": 15,
+      "errors": 0,
+      "skips": 0,
+      "exit_code": 1
+    },
+    "governance": {
+      "methods": 4,
+      "passed_methods": 2,
+      "failed_methods": 2,
+      "failure_records": 5,
+      "errors": 0,
+      "skips": 0,
+      "exit_code": 1
+    }
+  },
+  "harness_changes_after_last_run": "Lossless evidence packaging only: dump now gzips all runtime JSON; assertions and fixture bytes unchanged. All packaged JSON round-tripped exactly."
+}

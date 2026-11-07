@@ -118,7 +118,7 @@ jobs:
           cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('local_cao/examples/cli-proof.json'))")" /tmp/local-cao-proof.json
       - name: Orchestration authored and independent QA
         if: steps.prior.outputs.cached != 'true'
-        run: python -m intelligence.tests.run_release suite orchestration/tests 'test_*.py' ci-orchestration
+        run: python -m intelligence.tests.run_release suite orchestration/tests 'test_*.py' "ci-orchestration-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
       - name: Existing skills and lease vertical slice
         if: steps.prior.outputs.cached != 'true'
         run: |

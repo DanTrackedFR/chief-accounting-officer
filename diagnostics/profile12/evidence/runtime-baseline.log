@@ -1,0 +1,174 @@
+test_ACC_01 (__main__.Regressions.test_ACC_01) ... FAIL
+test_ACC_02 (__main__.Regressions.test_ACC_02) ... FAIL
+test_ACC_03 (__main__.Regressions.test_ACC_03) ... FAIL
+test_ACC_04 (__main__.Regressions.test_ACC_04) ... FAIL
+test_ACC_05 (__main__.Regressions.test_ACC_05) ... FAIL
+test_ENG_01 (__main__.Regressions.test_ENG_01) ... FAIL
+test_ENG_02 (__main__.Regressions.test_ENG_02) ... FAIL
+test_ENG_02_mixed (__main__.Regressions.test_ENG_02_mixed) ... FAIL
+test_ENG_03 (__main__.Regressions.test_ENG_03) ... FAIL
+test_ENG_04 (__main__.Regressions.test_ENG_04) ... FAIL
+test_ENG_05 (__main__.Regressions.test_ENG_05) ... FAIL
+test_ENG_06 (__main__.Regressions.test_ENG_06) ... 
+  test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/operations', operation=[]) ... FAIL
+  test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/operations', operation={}) ... FAIL
+  test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/jobs', operation=[]) ... FAIL
+  test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/jobs', operation={}) ... FAIL
+test_control_accrual (__main__.Regressions.test_control_accrual) ... ok
+test_control_ap (__main__.Regressions.test_control_ap) ... ok
+test_control_disposal (__main__.Regressions.test_control_disposal) ... ok
+test_control_disputed (__main__.Regressions.test_control_disputed) ... ok
+test_control_fa (__main__.Regressions.test_control_fa) ... ok
+test_control_invalid_opening (__main__.Regressions.test_control_invalid_opening) ... ok
+test_control_no_disposal (__main__.Regressions.test_control_no_disposal) ... ok
+
+======================================================================
+FAIL: test_ACC_01 (__main__.Regressions.test_ACC_01)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 74, in test_ACC_01
+    p,n=self.run_case('ACC-01');self.assertNotEqual(p['accounting_determination'],'SUPPORTED','Current additions cannot cure invalid opening accumulation');self.assertFalse(n['calculations'].get('assets'))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SUPPORTED' == 'SUPPORTED' : Current additions cannot cure invalid opening accumulation
+
+======================================================================
+FAIL: test_ACC_02 (__main__.Regressions.test_ACC_02)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 76, in test_ACC_02
+    p,n=self.run_case('ACC-02','accounts-payable');self.assertNotIn('administrative expense',json.dumps(n['proposed_journal_workpaper'],default=str),'Refundable deposit conflicts with inherited service-expense default');self.assertNotEqual(p['accounting_determination'],'SUPPORTED')
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'administrative expense' unexpectedly found in '[[{"account": "administrative expense", "amount": "110.00", "side": "Dr"}, {"account": "accounts payable", "amount": "110.00", "side": "Cr"}]]' : Refundable deposit conflicts with inherited service-expense default
+
+======================================================================
+FAIL: test_ACC_03 (__main__.Regressions.test_ACC_03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 78, in test_ACC_03
+    p,n=self.run_case('ACC-03');self.assertNotIn('cash',json.dumps(n['proposed_journal_workpaper'],default=str),'Unpaid credit consideration cannot be debited to cash')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'cash' unexpectedly found in '[[{"account": "depreciation expense", "amount": "1100.00", "side": "Dr"}, {"account": "accumulated depreciation", "amount": "1100.00", "side": "Cr"}], [{"account": "cash", "amount": "12000.00", "side": "Dr"}, {"account": "accumulated depreciation", "amount": "1100.00", "side": "Dr"}, {"account": "PPE cost", "amount": "11000.00", "side": "Cr"}, {"account": "disposal gain", "amount": "2100.00", "side": "Cr"}]]' : Unpaid credit consideration cannot be debited to cash
+
+======================================================================
+FAIL: test_ACC_04 (__main__.Regressions.test_ACC_04)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 80, in test_ACC_04
+    p,n=self.run_case('ACC-04','accounts-payable');self.assertEqual(self.amount(p,'invoices'),110,'Explicit negation does not establish a dispute');self.assertEqual(p['accounting_determination'],'SUPPORTED')
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 110 : Explicit negation does not establish a dispute
+
+======================================================================
+FAIL: test_ACC_05 (__main__.Regressions.test_ACC_05)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 82, in test_ACC_05
+    p,n=self.run_case('ACC-05','accounts-payable');self.assertEqual(self.amount(p,'closing accruals'),200,'Unrelated missing invoice supplier must not erase supported accrual');self.assertTrue(p['validation_requirements'])
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 200 : Unrelated missing invoice supplier must not erase supported accrual
+
+======================================================================
+FAIL: test_ENG_01 (__main__.Regressions.test_ENG_01)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 44, in test_ENG_01
+    p,n=self.run_case('ENG-01');self.assertNotEqual(p['accounting_determination'],'SUPPORTED','Nonboolean disposal authorization must be rejected');self.assertNotIn('cash',json.dumps(n['proposed_journal_workpaper'],default=str))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'SUPPORTED' == 'SUPPORTED' : Nonboolean disposal authorization must be rejected
+
+======================================================================
+FAIL: test_ENG_02 (__main__.Regressions.test_ENG_02)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 46, in test_ENG_02
+    p,n=self.run_case('ENG-02');self.assertFalse(p['calculations']);self.assertIn('assets:1',p['anomaly_report']['excluded_rows']);self.assertEqual(n['proposed_journal_workpaper'],[],'Rejected asset must contribute no persisted journal')
+                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [[{'account': 'depreciation expense', 'amo[119 chars]r'}]] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+[{'account': 'depreciation expense', 'amount': Decimal('545.48'), 'side': 'Dr'}, {'account': 'accumulated depreciation', 'amount': Decimal('545.48'), 'side': 'Cr'}]
+
++ []
+- [[{'account': 'depreciation expense',
+-    'amount': Decimal('545.48'),
+-    'side': 'Dr'},
+-   {'account': 'accumulated depreciation',
+-    'amount': Decimal('545.48'),
+-    'side': 'Cr'}]] : Rejected asset must contribute no persisted journal
+
+======================================================================
+FAIL: test_ENG_02_mixed (__main__.Regressions.test_ENG_02_mixed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 50, in test_ENG_02_mixed
+    self.assertEqual(debit,1100,'Only the valid row may contribute to persisted depreciation')
+AssertionError: Decimal('1645.48') != 1100 : Only the valid row may contribute to persisted depreciation
+
+======================================================================
+FAIL: test_ENG_03 (__main__.Regressions.test_ENG_03)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 61, in test_ENG_03
+    self.assertIn(status,(400,422),'Source Case ID object must fail preacceptance');self.assertIn('evidence.facts.machinery.case_id',[x['field_path'] for x in result['error']['requirements']])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in (400, 422) : Source Case ID object must fail preacceptance
+
+======================================================================
+FAIL: test_ENG_04 (__main__.Regressions.test_ENG_04)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 63, in test_ENG_04
+    p,n=self.run_case('ENG-04');encoded=json.dumps(p);self.assertLessEqual(encoded.count('X'*8192),1,'Large source identity must not be replicated per finding')
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 107 not less than or equal to 1 : Large source identity must not be replicated per finding
+
+======================================================================
+FAIL: test_ENG_05 (__main__.Regressions.test_ENG_05)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 65, in test_ENG_05
+    p,n=self.run_case('ENG-05','accounts-payable');self.assertIsNone(self.amount(p,'closing ap'),'Conflicting supplied payments must withhold closing AP');self.assertTrue(p['validation_requirements']);self.assertEqual(self.amount(p,'invoices'),110)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Decimal('110') is not None : Conflicting supplied payments must withhold closing AP
+
+======================================================================
+FAIL: test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/operations', operation=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 72, in test_ENG_06
+    self.assertIn(status,(400,422));self.assertEqual(result['error']['code'],'invalid_request');self.assertIn('operation',[x['field_path'] for x in result['error']['requirements']])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 503 not found in (400, 422)
+
+======================================================================
+FAIL: test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/operations', operation={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 72, in test_ENG_06
+    self.assertIn(status,(400,422));self.assertEqual(result['error']['code'],'invalid_request');self.assertIn('operation',[x['field_path'] for x in result['error']['requirements']])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 503 not found in (400, 422)
+
+======================================================================
+FAIL: test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/jobs', operation=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 72, in test_ENG_06
+    self.assertIn(status,(400,422));self.assertEqual(result['error']['code'],'invalid_request');self.assertIn('operation',[x['field_path'] for x in result['error']['requirements']])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 503 not found in (400, 422)
+
+======================================================================
+FAIL: test_ENG_06 (__main__.Regressions.test_ENG_06) (path='/v1/jobs', operation={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/2bef87c54611/chief-accounting-officer/diagnostics/profile12/regressions.py", line 72, in test_ENG_06
+    self.assertIn(status,(400,422));self.assertEqual(result['error']['code'],'invalid_request');self.assertIn('operation',[x['field_path'] for x in result['error']['requirements']])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 503 not found in (400, 422)
+
+----------------------------------------------------------------------
+Ran 19 tests in 13.687s
+
+FAILED (failures=15)

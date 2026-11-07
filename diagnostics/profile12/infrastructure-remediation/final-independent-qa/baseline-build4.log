@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/tmp/infra-final-review-baseline/build4/verify_release.py", line 90, in <module>
+    if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+                                             ^^^^^^^^
+  File "/tmp/infra-final-review-baseline/build4/verify_release.py", line 19, in verify
+    return module.verify()
+           ^^^^^^^^^^^^^^^
+  File "/tmp/infra-final-review-baseline/skills/presumed-sources/verify_release.py", line 134, in verify
+    verify_inventory(ROOT,pointer,manifest_path,manifest,'release')
+  File "/tmp/infra-final-review-baseline/skills/presumed-sources/receipt_integrity.py", line 30, in verify_inventory
+    require(pointer.get('schema_version') == 2, 'A version 2 evidence inventory is required; historical acceptance is not backfilled')
+  File "/tmp/infra-final-review-baseline/skills/presumed-sources/receipt_integrity.py", line 13, in require
+    raise IntegrityError(message)
+receipt_integrity.IntegrityError: A version 2 evidence inventory is required; historical acceptance is not backfilled

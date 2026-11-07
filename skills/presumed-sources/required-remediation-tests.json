@@ -1,0 +1,99 @@
+{
+  "baseline": "7f56ac01cd7b855ebba58411f28f7675c4371bcd",
+  "schema_version": 1,
+  "suites": [
+    {
+      "distinct_ids": [
+        "diagnostics/profile12::regressions.Regressions.test_ACC_01",
+        "diagnostics/profile12::regressions.Regressions.test_ACC_02",
+        "diagnostics/profile12::regressions.Regressions.test_ACC_03",
+        "diagnostics/profile12::regressions.Regressions.test_ACC_04",
+        "diagnostics/profile12::regressions.Regressions.test_ACC_05",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_01",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_02",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_02_mixed",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_03",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_04",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_05",
+        "diagnostics/profile12::regressions.Regressions.test_ENG_06",
+        "diagnostics/profile12::regressions.Regressions.test_control_accrual",
+        "diagnostics/profile12::regressions.Regressions.test_control_ap",
+        "diagnostics/profile12::regressions.Regressions.test_control_disposal",
+        "diagnostics/profile12::regressions.Regressions.test_control_disputed",
+        "diagnostics/profile12::regressions.Regressions.test_control_fa",
+        "diagnostics/profile12::regressions.Regressions.test_control_invalid_opening",
+        "diagnostics/profile12::regressions.Regressions.test_control_no_disposal"
+      ],
+      "pattern": "regressions.py",
+      "suite": "diagnostics/profile12"
+    },
+    {
+      "distinct_ids": [
+        "diagnostics/profile12::governance.Governance.test_GOV_01",
+        "diagnostics/profile12::governance.Governance.test_GOV_02",
+        "diagnostics/profile12::governance.Governance.test_control_bound_log",
+        "diagnostics/profile12::governance.Governance.test_control_intact"
+      ],
+      "pattern": "governance.py",
+      "suite": "diagnostics/profile12"
+    },
+    {
+      "distinct_ids": [
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_cash_disposal_positive",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_credit_disposal_positive",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_disposal_boolean_invalid_variants",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_disposal_false_and_omission_preserve_asset",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_equal_opening_cost_accumulation_valid",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_invalid_opening_with_addition_is_atomic",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_invalid_payment_aggregate_retains_invoice",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_malformed_accrual_supplier_not_authorized_by_overlap",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_malformed_invoice_preserves_independent_accrual",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_mixed_rejected_disposal_retains_only_valid_asset",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_negated_and_affirmative_dispute_context",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_new_dispute_verb_forms_respect_explicit_negation",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_out_of_period_payment_detail_qualifies_balance",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_payment_positive_and_conflict_preserve_invoice",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_refundable_deposit_and_ordinary_service_mixed",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_structured_affirmative_overrides_text_negation",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_unknown_or_conflicting_settlement_no_cash",
+        "diagnostics/profile12/remediation/accounting-qa::test_accounting_qa.AccountingQA.test_unresolved_overlap_remains_blocked"
+      ],
+      "pattern": "test_accounting_qa.py",
+      "suite": "diagnostics/profile12/remediation/accounting-qa"
+    },
+    {
+      "distinct_ids": [
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_boolean_disposal_boundary_direct",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_direct_owner_rejects_invalid_case_identifier",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_inline_case_identifier_types",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_invalid_operations_local_boundary",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_operation_types_are_structured_client_errors",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_population_limit_rejects_before_partial_accounting",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_replaced_staged_evidence_rejected_before_job_acceptance",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_row_id_bound_retains_independent_row",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_source_reference_does_not_multiply_and_keeps_anomalies",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_source_reference_over_bound_blocks_safely",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_staged_case_identifier_types",
+        "diagnostics/profile12/remediation/engineering-qa::test_boundaries.Boundaries.test_valid_boundary_identifier_is_distinct_from_durable_case"
+      ],
+      "pattern": "test_boundaries.py",
+      "suite": "diagnostics/profile12/remediation/engineering-qa"
+    },
+    {
+      "distinct_ids": [
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_01_positive_receipt_and_historical_preservation",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_02_additional_sidecar_classes_fail_closed",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_03_inventory_digest_and_omission_fail_closed",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_04_unlisted_attempt_file_and_required_deletion",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_05_identical_bytes_symlink_is_rejected",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_06_rehashed_role_substitution_is_rejected",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_07_path_escape_rejected",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_08_optimized_entrypoints_refuse_even_valid_receipt",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_09_stale_full_release_is_not_accepted",
+        "diagnostics/profile12/remediation/engineering-qa::test_governance.GovernanceBoundary.test_10_invented_discovery_population_rejected"
+      ],
+      "pattern": "test_governance.py",
+      "suite": "diagnostics/profile12/remediation/engineering-qa"
+    }
+  ]
+}

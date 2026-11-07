@@ -1,0 +1,12 @@
+{
+  "source": "33704a4cfecf8d54f4333fe8b836033d8c5ee826",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-O",
+    "-c",
+    "import runpy; v=runpy.run_path('skills/presumed-sources/verify_release.py'); print(v['verify_historical']())"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"<frozen runpy>\", line 287, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"skills/presumed-sources/verify_release.py\", line 11, in <module>\n    raise RuntimeError(\"Optimized Python is not supported for mandatory release integrity verification\")\nRuntimeError: Optimized Python is not supported for mandatory release integrity verification\n"
+}

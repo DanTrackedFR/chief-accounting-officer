@@ -1,0 +1,29 @@
+[
+  {
+    "label": "omitted-method-discovery",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "skills/presumed-sources/run_release.py",
+      "--discover"
+    ],
+    "exit_code": 1
+  },
+  {
+    "label": "dirty-workflow-preflight",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "skills/presumed-sources/run_release.py",
+      "--preflight"
+    ],
+    "exit_code": 1
+  },
+  {
+    "label": "ignored-source-preflight",
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "skills/presumed-sources/run_release.py",
+      "--preflight"
+    ],
+    "exit_code": 1
+  }
+]

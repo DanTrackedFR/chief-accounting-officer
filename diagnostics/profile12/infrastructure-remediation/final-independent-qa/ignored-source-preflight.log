@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 110, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 106, in main
+    return release(attempt, preflight=args.preflight)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 33, in release
+    committed_inputs()
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/run_release.py", line 26, in committed_inputs
+    require(inputs <= tracked, 'Commit all execution inputs, including ignored files, before isolated governance execution')
+  File "/tmp/infra-final-review-adversary/skills/presumed-sources/receipt_integrity.py", line 13, in require
+    raise IntegrityError(message)
+receipt_integrity.IntegrityError: Commit all execution inputs, including ignored files, before isolated governance execution

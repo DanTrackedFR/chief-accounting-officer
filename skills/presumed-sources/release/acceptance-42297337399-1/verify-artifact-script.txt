@@ -1,0 +1,13 @@
+import json,hashlib,pathlib,zipfile,collections,stat
+root=pathlib.Path('repo');out=root/'skills/presumed-sources/release/acceptance-42297337399-1'; zpath=pathlib.Path('artifact-13545745955.zip')
+h=lambda b:hashlib.sha256(b).hexdigest()
+with zipfile.ZipFile(zpath) as z:
+ names=z.namelist();assert len(names)==len(set(names))==296;assert z.testzip() is None
+ for i in z.infolist():
+  p=pathlib.PurePosixPath(i.filename);assert not p.is_absolute() and '..' not in p.parts and '\\' not in i.filename
+  assert not stat.S_ISLNK(i.external_attr>>16)
+ files={i.filename:h(z.read(i)) for i in z.infolist()}
+ assert all(h((root/n).read_bytes())==v for n,v in files.items())
+report=dict(artifact_id=13545745955,run_id=42297337399,run_attempt=1,source_commit='126c2f85ea37dc216bb8a732ed4394e4bfbc7e17',source_tree='db6d5d966451716a95b37c918eb788f3fca89319',zip_bytes=zpath.stat().st_size,zip_sha256=h(zpath.read_bytes()),members=len(names),files=files,archive_integrity='PASS',restored_bytes='PASS')
+(out/'artifact-verification.json').write_text(json.dumps(report,sort_keys=True,indent=2)+'\n')
+print(report['zip_sha256'])

@@ -26,11 +26,14 @@ SAFE = {'invalid_request': 'Check the versioned request contract.', 'unauthorize
         'payload_limit': 'Request exceeds the configured limit.'}
 
 class Error(Exception):
-    def __init__(self, code, status=400): self.code=code; self.status=status
+    def __init__(self, code, status=400, requirements=None): self.code=code; self.status=status; self.requirements=requirements or []
 
 class Service:
-    def __init__(self, root, companies, credentials, *, allow_prepared_unreviewed=False):
+    def __init__(self, root, companies, credentials, *, allow_prepared_unreviewed=False, allow_presumed_user_sources=False):
         if type(allow_prepared_unreviewed) is not bool: raise ValueError('Host enablement must be boolean')
+        if type(allow_presumed_user_sources) is not bool: raise ValueError('Host enablement must be boolean')
+        if allow_presumed_user_sources and not allow_prepared_unreviewed: raise ValueError('Presumed sources require prepared execution')
+        self.allow_presumed_user_sources = allow_presumed_user_sources
         self.allow_prepared_unreviewed=allow_prepared_unreviewed
         self.root=checked_path(root); self.root.mkdir(mode=0o700,parents=True,exist_ok=True)
         self.companies={identity(k):checked_path(v) for k,v in companies.items()}
@@ -71,6 +74,9 @@ class Service:
         return match['caller_id']
 
     def validate(self, request, company, operation=None):
+        from local_cao.validation import requirements as request_requirements
+        needs=request_requirements(request) if self.allow_presumed_user_sources else []
+        if needs: raise Error('invalid_request',requirements=needs)
         try:
             bounded(request)
             if not isinstance(request,dict) or len(canonical(request).encode())>MAX_BYTES: raise ValueError()
@@ -78,8 +84,9 @@ class Service:
             op=request.get('operation')
             if op not in OPERATIONS|{'execute'} or operation and op!=operation: raise ValueError()
             fields={'contract_version','company_id','operation','route'}
-            if op in ('start','submit','execute','status','questions','result','resume'): fields.add('review_mode')
+            if op in ('start','submit','execute','status','questions','result','resume'): fields |= {'review_mode','source_assurance'}
             if 'review_mode' in request and (request['review_mode'] not in ('formal','prepared_unreviewed') or (request['review_mode']=='prepared_unreviewed' and not self.allow_prepared_unreviewed)): raise ValueError()
+            if 'source_assurance' in request and (request['source_assurance'] != 'presumed_user_provided' or not self.allow_presumed_user_sources): raise ValueError()
             required=set()
             if op in {'start','investigate'}: fields|={'request_id','objective','target_family'}; required={'request_id','objective'} | ({'target_family'} if op=='start' else set())
             if op in {'status','questions','submit','execute','result','resume','document','continue_investigation','investigation','correct_investigation','rework_investigation'}: fields.add('case_id');required.add('case_id')
@@ -101,7 +108,7 @@ class Service:
             if op=='start' and (not isinstance(request['objective'],str) or not request['objective'].strip() or len(request['objective'])>4000 or not isinstance(request['target_family'],str)): raise ValueError()
             if 'staged_file_id' in request and not re.fullmatch('[A-Za-z0-9_-]{1,80}',request['staged_file_id']): raise ValueError()
             if 'evidence' in request and not isinstance(request['evidence'],dict): raise ValueError()
-        except (ValueError,TypeError,KeyError,RecursionError): raise Error('invalid_request') from None
+        except (ValueError,TypeError,KeyError,RecursionError): raise Error('invalid_request',requirements=[dict(identifier='request.shape',field_path='$',explanation='Check the submitted fields and types against the HTTP contract.',category='invalid_shape')] if self.allow_presumed_user_sources else []) from None
         return dict(request)
 
     def call(self, company, request):
@@ -111,10 +118,10 @@ class Service:
             # A host-provisioned regular JSON file. No caller-supplied path is accepted.
             r['evidence_file']='staged/'+r.pop('staged_file_id')+'.json'
         with self.company_locks[company]:
-            return ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call(r)
+            return ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources).call(r)
 
     def input_hash(self, company, request):
-        api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed)
+        api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources)
         config=api._configuration(company)
         d,folder=api._request(request["case_id"],config)
         if 'context_snapshot' in d:
@@ -135,8 +142,17 @@ class Service:
         if r['operation'] not in JOB_OPERATIONS:raise Error('invalid_request')
         if not isinstance(key,str) or not re.fullmatch('[A-Za-z0-9_.:-]{1,120}',key): raise Error('invalid_request')
         # Validate ownership and request existence before acceptance; status is not execution.
-        check=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call({**r,'operation':'status'})
+        check=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources).call({**r,'operation':'status'})
         if not check['ok']: raise Error('not_found',404)
+        if r['operation']=='execute':
+            api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources)
+            config=api._configuration(company);descriptor,folder=api._request(r['case_id'],config)
+            path=folder/'evidence.json'
+            if descriptor.get('source_assurance') and path.exists():
+                from local_cao.adapter import ClientValidation, Failure
+                try: api._evidence(api.read_json(str(path.relative_to(self.companies[company]))),descriptor)
+                except ClientValidation as exc: raise Error('invalid_request',requirements=exc.requirements) from None
+                except (Failure,ValueError,TypeError,KeyError): raise Error('invalid_request',requirements=[dict(identifier='request.evidence',field_path='evidence',explanation='Correct the staged evidence bindings.',category='invalid_shape')] if self.allow_presumed_user_sources else []) from None
         payload=canonical(r);fp=hashlib.sha256(payload.encode()).hexdigest()
         jid='job-'+hashlib.sha256(canonical([company,key]).encode()).hexdigest()
         with self.db() as c:
@@ -156,10 +172,14 @@ class Service:
         if row['result_case']:
             # Always load latest authoritative checkpoint/currentness, never a cached accounting answer.
             with self.company_locks[company]:
-                out['accounting']=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed).call({**decode(row['request']),'operation':'resume'})
+                out['accounting']=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources).call({**decode(row['request']),'operation':'resume'})
         elif row['outcome']:
             out['accounting']=decode(row['outcome'])
-        if row['error']: out['error']={'code':row['error'],'message':SAFE['unavailable']}
+        if row['error']:
+            out['error']={'code':row['error'],'message':SAFE.get(row['error'],SAFE['unavailable'])}
+            if row['outcome']:
+                safe=decode(row['outcome']).get('error',{})
+                if safe.get('requirements'):out['error']['requirements']=safe['requirements']
         return out
 
     def start_worker(self):
@@ -180,7 +200,7 @@ class Service:
             row=c.execute("SELECT * FROM jobs WHERE state IN ('ACCEPTED','EXECUTING') ORDER BY created,id LIMIT 1").fetchone()
             if row is None:return False
             c.execute("UPDATE jobs SET state='EXECUTING',attempts=attempts+1,updated=? WHERE id=?",(time.time(),row['id']))
-        started=time.monotonic();company=row['company'];request=decode(row['request']);api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed)
+        started=time.monotonic();company=row['company'];request=decode(row['request']);api=ExecutionInterface(self.companies[company],allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources)
         response=None
         try:
             with self.company_locks[company]:
@@ -188,11 +208,14 @@ class Service:
             if response['ok']:
                 state='SUCCEEDED';error=None;reference=request['case_id'] if response.get('durable') else None
             else:
-                state='FAILED';error='unavailable';reference=None
+                state='FAILED';error='invalid_request' if response.get('error',{}).get('code')=='invalid_request' else 'unavailable';reference=None
+        except Error as exc:
+            state='FAILED';error=exc.code if exc.code in ('invalid_request','conflict') else 'unavailable';reference=None
+            response=dict(contract_version=API_VERSION,ok=False,error=dict(code=error,message=SAFE[error],**({'requirements':exc.requirements} if exc.requirements else {})))
         except Exception:
             state='FAILED';error='unavailable';reference=None
         with self.db() as c:
-            c.execute('UPDATE jobs SET state=?,result_case=?,outcome=?,error=?,updated=? WHERE id=?',(state,reference,canonical(response) if response and response.get('ok') and not reference else None,error,time.time(),row['id']))
+            c.execute('UPDATE jobs SET state=?,result_case=?,outcome=?,error=?,updated=? WHERE id=?',(state,reference,canonical(response) if response and not reference else None,error,time.time(),row['id']))
         LOG.info(canonical({'event':'job_finished','job_id':row['id'],'status':state,'duration_ms':round((time.monotonic()-started)*1000)}))
         return True
 
@@ -281,7 +304,7 @@ class Handler(BaseHTTPRequestHandler):
                         value=service.call(company,body);status=200 if value['ok'] else 422
                 else:raise Error('not_found',404)
         except Error as exc:
-            status=exc.status;value={'api_version':API_VERSION,'ok':False,'error':{'code':exc.code,'message':SAFE[exc.code]}}
+            status=exc.status;value={'api_version':API_VERSION,'ok':False,'error':{'code':exc.code,'message':SAFE[exc.code],**({'requirements':exc.requirements} if exc.requirements else {})}}
         except Exception:
             status=503;value={'api_version':API_VERSION,'ok':False,'error':{'code':'unavailable','message':SAFE['unavailable']}}
         # Emit safe operational metadata before the response becomes observable.

@@ -109,6 +109,33 @@
         },
         "message": {
           "type": "string"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "identifier",
+              "field_path",
+              "explanation",
+              "category"
+            ],
+            "properties": {
+              "identifier": {
+                "type": "string"
+              },
+              "field_path": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     },

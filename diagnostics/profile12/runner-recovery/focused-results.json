@@ -1,0 +1,83 @@
+{
+  "scope": "bounded-runner-recovery-not-release-acceptance",
+  "results": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_presumed_runner_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "diagnostics/profile12/runner-recovery/test_presumed_runner_all.log",
+      "sha256": "927c514ae4fb677bfe53dee115772b0e904fa750ba2b75a169ad70149a11db09"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_presumed_ci_evidence.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "diagnostics/profile12/runner-recovery/test_presumed_ci_evidence.log",
+      "sha256": "eef10ca488a3fb109fd4178cde5727d0fc5f91a55ffc9f34007fc78d88afb4ac"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_presumed_release.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "diagnostics/profile12/runner-recovery/test_presumed_release.log",
+      "sha256": "f02853c6a1731168ef6289ea1a8e0e8d4b4f1dddabe8df4e7db41ad4a45eac75"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_presumed_workflow_migration.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "diagnostics/profile12/runner-recovery/test_presumed_workflow_migration.log",
+      "sha256": "54993ce5ea424a2b4df436859ded5c93e4d5f3fa03a79ca007801fa6439fc7bf"
+    }
+  ],
+  "distinct_methods": 47,
+  "independent_methods_included": 16,
+  "historical_entries_verified": 8912,
+  "baseline": "a000d52991142352d9cd94ad2f554ea84fa1d151",
+  "source_sha256": {
+    ".github/workflows/cao-presumed-sources.yml": "c0a4f1da451d6bca650a0ba25fd7c5cafa3423a38c94e61dbf4fa9f897454259",
+    "skills/presumed-sources/execute_release.py": "8bbf10d989b6a57bcd1e8f4f273fc44b2c9ca660a44ea31cf9561b38531ad01f",
+    "skills/presumed-sources/verify_release.py": "64bf304bc340eed00f41768e5bba395e16871b5ce0ee6249b209e3ccb4b48ea5",
+    "tests/test_presumed_ci_evidence.py": "534993f29affb7be2a82487a3c2346245d633b67eb28971941de8f22db1fbda8",
+    "tests/test_presumed_runner_dispatch.py": "88bfc9b694b27a25881e2332e7ea69140ca0cc28389c9c00ce7e267316039a2d",
+    "tests/test_presumed_runner_recovery.py": "b7ed25828440462287693ab3c652d56567962c7771c000c5f3286cf2f0c154fe",
+    "diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py": "a4a304d64e5104e45cbb97e45fb7eeeaaa2c3955723b3e11936897b00ab9a8ae"
+  },
+  "independent_review_source_bindings_match": true
+}

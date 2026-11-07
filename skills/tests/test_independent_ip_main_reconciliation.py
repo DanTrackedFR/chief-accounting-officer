@@ -67,7 +67,20 @@ class IndependentMainReconciliation(unittest.TestCase):
   self.assertEqual(expected_dispatch(baseline.decode(),helper_hash),merged.decode())
   from prepared_fingerprint import expected_prepared_dispatch
   prepared_hash=hashlib.sha256((ROOT/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
-  self.assertEqual(expected_prepared_dispatch(merged.decode(),prepared_hash).encode(),(ROOT/'skills/production.py').read_bytes())
+  prepared=(ROOT/'skills/presumed-sources/release/main-7146-production.py.txt').read_bytes()
+  self.assertEqual(subprocess.check_output(['git','show','7146eaeca6a28d17d9183d0f9431fd9b9663f1fe:skills/production.py'],cwd=ROOT),prepared)
+  self.assertEqual(expected_prepared_dispatch(merged.decode(),prepared_hash).encode(),prepared)
+  # Independently replay the exact additive Profile 1.2 transformation; the
+  # previously approved dispatch witnesses and all accounting hashes stay fixed.
+  from source_fingerprint import TRANSFORM_HASH
+  manifest=(ROOT/'skills/presumed-sources/additive-changes.json').read_bytes()
+  self.assertEqual(TRANSFORM_HASH,hashlib.sha256(manifest).hexdigest())
+  source_pin=hashlib.sha256((ROOT/'skills/source_fingerprint.py').read_bytes()).hexdigest()
+  current=prepared.decode()
+  for before,after in json.loads(manifest)['skills/production.py']:
+   self.assertEqual(current.count(before),1)
+   current=current.replace(before,after.replace('__SOURCE_PIN__',source_pin),1)
+  self.assertEqual(current.encode(),(ROOT/'skills/production.py').read_bytes())
   old=ROOT/'skills/investment-property/fingerprint-baseline/production.py.txt'
   self.assertEqual('b452b2b46d56ad1f72cf7e87fdcadc9e8b7923a6d42c8945aac4589f291b7f52',hashlib.sha256(old.read_bytes()).hexdigest())
 
@@ -141,13 +154,18 @@ class IndependentMainReconciliation(unittest.TestCase):
   c=borrowing_case();files=fingerprint_files(c,ROOT,PACKAGES)
   actual={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
   native=Path.read_text
-  targets={ROOT/'skills/production.py',ROOT/'skills/investment-property/fingerprint-baseline/main-e753-production.py.txt'}
+  targets={ROOT/name for name in ('skills/production.py','interfaces/public_output.py',
+   'skills/investment-property/fingerprint-baseline/main-e753-production.py.txt',
+   'skills/prepared-accounting/release/main-fbf8-production.py.txt',
+   'skills/prepared-accounting/release/main-fbf8-public-output.py.txt',
+   'skills/presumed-sources/release/main-7146-production.py.txt',
+   'skills/presumed-sources/release/main-7146-public-output.py.txt')}
   def inconsistent(p,*a,**k):
    return 'incongruent non-authoritative text view' if p in targets else native(p,*a,**k)
   with patch.object(Path,'read_text',inconsistent):
-   from prepared_fingerprint import bind_additive_mode
-   pinned=hashlib.sha256((ROOT/'skills/prepared_fingerprint.py').read_bytes()).hexdigest()
-   result=bind_additive_mode(c,ROOT,PACKAGES,files,actual,pinned)
+   from source_fingerprint import bind_source_mode
+   pinned=hashlib.sha256((ROOT/'skills/source_fingerprint.py').read_bytes()).hexdigest()
+   result=bind_source_mode(c,ROOT,PACKAGES,files,actual,pinned)
   self.assertEqual(BASELINE_SHA,result['skills/production.py'])
 
  def test_owner_scoped_closure_has_no_investment_source_coupling(self):

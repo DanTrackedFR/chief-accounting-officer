@@ -1,4 +1,6 @@
 """Read-only exact-tree release witness; never regenerates accounting references."""
+import argparse
+import os
 import hashlib
 import json
 from pathlib import Path
@@ -6,11 +8,30 @@ import subprocess
 import sys
 import unittest
 
+if sys.flags.optimize:
+    raise RuntimeError('Optimized Python is not supported for mandatory release integrity verification')
+
 ROOT=Path(__file__).resolve().parents[1]
 
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
-def verify():
+def verify(pointer_path=None):
+    # Historical acceptance is immutable evidence for its original source, never
+    # an implicit candidate. The fixed current path is issued only after review;
+    # explicit paths permit immutable versioned candidate/retry receipts.
+    environment_pointer = os.environ.get('CAO_ACCEPTANCE_POINTER') or None
+    if pointer_path is not None and environment_pointer is not None and pointer_path != environment_pointer:
+        raise ValueError('Conflicting explicit acceptance pointers')
+    selected = pointer_path if pointer_path is not None else environment_pointer
+    source_verifier = ROOT/'skills/presumed-sources/verify_release.py'
+    if selected is not None or source_verifier.exists():
+        if selected is None:
+            selected = 'build4/release/presumed-sources-current-release.json'
+
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('presumed_sources_release_verifier',ROOT/'skills/presumed-sources/verify_release.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        return module.verify(selected)
     prepared_pointer=ROOT/'build4/release/prepared-execution-accepted-release.json'
     if prepared_pointer.exists():
         import importlib.util
@@ -81,4 +102,8 @@ print(json.dumps(sorted(sys.argv[1]+'::'+t.id() for t in cases(suite))))
     for name,checksum in inventory['files'].items():assert digest(ROOT/name)==checksum,('Artifact hash mismatch',name)
     return dict(status='PASS',distinct_tests=len(all_ids),historical_files=len(historical['files']),python_files=len(actual),proofs=len(proofs['proofs']))
 
-if __name__=='__main__':print(json.dumps(verify(),sort_keys=True))
+if __name__=='__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--pointer', help='Explicit reviewed Profile 1.2 acceptance pointer')
+    args = parser.parse_args()
+    print(json.dumps(verify(args.pointer),sort_keys=True))
