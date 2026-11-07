@@ -42,3 +42,44 @@ class LifeFoundation(unittest.TestCase):
     def test_cap_residual_and_leap_arithmetic(self):
         self.assertEqual(actual_charge(date(2024,2,1),date(2024,2,29),D(12000),D(12)),D('950.82'))
         self.assertEqual(actual_charge(date(2026,1,1),date(2026,12,31),D(120),D('0.1')),D('120'))
+
+class Conventions(unittest.TestCase):
+    def month(self,month,end,**kwargs):
+        c=source(period_start='2026-'+month+'-01',reporting_period='2026-'+month+'-'+end,**kwargs)
+        c['assets'][0].update(opening_cost='24000',remaining_life='10')
+        return c
+    def test_monthly_and_legacy(self):
+        for month,last,actual in [('05','31','203.84'),('02','28','184.11')]:
+            c=self.month(month,last)
+            self.assertEqual(calculate(c)['calculations']['depreciation'],D(actual))
+            c['policy_elections']={'depreciation_convention':'monthly'};c['assets'][0]['expected_depreciation']='200'
+            r=calculate(c);self.assertEqual(r['calculations']['depreciation'],D('200'))
+            self.assertFalse(any(f['severity']=='WARNING' and f['check_id']=='depreciation_comparison' for f in r['anomaly_report']['findings']))
+    def test_partial_readiness_disposal(self):
+        for mode in ('stub','ready','disposal'):
+            c=self.month('05','31',policy_elections={'depreciation_convention':'monthly'})
+            if mode=='stub':c['period_start']='2026-05-16'
+            if mode=='ready':c['assets'][0]['ready_date']='2026-05-16'
+            if mode=='disposal':c['assets'][0]['disposal']=dict(enabled=True,date='2026-05-16',proceeds='1000',ordinary_sale=True,cash_received=True)
+            r=calculate(c);self.assertFalse(r['proposed_journal_workpaper']);self.assertIn('partial',str(r['validation_requirements']))
+            c['policy_elections']['partial_month_treatment']='actual_days_in_month'
+            self.assertEqual(calculate(c)['calculations']['depreciation'],D('103.23'))
+    def test_policy_precedence_and_compatibility(self):
+        c=self.month('05','31');c['asset_policy']=dict(depreciation_convention='monthly',confirmation='confirmed',entity='ENTITY-DEMO',framework='IFRS',effective_from='2026-01-01',effective_to='2026-12-31',policy_version='v1')
+        self.assertEqual(calculate(c)['calculations']['depreciation'],D('200'))
+        c['policy_elections']={'depreciation_convention':'actual_days'}
+        self.assertFalse(calculate(c)['proposed_journal_workpaper'])
+        c['policy_elections']={'depreciation_convention':'monthly'}
+        self.assertEqual(calculate(c)['calculations']['depreciation'],D('200'))
+        c['asset_policy']['entity']='OTHER';self.assertFalse(calculate(c)['proposed_journal_workpaper'])
+    def test_leap_month_and_final_cap(self):
+        from source_execution import monthly_charge
+        self.assertEqual(monthly_charge(date(2024,2,1),date(2024,2,29),D(12000),D(12),None),D('1000'))
+        self.assertEqual(monthly_charge(date(2026,5,1),date(2026,5,31),D(120),D('.1'),None),D('120'))
+    def test_months_equivalence_both_conventions(self):
+        for convention in ('monthly','actual_days'):
+            for months in (12,24,36,60):
+                c=self.month('05','31',policy_elections={'depreciation_convention':convention})
+                c['assets'][0]['remaining_life']=str(D(months)/12);a=calculate(c)
+                c['assets'][0].pop('remaining_life');c['assets'][0]['remaining_life_months']=str(months)
+                self.assertEqual(a['proposed_journal_workpaper'],calculate(c)['proposed_journal_workpaper'])

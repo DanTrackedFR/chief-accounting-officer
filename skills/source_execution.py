@@ -10,7 +10,7 @@ import re
 from collections import Counter
 from decimal import Decimal
 from fractions import Fraction
-from calendar import isleap
+from calendar import isleap, monthrange
 from datetime import date, timedelta
 from core_accounting import ReviewRequired, required, cash, journal, balance
 from source_screening import PROFILE, Screening, attestation, iso, number, normalized, text, identifier, disposal_input
@@ -134,7 +134,10 @@ def requirements(package, case):
         found.append(issue('scope.source_assurance','source_assurance','Explicit source-assurance profile required.','unsupported_scope'))
     if case.get('review_mode') != MODE:
         found.append(issue('scope.review_mode','review_mode','Profile 1.2 requires prepared-unreviewed execution.','unsupported_scope'))
-    if 'policy_elections' in case and case['policy_elections'] != {}:
+    if package=='fixed-assets':
+        _,policy_needs=depreciation_policy(case)
+        found.extend(policy_needs)
+    elif case.get('policy_elections',{}) != {}:
         found.append(issue('scope.policy_elections','policy_elections','Supplied elections require a separately supported method.','unsupported_scope'))
     if package not in ('fixed-assets','accounts-payable'):
         found.append(issue('scope.package','package','This source profile is unavailable for the selected package.','unsupported_scope'))
@@ -217,6 +220,68 @@ def totals(screening, rows, amounts, calculated):
     return dict(record_count=len(rows), monetary_total=None if amounts is None else cash(sum(amounts,ZERO)))
 
 
+def depreciation_policy(case):
+    """Source assertions are policies only when explicitly confirmed and applicable.
+
+    Memory remains context-only; it must be confirmed into asset_policy before use.
+    Never choose one side of a confirmed-policy conflict.
+    """
+    needs=[]
+    elections=case.get('policy_elections',{})
+    allowed={'depreciation_convention':('monthly','actual_days'),
+             'partial_month_treatment':('actual_days_in_month',)}
+    def validate(values,path):
+        if not isinstance(values,dict):
+            needs.append(issue('policy.'+path,path,'Supply a structured depreciation policy election.','invalid_fact'));return {}
+        out={}
+        for key,value in values.items():
+            if key not in allowed or value not in allowed[key]:
+                needs.append(issue('policy.'+path+'.'+key,path+'.'+key,'Unsupported policy election; use monthly or actual_days and explicit actual_days_in_month for partial monthly periods.','unsupported_scope'))
+            else:out[key]=value
+        if 'partial_month_treatment' in out and out.get('depreciation_convention')!='monthly':
+            needs.append(issue('policy.partial_basis',path+'.partial_month_treatment','Partial-month treatment requires the monthly convention.','invalid_fact'))
+        return out
+    selected=validate(elections,'policy_elections')
+    provenance='case_election' if selected else 'engine_default_unconfirmed'
+    policy=case.get('asset_policy',{})
+    if not isinstance(policy,dict):
+        needs.append(issue('policy.asset_policy','asset_policy','Supply a policy object.','invalid_fact'));policy={}
+    governed={k:policy[k] for k in allowed if k in policy}
+    if governed:
+        validated=validate(governed,'asset_policy')
+        valid=True
+        for key in ('confirmation','entity','framework','effective_from','effective_to','policy_version'):
+            if not isinstance(policy.get(key),str) or not policy[key].strip():
+                needs.append(issue('policy.asset_policy.'+key,'asset_policy.'+key,'Supply explicitly confirmed, entity/framework/period-qualified company policy.'));valid=False
+        if valid:
+            try:
+                valid=(policy['confirmation']=='confirmed' and policy['entity']==case.get('entity') and
+                       policy['framework']==case.get('framework') and
+                       iso(policy['effective_from'])<=iso(case['period_start'])<=iso(case['reporting_period'])<=iso(policy['effective_to']))
+            except (ReviewRequired,KeyError):valid=False
+            if not valid:needs.append(issue('policy.applicability','asset_policy','Confirmed company policy is unconfirmed or outside the Case entity/framework/effective window.','invalid_fact'))
+        if valid:
+            for key,value in selected.items():
+                if key not in validated or validated[key]!=value:
+                    needs.append(issue('policy.conflict.'+key,'policy_elections.'+key,'Case election conflicts with confirmed company policy; resolve through an explicit governed policy change.','invalid_fact'))
+            selected=validated;provenance='confirmed_company_policy_client_asserted'
+    return dict(convention=selected.get('depreciation_convention','actual_days'),
+                partial_month_treatment=selected.get('partial_month_treatment'),provenance=provenance),needs
+
+
+def monthly_charge(start,end,basis,months,partial):
+    if end<start:return ZERO
+    fraction=Fraction(0);d=start
+    while d<=end:
+        days=monthrange(d.year,d.month)[1];last=min(end,date(d.year,d.month,days))
+        if d.day==1 and last.day==days:fraction+=1
+        elif partial=='actual_days_in_month':fraction+=Fraction((last-d).days+1,days)
+        else:raise ReviewRequired('Monthly partial-period treatment unresolved; explicitly elect actual_days_in_month for reporting stubs, mid-month availability or disposal.')
+        d=last+timedelta(days=1)
+    value=min(Fraction(basis),Fraction(basis)/Fraction(months)*fraction)
+    return cash(Decimal(value.numerator)/Decimal(value.denominator))
+
+
 def remaining_months(row, screening, ref):
     """Validate both life fields before using either; exact decimal years × 12."""
     keys=('remaining_life','remaining_life_months')
@@ -266,6 +331,7 @@ def fixed_assets(case, screening):
     costs = screening.rows('costs'); cip = screening.rows('cip')
     work=[];costwork=[]; entries=[]; expenses=ZERO; input_amounts=[]
     capital_entries=[]
+    selected_policy,_=depreciation_policy(case)
     additions={row.get('id'):ZERO for row in assets if isinstance(row.get('id'),str)}
     expensed_destinations=set()
     def resolve_cost(raw,ref):
@@ -401,8 +467,16 @@ def fixed_assets(case, screening):
         threshold=row.get('capitalization_threshold')
         if threshold is not None and cost<number(threshold):
             screening.add('classification','BLOCKED',[ref],'Opening asset cost is below the supplied capitalization threshold.',blocks=True,resolution='Resolve opening carrying balance and policy treatment; do not expense a historic carrying amount automatically.');return
-        amount=(actual_charge(max(start,ready),last,max(cost-acc-res,ZERO),life) if row['method']=='straight_line' else
-                charge(max(start,ready),last,max(cost-acc-res,ZERO),life,row['method'],units))
+        basis=max(cost-acc-res,ZERO)
+        if row['method']=='straight_line':
+            if selected_policy['convention']=='monthly':
+                try:amount=monthly_charge(max(start,ready),last,basis,life,selected_policy['partial_month_treatment'])
+                except ReviewRequired as exc:
+                    screening.add('assumptions','BLOCKED',[ref],str(exc),blocks=True,resolution='Confirm the partial-month accounting policy.')
+                    screening.findings[-1]['field_path']='policy_elections.partial_month_treatment'
+                    return
+            else:amount=actual_charge(max(start,ready),last,basis,life)
+        else:amount=charge(max(start,ready),last,basis,life,row['method'],units)
         if 'expected_depreciation' in row:screening.compare('depreciation_comparison',row['expected_depreciation'],amount,[ref],label='Supplied depreciation')
         closingcost=cost;closingacc=acc+amount;gain=ZERO
         row_entries.append(journal(('Dr','depreciation expense',amount),('Cr','accumulated depreciation',amount)))
@@ -428,6 +502,7 @@ def fixed_assets(case, screening):
         entries.extend(row_entries)
         return dict(id=row['id'],row_reference=ref,cost=cost,depreciation=amount,closing_cost=closingcost,
                     closing_accumulated=closingacc,carrying=closingcost-closingacc,disposal_gain=gain,
+                    applied_depreciation_policy=selected_policy if row['method']=='straight_line' else None,
                     assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in (('method','residual','scope','capitalization_threshold','remaining_units','period_units') if row['method']=='units_of_production' else ('method','residual','scope','capitalization_threshold','remaining_life','remaining_life_months')) if k in row})
     for i,row in enumerate(assets):
         value=screening.row('assets',i,row,calculate)
@@ -586,7 +661,9 @@ def execute(package, case):
     working.setdefault('policy_elections',{})
     if not pending:
         try:
-            edition=qualify(package,working)
+            qualification=copy.deepcopy(working)
+            if package=='fixed-assets':qualification['policy_elections']={}  # bounded elections validated above; shared Profile 1.1 stays unchanged
+            edition=qualify(package,qualification)
             attestation(case['source_attestation'])
             if not isinstance(case['assumptions'],list):raise ReviewRequired('Assumptions must be an array')
             if case.get('specialist_items'):raise ReviewRequired('Unresolved specialist accounting matters require sufficient evidence')
@@ -644,6 +721,11 @@ def to_public(result,route):
         guidance+='\n'+('Ordinary machinery uses the governed cost method; depreciation starts when available for use (IAS 16, ASC 360, FRS 102 Section 17 or AASB 116, as applicable).' if fa else 'Recognize supplied ordinary supplier obligations under the applicable governed recognition method; unbilled accruals require supported goods or services receipt.')
         guidance+='\nCalculated valid rows are bounded by the supplied file; excluded rows are not included in a complete population total.'
         guidance+='\n'+result['policy_elections_disclosure']
+        if fa:
+            policy,_=depreciation_policy(result['facts_used'])
+            guidance+='\nApplied depreciation convention: '+policy['convention']+' ('+policy['provenance']+').'
+            guidance+='\nMonthly depreciation is recommended for businesses calculating depreciation as part of a monthly close. It provides consistent full-month charges and commonly aligns with fixed-asset registers. Choose actual days if your documented accounting policy uses calendar-day proration.'
+            if policy['provenance']=='engine_default_unconfirmed':guidance+=' Confirm the company convention; the backward-compatible actual-day basis was used, not inferred from supplied depreciation.'
         applied=[];used_classes=set()
         for table in ('assets','cost_rows','invoice_rows','accrual_rows'):
             for row in result['calculations'].get(table,[]):
