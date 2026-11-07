@@ -83,3 +83,29 @@ class Conventions(unittest.TestCase):
                 c['assets'][0]['remaining_life']=str(D(months)/12);a=calculate(c)
                 c['assets'][0].pop('remaining_life');c['assets'][0]['remaining_life_months']=str(months)
                 self.assertEqual(a['proposed_journal_workpaper'],calculate(c)['proposed_journal_workpaper'])
+
+class BalanceComparisons(unittest.TestCase):
+    def test_matching_and_material_mismatch_without_journal_change(self):
+        c=source();expected=calculate(c)['proposed_journal_workpaper']
+        c['assets'][0].update(supplied_net_book_value='9900',supplied_accumulated_depreciation='1100',comparison_balance_basis='closing')
+        r=calculate(c);self.assertTrue(all(x['status']=='MATCH' for x in r['calculations']['balance_comparisons']))
+        self.assertEqual(r['proposed_journal_workpaper'],expected)
+        c['assets'][0]['supplied_net_book_value']='269900';r=calculate(c)
+        self.assertEqual(r['calculations']['balance_comparisons'][0]['variance'],'260000.00')
+        self.assertEqual(r['proposed_journal_workpaper'],expected)
+        self.assertEqual(r['calculations']['balance_comparisons'][-1]['status'],'MISMATCH')
+    def test_basis_partial_invalid_and_absent(self):
+        c=source();self.assertEqual(calculate(c)['calculations']['balance_comparisons'],[])
+        for basis,expected in [('opening','11000.00'),('closing','9900.00')]:
+            c['assets'][0].update(supplied_net_book_value=expected,comparison_balance_basis=basis)
+            r=calculate(c);self.assertEqual(r['calculations']['balance_comparisons'][0]['status'],'MATCH')
+        c['assets'][0].pop('comparison_balance_basis');r=calculate(c)
+        self.assertEqual(r['calculations']['balance_comparisons'][0]['status'],'UNRESOLVED_BASIS')
+        self.assertTrue(r['validation_requirements']);self.assertTrue(r['proposed_journal_workpaper'])
+        c['assets'][0]['supplied_net_book_value']='bad';r=calculate(c)
+        self.assertEqual(r['calculations']['balance_comparisons'][0]['status'],'INVALID')
+    def test_disposal_and_fully_depreciated(self):
+        for disposed in (False,True):
+            c=source();c['assets'][0].update(opening_accumulated='11000',supplied_net_book_value='0',supplied_accumulated_depreciation='0' if disposed else '11000',comparison_balance_basis='closing')
+            if disposed:c['assets'][0]['disposal']=dict(enabled=True,date='2026-06-30',proceeds='1',ordinary_sale=True,cash_received=True)
+            self.assertTrue(all(x['status']=='MATCH' for x in calculate(c)['calculations']['balance_comparisons']))

@@ -324,6 +324,45 @@ def actual_charge(start, end, basis, months):
     return cash(Decimal(value.numerator)/Decimal(value.denominator))
 
 
+def balance_comparisons(row,ref,screening,opening_cost,opening_acc,closing_cost,closing_acc):
+    fields={'supplied_net_book_value':(opening_cost-opening_acc,closing_cost-closing_acc),
+            'supplied_accumulated_depreciation':(opening_acc,closing_acc)}
+    supplied=[key for key in fields if key in row]
+    if not supplied:return []
+    basis=row.get('comparison_balance_basis');out=[];values={}
+    for key in supplied:
+        path=ref.replace(':','[')+'].'+key
+        record=dict(row_reference=ref,asset_reference=row['id'],source_field_path=path,
+                    balance_basis=basis if basis in ('opening','closing') else None,
+                    supplied_value=None,calculated_value=None,variance=None,status='INVALID',explanation='')
+        try:values[key]=cash(number(row[key]));record['supplied_value']=str(values[key])
+        except (ReviewRequired,ArithmeticError):
+            record['explanation']='Malformed supplied comparison amount; supply a nonnegative finite decimal.'
+            screening.add('gl_reconciliation','BLOCKED',[ref],record['explanation'],resolution='Correct the comparison amount; it does not override accounting inputs.')
+            screening.findings[-1]['field_path']=path
+            out.append(record);continue
+        if basis not in ('opening','closing'):
+            record['status']='UNRESOLVED_BASIS';record['explanation']='State whether supplied balances are opening or closing at the Case dates.'
+            screening.add('gl_reconciliation','BLOCKED',[ref],record['explanation'],resolution='Supply comparison_balance_basis opening or closing.')
+            screening.findings[-1]['field_path']=ref.replace(':','[')+'].'+'comparison_balance_basis'
+            out.append(record);continue
+        expected=cash(fields[key][basis=='closing']);variance=cash(values[key]-expected)
+        record.update(calculated_value=str(expected),variance=str(variance),status='MATCH' if variance==ZERO else 'MISMATCH',
+                      explanation='Supplied '+key.replace('_',' ')+' compared to independently calculated '+basis+' balance; variance is supplied minus calculated. No balancing journal is proposed.')
+        screening.compare('gl_reconciliation',values[key],expected,[ref],label='Supplied '+basis+' '+key.replace('_',' '))
+        screening.findings[-1]['field_path']=path
+        out.append(record)
+    if len(values)==2 and basis in ('opening','closing'):
+        gross=opening_cost if basis=='opening' else closing_cost
+        expected=cash(gross-values['supplied_accumulated_depreciation'])
+        variance=cash(values['supplied_net_book_value']-expected)
+        out.append(dict(row_reference=ref,asset_reference=row['id'],source_field_path=ref.replace(':','[')+'].'+'supplied_net_book_value',
+            balance_basis=basis,supplied_value=str(values['supplied_net_book_value']),calculated_value=str(expected),variance=str(variance),
+            status='MATCH' if variance==ZERO else 'MISMATCH',explanation='Internal consistency: gross carrying amount minus supplied accumulated depreciation equals supplied NBV; no missing comparison balance is invented.'))
+        screening.compare('gl_reconciliation',values['supplied_net_book_value'],expected,[ref],label='Supplied balance equation')
+    return out
+
+
 def fixed_assets(case, screening):
     import production
     charge = production.load_workflow('fixed-assets').charge
@@ -331,6 +370,7 @@ def fixed_assets(case, screening):
     costs = screening.rows('costs'); cip = screening.rows('cip')
     work=[];costwork=[]; entries=[]; expenses=ZERO; input_amounts=[]
     capital_entries=[]
+    comparisons=[]
     selected_policy,_=depreciation_policy(case)
     additions={row.get('id'):ZERO for row in assets if isinstance(row.get('id'),str)}
     expensed_destinations=set()
@@ -498,6 +538,7 @@ def fixed_assets(case, screening):
         for k,val in [('gl_cost',closingcost),('gl_accumulated',closingacc)]:
             if k in row:screening.compare('gl_reconciliation',row[k],val,[ref],label='Supplied asset '+k)
         if 'closing_cost' in row:screening.compare('roll_forward',row['closing_cost'],closingcost,[ref],label='Asset cost roll-forward')
+        comparisons.extend(balance_comparisons(row,ref,screening,opening_cost,acc,closingcost,closingacc))
         screening.add('dates','PASS',[ref],'Availability and disposal chronology checked.')
         entries.extend(row_entries)
         return dict(id=row['id'],row_reference=ref,cost=cost,depreciation=amount,closing_cost=closingcost,
@@ -516,7 +557,7 @@ def fixed_assets(case, screening):
             entries.remove(entry)
             costwork[:]=[r for r in costwork if r['row_reference']!=cost_ref]
             screening.add('movements','BLOCKED',[cost_ref],'Linked asset validation failed; capital journal withheld.',blocks=True,resolution='Resolve the asset opening position and movement evidence together.')
-    calcs=dict(assets=work,cost_rows=costwork)
+    calcs=dict(assets=work,cost_rows=costwork,balance_comparisons=comparisons)
     if work:
         calcs.update(depreciation=sum((r['depreciation'] for r in work),ZERO),
                      closing_cost=sum((r['closing_cost'] for r in work),ZERO),
