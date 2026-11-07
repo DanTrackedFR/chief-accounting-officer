@@ -489,6 +489,9 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         files.update(root/name for name in (
             'skills/prepared_execution.py', 'skills/prepared_fingerprint.py',
             'skills/source_fingerprint.py', 'skills/presumed-sources/additive-changes.json',
+            'skills/phase_a_fingerprint.py',
+            'skills/phase-a-compatibility/accepted-main-production.py.txt',
+            'skills/phase-a-compatibility/accepted-main-public_output.py.txt',
             'skills/presumed-sources/release/main-7146-production.py.txt',
             'skills/presumed-sources/release/main-7146-public-output.py.txt',
             'skills/prepared-accounting/release/main-fbf8-production.py.txt',
@@ -505,6 +508,9 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
                 self.assertEqual(production.case_fingerprint(case), original)
                 for name in ('skills/core_accounting.py', 'skills/production.py',
                              'interfaces/public_output.py', 'skills/prepared_fingerprint.py',
+                             'skills/phase_a_fingerprint.py',
+                             'skills/phase-a-compatibility/accepted-main-production.py.txt',
+                             'skills/phase-a-compatibility/accepted-main-public_output.py.txt',
                              'skills/prepared-accounting/release/main-fbf8-production.py.txt',
                              'skills/prepared-accounting/release/main-fbf8-public-output.py.txt'):
                     path = isolated/name
@@ -557,21 +563,21 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         import hashlib
         import production
         from implementation_scope import fingerprint_files
-        from source_fingerprint import bind_source_mode
+        from phase_a_fingerprint import bind_phase_a
         root = Path(__file__).resolve().parents[2]
         case = formal_evidence('fixed-assets')['facts']['machinery']
         files = fingerprint_files(case, root, production.PACKAGES)
         captured = {str(path.relative_to(root)): hashlib.sha256(path.read_bytes()).hexdigest()
                     for path in files}
-        pinned = hashlib.sha256((root/'skills/source_fingerprint.py').read_bytes()).hexdigest()
-        normalized = bind_source_mode(case, root, production.PACKAGES, files, captured, pinned)
+        pinned = hashlib.sha256((root/'skills/phase_a_fingerprint.py').read_bytes()).hexdigest()
+        normalized = bind_phase_a(case, root, production.PACKAGES, files, captured, pinned)
         self.assertNotEqual(normalized['skills/production.py'], captured['skills/production.py'],
                             'Fixture must exercise a valid live compatibility normalization')
         for name in ('skills/production.py', 'interfaces/public_output.py'):
             with self.subTest(boundary=name):
                 changed = dict(captured)
                 changed[name] = '0'*64
-                result = bind_source_mode(case, root, production.PACKAGES, files, changed, pinned)
+                result = bind_phase_a(case, root, production.PACKAGES, files, changed, pinned)
                 self.assertEqual(result, changed,
                                  'Digest captured by caller must match the authoritative bytes before normalization')
 
@@ -585,6 +591,9 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
         files.update(root/name for name in ('skills/prepared_execution.py',
                                            'skills/prepared_fingerprint.py',
                                            'skills/source_fingerprint.py', 'skills/presumed-sources/additive-changes.json',
+            'skills/phase_a_fingerprint.py',
+            'skills/phase-a-compatibility/accepted-main-production.py.txt',
+            'skills/phase-a-compatibility/accepted-main-public_output.py.txt',
                                            'skills/presumed-sources/release/main-7146-production.py.txt',
                                            'skills/presumed-sources/release/main-7146-public-output.py.txt',
                                            'skills/investment_fingerprint.py',
@@ -599,8 +608,10 @@ class IndependentFingerprintEngineeringQA(unittest.TestCase):
                 target = isolated/source.relative_to(root)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(source.read_bytes())
+            expected = production.case_fingerprint(case)
             with patch.object(production, 'ROOT', isolated):
                 baseline = production.case_fingerprint(case)
+                self.assertEqual(baseline, expected, 'Isolated fixture must include the complete active compatibility closure')
                 path = isolated/'skills/prepared_execution.py'
                 path.write_bytes(path.read_bytes()+b'\n# isolated method change\n')
                 self.assertNotEqual(production.case_fingerprint(case), baseline)
