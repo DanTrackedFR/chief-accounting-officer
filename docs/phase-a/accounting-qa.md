@@ -143,3 +143,31 @@ Original Phase A files, including Pulse Restore, require separately owned Tracke
 retesting. The original release receipt does not cover this corrected source. Full release
 regression/governance acceptance must be separately authorized. No full historical release
 regression, merge, deployment or historical evidence rewrite was performed by this reviewer.
+
+## Independent published-tree recheck
+
+After publication through the connected GitHub Git-data API, this reviewer independently
+ran the same16 permanent accounting methods from a fetched checkout of published commit
+`02767e0563acd965b26d16e79565a89f80ea8bfd` at `/tmp/cao-phase-a-published`:
+
+```sh
+python -m unittest skills.tests.test_phase_a_independent_accounting -v
+```
+
+Result: **16 tests, PASS**,2.544 seconds. Log: `accounting-qa-published.log`.
+The tests now bootstrap their import path, so no `PYTHONPATH` override is required.
+
+Independently checked Git tree identities:
+
+| Local commit | Published commit | Exact shared tree SHA |
+|---|---|---|
+| `fa1734070c0781d5e4b44f18bb97381c6204e582` | `f3f78debd750f1ca86c6e7edc7019a353c7c2b11` | `d303cbc2277d63f0830e0571182898a8d00396d6` |
+| `69783e0954006d9283b400a05a5798b6502dbffd` | `02767e0563acd965b26d16e79565a89f80ea8bfd` | `58a11c98026a7dd2a1b452d9deeec4e54155903b` |
+
+The published source therefore contains the exact reviewed accounting implementation,
+with subsequent test/evidence/documentation additions. Different commit metadata/parent
+identities do not change these exact trees. The stage mapping is recorded in
+`publication-source-map.json`. Independent accounting QA remains **PASS** for this
+published implementation, with the previously stated release, original-upload and
+policy-memory limits. Later changes described by the implementation owner are evidence/
+documentation only; this report does not claim execution at an as-yet-untested later SHA.
