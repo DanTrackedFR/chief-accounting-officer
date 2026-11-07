@@ -9,6 +9,9 @@ import json
 import re
 from collections import Counter
 from decimal import Decimal
+from fractions import Fraction
+from calendar import isleap
+from datetime import date, timedelta
 from core_accounting import ReviewRequired, required, cash, journal, balance
 from source_screening import PROFILE, Screening, attestation, iso, number, normalized, text, identifier, disposal_input
 from prepared_execution import MODE, qualify, reject_records
@@ -150,7 +153,8 @@ def resolved_row(case, row, screening, ref):
         if (policy['framework'] != case['framework'] or policy['entity'] != case['entity'] or
             not iso(policy['effective_from']) <= iso(case['period_start']) <= iso(case['reporting_period']) <= iso(policy['effective_to'])):
             raise ReviewRequired('Class assumption applicability unresolved')
-        for key in ('remaining_life','residual','method','scope','capitalization_threshold','account','recognition_basis'):
+        for key in ('remaining_life','remaining_life_months','remaining_life_unit','residual','method','scope','capitalization_threshold','account','recognition_basis'):
+            if key in ('remaining_life','remaining_life_months','remaining_life_unit') and any(k in row for k in ('remaining_life','remaining_life_months')):continue
             if key in policy and key not in result: result[key] = policy[key]
         screening.add('assumptions','PASS',[ref],'Applicable company class assumptions applied; row-specific inputs take precedence.')
     return result
@@ -211,6 +215,48 @@ def totals(screening, rows, amounts, calculated):
             else: compare('gl_reconciliation',value,calculated[key],'Supplied GL '+key.replace('_',' '))
         else:screening.add('gl_reconciliation','NOT_PERFORMED',explanation='Supplied GL dimension has no supported population calculation in this Case.',population=True)
     return dict(record_count=len(rows), monetary_total=None if amounts is None else cash(sum(amounts,ZERO)))
+
+
+def remaining_months(row, screening, ref):
+    """Validate both life fields before using either; exact decimal years × 12."""
+    keys=('remaining_life','remaining_life_months')
+    supplied=[key for key in keys if key in row]
+    values={}
+    def fail(key, message):
+        screening.add('signs_units','BLOCKED',[ref],message,blocks=True,
+            resolution='Confirm remaining useful life: remaining_life is years; remaining_life_months is months.')
+        screening.findings[-1]['field_path']=ref.replace(':','[')+'].'+key
+    if 'remaining_life_unit' in row and row['remaining_life_unit']!='years':
+        fail('remaining_life_unit','Invalid remaining-life units; remaining_life represents years. Use remaining_life_months for months.')
+    if not supplied:fail('remaining_life','Missing remaining useful life; supply years or remaining_life_months.')
+    for key in supplied:
+        value=row[key]
+        if value is None:
+            fail(key,'Null remaining useful life; supply a numeric life in the named field units.');continue
+        try:
+            from core_accounting import dec
+            n=dec(value)
+        except ReviewRequired:
+            fail(key,'Nonnumeric remaining useful life; supply a finite decimal in '+('years.' if key=='remaining_life' else 'months.'));continue
+        if n<ZERO:fail(key,'Negative remaining useful life; supplied life data is inconsistent.');continue
+        if n==ZERO:
+            fail(key,'Useful life exhausted: the stated useful life has elapsed. Assess the remaining depreciable balance or useful-life estimate; an asset still in use is not automatically disposed of.');continue
+        values[key]=n*12 if key=='remaining_life' else n
+    if len(values)==2 and values[keys[0]]!=values[keys[1]]:
+        for key in keys:fail(key,'Conflicting remaining-life assumptions: years multiplied by 12 must equal remaining_life_months; neither was selected.')
+    return next(iter(values.values()),None)
+
+
+def actual_charge(start, end, basis, months):
+    """Exact rational fraction, rounded once to cents, capped at remaining basis."""
+    if end<start:return ZERO
+    fraction=Fraction(0);d=start
+    while d<=end:
+        last=min(end,date(d.year,12,31))
+        fraction+=Fraction((last-d).days+1,366 if isleap(d.year) else 365)
+        d=last+timedelta(days=1)
+    value=min(Fraction(basis),Fraction(basis)*12/Fraction(months)*fraction)
+    return cash(Decimal(value.numerator)/Decimal(value.denominator))
 
 
 def fixed_assets(case, screening):
@@ -313,7 +359,7 @@ def fixed_assets(case, screening):
         try:zero_expensed=row.get('id') in expensed_destinations and number(row.get('opening_cost'))==ZERO and number(row.get('opening_accumulated'))==ZERO and additions.get(row.get('id'),ZERO)==ZERO
         except ReviewRequired:pass
         if not zero_expensed:
-            if row.get('method')=='straight_line':needed+=('remaining_life',)
+            if row.get('method')=='straight_line':life_months=remaining_months(row,screening,ref)
             elif row.get('method')=='units_of_production':needed+=('remaining_units','period_units')
         if missing_row(screening,row,needed,ref):return
         if ref in screening.blocked:return
@@ -349,14 +395,14 @@ def fixed_assets(case, screening):
             life=number(row['remaining_units'],positive=True);units=number(row['period_units'])
             if units>life:raise ReviewRequired('Production exceeds remaining units')
         elif row['method']=='straight_line':
-            if missing_row(screening,row,('remaining_life',),ref):return
-            life=number(row['remaining_life'],positive=True)
+            life=life_months
         else:raise ReviewRequired('Unsupported depreciation method')
         screening.norms(row,ref,{**row,'amount':cost})
         threshold=row.get('capitalization_threshold')
         if threshold is not None and cost<number(threshold):
             screening.add('classification','BLOCKED',[ref],'Opening asset cost is below the supplied capitalization threshold.',blocks=True,resolution='Resolve opening carrying balance and policy treatment; do not expense a historic carrying amount automatically.');return
-        amount=charge(max(start,ready),last,max(cost-acc-res,ZERO),life,row['method'],units)
+        amount=(actual_charge(max(start,ready),last,max(cost-acc-res,ZERO),life) if row['method']=='straight_line' else
+                charge(max(start,ready),last,max(cost-acc-res,ZERO),life,row['method'],units))
         if 'expected_depreciation' in row:screening.compare('depreciation_comparison',row['expected_depreciation'],amount,[ref],label='Supplied depreciation')
         closingcost=cost;closingacc=acc+amount;gain=ZERO
         row_entries.append(journal(('Dr','depreciation expense',amount),('Cr','accumulated depreciation',amount)))
@@ -382,7 +428,7 @@ def fixed_assets(case, screening):
         entries.extend(row_entries)
         return dict(id=row['id'],row_reference=ref,cost=cost,depreciation=amount,closing_cost=closingcost,
                     closing_accumulated=closingacc,carrying=closingcost-closingacc,disposal_gain=gain,
-                    assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in (('method','residual','scope','capitalization_threshold','remaining_units','period_units') if row['method']=='units_of_production' else ('method','residual','scope','capitalization_threshold','remaining_life')) if k in row})
+                    assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in (('method','residual','scope','capitalization_threshold','remaining_units','period_units') if row['method']=='units_of_production' else ('method','residual','scope','capitalization_threshold','remaining_life','remaining_life_months')) if k in row})
     for i,row in enumerate(assets):
         value=screening.row('assets',i,row,calculate)
         if value is not None:work.append(value)
