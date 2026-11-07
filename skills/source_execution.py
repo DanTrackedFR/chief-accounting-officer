@@ -772,9 +772,12 @@ def structured_outputs(result):
     source=facts.get('source',{}).get('id','')
     if len(source)>256:source=display_reference('source-ref',source)
     journals=[]
-    refs=calcs.get('journal_rows',[])
+    refs=calcs.get('journal_rows')
+    # Accepted historical native workpapers have no row-lineage metadata.
+    # Preserve them read-only; never guess rows or turn a historical read into execution.
+    legacy_lineage=refs is None and bool(result.get('proposed_journal_workpaper'))
     for i,lines in enumerate(result.get('proposed_journal_workpaper',[])):
-        if not lines:continue
+        if not lines or legacy_lineage:continue
         if i>=len(refs):raise ReviewRequired('Native proposed journal row lineage is missing')
         balance(lines)
         ref=refs[i]
@@ -839,6 +842,10 @@ def to_public(result,route):
         open_items=result.get('open_items',[]),validation_requirements=result.get('validation_requirements',[]),
         calculations=[dict(label=k.replace('_',' '),amount=str(v)) for k,v in result['calculations'].items() if isinstance(v,Decimal)],
         anomaly_report=result.get('anomaly_report',{}),**structured_outputs(result))
+    if result.get('proposed_journal_workpaper') and 'journal_rows' not in result.get('calculations',{}):
+        explanation='Historical proposed workpaper has no structured row lineage. Preserve the original result and use a separately identified correction Case for structured proposals; no accounting was rerun.'
+        public['validation_requirements']=public['validation_requirements']+[issue('integration.historical_journal_lineage','proposed_journals',explanation,'integration_migration')]
+        public['limitations']=public['limitations']+[explanation]
     rendered=public_record(public,route=route)
     private=[]
     def collect(value):
