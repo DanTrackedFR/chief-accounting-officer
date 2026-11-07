@@ -5,6 +5,7 @@ framework/period qualification are reused; structured observations are facts,
 not certification. Native accounting remains partial and journals are proposals.
 """
 import copy
+import hashlib
 import json
 import re
 from collections import Counter
@@ -36,6 +37,7 @@ def scope_requirements(case, expected=None, prefix=''):
         if reason is None and key in ('period_start','reporting_period'):
             try:iso(value)
             except ReviewRequired:reason='invalid_date'
+        if reason is None and key=='jurisdiction' and not re.fullmatch('[A-Z]{2}',value):reason='unsupported'
         if reason is None and key=='framework' and value not in ('IFRS','US_GAAP','UK_GAAP','AASB'):reason='unsupported'
         if reason is None and key=='functional_currency' and (not re.fullmatch('[A-Z]{3}',value) or value=='XXX'):reason='unsupported'
         if reason is None and expected is not None and value!=expected[key]:reason='identity_conflict'
@@ -370,6 +372,7 @@ def fixed_assets(case, screening):
     costs = screening.rows('costs'); cip = screening.rows('cip')
     work=[];costwork=[]; entries=[]; expenses=ZERO; input_amounts=[]
     capital_entries=[]
+    entry_refs={}
     comparisons=[]
     selected_policy,_=depreciation_policy(case)
     additions={row.get('id'):ZERO for row in assets if isinstance(row.get('id'),str)}
@@ -413,7 +416,7 @@ def fixed_assets(case, screening):
         if excluded or row.get('eligible') is False or below:
             if missing_row(screening,row,('account',),ref):return
             text(row['account'],'Expense account')
-            entries.append(journal(('Dr',row['account'],n),('Cr',row['offset'],n)))
+            entries.append(journal(('Dr',row['account'],n),('Cr',row['offset'],n)));entry_refs[id(entries[-1])]=ref
             if row.get('destination') is not None:expensed_destinations.add(row['destination'])
             screening.add('classification','PASS',[ref],
                 'Training, general overhead and abnormal waste are expensed under the governed cost method.' if excluded else 'Cost is expensed using the explicit eligibility or applicable company capitalization threshold.')
@@ -433,7 +436,7 @@ def fixed_assets(case, screening):
         if specialist(screening,target,ref,'fixed-assets'):return
         if iso(row['date'])>iso(targets[0].get('ready_date')):raise ReviewRequired('Post-readiness improvement/component cost requires supported specialist route')
         additions[row['destination']]+=n
-        entries.append(journal(('Dr','PPE cost',n),('Cr',row['offset'],n)))
+        entries.append(journal(('Dr','PPE cost',n),('Cr',row['offset'],n)));entry_refs[id(entries[-1])]=ref
         capital_entries.append((ref,target_ref,entries[-1]))
         screening.add('classification','PASS',[ref],'Ordinary purchase, freight or installation cost directly attributable before readiness is capitalized under the governed cost method.')
         return ('capital',n,dict(row_reference=ref,assumption_class=row.get('class'),applied_assumptions={k:row[k] for k in ('capitalization_threshold',) if k in row}))
@@ -491,6 +494,7 @@ def fixed_assets(case, screening):
         if ready>end:
             screening.add('readiness','BLOCKED',[ref],'Asset is not available for use at reporting date.',blocks=True,resolution='Supply supported CIP/uncommissioned classification; no depreciation charged.');return
         if cost==ZERO and acc==ZERO and row['id'] in expensed_destinations:
+            comparisons.extend(balance_comparisons(row,ref,screening,ZERO,ZERO,ZERO,ZERO))
             if 'expected_depreciation' in row:screening.compare('depreciation_comparison',row['expected_depreciation'],ZERO,[ref],label='Supplied depreciation')
             screening.add('classification','PASS',[ref],'All supported costs for this zero-opening asset were expensed; no PPE or depreciation is recognized.')
             return dict(id=row['id'],row_reference=ref,cost=ZERO,depreciation=ZERO,closing_cost=ZERO,
@@ -541,6 +545,7 @@ def fixed_assets(case, screening):
         comparisons.extend(balance_comparisons(row,ref,screening,opening_cost,acc,closingcost,closingacc))
         screening.add('dates','PASS',[ref],'Availability and disposal chronology checked.')
         entries.extend(row_entries)
+        for entry in row_entries:entry_refs[id(entry)]=ref
         return dict(id=row['id'],row_reference=ref,cost=cost,depreciation=amount,closing_cost=closingcost,
                     closing_accumulated=closingacc,carrying=closingcost-closingacc,disposal_gain=gain,
                     applied_depreciation_policy=selected_policy if row['method']=='straight_line' else None,
@@ -554,10 +559,10 @@ def fixed_assets(case, screening):
         except (KeyError,ReviewRequired):input_amounts=None
     for cost_ref,asset_ref,entry in capital_entries:
         if asset_ref in screening.blocked:
-            entries.remove(entry)
+            entries[:]=[candidate for candidate in entries if candidate is not entry]
             costwork[:]=[r for r in costwork if r['row_reference']!=cost_ref]
             screening.add('movements','BLOCKED',[cost_ref],'Linked asset validation failed; capital journal withheld.',blocks=True,resolution='Resolve the asset opening position and movement evidence together.')
-    calcs=dict(assets=work,cost_rows=costwork,balance_comparisons=comparisons)
+    calcs=dict(assets=work,cost_rows=costwork,balance_comparisons=comparisons,journal_rows=[entry_refs[id(entry)] for entry in entries])
     if work:
         calcs.update(depreciation=sum((r['depreciation'] for r in work),ZERO),
                      closing_cost=sum((r['closing_cost'] for r in work),ZERO),
@@ -578,7 +583,7 @@ def accounts_payable(case,screening):
     for i,key in enumerate(keys):
         if key in duplicates:screening.add('duplicate_invoices','BLOCKED',['invoices:'+str(i+1)],'Duplicate supplier/invoice reference.',blocks=True,resolution='Resolve duplicate liabilities before including these invoices.')
     if not duplicates:screening.add('duplicate_invoices','PASS',explanation='Supplier/invoice references checked for exact normalized duplicates.')
-    entries=[];work=[];acs=[]
+    entries=[];entry_refs={};work=[];acs=[]
     def invoice(raw,ref):
         row=resolved_row(case,raw,screening,ref)
         screening.numeric_inputs(row,ref)
@@ -613,7 +618,7 @@ def accounts_payable(case,screening):
             if not screening.compare('arithmetic',n,number(row['units'])*number(row['unit_price']),[ref],label='Quantity times unit price',blocks=True):return
         screening.norms(row,ref,{**row,'amount':n})
         screening.add('recognition','PASS',[ref],'Supplier obligation calculated using the supplied recognition basis; no PO/receipt match is inferred.')
-        entries.append(journal(('Dr',row['account'],n),('Cr','accounts payable',n)))
+        entries.append(journal(('Dr',row['account'],n),('Cr','accounts payable',n)));entry_refs[id(entries[-1])]=ref
         return dict(id=row['id'],row_reference=ref,amount=n,assumption_class=row.get('class'),applied_assumptions={'recognition_basis':row['recognition_basis']})
     def accrual(raw,ref):
         row=resolved_row(case,raw,screening,ref)
@@ -635,6 +640,7 @@ def accounts_payable(case,screening):
         if 'opening_accrual' in row:
             prior=number(row['opening_accrual']);delta=n-prior
             entries.append(journal(('Dr',row['account'],max(delta,ZERO)),('Dr','accrued expenses',max(-delta,ZERO)),('Cr','accrued expenses',max(delta,ZERO)),('Cr',row['account'],max(-delta,ZERO))))
+            entry_refs[id(entries[-1])]=ref
             value.update(opening_accrual=prior,expense_movement=delta)
         else:
             screening.add('roll_forward','NOT_PERFORMED',[ref],'Opening accrual/postings were not supplied; closing obligation calculated, adjusting journal omitted.',resolution='Supply the existing opening accrual to calculate the net journal movement.')
@@ -691,6 +697,7 @@ def accounts_payable(case,screening):
             else:screening.add('supplier_reconciliation','NOT_PERFORMED',explanation='Supplier movement evidence or supported complete AP balance unavailable; individual supplier reconciliation not established.',population=True)
         except (ReviewRequired,KeyError):screening.add('supplier_reconciliation','WARNING',explanation='Supplied supplier balances contain missing or invalid amounts.',population=True,resolution='Supply valid supplier balances and movement evidence.')
     population=totals(screening,invoices+accruals,amounts,calcs)
+    calcs['journal_rows']=[entry_refs[id(entry)] for entry in entries]
     return calcs,entries,population
 
 
@@ -745,12 +752,59 @@ def execute(package, case):
 
 def blocked(package,case,needs):
     import production
-    return dict(skill_id=production.PACKAGES.get(package,('UNSUPPORTED',))[0],framework=case.get('framework',''),jurisdiction=case.get('jurisdiction',''),
-        entities=[case.get('entity','')],periods=[case.get('period_start',''),case.get('reporting_period','')],review_mode=MODE,source_assurance=PROFILE,
+    safe=lambda key:case[key] if isinstance(case.get(key),str) else ''
+    return dict(skill_id=production.PACKAGES.get(package,('UNSUPPORTED',))[0],framework=safe('framework'),jurisdiction=safe('jurisdiction'),
+        entities=[safe('entity')],periods=[safe('period_start'),safe('reporting_period')],review_mode=MODE,source_assurance=PROFILE,
         status='blocked',accounting_determination='UNRESOLVED',evidence_sufficiency='INSUFFICIENT',review_provenance='SYSTEM_PREPARED',source_provenance='USER_PROVIDED_SOURCES',
         conclusion='Supply the listed information to execute the affected accounting calculations.',validation_requirements=needs,
         open_items=[n['explanation'] for n in needs],calculations={},journal_entry_implications=[],proposed_journal_workpaper=[],
         facts_used=copy.deepcopy(case),assumptions=case.get('assumptions',[]),evidence=[],uncertainties=[])
+
+
+def display_reference(kind,value):
+    return kind+'-'+hashlib.sha256(str(value).encode()).hexdigest()[:32]
+
+
+def structured_outputs(result):
+    """Curated metadata over native workpapers; never parse guidance or calculate journals."""
+    facts=result.get('facts_used',{});calcs=result.get('calculations',{})
+    case_ref=result.get('execution_case_reference',display_reference('source-case',facts.get('case_id','unbound')))
+    source=facts.get('source',{}).get('id','')
+    if len(source)>256:source=display_reference('source-ref',source)
+    journals=[]
+    refs=calcs.get('journal_rows',[])
+    for i,lines in enumerate(result.get('proposed_journal_workpaper',[])):
+        if not lines:continue
+        if i>=len(refs):raise ReviewRequired('Native proposed journal row lineage is missing')
+        balance(lines)
+        ref=refs[i]
+        table,index=ref.split(':');raw=facts[table][int(index)-1]
+        journals.append(dict(journal_reference=display_reference('proposal',case_ref+'|'+ref+'|'+str(i)),
+            case_reference=case_ref,row_reference=ref,asset_or_transaction_reference=raw['id'],
+            lines=[dict(side=line['side'],account=line['account'],amount=str(line['amount'])) for line in lines],
+            currency=facts['functional_currency'],period_start=facts['period_start'],reporting_period=facts['reporting_period'],
+            accounting_determination='SUPPORTED',qualification_status='PROPOSED',source_reference=source))
+    assumptions=[]
+    def add(ref,field,value,provenance):
+        assumptions.append(dict(row_reference=ref,field=field,value=str(value),provenance=provenance))
+    for field in ('framework','period_start','reporting_period','functional_currency'):
+        if field in facts:add('case',field,facts[field],'explicit_user_input')
+    for table,native in (('assets','assets'),('cost_rows','costs'),('invoice_rows','invoices'),('accrual_rows','accruals')):
+        for row in calcs.get(table,[]):
+            ref=row['row_reference'];_,index=ref.split(':');raw=facts.get(native,[])[int(index)-1]
+            for field,value in row.get('applied_assumptions',{}).items():
+                add(ref,field,value,'explicit_user_input' if field in raw else 'client_asserted_class_assumption')
+            if table=='assets':
+                if 'ready_date' in raw:
+                    add(ref,'available_for_use_date',raw['ready_date'],'explicit_user_input')
+                    add(ref,'availability_treatment','depreciation starts at later of period start and available-for-use date','governed_method')
+                policy=row.get('applied_depreciation_policy')
+                if policy:
+                    add(ref,'depreciation_convention',policy['convention'],policy['provenance'])
+                    if policy['partial_month_treatment']:add(ref,'partial_month_treatment',policy['partial_month_treatment'],policy['provenance'])
+                    add(ref,'remaining_life_units','months' if 'remaining_life_months' in row['applied_assumptions'] else 'years','explicit_field_semantics')
+                    add(ref,'useful_life_basis','remaining depreciable balance and remaining life at period start or availability','governed_method')
+    return dict(proposed_journals=journals,applied_assumptions=assumptions,balance_comparisons=calcs.get('balance_comparisons',[]))
 
 
 def to_public(result,route):
@@ -784,7 +838,7 @@ def to_public(result,route):
         limitations=result.get('uncertainties',[])+['Prepared without independent review. Journal workpapers are proposals; no posting is authorized.'],
         open_items=result.get('open_items',[]),validation_requirements=result.get('validation_requirements',[]),
         calculations=[dict(label=k.replace('_',' '),amount=str(v)) for k,v in result['calculations'].items() if isinstance(v,Decimal)],
-        anomaly_report=result.get('anomaly_report',{}))
+        anomaly_report=result.get('anomaly_report',{}),**structured_outputs(result))
     rendered=public_record(public,route=route)
     private=[]
     def collect(value):

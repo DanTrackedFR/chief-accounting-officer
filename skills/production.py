@@ -292,8 +292,8 @@ def case_fingerprint(case):
     if hashlib.sha256(bridge_path.read_bytes()).hexdigest() == 'a32b9ef41680e8d649d7b3770d0db02ae400613d4337e8e266c29f123e5e8c1b':
         from investment_fingerprint import bind_investment_dispatch
         implementation = bind_investment_dispatch(case, ROOT, PACKAGES, files, implementation)
-    from source_fingerprint import bind_source_mode
-    implementation = bind_source_mode(case, ROOT, PACKAGES, files, implementation, '7011aa04c86f51184354a05e97ab3fceee9036c6a2649761f66135f7ed04ddd2')
+    from phase_a_fingerprint import bind_phase_a
+    implementation = bind_phase_a(case, ROOT, PACKAGES, files, implementation, 'b820fef2ff2f00dbe5385399c6b2d5132bb03163496489481e05ac4cd5366ba3')
     payload={'case':{k:v for k,v in case.items() if k!='reviewer_signoff'},'implementation':implementation}
     return hashlib.sha256(json.dumps(payload,sort_keys=True,default=str).encode()).hexdigest()
 

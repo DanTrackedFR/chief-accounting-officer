@@ -259,6 +259,225 @@
           }
         }
       }
+    },
+    "proposed_journals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "journal_reference",
+          "case_reference",
+          "row_reference",
+          "asset_or_transaction_reference",
+          "currency",
+          "period_start",
+          "reporting_period",
+          "source_reference",
+          "accounting_determination",
+          "qualification_status",
+          "lines"
+        ],
+        "properties": {
+          "journal_reference": {
+            "type": "string"
+          },
+          "case_reference": {
+            "type": "string"
+          },
+          "row_reference": {
+            "type": "string"
+          },
+          "asset_or_transaction_reference": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "period_start": {
+            "type": "string"
+          },
+          "reporting_period": {
+            "type": "string"
+          },
+          "source_reference": {
+            "type": "string"
+          },
+          "accounting_determination": {
+            "const": "SUPPORTED"
+          },
+          "qualification_status": {
+            "const": "PROPOSED"
+          },
+          "lines": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "account",
+                "side",
+                "amount"
+              ],
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "side": {
+                  "enum": [
+                    "Dr",
+                    "Cr"
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^[0-9]+(?:\\.[0-9]+)?$",
+                  "description": "Exact numeric decimal string. Parse with decimal arithmetic, not binary float."
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "Proposals only, from native workpaper. Balanced lines; no posting authorization. Case references are curated durable identifiers on hosted routes."
+    },
+    "applied_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "row_reference",
+          "field",
+          "value",
+          "provenance"
+        ],
+        "properties": {
+          "row_reference": {
+            "type": "string"
+          },
+          "field": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "provenance": {
+            "enum": [
+              "explicit_user_input",
+              "client_asserted_class_assumption",
+              "case_election",
+              "engine_default_unconfirmed",
+              "confirmed_company_policy_client_asserted",
+              "explicit_field_semantics",
+              "governed_method"
+            ]
+          }
+        }
+      }
+    },
+    "balance_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "row_reference",
+          "asset_reference",
+          "source_field_path",
+          "explanation",
+          "status",
+          "balance_basis",
+          "supplied_value",
+          "calculated_value",
+          "variance"
+        ],
+        "properties": {
+          "row_reference": {
+            "type": "string"
+          },
+          "asset_reference": {
+            "type": "string"
+          },
+          "source_field_path": {
+            "type": "string"
+          },
+          "explanation": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "MATCH",
+              "MISMATCH",
+              "INVALID",
+              "UNRESOLVED_BASIS"
+            ]
+          },
+          "balance_basis": {
+            "enum": [
+              null,
+              "opening",
+              "closing"
+            ]
+          },
+          "supplied_value": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+          },
+          "calculated_value": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+          },
+          "variance": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+          }
+        }
+      },
+      "description": "Variance = supplied minus calculated. Null calculation/variance means comparison could not be performed; no invented balance."
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": [
+              "proposed_journals"
+            ]
+          },
+          {
+            "required": [
+              "applied_assumptions"
+            ]
+          },
+          {
+            "required": [
+              "balance_comparisons"
+            ]
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "source_provenance"
+        ],
+        "properties": {
+          "source_provenance": {
+            "const": "USER_PROVIDED_SOURCES"
+          }
+        }
+      }
+    }
+  ]
 }

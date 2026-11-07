@@ -376,6 +376,9 @@ class CAO:
                     r=production.assess_case(n.selected_skill,source,allow_prepared_unreviewed=self.allow_prepared_unreviewed,allow_presumed_user_sources=self.allow_presumed_user_sources)
                     if not isinstance(r,dict) or r.get('skill_id')!=meta['id'] or r.get('status') not in ('complete','partial','blocked','not_applicable'):
                         raise ValueError('Malformed owner result envelope')
+                    if r.get('source_assurance')=='presumed_user_provided':
+                        from source_execution import display_reference
+                        r['execution_case_reference']=display_reference('accounting-case',c.id)
                     # Public curation is mandatory even before internal synthesis.
                     production.to_public(r, 'answer_context')
                     if r.get('status')=='complete' and r.get('case_fingerprint')!=production.case_fingerprint(source):
