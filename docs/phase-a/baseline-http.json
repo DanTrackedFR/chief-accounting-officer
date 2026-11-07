@@ -1,0 +1,1109 @@
+[
+  {
+    "field": "entity",
+    "value": "MISSING",
+    "http_submit": 200,
+    "result": {
+      "accounting": {
+        "case_id": "case:cf5097ad2cafc40b39d4e3802a97de61d4a84f8e9460c6acf7a85b08ab86ca6f",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "blocked",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "calculations": [],
+          "confidence": "low",
+          "controls": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "The accounting review is unresolved in the areas listed below; completed workpapers are retained.",
+          "journals": [],
+          "jurisdiction": "NL",
+          "limitations": [],
+          "open_items": [
+            "machinery: Missing reviewed source workpaper for machinery"
+          ],
+          "reporting": [],
+          "required_approvals": [],
+          "status": "blocked",
+          "uncertainties": []
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "blocked"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:cf5097ad2cafc40b39d4e3802a97de61d4a84f8e9460c6acf7a85b08ab86ca6f",
+      "company_id": "synthetic-demo-001",
+      "created": 1794070524.6478753,
+      "id": "job-a53c48cc99338649a9e9fc8b7ccd3514b9ac93b6dfbc34badcfe6455f541baef",
+      "state": "SUCCEEDED",
+      "updated": 1794070524.7306058
+    }
+  },
+  {
+    "field": "entity",
+    "value": "",
+    "http_submit": 422,
+    "result": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "identity_conflict",
+        "message": "Company, entity, period or existing submission identity differs; select the original workspace."
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Company, entity, period or existing submission identity differs; select the original workspace.",
+        "status": "blocked"
+      }
+    }
+  },
+  {
+    "field": "jurisdiction",
+    "value": "MISSING",
+    "http_submit": 200,
+    "result": {
+      "accounting": {
+        "case_id": "case:efd520db3c5253ff0a39d143fb1fe4c06ecb01ca11402d1540ad455562edea56",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "blocked",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "calculations": [],
+          "confidence": "low",
+          "controls": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "framework": "IFRS",
+          "guidance": "The accounting review is unresolved in the areas listed below; completed workpapers are retained.",
+          "journals": [],
+          "jurisdiction": "NL",
+          "limitations": [],
+          "open_items": [
+            "machinery: Owner entity/framework/jurisdiction/period/currency mismatch"
+          ],
+          "reporting": [],
+          "required_approvals": [],
+          "status": "blocked",
+          "uncertainties": []
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "blocked"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:efd520db3c5253ff0a39d143fb1fe4c06ecb01ca11402d1540ad455562edea56",
+      "company_id": "synthetic-demo-001",
+      "created": 1794070524.8406467,
+      "id": "job-28e4874ed78a86fcdf692eb034c764b96c92d50e77fa2033461160693289035a",
+      "state": "SUCCEEDED",
+      "updated": 1794070524.8976912
+    }
+  },
+  {
+    "field": "remaining_life",
+    "value": 0,
+    "http_submit": 200,
+    "result": {
+      "accounting": {
+        "case_id": "case:486dd01375b72c06279f9742c4d7c6723b2669df67dc089c0b9feaae5f3d9d2f",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "partial",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "accounting_determination": "UNRESOLVED",
+          "anomaly_report": {
+            "completeness": "PRESUMED_FROM_SUPPLIED_FILE_NOT_INDEPENDENTLY_VERIFIED",
+            "excluded_rows": [
+              "assets:1"
+            ],
+            "findings": [
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within assets.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within costs.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within cip.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "assumptions",
+                "explanation": "Applicable company class assumptions applied; row-specific inputs take precedence.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": true,
+                "check_id": "signs_units",
+                "explanation": "Invalid numeric input or sign for remaining life.",
+                "field_path": "assets[1].remaining_life",
+                "resolution": "Supply a valid supported numeric value for remaining_life.",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "BLOCKED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "impairment",
+                "explanation": "No impairment indicator indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No lease like indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No held for sale indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No sale leaseback indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No replacement component indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "duplicate_invoices",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "arithmetic",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "control_totals",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "gl_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "dates",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "cutoff",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "pre_readiness_disposal",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "currency",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "essential_inputs",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "roll_forward",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "depreciation_comparison",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "qualified_outliers",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "readiness",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "movements",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "recognition",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "supplier_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              }
+            ],
+            "limitations": [
+              "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+              "No independent verification of source completeness or client identity assertion was performed."
+            ],
+            "population_status": "UNRECONCILED",
+            "profile": "presumed_user_provided"
+          },
+          "calculations": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "evidence_sufficiency": "INSUFFICIENT",
+          "framework": "IFRS",
+          "guidance": "No supported financial amounts could be calculated; resolve the listed requirements.",
+          "jurisdiction": "NL",
+          "limitations": [
+            "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+            "No independent verification of source completeness or client identity assertion was performed.",
+            "Prepared without independent review. Journal workpapers are proposals; no posting is authorized."
+          ],
+          "open_items": [
+            "Invalid numeric input or sign for remaining life."
+          ],
+          "review_provenance": "SYSTEM_PREPARED",
+          "source_provenance": "USER_PROVIDED_SOURCES",
+          "status": "partial",
+          "validation_requirements": [
+            {
+              "category": "anomaly",
+              "explanation": "Invalid numeric input or sign for remaining life.",
+              "field_path": "assets[1].remaining_life",
+              "identifier": "screening.signs_units.assets_1_.remaining_life"
+            }
+          ]
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "partial"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:486dd01375b72c06279f9742c4d7c6723b2669df67dc089c0b9feaae5f3d9d2f",
+      "company_id": "synthetic-demo-001",
+      "created": 1794070524.9588041,
+      "id": "job-0b67472e4becbacaeef9c19f674096b96afb555a5ac0b1faeb2e2d36bb781f5b",
+      "state": "SUCCEEDED",
+      "updated": 1794070525.0428705
+    }
+  },
+  {
+    "field": "remaining_life",
+    "value": 24,
+    "http_submit": 200,
+    "result": {
+      "accounting": {
+        "case_id": "case:b815e9a921aa52e687125024c469f3fa968767aaf5a1352d8d054f34cee7747f",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "partial",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "accounting_determination": "SUPPORTED",
+          "anomaly_report": {
+            "completeness": "PRESUMED_FROM_SUPPLIED_FILE_NOT_INDEPENDENTLY_VERIFIED",
+            "excluded_rows": [],
+            "findings": [
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within assets.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within costs.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within cip.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "assumptions",
+                "explanation": "Applicable company class assumptions applied; row-specific inputs take precedence.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "impairment",
+                "explanation": "No impairment indicator indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No lease like indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No held for sale indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No sale leaseback indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No replacement component indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "currency",
+                "explanation": "Currency and entity scope agree.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "qualified_outliers",
+                "explanation": "No reliable company/class comparison norm was supplied.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "dates",
+                "explanation": "Availability and disposal chronology checked.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "duplicate_invoices",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "arithmetic",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "control_totals",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "gl_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "cutoff",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "pre_readiness_disposal",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "signs_units",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "essential_inputs",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "roll_forward",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "depreciation_comparison",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "readiness",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "movements",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "recognition",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "supplier_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              }
+            ],
+            "limitations": [
+              "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+              "No independent verification of source completeness or client identity assertion was performed."
+            ],
+            "population_status": "SUPPLIED_FILE_BOUNDED",
+            "profile": "presumed_user_provided"
+          },
+          "calculations": [
+            {
+              "amount": "458.33",
+              "label": "depreciation"
+            },
+            {
+              "amount": "11000",
+              "label": "closing cost"
+            },
+            {
+              "amount": "458.33",
+              "label": "closing accumulated"
+            }
+          ],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "evidence_sufficiency": "SUFFICIENT",
+          "framework": "IFRS",
+          "guidance": "Nally calculated these results using the information you provided.\nOrdinary machinery uses the governed cost method; depreciation starts when available for use (IAS 16, ASC 360, FRS 102 Section 17 or AASB 116, as applicable).\nCalculated valid rows are bounded by the supplied file; excluded rows are not included in a complete population total.\nNo policy elections were assumed.\nSupplied class defaults: {\"machinery\": {\"method\": \"straight_line\", \"remaining_life\": \"10\", \"residual\": \"0\", \"scope\": \"ordinary_ppe\"}}\nApplied row assumptions: [{\"assumptions\": {\"method\": \"straight_line\", \"remaining_life\": 24, \"residual\": \"0\", \"scope\": \"ordinary_ppe\"}, \"row_reference\": \"assets:1\"}]\nExplicit user assumptions: []\nProposed journal implications: [[{\"account\": \"depreciation expense\", \"amount\": \"458.33\", \"side\": \"Dr\"}, {\"account\": \"accumulated depreciation\", \"amount\": \"458.33\", \"side\": \"Cr\"}]]",
+          "jurisdiction": "NL",
+          "limitations": [
+            "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+            "No independent verification of source completeness or client identity assertion was performed.",
+            "Prepared without independent review. Journal workpapers are proposals; no posting is authorized."
+          ],
+          "open_items": [],
+          "review_provenance": "SYSTEM_PREPARED",
+          "source_provenance": "USER_PROVIDED_SOURCES",
+          "status": "partial",
+          "validation_requirements": []
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "partial"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:b815e9a921aa52e687125024c469f3fa968767aaf5a1352d8d054f34cee7747f",
+      "company_id": "synthetic-demo-001",
+      "created": 1794070525.0954776,
+      "id": "job-4b913413155dc2a7f0e23843914b1e659608bd0eb7809e39a0e00b8ca0e2af57",
+      "state": "SUCCEEDED",
+      "updated": 1794070525.1834204
+    }
+  },
+  {
+    "field": "supplied_net_book_value",
+    "value": 260000,
+    "http_submit": 200,
+    "result": {
+      "accounting": {
+        "case_id": "case:5e7630ae942cc8836e763428750a78584889c6d990c376826fc7cf2009968748",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "partial",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "accounting_determination": "SUPPORTED",
+          "anomaly_report": {
+            "completeness": "PRESUMED_FROM_SUPPLIED_FILE_NOT_INDEPENDENTLY_VERIFIED",
+            "excluded_rows": [],
+            "findings": [
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within assets.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within costs.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "unique_identifiers",
+                "explanation": "Supplied identifiers checked within cip.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "assumptions",
+                "explanation": "Applicable company class assumptions applied; row-specific inputs take precedence.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "impairment",
+                "explanation": "No impairment indicator indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No lease like indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No held for sale indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "leases",
+                "explanation": "No sale leaseback indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "classification",
+                "explanation": "No replacement component indicator detected in the supplied structured facts.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "currency",
+                "explanation": "Currency and entity scope agree.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "qualified_outliers",
+                "explanation": "No reliable company/class comparison norm was supplied.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "dates",
+                "explanation": "Availability and disposal chronology checked.",
+                "resolution": "",
+                "row_references": [
+                  "assets:1"
+                ],
+                "severity": "PASS",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "duplicate_invoices",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "arithmetic",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "control_totals",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "gl_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "cutoff",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "pre_readiness_disposal",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "signs_units",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "essential_inputs",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "roll_forward",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "depreciation_comparison",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "readiness",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "movements",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "recognition",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              },
+              {
+                "blocks_calculation": false,
+                "check_id": "supplier_reconciliation",
+                "explanation": "Applicable evidence or qualified comparison basis was not supplied; no pass is inferred.",
+                "resolution": "",
+                "row_references": [],
+                "severity": "NOT_PERFORMED",
+                "source_reference": "synthetic-upload-independent-QA"
+              }
+            ],
+            "limitations": [
+              "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+              "No independent verification of source completeness or client identity assertion was performed."
+            ],
+            "population_status": "SUPPLIED_FILE_BOUNDED",
+            "profile": "presumed_user_provided"
+          },
+          "calculations": [
+            {
+              "amount": "1100.00",
+              "label": "depreciation"
+            },
+            {
+              "amount": "11000",
+              "label": "closing cost"
+            },
+            {
+              "amount": "1100.00",
+              "label": "closing accumulated"
+            }
+          ],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "evidence_sufficiency": "SUFFICIENT",
+          "framework": "IFRS",
+          "guidance": "Nally calculated these results using the information you provided.\nOrdinary machinery uses the governed cost method; depreciation starts when available for use (IAS 16, ASC 360, FRS 102 Section 17 or AASB 116, as applicable).\nCalculated valid rows are bounded by the supplied file; excluded rows are not included in a complete population total.\nNo policy elections were assumed.\nSupplied class defaults: {\"machinery\": {\"method\": \"straight_line\", \"remaining_life\": \"10\", \"residual\": \"0\", \"scope\": \"ordinary_ppe\"}}\nApplied row assumptions: [{\"assumptions\": {\"method\": \"straight_line\", \"remaining_life\": \"10\", \"residual\": \"0\", \"scope\": \"ordinary_ppe\"}, \"row_reference\": \"assets:1\"}]\nExplicit user assumptions: []\nProposed journal implications: [[{\"account\": \"depreciation expense\", \"amount\": \"1100.00\", \"side\": \"Dr\"}, {\"account\": \"accumulated depreciation\", \"amount\": \"1100.00\", \"side\": \"Cr\"}]]",
+          "jurisdiction": "NL",
+          "limitations": [
+            "Screening covers supplied structured facts; absence of an indicator is not proof the underlying issue cannot exist.",
+            "No independent verification of source completeness or client identity assertion was performed.",
+            "Prepared without independent review. Journal workpapers are proposals; no posting is authorized."
+          ],
+          "open_items": [],
+          "review_provenance": "SYSTEM_PREPARED",
+          "source_provenance": "USER_PROVIDED_SOURCES",
+          "status": "partial",
+          "validation_requirements": []
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "partial"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:5e7630ae942cc8836e763428750a78584889c6d990c376826fc7cf2009968748",
+      "company_id": "synthetic-demo-001",
+      "created": 1794070525.2595243,
+      "id": "job-9c4439d25c59c34ba6a235d2680998466ab09ce7feb6a0bc8a2095af9d9bd4c1",
+      "state": "SUCCEEDED",
+      "updated": 1794070525.335798
+    }
+  }
+]

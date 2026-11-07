@@ -81,7 +81,7 @@ def immutable(path, value):
 
 
 class ClientValidation(ValueError):
-    def __init__(self, requirements): self.requirements = requirements
+    def __init__(self, requirements, code="invalid_request"): self.requirements = requirements; self.code = code
 
 
 class ExecutionInterface:
@@ -163,7 +163,7 @@ class ExecutionInterface:
             with self._lock(): result = self._call(request, company, operation)
             return dict(contract_version=VERSION, operation=operation, company_id=company,
                         ok=True, **result)
-        except ClientValidation as exc: code = 'invalid_request'; requirements = exc.requirements
+        except ClientValidation as exc: code = exc.code; requirements = exc.requirements
         except Failure as exc: code = exc.code
         except ImportError: code = 'runtime_installation'
         except FileNotFoundError: code = 'not_found'
@@ -386,6 +386,17 @@ class ExecutionInterface:
         # Native approvals are supplied inert workpaper records. Adapter never
         # creates/refreshes reviewer seals or imports context-policy approvals.
         s = d['native_request']['scope']
+        if d.get('source_assurance') == 'presumed_user_provided':
+            from source_execution import scope_requirements, independent_row_requirements
+            needs=[]
+            for family,value in e['facts'].items():
+                if family not in FACT_ADAPTERS:continue
+                for source in value if isinstance(value,list) else [value]:
+                    if not isinstance(source,dict):continue
+                    prefix='evidence.facts.'+family+'.'
+                    defects=scope_requirements(source,s,prefix)
+                    if defects:needs.extend(defects+independent_row_requirements(source,prefix))
+            if needs:raise ClientValidation(needs,'identity_conflict')
         for family, value in e['facts'].items():
             if family == 'task_attributes': continue
             if family not in FACT_ADAPTERS: raise Failure('invalid_request')

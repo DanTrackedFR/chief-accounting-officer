@@ -20,9 +20,45 @@ def issue(identifier, path, explanation, category='missing_fact'):
     return dict(identifier=identifier, field_path=path, explanation=explanation, category=category)
 
 
+SCOPE_FIELDS = ('entity', 'jurisdiction', 'framework', 'period_start', 'reporting_period', 'functional_currency')
+
+
+def scope_requirements(case, expected=None, prefix=''):
+    """Shared Profile 1.2 scope checks, including immutable adapter identity."""
+    needs=[]
+    for key in SCOPE_FIELDS:
+        value=case.get(key)
+        reason=('missing' if key not in case else 'null' if value is None else
+                'invalid_type' if not isinstance(value,str) else 'blank' if not value.strip() else None)
+        if reason is None and key in ('period_start','reporting_period'):
+            try:iso(value)
+            except ReviewRequired:reason='invalid_date'
+        if reason is None and key=='framework' and value not in ('IFRS','US_GAAP','UK_GAAP','AASB'):reason='unsupported'
+        if reason is None and key=='functional_currency' and (not re.fullmatch('[A-Z]{3}',value) or value=='XXX'):reason='unsupported'
+        if reason is None and expected is not None and value!=expected[key]:reason='identity_conflict'
+        if reason:
+            needs.append(issue('scope.'+key+'.'+reason,prefix+key,
+                'Supply '+key.replace('_',' ')+' matching the selected Case scope ('+reason.replace('_',' ')+').',
+                'missing_fact' if reason in ('missing','null','blank') else 'invalid_fact'))
+    return needs
+
+
+def independent_row_requirements(case, prefix=''):
+    """Only prerequisites independent of invalid scope; no accounting conclusions."""
+    needs=[]
+    for table,fields in (('assets',('opening_cost','opening_accumulated','ready_date')),):
+        for i,row in enumerate(case.get(table,[]) if isinstance(case.get(table,[]),list) else []):
+            if not isinstance(row,dict):continue
+            for field in fields:
+                if row.get(field) in (None,''):
+                    path=prefix+table+'['+str(i+1)+'].'+field
+                    needs.append(issue('row.'+table+'.'+str(i+1)+'.'+field,path,'Supply '+field.replace('_',' ')+'.'))
+    return needs
+
+
 def requirements(package, case):
     """Only enumerate prerequisites evaluable at this stage; never guess consequences."""
-    found = []
+    found = scope_requirements(case)
     populations=('assets','costs','cip','invoices','accruals','payments','supplier_balances')
     if sum(len(case[k]) for k in populations if isinstance(case.get(k),list))>200:
         found.append(issue('bounds.population','source','This profile supports at most 200 supplied rows per Case; partition the population and reconcile the partitions.','invalid_fact'))
@@ -35,7 +71,7 @@ def requirements(package, case):
     if case.get('framework') == 'AASB': fields += ['aasb_compilation', 'reporting_tier']
     if case.get('framework') == 'US_GAAP': fields += ['us_entity_type']
     for key in fields:
-        if case.get(key) in (None, ''): found.append(issue('missing.'+key, key, 'Supply '+key.replace('_',' ')+'.'))
+        if key not in SCOPE_FIELDS and case.get(key) in (None, ''): found.append(issue('missing.'+key, key, 'Supply '+key.replace('_',' ')+'.'))
     for key, children in [('source', ('id','version','hash')),
                           ('source_attestation', ('authenticated_user_reference','timestamp','statement_version','represents_company_records'))]:
         if isinstance(case.get(key),dict):
