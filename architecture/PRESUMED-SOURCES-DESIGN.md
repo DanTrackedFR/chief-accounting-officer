@@ -154,3 +154,37 @@ historical Git checkout is a release prerequisite. Existing historical
 receipts, deterministic proofs and protected artifact files remain unchanged.
 Exact-head and readiness CI must both pass on the frozen release SHA before the
 single PR is Ready for Review. No merge is authorized.
+
+## Post-merge Phase A correction contract (November2026)
+
+The accepted Profile1.2 release above remains historical evidence. The separately
+governed Phase A correction adds bounded source/API behavior documented in
+[`docs/phase-a/integration-contract.md`](../docs/phase-a/integration-contract.md).
+`remaining_life` explicitly represents YEARS; `remaining_life_months` represents
+MONTHS. Both must reconcile exactly when supplied. Row-specific life inputs as
+a group override class life defaults. Invalid/exhausted life is field-specific,
+aggregated and cannot generate depreciation, disposal or proposed journal lines.
+
+Fixed-assets Case `policy_elections` now permits `depreciation_convention`
+(`monthly`, `actual_days`) and explicit `partial_month_treatment`
+(`actual_days_in_month`). Monthly is recommended for new monthly closes as an
+operational choice, never a universal standards mandate. Existing callers without
+an election keep actual-day behavior. Confirmed applicable client company policy
+in `asset_policy` precedes compatible Case election; conflict blocks. Native
+company memory remains CONTEXT_ONLY and requires explicit applicable policy
+confirmation/resubmission; it does not silently authorize calculations.
+
+Optional `supplied_net_book_value` and `supplied_accumulated_depreciation` require
+`comparison_balance_basis` opening/closing. They are comparisons only and never
+change independently calculated balances or journals. Structured public
+`balance_comparisons`, `proposed_journals` and `applied_assumptions` replace prose
+parsing for machine integrations. Native proposed workpaper lines remain the
+accounting source; per-row lineage and actual assumption provenance are curated
+on every public route. Amounts use exact numeric decimal strings. Journals remain
+proposals with no posting authorization; `journal_entry_implications` is retained
+empty. Required malformed/missing source scope rejects with aggregated field
+requirements at HTTP422 without weakening immutable Case identity.
+
+This correction has its own tests, independent accounting/engineering QA and
+post-merge compatibility witnesses. It does not update historical receipts or
+claim the original release acceptance covers the corrected implementation.

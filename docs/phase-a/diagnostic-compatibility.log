@@ -1,0 +1,36 @@
+test_ACC_01 (diagnostics.profile12.regressions.Regressions.test_ACC_01) ... ok
+test_ACC_02 (diagnostics.profile12.regressions.Regressions.test_ACC_02) ... ok
+test_ACC_03 (diagnostics.profile12.regressions.Regressions.test_ACC_03) ... ok
+test_ACC_04 (diagnostics.profile12.regressions.Regressions.test_ACC_04) ... ok
+test_ACC_05 (diagnostics.profile12.regressions.Regressions.test_ACC_05) ... ok
+test_ENG_01 (diagnostics.profile12.regressions.Regressions.test_ENG_01) ... ok
+test_ENG_02 (diagnostics.profile12.regressions.Regressions.test_ENG_02) ... ok
+test_ENG_02_mixed (diagnostics.profile12.regressions.Regressions.test_ENG_02_mixed) ... ok
+test_ENG_03 (diagnostics.profile12.regressions.Regressions.test_ENG_03) ... ok
+test_ENG_04 (diagnostics.profile12.regressions.Regressions.test_ENG_04) ... ok
+test_ENG_05 (diagnostics.profile12.regressions.Regressions.test_ENG_05) ... ok
+test_ENG_06 (diagnostics.profile12.regressions.Regressions.test_ENG_06) ... ok
+test_control_accrual (diagnostics.profile12.regressions.Regressions.test_control_accrual) ... ok
+test_control_ap (diagnostics.profile12.regressions.Regressions.test_control_ap) ... ok
+test_control_disposal (diagnostics.profile12.regressions.Regressions.test_control_disposal) ... ok
+test_control_disputed (diagnostics.profile12.regressions.Regressions.test_control_disputed) ... ok
+test_control_fa (diagnostics.profile12.regressions.Regressions.test_control_fa) ... ok
+test_control_invalid_opening (diagnostics.profile12.regressions.Regressions.test_control_invalid_opening) ... ok
+test_control_no_disposal (diagnostics.profile12.regressions.Regressions.test_control_no_disposal) ... ok
+regressions (unittest.loader._FailedTest.regressions) ... ERROR
+
+======================================================================
+ERROR: regressions (unittest.loader._FailedTest.regressions)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: regressions
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'diagnostics.profile12.remediation.regressions'
+
+
+----------------------------------------------------------------------
+Ran 20 tests in 13.375s
+
+FAILED (errors=1)
