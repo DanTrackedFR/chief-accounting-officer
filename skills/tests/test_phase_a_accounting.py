@@ -109,3 +109,12 @@ class BalanceComparisons(unittest.TestCase):
             c=source();c['assets'][0].update(opening_accumulated='11000',supplied_net_book_value='0',supplied_accumulated_depreciation='0' if disposed else '11000',comparison_balance_basis='closing')
             if disposed:c['assets'][0]['disposal']=dict(enabled=True,date='2026-06-30',proceeds='1',ordinary_sale=True,cash_received=True)
             self.assertTrue(all(x['status']=='MATCH' for x in calculate(c)['calculations']['balance_comparisons']))
+
+class ActualAssumptions(unittest.TestCase):
+    def test_units_of_production_does_not_claim_day_convention(self):
+        from source_execution import to_public
+        c=source();c['assets'][0].update(method='units_of_production',remaining_units='100',period_units='10')
+        r=calculate(c);public=to_public(r,'answer')
+        self.assertEqual(r['calculations']['depreciation'],D('1100'))
+        self.assertNotIn('Applied depreciation convention:',public['guidance'])
+        self.assertFalse(any(a['field']=='depreciation_convention' for a in public['applied_assumptions']))
