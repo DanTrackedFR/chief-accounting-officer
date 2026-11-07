@@ -6,11 +6,13 @@ and the complete receipt source map; it cannot change the expected proof bytes.
 """
 import argparse
 import json
+import sys
 from pathlib import Path
 from receipt_integrity import artifact, digest, require
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT))
 CONTRACT = 'skills/presumed-sources/release/phase-a-v1/proof-contract.json'
-CONTRACT_SHA256 = '50f025c6c743af0ced50a4d58395defa89e2e1d952a1d6bc758694fe409da83c'
+CONTRACT_SHA256 = '0cfd93e3d75f3bd9d781422bbbf97129607fe07253a09dba6d80f911de673694'
 VERSION = 'phase-a-v1'
 
 

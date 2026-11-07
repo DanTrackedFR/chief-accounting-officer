@@ -8,7 +8,7 @@ from pathlib import Path
 from receipt_integrity import artifact, digest, require
 ROOT=Path(__file__).resolve().parents[2]
 CONTRACT='skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json'
-CONTRACT_SHA256='42f239f82044c9d7a70557d4a8d824597108d601fda2c1f3376f724b48146485'
+CONTRACT_SHA256='b2c6a8d435095a82ae63d1d4f8ec5ed2e62dba4e4222e5adb5843914b3e4bfac'
 
 
 def verify_accepted_main(root=None):

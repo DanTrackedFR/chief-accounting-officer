@@ -51,7 +51,7 @@ def validate_population(manifest):
     observed = aggregate(rows)
     require(manifest.get('outcomes') == observed, 'Tampered aggregate test outcomes')
     for name in ('scheduled','executed','passed','failed','errored','skipped','unexecuted'):
-        require(manifest.get(name+'_distinct_tests') == len(observed[name+'_ids']), 'Aggregate execution count differs: '+name)
+        require(type(manifest.get(name+'_distinct_tests')) is int and manifest[name+'_distinct_tests'] == len(observed[name+'_ids']), 'Aggregate execution count differs: '+name)
     require(type(manifest.get('discovered_distinct_tests')) is int and
             manifest['discovered_distinct_tests'] == len(observed['discovered_ids']) == len(observed['scheduled_ids']),
             'Discovered receipt count differs from scheduled population')
@@ -158,7 +158,7 @@ def verify(pointer_path='build4/release/presumed-sources-accepted-release.json')
     assert manifest_path.resolve().is_relative_to(ROOT/'build4/release'),'Acceptance outside release namespace'
     assert digest(manifest_path)==pointer['sha256'],'Presumed-source regression manifest hash differs'
     manifest=json.loads(manifest_path.read_text())
-    assert manifest['complete'] and manifest['source_unchanged'],'Incomplete Presumed-source release'
+    require(manifest.get('complete') is True and manifest.get('source_unchanged') is True, 'Incomplete Presumed-source release')
     verify_inventory(ROOT,pointer,manifest_path,manifest,'release')
     validate_population(manifest)
     assert source_hashes()==manifest['tested_python_sha256'],'Presumed-source Python changed after regression'

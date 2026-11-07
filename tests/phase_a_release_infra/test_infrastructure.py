@@ -30,6 +30,12 @@ class Infrastructure(unittest.TestCase):
         path=proof.selected_proof();self.assertEqual(proof.verify_output(path)['proof_version'],'phase-a-v1')
         self.assertEqual(hashlib.sha256((ROOT/'skills/presumed-sources/release/http-proof.json').read_bytes()).hexdigest(),
                          'be06ab1a1ee247bc24159f7ad605eb30c1dc70fccb13c864b50a9da25e88bcb7')
+    def test_selector_cli_without_pythonpath(self):
+        env={k:v for k,v in os.environ.items() if k!='PYTHONPATH'}
+        p=subprocess.run([sys.executable,'skills/presumed-sources/proof_selection.py','--version','phase-a-v1',
+                          '--output','skills/presumed-sources/release/phase-a-v1/http-proof.json'],cwd=ROOT,env=env,capture_output=True,text=True)
+        self.assertEqual(p.returncode,0,p.stderr);self.assertEqual(json.loads(p.stdout)['proof_version'],'phase-a-v1')
+
     def test_proof_wrong_version(self):
         with self.assertRaises(ValueError):proof.selected_proof('historical')
     def test_proof_missing_stale_tampered_and_contract(self):
@@ -166,6 +172,9 @@ class ReceiptAdversarial(unittest.TestCase):
         for field in ('discovered_distinct_tests','executed_distinct_tests','passed_distinct_tests','proof_version','proof_sha256','proof_contract_sha256'):
             bad=copy.deepcopy(d);bad[field]='tampered'
             with self.subTest(field=field),self.assertRaises(ValueError):v.validate_population(bad)
+        for key in ('failed','errored','skipped','unexecuted'):
+            bad=copy.deepcopy(d);bad[key+'_distinct_tests']=False
+            with self.subTest(boolean_counter=key),self.assertRaises(ValueError):v.validate_population(bad)
         for identity in (population.phase_a_required_ids()[0],population.required_ids()[0]['distinct_ids'][0]):
             bad=copy.deepcopy(d)
             for row in bad['suite_results']:
