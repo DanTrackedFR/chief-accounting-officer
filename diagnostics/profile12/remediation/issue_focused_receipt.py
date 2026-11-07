@@ -27,7 +27,7 @@ def issue(name):
     attempt = 'focused-governance-' + name
     temporary = ROOT/'build4/release'/attempt
     require(not temporary.exists(), 'Preserve existing runner attempt')
-    command = [sys.executable, '-m', 'build4.run_release', 'suite', 'diagnostics/profile12', 'regressions.py', '0']
+    command = [sys.executable, 'skills/presumed-sources/suite_runner.py', 'suite', 'diagnostics/profile12', 'regressions.py', '0']
     # The genuine bounded suite runner records actual distinct method IDs.
     with tempfile.TemporaryDirectory() as traces, (out/'suite-0.log').open('w') as log:
         process = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT,

@@ -13,6 +13,9 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from receipt_integrity import verify_inventory, artifact, require
+from build4.test_outcomes import validate_outcomes, aggregate
+from proof_selection import selected_proof, VERSION, CONTRACT_SHA256
+from accepted_history import verify_accepted_main
 
 
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -20,10 +23,11 @@ def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
 from release_population import (SUPPORTED_SUITES, VALIDATOR_COMMANDS, gate_plan,
-                                discover, release_input_hashes)
+                                discover, release_input_hashes, verify_required_population, verify_source_binding)
 
 
 def _counted_pass(row):
+    validate_outcomes(row)
     ids = row['distinct_ids']
     assert isinstance(ids, list) and len(ids) == len(set(ids)), 'Duplicate test identities'
     assert type(row['tests']) is int and row['tests'] == len(ids), 'Test receipt count differs'
@@ -40,7 +44,21 @@ def _command_shape(command):
 
 
 def validate_population(manifest):
+    require(manifest.get('scope') != 'bounded-remediation-preflight' and manifest.get('release_accepted') is not False,
+            'Bounded preflight cannot satisfy release acceptance')
     rows = manifest['suite_results']
+    require(manifest.get('outcome_schema_version') == 1, 'Missing actual execution receipt semantics')
+    observed = aggregate(rows)
+    require(manifest.get('outcomes') == observed, 'Tampered aggregate test outcomes')
+    for name in ('scheduled','executed','passed','failed','errored','skipped','unexecuted'):
+        require(manifest.get(name+'_distinct_tests') == len(observed[name+'_ids']), 'Aggregate execution count differs: '+name)
+    require(type(manifest.get('discovered_distinct_tests')) is int and
+            manifest['discovered_distinct_tests'] == len(observed['discovered_ids']) == len(observed['scheduled_ids']),
+            'Discovered receipt count differs from scheduled population')
+    verify_required_population(rows, executed=True)
+    proof_path = selected_proof()
+    require(manifest.get('proof_version') == VERSION and manifest.get('proof_contract_sha256') == CONTRACT_SHA256 and
+            manifest.get('proof_sha256') == digest(proof_path), 'Incorrect proof version or binding')
     expected_plan = gate_plan(manifest['attempt'], manifest['source_commit'])
     assert manifest['gate_plan'] == expected_plan, 'Mandatory release gate plan differs'
     assert [(r['suite'], r['pattern']) for r in rows] == list(SUPPORTED_SUITES), 'Release suite population differs'
@@ -56,7 +74,7 @@ def validate_population(manifest):
                 _counted_pass(shard); shard_ids.extend(shard['distinct_ids'])
             assert sorted(shard_ids) == sorted(row['distinct_ids']) and len(shard_ids) == len(set(shard_ids)), 'Shard test population differs'
     assert len(ids) == len(set(ids)) == manifest['executed_distinct_tests'], 'Distinct release test population differs'
-    expected = [['python', '-m', 'build4.run_release', 'suite', directory, pattern, str(i)] for i, (directory, pattern) in enumerate(SUPPORTED_SUITES)]
+    expected = [['python', 'skills/presumed-sources/suite_runner.py', 'suite', directory, pattern, str(i)] for i, (directory, pattern) in enumerate(SUPPORTED_SUITES)]
     expected += [['python', command] for command in VALIDATOR_COMMANDS]
     expected += [['git', 'diff', '--check']]
     assert [_command_shape(row['command']) for row in manifest['logs']] == expected, 'Release validator or command population differs'
@@ -94,6 +112,25 @@ def verify_workflow_migration(historical_digest):
     assert digest(successor) == migration['successor_sha256'], 'Active successor workflow changed'
 
 
+DOC_MIGRATION = 'skills/presumed-sources/phase-a-contracts/hosted-doc-migration-v1.json'
+DOC_MIGRATION_SHA256 = 'c38063f63fbb651f0d91a31fdb229ef70023449a400b9140926bdded3f5abc29'
+
+
+def verify_doc_migration(historical_digest):
+    contract_path = artifact(ROOT, DOC_MIGRATION)
+    require(digest(contract_path) == DOC_MIGRATION_SHA256, 'Documentation migration contract changed')
+    contract = json.loads(contract_path.read_bytes())
+    require(contract['schema_version'] == 1 and contract['migration_id'] == 'phase-a-hosted-doc-v1', 'Documentation migration version differs')
+    require(contract['predecessor_manifest_sha256'] == PRESERVATION_SHA256, 'Documentation migration predecessor differs')
+    require(contract['path'] == 'docs/HOSTED-CAO.md' and contract['original_sha256'] == historical_digest, 'Documentation migration original differs')
+    original = artifact(ROOT, contract['archive_path']).read_bytes()
+    successor = artifact(ROOT, contract['path']).read_bytes()
+    require(hashlib.sha256(original).hexdigest() == historical_digest, 'Archived original document changed')
+    require(hashlib.sha256(successor).hexdigest() == contract['successor_sha256'], 'Active successor document changed')
+    require(successor.startswith(original) and len(successor.splitlines()) - len(original.splitlines()) == 14,
+            'Documentation migration is not the authorized additive transition')
+
+
 def verify_historical():
     path=ROOT/'skills/presumed-sources/release/historical-preservation.json'
     assert digest(path)==PRESERVATION_SHA256,'Historical preservation manifest changed'
@@ -104,8 +141,11 @@ def verify_historical():
         assert (ROOT/name).resolve().is_relative_to(ROOT),'Historical path escapes repository'
         if name == ORCHESTRATION_WORKFLOW:
             verify_workflow_migration(expected)
+        elif name == 'docs/HOSTED-CAO.md':
+            verify_doc_migration(expected)
         else:
             assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
+    verify_accepted_main()
     return len(historical['files'])
 
 
@@ -123,8 +163,11 @@ def verify(pointer_path='build4/release/presumed-sources-accepted-release.json')
     validate_population(manifest)
     assert source_hashes()==manifest['tested_python_sha256'],'Presumed-source Python changed after regression'
     assert release_input_hashes()==manifest['tested_execution_inputs_sha256'],'Presumed-source execution inputs changed after regression'
+    verify_source_binding(manifest['source_commit'], manifest['tested_python_sha256'], manifest['tested_execution_inputs_sha256'])
     all_ids=[]
     inventory=discover(manifest['attempt'],manifest['source_commit'])
+    require(manifest['discovered_distinct_tests'] == inventory['discovered_distinct_tests'],
+            'Discovered receipt count differs from actual rediscovery')
     for r, discovered in zip(manifest['suite_results'],inventory['suite_results']):
         expected=discovered['distinct_ids']
         assert expected==r['distinct_ids'] and r['passed'] and not r['skipped'] and not r['failures'] and not r['errors'] and r['exit_code']==0,('Presumed-source test receipt differs',r['suite'])
@@ -171,7 +214,7 @@ print(json.dumps(sorted('diagnostics/profile12::'+t.id() for t in cases(suite)))
     require(rows[0]['tests'] == 19 and manifest['executed_distinct_tests'] == 19, 'Focused test population differs')
     require(len(manifest['logs']) == 1, 'Focused command population differs')
     log = manifest['logs'][0]
-    require(_command_shape(log['command']) == ['python', '-m', 'build4.run_release', 'suite',
+    require(_command_shape(log['command']) == ['python', 'skills/presumed-sources/suite_runner.py', 'suite',
             'diagnostics/profile12', 'regressions.py', '0'], 'Focused command differs')
     require(log['exit_code'] == 0 and digest(artifact(ROOT,log['path'])) == log['sha256'], 'Presumed-source log changed')
     inventory = verify_inventory(ROOT, pointer, path, manifest, 'focused-governance-qa-v1')

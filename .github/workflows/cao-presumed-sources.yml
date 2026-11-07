@@ -36,7 +36,7 @@ jobs:
         run: |
           PYTHONHASHSEED=109 python -m hosted_cao.tests.prove_presumed_http > /tmp/source109.json
           PYTHONHASHSEED=971 python -m hosted_cao.tests.prove_presumed_http > /tmp/source971.json
-          cmp skills/presumed-sources/release/http-proof.json /tmp/source109.json
+          python skills/presumed-sources/proof_selection.py --version phase-a-v1 --output /tmp/source109.json
           cmp /tmp/source109.json /tmp/source971.json
       - name: Probe durable evidence storage before expensive regression
         id: persistence
