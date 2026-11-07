@@ -819,7 +819,7 @@ def to_public(result,route):
         guidance+='\n'+('Ordinary machinery uses the governed cost method; depreciation starts when available for use (IAS 16, ASC 360, FRS 102 Section 17 or AASB 116, as applicable).' if fa else 'Recognize supplied ordinary supplier obligations under the applicable governed recognition method; unbilled accruals require supported goods or services receipt.')
         guidance+='\nCalculated valid rows are bounded by the supplied file; excluded rows are not included in a complete population total.'
         guidance+='\n'+result['policy_elections_disclosure']
-        if fa:
+        if fa and 'journal_rows' in result['calculations']:
             policy,_=depreciation_policy(result['facts_used'])
             guidance+='\nApplied depreciation convention: '+policy['convention']+' ('+policy['provenance']+').'
             guidance+='\nMonthly depreciation is recommended for businesses calculating depreciation as part of a monthly close. It provides consistent full-month charges and commonly aligns with fixed-asset registers. Choose actual days if your documented accounting policy uses calendar-day proration.'
