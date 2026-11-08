@@ -50,7 +50,9 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                            PATH=str(Path(sys.executable).parent)+os.pathsep+os.environ['PATH'])
             finally:
                 contract.tearDownClass()
-            write('intelligence/tests/run_release.py', (ROOT/'intelligence/tests/run_release.py').read_bytes())
+            self.assertEqual((root/'intelligence/tests/run_release.py').read_bytes(),
+                             (ROOT/'intelligence/tests/run_release.py').read_bytes())
+            self.assertFalse(list(root.rglob('*.pyc')))
 
             protected = {}
             for historical in ('intelligence/release/ci-orchestration-module-0.log',

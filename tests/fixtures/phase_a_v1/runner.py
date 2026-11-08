@@ -166,6 +166,7 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         # The fixture commit is an execution input. Host clocks and user Git
         # settings must not move its identity. Run/attempt IDs vary separately.
         cls.env = {**{k: v for k, v in os.environ.items() if not k.startswith('GIT_')},
+                   'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONNOUSERSITE': '1', 'PYTHONPATH': '',
                    'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects,
                    'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_NOSYSTEM': '1',
                    'GIT_AUTHOR_NAME': 'Synthetic QA', 'GIT_COMMITTER_NAME': 'Synthetic QA',
