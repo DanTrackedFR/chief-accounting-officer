@@ -63,8 +63,8 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
             pointer = write('build4/release/presumed-sources-accepted-release.json',
                             (ROOT/'build4/release/presumed-sources-accepted-release.json').read_bytes())
             protected[pointer] = pointer.read_bytes()
-            subprocess.run(['git','add','.'],cwd=root,check=True)
-            subprocess.run(['git','-c','user.name=Synthetic QA','-c','user.email=synthetic@example.invalid','commit','-qm','CI isolation fixture'],cwd=root,check=True)
+            subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
+            subprocess.run(['git','-c','user.name=Synthetic QA','-c','user.email=synthetic@example.invalid','commit','-qm','CI isolation fixture'],cwd=root,env=env,check=True)
             env['CAO_ACCEPTANCE_POINTER'] = ''
             for run_id, retry in [('123', '1'), ('123', '2'), ('124', '1')]:
                 attempt = attempt_template.replace('${{ github.run_id }}', run_id).replace(

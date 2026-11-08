@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('population_dispatch_fixture',
@@ -53,6 +54,20 @@ class ProductionPopulationDispatch(unittest.TestCase):
         self.assertFalse((self.root/'build4/release/bounded-check').exists())
 
     def test_missing_outcome_dependency_refused_before_execution(self):
+        for name in ('../escape', str(self.root.parent/'escaped')):
+            with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'Redirected fixture path'):
+                FIXTURE.put(self.root, name, 'invalid')
+        link = self.root / 'outside'
+        link.symlink_to(self.root.parent, target_is_directory=True)
+        with self.assertRaisesRegex(ValueError, 'Redirected fixture path'):
+            FIXTURE.put(self.root, 'outside/escaped', 'invalid')
+        link.unlink()
+        original = Path.read_bytes
+        for filename in ('accepted-main-infrastructure-v1.json', 'proof-contract.json', 'governance-source-v2.json'):
+            with self.subTest(contract=filename), patch.object(Path, 'read_bytes',
+                    lambda p: b'{}' if p.name == filename else original(p)):
+                with self.assertRaisesRegex(ValueError, 'Fixture contract changed'):
+                    FIXTURE.bind_fixture_contracts(self.root)
         path = self.root / 'build4/test_outcomes.py'
         path.unlink()
         result = self.invoke('--discover')

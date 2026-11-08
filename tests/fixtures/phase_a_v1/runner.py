@@ -22,8 +22,23 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def child_path(root, name):
+    relative = Path(name)
+    path = root / relative
+    if relative.is_absolute() or '..' in relative.parts or path.resolve() != path:
+        raise ValueError('Redirected fixture path: ' + str(name))
+    return path
+
+
+def read_contract(name, expected):
+    data = child_path(SOURCE, name).read_bytes()
+    if hashlib.sha256(data).hexdigest() != expected:
+        raise ValueError('Fixture contract changed: ' + name)
+    return json.loads(data)
+
+
 def put(root, name, contents):
-    path = root / name
+    path = child_path(root, name)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(contents)
     return path
@@ -46,13 +61,13 @@ DEPENDENCIES = (
 
 
 def copy_dependency(root, name):
-    data = (ROOT / name).read_bytes()
+    dest = child_path(root, name)
+    data = child_path(ROOT, name).read_bytes()
     if name == 'skills/presumed-sources/proof_selection.py':
         if hashlib.sha256(data).hexdigest() != '19dbe5411bdb03dd33d4247b38ee6d68732318229680c1d53fad1e59f14a9c5b':
             raise ValueError('Fixture successor selector changed')
     elif data != subprocess.check_output(['git', 'show', FROZEN + ':' + name], cwd=ROOT):
         raise ValueError('Fixture dependency differs from frozen source: ' + name)
-    dest = root / name
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(data)
 
@@ -69,7 +84,16 @@ def bind_fixture_contracts(root):
     # The preservation and proof validators continue to run in the child process.
     directory = root / 'skills/presumed-sources'
     relative = 'skills/presumed-sources/'
-    live = json.loads((SOURCE / 'phase-a-contracts/accepted-main-infrastructure-v1.json').read_bytes())
+    live = read_contract('phase-a-contracts/accepted-main-infrastructure-v1.json',
+                         'b2c6a8d435095a82ae63d1d4f8ec5ed2e62dba4e4222e5adb5843914b3e4bfac')
+    proof = read_contract('release/phase-a-v1/proof-contract.json',
+                          '0cfd93e3d75f3bd9d781422bbbf97129607fe07253a09dba6d80f911de673694')
+    transition = read_contract('release/phase-a-v1/governance-source-v2.json',
+                               '1ec5e6f00421cd4948a23a1db6ac22f17128d6b63511544ac267c0d4e466d836')
+    migrations = {'diagnostics/profile12/remediation/issue_focused_receipt.py',
+                  *(relative + name for name in ('release_population.py', 'run_release.py', 'verify_release.py'))}
+    if set(live['source_migrations']) != migrations or transition['path'] != 'skills/tests/test_independent_ip_main_reconciliation.py':
+        raise ValueError('Unexpected synthetic migration population')
     files = {}
     for name, row in live['source_migrations'].items():
         copy_dependency(root, row['archive_path'])
@@ -84,7 +108,6 @@ def bind_fixture_contracts(root):
     history = directory / 'accepted_history.py'
     substitute(history, 'b2c6a8d435095a82ae63d1d4f8ec5ed2e62dba4e4222e5adb5843914b3e4bfac', sha(path))
     substitute(history, "len(data['files'])==7963", "len(data['files'])==5")
-    proof = json.loads((SOURCE / 'release/phase-a-v1/proof-contract.json').read_bytes())
     # The fixture emitter calculates its totals separately from its pinned expected values.
     expected = {'executions': [
         {'package': 'fixed-assets', 'calculations': [
@@ -111,7 +134,6 @@ print(json.dumps(dict(executions=rows), sort_keys=True, indent=2))
         for folder in ('build4','intelligence','hosted_cao','local_cao','orchestration','skills','interfaces','knowledge','.github')
         for p in (root / folder).rglob('*') if p.suffix in {'.json','.md','.csv','.yml','.yaml','.txt'}
         and 'release' not in p.relative_to(root).parts and 'examples' not in p.relative_to(root).parts}
-    transition = json.loads((SOURCE / 'release/phase-a-v1/governance-source-v2.json').read_bytes())
     fixture_test = put(root, transition['path'], '# synthetic successor governance module\n')
     transition['before'] = hashlib.sha256(b'# synthetic predecessor governance module\n').hexdigest()
     transition['after'] = sha(fixture_test)
@@ -141,8 +163,15 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         cls.base.mkdir()
         objects = subprocess.check_output(['git', 'rev-parse', '--path-format=absolute',
                                            '--git-path', 'objects'], cwd=ROOT, text=True).strip()
-        cls.env = {**os.environ, 'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects}
-        subprocess.run(['git', 'init', '-q'], cwd=cls.base, check=True)
+        # The fixture commit is an execution input. Host clocks and user Git
+        # settings must not move its identity. Run/attempt IDs vary separately.
+        cls.env = {**{k: v for k, v in os.environ.items() if not k.startswith('GIT_')},
+                   'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects,
+                   'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_NOSYSTEM': '1',
+                   'GIT_AUTHOR_NAME': 'Synthetic QA', 'GIT_COMMITTER_NAME': 'Synthetic QA',
+                   'GIT_AUTHOR_EMAIL': 'synthetic@example.invalid', 'GIT_COMMITTER_EMAIL': 'synthetic@example.invalid',
+                   'GIT_AUTHOR_DATE': '2000-01-01T00:00:00Z', 'GIT_COMMITTER_DATE': '2000-01-01T00:00:00Z'}
+        subprocess.run(['git', 'init', '--template=', '--object-format=sha1', '-q'], cwd=cls.base, env=cls.env, check=True)
         for name in DEPENDENCIES:
             copy_dependency(cls.base, name)
         spec = importlib.util.spec_from_file_location('qa_real_verifier', SOURCE / 'verify_release.py')
@@ -150,14 +179,14 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         spec.loader.exec_module(verifier)
         cls.suites = verifier.SUPPORTED_SUITES
         cls.validators = verifier.VALIDATOR_COMMANDS
-        for i, (directory, pattern) in enumerate(cls.suites[:17] + cls.suites[22:]):
+        for directory, pattern in cls.suites[:17] + cls.suites[22:]:
             filename = 'independent_review_tests.py' if pattern == 'independent_review_tests.py' else 'test_canary.py'
             put(cls.base, directory + '/' + filename,
                 'import unittest\nclass Canary(unittest.TestCase):\n'
                 '    def test_executed(self): self.assertEqual(2 + 2, 4)\n')
         # Keep the immutable required identities; substitute only their bodies in
         # this explicitly synthetic fixture. Production never changes its contract.
-        required = json.loads((SOURCE/'required-remediation-tests.json').read_text())
+        required = json.loads((cls.base/'skills/presumed-sources/required-remediation-tests.json').read_bytes())
         for row in required['suites']:
             classes = {}
             for identity in row['distinct_ids']:
@@ -191,8 +220,8 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
             dict(baseline='7146eaeca6a28d17d9183d0f9431fd9b9663f1fe',
                  files={'historical-canary.txt': sha(canary)}))
         vpath = cls.base / 'skills/presumed-sources/verify_release.py'
-        vpath.write_text(vpath.read_text().replace(verifier.PRESERVATION_SHA256, sha(preservation))
-                         .replace('PRESERVATION_COUNT = 8912', 'PRESERVATION_COUNT = 1'))
+        substitute(vpath, verifier.PRESERVATION_SHA256, sha(preservation))
+        substitute(vpath, 'PRESERVATION_COUNT = 8912', 'PRESERVATION_COUNT = 1')
         json_put(cls.base, 'build4/release/investment-property-historical-preservation.json',
                  dict(files={'historical-canary.txt': sha(canary)}))
         for name in ('specialist-migration.json', 'orchestration-migration.json', 'main-proof-migration.json'):
@@ -201,8 +230,8 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         put(cls.base, 'build4/release/presumed-sources-accepted-release.json',
             '{"historical": "deliberately stale, untouched"}\n')
         bind_fixture_contracts(cls.base)
-        subprocess.run(['git', 'add', '.'], cwd=cls.base, check=True)
-        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Synthetic fixture only'], cwd=cls.base, check=True)
+        subprocess.run(['git', 'add', '.'], cwd=cls.base, env=cls.env, check=True)
+        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Synthetic fixture only'], cwd=cls.base, env=cls.env, check=True)
         result = cls.invoke(cls.base, 'qa-seed')
         if result.returncode:
             raise AssertionError(result.stdout + result.stderr +
@@ -267,8 +296,8 @@ p=seal_inventory(root,root/'build4/release/qa-seed/release-regression.json',
         put(self.root, 'tests/test_canary.py',
             'import unittest\nclass Canary(unittest.TestCase):\n'
             '    def test_failed(self): self.fail("intentional synthetic failure")\n')
-        subprocess.run(['git', 'add', 'tests/test_canary.py'], cwd=self.root, check=True)
-        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Intentional failure fixture'], cwd=self.root, check=True)
+        subprocess.run(['git', 'add', 'tests/test_canary.py'], cwd=self.root, env=self.env, check=True)
+        subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Intentional failure fixture'], cwd=self.root, env=self.env, check=True)
         r = self.invoke(self.root, 'qa-failed')
         self.assertNotEqual(r.returncode, 0)
         manifest = json.loads((self.root / 'build4/release/qa-failed/release-regression.json').read_text())
