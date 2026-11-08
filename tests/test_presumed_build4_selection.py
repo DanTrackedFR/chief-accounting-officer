@@ -8,7 +8,7 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-path = ROOT/'diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py'
+path = ROOT/'tests/fixtures/phase_a_v1/runner.py'
 spec = importlib.util.spec_from_file_location('build4_selection_fixture', path)
 fixture = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fixture)
@@ -76,7 +76,7 @@ class Build4Selection(unittest.TestCase):
         self.assertIn('Conflicting explicit', result.stderr)
 
     def test_changed_source_and_tampered_sidecar_rejected(self):
-        path = self.root/'skills/tests/test_canary.py'
+        path = self.root/'tests/test_canary.py'
         original = path.read_bytes()
         path.write_bytes(original + b'\n# mismatched source\n')
         result = self.invoke('--pointer', 'build4/release/qa-pointer.json')

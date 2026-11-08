@@ -12,7 +12,9 @@ from receipt_integrity import artifact, digest, require
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT))
 CONTRACT = 'skills/presumed-sources/release/phase-a-v1/proof-contract.json'
-CONTRACT_SHA256 = '0cfd93e3d75f3bd9d781422bbbf97129607fe07253a09dba6d80f911de673694'
+PARENT_SHA256 = '0cfd93e3d75f3bd9d781422bbbf97129607fe07253a09dba6d80f911de673694'
+SUCCESSOR = 'skills/presumed-sources/release/phase-a-v1/governance-source-v2.json'
+CONTRACT_SHA256 = '1ec5e6f00421cd4948a23a1db6ac22f17128d6b63511544ac267c0d4e466d836'
 VERSION = 'phase-a-v1'
 
 
@@ -20,9 +22,18 @@ def selected_proof(version=VERSION, root=None):
     root = ROOT if root is None else root
     require(version == VERSION, 'Wrong proof version')
     path = artifact(root, CONTRACT)
-    require(digest(path) == CONTRACT_SHA256, 'Proof contract changed')
+    require(digest(path) == PARENT_SHA256, 'Proof contract changed')
     contract = json.loads(path.read_bytes())
     require(contract['proof_version'] == version and contract['schema_version'] == 1, 'Proof contract version differs')
+    successor = artifact(root, SUCCESSOR)
+    require(digest(successor) == CONTRACT_SHA256, 'Governance source contract changed')
+    change = json.loads(successor.read_bytes())
+    name = 'skills/tests/test_independent_ip_main_reconciliation.py'
+    require(change['schema_version'] == 2 and change['parent_sha256'] == PARENT_SHA256 and
+            change['proof_version'] == version and change['path'] == name and
+            contract['accounting_source_sha256'][name] == change['before'],
+            'Incorrect governance source predecessor')
+    contract['accounting_source_sha256'][name] = change['after']
     sources = {str(p.relative_to(root)) for folder in ('orchestration','local_cao','hosted_cao','intelligence','skills')
                for p in (root/folder).rglob('*.py')
                if '/release/' not in str(p.relative_to(root)) and '/examples/' not in str(p.relative_to(root))

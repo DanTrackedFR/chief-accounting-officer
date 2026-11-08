@@ -1,6 +1,6 @@
 """Actual production CLI negative cases in an explicitly synthetic repository.
 
-The imported fixture executes only 80 trivial synthetic methods. It does not
+The imported fixture executes only 136 trivial synthetic methods. It does not
 execute the CAO accounting regression or confer release acceptance.
 """
 import importlib.util
@@ -15,7 +15,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('population_dispatch_fixture',
-    ROOT/'diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py')
+    ROOT/'tests/fixtures/phase_a_v1/runner.py')
 FIXTURE = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(FIXTURE)
 
 
@@ -42,15 +42,23 @@ class ProductionPopulationDispatch(unittest.TestCase):
     def test_actual_discovery_rejects_one_missing_required_method(self):
         before = self.invoke('--discover'); self.assertEqual(before.returncode, 0, before.stderr)
         inventory = json.loads(before.stdout)
-        self.assertEqual(inventory['discovered_distinct_tests'], 80)
+        self.assertEqual(inventory['discovered_distinct_tests'], 136)
         required = json.loads((self.root/'skills/presumed-sources/required-remediation-tests.json').read_text())['suites'][0]
         method = required['distinct_ids'][0].split('.')[-1]
         path = self.root/required['suite']/required['pattern']
         path.write_text(path.read_text().replace('def '+method+'(', 'def omitted_'+method+'(', 1))
         failed = self.invoke('--discover')
         self.assertNotEqual(failed.returncode, 0)
-        self.assertIn('Missing mandatory remediation tests', failed.stderr)
+        self.assertIn('Missing mandatory Phase A/historical methods', failed.stderr)
         self.assertFalse((self.root/'build4/release/bounded-check').exists())
+
+    def test_missing_outcome_dependency_refused_before_execution(self):
+        path = self.root / 'build4/test_outcomes.py'
+        path.unlink()
+        result = self.invoke('--discover')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("No module named 'build4.test_outcomes'", result.stderr)
+        self.assertFalse((self.root / 'build4/release/bounded-check').exists())
 
     def test_actual_preflight_refuses_dirty_consumed_input(self):
         path = self.root/'skills/presumed-sources/required-remediation-tests.json'
@@ -74,9 +82,9 @@ class ProductionPopulationDispatch(unittest.TestCase):
         attempt = self.root/'build4/release/bounded-check'
         receipt = json.loads((attempt/'bounded-preflight.json').read_text())
         self.assertTrue(receipt['complete'])
-        self.assertEqual(receipt['executed_distinct_tests'], 63)
-        self.assertEqual(len(receipt['suite_results']), 5)
-        self.assertEqual(len(receipt['gate_plan']), 22)
+        self.assertEqual(receipt['executed_distinct_tests'], 64)
+        self.assertEqual(len(receipt['suite_results']), 6)
+        self.assertEqual(len(receipt['gate_plan']), 23)
         self.assertFalse(receipt['release_accepted'])
         self.assertFalse(receipt['full_accounting_regression_executed'])
         self.assertFalse((attempt/'release-regression.json').exists())

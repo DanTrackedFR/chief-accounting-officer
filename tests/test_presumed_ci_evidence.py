@@ -40,7 +40,7 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                 return path
 
             spec = importlib.util.spec_from_file_location('ci_synthetic_contract',
-                ROOT/'diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py')
+                ROOT/'tests/fixtures/phase_a_v1/runner.py')
             fixture = importlib.util.module_from_spec(spec); spec.loader.exec_module(fixture)
             contract = fixture.IndependentRunnerContract
             contract.setUpClass()
@@ -81,7 +81,7 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                 self.assertEqual(record['status'], 'REGRESSION_COMPLETE_ACCEPTANCE_PENDING')
                 receipt = root / record['manifest']
                 self.assertEqual(receipt.parent.name, attempt)
-                self.assertEqual(json.loads(receipt.read_bytes())['executed_distinct_tests'], 80)
+                self.assertEqual(json.loads(receipt.read_bytes())['executed_distinct_tests'], 136)
                 shard = root / f'intelligence/release/suite-ci-orchestration-{run_id}-{retry}.json'
                 shard_record = json.loads(shard.read_bytes())['module_results'][0]
                 self.assertEqual(shard_record['tests'], 1)
