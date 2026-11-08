@@ -1,0 +1,112 @@
+
+## suite-1.log
+FAIL: test_additive_bridge_exactly_matches_real_main_dispatcher (test_independent_ip_main_reconciliation.IndependentMainReconciliation.test_additive_bridge_exactly_matches_real_main_dispatcher)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/skills/tests/test_independent_ip_main_reconciliation.py", line 83, in test_additive_bridge_exactly_matches_real_main_dispatcher
+    self.assertEqual(current.encode(),(ROOT/'skills/production.py').read_bytes())
+AssertionError: b'"""[24710 chars]from source_fingerprint import bind_source_mod[28167 chars]ed\n' != b'"""[24710 chars]from phase_a_fingerprint import bind_phase_a\n[28160 chars]ed\n'
+
+======================================================================
+FAIL: test_normalizer_reads_authoritative_bytes_not_unrelated_text_view (test_independent_ip_main_reconciliation.IndependentMainReconciliation.test_normalizer_reads_authoritative_bytes_not_unrelated_text_view)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/skills/tests/test_independent_ip_main_reconciliation.py", line 169, in test_normalizer_reads_authoritative_bytes_not_unrelated_text_view
+    self.assertEqual(BASELINE_SHA,result['skills/production.py'])
+AssertionError: '10a34f9fcbe28bb291373fe9c640470ee8bd1202b46590ec66a2a2105d28dfb4' != 'ede70f7c396fe9979b024fc1ae5f4ad06d59b8daee6e3c8c19d23596eafa9d26'
+- 10a34f9fcbe28bb291373fe9c640470ee8bd1202b46590ec66a2a2105d28dfb4
++ ede70f7c396fe9979b024fc1ae5f4ad06d59b8daee6e3c8c19d23596eafa9d26
+
+
+----------------------------------------------------------------------
+Ran 1616 tests in 988.409s
+
+FAILED (failures=2)
+
+## suite-3.log
+ERROR: setUpClass (test_presumed_build4_selection.Build4Selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_presumed_build4_selection.py", line 20, in setUpClass
+    fixture.IndependentRunnerContract.setUpClass()
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py", line 99, in setUpClass
+    raise AssertionError(result.stdout + result.stderr +
+AssertionError: Traceback (most recent call last):
+  File "/tmp/tmp66pb60ru/base/skills/presumed-sources/run_release.py", line 15, in <module>
+    from build4.test_outcomes import aggregate, validate_outcomes
+ModuleNotFoundError: No module named 'build4.test_outcomes'
+
+
+======================================================================
+ERROR: setUpClass (test_presumed_population_dispatch.ProductionPopulationDispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_presumed_population_dispatch.py", line 26, in setUpClass
+    cls.contract.setUpClass()
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py", line 99, in setUpClass
+    raise AssertionError(result.stdout + result.stderr +
+AssertionError: Traceback (most recent call last):
+  File "/tmp/tmpot63qkjl/base/skills/presumed-sources/run_release.py", line 15, in <module>
+    from build4.test_outcomes import aggregate, validate_outcomes
+ModuleNotFoundError: No module named 'build4.test_outcomes'
+
+
+======================================================================
+ERROR: test_interpreter_location_can_change_without_changing_command (test_presumed_release.IndependentPresumedReleasePopulationQA.test_interpreter_location_can_change_without_changing_command)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_prepared_release.py", line 153, in test_interpreter_location_can_change_without_changing_command
+    self.validate(value)
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_presumed_release.py", line 61, in validate
+    return VERIFIER.validate_population(value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/skills/presumed-sources/verify_release.py", line 50, in validate_population
+    require(manifest.get('outcome_schema_version') == 1, 'Missing actual execution receipt semantics')
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/skills/presumed-sources/receipt_integrity.py", line 13, in require
+    raise IntegrityError(message)
+receipt_integrity.IntegrityError: Missing actual execution receipt semantics
+
+======================================================================
+ERROR: setUpClass (independent_runner_recovery_qa.IndependentRunnerContract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py", line 99, in setUpClass
+    raise AssertionError(result.stdout + result.stderr +
+AssertionError: Traceback (most recent call last):
+  File "/tmp/tmpj06ay_p5/base/skills/presumed-sources/run_release.py", line 15, in <module>
+    from build4.test_outcomes import aggregate, validate_outcomes
+ModuleNotFoundError: No module named 'build4.test_outcomes'
+
+
+======================================================================
+FAIL: test_retry_and_separate_run_preserve_original_and_prior_attempt_bytes (test_presumed_ci_evidence.IndependentCIEvidenceIsolationQA.test_retry_and_separate_run_preserve_original_and_prior_attempt_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_presumed_ci_evidence.py", line 46, in test_retry_and_separate_run_preserve_original_and_prior_attempt_bytes
+    contract.setUpClass()
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py", line 99, in setUpClass
+    raise AssertionError(result.stdout + result.stderr +
+AssertionError: Traceback (most recent call last):
+  File "/tmp/tmp0dcnwfpn/base/skills/presumed-sources/run_release.py", line 15, in <module>
+    from build4.test_outcomes import aggregate, validate_outcomes
+ModuleNotFoundError: No module named 'build4.test_outcomes'
+
+
+======================================================================
+FAIL: test_exact_independently_pinned_release_population (test_presumed_release.IndependentPresumedReleasePopulationQA.test_exact_independently_pinned_release_population)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/runner/work/chief-accounting-officer/chief-accounting-officer/tests/test_presumed_release.py", line 64, in test_exact_independently_pinned_release_population
+    self.assertEqual(list(VERIFIER.SUPPORTED_SUITES), BASELINE.EXPECTED_SUITES + REMEDIATION)
+AssertionError: Lists differ: [('or[989 chars]_governance.py'), ('tests/phase_a_release_infra', 'test_*.py')] != [('or[989 chars]_governance.py')]
+
+First list contains 1 additional elements.
+First extra element 22:
+('tests/phase_a_release_infra', 'test_*.py')
+
+Diff is 1365 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 112 tests in 33.967s
+
+FAILED (failures=2, errors=4)
