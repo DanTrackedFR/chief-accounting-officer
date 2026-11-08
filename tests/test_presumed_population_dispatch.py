@@ -85,8 +85,11 @@ class ProductionPopulationDispatch(unittest.TestCase):
 
     def test_actual_preflight_refuses_ignored_untracked_python(self):
         ignore = self.root/'.git/info/exclude'
-        ignore.write_text(ignore.read_text()+'\nignored-input.py\n')
+        ignore.parent.mkdir(parents=True, exist_ok=True)
+        with ignore.open('a') as rules:
+            rules.write('\nignored-input.py\n')
         (self.root/'ignored-input.py').write_text('VALUE=1\n')
+        subprocess.run(['git', 'check-ignore', '-q', 'ignored-input.py'], cwd=self.root, env=self.env, check=True)
         failed = self.invoke('--preflight')
         self.assertNotEqual(failed.returncode, 0)
         self.assertIn('including ignored files', failed.stderr)
