@@ -45,6 +45,8 @@ LEDGER = 'docs/phase-a/failed-regression-42466932475-1/identity-ledger.tsv.gz'
 LEDGER_SHA256 = '9d05d7c782169398060fb49bab1735b731f0a337a66b9c880542af34801983df'
 ADDITIONAL_ID = ('tests::test_presumed_population_dispatch.ProductionPopulationDispatch.'
                  'test_missing_outcome_dependency_refused_before_execution')
+ROUTING_ID = ('tests::test_presumed_ci_evidence.IndependentCIEvidenceIsolationQA.'
+              'test_event_routing_with_executed_synthetic_receipt')
 
 
 def check_phase_a_inventory(inventory, commit, expected):
@@ -53,9 +55,18 @@ def check_phase_a_inventory(inventory, commit, expected):
     rows = inventory['suite_results']
     if [(r['suite'], r['pattern']) for r in rows] != PHASE_A_SUITES:
         raise ValueError('Incorrect suite population')
+    actual_total = 0
     for slot, row in enumerate(rows):
-        if sorted(row['distinct_ids']) != expected[slot]:
+        # Production discovery publishes sorted lists and the runner compares them in order.
+        identities = row['distinct_ids']
+        if identities != expected[slot]:
             raise ValueError('Incorrect identities at slot ' + str(slot))
+        if type(row.get('tests')) is not int or row['tests'] != len(identities):
+            raise ValueError('Incorrect discovery count at slot ' + str(slot))
+        actual_total += len(identities)
+    reported = inventory.get('discovered_distinct_tests')
+    if type(reported) is not int or reported != actual_total or actual_total != sum(map(len, expected)):
+        raise ValueError('Incorrect discovered total')
 
 
 
@@ -169,9 +180,26 @@ verify_source_binding(value['source_commit'], value['tested_python_sha256'], val
         expected = [sorted(r['identity'] for r in rows if int(r['slot']) == slot)
                     for slot in range(23)]
         self.assertEqual(len(expected[22]), 16)
-        expected[3] = sorted([*expected[3], ADDITIONAL_ID])
+        expected[3] = sorted([*expected[3], ADDITIONAL_ID, ROUTING_ID])
+        self.assertEqual(len(expected[3]), 142)
+        self.assertEqual(expected[3][89], ROUTING_ID)
+        self.assertEqual(sum(map(len, expected)), 4013)
         inventory = discover('governance-population', commit)
         check_phase_a_inventory(inventory, commit, expected)
+        for delta in (-1, 1):
+            bad = dict(inventory, discovered_distinct_tests=inventory['discovered_distinct_tests'] + delta)
+            with self.subTest(total_delta=delta), self.assertRaisesRegex(ValueError, 'Incorrect discovered total'):
+                check_phase_a_inventory(bad, commit, expected)
+        bad = copy.deepcopy(inventory)
+        bad['suite_results'][3]['tests'] -= 1
+        with self.assertRaisesRegex(ValueError, 'Incorrect discovery count at slot 3'):
+            check_phase_a_inventory(bad, commit, expected)
+        bad = copy.deepcopy(inventory)
+        identities = bad['suite_results'][3]['distinct_ids']
+        identities.remove(ROUTING_ID)
+        identities.append(ROUTING_ID)
+        with self.assertRaisesRegex(ValueError, 'Incorrect identities at slot 3'):
+            check_phase_a_inventory(bad, commit, expected)
         for group in ('Phase A', 'historical'):
             target = next(r for r in rows if group.lower() in r['mandatory population'].lower())
             bad = copy.deepcopy(inventory)
