@@ -23,6 +23,16 @@ def workflow_command(workflow, step):
 
 
 class IndependentCIEvidenceIsolationQA(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        spec = importlib.util.spec_from_file_location('ci_synthetic_contract',
+            ROOT/'tests/fixtures/phase_a_v1/runner.py')
+        fixture = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(fixture)
+        cls.contract = fixture.IndependentRunnerContract
+        cls.contract.setUpClass()
+        cls.addClassCleanup(cls.contract.doClassCleanups)
+
     def test_retry_and_separate_run_preserve_original_and_prior_attempt_bytes(self):
         orchestration = (WORKFLOWS / 'cao-orchestration.yml').read_text()
         source = (WORKFLOWS / 'cao-presumed-sources.yml').read_text()
@@ -39,17 +49,9 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                 path.write_bytes(data)
                 return path
 
-            spec = importlib.util.spec_from_file_location('ci_synthetic_contract',
-                ROOT/'tests/fixtures/phase_a_v1/runner.py')
-            fixture = importlib.util.module_from_spec(spec); spec.loader.exec_module(fixture)
-            contract = fixture.IndependentRunnerContract
-            contract.setUpClass()
-            try:
-                shutil.copytree(contract.base, root, dirs_exist_ok=True)
-                env = dict(contract.env, PYTHONPATH=str(root),
-                           PATH=str(Path(sys.executable).parent)+os.pathsep+os.environ['PATH'])
-            finally:
-                contract.tearDownClass()
+            shutil.copytree(self.contract.base, root, dirs_exist_ok=True)
+            env = dict(self.contract.env, PYTHONPATH=str(root),
+                       PATH=str(Path(sys.executable).parent)+os.pathsep+os.environ['PATH'])
             self.assertEqual((root/'intelligence/tests/run_release.py').read_bytes(),
                              (ROOT/'intelligence/tests/run_release.py').read_bytes())
             self.assertFalse(list(root.rglob('*.pyc')))
@@ -67,6 +69,7 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
             protected[pointer] = pointer.read_bytes()
             subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
             subprocess.run(['git','-c','user.name=Synthetic QA','-c','user.email=synthetic@example.invalid','commit','-qm','CI isolation fixture'],cwd=root,env=env,check=True)
+            env['GITHUB_EVENT_NAME'] = 'workflow_dispatch'
             env['CAO_ACCEPTANCE_POINTER'] = ''
             for run_id, retry in [('123', '1'), ('123', '2'), ('124', '1')]:
                 attempt = attempt_template.replace('${{ github.run_id }}', run_id).replace(
@@ -101,3 +104,85 @@ class IndependentCIEvidenceIsolationQA(unittest.TestCase):
                 self.assertNotEqual(retry.returncode, 0)
                 for artifact, original in protected.items():
                     self.assertEqual(artifact.read_bytes(), original, str(artifact))
+
+    def test_event_routing_with_executed_synthetic_receipt(self):
+        source = (WORKFLOWS / 'cao-presumed-sources.yml').read_text()
+        command = workflow_command(source, 'Execute new regression or explicitly verify accepted evidence')
+        helper = self.contract()
+        helper.setUp()
+        self.addCleanup(helper.tearDown)
+        root = helper.root
+        pointer = 'build4/release/qa-pointer-v2.json'
+        receipt = root / pointer
+        shutil.copyfile(root / 'build4/release/qa-pointer.json', receipt)
+        checksum = hashlib.sha256(receipt.read_bytes()).hexdigest()
+        attempt_number = 0
+
+        def route(expected_error=None, event='pull_request', action='ready_for_review',
+                  manual='', selected=pointer, digest=checksum, optimize='0'):
+            nonlocal attempt_number
+            attempt_number += 1
+            attempt = f'qa-routing-{attempt_number}'
+            env = dict(self.contract.env, GITHUB_EVENT_NAME=event, CAO_PR_ACTION=action,
+                       CAO_ACCEPTANCE_POINTER=manual, CAO_PR_POINTER=selected,
+                       CAO_PR_POINTER_SHA256=digest, CAO_SOURCES_ATTEMPT=attempt,
+                       PYTHONOPTIMIZE=optimize, PYTHONPATH=str(root),
+                       PATH=str(Path(sys.executable).parent)+os.pathsep+os.environ['PATH'])
+            result = subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', command],
+                                    cwd=root, env=env, capture_output=True, text=True, timeout=60)
+            out = root / 'build4/release' / attempt
+            # The runner exclusively creates this log before launching even one suite.
+            self.assertFalse((root / 'skills/presumed-sources/release' /
+                              f'full-regression-{attempt}.log').exists())
+            if expected_error:
+                self.assertNotEqual(result.returncode, 0, result.stdout)
+                self.assertIn(expected_error, result.stderr + result.stdout)
+                self.assertFalse(out.exists())
+            else:
+                self.assertEqual(result.returncode, 0, result.stderr)
+                status = json.loads((out / 'execution.json').read_bytes())
+                self.assertEqual(status['status'], 'ACCEPTANCE_REUSED')
+                self.assertIs(status['release_accepted'], True)
+                self.assertEqual(status['verification']['distinct_tests'], 136)
+
+        route(event='workflow_dispatch', manual=pointer)
+        route('Missing or redirected evidence', event='workflow_dispatch', manual='absent')
+        for action in ('ready_for_review', 'synchronize', 'opened', 'reopened'):
+            with self.subTest(action=action):
+                route(action=action)
+                route('are required', action=action, selected='', manual=pointer)
+        route('Unsupported release event', event='push')
+        route('Unsupported PR action', action='edited')
+        route('No such file', selected='build4/release/missing-v2.json')
+        route('are required', digest='')
+        route('are required', selected='../outside-v2.json')
+        route('FAILED', digest='0' * 64)
+        for optimize in ('1', '2'):
+            route('Optimized Python is not supported', optimize=optimize)
+
+        original = receipt.read_bytes()
+        receipt.write_bytes(original + b' ')
+        route('FAILED')
+        historical = json.loads(original)
+        historical['schema_version'] = 1
+        receipt.write_text(json.dumps(historical))
+        route('version 2 evidence inventory', digest=hashlib.sha256(receipt.read_bytes()).hexdigest())
+        receipt.write_bytes(original)
+
+        canary = root / 'tests/test_canary.py'
+        original_canary = canary.read_bytes()
+        canary.write_bytes(original_canary + b'\n')
+        route('Python changed')
+        canary.write_bytes(original_canary)
+        workflow = root / '.github/workflows/cao-presumed-sources.yml'
+        workflow.parent.mkdir(parents=True, exist_ok=True)
+        previous_workflow = workflow.read_bytes() if workflow.exists() else None
+        workflow.write_text(source)
+        route('execution inputs changed')
+        if previous_workflow is None:
+            workflow.unlink()
+        else:
+            workflow.write_bytes(previous_workflow)
+        manifest = root / json.loads(original)['manifest']
+        manifest.write_bytes(manifest.read_bytes() + b' ')
+        route('manifest hash differs')

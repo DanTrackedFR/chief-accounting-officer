@@ -64,12 +64,33 @@ jobs:
       - name: Execute new regression or explicitly verify accepted evidence
         env:
           CAO_ACCEPTANCE_POINTER: ${{ inputs.acceptance_pointer }}
+          CAO_PR_ACTION: ${{ github.event.action }}
+          CAO_PR_POINTER: ${{ vars.CAO_PR_ACCEPTANCE_POINTER }}
+          CAO_PR_POINTER_SHA256: ${{ vars.CAO_PR_ACCEPTANCE_POINTER_SHA256 }}
         run: |
-          if [ -n "$CAO_ACCEPTANCE_POINTER" ]; then
-            python skills/presumed-sources/execute_release.py --reuse "$CAO_ACCEPTANCE_POINTER"
-          else
-            python skills/presumed-sources/execute_release.py
-          fi
+          set -eu
+          case "$GITHUB_EVENT_NAME" in
+            workflow_dispatch)
+              if [ -z "$CAO_ACCEPTANCE_POINTER" ]; then
+                exec python skills/presumed-sources/execute_release.py
+              fi
+              ;;
+            pull_request)
+              case "$CAO_PR_ACTION" in
+                opened|reopened|synchronize|ready_for_review) ;;
+                *) echo "Unsupported PR action: $CAO_PR_ACTION" >&2; exit 1 ;;
+              esac
+              if [[ ! "$CAO_PR_POINTER" =~ ^build4/release/[a-zA-Z0-9_-]+-v2\.json$ ||
+                    ! "$CAO_PR_POINTER_SHA256" =~ ^[0-9a-f]{64}$ ]]; then
+                echo 'A reviewed version-2 PR acceptance pointer and SHA-256 are required.' >&2
+                exit 1
+              fi
+              printf '%s  %s\n' "$CAO_PR_POINTER_SHA256" "$CAO_PR_POINTER" | sha256sum --check --strict -
+              export CAO_ACCEPTANCE_POINTER="$CAO_PR_POINTER"
+              ;;
+            *) echo "Unsupported release event: $GITHUB_EVENT_NAME" >&2; exit 1 ;;
+          esac
+          exec python skills/presumed-sources/execute_release.py --reuse "$CAO_ACCEPTANCE_POINTER"
       - name: Preserve actual release evidence across workspace recovery
         if: always()
         uses: actions/upload-artifact@v4
