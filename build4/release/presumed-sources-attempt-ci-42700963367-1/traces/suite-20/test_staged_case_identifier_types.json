@@ -1,0 +1,211 @@
+[
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "start",
+      "request_id": "id-file",
+      "objective": "Calculate supported accounting",
+      "target_family": "machinery",
+      "review_mode": "prepared_unreviewed",
+      "source_assurance": "presumed_user_provided"
+    },
+    "status": 200,
+    "response": {
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "checkpoint_revision": null,
+      "company_id": "synthetic-demo-001",
+      "contract_version": "1.0",
+      "currentness": "NOT_EXECUTED",
+      "durable": false,
+      "execution_state": "blocked",
+      "lifecycle_state": "OPEN",
+      "ok": true,
+      "operation": "start",
+      "public_result": {
+        "calculations": [],
+        "confidence": "low",
+        "controls": [],
+        "effective_period": "2026-01-01 to 2026-12-31",
+        "entity_scope": "ENTITY-DEMO",
+        "framework": "IFRS",
+        "guidance": "Accounting work is blocked.",
+        "journals": [],
+        "jurisdiction": "NL",
+        "limitations": [],
+        "open_items": [
+          "No supported issue decomposition; supply accounting facts or a scoped planner",
+          "Supply controlled structured evidence before execution.",
+          "Provide machinery workpaper including assets.",
+          "Consult the fixed-assets input contract and preserve its source and review references."
+        ],
+        "reporting": [],
+        "required_approvals": [],
+        "status": "blocked",
+        "uncertainties": []
+      },
+      "workplan": []
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "staged_file_id": "bad"
+    },
+    "status": 422,
+    "response": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "invalid_request",
+        "message": "Check contract version, operation and required input fields.",
+        "requirements": [
+          {
+            "category": "missing_fact",
+            "explanation": "Supply the source accounting Case binding.",
+            "field_path": "evidence.facts.machinery.case_id",
+            "identifier": "missing.source_case"
+          }
+        ]
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Check contract version, operation and required input fields.",
+        "status": "blocked"
+      }
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "staged_file_id": "bad"
+    },
+    "status": 422,
+    "response": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "invalid_request",
+        "message": "Check contract version, operation and required input fields.",
+        "requirements": [
+          {
+            "category": "missing_fact",
+            "explanation": "Supply the source accounting Case binding.",
+            "field_path": "evidence.facts.machinery.case_id",
+            "identifier": "missing.source_case"
+          }
+        ]
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Check contract version, operation and required input fields.",
+        "status": "blocked"
+      }
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "staged_file_id": "bad"
+    },
+    "status": 422,
+    "response": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "invalid_request",
+        "message": "Check contract version, operation and required input fields.",
+        "requirements": [
+          {
+            "category": "missing_fact",
+            "explanation": "Supply the source accounting Case binding.",
+            "field_path": "evidence.facts.machinery.case_id",
+            "identifier": "missing.source_case"
+          }
+        ]
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Check contract version, operation and required input fields.",
+        "status": "blocked"
+      }
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "staged_file_id": "bad"
+    },
+    "status": 422,
+    "response": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "invalid_request",
+        "message": "Check contract version, operation and required input fields.",
+        "requirements": [
+          {
+            "category": "missing_fact",
+            "explanation": "Supply the source accounting Case binding.",
+            "field_path": "evidence.facts.machinery.case_id",
+            "identifier": "missing.source_case"
+          }
+        ]
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Check contract version, operation and required input fields.",
+        "status": "blocked"
+      }
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:7e0dd2262123645daa8dca1fd0558fba395bbbabfd6d83640cfef0f7a078fce2",
+      "staged_file_id": "bad"
+    },
+    "status": 422,
+    "response": {
+      "contract_version": "1.0",
+      "error": {
+        "code": "invalid_request",
+        "message": "Check contract version, operation and required input fields.",
+        "requirements": [
+          {
+            "category": "missing_fact",
+            "explanation": "Supply the source accounting Case binding.",
+            "field_path": "evidence.facts.machinery.case_id",
+            "identifier": "missing.source_case"
+          }
+        ]
+      },
+      "ok": false,
+      "operation": "submit",
+      "public_result": {
+        "guidance": "Check contract version, operation and required input fields.",
+        "status": "blocked"
+      }
+    }
+  }
+]

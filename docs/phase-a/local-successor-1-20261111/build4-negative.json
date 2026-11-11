@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/Users/danhastings/Documents/ChatGPT/Tracked Finance & Reporting/chief-accounting-officer-phase-a/build4/verify_release.py\", line 109, in <module>\n    print(json.dumps(verify(args.pointer),sort_keys=True))\n                     ^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/danhastings/Documents/ChatGPT/Tracked Finance & Reporting/chief-accounting-officer-phase-a/build4/verify_release.py\", line 34, in verify\n    return module.verify(selected)\n           ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/danhastings/Documents/ChatGPT/Tracked Finance & Reporting/chief-accounting-officer-phase-a/skills/presumed-sources/verify_release.py\", line 159, in verify\n    assert digest(manifest_path)==pointer['sha256'],'Presumed-source regression manifest hash differs'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Presumed-source regression manifest hash differs\n",
+  "isolated_pointer": "build4/release/phase-a-successor-1-isolated-negative-20261111/corrupted-manifest-digest-v2.json"
+}
