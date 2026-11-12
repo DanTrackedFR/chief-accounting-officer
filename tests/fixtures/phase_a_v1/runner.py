@@ -22,6 +22,11 @@ SOURCE = ROOT / 'skills/presumed-sources'
 sys.path.insert(0,str(SOURCE))
 
 
+def git_environment():
+    """Real-checkout reads must not inherit repository-selection overrides."""
+    return {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
+
+
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -77,7 +82,7 @@ def copy_dependency(root, name):
         import ci_governance
         if data != Path(ci_governance.__file__).read_bytes():
             raise ValueError('Fixture anchor differs from loaded test trust root')
-    elif data != subprocess.check_output(['git', 'show', FROZEN + ':' + name], cwd=ROOT):
+    elif data != subprocess.check_output(['git', 'show', FROZEN + ':' + name], cwd=ROOT, env=git_environment()):
         raise ValueError('Fixture dependency differs from frozen source: ' + name)
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(data)
@@ -90,7 +95,7 @@ def substitute(path, before, after):
     path.write_text(text.replace(before, after))
 
 
-def bind_fixture_contracts(root):
+def bind_fixture_contracts(root, env=None):
     # Scope only the fixture data and trusted digests to this isolated checkout.
     # The preservation and proof validators continue to run in the child process.
     directory = root / 'skills/presumed-sources'
@@ -113,7 +118,7 @@ def bind_fixture_contracts(root):
         row['successor_sha256'] = sha(root / name)
         files[name] = live['files'][name]
     canary = 'historical-canary.txt'
-    files[canary] = subprocess.check_output(['git', 'hash-object', canary], cwd=root, text=True).strip()
+    files[canary] = subprocess.check_output(['git', 'hash-object', canary], cwd=root, env=git_environment() if env is None else env, text=True).strip()
     live['files'] = files
     path = json_put(root, relative + 'phase-a-contracts/accepted-main-infrastructure-v1.json', live)
     history = directory / 'accepted_history.py'
@@ -189,9 +194,13 @@ def bind_ci_fixture(root, env):
     data = json.loads((ROOT / governance.CONTRACT).read_bytes())
     namespace = root / governance.NAMESPACE
     namespace.mkdir(parents=True, exist_ok=True)
+    # Keep original sealed records immutable; only temporary successor data is rebound.
+    for record in governance.AMENDMENT_RECORDS:
+        put(root, record, (ROOT/record).read_text())
     for name in governance.WORKFLOWS:
         put(root, name, (ROOT/name).read_text())
-    for name in ('tests/test_presumed_release.py', governance.ADDED[1], governance.COMPATIBILITY_TEST):
+    for name in ('tests/test_presumed_release.py', governance.ADDED[1], governance.COMPATIBILITY_TEST,
+                 'tests/phase_a_release_infra/test_infrastructure.py'):
         put(root, name, '# Synthetic closure file; no CAO test body or acceptance.\n')
     put(root, 'tests/fixtures/phase_a_v1/runner.py', Path(__file__).read_text())
     for name in ('contract.schema.json','owner-authorization.json'):
@@ -203,8 +212,8 @@ def bind_ci_fixture(root, env):
     put(root,'build4/release/synthetic-f2-evidence.txt','synthetic immutable evidence\n')
     subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
     subprocess.run(['git','commit','-qm','Synthetic evidence only'],cwd=root,env=env,check=True)
-    f2 = subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
-    tree = subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=root,text=True).strip()
+    f2 = subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,env=env,text=True).strip()
+    tree = subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=root,env=env,text=True).strip()
     helper = root / governance.ADDED[0]
     substitute(helper, governance.F2, f2)
     substitute(helper, '2fff8be455b395428ab26de94cc046cc33c8040c', tree)
@@ -219,16 +228,16 @@ def bind_ci_fixture(root, env):
     data['owner_authorization']['sha256'] = sha(namespace/'owner-authorization.json')
     data['modified_files'] = {}
     for name in governance.MODIFIED:
-        before = subprocess.check_output(['git','show',f2+':'+name],cwd=root)
+        before = subprocess.check_output(['git','show',f2+':'+name],cwd=root,env=env)
         archive = governance.NAMESPACE+'/predecessors/'+name+'.txt'
         put(root,archive,before.decode())
         data['modified_files'][name] = dict(archive=archive,before_sha256=hashlib.sha256(before).hexdigest(),
-            before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,text=True).strip(),
+            before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,env=env,text=True).strip(),
             after_sha256=sha(root/name))
     name=governance.COMPATIBILITY_TEST
-    before=subprocess.check_output(['git','show',f2+':'+name],cwd=root)
+    before=subprocess.check_output(['git','show',f2+':'+name],cwd=root,env=env)
     data['compatibility_test']=dict(path=name,before_sha256=hashlib.sha256(before).hexdigest(),
-        before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,text=True).strip(),
+        before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,env=env,text=True).strip(),
         after_sha256=sha(root/name))
     data['added_source_files'][governance.ADDED[1]]['sha256'] = sha(root/governance.ADDED[1])
     for key in ('workflow_transitions','proof_input_transitions'):
@@ -241,7 +250,7 @@ def bind_ci_fixture(root, env):
     data['predecessor_contracts'] = [dict(path=n,sha256=sha(root/n)) for n in names]
     name='build4/release/synthetic-f2-evidence.txt'
     data['preserved_f2_files']={name:dict(sha256=sha(root/name),blob=subprocess.check_output(
-        ['git','rev-parse',f2+':'+name],cwd=root,text=True).strip())}
+        ['git','rev-parse',f2+':'+name],cwd=root,env=env,text=True).strip())}
     # Query the real enumerators in a fresh child; neither executes tests.
     program = "import json; from build4.run_release import source_hashes; from release_population import release_input_hashes; print(json.dumps(dict(tested_python_sha256=source_hashes(),tested_execution_inputs_sha256=release_input_hashes())))"
     child_env={**env,'PYTHONPATH':str(root)+os.pathsep+str(root/'skills/presumed-sources')}
@@ -249,6 +258,11 @@ def bind_ci_fixture(root, env):
     for values in maps.values():
         for name in governance.ADDED: values.pop(name,None)
     json_put(root,'build4/release/synthetic-frozen-maps.json',maps)
+    amendment=json.loads((root/governance.AMENDMENT).read_bytes())
+    for name,row in amendment['successors'].items():
+        row['after_sha256'] = sha(root/name)
+    amendment_path=json_put(root,governance.AMENDMENT,amendment)
+    substitute(helper,governance.AMENDMENT_SHA256,sha(amendment_path))
     contract=json_put(root,governance.CONTRACT,data)
     substitute(helper,governance.CONTRACT_SHA256,sha(contract))
 
@@ -269,10 +283,10 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         cls.base = Path(cls.storage.name) / 'base'
         cls.base.mkdir()
         objects = subprocess.check_output(['git', 'rev-parse', '--path-format=absolute',
-                                           '--git-path', 'objects'], cwd=ROOT, text=True).strip()
+                                           '--git-path', 'objects'], cwd=ROOT, env=git_environment(), text=True).strip()
         # The fixture commit is an execution input. Host clocks and user Git
         # settings must not move its identity. Run/attempt IDs vary separately.
-        cls.env = {**{k: v for k, v in os.environ.items() if not k.startswith('GIT_')},
+        cls.env = {**git_environment(),
                    'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONNOUSERSITE': '1', 'PYTHONPATH': '',
                    'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects,
                    'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_NOSYSTEM': '1',
@@ -340,7 +354,7 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         from ci_governance import WORKFLOWS
         for name in WORKFLOWS:
             put(cls.base,name,(ROOT/name).read_text())
-        bind_fixture_contracts(cls.base)
+        bind_fixture_contracts(cls.base, cls.env)
         bind_ci_fixture(cls.base, cls.env)
         subprocess.run(['git', 'add', '.'], cwd=cls.base, env=cls.env, check=True)
         subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Synthetic fixture only'], cwd=cls.base, env=cls.env, check=True)

@@ -16,8 +16,16 @@ if sys.flags.optimize:
     raise RuntimeError('Optimized Python is not supported for mandatory release integrity verification')
 ROOT = Path(__file__).resolve().parents[2]
 NAMESPACE = 'skills/presumed-sources/release/ci-governance-v1'
-CONTRACT = NAMESPACE + '/contract-v1.json'
-CONTRACT_SHA256 = 'e7695c46551a9457040dade644a6de5f94f85a3670a9b81248eef74794fad94a'
+PRIOR_CONTRACT = NAMESPACE + '/contract-v1.json'
+CONTRACT = NAMESPACE + '/contract-v2.json'
+AMENDMENT = NAMESPACE + '/amendment-001.json'
+AMENDMENT_SCHEMA = NAMESPACE + '/amendment-001.schema.json'
+AMENDMENT_RECORDS = (PRIOR_CONTRACT, AMENDMENT, AMENDMENT_SCHEMA)
+AMENDMENT_SHA256 = '993f6d12d6cadef2f47aa8b65e8cf313a90d54c1e6d8b9f41d83dab16fc960e4'
+PRIOR_COMMIT = '3fc1efd56506ad465ca959324644ac903130e321'
+PRIOR_TREE = 'b5227359df39804dc887fab9b22ac15931cee18e'
+PRIOR_CONTRACT_SHA256 = 'e7695c46551a9457040dade644a6de5f94f85a3670a9b81248eef74794fad94a'
+CONTRACT_SHA256 = '08da5d573556bc1976bd5ac25ffd78efbb416356592776c47b49202975098cbb'
 F2 = 'b65b6553a1990029c0b6d200c564c4ccac368299'
 FROZEN = 'fc33e21153756a0f694590e55fc607c8b0fb30e4'
 F2_COUNT = 611
@@ -183,6 +191,68 @@ def _validate_shape(root, data):
     require(bool(expected) and set(paths)==expected, 'Unauthorized predecessor contract set')
 
 
+def _verify_amendment(root, data):
+    """Exact versioned successor authority; pending bytes never confer a seal.
+
+    Helper successor identity is an external-review anchor, not a cyclic hash.
+    The two code pins authenticate this record and the effective contract.
+    """
+    raw = artifact(root, AMENDMENT).read_bytes()
+    require(sha(raw) == AMENDMENT_SHA256, 'CI governance amendment changed')
+    record = _json(raw)
+    _keys(record, ('schema_version','amendment_id','state','prior_source','diagnosis',
+                   'authorization','successors','helper','schema'))
+    require(type(record['schema_version']) is int and record['schema_version'] == 1 and
+            record['amendment_id'] == 'phase-a-ci-governance-v1-amendment-001' and
+            record['state'] == 'PENDING_INDEPENDENT_REVIEW', 'Invalid amendment identity/state')
+    require(record['prior_source'] == dict(commit=PRIOR_COMMIT, tree=PRIOR_TREE,
+            contract_sha256=PRIOR_CONTRACT_SHA256,
+            attestation='https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6834058611',
+            publication='https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6834471586'),
+            'Incorrect amendment predecessor')
+    require(record['diagnosis'] == dict(
+            url='https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6835042772',
+            sha256='1f1851a262e4d98d469bd47382a5a092ef20ee26c6d6e9ff8f1e5216d06171f5'),
+            'Incorrect amendment diagnosis')
+    require(isinstance(record['authorization'],str) and bool(record['authorization']),
+            'Missing amendment implementation authority')
+    _bound_shape(record['schema'])
+    require(record['schema']['path'] == AMENDMENT_SCHEMA, 'Amendment schema redirected')
+    _bound(root,record['schema'])
+    require(sha(artifact(root,PRIOR_CONTRACT).read_bytes()) == PRIOR_CONTRACT_SHA256,
+            'Original sealed contract changed')
+    require(_git(root,'rev-parse',PRIOR_COMMIT+'^{tree}').decode().strip() == PRIOR_TREE,
+            'Published amendment predecessor tree differs')
+    require(sha(_git(root,'show',PRIOR_COMMIT+':'+PRIOR_CONTRACT)) == PRIOR_CONTRACT_SHA256,
+            'Original contract Git binding differs')
+    names = ('tests/fixtures/phase_a_v1/runner.py', 'tests/test_ci_governance_migration.py',
+             'tests/test_presumed_release.py', 'tests/phase_a_release_infra/test_infrastructure.py')
+    _keys(record['successors'], names)
+    for name,row in record['successors'].items():
+        _keys(row, ('before_sha256','before_blob','after_sha256','reason'))
+        _digest(row['before_sha256']); _digest(row['after_sha256']); _blob_shape(row['before_blob'])
+        require(isinstance(row['reason'],str) and bool(row['reason']), 'Missing successor reason')
+        before = _git(root,'show',PRIOR_COMMIT+':'+name)
+        require(sha(before) == row['before_sha256'] and
+                _git(root,'rev-parse',PRIOR_COMMIT+':'+name).decode().strip() == row['before_blob'],
+                'Amendment predecessor Git binding differs: '+name)
+        effective = (data['modified_files'][name]['after_sha256'] if name in MODIFIED
+                     else data['added_source_files'][name]['sha256'] if name in ADDED
+                     else sha(artifact(root,name).read_bytes()))
+        require(effective == row['after_sha256'] and sha(artifact(root,name).read_bytes()) == row['after_sha256'],
+                'Amendment successor differs: '+name)
+    helper = record['helper']
+    _keys(helper, ('path','before_sha256','before_blob','successor_identity','reason'))
+    require(helper['path'] == ADDED[0] and helper['successor_identity'] == 'EXTERNAL_FINAL_GIT_REVIEW',
+            'Helper must retain external final-byte review anchor')
+    _digest(helper['before_sha256']); _blob_shape(helper['before_blob'])
+    require(isinstance(helper['reason'],str) and bool(helper['reason']), 'Missing helper reason')
+    require(sha(_git(root,'show',PRIOR_COMMIT+':'+ADDED[0])) == helper['before_sha256'] and
+            _git(root,'rev-parse',PRIOR_COMMIT+':'+ADDED[0]).decode().strip() == helper['before_blob'],
+            'Helper predecessor binding differs')
+    return record
+
+
 def load_contract(root):
     """Validate the pinned record structure; this does NOT approve pending records."""
     root = Path(root)
@@ -190,6 +260,7 @@ def load_contract(root):
     require(sha(raw) == CONTRACT_SHA256, 'CI governance contract changed')
     data = _json(raw)
     _validate_shape(root, data)
+    _verify_amendment(root, data)
     require(type(data['schema_version']) is int and data['schema_version'] == 1 and
             data['migration_id'] == 'phase-a-ci-governance-v1', 'Wrong CI governance version')
     require(data['state'] in ('PENDING_G3', 'SEALED'), 'Invalid sealing state')
@@ -231,6 +302,7 @@ def verify_transition(root):
     """Verify sealed exact succession, all predecessor bindings and governed closure."""
     root = Path(root)
     data = load_contract(root)
+    amendment = _verify_amendment(root, data)
     if data['state'] != 'SEALED':
         raise PendingSealing('CI governance PENDING_G3: independent review and final sealing required')
     _keys(data['scope_review'], ('path', 'sha256', 'status'))
@@ -242,6 +314,7 @@ def verify_transition(root):
         require(data[key]['path'] == NAMESPACE + '/' + filename, 'Record redirected')
         _bound(root, data[key])
     expected_records = {NAMESPACE + '/' + n for n in RECORDS}
+    expected_records.update((*AMENDMENT_RECORDS, CONTRACT))
     expected_records.update(row['archive'] for row in data['modified_files'].values())
     actual_records = {str(p.relative_to(root)) for p in (root/NAMESPACE).rglob('*') if p.is_file()}
     require(actual_records == expected_records, 'Unlisted governance record')
@@ -285,6 +358,8 @@ def verify_transition(root):
                 expected = data['modified_files'][name]['after_sha256']
             elif name == COMPATIBILITY_TEST:
                 expected = data['compatibility_test']['after_sha256']
+            elif name == 'tests/phase_a_release_infra/test_infrastructure.py':
+                expected = amendment['successors'][name]['after_sha256']
             require(actual[name] == expected, ('Python changed; ' if name.endswith('.py') else 'execution inputs changed; ')+'Unlisted governed change: '+name)
     return data
 

@@ -103,6 +103,9 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         original=Path.read_bytes
         with patch.object(Path,'read_bytes',lambda p:b'{}' if p==ROOT/g.CONTRACT else original(p)):
             with self.assertRaisesRegex(ValueError,'contract changed'):g.load_contract(ROOT)
+        # The versioned amendment and original seal are independently pinned.
+        for name in (g.AMENDMENT, g.AMENDMENT_SCHEMA, g.PRIOR_CONTRACT):
+            self.rejected(name)
         # Fixed schema boundaries beyond predecessor records.
         variants=[]
         for field in ('modified_files','added_source_files','predecessor_commits',
@@ -245,8 +248,64 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         # Execute only 136 trivial methods in the isolated synthetic checkout.
         spec=importlib.util.spec_from_file_location('g2_pending_fixture',ROOT/'tests/fixtures/phase_a_v1/runner.py')
         fixture=importlib.util.module_from_spec(spec);spec.loader.exec_module(fixture)
-        fixture.IndependentRunnerContract.setUpClass()
+        # A writable alternate prevents local sandbox permissions from masking
+        # borrowed-object reads. All objects/refs below belong to disposable repos.
+        storage = tempfile.TemporaryDirectory()
+        self.addCleanup(storage.cleanup)
+        donor = Path(storage.name)/'donor'; donor.mkdir()
+        clean = fixture.git_environment()
+        subprocess.run(['git','init','--template=','--object-format=sha1','-q'],cwd=donor,env=clean,check=True)
+        name = g.WORKFLOWS[0]
+        payload = (ROOT/name).read_bytes()
+        blob = subprocess.check_output(['git','hash-object','-w','--stdin'],input=payload,cwd=donor,env=clean).decode().strip()
+        objects = donor/'.git/objects'
+        original_bind = fixture.bind_ci_fixture
+        check_output = subprocess.check_output
+        observed = []
+        def bind(root, env):
+            real_objects = env['GIT_ALTERNATE_OBJECT_DIRECTORIES']
+            (objects/'info').mkdir(exist_ok=True)
+            alternate = objects/'info/alternates'
+            alternate.write_text(real_objects+'\n')
+            env['GIT_ALTERNATE_OBJECT_DIRECTORIES'] = str(objects)
+            def read(args, *a, **kw):
+                if args[0] == 'git' and kw.get('cwd') == root:
+                    self.assertIs(kw.get('env'),env, 'Every synthetic Git read must use its explicit environment')
+                    if args[:2] == ['git','show'] and args[2].endswith(':'+name):
+                        self.assertFalse((root/'.git/objects'/blob[:2]/blob[2:]).exists(),
+                                         'Control must borrow the blob rather than mask the defect')
+                        missing_context = subprocess.run(args,cwd=root,env=clean,capture_output=True)
+                        self.assertNotEqual(missing_context.returncode,0)
+                        correct = subprocess.run(args,cwd=root,env=env,capture_output=True)
+                        self.assertEqual(correct.returncode,0,correct.stderr)
+                        self.assertEqual(correct.stdout,payload)
+                        top = check_output(['git','rev-parse','--show-toplevel'],cwd=root,env=env,text=True).strip()
+                        self.assertEqual(Path(top),root)
+                        object_path = objects/blob[:2]/blob[2:]
+                        original = object_path.read_bytes()
+                        try:
+                            # Withhold both donor blob and fallback store: genuine
+                            # missing objects must still reject under the right env.
+                            object_path.unlink(); alternate.unlink()
+                            absent = subprocess.run(args,cwd=root,env=env,capture_output=True)
+                            self.assertNotEqual(absent.returncode,0)
+                            object_path.write_bytes(b'corrupt diagnostic object')
+                            corrupt = subprocess.run(args,cwd=root,env=env,capture_output=True)
+                            self.assertNotEqual(corrupt.returncode,0)
+                        finally:
+                            object_path.write_bytes(original)
+                            alternate.write_text(real_objects+'\n')
+                        observed.append(args[2])
+                return check_output(args,*a,**kw)
+            # Ambient repository overrides must not redirect explicitly isolated
+            # reads/writes. Donor deliberately lacks the synthetic predecessor.
+            with patch.dict(os.environ, GIT_DIR=str(donor/'.git'), GIT_WORK_TREE=str(donor)), \
+                 patch.object(subprocess,'check_output',read):
+                original_bind(root,env)
+        with patch.object(fixture,'bind_ci_fixture',bind):
+            fixture.IndependentRunnerContract.setUpClass()
         self.addCleanup(fixture.IndependentRunnerContract.doClassCleanups)
+        self.assertEqual(len(observed),1)
         run=fixture.IndependentRunnerContract.invoke(fixture.IndependentRunnerContract.base,'qa-bootstrap')
         self.assertEqual(run.returncode,0,run.stderr)
         status=json.loads(run.stdout)

@@ -320,7 +320,15 @@ class IndependentPresumedHistoricalPreservationQA(unittest.TestCase):
         self.assertEqual(hashlib.sha256(raw).hexdigest(), VERIFIER.PRESERVATION_SHA256)
         self.assertEqual(len(data['files']), VERIFIER.PRESERVATION_COUNT)
         self.assertGreater(VERIFIER.PRESERVATION_COUNT, 8900)
-        self.assertEqual(VERIFIER.verify_historical(), VERIFIER.PRESERVATION_COUNT)
+        import ci_governance as governance
+        infrastructure=module('pending_preservation_checks',ROOT/'tests/phase_a_release_infra/test_infrastructure.py')
+        candidate=infrastructure.candidate_preservation(VERIFIER)
+        self.assertEqual(candidate['historical'],VERIFIER.PRESERVATION_COUNT)
+        self.assertEqual(candidate['accepted_main'],7963)
+        if candidate['state'] != 'SEALED':
+            with self.assertRaises(governance.PendingSealing):VERIFIER.verify_historical()
+        else:
+            self.assertEqual(VERIFIER.verify_historical(),VERIFIER.PRESERVATION_COUNT)
 
 
 if __name__ == '__main__':

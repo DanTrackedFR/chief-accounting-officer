@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "amendment_id": {
+      "const": "phase-a-ci-governance-v1-amendment-001"
+    },
+    "authorization": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "diagnosis": {
+      "additionalProperties": false,
+      "properties": {
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "helper": {
+      "additionalProperties": false,
+      "properties": {
+        "before_blob": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "before_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "path": {
+          "const": "skills/presumed-sources/ci_governance.py"
+        },
+        "reason": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "successor_identity": {
+          "const": "EXTERNAL_FINAL_GIT_REVIEW"
+        }
+      },
+      "required": [
+        "path",
+        "before_sha256",
+        "before_blob",
+        "successor_identity",
+        "reason"
+      ],
+      "type": "object"
+    },
+    "prior_source": {
+      "additionalProperties": false,
+      "properties": {
+        "attestation": {
+          "type": "string"
+        },
+        "commit": {
+          "const": "3fc1efd56506ad465ca959324644ac903130e321"
+        },
+        "contract_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "publication": {
+          "type": "string"
+        },
+        "tree": {
+          "const": "b5227359df39804dc887fab9b22ac15931cee18e"
+        }
+      },
+      "required": [
+        "commit",
+        "tree",
+        "contract_sha256",
+        "attestation",
+        "publication"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "const": "skills/presumed-sources/release/ci-governance-v1/amendment-001.schema.json"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "state": {
+      "const": "PENDING_INDEPENDENT_REVIEW"
+    },
+    "successors": {
+      "additionalProperties": false,
+      "properties": {
+        "tests/fixtures/phase_a_v1/runner.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "before_sha256",
+            "before_blob",
+            "after_sha256",
+            "reason"
+          ],
+          "type": "object"
+        },
+        "tests/phase_a_release_infra/test_infrastructure.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "before_sha256",
+            "before_blob",
+            "after_sha256",
+            "reason"
+          ],
+          "type": "object"
+        },
+        "tests/test_ci_governance_migration.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "before_sha256",
+            "before_blob",
+            "after_sha256",
+            "reason"
+          ],
+          "type": "object"
+        },
+        "tests/test_presumed_release.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "before_sha256",
+            "before_blob",
+            "after_sha256",
+            "reason"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "tests/fixtures/phase_a_v1/runner.py",
+        "tests/test_ci_governance_migration.py",
+        "tests/test_presumed_release.py",
+        "tests/phase_a_release_infra/test_infrastructure.py"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "amendment_id",
+    "state",
+    "prior_source",
+    "diagnosis",
+    "authorization",
+    "successors",
+    "helper",
+    "schema"
+  ],
+  "type": "object"
+}
