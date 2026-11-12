@@ -5,6 +5,9 @@ and digest constants differ, because the real pinned historical test files canno
 be replaced with 136 cheap canaries (18 suite probes plus 118 required identities). Real preservation is checked separately.
 """
 import hashlib
+import contextlib
+import copy
+from unittest.mock import patch
 import importlib.util
 import json
 import os
@@ -16,6 +19,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[3]
 FROZEN = 'e025098beb849484e49d27f005adbcd30d508dc4'
 SOURCE = ROOT / 'skills/presumed-sources'
+sys.path.insert(0,str(SOURCE))
 
 
 def sha(path):
@@ -54,7 +58,7 @@ DEPENDENCIES = (
     'orchestration/history_references.py', 'intelligence/tests/run_release.py',
     *('skills/presumed-sources/' + name for name in (
         'execute_release.py', 'run_release.py', 'suite_runner.py', 'verify_release.py',
-        'receipt_integrity.py', 'release_population.py', 'proof_selection.py', 'accepted_history.py',
+        'receipt_integrity.py', 'release_population.py', 'proof_selection.py', 'accepted_history.py', 'ci_governance.py',
         'required-remediation-tests.json', 'phase-a-contracts/required-tests-v1.json',
         'release/http-proof.json', 'release/phase-a-v1/http-proof.json')),
 )
@@ -63,9 +67,16 @@ DEPENDENCIES = (
 def copy_dependency(root, name):
     dest = child_path(root, name)
     data = child_path(ROOT, name).read_bytes()
-    if name == 'skills/presumed-sources/proof_selection.py':
-        if hashlib.sha256(data).hexdigest() != '19dbe5411bdb03dd33d4247b38ee6d68732318229680c1d53fad1e59f14a9c5b':
-            raise ValueError('Fixture successor selector changed')
+    from ci_governance import load_contract, MODIFIED, ADDED
+    transition = load_contract(ROOT)
+    if name in MODIFIED:
+        expected = transition['modified_files'][name]['after_sha256']
+        if hashlib.sha256(data).hexdigest() != expected:
+            raise ValueError('Fixture successor dependency changed: ' + name)
+    elif name == ADDED[0]:
+        import ci_governance
+        if data != Path(ci_governance.__file__).read_bytes():
+            raise ValueError('Fixture anchor differs from loaded test trust root')
     elif data != subprocess.check_output(['git', 'show', FROZEN + ':' + name], cwd=ROOT):
         raise ValueError('Fixture dependency differs from frozen source: ' + name)
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -148,6 +159,100 @@ print(json.dumps(dict(executions=rows), sort_keys=True, indent=2))
 
 
 
+@contextlib.contextmanager
+def synthetic_review_context():
+    """In-memory seal for component tests; never modifies or approves real records."""
+    import ci_governance as governance
+    data=copy.deepcopy(governance.load_contract(ROOT))
+    review=b'SYNTHETIC COMPONENT REVIEW ONLY. Not independent CAO approval.\n'
+    data['state']='SEALED'
+    data['scope_review'].update(status='INDEPENDENTLY_REVIEWED',sha256=hashlib.sha256(review).hexdigest())
+    raw=(json.dumps(data,sort_keys=True,indent=2)+'\n').encode()
+    original=Path.read_bytes
+    def read(path):
+        if path==ROOT/governance.CONTRACT:return raw
+        if path==ROOT/governance.NAMESPACE/'scope-review.md':return review
+        return original(path)
+    with patch.object(Path,'read_bytes',read),patch.object(governance,'CONTRACT_SHA256',hashlib.sha256(raw).hexdigest()):
+        yield
+
+
+def bind_ci_fixture(root, env):
+    """Rebind data and literal pins ONLY in an isolated synthetic Git checkout.
+
+    The code-pin-bound provisional closure is checked before copying.
+    This synthetic seal never authorises the production candidate.
+    All production algorithms remain in the child; synthetic maps and histories
+    are separately labelled and cannot leave this temporary fixture as acceptance.
+    """
+    import ci_governance as governance
+    data = json.loads((ROOT / governance.CONTRACT).read_bytes())
+    namespace = root / governance.NAMESPACE
+    namespace.mkdir(parents=True, exist_ok=True)
+    for name in governance.WORKFLOWS:
+        put(root, name, (ROOT/name).read_text())
+    for name in ('tests/test_presumed_release.py', governance.ADDED[1], governance.COMPATIBILITY_TEST):
+        put(root, name, '# Synthetic closure file; no CAO test body or acceptance.\n')
+    put(root, 'tests/fixtures/phase_a_v1/runner.py', Path(__file__).read_text())
+    for name in ('contract.schema.json','owner-authorization.json'):
+        put(root, governance.NAMESPACE+'/'+name, (ROOT/governance.NAMESPACE/name).read_text())
+    put(root, governance.NAMESPACE+'/scope-review.md',
+        'SYNTHETIC FIXTURE REVIEW ONLY. Never independent CAO approval.\n')
+    subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
+    subprocess.run(['git','commit','-qm','Synthetic predecessor only'],cwd=root,env=env,check=True)
+    put(root,'build4/release/synthetic-f2-evidence.txt','synthetic immutable evidence\n')
+    subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
+    subprocess.run(['git','commit','-qm','Synthetic evidence only'],cwd=root,env=env,check=True)
+    f2 = subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+    tree = subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=root,text=True).strip()
+    helper = root / governance.ADDED[0]
+    substitute(helper, governance.F2, f2)
+    substitute(helper, '2fff8be455b395428ab26de94cc046cc33c8040c', tree)
+    substitute(helper, 'F2_COUNT = 611', 'F2_COUNT = 1')
+    substitute(helper, governance.FROZEN_MANIFEST, 'build4/release/synthetic-frozen-maps.json')
+    data['predecessor_commits']['f2'] = f2
+    data['predecessor_commits']['f2_tree'] = tree
+    data['state'] = 'SEALED'
+    data['scope_review'] = dict(path=governance.NAMESPACE+'/scope-review.md',
+                              sha256=sha(namespace/'scope-review.md'),status='INDEPENDENTLY_REVIEWED')
+    data['schema']['sha256'] = sha(namespace/'contract.schema.json')
+    data['owner_authorization']['sha256'] = sha(namespace/'owner-authorization.json')
+    data['modified_files'] = {}
+    for name in governance.MODIFIED:
+        before = subprocess.check_output(['git','show',f2+':'+name],cwd=root)
+        archive = governance.NAMESPACE+'/predecessors/'+name+'.txt'
+        put(root,archive,before.decode())
+        data['modified_files'][name] = dict(archive=archive,before_sha256=hashlib.sha256(before).hexdigest(),
+            before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,text=True).strip(),
+            after_sha256=sha(root/name))
+    name=governance.COMPATIBILITY_TEST
+    before=subprocess.check_output(['git','show',f2+':'+name],cwd=root)
+    data['compatibility_test']=dict(path=name,before_sha256=hashlib.sha256(before).hexdigest(),
+        before_blob=subprocess.check_output(['git','rev-parse',f2+':'+name],cwd=root,text=True).strip(),
+        after_sha256=sha(root/name))
+    data['added_source_files'][governance.ADDED[1]]['sha256'] = sha(root/governance.ADDED[1])
+    for key in ('workflow_transitions','proof_input_transitions'):
+        data[key] = {name:dict(before=data['modified_files'][name]['before_sha256'],
+                              after=data['modified_files'][name]['after_sha256']) for name in governance.WORKFLOWS}
+    names = ['skills/presumed-sources/release/historical-preservation.json',
+             'skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json',
+             'skills/presumed-sources/release/phase-a-v1/proof-contract.json',
+             'skills/presumed-sources/release/phase-a-v1/governance-source-v2.json']
+    data['predecessor_contracts'] = [dict(path=n,sha256=sha(root/n)) for n in names]
+    name='build4/release/synthetic-f2-evidence.txt'
+    data['preserved_f2_files']={name:dict(sha256=sha(root/name),blob=subprocess.check_output(
+        ['git','rev-parse',f2+':'+name],cwd=root,text=True).strip())}
+    # Query the real enumerators in a fresh child; neither executes tests.
+    program = "import json; from build4.run_release import source_hashes; from release_population import release_input_hashes; print(json.dumps(dict(tested_python_sha256=source_hashes(),tested_execution_inputs_sha256=release_input_hashes())))"
+    child_env={**env,'PYTHONPATH':str(root)+os.pathsep+str(root/'skills/presumed-sources')}
+    maps=json.loads(subprocess.check_output([sys.executable,'-c',program],cwd=root,env=child_env,text=True))
+    for values in maps.values():
+        for name in governance.ADDED: values.pop(name,None)
+    json_put(root,'build4/release/synthetic-frozen-maps.json',maps)
+    contract=json_put(root,governance.CONTRACT,data)
+    substitute(helper,governance.CONTRACT_SHA256,sha(contract))
+
+
 HISTORICAL_FIXTURE = 'diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py'
 spec = importlib.util.spec_from_file_location('profile12_historical_runner', ROOT / HISTORICAL_FIXTURE)
 historical = importlib.util.module_from_spec(spec)
@@ -157,6 +262,8 @@ spec.loader.exec_module(historical)
 class IndependentRunnerContract(historical.IndependentRunnerContract):
     @classmethod
     def setUpClass(cls):
+        from ci_governance import load_contract
+        load_contract(ROOT)  # Structural/pin validation, never production acceptance.
         cls.storage = tempfile.TemporaryDirectory()
         cls.addClassCleanup(cls.storage.cleanup)
         cls.base = Path(cls.storage.name) / 'base'
@@ -230,7 +337,11 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
                      dict(status='PASS', errors=[], files={}))
         put(cls.base, 'build4/release/presumed-sources-accepted-release.json',
             '{"historical": "deliberately stale, untouched"}\n')
+        from ci_governance import WORKFLOWS
+        for name in WORKFLOWS:
+            put(cls.base,name,(ROOT/name).read_text())
         bind_fixture_contracts(cls.base)
+        bind_ci_fixture(cls.base, cls.env)
         subprocess.run(['git', 'add', '.'], cwd=cls.base, env=cls.env, check=True)
         subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Synthetic fixture only'], cwd=cls.base, env=cls.env, check=True)
         result = cls.invoke(cls.base, 'qa-seed')

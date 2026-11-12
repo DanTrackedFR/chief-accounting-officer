@@ -99,7 +99,7 @@ validate_population(value)
 verify_source_binding(value['source_commit'], value['tested_python_sha256'], value['tested_execution_inputs_sha256'])
 """
         proc = subprocess.run([sys.executable, '-c', program], cwd=self.fixture.base,
-                              input=json.dumps(value), text=True, capture_output=True, timeout=30)
+                              input=json.dumps(value), env=self.fixture.env, text=True, capture_output=True, timeout=30)
         if proc.returncode:
             raise ValueError(proc.stderr)
 
@@ -184,6 +184,12 @@ verify_source_binding(value['source_commit'], value['tested_python_sha256'], val
         self.assertEqual(len(expected[3]), 142)
         self.assertEqual(expected[3][89], ROUTING_ID)
         self.assertEqual(sum(map(len, expected)), 4013)
+        from ci_governance import ADDITIONAL_IDS, load_contract
+        transition = load_contract(ROOT)['population_extension']
+        self.assertEqual(transition['additional_ids'], sorted(ADDITIONAL_IDS))
+        self.assertFalse(set(expected[3]) & set(ADDITIONAL_IDS))
+        expected[3] = sorted([*expected[3], *ADDITIONAL_IDS])
+        self.assertEqual(sum(map(len, expected)), 4037)
         inventory = discover('governance-population', commit)
         check_phase_a_inventory(inventory, commit, expected)
         for delta in (-1, 1):
@@ -253,10 +259,25 @@ class IndependentPresumedHistoricalPreservationQA(unittest.TestCase):
         self.manifest.write_text(json.dumps(data, sort_keys=True, indent=2)+'\n')
 
     def verify(self, expected_hash=None):
-        with patch.object(VERIFIER, 'ROOT', self.root), \
+        # The two-file historical fixture contains no workflow migration. Verify
+        # the real candidate overlay independently, then exercise the original
+        # historical algorithm against its explicitly synthetic two-file view.
+        import ci_governance
+        real_transition=ci_governance.verify_transition
+        def verified_candidate(root):
+            self.assertEqual(root,self.root)
+            return real_transition(ROOT)
+        with FIXTURE.synthetic_review_context(), \
+             patch.object(ci_governance,'verify_transition',verified_candidate), \
+             patch.object(VERIFIER, 'ROOT', self.root), \
              patch.object(VERIFIER, 'PRESERVATION_SHA256', expected_hash or self.original_hash), \
              patch.object(VERIFIER, 'PRESERVATION_COUNT', 2):
-            return VERIFIER.verify_historical()
+            # Accepted-main separately invokes the real overlay at the real root.
+            def both_roots(root):
+                self.assertIn(root,(self.root,ROOT))
+                return real_transition(ROOT)
+            with patch.object(ci_governance,'verify_transition',both_roots):
+                return VERIFIER.verify_historical()
 
     def test_valid_exact_manifest_and_population_are_accepted(self):
         self.assertEqual(self.verify(), 2)

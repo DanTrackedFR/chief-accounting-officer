@@ -1,0 +1,554 @@
+{
+  "$defs": {
+    "bound": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_main_transition": {
+      "const": "skills/presumed-sources/verify_release.py"
+    },
+    "added_source_files": {
+      "type": "object"
+    },
+    "compatibility_test": {
+      "type": "object"
+    },
+    "migration_id": {
+      "const": "phase-a-ci-governance-v1"
+    },
+    "modified_files": {
+      "additionalProperties": false,
+      "properties": {
+        ".github/workflows/cao-build4.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/cao-orchestration.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/phase3-skills.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/standards-evidence.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        "skills/presumed-sources/accepted_history.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        "skills/presumed-sources/proof_selection.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        "skills/presumed-sources/verify_release.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        "tests/fixtures/phase_a_v1/runner.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        },
+        "tests/test_presumed_release.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "$ref": "#/$defs/digest"
+            },
+            "archive": {
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "archive",
+            "before_sha256",
+            "before_blob",
+            "after_sha256"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        ".github/workflows/standards-evidence.yml",
+        ".github/workflows/phase3-skills.yml",
+        ".github/workflows/cao-build4.yml",
+        ".github/workflows/cao-orchestration.yml",
+        "skills/presumed-sources/verify_release.py",
+        "skills/presumed-sources/accepted_history.py",
+        "skills/presumed-sources/proof_selection.py",
+        "tests/test_presumed_release.py",
+        "tests/fixtures/phase_a_v1/runner.py"
+      ],
+      "type": "object"
+    },
+    "owner_authorization": {
+      "$ref": "#/$defs/bound"
+    },
+    "population_extension": {
+      "additionalProperties": false,
+      "properties": {
+        "additional_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 24,
+          "minItems": 24,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "base_count": {
+          "const": 4013
+        },
+        "slot": {
+          "const": 3
+        },
+        "total": {
+          "const": 4037
+        }
+      },
+      "required": [
+        "slot",
+        "base_count",
+        "additional_ids",
+        "total"
+      ],
+      "type": "object"
+    },
+    "predecessor_commits": {
+      "type": "object"
+    },
+    "predecessor_contracts": {
+      "items": {
+        "$ref": "#/$defs/bound"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "preserved_f2_files": {
+      "additionalProperties": {
+        "additionalProperties": false,
+        "properties": {
+          "blob": {
+            "pattern": "^[0-9a-f]{40}$",
+            "type": "string"
+          },
+          "sha256": {
+            "$ref": "#/$defs/digest"
+          }
+        },
+        "required": [
+          "sha256",
+          "blob"
+        ],
+        "type": "object"
+      },
+      "maxProperties": 611,
+      "minProperties": 611,
+      "type": "object"
+    },
+    "proof_input_transitions": {
+      "additionalProperties": false,
+      "properties": {
+        ".github/workflows/cao-build4.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/cao-orchestration.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/phase3-skills.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/standards-evidence.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        ".github/workflows/standards-evidence.yml",
+        ".github/workflows/phase3-skills.yml",
+        ".github/workflows/cao-build4.yml",
+        ".github/workflows/cao-orchestration.yml"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "$ref": "#/$defs/bound"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "scope_review": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/digest"
+        },
+        "status": {
+          "enum": [
+            "PENDING_G3",
+            "INDEPENDENTLY_REVIEWED"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "status"
+      ],
+      "type": "object"
+    },
+    "state": {
+      "enum": [
+        "PENDING_G3",
+        "SEALED"
+      ]
+    },
+    "workflow_transitions": {
+      "additionalProperties": false,
+      "properties": {
+        ".github/workflows/cao-build4.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/cao-orchestration.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/phase3-skills.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        },
+        ".github/workflows/standards-evidence.yml": {
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "$ref": "#/$defs/digest"
+            },
+            "before": {
+              "$ref": "#/$defs/digest"
+            }
+          },
+          "required": [
+            "before",
+            "after"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        ".github/workflows/standards-evidence.yml",
+        ".github/workflows/phase3-skills.yml",
+        ".github/workflows/cao-build4.yml",
+        ".github/workflows/cao-orchestration.yml"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "accepted_main_transition",
+    "added_source_files",
+    "compatibility_test",
+    "migration_id",
+    "modified_files",
+    "owner_authorization",
+    "population_extension",
+    "predecessor_commits",
+    "predecessor_contracts",
+    "preserved_f2_files",
+    "proof_input_transitions",
+    "schema",
+    "schema_version",
+    "scope_review",
+    "state",
+    "workflow_transitions"
+  ],
+  "type": "object"
+}

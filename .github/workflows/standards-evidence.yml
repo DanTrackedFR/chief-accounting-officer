@@ -43,6 +43,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install bounded document parsers
+        run: python -m pip install -r intelligence/requirements.txt reportlab
       - name: Validate claim registers
         run: python knowledge/standards-evidence/validate_claims.py
       - name: Government grants supplemental knowledge

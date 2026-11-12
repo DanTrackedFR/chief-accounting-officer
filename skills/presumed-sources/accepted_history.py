@@ -27,7 +27,9 @@ def verify_accepted_main(root=None):
     for name,blob in data['files'].items():
         migration=data['source_migrations'].get(name)
         if migration:
-            require(digest(artifact(root,name))==migration['successor_sha256'],'Infrastructure successor changed: '+name)
+            from ci_governance import accepted_main_predecessor
+            selected = accepted_main_predecessor(root, name) if name == 'skills/presumed-sources/verify_release.py' else artifact(root,name)
+            require(digest(selected)==migration['successor_sha256'],'Infrastructure successor changed: '+name)
             original=artifact(root,migration['archive_path']).read_bytes()
             require(hashlib.sha256(original).hexdigest()==migration['original_sha256'],'Archived infrastructure source changed')
         else:

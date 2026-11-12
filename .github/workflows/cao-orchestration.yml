@@ -83,6 +83,9 @@ jobs:
         run: pip install -r intelligence/requirements.txt reportlab
       - name: Build 4 integrated accounting intelligence acceptance
         if: steps.prior.outputs.cached != 'true'
+        env:
+          CAO_PR_POINTER: ${{ vars.CAO_PR_ACCEPTANCE_POINTER }}
+          CAO_PR_POINTER_SHA256: ${{ vars.CAO_PR_ACCEPTANCE_POINTER_SHA256 }}
         run: |
           python -m unittest discover -s build4/tests -p 'test_*.py'
           PYTHONHASHSEED=283 python -m build4.prove_integrated > /tmp/build4-283.json
@@ -93,7 +96,8 @@ jobs:
           PYTHONHASHSEED=1709 python -m build4.prove_memory > /tmp/memory-1709.json
           cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('build4/release/memory-proof.json'))")" /tmp/memory-283.json
           cmp /tmp/memory-283.json /tmp/memory-1709.json
-          python -m build4.verify_release
+          python skills/presumed-sources/ci_governance.py check-pointer --pointer "$CAO_PR_POINTER" --sha256 "$CAO_PR_POINTER_SHA256"
+          python -m build4.verify_release --pointer "$CAO_PR_POINTER"
       - name: Build 3 intelligence and deterministic integrated proof
         if: steps.prior.outputs.cached != 'true'
         run: |

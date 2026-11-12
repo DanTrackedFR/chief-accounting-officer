@@ -14,7 +14,8 @@ sys.path.insert(0,str(ROOT))
 CONTRACT = 'skills/presumed-sources/release/phase-a-v1/proof-contract.json'
 PARENT_SHA256 = '0cfd93e3d75f3bd9d781422bbbf97129607fe07253a09dba6d80f911de673694'
 SUCCESSOR = 'skills/presumed-sources/release/phase-a-v1/governance-source-v2.json'
-CONTRACT_SHA256 = '1ec5e6f00421cd4948a23a1db6ac22f17128d6b63511544ac267c0d4e466d836'
+GOVERNANCE_PARENT_SHA256 = '1ec5e6f00421cd4948a23a1db6ac22f17128d6b63511544ac267c0d4e466d836'
+from ci_governance import CONTRACT_SHA256, apply_proof_input_transition
 VERSION = 'phase-a-v1'
 
 
@@ -26,7 +27,7 @@ def selected_proof(version=VERSION, root=None):
     contract = json.loads(path.read_bytes())
     require(contract['proof_version'] == version and contract['schema_version'] == 1, 'Proof contract version differs')
     successor = artifact(root, SUCCESSOR)
-    require(digest(successor) == CONTRACT_SHA256, 'Governance source contract changed')
+    require(digest(successor) == GOVERNANCE_PARENT_SHA256, 'Governance source contract changed')
     change = json.loads(successor.read_bytes())
     name = 'skills/tests/test_independent_ip_main_reconciliation.py'
     require(change['schema_version'] == 2 and change['parent_sha256'] == PARENT_SHA256 and
@@ -42,6 +43,7 @@ def selected_proof(version=VERSION, root=None):
     from build4.run_release import input_hashes
     require(root == ROOT, 'Proof selection requires the actual checkout root')
     inputs = {n:h for n,h in input_hashes().items() if not n.endswith('.py') and n != '.github/workflows/cao-presumed-sources.yml'}
+    contract['proof_inputs_sha256'] = apply_proof_input_transition(root, contract['proof_inputs_sha256'])
     require(inputs == contract['proof_inputs_sha256'], 'Proof execution-input population/content mismatch')
     for key in ('accounting_source_sha256', 'proof_inputs_sha256'):
         for name, expected in contract[key].items():

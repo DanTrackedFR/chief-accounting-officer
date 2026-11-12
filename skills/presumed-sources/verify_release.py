@@ -106,7 +106,8 @@ def verify_workflow_migration(historical_digest):
     assert migration['original_path'] == migration['successor_path'] == ORCHESTRATION_WORKFLOW
     assert migration['original_sha256'] == historical_digest
     archive = ROOT / migration['archived_path']
-    successor = ROOT / migration['successor_path']
+    from ci_governance import historical_predecessor
+    successor = historical_predecessor(ROOT, migration['successor_path'])
     assert archive.resolve() == archive and successor.resolve() == successor, 'Workflow path redirected'
     assert digest(archive) == historical_digest, 'Archived original workflow changed'
     assert digest(successor) == migration['successor_sha256'], 'Active successor workflow changed'
@@ -137,14 +138,19 @@ def verify_historical():
     historical=json.loads(path.read_bytes())
     assert historical['baseline']=='7146eaeca6a28d17d9183d0f9431fd9b9663f1fe'
     assert len(historical['files'])==PRESERVATION_COUNT,'Historical preservation population differs'
+    from ci_governance import verify_transition, historical_predecessor, WORKFLOWS
+    transition = verify_transition(ROOT)
     for name,expected in historical['files'].items():
+        if name in WORKFLOWS:
+            assert digest(ROOT/name)==transition['modified_files'][name]['after_sha256'],('Active workflow changed',name)
         assert (ROOT/name).resolve().is_relative_to(ROOT),'Historical path escapes repository'
         if name == ORCHESTRATION_WORKFLOW:
             verify_workflow_migration(expected)
         elif name == 'docs/HOSTED-CAO.md':
             verify_doc_migration(expected)
         else:
-            assert digest(ROOT/name)==expected,('Main7146 artifact changed',name)
+            selected = historical_predecessor(ROOT, name) if name in WORKFLOWS else ROOT/name
+            assert digest(selected)==expected,('Main7146 artifact changed',name)
     verify_accepted_main()
     return len(historical['files'])
 
