@@ -17,7 +17,7 @@ if sys.flags.optimize:
 ROOT = Path(__file__).resolve().parents[2]
 NAMESPACE = 'skills/presumed-sources/release/ci-governance-v1'
 CONTRACT = NAMESPACE + '/contract-v1.json'
-CONTRACT_SHA256 = '1009be92ad7ec6abdad5ed597f6539a6b8db48aafb1d0dffac1267fac323f492'
+CONTRACT_SHA256 = 'e7695c46551a9457040dade644a6de5f94f85a3670a9b81248eef74794fad94a'
 F2 = 'b65b6553a1990029c0b6d200c564c4ccac368299'
 FROZEN = 'fc33e21153756a0f694590e55fc607c8b0fb30e4'
 F2_COUNT = 611
