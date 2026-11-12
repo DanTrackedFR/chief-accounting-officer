@@ -39,6 +39,17 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         with patch.object(Path,'read_bytes',read), patch.object(g,'CONTRACT_SHA256',g.sha(raw)):
             return (action or (lambda:g.verify_transition(ROOT)))()
 
+    def assert_invalid_shape(self, data):
+        # Re-pin only the in-memory test contract, then call production validation.
+        # PendingSealing is not a successful result for any malformed contract.
+        raw=(json.dumps(data,sort_keys=True,indent=2)+'\n').encode()
+        original=Path.read_bytes
+        with patch.object(Path,'read_bytes',lambda p:raw if p==ROOT/g.CONTRACT else original(p)), \
+             patch.object(g,'CONTRACT_SHA256',g.sha(raw)):
+            with self.assertRaises(g.IntegrityError) as raised:
+                g.verify_transition(ROOT)
+            self.assertNotIsInstance(raised.exception,g.PendingSealing)
+
     def rejected(self, name, contents=b'changed\n'):
         with self.assertRaises((ValueError,AssertionError,FileNotFoundError)):
             self.run_synthetic({ROOT/name:contents})
@@ -54,6 +65,30 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         data=copy.deepcopy(self.sealed)
         data['modified_files'][g.WORKFLOWS[0]]['before_blob']='0'*40
         with self.assertRaisesRegex(ValueError,'Git binding'):self.run_synthetic(data=data)
+        cases=[]
+        def variant(label, records):
+            value=copy.deepcopy(self.data);value['predecessor_contracts']=records;cases.append((label,value))
+        rows=self.data['predecessor_contracts']
+        variant('empty',[])
+        variant('duplicate path',rows+[rows[0]])
+        variant('missing authorised predecessor',rows[1:])
+        variant('unexpected predecessor',[*rows,dict(path='docs/HOSTED-CAO.md',sha256='0'*64)])
+        variant('not an array',{})
+        for label,row in (
+            ('missing path',{'sha256':'0'*64}),
+            ('missing digest',{'path':rows[0]['path']}),
+            ('unknown field',{**rows[0],'authority':'invented'}),
+            ('wrong path type',{'path':17,'sha256':'0'*64}),
+            ('wrong digest type',{'path':rows[0]['path'],'sha256':17}),
+            ('malformed digest',{'path':rows[0]['path'],'sha256':'INVALID'}),
+            ('unsafe path',{'path':'../escape','sha256':'0'*64}),
+            ('non-object row','not a record')):
+            variant(label,[row,*rows[1:]])
+        for label,value in cases:
+            with self.subTest(predecessor_contracts=label):self.assert_invalid_shape(value)
+        wrong=copy.deepcopy(self.sealed);wrong['predecessor_contracts'][0]['sha256']='0'*64
+        with self.assertRaisesRegex(g.IntegrityError,'Bound evidence changed'):
+            self.run_synthetic(data=wrong)
 
     def test_historical_predecessor_mutation(self):
         self.rejected('skills/presumed-sources/release/historical-preservation.json')
@@ -68,6 +103,29 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         original=Path.read_bytes
         with patch.object(Path,'read_bytes',lambda p:b'{}' if p==ROOT/g.CONTRACT else original(p)):
             with self.assertRaisesRegex(ValueError,'contract changed'):g.load_contract(ROOT)
+        # Fixed schema boundaries beyond predecessor records.
+        variants=[]
+        for field in ('modified_files','added_source_files','predecessor_commits',
+                      'population_extension','preserved_f2_files','workflow_transitions',
+                      'proof_input_transitions','compatibility_test'):
+            value=copy.deepcopy(self.data);value[field]=[];variants.append((field+' object type',value))
+        for field in ('schema','owner_authorization'):
+            value=copy.deepcopy(self.data);value[field]['extra']=True;variants.append((field+' unknown field',value))
+            value=copy.deepcopy(self.data);value[field]['sha256']='invalid';variants.append((field+' digest',value))
+        for field in ('state','schema_version','migration_id'):
+            value=copy.deepcopy(self.data);value[field]=None;variants.append((field+' enum/constant',value))
+        value=copy.deepcopy(self.data);value['scope_review']['status']='APPROVED';variants.append(('review enum',value))
+        value=copy.deepcopy(self.data);value['scope_review']['sha256']='invalid';variants.append(('review digest',value))
+        value=copy.deepcopy(self.data);value['scope_review']['extra']=True;variants.append(('review unknown field',value))
+        value=copy.deepcopy(self.data);value['population_extension']['additional_ids'].pop();variants.append(('minimum identities',value))
+        value=copy.deepcopy(self.data);value['population_extension']['additional_ids'].append('extra');variants.append(('maximum identities',value))
+        value=copy.deepcopy(self.data);value['population_extension']['additional_ids'][1]=value['population_extension']['additional_ids'][0];variants.append(('unique identities',value))
+        value=copy.deepcopy(self.data);value['preserved_f2_files'].pop(next(iter(value['preserved_f2_files'])));variants.append(('minimum F2 rows',value))
+        value=copy.deepcopy(self.data);value['preserved_f2_files']['unexpected']={'sha256':'0'*64,'blob':'0'*40};variants.append(('maximum F2 rows',value))
+        value=copy.deepcopy(self.data);value['modified_files'][g.WORKFLOWS[0]]['before_blob']=17;variants.append(('Git blob type',value))
+        value=copy.deepcopy(self.data);value['modified_files'][g.WORKFLOWS[0]]['extra']=True;variants.append(('migration unknown field',value))
+        for label,value in variants:
+            with self.subTest(schema_boundary=label):self.assert_invalid_shape(value)
 
     def test_scope_review_mutation(self):
         self.rejected(g.NAMESPACE+'/scope-review.md')
@@ -140,6 +198,11 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         self.assertEqual({n for n in after if after[n]!=before[n]},set(g.WORKFLOWS))
         bad=dict(before);bad[g.WORKFLOWS[0]]='0'*64
         with self.assertRaises(ValueError):self.run_synthetic(action=lambda:g.apply_proof_input_transition(ROOT,bad))
+        for field in ('workflow_transitions','proof_input_transitions'):
+            value=copy.deepcopy(self.data);value[field][g.WORKFLOWS[0]]['after']='0'*64
+            with self.subTest(inconsistent_transition=field):self.assert_invalid_shape(value)
+        value=copy.deepcopy(self.data);value['predecessor_commits']['f2']='0'*40
+        self.assert_invalid_shape(value)
 
     def test_proof_or_accounting_source_mutation(self):
         # Full governed closure rejects accounting changes even before proof parsing.

@@ -17,7 +17,7 @@ if sys.flags.optimize:
 ROOT = Path(__file__).resolve().parents[2]
 NAMESPACE = 'skills/presumed-sources/release/ci-governance-v1'
 CONTRACT = NAMESPACE + '/contract-v1.json'
-CONTRACT_SHA256 = '1932b9d6c540c5133852bfe9c3eb67bce2e16e93742ec70faa8e0b96531674e5'
+CONTRACT_SHA256 = '1009be92ad7ec6abdad5ed597f6539a6b8db48aafb1d0dffac1267fac323f492'
 F2 = 'b65b6553a1990029c0b6d200c564c4ccac368299'
 FROZEN = 'fc33e21153756a0f694590e55fc607c8b0fb30e4'
 F2_COUNT = 611
@@ -49,6 +49,22 @@ METHODS = (
     'anchor_binding_checked_independently', 'bootstrap_remains_acceptance_pending',
 )
 ADDITIONAL_IDS = tuple('tests::test_ci_governance_migration.CIGovernanceMigrationQA.test_' + x for x in METHODS)
+
+
+# A finite path universe, anchored to F2 rather than selected by contract data.
+# Production F2 contains all eight. Existing isolated fixtures rewrite the code's
+# F2 literal to a sparse synthetic predecessor; they cannot change production F2
+# through JSON, environment variables, or a caller-supplied migration selector.
+PREDECESSOR_PATHS = (
+    'skills/presumed-sources/release/historical-preservation.json',
+    'skills/presumed-sources/release/workflow-migration/contract-v2.json',
+    'skills/presumed-sources/release/workflow-migration/cao-orchestration.v1.yml',
+    'skills/presumed-sources/release/workflow-migration/independent-qa.md',
+    'skills/presumed-sources/release/workflow-migration/receipt-review.md',
+    'skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json',
+    'skills/presumed-sources/release/phase-a-v1/proof-contract.json',
+    'skills/presumed-sources/release/phase-a-v1/governance-source-v2.json',
+)
 
 
 class PendingSealing(IntegrityError):
@@ -91,13 +107,89 @@ def _git(root, *args):
     return subprocess.check_output(['git', *args], cwd=root)
 
 
+def _safe_name(name):
+    require(isinstance(name,str) and bool(name) and not Path(name).is_absolute() and
+            '..' not in Path(name).parts and Path(name).as_posix() == name,
+            'Unsafe contract path')
+
+
+def _bound_shape(row):
+    _keys(row, ('path','sha256'))
+    _safe_name(row['path'])
+    _digest(row['sha256'])
+
+
+def _blob_shape(value):
+    require(isinstance(value,str) and re.fullmatch('[0-9a-f]{40}',value) is not None,
+            'Malformed Git blob')
+
+
+def _validate_shape(root, data):
+    """Explicit fixed-schema validation, followed by stricter migration rules.
+
+    No JSON Schema package is needed by production. This implements every
+    constraint in contract.schema.json; existing semantic checks remain stronger
+    for fields whose schema only declares an object. F2_COUNT is the existing
+    literal rebound solely in copied synthetic fixture code, never contract data.
+    """
+    _keys(data, TOP_KEYS)
+    for name in ('modified_files','added_source_files','predecessor_commits',
+                 'population_extension','preserved_f2_files','workflow_transitions',
+                 'proof_input_transitions','compatibility_test'):
+        require(isinstance(data[name],dict), 'Contract field must be an object: '+name)
+    for key in ('schema','owner_authorization'):
+        _bound_shape(data[key])
+    _keys(data['scope_review'], ('path','sha256','status'))
+    _safe_name(data['scope_review']['path']); _digest(data['scope_review']['sha256'])
+    require(data['scope_review']['status'] in ('PENDING_G3','INDEPENDENTLY_REVIEWED'),
+            'Invalid review status')
+    _keys(data['modified_files'], MODIFIED)
+    _keys(data['added_source_files'], ADDED)
+    _keys(data['predecessor_commits'], ('f2','f2_tree','frozen','frozen_tree','accepted_baseline'))
+    for value in data['predecessor_commits'].values():_blob_shape(value)
+    for name,row in data['modified_files'].items():
+        _safe_name(name)
+        _keys(row, ('archive','before_sha256','before_blob','after_sha256'))
+        _safe_name(row['archive']);_digest(row['before_sha256']);_digest(row['after_sha256'])
+        _blob_shape(row['before_blob'])
+    compatibility=data['compatibility_test']
+    _keys(compatibility, ('path','before_sha256','before_blob','after_sha256'))
+    _safe_name(compatibility['path']);_digest(compatibility['before_sha256'])
+    _digest(compatibility['after_sha256']);_blob_shape(compatibility['before_blob'])
+    for key in ('workflow_transitions','proof_input_transitions'):
+        _keys(data[key],WORKFLOWS)
+        for row in data[key].values():
+            _keys(row, ('before','after'));_digest(row['before']);_digest(row['after'])
+    population=data['population_extension']
+    _keys(population, ('slot','base_count','additional_ids','total'))
+    for key in ('slot','base_count','total'):
+        require(type(population[key]) is int, 'Population counter must be an integer')
+    ids=population['additional_ids']
+    require(isinstance(ids,list) and len(ids)==24 and all(isinstance(v,str) for v in ids),
+            'Population extension differs: invalid identities')
+    require(len(set(ids))==len(ids), 'Duplicate population identities')
+    require(len(data['preserved_f2_files'])==F2_COUNT, 'F2 preservation population differs')
+    for name,row in data['preserved_f2_files'].items():
+        _safe_name(name);_keys(row, ('sha256','blob'));_digest(row['sha256']);_blob_shape(row['blob'])
+    records=data['predecessor_contracts']
+    require(isinstance(records,list) and bool(records), 'Empty or invalid predecessor contracts')
+    for row in records:_bound_shape(row)
+    paths=[row['path'] for row in records]
+    require(len(paths)==len(set(paths)), 'Duplicate predecessor contract path')
+    # Use only the immutable code-pinned Git tree, never a set supplied by JSON.
+    # This also supports the existing sparse, explicitly synthetic Git fixture.
+    tree={line.split('\t',1)[1] for line in _git(root,'ls-tree','-r',F2).decode().splitlines()}
+    expected=set(PREDECESSOR_PATHS) & tree
+    require(bool(expected) and set(paths)==expected, 'Unauthorized predecessor contract set')
+
+
 def load_contract(root):
     """Validate the pinned record structure; this does NOT approve pending records."""
     root = Path(root)
     raw = artifact(root, CONTRACT).read_bytes()
     require(sha(raw) == CONTRACT_SHA256, 'CI governance contract changed')
     data = _json(raw)
-    _keys(data, TOP_KEYS)
+    _validate_shape(root, data)
     require(type(data['schema_version']) is int and data['schema_version'] == 1 and
             data['migration_id'] == 'phase-a-ci-governance-v1', 'Wrong CI governance version')
     require(data['state'] in ('PENDING_G3', 'SEALED'), 'Invalid sealing state')
