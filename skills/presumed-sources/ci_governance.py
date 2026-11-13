@@ -197,12 +197,139 @@ def _validate_shape(root, data):
     require(bool(expected) and set(paths)==expected, 'Unauthorized predecessor contract set')
 
 
+# Exact owner-authorised successor. No independent attestation is asserted here.
+MAINTENANCE = NAMESPACE + '/amendment-002.json'
+MAINTENANCE_SCHEMA = NAMESPACE + '/amendment-002.schema.json'
+MAINTENANCE_REVIEW = NAMESPACE + '/amendment-002-review.md'
+DIAGNOSTIC_TEST = 'diagnostics/profile12/governance.py'
+DIAGNOSTIC_ARCHIVE = NAMESPACE + '/predecessors/' + DIAGNOSTIC_TEST + '.txt'
+MAINTENANCE_PREDECESSOR = '1feef2f93f2b5d9d017dc55449912c9cfd8bf7a7'
+MAINTENANCE_TREE = 'e9adf0d767198ba7593361126980296bb070d20a'
+MAINTENANCE_SHA256 = '2a217840838a66ec0c59688396eab7510d45c9e2b0b78de8ab40df439cc78984'
+MAINTENANCE_STATE = 'OWNER_AUTHORISED_MAINTENANCE_PENDING_FINAL_REVIEW'
+MAINTENANCE_PATHS = (DIAGNOSTIC_TEST, 'skills/presumed-sources/accepted_history.py',
+                     'tests/fixtures/phase_a_v1/runner.py',
+                     'tests/phase_a_release_infra/test_infrastructure.py',
+                     'tests/test_ci_governance_migration.py')
+MAINTENANCE_RECORDS = (MAINTENANCE, MAINTENANCE_SCHEMA, MAINTENANCE_REVIEW, DIAGNOSTIC_ARCHIVE)
+AMENDMENT_RECORDS += MAINTENANCE_RECORDS
+
+
+def _blob(data):
+    return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+
+
+def _maintenance(root):
+    """Validate mandatory successor authority without granting review/acceptance.
+
+    Historical source/review bindings stay in their original records. The helper
+    successor is externally reviewed at its final Git tree, avoiding a self-hash.
+    """
+    root = Path(root)
+    raw = artifact(root, MAINTENANCE).read_bytes()
+    require(sha(raw) == MAINTENANCE_SHA256, 'Maintenance amendment changed')
+    record = _json(raw)
+    _keys(record, ('schema_version','amendment_id','state','independent_review',
+                   'release_accepted','predecessor','evidence','authorization','successors',
+                   'helper','schema','review','accepted_main_extension'))
+    require(type(record['schema_version']) is int and record['schema_version'] == 2 and
+            record['amendment_id'] == 'phase-a-ci-governance-v1-amendment-002' and
+            record['state'] == MAINTENANCE_STATE and record['independent_review'] is None and
+            record['release_accepted'] is False, 'Invalid maintenance identity/state')
+    require(isinstance(record['authorization'],str) and bool(record['authorization']),
+            'Missing maintenance owner authority')
+    for key, name in (('schema',MAINTENANCE_SCHEMA), ('review',MAINTENANCE_REVIEW)):
+        _bound_shape(record[key]); require(record[key]['path'] == name, 'Maintenance record redirected')
+        _bound(root,record[key])
+    _keys(record['evidence'], ('failed_run','g4d1_sha256','g4d2_sha256','g4d3_sha256'))
+    for key in ('g4d1_sha256','g4d2_sha256','g4d3_sha256'): _digest(record['evidence'][key])
+    failure = record['evidence']['failed_run']
+    _keys(failure, ('run_id','attempt','method','checkpoint','archive_sha256','manifest_sha256'))
+    require(type(failure['run_id']) is int and failure['run_id'] == 43501747483 and
+            type(failure['attempt']) is int and failure['attempt'] == 1 and
+            failure['method'] == 'diagnostics/profile12::governance.Governance.test_GOV_02' and
+            failure['checkpoint'] == 'https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6865295726',
+            'Maintenance failure provenance differs')
+    _digest(failure['archive_sha256']); _digest(failure['manifest_sha256'])
+    prior = record['predecessor']
+    _keys(prior, ('commit','tree','records'))
+    require(prior['commit'] == MAINTENANCE_PREDECESSOR and prior['tree'] == MAINTENANCE_TREE and
+            _git(root,'rev-parse',MAINTENANCE_PREDECESSOR+'^{tree}').decode().strip() == MAINTENANCE_TREE,
+            'Maintenance predecessor identity differs')
+    names = tuple(NAMESPACE+'/'+n for n in ('contract-v1.json','scope-review.md','contract-v2.json',
+                  'amendment-001.json','amendment-001.schema.json','amendment-001-review.md'))
+    _keys(prior['records'],names)
+    for name,row in prior['records'].items():
+        _keys(row, ('sha256','blob')); _digest(row['sha256']); _blob_shape(row['blob'])
+        before = _git(root,'show',MAINTENANCE_PREDECESSOR+':'+name)
+        require(sha(before) == row['sha256'] and _blob(before) == row['blob'],
+                'Maintenance predecessor record differs: '+name)
+    _keys(record['successors'],MAINTENANCE_PATHS)
+    for name,row in record['successors'].items():
+        _keys(row, ('before_sha256','before_blob','after_sha256','after_blob'))
+        for key in ('before_sha256','after_sha256'): _digest(row[key])
+        for key in ('before_blob','after_blob'): _blob_shape(row[key])
+        before = _git(root,'show',MAINTENANCE_PREDECESSOR+':'+name)
+        require(sha(before) == row['before_sha256'] and _blob(before) == row['before_blob'],
+                'Maintenance source predecessor differs: '+name)
+    helper = record['helper']
+    _keys(helper, ('path','before_sha256','before_blob','successor_identity'))
+    require(helper['path'] == ADDED[0] and helper['successor_identity'] == 'EXTERNAL_FINAL_GIT_REVIEW',
+            'Maintenance helper must retain external review anchor')
+    before = _git(root,'show',MAINTENANCE_PREDECESSOR+':'+ADDED[0])
+    require(sha(before) == helper['before_sha256'] and _blob(before) == helper['before_blob'],
+            'Maintenance helper predecessor differs')
+    extension = record['accepted_main_extension']
+    _keys(extension, ('contract','baseline','migrations'))
+    _bound_shape(extension['contract'])
+    require(extension['contract']['path'] == 'skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json'
+            and extension['baseline'] == BASELINE, 'Accepted-main extension predecessor differs')
+    _bound(root,extension['contract'])
+    _keys(extension['migrations'], (DIAGNOSTIC_TEST,))
+    row = extension['migrations'][DIAGNOSTIC_TEST]
+    _keys(row, ('archive_path','original_sha256','original_blob','successor_sha256','successor_blob'))
+    source = record['successors'][DIAGNOSTIC_TEST]
+    require(row == dict(archive_path=DIAGNOSTIC_ARCHIVE, original_sha256=source['before_sha256'],
+            original_blob=source['before_blob'], successor_sha256=source['after_sha256'],
+            successor_blob=source['after_blob']), 'Accepted-main extension source binding differs')
+    original = artifact(root,DIAGNOSTIC_ARCHIVE).read_bytes()
+    require(sha(original) == row['original_sha256'] and _blob(original) == row['original_blob'],
+            'Accepted-main diagnostic archive changed')
+    return record
+
+
+def _effective_digest(name, predecessor, maintenance):
+    row = maintenance['successors'].get(name)
+    if row is None:
+        return predecessor
+    require(predecessor == row['before_sha256'], 'Maintenance source binding differs: '+name)
+    return row['after_sha256']
+
+
+def effective_source_digest(root, name, predecessor):
+    """Explicit content-addressed successor; never a caller-selected allowance."""
+    return _effective_digest(name, predecessor, _maintenance(root))
+
+
+def _legacy_active_digest(root, name, maintenance):
+    # The original reviewed hash remains verifiable in frozen Git, while current
+    # bytes must satisfy the separately authenticated successor below.
+    row = maintenance['successors'].get(name)
+    return row['before_sha256'] if row is not None else sha(artifact(root,name).read_bytes())
+
+
+def accepted_main_extension(root):
+    verify_transition(root)
+    return _maintenance(root)['accepted_main_extension']
+
+
 def _verify_amendment(root, data):
     """Exact versioned successor authority; pending bytes never confer a seal.
 
     Helper successor identity is an external-review anchor, not a cyclic hash.
     The two code pins authenticate this record and the effective contract.
     """
+    maintenance = _maintenance(root)
     raw = artifact(root, AMENDMENT).read_bytes()
     require(sha(raw) == AMENDMENT_SHA256, 'CI governance amendment changed')
     record = _json(raw)
@@ -253,13 +380,13 @@ def _verify_amendment(root, data):
         _keys(row, ('before_sha256','before_blob','after_sha256','reason',
                     'reviewed_sha256','reviewed_blob','change_state'))
         _digest(row['reviewed_sha256']); _blob_shape(row['reviewed_blob'])
-        maintenance = ('tests/fixtures/phase_a_v1/runner.py','tests/test_ci_governance_migration.py',
+        maintenance_paths = ('tests/fixtures/phase_a_v1/runner.py','tests/test_ci_governance_migration.py',
                        COMPATIBILITY_TEST)
         expected_state = ('OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW'
                           if row['after_sha256'] != row['reviewed_sha256'] else
                           'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW')
         require(row['change_state'] == expected_state and
-                (expected_state == 'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW' or name in maintenance),
+                (expected_state == 'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW' or name in maintenance_paths),
                 'Unapproved implementation successor: '+name)
         _digest(row['before_sha256']); _digest(row['after_sha256']); _blob_shape(row['before_blob'])
         require(isinstance(row['reason'],str) and bool(row['reason']), 'Missing successor reason')
@@ -269,8 +396,9 @@ def _verify_amendment(root, data):
                 'Amendment predecessor Git binding differs: '+name)
         effective = (data['modified_files'][name]['after_sha256'] if name in MODIFIED
                      else data['added_source_files'][name]['sha256'] if name in ADDED
-                     else sha(artifact(root,name).read_bytes()))
-        require(effective == row['after_sha256'] and sha(artifact(root,name).read_bytes()) == row['after_sha256'],
+                     else _legacy_active_digest(root,name,maintenance))
+        require(effective == row['after_sha256'] and sha(artifact(root,name).read_bytes()) ==
+                _effective_digest(name,row['after_sha256'],maintenance),
                 'Amendment successor differs: '+name)
         if record['state'] == 'INDEPENDENTLY_REVIEWED_IMPLEMENTATION':
             require(sha(_git(root,'show',REVIEWED_IMPLEMENTATION+':'+name)) == row['reviewed_sha256'] and
@@ -338,6 +466,7 @@ def verify_transition(root):
     root = Path(root)
     data = load_contract(root)
     amendment = _verify_amendment(root, data)
+    maintenance = _maintenance(root)
     if data['state'] != 'SEALED':
         raise PendingSealing('CI governance PENDING_G3: independent review and final sealing required')
     _keys(data['scope_review'], ('path', 'sha256', 'status'))
@@ -371,12 +500,12 @@ def verify_transition(root):
         archive = artifact(root, row['archive']).read_bytes()
         require(blob(archive) == tree.get(name) and sha(archive) == row['before_sha256'], 'Archived predecessor changed: '+name)
         require(tree.get(name) == row['before_blob'], 'Predecessor Git binding differs: '+name)
-        require(sha(artifact(root,name).read_bytes()) == row['after_sha256'], 'Active successor changed: '+name)
-    require(sha(artifact(root,ADDED[1]).read_bytes()) == data['added_source_files'][ADDED[1]]['sha256'], 'Added test changed')
+        require(sha(artifact(root,name).read_bytes()) == _effective_digest(name,row['after_sha256'],maintenance), 'Active successor changed: '+name)
+    require(sha(artifact(root,ADDED[1]).read_bytes()) == _effective_digest(ADDED[1],data['added_source_files'][ADDED[1]]['sha256'],maintenance), 'Added test changed')
     compatibility = data['compatibility_test']
     before = _git(root,'show',F2+':'+COMPATIBILITY_TEST)
     require(sha(before) == compatibility['before_sha256'] and tree.get(COMPATIBILITY_TEST) == compatibility['before_blob'], 'Compatibility predecessor differs')
-    require(sha(artifact(root,COMPATIBILITY_TEST).read_bytes()) == compatibility['after_sha256'], 'Compatibility successor changed')
+    require(sha(artifact(root,COMPATIBILITY_TEST).read_bytes()) == _effective_digest(COMPATIBILITY_TEST,compatibility['after_sha256'],maintenance), 'Compatibility successor changed')
     f2_paths = _git(root, 'diff', '--name-only', F2+'^', F2).decode().splitlines()
     require(set(f2_paths) == set(data['preserved_f2_files']), 'F2 inventory paths differ')
     for name,row in data['preserved_f2_files'].items():
@@ -401,8 +530,14 @@ def verify_transition(root):
                 expected = data['compatibility_test']['after_sha256']
             elif name == 'tests/phase_a_release_infra/test_infrastructure.py':
                 expected = amendment['successors'][name]['after_sha256']
+            expected = _effective_digest(name,expected,maintenance)
             require(actual[name] == expected, ('Python changed; ' if name.endswith('.py') else 'execution inputs changed; ')+'Unlisted governed change: '+name)
-    return data
+    for name,row in maintenance['successors'].items():
+        current = artifact(root,name).read_bytes()
+        require(sha(current) == row['after_sha256'] and _blob(current) == row['after_blob'],
+                'Maintenance successor changed: '+name)
+    return dict(data, maintenance_successor=dict(state=maintenance['state'],
+                independent_review=None,release_accepted=False))
 
 
 def historical_predecessor(root, path):

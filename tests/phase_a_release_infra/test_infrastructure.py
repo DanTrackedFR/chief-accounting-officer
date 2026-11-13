@@ -67,6 +67,14 @@ def candidate_preservation(v):
         'diagnostics/profile12/remediation/issue_focused_receipt.py',
         'skills/presumed-sources/release_population.py', 'skills/presumed-sources/run_release.py',
         'skills/presumed-sources/verify_release.py'}
+    maintenance_path = ROOT/governance.MAINTENANCE
+    maintenance_raw = maintenance_path.read_bytes()
+    assert hashlib.sha256(maintenance_raw).hexdigest() == governance.MAINTENANCE_SHA256
+    extension = json.loads(maintenance_raw)['accepted_main_extension']
+    assert extension['contract'] == dict(path=accepted_history.CONTRACT,sha256=accepted_history.CONTRACT_SHA256)
+    assert extension['baseline'] == main['baseline']
+    assert set(extension['migrations']) == {governance.DIAGNOSTIC_TEST}
+    assert not set(extension['migrations']) & set(main['source_migrations'])
     for name, expected in main['files'].items():
         row = main['source_migrations'].get(name)
         if row:
@@ -74,6 +82,15 @@ def candidate_preservation(v):
             assert v.digest(selected) == row['successor_sha256']
             original = (ROOT/row['archive_path']).read_bytes()
             assert hashlib.sha256(original).hexdigest() == row['original_sha256']
+        elif name in extension['migrations']:
+            row = extension['migrations'][name]
+            assert row['archive_path'] == governance.DIAGNOSTIC_ARCHIVE
+            original = (ROOT/row['archive_path']).read_bytes()
+            assert hashlib.sha256(original).hexdigest() == row['original_sha256']
+            assert row['original_blob'] == expected
+            active = (ROOT/name).read_bytes()
+            assert hashlib.sha256(active).hexdigest() == row['successor_sha256']
+            assert hashlib.sha1(b'blob '+str(len(active)).encode()+b'\0'+active).hexdigest() == row['successor_blob']
         else:
             original = (ROOT/name).read_bytes()
         assert hashlib.sha1(b'blob '+str(len(original)).encode()+b'\0'+original).hexdigest() == expected, name
@@ -86,7 +103,9 @@ def candidate_preservation(v):
         assert hashlib.sha256(raw).hexdigest() == row['before_sha256']
         assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest() == row['before_blob']
     assert len(old['preserved_f2_files']) == 611 and len(old['modified_files']) == 9
-    return dict(historical=8912, accepted_main=7963, f2=611, archives=9, state=data['state'])
+    return dict(historical=8912, accepted_main=7963, f2=611, archives=9, state=data['state'],
+                unchanged_active_files=len(main['files'])-len(main['source_migrations'])-len(extension['migrations']),
+                archived_source_migrations=len(main['source_migrations'])+len(extension['migrations']))
 
 
 class SyntheticProcesses:
@@ -177,6 +196,7 @@ with tempfile.TemporaryDirectory() as d:
     def test_historical_and_explicit_migrations(self):
         result=candidate_preservation(verifier())
         self.assertEqual((result['historical'],result['accepted_main']),(8912,7963))
+        self.assertEqual((result['unchanged_active_files'],result['archived_source_migrations']),(7958,5))
         if result['state'] != 'SEALED':
             with self.assertRaises(governance.PendingSealing):verifier().verify_historical()
         else:self.assertEqual(verifier().verify_historical(),8912)

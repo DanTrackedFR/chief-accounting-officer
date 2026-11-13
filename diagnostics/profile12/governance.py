@@ -49,9 +49,13 @@ class Governance(unittest.TestCase):
   try:
    path.write_bytes(original+b'\n# unauthorized diagnostic-only mutation\n')
    ordinary=self.run_verify('GOV-02-normal',historical=True)
-   self.assertNotEqual(ordinary.returncode,0);self.assertIn('Active successor workflow changed',ordinary.stderr)
+   self.assertNotEqual(ordinary.returncode,0)
+   self.assertEqual(ordinary.stderr.splitlines()[-1],
+    'receipt_integrity.IntegrityError: Active successor changed: .github/workflows/cao-orchestration.yml')
    optimized=self.run_verify('GOV-02-optimized',optimized=True,historical=True)
    self.assertNotEqual(optimized.returncode,0,'Optimized Python accepted unauthorized workflow')
+   self.assertEqual(optimized.stderr.splitlines()[-1],
+    'RuntimeError: Optimized Python is not supported for mandatory release integrity verification')
   finally:path.write_bytes(original)
  def test_control_bound_log(self):
   pointer=json.loads((self.repo/(self.pointer if self.focused else 'build4/release/presumed-sources-accepted-release.json')).read_text())

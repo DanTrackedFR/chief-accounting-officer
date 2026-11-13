@@ -76,6 +76,8 @@ def copy_dependency(root, name):
     transition = load_contract(ROOT)
     if name in MODIFIED:
         expected = transition['modified_files'][name]['after_sha256']
+        from ci_governance import effective_source_digest
+        expected = effective_source_digest(ROOT,name,expected)
         if hashlib.sha256(data).hexdigest() != expected:
             raise ValueError('Fixture successor dependency changed: ' + name)
     elif name == ADDED[0]:
@@ -117,13 +119,18 @@ def bind_fixture_contracts(root, env=None):
             copy_dependency(root, name)
         row['successor_sha256'] = sha(root / name)
         files[name] = live['files'][name]
+    # Sixth original: the diagnostic stub has its own immutable original bytes.
+    from ci_governance import DIAGNOSTIC_TEST, DIAGNOSTIC_ARCHIVE
+    diagnostic_original=(root/DIAGNOSTIC_TEST).read_bytes()
+    files[DIAGNOSTIC_TEST]=hashlib.sha1(b'blob '+str(len(diagnostic_original)).encode()+b'\0'+diagnostic_original).hexdigest()
+    put(root,DIAGNOSTIC_ARCHIVE,diagnostic_original.decode())
     canary = 'historical-canary.txt'
     files[canary] = subprocess.check_output(['git', 'hash-object', canary], cwd=root, env=git_environment() if env is None else env, text=True).strip()
     live['files'] = files
     path = json_put(root, relative + 'phase-a-contracts/accepted-main-infrastructure-v1.json', live)
     history = directory / 'accepted_history.py'
     substitute(history, 'b2c6a8d435095a82ae63d1d4f8ec5ed2e62dba4e4222e5adb5843914b3e4bfac', sha(path))
-    substitute(history, "len(data['files'])==7963", "len(data['files'])==5")
+    substitute(history, "len(data['files'])==7963", "len(data['files'])==6")
     # The fixture emitter calculates its totals separately from its pinned expected values.
     expected = {'executions': [
         {'package': 'fixed-assets', 'calculations': [
@@ -192,6 +199,13 @@ def bind_ci_fixture(root, env):
     # Keep original sealed records immutable; only temporary successor data is rebound.
     for record in governance.AMENDMENT_RECORDS:
         put(root, record, (ROOT/record).read_text())
+    # The successor provenance reads this original contract from the predecessor
+    # Git tree, before the separately labelled synthetic contract is rebound.
+    put(root,governance.CONTRACT,(ROOT/governance.CONTRACT).read_text())
+    # New archives in the synthetic history contain its own stub predecessor.
+    put(root,governance.DIAGNOSTIC_ARCHIVE,(root/governance.DIAGNOSTIC_TEST).read_text())
+    put(root,governance.MAINTENANCE_REVIEW,
+        'SYNTHETIC DISPOSABLE MAINTENANCE ONLY. No genuine G4C review or CAO acceptance.\n')
     for name in governance.WORKFLOWS:
         put(root, name, (ROOT/name).read_text())
     for name in ('tests/test_presumed_release.py', governance.ADDED[1], governance.COMPATIBILITY_TEST,
@@ -210,6 +224,8 @@ def bind_ci_fixture(root, env):
     subprocess.run(['git','commit','-qm','Synthetic evidence only'],cwd=root,env=env,check=True)
     f2 = subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,env=env,text=True).strip()
     tree = subprocess.check_output(['git','rev-parse','HEAD^{tree}'],cwd=root,env=env,text=True).strip()
+    diagnostic=root/governance.DIAGNOSTIC_TEST
+    diagnostic.write_bytes(diagnostic.read_bytes()+b'\n# exact synthetic diagnostic successor\n')
     helper = root / governance.ADDED[0]
     substitute(helper, governance.F2, f2)
     substitute(helper, '2fff8be455b395428ab26de94cc046cc33c8040c', tree)
@@ -274,6 +290,10 @@ def bind_ci_fixture(root, env):
     maps=json.loads(subprocess.check_output([sys.executable,'-c',program],cwd=root,env=child_env,text=True))
     for values in maps.values():
         for name in governance.ADDED: values.pop(name,None)
+        for name in governance.MAINTENANCE_PATHS:
+            if name in values:
+                before=subprocess.check_output(['git','show',f2+':'+name],cwd=root,env=env)
+                values[name]=hashlib.sha256(before).hexdigest()
     json_put(root,'build4/release/synthetic-frozen-maps.json',maps)
     amendment=json.loads((root/governance.AMENDMENT).read_bytes())
     amendment['independent_review'] = synthetic
@@ -291,6 +311,36 @@ def bind_ci_fixture(root, env):
     substitute(helper,governance.AMENDMENT_SHA256,sha(amendment_path))
     contract=json_put(root,governance.CONTRACT,data)
     substitute(helper,governance.CONTRACT_SHA256,sha(contract))
+    # Rebind the fifth migration and exact source rows only in this disposable
+    # helper. All Git reads keep the caller's isolated object/ref environment.
+    maintenance=json.loads((root/governance.MAINTENANCE).read_bytes())
+    def predecessor(name):
+        raw=subprocess.check_output(['git','show',f2+':'+name],cwd=root,env=env)
+        return raw,hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+    maintenance['predecessor']['commit']=f2;maintenance['predecessor']['tree']=tree
+    for name,row in maintenance['predecessor']['records'].items():
+        before,original_blob=predecessor(name)
+        row.update(sha256=hashlib.sha256(before).hexdigest(),blob=original_blob)
+    for name,row in maintenance['successors'].items():
+        before,original_blob=predecessor(name);after=(root/name).read_bytes()
+        row.update(before_sha256=hashlib.sha256(before).hexdigest(),before_blob=original_blob,
+                   after_sha256=hashlib.sha256(after).hexdigest(),
+                   after_blob=hashlib.sha1(b'blob '+str(len(after)).encode()+b'\0'+after).hexdigest())
+    before,original_blob=predecessor(governance.ADDED[0])
+    maintenance['helper'].update(before_sha256=hashlib.sha256(before).hexdigest(),before_blob=original_blob)
+    maintenance['review']['sha256']=sha(root/governance.MAINTENANCE_REVIEW)
+    maintenance['accepted_main_extension']['contract']['sha256']=sha(root/'skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json')
+    row=maintenance['successors'][governance.DIAGNOSTIC_TEST]
+    maintenance['accepted_main_extension']['migrations'][governance.DIAGNOSTIC_TEST].update(
+        original_sha256=row['before_sha256'],original_blob=row['before_blob'],
+        successor_sha256=row['after_sha256'],successor_blob=row['after_blob'])
+    maintenance_path=json_put(root,governance.MAINTENANCE,maintenance)
+    substitute(helper,"MAINTENANCE_PREDECESSOR = '"+governance.MAINTENANCE_PREDECESSOR+"'",
+               "MAINTENANCE_PREDECESSOR = '"+f2+"'")
+    substitute(helper,"MAINTENANCE_TREE = '"+governance.MAINTENANCE_TREE+"'",
+               "MAINTENANCE_TREE = '"+tree+"'")
+    substitute(helper,governance.MAINTENANCE_SHA256,sha(maintenance_path))
+
 
 
 HISTORICAL_FIXTURE = 'diagnostics/profile12/runner-recovery/independent-qa/test_runner_contract.py'

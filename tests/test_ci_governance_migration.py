@@ -57,7 +57,13 @@ class CIGovernanceMigrationQA(unittest.TestCase):
             with self.assertRaises(g.PendingSealing):g.verify_transition(ROOT)
         else:
             self.assertEqual(g.verify_transition(ROOT)['state'],'SEALED')
-        self.assertEqual(self.run_synthetic()['migration_id'],'phase-a-ci-governance-v1')
+        transition=self.run_synthetic()
+        self.assertEqual(transition['migration_id'],'phase-a-ci-governance-v1')
+        self.assertEqual(transition['maintenance_successor'],dict(
+            state=g.MAINTENANCE_STATE,independent_review=None,release_accepted=False))
+        from accepted_history import verify_accepted_main
+        self.assertEqual(verify_accepted_main(),dict(protected_files=7963,
+            unchanged_active_files=7958,archived_source_migrations=5))
         pending=copy.deepcopy(self.data);pending['state']='PENDING_G3'
         with self.assertRaises(g.PendingSealing):self.run_synthetic(data=pending)
         # Fake component evidence cannot acquire the genuine published trust root.
@@ -96,6 +102,11 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         self.rejected('skills/presumed-sources/release/historical-preservation.json')
 
     def test_f2_archive_mutation(self):
+        self.rejected(g.DIAGNOSTIC_ARCHIVE)
+        # This read hook models a missing file with this precise exception.
+        with self.assertRaises(FileNotFoundError) as missing:
+            self.run_synthetic({ROOT/g.DIAGNOSTIC_ARCHIVE:None})
+        self.assertEqual(str(missing.exception),str(ROOT/g.DIAGNOSTIC_ARCHIVE))
         self.rejected(self.data['modified_files'][g.WORKFLOWS[0]]['archive'])
 
     def test_legacy_archive_mutation(self):
@@ -106,7 +117,7 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         with patch.object(Path,'read_bytes',lambda p:b'{}' if p==ROOT/g.CONTRACT else original(p)):
             with self.assertRaisesRegex(ValueError,'contract changed'):g.load_contract(ROOT)
         # The versioned amendment and original seal are independently pinned.
-        for name in (g.AMENDMENT, g.AMENDMENT_SCHEMA, g.PRIOR_CONTRACT):
+        for name in (g.AMENDMENT, g.AMENDMENT_SCHEMA, g.PRIOR_CONTRACT, *g.MAINTENANCE_RECORDS):
             self.rejected(name)
         # Fixed schema boundaries beyond predecessor records.
         variants=[]
@@ -143,12 +154,16 @@ class CIGovernanceMigrationQA(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'Unlisted governed'):self.run_synthetic()
 
     def test_successor_hash_mismatch(self):
+        for name in g.MAINTENANCE_PATHS:
+            with self.subTest(successor=name):self.rejected(name)
         self.rejected(g.WORKFLOWS[0])
 
     def test_unapproved_verifier_successor(self):
         self.rejected(g.VERIFIER)
 
     def test_historical_rollback(self):
+        before=subprocess.check_output(['git','show',g.MAINTENANCE_PREDECESSOR+':'+g.DIAGNOSTIC_TEST],cwd=ROOT)
+        self.rejected(g.DIAGNOSTIC_TEST,before)
         for name in g.WORKFLOWS:
             self.rejected(name,(ROOT/self.data['modified_files'][name]['archive']).read_bytes())
 
@@ -238,6 +253,26 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         original=Path.read_bytes;raw=json.dumps(data).encode()
         with patch.object(Path,'read_bytes',lambda p:raw if p==ROOT/g.CONTRACT else original(p)):
             with self.assertRaisesRegex(ValueError,'contract changed'):g.load_contract(ROOT)
+
+        # Even a deliberately re-pinned in-memory candidate cannot add a sixth
+        # migration, misbind its predecessor or invent independent approval.
+        record=json.loads((ROOT/g.MAINTENANCE).read_bytes())
+        variants=[]
+        wrong=copy.deepcopy(record);wrong['accepted_main_extension']['migrations']['unexpected.py']=dict(next(iter(wrong['accepted_main_extension']['migrations'].values())));variants.append(wrong)
+        wrong=copy.deepcopy(record);wrong['accepted_main_extension']['migrations']={};variants.append(wrong)
+        wrong=copy.deepcopy(record);wrong['independent_review']={'status':'invented'};variants.append(wrong)
+        wrong=copy.deepcopy(record);wrong['successors'][g.DIAGNOSTIC_TEST]['before_blob']='0'*40;variants.append(wrong)
+        original=Path.read_bytes
+        for value in variants:
+            raw=(json.dumps(value,sort_keys=True,indent=2)+'\n').encode()
+            with patch.object(Path,'read_bytes',lambda p:raw if p==ROOT/g.MAINTENANCE else original(p)), \
+                 patch.object(g,'MAINTENANCE_SHA256',g.sha(raw)):
+                with self.assertRaises(g.IntegrityError) as raised:g.verify_transition(ROOT)
+                self.assertNotIsInstance(raised.exception,g.PendingSealing)
+        duplicate=(ROOT/g.MAINTENANCE).read_bytes().replace(b'"schema_version": 2',b'"schema_version": 2, "schema_version": 2')
+        with patch.object(Path,'read_bytes',lambda p:duplicate if p==ROOT/g.MAINTENANCE else original(p)), \
+             patch.object(g,'MAINTENANCE_SHA256',g.sha(duplicate)):
+            with self.assertRaisesRegex(g.IntegrityError,'Duplicate JSON key'):g.verify_transition(ROOT)
 
     def test_anchor_binding_checked_independently(self):
         # Explicitly synthetic external reviewer snapshot; G3 must provide the real one.
