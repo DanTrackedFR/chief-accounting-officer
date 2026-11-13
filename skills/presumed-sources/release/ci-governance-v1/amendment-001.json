@@ -1,6 +1,6 @@
 {
   "amendment_id": "phase-a-ci-governance-v1-amendment-001",
-  "authorization": "Owner G4C-2 instruction in this conversation authorises these two implementation paths, minimum versioned governance records and helper verification bindings, bounded local checks and one local checkpoint commit only. No publication, Actions execution, independent approval, acceptance, Ready, merge or deployment. Owner G4C-2A continuation additionally authorises necessary pending-state corrections to tests/test_presumed_release.py and tests/phase_a_release_infra/test_infrastructure.py, exact final execution-input binding, bounded validation and one local checkpoint commit only; all independent review/acceptance and publication gates remain closed.",
+  "authorization": "Owner G4C-2 instruction in this conversation authorises these two implementation paths, minimum versioned governance records and helper verification bindings, bounded local checks and one local checkpoint commit only. No publication, Actions execution, independent approval, acceptance, Ready, merge or deployment. Owner G4C-2A continuation additionally authorises necessary pending-state corrections to tests/test_presumed_release.py and tests/phase_a_release_infra/test_infrastructure.py, exact final execution-input binding, bounded validation and one local checkpoint commit only; all independent review/acceptance and publication gates remain closed. Owner G4C-4A explicitly authorises the five-path schema extension, genuine G4C-3 provenance record and local governance sealing only, conditional on all pre-commit gates. Final sealed-byte attestation remains outstanding; no publication, full regression or release acceptance is authorised.",
   "diagnosis": {
     "sha256": "1f1851a262e4d98d469bd47382a5a092ef20ee26c6d6e9ff8f1e5216d06171f5",
     "url": "https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6835042772"
@@ -12,6 +12,36 @@
     "reason": "Verify exact additive amendment and original published bindings; select separately pinned pending contract-v2; preserve all existing closure and sealing gates.",
     "successor_identity": "EXTERNAL_FINAL_GIT_REVIEW"
   },
+  "independent_review": {
+    "conditions": [
+      "Obtain separate owner authorisation to publish the exact local candidate to existing PR #54. Recheck remote head/PR Draft state and source/tree before writing. This review itself authorises only its report comment, not a source push or recreated Git commit.",
+      "Preserve the eight-file hashes, original sealed records and all historical evidence. Any source/pin/approval-record change creates a successor requiring fresh bounded verification and exact-byte review; this report does not preapprove it.",
+      "Disclose that amendment-001 remains PENDING_INDEPENDENT_REVIEW and contract-v2 remains PENDING_G3. Publication alone does not open production acceptance. Prior G3B-2 review applies to its old source, not automatic approval of the new helper.",
+      "Before fresh full regression, separately authorise and complete the required governance sealing/approval-evidence successor and independently review its final hashes/tree. Do not merely relabel the original historical scope review. Preserve the acyclic external trust anchor and separate map checks.",
+      "After that gate, obtain explicit renewed regression execution authority. Fresh discovery/maps, full mandatory methods, durable retrieved Actions artifacts, source-bound reviewed acceptance receipt and independent final acceptance remain required. Do not reuse F2 acceptance, claim skipped/pending exact-head CI passed, mark Ready, merge or deploy."
+    ],
+    "disposition": "APPROVE WITH EXPLICIT CONDITIONS",
+    "final_byte_attestation": "PENDING_INDEPENDENT_FINAL_BYTE_REVIEW",
+    "path": "skills/presumed-sources/release/ci-governance-v1/amendment-001-review.md",
+    "publication": "https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6836464616",
+    "release_accepted": false,
+    "report_sha256": "ad85901b6a58c247d233e22f239cf2aac59280cdbff6ecc1aa0914d4f0deb8fe",
+    "review_id": "G4C3-15897340-20261112",
+    "reviewed_commit": "1589734065b4a534276062f97b32288d6c03f761",
+    "reviewed_tree": "f3f747aa241583d1564cb210e99cd2cd18ca4765",
+    "scope": [
+      "skills/presumed-sources/ci_governance.py",
+      "skills/presumed-sources/release/ci-governance-v1/amendment-001.json",
+      "skills/presumed-sources/release/ci-governance-v1/amendment-001.schema.json",
+      "skills/presumed-sources/release/ci-governance-v1/contract-v2.json",
+      "tests/fixtures/phase_a_v1/runner.py",
+      "tests/phase_a_release_infra/test_infrastructure.py",
+      "tests/test_ci_governance_migration.py",
+      "tests/test_presumed_release.py"
+    ],
+    "session_reference": "01a1d1a0-6cc7-7cf1-8779-3e580adf1af0",
+    "sha256": "970eff3e719eb54f78874add4a5a67c1021f01da1810b8bac26c7db69dbfb470"
+  },
   "prior_source": {
     "attestation": "https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6834058611",
     "commit": "3fc1efd56506ad465ca959324644ac903130e321",
@@ -21,34 +51,55 @@
   },
   "schema": {
     "path": "skills/presumed-sources/release/ci-governance-v1/amendment-001.schema.json",
-    "sha256": "5c3a85624ae1a5e0de2b2917973167a8786272cb933957bb4d8e90049befa617"
+    "sha256": "48c6ab557803fea34335757c7b5c255063a2b9c8fb92ea9481baea4015c52f50"
   },
   "schema_version": 1,
-  "state": "PENDING_INDEPENDENT_REVIEW",
+  "state": "INDEPENDENTLY_REVIEWED_IMPLEMENTATION",
   "successors": {
     "tests/fixtures/phase_a_v1/runner.py": {
-      "after_sha256": "240ed10a520c9a3c94d9cd77809de5cabc76f077ce2cf83239bc38ecc1e05422",
+      "after_sha256": "56c94414f24b6239a68cda7b4842e99b121a3f0ddfdbcbdcf031475366003d9b",
       "before_blob": "2e13d6cf74a12ffe9d67ac906bdbb58340feea29",
       "before_sha256": "4144c2e87b59098758b03d740175aa4dda544ad38e03567265db95089bcfd9de",
-      "reason": "Propagate explicit Git environment and rebind only disposable amendment data."
+      "change_state": "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW",
+      "reason": "Propagate explicit Git environment and rebind only disposable amendment data.",
+      "reviewed_blob": "0b1eb3abc82ad78ab86c8f2d1a1e3d47e7776043",
+      "reviewed_sha256": "240ed10a520c9a3c94d9cd77809de5cabc76f077ce2cf83239bc38ecc1e05422"
     },
     "tests/phase_a_release_infra/test_infrastructure.py": {
       "after_sha256": "9109ee683a1319933896ffad565a999a725cbbc31947efdd298bf86b09373d7b",
       "before_blob": "50254460cfc4090007e9c35912c4c078280b2570",
       "before_sha256": "a935a8357e851458bf5eaa960d2332f70dcdbc575a478a242736ff5c0bbd2b7b",
-      "reason": "G4C-2A: separate genuine pending-candidate rejection from positive/adversarial production algorithms in existing disposable synthetic fixture; retain all identities."
+      "change_state": "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW",
+      "reason": "G4C-2A: separate genuine pending-candidate rejection from positive/adversarial production algorithms in existing disposable synthetic fixture; retain all identities.",
+      "reviewed_blob": "10aac60d2c5eac0a4abeb2b98fca840b6a7b4132",
+      "reviewed_sha256": "9109ee683a1319933896ffad565a999a725cbbc31947efdd298bf86b09373d7b"
     },
     "tests/test_ci_governance_migration.py": {
-      "after_sha256": "3c7428c5b7eae6856bd7291b62b04e87c30b57253802d85fc81238660efd398f",
+      "after_sha256": "11a8a45f29d5f5d203d9f11a6c3849f1afd9e3777b02b5700b6bf46825ae14db",
       "before_blob": "6ab9863b894a1b23c1594b19f7407c06b3a1d6c5",
       "before_sha256": "9a8ba1efe58fee5148c50598aa81babf8c71100284c81754115b93367baed9b8",
-      "reason": "Extend existing identities with borrowed-object, isolation, missing/corrupt-object and amendment checks."
+      "change_state": "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW",
+      "reason": "Extend existing identities with borrowed-object, isolation, missing/corrupt-object and amendment checks.",
+      "reviewed_blob": "b38e379f3acb8beea52cfdc8ee6666be91b395cb",
+      "reviewed_sha256": "3c7428c5b7eae6856bd7291b62b04e87c30b57253802d85fc81238660efd398f"
     },
     "tests/test_presumed_release.py": {
       "after_sha256": "c9b4e4645e29b5a5b05114ba818b7b036c86db3ac377b8bfbd10577b26cd6539",
       "before_blob": "7d8f7c328c08b560cd48053dab6599e957f4c569",
       "before_sha256": "b397a752d4168062487ded1e16c20165933fb802cadd0ff97c39e3bfdad45fa9",
-      "reason": "G4C-2A: preserve exact historical candidate checks and explicitly require production rejection while pending."
+      "change_state": "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW",
+      "reason": "G4C-2A: preserve exact historical candidate checks and explicitly require production rejection while pending.",
+      "reviewed_blob": "ae6385445ffe3a8a73e7f7a47657bdc992198e6c",
+      "reviewed_sha256": "c9b4e4645e29b5a5b05114ba818b7b036c86db3ac377b8bfbd10577b26cd6539"
+    },
+    "tests/test_presumed_workflow_migration.py": {
+      "after_sha256": "143188980cefde39c0b141d68b5e4646ba7c4f469d30d46a3981a3819d852674",
+      "before_blob": "f2303d59b08f8186c905d96a30c775a0bfad8122",
+      "before_sha256": "5675e877d9bfd57994f32e9465185d92fcb6516e1c97e110f493730bf957cff6",
+      "change_state": "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW",
+      "reason": "Owner G4C-4C authorises test-only review-context compatibility; no G4C-3 review of these later bytes is claimed.",
+      "reviewed_blob": "f2303d59b08f8186c905d96a30c775a0bfad8122",
+      "reviewed_sha256": "5675e877d9bfd57994f32e9465185d92fcb6516e1c97e110f493730bf957cff6"
     }
   }
 }

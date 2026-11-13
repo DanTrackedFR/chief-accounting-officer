@@ -1,6 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "independent_review": {
+          "type": "null"
+        },
+        "state": {
+          "const": "PENDING_INDEPENDENT_REVIEW"
+        }
+      }
+    },
+    {
+      "properties": {
+        "independent_review": {
+          "type": "object"
+        },
+        "state": {
+          "const": "INDEPENDENTLY_REVIEWED_IMPLEMENTATION"
+        }
+      }
+    }
+  ],
   "properties": {
     "amendment_id": {
       "const": "phase-a-ci-governance-v1-amendment-001"
@@ -57,6 +79,88 @@
       ],
       "type": "object"
     },
+    "independent_review": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "conditions": {
+              "const": [
+                "Obtain separate owner authorisation to publish the exact local candidate to existing PR #54. Recheck remote head/PR Draft state and source/tree before writing. This review itself authorises only its report comment, not a source push or recreated Git commit.",
+                "Preserve the eight-file hashes, original sealed records and all historical evidence. Any source/pin/approval-record change creates a successor requiring fresh bounded verification and exact-byte review; this report does not preapprove it.",
+                "Disclose that amendment-001 remains PENDING_INDEPENDENT_REVIEW and contract-v2 remains PENDING_G3. Publication alone does not open production acceptance. Prior G3B-2 review applies to its old source, not automatic approval of the new helper.",
+                "Before fresh full regression, separately authorise and complete the required governance sealing/approval-evidence successor and independently review its final hashes/tree. Do not merely relabel the original historical scope review. Preserve the acyclic external trust anchor and separate map checks.",
+                "After that gate, obtain explicit renewed regression execution authority. Fresh discovery/maps, full mandatory methods, durable retrieved Actions artifacts, source-bound reviewed acceptance receipt and independent final acceptance remain required. Do not reuse F2 acceptance, claim skipped/pending exact-head CI passed, mark Ready, merge or deploy."
+              ]
+            },
+            "disposition": {
+              "const": "APPROVE WITH EXPLICIT CONDITIONS"
+            },
+            "final_byte_attestation": {
+              "const": "PENDING_INDEPENDENT_FINAL_BYTE_REVIEW"
+            },
+            "path": {
+              "const": "skills/presumed-sources/release/ci-governance-v1/amendment-001-review.md"
+            },
+            "publication": {
+              "const": "https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6836464616"
+            },
+            "release_accepted": {
+              "const": false
+            },
+            "report_sha256": {
+              "const": "ad85901b6a58c247d233e22f239cf2aac59280cdbff6ecc1aa0914d4f0deb8fe"
+            },
+            "review_id": {
+              "const": "G4C3-15897340-20261112"
+            },
+            "reviewed_commit": {
+              "const": "1589734065b4a534276062f97b32288d6c03f761"
+            },
+            "reviewed_tree": {
+              "const": "f3f747aa241583d1564cb210e99cd2cd18ca4765"
+            },
+            "scope": {
+              "const": [
+                "skills/presumed-sources/ci_governance.py",
+                "skills/presumed-sources/release/ci-governance-v1/amendment-001.json",
+                "skills/presumed-sources/release/ci-governance-v1/amendment-001.schema.json",
+                "skills/presumed-sources/release/ci-governance-v1/contract-v2.json",
+                "tests/fixtures/phase_a_v1/runner.py",
+                "tests/phase_a_release_infra/test_infrastructure.py",
+                "tests/test_ci_governance_migration.py",
+                "tests/test_presumed_release.py"
+              ]
+            },
+            "session_reference": {
+              "const": "01a1d1a0-6cc7-7cf1-8779-3e580adf1af0"
+            },
+            "sha256": {
+              "const": "970eff3e719eb54f78874add4a5a67c1021f01da1810b8bac26c7db69dbfb470"
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "review_id",
+            "publication",
+            "report_sha256",
+            "reviewed_commit",
+            "reviewed_tree",
+            "disposition",
+            "conditions",
+            "scope",
+            "session_reference",
+            "final_byte_attestation",
+            "release_accepted"
+          ],
+          "type": "object"
+        }
+      ]
+    },
     "prior_source": {
       "additionalProperties": false,
       "properties": {
@@ -107,7 +211,10 @@
       "const": 1
     },
     "state": {
-      "const": "PENDING_INDEPENDENT_REVIEW"
+      "enum": [
+        "PENDING_INDEPENDENT_REVIEW",
+        "INDEPENDENTLY_REVIEWED_IMPLEMENTATION"
+      ]
     },
     "successors": {
       "additionalProperties": false,
@@ -127,16 +234,33 @@
               "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             },
+            "change_state": {
+              "enum": [
+                "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW",
+                "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW"
+              ]
+            },
             "reason": {
               "minLength": 1,
+              "type": "string"
+            },
+            "reviewed_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "reviewed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             }
           },
           "required": [
-            "before_sha256",
-            "before_blob",
             "after_sha256",
-            "reason"
+            "before_blob",
+            "before_sha256",
+            "change_state",
+            "reason",
+            "reviewed_blob",
+            "reviewed_sha256"
           ],
           "type": "object"
         },
@@ -155,16 +279,32 @@
               "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             },
+            "change_state": {
+              "enum": [
+                "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW"
+              ]
+            },
             "reason": {
               "minLength": 1,
+              "type": "string"
+            },
+            "reviewed_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "reviewed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             }
           },
           "required": [
-            "before_sha256",
-            "before_blob",
             "after_sha256",
-            "reason"
+            "before_blob",
+            "before_sha256",
+            "change_state",
+            "reason",
+            "reviewed_blob",
+            "reviewed_sha256"
           ],
           "type": "object"
         },
@@ -183,16 +323,33 @@
               "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             },
+            "change_state": {
+              "enum": [
+                "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW",
+                "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW"
+              ]
+            },
             "reason": {
               "minLength": 1,
+              "type": "string"
+            },
+            "reviewed_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "reviewed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             }
           },
           "required": [
-            "before_sha256",
-            "before_blob",
             "after_sha256",
-            "reason"
+            "before_blob",
+            "before_sha256",
+            "change_state",
+            "reason",
+            "reviewed_blob",
+            "reviewed_sha256"
           ],
           "type": "object"
         },
@@ -211,16 +368,77 @@
               "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             },
+            "change_state": {
+              "enum": [
+                "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW"
+              ]
+            },
             "reason": {
               "minLength": 1,
+              "type": "string"
+            },
+            "reviewed_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "reviewed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
               "type": "string"
             }
           },
           "required": [
-            "before_sha256",
-            "before_blob",
             "after_sha256",
-            "reason"
+            "before_blob",
+            "before_sha256",
+            "change_state",
+            "reason",
+            "reviewed_blob",
+            "reviewed_sha256"
+          ],
+          "type": "object"
+        },
+        "tests/test_presumed_workflow_migration.py": {
+          "additionalProperties": false,
+          "properties": {
+            "after_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "before_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "before_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "change_state": {
+              "enum": [
+                "UNCHANGED_SINCE_IMPLEMENTATION_REVIEW",
+                "OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW"
+              ]
+            },
+            "reason": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "reviewed_blob": {
+              "pattern": "^[0-9a-f]{40}$",
+              "type": "string"
+            },
+            "reviewed_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "after_sha256",
+            "before_blob",
+            "before_sha256",
+            "change_state",
+            "reason",
+            "reviewed_blob",
+            "reviewed_sha256"
           ],
           "type": "object"
         }
@@ -229,7 +447,8 @@
         "tests/fixtures/phase_a_v1/runner.py",
         "tests/test_ci_governance_migration.py",
         "tests/test_presumed_release.py",
-        "tests/phase_a_release_infra/test_infrastructure.py"
+        "tests/phase_a_release_infra/test_infrastructure.py",
+        "tests/test_presumed_workflow_migration.py"
       ],
       "type": "object"
     }
@@ -243,7 +462,8 @@
     "authorization",
     "successors",
     "helper",
-    "schema"
+    "schema",
+    "independent_review"
   ],
   "type": "object"
 }

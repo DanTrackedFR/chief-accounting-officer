@@ -19,16 +19,14 @@ import ci_governance as g
 class CIGovernanceMigrationQA(unittest.TestCase):
     def setUp(self):
         self.data = g.load_contract(ROOT)
-        self.synthetic_review = b'SYNTHETIC TEST REVIEW ONLY. No CAO approval.\n'
         self.sealed = copy.deepcopy(self.data)
         self.sealed['state'] = 'SEALED'
-        self.sealed['scope_review'].update(status='INDEPENDENTLY_REVIEWED', sha256=g.sha(self.synthetic_review))
 
     def run_synthetic(self, mutations=None, data=None, action=None):
-        """Substitute bytes only in memory, with an explicitly synthetic trust pin."""
+        """Fault-inject contract bytes; genuine review evidence remains untouched."""
         value = self.sealed if data is None else data
         raw = (json.dumps(value,sort_keys=True,indent=2)+'\n').encode()
-        replacements = {ROOT/g.CONTRACT:raw, ROOT/g.NAMESPACE/'scope-review.md':self.synthetic_review}
+        replacements = {ROOT/g.CONTRACT:raw}
         replacements.update(mutations or {})
         original = Path.read_bytes
         def read(path):
@@ -60,6 +58,10 @@ class CIGovernanceMigrationQA(unittest.TestCase):
         else:
             self.assertEqual(g.verify_transition(ROOT)['state'],'SEALED')
         self.assertEqual(self.run_synthetic()['migration_id'],'phase-a-ci-governance-v1')
+        pending=copy.deepcopy(self.data);pending['state']='PENDING_G3'
+        with self.assertRaises(g.PendingSealing):self.run_synthetic(data=pending)
+        # Fake component evidence cannot acquire the genuine published trust root.
+        self.rejected(g.AMENDMENT_REVIEW,b'SYNTHETIC COMPONENT EVIDENCE ONLY\n')
 
     def test_predecessor_git_binding(self):
         data=copy.deepcopy(self.sealed)

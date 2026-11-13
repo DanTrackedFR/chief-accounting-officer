@@ -29,19 +29,10 @@ spec.loader.exec_module(verifier)
 class WorkflowMigrationQA(unittest.TestCase):
     @contextlib.contextmanager
     def synthetic_seal(self):
-        # In-memory test authority only. Never seals or approves repository bytes.
-        data=copy.deepcopy(governance.load_contract(ROOT))
-        review=b'SYNTHETIC MIGRATION TEST REVIEW ONLY; not CAO approval.\n'
-        data['state']='SEALED'
-        data['scope_review'].update(status='INDEPENDENTLY_REVIEWED',sha256=hashlib.sha256(review).hexdigest())
-        raw=(json.dumps(data,sort_keys=True,indent=2)+'\n').encode()
-        read_bytes=Path.read_bytes
-        def read(path):
-            if path==ROOT/governance.CONTRACT:return raw
-            if path==ROOT/governance.NAMESPACE/'scope-review.md':return review
-            return read_bytes(path)
-        with patch.object(Path,'read_bytes',read),patch.object(governance,'CONTRACT_SHA256',hashlib.sha256(raw).hexdigest()):
-            yield data
+        # Compatibility context: use the actual bound review, never substitute
+        # the historical review with unrelated synthetic approval text.
+        data=governance.verify_transition(ROOT)
+        yield data
 
     def assert_rejected(self, replacements):
         # Substitute only the specified bytes at the lowest read boundary. All

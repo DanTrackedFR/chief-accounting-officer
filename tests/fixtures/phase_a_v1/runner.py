@@ -166,20 +166,15 @@ print(json.dumps(dict(executions=rows), sort_keys=True, indent=2))
 
 @contextlib.contextmanager
 def synthetic_review_context():
-    """In-memory seal for component tests; never modifies or approves real records."""
+    """Check the real overlay before a caller's independent synthetic history.
+
+    This compatibility context does not fabricate review authority or change
+    production pins. Fabricated-source checks use bind_ci_fixture's separate
+    disposable records instead; genuine evidence stays byte-for-byte intact.
+    """
     import ci_governance as governance
-    data=copy.deepcopy(governance.load_contract(ROOT))
-    review=b'SYNTHETIC COMPONENT REVIEW ONLY. Not independent CAO approval.\n'
-    data['state']='SEALED'
-    data['scope_review'].update(status='INDEPENDENTLY_REVIEWED',sha256=hashlib.sha256(review).hexdigest())
-    raw=(json.dumps(data,sort_keys=True,indent=2)+'\n').encode()
-    original=Path.read_bytes
-    def read(path):
-        if path==ROOT/governance.CONTRACT:return raw
-        if path==ROOT/governance.NAMESPACE/'scope-review.md':return review
-        return original(path)
-    with patch.object(Path,'read_bytes',read),patch.object(governance,'CONTRACT_SHA256',hashlib.sha256(raw).hexdigest()):
-        yield
+    governance.verify_transition(ROOT)
+    yield
 
 
 def bind_ci_fixture(root, env):
@@ -205,8 +200,9 @@ def bind_ci_fixture(root, env):
     put(root, 'tests/fixtures/phase_a_v1/runner.py', Path(__file__).read_text())
     for name in ('contract.schema.json','owner-authorization.json'):
         put(root, governance.NAMESPACE+'/'+name, (ROOT/governance.NAMESPACE/name).read_text())
+    # The original review stays immutable even in this disposable history.
     put(root, governance.NAMESPACE+'/scope-review.md',
-        'SYNTHETIC FIXTURE REVIEW ONLY. Never independent CAO approval.\n')
+        (ROOT/governance.NAMESPACE/'scope-review.md').read_text())
     subprocess.run(['git','add','.'],cwd=root,env=env,check=True)
     subprocess.run(['git','commit','-qm','Synthetic predecessor only'],cwd=root,env=env,check=True)
     put(root,'build4/release/synthetic-f2-evidence.txt','synthetic immutable evidence\n')
@@ -222,8 +218,29 @@ def bind_ci_fixture(root, env):
     data['predecessor_commits']['f2'] = f2
     data['predecessor_commits']['f2_tree'] = tree
     data['state'] = 'SEALED'
-    data['scope_review'] = dict(path=governance.NAMESPACE+'/scope-review.md',
-                              sha256=sha(namespace/'scope-review.md'),status='INDEPENDENTLY_REVIEWED')
+    # Separate local synthetic authority; never label it as the published G4C-3.
+    report = 'SYNTHETIC COMPONENT REPORT ONLY. No independent CAO review or acceptance.\n'
+    review = put(root,governance.AMENDMENT_REVIEW,
+        'SYNTHETIC DISPOSABLE FIXTURE. No published review or human signature.\n\n'
+        '## Synthetic component report\n\n'+report)
+    synthetic = copy.deepcopy(governance.IMPLEMENTATION_REVIEW)
+    synthetic.update(sha256=sha(review),review_id='SYNTHETIC_COMPONENT_ONLY',
+        publication='synthetic://disposable-fixture/no-published-approval',
+        report_sha256=hashlib.sha256(report.encode()).hexdigest(),
+        reviewed_commit=f2,reviewed_tree=tree,disposition='SYNTHETIC_COMPONENT_ONLY',
+        conditions=['NO CAO APPROVAL; disposable component test only'],
+        session_reference='SYNTHETIC_NO_REVIEWER_SESSION')
+    # Only copied helper constants are rebound; production has no test-mode branch.
+    substitute(helper,'REVIEW_REPORT_MARKER = '+repr(governance.REVIEW_REPORT_MARKER),
+               "REVIEW_REPORT_MARKER = b'## Synthetic component report\\n\\n'")
+    substitute(helper,'IMPLEMENTATION_REVIEW = '+repr(governance.IMPLEMENTATION_REVIEW),
+               'IMPLEMENTATION_REVIEW = '+repr(synthetic))
+    substitute(helper,"REVIEWED_IMPLEMENTATION = '"+governance.REVIEWED_IMPLEMENTATION+"'",
+               "REVIEWED_IMPLEMENTATION = '"+f2+"'")
+    substitute(helper,"REVIEWED_TREE = '"+governance.REVIEWED_TREE+"'",
+               "REVIEWED_TREE = '"+tree+"'")
+    data['scope_review'] = dict(path=governance.AMENDMENT_REVIEW,
+                              sha256=sha(review),status='INDEPENDENTLY_REVIEWED')
     data['schema']['sha256'] = sha(namespace/'contract.schema.json')
     data['owner_authorization']['sha256'] = sha(namespace/'owner-authorization.json')
     data['modified_files'] = {}
@@ -259,8 +276,17 @@ def bind_ci_fixture(root, env):
         for name in governance.ADDED: values.pop(name,None)
     json_put(root,'build4/release/synthetic-frozen-maps.json',maps)
     amendment=json.loads((root/governance.AMENDMENT).read_bytes())
+    amendment['independent_review'] = synthetic
     for name,row in amendment['successors'].items():
-        row['after_sha256'] = sha(root/name)
+        row['after_sha256'] = row['reviewed_sha256'] = sha(root/name)
+        row['reviewed_blob'] = subprocess.check_output(
+            ['git','rev-parse',f2+':'+name],cwd=root,env=env,text=True).strip()
+        row['change_state'] = 'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW'
+    schema=json.loads((root/governance.AMENDMENT_SCHEMA).read_bytes())
+    props=schema['properties']['independent_review']['oneOf'][1]['properties']
+    for key,value in synthetic.items():props[key]={'const':value}
+    schema_path=json_put(root,governance.AMENDMENT_SCHEMA,schema)
+    amendment['schema']['sha256'] = sha(schema_path)
     amendment_path=json_put(root,governance.AMENDMENT,amendment)
     substitute(helper,governance.AMENDMENT_SHA256,sha(amendment_path))
     contract=json_put(root,governance.CONTRACT,data)
@@ -287,6 +313,7 @@ class IndependentRunnerContract(historical.IndependentRunnerContract):
         # The fixture commit is an execution input. Host clocks and user Git
         # settings must not move its identity. Run/attempt IDs vary separately.
         cls.env = {**git_environment(),
+                   'PATH': str(Path(sys.executable).parent)+os.pathsep+os.environ.get('PATH',''),
                    'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONNOUSERSITE': '1', 'PYTHONPATH': '',
                    'GIT_ALTERNATE_OBJECT_DIRECTORIES': objects,
                    'GIT_CONFIG_GLOBAL': os.devnull, 'GIT_CONFIG_NOSYSTEM': '1',
@@ -422,11 +449,22 @@ p=seal_inventory(root,root/'build4/release/qa-seed/release-regression.json',
         put(self.root, 'tests/test_canary.py',
             'import unittest\nclass Canary(unittest.TestCase):\n'
             '    def test_failed(self): self.fail("intentional synthetic failure")\n')
-        subprocess.run(['git', 'add', 'tests/test_canary.py'], cwd=self.root, env=self.env, check=True)
+        # Authorise only this deliberate synthetic source revision, retaining
+        # the seed maps and receipts unchanged for preservation assertions.
+        original_maps = 'build4/release/synthetic-frozen-maps.json'
+        failure_maps = 'build4/release/synthetic-failure-maps.json'
+        maps=json.loads((self.root/original_maps).read_bytes())
+        maps['tested_python_sha256']['tests/test_canary.py']=sha(self.root/'tests/test_canary.py')
+        json_put(self.root,failure_maps,maps)
+        helper='skills/presumed-sources/ci_governance.py'
+        substitute(self.root/helper,original_maps,failure_maps)
+        subprocess.run(['git', 'add', 'tests/test_canary.py',helper,failure_maps],
+                       cwd=self.root, env=self.env, check=True)
         subprocess.run(['git', '-c', 'user.name=Synthetic QA', '-c', 'user.email=synthetic@example.invalid', 'commit', '-qm', 'Intentional failure fixture'], cwd=self.root, env=self.env, check=True)
         r = self.invoke(self.root, 'qa-failed')
         self.assertNotEqual(r.returncode, 0)
         manifest = json.loads((self.root / 'build4/release/qa-failed/release-regression.json').read_text())
         self.assertFalse(manifest['complete'])
+        self.assertGreater(manifest['failed_distinct_tests'],0)
         self.assertFalse((self.root / 'build4/release/qa-failed/execution.json').exists())
         self.unchanged()

@@ -20,12 +20,18 @@ PRIOR_CONTRACT = NAMESPACE + '/contract-v1.json'
 CONTRACT = NAMESPACE + '/contract-v2.json'
 AMENDMENT = NAMESPACE + '/amendment-001.json'
 AMENDMENT_SCHEMA = NAMESPACE + '/amendment-001.schema.json'
-AMENDMENT_RECORDS = (PRIOR_CONTRACT, AMENDMENT, AMENDMENT_SCHEMA)
-AMENDMENT_SHA256 = '993f6d12d6cadef2f47aa8b65e8cf313a90d54c1e6d8b9f41d83dab16fc960e4'
+AMENDMENT_REVIEW = NAMESPACE + '/amendment-001-review.md'
+AMENDMENT_RECORDS = (PRIOR_CONTRACT, AMENDMENT, AMENDMENT_SCHEMA, AMENDMENT_REVIEW)
+REVIEWED_IMPLEMENTATION = '1589734065b4a534276062f97b32288d6c03f761'
+REVIEWED_TREE = 'f3f747aa241583d1564cb210e99cd2cd18ca4765'
+REVIEW_REPORT_MARKER = b'## Complete published standalone G4C-3 report\n\n'
+# Exact published provenance; final sealing bytes require future external review.
+IMPLEMENTATION_REVIEW = {'conditions': ['Obtain separate owner authorisation to publish the exact local candidate to existing PR #54. Recheck remote head/PR Draft state and source/tree before writing. This review itself authorises only its report comment, not a source push or recreated Git commit.', 'Preserve the eight-file hashes, original sealed records and all historical evidence. Any source/pin/approval-record change creates a successor requiring fresh bounded verification and exact-byte review; this report does not preapprove it.', 'Disclose that amendment-001 remains PENDING_INDEPENDENT_REVIEW and contract-v2 remains PENDING_G3. Publication alone does not open production acceptance. Prior G3B-2 review applies to its old source, not automatic approval of the new helper.', 'Before fresh full regression, separately authorise and complete the required governance sealing/approval-evidence successor and independently review its final hashes/tree. Do not merely relabel the original historical scope review. Preserve the acyclic external trust anchor and separate map checks.', 'After that gate, obtain explicit renewed regression execution authority. Fresh discovery/maps, full mandatory methods, durable retrieved Actions artifacts, source-bound reviewed acceptance receipt and independent final acceptance remain required. Do not reuse F2 acceptance, claim skipped/pending exact-head CI passed, mark Ready, merge or deploy.'], 'disposition': 'APPROVE WITH EXPLICIT CONDITIONS', 'final_byte_attestation': 'PENDING_INDEPENDENT_FINAL_BYTE_REVIEW', 'path': 'skills/presumed-sources/release/ci-governance-v1/amendment-001-review.md', 'publication': 'https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6836464616', 'release_accepted': False, 'report_sha256': 'ad85901b6a58c247d233e22f239cf2aac59280cdbff6ecc1aa0914d4f0deb8fe', 'review_id': 'G4C3-15897340-20261112', 'reviewed_commit': '1589734065b4a534276062f97b32288d6c03f761', 'reviewed_tree': 'f3f747aa241583d1564cb210e99cd2cd18ca4765', 'scope': ['skills/presumed-sources/ci_governance.py', 'skills/presumed-sources/release/ci-governance-v1/amendment-001.json', 'skills/presumed-sources/release/ci-governance-v1/amendment-001.schema.json', 'skills/presumed-sources/release/ci-governance-v1/contract-v2.json', 'tests/fixtures/phase_a_v1/runner.py', 'tests/phase_a_release_infra/test_infrastructure.py', 'tests/test_ci_governance_migration.py', 'tests/test_presumed_release.py'], 'session_reference': '01a1d1a0-6cc7-7cf1-8779-3e580adf1af0', 'sha256': '970eff3e719eb54f78874add4a5a67c1021f01da1810b8bac26c7db69dbfb470'}
+AMENDMENT_SHA256 = 'eacee145d63748c53007c6ab96e0d4e7bf76d14957c084ddf7c9736c8a88786c'
 PRIOR_COMMIT = '3fc1efd56506ad465ca959324644ac903130e321'
 PRIOR_TREE = 'b5227359df39804dc887fab9b22ac15931cee18e'
 PRIOR_CONTRACT_SHA256 = 'e7695c46551a9457040dade644a6de5f94f85a3670a9b81248eef74794fad94a'
-CONTRACT_SHA256 = '08da5d573556bc1976bd5ac25ffd78efbb416356592776c47b49202975098cbb'
+CONTRACT_SHA256 = 'b676056ff2e6cfc1a62567c56a03972f012e155f70b8af433cf55b7802bb6495'
 F2 = 'b65b6553a1990029c0b6d200c564c4ccac368299'
 FROZEN = 'fc33e21153756a0f694590e55fc607c8b0fb30e4'
 F2_COUNT = 611
@@ -201,10 +207,24 @@ def _verify_amendment(root, data):
     require(sha(raw) == AMENDMENT_SHA256, 'CI governance amendment changed')
     record = _json(raw)
     _keys(record, ('schema_version','amendment_id','state','prior_source','diagnosis',
-                   'authorization','successors','helper','schema'))
+                   'authorization','successors','helper','schema','independent_review'))
     require(type(record['schema_version']) is int and record['schema_version'] == 1 and
             record['amendment_id'] == 'phase-a-ci-governance-v1-amendment-001' and
-            record['state'] == 'PENDING_INDEPENDENT_REVIEW', 'Invalid amendment identity/state')
+            record['state'] in ('PENDING_INDEPENDENT_REVIEW', 'INDEPENDENTLY_REVIEWED_IMPLEMENTATION'),
+            'Invalid amendment identity/state')
+    if record['state'] == 'PENDING_INDEPENDENT_REVIEW':
+        require(record['independent_review'] is None and data['state'] == 'PENDING_G3',
+                'Unapproved amendment cannot seal')
+    else:
+        require(record['independent_review'] == IMPLEMENTATION_REVIEW,
+                'Incorrect implementation review provenance')
+        evidence = _bound(root, {k: record['independent_review'][k] for k in ('path','sha256')})
+        raw_review = evidence.read_bytes()
+        marker = REVIEW_REPORT_MARKER
+        require(raw_review.count(marker) == 1 and sha(raw_review.split(marker,1)[1]) ==
+                IMPLEMENTATION_REVIEW['report_sha256'], 'Published review report bytes differ')
+        require(_git(root,'rev-parse',REVIEWED_IMPLEMENTATION+'^{tree}').decode().strip() ==
+                REVIEWED_TREE, 'Reviewed implementation tree differs')
     require(record['prior_source'] == dict(commit=PRIOR_COMMIT, tree=PRIOR_TREE,
             contract_sha256=PRIOR_CONTRACT_SHA256,
             attestation='https://github.com/DanTrackedFR/chief-accounting-officer/pull/54#issuecomment-6834058611',
@@ -226,10 +246,21 @@ def _verify_amendment(root, data):
     require(sha(_git(root,'show',PRIOR_COMMIT+':'+PRIOR_CONTRACT)) == PRIOR_CONTRACT_SHA256,
             'Original contract Git binding differs')
     names = ('tests/fixtures/phase_a_v1/runner.py', 'tests/test_ci_governance_migration.py',
-             'tests/test_presumed_release.py', 'tests/phase_a_release_infra/test_infrastructure.py')
+             'tests/test_presumed_release.py', 'tests/phase_a_release_infra/test_infrastructure.py',
+             COMPATIBILITY_TEST)
     _keys(record['successors'], names)
     for name,row in record['successors'].items():
-        _keys(row, ('before_sha256','before_blob','after_sha256','reason'))
+        _keys(row, ('before_sha256','before_blob','after_sha256','reason',
+                    'reviewed_sha256','reviewed_blob','change_state'))
+        _digest(row['reviewed_sha256']); _blob_shape(row['reviewed_blob'])
+        maintenance = ('tests/fixtures/phase_a_v1/runner.py','tests/test_ci_governance_migration.py',
+                       COMPATIBILITY_TEST)
+        expected_state = ('OWNER_AUTHORISED_TEST_MAINTENANCE_PENDING_FINAL_REVIEW'
+                          if row['after_sha256'] != row['reviewed_sha256'] else
+                          'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW')
+        require(row['change_state'] == expected_state and
+                (expected_state == 'UNCHANGED_SINCE_IMPLEMENTATION_REVIEW' or name in maintenance),
+                'Unapproved implementation successor: '+name)
         _digest(row['before_sha256']); _digest(row['after_sha256']); _blob_shape(row['before_blob'])
         require(isinstance(row['reason'],str) and bool(row['reason']), 'Missing successor reason')
         before = _git(root,'show',PRIOR_COMMIT+':'+name)
@@ -241,6 +272,10 @@ def _verify_amendment(root, data):
                      else sha(artifact(root,name).read_bytes()))
         require(effective == row['after_sha256'] and sha(artifact(root,name).read_bytes()) == row['after_sha256'],
                 'Amendment successor differs: '+name)
+        if record['state'] == 'INDEPENDENTLY_REVIEWED_IMPLEMENTATION':
+            require(sha(_git(root,'show',REVIEWED_IMPLEMENTATION+':'+name)) == row['reviewed_sha256'] and
+                    _git(root,'rev-parse',REVIEWED_IMPLEMENTATION+':'+name).decode().strip() == row['reviewed_blob'],
+                    'Reviewed implementation successor differs: '+name)
     helper = record['helper']
     _keys(helper, ('path','before_sha256','before_blob','successor_identity','reason'))
     require(helper['path'] == ADDED[0] and helper['successor_identity'] == 'EXTERNAL_FINAL_GIT_REVIEW',
@@ -307,7 +342,13 @@ def verify_transition(root):
         raise PendingSealing('CI governance PENDING_G3: independent review and final sealing required')
     _keys(data['scope_review'], ('path', 'sha256', 'status'))
     require(data['scope_review']['status'] == 'INDEPENDENTLY_REVIEWED', 'Independent review pending')
-    require(data['scope_review']['path'] == NAMESPACE + '/scope-review.md', 'Review redirected')
+    require(amendment['state'] == 'INDEPENDENTLY_REVIEWED_IMPLEMENTATION',
+            'Independent amendment review pending')
+    require(data['scope_review'] == dict(path=AMENDMENT_REVIEW,
+            sha256=IMPLEMENTATION_REVIEW['sha256'],status='INDEPENDENTLY_REVIEWED'), 'Review redirected')
+    # Retain the complete original review binding as historical evidence.
+    prior = _json(artifact(root,PRIOR_CONTRACT).read_bytes())
+    _bound(root, {k: prior['scope_review'][k] for k in ('path','sha256')})
     _bound(root, {k: data['scope_review'][k] for k in ('path','sha256')})
     require(b'PENDING G3' not in artifact(root, data['scope_review']['path']).read_bytes(), 'Pending review cannot seal')
     for key, filename in (('schema','contract.schema.json'), ('owner_authorization','owner-authorization.json')):
