@@ -37,7 +37,10 @@ REMEDIATION_SUITES = (
     ('diagnostics/profile12/remediation/engineering-qa', 'test_boundaries.py'),
     ('diagnostics/profile12/remediation/engineering-qa', 'test_governance.py'),
 )
-SUPPORTED_SUITES = BASE_SUITES + REMEDIATION_SUITES
+INFRA_SUITES = (('tests/phase_a_release_infra', 'test_*.py'),)
+SUPPORTED_SUITES = BASE_SUITES + REMEDIATION_SUITES + INFRA_SUITES
+PHASE_A_REQUIRED_PATH = 'skills/presumed-sources/phase-a-contracts/required-tests-v1.json'
+PHASE_A_REQUIRED_SHA256 = '2ca2548bbb70d37834f445834f8ef2500d5afb2873d984b5e5e9213a10382603'
 VALIDATOR_COMMANDS = (
     'knowledge/income-taxes/validate_supplement.py', 'knowledge/agriculture/validate_supplement.py',
     'knowledge/insurance-contracts/validate_supplement.py', 'knowledge/derivatives-hedge/validate_supplement.py',
@@ -62,6 +65,8 @@ print(json.dumps(ids))
 def release_input_hashes():
     values = input_hashes()
     paths = list((ROOT/'diagnostics/profile12/fixtures').rglob('*')) + [ROOT/REQUIRED_PATH]
+    paths += list((ROOT/'skills/presumed-sources/release/phase-a-v1').glob('*.json'))
+    paths += [ROOT/'skills/presumed-sources/release/http-proof.json']
     for path in paths:
         if path.is_file():
             require(path.resolve() == path, 'Diagnostic fixture redirected')
@@ -86,7 +91,7 @@ def gate_plan(attempt, commit):
                                CAO_GOV_FOCUSED='1', CAO_ENGINEERING_REF=commit)
         plan.append(dict(index=index, suite=directory, pattern=pattern,
                          gate='accounting-regression' if index < len(BASE_SUITES) else 'mandatory-remediation',
-                         command=['python', '-m', 'build4.run_release', 'suite', directory, pattern, str(index)],
+                         command=['python', 'skills/presumed-sources/suite_runner.py', 'suite', directory, pattern, str(index)],
                          environment=environment))
     return plan
 
@@ -100,6 +105,29 @@ def required_ids():
     ids = [identity for row in data['suites'] for identity in row['distinct_ids']]
     require(len(ids) == len(set(ids)) == 63, 'Mandatory remediation identity contract differs')
     return data['suites']
+
+
+def phase_a_required_ids():
+    path = ROOT/PHASE_A_REQUIRED_PATH
+    require(path.resolve() == path and hashlib.sha256(path.read_bytes()).hexdigest() == PHASE_A_REQUIRED_SHA256,
+            'Mandatory Phase A identity contract changed')
+    data = json.loads(path.read_bytes())
+    ids = data['required_ids']
+    require(data['schema_version'] == 1 and len(ids) == len(set(ids)) == 55 and ids == sorted(ids),
+            'Mandatory Phase A identity population differs')
+    return ids
+
+
+def verify_required_population(rows, executed=False):
+    key = 'executed_ids' if executed else 'distinct_ids'
+    ids = [identity for row in rows for identity in row[key]]
+    require(len(ids) == len(set(ids)), 'Duplicate release identities')
+    mandatory = set(phase_a_required_ids())
+    mandatory.update(i for row in required_ids() for i in row['distinct_ids'])
+    missing = mandatory - set(ids)
+    require(not missing, 'Missing mandatory Phase A/historical methods: '+', '.join(sorted(missing)))
+    return len(mandatory)
+
 
 
 def discover(attempt, commit):
@@ -118,6 +146,7 @@ def discover(attempt, commit):
             rows.append(dict(**slot, distinct_ids=ids, tests=len(ids)))
     ids = [identity for row in rows for identity in row['distinct_ids']]
     require(len(ids) == len(set(ids)), 'Duplicate release discovery identities')
+    verify_required_population(rows)
     indexed = {(row['suite'], row['pattern']): set(row['distinct_ids']) for row in rows}
     for required in required_ids():
         missing = set(required['distinct_ids']) - indexed[(required['suite'], required['pattern'])]
@@ -125,3 +154,17 @@ def discover(attempt, commit):
     return dict(schema_version=1, source_commit=commit, attempt=attempt, suite_results=rows,
                 discovered_distinct_tests=len(ids), executed_distinct_tests=0,
                 release_accepted=False, scope='discovery-only')
+
+
+def verify_source_binding(commit, sources, inputs):
+    require(re.fullmatch(r'[0-9a-f]{40}', commit or '') is not None, 'Invalid source commit')
+    entries = subprocess.check_output(['git','ls-tree','-r',commit], cwd=ROOT, text=True)
+    tree = {line.split('\t',1)[1]: line.split()[2] for line in entries.splitlines()}
+    for name, expected in {**sources, **inputs}.items():
+        path = ROOT/name
+        require(path.resolve() == path and path.is_file(), 'Source input redirected or absent: '+name)
+        data = path.read_bytes()
+        blob = hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+        require(hashlib.sha256(data).hexdigest() == expected and tree.get(name) == blob,
+                'Source commit/execution input mismatch: '+name)
+    return True

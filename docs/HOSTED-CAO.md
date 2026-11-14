@@ -55,3 +55,17 @@ Client-provided structured interpretation remains untrusted. Original document b
 and reviewed intake packs stay private; surface returned parser warnings. Existing
 membership/credential mapping does not authenticate human accounting approval.
 See interfaces/CAO-CONTEXT-EVIDENCE-DOCUMENT-CONTRACT.md and Build3 integration handoff.
+
+## Profile1.2 Phase A structured integration
+
+The separately governed post-merge [Phase A integration contract](phase-a/integration-contract.md)
+defines required Case scope validation, HTTP422 field requirements, explicit
+`remaining_life` YEARS versus `remaining_life_months` MONTHS, monthly/actual-day
+policy elections, opening/closing supplied balance comparisons, and structured
+`proposed_journals`, `applied_assumptions`, and `balance_comparisons`.
+Consume those arrays with decimal arithmetic rather than parsing accounting data
+from guidance. No convention election retains actual-day compatibility. Monthly
+is recommended for new monthly closes, subject to explicit confirmed company
+policy and partial-month treatment. No automatic journal posting is authorized.
+Historical source receipts do not cover the corrected source; separate release
+acceptance and original-upload retesting are required.

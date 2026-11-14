@@ -1,0 +1,146 @@
+[
+  {
+    "case": "intact",
+    "argv": [
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 0,
+    "result": "{\"distinct_tests\": 4012, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  },
+  {
+    "case": "optimized",
+    "argv": [
+      "-O",
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "case": "optimized",
+    "argv": [
+      "-OO",
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "case": "intact",
+    "argv": [
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 0,
+    "result": "{\"distinct_tests\": 4012, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  },
+  {
+    "case": "optimized",
+    "argv": [
+      "-O",
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "case": "optimized",
+    "argv": [
+      "-OO",
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "RuntimeError: Optimized Python is not supported for mandatory release integrity verification"
+  },
+  {
+    "case": "corrupted outer log",
+    "argv": [
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "receipt_integrity.IntegrityError: Evidence inventory artifact changed: skills/presumed-sources/release/full-regression-presumed-sources-attempt-ci-42518015088-1.log"
+  },
+  {
+    "case": "corrupted outer log",
+    "argv": [
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "receipt_integrity.IntegrityError: Evidence inventory artifact changed: skills/presumed-sources/release/full-regression-presumed-sources-attempt-ci-42518015088-1.log"
+  },
+  {
+    "case": "missing evidence",
+    "argv": [
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/presumed-sources-attempt-ci-42518015088-1/suite-17.json"
+  },
+  {
+    "case": "missing evidence",
+    "argv": [
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "receipt_integrity.IntegrityError: Missing or redirected evidence: build4/release/presumed-sources-attempt-ci-42518015088-1/suite-17.json"
+  },
+  {
+    "case": "changed executable source",
+    "argv": [
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "AssertionError: Presumed-source Python changed after regression"
+  },
+  {
+    "case": "changed executable source",
+    "argv": [
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 1,
+    "result": "AssertionError: Presumed-source Python changed after regression"
+  },
+  {
+    "case": "after restoration",
+    "argv": [
+      "skills/presumed-sources/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 0,
+    "result": "{\"distinct_tests\": 4012, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  },
+  {
+    "case": "after restoration",
+    "argv": [
+      "build4/verify_release.py",
+      "--pointer",
+      "build4/release/presumed-sources-accepted-42518015088-1-v2.json"
+    ],
+    "exit": 0,
+    "result": "{\"distinct_tests\": 4012, \"historical_files\": 8912, \"status\": \"PASS\"}"
+  }
+]

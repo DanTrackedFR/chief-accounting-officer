@@ -1,0 +1,12 @@
+{
+  "source": "d1dc520e1afc73f403a13c356067300cced41be8",
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "skills/presumed-sources/verify_release.py",
+    "--focused",
+    "diagnostics/profile12/remediation/governance-positive-v1-pointer.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmp3hc8xasn/repo/skills/presumed-sources/verify_release.py\", line 235, in <module>\n    result = verify_focused(sys.argv[2])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmp3hc8xasn/repo/skills/presumed-sources/verify_release.py\", line 225, in verify_focused\n    require(log['exit_code'] == 0 and digest(artifact(ROOT,log['path'])) == log['sha256'], 'Presumed-source log changed')\n  File \"/tmp/tmp3hc8xasn/repo/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: Presumed-source log changed\n"
+}

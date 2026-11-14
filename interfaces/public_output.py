@@ -83,7 +83,52 @@ def public_record(record, *, route):
                 if not isinstance(line, dict): raise ValueError('Journal line required')
                 lines.append({key: _text(line[key]) for key in ('side', 'account', 'amount') if key in line})
             result['journals'].append({'lines': lines})
+    if any(key in record for key in ('proposed_journals','applied_assumptions','balance_comparisons')):
+        if record.get('source_provenance')!='USER_PROVIDED_SOURCES':raise ValueError('Structured proposals require the source profile')
+        result.update(curate_source_outputs(record))
     return result
+
+def curate_source_outputs(record):
+    from decimal import Decimal
+    def amount(value, nonnegative=True):
+        if not isinstance(value,str) or not re.fullmatch(r'-?[0-9]+(?:\.[0-9]+)?',value):raise ValueError('Exact decimal string required')
+        number=Decimal(value)
+        if not number.is_finite() or (nonnegative and number<0):raise ValueError('Invalid numeric amount')
+        return value
+    out={}
+    for key in ('proposed_journals','applied_assumptions','balance_comparisons'):
+        values=record.get(key,[])
+        if not isinstance(values,list):raise ValueError('Structured output array required')
+        out[key]=[]
+        for value in values:
+            if not isinstance(value,dict):raise ValueError('Structured output object required')
+            if key=='proposed_journals':
+                fields=('journal_reference','case_reference','row_reference','asset_or_transaction_reference','currency',
+                        'period_start','reporting_period','accounting_determination','qualification_status','source_reference')
+                item={field:_text(value[field]) for field in fields}
+                if item['accounting_determination']!='SUPPORTED' or item['qualification_status']!='PROPOSED':raise ValueError('Only supported proposals permitted')
+                if not isinstance(value.get('lines'),list) or not value['lines']:raise ValueError('Nonempty proposal lines required')
+                lines=[];sides={'Dr':Decimal(0),'Cr':Decimal(0)}
+                for line in value['lines']:
+                    if not isinstance(line,dict) or line.get('side') not in sides:raise ValueError('Invalid journal side')
+                    n=amount(line['amount']);sides[line['side']]+=Decimal(n)
+                    lines.append(dict(side=line['side'],account=_text(line['account']),amount=n))
+                if sides['Dr']!=sides['Cr']:raise ValueError('Unbalanced proposal')
+                item['lines']=lines
+            elif key=='applied_assumptions':
+                item={field:_text(value[field]) for field in ('row_reference','field','value','provenance')}
+                if item['provenance'] not in ('explicit_user_input','client_asserted_class_assumption','case_election',
+                    'engine_default_unconfirmed','confirmed_company_policy_client_asserted','explicit_field_semantics','governed_method'):
+                    raise ValueError('Invalid assumption provenance')
+            else:
+                item={field:_text(value[field]) for field in ('row_reference','asset_reference','source_field_path','status','explanation')}
+                if item['status'] not in ('MATCH','MISMATCH','INVALID','UNRESOLVED_BASIS'):raise ValueError('Invalid comparison status')
+                if value.get('balance_basis') not in (None,'opening','closing'):raise ValueError('Invalid balance basis')
+                item['balance_basis']=value.get('balance_basis')
+                for field in ('supplied_value','calculated_value','variance'):
+                    item[field]=None if value.get(field) is None else amount(value[field],nonnegative=field=='supplied_value')
+            out[key].append(item)
+    return out
 
 def curate_anomalies(report):
     if report == {}: return {}

@@ -25,8 +25,22 @@
     },
     "policy_elections": {
       "type": "object",
-      "maxProperties": 0,
-      "default": {}
+      "additionalProperties": false,
+      "properties": {
+        "depreciation_convention": {
+          "enum": [
+            "monthly",
+            "actual_days"
+          ]
+        },
+        "partial_month_treatment": {
+          "enum": [
+            "actual_days_in_month"
+          ]
+        }
+      },
+      "default": {},
+      "description": "Fixed assets only. Missing convention preserves actual_days. Monthly recommended for new monthly-close configurations; partial months require explicit treatment."
     },
     "source": {
       "type": "object",
@@ -91,6 +105,77 @@
             "minLength": 1,
             "maxLength": 256,
             "pattern": "\\S"
+          },
+          "remaining_life": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Legacy remaining useful life in YEARS at period start or availability; never silently reinterpreted. Must be positive for calculation."
+          },
+          "remaining_life_months": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Remaining useful life in MONTHS at period start or availability; exact decimal arithmetic. Must be positive. If both fields supplied, remaining_life \u00d712 must equal remaining_life_months."
+          },
+          "residual": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Explicit residual amount; no replacement assumption is inferred."
+          },
+          "remaining_life_unit": {
+            "const": "years",
+            "description": "Optional explicit confirmation of legacy field units. To supply months use remaining_life_months."
+          },
+          "supplied_net_book_value": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Optional comparison only; never an accounting override. Requires comparison_balance_basis."
+          },
+          "supplied_accumulated_depreciation": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Optional comparison only; never an accounting override. Requires comparison_balance_basis."
+          },
+          "comparison_balance_basis": {
+            "enum": [
+              "opening",
+              "closing"
+            ],
+            "description": "Opening at period_start before movements/charge, or closing at reporting_period after charge and disposal."
           }
         }
       }
@@ -184,6 +269,131 @@
           }
         }
       }
+    },
+    "entity": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "framework": {
+      "enum": [
+        "IFRS",
+        "US_GAAP",
+        "UK_GAAP",
+        "AASB"
+      ]
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Required Case scope; Profile1.2 currently supports periods wholly within 2026."
+    },
+    "reporting_period": {
+      "type": "string",
+      "format": "date",
+      "description": "Required Case scope; Profile1.2 currently supports periods wholly within 2026."
+    },
+    "functional_currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "not": {
+        "const": "XXX"
+      }
+    },
+    "class_assumptions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "remaining_life": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Legacy remaining useful life in YEARS at period start or availability; never silently reinterpreted. Must be positive for calculation."
+          },
+          "remaining_life_months": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Remaining useful life in MONTHS at period start or availability; exact decimal arithmetic. Must be positive. If both fields supplied, remaining_life \u00d712 must equal remaining_life_months."
+          },
+          "residual": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+              },
+              {
+                "type": "integer"
+              }
+            ],
+            "description": "Explicit residual amount; no replacement assumption is inferred."
+          },
+          "remaining_life_unit": {
+            "const": "years",
+            "description": "Optional explicit confirmation of legacy field units. To supply months use remaining_life_months."
+          }
+        }
+      }
+    },
+    "asset_policy": {
+      "type": "object",
+      "properties": {
+        "depreciation_convention": {
+          "enum": [
+            "monthly",
+            "actual_days"
+          ]
+        },
+        "partial_month_treatment": {
+          "enum": [
+            "actual_days_in_month"
+          ]
+        },
+        "confirmation": {
+          "const": "confirmed"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "framework": {
+          "enum": [
+            "IFRS",
+            "US_GAAP",
+            "UK_GAAP",
+            "AASB"
+          ]
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date"
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "description": "A supplied convention must be explicitly confirmed and exactly applicable. Client policy assertion, not independent certification. Conflicting Case election blocks. Native company memory is context-only; explicitly confirm and resubmit candidate policies here."
     }
   },
   "description": "Profile 1.2 permits at most 200 rows across all populations combined (runtime enforced). Oversized source display references use a stable SHA-256-derived reference while native lineage retains the original."

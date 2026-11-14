@@ -1,0 +1,35 @@
+import sys,json,subprocess,hashlib
+from pathlib import Path
+R=Path.cwd();P=Path('/private/tmp');sys.path[:0]=[str(R),str(R/'skills/presumed-sources')]
+import ci_governance as g
+sha=lambda b:hashlib.sha256(b).hexdigest()
+blob=lambda b:hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+git=lambda *a:subprocess.check_output(['git',*a],cwd=R)
+tree={l.split('\t',1)[1]:l.split()[2] for l in git('ls-tree','-r',g.BASELINE).decode().splitlines()}
+main=json.loads((R/'skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json').read_bytes())
+c=json.loads((R/g.CONTRACT).read_bytes());maintenance=g._maintenance(R);extension=maintenance['accepted_main_extension']['migrations'];old=main['source_migrations'];unchanged=0
+for n,b in main['files'].items():
+ assert tree[n]==b
+ if n in old:
+  row=old[n];original=(R/row['archive_path']).read_bytes();assert sha(original)==row['original_sha256']
+  successor=R/c['modified_files'][n]['archive'] if n==g.VERIFIER else R/n
+  assert sha(successor.read_bytes())==row['successor_sha256']
+ elif n in extension:
+  row=extension[n];original=(R/row['archive_path']).read_bytes();assert sha(original)==row['original_sha256'] and blob(original)==row['original_blob']
+  assert sha((R/n).read_bytes())==row['successor_sha256'] and blob((R/n).read_bytes())==row['successor_blob']
+ else:original=(R/n).read_bytes();unchanged+=1
+ assert blob(original)==b,n
+assert len(main['files'])==7963 and unchanged==7958 and len(old)==4 and len(extension)==1
+assert (R/g.DIAGNOSTIC_ARCHIVE).read_bytes()==git('show',g.BASELINE+':'+g.DIAGNOSTIC_TEST)==git('show',g.MAINTENANCE_PREDECESSOR+':'+g.DIAGNOSTIC_TEST)
+prior=json.loads((R/g.PRIOR_CONTRACT).read_bytes());f2tree={l.split('\t',1)[1]:l.split()[2] for l in git('ls-tree','-r',g.F2).decode().splitlines()}
+for n,row in prior['preserved_f2_files'].items():
+ b=(R/n).read_bytes();assert sha(b)==row['sha256'] and blob(b)==row['blob']==f2tree[n]
+for n,row in prior['modified_files'].items():assert (R/row['archive']).read_bytes()==git('show',g.F2+':'+n)
+for n in ['contract-v1.json','scope-review.md','contract-v2.json','amendment-001.json','amendment-001.schema.json','amendment-001-review.md']:
+ assert (R/g.NAMESPACE/n).read_bytes()==git('show',g.MAINTENANCE_PREDECESSOR+':'+g.NAMESPACE+'/'+n)
+manifest='skills/presumed-sources/phase-a-contracts/accepted-main-infrastructure-v1.json';assert (R/manifest).read_bytes()==git('show',g.MAINTENANCE_PREDECESSOR+':'+manifest)
+# Every path outside the exact owner-authorized ten-path correction equals the predecessor Git tree.
+changes=git('diff','--name-only',g.MAINTENANCE_PREDECESSOR,'HEAD').decode().splitlines();assert len(changes)==10
+assert set(changes)==set(g.MAINTENANCE_PATHS)|{g.ADDED[0],g.MAINTENANCE,g.MAINTENANCE_SCHEMA,g.MAINTENANCE_REVIEW,g.DIAGNOSTIC_ARCHIVE}
+out={'accepted_main_originals':7963,'unchanged_active':unchanged,'original_migrations':4,'new_migrations':1,'f2_additions':len(prior['preserved_f2_files']),'original_archives':len(prior['modified_files']),'immutable_records_unchanged':True,'original_GOV02_bytes_preserved':True,'all_other_paths_including_accounting_and_proofs_unchanged':True,'authorized_successor_paths':changes}
+(P/'cao-g4d7-preservation.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

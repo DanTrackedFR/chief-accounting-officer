@@ -132,7 +132,7 @@ class Screening:
         return value
 
     def numeric_inputs(self,row,ref):
-        for field in ('opening_cost','opening_accumulated','residual','remaining_life','remaining_units',
+        for field in ('opening_cost','opening_accumulated','residual','remaining_units',
                       'period_units','amount','quantity','units','unit_price','rate','invoiced_received','opening_accrual'):
             if row.get(field) in (None,''):continue
             positive=(field=='remaining_life' and row.get('method')=='straight_line') or (field=='remaining_units' and row.get('method')=='units_of_production')

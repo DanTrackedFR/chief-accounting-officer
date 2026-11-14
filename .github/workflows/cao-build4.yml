@@ -32,4 +32,9 @@ jobs:
           cmp "$(python -c "from orchestration.history_references import reference_path; print(reference_path('build4/release/memory-proof.json'))")" /tmp/memory283.json
           cmp /tmp/memory283.json /tmp/memory1709.json
       - name: Release manifest and historical preservation
-        run: python -m build4.verify_release
+        env:
+          CAO_PR_POINTER: ${{ vars.CAO_PR_ACCEPTANCE_POINTER }}
+          CAO_PR_POINTER_SHA256: ${{ vars.CAO_PR_ACCEPTANCE_POINTER_SHA256 }}
+        run: |
+          python skills/presumed-sources/ci_governance.py check-pointer --pointer "$CAO_PR_POINTER" --sha256 "$CAO_PR_POINTER_SHA256"
+          python -m build4.verify_release --pointer "$CAO_PR_POINTER"

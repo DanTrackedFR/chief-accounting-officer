@@ -1,0 +1,321 @@
+[
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "start",
+      "request_id": "independent",
+      "objective": "Calculate supported accounting",
+      "target_family": "machinery",
+      "review_mode": "prepared_unreviewed",
+      "source_assurance": "presumed_user_provided"
+    },
+    "status": 200,
+    "response": {
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "checkpoint_revision": null,
+      "company_id": "synthetic-demo-001",
+      "contract_version": "1.0",
+      "currentness": "NOT_EXECUTED",
+      "durable": false,
+      "execution_state": "blocked",
+      "lifecycle_state": "OPEN",
+      "ok": true,
+      "operation": "start",
+      "public_result": {
+        "calculations": [],
+        "confidence": "low",
+        "controls": [],
+        "effective_period": "2026-01-01 to 2026-12-31",
+        "entity_scope": "ENTITY-DEMO",
+        "framework": "IFRS",
+        "guidance": "Accounting work is blocked.",
+        "journals": [],
+        "jurisdiction": "NL",
+        "limitations": [],
+        "open_items": [
+          "No supported issue decomposition; supply accounting facts or a scoped planner",
+          "Supply controlled structured evidence before execution.",
+          "Provide machinery workpaper including assets.",
+          "Consult the fixed-assets input contract and preserve its source and review references."
+        ],
+        "reporting": [],
+        "required_approvals": [],
+        "status": "blocked",
+        "uncertainties": []
+      },
+      "workplan": []
+    }
+  },
+  {
+    "path": "/v1/operations",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "submit",
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "evidence": {
+        "facts": {
+          "machinery": {
+            "case_id": "source-engineering-independent-17",
+            "entity": "ENTITY-DEMO",
+            "framework": "IFRS",
+            "jurisdiction": "NL",
+            "entity_type": "for_profit",
+            "period_start": "2026-01-01",
+            "reporting_period": "2026-12-31",
+            "functional_currency": "EUR",
+            "assumptions": [],
+            "source": {
+              "id": "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+              "version": "1",
+              "hash": "3ca6235126498a5268de17aa47ca06fe6f29eb86f1985d3ebd7a2443d4644fac"
+            },
+            "source_attestation": {
+              "authenticated_user_reference": "private-attesting-user-independent-QA",
+              "timestamp": "2026-11-02T09:00:00+01:00",
+              "statement_version": "company-records-v1",
+              "represents_company_records": true
+            },
+            "class_assumptions": {
+              "machinery": {
+                "framework": "IFRS",
+                "entity": "ENTITY-DEMO",
+                "effective_from": "2026-01-01",
+                "effective_to": "2026-12-31",
+                "policy_version": "synthetic-policy-v1",
+                "remaining_life": "10",
+                "residual": "0",
+                "method": "straight_line",
+                "scope": "ordinary_ppe"
+              }
+            },
+            "assets": [
+              {
+                "id": "EQ-0",
+                "class": "machinery",
+                "opening_cost": "17250",
+                "opening_accumulated": "750",
+                "ready_date": "2025-01-01"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "status": 200,
+    "response": {
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "company_id": "synthetic-demo-001",
+      "contract_version": "1.0",
+      "evidence_authority": "supplied_native_workpaper_not_adapter_approved",
+      "execution_state": "evidence_staged",
+      "ok": true,
+      "operation": "submit"
+    }
+  },
+  {
+    "path": "/v1/jobs",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "execute",
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c"
+    },
+    "status": 202,
+    "response": {
+      "api_version": "1.0",
+      "attempts": 0,
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "company_id": "synthetic-demo-001",
+      "created": 1794686258.2770178,
+      "id": "job-f132d539b5fab9c93fc6d5652ecb419ff240bde882887c0817f596213eb2939e",
+      "state": "ACCEPTED",
+      "updated": 1794686258.2770178
+    }
+  },
+  {
+    "path": "/v1/jobs/job-f132d539b5fab9c93fc6d5652ecb419ff240bde882887c0817f596213eb2939e",
+    "request": null,
+    "status": 200,
+    "response": {
+      "accounting": {
+        "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "blocked",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "accounting_determination": "UNRESOLVED",
+          "anomaly_report": {},
+          "applied_assumptions": [
+            {
+              "field": "framework",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "IFRS"
+            },
+            {
+              "field": "period_start",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "2026-01-01"
+            },
+            {
+              "field": "reporting_period",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "2026-12-31"
+            },
+            {
+              "field": "functional_currency",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "EUR"
+            }
+          ],
+          "balance_comparisons": [],
+          "calculations": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "evidence_sufficiency": "INSUFFICIENT",
+          "framework": "IFRS",
+          "guidance": "Supply the listed information to execute the affected accounting calculations.",
+          "jurisdiction": "NL",
+          "limitations": [
+            "Prepared without independent review. Journal workpapers are proposals; no posting is authorized."
+          ],
+          "open_items": [
+            "Source id exceeds the supported identifier length"
+          ],
+          "proposed_journals": [],
+          "review_provenance": "SYSTEM_PREPARED",
+          "source_provenance": "USER_PROVIDED_SOURCES",
+          "status": "blocked",
+          "validation_requirements": [
+            {
+              "category": "invalid_fact",
+              "explanation": "Source id exceeds the supported identifier length",
+              "field_path": "source",
+              "identifier": "source.validation"
+            }
+          ]
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "blocked"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "company_id": "synthetic-demo-001",
+      "created": 1794686258.2770178,
+      "id": "job-f132d539b5fab9c93fc6d5652ecb419ff240bde882887c0817f596213eb2939e",
+      "state": "SUCCEEDED",
+      "updated": 1794686258.5733066
+    }
+  },
+  {
+    "path": "/v1/jobs",
+    "request": {
+      "contract_version": "1.0",
+      "company_id": "synthetic-demo-001",
+      "operation": "execute",
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c"
+    },
+    "status": 202,
+    "response": {
+      "accounting": {
+        "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+        "checkpoint_revision": 1,
+        "company_id": "synthetic-demo-001",
+        "contract_version": "1.0",
+        "currentness": "CURRENT",
+        "durable": true,
+        "execution_state": "blocked",
+        "lifecycle_state": "DOCUMENTED",
+        "ok": true,
+        "operation": "resume",
+        "public_result": {
+          "accounting_determination": "UNRESOLVED",
+          "anomaly_report": {},
+          "applied_assumptions": [
+            {
+              "field": "framework",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "IFRS"
+            },
+            {
+              "field": "period_start",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "2026-01-01"
+            },
+            {
+              "field": "reporting_period",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "2026-12-31"
+            },
+            {
+              "field": "functional_currency",
+              "provenance": "explicit_user_input",
+              "row_reference": "case",
+              "value": "EUR"
+            }
+          ],
+          "balance_comparisons": [],
+          "calculations": [],
+          "effective_period": "2026-01-01 to 2026-12-31",
+          "entity_scope": "ENTITY-DEMO",
+          "evidence_sufficiency": "INSUFFICIENT",
+          "framework": "IFRS",
+          "guidance": "Supply the listed information to execute the affected accounting calculations.",
+          "jurisdiction": "NL",
+          "limitations": [
+            "Prepared without independent review. Journal workpapers are proposals; no posting is authorized."
+          ],
+          "open_items": [
+            "Source id exceeds the supported identifier length"
+          ],
+          "proposed_journals": [],
+          "review_provenance": "SYSTEM_PREPARED",
+          "source_provenance": "USER_PROVIDED_SOURCES",
+          "status": "blocked",
+          "validation_requirements": [
+            {
+              "category": "invalid_fact",
+              "explanation": "Source id exceeds the supported identifier length",
+              "field_path": "source",
+              "identifier": "source.validation"
+            }
+          ]
+        },
+        "workplan": [
+          {
+            "owner": "fixed-assets",
+            "state": "blocked"
+          }
+        ]
+      },
+      "api_version": "1.0",
+      "attempts": 1,
+      "case_id": "case:3543d6b8c2ddaf9108b0675fbe22ff0db6648c366c38c3e5434309e04dda6c4c",
+      "company_id": "synthetic-demo-001",
+      "created": 1794686258.2770178,
+      "id": "job-f132d539b5fab9c93fc6d5652ecb419ff240bde882887c0817f596213eb2939e",
+      "state": "SUCCEEDED",
+      "updated": 1794686258.5733066
+    }
+  }
+]

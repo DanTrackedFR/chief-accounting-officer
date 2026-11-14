@@ -18,6 +18,10 @@ from production import assess_case, case_fingerprint, serializable
 from borrowing_costs_cases import case as borrowing_case, ready as borrowing_ready
 from grant_cases import case as grant_case, ready as grant_ready
 
+PROFILE12 = '97d0621331c6ad2a66b12ed09c0ec40c05c626b9'
+PROFILE12_DISPATCH = '1283de1ef0a03808095284d734f574462567d624ffcf6aba7023a0e99ee6e16f'
+PHASE_A_DISPATCH = 'ede70f7c396fe9979b024fc1ae5f4ad06d59b8daee6e3c8c19d23596eafa9d26'
+PHASE_A_PIN = 'b820fef2ff2f00dbe5385399c6b2d5132bb03163496489481e05ac4cd5366ba3'
 MAIN = 'e75375b84813b9d584db12aa692b2f4d16baf052'
 BASELINES = {
  ('borrowing-costs','IFRS'): ('d50409cffccbecd1006bdd2d88cc0c336ed16b26519d886205ad9b64c8489537','6405abc524519af07dfab7c9aafacbfa74c970dde9f1301eb0a9b0a8cbec5bcf'),
@@ -80,7 +84,22 @@ class IndependentMainReconciliation(unittest.TestCase):
   for before,after in json.loads(manifest)['skills/production.py']:
    self.assertEqual(current.count(before),1)
    current=current.replace(before,after.replace('__SOURCE_PIN__',source_pin),1)
-  self.assertEqual(current.encode(),(ROOT/'skills/production.py').read_bytes())
+  accepted=subprocess.check_output(['git','show',PROFILE12+':skills/production.py'],cwd=ROOT)
+  self.assertEqual(current.encode(),accepted)
+  self.assertEqual(hashlib.sha256(accepted).hexdigest(),PROFILE12_DISPATCH)
+  old_call=b"    from source_fingerprint import bind_source_mode\n    implementation = bind_source_mode(case, ROOT, PACKAGES, files, implementation, '"+source_pin.encode()+b"')"
+  new_call=b"    from phase_a_fingerprint import bind_phase_a\n    implementation = bind_phase_a(case, ROOT, PACKAGES, files, implementation, '"+PHASE_A_PIN.encode()+b"')"
+  def replay(source):
+   self.assertEqual(source.count(old_call),1)
+   return source.replace(old_call,new_call,1)
+  live=(ROOT/'skills/production.py').read_bytes()
+  self.assertEqual(hashlib.sha256((ROOT/'skills/phase_a_fingerprint.py').read_bytes()).hexdigest(),PHASE_A_PIN)
+  expected=replay(accepted)
+  self.assertEqual(expected,live)
+  self.assertEqual(hashlib.sha256(expected).hexdigest(),PHASE_A_DISPATCH)
+  self.assertNotEqual(accepted,live)
+  self.assertNotEqual(expected,live+b'\n')
+  with self.assertRaises(AssertionError):replay(prepared)
   old=ROOT/'skills/investment-property/fingerprint-baseline/production.py.txt'
   self.assertEqual('b452b2b46d56ad1f72cf7e87fdcadc9e8b7923a6d42c8945aac4589f291b7f52',hashlib.sha256(old.read_bytes()).hexdigest())
 
@@ -162,11 +181,30 @@ class IndependentMainReconciliation(unittest.TestCase):
    'skills/presumed-sources/release/main-7146-public-output.py.txt')}
   def inconsistent(p,*a,**k):
    return 'incongruent non-authoritative text view' if p in targets else native(p,*a,**k)
+  from phase_a_fingerprint import bind_phase_a
+  from source_fingerprint import bind_source_mode
+  dispatcher='skills/production.py'
+  expected='10a34f9fcbe28bb291373fe9c640470ee8bd1202b46590ec66a2a2105d28dfb4'
+  self.assertEqual(BASELINE_SHA,expected)
+  # Test the predecessor with its original, Git-addressed authoritative bytes.
+  historical={ROOT/n:subprocess.check_output(['git','show',PROFILE12+':'+n],cwd=ROOT)
+              for n in (dispatcher,'interfaces/public_output.py')}
+  native_bytes=Path.read_bytes
+  previous=dict(actual)
+  previous.update({str(p.relative_to(ROOT)):hashlib.sha256(v).hexdigest() for p,v in historical.items()})
+  source_pin=hashlib.sha256((ROOT/'skills/source_fingerprint.py').read_bytes()).hexdigest()
   with patch.object(Path,'read_text',inconsistent):
-   from source_fingerprint import bind_source_mode
-   pinned=hashlib.sha256((ROOT/'skills/source_fingerprint.py').read_bytes()).hexdigest()
-   result=bind_source_mode(c,ROOT,PACKAGES,files,actual,pinned)
-  self.assertEqual(BASELINE_SHA,result['skills/production.py'])
+   with patch.object(Path,'read_bytes',lambda p:historical[p] if p in historical else native_bytes(p)):
+    self.assertEqual(bind_source_mode(c,ROOT,PACKAGES,files,previous,source_pin)[dispatcher],expected)
+   self.assertEqual(bind_phase_a(c,ROOT,PACKAGES,files,actual,PHASE_A_PIN)[dispatcher],expected)
+   wrong=dict(actual)
+   wrong[dispatcher]='0'*64
+   self.assertEqual(bind_phase_a(c,ROOT,PACKAGES,files,wrong,PHASE_A_PIN),wrong)
+   self.assertEqual(bind_phase_a(c,ROOT,PACKAGES,files,actual,'0'*64),actual)
+   with patch.object(Path,'read_bytes',lambda p:native_bytes(p)+(b'!' if p==ROOT/dispatcher else b'')):
+    changed=dict(actual)
+    changed[dispatcher]=hashlib.sha256((ROOT/dispatcher).read_bytes()).hexdigest()
+    self.assertEqual(bind_phase_a(c,ROOT,PACKAGES,files,changed,PHASE_A_PIN),changed)
 
  def test_owner_scoped_closure_has_no_investment_source_coupling(self):
   from implementation_scope import fingerprint_files

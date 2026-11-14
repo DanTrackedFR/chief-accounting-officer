@@ -1,0 +1,12 @@
+{
+  "source": "6b36ae0d9bb942ec4eacc199e59c099c4cc01133",
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "skills/presumed-sources/verify_release.py",
+    "--focused",
+    "diagnostics/profile12/remediation/independent-eng-qa-v1-pointer.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmpf70oibqu/candidate/skills/presumed-sources/verify_release.py\", line 229, in <module>\n    result = verify_focused(sys.argv[2])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpf70oibqu/candidate/skills/presumed-sources/verify_release.py\", line 220, in verify_focused\n    inventory = verify_inventory(ROOT, pointer, path, manifest, 'focused-governance-qa-v1')\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpf70oibqu/candidate/skills/presumed-sources/receipt_integrity.py\", line 33, in verify_inventory\n    require(digest(inventory_path) == binding.get('sha256'), 'Evidence inventory digest differs')\n  File \"/tmp/tmpf70oibqu/candidate/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: Evidence inventory digest differs\n"
+}

@@ -1,0 +1,27 @@
+test_cap_and_residual_above_carrying (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_cap_and_residual_above_carrying) ... ok
+test_comparison_material_error_and_no_override (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_comparison_material_error_and_no_override) ... ok
+test_confirmed_policy_conflict_and_provenance (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_confirmed_policy_conflict_and_provenance) ... ok
+test_disposal_and_comparison_date (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_disposal_and_comparison_date) ... ok
+test_exhausted_negative_null_mixed_isolation (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_exhausted_negative_null_mixed_isolation) ... ok
+test_february_and_leap_arithmetic_scope (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_february_and_leap_arithmetic_scope) ... ok
+test_fully_depreciated_in_use_no_disposal (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_fully_depreciated_in_use_no_disposal) ... ok
+test_may_monthly_actual_and_legacy (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_may_monthly_actual_and_legacy) ... ok
+test_partial_stub_and_addition (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_partial_stub_and_addition) ... ok
+test_sequential_period_life_rollforward (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_sequential_period_life_rollforward) ... ok
+test_supported_frameworks_and_no_broadening (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_supported_frameworks_and_no_broadening) ... ok
+test_year_month_equivalence_and_conflicts (skills.tests.test_phase_a_independent_accounting.IndependentAccounting.test_year_month_equivalence_and_conflicts) ... ok
+test_real_http_cross_stage_mixed_row_and_reconciliation (skills.tests.test_phase_a_independent_accounting.IndependentHostedAccounting.test_real_http_cross_stage_mixed_row_and_reconciliation) ... FAIL
+test_real_http_durable_retry_native_journals (skills.tests.test_phase_a_independent_accounting.IndependentHostedAccounting.test_real_http_durable_retry_native_journals) ... ok
+
+======================================================================
+FAIL: test_real_http_cross_stage_mixed_row_and_reconciliation (skills.tests.test_phase_a_independent_accounting.IndependentHostedAccounting.test_real_http_cross_stage_mixed_row_and_reconciliation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/15d3a1e6f2e4/chief-accounting-officer/skills/tests/test_phase_a_independent_accounting.py", line 164, in test_real_http_cross_stage_mixed_row_and_reconciliation
+    self.assertEqual(native['proposed_journal_workpaper'][0][0]['amount'],'2400.00')
+AssertionError: Decimal('2400.00') != '2400.00'
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.493s
+
+FAILED (failures=1)
