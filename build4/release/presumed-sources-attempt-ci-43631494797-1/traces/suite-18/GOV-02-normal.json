@@ -1,0 +1,11 @@
+{
+  "source": "d1dc520e1afc73f403a13c356067300cced41be8",
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "-c",
+    "import runpy; v=runpy.run_path('skills/presumed-sources/verify_release.py'); print(v['verify_historical']())"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"skills/presumed-sources/verify_release.py\", line 142, in verify_historical\n    transition = verify_transition(ROOT)\n                 ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmp3hc8xasn/repo/skills/presumed-sources/ci_governance.py\", line 503, in verify_transition\n    require(sha(artifact(root,name).read_bytes()) == _effective_digest(name,row['after_sha256'],maintenance), 'Active successor changed: '+name)\n  File \"/tmp/tmp3hc8xasn/repo/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: Active successor changed: .github/workflows/cao-orchestration.yml\n"
+}

@@ -1,0 +1,12 @@
+{
+  "source": "d1dc520e1afc73f403a13c356067300cced41be8",
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.16/x64/bin/python",
+    "skills/presumed-sources/verify_release.py",
+    "--focused",
+    "diagnostics/profile12/remediation/independent-eng-qa-v1-pointer.json"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/tmp/tmpd6icb3vp/candidate/skills/presumed-sources/verify_release.py\", line 235, in <module>\n    result = verify_focused(sys.argv[2])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpd6icb3vp/candidate/skills/presumed-sources/verify_release.py\", line 226, in verify_focused\n    inventory = verify_inventory(ROOT, pointer, path, manifest, 'focused-governance-qa-v1')\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpd6icb3vp/candidate/skills/presumed-sources/receipt_integrity.py\", line 68, in verify_inventory\n    require(digest(artifact(root, name)) == expected, 'Evidence inventory artifact changed: ' + name)\n                   ^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmpd6icb3vp/candidate/skills/presumed-sources/receipt_integrity.py\", line 25, in artifact\n    require(path.resolve() == path and path.is_file(), 'Missing or redirected evidence: ' + name)\n  File \"/tmp/tmpd6icb3vp/candidate/skills/presumed-sources/receipt_integrity.py\", line 13, in require\n    raise IntegrityError(message)\nreceipt_integrity.IntegrityError: Missing or redirected evidence: diagnostics/profile12/remediation/independent-eng-qa-v1/receipt-review.md\n"
+}

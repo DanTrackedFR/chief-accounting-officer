@@ -1,0 +1,341 @@
+{
+  "time": "2026-11-14T20:54:48.271190+00:00",
+  "source_commit": "d1dc520e1afc73f403a13c356067300cced41be8",
+  "source_tree": "09f4866ebc956384e42d177e4c82448c7205004b",
+  "checkpoints": [
+    {
+      "id": 6882362105,
+      "sha256": "1656d4771b938b20bf7c3f15210e9d0633da3a6a08e8e5c7187746a07d2f5cfa",
+      "exact_report_in_published_body": true
+    },
+    {
+      "id": 6883950156,
+      "sha256": "b76d3a13c61954ca66c566d726b758bfba0c3addc4982ebb59b7e362e6dd9c63",
+      "exact_report_in_published_body": true
+    }
+  ],
+  "hosted_control": {
+    "sole_failure": "Report execution scope (fresh regression is not release acceptance)",
+    "job_log_sha256": "09507f99f90787f44554f444bf82ac430d173b67c6b67f581b8aa886f9840337",
+    "source_runs": 9,
+    "manual_regressions": 1,
+    "attempt": 1,
+    "variables_unchanged": true
+  },
+  "artifacts": [
+    {
+      "id": 14130862022,
+      "size": 2139199,
+      "sha256": "33e9f96e9483b599e57ce399c8c883d6d8797b26cfc05a3e96899550f61ee096",
+      "members": 298
+    },
+    {
+      "id": 14128705095,
+      "size": 485,
+      "sha256": "8761328385a213664626fc002289c9920591bde7b5e7f4e93cf9a3653957b9c3",
+      "members": 1
+    }
+  ],
+  "suites": [
+    {
+      "suite": "orchestration/tests",
+      "pattern": "test_*.py",
+      "executed": 1377,
+      "passed": 1377
+    },
+    {
+      "suite": "skills/tests",
+      "pattern": "test_*.py",
+      "executed": 1616,
+      "passed": 1616
+    },
+    {
+      "suite": "skills/lease-accounting/tests",
+      "pattern": "test_*.py",
+      "executed": 17,
+      "passed": 17
+    },
+    {
+      "suite": "tests",
+      "pattern": "test_*.py",
+      "executed": 166,
+      "passed": 166
+    },
+    {
+      "suite": "knowledge/income-taxes",
+      "pattern": "test*.py",
+      "executed": 10,
+      "passed": 10
+    },
+    {
+      "suite": "knowledge/agriculture",
+      "pattern": "test*.py",
+      "executed": 83,
+      "passed": 83
+    },
+    {
+      "suite": "knowledge/insurance-contracts",
+      "pattern": "test*.py",
+      "executed": 35,
+      "passed": 35
+    },
+    {
+      "suite": "knowledge/derivatives-hedge",
+      "pattern": "test*.py",
+      "executed": 4,
+      "passed": 4
+    },
+    {
+      "suite": "knowledge/derivatives-hedge",
+      "pattern": "independent_review_tests.py",
+      "executed": 7,
+      "passed": 7
+    },
+    {
+      "suite": "knowledge/inventory-cost",
+      "pattern": "test*.py",
+      "executed": 262,
+      "passed": 262
+    },
+    {
+      "suite": "local_cao/tests",
+      "pattern": "test_*.py",
+      "executed": 55,
+      "passed": 55
+    },
+    {
+      "suite": "knowledge/borrowing-costs",
+      "pattern": "test*.py",
+      "executed": 16,
+      "passed": 16
+    },
+    {
+      "suite": "hosted_cao/tests",
+      "pattern": "test_*.py",
+      "executed": 127,
+      "passed": 127
+    },
+    {
+      "suite": "intelligence/tests",
+      "pattern": "test_*.py",
+      "executed": 72,
+      "passed": 72
+    },
+    {
+      "suite": "build4/tests",
+      "pattern": "test_*.py",
+      "executed": 60,
+      "passed": 60
+    },
+    {
+      "suite": "knowledge/government-grants",
+      "pattern": "test_*.py",
+      "executed": 39,
+      "passed": 39
+    },
+    {
+      "suite": "knowledge/investment-property",
+      "pattern": "test_*.py",
+      "executed": 12,
+      "passed": 12
+    },
+    {
+      "suite": "diagnostics/profile12",
+      "pattern": "regressions.py",
+      "executed": 19,
+      "passed": 19
+    },
+    {
+      "suite": "diagnostics/profile12",
+      "pattern": "governance.py",
+      "executed": 4,
+      "passed": 4
+    },
+    {
+      "suite": "diagnostics/profile12/remediation/accounting-qa",
+      "pattern": "test_accounting_qa.py",
+      "executed": 18,
+      "passed": 18
+    },
+    {
+      "suite": "diagnostics/profile12/remediation/engineering-qa",
+      "pattern": "test_boundaries.py",
+      "executed": 12,
+      "passed": 12
+    },
+    {
+      "suite": "diagnostics/profile12/remediation/engineering-qa",
+      "pattern": "test_governance.py",
+      "executed": 10,
+      "passed": 10
+    },
+    {
+      "suite": "tests/phase_a_release_infra",
+      "pattern": "test_*.py",
+      "executed": 16,
+      "passed": 16
+    }
+  ],
+  "validators": [
+    {
+      "command": [
+        "python",
+        "knowledge/income-taxes/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-0.log",
+      "seconds": 0.032,
+      "sha256": "ff29d00fccff3dddd4e4c4b103e2ba144d3c6ffdb21d0e073da548fac9e0609b"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/agriculture/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-1.log",
+      "seconds": 0.032,
+      "sha256": "f1b3745ad8a49e0f24f3cfc0e6edd764bf5cebb8b487b6bd12b4de232e44d5e9"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/insurance-contracts/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-2.log",
+      "seconds": 0.064,
+      "sha256": "857c7450542ca5a1407edb44112d9dbd1999d5c78344ae9ae2e9afa980864b8c"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/derivatives-hedge/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-3.log",
+      "seconds": 0.064,
+      "sha256": "91f2fce6e5e56dd67b2139f703fa9592d4c9b661a5eab27d8f8d65f01f3dd055"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/inventory-cost/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-4.log",
+      "seconds": 0.064,
+      "sha256": "7f9bcc251ad07ed18c0ddc9f1c9fcb6663aa653e45dd0ada5f42400fdeded57f"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/standards-evidence/validate_claims.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-5.log",
+      "seconds": 0.265,
+      "sha256": "dcf1972839b69d0353629f8aa93b8cc59bc4bdfee90498eb6147b944293333bc"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/standards-evidence/validate_approvals.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-6.log",
+      "seconds": 0.115,
+      "sha256": "753616395b018eeaef3f904a6ffdff881014378b7c64b2c65cc629b4518e39f8"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/borrowing-costs/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-7.log",
+      "seconds": 0.064,
+      "sha256": "ac076742bd63260170d6dea09094664589b9854e02400cd22564c2ecf1ea1cac"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/government-grants/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-8.log",
+      "seconds": 0.115,
+      "sha256": "06e59f5ec0a7c6252af9f4b9039e93c47b837a9a267cf97226d4bb65c0d0c010"
+    },
+    {
+      "command": [
+        "python",
+        "knowledge/investment-property/validate_supplement.py"
+      ],
+      "environment": {
+        "PYTHONHASHSEED": "19"
+      },
+      "exit_code": 0,
+      "path": "build4/release/presumed-sources-attempt-ci-43631494797-1/validator-9.log",
+      "seconds": 0.065,
+      "sha256": "e66edab915f84e3d2b02bf754332a65ac432024d221514eda7c58863bb724d1c"
+    }
+  ],
+  "maps": {
+    "python": 466,
+    "execution_inputs": 2746,
+    "each_verified_separately_against_commit_and_tree": true
+  },
+  "population": {
+    "suites": 23,
+    "shards": 65,
+    "distinct": 4037,
+    "executed": 4037,
+    "passed": 4037,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "missing": 0,
+    "duplicates": 0
+  },
+  "historical": 8912,
+  "accepted_main": {
+    "protected_files": 7963,
+    "unchanged_active_files": 7958,
+    "archived_source_migrations": 5
+  },
+  "governance": {
+    "state": "OWNER_AUTHORISED_MAINTENANCE_PENDING_FINAL_REVIEW",
+    "independent_review": null,
+    "release_accepted": false
+  },
+  "manifest_sha256": "a635a51b2a996b8519cd03fb0d4affcfa8e0da824c26b804bd3d4ff223f2f694",
+  "method_inventory_sha256": "17e25fc5e6f2b92324ec3f435a634c01f8e0cf6a536e4f3c089f823a1da402cb"
+}

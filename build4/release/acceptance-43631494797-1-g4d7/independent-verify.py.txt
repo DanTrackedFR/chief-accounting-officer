@@ -1,0 +1,81 @@
+import sys,json,hashlib,zipfile,subprocess,re,datetime
+from pathlib import Path
+R=Path.cwd();P=Path('/private/tmp');sys.path[:0]=[str(R),str(R/'skills/presumed-sources')]
+import verify_release as v,release_population as pop,ci_governance as g,accepted_history as ah
+from build4.run_release import source_hashes
+from build4.test_outcomes import validate_outcomes,aggregate
+H='d1dc520e1afc73f403a13c356067300cced41be8';T='09f4866ebc956384e42d177e4c82448c7205004b';A='presumed-sources-attempt-ci-43631494797-1';D='build4/release/'+A
+sha=lambda b:hashlib.sha256(b).hexdigest()
+git=lambda *a:subprocess.check_output(['git',*a],cwd=R)
+read=lambda n:json.loads((P/('cao-g4d7-'+n+'.json')).read_bytes())
+out={'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_commit':H,'source_tree':T}
+assert git('rev-parse','HEAD').decode().strip()==H and git('rev-parse','HEAD^{tree}').decode().strip()==T
+assert not git('status','--porcelain','--untracked-files=no')
+pr=read('pr');assert pr['head']['sha']==H and pr['draft'] and not pr['merged'] and pr['state']=='open'
+commit=read('commit');assert commit['tree']['sha']==T and commit['parents'][0]['sha']=='1feef2f93f2b5d9d017dc55449912c9cfd8bf7a7'
+cs=read('comments');checks=[]
+for ident,name,digest in [(6882362105,'cao-g4d5-independent-final-byte-review-d1dc520e.md','1656d4771b938b20bf7c3f15210e9d0633da3a6a08e8e5c7187746a07d2f5cfa'),(6883950156,'cao-g4d6-publication-and-regression-d1dc520e.md','b76d3a13c61954ca66c566d726b758bfba0c3addc4982ebb59b7e362e6dd9c63')]:
+ raw=(P/name).read_bytes();assert sha(raw)==digest
+ c=next(x for x in cs if x['id']==ident);assert raw.decode() in c['body'] and digest in c['body']
+ checks.append({'id':ident,'sha256':digest,'exact_report_in_published_body':True})
+assert not any('ACCEPTED — SOURCE-BOUND RECEIPT ISSUED AND VERIFIED' in c['body'] and '43631494797' in c['body'] for c in cs)
+out['checkpoints']=checks
+base=json.loads((P/'cao-g4d6-start-variables.json').read_bytes());assert read('variables')==base
+inv=read('runs');runs=inv['workflow_runs'];assert len(runs)==inv['total_count']==9 and all(x['run_attempt']==1 and x['head_sha']==H for x in runs)
+assert len([x for x in runs if x['event']=='workflow_dispatch'])==1
+run=read('run');assert run['id']==43631494797 and run['run_attempt']==1 and run['head_sha']==H and run['head_commit']['tree_id']==T and run['event']=='workflow_dispatch' and run['conclusion']=='failure'
+job=read('jobs')['jobs'];assert len(job)==1
+failed=[s for s in job[0]['steps'] if s['conclusion']=='failure'];assert len(failed)==1 and failed[0]['name']=='Report execution scope (fresh regression is not release acceptance)'
+log=(P/'cao-g4d7-job-log.log').read_text();assert log.count('##[error]Process completed with exit code 1.')==1 and 'Regression evidence uploaded; release acceptance remains pending independent review and explicit verified reuse.' in log
+out['hosted_control']={'sole_failure':failed[0]['name'],'job_log_sha256':sha(log.encode()),'source_runs':9,'manual_regressions':1,'attempt':1,'variables_unchanged':True}
+art=read('artifacts')['artifacts'];assert len(art)==2;out['artifacts']=[]
+z=None
+for a in art:
+ raw=(P/('cao-g4d7-'+str(a['id'])+'.zip')).read_bytes();assert len(raw)==a['size_in_bytes'] and 'sha256:'+sha(raw)==a['digest']
+ assert a['workflow_run']['id']==43631494797 and a['workflow_run']['head_sha']==H
+ archive=zipfile.ZipFile(P/('cao-g4d7-'+str(a['id'])+'.zip'));names=archive.namelist();assert archive.testzip() is None and len(names)==len(set(names)) and all(not Path(n).is_absolute() and '..' not in Path(n).parts for n in names)
+ out['artifacts'].append({'id':a['id'],'size':len(raw),'sha256':sha(raw),'members':len(names)})
+ if a['id']==14130862022:z=archive
+ else:assert archive.read('environment-persistence-probe.json')==(R/'skills/presumed-sources/release/environment-persistence-probe.json').read_bytes()
+assert z is not None
+raw=z.read(D+'/release-regression.json');assert sha(raw)=='a635a51b2a996b8519cd03fb0d4affcfa8e0da824c26b804bd3d4ff223f2f694';m=json.loads(raw)
+assert m['source_commit']==H and m['attempt']==A and m['complete'] and m['source_unchanged'] and not m['historical_artifacts_regenerated']
+v.validate_population(m)
+fresh=pop.discover('g4d7-independent-discovery',H);assert fresh['executed_distinct_tests']==0
+disc=json.loads(z.read(D+'/discovery.json'));assert [s['distinct_ids'] for s in disc['suite_results']]==[s['distinct_ids'] for s in fresh['suite_results']]
+def check_log(path,ids,directory):
+ text=z.read(path).decode();observed=re.findall(r'^\w+ \(([^()]+)\)(?:[^\n]*|\n[^\n]*) \.\.\. ok[ \t]*$',text,re.M)
+ actual=sorted(directory+'::'+x for x in observed)
+ assert actual==ids,(path,len(actual),len(ids),set(ids)-set(actual))
+ counts=re.findall(r'^Ran (\d+) tests? in ',text,re.M);assert counts and int(counts[-1])==len(ids) and re.search(r'^OK\s*$',text,re.M)
+ return len(ids)
+ids=[];shard_count=0;out['suites']=[]
+for i,row in enumerate(m['suite_results']):
+ validate_outcomes(row);assert row['distinct_ids']==fresh['suite_results'][i]['distinct_ids']
+ assert json.loads(z.read(D+'/suite-'+str(i)+'.json'))=={k:v for k,v in row.items() if k!='exit_code'}
+ ids.extend(row['executed_ids']);shards=row.get('module_results',[])
+ if shards:
+  shard_ids=[]
+  for s in shards:
+   validate_outcomes(s);assert sha(z.read(s['log']))==s['log_sha256'];check_log(s['log'],s['distinct_ids'],row['suite']);shard_ids.extend(s['distinct_ids'])
+  assert sorted(shard_ids)==row['distinct_ids'] and len(shard_ids)==len(set(shard_ids));shard_count+=len(shards)
+ else:check_log(m['logs'][i]['path'],row['distinct_ids'],row['suite'])
+ out['suites'].append({'suite':row['suite'],'pattern':row['pattern'],'executed':len(row['executed_ids']),'passed':len(row['passed_ids'])})
+assert len(ids)==len(set(ids))==4037 and len(m['suite_results'])==23 and shard_count==65
+for row in m['logs']:assert row['exit_code']==0 and sha(z.read(row['path']))==row['sha256']
+out['validators']=m['logs'][23:33];assert len(out['validators'])==10
+assert m['outcomes']==aggregate(m['suite_results'])
+assert m['outcomes']['passed_ids']==m['outcomes']['executed_ids']==sorted(ids)
+for k in ['failed','errored','skipped','unexecuted']:assert not m['outcomes'][k+'_ids']
+assert source_hashes()==m['tested_python_sha256'] and pop.release_input_hashes()==m['tested_execution_inputs_sha256']
+for label,key,n in [('source','tested_python_sha256',466),('input','tested_execution_inputs_sha256',2746)]:
+ assert len(m[key])==n and json.loads(z.read(D+'/start-'+label+'-hashes.json'))==m[key]
+ assert pop.verify_source_binding(H,m[key] if label=='source' else {},m[key] if label=='input' else {})
+ assert pop.verify_source_binding(T,m[key] if label=='source' else {},m[key] if label=='input' else {})
+out['maps']={'python':466,'execution_inputs':2746,'each_verified_separately_against_commit_and_tree':True}
+out['population']={'suites':23,'shards':65,'distinct':4037,'executed':4037,'passed':4037,'failures':0,'errors':0,'skips':0,'missing':0,'duplicates':0}
+out['historical']=v.verify_historical();out['accepted_main']=ah.verify_accepted_main();out['governance']=g.verify_transition(R)['maintenance_successor']
+assert out['historical']==8912 and out['accepted_main']=={'protected_files':7963,'unchanged_active_files':7958,'archived_source_migrations':5}
+out['manifest_sha256']=sha(raw)
+(P/'cao-g4d7-method-identities.txt').write_text('\n'.join(sorted(ids))+'\n');out['method_inventory_sha256']=sha((P/'cao-g4d7-method-identities.txt').read_bytes())
+(P/'cao-g4d7-verification.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps({k:v for k,v in out.items() if k not in ['suites','validators']},indent=2))
